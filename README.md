@@ -10,7 +10,8 @@ Mantoq to mafhoum
 - الفاحص: `.lake/build/bin/faahis mudaat/sijill.tsv mawsua/makhzan.tsv`؛ القارئ: `.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv "<نصّ مشكول>"`
   — كلمةً أو جملةً (مثل `"قَالُوا اكْتُبُوا"`): الكلمات ثمّ تركيب الجملة في الوصل على آلة المالك `Msent`، بسقوط همزة الوصل
   وإصلاحها الأدنى (Hamza.lean)، وتقطيعها كلماتٍ صوتيّةً ومقاطع (`Dal/Jumla.lean`).
-- المودَعات (المخصّص، لسان العرب، تاج العروس، المقاييس، سيبويه، جدول العوامل المئة) مسجَّلة ببصماتها في `mudaat/sijill.json` ولا تُرفع هنا؛ تُعيَّن بـ `MUDAA_MUKHASSAS` و`MUDAA_DIR` (و`MUDAA_AWAMIL`).
+- المودَعات (المخصّص، لسان العرب، تاج العروس، المقاييس، سيبويه، جدول العوامل المئة، قطر الندى، مغني اللبيب، الألفية، الجنى الداني) مسجَّلة ببصماتها في `mudaat/sijill.json` ولا تُرفع هنا؛ تُعيَّن بـ `MUDAA_MUKHASSAS` و`MUDAA_DIR` (و`MUDAA_AWAMIL`).
+- الجملة الاسمية والفعلية والظرفية بأقسام الكلم: `Jisr/Tarkib.lean` على مغني اللبيب وقطر الندى، فوق ملفّات المالك (Category/Ladder2/Wad).
 - العوامل المئة وفق قانون الاستنفاد: `Jisr/Awamil.lean` — الأصناف على جدول المالك المودَع، والمعادلات بتعيينه، والانغلاق والاستنفاد عليها.
 
 عدد المبرهنات المدقَّقة (بلا sorry/axiom/native_decide) مرجعُه مخرج `lake env lean Audit.lean` وخطّ الأساس `tahaqquq/khatt_asas.json`؛ والطفرات في `tahaqquq/tafrat.json` كلّها مقتولة عند مرور البوّابة.

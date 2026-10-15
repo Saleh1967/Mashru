@@ -17,6 +17,7 @@ import Dal.Makharij
 import Dal.Qanun
 import Dal.Jumla
 import Jisr.Awamil
+import Jisr.Tarkib
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -227,6 +228,51 @@ import Jisr.Awamil
 #print axioms Jisr.Awamil.atf_yantashir
 #print axioms Jisr.Awamil.majzum_qabl_hamzat_wasl
 #print axioms Jisr.Awamil.shahid_lam_yaqum
+-- ملفّات المالك المنقولة بنصّها (slge-closed-v13): المدلول أوّلًا، الأقسام الثلاثة، سلّم الضرورة لكلّ (وأدواته على الجنى الداني)، جبر العوامل على قطر الندى
+#print axioms SLGE.Awwalan.la_wad_bila_madlul
+#print axioms SLGE.Awwalan.madlul_bila_lafz
+#print axioms SLGE.Awwalan.shams_kulli
+#print axioms SLGE.Awwalan.kulli_la_bil_adad
+#print axioms SLGE.Awwalan.hukm_bil_madlul
+#print axioms SLGE.Awwalan.mutabaqa_qaim
+#print axioms SLGE.Awwalan.shahid_la_yunshi
+#print axioms SLGE.Cat.three_roles
+#print axioms SLGE.Cat.no_fourth
+#print axioms SLGE.Cat.kind_bij
+#print axioms SLGE.Cat.three_structs
+#print axioms SLGE.Cat.kindOfMadlul_spec
+#print axioms SLGE.Cat.kindOfMadlul_onto
+#print axioms SLGE.Law.licB_iff
+#print axioms SLGE.Law.nec_order3B
+#print axioms SLGE.Law.nec_order3
+#print axioms SLGE.Law.perm_rev
+#print axioms SLGE.Law.perm_swap
+#print axioms SLGE.Law.stK_bound
+#print axioms SLGE.Law.nec_position_all
+#print axioms SLGE.Cat.nec_compose
+#print axioms SLGE.Cat.ifada_pairs
+#print axioms SLGE.Cat.fil_needs_ism
+#print axioms SLGE.Cat.getD_harf
+#print axioms SLGE.Cat.harf_never
+#print axioms SLGE.Cat.harf_neutral
+#print axioms SLGE.Law.harf_table
+#print axioms SLGE.Law.augs_are_harf1
+#print axioms SLGE.Wad.irab_marks
+#print axioms SLGE.Wad.awamil_table
+#print axioms SLGE.Wad.closure
+#print axioms SLGE.Wad.exhaust
+#print axioms SLGE.Wad.harf_governs
+#print axioms SLGE.Wad.nawasikh_three
+#print axioms SLGE.Wad.kalam_min_matches
+#print axioms SLGE.Wad.wad_counts
+#print axioms SLGE.Wad.nayta_augs
+#print axioms SLGE.Wad.dha_two
+-- المرحلة ٣: الجملة الاسمية والفعلية والظرفية بأقسام الكلم (Jisr/Tarkib.lean على المغني والقطر)
+#print axioms Jisr.Tarkib.naw_thalatha
+#print axioms Jisr.Tarkib.shawahid_mughni
+#print axioms Jisr.Tarkib.azwaj_mufida
+#print axioms Jisr.Tarkib.jadwal_yali
+#print axioms Jisr.Tarkib.la_harf_bada_amil
 #print axioms SLGE.Law.ibtida
 #print axioms SLGE.Law.cell_count
 #print axioms SLGE.Law.qaltu

@@ -2,7 +2,11 @@
 
 هذه الملفّات السبعة **من مرفق المالك slge-closed.zip** (بصمته b773980b3c66ce05b44034626af90bf4aa4cd6e50fb088d8c9cd098e6667e1a6)،
 منقولةٌ بنصّها بلا تعديل، وبُنيت هنا بـ Lean 4.34.1 وأُدرجت مبرهناتها الرئيسة في Audit.lean:
-Core، Ladder، Count، Law، Hamza، Syllable، Root. ما لم يُنقل (Category، Mazid، Ilal، Tarkib، …) ينتظر مرحلته.
+Core، Ladder، Count، Law، Hamza، Syllable، Root.
+ثمّ أربعةٌ من حزمة المالك slge-closed-v13 (بصمة الملفّ المرفوع 364c3067ff7914307a565b2ce1fbd3a162de0527a8dc395f1f56807f5f4c6873)، بنصّها بلا تعديل، أُدرجت مبرهناتها في Audit.lean
+(2026-10-15): MadlulAwwalan (المدلول أوّلًا)، Category (الكلمة اسمٌ وفعلٌ وحرف والتركيب ثلاثة لا رابع)، Ladder2 (سلّم الضرورة «لكلّ»: الترتيب والموضع
+والإفادة والأدوات — والجنى الداني في قسمه الرابع — ومنه الأزواج المفيدة)، Wad (جبر العوامل والإعراب والنواسخ والمعارف على قطر الندى). ما لم يُنقل (Mazid، Ilal،
+Necessity، Bridge، Tarkib، Maqam، TarkibExt، Simat، Muwahhad، Kull، …) ينتظر مرحلته.
 
 الربط بخلايانا في `Dal/Qanun.lean`: ترميزنا `Dal.n` هو `SLGE.cellEnc` بعينه، وجدول مخارجنا `Dal.ahjam` هو
 `SLGE.makharijSizes` بعينه، وجدول المدّ واحد — كلّها مبرهنة، فتسري قوانين المالك على خلايانا.

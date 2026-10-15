@@ -199,6 +199,49 @@
 'Jisr.Awamil.atf_yantashir' depends on axioms: [propext, Quot.sound]
 'Jisr.Awamil.majzum_qabl_hamzat_wasl' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Jisr.Awamil.shahid_lam_yaqum' depends on axioms: [propext, Quot.sound]
+'SLGE.Awwalan.la_wad_bila_madlul' does not depend on any axioms
+'SLGE.Awwalan.madlul_bila_lafz' depends on axioms: [propext]
+'SLGE.Awwalan.shams_kulli' does not depend on any axioms
+'SLGE.Awwalan.kulli_la_bil_adad' does not depend on any axioms
+'SLGE.Awwalan.hukm_bil_madlul' depends on axioms: [propext]
+'SLGE.Awwalan.mutabaqa_qaim' depends on axioms: [propext, Quot.sound]
+'SLGE.Awwalan.shahid_la_yunshi' does not depend on any axioms
+'SLGE.Cat.three_roles' depends on axioms: [propext, Quot.sound]
+'SLGE.Cat.no_fourth' does not depend on any axioms
+'SLGE.Cat.kind_bij' does not depend on any axioms
+'SLGE.Cat.three_structs' depends on axioms: [propext]
+'SLGE.Cat.kindOfMadlul_spec' depends on axioms: [propext]
+'SLGE.Cat.kindOfMadlul_onto' does not depend on any axioms
+'SLGE.Law.licB_iff' depends on axioms: [propext, Quot.sound]
+'SLGE.Law.nec_order3B' does not depend on any axioms
+'SLGE.Law.nec_order3' depends on axioms: [propext, Quot.sound]
+'SLGE.Law.perm_rev' depends on axioms: [propext]
+'SLGE.Law.perm_swap' does not depend on any axioms
+'SLGE.Law.stK_bound' does not depend on any axioms
+'SLGE.Law.nec_position_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Cat.nec_compose' depends on axioms: [propext]
+'SLGE.Cat.ifada_pairs' depends on axioms: [propext]
+'SLGE.Cat.fil_needs_ism' depends on axioms: [propext]
+'SLGE.Cat.getD_harf' depends on axioms: [propext, Quot.sound]
+'SLGE.Cat.harf_never' depends on axioms: [propext, Quot.sound]
+'SLGE.Cat.harf_neutral' depends on axioms: [propext]
+'SLGE.Law.harf_table' does not depend on any axioms
+'SLGE.Law.augs_are_harf1' does not depend on any axioms
+'SLGE.Wad.irab_marks' does not depend on any axioms
+'SLGE.Wad.awamil_table' does not depend on any axioms
+'SLGE.Wad.closure' does not depend on any axioms
+'SLGE.Wad.exhaust' does not depend on any axioms
+'SLGE.Wad.harf_governs' does not depend on any axioms
+'SLGE.Wad.nawasikh_three' depends on axioms: [propext]
+'SLGE.Wad.kalam_min_matches' depends on axioms: [propext]
+'SLGE.Wad.wad_counts' does not depend on any axioms
+'SLGE.Wad.nayta_augs' does not depend on any axioms
+'SLGE.Wad.dha_two' does not depend on any axioms
+'Jisr.Tarkib.naw_thalatha' depends on axioms: [propext]
+'Jisr.Tarkib.shawahid_mughni' depends on axioms: [propext]
+'Jisr.Tarkib.azwaj_mufida' depends on axioms: [propext]
+'Jisr.Tarkib.jadwal_yali' depends on axioms: [propext]
+'Jisr.Tarkib.la_harf_bada_amil' depends on axioms: [propext]
 'SLGE.Law.ibtida' does not depend on any axioms
 'SLGE.Law.cell_count' does not depend on any axioms
 'SLGE.Law.qaltu' does not depend on any axioms
