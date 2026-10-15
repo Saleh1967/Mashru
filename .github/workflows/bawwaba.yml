@@ -1,0 +1,76 @@
+# بوّابة التحقّق على GitHub: تعمل على كلّ Pull Request وعلى كلّ دفعٍ إلى main.
+# تثبّت Lean 4.34.1، تبني، تدقّق المسلّمات، وتشغّل البوّابة كاملةً بطفراتها.
+# اختبارات الشبكة (المودَع mukhassas.txt) لا تعمل هنا لأنّ المودَعات لا تُرفع إلى المستودع؛ البوّابة تذكر ذلك بنفسها.
+name: bawwaba
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  bawwaba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: cache elan and lake build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.elan
+            .lake
+          key: lean-4.34.1-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'SLGE/**/*.lean') }}
+          restore-keys: |
+            lean-4.34.1-${{ runner.os }}-
+
+      - name: install Lean 4.34.1
+        run: bash scripts/tathbit_lean.sh
+
+      - name: lake build
+        run: |
+          export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
+          lake build
+
+      - name: audit axioms
+        run: |
+          export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
+          lake env lean Audit.lean | grep -E "depends|does not" > audit_ci.txt
+          wc -l audit_ci.txt
+          ! grep -vE "\[(propext|Classical\.choice|Quot\.sound)(, (propext|Classical\.choice|Quot\.sound))*\]|does not depend" audit_ci.txt
+
+      - name: bawwaba (gate with mutations)
+        id: gate
+        run: |
+          export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
+          set +e
+          python3 -I tahaqquq/bawwaba.py > gate_out.txt 2> gate_err.txt
+          code=$?
+          cat gate_out.txt; cat gate_err.txt
+          { echo "## مخرج البوّابة"; echo '```'; cat gate_out.txt; cat gate_err.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          exit $code
+
+      - name: post gate output on the PR
+        if: always() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          { echo "### البوّابة (CI) — ${{ steps.gate.outcome }} — \`$(lean --version 2>/dev/null || $HOME/.elan/bin/lean --version)\`"; echo '```'; cat gate_out.txt; cat gate_err.txt 2>/dev/null; echo '```'; echo "تشغيل: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"; } > comment.md
+          gh api -X POST "repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" -F body=@comment.md
+
+      - name: hook protocol test
+        run: |
+          export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
+          python3 -I tahaqquq/test_khattaf.py
+
+      - name: upload audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit
+          path: audit_ci.txt

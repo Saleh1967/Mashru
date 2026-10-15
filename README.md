@@ -11,3 +11,7 @@ Mantoq to mafhoum
 - المودَعات (المخصّص، لسان العرب، تاج العروس، المقاييس، سيبويه) مسجَّلة ببصماتها في `mudaat/sijill.json` ولا تُرفع هنا؛ تُعيَّن بـ `MUDAA_MUKHASSAS` و`MUDAA_DIR`.
 
 الإصدار 11 (2026-10-15): 199 مبرهنة مدقَّقة بلا sorry/axiom/native_decide، 54 طفرة مقتولة، القارئ 8/8.
+
+## سير العمل
+فرعٌ لكلّ مهمّة ثمّ Pull Request؛ لا دفع إلى `main` مباشرة. كلّ PR يمرّ بالبوّابة محلّيًّا وفي CI (`bawwaba`).
+الجلسات السحابية: الصق `.claude/cloud-setup.sh` في خانة Setup script لبيئتك على claude.ai/code (يثبّت Lean 4.34.1).
