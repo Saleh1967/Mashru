@@ -16,6 +16,7 @@ import Aql.Maratib
 import Dal.Makharij
 import Dal.Qanun
 import Dal.Jumla
+import Jisr.Awamil
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -214,6 +215,18 @@ import Dal.Jumla
 #print axioms Dal.shahid_qum_allayla
 #print axioms Dal.shahid_hadd
 #print axioms Dal.shahid_idgham_hadd
+-- المرحلة ٣: العوامل المئة وفق قانون الاستنفاد (Jisr/Awamil.lean على مودَع المالك)
+#print axioms Jisr.Awamil.hala_injective
+#print axioms Jisr.Awamil.ramz_arbaa
+#print axioms Jisr.Awamil.jadwal_mia
+#print axioms Jisr.Awamil.alfaz_96
+#print axioms Jisr.Awamil.inghilaq
+#print axioms Jisr.Awamil.nawasikh_thalatha
+#print axioms Jisr.Awamil.istinfad
+#print axioms Jisr.Awamil.bila_fard
+#print axioms Jisr.Awamil.atf_yantashir
+#print axioms Jisr.Awamil.majzum_qabl_hamzat_wasl
+#print axioms Jisr.Awamil.shahid_lam_yaqum
 #print axioms SLGE.Law.ibtida
 #print axioms SLGE.Law.cell_count
 #print axioms SLGE.Law.qaltu
