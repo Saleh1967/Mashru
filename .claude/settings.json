@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(git push origin main*)",
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(rm -rf *)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/qabl_tamm.sh",
+            "timeout": 600,
+            "statusMessage": "بوّابة التحقّق قبل «تمّ»…"
+          }
+        ]
+      }
+    ]
+  }
+}

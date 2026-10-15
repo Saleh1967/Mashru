@@ -1,0 +1,35 @@
+name = "mashru"
+version = "0.1.0"
+defaultTargets = ["SLGE", "Dal", "Madlul", "Jisr", "Aql", "faahis", "qari"]
+
+[[lean_lib]]
+name = "SLGE"
+globs = ["SLGE.+"]
+
+[[lean_lib]]
+name = "Dal"
+globs = ["Dal.+"]
+
+[[lean_lib]]
+name = "Madlul"
+globs = ["Madlul.+"]
+
+[[lean_lib]]
+name = "Jisr"
+globs = ["Jisr.+"]
+
+[[lean_lib]]
+name = "Aql"
+globs = ["Aql.+"]
+
+[[lean_lib]]
+name = "Faahis"
+globs = ["Faahis.Lib"]
+
+[[lean_exe]]
+name = "faahis"
+root = "Faahis.Main"
+
+[[lean_exe]]
+name = "qari"
+root = "Qari.Main"

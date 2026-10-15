@@ -1,0 +1,177 @@
+✔ [1/7] Built SLGE.Category (1.2s)
+⚠ [2/14] Built SLGE.MadlulAwwalan (1.2s)
+warning: SLGE/MadlulAwwalan.lean:71:37: Variable name `s` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _s
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SLGE/MadlulAwwalan.lean:71:39: Variable name `s'` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _s'
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3/15] Built SLGE.Madlul (839ms)
+✖ [4/15] Building SLGE.Shajara (490ms)
+trace: .> LEAN_PATH=/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/build_owner/slge/.lake/build/lib/lean /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/lean-4.34.1-linux/bin/lean /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/build_owner/slge/SLGE/Shajara.lean -o /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/build_owner/slge/.lake/build/lib/lean/SLGE/Shajara.olean -i /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/build_owner/slge/.lake/build/lib/lean/SLGE/Shajara.ilean -c /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/build_owner/slge/.lake/build/ir/SLGE/Shajara.c --setup /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/build_owner/slge/.lake/build/ir/SLGE/Shajara.setup.json --json
+error: SLGE/Shajara.lean:49:17: Type mismatch: After simplification, term
+  ih
+ has type
+  k = 0 ∨ hukm true true false = some Rutba.maluma
+but is expected to have type
+  hukm true true false = some Rutba.maluma ∧ (k = 0 ∨ hukm true true false = some Rutba.maluma)
+⚠ [5/15] Built SLGE.Qarar (539ms)
+warning: SLGE/Qarar.lean:52:86: This simp argument is unused:
+  h1
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Qarar.lean:53:38: This simp argument is unused:
+  h2
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [7/15] Built SLGE.Core (1.9s)
+warning: SLGE/Core.lean:80:34: Variable name `hB` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hB
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SLGE/Core.lean:80:47: Variable name `hC` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hC
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8/15] Built SLGE.Ajnas (471ms)
+⚠ [10/23] Built SLGE.Ladder (2.3s)
+warning: SLGE/Ladder.lean:153:29: Variable name `hm` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hm
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SLGE/Ladder.lean:253:48: This simp argument is unused:
+  List.takeWhile
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [List.dropWhile, this]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Ladder.lean:253:64: This simp argument is unused:
+  List.dropWhile
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [List.takeWhile, this]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Ladder.lean:257:10: This simp argument is unused:
+  List.takeWhile
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [List.dropWhile, hy, this.1, this.2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Ladder.lean:257:26: This simp argument is unused:
+  List.dropWhile
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [List.takeWhile, hy, this.1, this.2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [11/23] Built SLGE.Count (2.7s)
+warning: SLGE/Count.lean:76:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:79:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Count.lean:131:39: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:144:72: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:146:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Count.lean:160:25: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:161:25: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Count.lean:168:12: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:172:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Count.lean:394:0: automatically included section variable(s) unused in theorem `SLGE.Machine.bsizes_getD`:
+  [BEq α]
+  [LawfulBEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [BEq α] [LawfulBEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: SLGE/Count.lean:398:0: automatically included section variable(s) unused in theorem `SLGE.Machine.getD_eq`:
+  [BEq α]
+  [LawfulBEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [BEq α] [LawfulBEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [12/23] Built SLGE.Law (78s)
+warning: SLGE/Law.lean:127:6: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:127:25: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:292:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Law.lean:292:22: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Law.lean:302:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:302:34: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:317:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:317:34: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:396:59: Variable name `hne` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hne
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SLGE/Law.lean:441:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Law.lean:441:20: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Law.lean:489:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:489:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:702:23: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:709:41: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [13/23] Built SLGE.Syllable (30s)
+warning: SLGE/Syllable.lean:184:23: `if_pos` has been deprecated: Use `ite_eq_left` instead
+⚠ [14/23] Built SLGE.Hamza (479s)
+warning: SLGE/Hamza.lean:121:43: `if_false` has been deprecated: Use `ite_false` instead
+warning: SLGE/Hamza.lean:137:43: `if_false` has been deprecated: Use `ite_false` instead
+⚠ [15/23] Built SLGE.Root (467s)
+warning: SLGE/Root.lean:157:16: This simp argument is unused:
+  hcl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Root.lean:412:43: This simp argument is unused:
+  run_dead
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [δ_big _ (Nat.le_refl 96)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [16/23] Built SLGE.Tarib (678ms)
+✔ [17/23] Built SLGE.Ilal (30s)
+✔ [18/23] Built SLGE.Necessity (15s)
+✖ [19/23] Building SLGE.Jisr (547ms)
+trace: .> LEAN_PATH=/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/build_owner/slge/.lake/build/lib/lean /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/lean-4.34.1-linux/bin/lean /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/build_owner/slge/SLGE/Jisr.lean -o /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/build_owner/slge/.lake/build/lib/lean/SLGE/Jisr.olean -i /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/build_owner/slge/.lake/build/lib/lean/SLGE/Jisr.ilean -c /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/build_owner/slge/.lake/build/ir/SLGE/Jisr.c --setup /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/build_owner/slge/.lake/build/ir/SLGE/Jisr.setup.json --json
+error: SLGE/Jisr.lean:66:79: unsolved goals
+j : Madlul
+s : Nat
+al : List Nat
+hk : j.khawass = []
+ha : j.alaqat = []
+⊢ (match List.find? (fun a => false) al with
+    | some a => HukmNisba.majaz a
+    | none => HukmNisba.laHukm) =
+    HukmNisba.laHukm
+error: SLGE/Jisr.lean:83:36: failed to synthesize
+  Decidable (Law.Mroot.Lic 0 [8, 18, 26])
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+✔ [21/23] Built SLGE.Mazid (168s)
+Some required targets logged failures:
+- SLGE.Shajara
+- SLGE.Jisr
+error: build failed
+EXIT 1

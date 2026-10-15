@@ -1,0 +1,14 @@
+✔ [1/7] Built SLGE.Category 
+✔ [3/15] Built SLGE.Madlul 
+✖ [4/15] Building SLGE.Shajara 
+error: SLGE/Shajara.lean:49:17: Type mismatch: After simplification, term
+✔ [8/15] Built SLGE.Ajnas 
+✔ [16/23] Built SLGE.Tarib 
+✔ [17/23] Built SLGE.Ilal 
+✔ [18/23] Built SLGE.Necessity 
+✖ [19/23] Building SLGE.Jisr 
+error: SLGE/Jisr.lean:66:79: unsolved goals
+error: SLGE/Jisr.lean:83:36: failed to synthesize
+✔ [21/23] Built SLGE.Mazid 
+error: build failed
+EXIT 1

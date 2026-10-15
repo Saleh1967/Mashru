@@ -1,0 +1,326 @@
+[
+ {
+  "ism": "M1_mafhum_naw",
+  "milaf": "Jisr/Tawafuq.lean",
+  "min": "  | .iltizam => false",
+  "ila": "  | .iltizam => true"
+ },
+ {
+  "ism": "M2_majaz_branch",
+  "milaf": "Jisr/AqsamDalMadlul.lean",
+  "min": "false, false, false => .majaz",
+  "ila": "false, false, false => .manqul"
+ },
+ {
+  "ism": "M3_madlul_kull",
+  "milaf": "Madlul/AqsamAlmadlul.lean",
+  "min": "   lafz .murakkab .mustamal, lafz .murakkab .muhmal]",
+  "ila": "   lafz .murakkab .mustamal]"
+ },
+ {
+  "ism": "M4_naw_kull",
+  "milaf": "Dal/AqsamAllafz.lean",
+  "min": "def kull : List NawDalala := [mutabaqa, tadammun, iltizam]",
+  "ila": "def kull : List NawDalala := [mutabaqa, tadammun]"
+ },
+ {
+  "ism": "M5_juz_proper",
+  "milaf": "Madlul/Dalala.lean",
+  "min": "(∃ x, p x) ∧ (∀ x, p x → m x) ∧ (∃ x, m x ∧ ¬ p x)",
+  "ila": "(∃ x, p x) ∧ (∀ x, p x → m x) ∧ True"
+ },
+ {
+  "ism": "M6_juzi_uses_istiwa",
+  "milaf": "Jisr/TasnifAlism.lean",
+  "min": ".juzi (if s.muftaqir then .damir else .alam)",
+  "ila": ".juzi (if s.istiwa then .damir else .alam)"
+ },
+ {
+  "ism": "M7_swap_jins",
+  "milaf": "Jisr/TasnifAlism.lean",
+  "min": "(if s.dhuSifa then .mushtaq else .jinsJamid)",
+  "ila": "(if s.dhuSifa then .jinsJamid else .mushtaq)"
+ },
+ {
+  "ism": "M8_drop_ism_kind",
+  "milaf": "Dal/AqsamAlism.lean",
+  "min": "   juzi .alam, juzi .damir]",
+  "ila": "   juzi .alam]"
+ },
+ {
+  "ism": "M9_no_taalluq_filter",
+  "milaf": "Aql/Aqliyya.lean",
+  "min": "  ms.filter (taalluq w)",
+  "ila": "  ms"
+ },
+ {
+  "ism": "M10_hiss_ignored",
+  "milaf": "Aql/Aqliyya.lean",
+  "min": "  if a.hiss && a.dimagh then",
+  "ila": "  if a.dimagh then"
+ },
+ {
+  "ism": "M11_haqiqa_qati",
+  "milaf": "Aql/Aqliyya.lean",
+  "min": "  | .wujud, true => .qati",
+  "ila": "  | _, true => .qati"
+ },
+ {
+  "ism": "M12_no_premise_check",
+  "milaf": "Aql/Qaida.lean",
+  "min": "if r.muqaddimat.all (fun m => decide (m ∈ thabit)) then",
+  "ila": "if true then"
+ },
+ {
+  "ism": "M13_asl_unchecked",
+  "milaf": "Aql/Qaida.lean",
+  "min": "  | .asl p => if aslB p then some (thabit ++ [p]) else none",
+  "ila": "  | .asl p => some (thabit ++ [p])"
+ },
+ {
+  "ism": "M14_damm_any_rule",
+  "milaf": "Aql/Qaida.lean",
+  "min": "def damm {q : Qaida P} {aslB : P → Bool} (a b : Jawab q aslB) : Jawab q aslB :=",
+  "ila": "def damm {q q2 : Qaida P} {aslB : P → Bool} (a : Jawab q aslB) (b : Jawab q2 aslB) : Jawab q aslB :="
+ },
+ {
+  "ism": "M15_badiha_fil_ahkam",
+  "milaf": "Aql/Badiha.lean",
+  "min": "  | .tarif | .hukmShari | .fanni | .siyasaDalala => .dars",
+  "ila": "  | .tarif | .hukmShari | .fanni => .dars\n  | .siyasaDalala => .badiha"
+ },
+ {
+  "ism": "M16_mulahaza_tusamma_badiha",
+  "milaf": "Aql/Badiha.lean",
+  "min": "if t = .qasd && rabtBilJami then .badiha else .mulahaza",
+  "ila": "if t = .qasd then .badiha else .mulahaza"
+ },
+ {
+  "ism": "M17_dhaka_bila_intibah",
+  "milaf": "Aql/Badiha.lean",
+  "min": "def saraIhsas (h : Hal) : Bool := h.intibah",
+  "ila": "def saraIhsas (h : Hal) : Bool := true"
+ },
+ {
+  "ism": "M18_tafkir_yastalzim",
+  "milaf": "Aql/Badiha.lean",
+  "min": "  if saraIdrak h then",
+  "ila": "  if saraIdrak h || h.saraTafkir then"
+ },
+ {
+  "ism": "M19_masar_bila_rujua",
+  "milaf": "Aql/Badiha.lean",
+  "min": "  | none => dars ()",
+  "ila": "  | none => none"
+ },
+ {
+  "ism": "M20_tayy_sitt_khanat",
+  "milaf": "Aql/Mawsua.lean",
+  "min": "  tawi m := ilaBits 7 m.val",
+  "ila": "  tawi m := ilaBits 6 m.val"
+ },
+ {
+  "ism": "M21_udkhul_bila_fahs",
+  "milaf": "Aql/Mawsua.lean",
+  "min": "  if h : maqbul q aslB m.iddia = true then",
+  "ila": "  if h : true = true then"
+ },
+ {
+  "ism": "M22_wasm_la_yanqus",
+  "milaf": "Aql/Mawsua.lean",
+  "min": "  | .asl p :: ks => min (aslW p).quwwa (quwwatSilsila aslW qW ks)",
+  "ila": "  | .asl p :: ks => max (aslW p).quwwa (quwwatSilsila aslW qW ks)"
+ },
+ {
+  "ism": "M23_majaz_qabl_alhaqiqa",
+  "milaf": "Aql/Mawsua.lean",
+  "min": "  | .haqiqa => 0 | .majaz => 1 | .naql => 2",
+  "ila": "  | .haqiqa => 1 | .majaz => 0 | .naql => 2"
+ },
+ {
+  "ism": "M24_ilmi_lil_kull",
+  "milaf": "Aql/Mawsua.lean",
+  "min": "def uslub (b : Bahth) : Tariqa := if b.maddaMahsusa then .ilmiyya else .aqliyya",
+  "ila": "def uslub (_ : Bahth) : Tariqa := .ilmiyya"
+ },
+ {
+  "ism": "M25_ilmi_bila_qayd",
+  "milaf": "Aql/Mawsua.lean",
+  "min": "  | .ilmiyya => if w.quwwa ≤ Wasm.maqis.quwwa then w else .maqis",
+  "ila": "  | .ilmiyya => w"
+ },
+ {
+  "ism": "M26_sual_dayman_laHukm",
+  "milaf": "Aql/Mawsua.lean",
+  "min": "  if h : (s.istirja f).iddiaat = [] then .laHukm else .hukm (s.istirja f) h",
+  "ila": "  .laHukm"
+ },
+ {
+  "ism": "M27_burhan_min_kitab",
+  "milaf": "Aql/Idaa.lean",
+  "min": "  | .waqiMakhtum | .wad | .maalumatSabiqa => .mutabaq",
+  "ila": "  | .waqiMakhtum | .wad | .maalumatSabiqa => .mubarhan"
+ },
+ {
+  "ism": "M28_ahad_qati",
+  "milaf": "Aql/Idaa.lean",
+  "min": "  | .ahad => .zanni",
+  "ila": "  | .ahad => .qati"
+ },
+ {
+  "ism": "M29_asl_bila_sanad",
+  "milaf": "Aql/Idaa.lean",
+  "min": "  | none => false\n\ntheorem aslMusajjal_sanad",
+  "ila": "  | none => true\n\ntheorem aslMusajjal_sanad"
+ },
+ {
+  "ism": "P12_khatm_bila_idhn",
+  "milaf": "mudaat/idaa.py",
+  "min": "        if not idhn:",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P13_tanzif_qabl_albasma",
+  "milaf": "mudaat/idaa.py",
+  "min": "            h.update(chunk)",
+  "ila": "            h.update(chunk.replace(\"ـ\".encode(), b\"\"))"
+ },
+ {
+  "ism": "P5_faahis_bila_wasm",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    else if w.quwwa > quwwa then",
+  "ila": "    else if false then"
+ },
+ {
+  "ism": "P6_faahis_kull_asl",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    aslB := fun p => Idaa.aslMusajjal (fun x => (asl? x).map (·.sanad)) sijill p",
+  "ila": "    aslB := fun _ => true"
+ },
+ {
+  "ism": "P7_qaida_maftuha",
+  "milaf": "Faahis/Lib.lean",
+  "min": "      if shakl r then ⟨d, mudaat, isdar, qawanin.push (r, w), usul, iddiaat, shawahid, akhta⟩",
+  "ila": "      if true then ⟨d, mudaat, isdar, qawanin.push (r, w), usul, iddiaat, shawahid, akhta⟩"
+ },
+ {
+  "ism": "P8_faahis_bila_qayd",
+  "milaf": "Faahis/Lib.lean",
+  "min": "fun a => qayd a.tariqa (Idaa.qaydMudaa (nawSanad a.sanad) a.wasm)",
+  "ila": "fun a => Idaa.qaydMudaa (nawSanad a.sanad) a.wasm"
+ },
+ {
+  "ism": "P9_sual_bila_udkhul",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    s.udkhul ⟨⟨p, ks⟩, sn⟩) (Makhzan.faregh b.q b.aslB)",
+  "ila": "    s) (Makhzan.faregh b.q b.aslB)"
+ },
+ {
+  "ism": "P11_faahis_bila_sakf_mudaa",
+  "milaf": "Faahis/Lib.lean",
+  "min": "fun a => qayd a.tariqa (Idaa.qaydMudaa (nawSanad a.sanad) a.wasm)",
+  "ila": "fun a => qayd a.tariqa a.wasm"
+ },
+ {
+  "ism": "P14_shuhud_bila_naw",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    shuhud := fun m => shuhudMutabara h.mudaat.toList ((h.shawahid.filter (·.1 == m)).map (·.2)).toList }",
+  "ila": "    shuhud := fun m => ((h.shawahid.filter (·.1 == m)).map (·.2)).toList }"
+ },
+ {
+  "ism": "M30_shakl_bila_ism",
+  "milaf": "Aql/QawaninDalala.lean",
+  "min": "  | [.wad l m] => decide (r = qMutabaqa l m)",
+  "ila": "  | [.wad l m] => decide (r.natija = .mutabaqa l m)"
+ },
+ {
+  "ism": "M31_rutba_mutabaqa_sifr",
+  "milaf": "Aql/QawaninDalala.lean",
+  "min": "  | .mutabaqa .. | .taht .. => 1",
+  "ila": "  | .mutabaqa .. | .taht .. => 0"
+ },
+ {
+  "ism": "M32_haml_lughawiyya_awwalan",
+  "milaf": "Aql/QawaninDalala.lean",
+  "min": "def tartibHaml : List NawHaqiqa := [.shariyya, .urfiyya, .lughawiyya]",
+  "ila": "def tartibHaml : List NawHaqiqa := [.lughawiyya, .urfiyya, .shariyya]"
+ },
+ {
+  "ism": "M33_iltizam_bila_luzum",
+  "milaf": "Aql/QawaninDalala.lean",
+  "min": "  ⟨\"التزام-من-اللزوم\", [.mutabaqa l m, .kharij k m, .luzum m k], .iltizam l k⟩",
+  "ila": "  ⟨\"التزام-من-اللزوم\", [.mutabaqa l m, .kharij k m], .iltizam l k⟩"
+ },
+ {
+  "ism": "M34_shuhud_min_ayy_mudaa",
+  "milaf": "Aql/Maratib.lean",
+  "min": "  sh.filter fun s => sijill.any fun b => s.basma.startsWith b.1 && b.2 == .waqiMakhtum",
+  "ila": "  sh.filter fun s => sijill.any fun b => s.basma.startsWith b.1"
+ },
+ {
+  "ism": "M35_ahjam_naqisa",
+  "milaf": "Dal/Makharij.lean",
+  "min": "def ahjam : List Nat := [3, 2, 2, 1, 1, 3, 1, 1, 1, 1, 3, 3, 3, 1, 3]",
+  "ila": "def ahjam : List Nat := [3, 2, 2, 1, 1, 3, 1, 1, 1, 1, 3, 3, 3, 1, 2]"
+ },
+ {
+  "ism": "M36_tartib_alawsam_maqlub",
+  "milaf": "Aql/Mawsua.lean",
+  "min": "def Wasm.tartib : List Wasm := [.mubarhan, .mubarhanShahid, .mutabaq, .mafhus, .maqis, .taqdir, .ray]",
+  "ila": "def Wasm.tartib : List Wasm := [.mubarhan, .mubarhanShahid, .mutabaq, .maqis, .mafhus, .taqdir, .ray]"
+ },
+ {
+  "ism": "M37_madd_alkasra_waw",
+  "milaf": "Dal/Makharij.lean",
+  "min": "  | .kasra => some 11",
+  "ila": "  | .kasra => some 28"
+ },
+ {
+  "ism": "P10_faahis_bila_sijill",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    aslB := fun p => Idaa.aslMusajjal (fun x => (asl? x).map (·.sanad)) sijill p",
+  "ila": "    aslB := fun p => (asl? p).isSome"
+ },
+ {
+  "ism": "M38_maqta_cvv_cvc",
+  "milaf": "Dal/Qanun.lean",
+  "min": "  | [k] => if k = m then some (1, o, 0, 0) else some (2, o, unskip m k, 0)",
+  "ila": "  | [k] => if k = m then some (2, o, unskip m k, 0) else some (1, o, 0, 0)"
+ },
+ {
+  "ism": "M39_qatta_bila_fahs",
+  "milaf": "Dal/Qanun.lean",
+  "min": "  | some w => if wordChain w = l ∧ ∀ x ∈ w, Valid x ∧ AlifOK x then some w else none",
+  "ila": "  | some w => some w"
+ },
+ {
+  "ism": "M40_hawamil_maqluba",
+  "milaf": "Dal/Makharij.lean",
+  "min": "  ['ء', 'ه', 'ا', 'ع', 'ح',",
+  "ila": "  ['ء', 'ا', 'ه', 'ع', 'ح',"
+ },
+ {
+  "ism": "P15_tanwin_bila_nun",
+  "milaf": "Qari/Main.lean",
+  "min": "          let cells := (if sh then [kh h 3] else []) ++ [kh h s, kh 14 3]",
+  "ila": "          let cells := (if sh then [kh h 3] else []) ++ [kh h s]"
+ },
+ {
+  "ism": "P16_wasl_bila_islah",
+  "milaf": "Qari/Main.lean",
+  "min": "    q := { q with khalaya := ibtidaForm isAl q.khalaya,",
+  "ila": "    q := { q with khalaya := q.khalaya,"
+ },
+ {
+  "ism": "P17_ta_marbuta_ha",
+  "milaf": "Qari/Main.lean",
+  "min": "    if c == 'ة' then throw \"تاء مربوطة: تُقرأ هاءً في الوقف وتاءً في الوصل، ولم يُودَع قرارها\"",
+  "ila": "    let c := if c == 'ة' then 'ه' else c"
+ },
+ {
+  "ism": "P18_qadiyya_naw_muhmal",
+  "milaf": "Faahis/Lib.lean",
+  "min": "      | \"luzum\" => some (.luzum x y) | \"mutabaqa\" => some (.mutabaqa x y) | \"tadammun\" => some (.tadammun x y)",
+  "ila": "      | \"luzum\" => some (.luzum x y) | \"mutabaqa\" => some (.wad x y) | \"tadammun\" => some (.tadammun x y)"
+ }
+]

@@ -1,0 +1,2 @@
+/- تجربة الخطّاف في جلسة حقيقية -/
+theorem tajriba_khattaf : 1 = 1 := rfl

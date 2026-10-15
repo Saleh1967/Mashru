@@ -1,0 +1,223 @@
+import Dal.Khaliya
+import Dal.AqsamAllafz
+import Madlul.Dalala
+import Madlul.AqsamAlmadlul
+import Jisr.AqsamDalMadlul
+import Jisr.Tawafuq
+import Dal.AqsamAlism
+import Jisr.TasnifAlism
+import Aql.Aqliyya
+import Aql.Qaida
+import Aql.Badiha
+import Aql.Mawsua
+import Aql.Idaa
+import Aql.QawaninDalala
+import Aql.Maratib
+import Dal.Makharij
+import Dal.Qanun
+
+-- المرحلة ١: الدال وحده
+#print axioms Dal.n_injective
+#print axioms Dal.n_surjective
+#print axioms Dal.NawDalala.kull_hasir
+#print axioms Dal.NawDalala.kull_nodup
+#print axioms Dal.QismMufrad.kull_hasir
+#print axioms Dal.QismMurakkab.kull_hasir
+-- المرحلة ٢: المدلول وحده
+#print axioms Madlul.QismMadlul.kull_hasir
+#print axioms Madlul.QismMadlul.kull_nodup
+#print axioms Madlul.QismMadlul.khamsa
+#print axioms Dalala.dakhil_mutabaqa_or_tadammun
+#print axioms Dalala.no_witness_no_dalala
+-- المرحلة ٣: الدال والمدلول معًا
+#print axioms Jisr.tasnif_fi_kull
+#print axioms Jisr.tasnif_mustawfa
+#print axioms Jisr.haqiqa_majaz_shart
+#print axioms Jisr.tahaqquq_wahid
+#print axioms Jisr.tahaqquq_hasir
+#print axioms Jisr.mantuq_iff
+#print axioms Jisr.mafhum_iff
+#print axioms Jisr.mantuq_mafhum_la_yajtamian
+#print axioms Jisr.la_tahaqquq_bila_madda
+-- تقسيم الاسم (ج3 745–749)
+#print axioms Dal.QismIsm.kull_hasir
+#print axioms Dal.QismIsm.kull_nodup
+#print axioms Dal.QismIsm.sitta
+#print axioms Jisr.kulli_iff
+#print axioms Jisr.mushtaq_iff
+#print axioms Jisr.alam_iff
+#print axioms Jisr.juzi_la_yaqra_sifat_kulli
+#print axioms Jisr.kulli_la_yaqra_iftiqar
+#print axioms Jisr.tasnifIsm_mustawfa
+-- العقل والعقلية (التفكير 37–65؛ ج1 27–57)
+#print axioms Aql.la_hukm_bila_waqi
+#print axioms Aql.la_hukm_bila_hiss
+#print axioms Aql.la_hukm_bila_dimagh
+#print axioms Aql.la_hukm_bila_maalumat
+#print axioms Aql.ghayr_mutaalliq_la_yufassir
+#print axioms Aql.la_aql_bila_taalluq
+#print axioms Aql.takrar_la_yunshi_fikran
+#print axioms Aql.kull_hukm_min_alqaida
+#print axioms Aql.ikhtilaf_alaqliyyat
+#print axioms Aql.qaida_wahida_mutasiqa
+#print axioms Aql.taaddud_alqawaid_la_lawn
+#print axioms Aql.haqiqa_zanniyya
+#print axioms Aql.la_mafhum_bila_shahid
+-- قاعدة المحرّك: الجبر المرخَّص (ج1 29، 57)
+#print axioms Qaida.tatbiq_sahih
+#print axioms Qaida.fahs_sahih
+#print axioms Qaida.maqbul_murakhkhas
+#print axioms Qaida.jawab_sahih
+#print axioms Qaida.ziyada_la_tusqit
+#print axioms Qaida.rutba_sifr_asl
+#print axioms Qaida.shahid_maqbul
+#print axioms Qaida.shahid_marfud_tartib
+#print axioms Qaida.shahid_marfud_asl
+#print axioms Badiha.la_dhaka_bila_intibah
+#print axioms Badiha.la_dhaka_bila_maalumat
+#print axioms Badiha.la_badiha_fi_alahkam
+#print axioms Badiha.aali_bila_dars
+#print axioms Badiha.mufajaa_dayyiqa_badiha
+#print axioms Badiha.masarSari_sahih
+#print axioms Badiha.badiha_min_idrak
+#print axioms Badiha.la_badiha_bila_rabt
+#print axioms Badiha.tamiyat_alfil_mulahaza
+#print axioms Badiha.saraTafkir_la_tastalzim
+#print axioms Badiha.badiha_murakhkhas
+#print axioms Mawsua.Tayy.injective
+#print axioms Mawsua.la_tayy_maa_jam
+#print axioms Mawsua.ilaBits_tul
+#print axioms Mawsua.minBits_ilaBits
+#print axioms Mawsua.sifrWahid_la_yudi
+#print axioms Mawsua.udkhul_marfud
+#print axioms Mawsua.istirja_murakhkhas
+#print axioms Mawsua.wasm_la_yaalu_asl
+#print axioms Mawsua.wasm_la_yaalu_qanun
+#print axioms Mawsua.tarjih_some
+#print axioms Mawsua.tarjih_min
+#print axioms Mawsua.haqiqa_awla
+#print axioms Mawsua.majaz_awla_min_naql
+#print axioms Mawsua.asas_aqli
+#print axioms Mawsua.ghayr_maddi_la_ilmi
+#print axioms Mawsua.ilmi_zanni
+#print axioms Mawsua.qayd_ilmi
+#print axioms Mawsua.qayd_la_yarfa
+#print axioms Mawsua.ilmi_fi_silsila
+#print axioms Mawsua.sual_laHukm_iff
+#print axioms Mawsua.sual_hukm_istirja
+#print axioms Idaa.qaydMudaa_la_yarfa
+#print axioms Idaa.la_burhan_min_mudaa
+#print axioms Idaa.ahad_zanni
+#print axioms Idaa.laysa_kull_lughawi_qati
+#print axioms Idaa.tatwil_yajma
+#print axioms Idaa.la_tanzif_bila_daya
+#print axioms Idaa.aslMusajjal_sanad
+#print axioms Idaa.sijill_faregh
+#print axioms Qaida.mutadarrija_daifa
+#print axioms Qaida.rutba_sifr_asl_daifa
+#print axioms Mawsua.tartib_hasir
+#print axioms Mawsua.tartib_nodup
+#print axioms Mawsua.tartib_tanazuli
+#print axioms Mawsua.quwwa_tafriq
+#print axioms Dal.hala_min_ila
+#print axioms Dal.hala_ila_min
+#print axioms Dal.thalath_harakat
+#print axioms Dal.hawamil_29
+#print axioms Dal.hawamil_nodup
+#print axioms Dal.makharij_15
+#print axioms Dal.ahjam_sum
+#print axioms Dal.ahjam_mawjaba
+#print axioms Dal.alif_2
+#print axioms Dal.ya_11
+#print axioms Dal.waw_28
+#print axioms Dal.makhraj_hamil
+#print axioms Dal.hamil_makhraj
+#print axioms Dal.illa_mukhtalifa
+#print axioms Dal.madd_huruf_illa
+#print axioms Dal.la_madd_lissukun
+#print axioms QawaninDalala.shakl_sahih
+#print axioms QawaninDalala.shakl_qawanin
+#print axioms QawaninDalala.shakl_mutadarrija
+#print axioms QawaninDalala.dalala_mutadarrija
+#print axioms QawaninDalala.naql_la_aql
+#print axioms QawaninDalala.juz_sawa
+#print axioms QawaninDalala.kharij_sawa
+#print axioms QawaninDalala.sawa_eq
+#print axioms QawaninDalala.salama
+#print axioms QawaninDalala.shahid_shakl
+#print axioms QawaninDalala.shahid_mutadarrija
+#print axioms QawaninDalala.shahid_tadammun
+#print axioms QawaninDalala.shahid_iltizam
+#print axioms QawaninDalala.shahid_la_iltizam_bila_luzum
+#print axioms QawaninDalala.shahid_la_tadammun_bila_juz
+#print axioms QawaninDalala.shariyya_awwalan
+#print axioms QawaninDalala.wahida_tuhmal
+#print axioms QawaninDalala.la_majaz_qabl_istinfad
+#print axioms QawaninDalala.ghayr_yuqif
+#print axioms QawaninDalala.majaz_bad_istinfad
+#print axioms QawaninDalala.mushtarak_bila_qarina
+#print axioms QawaninDalala.haml_rubai
+#print axioms Maratib.qadiyya_min_haythu_hiya
+#print axioms Maratib.la_mafhum_bila_shahid
+#print axioms Maratib.mafhum_bishahid
+#print axioms Maratib.takrar_la_yarfa
+#print axioms Maratib.mujam_la_yasna_mafhum
+#print axioms Maratib.la_mafhum_bila_waqi
+#print axioms Maratib.waqi_yarfa
+#print axioms Maratib.khatwa_majmu
+#print axioms Maratib.foldl_majmu
+#print axioms Maratib.ihsa_majmu
+#print axioms Maratib.khatwa_maana_fst
+#print axioms Maratib.mukhraj_wahid_min_haythu
+#print axioms Dal.ramz_eq_cellEnc
+#print axioms Dal.ramz_lt
+#print axioms Dal.ahjam_eq
+#print axioms Dal.madd_eq
+#print axioms Dal.makhraj_eq
+#print axioms Dal.la_ibtida_bisakin
+#print axioms Dal.khaliya_mufrada_84
+#print axioms Dal.shahid_bint
+#print axioms Dal.shahid_qaltu
+#print axioms Dal.shahid_hajja
+#print axioms Dal.harf_kharij_marfud
+#print axioms Dal.akhudhSawakin_len
+#print axioms Dal.qatta_sahih
+#print axioms Dal.qatta_wahid
+#print axioms Dal.anwa_sitta
+#print axioms Dal.shahid_qatta
+#print axioms Dal.judhur_thulathiyya
+#print axioms SLGE.Law.ibtida
+#print axioms SLGE.Law.cell_count
+#print axioms SLGE.Law.qaltu
+#print axioms SLGE.Law.hajja
+#print axioms SLGE.Law.bint
+#print axioms SLGE.Law.syl_law
+#print axioms SLGE.Law.word_structure
+#print axioms SLGE.Law.sent_structure
+#print axioms SLGE.Law.wordChain_inj
+#print axioms SLGE.Law.sentChain_inj
+#print axioms SLGE.Law.word_levels
+#print axioms SLGE.Law.word_levels_wasl
+#print axioms SLGE.Law.syl_levels
+#print axioms SLGE.Law.syl_numbering
+#print axioms SLGE.Law.sukun_first_dead
+#print axioms SLGE.Law.wasl_hamza_repair
+#print axioms SLGE.Law.prefix_licenses
+#print axioms SLGE.Law.tajawur
+#print axioms SLGE.Law.tajawur_free
+#print axioms SLGE.Law.root3
+#print axioms SLGE.Law.root4
+#print axioms SLGE.Law.root5
+#print axioms SLGE.Law.wazn_counts
+#print axioms SLGE.Law.root_numbering
+#print axioms SLGE.Law.muj_numbering
+#print axioms SLGE.Law.units1
+#print axioms SLGE.Law.units2
+#print axioms SLGE.carrier_dec_enc
+#print axioms SLGE.carrier_enc_dec
+#print axioms SLGE.cell_dec_enc
+#print axioms SLGE.cell_enc_dec
+#print axioms SLGE.syl_dec_enc
+#print axioms SLGE.syl_enc_dec
+#print axioms SLGE.makharij_count
+#print axioms SLGE.syl_sizes

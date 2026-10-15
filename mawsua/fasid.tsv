@@ -1,0 +1,11 @@
+mudaa	aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa	معلومات-سابقة	شاهد-اختبار
+isdar	shahid-fasid
+qanun	تعدية-الاحتواء	taht:zA:j1|fi:j1:j2	taht:zA:j2	مطابق
+asl	taht:zA:j1	تقدير	aaaaaaaaaaaa@s1
+asl	fi:j1:j2	مفحوص	aaaaaaaaaaaa@s2
+iddia	taht:zA:j2	تقدير	a=taht:zA:j1|a=fi:j1:j2|q=0	sahih
+iddia	taht:zA:j2	تقدير	q=0|a=taht:zA:j1|a=fi:j1:j2	tartib
+iddia	taht:zA:j2	تقدير	a=taht:zA:j2	asl-ghayr-mudaa
+iddia	taht:zA:j2	مبرهن	a=taht:zA:j1|a=fi:j1:j2|q=0	wasm-aala
+iddia	taht:zA:j3	تقدير	a=taht:zA:j1|a=fi:j1:j2|q=0	qawl-ghayr-muntaj
+iddia	taht:zA:j1	رأي	a=taht:zA:j1	wasm-adna

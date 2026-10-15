@@ -1,0 +1,19 @@
+mudaa	aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa	معلومات-سابقة	شاهد-اختبار
+isdar	shahid-dalala
+qanun	مطابقة-من-الوضع	wad:الإنسان:الحيوان-الناطق	mutabaqa:الإنسان:الحيوان-الناطق	مطابق
+qanun	تضمّن-من-الجزء	mutabaqa:الإنسان:الحيوان-الناطق|juz:الحيوان:الحيوان-الناطق	tadammun:الإنسان:الحيوان	مطابق
+qanun	مطابقة-من-الوضع	wad:الأسد:الحيوان-المفترس	mutabaqa:الأسد:الحيوان-المفترس	مطابق
+qanun	التزام-من-اللزوم	mutabaqa:الأسد:الحيوان-المفترس|kharij:الشجاعة:الحيوان-المفترس|luzum:الحيوان-المفترس:الشجاعة	iltizam:الأسد:الشجاعة	مطابق
+qanun	تضمّن-من-الجزء	mutabaqa:الإنسان:الحيوان-الناطق|juz:الحيوان:الحيوان-الناطق	tadammun:الأسد:الحيوان	مطابق
+qanun	قانون-مخترع	wad:الإنسان:الحيوان-الناطق	tadammun:الإنسان:الحيوان	مطابق
+qanun	مطابقة-من-الوضع	wad:الإنسان:الحيوان-الناطق	tadammun:الإنسان:الحيوان	مطابق
+asl	wad:الإنسان:الحيوان-الناطق	مطابق	aaaaaaaaaaaa@737
+asl	juz:الحيوان:الحيوان-الناطق	مطابق	aaaaaaaaaaaa@737
+asl	wad:الأسد:الحيوان-المفترس	مطابق	aaaaaaaaaaaa@737
+asl	kharij:الشجاعة:الحيوان-المفترس	مطابق	aaaaaaaaaaaa@737
+asl	luzum:الحيوان-المفترس:الشجاعة	مطابق	aaaaaaaaaaaa@737
+iddia	tadammun:الإنسان:الحيوان	مطابق	a=wad:الإنسان:الحيوان-الناطق|q=0|a=juz:الحيوان:الحيوان-الناطق|q=1	tadammun-sahih
+iddia	iltizam:الأسد:الشجاعة	مطابق	a=wad:الأسد:الحيوان-المفترس|q=2|a=kharij:الشجاعة:الحيوان-المفترس|a=luzum:الحيوان-المفترس:الشجاعة|q=3	iltizam-sahih
+iddia	iltizam:الأسد:الشجاعة	مطابق	a=wad:الأسد:الحيوان-المفترس|q=2|a=kharij:الشجاعة:الحيوان-المفترس|q=3	bila-luzum
+iddia	tadammun:الإنسان:الحيوان	مطابق	a=wad:الإنسان:الحيوان-الناطق|q=1	bila-mutabaqa
+iddia	tadammun:الإنسان:الحيوان	مبرهن	a=wad:الإنسان:الحيوان-الناطق|q=0|a=juz:الحيوان:الحيوان-الناطق|q=1	mubarhan-min-kitab

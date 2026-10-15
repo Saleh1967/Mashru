@@ -1,0 +1,115 @@
+{
+ "sijill": [
+  {
+   "ism": "المخصص",
+   "naw": "معلومات-سابقة",
+   "sha256": "936c68e0c2c62ddbfb881c573487c7b37650ef69117bca364c219b6d1bf8e76c",
+   "milaf": "mukhassas.txt",
+   "masdar": "OpenITI/0475ah@cc9beb0d9645e8cdce892556423b9926a127054f",
+   "muallif": "ابن سيده",
+   "hala": "مختوم",
+   "idhn": "مختوم في حزمة المالك qawanin_madlul_v11 (qawanin_madlul/mudaa_ajnas.py، SLOTS)"
+  },
+  {
+   "ism": "لسان العرب",
+   "naw": "معلومات-سابقة",
+   "sha256": "34fa56710a5b701532a34cb70f8fe440b261e80ae3c40d9667d18b65be7ed86d",
+   "milaf": "lisan.txt",
+   "masdar": "OpenITI/0725ah@056df249d6619b428a78f1d69a8ab2851b97b0a6",
+   "muallif": "ابن منظور",
+   "hala": "مختوم",
+   "idhn": "مختوم في حزمة المالك qawanin_madlul_v11 (qawanin_madlul/mudaa_ajnas.py، SLOTS)"
+  },
+  {
+   "ism": "تاج العروس",
+   "naw": "معلومات-سابقة",
+   "sha256": "eb756c4c41479451040caedc9aa8fb7fef0f6acd3a4cb47a2a7e8a536a3d6cc7",
+   "milaf": "taj.txt",
+   "masdar": "OpenITI/1225ah@4ec30fc763750fc1233d3774c4416b28c5c8b886",
+   "muallif": "الزبيدي",
+   "hala": "مختوم",
+   "idhn": "مختوم في حزمة المالك qawanin_madlul_v11 (qawanin_madlul/mudaa_ajnas.py، SLOTS)"
+  },
+  {
+   "ism": "مقاييس اللغة",
+   "naw": "معلومات-سابقة",
+   "sha256": "7f71af0dfe056cb84e7da24657fa13edc6e8061ca1980eed7f6c196bd18b5689",
+   "milaf": "maqayis.txt",
+   "masdar": "OpenITI/0400ah@5bb6966d8df2ed22b1bff5cdbe29bb9c24f3ca29",
+   "muallif": "ابن فارس",
+   "hala": "مختوم",
+   "idhn": "مختوم في حزمة المالك qawanin_madlul_v11 (qawanin_madlul/mudaa_ajnas.py، SLOTS)"
+  },
+  {
+   "ism": "الشخصية الإسلامية ج1",
+   "naw": "معلومات-سابقة",
+   "sha256": "5e327aa2563af094962833951972b7537a872119a58bbfce5f2a813d20c88e17",
+   "milaf": "8ac96aef-…1.docx",
+   "masdar": "رفعه المالك في الجلسة 2026-10-15",
+   "muallif": "تقي الدين النبهاني",
+   "hala": "مرشح",
+   "idhn": "",
+   "nass_muhawwal": {
+    "milaf": "a1.txt",
+    "sha256": "25a91560a646adb6ce0eb2a1bd9d6f2d1f8fd129c535a86fd5a3da34f12162c9",
+    "ala": "تحويل نصّيّ في الجلسة؛ أرقام الأسطر المستشهد بها في Lean منه"
+   }
+  },
+  {
+   "ism": "الشخصية الإسلامية ج3 (أصول الفقه)",
+   "naw": "معلومات-سابقة",
+   "sha256": "360f7653df4e3396d18153d0ea31e607523d33e0cb552b419340400b2211d5bd",
+   "milaf": "947f0f5c-…2.docx",
+   "masdar": "رفعه المالك في الجلسة 2026-10-15",
+   "muallif": "تقي الدين النبهاني",
+   "hala": "مرشح",
+   "idhn": "",
+   "nass_muhawwal": {
+    "milaf": "a2.txt",
+    "sha256": "8252ca521c91c285b0344b74ab5fc956f088447c8c7811fd5c95c6c2717b8401",
+    "ala": "تحويل نصّيّ في الجلسة؛ أرقام الأسطر المستشهد بها في Lean منه"
+   }
+  },
+  {
+   "ism": "التفكير",
+   "naw": "معلومات-سابقة",
+   "sha256": "e917d9a03b1a546d783868d3bc018b24ced19eb85df671bd41e05f50c2de492c",
+   "milaf": "fc78c25e-…713.doc",
+   "masdar": "رفعه المالك في الجلسة 2026-10-15",
+   "muallif": "تقي الدين النبهاني",
+   "hala": "مرشح",
+   "idhn": "",
+   "nass_muhawwal": {
+    "milaf": "a3.txt",
+    "sha256": "659db78321fa3560893e8d0f5032946783ce9101d99abfe8dafa91f354c91fe0",
+    "ala": "تحويل نصّيّ في الجلسة؛ أرقام الأسطر المستشهد بها في Lean منه"
+   }
+  },
+  {
+   "ism": "سرعة البديهة",
+   "naw": "معلومات-سابقة",
+   "sha256": "483cf19f6153cfb31bb6d965e1b7da6927f330633b49c586360f3567798bc161",
+   "milaf": "018e569d-….docx",
+   "masdar": "رفعه المالك في الجلسة 2026-10-15",
+   "muallif": "تقي الدين النبهاني",
+   "hala": "مرشح",
+   "idhn": "",
+   "nass_muhawwal": {
+    "milaf": "badiha.txt",
+    "sha256": "e8fdceb200c4a6415fd0edd98a2cc2d882b5a454d72a0f03383430873a465d59",
+    "ala": "تحويل نصّيّ في الجلسة؛ أرقام الأسطر المستشهد بها في Lean منه"
+   }
+  },
+  {
+   "ism": "كتاب سيبويه",
+   "naw": "معلومات-سابقة",
+   "sha256": "a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625",
+   "milaf": "sibawayhi.txt",
+   "masdar": "OpenITI 0180Sibawayhi.KitabSibawayhi.JK006989-ara1",
+   "muallif": "سيبويه",
+   "hala": "مختوم",
+   "idhn": "مختوم في حزمة المالك slge-closed (SLGE/BridgeWitness.lean السطر 2)؛ الملفّ غير حاضر في جلسة 2026-10-15 فلم تُطابَق بصمته هنا",
+   "mulahaza": "شاهد جدول المخارج (Dal/Makharij.lean): الكتاب ج4 ص431 كما أحال المالك"
+  }
+ ]
+}

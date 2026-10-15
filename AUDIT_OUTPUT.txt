@@ -1,0 +1,199 @@
+'Dal.n_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dal.n_surjective' depends on axioms: [propext, Quot.sound]
+'Dal.NawDalala.kull_hasir' depends on axioms: [propext]
+'Dal.NawDalala.kull_nodup' does not depend on any axioms
+'Dal.QismMufrad.kull_hasir' depends on axioms: [propext]
+'Dal.QismMurakkab.kull_hasir' depends on axioms: [propext]
+'Madlul.QismMadlul.kull_hasir' depends on axioms: [propext]
+'Madlul.QismMadlul.kull_nodup' does not depend on any axioms
+'Madlul.QismMadlul.khamsa' does not depend on any axioms
+'Dalala.dakhil_mutabaqa_or_tadammun' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dalala.no_witness_no_dalala' does not depend on any axioms
+'Jisr.tasnif_fi_kull' depends on axioms: [propext]
+'Jisr.tasnif_mustawfa' does not depend on any axioms
+'Jisr.haqiqa_majaz_shart' depends on axioms: [propext]
+'Jisr.tahaqquq_wahid' does not depend on any axioms
+'Jisr.tahaqquq_hasir' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.mantuq_iff' depends on axioms: [propext]
+'Jisr.mafhum_iff' depends on axioms: [propext]
+'Jisr.mantuq_mafhum_la_yajtamian' depends on axioms: [propext]
+'Jisr.la_tahaqquq_bila_madda' does not depend on any axioms
+'Dal.QismIsm.kull_hasir' depends on axioms: [propext]
+'Dal.QismIsm.kull_nodup' does not depend on any axioms
+'Dal.QismIsm.sitta' does not depend on any axioms
+'Jisr.kulli_iff' depends on axioms: [propext]
+'Jisr.mushtaq_iff' depends on axioms: [propext, Quot.sound]
+'Jisr.alam_iff' depends on axioms: [propext]
+'Jisr.juzi_la_yaqra_sifat_kulli' depends on axioms: [propext]
+'Jisr.kulli_la_yaqra_iftiqar' depends on axioms: [propext]
+'Jisr.tasnifIsm_mustawfa' does not depend on any axioms
+'Aql.la_hukm_bila_waqi' does not depend on any axioms
+'Aql.la_hukm_bila_hiss' depends on axioms: [propext]
+'Aql.la_hukm_bila_dimagh' depends on axioms: [propext]
+'Aql.la_hukm_bila_maalumat' does not depend on any axioms
+'Aql.ghayr_mutaalliq_la_yufassir' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.la_aql_bila_taalluq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.takrar_la_yunshi_fikran' depends on axioms: [propext]
+'Aql.kull_hukm_min_alqaida' depends on axioms: [propext, Quot.sound]
+'Aql.ikhtilaf_alaqliyyat' does not depend on any axioms
+'Aql.qaida_wahida_mutasiqa' depends on axioms: [propext, Quot.sound]
+'Aql.taaddud_alqawaid_la_lawn' depends on axioms: [propext]
+'Aql.haqiqa_zanniyya' depends on axioms: [propext]
+'Aql.la_mafhum_bila_shahid' does not depend on any axioms
+'Qaida.tatbiq_sahih' depends on axioms: [propext, Quot.sound]
+'Qaida.fahs_sahih' depends on axioms: [propext, Quot.sound]
+'Qaida.maqbul_murakhkhas' depends on axioms: [propext, Quot.sound]
+'Qaida.jawab_sahih' depends on axioms: [propext, Quot.sound]
+'Qaida.ziyada_la_tusqit' does not depend on any axioms
+'Qaida.rutba_sifr_asl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Qaida.shahid_maqbul' depends on axioms: [propext]
+'Qaida.shahid_marfud_tartib' depends on axioms: [propext]
+'Qaida.shahid_marfud_asl' depends on axioms: [propext]
+'Badiha.la_dhaka_bila_intibah' depends on axioms: [propext]
+'Badiha.la_dhaka_bila_maalumat' depends on axioms: [propext]
+'Badiha.la_badiha_fi_alahkam' does not depend on any axioms
+'Badiha.aali_bila_dars' depends on axioms: [propext]
+'Badiha.mufajaa_dayyiqa_badiha' does not depend on any axioms
+'Badiha.masarSari_sahih' depends on axioms: [propext]
+'Badiha.badiha_min_idrak' does not depend on any axioms
+'Badiha.la_badiha_bila_rabt' depends on axioms: [propext]
+'Badiha.tamiyat_alfil_mulahaza' depends on axioms: [propext]
+'Badiha.saraTafkir_la_tastalzim' depends on axioms: [propext]
+'Badiha.badiha_murakhkhas' depends on axioms: [propext, Quot.sound]
+'Mawsua.Tayy.injective' does not depend on any axioms
+'Mawsua.la_tayy_maa_jam' does not depend on any axioms
+'Mawsua.ilaBits_tul' depends on axioms: [propext]
+'Mawsua.minBits_ilaBits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Mawsua.sifrWahid_la_yudi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Mawsua.udkhul_marfud' depends on axioms: [propext]
+'Mawsua.istirja_murakhkhas' depends on axioms: [propext, Quot.sound]
+'Mawsua.wasm_la_yaalu_asl' depends on axioms: [propext]
+'Mawsua.wasm_la_yaalu_qanun' depends on axioms: [propext]
+'Mawsua.tarjih_some' depends on axioms: [Quot.sound]
+'Mawsua.tarjih_min' depends on axioms: [propext, Quot.sound]
+'Mawsua.haqiqa_awla' depends on axioms: [propext, Quot.sound]
+'Mawsua.majaz_awla_min_naql' depends on axioms: [propext, Quot.sound]
+'Mawsua.asas_aqli' does not depend on any axioms
+'Mawsua.ghayr_maddi_la_ilmi' depends on axioms: [propext]
+'Mawsua.ilmi_zanni' does not depend on any axioms
+'Mawsua.qayd_ilmi' does not depend on any axioms
+'Mawsua.qayd_la_yarfa' does not depend on any axioms
+'Mawsua.ilmi_fi_silsila' depends on axioms: [propext]
+'Mawsua.sual_laHukm_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Mawsua.sual_hukm_istirja' depends on axioms: [propext, Quot.sound]
+'Idaa.qaydMudaa_la_yarfa' does not depend on any axioms
+'Idaa.la_burhan_min_mudaa' does not depend on any axioms
+'Idaa.ahad_zanni' does not depend on any axioms
+'Idaa.laysa_kull_lughawi_qati' does not depend on any axioms
+'Idaa.tatwil_yajma' does not depend on any axioms
+'Idaa.la_tanzif_bila_daya' does not depend on any axioms
+'Idaa.aslMusajjal_sanad' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Idaa.sijill_faregh' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Qaida.mutadarrija_daifa' depends on axioms: [propext, Quot.sound]
+'Qaida.rutba_sifr_asl_daifa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Mawsua.tartib_hasir' depends on axioms: [propext]
+'Mawsua.tartib_nodup' does not depend on any axioms
+'Mawsua.tartib_tanazuli' depends on axioms: [propext]
+'Mawsua.quwwa_tafriq' depends on axioms: [propext]
+'Dal.hala_min_ila' depends on axioms: [propext]
+'Dal.hala_ila_min' depends on axioms: [propext]
+'Dal.thalath_harakat' depends on axioms: [propext]
+'Dal.hawamil_29' does not depend on any axioms
+'Dal.hawamil_nodup' does not depend on any axioms
+'Dal.makharij_15' does not depend on any axioms
+'Dal.ahjam_sum' does not depend on any axioms
+'Dal.ahjam_mawjaba' does not depend on any axioms
+'Dal.alif_2' depends on axioms: [propext]
+'Dal.ya_11' depends on axioms: [propext]
+'Dal.waw_28' depends on axioms: [propext]
+'Dal.makhraj_hamil' depends on axioms: [propext]
+'Dal.hamil_makhraj' depends on axioms: [propext]
+'Dal.illa_mukhtalifa' depends on axioms: [propext]
+'Dal.madd_huruf_illa' depends on axioms: [propext]
+'Dal.la_madd_lissukun' depends on axioms: [propext]
+'QawaninDalala.shakl_sahih' depends on axioms: [propext]
+'QawaninDalala.shakl_qawanin' depends on axioms: [propext]
+'QawaninDalala.shakl_mutadarrija' depends on axioms: [propext, Quot.sound]
+'QawaninDalala.dalala_mutadarrija' depends on axioms: [propext, Quot.sound]
+'QawaninDalala.naql_la_aql' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QawaninDalala.juz_sawa' does not depend on any axioms
+'QawaninDalala.kharij_sawa' does not depend on any axioms
+'QawaninDalala.sawa_eq' depends on axioms: [propext, Quot.sound]
+'QawaninDalala.salama' depends on axioms: [propext, Quot.sound]
+'QawaninDalala.shahid_shakl' depends on axioms: [propext]
+'QawaninDalala.shahid_mutadarrija' does not depend on any axioms
+'QawaninDalala.shahid_tadammun' depends on axioms: [propext]
+'QawaninDalala.shahid_iltizam' depends on axioms: [propext]
+'QawaninDalala.shahid_la_iltizam_bila_luzum' depends on axioms: [propext]
+'QawaninDalala.shahid_la_tadammun_bila_juz' depends on axioms: [propext]
+'QawaninDalala.shariyya_awwalan' depends on axioms: [propext]
+'QawaninDalala.wahida_tuhmal' depends on axioms: [propext]
+'QawaninDalala.la_majaz_qabl_istinfad' depends on axioms: [propext]
+'QawaninDalala.ghayr_yuqif' depends on axioms: [propext]
+'QawaninDalala.majaz_bad_istinfad' depends on axioms: [propext]
+'QawaninDalala.mushtarak_bila_qarina' depends on axioms: [propext]
+'QawaninDalala.haml_rubai' depends on axioms: [propext]
+'Maratib.qadiyya_min_haythu_hiya' does not depend on any axioms
+'Maratib.la_mafhum_bila_shahid' depends on axioms: [propext]
+'Maratib.mafhum_bishahid' depends on axioms: [propext]
+'Maratib.takrar_la_yarfa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Maratib.mujam_la_yasna_mafhum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Maratib.la_mafhum_bila_waqi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Maratib.waqi_yarfa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Maratib.khatwa_majmu' depends on axioms: [propext, Quot.sound]
+'Maratib.foldl_majmu' depends on axioms: [propext, Quot.sound]
+'Maratib.ihsa_majmu' depends on axioms: [propext, Quot.sound]
+'Maratib.khatwa_maana_fst' does not depend on any axioms
+'Maratib.mukhraj_wahid_min_haythu' depends on axioms: [propext, Quot.sound]
+'Dal.ramz_eq_cellEnc' depends on axioms: [propext, Quot.sound]
+'Dal.ramz_lt' depends on axioms: [propext, Quot.sound]
+'Dal.ahjam_eq' does not depend on any axioms
+'Dal.madd_eq' depends on axioms: [propext]
+'Dal.makhraj_eq' does not depend on any axioms
+'Dal.la_ibtida_bisakin' depends on axioms: [propext, Quot.sound]
+'Dal.khaliya_mufrada_84' does not depend on any axioms
+'Dal.shahid_bint' depends on axioms: [propext, Quot.sound]
+'Dal.shahid_qaltu' depends on axioms: [propext, Quot.sound]
+'Dal.shahid_hajja' depends on axioms: [propext, Quot.sound]
+'Dal.harf_kharij_marfud' depends on axioms: [propext]
+'Dal.akhudhSawakin_len' depends on axioms: [propext, Quot.sound]
+'Dal.qatta_sahih' depends on axioms: [propext, Quot.sound]
+'Dal.qatta_wahid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dal.anwa_sitta' does not depend on any axioms
+'Dal.shahid_qatta' depends on axioms: [propext, Quot.sound]
+'Dal.judhur_thulathiyya' depends on axioms: [propext, Quot.sound]
+'SLGE.Law.ibtida' does not depend on any axioms
+'SLGE.Law.cell_count' does not depend on any axioms
+'SLGE.Law.qaltu' does not depend on any axioms
+'SLGE.Law.hajja' does not depend on any axioms
+'SLGE.Law.bint' does not depend on any axioms
+'SLGE.Law.syl_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Law.word_structure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Law.sent_structure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Law.wordChain_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Law.sentChain_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Law.word_levels' depends on axioms: [propext, Quot.sound]
+'SLGE.Law.word_levels_wasl' depends on axioms: [propext, Quot.sound]
+'SLGE.Law.syl_levels' depends on axioms: [propext, Quot.sound]
+'SLGE.Law.syl_numbering' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Law.sukun_first_dead' depends on axioms: [propext]
+'SLGE.Law.wasl_hamza_repair' depends on axioms: [propext]
+'SLGE.Law.prefix_licenses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Law.tajawur' does not depend on any axioms
+'SLGE.Law.tajawur_free' does not depend on any axioms
+'SLGE.Law.root3' depends on axioms: [propext, Quot.sound]
+'SLGE.Law.root4' depends on axioms: [propext, Quot.sound]
+'SLGE.Law.root5' depends on axioms: [propext, Quot.sound]
+'SLGE.Law.wazn_counts' does not depend on any axioms
+'SLGE.Law.root_numbering' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Law.muj_numbering' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Law.units1' depends on axioms: [propext, Quot.sound]
+'SLGE.Law.units2' depends on axioms: [propext, Quot.sound]
+'SLGE.carrier_dec_enc' depends on axioms: [propext, Quot.sound]
+'SLGE.carrier_enc_dec' depends on axioms: [propext, Quot.sound]
+'SLGE.cell_dec_enc' depends on axioms: [propext, Quot.sound]
+'SLGE.cell_enc_dec' depends on axioms: [propext]
+'SLGE.syl_dec_enc' depends on axioms: [propext, Quot.sound]
+'SLGE.syl_enc_dec' depends on axioms: [propext, Quot.sound]
+'SLGE.makharij_count' does not depend on any axioms
+'SLGE.syl_sizes' does not depend on any axioms

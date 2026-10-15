@@ -1,0 +1,219 @@
+<title>شبكة المخصّص</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: a lexicographer's index — a narrow column of kutub on the right, the open section's
+   entries in the main column, its links to other ajnas beside them. Ink on cool paper. */
+:root{
+  --paper:#f3f5f6; --sheet:#ffffff; --ink:#1d2428; --muted:#5d6a71; --rule:#d9dfe2;
+  --accent:#1f5f6b; --accent-soft:#e3eff1; --qail:#7a4b13; --warn:#8a5a00; --warn-soft:#fbf1dc;
+  --f-word:"Amiri","Traditional Arabic","Times New Roman",serif;
+  --f-ui:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#12171a; --sheet:#1a2125; --ink:#e4e9ec; --muted:#9aa7ae; --rule:#2c363b;
+  --accent:#6fb7c4; --accent-soft:#1d3237; --qail:#d9a46a; --warn:#e2b45c; --warn-soft:#2e2615; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#12171a; --sheet:#1a2125; --ink:#e4e9ec; --muted:#9aa7ae; --rule:#2c363b;
+  --accent:#6fb7c4; --accent-soft:#1d3237; --qail:#d9a46a; --warn:#e2b45c; --warn-soft:#2e2615; color-scheme:dark}
+html{direction:rtl}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 32px}
+.wrap{max-width:1180px;margin-inline:auto;display:grid;gap:16px}
+header{display:grid;gap:8px}
+h1{font-family:var(--f-word);font-size:2rem;margin:0;font-weight:700;text-wrap:balance}
+.sub{color:var(--muted);margin:0;max-width:70ch}
+.stats{display:flex;flex-wrap:wrap;gap:8px 18px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.stats b{color:var(--ink);font-weight:600}
+.note{background:var(--warn-soft);color:var(--ink);border-inline-start:3px solid var(--warn);padding:8px 12px;border-radius:4px;max-width:90ch}
+.note b{color:var(--warn)}
+.grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:820px){.grid{grid-template-columns:minmax(0,1fr)}}
+aside,.panel{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;min-width:0}
+aside{padding:12px;display:grid;gap:10px;max-height:80vh;overflow:auto}
+@media (max-width:820px){aside{max-height:40vh}}
+label.l{font-size:12px;color:var(--muted);letter-spacing:.02em}
+input[type=search]{width:100%;box-sizing:border-box;font:inherit;font-family:var(--f-word);font-size:1.1rem;padding:6px 10px;
+  border:1px solid var(--rule);border-radius:4px;background:var(--paper);color:var(--ink)}
+input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tree{display:grid;gap:2px}
+.tree details>summary{cursor:pointer;font-weight:600;padding:3px 4px;border-radius:4px;list-style:none}
+.tree details>summary::-webkit-details-marker{display:none}
+.tree details>summary::before{content:"◂ ";color:var(--muted);font-size:.8em}
+.tree details[open]>summary::before{content:"▾ "}
+.tree button{all:unset;cursor:pointer;display:block;padding:2px 14px 2px 4px;border-radius:4px;font-size:13px;color:var(--ink)}
+.tree button:hover,.tree summary:hover{background:var(--accent-soft)}
+.tree button.on{background:var(--accent);color:var(--sheet)}
+.tree .kids{display:grid;gap:1px;margin-inline-start:6px;border-inline-start:1px solid var(--rule)}
+.panel{padding:16px;display:grid;gap:16px}
+.crumb{color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:6px}
+.crumb button{all:unset;cursor:pointer;color:var(--accent)}
+h2{font-family:var(--f-word);font-size:1.7rem;margin:0;line-height:1.3}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:16px;align-items:start}
+@media (max-width:1000px){.cols{grid-template-columns:minmax(0,1fr)}}
+h3{font-size:13px;font-weight:600;color:var(--muted);margin:0 0 6px;letter-spacing:.02em}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+td,th{text-align:start;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--rule)}
+th{font-size:12px;color:var(--muted);font-weight:500}
+td.w{font-family:var(--f-word);font-size:1.15rem;white-space:nowrap}
+td.g{font-family:var(--f-word);font-size:1.02rem}
+td.q{color:var(--qail);font-size:12.5px;white-space:nowrap}
+td.pg{color:var(--muted);font-size:11.5px;font-variant-numeric:tabular-nums;white-space:nowrap;direction:ltr;text-align:end}
+.side{display:grid;gap:16px}
+.bar{display:grid;grid-template-columns:minmax(0,1fr) 40px;gap:2px 8px;align-items:center;font-size:12.5px}
+.bar .t{position:relative;padding:1px 6px;z-index:0}
+.bar .t i{position:absolute;inset-block:0;inset-inline-start:0;background:var(--accent-soft);z-index:-1;border-radius:2px}
+.bar .n{font-variant-numeric:tabular-nums;color:var(--muted);text-align:end}
+.links{display:grid;gap:6px}
+.links button{all:unset;cursor:pointer;display:grid;gap:1px;padding:5px 8px;border:1px solid var(--rule);border-radius:4px}
+.links button:hover{border-color:var(--accent)}
+.links .lt{color:var(--accent);font-weight:500}
+.links .le{font-family:var(--f-word);color:var(--muted);font-size:.95rem}
+.poem{font-family:var(--f-word);font-size:1.05rem;padding:4px 0;border-bottom:1px dashed var(--rule)}
+.more{all:unset;cursor:pointer;color:var(--accent);font-size:13px}
+.res{display:grid;gap:4px}
+.res button{all:unset;cursor:pointer;padding:3px 6px;border-radius:4px;font-size:13px}
+.res button:hover{background:var(--accent-soft)}
+.res .rw{font-family:var(--f-word);font-size:1.05rem}
+.res .rj{color:var(--muted)}
+.empty{color:var(--muted)}
+.kids-list{display:flex;flex-wrap:wrap;gap:6px}
+.kids-list button{all:unset;cursor:pointer;padding:2px 8px;border:1px solid var(--rule);border-radius:999px;font-size:12.5px}
+.kids-list button:hover{border-color:var(--accent);color:var(--accent)}
+footer{color:var(--muted);font-size:12px;max-width:90ch}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>شبكة المخصّص لابن سيده</h1>
+    <p class="sub">أجناس المخصّص كما بوّبها ابن سيده، وتحت كلّ جنس ألفاظه وشروحها منسوبةً إلى قائليها، وشواهده الشعرية، وروابطه بالأجناس الأخرى التي تُشرح ألفاظها بألفاظه.</p>
+    <div class="stats" id="stats"></div>
+    <div class="note" id="note"></div>
+  </header>
+  <div class="grid">
+    <aside>
+      <div>
+        <label class="l" for="q">ابحث عن لفظ</label>
+        <input id="q" type="search" placeholder="مثل: الحدقة" autocomplete="off">
+      </div>
+      <div class="res" id="res" hidden></div>
+      <div>
+        <h3>الكتب</h3>
+        <div class="tree" id="tree"></div>
+      </div>
+    </aside>
+    <main class="panel" id="panel"><p class="empty">يُحمَّل المودَع…</p></main>
+  </div>
+  <footer id="foot"></footer>
+</div>
+
+<script>
+(async function(){
+  const D = await (await fetch('data.json')).json();
+  const AJ = D.aj, P = D.p, Q = D.q, PG = D.pages;
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const fmt = n => n.toLocaleString('ar-EG');
+  const norm = w => { w = w.replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي'); return (w.startsWith('ال') && w.length>4) ? w.slice(2) : w; };
+  const kids = AJ.map(() => []); AJ.forEach((a,i) => { if (a[2] !== null) kids[a[2]].push(i); });
+  const byJ = AJ.map(() => []); P.forEach((p,i) => byJ[p[0]].push(i));
+  const poems = AJ.map(() => []); D.s.forEach(s => poems[s[0]].push(s[1]));
+  const out = AJ.map(() => []), inn = AJ.map(() => []);
+  D.r.forEach(r => { out[r[0]].push(r); inn[r[1]].push(r); });
+  const pageLabel = i => { const m = /PageV(\d+)P(\d+)/.exec(PG[i] || ''); return m ? `ج${+m[1]} ص${+m[2]}` : ''; };
+  const pathOf = i => { const r = []; while (i !== null) { r.unshift(i); i = AJ[i][2]; } return r; };
+
+  const I = D.ihsa, M = D.qiyas;
+  $('#stats').innerHTML = [
+    ['أجناس', I.ajnas], ['أزواج لفظ وشرح', I.azwaj], ['منسوبة إلى قائل', I.mansub],
+    ['شواهد شعرية', I.shawahid_shiriyya], ['روابط بين الأجناس (وزن ٣ فأكثر)', D.r.length]
+  ].map(([k,v]) => `<span>${k}: <b>${fmt(v)}</b></span>`).join('');
+  $('#note').innerHTML = `<b>دقّة الاستخراج، تقديرًا على عيّنة عشوائية من ${fmt(M.n)} زوجًا راجعها مدقّق مستقلّ:</b> اللفظ تامّ في ${fmt(M.lafz_tam)}، وجزئيّ في ${fmt(M.lafz_juzi)}، وخاطئ في ${fmt(M.lafz_khata)}؛ القائل صحيح في ${fmt(M.qail_sahih)}؛ الشرح صحيح في ${fmt(M.sharh_sahih)}. فالشجرة والنسب والشروح يُعتمد عليها، والألفاظ <b>مرشّحة</b> تُراجع قبل أن تُبنى عليها قسمة الاسم.`;
+  $('#foot').innerHTML = `المودَع: ${esc(D.slot.author)}، ${esc(D.slot.uri)}، OpenITI ${esc(D.slot.repo)} @ ${esc(D.slot.commit.slice(0,8))}. البصمة sha256 تبدأ بـ ${esc(D.slot.sha256.slice(0,12))}، ويُرفض النصّ إن تغيّر. نوعه: ${esc(D.slot.kind)}.`;
+
+  // الشجرة: الكتب فأبناؤها
+  const tree = $('#tree');
+  AJ.forEach((a,i) => {
+    if (a[0] !== 'كتاب') return;
+    const d = document.createElement('details');
+    d.innerHTML = `<summary>${esc(a[1])}</summary><div class="kids"></div>`;
+    const box = d.querySelector('.kids');
+    const add = (j, depth) => {
+      const b = document.createElement('button');
+      b.textContent = AJ[j][1]; b.dataset.j = j; b.style.paddingInlineStart = (4 + depth*10) + 'px';
+      box.appendChild(b); kids[j].forEach(k => add(k, depth+1));
+    };
+    const s = d.querySelector('summary'); s.dataset.j = i;
+    kids[i].forEach(k => add(k, 0));
+    tree.appendChild(d);
+  });
+  tree.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (b) { show(+b.dataset.j); return; }
+    const s = e.target.closest('summary'); if (s) show(+s.dataset.j);
+  });
+
+  function qailBars(ids){
+    const c = new Map(); ids.forEach(i => c.set(P[i][2], (c.get(P[i][2])||0)+1));
+    const rows = [...c].sort((a,b) => b[1]-a[1]).slice(0,8); const mx = rows.length ? rows[0][1] : 1;
+    return rows.map(([q,n]) => `<span class="t"><i style="inline-size:${(100*n/mx).toFixed(1)}%"></i>${esc(Q[q])}</span><span class="n">${fmt(n)}</span>`).join('');
+  }
+  function linkList(list, dir){
+    if (!list.length) return '<p class="empty">لا روابط بوزن ٣ فأكثر.</p>';
+    return list.slice().sort((a,b) => b[2]-a[2]).slice(0,10).map(r => {
+      const j = dir === 'out' ? r[1] : r[0];
+      return `<button data-j="${j}"><span class="lt">${esc(AJ[j][1])} · ${fmt(r[2])}</span><span class="le">${r[3].map(esc).join('، ')}</span></button>`;
+    }).join('');
+  }
+
+  let cur = null, limit = 60;
+  function show(j, keep){
+    if (!keep) limit = 60;
+    cur = j;
+    document.querySelectorAll('.tree button.on').forEach(b => b.classList.remove('on'));
+    const tb = tree.querySelector(`button[data-j="${j}"]`);
+    if (tb) { tb.classList.add('on'); const det = tb.closest('details'); if (det) det.open = true; }
+    const path = pathOf(j), ids = byJ[j], a = AJ[j];
+    const ch = kids[j];
+    $('#panel').innerHTML = `
+      <div class="crumb">${path.map((k,n) => n < path.length-1 ? `<button data-j="${k}">${esc(AJ[k][1])}</button><span>›</span>` : '').join('')}<span>${esc(a[0])} · ${pageLabel(a[3])}</span></div>
+      <h2>${esc(a[1])}</h2>
+      ${ch.length ? `<div><h3>تحته (${fmt(ch.length)})</h3><div class="kids-list">${ch.map(k => `<button data-j="${k}">${esc(AJ[k][1])}</button>`).join('')}</div></div>` : ''}
+      <div class="cols">
+        <div>
+          <h3>الألفاظ وشروحها (${fmt(ids.length)})</h3>
+          ${ids.length ? `<div class="tbl"><table><thead><tr><th>اللفظ (مرشّح)</th><th>الشرح</th><th>القائل</th><th>الموضع</th></tr></thead><tbody>
+          ${ids.slice(0,limit).map(i => { const p = P[i]; return `<tr><td class="w">${esc(p[1])}</td><td class="g">${esc(p[3])}</td><td class="q">${esc(Q[p[2]])}</td><td class="pg">${pageLabel(p[4])}</td></tr>`; }).join('')}
+          </tbody></table></div>${ids.length > limit ? `<button class="more" id="more">اعرض ${fmt(Math.min(60, ids.length-limit))} أخرى من ${fmt(ids.length-limit)}</button>` : ''}` : '<p class="empty">لا أزواج مستخرجة تحت هذا الرأس مباشرة؛ انظر ما تحته.</p>'}
+          ${poems[j].length ? `<div style="margin-top:16px"><h3>شواهد شعرية (${fmt(poems[j].length)})</h3>${poems[j].slice(0,12).map(b => `<div class="poem">${esc(b)}</div>`).join('')}</div>` : ''}
+        </div>
+        <div class="side">
+          ${ids.length ? `<div><h3>القائلون في هذا الجنس</h3><div class="bar">${qailBars(ids)}</div></div>` : ''}
+          <div><h3>يُشرح بألفاظ من</h3><div class="links">${linkList(out[j],'out')}</div></div>
+          <div><h3>تُشرح بألفاظه</h3><div class="links">${linkList(inn[j],'in')}</div></div>
+        </div>
+      </div>`;
+    const m = $('#more'); if (m) m.onclick = () => { limit += 60; show(j, true); };
+  }
+  $('#panel').addEventListener('click', e => { const b = e.target.closest('button[data-j]'); if (b) { show(+b.dataset.j); window.scrollTo({top:0}); } });
+
+  // البحث
+  const keys = P.map(p => norm(p[1]));
+  let t;
+  $('#q').addEventListener('input', e => {
+    clearTimeout(t); t = setTimeout(() => {
+      const v = norm(e.target.value.trim()); const res = $('#res');
+      if (v.length < 2) { res.hidden = true; return; }
+      const hits = []; for (let i = 0; i < keys.length && hits.length < 40; i++) if (keys[i].startsWith(v)) hits.push(i);
+      res.hidden = false;
+      res.innerHTML = hits.length ? hits.map(i => `<button data-j="${P[i][0]}"><span class="rw">${esc(P[i][1])}</span> <span class="rj">— ${esc(AJ[P[i][0]][1])}</span></button>`).join('') : '<p class="empty">لا لفظ يبدأ بهذا.</p>';
+    }, 150);
+  });
+  $('#res').addEventListener('click', e => { const b = e.target.closest('button[data-j]'); if (b) show(+b.dataset.j); });
+
+  const start = AJ.findIndex(a => a[1] === 'العين وما فيها');
+  show(start >= 0 ? start : 0);
+})().catch(err => { document.getElementById('panel').innerHTML = '<p class="empty">تعذّر تحميل بيانات الشبكة. أعد فتح الصفحة.</p>'; });
+</script>
