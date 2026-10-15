@@ -393,6 +393,15 @@
 'Jisr.Nisab.ihsa_val' does not depend on any axioms
 'Jisr.Nisab.uslub_istinfad' does not depend on any axioms
 'Jisr.Nisab.ikhbar_82' does not depend on any axioms
+'Jisr.Ikhbar.kull_hasir' depends on axioms: [propext]
+'Jisr.Ikhbar.istinfad' depends on axioms: [propext]
+'Jisr.Ikhbar.adwar_tisa' does not depend on any axioms
+'Jisr.Ikhbar.ghayr_mughatta' depends on axioms: [propext]
+'Jisr.Ikhbar.adna_itar' does not depend on any axioms
+'Jisr.Ikhbar.awamil_ikhbar' does not depend on any axioms
+'Jisr.AqsamAwamil.mujam_45' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.AqsamAwamil.bila_hukm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.AqsamAwamil.shawahid' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SLGE.Law.ibtida' does not depend on any axioms
 'SLGE.Law.cell_count' does not depend on any axioms
 'SLGE.Law.qaltu' does not depend on any axioms

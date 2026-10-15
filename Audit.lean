@@ -21,6 +21,8 @@ import Jisr.Tarkib
 import SLGE.Kull
 import SLGE.Awamil
 import Jisr.Nisab
+import Jisr.Ikhbar
+import Jisr.AqsamAwamil
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -440,6 +442,17 @@ import Jisr.Nisab
 #print axioms Jisr.Nisab.ihsa_val
 #print axioms Jisr.Nisab.uslub_istinfad
 #print axioms Jisr.Nisab.ikhbar_82
+-- أساليب الإخبار: جرد القطر، التغطية بأطر المالك، الحدّ الأدنى المكتمل (Jisr/Ikhbar.lean)
+#print axioms Jisr.Ikhbar.kull_hasir
+#print axioms Jisr.Ikhbar.istinfad
+#print axioms Jisr.Ikhbar.adwar_tisa
+#print axioms Jisr.Ikhbar.ghayr_mughatta
+#print axioms Jisr.Ikhbar.adna_itar
+#print axioms Jisr.Ikhbar.awamil_ikhbar
+-- معجم أقسام الكلم: أقسام العوامل من القطر عبر عائلات المالك (Jisr/AqsamAwamil.lean)
+#print axioms Jisr.AqsamAwamil.mujam_45
+#print axioms Jisr.AqsamAwamil.bila_hukm
+#print axioms Jisr.AqsamAwamil.shawahid
 #print axioms SLGE.Law.ibtida
 #print axioms SLGE.Law.cell_count
 #print axioms SLGE.Law.qaltu
