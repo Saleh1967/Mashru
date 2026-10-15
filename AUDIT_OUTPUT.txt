@@ -162,6 +162,32 @@
 'Dal.anwa_sitta' does not depend on any axioms
 'Dal.shahid_qatta' depends on axioms: [propext, Quot.sound]
 'Dal.judhur_thulathiyya' depends on axioms: [propext, Quot.sound]
+'Dal.harakatIltiqa_lt' does not depend on any axioms
+'Dal.rakkib_wahida' depends on axioms: [propext]
+'Dal.ibtidaForm_lt' depends on axioms: [propext, Quot.sound]
+'Dal.ibtida_lt' depends on axioms: [propext, Quot.sound]
+'Dal.isqatHamza_lt' depends on axioms: [propext, Quot.sound]
+'Dal.rakkibAux_lt' depends on axioms: [propext, Quot.sound]
+'Dal.rakkib_abjadiyya' depends on axioms: [propext, Quot.sound]
+'Dal.jumla_murakhkhasa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dal.sentChain_eq_joinH' does not depend on any axioms
+'Dal.splitH_ne_nil' depends on axioms: [propext]
+'Dal.joinH_cons_nil' does not depend on any axioms
+'Dal.joinH_cons_cons' does not depend on any axioms
+'Dal.joinH_splitH' depends on axioms: [propext]
+'Dal.qattaKull_sahih' depends on axioms: [propext, Quot.sound]
+'Dal.qattaJumla_sahih' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dal.qattaJumla_wahid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dal.isqat_ghayr_sakin' depends on axioms: [propext]
+'Dal.sakinAwwal_cons' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dal.isqat_mover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dal.isqat_madd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dal.isqat_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dal.shahid_qala_uktub' depends on axioms: [propext, Quot.sound]
+'Dal.shahid_qalu_uktubu' depends on axioms: [propext, Quot.sound]
+'Dal.shahid_qum_allayla' depends on axioms: [propext, Quot.sound]
+'Dal.shahid_hadd' depends on axioms: [propext, Quot.sound]
+'Dal.shahid_idgham_hadd' depends on axioms: [propext]
 'SLGE.Law.ibtida' does not depend on any axioms
 'SLGE.Law.cell_count' does not depend on any axioms
 'SLGE.Law.qaltu' does not depend on any axioms

@@ -307,9 +307,9 @@
  },
  {
   "ism": "P16_wasl_bila_islah",
-  "milaf": "Qari/Main.lean",
-  "min": "    q := { q with khalaya := ibtidaForm isAl q.khalaya,",
-  "ila": "    q := { q with khalaya := q.khalaya,"
+  "milaf": "Dal/Jumla.lean",
+  "min": "def ibtida (w : Kalima) : List Nat := if w.wasl then ibtidaForm w.al w.khalaya else w.khalaya",
+  "ila": "def ibtida (w : Kalima) : List Nat := w.khalaya"
  },
  {
   "ism": "P17_ta_marbuta_ha",
@@ -322,5 +322,83 @@
   "milaf": "Faahis/Lib.lean",
   "min": "      | \"luzum\" => some (.luzum x y) | \"mutabaqa\" => some (.mutabaqa x y) | \"tadammun\" => some (.tadammun x y)",
   "ila": "      | \"luzum\" => some (.luzum x y) | \"mutabaqa\" => some (.wad x y) | \"tadammun\" => some (.tadammun x y)"
+ },
+ {
+  "ism": "P19_harakat_iltiqa_fatha",
+  "milaf": "Dal/Jumla.lean",
+  "min": "def harakatIltiqa : Nat := 2",
+  "ila": "def harakatIltiqa : Nat := 0"
+ },
+ {
+  "ism": "P20_madd_la_yuhdhaf",
+  "milaf": "Dal/Jumla.lean",
+  "min": "  else if q = 4 then some (l.dropLast ++ v, .hadhfMadd)",
+  "ila": "  else if q = 4 then some (l ++ v, .hadhfMadd)"
+ },
+ {
+  "ism": "P21_hadd_la_yudraj",
+  "milaf": "Dal/Jumla.lean",
+  "min": "    else rakkibAux (l ++ 116 :: w.khalaya) ms (i + 1) ws",
+  "ila": "    else rakkibAux (l ++ w.khalaya) ms (i + 1) ws"
+ },
+ {
+  "ism": "P22_alif_fariqa_tuntaq",
+  "milaf": "Qari/Main.lean",
+  "min": "        else if c == 'ا' && bilaAlama && akhir && q.khalaya.getLast? == some (kh 28 3) then",
+  "ila": "        else if false then"
+ },
+ {
+  "ism": "P23_lam_tarif_tuntaq",
+  "milaf": "Qari/Main.lean",
+  "min": "        if q.wasl && q.khalaya.isEmpty && c == 'ل' && bilaAlama && !akhir && mushaddad cs j then",
+  "ila": "        if false then"
+ },
+ {
+  "ism": "P24_akhir_bila_haraka_fi_wasl",
+  "milaf": "Qari/Main.lean",
+  "min": "              else throw s!\"الحرف الأخير بلا حركة في غير آخر الجملة: «{c}» — الوصل يحتاج حركته\"",
+  "ila": "              else q := { q with khalaya := q.khalaya ++ [kh h 3] }"
+ },
+ {
+  "ism": "P25_la_tusal_raqm",
+  "milaf": "Dal/Jumla.lean",
+  "min": "khalal := some (.laTusal (i - 1)) }",
+  "ila": "khalal := some (.laTusal i) }"
+ },
+ {
+  "ism": "P26_isqat_madd_ka_mover",
+  "milaf": "Dal/Jumla.lean",
+  "min": "  if 1 ≤ q ∧ q ≤ 3 then some (l ++ v, .la)",
+  "ila": "  if 1 ≤ q ∧ q ≤ 4 then some (l ++ v, .la)"
+ },
+ {
+  "ism": "P27_al_bila_fatha",
+  "milaf": "Qari/Main.lean",
+  "min": "  if q.wasl && isAl q.khalaya then q := { q with al := true }",
+  "ila": "  if false then q := { q with al := true }"
+ },
+ {
+  "ism": "P28_alif_qabl_mutaharrik",
+  "milaf": "Qari/Main.lean",
+  "min": "  if q.wasl && !sakinAwwal q.khalaya then",
+  "ila": "  if false then"
+ },
+ {
+  "ism": "P29_islah_la_bila_risala",
+  "milaf": "Qari/Main.lean",
+  "min": "  | .la => \"سقطت همزة الوصل بعد متحرّك بلا إصلاح (wasl_after_mover)\"",
+  "ila": "  | .la => \"سقطت همزة الوصل\""
+ },
+ {
+  "ism": "P30_hadd_bila_ism",
+  "milaf": "Qari/Main.lean",
+  "min": "  if a == 116 then \"|\" else",
+  "ila": "  if a == 116 then \"\" else"
+ },
+ {
+  "ism": "P31_mayyita_raqm",
+  "milaf": "Dal/Jumla.lean",
+  "min": "      { silsila := l ++ 116 :: w.khalaya, islahat := ms, khalal := some (.mayyita i) }",
+  "ila": "      { silsila := l ++ 116 :: w.khalaya, islahat := ms, khalal := some (.mayyita (i - 1)) }"
  }
 ]
