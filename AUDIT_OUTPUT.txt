@@ -188,6 +188,17 @@
 'Dal.shahid_qum_allayla' depends on axioms: [propext, Quot.sound]
 'Dal.shahid_hadd' depends on axioms: [propext, Quot.sound]
 'Dal.shahid_idgham_hadd' depends on axioms: [propext]
+'Jisr.Awamil.hala_injective' depends on axioms: [propext]
+'Jisr.Awamil.ramz_arbaa' depends on axioms: [propext]
+'Jisr.Awamil.jadwal_mia' does not depend on any axioms
+'Jisr.Awamil.alfaz_96' does not depend on any axioms
+'Jisr.Awamil.inghilaq' depends on axioms: [propext]
+'Jisr.Awamil.nawasikh_thalatha' does not depend on any axioms
+'Jisr.Awamil.istinfad' depends on axioms: [propext]
+'Jisr.Awamil.bila_fard' does not depend on any axioms
+'Jisr.Awamil.atf_yantashir' depends on axioms: [propext, Quot.sound]
+'Jisr.Awamil.majzum_qabl_hamzat_wasl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.Awamil.shahid_lam_yaqum' depends on axioms: [propext, Quot.sound]
 'SLGE.Law.ibtida' does not depend on any axioms
 'SLGE.Law.cell_count' does not depend on any axioms
 'SLGE.Law.qaltu' does not depend on any axioms

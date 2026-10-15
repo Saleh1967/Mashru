@@ -400,5 +400,29 @@
   "milaf": "Dal/Jumla.lean",
   "min": "      { silsila := l ++ 116 :: w.khalaya, islahat := ms, khalal := some (.mayyita i) }",
   "ila": "      { silsila := l ++ 116 :: w.khalaya, islahat := ms, khalal := some (.mayyita (i - 1)) }"
+ },
+ {
+  "ism": "P32_kana_fi_sinf_inna",
+  "milaf": "Jisr/AwamilJadwal.lean",
+  "min": "  (\"كان\", 1, false),",
+  "ila": "  (\"كان\", 2, false),"
+ },
+ {
+  "ism": "P33_jarr_jazm",
+  "milaf": "Jisr/Awamil.lean",
+  "min": "  | 7 => [[(6, 2)]]",
+  "ila": "  | 7 => [[(6, 3)]]"
+ },
+ {
+  "ism": "P34_kana_rafa_rafa",
+  "milaf": "Jisr/Awamil.lean",
+  "min": "  | 1 => [[(0, 1), (1, 0)]]",
+  "ila": "  | 1 => [[(0, 1), (1, 1)]]"
+ },
+ {
+  "ism": "P35_shart_ism",
+  "milaf": "Jisr/Awamil.lean",
+  "min": "def qismDawr (r : Nat) : Qism := if r == 2 || r == 11 || r == 12 then .fil else .ism",
+  "ila": "def qismDawr (r : Nat) : Qism := if r == 2 then .fil else .ism"
  }
 ]
