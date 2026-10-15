@@ -237,11 +237,162 @@
 'SLGE.Wad.wad_counts' does not depend on any axioms
 'SLGE.Wad.nayta_augs' does not depend on any axioms
 'SLGE.Wad.dha_two' does not depend on any axioms
+'SLGE.Madlul.divs_complete' depends on axioms: [propext]
+'SLGE.Madlul.divs_length' does not depend on any axioms
+'SLGE.Madlul.codes' does not depend on any axioms
+'SLGE.Madlul.code_inj' depends on axioms: [propext]
+'SLGE.Madlul.no_maana_no_dal' does not depend on any axioms
+'SLGE.Madlul.qism_none' does not depend on any axioms
+'SLGE.Madlul.qism_never_maana' depends on axioms: [propext]
+'SLGE.Madlul.hadhayan' does not depend on any axioms
+'SLGE.Madlul.isnad_count' does not depend on any axioms
+'SLGE.Madlul.isnad_harf' does not depend on any axioms
+'SLGE.Madlul.no_third' depends on axioms: [propext]
+'SLGE.Madlul.both_occur' does not depend on any axioms
+'SLGE.Madlul.mafhum_iff_iltizam' depends on axioms: [propext]
+'SLGE.Madlul.mukhalafa_closed' depends on axioms: [propext]
+'SLGE.Madlul.takhsis_sub' depends on axioms: [propext]
+'SLGE.Madlul.amal_bil_muqayyad' depends on axioms: [propext]
+'SLGE.Madlul.amal_bil_mutlaq_la_yafi' depends on axioms: [propext, Quot.sound]
+'SLGE.Madlul.haml_iff' does not depend on any axioms
+'SLGE.Madlul.shart_adam' does not depend on any axioms
+'SLGE.Madlul.shart_la_yujib' does not depend on any axioms
+'SLGE.Madlul.sabab_la_yujib' does not depend on any axioms
+'SLGE.Madlul.mani_yamna' does not depend on any axioms
+'SLGE.Madlul.wujud_tamm' does not depend on any axioms
+'SLGE.Law.nec_vowel' does not depend on any axioms
+'SLGE.Law.nec_second' depends on axioms: [propext]
+'SLGE.Law.two_complete' depends on axioms: [propext]
+'SLGE.Law.nec_order' does not depend on any axioms
+'SLGE.Law.nec_position' does not depend on any axioms
+'SLGE.Bridge.iqtiran_needs_madlul' depends on axioms: [propext]
+'SLGE.Bridge.iqtiran_needs_dal' depends on axioms: [propext]
+'SLGE.Bridge.no_single_cell' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Bridge.dal_undetermines' depends on axioms: [propext]
+'SLGE.Bridge.transition' depends on axioms: [propext]
+'SLGE.Bridge.dal_complete_madlul_not' depends on axioms: [propext]
+'SLGE.Bridge.irab_state_bij' depends on axioms: [propext, Quot.sound]
+'SLGE.Bridge.jazm_sukun_fil' does not depend on any axioms
+'SLGE.Bridge.fariya_augs' does not depend on any axioms
+'SLGE.Bridge.sent_min' depends on axioms: [propext]
+'SLGE.Bridge.sent_two' depends on axioms: [propext]
+'SLGE.Tarkib.keys_eq' does not depend on any axioms
+'SLGE.Tarkib.chunk_0' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_1' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_2' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_3' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_4' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_5' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_6' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_7' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_8' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_9' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_10' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_11' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_12' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_13' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_14' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_15' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_16' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_17' depends on axioms: [propext]
+'SLGE.Tarkib.chunk_18' depends on axioms: [propext]
+'SLGE.Tarkib.lit_eq' depends on axioms: [propext]
+'SLGE.Tarkib.frames_eq' depends on axioms: [propext]
+'SLGE.Tarkib.frames_count' does not depend on any axioms
+'SLGE.Tarkib.frames_nodup' does not depend on any axioms
+'SLGE.Tarkib.map_decS_encS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Tarkib.idxOf_getD' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Tarkib.s_dec_enc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Tarkib.frame_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Tarkib.taqdim' depends on axioms: [propext, Quot.sound]
+'SLGE.Tarkib.mustatir' depends on axioms: [propext, Quot.sound]
+'SLGE.Tarkib.one_overt_five' does not depend on any axioms
+'SLGE.Tarkib.adat' depends on axioms: [propext, Quot.sound]
+'SLGE.Tarkib.irab_by_position' does not depend on any axioms
+'SLGE.Tarkib.state_in_proof' depends on axioms: [propext]
+'SLGE.Tarkib.mustatir_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Tarkib.ihala_between' does not depend on any axioms
+'SLGE.Awamil.table_classes' does not depend on any axioms
+'SLGE.Awamil.eqs_closed' does not depend on any axioms
+'SLGE.Awamil.nasikh_by_equation' does not depend on any axioms
+'SLGE.Awamil.eqs_match_tarkib' does not depend on any axioms
+'SLGE.Awamil.eqs_exhaust' does not depend on any axioms
+'SLGE.Awamil.atf_propagates' depends on axioms: [propext, Quot.sound]
+'SLGE.Awamil.hidden_amil_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Maqam.maqam_three' does not depend on any axioms
+'SLGE.Maqam.dal_underdetermines_maqam' does not depend on any axioms
+'SLGE.Maqam.damair_in_muradi' does not depend on any axioms
+'SLGE.Maqam.participants_free' depends on axioms: [propext]
+'SLGE.Maqam.ghaib_needs_ante' depends on axioms: [propext]
+'SLGE.Maqam.mutabaqa' depends on axioms: [propext]
+'SLGE.Maqam.ishara_ref' depends on axioms: [propext]
+'SLGE.Maqam.sila_aid' does not depend on any axioms
+'SLGE.Maqam.featCode_inj' does not depend on any axioms
+'SLGE.Maqam.maqam_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.TarkibExt.fIdx_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.TarkibExt.shart_frames' does not depend on any axioms
+'SLGE.TarkibExt.shart_internal_ihala' does not depend on any axioms
+'SLGE.TarkibExt.shart_count' does not depend on any axioms
+'SLGE.TarkibExt.shart_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.TarkibExt.nida_heads' does not depend on any axioms
+'SLGE.TarkibExt.nida_mukhatab' depends on axioms: [propext, Quot.sound]
+'SLGE.TarkibExt.nida_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.TarkibExt.istifham_sadara' depends on axioms: [propext]
+'SLGE.TarkibExt.istifham_count' depends on axioms: [propext]
+'SLGE.TarkibExt.shaan_frames' depends on axioms: [propext]
+'SLGE.TarkibExt.mawsul_frames' does not depend on any axioms
+'SLGE.TarkibExt.aid_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Simat.tatabuq' depends on axioms: [propext]
+'SLGE.Simat.rabit_tatabuq' depends on axioms: [propext]
+'SLGE.Simat.zaman' depends on axioms: [propext]
+'SLGE.Simat.tarif' depends on axioms: [propext]
+'SLGE.Simat.mahall_exhaust' does not depend on any axioms
+'SLGE.Simat.mahall_mabni' does not depend on any axioms
+'SLGE.Simat.alaqa' does not depend on any axioms
+'SLGE.Simat.attrCode_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Simat.map_inj' depends on axioms: [propext]
+'SLGE.Simat.encS_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Simat.attr_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Simat.ihala_ptr' depends on axioms: [propext]
+'SLGE.Simat.ptr_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Simat.musawwigh' depends on axioms: [propext]
+'SLGE.Simat.khabar_tatabuq' depends on axioms: [propext]
+'SLGE.Simat.tanith' depends on axioms: [propext]
+'SLGE.Simat.ptr_mafool' depends on axioms: [propext]
+'SLGE.Simat.ptr_aid' depends on axioms: [propext]
+'SLGE.Simat.extCode_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Simat.ext_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Muwahhad.u_conservative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Muwahhad.musawwigh_linked' depends on axioms: [propext]
+'SLGE.Muwahhad.istithna_mufarragh' depends on axioms: [propext]
+'SLGE.Muwahhad.amil_ala_amil' depends on axioms: [propext]
+'SLGE.Muwahhad.amil_compose' does not depend on any axioms
+'SLGE.Muwahhad.u_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Kull.istithna_tamm' depends on axioms: [propext]
+'SLGE.Kull.kull_conservative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Kull.containment' depends on axioms: [propext]
+'SLGE.Kull.lan_not_shart' depends on axioms: [propext]
+'SLGE.Kull.in_lam_yakun' depends on axioms: [propext]
+'SLGE.Kull.tamm_in_jumla' depends on axioms: [propext]
+'SLGE.Kull.bCode_inj' depends on axioms: [propext]
+'SLGE.Kull.pair_zero' does not depend on any axioms
+'SLGE.Kull.pair_ne0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Kull.istCode_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Kull.uK_mem' depends on axioms: [propext, Quot.sound]
+'SLGE.Kull.ud_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Kull.fC_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Kull.opt_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SLGE.Kull.j_value' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Jisr.Tarkib.naw_thalatha' depends on axioms: [propext]
 'Jisr.Tarkib.shawahid_mughni' depends on axioms: [propext]
 'Jisr.Tarkib.azwaj_mufida' depends on axioms: [propext]
 'Jisr.Tarkib.jadwal_yali' depends on axioms: [propext]
 'Jisr.Tarkib.la_harf_bada_amil' depends on axioms: [propext]
+'Jisr.Nisab.kull_mawdi' does not depend on any axioms
+'Jisr.Nisab.isnad_markaz' does not depend on any axioms
+'Jisr.Nisab.ihsa_val' does not depend on any axioms
+'Jisr.Nisab.uslub_istinfad' does not depend on any axioms
+'Jisr.Nisab.ikhbar_82' does not depend on any axioms
 'SLGE.Law.ibtida' does not depend on any axioms
 'SLGE.Law.cell_count' does not depend on any axioms
 'SLGE.Law.qaltu' does not depend on any axioms

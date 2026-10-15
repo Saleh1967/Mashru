@@ -5,8 +5,16 @@
 Core، Ladder، Count، Law، Hamza، Syllable، Root.
 ثمّ أربعةٌ من حزمة المالك slge-closed-v13 (بصمة الملفّ المرفوع 364c3067ff7914307a565b2ce1fbd3a162de0527a8dc395f1f56807f5f4c6873)، بنصّها بلا تعديل، أُدرجت مبرهناتها في Audit.lean
 (2026-10-15): MadlulAwwalan (المدلول أوّلًا)، Category (الكلمة اسمٌ وفعلٌ وحرف والتركيب ثلاثة لا رابع)، Ladder2 (سلّم الضرورة «لكلّ»: الترتيب والموضع
-والإفادة والأدوات — والجنى الداني في قسمه الرابع — ومنه الأزواج المفيدة)، Wad (جبر العوامل والإعراب والنواسخ والمعارف على قطر الندى). ما لم يُنقل (Mazid، Ilal،
-Necessity، Bridge، Tarkib، Maqam، TarkibExt، Simat، Muwahhad، Kull، …) ينتظر مرحلته.
+والإفادة والأدوات — والجنى الداني في قسمه الرابع — ومنه الأزواج المفيدة)، Wad (جبر العوامل والإعراب والنواسخ والمعارف على قطر الندى).
+ثمّ بإذن المالك (2026-10-16) بقيّة طبقة التركيب من الحزمة نفسها بنصّها (146 مبرهنة في Audit.lean): Madlul (المدلول وحده)،
+Necessity (سلّم الضرورة)، Bridge (الاقتران: الحالة تحمل الإعراب، والعلامات الفرعية من حروف الزيادة)، TarkibLit وTarkib (أُطر
+الجملة الاسمية والفعلية وشبه الجملة: الأدوار والمقدَّر والإحالة)، AwamilTable وAwamil (العوامل معادلات)، Maqam (المتكلّم
+والمخاطب والغائب ونظام الإحالة)، TarkibExt (الشرط والنداء والاستفهام وضمير الشأن والموصول)، Simat وSimat2 (الزمن والتعريف
+والجنس والعدد والشخص والبناء والإعراب والمحلّ والعلاقة والمطابقة)، Muwahhad (الإطار الموحَّد)، Kull (الجملة الكلّيّة).
+Madlul رفعه المالك موسومًا «غير مدقَّق»؛ دُقّق هنا أوّل مرّة (بُني، ومبرهناته الـ23 ضمن المسلّمات الثلاث).
+ما لم يُنقل بعد (26 ملفًّا): Mazid، MazidGeneral، Ilal، IlalMore، OrderAll، Tarib، Jisr، Ajnas، Qanun، Maluma، Ifada، JamiMani،
+Istinfad، Maratib، Dalala، Tahlil، TahlilHukm، Example، ملفّات الشواهد الخمسة (BridgeWitness، ExtWitness، SimatWitness،
+MuwahhadWitness، KullWitness — كلٌّ بمبرهنة)، MadlulWitness، وClosed/ClosedMadlul (القفل).
 
 الربط بخلايانا في `Dal/Qanun.lean`: ترميزنا `Dal.n` هو `SLGE.cellEnc` بعينه، وجدول مخارجنا `Dal.ahjam` هو
 `SLGE.makharijSizes` بعينه، وجدول المدّ واحد — كلّها مبرهنة، فتسري قوانين المالك على خلايانا.

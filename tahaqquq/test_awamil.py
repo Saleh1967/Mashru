@@ -2,10 +2,10 @@
 
 يُشغَّل حين يحضر المودَع (MUDAA_AWAMIL=<مسار xlsx>، أو MUDAA_DIR فيه awamil_mia.xlsx)؛ وإلّا طُبع «لم يُشغَّل» وخرج 0.
 ١. بصمة المودَع الحاضر هي بصمته في السجلّ (وإلّا رُفض باسمه).
-٢. مطابَق: ما يولّده scripts/bina_awamil.py من المودَع هو Jisr/AwamilJadwal.lean بنصّه.
+٢. مطابَق: ما يولّده scripts/bina_awamil.py من المودَع هو Jisr/AwamilJadwal.lean وJisr/AwamilUslub.lean بنصّهما.
 ٣. توقّعات مستقلّة عن المولّد (عدٌّ مباشر لأعمدة المودَع، مكتوب باليد من قراءة الجدول): 100 صفًّا؛ «تنصب الاسم وترفع
    الخبر» 6؛ «ترفع الاسم وتنصب الخبر» 13؛ «تنصب مفعولين» 10؛ «أداة شرط جزم فعلين» 10؛ الأسلوب «الاستفهام» 10
-   و«النداء» 4؛ وترتيب أسماء الجدول في Lean هو ترتيب العمود الأوّل في المودَع.
+   و«النداء» 4 و«الخبر» 82 و«الطلب» 2 و«التمني» 1 و«الترجي» 1؛ وترتيب أسماء الجدول في Lean هو ترتيب العمود الأوّل في المودَع.
 التشغيل: python3 -I tahaqquq/test_awamil.py
 """
 import hashlib
@@ -36,12 +36,16 @@ ok = 1
 
 with tempfile.TemporaryDirectory() as tmp:
     out = os.path.join(tmp, "AwamilJadwal.lean")
-    p = subprocess.run([sys.executable, "-I", os.path.join(ROOT, "scripts", "bina_awamil.py"), path, out],
+    out2 = os.path.join(tmp, "AwamilUslub.lean")
+    p = subprocess.run([sys.executable, "-I", os.path.join(ROOT, "scripts", "bina_awamil.py"), path, out, out2],
                        capture_output=True, text=True)
     assert p.returncode == 0, p.stderr
     gen = open(out, encoding="utf-8").read()
+    gen2 = open(out2, encoding="utf-8").read()
 lean = open(os.path.join(ROOT, "Jisr", "AwamilJadwal.lean"), encoding="utf-8").read()
 assert gen == lean, "Jisr/AwamilJadwal.lean لا يطابق ما يولَّد من المودَع"
+lean2 = open(os.path.join(ROOT, "Jisr", "AwamilUslub.lean"), encoding="utf-8").read()
+assert gen2 == lean2, "Jisr/AwamilUslub.lean لا يطابق ما يولَّد من المودَع"
 ok += 1
 
 try:
@@ -60,6 +64,7 @@ assert hukm.count("تنصب مفعولين") == 10
 assert hukm.count("أداة شرط جزم فعلين") == 10
 uslub = [r[1] for r in rows]
 assert uslub.count("الاستفهام") == 10 and uslub.count("النداء") == 4
+assert uslub.count("الخبر") == 82 and uslub.count("الطلب") == 2 and uslub.count("التمني") == 1 and uslub.count("الترجي") == 1
 import re  # noqa: E402
 names = re.findall(r'\n  \("((?:[^"\\]|\\.)*)", \d+, (?:true|false)\)', lean)
 assert names == [r[0] for r in rows], "ترتيب الأسماء في Lean ليس ترتيب المودَع"

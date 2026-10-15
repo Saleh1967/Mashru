@@ -472,5 +472,17 @@
   "milaf": "Qari/Main.lean",
   "min": "        if c == 'ة' && !akhir then\n          throw \"تاء مربوطة في غير آخر الكلمة\"",
   "ila": "        if false then\n          throw \"تاء مربوطة في غير آخر الكلمة\""
+ },
+ {
+  "ism": "P44_mafuliyya_isnad",
+  "milaf": "Jisr/Nisab.lean",
+  "min": "  | 4 => some .taqyidiyya",
+  "ila": "  | 4 => some .isnadiyya"
+ },
+ {
+  "ism": "P45_uslub_inna_talab",
+  "milaf": "Jisr/AwamilUslub.lean",
+  "min": "  (\"إنّ\", \"الخبر\"),",
+  "ila": "  (\"إنّ\", \"الطلب\"),"
  }
 ]

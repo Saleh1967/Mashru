@@ -18,6 +18,9 @@ import Dal.Qanun
 import Dal.Jumla
 import Jisr.Awamil
 import Jisr.Tarkib
+import SLGE.Kull
+import SLGE.Awamil
+import Jisr.Nisab
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -267,12 +270,176 @@ import Jisr.Tarkib
 #print axioms SLGE.Wad.wad_counts
 #print axioms SLGE.Wad.nayta_augs
 #print axioms SLGE.Wad.dha_two
+-- بقيّة طبقة التركيب من حزمة المالك slge-closed-v13 بنصّها (13 ملفًّا، بإذنه 2026-10-16): المدلول، الضرورة، الجسر، التركيب، العوامل، المقام، الأطر المركّبة، السمات، الإطار الموحَّد، الجملة الكلّيّة
+-- Madlul.lean (المالك، بنصّه)
+#print axioms SLGE.Madlul.divs_complete
+#print axioms SLGE.Madlul.divs_length
+#print axioms SLGE.Madlul.codes
+#print axioms SLGE.Madlul.code_inj
+#print axioms SLGE.Madlul.no_maana_no_dal
+#print axioms SLGE.Madlul.qism_none
+#print axioms SLGE.Madlul.qism_never_maana
+#print axioms SLGE.Madlul.hadhayan
+#print axioms SLGE.Madlul.isnad_count
+#print axioms SLGE.Madlul.isnad_harf
+#print axioms SLGE.Madlul.no_third
+#print axioms SLGE.Madlul.both_occur
+#print axioms SLGE.Madlul.mafhum_iff_iltizam
+#print axioms SLGE.Madlul.mukhalafa_closed
+#print axioms SLGE.Madlul.takhsis_sub
+#print axioms SLGE.Madlul.amal_bil_muqayyad
+#print axioms SLGE.Madlul.amal_bil_mutlaq_la_yafi
+#print axioms SLGE.Madlul.haml_iff
+#print axioms SLGE.Madlul.shart_adam
+#print axioms SLGE.Madlul.shart_la_yujib
+#print axioms SLGE.Madlul.sabab_la_yujib
+#print axioms SLGE.Madlul.mani_yamna
+#print axioms SLGE.Madlul.wujud_tamm
+-- Necessity.lean (المالك، بنصّه)
+#print axioms SLGE.Law.nec_vowel
+#print axioms SLGE.Law.nec_second
+#print axioms SLGE.Law.two_complete
+#print axioms SLGE.Law.nec_order
+#print axioms SLGE.Law.nec_position
+-- Bridge.lean (المالك، بنصّه)
+#print axioms SLGE.Bridge.iqtiran_needs_madlul
+#print axioms SLGE.Bridge.iqtiran_needs_dal
+#print axioms SLGE.Bridge.no_single_cell
+#print axioms SLGE.Bridge.dal_undetermines
+#print axioms SLGE.Bridge.transition
+#print axioms SLGE.Bridge.dal_complete_madlul_not
+#print axioms SLGE.Bridge.irab_state_bij
+#print axioms SLGE.Bridge.jazm_sukun_fil
+#print axioms SLGE.Bridge.fariya_augs
+#print axioms SLGE.Bridge.sent_min
+#print axioms SLGE.Bridge.sent_two
+-- Tarkib.lean (المالك، بنصّه)
+#print axioms SLGE.Tarkib.keys_eq
+#print axioms SLGE.Tarkib.chunk_0
+#print axioms SLGE.Tarkib.chunk_1
+#print axioms SLGE.Tarkib.chunk_2
+#print axioms SLGE.Tarkib.chunk_3
+#print axioms SLGE.Tarkib.chunk_4
+#print axioms SLGE.Tarkib.chunk_5
+#print axioms SLGE.Tarkib.chunk_6
+#print axioms SLGE.Tarkib.chunk_7
+#print axioms SLGE.Tarkib.chunk_8
+#print axioms SLGE.Tarkib.chunk_9
+#print axioms SLGE.Tarkib.chunk_10
+#print axioms SLGE.Tarkib.chunk_11
+#print axioms SLGE.Tarkib.chunk_12
+#print axioms SLGE.Tarkib.chunk_13
+#print axioms SLGE.Tarkib.chunk_14
+#print axioms SLGE.Tarkib.chunk_15
+#print axioms SLGE.Tarkib.chunk_16
+#print axioms SLGE.Tarkib.chunk_17
+#print axioms SLGE.Tarkib.chunk_18
+#print axioms SLGE.Tarkib.lit_eq
+#print axioms SLGE.Tarkib.frames_eq
+#print axioms SLGE.Tarkib.frames_count
+#print axioms SLGE.Tarkib.frames_nodup
+#print axioms SLGE.Tarkib.map_decS_encS
+#print axioms SLGE.Tarkib.idxOf_getD
+#print axioms SLGE.Tarkib.s_dec_enc
+#print axioms SLGE.Tarkib.frame_value
+#print axioms SLGE.Tarkib.taqdim
+#print axioms SLGE.Tarkib.mustatir
+#print axioms SLGE.Tarkib.one_overt_five
+#print axioms SLGE.Tarkib.adat
+#print axioms SLGE.Tarkib.irab_by_position
+#print axioms SLGE.Tarkib.state_in_proof
+#print axioms SLGE.Tarkib.mustatir_value
+#print axioms SLGE.Tarkib.ihala_between
+-- Awamil.lean (المالك، بنصّه)
+#print axioms SLGE.Awamil.table_classes
+#print axioms SLGE.Awamil.eqs_closed
+#print axioms SLGE.Awamil.nasikh_by_equation
+#print axioms SLGE.Awamil.eqs_match_tarkib
+#print axioms SLGE.Awamil.eqs_exhaust
+#print axioms SLGE.Awamil.atf_propagates
+#print axioms SLGE.Awamil.hidden_amil_value
+-- Maqam.lean (المالك، بنصّه)
+#print axioms SLGE.Maqam.maqam_three
+#print axioms SLGE.Maqam.dal_underdetermines_maqam
+#print axioms SLGE.Maqam.damair_in_muradi
+#print axioms SLGE.Maqam.participants_free
+#print axioms SLGE.Maqam.ghaib_needs_ante
+#print axioms SLGE.Maqam.mutabaqa
+#print axioms SLGE.Maqam.ishara_ref
+#print axioms SLGE.Maqam.sila_aid
+#print axioms SLGE.Maqam.featCode_inj
+#print axioms SLGE.Maqam.maqam_value
+-- TarkibExt.lean (المالك، بنصّه)
+#print axioms SLGE.TarkibExt.fIdx_inj
+#print axioms SLGE.TarkibExt.shart_frames
+#print axioms SLGE.TarkibExt.shart_internal_ihala
+#print axioms SLGE.TarkibExt.shart_count
+#print axioms SLGE.TarkibExt.shart_value
+#print axioms SLGE.TarkibExt.nida_heads
+#print axioms SLGE.TarkibExt.nida_mukhatab
+#print axioms SLGE.TarkibExt.nida_value
+#print axioms SLGE.TarkibExt.istifham_sadara
+#print axioms SLGE.TarkibExt.istifham_count
+#print axioms SLGE.TarkibExt.shaan_frames
+#print axioms SLGE.TarkibExt.mawsul_frames
+#print axioms SLGE.TarkibExt.aid_value
+-- Simat.lean (المالك، بنصّه)
+#print axioms SLGE.Simat.tatabuq
+#print axioms SLGE.Simat.rabit_tatabuq
+#print axioms SLGE.Simat.zaman
+#print axioms SLGE.Simat.tarif
+#print axioms SLGE.Simat.mahall_exhaust
+#print axioms SLGE.Simat.mahall_mabni
+#print axioms SLGE.Simat.alaqa
+#print axioms SLGE.Simat.attrCode_inj
+#print axioms SLGE.Simat.map_inj
+#print axioms SLGE.Simat.encS_inj
+#print axioms SLGE.Simat.attr_value
+#print axioms SLGE.Simat.ihala_ptr
+#print axioms SLGE.Simat.ptr_value
+-- Simat2.lean (المالك، بنصّه)
+#print axioms SLGE.Simat.musawwigh
+#print axioms SLGE.Simat.khabar_tatabuq
+#print axioms SLGE.Simat.tanith
+#print axioms SLGE.Simat.ptr_mafool
+#print axioms SLGE.Simat.ptr_aid
+#print axioms SLGE.Simat.extCode_inj
+#print axioms SLGE.Simat.ext_value
+-- Muwahhad.lean (المالك، بنصّه)
+#print axioms SLGE.Muwahhad.u_conservative
+#print axioms SLGE.Muwahhad.musawwigh_linked
+#print axioms SLGE.Muwahhad.istithna_mufarragh
+#print axioms SLGE.Muwahhad.amil_ala_amil
+#print axioms SLGE.Muwahhad.amil_compose
+#print axioms SLGE.Muwahhad.u_value
+-- Kull.lean (المالك، بنصّه)
+#print axioms SLGE.Kull.istithna_tamm
+#print axioms SLGE.Kull.kull_conservative
+#print axioms SLGE.Kull.containment
+#print axioms SLGE.Kull.lan_not_shart
+#print axioms SLGE.Kull.in_lam_yakun
+#print axioms SLGE.Kull.tamm_in_jumla
+#print axioms SLGE.Kull.bCode_inj
+#print axioms SLGE.Kull.pair_zero
+#print axioms SLGE.Kull.pair_ne0
+#print axioms SLGE.Kull.istCode_inj
+#print axioms SLGE.Kull.uK_mem
+#print axioms SLGE.Kull.ud_value
+#print axioms SLGE.Kull.fC_inj
+#print axioms SLGE.Kull.opt_inj
+#print axioms SLGE.Kull.j_value
 -- المرحلة ٣: الجملة الاسمية والفعلية والظرفية بأقسام الكلم (Jisr/Tarkib.lean على المغني والقطر)
 #print axioms Jisr.Tarkib.naw_thalatha
 #print axioms Jisr.Tarkib.shawahid_mughni
 #print axioms Jisr.Tarkib.azwaj_mufida
 #print axioms Jisr.Tarkib.jadwal_yali
 #print axioms Jisr.Tarkib.la_harf_bada_amil
+-- النِّسَب الثلاث على أطر المالك، واستنفاد أساليب الإخبار (Jisr/Nisab.lean)
+#print axioms Jisr.Nisab.kull_mawdi
+#print axioms Jisr.Nisab.isnad_markaz
+#print axioms Jisr.Nisab.ihsa_val
+#print axioms Jisr.Nisab.uslub_istinfad
+#print axioms Jisr.Nisab.ikhbar_82
 #print axioms SLGE.Law.ibtida
 #print axioms SLGE.Law.cell_count
 #print axioms SLGE.Law.qaltu
