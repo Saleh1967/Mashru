@@ -484,5 +484,23 @@
   "milaf": "Jisr/AwamilUslub.lean",
   "min": "  (\"إنّ\", \"الخبر\"),",
   "ila": "  (\"إنّ\", \"الطلب\"),"
+ },
+ {
+  "ism": "P46_nafy_ghayr_mughatta",
+  "milaf": "Jisr/Ikhbar.lean",
+  "min": "  | .ibtida | .nawasikh | .muqaraba | .fail | .mafulBihi | .jarr | .mudari | .shart | .istithna | .nafy => true",
+  "ila": "  | .ibtida | .nawasikh | .muqaraba | .fail | .mafulBihi | .jarr | .mudari | .shart | .istithna => true"
+ },
+ {
+  "ism": "P47_muqaraba_bila_uslub",
+  "milaf": "Jisr/Ikhbar.lean",
+  "min": "  | 6 => some .muqaraba",
+  "ila": "  | 6 => none"
+ },
+ {
+  "ism": "P48_jarr_bila_aila",
+  "milaf": "Jisr/AqsamAwamil.lean",
+  "min": "  | 5 => SLGE.Wad.jazm1F | 7 => SLGE.Wad.jarrF | _ => []",
+  "ila": "  | 5 => SLGE.Wad.jazm1F | _ => []"
  }
 ]
