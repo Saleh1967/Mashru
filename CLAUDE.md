@@ -43,14 +43,18 @@
 5. الجواب للمالك ثلاثة أقسام: ما فحصته الآلة / ما استنتجته / ما بقي باسمه.
 
 ## البناء
-- Lean 4.34.1 (`lean-toolchain`). `lake build`، ثم `lake env lean Audit.lean`. مجلّد `SLGE/` ملفّات المالك السبعة
-  (قانون الدالّ وحده) بنصّها؛ لا تُعدَّل هنا، والجسر إليها في `Dal/Qanun.lean`.
+- Lean 4.34.1 (`lean-toolchain`). `lake build`، ثم `lake env lean Audit.lean`. مجلّد `SLGE/` ملفّات المالك (السبعة من
+  slge-closed، وأربعة من slge-closed-v13: MadlulAwwalan، Category، Ladder2، Wad) بنصّها؛ لا تُعدَّل هنا، والجسر إليها في
+  `Dal/Qanun.lean`، والبناء عليها في `Jisr/Awamil.lean` و`Jisr/Tarkib.lean`.
 - القارئ: `.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv "<نصّ مشكول>"` — كلّ كلمة: خلاياها،
   حكم القانون، مقاطعها، ومنطوقها ومفهومها من المخزن بالسلسلة والوسم والمرتبة. ما لا قرار له يُرفض باسمه.
   والجملة (كلمتان فأكثر): تركيبها في الوصل على آلة المالك `Msent` (`Dal/Jumla.lean`: سقوط همزة الوصل بإصلاح المالك
   الأدنى من Hamza.lean، وحدّ الكلمة 116 بين ما سواها)، وحكمها، وكلماتها الصوتية ومقاطعها؛ أوّل خلل يُسمّى بكلمته.
 - المودَع: `MUDAA_MUKHASSAS=<مسار mukhassas.txt>` لاختبارات الشبكة، و`MUDAA_DIR=<مجلّد المودَعات>` لمطابقة بصماتها
-  (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`).
+  (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`؛ و`qatr.txt`، `mughni.txt`، `alfiyya.txt`،
+  `janadani.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib بأسطرها).
+- قرارات الوقف والرسم في القارئ (ة، ى، التنوين، ألف الجماعة، حركة همزة الوصل) منقولةٌ من قطر الندى (L440–452) والألفية (L1131،
+  L1142) بأسطرها في المخرج؛ تُطبَّق على آخر الجملة (الموقوف عليه) وحده.
 - العوامل: `Jisr/AwamilJadwal.lean` مولَّد من المودَع بـ `python3 -I scripts/bina_awamil.py <xlsx>` بتعيين المالك ولا يُحرَّر يدويًّا؛
   والمعادلات والاستنفاد في `Jisr/Awamil.lean`؛ ومطابقته للمودَع `tahaqquq/test_awamil.py`.
 - المخزن: `python3 -I mawsua/bina.py` يبنيه (بذرة ثابتة؛ لكلّ زوجٍ ادّعاءُ مطابقةٍ من وضعٍ محكيّ، وادّعاءُ «تحت العنوان»)، و`.lake/build/bin/faahis mudaat/sijill.tsv mawsua/makhzan.tsv` يفحصه،

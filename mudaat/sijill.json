@@ -120,6 +120,46 @@
    "hala": "مختوم",
    "idhn": "إذنٌ مستنبَط لا نصّيّ: المالك طبع بصمة هذا الملفّ في حزمته slge-closed-v13 (SLGE/AwamilTable.lean السطر 1) وولّد منه جدوله (awamil_xlsx/gen_awamil.py)، ثمّ رفعه في الجلسة 2026-10-15 طالبًا «حلل العوامل وفق قانون الاستنفاد»؛ يُؤكَّد الختم بكلمة المالك في مراجعة الـ PR",
    "tarikh": "2026-10-15"
+  },
+  {
+   "ism": "متن قطر الندى",
+   "naw": "وضع",
+   "sha256": "2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d",
+   "milaf": "qatr.txt",
+   "masdar": "OpenITI/0775AH: 0761JamalDinIbnHisham.MatnQatrNada.Shamela0011376-ara1؛ بصمته في wad/MANIFEST.json بحزمة المالك slge-closed-v13",
+   "hala": "مختوم",
+   "idhn": "مختوم عند المالك: بصمته في حزمته slge-closed-v13 wad/MANIFEST.json (SLGE/Wad.lean)؛ والملفّ في حزمته؛ الإذن مستنبَط من ذلك ومن طلبه في الجلسة 2026-10-15 «راجع قطر الندى ومغني اللبيب»، ويُؤكَّد في مراجعة الـ PR",
+   "tarikh": "2026-10-15"
+  },
+  {
+   "ism": "مغني اللبيب",
+   "naw": "وضع",
+   "sha256": "f37ac2bb4b273f59169053dd0ac2abf50a52846a7e87ddf689ee5c0b87f77e7d",
+   "milaf": "mughni.txt",
+   "masdar": "OpenITI/0775AH: 0761JamalDinIbnHisham.MughniLabib.Shamela0006972-ara1؛ بصمته في wad/MANIFEST.json بحزمة المالك slge-closed-v13",
+   "hala": "مختوم",
+   "idhn": "مختوم عند المالك: بصمته في حزمته slge-closed-v13 wad/MANIFEST.json (شاهد Wad.kalam_min_matches)؛ جُلب من OpenITI وطابقت بصمتُه بصمةَ المالك؛ الإذن مستنبَط من ذلك ومن طلبه في الجلسة 2026-10-15 «راجع قطر الندى ومغني اللبيب»، ويُؤكَّد في مراجعة الـ PR",
+   "tarikh": "2026-10-15"
+  },
+  {
+   "ism": "ألفية ابن مالك",
+   "naw": "وضع",
+   "sha256": "13b351a0a02d9060fdedbb5db568544718eb4e89bef323f5572b8a26c0921ca0",
+   "milaf": "alfiyya.txt",
+   "masdar": "OpenITI/0675AH: 0672IbnMalik.Alfiyya.Shamela0008522-ara1؛ بصمته في wad/MANIFEST.json بحزمة المالك slge-closed-v13",
+   "hala": "مختوم",
+   "idhn": "مختوم عند المالك: بصمته في حزمته slge-closed-v13 wad/MANIFEST.json (BridgeWitness عنده؛ وهنا شاهد الوقف في Qari/Main.lean L1131، L1136، L1142)؛ والملفّ في حزمته؛ الإذن مستنبَط من ذلك ومن طلبه في الجلسة 2026-10-15 «راجع قطر الندى ومغني اللبيب»، ويُؤكَّد في مراجعة الـ PR",
+   "tarikh": "2026-10-15"
+  },
+  {
+   "ism": "الجنى الداني في حروف المعاني",
+   "naw": "وضع",
+   "sha256": "756890608761e098054af5b7c912ae5078ff3e008820e638d47acf2a759ba64d",
+   "milaf": "janadani.txt",
+   "masdar": "OpenITI/0750AH: 0749BadrDinMisriMuradi.JanaDani.Shamela0026099-ara1؛ بصمته في wad/MANIFEST.json بحزمة المالك slge-closed-v13",
+   "hala": "مختوم",
+   "idhn": "مختوم عند المالك: بصمته في حزمته slge-closed-v13 wad/MANIFEST.json (SLGE/Ladder2.lean)؛ والملفّ في حزمته؛ الإذن مستنبَط من ذلك ومن طلبه في الجلسة 2026-10-15 «راجع قطر الندى ومغني اللبيب»، ويُؤكَّد في مراجعة الـ PR",
+   "tarikh": "2026-10-15"
   }
  ]
 }

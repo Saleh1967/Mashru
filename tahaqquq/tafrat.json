@@ -314,8 +314,8 @@
  {
   "ism": "P17_ta_marbuta_ha",
   "milaf": "Qari/Main.lean",
-  "min": "    if c == 'ة' then throw \"تاء مربوطة: تُقرأ هاءً في الوقف وتاءً في الوصل، ولم يُودَع قرارها\"",
-  "ila": "    let c := if c == 'ة' then 'ه' else c"
+  "min": "        if c == 'ة' then some (if akhirJumla then 1 else 18)",
+  "ila": "        if c == 'ة' then some (if akhirJumla then 1 else 1)"
  },
  {
   "ism": "P18_qadiyya_naw_muhmal",
@@ -350,8 +350,8 @@
  {
   "ism": "P23_lam_tarif_tuntaq",
   "milaf": "Qari/Main.lean",
-  "min": "        if q.wasl && q.khalaya.isEmpty && c == 'ل' && bilaAlama && !akhir && mushaddad cs j then",
-  "ila": "        if false then"
+  "min": "        else if q.wasl && q.khalaya.isEmpty && c == 'ل' && bilaAlama && !akhir && mushaddad cs j then",
+  "ila": "        else if false then"
  },
  {
   "ism": "P24_akhir_bila_haraka_fi_wasl",
@@ -424,5 +424,53 @@
   "milaf": "Jisr/Awamil.lean",
   "min": "def qismDawr (r : Nat) : Qism := if r == 2 || r == 11 || r == 12 then .fil else .ism",
   "ila": "def qismDawr (r : Nat) : Qism := if r == 2 then .fil else .ism"
+ },
+ {
+  "ism": "P36_ta_marbuta_ta_fi_waqf",
+  "milaf": "Qari/Main.lean",
+  "min": "          q := { q with khalaya := q.khalaya ++ [kh 1 3],",
+  "ila": "          q := { q with khalaya := q.khalaya ++ [kh 18 3],"
+ },
+ {
+  "ism": "P37_maqsura_marfuda",
+  "milaf": "Qari/Main.lean",
+  "min": "    let c := if c0 == 'ى' then 'ا' else c0",
+  "ila": "    let c := c0"
+ },
+ {
+  "ism": "P38_tanwin_fath_bila_alif",
+  "milaf": "Qari/Main.lean",
+  "min": "(if s == 0 then [kh h 0, kh 2 3] else [kh h 3])",
+  "ila": "(if s == 0 then [kh h 0] else [kh h 3])"
+ },
+ {
+  "ism": "P39_tanwin_waqf_nun",
+  "milaf": "Qari/Main.lean",
+  "min": "        else if tanwin.isSome && akhir && akhirJumla then",
+  "ila": "        else if false then"
+ },
+ {
+  "ism": "P40_istifham_sadr",
+  "milaf": "Jisr/Tarkib.lean",
+  "min": "def laYusaddar (w : Kalima) : Bool := w.qism == .harf || (w.qism == .ism && w.sinf == 12)",
+  "ila": "def laYusaddar (w : Kalima) : Bool := w.qism == .harf"
+ },
+ {
+  "ism": "P41_yali_bila_hukm",
+  "milaf": "Jisr/Tarkib.lean",
+  "min": "  | [[]] => [.ism, .fil]",
+  "ila": "  | [[]] => [.ism]"
+ },
+ {
+  "ism": "P42_maqsura_bada_tanwin",
+  "milaf": "Qari/Main.lean",
+  "min": "                          else \"الوقف على التنوين بحذفه وتسكين الحرف (الألفية L1131، L1136)\"] }\n          if s == 0 && (cs[j]? == some 'ا' || cs[j]? == some 'ى') then j := j + 1",
+  "ila": "                          else \"الوقف على التنوين بحذفه وتسكين الحرف (الألفية L1131، L1136)\"] }\n          if s == 0 && cs[j]? == some 'ا' then j := j + 1"
+ },
+ {
+  "ism": "P43_ta_marbuta_wasat",
+  "milaf": "Qari/Main.lean",
+  "min": "        if c == 'ة' && !akhir then\n          throw \"تاء مربوطة في غير آخر الكلمة\"",
+  "ila": "        if false then\n          throw \"تاء مربوطة في غير آخر الكلمة\""
  }
 ]
