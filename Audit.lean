@@ -15,6 +15,7 @@ import Aql.QawaninDalala
 import Aql.Maratib
 import Dal.Makharij
 import Dal.Qanun
+import Dal.Jumla
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -186,6 +187,33 @@ import Dal.Qanun
 #print axioms Dal.anwa_sitta
 #print axioms Dal.shahid_qatta
 #print axioms Dal.judhur_thulathiyya
+-- المرحلة ٣: الجملة في الوصل (Dal/Jumla.lean على Msent وHamza.lean)
+#print axioms Dal.harakatIltiqa_lt
+#print axioms Dal.rakkib_wahida
+#print axioms Dal.ibtidaForm_lt
+#print axioms Dal.ibtida_lt
+#print axioms Dal.isqatHamza_lt
+#print axioms Dal.rakkibAux_lt
+#print axioms Dal.rakkib_abjadiyya
+#print axioms Dal.jumla_murakhkhasa
+#print axioms Dal.sentChain_eq_joinH
+#print axioms Dal.splitH_ne_nil
+#print axioms Dal.joinH_cons_nil
+#print axioms Dal.joinH_cons_cons
+#print axioms Dal.joinH_splitH
+#print axioms Dal.qattaKull_sahih
+#print axioms Dal.qattaJumla_sahih
+#print axioms Dal.qattaJumla_wahid
+#print axioms Dal.isqat_ghayr_sakin
+#print axioms Dal.sakinAwwal_cons
+#print axioms Dal.isqat_mover
+#print axioms Dal.isqat_madd
+#print axioms Dal.isqat_closed
+#print axioms Dal.shahid_qala_uktub
+#print axioms Dal.shahid_qalu_uktubu
+#print axioms Dal.shahid_qum_allayla
+#print axioms Dal.shahid_hadd
+#print axioms Dal.shahid_idgham_hadd
 #print axioms SLGE.Law.ibtida
 #print axioms SLGE.Law.cell_count
 #print axioms SLGE.Law.qaltu

@@ -1,19 +1,25 @@
 /-
   Qari/Main.lean — القارئ: نصٌّ عربيٌّ مشكول ← خلايا (الدال وحده) ← القانون (ابتداء/وصل/وقف) ← المقاطع
   ← المخزن (المدلول): المنطوق (مطابقة وتضمّن) والمفهوم (التزام)، بمراتب المخرج ووسم كلّ قول.
+  والجملة: تركيب الكلمات في الوصل على آلة المالك `Msent` (Dal/Jumla.lean): سقوط همزة الوصل بإصلاحها الأدنى،
+  وحدّ الكلمة 116 بين ما سواها؛ والتقطيع كلماتٍ صوتيّةً ومقاطعَ، صحيحٌ بالبناء وواحدٌ بمبرهنة المالك.
 
   ما يُخمَّن: لا شيء. ما ليس في جدول المخارج أو لم يُودَع قرارُه يُرفض باسمه (الدستور م5):
-  التاء المربوطة، الألف المقصورة، الحرف بلا حركة في غير آخر الكلمة، الألف المحرّكة في أوّل الكلمة.
+  التاء المربوطة، الألف المقصورة، الحرف بلا حركة في غير آخر الكلمة، الألف المحرّكة في أوّل الكلمة،
+  والحرف الأخير بلا حركة في غير آخر الجملة (الوصل يحتاج حركته).
   الوسائط المعلنة (مقرّرة هنا، مذكورة في المخرج):
   * مقاعد الهمزة (أ إ ؤ ئ) همزةُ قطع (ء = 0)؛ آ = همزة مفتوحة ثمّ ألف مدّ.
-  * الألف المجرّدة في أوّل الكلمة (أو ٱ) همزةُ وصل: تُحذف ويُصلح الابتداء بـ `SLGE.Law.ibtidaForm`
-    (فتحة مع «ال»، وإلّا بحسب حركة الثالث — وسيط المالك `waslHaraka`).
+  * الألف المجرّدة في أوّل الكلمة (أو ٱ) همزةُ وصل: تُحذف من الخلايا، وفي الابتداء تُصلح بـ `SLGE.Law.ibtidaForm`
+    (فتحة مع «ال»، وإلّا بحسب حركة الثالث — وسيط المالك `waslHaraka`)؛ وفي الوصل تسقط بإصلاح المالك (Hamza.lean).
+    ولا تكون إلّا قبل ساكن (Hamza.lean)؛ فألفٌ مجرّدة قبل متحرّك تُرفض باسمها.
+  * لام التعريف بلا علامة قبل حرفٍ مشدّد: مدغمةٌ فيه، لا خلية لها (الشدّة في النصّ شاهدُ الإدغام).
   * الشدّة: ساكنٌ ثمّ متحرّكٌ من الحامل نفسه. التنوين: حركةٌ ثمّ نون ساكنة (وألفُ التنوين بعد الفتحتين لا تُنطق).
-  * الحرف الأخير بلا حركة: ساكنٌ للوقف. ا/و/ي بلا حركة في غير الأوّل: ساكنة (مدًّا أو غيرَه، والقانون يحكم).
+  * الألف الفارقة: ألفٌ بلا علامة في آخر الكلمة بعد واوٍ ساكنة لا تُنطق.
+  * الحرف الأخير بلا حركة في آخر الجملة: ساكنٌ للوقف. ا/و/ي بلا حركة في غير الأوّل: ساكنة (مدًّا أو غيرَه، والقانون يحكم).
   * البحث في المخزن باللفظ مجرَّدًا من الحركات كما يكتبه المعجم.
   التشغيل: qari <سجلّ المودَعات> <المخزن> <نصّ مشكول…>
 -/
-import Dal.Qanun
+import Dal.Jumla
 import Faahis.Lib
 
 open Dal SLGE SLGE.Law QawaninDalala Qaida Mawsua
@@ -25,23 +31,32 @@ def harf? (c : Char) : Option Nat := hawamil.idxOf? c
 def maqadAlhamza : List Char := ['أ', 'إ', 'ؤ', 'ئ']
 
 structure Qiraa where
-  khalaya   : List Nat := []       -- الرموز 4c+s
+  khalaya   : List Nat := []       -- الرموز 4c+s بلا همزة الوصل
   wasl      : Bool := false        -- بدأت بهمزة وصل
+  al        : Bool := false        -- همزتها همزة «أل» (لامٌ ساكنة أو مدغمة)
   mulahazat : List String := []
 
 /-- خلية: حامل وحالة. -/
 def kh (c s : Nat) : Nat := 4 * c + s
 
-/-- تحليل كلمة مشكولة إلى خلايا؛ الرفض باسمه. -/
-def tahlil (w : String) : Except String Qiraa := do
+def harakaOf (c : Char) : Option Nat :=
+  if c == 'َ' then some 0 else if c == 'ُ' then some 1 else if c == 'ِ' then some 2 else if c == 'ْ' then some 3 else none
+
+def tanwinOf (c : Char) : Option Nat :=
+  if c == 'ً' then some 0 else if c == 'ٌ' then some 1 else if c == 'ٍ' then some 2 else none
+
+def alama (c : Char) : Bool := c == 'ّ' || (harakaOf c).isSome || (tanwinOf c).isSome
+
+/-- هل الحرف الذي يبدأ في الموضع `i` تليه شدّة بين علاماته؟ -/
+def mushaddad (cs : List Char) (i : Nat) : Bool :=
+  (cs.drop (i + 1)).takeWhile alama |>.contains 'ّ'
+
+/-- تحليل كلمة مشكولة إلى خلايا؛ الرفض باسمه. `akhirJumla`: الكلمة آخر الجملة (فيجوز الوقف على ساكن). -/
+def tahlil (w : String) (akhirJumla : Bool := true) : Except String Qiraa := do
   let cs := w.toList.filter (· != 'ـ')
   let n := cs.length
   let mut q : Qiraa := {}
   let mut i := 0
-  let harakaOf (c : Char) : Option Nat :=
-    if c == 'َ' then some 0 else if c == 'ُ' then some 1 else if c == 'ِ' then some 2 else if c == 'ْ' then some 3 else none
-  let tanwinOf (c : Char) : Option Nat :=
-    if c == 'ً' then some 0 else if c == 'ٌ' then some 1 else if c == 'ٍ' then some 2 else none
   while i < n do
     let c := cs[i]!
     let nxt := cs[i+1]?
@@ -73,30 +88,42 @@ def tahlil (w : String) : Except String Qiraa := do
               | some s => tanwin := some s; j := j + 1
               | none => break
         let akhir := j ≥ n
-        match haraka, tanwin with
-        | some s, _ =>
-          let cells := if sh then [kh h 3, kh h s] else [kh h s]
-          q := { q with khalaya := q.khalaya ++ cells }
-        | none, some s =>
-          let cells := (if sh then [kh h 3] else []) ++ [kh h s, kh 14 3]
-          q := { q with khalaya := q.khalaya ++ cells,
-                        mulahazat := q.mulahazat ++ ["التنوين نون ساكنة (وسيط معلَن)"] }
-          -- ألف التنوين بعد الفتحتين لا تُنطق
-          if s == 0 && cs[j]? == some 'ا' then j := j + 1
-        | none, none =>
-          if akhir then
-            q := { q with khalaya := q.khalaya ++ (if sh then [kh h 3, kh h 3] else [kh h 3]),
-                          mulahazat := q.mulahazat ++ ["الحرف الأخير بلا حركة: عُدّ ساكنًا للوقف"] }
-          else if h == 2 || h == 28 || h == 11 then
-            q := { q with khalaya := q.khalaya ++ [kh h 3] }
-          else throw s!"حرف بلا حركة في غير آخر الكلمة: «{c}» — النصّ غير مشكول"
+        let bilaAlama := haraka.isNone && !sh && tanwin.isNone
+        if q.wasl && q.khalaya.isEmpty && c == 'ل' && bilaAlama && !akhir && mushaddad cs j then
+          -- لام التعريف المدغمة في المشدّد بعدها
+          q := { q with al := true,
+                        mulahazat := q.mulahazat ++ ["لام التعريف مدغمة في المشدّد بعدها، لا خلية لها (وسيط معلَن)"] }
+        else if c == 'ا' && bilaAlama && akhir && q.khalaya.getLast? == some (kh 28 3) then
+          q := { q with mulahazat := q.mulahazat ++ ["الألف الفارقة بعد الواو الساكنة لا تُنطق (وسيط معلَن)"] }
+        else
+          match haraka, tanwin with
+          | some s, _ =>
+            let cells := if sh then [kh h 3, kh h s] else [kh h s]
+            q := { q with khalaya := q.khalaya ++ cells }
+          | none, some s =>
+            let cells := (if sh then [kh h 3] else []) ++ [kh h s, kh 14 3]
+            q := { q with khalaya := q.khalaya ++ cells,
+                          mulahazat := q.mulahazat ++ ["التنوين نون ساكنة (وسيط معلَن)"] }
+            -- ألف التنوين بعد الفتحتين لا تُنطق
+            if s == 0 && cs[j]? == some 'ا' then j := j + 1
+          | none, none =>
+            if h == 2 || h == 28 || h == 11 then
+              q := { q with khalaya := q.khalaya ++ [kh h 3] }
+            else if akhir then
+              if akhirJumla then
+                q := { q with khalaya := q.khalaya ++ (if sh then [kh h 3, kh h 3] else [kh h 3]),
+                              mulahazat := q.mulahazat ++ ["الحرف الأخير بلا حركة: عُدّ ساكنًا للوقف"] }
+              else throw s!"الحرف الأخير بلا حركة في غير آخر الجملة: «{c}» — الوصل يحتاج حركته"
+            else throw s!"حرف بلا حركة في غير آخر الكلمة: «{c}» — النصّ غير مشكول"
         i := j
   if q.khalaya.isEmpty then throw "كلمة فارغة"
-  if q.wasl then
-    let isAl := q.khalaya.head? == some (kh 13 3)
-    q := { q with khalaya := ibtidaForm isAl q.khalaya,
-                  mulahazat := q.mulahazat ++ [s!"همزة الوصل أُصلحت بـ ibtidaForm (isAl={isAl})"] }
+  if q.wasl && !sakinAwwal q.khalaya then
+    throw "ألف مجرّدة قبل متحرّك: ليست همزة وصل (همزة الوصل لا تكون إلّا قبل ساكن — Hamza.lean)؛ اكتب همزة القطع بمقعدها (أ/إ)"
+  if q.wasl && isAl q.khalaya then q := { q with al := true }
   return q
+
+/-- الكلمة كما يسلّمها القارئ إلى التركيب (Dal/Jumla.lean). -/
+def kalima (q : Qiraa) : Kalima := ⟨q.khalaya, q.wasl, q.al⟩
 
 /-- تجريد اللفظ من الحركات للبحث في المخزن. -/
 def mujarrad (w : String) : String :=
@@ -104,49 +131,82 @@ def mujarrad (w : String) : String :=
 
 def halaIsm (s : Nat) : String := match s with | 0 => "فتحة" | 1 => "ضمّة" | 2 => "كسرة" | _ => "سكون"
 
-def khaliyaIsm (a : Nat) : String := s!"{Dal.harf ⟨a / 4 % 29, Nat.mod_lt _ (by decide)⟩}/{halaIsm (a % 4)}({a})"
+def khaliyaIsm (a : Nat) : String :=
+  if a == 116 then "|" else s!"{Dal.harf ⟨a / 4 % 29, Nat.mod_lt _ (by decide)⟩}/{halaIsm (a % 4)}({a})"
 
 def nawIsm : NawMaqta → String
   | .CV => "CV" | .CVV => "CVV" | .CVC => "CVC" | .CVVC => "CVVC" | .CVCC => "CVCC" | .CVVCC => "CVVCC"
 
-/-! ## ٢. القراءة -/
+def silsilaIsm (l : List Nat) : String := " ".intercalate (l.map khaliyaIsm)
 
-def iqra (h : Hal) (b : Bina) (w : String) : IO Unit := do
-  IO.println s!"الكلمة: {w}"
-  match tahlil w with
-  | .error e => IO.println s!"  مرفوضة باسمها: {e}"
-  | .ok q =>
-    IO.println s!"  الخلايا: {" ".intercalate (q.khalaya.map khaliyaIsm)}"
-    for m in q.mulahazat do IO.println s!"  ملاحظة: {m}"
-    let waqf := Fwaqf (run 0 q.khalaya)
-    let wasl := Fwasl (run 0 q.khalaya)
-    IO.println s!"  القانون (ابتداء/وصل/وقف): موقوفًا عليها {if waqf then "مرخَّصة" else "ممتنعة"}؛ في الوصل {if wasl then "مرخَّصة" else "ممتنعة"}"
-    if waqf then
-      match qatta q.khalaya with
-      | some sy => IO.println s!"  المقاطع ({sy.length}): {" · ".intercalate (sy.map fun x => nawIsm (nawMaqta x))} — واحدٌ بمبرهنة qatta_wahid"
-      | none => IO.println "  المقاطع: لم يُقسَّم (خلل في التقطيع التنفيذيّ؛ الوجود مبرهن في word_structure)"
-    -- المدلول من المخزن
-    let key := mujarrad w
-    let yuwafiq (p : Qadiyya) : Bool := match p with
-      | .mutabaqa l _ | .tadammun l _ | .iltizam l _ => h.dh.ism l == key
-      | _ => false
-    let mantuq := h.iddiaat.filter fun (_, p, _, _, _) => match p with
-      | .mutabaqa .. | .tadammun .. => yuwafiq p | _ => false
-    let mafhum := h.iddiaat.filter fun (_, p, _, _, _) => match p with
-      | .iltizam .. => yuwafiq p | _ => false
-    IO.println s!"  المدلول باللفظ «{key}»:"
-    if mantuq.isEmpty then IO.println "    المنطوق (مطابقة/تضمّن): لا مدخل في المخزن — لا حكم؛ الغياب ليس امتناعًا."
-    else
-      IO.println s!"    المنطوق (مطابقة/تضمّن): {mantuq.size}"
-      for (_, p, _, ks, _) in mantuq do
-        if maqbul b.q b.aslB ⟨p, ks⟩ then tatabbu h b ⟨p, ks⟩
-        else IO.println s!"      {qadiyyaIsm h.dh p}: مرفوض — سلسلة لا يقبلها الفاحص"
-    if mafhum.isEmpty then IO.println "    المفهوم (التزام): لا مدخل في المخزن — لا حكم."
-    else
-      IO.println s!"    المفهوم (التزام): {mafhum.size}"
-      for (_, p, _, ks, _) in mafhum do
-        if maqbul b.q b.aslB ⟨p, ks⟩ then tatabbu h b ⟨p, ks⟩
-        else IO.println s!"      {qadiyyaIsm h.dh p}: مرفوض — سلسلة لا يقبلها الفاحص"
+/-! ## ٢. قراءة الكلمة وحدها -/
+
+def iqraKalima (h : Hal) (b : Bina) (w : String) (q : Qiraa) : IO Unit := do
+  let l := ibtida (kalima q)
+  IO.println s!"  الخلايا: {silsilaIsm l}"
+  for m in q.mulahazat do IO.println s!"  ملاحظة: {m}"
+  if q.wasl then IO.println s!"  ملاحظة: همزة الوصل أُصلحت بـ ibtidaForm (isAl={q.al})"
+  let waqf := Fwaqf (run 0 l)
+  let wasl := Fwasl (run 0 l)
+  IO.println s!"  القانون (ابتداء/وصل/وقف): موقوفًا عليها {if waqf then "مرخَّصة" else "ممتنعة"}؛ في الوصل {if wasl then "مرخَّصة" else "ممتنعة"}"
+  if waqf then
+    match qatta l with
+    | some sy => IO.println s!"  المقاطع ({sy.length}): {" · ".intercalate (sy.map fun x => nawIsm (nawMaqta x))} — واحدٌ بمبرهنة qatta_wahid"
+    | none => IO.println "  المقاطع: لم يُقسَّم (خلل في التقطيع التنفيذيّ؛ الوجود مبرهن في word_structure)"
+  -- المدلول من المخزن
+  let key := mujarrad w
+  let yuwafiq (p : Qadiyya) : Bool := match p with
+    | .mutabaqa l _ | .tadammun l _ | .iltizam l _ => h.dh.ism l == key
+    | _ => false
+  let mantuq := h.iddiaat.filter fun (_, p, _, _, _) => match p with
+    | .mutabaqa .. | .tadammun .. => yuwafiq p | _ => false
+  let mafhum := h.iddiaat.filter fun (_, p, _, _, _) => match p with
+    | .iltizam .. => yuwafiq p | _ => false
+  IO.println s!"  المدلول باللفظ «{key}»:"
+  if mantuq.isEmpty then IO.println "    المنطوق (مطابقة/تضمّن): لا مدخل في المخزن — لا حكم؛ الغياب ليس امتناعًا."
+  else
+    IO.println s!"    المنطوق (مطابقة/تضمّن): {mantuq.size}"
+    for (_, p, _, ks, _) in mantuq do
+      if maqbul b.q b.aslB ⟨p, ks⟩ then tatabbu h b ⟨p, ks⟩
+      else IO.println s!"      {qadiyyaIsm h.dh p}: مرفوض — سلسلة لا يقبلها الفاحص"
+  if mafhum.isEmpty then IO.println "    المفهوم (التزام): لا مدخل في المخزن — لا حكم."
+  else
+    IO.println s!"    المفهوم (التزام): {mafhum.size}"
+    for (_, p, _, ks, _) in mafhum do
+      if maqbul b.q b.aslB ⟨p, ks⟩ then tatabbu h b ⟨p, ks⟩
+      else IO.println s!"      {qadiyyaIsm h.dh p}: مرفوض — سلسلة لا يقبلها الفاحص"
+
+/-! ## ٣. الجملة في الوصل -/
+
+def islahIsm : Islah → String
+  | .la => "سقطت همزة الوصل بعد متحرّك بلا إصلاح (wasl_after_mover)"
+  | .hadhfMadd => "سقطت همزة الوصل وحُذف المدّ قبلها لالتقاء الساكنين (wasl_after_madd)"
+  | .tahrik => s!"سقطت همزة الوصل وحُرّك الساكن قبلها بال{halaIsm harakatIltiqa} لالتقاء الساكنين (wasl_after_closed؛ الحركة وسيط معلَن)"
+
+def kalimaRaqm (ws : Array String) (i : Nat) : String := s!"الكلمة {i} «{ws.getD (i - 1) "?"}»"
+
+def khalalIsm (ws : Array String) : Khalal → String
+  | .mayyita i => s!"ممتنعة عند {kalimaRaqm ws i}: القانون يميت السلسلة في موضعها"
+  | .laTusal i => s!"{kalimaRaqm ws i} لا توصل بما بعدها: آخرها ساكنان (الوقف لا الوصل)"
+  | .laHukm i => s!"لا حكم عند {kalimaRaqm ws i}: همزة وصل بعد حالةٍ ليس عند المالك إصلاحٌ لها"
+  | .farigha => "لا كلمات"
+
+def iqraJumla (ws : Array String) (qs : Array Qiraa) : IO Unit := do
+  IO.println s!"الجملة في الوصل ({ws.size} كلمات):"
+  let n := rakkib (qs.toList.map kalima)
+  for (i, s) in n.islahat do IO.println s!"  الوصل عند {kalimaRaqm ws i}: {islahIsm s}"
+  IO.println s!"  السلسلة: {silsilaIsm n.silsila}"
+  match n.khalal with
+  | some k => IO.println s!"  القانون (آلة الجملة Msent): {khalalIsm ws k}"
+  | none =>
+    if Fwaqf (run 0 n.silsila) then
+      IO.println "  القانون (آلة الجملة Msent): مرخَّصة موقوفًا على آخرها — لها تقطيع (jumla_murakhkhasa)"
+      match qattaJumla n.silsila with
+      | some S =>
+        let ks := S.map fun w => "[" ++ " · ".intercalate (w.map fun x => nawIsm (nawMaqta x)) ++ "]"
+        IO.println s!"  الكلمات الصوتية ({S.length}): {" ".intercalate ks} — واحدٌ بمبرهنة qattaJumla_wahid"
+      | none => IO.println "  الكلمات الصوتية: لم تُقطَّع (خلل في التقطيع التنفيذيّ؛ الوجود مبرهن في sent_structure)"
+    else IO.println "  القانون (آلة الجملة Msent): ممتنعة موقوفًا على آخرها (آخرها معلَّق على الوصل)"
 
 def main (args : List String) : IO UInt32 := do
   match args with
@@ -157,7 +217,17 @@ def main (args : List String) : IO UInt32 := do
     let h := (lines.toList.zipIdx 1).foldl (fun h (l, n) => qira h n l) {}
     let some isdar := h.isdar | IO.eprintln "لا إصدار للقاعدة"; return 1
     let b := bina h isdar
-    let words := (" ".intercalate nass).splitOn " " |>.filter (· != "")
-    for w in words do iqra h b w
+    let words := ((" ".intercalate nass).splitOn " " |>.filter (· != "")).toArray
+    let mut qs : Array Qiraa := #[]
+    let mut kull := true
+    for i in [0:words.size] do
+      let w := words[i]!
+      IO.println s!"الكلمة: {w}"
+      match tahlil w (i + 1 == words.size) with
+      | .error e => IO.println s!"  مرفوضة باسمها: {e}"; kull := false
+      | .ok q => iqraKalima h b w q; qs := qs.push q
+    if words.size ≥ 2 then
+      if kull then iqraJumla words qs
+      else IO.println s!"الجملة في الوصل ({words.size} كلمات): لم تُركَّب — فيها كلمة مرفوضة باسمها"
     return 0
   | _ => IO.eprintln "الاستعمال: qari <سجلّ المودَعات> <المخزن> <نصّ مشكول…>"; return 2
