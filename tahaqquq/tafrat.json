@@ -742,5 +742,29 @@
   "milaf": "Madlul/Tayin.lean",
   "min": "def ramzQism : Qism → Nat | .jamad => 1 | .nabat => 2 | .hayawan => 3 | .insan => 4",
   "ila": "def ramzQism : Qism → Nat | .jamad => 9 | .nabat => 2 | .hayawan => 3 | .insan => 4"
+ },
+ {
+  "ism": "P89_fasl_yunaqid",
+  "milaf": "Madlul/Wiratha.lean",
+  "min": "  | a, _ => a\n",
+  "ila": "  | _, f => f\n"
+ },
+ {
+  "ism": "P90_kathafa_thalj",
+  "milaf": "Madlul/Jamad.lean",
+  "min": "kJamid := some 916700,",
+  "ila": "kJamid := some 9167000,"
+ },
+ {
+  "ism": "P91_jumud_ila_bukhar",
+  "milaf": "Madlul/Jamad.lean",
+  "min": "  | .jumud, .sail => some .jamid\n",
+  "ila": "  | .jumud, .sail => some .bukhar\n"
+ },
+ {
+  "ism": "P92_hayy_bila_mawt",
+  "milaf": "Madlul/Wiratha.lean",
+  "min": "      | .hayy => { taghadhdhi := .naam, numuw := .naam, mawt := .naam }",
+  "ila": "      | .hayy => { taghadhdhi := .naam, numuw := .naam, mawt := .la }"
  }
 ]

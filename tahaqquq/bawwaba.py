@@ -13,6 +13,8 @@
   ٥و. العوامل (tahaqquq/test_awamil.py): Jisr/AwamilJadwal.lean مطابقٌ لمودَعه إن حضر (MUDAA_AWAMIL أو MUDAA_DIR).
   ٥ز. نقول الأقسام (tahaqquq/test_aqsam.py): اقتباسات Jisr/AqsamAwamil.lean في أسطرها من المودَعات إن حضرت (MUDAA_DIR).
   ٥ح. جدول الأجناس (tahaqquq/test_ajnas.py): المودَع ajnas.tsv ببصمته، ومطابقة جدول Madlul/Tayin.lean له، وشجرة المخصّص إن حضرت.
+  ٥ط. القطعة الثانية والنظامان (tahaqquq/test_jamad.py): ajnas_jamad.tsv وnizam_fizya.tsv وnizam_riyadiyyat.tsv ببصماتها، ومطابقة
+      Madlul/Wiratha.lean وMadlul/Jamad.lean لها (الشجرة والثوابت وأسماء القوانين) إن حضرت.
   ٦. كلّ طفرة في tafrat.json تُقتل: تُفشل البناء أو تُفشل اختبارات المخزن. طفرة تعيش = اختبارٌ مرآة.
 التشغيل: python3 -I tahaqquq/bawwaba.py [--bila-tafrat]
 """
@@ -111,6 +113,10 @@ def main():
     report.append(f"٥ح جدول الأجناس: {out.strip().splitlines()[-1] if out.strip() else '?'}")
     if code != 0:
         fails.append("اختبار جدول الأجناس فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_jamad.py"])
+    report.append(f"٥ط القطعة الثانية والنظامان: {out.strip().splitlines()[-1] if out.strip() else '?'}")
+    if code != 0:
+        fails.append("اختبار القطعة الثانية والنظامين فشل:\n" + out[-800:])
     mdir = os.environ.get("MUDAA_DIR")
     if mdir and os.path.isdir(mdir):
         code, out = run([sys.executable, "-I", "mudaat/idaa.py", "tahaqqaq", mdir])
@@ -146,6 +152,8 @@ def main():
                 code, _ = run([sys.executable, "-I", "tahaqquq/test_aqsam.py"], cwd=dst)
             if code == 0:
                 code, _ = run([sys.executable, "-I", "tahaqquq/test_ajnas.py"], cwd=dst)
+            if code == 0:
+                code, _ = run([sys.executable, "-I", "tahaqquq/test_jamad.py"], cwd=dst)
             if code == 0:
                 alive.append(t["ism"])
             shutil.rmtree(tmp)

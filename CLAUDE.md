@@ -80,6 +80,21 @@
   المخصّص `mawsua/ajnas_mukhassas.tsv` (333 عنوانًا بأسطرها: 18 «كتاب» في وسم `### |`، 310 «باب»، 3 خواتيم، 2 توالٍ) مولَّدة من
   المخصّص المختوم بـ `python3 -I scripts/bina_ajnas_mukhassas.py <mukhassas.txt>` ويطابقها الاختبار بايتًا؛ اتّخاذها قيمًا لعمود
   `jins_ala` وقسمة كتبه ذواتًا وأعراضًا قرار المالك.
+- قانون التوريث والوراثة (قرار المالك 2026-10-16 وإمضاؤه لقراءة البنّاء: التوريث نزولًا والوراثة صعودًا، والفصل لا يبتّ إلّا فيما تُرك
+  «لا حكم» ولا يناقضه): `Madlul/Wiratha.lean` — `battQ`، `warrith`، `Shajara`/`Shajara.khawass`؛ مبرهن لكلّ: `warrith_yuhassin` (الوراثة
+  تحسين `yuhassin`) و`tahsin_wiratha` (العكس على الخانات الخمس)، `warrith_la_yunaqid`/`warrith_yabutt` (على الخمس)، `mawruth_yabqa`،
+  `warrith_farigh`، `yuhassin_trans`، `Shajara.wiratha`؛ وعلى الشاهد `fusul_min_wiratha` (شجرة القطعتين بفصولها المعيَّنة تعيد صفوف
+  القطعة الأولى — مطابقة لا اشتقاق)، `aba_bila_hukm` (عُقَد الآباء الموجود/الحيّ/الحيوان-الجنس «لا حكم»)، `ikhwan_bi_fasl`.
+- تصنيف الجماد (قرار المالك 2026-10-16 وإمضاؤه: الكتلة والحجم والكثافة والحرارة وعتبات التحوّل؛ الوحدة والكثرة بوجهيها): `Madlul/Jamad.lean` —
+  `Hala` (جامد/سائل/بخار) و`tahawwul`، `Madda` (كثافة لكلّ حالة غ/م³، عتبتان °م، `none` لا حكم)، `halaInda` (ف4)، `Fard`/`Jism`
+  (ميكروغرام = غ/م³ × سم³ بلا قسمة)، `yatfu`، `qarin`، `Wahda`/`ifrad`؛ مبرهن لكلّ: `tahawwul_la_yughayyir_haqiqa` (قانون التعيين: التحوّل
+  يغيّر الحالة وحدها)، `tahawwul_yahfaz_kutla`، `hala_ratiba`، `sail_bayn`، `dhawb_jumud`/`tabakhkhur_takathuf`، `kathafa_la_tujma`
+  (الوسيط: الكثافة لا تُجمع)، `tartib_kathafa`، `muttasiqB_salim`؛ وعلى الشاهد (المواد الستّ): `shawahid_hala`، `shawahid_muttasiq`، `thalj_ma`،
+  `thalj_yatfu`، `kathafa_mushakkika`. المودَعات الثلاثة «معلومات-سابقة» بإذن المالك 2026-10-16 (13:26؛ إذن القطعة الثانية بالاسم ينتظر
+  تثبيته) في `MUDAA_DIR`: `ajnas_jamad.tsv` (القطعة الثانية: عُقَد الآباء والجماد، 17 صفًّا بشواهد لسان العرب والمخصّص بأسطرها؛ خللٌ
+  معلَن في الوثيقة §7: صفّا الحالة ثلج/بخار، حالة الجوهر، سند الجوهر، أسماء الحيوان)، `nizam_fizya.tsv` (ف0–ف7 و20 ثابتًا نقلها البنّاء من
+  Wikipedia قُرئت بأداة — «علمي» لا «مقيس» حتّى يُودَع مرجع)، `nizam_riyadiyyat.tsv` (ر1–ر6)؛ ومطابقتها `tahaqquq/test_jamad.py` (٥ط؛
+  P89–P92).
 - القارئ: `.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv "<نصّ مشكول>"` — كلّ كلمة: خلاياها،
   حكم القانون، مقاطعها، ومنطوقها ومفهومها من المخزن بالسلسلة والوسم والمرتبة. ما لا قرار له يُرفض باسمه.
   والجملة (كلمتان فأكثر): تركيبها في الوصل على آلة المالك `Msent` (`Dal/Jumla.lean`: سقوط همزة الوصل بإصلاح المالك
@@ -87,7 +102,7 @@
 - المودَع: `MUDAA_MUKHASSAS=<مسار mukhassas.txt>` لاختبارات الشبكة، و`MUDAA_DIR=<مجلّد المودَعات>` لمطابقة بصماتها
   (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`؛ و`qatr.txt`، `mughni.txt`، `alfiyya.txt`،
   `janadani.txt`، `sibawayhi.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib/AqsamAwamil بأسطرها؛ و`ajnas.tsv` جدول الأجناس —
-  القطعة الأولى الذي يطابقه `test_ajnas.py`).
+  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`).
 - قرارات الوقف والرسم في القارئ (ة، ى، التنوين، ألف الجماعة، حركة همزة الوصل) منقولةٌ من قطر الندى (باب الوقف L440–447،
   همزة الوصل L449–453) والألفية (L1131، L1136، L1142) بأسطرها في المخرج؛ قرارا الوقف على آخر النصّ (الموقوف عليه)، وقرارا الرسم
   وهمزة الوصل في كلّ موضع.

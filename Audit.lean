@@ -3,6 +3,8 @@ import Dal.AqsamAllafz
 import Madlul.Dalala
 import Madlul.AqsamAlmadlul
 import Madlul.Tayin
+import Madlul.Wiratha
+import Madlul.Jamad
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
 import Dal.AqsamAlism
@@ -583,3 +585,49 @@ import Jisr.Utur
 #print axioms Madlul.Tayin.tahsin_la_yughayyir
 #print axioms Madlul.Tayin.qabiliyya_tabi_khassa
 #print axioms Madlul.Tayin.shawahid
+
+-- قانون التوريث والوراثة على شجرة الأجناس (Madlul/Wiratha.lean)
+#print axioms Madlul.Wiratha.battQ_yuhassin
+#print axioms Madlul.Wiratha.warrith_yuhassin
+#print axioms Madlul.Wiratha.battQ_yuhassinQ
+#print axioms Madlul.Wiratha.tahsin_wiratha
+#print axioms Madlul.Wiratha.battQ_la_yunaqid
+#print axioms Madlul.Wiratha.warrith_la_yunaqid
+#print axioms Madlul.Wiratha.battQ_yabutt
+#print axioms Madlul.Wiratha.warrith_yabutt
+#print axioms Madlul.Wiratha.mawruth_yabqa
+#print axioms Madlul.Wiratha.battQ_laHukm
+#print axioms Madlul.Wiratha.warrith_farigh
+#print axioms Madlul.Wiratha.yuhassinQ_refl
+#print axioms Madlul.Wiratha.yuhassinQ_trans
+#print axioms Madlul.Wiratha.yuhassin_refl
+#print axioms Madlul.Wiratha.yuhassin_trans
+#print axioms Madlul.Wiratha.Shajara.wiratha
+#print axioms Madlul.Wiratha.Shajara.jidhr_thabit
+#print axioms Madlul.Wiratha.fusul_min_wiratha
+#print axioms Madlul.Wiratha.aba_bila_hukm
+#print axioms Madlul.Wiratha.ikhwan_bi_fasl
+
+-- تصنيف الجماد: الكمّ والحالات والتحوّل وشروط الفيزياء والرياضيات والوحدة والكثرة (Madlul/Jamad.lean)
+#print axioms Madlul.Jamad.dhawb_jumud
+#print axioms Madlul.Jamad.tabakhkhur_takathuf
+#print axioms Madlul.Jamad.tahawwul_yughayyir
+#print axioms Madlul.Jamad.tahawwul_daraja
+#print axioms Madlul.Jamad.muttasiqB_salim
+#print axioms Madlul.Jamad.hala_ratiba
+#print axioms Madlul.Jamad.sail_bayn
+#print axioms Madlul.Jamad.tahawwul_la_yughayyir_haqiqa
+#print axioms Madlul.Jamad.tahawwul_yahfaz_kutla
+#print axioms Madlul.Jamad.kutla_majmu
+#print axioms Madlul.Jamad.kathafa_la_tujma
+#print axioms Madlul.Jamad.jism_kutla_la_hukm
+#print axioms Madlul.Jamad.tartib_kathafa
+#print axioms Madlul.Jamad.ifrad_madud
+#print axioms Madlul.Jamad.ifrad_bila_ta
+#print axioms Madlul.Jamad.shawahid_hala
+#print axioms Madlul.Jamad.shawahid_muttasiq
+#print axioms Madlul.Jamad.shawahid_muttasiq'
+#print axioms Madlul.Jamad.thalj_ma
+#print axioms Madlul.Jamad.thalj_yatfu
+#print axioms Madlul.Jamad.kathafa_mushakkika
+#print axioms Madlul.Jamad.haqiqa_mutawatia
