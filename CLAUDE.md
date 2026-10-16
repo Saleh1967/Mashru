@@ -102,6 +102,12 @@
   لكلّ قاعدة، `qawanin_salima`/`shabaka_salima`/`marfud`/`jinsSifa_la_yurakhkhas` لكلّ شبكة؛ النموذج `semB` تعيين البنّاء بلا إغلاق للعالم)؛ وعلى شاهد المالك: «الحيوان يشرب الماء … الشراب يُشرب» مقبولة بسلاسلها
   (`shawahid_maqbula`)، و«السائل شراب» لا حكم بأيّ سلسلة (`sail_sharab_marfud` من العامّ: لا قانون معجميّ مودَع) ويُرخَّص بإيداع قانون اللسان س16599 (`sail_sharab_bil_mujam`).
   المودَع «جدول العلاقات» `alaqat.tsv` (`0269d2ce…`، «معلومات-سابقة») ومطابقته `tahaqquq/test_shabaka.py` (٥ي؛ P93–P95). المجاز فوق هذه الطبقة.
+- الحواسّ الخمس وتشارك الخبرة رخصةً مسمّاةً فوق الشبكة (قرار المالك 2026-10-16، 17:33): `Madlul/Hawass.lean` — `Hassa`/`mahsus`/`adat`،
+  التجربة الذاتية `Khibra` وتسميتها `Tasmiya` (المطابقة) وتشاركها (`tasdiq`: شاهدان مستقلّان من «واقع مختوم» — تعيين)، والرخصة
+  `rukhsaTasharuk` (مفهوم/معلومة/لا حكم) توحّد المطابقة والتصديق (`tawhid`؛ `la_mafhum_bila_waqi`، `tikrar_la_yarfa`، `rukhsa_la_tanzil`)؛
+  التسمية بالحدّ (`ismSawt`: الشديد صراخ؛ `malmasHarara` بعتبتين: تعيين)، التفضيل بالتمييز (`akbar`: بلا تمييز لا حكم؛ لا ينعكس، متعدٍّ)،
+  الصفة المشبّهة والحال (`Thubut`). خبرات المالك في مثاله «معلومة» (`shawahid_malik`) حتّى يُودَع واقع مختوم. الجدول `hawass.tsv`
+  (`77a2af11…`) مسجَّل «مرشّحًا» حتّى يأذن المالك بختمه؛ مطابقته `tahaqquq/test_hawass.py` (٥ك؛ P96–P98).
 - القارئ: `.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv "<نصّ مشكول>"` — كلّ كلمة: خلاياها،
   حكم القانون، مقاطعها، ومنطوقها ومفهومها من المخزن بالسلسلة والوسم والمرتبة. ما لا قرار له يُرفض باسمه.
   والجملة (كلمتان فأكثر): تركيبها في الوصل على آلة المالك `Msent` (`Dal/Jumla.lean`: سقوط همزة الوصل بإصلاح المالك
@@ -109,7 +115,7 @@
 - المودَع: `MUDAA_MUKHASSAS=<مسار mukhassas.txt>` لاختبارات الشبكة، و`MUDAA_DIR=<مجلّد المودَعات>` لمطابقة بصماتها
   (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`؛ و`qatr.txt`، `mughni.txt`، `alfiyya.txt`،
   `janadani.txt`، `sibawayhi.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib/AqsamAwamil بأسطرها؛ و`ajnas.tsv` جدول الأجناس —
-  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`).
+  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`).
 - قرارات الوقف والرسم في القارئ (ة، ى، التنوين، ألف الجماعة، حركة همزة الوصل) منقولةٌ من قطر الندى (باب الوقف L440–447،
   همزة الوصل L449–453) والألفية (L1131، L1136، L1142) بأسطرها في المخرج؛ قرارا الوقف على آخر النصّ (الموقوف عليه)، وقرارا الرسم
   وهمزة الوصل في كلّ موضع.

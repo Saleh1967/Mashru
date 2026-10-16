@@ -602,3 +602,26 @@
 'Madlul.Shabaka.salasil_marfuda' depends on axioms: [propext]
 'Madlul.Shabaka.qaida_shahid_mutadarrija' depends on axioms: [propext, Quot.sound]
 'Madlul.Shabaka.adad_qawanin' does not depend on any axioms
+'Madlul.Hawass.sawt_masmu' does not depend on any axioms
+'Madlul.Hawass.hajm_malmus_mari' does not depend on any axioms
+'Madlul.Hawass.tawhid' depends on axioms: [propext]
+'Madlul.Hawass.la_mafhum_bila_mutabaqa' depends on axioms: [propext]
+'Madlul.Hawass.la_mafhum_bila_waqi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Madlul.Hawass.mujam_la_yasna_mafhum' depends on axioms: [propext, Quot.sound]
+'Madlul.Hawass.tikrar_la_yarfa' depends on axioms: [propext, Quot.sound]
+'Madlul.Hawass.tasdiq_ratib' depends on axioms: [propext, Quot.sound]
+'Madlul.Hawass.rukhsa_la_tanzil' depends on axioms: [propext, Quot.sound]
+'Madlul.Hawass.sarakh_shadid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Madlul.Hawass.sarakh_ratib' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Madlul.Hawass.malmas_la_hukm' depends on axioms: [propext]
+'Madlul.Hawass.malmas_ratib' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Madlul.Hawass.tafdil_bila_tamyiz' does not depend on any axioms
+'Madlul.Hawass.akbar_la_yanakis' depends on axioms: [propext, Quot.sound]
+'Madlul.Hawass.akbar_mutaaddi' depends on axioms: [propext, Quot.sound]
+'Madlul.Hawass.akbar_la_yufaddil_nafsah' depends on axioms: [propext, Quot.sound]
+'Madlul.Hawass.wajh_jins' does not depend on any axioms
+'Madlul.Hawass.wajh_fard' does not depend on any axioms
+'Madlul.Hawass.shawahid_malik' does not depend on any axioms
+'Madlul.Hawass.mafhum_bi_tasharuk' does not depend on any axioms
+'Madlul.Hawass.thalj_barid' depends on axioms: [propext]
+'Madlul.Hawass.jabal_akbar' does not depend on any axioms

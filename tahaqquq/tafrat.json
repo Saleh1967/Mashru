@@ -784,5 +784,23 @@
   "milaf": "Madlul/Shabaka.lean",
   "min": "  | .nisba .. => 1\n",
   "ila": "  | .nisba .. => 0\n"
+ },
+ {
+  "ism": "P96_tasdiq_bishahid_wahid",
+  "milaf": "Madlul/Hawass.lean",
+  "min": "def tasdiq (sh : List ShahidWaqi) : Bool := sh.any fun a => sh.any fun b => a != b",
+  "ila": "def tasdiq (sh : List ShahidWaqi) : Bool := !sh.isEmpty"
+ },
+ {
+  "ism": "P97_sarakh_mutadil",
+  "milaf": "Madlul/Hawass.lean",
+  "min": "  | .shadid => \"صراخ\"\n  | _ => \"صوت\"",
+  "ila": "  | .khafi => \"صوت\"\n  | _ => \"صراخ\""
+ },
+ {
+  "ism": "P98_khibra_thalj_sakhin",
+  "milaf": "Madlul/Hawass.lean",
+  "min": "[⟨qawlMalik 1, .lams, \"ثلج\", \"حرارة\", \"بارد\"⟩,",
+  "ila": "[⟨qawlMalik 1, .lams, \"ثلج\", \"حرارة\", \"ساخن\"⟩,"
  }
 ]
