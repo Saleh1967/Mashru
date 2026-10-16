@@ -816,10 +816,10 @@
   "ila": "def haqqiq {E : Type} (madi : List E) (kain : E) : List E := kain :: madi"
  },
  {
-  "ism": "P101_zaman5_hal_qabl",
+  "ism": "P101_zaman5_madi_hatta_al_an",
   "milaf": "Aql/Awwaliyyat.lean",
-  "min": "  else if t = now then .hal\n",
-  "ila": "  else if t ≤ now then .hal\n"
+  "min": "  if t < now then (if muntazar then .madiMuttasil else .madiMunqati)\n",
+  "ila": "  if t ≤ now then (if muntazar then .madiMuttasil else .madiMunqati)\n"
  },
  {
   "ism": "P102_qasam_nafy_lamma",

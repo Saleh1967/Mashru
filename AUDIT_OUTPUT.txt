@@ -633,7 +633,7 @@
 'Aql.Awwaliyyat.aqsam_mutamayiza' does not depend on any axioms
 'Aql.Awwaliyyat.marfu_thalith' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Aql.Awwaliyyat.marfu_thalith_muqarrar' does not depend on any axioms
-'Aql.Awwaliyyat.la_hukm_laysa_thalithan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Awwaliyyat.la_hukm_laysa_thalithan' depends on axioms: [propext]
 'Aql.Awwaliyyat.juz_asghar_min_kull' does not depend on any axioms
 'Aql.Awwaliyyat.kutlat_juz' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Aql.Awwaliyyat.adad_dun_majmuih' depends on axioms: [propext, Classical.choice, Quot.sound]
