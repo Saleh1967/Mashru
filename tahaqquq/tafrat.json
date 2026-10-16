@@ -736,5 +736,53 @@
   "milaf": "Madlul/Tayin.lean",
   "min": "  | .naam, .naam, .naam => some .insan\n  | _, _, _ => none\n\n/-- في غير الجمادية",
   "ila": "  | .naam, .naam, .naam => some .hayawan\n  | _, _, _ => none\n\n/-- في غير الجمادية"
+ },
+ {
+  "ism": "P88_ramz_jamad",
+  "milaf": "Madlul/Tayin.lean",
+  "min": "def ramzQism : Qism → Nat | .jamad => 1 | .nabat => 2 | .hayawan => 3 | .insan => 4",
+  "ila": "def ramzQism : Qism → Nat | .jamad => 9 | .nabat => 2 | .hayawan => 3 | .insan => 4"
+ },
+ {
+  "ism": "P89_fasl_yunaqid",
+  "milaf": "Madlul/Wiratha.lean",
+  "min": "  | a, _ => a\n",
+  "ila": "  | _, f => f\n"
+ },
+ {
+  "ism": "P90_kathafa_thalj",
+  "milaf": "Madlul/Jamad.lean",
+  "min": "kJamid := some 916700,",
+  "ila": "kJamid := some 9167000,"
+ },
+ {
+  "ism": "P91_jumud_ila_bukhar",
+  "milaf": "Madlul/Jamad.lean",
+  "min": "  | .jumud, .sail => some .jamid\n",
+  "ila": "  | .jumud, .sail => some .bukhar\n"
+ },
+ {
+  "ism": "P92_hayy_bila_mawt",
+  "milaf": "Madlul/Wiratha.lean",
+  "min": "      | .hayy => { taghadhdhi := .naam, numuw := .naam, mawt := .naam }",
+  "ila": "      | .hayy => { taghadhdhi := .naam, numuw := .naam, mawt := .la }"
+ },
+ {
+  "ism": "P93_tawi_yahfaz_fail",
+  "milaf": "Madlul/Shabaka.lean",
+  "min": "  | .mujarrad, .mutaaddi, some m => some { fil := { i.fil with luzum := .lazim }, uslub := .mutawaa, fail := some m }",
+  "ila": "  | .mujarrad, .mutaaddi, some m => some { fil := { i.fil with luzum := .lazim }, uslub := .mutawaa, fail := i.fail, mafool := some m }"
+ },
+ {
+  "ism": "P94_qanun_mujam_fi_shabaka",
+  "milaf": "Madlul/Shabaka.lean",
+  "min": "    tasmiyat := [(\"شراب\", \"شرب\")] }\n\n/-- الشبكةُ نفسها مع القانون المعجميّ",
+  "ila": "    tasmiyat := [(\"شراب\", \"شرب\")], qawaninMujam := [(\"سائل\", \"شرب\")] }\n\n/-- الشبكةُ نفسها مع القانون المعجميّ"
+ },
+ {
+  "ism": "P95_rutba_bila_tadarruj",
+  "milaf": "Madlul/Shabaka.lean",
+  "min": "  | .nisba .. => 1\n",
+  "ila": "  | .nisba .. => 0\n"
  }
 ]

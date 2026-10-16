@@ -12,6 +12,10 @@
   ٥هـ. القارئ (tahaqquq/test_qari.py): من النصّ المشكول إلى الخلايا والقانون والمقاطع والمخزن.
   ٥و. العوامل (tahaqquq/test_awamil.py): Jisr/AwamilJadwal.lean مطابقٌ لمودَعه إن حضر (MUDAA_AWAMIL أو MUDAA_DIR).
   ٥ز. نقول الأقسام (tahaqquq/test_aqsam.py): اقتباسات Jisr/AqsamAwamil.lean في أسطرها من المودَعات إن حضرت (MUDAA_DIR).
+  ٥ح. جدول الأجناس (tahaqquq/test_ajnas.py): المودَع ajnas.tsv ببصمته، ومطابقة جدول Madlul/Tayin.lean له، وشجرة المخصّص إن حضرت.
+  ٥ط. القطعة الثانية والنظامان (tahaqquq/test_jamad.py): ajnas_jamad.tsv وnizam_fizya.tsv وnizam_riyadiyyat.tsv ببصماتها، ومطابقة
+      Madlul/Wiratha.lean وMadlul/Jamad.lean لها (الشجرة والثوابت وأسماء القوانين) إن حضرت.
+  ٥ي. جدول العلاقات (tahaqquq/test_shabaka.py): alaqat.tsv ببصمته، ومطابقة شبكة Madlul/Shabaka.lean له وقرار «السائل شراب» إن حضر.
   ٦. كلّ طفرة في tafrat.json تُقتل: تُفشل البناء أو تُفشل اختبارات المخزن. طفرة تعيش = اختبارٌ مرآة.
 التشغيل: python3 -I tahaqquq/bawwaba.py [--bila-tafrat]
 """
@@ -106,6 +110,18 @@ def main():
     report.append(f"٥ز نقول الأقسام: {out.strip().splitlines()[-1] if out.strip() else '?'}")
     if code != 0:
         fails.append("اختبار نقول الأقسام فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_ajnas.py"])
+    report.append(f"٥ح جدول الأجناس: {out.strip().splitlines()[-1] if out.strip() else '?'}")
+    if code != 0:
+        fails.append("اختبار جدول الأجناس فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_jamad.py"])
+    report.append(f"٥ط القطعة الثانية والنظامان: {out.strip().splitlines()[-1] if out.strip() else '?'}")
+    if code != 0:
+        fails.append("اختبار القطعة الثانية والنظامين فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_shabaka.py"])
+    report.append(f"٥ي جدول العلاقات: {out.strip().splitlines()[-1] if out.strip() else '?'}")
+    if code != 0:
+        fails.append("اختبار جدول العلاقات فشل:\n" + out[-800:])
     mdir = os.environ.get("MUDAA_DIR")
     if mdir and os.path.isdir(mdir):
         code, out = run([sys.executable, "-I", "mudaat/idaa.py", "tahaqqaq", mdir])
@@ -139,6 +155,12 @@ def main():
                 code, _ = run([sys.executable, "-I", "tahaqquq/test_awamil.py"], cwd=dst)
             if code == 0:
                 code, _ = run([sys.executable, "-I", "tahaqquq/test_aqsam.py"], cwd=dst)
+            if code == 0:
+                code, _ = run([sys.executable, "-I", "tahaqquq/test_ajnas.py"], cwd=dst)
+            if code == 0:
+                code, _ = run([sys.executable, "-I", "tahaqquq/test_jamad.py"], cwd=dst)
+            if code == 0:
+                code, _ = run([sys.executable, "-I", "tahaqquq/test_shabaka.py"], cwd=dst)
             if code == 0:
                 alive.append(t["ism"])
             shutil.rmtree(tmp)

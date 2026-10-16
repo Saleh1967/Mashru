@@ -71,16 +71,45 @@
   الخمس بقيمة ثلاثيّة `Qima` (نعم/لا/لا حكم)، الحياة `hayat`، الأقسام الأربعة `Qism` (جماد/نبات/حيوان/إنسان) وفصولها `fusul`، وقاعدة
   التصنيف `sannif` (على تعيين البنّاء لترتيب ابن سيده: الحياة ثمّ الانتقال الذاتيّ ثمّ العقل؛ والعقل فصل تحت الحيوان لا يُسأل عنه في
   الجماد والنبات؛ وما لم يستوفِ شروط قسم «لا حكم» — المخرج قسم أو لا حكم لا «ممتنع» فيه: `sannif_iff`)؛ induction FOR = الإنشاء وON =
-  التفكيك بتأويل البنّاء ينتظر إمضاء المالك (`sannif_fusul`، `fusul_sannif`، `fasl_wahid`، `tahsin_la_yughayyir`، `shawahid_khuruj`،
-  `qabiliyya_tabi_khassa`)؛ الربط بمدلول المالك `ilaMadlul` تعريف بترميز معلَن. التحليل بأسطر ج1/ج3/المخصّص ومخطّط الجدول المودَع في
-  `Madlul/التعيين_والتمييز.md`. الخواصّ والأقسام بقول المالك لا نقلٌ من مودَع — تنتظر جدوله.
+  التفكيك بتأويل البنّاء، أمضاه المالك مع القواعد ت1–ت6 وم1–م5 وتعييناتها 2026-10-16 (`sannif_fusul`، `fusul_sannif`، `fasl_wahid`،
+  `tahsin_la_yughayyir`، `shawahid_khuruj`، `qabiliyya_tabi_khassa`)؛ الربط بمدلول المالك `ilaMadlul` تعريف بترميز معلَن. التحليل بأسطر
+  ج1/ج3/المخصّص والجدول المودَع في `Madlul/التعيين_والتمييز.md`. **جدول الأجناس — القطعة الأولى** (الصفوف الأربعة بخواصّها الخمس،
+  بقول المالك، نوعه «معلومات-سابقة») مودَعٌ مختوم بإذنه 2026-10-16: `ajnas.tsv` في `MUDAA_DIR`، بصمته `f567d1ab…` في `mudaat/sijill.json`؛
+  و`fusul` و`ramzQism` مطابَقان له بـ `tahaqquq/test_ajnas.py` (خطوة البوّابة ٥ح؛ طفرته `P88_ramz_jamad`؛ يُرفض المودَع باسمه إن
+  تغيّرت بصمته، ويُتجاوز الاختبار بخروج 0 إن غاب المودَع). عمود `wujud` (شاهد الواقع) فارغ حتّى يُودَع «واقع مختوم». وشجرة عناوين
+  المخصّص `mawsua/ajnas_mukhassas.tsv` (333 عنوانًا بأسطرها: 18 «كتاب» في وسم `### |`، 310 «باب»، 3 خواتيم، 2 توالٍ) مولَّدة من
+  المخصّص المختوم بـ `python3 -I scripts/bina_ajnas_mukhassas.py <mukhassas.txt>` ويطابقها الاختبار بايتًا؛ اتّخاذها قيمًا لعمود
+  `jins_ala` وقسمة كتبه ذواتًا وأعراضًا قرار المالك.
+- قانون التوريث والوراثة (قرار المالك 2026-10-16 وإمضاؤه لقراءة البنّاء: التوريث نزولًا والوراثة صعودًا، والفصل لا يبتّ إلّا فيما تُرك
+  «لا حكم» ولا يناقضه): `Madlul/Wiratha.lean` — `battQ`، `warrith`، `Shajara`/`Shajara.khawass`؛ مبرهن لكلّ: `warrith_yuhassin` (الوراثة
+  تحسين `yuhassin`) و`tahsin_wiratha` (العكس على الخانات الخمس)، `warrith_la_yunaqid`/`warrith_yabutt` (على الخمس)، `mawruth_yabqa`،
+  `warrith_farigh`، `yuhassin_trans`، `Shajara.wiratha`؛ وعلى الشاهد `fusul_min_wiratha` (شجرة القطعتين بفصولها المعيَّنة تعيد صفوف
+  القطعة الأولى — مطابقة لا اشتقاق)، `aba_bila_hukm` (عُقَد الآباء الموجود/الحيّ/الحيوان-الجنس «لا حكم»)، `ikhwan_bi_fasl`.
+- تصنيف الجماد (قرار المالك 2026-10-16 وإمضاؤه: الكتلة والحجم والكثافة والحرارة وعتبات التحوّل؛ الوحدة والكثرة بوجهيها): `Madlul/Jamad.lean` —
+  `Hala` (جامد/سائل/بخار) و`tahawwul`، `Madda` (كثافة لكلّ حالة غ/م³، عتبتان °م، `none` لا حكم)، `halaInda` (ف4)، `Fard`/`Jism`
+  (ميكروغرام = غ/م³ × سم³ بلا قسمة)، `yatfu`، `qarin`، `Wahda`/`ifrad`؛ مبرهن لكلّ: `tahawwul_la_yughayyir_haqiqa` (قانون التعيين: التحوّل
+  يغيّر الحالة وحدها)، `tahawwul_yahfaz_kutla`، `hala_ratiba`، `sail_bayn`، `dhawb_jumud`/`tabakhkhur_takathuf`، `kathafa_la_tujma`
+  (الوسيط: الكثافة لا تُجمع)، `tartib_kathafa`، `muttasiqB_salim`؛ وعلى الشاهد (المواد الستّ): `shawahid_hala`، `shawahid_muttasiq`، `thalj_ma`،
+  `thalj_yatfu`، `kathafa_mushakkika`. المودَعات الثلاثة «معلومات-سابقة» بإذن المالك 2026-10-16 (13:26؛ إذن القطعة الثانية بالاسم ينتظر
+  تثبيته) في `MUDAA_DIR`: `ajnas_jamad.tsv` (القطعة الثانية: عُقَد الآباء والجماد، 17 صفًّا بشواهد لسان العرب والمخصّص بأسطرها؛ خللٌ
+  معلَن في الوثيقة §7: صفّا الحالة ثلج/بخار، حالة الجوهر، سند الجوهر، أسماء الحيوان)، `nizam_fizya.tsv` (ف0–ف7 و20 ثابتًا نقلها البنّاء من
+  Wikipedia قُرئت بأداة — «علمي» لا «مقيس» حتّى يُودَع مرجع)، `nizam_riyadiyyat.tsv` (ر1–ر6)؛ ومطابقتها `tahaqquq/test_jamad.py` (٥ط؛
+  P89–P92).
+- شبكة العلاقات وأساليب الإخبار وسلسلة القرار المرخَّصة جبريًّا (قرار المالك 2026-10-16 وإمضاؤه 14:39): `Madlul/Shabaka.lean` — الأساليب
+  تحويلات على الأدوار (`jahhil`، `tawi`، `addi`، `sharik`، `utlub`؛ مبرهن لكلّ: `tawi_addi` المطاوعة عكس التعدية، `tawi_fail`، `jahhil_naib`،
+  `sharik_tabadul`، `utlub_yahfaz`، `uslub_la_yakhtari`)؛ والشبكة `Shabaka` بقاعدة مولَّدة `qaidaOf` (ش1–ش5؛ لا قانون يرفع صفة النوع إلى
+  ذي حالته) متدرّجة بالرتبة = درجة الاشتقاق (`qaida_mutadarrija`، `asl_la_yurakhkhas_illa_mudaan`) وسليمة على النموذج (`murakhkhas_salim`
+  لكلّ قاعدة، `qawanin_salima`/`shabaka_salima`/`marfud`/`jinsSifa_la_yurakhkhas` لكلّ شبكة؛ النموذج `semB` تعيين البنّاء بلا إغلاق للعالم)؛ وعلى شاهد المالك: «الحيوان يشرب الماء … الشراب يُشرب» مقبولة بسلاسلها
+  (`shawahid_maqbula`)، و«السائل شراب» لا حكم بأيّ سلسلة (`sail_sharab_marfud` من العامّ: لا قانون معجميّ مودَع) ويُرخَّص بإيداع قانون اللسان س16599 (`sail_sharab_bil_mujam`).
+  المودَع «جدول العلاقات» `alaqat.tsv` (`0269d2ce…`، «معلومات-سابقة») ومطابقته `tahaqquq/test_shabaka.py` (٥ي؛ P93–P95). المجاز فوق هذه الطبقة.
 - القارئ: `.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv "<نصّ مشكول>"` — كلّ كلمة: خلاياها،
   حكم القانون، مقاطعها، ومنطوقها ومفهومها من المخزن بالسلسلة والوسم والمرتبة. ما لا قرار له يُرفض باسمه.
   والجملة (كلمتان فأكثر): تركيبها في الوصل على آلة المالك `Msent` (`Dal/Jumla.lean`: سقوط همزة الوصل بإصلاح المالك
   الأدنى من Hamza.lean، وحدّ الكلمة 116 بين ما سواها)، وحكمها، وكلماتها الصوتية ومقاطعها؛ أوّل خلل يُسمّى بكلمته.
 - المودَع: `MUDAA_MUKHASSAS=<مسار mukhassas.txt>` لاختبارات الشبكة، و`MUDAA_DIR=<مجلّد المودَعات>` لمطابقة بصماتها
   (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`؛ و`qatr.txt`، `mughni.txt`، `alfiyya.txt`،
-  `janadani.txt`، `sibawayhi.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib/AqsamAwamil بأسطرها).
+  `janadani.txt`، `sibawayhi.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib/AqsamAwamil بأسطرها؛ و`ajnas.tsv` جدول الأجناس —
+  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`).
 - قرارات الوقف والرسم في القارئ (ة، ى، التنوين، ألف الجماعة، حركة همزة الوصل) منقولةٌ من قطر الندى (باب الوقف L440–447،
   همزة الوصل L449–453) والألفية (L1131، L1136، L1142) بأسطرها في المخرج؛ قرارا الوقف على آخر النصّ (الموقوف عليه)، وقرارا الرسم
   وهمزة الوصل في كلّ موضع.
