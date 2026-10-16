@@ -690,6 +690,7 @@
 'Aql.Makan.naqid_mihwar' does not depend on any axioms
 'Aql.Makan.naqid_ishara' does not depend on any axioms
 'Aql.Makan.jihat_sitt' does not depend on any axioms
+'Aql.Makan.muradifat' depends on axioms: [propext]
 'Aql.Makan.marja_muhayid' depends on axioms: [propext]
 'Aql.Makan.aks_yarudd' depends on axioms: [propext]
 'Aql.Makan.aks_aks' depends on axioms: [propext]
@@ -711,6 +712,8 @@
 'Aql.Makan.mil_wa_farsakh' does not depend on any axioms
 'Aql.Makan.farsakh_la_hukm' depends on axioms: [propext]
 'Aql.Makan.shawahid_sibawayhi' does not depend on any axioms
+'Aql.Makan.ghaya_tahfaz' does not depend on any axioms
 'Aql.Makan.bila_marja_la_hukm' does not depend on any axioms
-'Aql.Makan.jisr_zaman' depends on axioms: [propext, Quot.sound]
-'Aql.Makan.wara_la_hukm' depends on axioms: [propext]
+'Aql.Makan.jisr_wajhan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Makan.wara_bil_qarina' does not depend on any axioms
+'Aql.Makan.wara_wajhan' does not depend on any axioms

@@ -765,6 +765,7 @@ import Jisr.Utur
 #print axioms Aql.Makan.naqid_mihwar
 #print axioms Aql.Makan.naqid_ishara
 #print axioms Aql.Makan.jihat_sitt
+#print axioms Aql.Makan.muradifat
 #print axioms Aql.Makan.marja_muhayid
 #print axioms Aql.Makan.aks_yarudd
 #print axioms Aql.Makan.aks_aks
@@ -786,6 +787,8 @@ import Jisr.Utur
 #print axioms Aql.Makan.mil_wa_farsakh
 #print axioms Aql.Makan.farsakh_la_hukm
 #print axioms Aql.Makan.shawahid_sibawayhi
+#print axioms Aql.Makan.ghaya_tahfaz
 #print axioms Aql.Makan.bila_marja_la_hukm
-#print axioms Aql.Makan.jisr_zaman
-#print axioms Aql.Makan.wara_la_hukm
+#print axioms Aql.Makan.jisr_wajhan
+#print axioms Aql.Makan.wara_bil_qarina
+#print axioms Aql.Makan.wara_wajhan

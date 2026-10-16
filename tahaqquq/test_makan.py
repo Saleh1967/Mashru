@@ -3,11 +3,12 @@
 
 يُشغَّل على الجدول حين يحضر (MUDAA_DIR وفيه makan.tsv)؛ وإلّا أُجريت فحوصُ نصّ Lean وحدها (الجهات والنقائض والحدود وأسماء المبرهنات) وخرج 0.
 ١. بصمةُ الجدول الحاضر هي بصمتُه في mudaat/sijill.json (وإلّا رُفض باسمه)، ونوعُه «معلومات-سابقة»، وحالتُه مختوم أو مرشّح (تُطبع).
-٢. توقّعاتٌ مستقلّة: 26 صفًّا — 6 جهات (ثلاثة أزواج على ثلاثة محاور، لكلّ جهة نقيضٌ على محورها بإشارة معكوسة)، 1 مشترك (وراء)، 3 وحدات،
-   11 شاهدًا، 5 قواعد؛ وكلُّ «…» في عمود الشاهد إمّا تعيين/قراءة البنّاء وإمّا على نمط «المصدر سN: «…»» موجودٌ في سطره في المودَع
+٢. توقّعاتٌ مستقلّة: 35 صفًّا — 6 جهات (ثلاثة أزواج على ثلاثة محاور، لكلّ جهة نقيضٌ على محورها بإشارة معكوسة)، 6 مرادفات، 1 مشترك (وراء
+   بقرينته)، 3 وحدات، 12 شاهدًا، 7 قواعد؛ وكلُّ «…» في عمود الشاهد إمّا تعيين/قراءة البنّاء وإمّا على نمط «المصدر سN: «…»» موجودٌ في سطره في المودَع
    الحاضر بلفظه (الكتاب/لسان العرب).
-٣. Lean من النصّ (لا عبر Lean): `Jiha.mihwar`/`Jiha.naqid`/`Jiha.ishara` تُقرأ من Makan.lean وتُطابَق بصفوف الجهات؛ `hadd` بصفوف الوحدات؛
-   قائمةُ `shawahid` (اللفظ، الجهة، المقدار) بصفوف الشواهد بترتيبها؛ و`maaniWara` = [خلف، أمام].
+٣. Lean من النصّ (لا عبر Lean): `Jiha.mihwar`/`Jiha.naqid`/`Jiha.ishara` تُقرأ من Makan.lean وتُطابَق بصفوف الجهات؛ `muradif` بصفوف المرادفات؛
+   `hadd` بصفوف الوحدات؛ `jar` (الجيران الستّة: وحدةٌ واحدة على محور الجهة بإشارتها)؛ قائمةُ `shawahid` (اللفظ، الجهة الاختياريّة، المقدار)
+   بصفوف الشواهد بترتيبها؛ و`hukmWara` (مكان خلف، ممرّ أمام، زمان لا حكم) و`maaniWara` = [خلف، أمام].
 ٤. كلُّ اسمٍ في عمود mirat_lean معرَّفٌ في Makan.lean باسمه الكامل (def/theorem/structure/inductive في أوّل السطر)، والمنقوطُ منشئٌ في
    فضاء نوعه أو دالّةٌ معرَّفة باسمها الكامل؛ و«(لم يُبنَ)» يُقبل إعلانًا.
 ٥. القاعدة من بنية الجدول: نقيضُ النقيض هو الجهة، والنقيضان على محورٍ واحد، وإشارتاهما متعاكستان؛ «وراء» إشارته «لا حكم»؛ الفرسخُ بعددين.
@@ -47,11 +48,19 @@ def fahs_lean():
     assert "match hadd u with" in ad and "if a = b then some (a * n) else none" in ad, ad
     wara = re.findall(r"\.(\w+)", block("def maaniWara : List Jiha :=", "\n\n"))
     assert wara == ["khalf", "amam"], wara
-    for name in ("naqid_naqid", "naqid_ghayr", "naqid_mihwar", "naqid_ishara", "jihat_sitt", "jiha_hasira", "aks_yunaqid", "tanazur",
-                 "taaddi", "la_yajtami", "intiqal_marja", "jar_jiha", "jar_naqid", "mujawir_tabadul", "farsakh_la_hukm",
-                 "shawahid_sibawayhi", "bila_marja_la_hukm", "jisr_zaman", "wara_la_hukm"):
+    hw = dict(re.findall(r"\| \.(\w+) => (some \.\w+|none)", block("def hukmWara : Qarina → Option Jiha", "\n\n")))
+    assert hw == {"makan": "some .khalf", "mamarr": "some .amam", "zaman": "none"}, hw
+    jar = {j: tuple(int(x) for x in v.split(", ")) for j, v in re.findall(r"\| \.(\w+) => ⟨(-?\d+, -?\d+, -?\d+)⟩", block("def jar : Jiha → Izaha3", "\n\n"))}
+    ax = {"amudi": 0, "ufuqi": 1, "tuli": 2}
+    for j in J.values():   # الجارُ وحدةٌ واحدة على محور جهته بإشارتها، وصفرٌ على غيره — توقّعٌ مستقلّ
+        v = jar[j]
+        assert v[ax[mihwar[j]]] == ishara[j] and sum(abs(x) for x in v) == 1, (j, v)
+    mur = re.findall(r'\("([^"]+)", \.(\w+)\)', block("def muradif : List (String × Jiha) :=", "theorem muradifat"))
+    for name in ("naqid_naqid", "naqid_ghayr", "naqid_mihwar", "naqid_ishara", "jihat_sitt", "muradifat", "jiha_hasira", "aks_yunaqid",
+                 "tanazur", "taaddi", "la_yajtami", "intiqal_marja", "jar_jiha", "jar_naqid", "mujawir_tabadul", "farsakh_la_hukm",
+                 "shawahid_sibawayhi", "ghaya_tahfaz", "bila_marja_la_hukm", "jisr_wajhan", "wara_bil_qarina", "wara_wajhan"):
         assert re.search(rf"^theorem {name}\b", lean, re.M), name
-    return mihwar, naqid, ishara, hadd
+    return mihwar, naqid, ishara, hadd, mur
 
 
 d = os.environ.get("MUDAA_DIR")
@@ -97,11 +106,11 @@ ok = 1
 
 # ٢
 rows = tsv(p)
-assert len(rows) == 26, len(rows)
+assert len(rows) == 35, len(rows)
 by = {}
 for r in rows:
     by.setdefault(r["naw"], []).append(r)
-assert {k: len(v) for k, v in by.items()} == {"jiha": 6, "mushtarak": 1, "wahda": 3, "shahid": 11, "qaida": 5}, {k: len(v) for k, v in by.items()}
+assert {k: len(v) for k, v in by.items()} == {"jiha": 6, "muradif": 6, "mushtarak": 1, "wahda": 3, "shahid": 12, "qaida": 7}, {k: len(v) for k, v in by.items()}
 assert [r["ramz"] for r in by["jiha"]] == ["فوق", "تحت", "يمين", "شمال", "أمام", "خلف"]
 assert [r["ramz"] for r in by["wahda"]] == ["ذراع", "ميل", "فرسخ"]
 src = {"الكتاب": "sibawayhi.txt", "لسان العرب": "lisan.txt"}
@@ -125,25 +134,26 @@ for r in rows:
             if s0 in nusus:
                 assert q in nusus[s0][int(ln) - 1], (s0, ln, q[:40])
                 iqt += 1
-assert kull == 50, kull   # توقّع مستقلّ (عدٌّ يدويّ): 30 الكتاب، 20 لسان العرب
+assert kull == 95, kull   # توقّع مستقلّ (عدٌّ يدويّ صفًّا صفًّا): 54 الكتاب، 41 لسان العرب
 iqt_bayan = f"{iqt} اقتباسًا في سطره من {kull}" if nusus else "لم تُفحص الاقتباسات (المودَعات النصّية غير حاضرة)"
 ok += 1
 
 # ٣
-mihwar, naqid, ishara, hadd = fahs_lean()
+mihwar, naqid, ishara, hadd, mur = fahs_lean()
 for r in by["jiha"]:
     j = J[r["ramz"]]
     assert mihwar[j] == r["mihwar"] and ishara[j] == int(r["ishara"]) and naqid[j] == J[r["naqid"]], r["ramz"]
 for r in by["wahda"]:
     u = W[r["ramz"]]
     a, bb = hadd[u]
-    assert (r["ishara"] == str(a)) if a == bb else r["ishara"].startswith(f"{a}–{bb}"), (r["ramz"], r["ishara"], hadd[u])
-sh = re.findall(r'\("([^"]+)", ⟨\.(\w+), (none|some \((\d+), \.(\w+)\))⟩\)', block("def shawahid : List (String × Mawdi) :=", "theorem shawahid_sibawayhi"))
-sh = [(s, j, (int(n), u) if n else None) for s, j, _, n, u in sh]
-inv_w = {v: k for k, v in W.items()}
+    assert r["ishara"].startswith(str(a) if a == bb else f"{a}–{bb}"), (r["ramz"], r["ishara"], hadd[u])
+sh = re.findall(r'\("([^"]+)", ⟨(none|some \.\w+), (none|some \((\d+), \.(\w+)\))⟩\)', block("def shawahid : List (String × Mawdi) :=", "theorem shawahid_sibawayhi"))
+sh = [(s, j.replace("some .", "") if j != "none" else "—", (int(n), u) if n else None) for s, j, _, n, u in sh]
 jadwal = [(r["ramz"], r["mihwar"], None if r["ishara"] == "—" else (int(r["ishara"].split()[0]), W[r["ishara"].split()[1]])) for r in by["shahid"]]
 assert sh == jadwal, (sh, jadwal)
-assert by["mushtarak"][0]["ramz"] == "وراء" and by["mushtarak"][0]["ishara"] == "لا حكم" and by["mushtarak"][0]["mihwar"] == "tuli"
+assert mur == [(r["ramz"], J[[k for k, v in J.items() if mihwar[v] == r["mihwar"] and ishara[v] == int(r["ishara"])][0]]) for r in by["muradif"]], mur
+w0 = by["mushtarak"][0]
+assert w0["ramz"] == "وراء" and w0["mihwar"] == "tuli" and "مكانًا خلف (-1)" in w0["ishara"] and "ممرًّا قدّام (1)" in w0["ishara"] and "زمانًا لا حكم" in w0["ishara"]
 ok += 1
 
 # ٤
@@ -172,5 +182,5 @@ for r in by["jiha"]:
 assert sorted(r["mihwar"] for r in by["jiha"]) == ["amudi", "amudi", "tuli", "tuli", "ufuqi", "ufuqi"]
 assert "لا حكم" in by["wahda"][2]["ishara"] and "أو" in by["wahda"][2]["ishara"]
 ok += 1
-print(f"{ok}/5 — 26/26 صفًّا ({hala})، {iqt_bayan}، الجهات الستّ والوحدات والشواهد (11) ووراء في Lean مطابقة، {len(asma)} اسمًا معرَّفًا، "
-      f"النقائض متعاكسة على محاورها")
+print(f"{ok}/5 — 35/35 صفًّا ({hala})، {iqt_bayan}، الجهات الستّ والمرادفات (6) والوحدات والجيران والشواهد (12) ووراء بقرينته في Lean مطابقة، "
+      f"{len(asma)} اسمًا معرَّفًا، النقائض متعاكسة على محاورها")
