@@ -862,5 +862,23 @@
   "milaf": "Aql/Makan.lean",
   "min": "  if 0 < v.ala m then some (mujab m) else if v.ala m < 0 then some (salib m) else none",
   "ila": "  if 0 ≤ v.ala m then some (mujab m) else if v.ala m < 0 then some (salib m) else none"
+ },
+ {
+  "ism": "P109_zamanInda_jam",
+  "milaf": "Aql/Mirsat.lean",
+  "min": "def zamanInda (r : Mirsat) (t : Int) (u : Wahda) : Zaman3 := zamanOf ⟨t - r.an, u⟩",
+  "ila": "def zamanInda (r : Mirsat) (t : Int) (u : Wahda) : Zaman3 := zamanOf ⟨t + r.an, u⟩"
+ },
+ {
+  "ism": "P110_mubham_dhaka_qarib",
+  "milaf": "Aql/Mirsat.lean",
+  "min": "  if masafa (nisba r.huna x) ≤ hadd then .hadha else .dhaka",
+  "ila": "  if masafa (nisba r.huna x) ≤ hadd then .dhaka else .hadha"
+ },
+ {
+  "ism": "P111_naql_bila_makan",
+  "milaf": "Aql/Mirsat.lean",
+  "min": "def naql (r : Mirsat) (k : Int) (v : Izaha3) : Mirsat := ⟨r.an + k, Makan.jam r.huna v⟩",
+  "ila": "def naql (r : Mirsat) (k : Int) (v : Izaha3) : Mirsat := ⟨r.an + k, r.huna⟩"
  }
 ]

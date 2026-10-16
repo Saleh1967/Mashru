@@ -10,6 +10,7 @@ import Madlul.Hawass
 import Aql.Awwaliyyat
 import Aql.Azmina
 import Aql.Makan
+import Aql.Mirsat
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
 import Dal.AqsamAlism
@@ -792,3 +793,18 @@ import Jisr.Utur
 #print axioms Aql.Makan.jisr_wajhan
 #print axioms Aql.Makan.wara_bil_qarina
 #print axioms Aql.Makan.wara_wajhan
+#print axioms Aql.Mirsat.an_hal
+#print axioms Aql.Mirsat.huna_la_jiha
+#print axioms Aql.Mirsat.thabat_naql_zaman
+#print axioms Aql.Mirsat.thabat_naql_jiha
+#print axioms Aql.Mirsat.thabat_naql_istiqama
+#print axioms Aql.Mirsat.naql_mirsat_zaman
+#print axioms Aql.Mirsat.naql_mirsat_jiha
+#print axioms Aql.Mirsat.alyawm_bimanzilat_alan
+#print axioms Aql.Mirsat.min_alan_ila_ghad
+#print axioms Aql.Mirsat.huna_hadha
+#print axioms Aql.Mirsat.taqrib_tabid
+#print axioms Aql.Mirsat.bila_mirsat_la_hukm
+#print axioms Aql.Mirsat.thabat_naql_mubham
+#print axioms Aql.Mirsat.la_qabl_wa_bad
+#print axioms Aql.Mirsat.mustaqim_min_kull_mirsat
