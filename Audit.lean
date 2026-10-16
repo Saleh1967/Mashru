@@ -6,6 +6,7 @@ import Madlul.Tayin
 import Madlul.Wiratha
 import Madlul.Jamad
 import Madlul.Shabaka
+import Madlul.Hawass
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
 import Dal.AqsamAlism
@@ -669,3 +670,30 @@ import Jisr.Utur
 #print axioms Madlul.Shabaka.salasil_marfuda
 #print axioms Madlul.Shabaka.qaida_shahid_mutadarrija
 #print axioms Madlul.Shabaka.adad_qawanin
+
+-- الحواسّ الخمس وتشارك الخبرة رخصةً فوق الشبكة (Madlul/Hawass.lean)
+#print axioms Madlul.Hawass.sawt_masmu
+#print axioms Madlul.Hawass.hajm_malmus_mari
+#print axioms Madlul.Hawass.tawhid
+#print axioms Madlul.Hawass.la_mafhum_bila_mutabaqa
+#print axioms Madlul.Hawass.la_mafhum_bila_mudaa_waqi
+#print axioms Madlul.Hawass.mujam_la_yasna_mafhum
+#print axioms Madlul.Hawass.tikrar_la_yarfa
+#print axioms Madlul.Hawass.tasdiq_ratib
+#print axioms Madlul.Hawass.rukhsa_la_tanzil
+#print axioms Madlul.Hawass.sarakh_shadid
+#print axioms Madlul.Hawass.sarakh_ratib
+#print axioms Madlul.Hawass.malmas_la_hukm
+#print axioms Madlul.Hawass.malmas_ratib
+#print axioms Madlul.Hawass.tafdil_bila_tamyiz
+#print axioms Madlul.Hawass.akbar_la_yanakis
+#print axioms Madlul.Hawass.akbar_mutaaddi
+#print axioms Madlul.Hawass.akbar_la_yufaddil_nafsah
+#print axioms Madlul.Hawass.wajh_jins
+#print axioms Madlul.Hawass.wajh_fard
+#print axioms Madlul.Hawass.shawahid_malik
+#print axioms Madlul.Hawass.mafhum_bi_tasharuk
+#print axioms Madlul.Hawass.thalj_barid
+#print axioms Madlul.Hawass.jabal_akbar
+#print axioms Madlul.Hawass.khibrat_asma
+#print axioms Madlul.Hawass.shahid_ghayr_mudaa_la_yuthir

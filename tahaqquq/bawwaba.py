@@ -16,6 +16,7 @@
   ٥ط. القطعة الثانية والنظامان (tahaqquq/test_jamad.py): ajnas_jamad.tsv وnizam_fizya.tsv وnizam_riyadiyyat.tsv ببصماتها، ومطابقة
       Madlul/Wiratha.lean وMadlul/Jamad.lean لها (الشجرة والثوابت وأسماء القوانين) إن حضرت.
   ٥ي. جدول العلاقات (tahaqquq/test_shabaka.py): alaqat.tsv ببصمته، ومطابقة شبكة Madlul/Shabaka.lean له وقرار «السائل شراب» إن حضر.
+  ٥ك. جدول الحواسّ الخمس (tahaqquq/test_hawass.py): hawass.tsv ببصمته (مرشّح أو مختوم)، ومطابقة Madlul/Hawass.lean له إن حضر.
   ٦. كلّ طفرة في tafrat.json تُقتل: تُفشل البناء أو تُفشل اختبارات المخزن. طفرة تعيش = اختبارٌ مرآة.
 التشغيل: python3 -I tahaqquq/bawwaba.py [--bila-tafrat]
 """
@@ -122,6 +123,10 @@ def main():
     report.append(f"٥ي جدول العلاقات: {out.strip().splitlines()[-1] if out.strip() else '?'}")
     if code != 0:
         fails.append("اختبار جدول العلاقات فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_hawass.py"])
+    report.append(f"٥ك جدول الحواسّ: {out.strip().splitlines()[-1] if out.strip() else '?'}")
+    if code != 0:
+        fails.append("اختبار جدول الحواسّ فشل:\n" + out[-800:])
     mdir = os.environ.get("MUDAA_DIR")
     if mdir and os.path.isdir(mdir):
         code, out = run([sys.executable, "-I", "mudaat/idaa.py", "tahaqqaq", mdir])
@@ -162,6 +167,8 @@ def main():
             if code == 0:
                 code, _ = run([sys.executable, "-I", "tahaqquq/test_shabaka.py"], cwd=dst)
             if code == 0:
+                code, _ = run([sys.executable, "-I", "tahaqquq/test_hawass.py"], cwd=dst)
+            if code == 0:
                 alive.append(t["ism"])
             shutil.rmtree(tmp)
         report.append(f"٦ الطفرات: قُتلت {len(tafrat) - len(alive)} من {len(tafrat)}")
@@ -170,9 +177,9 @@ def main():
     else:
         report.append("٦ الطفرات: تُركت بطلب (--bila-tafrat)")
 
-    print("\n".join(report))
+    print("\n".join(report), flush=True)   # التقرير أوّلًا ثمّ الأسباب، بترتيبٍ واحد حين يُجمع المخرجان (2>&1) في الخطّاف
     if fails:
-        print("\n".join(fails), file=sys.stderr)
+        print("\n".join(fails), file=sys.stderr, flush=True)
         sys.exit(2)
     sys.exit(0)
 

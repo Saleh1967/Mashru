@@ -5,6 +5,7 @@
 #   * حارس الدوران: stop_hook_active=false يعني محاولةَ توقّفٍ جديدة فيبدأ العدّ؛ وtrue يعني أنّ الوكيل
 #     يُكمل بسبب حجبٍ سابق فيزيد العدّ. بعد ثلاثة حجوب متتالية يُسمح بالتوقّف مع أمرٍ بإبلاغ المالك بالفشل.
 #   * كلّ تشغيلٍ يُسجَّل في .claude/hooks/sijill_khattaf.log (الوقت، stop_hook_active، الجلسة، النتيجة).
+#   * عند الفشل يُعاد آخر 40 سطرًا من مخرج البوّابة (التقرير ثمّ الأسباب)؛ كان 15 فسقطت الأسباب لمّا طال التقرير (CI #16).
 cd "${CLAUDE_PROJECT_DIR:-$(dirname "$0")/../..}" || exit 0
 IN=$(cat)
 ACTIVE=$(printf '%s' "$IN" | python3 -I -c 'import json,sys
@@ -32,10 +33,10 @@ if [ $N -ge 3 ]; then
   rm -f "$GUARD"
   echo "$(date -u +%FT%TZ) stop_hook_active=$ACTIVE_FLAG session=$SESSION gate=fail block=$N exit=0(guard)" >> "$LOG"
   echo "البوّابة فشلت ثلاث مرّات. أبلغ المالك بالفشل باسمه، ولا تقل «تمّ»:" >&2
-  echo "$OUT" | tail -n 15 >&2
+  echo "$OUT" | tail -n 40 >&2
   exit 0
 fi
 echo "$(date -u +%FT%TZ) stop_hook_active=$ACTIVE_FLAG session=$SESSION gate=fail block=$N exit=2" >> "$LOG"
 echo "لم تمرّ البوّابة؛ أصلح ثم أعد. المخرج:" >&2
-echo "$OUT" | tail -n 15 >&2
+echo "$OUT" | tail -n 40 >&2
 exit 2
