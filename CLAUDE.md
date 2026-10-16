@@ -195,6 +195,14 @@
   `tahaqquq/test_jisrdal.py` (٥ف؛ قائمة الشواهد بأسطرها مكتوبة في الاختبار يدويًّا وتُقارَن بنصّ Lean بلا مودَع، وخلاياها حروفَ ألفاظها؛ P115–P119).
   التحليل والمراجعتان في `Madlul/التعيين_والتمييز.md` §15. لم يُبنَ: التنوين والمنقوص المنوَّن (في القارئ)، قال/باع والأجوف والناقص والمثال الواوي في
   المجهول، ملحقات المثنّى والجمع وأولات وهن شواهدَ (بإعلان بابها)، الجسر من `hukm` إلى `Jisr.Awamil.Irab` والقارئ.
+- النِّسَب الثلاث على أصناف العوامل المئة (قرار المالك 2026-10-17، 00:09: «وكذلك النِّسَب الثلاث على الأصناف (ج3 721): تعيينها على أصناف المئة»،
+  مبنيّةٌ مستقلّةً عن القطعة التاسعة فيما يسبقها؛ لا تعتمد على `Jisr.JisrDal`): `Jisr/NisabAsnaf.lean` — `semDawr` امتداد `Simat.semOf` إلى أدوار
+  جدول العوامل (أدوار المالك 0/1/2/6 بعلاقته `muwafiq_semOf`؛ فعل الشرط وجوابه مسندان، المنادى مفعولية — القطر L268 «ومنه المنادى» — والعطف تساوٍ:
+  تعيين البنّاء)، `nisbaDawr = Nisab.nisbaOf ∘ semDawr`، `nisabSinf` على `Awamil.muadalat`؛ 7 مبرهنات على الشاهد: `jadwal_nisab` (الثلاثة عشر بنِسَب
+  أدوارها)، `kull_mamul_nisba`، `idafiyya_jarr` (المجرور وحده في 7 و9 — قراءة البنّاء، وج3 س1284/1301 شاهدٌ مضادٌّ في المضاف إليه)، `taqyidiyya_nida`
+  (النداء وحده؛ مفعولا ظنّ إسناديان بعلاقة المالك وازدواجٌ جديدٌ يُعرض على المالك — غيرُ ازدواج «التقييدية» الذي أمضاه في `Jisr/Utur.lean`)،
+  `isnadiyya_asnaf`، `ihsa_awamil` (57 إسنادية، 18 إضافية، 4 تقييدية، 22 بلا نسبة؛ لام التعليل في الأوليين). الجدول `nisab_asnaf.tsv` (16 صفًّا،
+  24 اقتباسًا: 21 قطر و3 ج3 لا تُفحص) مسجَّل «مرشّحًا»؛ مطابقته `tahaqquq/test_nisab_asnaf.py` (٥ق؛ إحصاء مستقلّ من جدول المالك نصًّا؛ P120–P121). §16.
 - القارئ: `.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv "<نصّ مشكول>"` — كلّ كلمة: خلاياها،
   حكم القانون، مقاطعها، ومنطوقها ومفهومها من المخزن بالسلسلة والوسم والمرتبة. ما لا قرار له يُرفض باسمه.
   والجملة (كلمتان فأكثر): تركيبها في الوصل على آلة المالك `Msent` (`Dal/Jumla.lean`: سقوط همزة الوصل بإصلاح المالك
@@ -202,7 +210,7 @@
 - المودَع: `MUDAA_MUKHASSAS=<مسار mukhassas.txt>` لاختبارات الشبكة، و`MUDAA_DIR=<مجلّد المودَعات>` لمطابقة بصماتها
   (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`؛ و`qatr.txt`، `mughni.txt`، `alfiyya.txt`،
   `janadani.txt`، `sibawayhi.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib/AqsamAwamil بأسطرها؛ و`ajnas.tsv` جدول الأجناس —
-  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`؛ و`azmina.tsv` (مرشّح) الذي يطابقه `test_azmina.py`؛ و`makan.tsv` (مرشّح) الذي يطابقه `test_makan.py`؛ و`mirsat.tsv` (مرشّح) الذي يطابقه `test_mirsat.py`؛ و`isnad.tsv` (مرشّح) الذي يطابقه `test_isnad.py`؛ و`jisr_dal.tsv` (مرشّح) الذي يطابقه `test_jisrdal.py`).
+  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`؛ و`azmina.tsv` (مرشّح) الذي يطابقه `test_azmina.py`؛ و`makan.tsv` (مرشّح) الذي يطابقه `test_makan.py`؛ و`mirsat.tsv` (مرشّح) الذي يطابقه `test_mirsat.py`؛ و`isnad.tsv` (مرشّح) الذي يطابقه `test_isnad.py`؛ و`jisr_dal.tsv` (مرشّح) الذي يطابقه `test_jisrdal.py`؛ و`nisab_asnaf.tsv` (مرشّح) الذي يطابقه `test_nisab_asnaf.py`).
 - قرارات الوقف والرسم في القارئ (ة، ى، التنوين، ألف الجماعة، حركة همزة الوصل) منقولةٌ من قطر الندى (باب الوقف L440–447،
   همزة الوصل L449–453) والألفية (L1131، L1136، L1142) بأسطرها في المخرج؛ قرارا الوقف على آخر النصّ (الموقوف عليه)، وقرارا الرسم
   وهمزة الوصل في كلّ موضع.

@@ -14,6 +14,7 @@ import Aql.Mirsat
 import Aql.Isnad
 import Jisr.JisrDal
 import Jisr.JisrDalUtur
+import Jisr.NisabAsnaf
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
 import Dal.AqsamAlism
@@ -853,3 +854,10 @@ import Jisr.Utur
 #print axioms Jisr.JisrDal.intilaq_wasl
 #print axioms Jisr.JisrDalUtur.mufrad_halaIrab
 #print axioms Jisr.JisrDalUtur.mufrad_tanwin
+#print axioms Jisr.NisabAsnaf.muwafiq_semOf
+#print axioms Jisr.NisabAsnaf.jadwal_nisab
+#print axioms Jisr.NisabAsnaf.kull_mamul_nisba
+#print axioms Jisr.NisabAsnaf.idafiyya_jarr
+#print axioms Jisr.NisabAsnaf.taqyidiyya_nida
+#print axioms Jisr.NisabAsnaf.isnadiyya_asnaf
+#print axioms Jisr.NisabAsnaf.ihsa_awamil
