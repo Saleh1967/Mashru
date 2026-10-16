@@ -676,7 +676,7 @@ import Jisr.Utur
 #print axioms Madlul.Hawass.hajm_malmus_mari
 #print axioms Madlul.Hawass.tawhid
 #print axioms Madlul.Hawass.la_mafhum_bila_mutabaqa
-#print axioms Madlul.Hawass.la_mafhum_bila_waqi
+#print axioms Madlul.Hawass.la_mafhum_bila_mudaa_waqi
 #print axioms Madlul.Hawass.mujam_la_yasna_mafhum
 #print axioms Madlul.Hawass.tikrar_la_yarfa
 #print axioms Madlul.Hawass.tasdiq_ratib
@@ -695,3 +695,5 @@ import Jisr.Utur
 #print axioms Madlul.Hawass.mafhum_bi_tasharuk
 #print axioms Madlul.Hawass.thalj_barid
 #print axioms Madlul.Hawass.jabal_akbar
+#print axioms Madlul.Hawass.khibrat_asma
+#print axioms Madlul.Hawass.shahid_ghayr_mudaa_la_yuthir

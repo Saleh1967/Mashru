@@ -8,7 +8,7 @@
   الحجر صلب وملمس الماء مانع وملمس الشيء الحار ملمس ساخن والصوت مسموع والصوت العالي صراخ وحجم الجبل اكبر من حجم الرجل الذي يتسلقه
   والصفة المشبه والتمييز والحال» (قرأ البنّاءُ «مانع» مائعًا — لسان س155680 — تعيينًا يُعرض عليه).
 
-  **السند** (بأسطره؛ الاقتباساتُ بلفظ المصدر وتشكيلُها مضاف):
+  **السند** (بأسطره؛ الاقتباساتُ بلفظ المصدر):
   - ج1 (a1.txt، مرشّح) س317: العقل «نقل الواقع بواسطة الحس للدماغ ومعلومات سابقة تفسر هذا الواقع» — الحسُّ ركنٌ ينقل الواقع؛ ج3 س848:
     «الإيمان في اللغة هو التصديق».
   - لسان العرب (مختوم): س73686: «ابن سيده: البصر حس العين»؛ س148936: «السمع: حس الأذن»؛ س177392–177393: «الذوق: مصدر ذاق الشيء
@@ -20,36 +20,44 @@
     التسميةُ بالحدّ؛
     س224217: «وحجم كل شيء: ملمسه» — الحجمُ ملموسٌ ومرئيّ؛ س100412: «ابن سيده: الكبر نقيض الصغر»؛ س113887: «الحس والحسيس: الصوت الخفي».
   - الصيغُ النحوية (القطر، مختوم): س366–367: «والصفة المشبهة: باسم الفاعل المتعدي لواحد، وهي الصفة المصوغة لغير تفضيل لإفادة الثبوت،
-    كحسن وظريف وطاهر وضامر»؛ س370: «واسم التفضيل: وهو الصفة الدالة على المشاركة والزيادة كأكرم، ويستعمل بمن»؛ س313: «والتمييز: هو
+    كحسن وظريف وطاهر وضامر»؛ س370–371: «واسم التفضيل: وهو الصفة الدالة على المشاركة والزيادة كأكرم، ويستعمل / بمن»؛ س313: «والتمييز: هو
     اسم فضلة نكرة جامد مفسر لما انبهم من الذوات»؛ س308: «وهو وصف فضلة في جواب كيف، ك "ضربت اللص مكتوفا"، وشرطها التنكير» (الحال) —
-    وأطرُها عند المالك في `Jisr/Mulhaqat.lean` (الحال 8، التمييز 9، الصفة المشبّهة واسم التفضيل 10).
+    وملحقاتُ البنّاء على إطار المالك في `Jisr/Mulhaqat.lean` (الحال 8، التمييز 9، الصفة المشبّهة واسم التفضيل ضمن 11 «ما يعمل عمل فعله»).
   - الدستور م15–م16 و`Aql/Maratib.lean`: لا «مفهوم» بلا شاهدٍ في مودَع «واقع مختوم»، ولا يرفع التكرارُ معلومةً إلى مفهوم.
 
-  **الصورة.** (١) `Hassa` الحواسُّ الخمس و`mahsus` جنسُ محسوسها (مرئيّ/مسموع/مذوق/ملموس/مشموم) و`adat` أداتُها بلفظ المعجم. (٢) **التجربةُ
+  **الصورة.** (١) `Hassa` الحواسُّ الخمس و`mahsus` جنسُ محسوسها (مرئيّ/مسموع/مذوق/ملموس/مشموم) و`adat` أداتُها (العينُ والأذنُ واليدُ
+  والأنفُ بلفظ المعجم؛ والفمُ للذوق تعيينُ البنّاء). (٢) **التجربةُ
   الذاتية** `Khibra`: شاهدٌ (`ShahidWaqi` ببصمة مودَعٍ وموضع) أدرك بحاسّةٍ جنسًا على بُعدٍ (حرارة، صلابة، قوام، شدّة الصوت، حجم)
-  باسمٍ؛ و**تسميتُها** `Tasmiya`: الاسمُ موضوعٌ للبُعد في المعجم (المطابقة `mutabaqa`). (٣) **تشاركُ الخبرة**: شاهدان مستقلّان فأكثر على
-  الادّعاء نفسه (`tasdiq`؛ حدُّ الاستقلال شاهدان مختلفان — تعيينُ البنّاء) من مودَعِ «واقع مختوم» (`mutabara`، على نهج `Maratib.shuhudMutabara`). (٤) **الرخصةُ
+  باسمٍ؛ و**تسميتُها** `Tasmiya`: الاسمُ موضوعٌ للبُعد في المعجم (المطابقة `mutabaqa` — على البُعد والاسم لا على الجنس: فـ«الثلج ساخن»
+  يطابق لفظًا وهو معلومةٌ بالمعنى م15 «مفهومٌ لفظًا لا شاهدَ مودَعًا لواقعه»). (٣) **تشاركُ الخبرة**: شاهدان مختلفان فأكثر (بصمةً أو
+  موضعًا — تعيينُ البنّاء لحدّ الاستقلال) على الادّعاء نفسه (`tasdiq`) من مودَعِ «واقع مختوم» (`mutabara`: مطابقةُ البصمة تامّةً — بخلاف
+  `Maratib.shuhudMutabara` التي تطابق بادئتها، وبعتبةِ شاهدين لا شاهدٍ واحد كما في `Maratib.martabatMaana` — تعيينان معلَنان). (٤) **الرخصةُ
   المسمّاة «تشارك الخبرة»** فوق الشبكة `rukhsaTasharuk`: مفهومٌ إذا طابق الاسمُ وصُدِّق؛ معلومةٌ إذا طابق ولم يُصدَّق؛ ولا حكم إذا لم
-  يطابق — فهي توحّد المطابقةَ والتصديق بالتعريف (`tawhid`). (٥) **التسميةُ بالحدّ**: الصوتُ بشدّته `Shidda` واسمُه `ismSawt` (الشديدُ
+  يطابق — فهي توحّد المطابقةَ والتصديق بالتعريف (`tawhid`: تعريفيّة). شاهدٌ ليس من مودَعِ واقعٍ مختوم (كقول المالك) لا أثرَ له في الحكم
+  (`shahid_ghayr_mudaa_la_yuthir`) — فمعلومةُ المالك معلومةٌ بالمطابقة اللفظية وحدها. (٥) **التسميةُ بالحدّ**: الصوتُ بشدّته `Shidda` واسمُه `ismSawt` (الشديدُ
   صراخ)؛ والحرارةُ لمسًا `malmasHarara` بعتبتين (بارد/فاتر/ساخن؛ `none` لا حكم). (٦) **التفضيلُ بالتمييز** `akbar`: مقارنةُ كمّيتين على
   بُعدٍ مسمًّى؛ بلا تمييزٍ لا حكم. (٧) **الثبوتُ والحال** `Thubut`: ما كان للجنس في حالته المرجعية صفةٌ مشبّهة (ثبوت)، وما كان للفرد في
   حالته الراهنة حال.
 
-  **المبرهنات (لكلّ):** `tawhid` (مفهومٌ ↔ مطابقةٌ وتصديق)، `la_mafhum_bila_mutabaqa`، `la_mafhum_bila_waqi` (لا مفهومَ بلا مودَع واقعٍ
-  مختوم مهما كثرت الخبرات)، `mujam_la_yasna_mafhum` (المعجمُ وحدَه معلومةٌ لا مفهوم)، `tikrar_la_yarfa` (الشاهدُ الواحد مكرَّرًا لا
-  يصدّق)، `tasdiq_ratib` و`rukhsa_la_tanzil` (خبرةٌ مزيدة لا تُنزل الرخصة)، `sarakh_shadid` (الصراخُ الصوتُ الشديد لا غير)، `sarakh_ratib`
-  (الأشدُّ من الصراخ صراخ)، `malmas_ratib` (الأسخنُ لا يُسمّى أبرد)، `malmas_la_hukm` (بلا عتبةٍ لا حكم)، `tafdil_bila_tamyiz` (لا
-  تفضيلَ بلا تمييز)، `akbar_la_yanakis` (أكبرُ لا ينعكس)، `akbar_mutaaddi` (أكبرُ متعدٍّ)، `akbar_la_yufaddil_nafsah`.
+  **المبرهنات (لكلّ):** `la_mafhum_bila_mutabaqa`، `la_mafhum_bila_mudaa_waqi` (لا مفهومَ بلا مودَع واقعٍ مختوم مهما كثرت
+  الخبرات)، `mujam_la_yasna_mafhum` (المعجمُ وحدَه معلومةٌ لا مفهوم)، `tikrar_la_yarfa` (الشاهدُ الواحد مكرَّرًا لا يصدّق — نظيرُ م16 في
+  القائمة لا في النصّ)، `tasdiq_ratib` و`rukhsa_la_tanzil` (خبرةٌ مزيدة لا تُنزل الرخصة)، `shahid_ghayr_mudaa_la_yuthir` (شاهدٌ غيرُ مودَع
+  لا يغيّر الحكم)، `sarakh_shadid` (الصراخُ الصوتُ الشديد لا غير)، `sarakh_ratib` (الأشدُّ من الصراخ صراخ)، `malmas_ratib` (الأسخنُ لا يُسمّى
+  أبرد)، `malmas_la_hukm` (بلا عتبةٍ لا حكم)، `tafdil_bila_tamyiz` (لا تفضيلَ بلا تمييز، ولا بتمييزٍ فارغ)، `akbar_la_yanakis` (أكبرُ لا
+  ينعكس)، `akbar_mutaaddi` (أكبرُ متعدٍّ)، `akbar_la_yufaddil_nafsah`؛ وتعريفيّة (مبرهنةٌ على التعريف): `tawhid` (مفهومٌ ↔ مطابقةٌ
+  وتصديق)، `sawt_masmu`، `wajh_jins`، `wajh_fard`.
   **على الشاهد** (مثالُ المالك `mujam`، `khibrat`): `shawahid_malik` (الثلجُ بارد، الحجرُ صلب، الماءُ مائع، الحارُّ ساخن، الصوتُ العالي
-  صراخ: كلُّها «معلومة» — مطابقةٌ للمعجم بشاهدٍ واحد هو قولُ المالك وليس مودَعَ واقعٍ مختوم؛ و«ملمس الحجر ليّن» لا حكم)، `jabal_akbar`
-  (الجبلُ أكبر من الرجل حجمًا على مقادير المثال، ولا حكم بلا تمييز)، `thalj_barid` (الثلجُ بارد والمغليُّ ساخن بالعتبتين)،
-  `sawt_masmu` (المسموعُ محسوسُ السمع — تعريفيّة)،
-  `hajm_malmus_mari` (الحجمُ بُعدُ اللمس والبصر معًا — من لسان س224217).
+  صراخ: كلُّها «معلومة» — مطابقةٌ للمعجم لفظًا؛ وقولُ المالك شاهدٌ غيرُ مودَع فلا يرفعها؛ و«ملمس الحجر حلو» لا حكم: ليس «حلو» اسمًا
+  للصلابة في المعجم)، `khibrat_asma` (أسماءُ خبرات المالك بترتيبها)، `mafhum_bi_tasharuk` (مثالٌ مبنيّ: شاهدان في واقعٍ مختوم ← مفهوم)،
+  `jabal_akbar` (الجبلُ أكبر من الرجل حجمًا على مقادير المثال، ولا حكم بلا تمييز)، `thalj_barid` (الثلجُ بارد والمغليُّ ساخن
+  بالعتبتين)، `hajm_malmus_mari` (الحجمُ بُعدُ اللمس — من لسان س224217 — والبصر: تعيينُ البنّاء من قول المالك «حجم الجبل»).
 
   الوسم: مبرهن (لكلّ) ما سُمّي كذلك؛ مبرهن على الشاهد (decide على `mujam`/`khibrat` اللذين كتبهما البنّاء من الشواهد أعلاه ومن قول
-  المالك) ما سُمّي كذلك؛ تعريفيّة: `sawt_masmu`، `mahsus_*`. الجدولُ `hawass.tsv` مسجَّلٌ «مرشّح» في `mudaat/sijill.json` حتّى يأذن
-  المالك بختمه؛ ومطابقتُه `tahaqquq/test_hawass.py`. حدُّ التشارك (شاهدان) والعتباتُ (بارد دون 15°م، ساخن من 40°م) وقراءةُ «مانع»
-  مائعًا تعييناتُ البنّاء تُعرض عليه.
+  المالك) ما سُمّي كذلك؛ تعريفيّة ما سُمّي كذلك. الجدولُ `hawass.tsv` مسجَّلٌ «مرشّحًا» في `mudaat/sijill.json` (بصمتُه تُحدَّث ما دام
+  مرشّحًا) حتّى يأذن المالك بختمه؛ ومطابقتُه `tahaqquq/test_hawass.py` (مطابَقٌ لمرشّح). **تعييناتُ البنّاء المعروضة:** قراءةُ «مانع»
+  مائعًا؛ حدُّ التشارك شاهدان مختلفان بصمةً أو موضعًا؛ عتبتا الملمس (بارد دون 15°م، ساخن من 40°م) والاسمُ الأوسط «فاتر»؛ درجاتُ
+  الصوت (خفيّ/معتدل/شديد) واسمُ ما دون الشديد «صوت»؛ «الفم» أداةً للذوق؛ الحجمُ مرئيًّا والقوامُ مرئيًّا مع اللمس؛ مقاديرُ الجبل والرجل
+  مثالًا لا قياسًا.
 -/
 import Madlul.Shabaka
 import Aql.Maratib
@@ -73,7 +81,7 @@ def mahsus : Hassa → String
   | .lams => "ملموس"
   | .shamm => "مشموم"
 
-/-- أداةُ الحاسّة بلفظ المعجم. -/
+/-- أداةُ الحاسّة: العينُ (س73686) والأذنُ (س148936) واليدُ (س119800) والأنفُ (س231680) بلفظ المعجم؛ والفمُ للذوق تعيينُ البنّاء. -/
 def adat : Hassa → String
   | .basar => "العين"
   | .sam => "الأذن"
@@ -83,7 +91,8 @@ def adat : Hassa → String
 
 theorem sawt_masmu : mahsus .sam = "مسموع" := rfl
 
-/-- بُعدٌ حسّيّ: ما تُقاس عليه الصفة، وحواسُّه (الحجمُ ملموسٌ ومرئيّ: «وحجم كل شيء: ملمسه» س224217). -/
+/-- بُعدٌ حسّيّ: ما تُقاس عليه الصفة، وحواسُّه (الحجمُ ملموسٌ: «وحجم كل شيء: ملمسه» س224217؛ ومرئيٌّ: تعيينُ البنّاء من قول المالك
+«حجم الجبل أكبر من حجم الرجل»؛ والقوامُ لمسًا وبصرًا: تعيين). -/
 structure Bud where
   ism : String
   hawass : List Hassa
@@ -151,7 +160,7 @@ theorem la_mafhum_bila_mutabaqa (sijill : List (String × Idaa.Naw)) (mujam : Li
   simp [rukhsaTasharuk, h]
 
 /-- **لا مفهومَ بلا مودَع واقعٍ مختوم** (م16): إن لم يكن في السجلّ مودَعٌ من نوع «واقع مختوم» فلا تصديقَ مهما كثرت الخبرات. -/
-theorem la_mafhum_bila_waqi (sijill : List (String × Idaa.Naw)) (hs : ∀ b ∈ sijill, b.2 ≠ .waqiMakhtum)
+theorem la_mafhum_bila_mudaa_waqi (sijill : List (String × Idaa.Naw)) (hs : ∀ b ∈ sijill, b.2 ≠ .waqiMakhtum)
     (mujam : List Tasmiya) (kh : List Khibra) (jins bud ism : String) :
     rukhsaTasharuk sijill mujam kh jins bud ism ≠ .mafhum := by
   intro h
@@ -249,18 +258,28 @@ theorem malmas_ratib (b s : Int) (t t' : Int) (ht : t ≤ t') (n n' : String)
 /-! ## ٣. التفضيلُ بالتمييز -/
 
 /-- **أكبرُ … تمييزًا:** مقارنةُ كمّيتين على بُعدٍ مسمًّى (التمييزُ يفسّر ما انبهم: القطر س313)؛ بلا تمييزٍ لا حكم. -/
-def akbar (tamyiz : Option String) (a b : Nat) : Option Bool := tamyiz.map fun _ => decide (b < a)
+def akbar (tamyiz : Option String) (a b : Nat) : Option Bool :=
+  match tamyiz with
+  | some t => if t.isEmpty then none else some (decide (b < a))
+  | none => none
 
-theorem tafdil_bila_tamyiz (a b : Nat) : akbar none a b = none := rfl
+theorem tafdil_bila_tamyiz (a b : Nat) : akbar none a b = none ∧ akbar (some "") a b = none := ⟨rfl, rfl⟩
 
 theorem akbar_la_yanakis (d : String) (a b : Nat) (h : akbar (some d) a b = some true) : akbar (some d) b a = some false := by
-  simp [akbar] at h ⊢; omega
+  simp only [akbar] at h ⊢
+  split at h
+  · simp at h
+  · rename_i hd; simp only [hd]; simp at h ⊢; omega
 
 theorem akbar_mutaaddi (d : String) (a b c : Nat) (h1 : akbar (some d) a b = some true) (h2 : akbar (some d) b c = some true) :
     akbar (some d) a c = some true := by
-  simp [akbar] at h1 h2 ⊢; omega
+  simp only [akbar] at h1 h2 ⊢
+  split at h1
+  · simp at h1
+  · rename_i hd; simp only [hd] at h2 ⊢; simp at h1 h2 ⊢; omega
 
-theorem akbar_la_yufaddil_nafsah (d : String) (a : Nat) : akbar (some d) a a = some false := by simp [akbar]
+theorem akbar_la_yufaddil_nafsah (d : String) (hd : ¬ d.isEmpty) (a : Nat) : akbar (some d) a a = some false := by
+  simp [akbar, hd]
 
 /-! ## ٤. الصفةُ المشبّهة والحال -/
 
@@ -278,8 +297,8 @@ theorem wajh_fard : wajh false = .hal := rfl
 
 /-- المعجمُ (الوضع): أسماءُ التجارب على أبعادها بشواهد اللسان. -/
 def mujam : List Tasmiya :=
-  [⟨"بارد", "حرارة"⟩, ⟨"ساخن", "حرارة"⟩, ⟨"فاتر", "حرارة"⟩, ⟨"صلب", "صلابة"⟩, ⟨"مائع", "قوام"⟩, ⟨"صراخ", "شدّة الصوت"⟩,
-   ⟨"صوت", "شدّة الصوت"⟩, ⟨"أكبر", "حجم"⟩]
+  [⟨"بارد", "حرارة"⟩, ⟨"ساخن", "حرارة"⟩, ⟨"فاتر", "حرارة"⟩, ⟨"صلب", "صلابة"⟩, ⟨"ليّن", "صلابة"⟩, ⟨"مائع", "قوام"⟩,
+   ⟨"صراخ", "شدّة الصوت"⟩, ⟨"صوت", "شدّة الصوت"⟩]
 
 /-- شاهدُ قول المالك (ليس مودَعَ واقعٍ مختوم؛ بصمتُه اسمُ القول وموضعُه رقمُ المثال). -/
 def qawlMalik (i : Nat) : ShahidWaqi := ⟨"قول-المالك-2026-10-16-17:33", i⟩
@@ -293,16 +312,38 @@ def khibrat : List Khibra :=
 /-- سجلٌّ لا «واقعَ مختومًا» فيه (المودَعات المختومة كلُّها معلوماتٌ سابقة أو وضع). -/
 def sijillBilaWaqi : List (String × Idaa.Naw) := [("936c68e0", .maalumatSabiqa), ("34fa5671", .maalumatSabiqa), ("f567d1ab", .maalumatSabiqa)]
 
-/-- **خبراتُ المالك «معلومة»:** مطابقةٌ للمعجم بشاهدٍ واحد هو قولُه — وليس مودَعَ واقعٍ مختوم؛ و«ملمس الحجر ليّن» لا حكم (لا تسميةَ
-مودَعة). -/
+/-- **خبراتُ المالك «معلومة»:** مطابقةٌ للمعجم لفظًا؛ وشاهدُها قولُه وليس مودَعَ واقعٍ مختوم فلا يرفعها؛ و«ملمس الحجر حلو» لا حكم:
+ليس «حلو» اسمًا للصلابة في المعجم. -/
 theorem shawahid_malik :
     rukhsaTasharuk sijillBilaWaqi mujam khibrat "ثلج" "حرارة" "بارد" = .maaluma ∧
     rukhsaTasharuk sijillBilaWaqi mujam khibrat "حجر" "صلابة" "صلب" = .maaluma ∧
     rukhsaTasharuk sijillBilaWaqi mujam khibrat "ماء" "قوام" "مائع" = .maaluma ∧
     rukhsaTasharuk sijillBilaWaqi mujam khibrat "الحارّ" "حرارة" "ساخن" = .maaluma ∧
     rukhsaTasharuk sijillBilaWaqi mujam khibrat "صوت عالٍ" "شدّة الصوت" "صراخ" = .maaluma ∧
-    rukhsaTasharuk sijillBilaWaqi mujam khibrat "حجر" "صلابة" "ليّن" = .laHukm := by
+    rukhsaTasharuk sijillBilaWaqi mujam khibrat "حجر" "صلابة" "حلو" = .laHukm := by
   decide
+
+/-- أسماءُ خبرات المالك بترتيبها (تثبيتٌ للقائمة). -/
+theorem khibrat_asma : khibrat.map (·.ism) = ["بارد", "صلب", "مائع", "ساخن", "صراخ"] := by decide
+
+/-- **شاهدٌ غيرُ مودَع لا يغيّر الحكم:** إن لم تكن بصمةُ الشاهد في السجلّ واقعًا مختومًا فحذفُ خبرته لا يغيّر الرخصة (لكلّ). -/
+theorem shahid_ghayr_mudaa_la_yuthir (sijill : List (String × Idaa.Naw)) (mujam : List Tasmiya) (k : Khibra) (kh : List Khibra)
+    (hk : ∀ b ∈ sijill, k.shahid.basma = b.1 → b.2 ≠ .waqiMakhtum) (jins bud ism : String) :
+    rukhsaTasharuk sijill mujam (k :: kh) jins bud ism = rukhsaTasharuk sijill mujam kh jins bud ism := by
+  unfold rukhsaTasharuk
+  have : mutabara sijill (shuhud (k :: kh) jins bud ism) = mutabara sijill (shuhud kh jins bud ism) := by
+    unfold shuhud mutabara
+    simp only [List.filter_cons]
+    split
+    · simp only [List.map_cons, List.filter_cons]
+      split
+      · rename_i hany
+        simp only [List.any_eq_true, Bool.and_eq_true, beq_iff_eq] at hany
+        obtain ⟨b, hb, h1, h2⟩ := hany
+        exact absurd h2 (hk b hb h1)
+      · rfl
+    · rfl
+  rw [this]
 
 /-- ولو شهد شاهدان مستقلّان في مودَع «واقع مختوم» (بصمتُه مسجَّلة بنوعها) لصار مفهومًا — مثالٌ مبنيّ. -/
 theorem mafhum_bi_tasharuk :

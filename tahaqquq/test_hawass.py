@@ -7,10 +7,11 @@
    8 تسميات، 6 خبرات للمالك، رخصة، 4 صيغ؛ وكلُّ اقتباسٍ «…» بسطره (لسان العرب/قطر الندى) موجودٌ في سطره في المودَع الحاضر بلفظه.
 ٣. Lean من النصّ (لا عبر Lean): `mujam` (الاسم، البُعد) يطابق صفوفَ التسمية زوجًا زوجًا بترتيبها؛ `khibrat` (الحاسّة، الجنس، البُعد،
    الاسم) يطابق خبراتِ المالك 1–5 بترتيبها؛ `abad` يطابق صفوفَ الأبعاد بأسمائها وحواسّها؛ `adat`/`mahsus` يطابقان صفوفَ الحواسّ.
-٤. كلُّ اسمٍ في عمود mirat_lean معرَّفٌ في Hawass.lean باسمه الكامل (def/theorem/structure/inductive في أوّل السطر، أو منشئٌ من
-   `Hassa.*`/`Thubut.*`).
-٥. قرارُ الرخصة من بنية الجدول وحدها: خبراتُ المالك شاهدُها قولُه (ليس مودَعًا من نوع «واقع-مختوم» في السجلّ) — فكلُّها «معلومة» إن
-   طابق اسمُها تسميةً في الجدول، ولا مفهومَ ما لم يحضر في السجلّ مودَعٌ «واقع-مختوم» (يُطابَق بـ `shawahid_malik`/`la_mafhum_bila_waqi`).
+٤. كلُّ اسمٍ في عمود mirat_lean معرَّفٌ في Hawass.lean باسمه الكامل (def/theorem/structure/inductive في أوّل السطر)؛ والاسمُ المنقوط
+   منشئٌ في فضاء نوعه وحده (`Hassa.sam` لا `Thubut.sam`).
+٥. قرارُ الرخصة من بنية الجدول وحدها: خبراتُ المالك شاهدُها قولُه (ليس بصمةَ مودَع) ومطابقةٌ لتسميات الجدول ← «معلومة» (مطابقةٌ لفظية؛
+   والشاهدُ غيرُ المودَع لا أثرَ له)، ولا خبرةَ توصف مفهومًا؛ وتُطابَق أسماءُ المبرهنات `shawahid_malik`/`la_mafhum_bila_mudaa_waqi`/
+   `shahid_ghayr_mudaa_la_yuthir`/`khibrat_asma` بوجودها.
 التشغيل: python3 -I tahaqquq/test_hawass.py
 """
 import hashlib
@@ -102,20 +103,27 @@ asma = set()
 for r in rows:
     for ident in [x.strip() for x in r["mirat_lean"].split(";") if x.strip()]:
         asma.add(ident)
+munshiat = {}
+for typ, body in re.findall(r"^inductive (\w+) ((?:\| \w+ ?)+)", lean, re.M):
+    munshiat[typ] = set(re.findall(r"\| (\w+)", body))
 for ident in asma:
-    found = re.search(rf"^(def|theorem|structure|inductive) {re.escape(ident)}\b", lean, re.M) or \
-        (ident.startswith(("Hassa.", "Thubut.")) and re.search(rf"\| {re.escape(ident.split('.', 1)[1])}\b", lean))
+    if "." in ident:
+        typ, c = ident.split(".", 1)
+        found = c in munshiat.get(typ, set())   # منشئ في فضاء نوعه وحده
+    else:
+        found = re.search(rf"^(def|theorem|structure|inductive) {re.escape(ident)}\b", lean, re.M)
     assert found, f"اسم في الجدول لا تعريف له في Lean بهذا الاسم الكامل: {ident}"
 ok += 1
 
-# ٥ — الرخصة من بنية الجدول: لا «واقع-مختوم» في السجلّ ← لا مفهوم؛ خبرات المالك مطابقة للتسميات ← معلومة
-waqi = [x for x in sijill if x["naw"] == "واقع-مختوم"]
+# ٥ — الرخصة من بنية الجدول: خبرات المالك شاهدها قوله (ليس بصمة مودَع) ومطابقة لتسميات الجدول ← «معلومة» في عمود bayan؛
+# والقطعة لا تدّعي مفهومًا (لا صفّ مفهوم)
 tasmiyat = {(r["ramz"], r["taraf1"]) for r in by["tasmiya"]}
 for r in by["khibra"][:5]:
     assert (r["qima"], r["taraf2"]) in tasmiyat, (r["ramz"], r["qima"], r["taraf2"])
-    assert "معلومة" in r["bayan"], r["ramz"]
-assert not waqi, "ظهر مودَع «واقع-مختوم» في السجلّ: يجب مراجعة حكم «معلومة» في الجدول وفي shawahid_malik"
-assert re.search(r"^theorem shawahid_malik\b", lean, re.M) and re.search(r"^theorem la_mafhum_bila_waqi\b", lean, re.M)
+    assert r["shahid"].startswith("قول المالك") and "معلومة" in r["bayan"], r["ramz"]
+assert not any("مفهوم" in r["bayan"] and r["naw"] == "khibra" for r in rows), "لا خبرة توصف مفهومًا بلا واقع مختوم"
+for name in ("shawahid_malik", "la_mafhum_bila_mudaa_waqi", "shahid_ghayr_mudaa_la_yuthir", "khibrat_asma"):
+    assert re.search(rf"^theorem {name}\b", lean, re.M), name
 ok += 1
 print(f"{ok}/5 — 29/29 صفًّا ({hala})، {iqt_bayan}، المعجم والخبرات والأبعاد والحواسّ في Lean مطابقة، {len(asma)} اسمًا معرَّفًا، "
-      f"خبرات المالك «معلومة» (لا واقع مختوم في السجلّ)")
+      f"خبرات المالك «معلومة» (مطابقة لفظية؛ شاهدها غير مودَع)")
