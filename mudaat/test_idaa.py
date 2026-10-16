@@ -36,7 +36,7 @@ def run(*a):
 
 ok = 0
 code, out = run("fahs")
-assert code == 0 and "مختوم 15، مرشح 10، أخطاء 0" in out, out
+assert code == 0 and "مختوم 15، مرشح 11، أخطاء 0" in out, out
 ok += 1
 
 tmp = tempfile.mkdtemp()

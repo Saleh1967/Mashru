@@ -181,6 +181,13 @@
   `Jisr/حصر_الإخبار_والعوامل.md` — القطر بابًا بابًا (L41–452) بحال كلّ باب (مبنيّ/جزئيّ/بالاسم/غير مبنيّ) بأسماء Lean، والمتبقّي بلفظ القطر
   وسطره؛ وثلاثة عوامل في القطر خارج جدول المئة (ما/لا/لات الحجازيات، لا النافية للجنس، غير/سوى/ليس/لا يكون)، وشروط العمل، وترتيب المعمول —
   والترخيص بالإنشاء لم يُعطَ بعد (رأي البنّاء؛ القرار للمالك).
+- الجسر إلى الدالّ (قرار المالك 2026-10-17، 00:09: «عمل الجسر lean وslge وبعدها ننتقل للإنشاء»): `Jisr/JisrDal.lean` — الباب `Bab` معلَن من المعجم
+  (12 بابًا من القطر L75–95، L241–244)، والحكم من الخلايا ثلاثيّ `HukmDal` (معيَّن/محتمَل/لا حكم)؛ الأصلية تقابل المالك `Bridge.irabState` (`asliyya_bij`)،
+  والفرعية توافق `Bridge.farIya` حاملًا حاملًا (`muwafiq_farIya` على 20 شاهدًا؛ `sitta_hamil` على `Law.augs`)؛ التقدير (`maqsur_la_yuayyin`، `manqus_fatha_zahira`)،
+  الممنوع بالفتحة (`mamnu_fatha`، `mamnu_bi_al`)، الأمثلة (`amthila_nun`)، ياء المثنّى والجمع لا تفرّق (`yayn_la_yufarriq`)؛ المجهول على الخلايا
+  (`majhul` بصيغه الثلاث؛ `majhul_huruf`/`majhul_tul` لكلّ، `shawahid_majhul`). 15 مبرهنة (2 لكلّ، 9 تعريفيّة، 4 على الشاهد). الجدول `jisr_dal.tsv`
+  (17 صفًّا، 40 اقتباسًا من القطر) مسجَّل «مرشّحًا»؛ مطابقته `tahaqquq/test_jisrdal.py` (٥ف؛ P115–P117). التحليل في `Madlul/التعيين_والتمييز.md` §15.
+  لم يُبنَ: المنقوص المنوَّن، قال/باع في المجهول، ملحقات الجمع، الجسر من `hukm` إلى القارئ.
 - القارئ: `.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv "<نصّ مشكول>"` — كلّ كلمة: خلاياها،
   حكم القانون، مقاطعها، ومنطوقها ومفهومها من المخزن بالسلسلة والوسم والمرتبة. ما لا قرار له يُرفض باسمه.
   والجملة (كلمتان فأكثر): تركيبها في الوصل على آلة المالك `Msent` (`Dal/Jumla.lean`: سقوط همزة الوصل بإصلاح المالك
@@ -188,7 +195,7 @@
 - المودَع: `MUDAA_MUKHASSAS=<مسار mukhassas.txt>` لاختبارات الشبكة، و`MUDAA_DIR=<مجلّد المودَعات>` لمطابقة بصماتها
   (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`؛ و`qatr.txt`، `mughni.txt`، `alfiyya.txt`،
   `janadani.txt`، `sibawayhi.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib/AqsamAwamil بأسطرها؛ و`ajnas.tsv` جدول الأجناس —
-  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`؛ و`azmina.tsv` (مرشّح) الذي يطابقه `test_azmina.py`؛ و`makan.tsv` (مرشّح) الذي يطابقه `test_makan.py`؛ و`mirsat.tsv` (مرشّح) الذي يطابقه `test_mirsat.py`؛ و`isnad.tsv` (مرشّح) الذي يطابقه `test_isnad.py`).
+  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`؛ و`azmina.tsv` (مرشّح) الذي يطابقه `test_azmina.py`؛ و`makan.tsv` (مرشّح) الذي يطابقه `test_makan.py`؛ و`mirsat.tsv` (مرشّح) الذي يطابقه `test_mirsat.py`؛ و`isnad.tsv` (مرشّح) الذي يطابقه `test_isnad.py`؛ و`jisr_dal.tsv` (مرشّح) الذي يطابقه `test_jisrdal.py`).
 - قرارات الوقف والرسم في القارئ (ة، ى، التنوين، ألف الجماعة، حركة همزة الوصل) منقولةٌ من قطر الندى (باب الوقف L440–447،
   همزة الوصل L449–453) والألفية (L1131، L1136، L1142) بأسطرها في المخرج؛ قرارا الوقف على آخر النصّ (الموقوف عليه)، وقرارا الرسم
   وهمزة الوصل في كلّ موضع.
