@@ -802,5 +802,29 @@
   "milaf": "Madlul/Hawass.lean",
   "min": "[⟨qawlMalik 1, .lams, \"ثلج\", \"حرارة\", \"بارد\"⟩,",
   "ila": "[⟨qawlMalik 1, .lams, \"ثلج\", \"حرارة\", \"ساخن\"⟩,"
+ },
+ {
+  "ism": "P99_nafy_hal_la",
+  "milaf": "Aql/Awwaliyyat.lean",
+  "min": "  | .hal => \"ما يفعل\"\n",
+  "ila": "  | .hal => \"لا يفعل\"\n"
+ },
+ {
+  "ism": "P100_haqqiq_yughayyir",
+  "milaf": "Aql/Awwaliyyat.lean",
+  "min": "def haqqiq {E : Type} (madi : List E) (kain : E) : List E := madi ++ [kain]",
+  "ila": "def haqqiq {E : Type} (madi : List E) (kain : E) : List E := kain :: madi"
+ },
+ {
+  "ism": "P101_zaman5_madi_hatta_al_an",
+  "milaf": "Aql/Awwaliyyat.lean",
+  "min": "  if t < now then (if muntazar then .madiMuttasil else .madiMunqati)\n",
+  "ila": "  if t ≤ now then (if muntazar then .madiMuttasil else .madiMunqati)\n"
+ },
+ {
+  "ism": "P102_qasam_nafy_lamma",
+  "milaf": "Aql/Awwaliyyat.lean",
+  "min": "  | .madiMuttasil => some \"ما فعل\"\n",
+  "ila": "  | .madiMuttasil => some \"لما يفعل\"\n"
  }
 ]

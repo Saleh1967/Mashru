@@ -627,3 +627,27 @@
 'Madlul.Hawass.jabal_akbar' does not depend on any axioms
 'Madlul.Hawass.khibrat_asma' does not depend on any axioms
 'Madlul.Hawass.shahid_ghayr_mudaa_la_yuthir' depends on axioms: [propext, Quot.sound]
+'Aql.Awwaliyyat.la_fikr_bila_arkan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Awwaliyyat.al_shay_huwa_huwa' does not depend on any axioms
+'Aql.Awwaliyyat.tamyiz_bil_fasl' does not depend on any axioms
+'Aql.Awwaliyyat.aqsam_mutamayiza' does not depend on any axioms
+'Aql.Awwaliyyat.marfu_thalith' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Awwaliyyat.marfu_thalith_muqarrar' does not depend on any axioms
+'Aql.Awwaliyyat.la_hukm_laysa_thalithan' depends on axioms: [propext]
+'Aql.Awwaliyyat.juz_asghar_min_kull' does not depend on any axioms
+'Aql.Awwaliyyat.kutlat_juz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Awwaliyyat.adad_dun_majmuih' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Awwaliyyat.tawrith_intizam' depends on axioms: [propext, Quot.sound]
+'Aql.Awwaliyyat.taaqub_yurith' depends on axioms: [propext, Quot.sound]
+'Aql.Awwaliyyat.layl_nahar' depends on axioms: [propext]
+'Aql.Awwaliyyat.azmina_thalatha_hasira' does not depend on any axioms
+'Aql.Awwaliyyat.zaman_yurith_ma_kan' depends on axioms: [propext]
+'Aql.Awwaliyyat.mustaqbal_la_hukm' depends on axioms: [propext]
+'Aql.Awwaliyyat.ithbat_la_yukhallis' does not depend on any axioms
+'Aql.Awwaliyyat.nafy_yukhallis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Awwaliyyat.nafy_asma' does not depend on any axioms
+'Aql.Awwaliyyat.zaman5_hasira' depends on axioms: [propext, Quot.sound]
+'Aql.Awwaliyyat.qasam_ala_zamanayn' depends on axioms: [propext]
+'Aql.Awwaliyyat.qasam_yusqit_intizar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Awwaliyyat.muhal_naqd' depends on axioms: [propext, Quot.sound]
+'Aql.Awwaliyyat.mustaqim_hasan' depends on axioms: [propext, Quot.sound]

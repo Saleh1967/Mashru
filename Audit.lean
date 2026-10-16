@@ -7,6 +7,7 @@ import Madlul.Wiratha
 import Madlul.Jamad
 import Madlul.Shabaka
 import Madlul.Hawass
+import Aql.Awwaliyyat
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
 import Dal.AqsamAlism
@@ -697,3 +698,29 @@ import Jisr.Utur
 #print axioms Madlul.Hawass.jabal_akbar
 #print axioms Madlul.Hawass.khibrat_asma
 #print axioms Madlul.Hawass.shahid_ghayr_mudaa_la_yuthir
+
+-- أوّليات العقل: الأركان، التعيين، التمييز، المرفوع الثالث، الجزء والكلّ، الزمن والأزمنة الخمسة عند سيبويه (Aql/Awwaliyyat.lean)
+#print axioms Aql.Awwaliyyat.la_fikr_bila_arkan
+#print axioms Aql.Awwaliyyat.al_shay_huwa_huwa
+#print axioms Aql.Awwaliyyat.tamyiz_bil_fasl
+#print axioms Aql.Awwaliyyat.aqsam_mutamayiza
+#print axioms Aql.Awwaliyyat.marfu_thalith
+#print axioms Aql.Awwaliyyat.marfu_thalith_muqarrar
+#print axioms Aql.Awwaliyyat.la_hukm_laysa_thalithan
+#print axioms Aql.Awwaliyyat.juz_asghar_min_kull
+#print axioms Aql.Awwaliyyat.kutlat_juz
+#print axioms Aql.Awwaliyyat.adad_dun_majmuih
+#print axioms Aql.Awwaliyyat.tawrith_intizam
+#print axioms Aql.Awwaliyyat.taaqub_yurith
+#print axioms Aql.Awwaliyyat.layl_nahar
+#print axioms Aql.Awwaliyyat.azmina_thalatha_hasira
+#print axioms Aql.Awwaliyyat.zaman_yurith_ma_kan
+#print axioms Aql.Awwaliyyat.mustaqbal_la_hukm
+#print axioms Aql.Awwaliyyat.ithbat_la_yukhallis
+#print axioms Aql.Awwaliyyat.nafy_yukhallis
+#print axioms Aql.Awwaliyyat.nafy_asma
+#print axioms Aql.Awwaliyyat.zaman5_hasira
+#print axioms Aql.Awwaliyyat.qasam_ala_zamanayn
+#print axioms Aql.Awwaliyyat.qasam_yusqit_intizar
+#print axioms Aql.Awwaliyyat.muhal_naqd
+#print axioms Aql.Awwaliyyat.mustaqim_hasan
