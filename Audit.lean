@@ -24,6 +24,7 @@ import Jisr.Nisab
 import Jisr.Ikhbar
 import Jisr.AqsamAwamil
 import Jisr.Mulhaqat
+import Jisr.Utur
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -485,6 +486,46 @@ import Jisr.Mulhaqat
 #print axioms Jisr.Mulhaqat.taghtiya_kamila
 #print axioms Jisr.Mulhaqat.mulhaqCode_inj
 #print axioms Jisr.Mulhaqat.itar_value
+-- أطر الطبقات الثلاث على القانون العامّ: الدال وحده، المدلول وحده، معًا (Jisr/Utur.lean)
+#print axioms Jisr.Utur.waqf_kama_yuqra
+#print axioms Jisr.Utur.dal_waqf_kama_yuqra
+#print axioms Jisr.Utur.wasl_yastalzim_ibtida
+#print axioms Jisr.Utur.waqf_yastalzim_ibtida
+#print axioms Jisr.Utur.wasl_waqf_mustaqillan
+#print axioms Jisr.Utur.wasl_ghayr_Fwasl
+#print axioms Jisr.Utur.la_itar_bisakin
+#print axioms Jisr.Utur.dal_vs_complete
+#print axioms Jisr.Utur.dal_yastalzim_complete
+#print axioms Jisr.Utur.itar_dal_istinfad_2
+#print axioms Jisr.Utur.itar_dal_anmat_2
+#print axioms Jisr.Utur.itar_dal_shawahid
+#print axioms Jisr.Utur.damm_murakhkhas
+#print axioms Jisr.Utur.damm_mumtani
+#print axioms Jisr.Utur.ofBool_murakhkhas
+#print axioms Jisr.Utur.harf_la_yubtada
+#print axioms Jisr.Utur.fil_la_yubtada
+#print axioms Jisr.Utur.nisab_mahmul
+#print axioms Jisr.Utur.wasl_thulathi
+#print axioms Jisr.Utur.madlul_shawahid
+#print axioms Jisr.Utur.ibtida3_of_hukm
+#print axioms Jisr.Utur.hukmTarkib_murakhkhas
+#print axioms Jisr.Utur.hukm3_murakhkhas
+#print axioms Jisr.Utur.hukm_la_yusqit_tarkhis
+#print axioms Jisr.Utur.fiHadd_of_hukm
+#print axioms Jisr.Utur.kharij_alhadd
+#print axioms Jisr.Utur.itar3_yahtawi
+#print axioms Jisr.Utur.itar3_yahtawi_hukm
+#print axioms Jisr.Utur.shahid_dhahaba_alwalad
+#print axioms Jisr.Utur.shahid_fi_dar
+#print axioms Jisr.Utur.shahid_hal
+#print axioms Jisr.Utur.shahid_kana
+#print axioms Jisr.Utur.shahid_hadd
+#print axioms Jisr.Utur.kalimaCode_inj
+#print axioms Jisr.Utur.madlulCode_inj
+#print axioms Jisr.Utur.mahmulCode_inj
+#print axioms Jisr.Utur.nisbaCode_inj
+#print axioms Jisr.Utur.itarMadlulCode_inj
+#print axioms Jisr.Utur.itar3_value
 #print axioms SLGE.Law.ibtida
 #print axioms SLGE.Law.cell_count
 #print axioms SLGE.Law.qaltu
