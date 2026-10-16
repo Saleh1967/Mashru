@@ -809,13 +809,14 @@ import Jisr.Utur
 #print axioms Aql.Mirsat.thabat_naql_mubham
 #print axioms Aql.Mirsat.la_qabl_wa_bad
 #print axioms Aql.Mirsat.mustaqim_min_kull_mirsat
+#print axioms Aql.Isnad.ajza_ithnan
 #print axioms Aql.Isnad.hakim_mahkum
-#print axioms Aql.Isnad.shatr_laysa_kalaman
 #print axioms Aql.Isnad.sughra_kalam
+#print axioms Aql.Isnad.wasf_bi_fail
 #print axioms Aql.Isnad.zarfiyya_kalam
 #print axioms Aql.Isnad.nasikh_yahfaz
-#print axioms Aql.Isnad.kubra_bila_sabab_la_kalam
 #print axioms Aql.Isnad.kubra_kalam
+#print axioms Aql.Isnad.kubra_bila_sabab_la_kalam
 #print axioms Aql.Isnad.khabar_kalam
 #print axioms Aql.Isnad.wasf_la_zaman
 #print axioms Aql.Isnad.sughra_huna

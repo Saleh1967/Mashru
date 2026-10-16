@@ -890,8 +890,8 @@
  {
   "ism": "P113_wasf_zaman_hal",
   "milaf": "Aql/Isnad.lean",
-  "min": "  | .wasf _ => none",
-  "ila": "  | .wasf _ => some .hal"
+  "min": "  | .wasf _ _ => none",
+  "ila": "  | .wasf _ _ => some .hal"
  },
  {
   "ism": "P114_sughra_mawdi_sifr",

@@ -732,20 +732,21 @@
 'Aql.Mirsat.thabat_naql_mubham' depends on axioms: [propext, Quot.sound]
 'Aql.Mirsat.la_qabl_wa_bad' does not depend on any axioms
 'Aql.Mirsat.mustaqim_min_kull_mirsat' depends on axioms: [propext, Quot.sound]
-'Aql.Isnad.hakim_mahkum' does not depend on any axioms
-'Aql.Isnad.shatr_laysa_kalaman' does not depend on any axioms
-'Aql.Isnad.sughra_kalam' does not depend on any axioms
-'Aql.Isnad.zarfiyya_kalam' does not depend on any axioms
-'Aql.Isnad.nasikh_yahfaz' does not depend on any axioms
-'Aql.Isnad.kubra_bila_sabab_la_kalam' depends on axioms: [propext]
+'Aql.Isnad.ajza_ithnan' does not depend on any axioms
+'Aql.Isnad.hakim_mahkum' depends on axioms: [propext]
+'Aql.Isnad.sughra_kalam' depends on axioms: [propext]
+'Aql.Isnad.wasf_bi_fail' depends on axioms: [propext, Quot.sound]
+'Aql.Isnad.zarfiyya_kalam' depends on axioms: [propext]
+'Aql.Isnad.nasikh_yahfaz' depends on axioms: [propext]
 'Aql.Isnad.kubra_kalam' depends on axioms: [propext, Quot.sound]
+'Aql.Isnad.kubra_bila_sabab_la_kalam' depends on axioms: [propext]
 'Aql.Isnad.khabar_kalam' depends on axioms: [propext, Quot.sound]
 'Aql.Isnad.wasf_la_zaman' does not depend on any axioms
 'Aql.Isnad.sughra_huna' does not depend on any axioms
 'Aql.Isnad.thabat_naql_arad' depends on axioms: [propext, Quot.sound]
 'Aql.Isnad.thabat_naql_mawdi' depends on axioms: [propext, Quot.sound]
 'Aql.Isnad.mustaqarr_jiha' depends on axioms: [propext, Quot.sound]
-'Aql.Isnad.shawahid_kalam' does not depend on any axioms
-'Aql.Isnad.sabab_yufarriq' does not depend on any axioms
+'Aql.Isnad.shawahid_kalam' depends on axioms: [propext]
+'Aql.Isnad.sabab_yufarriq' depends on axioms: [propext]
 'Aql.Isnad.hahuna_la_jiha' depends on axioms: [propext, Quot.sound]
 'Aql.Isnad.thamma_dhaka' does not depend on any axioms

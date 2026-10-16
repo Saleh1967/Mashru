@@ -3,16 +3,18 @@
 يُشغَّل على الجدول حين يحضر (MUDAA_DIR وفيه isnad.tsv)؛ وإلّا أُجريت فحوصُ نصّ Lean وحدها (منشئات الجملة، قاعدة الكبرى، زمن الوصف، موضع الصغرى،
 أسماء المبرهنات) وخرج 0.
 ١. بصمةُ الجدول الحاضر هي بصمتُه في mudaat/sijill.json (وإلّا رُفض باسمه)، ونوعُه «معلومات-سابقة»، وحالتُه مختوم أو مرشّح (تُطبع).
-٢. توقّعاتٌ مستقلّة: 18 صفًّا — 3 أنماط (الصغرى، الكبرى، الظرفية)، 2 رتبة، 3 قواعد، 7 شواهد، 3 فحص لجدول المالك؛ 48 اقتباسًا (الكتاب 46، لسان
-   العرب 2) بعدٍّ يدويّ؛ وكلُّ «…» في عمود الشاهد إمّا قولُ المالك/قراءة البنّاء/تعيينه وإمّا على نمط «المصدر سN: «…»» موجودٌ في سطره في المودَع
-   الحاضر بلفظه.
-٣. Lean من النصّ (لا عبر Lean): `Jumla` منشئاتُه الأربعة sughra/kubra/zarfiyya/mansukha؛ قاعدةُ الكبرى في `yastaghni`: «الخبر كلامٌ ومن سببه»
-   (`yastaghni j && (sabab j).contains d.ramz`)؛ `zamanArad` للوصف `none`؛ `mawdiInda` للصغرى `r.huna`؛ `Rutba` hakim/mahkum.
+٢. توقّعاتٌ مستقلّة: 21 صفًّا — 3 أنماط (الصغرى، الكبرى، الظرفية)، 2 رتبة، 3 قواعد، 10 شواهد، 3 فحص لجدول المالك؛ 69 اقتباسًا (الكتاب 60، مغني
+   اللبيب 3، قطر الندى 4، لسان العرب 2) بعدٍّ يدويّ؛ وكلُّ «…» في عمود الشاهد إمّا قولُ المالك/قراءة البنّاء/تعيينه وإمّا على نمط «المصدر سN: «…»»
+   موجودٌ في سطره في المودَع الحاضر بلفظه.
+٣. Lean من النصّ (لا عبر Lean): `Jumla` منشئاتُه الأربعة sughra/kubra/zarfiyya/mansukha؛ `Juz` أربعة؛ `Arad` فعلٌ بمفعولٍ ووصفٌ بفاعل؛ قاعدةُ الكبرى
+   في `yastaghni`: «الخبر كلامٌ ومن سببه» (`yastaghni j && (sabab j).contains d.ramz`)، والوصفُ بفاعلٍ في `sababWasf` (`f.damir == some d.ramz`)؛
+   `zamanArad` للوصف `none`؛ `mawdiInda` للصغرى `r.huna`؛ `Rutba` hakim/mahkum.
 ٤. كلُّ اسمٍ في عمود mirat_lean معرَّفٌ في Isnad.lean باسمه الكامل، والمنقوطُ منشئٌ في فضاء نوعه أو تعريفٌ منقوط (`Arad.naql`)؛ و«(لم يُبنَ)»
    يُقبل إعلانًا.
-٥. ادّعاءاتُ الغياب تُفحص على مادّة الكتاب الحاضر كلّها **موصولةَ الأسطر** (لا على الأسطر وحدها): «بظرفه» 0، «ومستقره» 0، «إخبار عن الاسم» 0،
-   «زيد ضربت أخاه» 0؛ و«زيد أبوه منطلق» 1 موصولًا و0 على الأسطر (مقطوع بين س9929 وس9930)؛ وعلامتا الصفحتين 23 و61 في س240 وس662؛ و«ههنا عمرو»
-   في س5731؛ وصفوفُ الفحص الثلاثة تذكر ذلك.
+٥. ادّعاءاتُ الغياب والأعداد تُفحص على مادّة المودَعات الحاضرة كلّها **موصولةَ الأسطر**: في الكتاب «بظرفه» 0، «ومستقره» 0، «إخبار عن الاسم» 0،
+   «زيد ضربت أخاه» 0، و«زيد أبوه منطلق» 1 موصولًا و0 على الأسطر (مقطوع بين س9929 وس9930)، و«من سببه» 33 موضعًا في 24 سطرًا، و«ملتبس به» في س653
+   وس1161، و«زيد أخوك» في ستّة أسطر بعينها؛ وأعدادُ الثلاث في القطر والمغني والألفية والجنى الداني والمخصّص واللسان والتاج والمقاييس كما في
+   صفّ الفحص الثالث؛ وعلامتا الصفحتين 23 و61 في س240 وس662؛ و«ههنا عمرو» في س5731؛ وصفوفُ الفحص الثلاثة تذكر ذلك.
 التشغيل: python3 -I tahaqquq/test_isnad.py
 """
 import hashlib
@@ -38,13 +40,16 @@ def munshiat_of(typ):
 
 def fahs_lean():
     assert munshiat_of("Jumla") == ["sughra", "kubra", "zarfiyya", "mansukha"], munshiat_of("Jumla")
+    assert munshiat_of("Juz") == ["ilayh", "arad", "khabar", "mustaqarr"], munshiat_of("Juz")
+    assert "| fiil (ramz : Nat) (t : Int) (u : Wahda) (maful : Option Dhat)" in lean and "| wasf (ramz : Nat) (fail : Option Dhat)" in lean
     assert "| .kubra d j => yastaghni j && (sabab j).contains d.ramz" in block("def yastaghni", "\n\n")
-    assert "| .wasf _ => none" in block("def zamanArad", "\n\n")
+    assert "| .wasf _ (some f) => f.damir == some d.ramz" in block("def sababWasf", "\n\n")
+    assert "| .wasf _ _ => none" in block("def zamanArad", "\n\n")
     assert "| .sughra _ _ => r.huna" in block("def mawdiInda", "\n\n")
     assert re.search(r"^inductive Rutba \| hakim \| mahkum", lean, re.M)
-    for name in ("hakim_mahkum", "shatr_laysa_kalaman", "sughra_kalam", "zarfiyya_kalam", "nasikh_yahfaz", "kubra_bila_sabab_la_kalam",
-                 "kubra_kalam", "khabar_kalam", "wasf_la_zaman", "sughra_huna", "thabat_naql_arad", "thabat_naql_mawdi", "mustaqarr_jiha",
-                 "shawahid_kalam", "sabab_yufarriq", "hahuna_la_jiha", "thamma_dhaka"):
+    for name in ("ajza_ithnan", "hakim_mahkum", "sughra_kalam", "wasf_bi_fail", "zarfiyya_kalam", "nasikh_yahfaz", "kubra_kalam",
+                 "kubra_bila_sabab_la_kalam", "khabar_kalam", "wasf_la_zaman", "sughra_huna", "thabat_naql_arad", "thabat_naql_mawdi",
+                 "mustaqarr_jiha", "shawahid_kalam", "sabab_yufarriq", "hahuna_la_jiha", "thamma_dhaka"):
         assert re.search(rf"^theorem {name}\b", lean, re.M), name
 
 
@@ -102,15 +107,15 @@ ok = 1
 
 # ٢
 rows = tsv(p)
-assert len(rows) == 18, len(rows)
+assert len(rows) == 21, len(rows)
 by = {}
 for r in rows:
     by.setdefault(r["naw"], []).append(r)
-assert {k: len(v) for k, v in by.items()} == {"namat": 3, "rutba": 2, "qaida": 3, "shahid": 7, "fahs": 3}, {k: len(v) for k, v in by.items()}
+assert {k: len(v) for k, v in by.items()} == {"namat": 3, "rutba": 2, "qaida": 3, "shahid": 10, "fahs": 3}, {k: len(v) for k, v in by.items()}
 assert [r["ramz"] for r in by["namat"]] == ["الصغرى", "الكبرى", "الظرفية"] and [r["ramz"] for r in by["rutba"]] == ["الحاكم", "المحكوم"]
-src = {"الكتاب": "sibawayhi.txt", "لسان العرب": "lisan.txt"}
+src = {"الكتاب": "sibawayhi.txt", "لسان العرب": "lisan.txt", "مغني اللبيب": "mughni.txt", "قطر الندى": "qatr.txt"}
 nusus = {k: open(os.path.join(d, v), encoding="utf-8").read().split("\n") for k, v in src.items() if os.path.exists(os.path.join(d, v))}
-pat = re.compile(r"(?:(الكتاب|لسان العرب) )?س(\d+)(?:–\d+)?: «([^»]+)»")
+pat = re.compile(r"(?:(الكتاب|لسان العرب|مغني اللبيب|قطر الندى) )?س(\d+)(?:–\d+)?: «([^»]+)»")
 iqt = kull = 0
 bimasdar = {}
 for r in rows:
@@ -131,7 +136,7 @@ for r in rows:
             if s0 in nusus:
                 assert q in nusus[s0][int(ln) - 1], (s0, ln, q[:40])
                 iqt += 1
-assert kull == 48 and bimasdar == {"الكتاب": 46, "لسان العرب": 2}, (kull, bimasdar)   # توقّع مستقلّ (عدٌّ يدويّ صفًّا صفًّا)
+assert kull == 69 and bimasdar == {"الكتاب": 60, "مغني اللبيب": 3, "قطر الندى": 4, "لسان العرب": 2}, (kull, bimasdar)   # توقّع مستقلّ (عدٌّ يدويّ)
 iqt_bayan = f"{iqt} اقتباسًا في سطره من {kull}" if nusus else "لم تُفحص الاقتباسات (المودَعات النصّية غير حاضرة)"
 ok += 1
 
@@ -159,20 +164,34 @@ ok += 1
 
 # ٥
 f1, f2, f3 = by["fahs"]
-assert "ص23" in f1["qima"] and "س240" in f1["shahid"] and "PageV01P023" in f1["shahid"]
+assert "ص23" in f1["qima"] and "س240" in f1["shahid"] and "PageV01P023" in f1["shahid"] and "6 أسطر" in f1["shahid"]
 assert "س9929" in f2["qima"] and "0 على السطر" in f2["qima"] and "1 على النصّ الموصول" in f2["qima"] and "«زيد ضربت أخاه» 0" in f2["qima"]
-assert "«إخبار عن الاسم بظرفه ومستقره» 0" in f3["qima"] and "«بظرفه» 0" in f3["shahid"] and "«ومستقره» 0" in f3["shahid"]
+assert "بتمامها 0" in f3["qima"] and "و4 في التاج" in f3["shahid"] and "و2 في المخصّص و3 في اللسان و2 في التاج و2 في المقاييس" in f3["shahid"]
+assert by["shahid"][5]["ramz"] == "زيد ضربت أخاه" and "قراءة مثال المالك" in by["shahid"][5]["qima"], "«زيد ضربت أخاه» قراءة معلَنة"
 ghiyab = "لم يُفحص (الكتاب غير حاضر)"
 if "الكتاب" in nusus:
     k = nusus["الكتاب"]
     kk = mawsul(k)
-    for ibara in ("بظرفه", "ومستقره", "إخبار عن الاسم", "زيد ضربت أخاه"):
+    for ibara in ("بظرفه", "ومستقره", "إخبار عن الاسم", "زيد ضربت أخاه", "زيد أخوك وضرب"):
         assert kk.count(ibara) == 0, (ibara, kk.count(ibara))
     assert kk.count("زيد أبوه منطلق") == 1 and sum(l.count("زيد أبوه منطلق") for l in k) == 0
     assert "كان زيد" in k[9929 - 1] and k[9930 - 1].startswith("~~أبوه منطلق")
-    assert "PageV01P023" in k[240 - 1] and "PageV01P061" in k[662 - 1] and "PageV01P060" in k[647 - 1]
+    assert kk.count("من سببه") == 33 and sum(1 for l in k if "من سببه" in l) == 24
+    assert [i + 1 for i, l in enumerate(k) if "ملتبس به" in l] == [653, 1161]
+    assert [i + 1 for i, l in enumerate(k) if "زيد أخوك" in l] == [3653, 4000, 5738, 5739, 11938, 11945]
+    assert "PageV01P023" in k[240 - 1] and "PageV01P061" in k[662 - 1] and "PageV01P060" in k[647 - 1] and "PageV01P022" in k[227 - 1]
     assert "هذا باب المسند والمسند إليه" in k[234 - 1] and "ومثله ثم زيد وههنا عمرو" in k[5731 - 1]
-    ghiyab = "ادّعاءات الغياب الأربعة مفحوصة على الكتاب موصول الأسطر، و«زيد أبوه منطلق» 1 موصولًا (س9929–9930)، وعلامتا ص23 وص61 في سطريهما"
+    assert "هذا باب ما أجرى مجرى ليس" in k[607 - 1] and "هذا باب إنما وأنما" in k[9907 - 1]
+    # أعداد الثلاث في سائر المودَعات الحاضرة، موصولةَ الأسطر — توقّع مستقلّ (عُدّت بأداة في الجلسة)
+    mutawaqqa = {"qatr": (0, 0, 0), "mughni": (0, 0, 0), "alfiyya": (0, 0, 0), "janadani": (0, 0, 0), "mukhassas": (0, 2, 0),
+                 "lisan": (0, 3, 0), "taj": (4, 2, 2), "maqayis": (0, 2, 0)}
+    for f, (a, b, c) in mutawaqqa.items():
+        fp = os.path.join(d, f + ".txt")
+        if os.path.exists(fp):
+            jj = mawsul(open(fp, encoding="utf-8").read().split("\n"))
+            assert (jj.count("بظرفه"), jj.count("ومستقره"), jj.count("إخبار عن الاسم")) == (a, b, c), (f, jj.count("بظرفه"), jj.count("ومستقره"), jj.count("إخبار عن الاسم"))
+            assert jj.count("إخبار عن الاسم بظرفه ومستقره") == 0
+    ghiyab = "ادّعاءات الغياب والأعداد مفحوصة على الكتاب وسائر المودَعات الحاضرة موصولة الأسطر، و«زيد أبوه منطلق» 1 موصولًا (س9929–9930)، وعلامتا ص23 وص61 في سطريهما"
 ok += 1
-print(f"{ok}/5 — 18/18 صفًّا ({hala})، {iqt_bayan}، منشئات الجملة وقاعدة الكبرى وزمن الوصف وموضع الصغرى في Lean مطابقة، {len(asma)} اسمًا "
+print(f"{ok}/5 — 21/21 صفًّا ({hala})، {iqt_bayan}، منشئات الجملة وقاعدة الكبرى وزمن الوصف وموضع الصغرى في Lean مطابقة، {len(asma)} اسمًا "
       f"معرَّفًا، {ghiyab}")
