@@ -2,6 +2,7 @@ import Dal.Khaliya
 import Dal.AqsamAllafz
 import Madlul.Dalala
 import Madlul.AqsamAlmadlul
+import Madlul.Tayin
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
 import Dal.AqsamAlism
@@ -561,3 +562,24 @@ import Jisr.Utur
 #print axioms SLGE.syl_enc_dec
 #print axioms SLGE.makharij_count
 #print axioms SLGE.syl_sizes
+
+-- المعلومات السابقة التأسيسية للتعيين والتمييز: induction FOR/ON على أركان ج1 ومنهج ابن سيده (Madlul/Tayin.lean)
+#print axioms Madlul.Tayin.wa_naam
+#print axioms Madlul.Tayin.wa_la
+#print axioms Madlul.Tayin.hayat_naam
+#print axioms Madlul.Tayin.hayat_la
+#print axioms Madlul.Tayin.sannif_ghayr_jamad
+#print axioms Madlul.Tayin.jamadiyya_hayat
+#print axioms Madlul.Tayin.sannif_iff
+#print axioms Madlul.Tayin.fusul_sannif
+#print axioms Madlul.Tayin.sannif_fusul
+#print axioms Madlul.Tayin.fasl_wahid
+#print axioms Madlul.Tayin.aql_la_yumayyiz
+#print axioms Madlul.Tayin.ghiyab_la_hukm
+#print axioms Madlul.Tayin.shawahid_khuruj
+#print axioms Madlul.Tayin.yuhassinQ_naam
+#print axioms Madlul.Tayin.yuhassinQ_la
+#print axioms Madlul.Tayin.hayat_tahsin
+#print axioms Madlul.Tayin.tahsin_la_yughayyir
+#print axioms Madlul.Tayin.qabiliyya_tabi_khassa
+#print axioms Madlul.Tayin.shawahid

@@ -712,5 +712,29 @@
   "milaf": "Jisr/Utur.lean",
   "min": "  | .mutlaq | .lahu | .fihi | .maahu | .hal => true\n",
   "ila": "  | .lahu | .fihi | .maahu | .hal => true\n"
+ },
+ {
+  "ism": "P84_nabat_hayawan",
+  "milaf": "Madlul/Tayin.lean",
+  "min": "  | .naam, .la, _ => some .nabat\n  | .naam, .naam, .la => some .hayawan\n  | .naam, .naam, .naam => some .insan\n  | _, _, _ => none\n\n/-- في غير الجمادية",
+  "ila": "  | .naam, .la, _ => some .hayawan\n  | .naam, .naam, .la => some .hayawan\n  | .naam, .naam, .naam => some .insan\n  | _, _, _ => none\n\n/-- في غير الجمادية"
+ },
+ {
+  "ism": "P85_insan_bila_aql",
+  "milaf": "Madlul/Tayin.lean",
+  "min": "  | .insan => { taghadhdhi := .naam, numuw := .naam, mawt := .naam, intiqal := .naam, aql := .naam,",
+  "ila": "  | .insan => { taghadhdhi := .naam, numuw := .naam, mawt := .naam, intiqal := .naam, aql := .la,"
+ },
+ {
+  "ism": "P86_jamadiyya_bil_mawt",
+  "milaf": "Madlul/Tayin.lean",
+  "min": "def jamadiyya (k : Khawass) : Prop := k.taghadhdhi = .la ∧ k.numuw = .la ∧ k.intiqal = .la",
+  "ila": "def jamadiyya (k : Khawass) : Prop := k.taghadhdhi = .la ∧ k.numuw = .la ∧ k.mawt = .la ∧ k.intiqal = .la"
+ },
+ {
+  "ism": "P87_aqil_hayawan",
+  "milaf": "Madlul/Tayin.lean",
+  "min": "  | .naam, .naam, .naam => some .insan\n  | _, _, _ => none\n\n/-- في غير الجمادية",
+  "ila": "  | .naam, .naam, .naam => some .hayawan\n  | _, _, _ => none\n\n/-- في غير الجمادية"
  }
 ]
