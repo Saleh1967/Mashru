@@ -68,7 +68,7 @@ d = os.environ.get("MUDAA_DIR")
 p = os.path.join(d, "nisab_asnaf.tsv") if d else None
 if not p or not os.path.exists(p):
     fahs_lean()
-    print("لم يُشغَّل على الجدول (غير حاضر؛ عيّن MUDAA_DIR وفيه nisab_asnaf.tsv)؛ فحص نصّ Lean: semDawr بحالاته والمبرهنات السبع، والإحصاء المستقلّ "
+    print("لم يُشغَّل على الجدول (غير حاضر؛ عيّن MUDAA_DIR وفيه nisab_asnaf.tsv)؛ فحص نصّ Lean: semDawr بحالاته والمبرهنات السبع، وعدٌّ مستقلّ "
           "من جدول المالك 57/18/4/22 يطابق نصّ ihsa_awamil")
     sys.exit(0)
 
@@ -161,5 +161,5 @@ for r in rows:
 for ident in asma:
     assert re.search(rf"^(def|theorem|structure|inductive) {re.escape(ident)}\b", lean, re.M), f"اسم في الجدول لا تعريف له في Lean: {ident}"
 ok += 1
-print(f"{ok}/5 — 16/16 صفًّا ({hala})، {iqt_bayan}، semDawr بحالاته والمبرهنات السبع، الإحصاء المستقلّ من جدول المالك "
+print(f"{ok}/5 — 16/16 صفًّا ({hala})، {iqt_bayan}، semDawr بحالاته والمبرهنات السبع، عدٌّ مستقلّ (في العدّ لا في التعيين) من جدول المالك "
       f"{n['إسنادية']}/{n['إضافية']}/{n['تقييدية']}/{n['بلا']} يطابق الجدول وLean، {len(asma)} اسمًا معرَّفًا")
