@@ -844,5 +844,23 @@
   "milaf": "Aql/Azmina.lean",
   "min": "def zamanOf (i : Izaha) : Zaman3 := if i.adad < 0 then .madi",
   "ila": "def zamanOf (i : Izaha) : Zaman3 := if i.adad ≤ 0 then .madi"
+ },
+ {
+  "ism": "P106_naqid_fawq_nafsuh",
+  "milaf": "Aql/Makan.lean",
+  "min": "  | .fawq => .taht\n",
+  "ila": "  | .fawq => .fawq\n"
+ },
+ {
+  "ism": "P107_jar_fawq_yamin",
+  "milaf": "Aql/Makan.lean",
+  "min": "  | .fawq => ⟨1, 0, 0⟩\n",
+  "ila": "  | .fawq => ⟨0, 1, 0⟩\n"
+ },
+ {
+  "ism": "P108_jihaOf_sifr_fawq",
+  "milaf": "Aql/Makan.lean",
+  "min": "  if 0 < v.ala m then some (mujab m) else if v.ala m < 0 then some (salib m) else none",
+  "ila": "  if 0 ≤ v.ala m then some (mujab m) else if v.ala m < 0 then some (salib m) else none"
  }
 ]
