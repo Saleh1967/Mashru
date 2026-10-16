@@ -651,3 +651,31 @@
 'Aql.Awwaliyyat.qasam_yusqit_intizar' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Aql.Awwaliyyat.muhal_naqd' depends on axioms: [propext, Quot.sound]
 'Aql.Awwaliyyat.mustaqim_hasan' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.rutba_tartib' does not depend on any axioms
+'Aql.Azmina.rutba_injective' does not depend on any axioms
+'Aql.Azmina.al_an_muhayid' depends on axioms: [propext]
+'Aql.Azmina.aks_yarudd' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.aks_aks' depends on axioms: [propext]
+'Aql.Azmina.zaman_hasir' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.aks_yaqlib' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.al_an_hal' depends on axioms: [propext]
+'Aql.Azmina.awwal_min_ams' does not depend on any axioms
+'Aql.Azmina.qabl_ams_biyawm' does not depend on any axioms
+'Aql.Azmina.ghad_thani_yawmik' does not depend on any axioms
+'Aql.Azmina.awwalMin_bad' depends on axioms: [propext]
+'Aql.Azmina.asma_azmina' does not depend on any axioms
+'Aql.Azmina.markaz_sifr' depends on axioms: [propext]
+'Aql.Azmina.markaz_markaz' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.markaz_yahfaz_farq' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.kull_yawm_yasir_amsan' does not depend on any axioms
+'Aql.Azmina.kull_ams_mada_lan_yaud' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.usbu_sabat_ayyam' depends on axioms: [propext]
+'Aql.Azmina.sana_ithna_ashar' depends on axioms: [propext]
+'Aql.Azmina.yawm_24' depends on axioms: [propext]
+'Aql.Azmina.shahr_bil_ayyam_la_hukm' depends on axioms: [propext]
+'Aql.Azmina.tahwil_yahfaz_ishara' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.mustaqim_hasan_ams_ghad' does not depend on any axioms
+'Aql.Azmina.muhal_ghad_ams' does not depend on any axioms
+'Aql.Azmina.la_yastaqim_maan' depends on axioms: [propext]
+'Aql.Azmina.izaha_mustaqbal' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.izaha_madi' depends on axioms: [propext, Quot.sound]

@@ -826,5 +826,23 @@
   "milaf": "Aql/Awwaliyyat.lean",
   "min": "  | .madiMuttasil => some \"ما فعل\"\n",
   "ila": "  | .madiMuttasil => some \"لما يفعل\"\n"
+ },
+ {
+  "ism": "P103_ams_ghadan",
+  "milaf": "Aql/Azmina.lean",
+  "min": "def ams : Izaha := ⟨-1, .yawm⟩\n",
+  "ila": "def ams : Izaha := ⟨1, .yawm⟩\n"
+ },
+ {
+  "ism": "P104_usbu_sitta",
+  "milaf": "Aql/Azmina.lean",
+  "min": "  | ⟨n, .usbu⟩ => some (7 * n)\n",
+  "ila": "  | ⟨n, .usbu⟩ => some (6 * n)\n"
+ },
+ {
+  "ism": "P105_al_an_madi",
+  "milaf": "Aql/Azmina.lean",
+  "min": "def zamanOf (i : Izaha) : Zaman3 := if i.adad < 0 then .madi",
+  "ila": "def zamanOf (i : Izaha) : Zaman3 := if i.adad ≤ 0 then .madi"
  }
 ]

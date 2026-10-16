@@ -123,6 +123,15 @@
   والمحال نقض أوّل الكلام بآخره (`muhal_naqd`، س263–267). الجدول `awwaliyyat.tsv` (17 صفًّا، 49 اقتباسًا بأسطرها يفحص الاختبار 47 منها؛ ج1/ج3 مرشّحان)
   مسجَّل «مرشّحًا» حتّى يأذن المالك بختمه؛ مطابقته `tahaqquq/test_awwaliyyat.py` (٥ل؛ P99–P102 تقتلها Lean). ظروف الزمان (إذ/إذا/قبل/بعد/متى، ز9) قُرئت
   ولم تُبنَ. التحليل في `Madlul/التعيين_والتمييز.md` §10.
+- الأزمنة على محور الآن (قرار المالك 2026-10-16، 20:06: الآن محايد، وناقص/زائد الوحدة الزمنية ساعة ويومًا وأسبوعًا وشهرًا وسنة): `Aql/Azmina.lean` —
+  `Wahda` سلّم برتبة، `Izaha` (عدد صحيح من وحدة)، الآن صفر كلّ وحدة عنصرًا محايدًا للجمع (`al_an_muhayid`) والعكس يردّ إليه (`aks_yarudd`)؛ الزمن من
+  الإشارة `zamanOf` (`zaman_hasir` حاصرة؛ `aks_yaqlib` التناظر حول الآن)؛ أسماء الإزاحات من اللسان (`ams` −1، `awwalMin` ينقص يومًا: أوّل من أمس −2
+  وأوّل من أوّل من أمس −3 س112333–112335، `ghad` +1 «ثاني يومك»، `bad` يزيد يومًا، `amAwwal`/`amQabil` ±1 سنة؛ `asma` 16 اسمًا على الشاهد)؛ انتقال الآن
+  `markaz` («كلّ يوم يصير أمسًا وكلّ أمس مضى فلن يعود» س112344: `kull_yawm_yasir_amsan`، `kull_ams_mada_lan_yaud`)؛ التحويل حيث نصّ اللسان (`ilaAyyam`:
+  الأسبوع 7؛ `ilaAshhur`: السنة 12؛ الشهر بالأيام لا حكم `shahr_bil_ayyam_la_hukm`؛ اليوم 24 ساعة تعيين) ويحفظ الإشارة (`tahwil_yahfaz_ishara`)؛
+  الاستقامة والمحال عند سيبويه (`yastaqim`: «أتيتك أمس وسآتيك غدا» مستقيم، «أتيتك غدا»/«سوف أشرب ماء البحر أمس» محال؛ `la_yastaqim_maan` لكلّ)؛
+  والجسر إلى `zaman5Of` (`izaha_mustaqbal`/`izaha_madi`). الجدول `azmina.tsv` (25 صفًّا، 31 اقتباسًا يفحص الاختبار 30) مسجَّل «مرشّحًا» حتّى يأذن
+  المالك بختمه؛ مطابقته `tahaqquq/test_azmina.py` (٥م؛ P103–P105 تقتلها Lean). التحليل في `Madlul/التعيين_والتمييز.md` §11.
 - القارئ: `.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv "<نصّ مشكول>"` — كلّ كلمة: خلاياها،
   حكم القانون، مقاطعها، ومنطوقها ومفهومها من المخزن بالسلسلة والوسم والمرتبة. ما لا قرار له يُرفض باسمه.
   والجملة (كلمتان فأكثر): تركيبها في الوصل على آلة المالك `Msent` (`Dal/Jumla.lean`: سقوط همزة الوصل بإصلاح المالك
@@ -130,7 +139,7 @@
 - المودَع: `MUDAA_MUKHASSAS=<مسار mukhassas.txt>` لاختبارات الشبكة، و`MUDAA_DIR=<مجلّد المودَعات>` لمطابقة بصماتها
   (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`؛ و`qatr.txt`، `mughni.txt`، `alfiyya.txt`،
   `janadani.txt`، `sibawayhi.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib/AqsamAwamil بأسطرها؛ و`ajnas.tsv` جدول الأجناس —
-  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`).
+  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`؛ و`azmina.tsv` (مرشّح) الذي يطابقه `test_azmina.py`).
 - قرارات الوقف والرسم في القارئ (ة، ى، التنوين، ألف الجماعة، حركة همزة الوصل) منقولةٌ من قطر الندى (باب الوقف L440–447،
   همزة الوصل L449–453) والألفية (L1131، L1136، L1142) بأسطرها في المخرج؛ قرارا الوقف على آخر النصّ (الموقوف عليه)، وقرارا الرسم
   وهمزة الوصل في كلّ موضع.

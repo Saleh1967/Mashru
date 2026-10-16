@@ -8,6 +8,7 @@ import Madlul.Jamad
 import Madlul.Shabaka
 import Madlul.Hawass
 import Aql.Awwaliyyat
+import Aql.Azmina
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
 import Dal.AqsamAlism
@@ -724,3 +725,31 @@ import Jisr.Utur
 #print axioms Aql.Awwaliyyat.qasam_yusqit_intizar
 #print axioms Aql.Awwaliyyat.muhal_naqd
 #print axioms Aql.Awwaliyyat.mustaqim_hasan
+#print axioms Aql.Azmina.rutba_tartib
+#print axioms Aql.Azmina.rutba_injective
+#print axioms Aql.Azmina.al_an_muhayid
+#print axioms Aql.Azmina.aks_yarudd
+#print axioms Aql.Azmina.aks_aks
+#print axioms Aql.Azmina.zaman_hasir
+#print axioms Aql.Azmina.aks_yaqlib
+#print axioms Aql.Azmina.al_an_hal
+#print axioms Aql.Azmina.awwal_min_ams
+#print axioms Aql.Azmina.qabl_ams_biyawm
+#print axioms Aql.Azmina.ghad_thani_yawmik
+#print axioms Aql.Azmina.awwalMin_bad
+#print axioms Aql.Azmina.asma_azmina
+#print axioms Aql.Azmina.markaz_sifr
+#print axioms Aql.Azmina.markaz_markaz
+#print axioms Aql.Azmina.markaz_yahfaz_farq
+#print axioms Aql.Azmina.kull_yawm_yasir_amsan
+#print axioms Aql.Azmina.kull_ams_mada_lan_yaud
+#print axioms Aql.Azmina.usbu_sabat_ayyam
+#print axioms Aql.Azmina.sana_ithna_ashar
+#print axioms Aql.Azmina.yawm_24
+#print axioms Aql.Azmina.shahr_bil_ayyam_la_hukm
+#print axioms Aql.Azmina.tahwil_yahfaz_ishara
+#print axioms Aql.Azmina.mustaqim_hasan_ams_ghad
+#print axioms Aql.Azmina.muhal_ghad_ams
+#print axioms Aql.Azmina.la_yastaqim_maan
+#print axioms Aql.Azmina.izaha_mustaqbal
+#print axioms Aql.Azmina.izaha_madi
