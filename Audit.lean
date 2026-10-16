@@ -23,6 +23,7 @@ import SLGE.Awamil
 import Jisr.Nisab
 import Jisr.Ikhbar
 import Jisr.AqsamAwamil
+import Jisr.Mulhaqat
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -453,6 +454,33 @@ import Jisr.AqsamAwamil
 #print axioms Jisr.AqsamAwamil.mujam_45
 #print axioms Jisr.AqsamAwamil.bila_hukm
 #print axioms Jisr.AqsamAwamil.shawahid
+-- الأطر السبعة عشر المنتظرة على أطر المالك: الملحقات بأدوارها وشواهد القطر (Jisr/Mulhaqat.lean)
+#print axioms Jisr.Mulhaqat.Dawr.hasir
+#print axioms Jisr.Mulhaqat.Dawr.code_inj
+#print axioms Jisr.Mulhaqat.khilaf_musajjal
+#print axioms Jisr.Mulhaqat.itar_conservative
+#print axioms Jisr.Mulhaqat.furui_eq
+#print axioms Jisr.Mulhaqat.naib_shawahid
+#print axioms Jisr.Mulhaqat.naib_ahkam
+#print axioms Jisr.Mulhaqat.ishtighal_shawahid
+#print axioms Jisr.Mulhaqat.tanazu_shawahid
+#print axioms Jisr.Mulhaqat.mafail_shawahid
+#print axioms Jisr.Mulhaqat.hal_shawahid
+#print axioms Jisr.Mulhaqat.tamyiz_shawahid
+#print axioms Jisr.Mulhaqat.idafa_shawahid
+#print axioms Jisr.Mulhaqat.amil_ismi_shawahid
+#print axioms Jisr.Mulhaqat.amil_ismi_istinfad
+#print axioms Jisr.Mulhaqat.nat_shawahid
+#print axioms Jisr.Mulhaqat.tawkid_shawahid
+#print axioms Jisr.Mulhaqat.atf_bayan_shawahid
+#print axioms Jisr.Mulhaqat.atf_nasaq_shawahid
+#print axioms Jisr.Mulhaqat.badal_shawahid
+#print axioms Jisr.Mulhaqat.adad_shawahid
+#print axioms Jisr.Mulhaqat.halat_adwar
+#print axioms Jisr.Mulhaqat.la_jazm
+#print axioms Jisr.Mulhaqat.taghtiya_kamila
+#print axioms Jisr.Mulhaqat.mulhaqCode_inj
+#print axioms Jisr.Mulhaqat.itar_value
 #print axioms SLGE.Law.ibtida
 #print axioms SLGE.Law.cell_count
 #print axioms SLGE.Law.qaltu
