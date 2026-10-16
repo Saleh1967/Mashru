@@ -880,5 +880,23 @@
   "milaf": "Aql/Mirsat.lean",
   "min": "def naql (r : Mirsat) (k : Int) (v : Izaha3) : Mirsat := ⟨r.an + k, Makan.jam r.huna v⟩",
   "ila": "def naql (r : Mirsat) (k : Int) (v : Izaha3) : Mirsat := ⟨r.an + k, r.huna⟩"
+ },
+ {
+  "ism": "P112_kubra_bila_sabab",
+  "milaf": "Aql/Isnad.lean",
+  "min": "  | .kubra d j => yastaghni j && (sabab j).contains d.ramz",
+  "ila": "  | .kubra d j => yastaghni j"
+ },
+ {
+  "ism": "P113_wasf_zaman_hal",
+  "milaf": "Aql/Isnad.lean",
+  "min": "  | .wasf _ => none",
+  "ila": "  | .wasf _ => some .hal"
+ },
+ {
+  "ism": "P114_sughra_mawdi_sifr",
+  "milaf": "Aql/Isnad.lean",
+  "min": "  | .sughra _ _ => r.huna",
+  "ila": "  | .sughra _ _ => sifr"
  }
 ]
