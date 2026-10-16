@@ -685,3 +685,32 @@
 'Aql.Azmina.istiqama_aks' depends on axioms: [propext, Quot.sound]
 'Aql.Azmina.jisr_mustaqbal' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Aql.Azmina.jisr_madi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Makan.naqid_naqid' does not depend on any axioms
+'Aql.Makan.naqid_ghayr' does not depend on any axioms
+'Aql.Makan.naqid_mihwar' does not depend on any axioms
+'Aql.Makan.naqid_ishara' does not depend on any axioms
+'Aql.Makan.jihat_sitt' does not depend on any axioms
+'Aql.Makan.marja_muhayid' depends on axioms: [propext]
+'Aql.Makan.aks_yarudd' depends on axioms: [propext]
+'Aql.Makan.aks_aks' depends on axioms: [propext]
+'Aql.Makan.mujab_ne_salib' does not depend on any axioms
+'Aql.Makan.jiha_hasira' depends on axioms: [propext, Quot.sound]
+'Aql.Makan.jiha_ala_mihwarih' does not depend on any axioms
+'Aql.Makan.aks_ala' does not depend on any axioms
+'Aql.Makan.jihaOf_some' depends on axioms: [propext, Quot.sound]
+'Aql.Makan.aks_yunaqid' depends on axioms: [propext, Quot.sound]
+'Aql.Makan.nisba_marja_nafsih' depends on axioms: [propext]
+'Aql.Makan.tanazur' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Makan.taaddi' depends on axioms: [propext, Quot.sound]
+'Aql.Makan.la_yajtami' does not depend on any axioms
+'Aql.Makan.intiqal_marja' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Makan.jar_jiha' does not depend on any axioms
+'Aql.Makan.jar_naqid' does not depend on any axioms
+'Aql.Makan.jar_ala_mihwarih' does not depend on any axioms
+'Aql.Makan.mujawir_tabadul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Makan.mil_wa_farsakh' does not depend on any axioms
+'Aql.Makan.farsakh_la_hukm' depends on axioms: [propext]
+'Aql.Makan.shawahid_sibawayhi' does not depend on any axioms
+'Aql.Makan.bila_marja_la_hukm' does not depend on any axioms
+'Aql.Makan.jisr_zaman' depends on axioms: [propext, Quot.sound]
+'Aql.Makan.wara_la_hukm' depends on axioms: [propext]

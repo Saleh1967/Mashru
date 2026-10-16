@@ -136,6 +136,16 @@
   خماسيّ `qalb5`؛ القاعدة قراءة البنّاء)؛ وجسر الإشارة إلى `zaman5Of` (`jisr_mustaqbal`/`jisr_madi`). 34 مبرهنة (15 لكلّ، 4 تعريفيّة، 15 على الشاهد).
   الجدول `azmina.tsv` (26 صفًّا، 49 اقتباسًا يفحص الاختبار 48) مسجَّل «مرشّحًا» حتّى يأذن المالك بختمه؛ مطابقته `tahaqquq/test_azmina.py` (٥م؛ بلا
   مودَع تُجرى فحوص نصّ Lean وحدها؛ P103–P105 تقتلها Lean). التحليل في `Madlul/التعيين_والتمييز.md` §11.
+- التجاور المكانيّ (قرار المالك 2026-10-16، 20:54: فوق وتحت ويمين ويسار ومرجع قبل وبعد، بتحليل سيبويه لا من الذاكرة): `Aql/Makan.lean` — الجهات
+  الستّ `Jiha` على ثلاثة محاور `Mihwar` بنقيض وإشارة (اللسان س28499 «إحدى الجهات الست المحيطة بالجرم»؛ `naqid_naqid`، `naqid_ishara`، `jihat_sitt`)،
+  الموضع `Izaha3` نسبةً إلى مرجع صفرٍ محايد (`marja_muhayid`، `aks_yarudd`)، الحكم بالجهة من الإشارة والمحاذاة لا حكم (`jihaOf`، `jiha_hasira`،
+  `jihaOf_some`)، التناظر (`aks_yunaqid`، `tanazur`: «أنت من خلفى ومعناه أنت خلفى» الكتاب س4170)، التعدّي (`taaddi`)، `la_yajtami`، انتقال المرجع
+  (`intiqal_marja`)، الجيران الستّة (`jar`، `jar_jiha`، `mujawir_tabadul`)، المقدار بوحدة أو مبهمًا (`Mawdi`؛ الكتاب س4161–4164 «دارى خلف دارك فرسخا …
+  أبهم فلم يدر ما قدر ذاك»؛ `hadd`: الميل 4000 ذراع والفرسخ 3 أو 6 أميال فلا تحويل `farsakh_la_hukm`)، شواهد الكتاب بجهاتها (`shawahid_sibawayhi`:
+  11)، مرجع قبل وبعد (`hukmBilMarja`، `bila_marja_la_hukm`: «لا تقول هذا قبل» س11493)، وقبل/بعد مكانًا وزمانًا على محور واحد (`jisr_zaman`: خلف =
+  ماضٍ، أمام = مستقبل على `Azmina.zamanOf`؛ الكتاب س4200، س18511)، ووراء من الأضداد لا حكم (`wara_la_hukm`؛ اللسان س6575). 29 مبرهنة (14 لكلّ، 3
+  تعريفيّة، 12 على الشاهد). الجدول `makan.tsv` (26 صفًّا، 50 اقتباسًا بأسطرها يفحصها الاختبار كلَّها) مسجَّل «مرشّحًا» حتّى يأذن المالك بختمه؛ مطابقته
+  `tahaqquq/test_makan.py` (٥ن؛ P106–P108 تقتلها Lean). التحليل في `Madlul/التعيين_والتمييز.md` §12.
 - القارئ: `.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv "<نصّ مشكول>"` — كلّ كلمة: خلاياها،
   حكم القانون، مقاطعها، ومنطوقها ومفهومها من المخزن بالسلسلة والوسم والمرتبة. ما لا قرار له يُرفض باسمه.
   والجملة (كلمتان فأكثر): تركيبها في الوصل على آلة المالك `Msent` (`Dal/Jumla.lean`: سقوط همزة الوصل بإصلاح المالك
@@ -143,7 +153,7 @@
 - المودَع: `MUDAA_MUKHASSAS=<مسار mukhassas.txt>` لاختبارات الشبكة، و`MUDAA_DIR=<مجلّد المودَعات>` لمطابقة بصماتها
   (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`؛ و`qatr.txt`، `mughni.txt`، `alfiyya.txt`،
   `janadani.txt`، `sibawayhi.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib/AqsamAwamil بأسطرها؛ و`ajnas.tsv` جدول الأجناس —
-  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`؛ و`azmina.tsv` (مرشّح) الذي يطابقه `test_azmina.py`).
+  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`؛ و`azmina.tsv` (مرشّح) الذي يطابقه `test_azmina.py`؛ و`makan.tsv` (مرشّح) الذي يطابقه `test_makan.py`).
 - قرارات الوقف والرسم في القارئ (ة، ى، التنوين، ألف الجماعة، حركة همزة الوصل) منقولةٌ من قطر الندى (باب الوقف L440–447،
   همزة الوصل L449–453) والألفية (L1131، L1136، L1142) بأسطرها في المخرج؛ قرارا الوقف على آخر النصّ (الموقوف عليه)، وقرارا الرسم
   وهمزة الوصل في كلّ موضع.

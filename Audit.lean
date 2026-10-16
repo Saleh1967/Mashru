@@ -9,6 +9,7 @@ import Madlul.Shabaka
 import Madlul.Hawass
 import Aql.Awwaliyyat
 import Aql.Azmina
+import Aql.Makan
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
 import Dal.AqsamAlism
@@ -759,3 +760,32 @@ import Jisr.Utur
 #print axioms Aql.Azmina.istiqama_aks
 #print axioms Aql.Azmina.jisr_mustaqbal
 #print axioms Aql.Azmina.jisr_madi
+#print axioms Aql.Makan.naqid_naqid
+#print axioms Aql.Makan.naqid_ghayr
+#print axioms Aql.Makan.naqid_mihwar
+#print axioms Aql.Makan.naqid_ishara
+#print axioms Aql.Makan.jihat_sitt
+#print axioms Aql.Makan.marja_muhayid
+#print axioms Aql.Makan.aks_yarudd
+#print axioms Aql.Makan.aks_aks
+#print axioms Aql.Makan.mujab_ne_salib
+#print axioms Aql.Makan.jiha_hasira
+#print axioms Aql.Makan.jiha_ala_mihwarih
+#print axioms Aql.Makan.aks_ala
+#print axioms Aql.Makan.jihaOf_some
+#print axioms Aql.Makan.aks_yunaqid
+#print axioms Aql.Makan.nisba_marja_nafsih
+#print axioms Aql.Makan.tanazur
+#print axioms Aql.Makan.taaddi
+#print axioms Aql.Makan.la_yajtami
+#print axioms Aql.Makan.intiqal_marja
+#print axioms Aql.Makan.jar_jiha
+#print axioms Aql.Makan.jar_naqid
+#print axioms Aql.Makan.jar_ala_mihwarih
+#print axioms Aql.Makan.mujawir_tabadul
+#print axioms Aql.Makan.mil_wa_farsakh
+#print axioms Aql.Makan.farsakh_la_hukm
+#print axioms Aql.Makan.shawahid_sibawayhi
+#print axioms Aql.Makan.bila_marja_la_hukm
+#print axioms Aql.Makan.jisr_zaman
+#print axioms Aql.Makan.wara_la_hukm
