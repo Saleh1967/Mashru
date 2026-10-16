@@ -736,5 +736,11 @@
   "milaf": "Madlul/Tayin.lean",
   "min": "  | .naam, .naam, .naam => some .insan\n  | _, _, _ => none\n\n/-- في غير الجمادية",
   "ila": "  | .naam, .naam, .naam => some .hayawan\n  | _, _, _ => none\n\n/-- في غير الجمادية"
+ },
+ {
+  "ism": "P88_ramz_jamad",
+  "milaf": "Madlul/Tayin.lean",
+  "min": "def ramzQism : Qism → Nat | .jamad => 1 | .nabat => 2 | .hayawan => 3 | .insan => 4",
+  "ila": "def ramzQism : Qism → Nat | .jamad => 9 | .nabat => 2 | .hayawan => 3 | .insan => 4"
  }
 ]
