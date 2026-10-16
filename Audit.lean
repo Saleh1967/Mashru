@@ -5,6 +5,7 @@ import Madlul.AqsamAlmadlul
 import Madlul.Tayin
 import Madlul.Wiratha
 import Madlul.Jamad
+import Madlul.Shabaka
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
 import Dal.AqsamAlism
@@ -631,3 +632,40 @@ import Jisr.Utur
 #print axioms Madlul.Jamad.thalj_yatfu
 #print axioms Madlul.Jamad.kathafa_mushakkika
 #print axioms Madlul.Jamad.haqiqa_mutawatia
+
+-- شبكة العلاقات وأساليب الإخبار وسلسلة القرار المرخَّصة جبريًّا (Madlul/Shabaka.lean)
+#print axioms Madlul.Shabaka.tawi_addi
+#print axioms Madlul.Shabaka.tawi_lazim
+#print axioms Madlul.Shabaka.tawi_fail
+#print axioms Madlul.Shabaka.tawi_lazim_la_hukm
+#print axioms Madlul.Shabaka.jahhil_naib
+#print axioms Madlul.Shabaka.jahhil_lazim_la_hukm
+#print axioms Madlul.Shabaka.sharik_tabadul
+#print axioms Madlul.Shabaka.utlub_yahfaz
+#print axioms Madlul.Shabaka.uslub_la_yakhtari
+#print axioms Madlul.Shabaka.murakhkhas_salim
+#print axioms Madlul.Shabaka.asl_sadiq
+#print axioms Madlul.Shabaka.qaida_mutadarrija
+#print axioms Madlul.Shabaka.asl_la_yurakhkhas_illa_mudaan
+#print axioms Madlul.Shabaka.semB_qabiliyya
+#print axioms Madlul.Shabaka.semB_mafooliyya
+#print axioms Madlul.Shabaka.semB_sababiyya
+#print axioms Madlul.Shabaka.semB_tasmiya
+#print axioms Madlul.Shabaka.semB_qanunMujam
+#print axioms Madlul.Shabaka.semB_nisba
+#print axioms Madlul.Shabaka.s1
+#print axioms Madlul.Shabaka.s2
+#print axioms Madlul.Shabaka.s3
+#print axioms Madlul.Shabaka.s4
+#print axioms Madlul.Shabaka.s5
+#print axioms Madlul.Shabaka.qawanin_salima
+#print axioms Madlul.Shabaka.shabaka_salima
+#print axioms Madlul.Shabaka.ghayr_thabit_la_yurakhkhas
+#print axioms Madlul.Shabaka.jinsSifa_la_yurakhkhas
+#print axioms Madlul.Shabaka.marfud
+#print axioms Madlul.Shabaka.shawahid_maqbula
+#print axioms Madlul.Shabaka.sail_sharab_marfud
+#print axioms Madlul.Shabaka.sail_sharab_bil_mujam
+#print axioms Madlul.Shabaka.salasil_marfuda
+#print axioms Madlul.Shabaka.qaida_shahid_mutadarrija
+#print axioms Madlul.Shabaka.adad_qawanin

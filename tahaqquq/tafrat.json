@@ -766,5 +766,23 @@
   "milaf": "Madlul/Wiratha.lean",
   "min": "      | .hayy => { taghadhdhi := .naam, numuw := .naam, mawt := .naam }",
   "ila": "      | .hayy => { taghadhdhi := .naam, numuw := .naam, mawt := .la }"
+ },
+ {
+  "ism": "P93_tawi_yahfaz_fail",
+  "milaf": "Madlul/Shabaka.lean",
+  "min": "  | .mujarrad, .mutaaddi, some m => some { fil := { i.fil with luzum := .lazim }, uslub := .mutawaa, fail := some m }",
+  "ila": "  | .mujarrad, .mutaaddi, some m => some { fil := { i.fil with luzum := .lazim }, uslub := .mutawaa, fail := i.fail, mafool := some m }"
+ },
+ {
+  "ism": "P94_qanun_mujam_fi_shabaka",
+  "milaf": "Madlul/Shabaka.lean",
+  "min": "    tasmiyat := [(\"شراب\", \"شرب\")] }\n\n/-- الشبكةُ نفسها مع القانون المعجميّ",
+  "ila": "    tasmiyat := [(\"شراب\", \"شرب\")], qawaninMujam := [(\"سائل\", \"شرب\")] }\n\n/-- الشبكةُ نفسها مع القانون المعجميّ"
+ },
+ {
+  "ism": "P95_rutba_bila_tadarruj",
+  "milaf": "Madlul/Shabaka.lean",
+  "min": "  | .nisba .. => 1\n",
+  "ila": "  | .nisba .. => 0\n"
  }
 ]

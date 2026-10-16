@@ -95,6 +95,13 @@
   معلَن في الوثيقة §7: صفّا الحالة ثلج/بخار، حالة الجوهر، سند الجوهر، أسماء الحيوان)، `nizam_fizya.tsv` (ف0–ف7 و20 ثابتًا نقلها البنّاء من
   Wikipedia قُرئت بأداة — «علمي» لا «مقيس» حتّى يُودَع مرجع)، `nizam_riyadiyyat.tsv` (ر1–ر6)؛ ومطابقتها `tahaqquq/test_jamad.py` (٥ط؛
   P89–P92).
+- شبكة العلاقات وأساليب الإخبار وسلسلة القرار المرخَّصة جبريًّا (قرار المالك 2026-10-16 وإمضاؤه 14:39): `Madlul/Shabaka.lean` — الأساليب
+  تحويلات على الأدوار (`jahhil`، `tawi`، `addi`، `sharik`، `utlub`؛ مبرهن لكلّ: `tawi_addi` المطاوعة عكس التعدية، `tawi_fail`، `jahhil_naib`،
+  `sharik_tabadul`، `utlub_yahfaz`، `uslub_la_yakhtari`)؛ والشبكة `Shabaka` بقاعدة مولَّدة `qaidaOf` (ش1–ش5؛ لا قانون يرفع صفة النوع إلى
+  ذي حالته) متدرّجة بالرتبة = درجة الاشتقاق (`qaida_mutadarrija`، `asl_la_yurakhkhas_illa_mudaan`) وسليمة على النموذج (`murakhkhas_salim`
+  لكلّ قاعدة، `qawanin_salima`/`shabaka_salima`/`marfud`/`jinsSifa_la_yurakhkhas` لكلّ شبكة؛ النموذج `semB` تعيين البنّاء بلا إغلاق للعالم)؛ وعلى شاهد المالك: «الحيوان يشرب الماء … الشراب يُشرب» مقبولة بسلاسلها
+  (`shawahid_maqbula`)، و«السائل شراب» لا حكم بأيّ سلسلة (`sail_sharab_marfud` من العامّ: لا قانون معجميّ مودَع) ويُرخَّص بإيداع قانون اللسان س16599 (`sail_sharab_bil_mujam`).
+  المودَع «جدول العلاقات» `alaqat.tsv` (`0269d2ce…`، «معلومات-سابقة») ومطابقته `tahaqquq/test_shabaka.py` (٥ي؛ P93–P95). المجاز فوق هذه الطبقة.
 - القارئ: `.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv "<نصّ مشكول>"` — كلّ كلمة: خلاياها،
   حكم القانون، مقاطعها، ومنطوقها ومفهومها من المخزن بالسلسلة والوسم والمرتبة. ما لا قرار له يُرفض باسمه.
   والجملة (كلمتان فأكثر): تركيبها في الوصل على آلة المالك `Msent` (`Dal/Jumla.lean`: سقوط همزة الوصل بإصلاح المالك
@@ -102,7 +109,7 @@
 - المودَع: `MUDAA_MUKHASSAS=<مسار mukhassas.txt>` لاختبارات الشبكة، و`MUDAA_DIR=<مجلّد المودَعات>` لمطابقة بصماتها
   (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`؛ و`qatr.txt`، `mughni.txt`، `alfiyya.txt`،
   `janadani.txt`، `sibawayhi.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib/AqsamAwamil بأسطرها؛ و`ajnas.tsv` جدول الأجناس —
-  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`).
+  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`).
 - قرارات الوقف والرسم في القارئ (ة، ى، التنوين، ألف الجماعة، حركة همزة الوصل) منقولةٌ من قطر الندى (باب الوقف L440–447،
   همزة الوصل L449–453) والألفية (L1131، L1136، L1142) بأسطرها في المخرج؛ قرارا الوقف على آخر النصّ (الموقوف عليه)، وقرارا الرسم
   وهمزة الوصل في كلّ موضع.
