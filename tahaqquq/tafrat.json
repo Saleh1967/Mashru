@@ -586,5 +586,131 @@
   "milaf": "Jisr/Mulhaqat.lean",
   "min": "      (attrAt ats i).2.2.1 == m.t.2.2.1 && (fillOf f i == 1 || (attrAt ats i).2.2.2)",
   "ila": "      fillOf f i == 1 || ((attrAt ats i).2.2.1 == m.t.2.2.1 && (attrAt ats i).2.2.2)"
+ },
+ {
+  "ism": "P63_sara_harf",
+  "milaf": "Jisr/AqsamAwamil.lean",
+  "min": "  ⟨\"صار\", 1, .fil, .sibawayhi, 480,",
+  "ila": "  ⟨\"صار\", 1, .harf, .sibawayhi, 480,"
+ },
+ {
+  "ism": "P64_hal_mahdhuf",
+  "milaf": "Jisr/AqsamAwamil.lean",
+  "min": "  ⟨\"هل\", 12, .harf, .mughni, 8095, \"حرف موضوع لطلب التصديق الإيجابي\", false⟩,\n",
+  "ila": ""
+ },
+ {
+  "ism": "P65_naql_muhmal",
+  "milaf": "Jisr/AqsamAwamil.lean",
+  "min": "    match (naql.filter fun n => n.amil == ism && n.sinf == sinf).map (·.qism) with\n    | [] => none\n    | ks => some ks",
+  "ila": "    match (naql.filter fun n => n.amil == ism && n.sinf == sinf).map (·.qism) with\n    | _ => none"
+ },
+ {
+  "ism": "P66_waqf_bila_taskin",
+  "milaf": "Jisr/Utur.lean",
+  "min": "def waqfDal (l : List Nat) : Bool := complete' l",
+  "ila": "def waqfDal (l : List Nat) : Bool := Fwaqf (run 0 l)"
+ },
+ {
+  "ism": "P67_qabiliyya_mutlaqa",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  | .qabiliyya q => m.qabiliyyat.contains q\n  | .fard f => m.afrad.contains f",
+  "ila": "  | .qabiliyya _ => true\n  | .fard f => m.afrad.contains f"
+ },
+ {
+  "ism": "P68_alaqa_isnad",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  | .alaqa _ _ => [.idafiyya]",
+  "ila": "  | .alaqa _ _ => [.isnadiyya]"
+ },
+ {
+  "ism": "P69_waqf_madlul_mutlaq",
+  "milaf": "Jisr/Utur.lean",
+  "min": "def waqfMadlul (u : ItarMadlul) : Bool := u.nisba == .isnadiyya",
+  "ila": "def waqfMadlul (u : ItarMadlul) : Bool := true"
+ },
+ {
+  "ism": "P70_hala_muhmala",
+  "milaf": "Jisr/Utur.lean",
+  "min": "                    | some h => halaIrab (isNom r) w.khalaya == h | none => true)) &&",
+  "ila": "                    | some _ => true | none => true)) &&"
+ },
+ {
+  "ism": "P71_ibtida_bila_zaman",
+  "milaf": "Jisr/Utur.lean",
+  "min": "def ibtidaMadlul (u : ItarMadlul) : Bool := (SLGE.Cat.roles u.mawdu.ind u.mawdu.tim).1",
+  "ila": "def ibtidaMadlul (u : ItarMadlul) : Bool := u.mawdu.ind"
+ },
+ {
+  "ism": "P72_wasl_farigh",
+  "milaf": "Jisr/Utur.lean",
+  "min": "def waslDal (l : List Nat) : Bool := !l.isEmpty && run 0 l != 96",
+  "ila": "def waslDal (l : List Nat) : Bool := run 0 l != 96"
+ },
+ {
+  "ism": "P73_tanwin_sakin",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  | 59 :: a :: _ => if ismi && a % 4 < 3 then a % 4 else 3\n",
+  "ila": "  | 59 :: _ :: _ => 3\n"
+ },
+ {
+  "ism": "P74_jins_fil_khassa",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  | .qabiliyya _, 2 => true\n",
+  "ila": "  | .khassa _, 2 => true\n"
+ },
+ {
+  "ism": "P75_qism_fil_ism",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  if r == 2 then .fil else if r == 7 then (if a == 1 || a == 3 then .fil else .harf) else if r == 5 then .harf else .ism",
+  "ila": "  if r == 2 then .ism else if r == 7 then (if a == 1 || a == 3 then .fil else .harf) else if r == 5 then .harf else .ism"
+ },
+ {
+  "ism": "P76_damm_la_hukm_imtina",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  | .laHukm, _ => .laHukm\n",
+  "ila": "  | .laHukm, _ => .mumtani\n"
+ },
+ {
+  "ism": "P77_hala_mulhaq_muhmala",
+  "milaf": "Jisr/Utur.lean",
+  "min": "        (m.t.2.2.2 || (halatMl u j).isEmpty || (halatMl u j).contains (halaIrab true w.khalaya)) &&",
+  "ila": "        true &&"
+ },
+ {
+  "ism": "P78_qism_mulhaq_muhmal",
+  "milaf": "Jisr/Utur.lean",
+  "min": "        SLGE.Cat.kindOfMadlul md == .ism\n",
+  "ila": "        true\n"
+ },
+ {
+  "ism": "P79_nasikh_harf",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  if r == 2 then .fil else if r == 7 then (if a == 1 || a == 3 then .fil else .harf) else if r == 5 then .harf else .ism",
+  "ila": "  if r == 2 then .fil else if r == 7 then .harf else if r == 5 then .harf else .ism"
+ },
+ {
+  "ism": "P80_mustatir_dakhil_alhadd",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  (match musnadIlayhIdx u with | some i => fillAt (baseSlots u) i == 0 | none => u.jisr.ud.f.1 == 2) &&",
+  "ila": "  (match musnadIlayhIdx u with | some _ => true | none => u.jisr.ud.f.1 == 2) &&"
+ },
+ {
+  "ism": "P81_tarkib_la_hukm_imtina",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  match n.khalal with | none => .murakhkhas | some (.laHukm _) => .laHukm | some _ => .mumtani",
+  "ila": "  match n.khalal with | none => .murakhkhas | some _ => .mumtani"
+ },
+ {
+  "ism": "P82_mudari_khabar_dakhil",
+  "milaf": "Jisr/Utur.lean",
+  "min": "    (if Mulhaqat.roleOf u.jisr.ud.f i == 2 then u.jisr.ud.f.1 == 1\n",
+  "ila": "    (if Mulhaqat.roleOf u.jisr.ud.f i == 2 then true\n"
+ },
+ {
+  "ism": "P83_mutlaq_la_yataakhkhar",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  | .mutlaq | .lahu | .fihi | .maahu | .hal => true\n",
+  "ila": "  | .lahu | .fihi | .maahu | .hal => true\n"
  }
 ]
