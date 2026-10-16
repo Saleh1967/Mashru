@@ -3,7 +3,7 @@
 
 يُشغَّل حين يحضر الجدول (MUDAA_DIR وفيه azmina.tsv)؛ وإلّا طُبع «لم يُشغَّل» وخرج 0.
 ١. بصمةُ الجدول الحاضر هي بصمتُه في mudaat/sijill.json (وإلّا رُفض باسمه)، ونوعُه «معلومات-سابقة»، وحالتُه مختوم أو مرشّح (تُطبع).
-٢. توقّعاتٌ مستقلّة: 25 صفًّا — 5 وحدات برتبها 0–4 (ساعة، يوم، أسبوع، شهر، سنة)، 16 اسمًا، 4 شواهد استقامة؛ وزمنُ كلّ اسم من إشارة
+٢. توقّعاتٌ مستقلّة: 26 صفًّا — 5 وحدات برتبها 0–4 (ساعة، يوم، أسبوع، شهر، سنة)، 16 اسمًا، 5 شواهد استقامة؛ وزمنُ كلّ اسم من إشارة
    عدده (سالب ماضٍ، صفر حال، موجب مستقبل)؛ وكلُّ «…» في عمود الشاهد إمّا قولُ المالك/قراءة البنّاء وإمّا على نمط «المصدر سN: «…»» موجودٌ
    في سطره في المودَع الحاضر بلفظه (لسان العرب/الكتاب/المخصّص؛ ج3 مرشّح لا يُفحص).
 ٣. Lean من النصّ (لا عبر Lean): قائمةُ `asma` تُقرأ من Azmina.lean وتُقوَّم بمقوِّمٍ مستقلّ صغير (⟨n, .u⟩، alAn .u، ams/ghad/alYawm/amAwwal/amQabil
@@ -11,8 +11,9 @@
    (الأسبوع 7، السنة 12، اليوم 24، الأسبوع 168 ساعة) تطابق عمودَ adad في صفوف الوحدات؛ والشهرُ بالأيام غيرُ معرَّف في `ilaAyyam` (لا حكم).
 ٤. كلُّ اسمٍ في عمود mirat_lean معرَّفٌ في Azmina.lean باسمه الكامل (def/theorem/structure/inductive في أوّل السطر)، والمنقوطُ منشئٌ في
    فضاء نوعه أو حقلٌ/دالّةٌ معرَّفة باسمها الكامل.
-٥. شواهدُ الاستقامة: الزمنُ المحكوم في عمود zaman («مستقيم»/«محال») يطابق توافقَ إشارة العدد مع زمن الفعل المذكور قبل «↔» — توقّعٌ
-   مستقلّ عن `yastaqim`.
+٥. شواهدُ الاستقامة: الحكمُ في عمود zaman («مستقيم»/«محال»/«لا حكم») يطابق توافقَ إشارة العدد مع زمن الفعل المذكور قبل «↔»، والصفرُ
+   «لا حكم» — توقّعٌ مستقلّ عن `istiqama`.
+بلا مودَع: تُجرى الفحوصُ التي لا تحتاج الجدول (نِسَب التحويل في نصّ Lean، وأسماءُ المبرهنات) ثمّ يُطبع «لم يُشغَّل على الجدول» ويُخرج 0.
 التشغيل: python3 -I tahaqquq/test_azmina.py
 """
 import hashlib
@@ -25,10 +26,40 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ISM = "جدول الأزمنة"
 WAHDAT = ["saa", "yawm", "usbu", "shahr", "sana"]
 
+lean = open(os.path.join(ROOT, "Aql", "Azmina.lean"), encoding="utf-8").read()
+
+
+def block(start, end):
+    a = lean.index(start)
+    return lean[a:lean.index(end, a)]
+
+
+def fahs_lean():
+    """فحوصٌ على نصّ Lean لا تحتاج الجدول: نِسَبُ التحويل، والشهرُ بالأيام غيرُ معرَّف، وأسماءُ المبرهنات."""
+    nisab = {}
+    for fn in ("ilaAyyam", "ilaAshhur", "ilaSaat"):
+        body = block(f"def {fn} : Izaha → Option Int", "\n\n")
+        for u, k in re.findall(r"\| ⟨n, \.(\w+)⟩ => some \((\d+) \* n\)", body):
+            nisab[(fn, u)] = int(k)
+        for u in re.findall(r"\| ⟨n, \.(\w+)⟩ => some n\n", body):
+            nisab[(fn, u)] = 1
+        assert "| _ => none" in body, fn
+    assert nisab == {("ilaAyyam", "yawm"): 1, ("ilaAyyam", "usbu"): 7, ("ilaAshhur", "shahr"): 1, ("ilaAshhur", "sana"): 12,
+                     ("ilaSaat", "saa"): 1, ("ilaSaat", "yawm"): 24, ("ilaSaat", "usbu"): 168}, nisab
+    assert ("ilaAyyam", "shahr") not in nisab and ("ilaAyyam", "sana") not in nisab
+    hadd = re.findall(r"\| \.(\w+) => some \((\d+), (\d+)\)", block("def hadd : Wahda → Option (Int × Int)", "\n\n"))
+    assert hadd == [("yawm", "1", "1"), ("usbu", "7", "7"), ("shahr", "29", "30")], hadd
+    for name in ("mustaqim_hasan_ams_ghad", "muhal_ghad_ams", "al_an_la_hukm", "istiqama_aks", "zaman_hasir", "aks_yaqlib",
+                 "kull_ams_mada_lan_yaud", "jisr_mustaqbal", "jisr_madi", "shahr_tisa_aw_thalathun"):
+        assert re.search(rf"^theorem {name}\b", lean, re.M), name
+    return nisab
+
+
 d = os.environ.get("MUDAA_DIR")
 p = os.path.join(d, "azmina.tsv") if d else None
 if not p or not os.path.exists(p):
-    print("لم يُشغَّل (الجدول غير حاضر؛ عيّن MUDAA_DIR وفيه azmina.tsv)")
+    fahs_lean()
+    print("لم يُشغَّل على الجدول (غير حاضر؛ عيّن MUDAA_DIR وفيه azmina.tsv)؛ فحص نصّ Lean: نسب التحويل 7/12/24/168 والحدّان 29/30 والمبرهنات المسمّاة موجودة")
     sys.exit(0)
 
 
@@ -48,11 +79,11 @@ ok = 1
 
 # ٢
 rows = tsv(p)
-assert len(rows) == 25, len(rows)
+assert len(rows) == 26, len(rows)
 by = {}
 for r in rows:
     by.setdefault(r["naw"], []).append(r)
-assert {k: len(v) for k, v in by.items()} == {"wahda": 5, "ism": 16, "istiqama": 4}, {k: len(v) for k, v in by.items()}
+assert {k: len(v) for k, v in by.items()} == {"wahda": 5, "ism": 16, "istiqama": 5}, {k: len(v) for k, v in by.items()}
 assert [(r["ramz"], r["wahda"], r["zaman"]) for r in by["wahda"]] == \
     [("ساعة", "saa", "0"), ("يوم", "yawm", "1"), ("أسبوع", "usbu", "2"), ("شهر", "shahr", "3"), ("سنة", "sana", "4")]
 for r in by["ism"]:
@@ -102,17 +133,11 @@ for r in rows:
             if s0 in nusus:
                 assert q in nusus[s0][int(ln) - 1], (s0, ln, q[:40])
                 iqt += 1
-assert kull == 31, kull   # توقّع مستقلّ (عدٌّ يدويّ): 22 لسان العرب، 7 الكتاب، 1 المخصّص، 1 ج3؛ وقول المالك وقراءة البنّاء بلا سطر
+assert kull == 49, kull   # توقّع مستقلّ (عدٌّ يدويّ): 29 لسان العرب، 18 الكتاب، 1 المخصّص، 1 ج3؛ وقول المالك وقراءة البنّاء بلا سطر
 iqt_bayan = f"{iqt} اقتباسًا في سطره من {kull} (ج3 لا يُفحص)" if nusus else "لم تُفحص الاقتباسات (المودَعات النصّية غير حاضرة)"
 ok += 1
 
 # ٣ — Lean من النصّ
-lean = open(os.path.join(ROOT, "Aql", "Azmina.lean"), encoding="utf-8").read()
-
-
-def block(start, end):
-    a = lean.index(start)
-    return lean[a:lean.index(end, a)]
 
 
 def lit(expr):
@@ -141,19 +166,10 @@ asma_src = block("def asma : List (String × Izaha) :=", "theorem asma_azmina")
 asma = [(name, lit(e)) for name, e in re.findall(r'\("([^"]+)", ([^()\n]+?(?:\([^()]*\))?[^()\n]*?)\)(?=,|\])', asma_src)]
 jadwal = [(r["ramz"], (int(r["adad"]), r["wahda"])) for r in by["ism"]]
 assert asma == jadwal, (asma, jadwal)
-nisab = {}
-for fn in ("ilaAyyam", "ilaAshhur", "ilaSaat"):
-    body = block(f"def {fn} : Izaha → Option Int", "\n\n")
-    for u, k in re.findall(r"\| ⟨n, \.(\w+)⟩ => some \((\d+) \* n\)", body):
-        nisab[(fn, u)] = int(k)
-    for u in re.findall(r"\| ⟨n, \.(\w+)⟩ => some n\n", body):
-        nisab[(fn, u)] = 1
-    assert "| _ => none" in body, fn
-assert nisab == {("ilaAyyam", "yawm"): 1, ("ilaAyyam", "usbu"): 7, ("ilaAshhur", "shahr"): 1, ("ilaAshhur", "sana"): 12,
-                 ("ilaSaat", "saa"): 1, ("ilaSaat", "yawm"): 24, ("ilaSaat", "usbu"): 168}, nisab
+nisab = fahs_lean()
 w = {r["ramz"]: r["adad"] for r in by["wahda"]}
-assert w["أسبوع"].startswith("7 ") and w["سنة"].startswith("12 ") and w["يوم"].startswith("24 ") and w["شهر"].startswith("لا حكم"), w
-assert ("ilaAyyam", "shahr") not in nisab and ("ilaAyyam", "sana") not in nisab
+assert w["أسبوع"].startswith("7 ") and w["سنة"].startswith("12 ") and w["يوم"].startswith("24 ") and w["شهر"].startswith("29 أو 30 "), w
+assert "لا حكم" in w["شهر"] and "لا حكم" in w["سنة"], w
 ok += 1
 
 # ٤
@@ -179,11 +195,9 @@ for r in by["istiqama"]:
     fil, hukm = r["zaman"].split(" ↔ ")
     n = int(r["adad"])
     sign = -1 if n < 0 else 0 if n == 0 else 1
-    expected = "مستقيم" if Z[fil] == sign else "محال"
+    expected = "لا حكم" if n == 0 else "مستقيم" if Z[fil] == sign else "محال"
     assert hukm.endswith(expected), (r["ramz"], r["zaman"], expected)
-assert [r["zaman"].split(": ")[-1] for r in by["istiqama"]] == ["مستقيم", "مستقيم", "محال", "محال"]
-for name in ("mustaqim_hasan_ams_ghad", "muhal_ghad_ams", "la_yastaqim_maan", "zaman_hasir", "aks_yaqlib", "kull_ams_mada_lan_yaud"):
-    assert re.search(rf"^theorem {name}\b", lean, re.M), name
+assert [r["zaman"].split(": ")[-1] for r in by["istiqama"]] == ["مستقيم", "مستقيم", "محال", "محال", "لا حكم"]
 ok += 1
-print(f"{ok}/5 — 25/25 صفًّا ({hala})، {iqt_bayan}، أسماء الإزاحات (16) ونسب الوحدات في Lean مطابقة، {len(asma_lean)} اسمًا معرَّفًا، "
-      f"الاستقامة 2 والمحال 2")
+print(f"{ok}/5 — 26/26 صفًّا ({hala})، {iqt_bayan}، أسماء الإزاحات (16) ونسب الوحدات والحدّان في Lean مطابقة، {len(asma_lean)} اسمًا معرَّفًا، "
+      f"الاستقامة 2 والمحال 2 ولا حكم 1")

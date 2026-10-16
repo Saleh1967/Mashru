@@ -667,15 +667,19 @@
 'Aql.Azmina.markaz_sifr' depends on axioms: [propext]
 'Aql.Azmina.markaz_markaz' depends on axioms: [propext, Quot.sound]
 'Aql.Azmina.markaz_yahfaz_farq' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.markaz_yahfaz_tartib' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Aql.Azmina.kull_yawm_yasir_amsan' does not depend on any axioms
 'Aql.Azmina.kull_ams_mada_lan_yaud' depends on axioms: [propext, Quot.sound]
 'Aql.Azmina.usbu_sabat_ayyam' depends on axioms: [propext]
 'Aql.Azmina.sana_ithna_ashar' depends on axioms: [propext]
 'Aql.Azmina.yawm_24' depends on axioms: [propext]
+'Aql.Azmina.shahr_tisa_aw_thalathun' depends on axioms: [propext]
 'Aql.Azmina.shahr_bil_ayyam_la_hukm' depends on axioms: [propext]
-'Aql.Azmina.tahwil_yahfaz_ishara' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.zamanOf_ishara' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.tahwil_yahfaz_ishara' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Aql.Azmina.mustaqim_hasan_ams_ghad' does not depend on any axioms
 'Aql.Azmina.muhal_ghad_ams' does not depend on any axioms
-'Aql.Azmina.la_yastaqim_maan' depends on axioms: [propext]
-'Aql.Azmina.izaha_mustaqbal' depends on axioms: [propext, Quot.sound]
-'Aql.Azmina.izaha_madi' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.al_an_la_hukm' depends on axioms: [propext]
+'Aql.Azmina.istiqama_aks' depends on axioms: [propext, Quot.sound]
+'Aql.Azmina.jisr_mustaqbal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Azmina.jisr_madi' depends on axioms: [propext, Classical.choice, Quot.sound]

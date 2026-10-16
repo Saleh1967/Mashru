@@ -1,22 +1,29 @@
 /-
   Aql/Azmina.lean — الأزمنةُ على محور الآن: الآنُ محايدٌ (صفر)، والإزاحاتُ عنه بالوحدات (ساعة، يوم، أسبوع، شهر، سنة) سالبةً لما مضى
-  وموجبةً لما يأتي؛ وأسماءُ الإزاحات من اللسان (أمس، أوّل من أمس، الغد، بعد غد، عام أوّل، عام قابل)؛ وتحويلُ الوحدات حيث نصّ اللسان
-  (الأسبوع سبعة أيام، السنة اثنا عشر شهرًا) و«لا حكم» حيث لم ينصّ (الشهر بالأيام)؛ وانتقالُ الآن (كلّ يوم يصير أمسًا)؛ واستقامةُ الكلام
-  ومحالُه عند سيبويه على الإزاحات.
+  وموجبةً لما يأتي؛ وأسماءُ الإزاحات من اللسان والكتاب (أمس، أوّل من أمس، الغد، بعد غد، عام أوّل، عام قابل)؛ وتحويلُ الوحدات بما نقله
+  اللسان (اليوم بليلته 24 ساعة، الأسبوع سبعة أيام، الشهر 29 أو 30 يومًا، السنة اثنا عشر شهرًا أو 360 يومًا) — وحيث نقل عددين «لا حكم» بعددٍ
+  واحد حتّى يقرّر المالك (الشهر والسنة بالأيام)؛ وانتقالُ الآن (كلّ يوم يصير أمسًا)؛ واستقامةُ الكلام ومحالُه عند سيبويه على الإزاحات.
 
   قرارُ المالك (2026-10-16، 20:06) بلفظه: «فإذا زمن الان هو المحايد وناقص الوحدة الزمنية ساعه وساعتين ويوم واسبوع وشهر وسنة هكذا وزائد
   واحد غدا وزائد سبعة اسبوع وزائد شهر وزائد سنة اعمل lean الازمنة».
 
   **السند** (بأسطره؛ الاقتباساتُ بلفظ المصدر):
   - لسان العرب (مختوم): س245811: «والآن تقع على كل وقت حاضر لا يخص بعض ذلك دون بعض»؛ س149201: «الساعة: جزء من أجزاء الليل والنهار»؛
-    س149208: «والساعة: الوقت الحاضر»؛ س244209: «اليوم: معروف مقداره من طلوع الشمس إلى غروبها»؛ س148327: «والسبوع والأسبوع من الأيام: تمام
-    سبعة أيام»؛ س87957–87958: «ابن سيده: والشهر العدد المعروف / من الأيام، سمي بذلك لأنه يشهر بالقمر وفيه علامة ابتدائه وانتهائه»؛ س82632:
-    «السنة اثنا عشر شهرا»؛ س199682: «الحول: سنة بأسرها»؛ س263594: «السنة: واحدة السنين. قال ابن سيده: السنة العام».
-  - أسماءُ الإزاحات — لسان العرب: س112305: «أمس: من ظروف الزمان مبني على الكسر إلا أن ينكر أو يعرف»؛ س112333–112335: «ابن السكيت: تقول ما
-    رأيته مذ / أمس، فإن لم تره يوما قبل ذلك قلت: ما رأيته مذ أول من أمس، فإن لم تره / يومين قبل ذلك قلت: ما رأيته مذ أول من أول من أمس»؛
-    س112353: «ما رأيته / قبل أمس بيوم؛ يريد من أول من أمس»؛ س112344–112345: «يقولون إذا نكروه كل يوم يصير أمسا، وكل أمس مضى فلن يعود»؛
-    س289554: «الغدو: أصل الغد، وهو اليوم الذي يأتي بعد يومك»؛ س289556: «والغد ثاني يومك»؛ س70859–70861: «يقال ما رأيته مذ عام الأول، /
-    وقال العوام: مذ عام أول … / … لم أره مذ يومان ولم / أره منذ يومين»؛ س212565: «يقال: عام قابل أي مقبل».
+    س149206–149207: «والليل والنهار معا أربع وعشرون ساعة، وإذا اعتدلا فكل / واحد منهما ثنتا عشرة ساعة»؛ س149208: «والساعة: الوقت الحاضر»؛
+    س244209: «اليوم: معروف مقداره من طلوع الشمس إلى غروبها» (النهارُ وحده؛ فاليومُ بليلته 24 ساعة — قراءة)؛ س148327: «والسبوع والأسبوع من
+    الأيام: تمام سبعة أيام»؛ س87957–87958: «ابن سيده: والشهر العدد المعروف / من الأيام، سمي بذلك لأنه يشهر بالقمر وفيه علامة ابتدائه وانتهائه»؛
+    س87964 (حديثٌ يرويه): «الشهر تسع وعشرون»؛ س85101: «كان الشهر تسعا وعشرين … وإذا كان الشهر ثلاثين»؛ س98561: «عدد الشهر حتى تكملوه ثلاثين
+    يوما»؛ س82632 (حديثٌ يرويه): «السنة اثنا عشر شهرا»؛ س11061 (الفراء): «والسنة ثلاثمائة وستون يوما»؛ س199682: «الحول: سنة بأسرها»؛ س263594:
+    «السنة: واحدة السنين. قال ابن سيده: السنة العام».
+  - أسماءُ الإزاحات — الكتاب (مختوم) س11522–11524: «وإذا قلت عام أول فإنما جاز هذا الكلام لأنك تعلم به أنك / تعني العام الذي يليه عامك كما أنك
+    إذا قلت أول من أمس أو بعد غد فإنما / تعني الذي يليه أمس والذي يليه غد» (ونقله اللسان س219259–219261)؛ س11585–11586: «كما تقول عاما أول فيعلم
+    أنك تريد العام الذي يليه / عامك»؛ س2151–2152: «فيقول اليوم أو غدا أو / بعد غد أو يوم الجمعة | وتقول متى سير عليه ؟ فيقول أمس أو أول من
+    أمس». لسان العرب: س112305: «أمس: من ظروف الزمان مبني على الكسر إلا أن ينكر أو يعرف»؛ س112333–112335: «ابن السكيت: تقول ما رأيته مذ /
+    أمس، فإن لم تره يوما قبل ذلك قلت: ما رأيته مذ أول من أمس، فإن لم تره / يومين قبل ذلك قلت: ما رأيته مذ أول من أول من أمس»؛ س112352–112353:
+    «ويقال ما رأيته / قبل أمس بيوم؛ يريد من أول من أمس»؛ س112344: «يقولون إذا نكروه كل يوم يصير أمسا، وكل أمس مضى فلن يعود»؛ س289554:
+    «الغدو: أصل الغد، وهو اليوم الذي يأتي بعد يومك»؛ س289556: «والغد ثاني يومك»؛ س70859–70862 (إعرابُ مذ/منذ لا المعنى): «يقال ما رأيته
+    مذ عام الأول، / وقال العوام: مذ عام أول … / … لم أره مذ يومان ولم / أره منذ يومين»؛ س212565: «يقال: عام قابل أي مقبل» (الإشارةُ لا
+    المقدار؛ المقدارُ 1 من قول المالك «وزائد سنة» وقراءةُ «يليه» واحدًا).
   - الكتاب (مختوم) س263–264: «فأما المستقيم الحسن فقولك أتيتك أمس وسآتيك غدا | وأما محال فأن تنقض أول / كلامك بآخره فتقول أتيتك غدا
     وسآتيك أمس»؛ س267: «المحال الكذب فأن تقول سوف أشرب ماء البحر أمس»؛ س348: «سيذهب فإنه دليل على أنه يكون فيما يستقبل من الزمان»؛
     س9760–9761: «سوف يفعل لأنها بمنزلة السين التي / في قولك سيفعل»؛ ج3 (مرشّح) س926: «وتخليص المستقبل عن الحاضر بدخول السين أو سوف».
@@ -25,25 +32,33 @@
   **الصورة.** الوحداتُ `Wahda` سلّمٌ برتبة (`rutba_tartib`). الإزاحةُ `Izaha` عددٌ صحيح من وحدة؛ **الآنُ محايد**: صفرُ كلّ وحدة، عنصرٌ محايد
   للجمع (`al_an_muhayid`)، والعكسُ يردّ إلى الآن (`aks_yarudd`). **الأزمنةُ الثلاثة من الإشارة** (`zamanOf`: سالب ماضٍ، صفر حال، موجب مستقبل؛
   `zaman_hasir`)، والعكسُ يقلب الماضي مستقبلًا والحالَ حالًا (`aks_yaqlib`) — فالتناظرُ حول الآن. **الأسماء** إزاحاتٌ باليوم والسنة: أمس −1،
-  أوّل من أمس −2، أوّل من أوّل من أمس −3 (`awwalMin` ينقص يومًا — اللسان س112333–112335، 112353)، اليوم 0، الغد +1 «ثاني يومك» (`bad` يزيد يومًا)،
-  بعد غد +2؛ عام أوّل −1 سنة، عام قابل +1 سنة. **انتقالُ الآن** (`markaz k`: الإزاحةُ نفسُها من آنٍ متأخّرٍ بـ k): كلُّ يوم يصير أمسًا
-  (`kull_yawm_yasir_amsan`)، وكلُّ أمسٍ مضى فلن يعود (`kull_ams_mada_lan_yaud`: لا انتقالٍ إلى الأمام يعيده)، والانتقالُ يحفظ الفروقَ والترتيب
-  (`markaz_yahfaz_farq`). **التحويل** حيث نصّ اللسان: الأسبوع 7 أيام (`usbu_sabat_ayyam`)، السنة 12 شهرًا (`sana_ithna_ashar`)؛ والشهرُ بالأيام
-  والسنةُ بالأيام «لا حكم» (`shahr_bil_ayyam_la_hukm`؛ اللسان: «العدد المعروف من الأيام» بلا عدد — فلا يُعيَّن)؛ واليومُ 24 ساعة تعيينُ البنّاء
-  (اللسان: «جزء من أجزاء الليل والنهار» بلا عدد)؛ والتحويلُ يحفظ الإشارة (`tahwil_yahfaz_ishara`). **الاستقامةُ والمحال** (الكتاب س263–267):
-  الكلامُ يستقيم إذا وافق زمنُ الفعل إشارةَ الظرف (`yastaqim`): «أتيتك أمس» و«سآتيك غدا» مستقيمان، و«أتيتك غدا» و«سوف أشرب … أمس» محالان
-  (على الشاهد)، ولا إزاحةَ تستقيم مع الماضي والمستقبل معًا (`la_yastaqim_maan`). **الجسرُ إلى الأزمنة الخمسة** (`Awwaliyyat.zaman5Of`): إزاحةٌ
-  موجبةٌ من الآن مستقبلٌ (منفَّسٌ أو لا) وسالبةٌ ماضٍ (منقطعٌ أو متّصل) (`izaha_mustaqbal`، `izaha_madi`).
+  أوّل من أمس −2، أوّل من أوّل من أمس −3 (`awwalMin` ينقص يومًا — الكتاب س11523–11524 «الذي يليه أمس»، اللسان س112333–112335، 112352–112353)،
+  اليوم 0، الغد +1 «ثاني يومك» (`bad` يزيد يومًا — الكتاب «الذي يليه غد»)، بعد غد +2؛ عام أوّل −1 سنة («العام الذي يليه عامك»)، عام قابل +1 سنة؛
+  وقراءةُ «يليه» واحدًا قراءةُ البنّاء. **انتقالُ الآن** (`markaz k`: الإزاحةُ نفسُها من آنٍ متأخّرٍ بـ k): كلُّ يوم يصير أمسًا
+  (`kull_yawm_yasir_amsan`)، وكلُّ أمسٍ مضى فلن يعود (`kull_ams_mada_lan_yaud`: لا انتقالٍ إلى الأمام يعيده)، والانتقالُ يحفظ الفروقَ
+  (`markaz_yahfaz_farq`) والترتيبَ (`markaz_yahfaz_tartib`). **التحويل** بما نقله اللسان: اليومُ بليلته 24 ساعة (`yawm_24`؛ س149206 — وقراءةُ
+  «اليوم» في الإزاحات يومًا بليلته لا النهارَ وحده: قراءة)، الأسبوع 7 أيام (`usbu_sabat_ayyam`)، السنة 12 شهرًا (`sana_ithna_ashar`؛ حديثٌ
+  يرويه اللسان)؛ والشهرُ بالأيام عددان في اللسان 29 و30 (`shahr_tisa_aw_thalathun`: `hadd`) فلا يُحوَّل بعددٍ واحد («لا حكم»:
+  `shahr_bil_ayyam_la_hukm`)، والسنةُ بالأيام كذلك (12 شهرًا هلاليًّا مقابل «ثلاثمائة وستون يوما» عند الفراء) — القرارُ للمالك؛ والتحويلُ
+  بالدوالّ الثلاث يحفظ الإشارة (`tahwil_yahfaz_ishara`). **الاستقامةُ والمحال** (الكتاب س263–267؛ قراءةُ البنّاء للقاعدة): يستقيم الكلامُ إذا
+  وافق زمنُ الفعل إشارةَ الظرف، ويُحال إذا خالفها، وإزاحةُ الحال (0: ظرفُها يحتوي الآن) «لا حكم» (`istiqama` ثلاثيّ؛ `al_an_la_hukm`): «أتيتك
+  أمس» و«سآتيك غدا» مستقيمان، و«أتيتك غدا» و«سوف أشرب … أمس» محالان (على ترميز الشاهد)، والعكسُ يبادل الاستقامة بين الماضي والمستقبل
+  (`istiqama_aks`). **الجسرُ إلى الأزمنة الخمسة** (`Awwaliyyat.zaman5Of`): حدثٌ بعد الآن بـ d على `zaman5Of` زمنُه الثلاثيّ هو زمنُ الإزاحة
+  الموجبة d، وقبله بـ d زمنُ الإزاحة السالبة (`jisr_mustaqbal`، `jisr_madi`).
 
-  **المبرهنات (لكلّ، 16):** `al_an_muhayid`، `aks_yarudd`، `aks_aks`، `zaman_hasir`، `aks_yaqlib`، `al_an_hal`، `markaz_sifr`، `markaz_markaz`،
-  `markaz_yahfaz_farq`، `kull_ams_mada_lan_yaud`، `tahwil_yahfaz_ishara`، `shahr_bil_ayyam_la_hukm`، `la_yastaqim_maan`، `izaha_mustaqbal`،
-  `izaha_madi`، `awwalMin_bad`. **على الشاهد (12؛ decide على المبنيّ):** `rutba_tartib`، `rutba_injective`، `asma_azmina` (أسماءُ الإزاحات
-  بأزمنتها)، `awwal_min_ams`، `qabl_ams_biyawm`، `ghad_thani_yawmik`، `kull_yawm_yasir_amsan`، `usbu_sabat_ayyam`، `sana_ithna_ashar`، `yawm_24`
-  (تعيين)، `mustaqim_hasan_ams_ghad`، `muhal_ghad_ams`. (28 في `Audit.lean`؛ مسلّماتها propext/Quot.sound فقط — بلا `Classical.choice`.)
+  **المبرهنات (لكلّ، 19):** `al_an_muhayid`، `aks_yarudd`، `aks_aks`، `zaman_hasir`، `aks_yaqlib`، `al_an_hal`، `markaz_sifr`، `markaz_markaz`،
+  `markaz_yahfaz_farq`، `markaz_yahfaz_tartib`، `kull_ams_mada_lan_yaud`، `tahwil_yahfaz_ishara`، `shahr_bil_ayyam_la_hukm`، `al_an_la_hukm`،
+  `istiqama_aks`، `jisr_mustaqbal`، `jisr_madi`، `awwalMin_bad`، `zamanOf_ishara` (إشارتان متوافقتان زمنٌ واحد — 19). **على الشاهد (13؛ decide على المبنيّ):** `rutba_tartib`، `rutba_injective`،
+  `asma_azmina` (أسماءُ الإزاحات بأزمنتها)، `awwal_min_ams`، `qabl_ams_biyawm`، `ghad_thani_yawmik`، `kull_yawm_yasir_amsan`، `usbu_sabat_ayyam`،
+  `sana_ithna_ashar`، `yawm_24`، `shahr_tisa_aw_thalathun`، `mustaqim_hasan_ams_ghad`، `muhal_ghad_ams`. (32 في `Audit.lean`؛ مسلّماتها
+  propext/Classical.choice/Quot.sound فقط — و`Classical.choice` في أربعٍ عبر `omega`/`simp`: `markaz_yahfaz_tartib`، `tahwil_yahfaz_ishara`،
+  `jisr_mustaqbal`، `jisr_madi`.)
 
   الوسم: مبرهن (لكلّ) ما سُمّي كذلك؛ مبرهن على الشاهد (decide/rfl/simp على المبنيّ) ما سُمّي كذلك. تعييناتُ البنّاء (تُعرض على المالك):
-  اليومُ 24 ساعة؛ الشهرُ والسنةُ بالأيام «لا حكم» حتّى يُودَع عددٌ (الهلاليّ 29/30 أو الشمسيّ)؛ «السين» في «سآتيك» مستقبلٌ منفَّس كـ«سوف»
-  (الكتاب س9760–9761، ج3 س926)؛ أسماءُ الإزاحات باليوم والسنة من اللسان وما لا اسمَ له في اللسان (بعد غد، قبل/بعد شهر) بالعدد والوحدة.
+  «اليوم» في الإزاحات يومٌ بليلته (24 ساعة من اللسان س149206؛ وس244209 يعرّف النهار)؛ الشهرُ والسنةُ بالأيام «لا حكم» بعددٍ واحد لأنّ اللسان
+  ينقل عددين (29/30، و12 شهرًا مقابل 360 يومًا) — القرارُ للمالك؛ قراءةُ «يليه» واحدًا (±1 يومًا/سنة)؛ «السين» في «سآتيك» مستقبلٌ منفَّس كـ«سوف»
+  (الكتاب س9760–9761، ج3 س926) — ولا أثرَ للتنفيس في حكم الاستقامة (الحكمُ على الثلاثة)؛ قاعدةُ الاستقامة الثلاثية قراءةُ البنّاء للكتاب س262–267
+  (أقسامُ سيبويه خمسة والمبنيّ منها المستقيمُ الحسن والمحال)؛ وما لا اسمَ له في المصادر (قبل/بعد ساعة وأسبوع وشهر) بالعدد والوحدة من قول المالك.
   الجدولُ `azmina.tsv` مسجَّلٌ «مرشّحًا» حتّى يأذن المالك بختمه؛ ومطابقتُه `tahaqquq/test_azmina.py`.
 -/
 import Aql.Awwaliyyat
@@ -148,13 +163,15 @@ def alYawm : Izaha := ⟨0, .yawm⟩
 def ams : Izaha := ⟨-1, .yawm⟩
 /-- الغد: زائدُ يوم — «اليوم الذي يأتي بعد يومك» (س289554). -/
 def ghad : Izaha := ⟨1, .yawm⟩
-/-- «أوّل من …»: ناقصُ وحدة (س112333–112335: أمس، أوّل من أمس، أوّل من أوّل من أمس). -/
+/-- «أوّل من …»: ناقصُ وحدة — الكتاب س11523–11524 «أول من أمس … الذي يليه أمس»؛ اللسان س112333–112335 (أمس، أوّل من أمس، أوّل من أوّل من
+أمس)؛ وقراءةُ «يليه» واحدًا قراءةُ البنّاء. -/
 def awwalMin (i : Izaha) : Izaha := ⟨i.adad - 1, i.wahda⟩
-/-- «بعد …»: زائدُ وحدة (الغد «ثاني يومك» س289556؛ بعد غد). -/
+/-- «بعد …»: زائدُ وحدة — الكتاب س11523–11524 «بعد غد … الذي يليه غد»؛ الغد «ثاني يومك» (اللسان س289556). -/
 def bad (i : Izaha) : Izaha := ⟨i.adad + 1, i.wahda⟩
-/-- «قبل … بكذا»: ناقصُ k من الوحدة (س112353: «قبل أمس بيوم؛ يريد من أول من أمس»). -/
+/-- «قبل … بكذا»: ناقصُ k من الوحدة (اللسان س112352–112353: «ما رأيته قبل أمس بيوم؛ يريد من أول من أمس»). -/
 def qabl (i : Izaha) (k : Int) : Izaha := ⟨i.adad - k, i.wahda⟩
-/-- عامٌ أوّل: ناقصُ سنة (س70859–70861)؛ عامٌ قابل: زائدُ سنة (س212565). -/
+/-- عامٌ أوّل: ناقصُ سنة — الكتاب س11522–11523 «عام أول … العام الذي يليه عامك» (وس11585)؛ عامٌ قابل: زائدُ سنة — اللسان س212565 «عام قابل
+أي مقبل» (الإشارة)، والمقدارُ 1 من قول المالك «وزائد سنة» وقراءةِ «يليه» واحدًا. -/
 def amAwwal : Izaha := ⟨-1, .sana⟩
 def amQabil : Izaha := ⟨1, .sana⟩
 
@@ -184,19 +201,30 @@ def markaz (k : Int) (i : Izaha) : Izaha := ⟨i.adad - k, i.wahda⟩
 theorem markaz_sifr (i : Izaha) : markaz 0 i = i := by simp [markaz]
 theorem markaz_markaz (k l : Int) (i : Izaha) : markaz k (markaz l i) = markaz (k + l) i := by
   simp [markaz]; omega
-/-- الانتقالُ يحفظ الفروقَ (ومن ثَمّ الترتيب). -/
+/-- الانتقالُ يحفظ الفروق. -/
 theorem markaz_yahfaz_farq (k : Int) (i j : Izaha) : (markaz k i).adad - (markaz k j).adad = i.adad - j.adad := by
   simp only [markaz]; omega
-/-- **كلُّ يوم يصير أمسًا** (س112344): اليومُ من الغد أمسٌ. -/
+/-- والترتيب. -/
+theorem markaz_yahfaz_tartib (k : Int) (i j : Izaha) : (markaz k i).adad < (markaz k j).adad ↔ i.adad < j.adad := by
+  simp only [markaz]; omega
+/-- **كلُّ يوم يصير أمسًا** (اللسان س112344): اليومُ من الغد أمسٌ. -/
 theorem kull_yawm_yasir_amsan : markaz 1 alYawm = ams ∧ markaz 1 ghad = alYawm := by decide
-/-- **وكلُّ أمسٍ مضى فلن يعود** (س112344–112345): لا انتقالٍ إلى الأمام يعيد أمسًا إلى الحال أو المستقبل. -/
+/-- **وكلُّ أمسٍ مضى فلن يعود** (اللسان س112344): لا انتقالٍ إلى الأمام يعيد أمسًا إلى الحال أو المستقبل. -/
 theorem kull_ams_mada_lan_yaud (k : Int) (hk : 0 ≤ k) : zamanOf (markaz k ams) = .madi := by
   have h : -1 - k < 0 := by omega
   simp [zamanOf, markaz, ams, h]
 
-/-! ## ٥. تحويلُ الوحدات حيث نصّ اللسان -/
+/-! ## ٥. تحويلُ الوحدات بما نقله اللسان -/
 
-/-- إلى أيّام: اليوم والأسبوع (7)؛ الشهرُ والسنةُ والساعةُ «لا حكم» بالأيام. -/
+/-- حدّا الوحدة بالأيام حيث نقل اللسان: الأسبوع 7 (س148327)، الشهر 29 أو 30 (س87964، س85101، س98561)؛ والسنةُ بالأيام بلا حدّين
+(12 شهرًا هلاليًّا س82632 مقابل «ثلاثمائة وستون يوما» س11061). -/
+def hadd : Wahda → Option (Int × Int)
+  | .yawm => some (1, 1)
+  | .usbu => some (7, 7)
+  | .shahr => some (29, 30)
+  | _ => none
+
+/-- إلى أيّام: اليوم والأسبوع (7)؛ الشهرُ (عددان) والسنةُ والساعةُ «لا حكم» بالأيام بعددٍ واحد. -/
 def ilaAyyam : Izaha → Option Int
   | ⟨n, .yawm⟩ => some n
   | ⟨n, .usbu⟩ => some (7 * n)
@@ -208,7 +236,7 @@ def ilaAshhur : Izaha → Option Int
   | ⟨n, .sana⟩ => some (12 * n)
   | _ => none
 
-/-- إلى ساعات: الساعة، واليوم 24 (تعيين)، والأسبوع 168. -/
+/-- إلى ساعات: الساعة، واليومُ بليلته 24 («والليل والنهار معا أربع وعشرون ساعة» س149206؛ قراءةُ «اليوم» يومًا بليلته)، والأسبوع 168. -/
 def ilaSaat : Izaha → Option Int
   | ⟨n, .saa⟩ => some n
   | ⟨n, .yawm⟩ => some (24 * n)
@@ -218,29 +246,38 @@ def ilaSaat : Izaha → Option Int
 theorem usbu_sabat_ayyam : ilaAyyam ⟨1, .usbu⟩ = some 7 ∧ ilaAyyam ⟨-1, .usbu⟩ = some (-7) := by decide
 theorem sana_ithna_ashar : ilaAshhur amQabil = some 12 ∧ ilaAshhur amAwwal = some (-12) := by decide
 theorem yawm_24 : ilaSaat alYawm = some 0 ∧ ilaSaat ghad = some 24 ∧ ilaSaat ⟨1, .usbu⟩ = some 168 := by decide
-/-- الشهرُ والسنةُ بالأيام لا حكم (لم ينصّ اللسان على عدد). -/
+/-- الشهرُ تسعٌ وعشرون أو ثلاثون (حدّاه)، والأسبوع سبعة، والسنةُ بالأيام بلا حدّين (على الشاهد). -/
+theorem shahr_tisa_aw_thalathun : hadd .shahr = some (29, 30) ∧ hadd .usbu = some (7, 7) ∧ hadd .sana = none := by decide
+/-- الشهرُ والسنةُ بالأيام لا حكم بعددٍ واحد (اللسان ينقل عددين؛ القرارُ للمالك). -/
 theorem shahr_bil_ayyam_la_hukm (n : Int) : ilaAyyam ⟨n, .shahr⟩ = none ∧ ilaAyyam ⟨n, .sana⟩ = none := by
   simp [ilaAyyam]
-/-- **التحويلُ يحفظ الإشارة:** ما مضى يبقى ماضيًا بأيّ وحدة. -/
-theorem tahwil_yahfaz_ishara (i : Izaha) (d : Int) (h : ilaAyyam i = some d) : zamanOf ⟨d, .yawm⟩ = zamanOf i := by
+
+/-- إشارتان متوافقتان تعطيان زمنًا واحدًا بأيّ وحدتين. -/
+theorem zamanOf_ishara (a b : Int) (u v : Wahda) (h1 : a < 0 ↔ b < 0) (h2 : a = 0 ↔ b = 0) :
+    zamanOf ⟨a, u⟩ = zamanOf ⟨b, v⟩ := by
+  unfold zamanOf
+  rcases Int.lt_trichotomy b 0 with hb | hb | hb
+  · have ha : a < 0 := h1.2 hb
+    simp [ha, hb]
+  · have ha : a = 0 := h2.2 hb
+    simp [ha, hb]
+  · have ha1 : ¬ a < 0 := fun h => absurd (h1.1 h) (by omega)
+    have ha2 : ¬ a = 0 := fun h => absurd (h2.1 h) (by omega)
+    have hb1 : ¬ b < 0 := by omega
+    have hb2 : ¬ b = 0 := by omega
+    simp [ha1, ha2, hb1, hb2]
+
+/-- **التحويلُ يحفظ الإشارة** بالدوالّ الثلاث: ما مضى يبقى ماضيًا بأيّ وحدة. -/
+theorem tahwil_yahfaz_ishara (i : Izaha) :
+    (∀ d, ilaAyyam i = some d → zamanOf ⟨d, .yawm⟩ = zamanOf i) ∧
+    (∀ m, ilaAshhur i = some m → zamanOf ⟨m, .shahr⟩ = zamanOf i) ∧
+    (∀ h, ilaSaat i = some h → zamanOf ⟨h, .saa⟩ = zamanOf i) := by
   obtain ⟨n, u⟩ := i
-  cases u with
-  | yawm => simp [ilaAyyam] at h; subst h; rfl
-  | usbu =>
-    simp [ilaAyyam] at h; subst h
-    unfold zamanOf
-    rcases Int.lt_trichotomy n 0 with hn | hn | hn
-    · have a : 7 * n < 0 := by omega
-      simp [a, hn]
-    · subst hn; simp
-    · have a : ¬ (7 * n < 0) := by omega
-      have b : ¬ (7 * n = 0) := by omega
-      have c : ¬ (n < 0) := by omega
-      have d' : ¬ (n = 0) := by omega
-      simp [a, b, c, d']
-  | saa => simp [ilaAyyam] at h
-  | shahr => simp [ilaAyyam] at h
-  | sana => simp [ilaAyyam] at h
+  refine ⟨fun d hd => ?_, fun m hm => ?_, fun h hh => ?_⟩ <;> cases u <;> simp [ilaAyyam, ilaAshhur, ilaSaat] at * <;>
+    first
+    | (subst hd; exact zamanOf_ishara _ _ _ _ (by omega) (by omega))
+    | (subst hm; exact zamanOf_ishara _ _ _ _ (by omega) (by omega))
+    | (subst hh; exact zamanOf_ishara _ _ _ _ (by omega) (by omega))
 
 /-! ## ٦. الاستقامةُ والمحال (الكتاب س263–267) والجسرُ إلى الأزمنة الخمسة -/
 
@@ -252,27 +289,51 @@ def zaman3Of5 : Zaman5 → Zaman3
   | .mustaqbal => .mustaqbal
   | .mustaqbalMunaffas => .mustaqbal
 
-/-- يستقيم الكلامُ إذا وافق زمنُ الفعل زمنَ الظرف. -/
-def yastaqim (z : Zaman5) (i : Izaha) : Bool := zaman3Of5 z == zamanOf i
+/-- حكمُ الاستقامة ثلاثيّ: مستقيم، لا حكم، محال. -/
+inductive Istiqama | mustaqim | laHukm | muhal
+deriving DecidableEq, Repr
 
-/-- «أتيتك أمس وسآتيك غدا» مستقيمٌ (س263؛ السينُ مستقبلٌ منفَّس — تعيين). -/
-theorem mustaqim_hasan_ams_ghad : yastaqim .madiMunqati ams = true ∧ yastaqim .mustaqbalMunaffas ghad = true := by decide
-/-- «أتيتك غدا وسآتيك أمس» و«سوف أشرب ماء البحر أمس» محالٌ (س264، 267). -/
-theorem muhal_ghad_ams : yastaqim .madiMunqati ghad = false ∧ yastaqim .mustaqbalMunaffas ams = false := by decide
-/-- **لا إزاحةَ تستقيم مع الماضي والمستقبل معًا** (نقضُ أوّل الكلام بآخره). -/
-theorem la_yastaqim_maan (i : Izaha) : ¬ (yastaqim .madiMunqati i = true ∧ yastaqim .mustaqbalMunaffas i = true) := by
-  simp [yastaqim, zaman3Of5]
-  intro h; rw [← h]; decide
+/-- يستقيم الكلامُ إذا وافق زمنُ الفعل زمنَ الظرف، ويُحال إذا خالفه؛ وإزاحةُ الحال (0: ظرفُها يحتوي الآن) لا حكم — قراءةُ البنّاء للكتاب
+س262–267 (المبنيّ من أقسامه الخمسة: المستقيمُ الحسن والمحال). -/
+def istiqama (z : Zaman5) (i : Izaha) : Istiqama :=
+  if i.adad = 0 then .laHukm else if zaman3Of5 z = zamanOf i then .mustaqim else .muhal
 
-/-- إزاحةٌ موجبةٌ باليوم من الآن `now` تقع في المستقبل (منفَّسًا أو لا) على `Awwaliyyat.zaman5Of`. -/
-theorem izaha_mustaqbal (now d : Nat) (m f : Bool) (hd : 0 < d) :
-    zaman5Of now (now + d) m f = .mustaqbal ∨ zaman5Of now (now + d) m f = .mustaqbalMunaffas :=
-  ((zaman5_hasira now (now + d) m f).2.2).1 (by omega)
+/-- «أتيتك أمس وسآتيك غدا» مستقيمٌ (س263؛ على ترميز الشاهد: أتيتك ماضٍ منقطع، سآتيك مستقبلٌ منفَّس — تعيين لا أثرَ له في الحكم). -/
+theorem mustaqim_hasan_ams_ghad : istiqama .madiMunqati ams = .mustaqim ∧ istiqama .mustaqbalMunaffas ghad = .mustaqim := by decide
+/-- «أتيتك غدا وسآتيك أمس» و«سوف أشرب ماء البحر أمس» محالٌ (س264، 267؛ على ترميز الشاهد). -/
+theorem muhal_ghad_ams : istiqama .madiMunqati ghad = .muhal ∧ istiqama .mustaqbalMunaffas ams = .muhal := by decide
+/-- **إزاحةُ الحال لا حكم** مع أيّ زمن: ظرفُها يحتوي الآن. -/
+theorem al_an_la_hukm (z : Zaman5) (u : Wahda) : istiqama z (alAn u) = .laHukm := by simp [istiqama, alAn]
+/-- **العكسُ يبادل الاستقامة** بين الماضي والمستقبل: ما استقام ماضيًا استقام عكسُه مستقبلًا (بـ `aks_yaqlib`). -/
+theorem istiqama_aks (i : Izaha) :
+    istiqama .madiMunqati i = .mustaqim ↔ istiqama .mustaqbalMunaffas i.aks = .mustaqim := by
+  unfold istiqama
+  rw [aks_yaqlib]
+  have h0 : i.aks.adad = 0 ↔ i.adad = 0 := by simp [Izaha.aks]
+  by_cases h : i.adad = 0
+  · simp [h, h0.2 h]
+  · have h' : ¬ i.aks.adad = 0 := fun hh => h (h0.1 hh)
+    simp only [h, h', ite_false, zaman3Of5]
+    cases zamanOf i <;> simp [qalb]
 
-/-- وإزاحةٌ سالبةٌ (لا تجاوز الآن) تقع في الماضي (منقطعًا أو متّصلًا). -/
-theorem izaha_madi (now d : Nat) (m f : Bool) (hd : 0 < d) (hn : d ≤ now) :
-    zaman5Of now (now - d) m f = .madiMunqati ∨ zaman5Of now (now - d) m f = .madiMuttasil :=
-  ((zaman5_hasira now (now - d) m f).1).1 (by omega)
+/-- **الجسرُ إلى الأزمنة الخمسة:** حدثٌ بعد الآن بـ d على `Awwaliyyat.zaman5Of` زمنُه الثلاثيّ هو زمنُ الإزاحة الموجبة d (بأيّ وحدة). -/
+theorem jisr_mustaqbal (now d : Nat) (m f : Bool) (u : Wahda) (hd : 0 < d) :
+    zaman3Of5 (zaman5Of now (now + d) m f) = zamanOf ⟨(d : Int), u⟩ := by
+  have h := ((zaman5_hasira now (now + d) m f).2.2).1 (by omega)
+  have hz : zamanOf ⟨(d : Int), u⟩ = .mustaqbal := by
+    have h2 : ¬ d = 0 := by omega
+    simp [zamanOf, h2]
+  rw [hz]
+  rcases h with h | h <;> rw [h] <;> rfl
+
+/-- وحدثٌ قبل الآن بـ d (لا يجاوزه) زمنُه الثلاثيّ هو زمنُ الإزاحة السالبة −d. -/
+theorem jisr_madi (now d : Nat) (m f : Bool) (u : Wahda) (hd : 0 < d) (hn : d ≤ now) :
+    zaman3Of5 (zaman5Of now (now - d) m f) = zamanOf ⟨-(d : Int), u⟩ := by
+  have h := ((zaman5_hasira now (now - d) m f).1).1 (by omega)
+  have hz : zamanOf ⟨-(d : Int), u⟩ = .madi := by
+    simp [zamanOf]; intro h0; omega
+  rw [hz]
+  rcases h with h | h <;> rw [h] <;> rfl
 
 end Azmina
 end Aql
