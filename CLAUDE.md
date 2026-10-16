@@ -110,6 +110,16 @@
   والحال (`Thubut`). خبرات المالك في مثاله «معلومة» بالمطابقة اللفظية (`shawahid_malik`؛ قوله شاهد غير مودَع لا أثر له) حتّى يُودَع واقع
   مختوم. الجدول `hawass.tsv` مسجَّل «مرشّحًا» (بصمته تُحدَّث ما دام مرشّحًا) حتّى يأذن المالك بختمه؛ مطابقته `tahaqquq/test_hawass.py` (٥ك؛
   مطابَق لمرشّح؛ P96–P98 تقتلها Lean). تعيينات البنّاء المعروضة: «مانع» مائعًا، الفم، الحجم والقوام بصرًا، فاتر/صوت/معتدل، العتبتان، حدّ التشارك.
+- أوّليات العقل والأزمنة عند سيبويه (قرار المالك 2026-10-16، 17:53؛ إمضاؤه 19:05: «لا حكم» ليس ثالثًا للقضية، التوريث للانتظام = الاستقراء، الأزمنة الثلاثة
+  حاصرة): `Aql/Awwaliyyat.lean` — الأركان الأربعة (`la_fikr_bila_arkan` يجمع مبرهنات الحواسّ)، `al_shay_huwa_huwa`، `tamyiz_bil_fasl`، `marfu_thalith`
+  (`Classical.em`؛ وبنائيًّا للمقرَّرة)، `la_hukm_laysa_thalithan`، `juz_asghar_min_kull`/`kutlat_juz`/`adad_dun_majmuih`، الزمن من التتابع `Tatabu` المنتظم
+  `muntazim` والتعاقب `taaqub` والتوريث للانتظام `tawrith_intizam` (استقراء `Nat.rec`)، `azmina_thalatha_hasira` (`Nat.lt_trichotomy`)، الماضي قائمةً
+  (`haqqiq`، `zaman_yurith_ma_kan`، `mustaqbal_la_hukm`: لا حكم لا ممتنع)؛ **والأزمنة الخمسة عند سيبويه** تعيين البنّاء من باب نفي الفعل (الكتاب س9782–9787):
+  `Zaman5` بإثباتها ونفيها — لم (ماضٍ منقطع)، لمّا (متّصل منتظَر)، ما (حال)، لا (مستقبل)، لن (منفَّس): `nafy_yukhallis` (النفي يخلّص ما لا يخلّصه الإثبات
+  `ithbat_la_yukhallis`؛ ج3 س926 «في اللفظ واحد»)، `zaman5Of`/`zaman5_hasira` (على محور الآن بعلامتَي الانتظار قد/لمّا والتنفيس سوف/لن — تطابق الثلاثية)،
+  جواب القسم `ithbatQasam`/`nafyQasam` (`qasam_ala_zamanayn`، `qasam_yusqit_intizar`: «ما فعل» لا «لمّا يفعل»)، والمحال نقض أوّل الكلام بآخره
+  (`muhal_naqd`، س263–267). الجدول `awwaliyyat.tsv` (17 صفًّا، 46 اقتباسًا بأسطرها) مسجَّل «مرشّحًا» حتّى يأذن المالك بختمه؛ مطابقته
+  `tahaqquq/test_awwaliyyat.py` (٥ل؛ P99–P102 تقتلها Lean). ظروف الزمان (إذ/إذا/قبل/بعد/متى، ز9) قُرئت ولم تُبنَ. التحليل في `Madlul/التعيين_والتمييز.md` §10.
 - القارئ: `.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv "<نصّ مشكول>"` — كلّ كلمة: خلاياها،
   حكم القانون، مقاطعها، ومنطوقها ومفهومها من المخزن بالسلسلة والوسم والمرتبة. ما لا قرار له يُرفض باسمه.
   والجملة (كلمتان فأكثر): تركيبها في الوصل على آلة المالك `Msent` (`Dal/Jumla.lean`: سقوط همزة الوصل بإصلاح المالك
@@ -117,7 +127,7 @@
 - المودَع: `MUDAA_MUKHASSAS=<مسار mukhassas.txt>` لاختبارات الشبكة، و`MUDAA_DIR=<مجلّد المودَعات>` لمطابقة بصماتها
   (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`؛ و`qatr.txt`، `mughni.txt`، `alfiyya.txt`،
   `janadani.txt`، `sibawayhi.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib/AqsamAwamil بأسطرها؛ و`ajnas.tsv` جدول الأجناس —
-  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`).
+  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`).
 - قرارات الوقف والرسم في القارئ (ة، ى، التنوين، ألف الجماعة، حركة همزة الوصل) منقولةٌ من قطر الندى (باب الوقف L440–447،
   همزة الوصل L449–453) والألفية (L1131، L1136، L1142) بأسطرها في المخرج؛ قرارا الوقف على آخر النصّ (الموقوف عليه)، وقرارا الرسم
   وهمزة الوصل في كلّ موضع.
