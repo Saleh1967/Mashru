@@ -502,5 +502,89 @@
   "milaf": "Jisr/AqsamAwamil.lean",
   "min": "  | 5 => SLGE.Wad.jazm1F | 7 => SLGE.Wad.jarrF | _ => []",
   "ila": "  | 5 => SLGE.Wad.jazm1F | _ => []"
+ },
+ {
+  "ism": "P49_ishtighal_bila_damir",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  (attrAt u.ud.ats m.marsa).2.2.2 && tarifAt u m.marsa == 1 && (featAt u m.marsa).1 == 3 &&",
+  "ila": "  (featAt u m.marsa).1 == 3 &&"
+ },
+ {
+  "ism": "P50_hal_marifa",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  ismiAt u m.marsa && m.t.2.1 == 0 && m.t.2.2.1.1 == 3 &&\n  refOK ((featAt u m.marsa).1",
+  "ila": "  ismiAt u m.marsa && m.t.2.2.1.1 == 3 &&\n  refOK ((featAt u m.marsa).1"
+ },
+ {
+  "ism": "P51_adad_mutabaqa",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  else if (3 ≤ q && q ≤ 10) || (13 ≤ q && q ≤ 19) then some (gAdad != gMadud)",
+  "ila": "  else if (3 ≤ q && q ≤ 10) || (13 ≤ q && q ≤ 19) then some (gAdad == gMadud)"
+ },
+ {
+  "ism": "P52_am_bila_hamza",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  (m.naw != 5 || u.ud.pre.contains 3) && (m.naw != 6 || !nafy u) && (m.naw != 7 || nafy u)",
+  "ila": "  (m.naw != 6 || !nafy u) && (m.naw != 7 || nafy u)"
+ },
+ {
+  "ism": "P53_tawkid_nakira",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  else tarifAt u m.marsa == 1 &&\n    (match m.naw with",
+  "ila": "  else\n    (match m.naw with"
+ },
+ {
+  "ism": "P54_naib_maa_maful",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  u.ud.f.1 == 1 && roleOf u.ud.f m.marsa == 3 && zamanFil u ≤ 1 && m.naw ≤ 3 &&\n  (m.naw == 0 || !hasRole u.ud.f 4)",
+  "ila": "  u.ud.f.1 == 1 && roleOf u.ud.f m.marsa == 3 && zamanFil u ≤ 1 && m.naw ≤ 3"
+ },
+ {
+  "ism": "P55_dawr_code_takrar",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  | .atfBayan => 33 | .atfNasaq => 34 | .badal => 35 | .madud => 36",
+  "ila": "  | .atfBayan => 33 | .atfNasaq => 34 | .badal => 35 | .madud => 35"
+ },
+ {
+  "ism": "P56_adad_bila_dawr",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  | .badal => some .badal | .adad => some .madud",
+  "ila": "  | .badal => some .badal"
+ },
+ {
+  "ism": "P57_tafdil_yansib",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  | 7 => !hasRole g 4 && (fillOf g (posRole g 3) == 1 || kuhl)",
+  "ila": "  | 7 => (fillOf g (posRole g 3) == 1 || kuhl)"
+ },
+ {
+  "ism": "P58_tanazu_hala_maqluba",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  if m.naw == 1 then reqState 1 u.ud.f.2.1 (roleOf u.ud.f m.marsa)",
+  "ila": "  if m.naw == 2 then reqState 1 u.ud.f.2.1 (roleOf u.ud.f m.marsa)"
+ },
+ {
+  "ism": "P59_idafa_al",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  ismiAt u m.marsa && zahirAt u m.marsa && m.naw ≤ 3 && !m.qabl && m.q ≤ 3 &&\n  (m.q % 2 == 0 || (m.naw == 3 && ((featAt u m.marsa).2.2 ≥ 1 || m.q / 2 == 1))) &&",
+  "ila": "  ismiAt u m.marsa && zahirAt u m.marsa && m.naw ≤ 3 && !m.qabl && m.q ≤ 3 &&"
+ },
+ {
+  "ism": "P60_taatuf_muakkadat",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  u.ml.all (mulhaqOK u) && laTaatuf u",
+  "ila": "  u.ml.all (mulhaqOK u)"
+ },
+ {
+  "ism": "P61_marsa_lahiq",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "  (List.range u.ml.length).all fun j => match u.ml[j]? with | some m => m.marsa < nBase u + j | none => true",
+  "ila": "  (List.range u.ml.length).all fun j => match u.ml[j]? with | some m => m.marsa ≤ nBase u + j | none => true"
+ },
+ {
+  "ism": "P62_tanazu_bila_mutabaqa",
+  "milaf": "Jisr/Mulhaqat.lean",
+  "min": "      (attrAt ats i).2.2.1 == m.t.2.2.1 && (fillOf f i == 1 || (attrAt ats i).2.2.2)",
+  "ila": "      fillOf f i == 1 || ((attrAt ats i).2.2.1 == m.t.2.2.1 && (attrAt ats i).2.2.2)"
  }
 ]

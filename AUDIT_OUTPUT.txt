@@ -402,6 +402,32 @@
 'Jisr.AqsamAwamil.mujam_45' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Jisr.AqsamAwamil.bila_hukm' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Jisr.AqsamAwamil.shawahid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.Mulhaqat.Dawr.hasir' depends on axioms: [propext]
+'Jisr.Mulhaqat.Dawr.code_inj' depends on axioms: [propext]
+'Jisr.Mulhaqat.khilaf_musajjal' does not depend on any axioms
+'Jisr.Mulhaqat.itar_conservative' depends on axioms: [propext, Quot.sound]
+'Jisr.Mulhaqat.furui_eq' depends on axioms: [propext]
+'Jisr.Mulhaqat.naib_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.naib_ahkam' does not depend on any axioms
+'Jisr.Mulhaqat.ishtighal_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.tanazu_shawahid' depends on axioms: [propext, Quot.sound]
+'Jisr.Mulhaqat.mafail_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.hal_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.tamyiz_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.idafa_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.amil_ismi_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.amil_ismi_istinfad' depends on axioms: [propext]
+'Jisr.Mulhaqat.nat_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.tawkid_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.atf_bayan_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.atf_nasaq_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.badal_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.adad_shawahid' depends on axioms: [propext]
+'Jisr.Mulhaqat.halat_adwar' depends on axioms: [propext]
+'Jisr.Mulhaqat.la_jazm' depends on axioms: [propext]
+'Jisr.Mulhaqat.taghtiya_kamila' depends on axioms: [propext]
+'Jisr.Mulhaqat.mulhaqCode_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.Mulhaqat.itar_value' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SLGE.Law.ibtida' does not depend on any axioms
 'SLGE.Law.cell_count' does not depend on any axioms
 'SLGE.Law.qaltu' does not depend on any axioms
