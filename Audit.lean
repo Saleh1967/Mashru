@@ -13,6 +13,7 @@ import Aql.Makan
 import Aql.Mirsat
 import Aql.Isnad
 import Jisr.JisrDal
+import Jisr.JisrDalUtur
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
 import Dal.AqsamAlism
@@ -829,10 +830,9 @@ import Jisr.Utur
 #print axioms Aql.Isnad.hahuna_la_jiha
 #print axioms Aql.Isnad.thamma_dhaka
 #print axioms Jisr.JisrDal.harf_fakk
+#print axioms Jisr.JisrDal.khaliya_malik
 #print axioms Jisr.JisrDal.hawamil_huruf
 #print axioms Jisr.JisrDal.asliyya_tuqabil
-#print axioms Jisr.JisrDal.mufrad_halaIrab
-#print axioms Jisr.JisrDal.mufrad_tanwin
 #print axioms Jisr.JisrDal.maqsur_la_yuayyin
 #print axioms Jisr.JisrDal.mudaf_la_yuayyin
 #print axioms Jisr.JisrDal.yayn_la_yufarriq
@@ -851,3 +851,5 @@ import Jisr.Utur
 #print axioms Jisr.JisrDal.majhul_marfud
 #print axioms Jisr.JisrDal.shawahid_majhul
 #print axioms Jisr.JisrDal.intilaq_wasl
+#print axioms Jisr.JisrDalUtur.mufrad_halaIrab
+#print axioms Jisr.JisrDalUtur.mufrad_tanwin
