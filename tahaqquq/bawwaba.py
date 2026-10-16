@@ -184,9 +184,9 @@ def main():
     else:
         report.append("٦ الطفرات: تُركت بطلب (--bila-tafrat)")
 
-    print("\n".join(report))
+    print("\n".join(report), flush=True)   # التقرير أوّلًا ثمّ الأسباب، بترتيبٍ واحد حين يُجمع المخرجان (2>&1) في الخطّاف
     if fails:
-        print("\n".join(fails), file=sys.stderr)
+        print("\n".join(fails), file=sys.stderr, flush=True)
         sys.exit(2)
     sys.exit(0)
 
