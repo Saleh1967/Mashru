@@ -754,6 +754,8 @@ import Jisr.Utur
 #print axioms Aql.Azmina.mustaqim_hasan_ams_ghad
 #print axioms Aql.Azmina.muhal_ghad_ams
 #print axioms Aql.Azmina.al_an_la_hukm
+#print axioms Aql.Azmina.zaman3Of5_qalb5
+#print axioms Aql.Azmina.qalb_injective
 #print axioms Aql.Azmina.istiqama_aks
 #print axioms Aql.Azmina.jisr_mustaqbal
 #print axioms Aql.Azmina.jisr_madi

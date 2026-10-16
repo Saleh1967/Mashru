@@ -680,6 +680,8 @@
 'Aql.Azmina.mustaqim_hasan_ams_ghad' does not depend on any axioms
 'Aql.Azmina.muhal_ghad_ams' does not depend on any axioms
 'Aql.Azmina.al_an_la_hukm' depends on axioms: [propext]
+'Aql.Azmina.zaman3Of5_qalb5' does not depend on any axioms
+'Aql.Azmina.qalb_injective' does not depend on any axioms
 'Aql.Azmina.istiqama_aks' depends on axioms: [propext, Quot.sound]
 'Aql.Azmina.jisr_mustaqbal' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Aql.Azmina.jisr_madi' depends on axioms: [propext, Classical.choice, Quot.sound]

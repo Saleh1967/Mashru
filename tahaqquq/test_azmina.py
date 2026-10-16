@@ -12,7 +12,7 @@
 ٤. كلُّ اسمٍ في عمود mirat_lean معرَّفٌ في Azmina.lean باسمه الكامل (def/theorem/structure/inductive في أوّل السطر)، والمنقوطُ منشئٌ في
    فضاء نوعه أو حقلٌ/دالّةٌ معرَّفة باسمها الكامل.
 ٥. شواهدُ الاستقامة: الحكمُ في عمود zaman («مستقيم»/«محال»/«لا حكم») يطابق توافقَ إشارة العدد مع زمن الفعل المذكور قبل «↔»، والصفرُ
-   «لا حكم» — توقّعٌ مستقلّ عن `istiqama`.
+   «لا حكم» — توقّعٌ مستقلّ عن `istiqama`؛ و`ilaAyyam` يُقرأ مشتقًّا من `hadd` بقاعدته (حدّان متساويان تحويل، وإلّا لا حكم).
 بلا مودَع: تُجرى الفحوصُ التي لا تحتاج الجدول (نِسَب التحويل في نصّ Lean، وأسماءُ المبرهنات) ثمّ يُطبع «لم يُشغَّل على الجدول» ويُخرج 0.
 التشغيل: python3 -I tahaqquq/test_azmina.py
 """
@@ -37,20 +37,27 @@ def block(start, end):
 def fahs_lean():
     """فحوصٌ على نصّ Lean لا تحتاج الجدول: نِسَبُ التحويل، والشهرُ بالأيام غيرُ معرَّف، وأسماءُ المبرهنات."""
     nisab = {}
-    for fn in ("ilaAyyam", "ilaAshhur", "ilaSaat"):
+    for fn in ("ilaAshhur", "ilaSaat"):
         body = block(f"def {fn} : Izaha → Option Int", "\n\n")
         for u, k in re.findall(r"\| ⟨n, \.(\w+)⟩ => some \((\d+) \* n\)", body):
             nisab[(fn, u)] = int(k)
         for u in re.findall(r"\| ⟨n, \.(\w+)⟩ => some n\n", body):
             nisab[(fn, u)] = 1
         assert "| _ => none" in body, fn
+    hadd_body = block("def hadd : Wahda → Option (Int × Int)", "\n\n")
+    hadd = re.findall(r"\| \.(\w+) => some \((\d+), (\d+)\)", hadd_body)
+    assert hadd == [("yawm", "1", "1"), ("usbu", "7", "7"), ("shahr", "29", "30")] and "| _ => none" in hadd_body, hadd
+    # ilaAyyam مشتقٌّ من hadd بالقاعدة (حدّان متساويان → تحويل، وإلّا none) — يُقرأ نصُّ القاعدة ويُستنتج الجدول
+    ayyam_body = block("def ilaAyyam (i : Izaha) : Option Int :=", "\n\n")
+    assert "match hadd i.wahda with" in ayyam_body and "if a = b then some (a * i.adad) else none" in ayyam_body and "| none => none" in ayyam_body, ayyam_body
+    for u, a, b in hadd:
+        if a == b:
+            nisab[("ilaAyyam", u)] = int(a)
     assert nisab == {("ilaAyyam", "yawm"): 1, ("ilaAyyam", "usbu"): 7, ("ilaAshhur", "shahr"): 1, ("ilaAshhur", "sana"): 12,
                      ("ilaSaat", "saa"): 1, ("ilaSaat", "yawm"): 24, ("ilaSaat", "usbu"): 168}, nisab
     assert ("ilaAyyam", "shahr") not in nisab and ("ilaAyyam", "sana") not in nisab
-    hadd = re.findall(r"\| \.(\w+) => some \((\d+), (\d+)\)", block("def hadd : Wahda → Option (Int × Int)", "\n\n"))
-    assert hadd == [("yawm", "1", "1"), ("usbu", "7", "7"), ("shahr", "29", "30")], hadd
     for name in ("mustaqim_hasan_ams_ghad", "muhal_ghad_ams", "al_an_la_hukm", "istiqama_aks", "zaman_hasir", "aks_yaqlib",
-                 "kull_ams_mada_lan_yaud", "jisr_mustaqbal", "jisr_madi", "shahr_tisa_aw_thalathun"):
+                 "kull_ams_mada_lan_yaud", "jisr_mustaqbal", "jisr_madi", "shahr_tisa_aw_thalathun", "zaman3Of5_qalb5", "qalb_injective"):
         assert re.search(rf"^theorem {name}\b", lean, re.M), name
     return nisab
 
@@ -190,11 +197,12 @@ for ident in asma_lean:
 ok += 1
 
 # ٥ — الاستقامة من بنية الجدول: زمن الفعل قبل «↔» وإشارة العدد
-Z = {"ماضٍ منقطع": -1, "ماضٍ متّصل": -1, "حال": 0, "مستقبل": 1, "مستقبل منفَّس": 1}
+Z = {"ماضٍ منقطع": -1, "ماضٍ متّصل": -1, "حال": 0, "مستقبل": 1, "مستقبل منفَّس": 1, "مضارع (حال/مستقبل بلا تخليص)": None}
 for r in by["istiqama"]:
     fil, hukm = r["zaman"].split(" ↔ ")
     n = int(r["adad"])
     sign = -1 if n < 0 else 0 if n == 0 else 1
+    assert fil in Z, fil
     expected = "لا حكم" if n == 0 else "مستقيم" if Z[fil] == sign else "محال"
     assert hukm.endswith(expected), (r["ramz"], r["zaman"], expected)
 assert [r["zaman"].split(": ")[-1] for r in by["istiqama"]] == ["مستقيم", "مستقيم", "محال", "محال", "لا حكم"]
