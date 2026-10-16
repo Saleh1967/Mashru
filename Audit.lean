@@ -454,6 +454,10 @@ import Jisr.Mulhaqat
 #print axioms Jisr.AqsamAwamil.mujam_45
 #print axioms Jisr.AqsamAwamil.bila_hukm
 #print axioms Jisr.AqsamAwamil.shawahid
+#print axioms Jisr.AqsamAwamil.naql_fi_jadwal
+#print axioms Jisr.AqsamAwamil.mujam_98
+#print axioms Jisr.AqsamAwamil.bila_hukm_2
+#print axioms Jisr.AqsamAwamil.shawahid2
 -- الأطر السبعة عشر المنتظرة على أطر المالك: الملحقات بأدوارها وشواهد القطر (Jisr/Mulhaqat.lean)
 #print axioms Jisr.Mulhaqat.Dawr.hasir
 #print axioms Jisr.Mulhaqat.Dawr.code_inj

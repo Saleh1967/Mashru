@@ -11,6 +11,7 @@
       طوبقت بصمات ما حضر من المودَعات فيه.
   ٥هـ. القارئ (tahaqquq/test_qari.py): من النصّ المشكول إلى الخلايا والقانون والمقاطع والمخزن.
   ٥و. العوامل (tahaqquq/test_awamil.py): Jisr/AwamilJadwal.lean مطابقٌ لمودَعه إن حضر (MUDAA_AWAMIL أو MUDAA_DIR).
+  ٥ز. نقول الأقسام (tahaqquq/test_aqsam.py): اقتباسات Jisr/AqsamAwamil.lean في أسطرها من المودَعات إن حضرت (MUDAA_DIR).
   ٦. كلّ طفرة في tafrat.json تُقتل: تُفشل البناء أو تُفشل اختبارات المخزن. طفرة تعيش = اختبارٌ مرآة.
 التشغيل: python3 -I tahaqquq/bawwaba.py [--bila-tafrat]
 """
@@ -101,6 +102,10 @@ def main():
     report.append(f"٥و العوامل: {out.strip().splitlines()[-1] if out.strip() else '?'}")
     if code != 0:
         fails.append("اختبار العوامل فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_aqsam.py"])
+    report.append(f"٥ز نقول الأقسام: {out.strip().splitlines()[-1] if out.strip() else '?'}")
+    if code != 0:
+        fails.append("اختبار نقول الأقسام فشل:\n" + out[-800:])
     mdir = os.environ.get("MUDAA_DIR")
     if mdir and os.path.isdir(mdir):
         code, out = run([sys.executable, "-I", "mudaat/idaa.py", "tahaqqaq", mdir])
@@ -132,6 +137,8 @@ def main():
                 code, _ = run([sys.executable, "-I", "tahaqquq/test_qari.py"], cwd=dst)
             if code == 0:
                 code, _ = run([sys.executable, "-I", "tahaqquq/test_awamil.py"], cwd=dst)
+            if code == 0:
+                code, _ = run([sys.executable, "-I", "tahaqquq/test_aqsam.py"], cwd=dst)
             if code == 0:
                 alive.append(t["ism"])
             shutil.rmtree(tmp)

@@ -402,6 +402,10 @@
 'Jisr.AqsamAwamil.mujam_45' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Jisr.AqsamAwamil.bila_hukm' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Jisr.AqsamAwamil.shawahid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.AqsamAwamil.naql_fi_jadwal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.AqsamAwamil.mujam_98' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.AqsamAwamil.bila_hukm_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.AqsamAwamil.shawahid2' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Jisr.Mulhaqat.Dawr.hasir' depends on axioms: [propext]
 'Jisr.Mulhaqat.Dawr.code_inj' depends on axioms: [propext]
 'Jisr.Mulhaqat.khilaf_musajjal' does not depend on any axioms

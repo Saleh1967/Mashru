@@ -586,5 +586,23 @@
   "milaf": "Jisr/Mulhaqat.lean",
   "min": "      (attrAt ats i).2.2.1 == m.t.2.2.1 && (fillOf f i == 1 || (attrAt ats i).2.2.2)",
   "ila": "      fillOf f i == 1 || ((attrAt ats i).2.2.1 == m.t.2.2.1 && (attrAt ats i).2.2.2)"
+ },
+ {
+  "ism": "P63_sara_harf",
+  "milaf": "Jisr/AqsamAwamil.lean",
+  "min": "  ⟨\"صار\", 1, .fil, .sibawayhi, 480,",
+  "ila": "  ⟨\"صار\", 1, .harf, .sibawayhi, 480,"
+ },
+ {
+  "ism": "P64_hal_mahdhuf",
+  "milaf": "Jisr/AqsamAwamil.lean",
+  "min": "  ⟨\"هل\", 12, .harf, .mughni, 8095, \"حرف موضوع لطلب التصديق الإيجابي\", false⟩,\n",
+  "ila": ""
+ },
+ {
+  "ism": "P65_naql_muhmal",
+  "milaf": "Jisr/AqsamAwamil.lean",
+  "min": "    match (naql.filter fun n => n.amil == ism && n.sinf == sinf).map (·.qism) with\n    | [] => none\n    | ks => some ks",
+  "ila": "    match (naql.filter fun n => n.amil == ism && n.sinf == sinf).map (·.qism) with\n    | _ => none"
  }
 ]
