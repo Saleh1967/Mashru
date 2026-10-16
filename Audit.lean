@@ -828,7 +828,11 @@ import Jisr.Utur
 #print axioms Aql.Isnad.sabab_yufarriq
 #print axioms Aql.Isnad.hahuna_la_jiha
 #print axioms Aql.Isnad.thamma_dhaka
-#print axioms Jisr.JisrDal.asliyya_bij
+#print axioms Jisr.JisrDal.harf_fakk
+#print axioms Jisr.JisrDal.hawamil_huruf
+#print axioms Jisr.JisrDal.asliyya_tuqabil
+#print axioms Jisr.JisrDal.mufrad_halaIrab
+#print axioms Jisr.JisrDal.mufrad_tanwin
 #print axioms Jisr.JisrDal.maqsur_la_yuayyin
 #print axioms Jisr.JisrDal.mudaf_la_yuayyin
 #print axioms Jisr.JisrDal.yayn_la_yufarriq
@@ -837,9 +841,13 @@ import Jisr.Utur
 #print axioms Jisr.JisrDal.mamnu_bi_al
 #print axioms Jisr.JisrDal.amthila_nun
 #print axioms Jisr.JisrDal.sitta_hamil
+#print axioms Jisr.JisrDal.farIyaBab_malik
+#print axioms Jisr.JisrDal.farIya_kull
 #print axioms Jisr.JisrDal.shawahid_hukm
 #print axioms Jisr.JisrDal.muwafiq_farIya
 #print axioms Jisr.JisrDal.majhul_huruf
 #print axioms Jisr.JisrDal.majhul_tul
-#print axioms Jisr.JisrDal.majhul_qasir
+#print axioms Jisr.JisrDal.majhul_dun_116
+#print axioms Jisr.JisrDal.majhul_marfud
 #print axioms Jisr.JisrDal.shawahid_majhul
+#print axioms Jisr.JisrDal.intilaq_wasl
