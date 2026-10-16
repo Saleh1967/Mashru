@@ -717,3 +717,18 @@
 'Aql.Makan.jisr_wajhan' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Aql.Makan.wara_bil_qarina' does not depend on any axioms
 'Aql.Makan.wara_wajhan' does not depend on any axioms
+'Aql.Mirsat.an_hal' depends on axioms: [propext]
+'Aql.Mirsat.huna_la_jiha' depends on axioms: [propext, Quot.sound]
+'Aql.Mirsat.thabat_naql_zaman' depends on axioms: [propext, Quot.sound]
+'Aql.Mirsat.thabat_naql_jiha' depends on axioms: [propext, Quot.sound]
+'Aql.Mirsat.thabat_naql_istiqama' depends on axioms: [propext, Quot.sound]
+'Aql.Mirsat.naql_mirsat_zaman' depends on axioms: [propext, Quot.sound]
+'Aql.Mirsat.naql_mirsat_jiha' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Aql.Mirsat.alyawm_bimanzilat_alan' does not depend on any axioms
+'Aql.Mirsat.min_alan_ila_ghad' does not depend on any axioms
+'Aql.Mirsat.huna_hadha' depends on axioms: [propext]
+'Aql.Mirsat.taqrib_tabid' depends on axioms: [propext, Quot.sound]
+'Aql.Mirsat.bila_mirsat_la_hukm' does not depend on any axioms
+'Aql.Mirsat.thabat_naql_mubham' depends on axioms: [propext, Quot.sound]
+'Aql.Mirsat.la_qabl_wa_bad' does not depend on any axioms
+'Aql.Mirsat.mustaqim_min_kull_mirsat' depends on axioms: [propext, Quot.sound]

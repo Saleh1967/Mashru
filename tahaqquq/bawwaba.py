@@ -20,6 +20,7 @@
   ٥ل. جدول أوّليات العقل (tahaqquq/test_awwaliyyat.py): awwaliyyat.tsv ببصمته (مرشّح أو مختوم)، ومطابقة Aql/Awwaliyyat.lean له إن حضر.
   ٥م. جدول الأزمنة (tahaqquq/test_azmina.py): azmina.tsv ببصمته (مرشّح أو مختوم)، ومطابقة Aql/Azmina.lean له إن حضر.
   ٥ن. جدول التجاور المكانيّ (tahaqquq/test_makan.py): makan.tsv ببصمته (مرشّح أو مختوم)، ومطابقة Aql/Makan.lean له إن حضر.
+  ٥س. جدول المرساة (tahaqquq/test_mirsat.py): mirsat.tsv ببصمته (مرشّح أو مختوم)، ومطابقة Aql/Mirsat.lean له إن حضر.
   ٦. كلّ طفرة في tafrat.json تُقتل: تُفشل البناء أو تُفشل اختبارات المخزن. طفرة تعيش = اختبارٌ مرآة.
 التشغيل: python3 -I tahaqquq/bawwaba.py [--bila-tafrat]
 """
@@ -142,6 +143,10 @@ def main():
     report.append(f"٥ن جدول التجاور المكانيّ: {out.strip().splitlines()[-1] if out.strip() else '?'}")
     if code != 0:
         fails.append("اختبار جدول التجاور المكانيّ فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_mirsat.py"])
+    report.append(f"٥س جدول المرساة: {out.strip().splitlines()[-1] if out.strip() else '?'}")
+    if code != 0:
+        fails.append("اختبار جدول المرساة فشل:\n" + out[-800:])
     mdir = os.environ.get("MUDAA_DIR")
     if mdir and os.path.isdir(mdir):
         code, out = run([sys.executable, "-I", "mudaat/idaa.py", "tahaqqaq", mdir])
@@ -189,6 +194,8 @@ def main():
                 code, _ = run([sys.executable, "-I", "tahaqquq/test_azmina.py"], cwd=dst)
             if code == 0:
                 code, _ = run([sys.executable, "-I", "tahaqquq/test_makan.py"], cwd=dst)
+            if code == 0:
+                code, _ = run([sys.executable, "-I", "tahaqquq/test_mirsat.py"], cwd=dst)
             if code == 0:
                 alive.append(t["ism"])
             shutil.rmtree(tmp)
