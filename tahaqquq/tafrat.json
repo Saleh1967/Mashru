@@ -898,5 +898,35 @@
   "milaf": "Aql/Isnad.lean",
   "min": "  | .sughra _ _ => r.huna",
   "ila": "  | .sughra _ _ => sifr"
+ },
+ {
+  "ism": "P115_mamnu_fatha_nasb_faqat",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "      | 1 => .muayyan .raf | 0 => .muhtamal [.nasb, .jarr] | _ => .laHukm\n    | .mamnu true",
+  "ila": "      | 1 => .muayyan .raf | 0 => .muayyan .nasb | _ => .laHukm\n    | .mamnu true"
+ },
+ {
+  "ism": "P116_majhul_madi_fatha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "(if madi then 2 else 0)",
+  "ila": "(if madi then 0 else 2)"
+ },
+ {
+  "ism": "P117_sitta_waw_nasb",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "else if harf c == waw then .muayyan .raf else if harf c == alif then .muayyan .nasb",
+  "ila": "else if harf c == waw then .muayyan .nasb else if harf c == alif then .muayyan .nasb"
+ },
+ {
+  "ism": "P118_shahid_satr_khata",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "⟨\"فعلين\", 115, .muthanna",
+  "ila": "⟨\"فعلين\", 116, .muthanna"
+ },
+ {
+  "ism": "P119_lahiqa_muthanna_fatha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "| .muthanna, h, sn => [kh h 3, kh nun sn]",
+  "ila": "| .muthanna, h, sn => [kh h 0, kh nun sn]"
  }
 ]

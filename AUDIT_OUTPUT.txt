@@ -750,3 +750,27 @@
 'Aql.Isnad.sabab_yufarriq' depends on axioms: [propext]
 'Aql.Isnad.hahuna_la_jiha' depends on axioms: [propext, Quot.sound]
 'Aql.Isnad.thamma_dhaka' does not depend on any axioms
+'Jisr.JisrDal.harf_fakk' depends on axioms: [propext, Quot.sound]
+'Jisr.JisrDal.khaliya_malik' depends on axioms: [propext, Quot.sound]
+'Jisr.JisrDal.hawamil_huruf' depends on axioms: [propext]
+'Jisr.JisrDal.asliyya_tuqabil' depends on axioms: [propext, Quot.sound]
+'Jisr.JisrDal.maqsur_la_yuayyin' depends on axioms: [propext]
+'Jisr.JisrDal.mudaf_la_yuayyin' depends on axioms: [propext]
+'Jisr.JisrDal.yayn_la_yufarriq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.JisrDal.manqus_fatha_zahira' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.JisrDal.mamnu_fatha' depends on axioms: [propext, Quot.sound]
+'Jisr.JisrDal.mamnu_bi_al' depends on axioms: [propext, Quot.sound]
+'Jisr.JisrDal.amthila_nun' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.JisrDal.sitta_hamil' does not depend on any axioms
+'Jisr.JisrDal.farIyaBab_malik' depends on axioms: [propext]
+'Jisr.JisrDal.farIya_kull' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jisr.JisrDal.shawahid_hukm' depends on axioms: [propext]
+'Jisr.JisrDal.muwafiq_farIya' depends on axioms: [propext]
+'Jisr.JisrDal.majhul_huruf' depends on axioms: [propext, Quot.sound]
+'Jisr.JisrDal.majhul_tul' depends on axioms: [propext]
+'Jisr.JisrDal.majhul_dun_116' depends on axioms: [propext, Quot.sound]
+'Jisr.JisrDal.majhul_marfud' does not depend on any axioms
+'Jisr.JisrDal.shawahid_majhul' does not depend on any axioms
+'Jisr.JisrDal.intilaq_wasl' depends on axioms: [propext]
+'Jisr.JisrDalUtur.mufrad_halaIrab' depends on axioms: [propext, Quot.sound]
+'Jisr.JisrDalUtur.mufrad_tanwin' depends on axioms: [propext]
