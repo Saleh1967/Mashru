@@ -946,5 +946,17 @@
   "milaf": "Aql/SababShartMani.lean",
   "min": "  | .nisabWaDaynKathir => false",
   "ila": "  | .nisabWaDaynKathir => true"
+ },
+ {
+  "ism": "P123_tashfir_fakk_jamad",
+  "milaf": "Madlul/Tashfir.lean",
+  "min": "| 1 => some .jamad",
+  "ila": "| 1 => some .hayawan"
+ },
+ {
+  "ism": "P124_tashfir_fakk_insan",
+  "milaf": "Madlul/Tashfir.lean",
+  "min": "| 4 => some .insan",
+  "ila": "| 4 => some .jamad"
  }
 ]
