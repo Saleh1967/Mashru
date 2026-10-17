@@ -16,6 +16,7 @@ import Jisr.JisrDal
 import Jisr.JisrDalUtur
 import Jisr.QiraaSimat
 import Jisr.NisabAsnaf
+import Jisr.TartibMamul
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
 import Dal.AqsamAlism
