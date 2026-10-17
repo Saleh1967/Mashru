@@ -1120,5 +1120,23 @@
   "milaf": "Madlul/TashfirHawass.lean",
   "min": "  listEnc (charBound + 1) ((b.ism.toList.map charEnc) ++ (charBound :: (b.hawass.map hassaEnc)))",
   "ila": "  listEnc (charBound + 1) ((b.ism.toList.map charEnc) ++ ((charBound + 1) :: (b.hawass.map hassaEnc)))"
+ },
+ {
+  "ism": "P152_joinTrailing_bila_fasil",
+  "milaf": "Madlul/TashfirShabaka.lean",
+  "min": "c ++ (sep :: joinTrailing sep cs)",
+  "ila": "c ++ (joinTrailing sep cs)"
+ },
+ {
+  "ism": "P153_qawlEnc_hadd_khati",
+  "milaf": "Madlul/TashfirShabaka.lean",
+  "min": "SLGE.mixEnc 11 1 (stringsEnc (toStrings q)) (tagOf q) 0",
+  "ila": "SLGE.mixEnc 10 1 (stringsEnc (toStrings q)) (tagOf q) 0"
+ },
+ {
+  "ism": "P154_stringsToPairs_tabdil",
+  "milaf": "Madlul/TashfirShabaka.lean",
+  "min": "a :: b :: rest => (a, b) :: stringsToPairs rest",
+  "ila": "a :: b :: rest => (b, a) :: stringsToPairs rest"
  }
 ]

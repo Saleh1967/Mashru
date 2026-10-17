@@ -13,6 +13,7 @@ import Madlul.Jamad
 import Madlul.Shabaka
 import Madlul.Hawass
 import Madlul.TashfirHawass
+import Madlul.TashfirShabaka
 import Aql.Awwaliyyat
 import Aql.TashfirAwwaliyyat
 import Aql.Azmina
@@ -1079,3 +1080,39 @@ import Jisr.Utur
 #print axioms Madlul.TashfirHawass.qawlMalik_shawahid
 #print axioms Madlul.TashfirHawass.khibrat_tudi
 #print axioms Madlul.TashfirHawass.khibrat_eq
+
+-- جسرُ المعلومة المعمَّم (الثامن): طيُّ وفكُّ Madlul.Shabaka (Luzum/Uslub/Fil/Qawl/Shabaka) — قطعةُ alaqat
+-- من الاسم الثمانيّ. أداتانِ جديدتان: splitAllSep/joinTrailing (تعميمُ splitAtSep من جزءٍ واحدٍ إلى عددٍ
+-- غيرِ محدود، بفاصلٍ لاحق)، وstringsEnc/stringsListEnc (طيُّ List String وList(List String) بهما، غيرَ
+-- مشروطين بتاتًا). Shabaka (ستّةُ حقول List(String×String)) وQawl (أحدَ عشرَ منشِئًا بحقولَ نصّيّة) كلاهما
+-- غيرُ مشروطٍ — الأشملُ بين قطع هذه السلسلة، بلا استثناءٍ واحدٍ كـmawdi في القطعة السابقة (Hawass).
+#print axioms Madlul.TashfirShabaka.splitAtSep_snd_lt
+#print axioms Madlul.TashfirShabaka.splitAllSep_unfold
+#print axioms Madlul.TashfirShabaka.splitAllSep_joinTrailing
+#print axioms Madlul.TashfirShabaka.joinTrailing_mem
+#print axioms Madlul.TashfirShabaka.stringsEnc_lt
+#print axioms Madlul.TashfirShabaka.stringsEnc_notMem
+#print axioms Madlul.TashfirShabaka.stringsRaw_dec_enc
+#print axioms Madlul.TashfirShabaka.strings_dec_enc
+#print axioms Madlul.TashfirShabaka.stringsListEnc_lt
+#print axioms Madlul.TashfirShabaka.stringsListEnc_notMem
+#print axioms Madlul.TashfirShabaka.stringsList_dec_enc
+#print axioms Madlul.TashfirShabaka.luzum_dec_enc
+#print axioms Madlul.TashfirShabaka.luzumEnc_lt
+#print axioms Madlul.TashfirShabaka.tayyLuzum_la_yudi
+#print axioms Madlul.TashfirShabaka.uslub_dec_enc
+#print axioms Madlul.TashfirShabaka.uslubEnc_lt
+#print axioms Madlul.TashfirShabaka.tayyUslub_la_yudi
+#print axioms Madlul.TashfirShabaka.fil_dec_enc
+#print axioms Madlul.TashfirShabaka.tayyFil_la_yudi
+#print axioms Madlul.TashfirShabaka.tagOf_lt
+#print axioms Madlul.TashfirShabaka.toStrings_ofStrings
+#print axioms Madlul.TashfirShabaka.qawl_dec_enc
+#print axioms Madlul.TashfirShabaka.tayyQawl_la_yudi
+#print axioms Madlul.TashfirShabaka.stringsToPairs_pairsToStrings
+#print axioms Madlul.TashfirShabaka.shabaka_dec_enc
+#print axioms Madlul.TashfirShabaka.tayyShabaka_la_yudi
+#print axioms Madlul.TashfirShabaka.shabaka_tudi
+#print axioms Madlul.TashfirShabaka.shabakaP_tudi
+#print axioms Madlul.TashfirShabaka.qawl_shawahid
+#print axioms Madlul.TashfirShabaka.fil_shahid
