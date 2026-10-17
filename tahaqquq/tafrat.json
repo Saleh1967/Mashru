@@ -948,6 +948,42 @@
   "ila": "  | .nisabWaDaynKathir => true"
  },
  {
+  "ism": "P123_mujalasa_sirin_kilahuma_false",
+  "milaf": "Aql/AdawatMaani.lean",
+  "min": "  | .ibnSirinFaqat => true\n  | .kilahuma => true",
+  "ila": "  | .ibnSirinFaqat => true\n  | .kilahuma => false"
+ },
+ {
+  "ism": "P124_ikhtiyar_sabt_yawmAljumah_true",
+  "milaf": "Aql/AdawatMaani.lean",
+  "min": "  | .yawmAljumah => false",
+  "ila": "  | .yawmAljumah => true"
+ },
+ {
+  "ism": "P125_daw_laShamsWaDawSiraj_false",
+  "milaf": "Aql/AdawatMaani.lean",
+  "min": "  | .laShamsWaDawSiraj => true",
+  "ila": "  | .laShamsWaDawSiraj => false"
+ },
+ {
+  "ism": "P123_anti_bil_fatha",
+  "milaf": "Jisr/QiraaSimat.lean",
+  "min": "(\"أَنْتِ\", [kh 0 0, kh 14 3, kh 18 2]",
+  "ila": "(\"أَنْتِ\", [kh 0 0, kh 14 3, kh 18 0]"
+ },
+ {
+  "ism": "P124_muayyan_yaqbal_kull",
+  "milaf": "Jisr/QiraaSimat.lean",
+  "min": "  | .qad a, x => x == a",
+  "ila": "  | .qad _, _ => true"
+ },
+ {
+  "ism": "P125_muhtamal_bi_awwalih",
+  "milaf": "Jisr/QiraaSimat.lean",
+  "min": "  | gs => .muhtamal gs",
+  "ila": "  | g :: _ => .qad g"
+ },
+ {
   "ism": "P123_zayd_fail_qabl_amil",
   "milaf": "Jisr/TartibMamul.lean",
   "min": "def zaydFailAsl : Mawdi := 1",
@@ -976,17 +1012,5 @@
   "milaf": "Jisr/KhulasaIkhbar.lean",
   "min": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 339",
   "ila": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 999"
- },
- {
-  "ism": "P124_ikhtiyar_sabt_yawmAljumah_true",
-  "milaf": "Aql/AdawatMaani.lean",
-  "min": "  | .yawmAljumah => false",
-  "ila": "  | .yawmAljumah => true"
- },
- {
-  "ism": "P125_daw_laShamsWaDawSiraj_false",
-  "milaf": "Aql/AdawatMaani.lean",
-  "min": "  | .laShamsWaDawSiraj => true",
-  "ila": "  | .laShamsWaDawSiraj => false"
  }
 ]

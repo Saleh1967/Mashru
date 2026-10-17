@@ -14,6 +14,7 @@ import Aql.Mirsat
 import Aql.Isnad
 import Jisr.JisrDal
 import Jisr.JisrDalUtur
+import Jisr.QiraaSimat
 import Jisr.KhulasaIkhbar
 import Jisr.NisabAsnaf
 import Jisr.TartibMamul
@@ -911,6 +912,24 @@ import Jisr.Utur
 #print axioms Jisr.NisabAsnaf.taqyidiyya_nida
 #print axioms Jisr.NisabAsnaf.isnadiyya_asnaf
 #print axioms Jisr.NisabAsnaf.ihsa_awamil
+#print axioms Jisr.QiraaSimat.hawamil_malik
+#print axioms Jisr.QiraaSimat.qiraa_salima
+#print axioms Jisr.QiraaSimat.qiraaH_salima
+#print axioms Jisr.QiraaSimat.hawamil_8
+#print axioms Jisr.QiraaSimat.khalaya_10
+#print axioms Jisr.QiraaSimat.anta_anti
+#print axioms Jisr.QiraaSimat.huma_baqiya
+#print axioms Jisr.QiraaSimat.ghayr_damir
+#print axioms Jisr.QiraaSimat.qiraa_min_raqm
+#print axioms Jisr.QiraaSimat.qiraa_min_annEnc
+#print axioms Jisr.QiraaSimat.la_dalla_tasturidd
+#print axioms Jisr.QiraaSimat.attrDec_attrCode
+#print axioms Jisr.QiraaSimat.map_attrDec
+#print axioms Jisr.QiraaSimat.fahs_min_raqm
+#print axioms Jisr.QiraaSimat.kashf_tanaqud
+#print axioms Jisr.QiraaSimat.faid
+#print axioms Jisr.QiraaSimat.ihtizal
+#print axioms Jisr.QiraaSimat.ihtizal_annEnc
 
 -- ترتيبُ الفاعل والمفعول به مع عامله: قطر الندى L219–235 (Jisr/TartibMamul.lean؛ بعد تصحيح أرقام
 -- السند وحذف قسمين غير مسنودين في مراجعة murajii 2026-10-17)
