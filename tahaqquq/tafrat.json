@@ -958,5 +958,23 @@
   "milaf": "Madlul/Tashfir.lean",
   "min": "| 4 => some .insan",
   "ila": "| 4 => some .jamad"
+ },
+ {
+  "ism": "P125_sullam_tawi_darja0_yabdil",
+  "milaf": "Madlul/TashfirSullam.lean",
+  "min": "  | 0 => fun p => carrierEnc p.1 p.2",
+  "ila": "  | 0 => fun p => carrierEnc p.2 p.1"
+ },
+ {
+  "ism": "P126_sullam_sahih_darja1_khata",
+  "milaf": "Madlul/TashfirSullam.lean",
+  "min": "  | 1 => fun p => p.2 < 4",
+  "ila": "  | 1 => fun p => p.1 < 4"
+ },
+ {
+  "ism": "P127_sullam_fakkOf_dayman_laShay",
+  "milaf": "Madlul/TashfirSullam.lean",
+  "min": "    (fun h => some ⟨fakkRaw n code, h⟩) (fun _ => none)",
+  "ila": "    (fun _ => none) (fun _ => none)"
  }
 ]
