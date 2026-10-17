@@ -946,5 +946,41 @@
   "milaf": "Aql/SababShartMani.lean",
   "min": "  | .nisabWaDaynKathir => false",
   "ila": "  | .nisabWaDaynKathir => true"
+ },
+ {
+  "ism": "P123_ikhtisas_bizahir_khat",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 339",
+  "ila": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 999"
+ },
+ {
+  "ism": "P124_ghaib_L115_naqis",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  [\"إن\", \"إذ\", \"إذما\", \"أي\", \"أين\", \"أنى\", \"أيان\", \"متى\", \"مهما\", \"من\", \"ما\", \"حيثما\"]",
+  "ila": "  [\"إن\", \"إذما\", \"أي\", \"أين\", \"أنى\", \"أيان\", \"متى\", \"مهما\", \"من\", \"ما\", \"حيثما\"]"
+ },
+ {
+  "ism": "P125_jam_tashih_jawaz_khata",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  | .jamTashihMudhakkar => .wajibManfi",
+  "ila": "  | .jamTashihMudhakkar => .jaizWajhan"
+ },
+ {
+  "ism": "P126_rutbat_laqab_khata",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  | .laqab => 1\n  | .kunya => 1",
+  "ila": "  | .laqab => 0\n  | .kunya => 1"
+ },
+ {
+  "ism": "P127_shahid_wujub_mukarrar",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  | .jawabQasamSarih => \"لعمرك لأفعلن\"",
+  "ila": "  | .jawabQasamSarih => \"لولا أنتم لكنا مؤمنين\""
+ },
+ {
+  "ism": "P128_ilgha_zann_mukarrar",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  | .baynaAlMafulayn => .musawin",
+  "ila": "  | .baynaAlMafulayn => .mumtani"
  }
 ]
