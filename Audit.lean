@@ -14,6 +14,7 @@ import Aql.Mirsat
 import Aql.Isnad
 import Jisr.JisrDal
 import Jisr.JisrDalUtur
+import Jisr.KhulasaIkhbar
 import Jisr.NisabAsnaf
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
@@ -864,6 +865,25 @@ import Jisr.Utur
 #print axioms Jisr.JisrDal.intilaq_wasl
 #print axioms Jisr.JisrDalUtur.mufrad_halaIrab
 #print axioms Jisr.JisrDalUtur.mufrad_tanwin
+-- خلاصةُ أسلوب الإخبار: الثمانيةُ بنودٍ الباقية (Jisr/KhulasaIkhbar.lean)
+#print axioms Jisr.KhulasaIkhbar.bund_thamaniya
+#print axioms Jisr.KhulasaIkhbar.bund_mutamayiza
+#print axioms Jisr.KhulasaIkhbar.darajat_ilgha_thalath_mukhtalifa
+#print axioms Jisr.KhulasaIkhbar.arbaa_asbab
+#print axioms Jisr.KhulasaIkhbar.shawahid_arbaa_mustaqilla
+#print axioms Jisr.KhulasaIkhbar.jamay_tashih_bila_jawaz
+#print axioms Jisr.KhulasaIkhbar.yaslahu_khiyar_wahid
+#print axioms Jisr.KhulasaIkhbar.laYaslahu_khiyaran
+#print axioms Jisr.KhulasaIkhbar.bilaQarn_khas_bi_yaslahu
+#print axioms Jisr.KhulasaIkhbar.ghaib_L115_khamsa
+#print axioms Jisr.KhulasaIkhbar.ism_yataqaddam_laqab
+#print axioms Jisr.KhulasaIkhbar.ism_yataqaddam_kunya
+#print axioms Jisr.KhulasaIkhbar.laqab_la_yataqaddam_ism
+#print axioms Jisr.KhulasaIkhbar.halatay_laqab_mustaqillatan
+#print axioms Jisr.KhulasaIkhbar.mukhtassa_sabaa
+#print axioms Jisr.KhulasaIkhbar.mushtaraka_sabaa
+#print axioms Jisr.KhulasaIkhbar.qismat_jarr_tamma
+#print axioms Jisr.KhulasaIkhbar.tasnif_al_bunud_tamm
 #print axioms Jisr.NisabAsnaf.muwafiq_semOf
 #print axioms Jisr.NisabAsnaf.jadwal_nisab
 #print axioms Jisr.NisabAsnaf.kull_mamul_nisba
