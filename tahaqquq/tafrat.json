@@ -976,5 +976,23 @@
   "milaf": "Madlul/TashfirSullam.lean",
   "min": "    (fun h => some ⟨fakkRaw n code, h⟩) (fun _ => none)",
   "ila": "    (fun _ => none) (fun _ => none)"
+ },
+ {
+  "ism": "P128_madda_tabdil_kathafa",
+  "milaf": "Madlul/TashfirMadda.lean",
+  "min": "  let l1 := SLGE.mixEnc BOUND BOUND m.haqiqa (optNatEnc m.kJamid) (optNatEnc m.kSail)",
+  "ila": "  let l1 := SLGE.mixEnc BOUND BOUND m.haqiqa (optNatEnc m.kSail) (optNatEnc m.kJamid)"
+ },
+ {
+  "ism": "P129_zigzag_negSucc_khata",
+  "milaf": "Madlul/TashfirMadda.lean",
+  "min": "  | .negSucc n => 2 * n + 1",
+  "ila": "  | .negSucc n => 2 * n"
+ },
+ {
+  "ism": "P130_bound_dun_shawahid",
+  "milaf": "Madlul/TashfirMadda.lean",
+  "min": "def BOUND : Nat := 2 ^ 32",
+  "ila": "def BOUND : Nat := 2 ^ 8"
  }
 ]

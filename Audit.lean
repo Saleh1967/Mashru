@@ -5,6 +5,7 @@ import Madlul.AqsamAlmadlul
 import Madlul.Tayin
 import Madlul.Tashfir
 import Madlul.TashfirSullam
+import Madlul.TashfirMadda
 import Madlul.Wiratha
 import Madlul.Jamad
 import Madlul.Shabaka
@@ -952,3 +953,15 @@ import Jisr.Utur
 #print axioms TartibMamul.wujub_taakhir_fail_li_damir_mamul
 #print axioms TartibMamul.shahid_darabani_zayd
 #print axioms TartibMamul.jawaz_taqdim_maful_ala_amil
+
+-- جسرُ المعلومة المعمَّم: طيُّ وفكُّ Madlul.Jamad.Madda بـ SLGE.mixEnc/mixDec (Madlul/TashfirMadda.lean؛
+-- طلب المالك 2026-10-17: «ابدا بالجسر اعمل lean» على المقترح ١ — جسر المعلومة/المفاهيم بالنمط المعمَّم)
+#print axioms Madlul.TashfirMadda.optNat_dec_enc
+#print axioms Madlul.TashfirMadda.zigzag_unzigzag
+#print axioms Madlul.TashfirMadda.optInt_dec_enc
+#print axioms Madlul.TashfirMadda.bound_pos
+#print axioms Madlul.TashfirMadda.madda_dec_enc
+#print axioms Madlul.TashfirMadda.fakkOf_tawiOf
+#print axioms Madlul.TashfirMadda.tayyMadda_la_yudi
+#print axioms Madlul.TashfirMadda.shawahid_sahih
+#print axioms Madlul.TashfirMadda.madda_shawahid_tudi
