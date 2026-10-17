@@ -3,6 +3,8 @@ import Dal.AqsamAllafz
 import Madlul.Dalala
 import Madlul.AqsamAlmadlul
 import Madlul.Tayin
+import Madlul.Tashfir
+import Madlul.TashfirSullam
 import Madlul.Wiratha
 import Madlul.Jamad
 import Madlul.Shabaka
@@ -627,6 +629,17 @@ import Jisr.Utur
 #print axioms Madlul.Tayin.tahsin_la_yughayyir
 #print axioms Madlul.Tayin.qabiliyya_tabi_khassa
 #print axioms Madlul.Tayin.shawahid
+
+-- تشفير معجم الأجناس على قناة الدالّ وحده الثنائيّة نفسِها (Madlul/Tashfir.lean؛ ردًّا على طلب المالك
+-- 2026-10-17 توظيف الـ binary والفكّ عبر Tayy على حدود الجسر)
+#print axioms Madlul.Tashfir.qism_la_yudi
+#print axioms Madlul.Tashfir.qismSifrWahid_la_yudi
+
+-- تعميمُ Tayy على سلّم SLGE كلِّه بدرجةٍ n (Madlul/TashfirSullam.lean؛ طلب المالك 2026-10-17: دالّةٌ
+-- واحدةٌ على unit = n، لا مثالٌ لكلّ انتقال، بقراءة مبرهنات SLGE/Ladder.lean مباشرةً)
+#print axioms Madlul.TashfirSullam.fakkRaw_tawiRaw
+#print axioms Madlul.TashfirSullam.fakkOf_tawiOf
+#print axioms Madlul.TashfirSullam.tayyOf_la_yudi
 
 -- قانون التوريث والوراثة على شجرة الأجناس (Madlul/Wiratha.lean)
 #print axioms Madlul.Wiratha.battQ_yuhassin

@@ -948,69 +948,33 @@
   "ila": "  | .nisabWaDaynKathir => true"
  },
  {
-  "ism": "P123_mujalasa_sirin_kilahuma_false",
-  "milaf": "Aql/AdawatMaani.lean",
-  "min": "  | .ibnSirinFaqat => true\n  | .kilahuma => true",
-  "ila": "  | .ibnSirinFaqat => true\n  | .kilahuma => false"
+  "ism": "P123_tashfir_fakk_jamad",
+  "milaf": "Madlul/Tashfir.lean",
+  "min": "| 1 => some .jamad",
+  "ila": "| 1 => some .hayawan"
  },
  {
-  "ism": "P124_ikhtiyar_sabt_yawmAljumah_true",
-  "milaf": "Aql/AdawatMaani.lean",
-  "min": "  | .yawmAljumah => false",
-  "ila": "  | .yawmAljumah => true"
+  "ism": "P124_tashfir_fakk_insan",
+  "milaf": "Madlul/Tashfir.lean",
+  "min": "| 4 => some .insan",
+  "ila": "| 4 => some .jamad"
  },
  {
-  "ism": "P125_daw_laShamsWaDawSiraj_false",
-  "milaf": "Aql/AdawatMaani.lean",
-  "min": "  | .laShamsWaDawSiraj => true",
-  "ila": "  | .laShamsWaDawSiraj => false"
+  "ism": "P125_sullam_tawi_darja0_yabdil",
+  "milaf": "Madlul/TashfirSullam.lean",
+  "min": "  | 0 => fun p => carrierEnc p.1 p.2",
+  "ila": "  | 0 => fun p => carrierEnc p.2 p.1"
  },
  {
-  "ism": "P123_anti_bil_fatha",
-  "milaf": "Jisr/QiraaSimat.lean",
-  "min": "(\"أَنْتِ\", [kh 0 0, kh 14 3, kh 18 2]",
-  "ila": "(\"أَنْتِ\", [kh 0 0, kh 14 3, kh 18 0]"
+  "ism": "P126_sullam_sahih_darja1_khata",
+  "milaf": "Madlul/TashfirSullam.lean",
+  "min": "  | 1 => fun p => p.2 < 4",
+  "ila": "  | 1 => fun p => p.1 < 4"
  },
  {
-  "ism": "P124_muayyan_yaqbal_kull",
-  "milaf": "Jisr/QiraaSimat.lean",
-  "min": "  | .qad a, x => x == a",
-  "ila": "  | .qad _, _ => true"
- },
- {
-  "ism": "P125_muhtamal_bi_awwalih",
-  "milaf": "Jisr/QiraaSimat.lean",
-  "min": "  | gs => .muhtamal gs",
-  "ila": "  | g :: _ => .qad g"
- },
- {
-  "ism": "P123_zayd_fail_qabl_amil",
-  "milaf": "Jisr/TartibMamul.lean",
-  "min": "def zaydFailAsl : Mawdi := 1",
-  "ila": "def zaydFailAsl : Mawdi := 0"
- },
- {
-  "ism": "P124_rabbuhu_aid_khati",
-  "milaf": "Jisr/TartibMamul.lean",
-  "min": "def rabbuhuFail : Kalima := ⟨2, 2, some 1⟩",
-  "ila": "def rabbuhuFail : Kalima := ⟨2, 2, some 99⟩"
- },
- {
-  "ism": "P125_muttasil_ziyada",
-  "milaf": "Jisr/TartibMamul.lean",
-  "min": "maful.damir = some amilRamz ∧ maful.mawdi = amilPos + 1",
-  "ila": "maful.damir = some amilRamz ∧ maful.mawdi = amilPos + 2"
- },
- {
-  "ism": "P126_hada_maful_muakhkhar",
-  "milaf": "Jisr/TartibMamul.lean",
-  "min": "def hadaMafulMuqaddam : Mawdi := 0   -- فريقا، مقدَّمٌ",
-  "ila": "def hadaMafulMuqaddam : Mawdi := 1   -- فريقا، مقدَّمٌ"
- },
- {
-  "ism": "P123_ikhtisas_bizahir_khat",
-  "milaf": "Jisr/KhulasaIkhbar.lean",
-  "min": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 339",
-  "ila": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 999"
+  "ism": "P127_sullam_fakkOf_dayman_laShay",
+  "milaf": "Madlul/TashfirSullam.lean",
+  "min": "    (fun h => some ⟨fakkRaw n code, h⟩) (fun _ => none)",
+  "ila": "    (fun _ => none) (fun _ => none)"
  }
 ]
