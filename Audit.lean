@@ -15,6 +15,7 @@ import Aql.Awwaliyyat
 import Aql.Azmina
 import Aql.TashfirAzmina
 import Aql.Makan
+import Aql.TashfirMakan
 import Aql.Mirsat
 import Aql.TashfirMirsat
 import Aql.Isnad
@@ -1000,3 +1001,27 @@ import Jisr.Utur
 #print axioms Aql.TashfirAzmina.izaha_dec_enc
 #print axioms Aql.TashfirAzmina.tayyIzaha_la_yudi
 #print axioms Aql.TashfirAzmina.izaha_asma_tudi
+
+-- جسرُ المعلومة المعمَّم (الخامس): طيُّ وفكُّ Aql.Makan.Izaha3/Mawdi/Marja (Aql/TashfirMakan.lean؛ نفس
+-- تفويض 2026-10-17 22:55). Marja نوعُ مجموعٍ: التاجُ محدودٌ في k₁، والحمولةُ طليقةٌ في o — لا blockEnc
+-- (إخفاقانِ فعليّانِ موثَّقانِ في ترويسة الملفّ: تجسيدُ BOUND³ حوسوبيًّا OOM، ونداءُ simp جامعٌ يُعلِّق)
+#print axioms Aql.TashfirMakan.izaha3_dec_enc
+#print axioms Aql.TashfirMakan.izaha3FakkOf_tawiOf
+#print axioms Aql.TashfirMakan.tayyIzaha3_la_yudi
+#print axioms Aql.TashfirMakan.jiha_dec_enc
+#print axioms Aql.TashfirMakan.jihaEnc_lt
+#print axioms Aql.TashfirMakan.wahdaMakan_dec_enc
+#print axioms Aql.TashfirMakan.wahdaMakanEnc_lt
+#print axioms Aql.TashfirMakan.ojiha_dec_enc
+#print axioms Aql.TashfirMakan.ojihaEnc_lt
+#print axioms Aql.TashfirMakan.miq_dec_enc
+#print axioms Aql.TashfirMakan.omiq_dec_enc
+#print axioms Aql.TashfirMakan.mawdi_dec_enc
+#print axioms Aql.TashfirMakan.tayyMawdi_la_yudi
+#print axioms Aql.TashfirMakan.marja_dec_enc
+#print axioms Aql.TashfirMakan.marjaTag_lt
+#print axioms Aql.TashfirMakan.marjaFakkOf_tawiOf
+#print axioms Aql.TashfirMakan.tayyMarja_la_yudi
+#print axioms Aql.TashfirMakan.mawdi_shawahid_tudi
+#print axioms Aql.TashfirMakan.marja_shawahid_sahih
+#print axioms Aql.TashfirMakan.marja_shawahid_tudi
