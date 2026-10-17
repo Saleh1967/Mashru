@@ -946,5 +946,23 @@
   "milaf": "Aql/SababShartMani.lean",
   "min": "  | .nisabWaDaynKathir => false",
   "ila": "  | .nisabWaDaynKathir => true"
+ },
+ {
+  "ism": "P123_anti_bil_fatha",
+  "milaf": "Jisr/QiraaSimat.lean",
+  "min": "(\"أَنْتِ\", [kh 0 0, kh 14 3, kh 18 2]",
+  "ila": "(\"أَنْتِ\", [kh 0 0, kh 14 3, kh 18 0]"
+ },
+ {
+  "ism": "P124_muayyan_yaqbal_kull",
+  "milaf": "Jisr/QiraaSimat.lean",
+  "min": "  | .qad a, x => x == a",
+  "ila": "  | .qad _, _ => true"
+ },
+ {
+  "ism": "P125_muhtamal_bi_awwalih",
+  "milaf": "Jisr/QiraaSimat.lean",
+  "min": "  | gs => .muhtamal gs",
+  "ila": "  | g :: _ => .qad g"
  }
 ]
