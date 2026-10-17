@@ -13,6 +13,7 @@ import Madlul.Shabaka
 import Madlul.Hawass
 import Aql.Awwaliyyat
 import Aql.Azmina
+import Aql.TashfirAzmina
 import Aql.Makan
 import Aql.Mirsat
 import Aql.TashfirMirsat
@@ -991,3 +992,11 @@ import Jisr.Utur
 #print axioms Aql.TashfirMirsat.tayyMirsat_la_yudi
 #print axioms Aql.TashfirMirsat.shawahid_sahih
 #print axioms Aql.TashfirMirsat.mirsat_shawahid_tudi
+
+-- جسرُ المعلومة المعمَّم (الرابع): طيُّ وفكُّ Aql.Azmina.Izaha؛ حقلٌ طليقٌ واحدٌ (adad) يكفيه موضعُ mixEnc
+-- غيرُ المقيَّد فلا شرطَ Sahih هنا أصلًا (Aql/TashfirAzmina.lean؛ نفس تفويض 2026-10-17 22:55)
+#print axioms Aql.TashfirAzmina.wahda_dec_enc
+#print axioms Aql.TashfirAzmina.wahdaEnc_lt
+#print axioms Aql.TashfirAzmina.izaha_dec_enc
+#print axioms Aql.TashfirAzmina.tayyIzaha_la_yudi
+#print axioms Aql.TashfirAzmina.izaha_asma_tudi

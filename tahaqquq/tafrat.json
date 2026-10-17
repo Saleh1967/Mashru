@@ -1030,5 +1030,23 @@
   "milaf": "Aql/TashfirMirsat.lean",
   "min": "      { an := unzigzag anC, huna := { amudi := unzigzag amudiC, ufuqi := unzigzag ufuqiC, tuli := unzigzag tuliC } }",
   "ila": "      { an := unzigzag anC, huna := { amudi := unzigzag amudiC, ufuqi := unzigzag tuliC, tuli := unzigzag ufuqiC } }"
+ },
+ {
+  "ism": "P137_izahaEnc_tabdil_adad_wahda",
+  "milaf": "Aql/TashfirAzmina.lean",
+  "min": "def izahaEnc (i : Izaha) : Nat := SLGE.mixEnc 5 1 (zigzag i.adad) (wahdaEnc i.wahda) 0",
+  "ila": "def izahaEnc (i : Izaha) : Nat := SLGE.mixEnc 5 1 (wahdaEnc i.wahda) (zigzag i.adad) 0"
+ },
+ {
+  "ism": "P138_wahdaDec_tabdil_saa_yawm",
+  "milaf": "Aql/TashfirAzmina.lean",
+  "min": "  | 0 => .saa | 1 => .yawm | 2 => .usbu | 3 => .shahr | _ => .sana",
+  "ila": "  | 0 => .yawm | 1 => .saa | 2 => .usbu | 3 => .shahr | _ => .sana"
+ },
+ {
+  "ism": "P139_izahaEnc_hashw_khata",
+  "milaf": "Aql/TashfirAzmina.lean",
+  "min": "def izahaEnc (i : Izaha) : Nat := SLGE.mixEnc 5 1 (zigzag i.adad) (wahdaEnc i.wahda) 0",
+  "ila": "def izahaEnc (i : Izaha) : Nat := SLGE.mixEnc 5 1 (zigzag i.adad) (wahdaEnc i.wahda) 1"
  }
 ]
