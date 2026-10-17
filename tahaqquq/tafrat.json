@@ -948,10 +948,34 @@
   "ila": "  | .nisabWaDaynKathir => true"
  },
  {
-  "ism": "P123_mujalasa_sirin_kilahuma_false",
-  "milaf": "Aql/AdawatMaani.lean",
-  "min": "  | .ibnSirinFaqat => true\n  | .kilahuma => true",
-  "ila": "  | .ibnSirinFaqat => true\n  | .kilahuma => false"
+  "ism": "P123_zayd_fail_qabl_amil",
+  "milaf": "Jisr/TartibMamul.lean",
+  "min": "def zaydFailAsl : Mawdi := 1",
+  "ila": "def zaydFailAsl : Mawdi := 0"
+ },
+ {
+  "ism": "P124_rabbuhu_aid_khati",
+  "milaf": "Jisr/TartibMamul.lean",
+  "min": "def rabbuhuFail : Kalima := ⟨2, 2, some 1⟩",
+  "ila": "def rabbuhuFail : Kalima := ⟨2, 2, some 99⟩"
+ },
+ {
+  "ism": "P125_muttasil_ziyada",
+  "milaf": "Jisr/TartibMamul.lean",
+  "min": "maful.damir = some amilRamz ∧ maful.mawdi = amilPos + 1",
+  "ila": "maful.damir = some amilRamz ∧ maful.mawdi = amilPos + 2"
+ },
+ {
+  "ism": "P126_hada_maful_muakhkhar",
+  "milaf": "Jisr/TartibMamul.lean",
+  "min": "def hadaMafulMuqaddam : Mawdi := 0   -- فريقا، مقدَّمٌ",
+  "ila": "def hadaMafulMuqaddam : Mawdi := 1   -- فريقا، مقدَّمٌ"
+ },
+ {
+  "ism": "P123_ikhtisas_bizahir_khat",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 339",
+  "ila": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 999"
  },
  {
   "ism": "P124_ikhtiyar_sabt_yawmAljumah_true",
