@@ -15,6 +15,7 @@ import Aql.Isnad
 import Jisr.JisrDal
 import Jisr.JisrDalUtur
 import Jisr.QiraaSimat
+import Jisr.KhulasaIkhbar
 import Jisr.NisabAsnaf
 import Jisr.TartibMamul
 import Jisr.AqsamDalMadlul
@@ -929,3 +930,12 @@ import Jisr.Utur
 #print axioms Jisr.QiraaSimat.faid
 #print axioms Jisr.QiraaSimat.ihtizal
 #print axioms Jisr.QiraaSimat.ihtizal_annEnc
+
+-- ترتيبُ الفاعل والمفعول به مع عامله: قطر الندى L219–235 (Jisr/TartibMamul.lean؛ بعد تصحيح أرقام
+-- السند وحذف قسمين غير مسنودين في مراجعة murajii 2026-10-17)
+#print axioms TartibMamul.asl_yali_amilah
+#print axioms TartibMamul.jawaz_taakhir_fail_an_maful
+#print axioms TartibMamul.wujub_taakhir_fail_li_aid
+#print axioms TartibMamul.wujub_taakhir_fail_li_damir_mamul
+#print axioms TartibMamul.shahid_darabani_zayd
+#print axioms TartibMamul.jawaz_taqdim_maful_ala_amil
