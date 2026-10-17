@@ -1084,5 +1084,23 @@
   "milaf": "Aql/TashfirAwwaliyyat.lean",
   "min": "  tawi := zaman5Enc",
   "ila": "  tawi := fun _ => 0"
+ },
+ {
+  "ism": "P146_charBound_tabdil_saghir",
+  "milaf": "Madlul/TashfirNas.lean",
+  "min": "def charBound : Nat := 2 ^ 32",
+  "ila": "def charBound : Nat := 2 ^ 16"
+ },
+ {
+  "ism": "P147_stringEnc_charDec_khata",
+  "milaf": "Madlul/TashfirNas.lean",
+  "min": "def stringEnc (s : String) : Nat := listEnc charBound (s.toList.map charEnc)",
+  "ila": "def stringEnc (s : String) : Nat := listEnc charBound (s.toList.map charDec)"
+ },
+ {
+  "ism": "P148_tawi_string_hashw",
+  "milaf": "Madlul/TashfirNas.lean",
+  "min": "  tawi := stringEnc",
+  "ila": "  tawi := fun _ => 0"
  }
 ]

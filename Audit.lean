@@ -7,6 +7,7 @@ import Madlul.Tashfir
 import Madlul.TashfirSullam
 import Madlul.TashfirMadda
 import Madlul.TashfirKhawass
+import Madlul.TashfirNas
 import Madlul.Wiratha
 import Madlul.Jamad
 import Madlul.Shabaka
@@ -1033,3 +1034,14 @@ import Jisr.Utur
 #print axioms Aql.TashfirAwwaliyyat.zaman5Enc_lt
 #print axioms Aql.TashfirAwwaliyyat.tayyZaman5_la_yudi
 #print axioms Aql.TashfirAwwaliyyat.zaman5_shawahid_tudi
+
+-- أداةُ طيّ String العامّة (Madlul/TashfirNas.lean؛ نفس تفويض 2026-10-17 22:55). تركيبٌ على listEnc/listDec
+-- من TashfirKhawass + مبرهناتِ نواة Lean (Char.ofNat_toNat، UInt32.toNat_lt، String.ofList_toList) بلا
+-- برهانٍ جديدٍ تقريبًا؛ تفتح جسري Hawass وShabaka(alaqat) اللذين يحملان حقول String.
+#print axioms Madlul.TashfirNas.char_dec_enc
+#print axioms Madlul.TashfirNas.charEnc_lt
+#print axioms Madlul.TashfirNas.charList_dec_enc
+#print axioms Madlul.TashfirNas.charList_map_lt
+#print axioms Madlul.TashfirNas.string_dec_enc
+#print axioms Madlul.TashfirNas.tayyString_la_yudi
+#print axioms Madlul.TashfirNas.string_shawahid_tudi
