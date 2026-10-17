@@ -1102,5 +1102,23 @@
   "milaf": "Madlul/TashfirNas.lean",
   "min": "  tawi := stringEnc",
   "ila": "  tawi := fun _ => 0"
+ },
+ {
+  "ism": "P149_splitAtSep_shart_maqlub",
+  "milaf": "Madlul/TashfirHawass.lean",
+  "min": "    if x = sep then ([], xs)",
+  "ila": "    if x ≠ sep then ([], xs)"
+ },
+ {
+  "ism": "P150_hassaDec_tabdil",
+  "milaf": "Madlul/TashfirHawass.lean",
+  "min": "  | 0 => .basar | 1 => .sam | 2 => .dhawq | 3 => .lams | _ => .shamm",
+  "ila": "  | 0 => .sam | 1 => .basar | 2 => .dhawq | 3 => .lams | _ => .shamm"
+ },
+ {
+  "ism": "P151_budEnc_faasil_mukhtalif",
+  "milaf": "Madlul/TashfirHawass.lean",
+  "min": "  listEnc (charBound + 1) ((b.ism.toList.map charEnc) ++ (charBound :: (b.hawass.map hassaEnc)))",
+  "ila": "  listEnc (charBound + 1) ((b.ism.toList.map charEnc) ++ ((charBound + 1) :: (b.hawass.map hassaEnc)))"
  }
 ]

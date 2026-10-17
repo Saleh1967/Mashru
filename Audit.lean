@@ -12,6 +12,7 @@ import Madlul.Wiratha
 import Madlul.Jamad
 import Madlul.Shabaka
 import Madlul.Hawass
+import Madlul.TashfirHawass
 import Aql.Awwaliyyat
 import Aql.TashfirAwwaliyyat
 import Aql.Azmina
@@ -1045,3 +1046,36 @@ import Jisr.Utur
 #print axioms Madlul.TashfirNas.string_dec_enc
 #print axioms Madlul.TashfirNas.tayyString_la_yudi
 #print axioms Madlul.TashfirNas.string_shawahid_tudi
+
+-- جسرُ المعلومة المعمَّم (السابع): طيُّ وفكُّ Madlul.Hawass (Hassa/Hukm/Shidda/Thubut/Bud/Tasmiya/Khibra)
+-- وMaratib.ShahidWaqi (Madlul/TashfirHawass.lean؛ نفس تفويض 2026-10-17 22:55). أداةٌ جديدةٌ: splitAtSep
+-- (الفصلُ بقيمةٍ محجوزة لا بحدٍّ مختار) تفتح الحقول المتعدّدة من String معًا بلا Sahih/Subtype إلّا على
+-- mawdi وحده (شرطٌ خفيفٌ، لا يُغلَّف بـTayy/Subtype عمدًا).
+#print axioms Madlul.TashfirHawass.splitAtSep_join
+#print axioms Madlul.TashfirHawass.hassa_dec_enc
+#print axioms Madlul.TashfirHawass.hassaEnc_lt
+#print axioms Madlul.TashfirHawass.tayyHassa_la_yudi
+#print axioms Madlul.TashfirHawass.hukm_dec_enc
+#print axioms Madlul.TashfirHawass.hukmEnc_lt
+#print axioms Madlul.TashfirHawass.tayyHukm_la_yudi
+#print axioms Madlul.TashfirHawass.shidda_dec_enc
+#print axioms Madlul.TashfirHawass.shiddaEnc_lt
+#print axioms Madlul.TashfirHawass.tayyShidda_la_yudi
+#print axioms Madlul.TashfirHawass.thubut_dec_enc
+#print axioms Madlul.TashfirHawass.thubutEnc_lt
+#print axioms Madlul.TashfirHawass.tayyThubut_la_yudi
+#print axioms Madlul.TashfirHawass.charBound_ge5
+#print axioms Madlul.TashfirHawass.charBound_notin_charCodes
+#print axioms Madlul.TashfirHawass.charCodes_lt
+#print axioms Madlul.TashfirHawass.charCodes_dec_enc
+#print axioms Madlul.TashfirHawass.bud_dec_enc
+#print axioms Madlul.TashfirHawass.tasmiya_dec_enc
+#print axioms Madlul.TashfirHawass.tayyTasmiya_la_yudi
+#print axioms Madlul.TashfirHawass.shahid_dec_enc
+#print axioms Madlul.TashfirHawass.khibra_dec_enc
+#print axioms Madlul.TashfirHawass.abad_tudi
+#print axioms Madlul.TashfirHawass.mujam_tudi
+#print axioms Madlul.TashfirHawass.qawlMalik_tudi
+#print axioms Madlul.TashfirHawass.qawlMalik_shawahid
+#print axioms Madlul.TashfirHawass.khibrat_tudi
+#print axioms Madlul.TashfirHawass.khibrat_eq
