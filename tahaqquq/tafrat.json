@@ -1066,5 +1066,23 @@
   "milaf": "Aql/TashfirMakan.lean",
   "min": "  | 0 => .fawq | 1 => .taht | 2 => .yamin | 3 => .shimal | 4 => .amam | _ => .khalf",
   "ila": "  | 0 => .taht | 1 => .fawq | 2 => .yamin | 3 => .shimal | 4 => .amam | _ => .khalf"
+ },
+ {
+  "ism": "P143_zaman5Enc_tabdil_munqati_muttasil",
+  "milaf": "Aql/TashfirAwwaliyyat.lean",
+  "min": "  | .madiMunqati => 0 | .madiMuttasil => 1 | .hal => 2 | .mustaqbal => 3 | .mustaqbalMunaffas => 4",
+  "ila": "  | .madiMunqati => 1 | .madiMuttasil => 0 | .hal => 2 | .mustaqbal => 3 | .mustaqbalMunaffas => 4"
+ },
+ {
+  "ism": "P144_zaman5Dec_tabdil_hal_mustaqbal",
+  "milaf": "Aql/TashfirAwwaliyyat.lean",
+  "min": "  | 0 => .madiMunqati | 1 => .madiMuttasil | 2 => .hal | 3 => .mustaqbal | _ => .mustaqbalMunaffas",
+  "ila": "  | 0 => .madiMunqati | 1 => .madiMuttasil | 2 => .mustaqbal | 3 => .hal | _ => .mustaqbalMunaffas"
+ },
+ {
+  "ism": "P145_tawi_zaman5_hashw",
+  "milaf": "Aql/TashfirAwwaliyyat.lean",
+  "min": "  tawi := zaman5Enc",
+  "ila": "  tawi := fun _ => 0"
  }
 ]

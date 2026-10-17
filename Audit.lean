@@ -12,6 +12,7 @@ import Madlul.Jamad
 import Madlul.Shabaka
 import Madlul.Hawass
 import Aql.Awwaliyyat
+import Aql.TashfirAwwaliyyat
 import Aql.Azmina
 import Aql.TashfirAzmina
 import Aql.Makan
@@ -1025,3 +1026,10 @@ import Jisr.Utur
 #print axioms Aql.TashfirMakan.mawdi_shawahid_tudi
 #print axioms Aql.TashfirMakan.marja_shawahid_sahih
 #print axioms Aql.TashfirMakan.marja_shawahid_tudi
+
+-- جسرُ المعلومة المعمَّم (السادس): طيُّ وفكُّ Aql.Awwaliyyat.Zaman5 (Aql/TashfirAwwaliyyat.lean؛ نفس تفويض
+-- 2026-10-17 22:55). تعدادٌ محدودٌ بلا حمولة؛ ترميزٌ مباشرٌ بلا mixEnc أصلًا — أبسط من كلّ القطع 1–5.
+#print axioms Aql.TashfirAwwaliyyat.zaman5_dec_enc
+#print axioms Aql.TashfirAwwaliyyat.zaman5Enc_lt
+#print axioms Aql.TashfirAwwaliyyat.tayyZaman5_la_yudi
+#print axioms Aql.TashfirAwwaliyyat.zaman5_shawahid_tudi
