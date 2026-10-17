@@ -21,6 +21,7 @@ import Jisr.TasnifAlism
 import Aql.Aqliyya
 import Aql.Qaida
 import Aql.Badiha
+import Aql.SababShartMani
 import Aql.Mawsua
 import Aql.Idaa
 import Aql.QawaninDalala
@@ -106,6 +107,15 @@ import Jisr.Utur
 #print axioms Badiha.tamiyat_alfil_mulahaza
 #print axioms Badiha.saraTafkir_la_tastalzim
 #print axioms Badiha.badiha_murakhkhas
+-- السبب والشرط والمانع عند النبهاني، فوق ركن الواقع (Aql/SababShartMani.lean)
+#print axioms SababShartMani.ghiyab_la_yunshi_hukm
+#print axioms SababShartMani.la_yumkin_hukm_muayyan_maa_ghiyab
+#print axioms SababShartMani.sabab_zahir_arkan_waqi
+#print axioms SababShartMani.shahid_hummilat_aljibal
+#print axioms SababShartMani.shart_wahdahu_la_yahkum
+#print axioms SababShartMani.shartWudu
+#print axioms SababShartMani.mani_yusqit_bisabab
+#print axioms SababShartMani.maniDayn
 #print axioms Mawsua.Tayy.injective
 #print axioms Mawsua.la_tayy_maa_jam
 #print axioms Mawsua.ilaBits_tul

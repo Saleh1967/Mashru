@@ -928,5 +928,23 @@
   "milaf": "Jisr/JisrDal.lean",
   "min": "| .muthanna, h, sn => [kh h 3, kh nun sn]",
   "ila": "| .muthanna, h, sn => [kh h 0, kh nun sn]"
+ },
+ {
+  "ism": "P120_sabab_fail_wasf_daim",
+  "milaf": "Aql/SababShartMani.lean",
+  "min": "def sababFail : SababZahir (Option String) String String := ⟨id, fun _ => \"صدقٌ عقديّ\"⟩",
+  "ila": "def sababFail : SababZahir (Option String) String String := ⟨fun _ => some \"x\", fun _ => \"صدقٌ عقديّ\"⟩"
+ },
+ {
+  "ism": "P121_wudu_bila_salaa_sahih",
+  "milaf": "Aql/SababShartMani.lean",
+  "min": "  | .wuduBilaSalaa => false",
+  "ila": "  | .wuduBilaSalaa => true"
+ },
+ {
+  "ism": "P122_nisab_wa_dayn_zakat_wajiba",
+  "milaf": "Aql/SababShartMani.lean",
+  "min": "  | .nisabWaDaynKathir => false",
+  "ila": "  | .nisabWaDaynKathir => true"
  }
 ]
