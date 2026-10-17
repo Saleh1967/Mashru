@@ -15,6 +15,7 @@ import Aql.Awwaliyyat
 import Aql.Azmina
 import Aql.Makan
 import Aql.Mirsat
+import Aql.TashfirMirsat
 import Aql.Isnad
 import Jisr.JisrDal
 import Jisr.JisrDalUtur
@@ -981,3 +982,12 @@ import Jisr.Utur
 #print axioms Madlul.TashfirKhawass.khawass_dec_enc
 #print axioms Madlul.TashfirKhawass.tayyKhawass_la_yudi
 #print axioms Madlul.TashfirKhawass.khawass_shawahid_tudi
+
+-- جسرُ المعلومة المعمَّم (الثالث): طيُّ وفكُّ Aql.Mirsat.Mirsat بإعادة استعمال zigzag/BOUND من TashfirMadda
+-- (Aql/TashfirMirsat.lean؛ نفس تفويض 2026-10-17 22:55؛ مشروطةٌ بـSahih — Subtype كـMaddaUnit، لا كـKhawass
+-- غيرِ المشروطة — لأنّ حقول Mirsat الأربعة Int طليقةٌ لا أنواعًا محدودة)
+#print axioms Aql.TashfirMirsat.mirsat_dec_enc
+#print axioms Aql.TashfirMirsat.fakkOf_tawiOf
+#print axioms Aql.TashfirMirsat.tayyMirsat_la_yudi
+#print axioms Aql.TashfirMirsat.shawahid_sahih
+#print axioms Aql.TashfirMirsat.mirsat_shawahid_tudi

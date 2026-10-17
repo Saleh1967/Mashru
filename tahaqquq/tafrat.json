@@ -1012,5 +1012,23 @@
   "milaf": "Madlul/TashfirKhawass.lean",
   "min": "  | 0 => .sayr | 1 => .rakd | 2 => .jary | 3 => .zahf | _ => .qafz",
   "ila": "  | 0 => .rakd | 1 => .sayr | 2 => .jary | 3 => .zahf | _ => .qafz"
+ },
+ {
+  "ism": "P134_mirsatEnc_tabdil_ufuqi_tuli",
+  "milaf": "Aql/TashfirMirsat.lean",
+  "min": "  let l1 := SLGE.mixEnc BOUND BOUND (zigzag r.huna.amudi) (zigzag r.huna.ufuqi) (zigzag r.huna.tuli)",
+  "ila": "  let l1 := SLGE.mixEnc BOUND BOUND (zigzag r.huna.amudi) (zigzag r.huna.tuli) (zigzag r.huna.ufuqi)"
+ },
+ {
+  "ism": "P135_mirsatEnc_hashw_khata",
+  "milaf": "Aql/TashfirMirsat.lean",
+  "min": "  SLGE.mixEnc BOUND BOUND l1 (zigzag r.an) 0",
+  "ila": "  SLGE.mixEnc BOUND BOUND l1 (zigzag r.an) 1"
+ },
+ {
+  "ism": "P136_mirsatDec_tabdil_ufuqi_tuli",
+  "milaf": "Aql/TashfirMirsat.lean",
+  "min": "      { an := unzigzag anC, huna := { amudi := unzigzag amudiC, ufuqi := unzigzag ufuqiC, tuli := unzigzag tuliC } }",
+  "ila": "      { an := unzigzag anC, huna := { amudi := unzigzag amudiC, ufuqi := unzigzag tuliC, tuli := unzigzag ufuqiC } }"
  }
 ]
