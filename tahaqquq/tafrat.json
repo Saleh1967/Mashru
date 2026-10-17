@@ -970,6 +970,8 @@
   "milaf": "Jisr/TartibMamul.lean",
   "min": "def hadaMafulMuqaddam : Mawdi := 0   -- فريقا، مقدَّمٌ",
   "ila": "def hadaMafulMuqaddam : Mawdi := 1   -- فريقا، مقدَّمٌ"
+ },
+ {
   "ism": "P123_ikhtisas_bizahir_khat",
   "milaf": "Jisr/KhulasaIkhbar.lean",
   "min": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 339",
