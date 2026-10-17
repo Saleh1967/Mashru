@@ -23,6 +23,7 @@ import Aql.Aqliyya
 import Aql.Qaida
 import Aql.Badiha
 import Aql.SababShartMani
+import Aql.AdawatMaani
 import Aql.Mawsua
 import Aql.Idaa
 import Aql.QawaninDalala
@@ -117,6 +118,24 @@ import Jisr.Utur
 #print axioms SababShartMani.shartWudu
 #print axioms SababShartMani.mani_yusqit_bisabab
 #print axioms SababShartMani.maniDayn
+-- أدواتُ المعاني بوّاباتِ المنطق: و/أو/لا.../إنْ لو، فوق سبب وشرط ومانع (Aql/AdawatMaani.lean)
+#print axioms AdawatMaani.jam_yushhid_ibaha
+#print axioms AdawatMaani.jam_yunafi_takhyir
+#print axioms AdawatMaani.ibaha_tunaqid_takhyir
+#print axioms AdawatMaani.takhyir_maa_asl_alaw_yuaddi_ila_xor
+#print axioms AdawatMaani.xor_yastalzim_al_asl
+#print axioms AdawatMaani.takhyirIkhtiyar
+#print axioms AdawatMaani.ibahaMujalasa
+#print axioms AdawatMaani.nafy_aljihatayn_yusawi_nafy_alaw
+#print axioms AdawatMaani.nor_yastalzim_nand
+#print axioms AdawatMaani.nand_la_yastalzim_nor
+#print axioms AdawatMaani.wudu_shart_usuli_la_nahwi
+#print axioms AdawatMaani.shartNahwiDaw
+#print axioms AdawatMaani.daw_la_yakfi_lilshams
+#print axioms AdawatMaani.shams_intifa_la_yulzim_daw_intifa
+#print axioms AdawatMaani.musawi_yulzim_nafy_altarafayn
+#print axioms AdawatMaani.shartNahwiNahar
+#print axioms AdawatMaani.shartNahwiNaharAksan
 #print axioms Mawsua.Tayy.injective
 #print axioms Mawsua.la_tayy_maa_jam
 #print axioms Mawsua.ilaBits_tul

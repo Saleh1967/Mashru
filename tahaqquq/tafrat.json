@@ -946,5 +946,23 @@
   "milaf": "Aql/SababShartMani.lean",
   "min": "  | .nisabWaDaynKathir => false",
   "ila": "  | .nisabWaDaynKathir => true"
+ },
+ {
+  "ism": "P123_mujalasa_sirin_kilahuma_false",
+  "milaf": "Aql/AdawatMaani.lean",
+  "min": "  | .ibnSirinFaqat => true\n  | .kilahuma => true",
+  "ila": "  | .ibnSirinFaqat => true\n  | .kilahuma => false"
+ },
+ {
+  "ism": "P124_ikhtiyar_sabt_yawmAljumah_true",
+  "milaf": "Aql/AdawatMaani.lean",
+  "min": "  | .yawmAljumah => false",
+  "ila": "  | .yawmAljumah => true"
+ },
+ {
+  "ism": "P125_daw_laShamsWaDawSiraj_false",
+  "milaf": "Aql/AdawatMaani.lean",
+  "min": "  | .laShamsWaDawSiraj => true",
+  "ila": "  | .laShamsWaDawSiraj => false"
  }
 ]
