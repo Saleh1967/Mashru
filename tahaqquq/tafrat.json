@@ -994,5 +994,23 @@
   "milaf": "Madlul/TashfirMadda.lean",
   "min": "def BOUND : Nat := 2 ^ 32",
   "ila": "def BOUND : Nat := 2 ^ 8"
+ },
+ {
+  "ism": "P131_khawass_tabdil_intiqal_aql",
+  "milaf": "Madlul/TashfirKhawass.lean",
+  "min": "  let l2 := SLGE.mixEnc 3 3 l1 (qimaEnc k.intiqal) (qimaEnc k.aql)",
+  "ila": "  let l2 := SLGE.mixEnc 3 3 l1 (qimaEnc k.aql) (qimaEnc k.intiqal)"
+ },
+ {
+  "ism": "P132_listEnc_shift_khata",
+  "milaf": "Madlul/TashfirKhawass.lean",
+  "min": "  | x :: xs => SLGE.mixEnc B 1 (listEnc B xs) x 0 + 1",
+  "ila": "  | x :: xs => SLGE.mixEnc B 1 (listEnc B xs) x 0 + 2"
+ },
+ {
+  "ism": "P133_qabDec_tabdil_sayr_rakd",
+  "milaf": "Madlul/TashfirKhawass.lean",
+  "min": "  | 0 => .sayr | 1 => .rakd | 2 => .jary | 3 => .zahf | _ => .qafz",
+  "ila": "  | 0 => .rakd | 1 => .sayr | 2 => .jary | 3 => .zahf | _ => .qafz"
  }
 ]

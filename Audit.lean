@@ -6,6 +6,7 @@ import Madlul.Tayin
 import Madlul.Tashfir
 import Madlul.TashfirSullam
 import Madlul.TashfirMadda
+import Madlul.TashfirKhawass
 import Madlul.Wiratha
 import Madlul.Jamad
 import Madlul.Shabaka
@@ -965,3 +966,18 @@ import Jisr.Utur
 #print axioms Madlul.TashfirMadda.tayyMadda_la_yudi
 #print axioms Madlul.TashfirMadda.shawahid_sahih
 #print axioms Madlul.TashfirMadda.madda_shawahid_tudi
+
+-- جسرُ المعلومة المعمَّم: طيُّ وفكُّ Madlul.Tayin.Khawass بترميز قوائمَ عامّ فوق SLGE.mixEnc/mixDec
+-- (Madlul/TashfirKhawass.lean؛ طلب المالك 2026-10-17 22:55: «Khawass … نفذ انت مفوض مني» — يغلق فجوة
+-- القوائم التي أجّلتها TashfirMadda بالاسم؛ غيرُ مشروطٍ (بلا Subtype) لأنّ Qima/QabHaraka محدودان)
+#print axioms Madlul.TashfirKhawass.qima_dec_enc
+#print axioms Madlul.TashfirKhawass.qimaEnc_lt
+#print axioms Madlul.TashfirKhawass.qab_dec_enc
+#print axioms Madlul.TashfirKhawass.qabEnc_lt
+#print axioms Madlul.TashfirKhawass.list_dec_enc
+#print axioms Madlul.TashfirKhawass.khawass_l2_lt
+#print axioms Madlul.TashfirKhawass.qabEnc_map_lt
+#print axioms Madlul.TashfirKhawass.qab_list_roundtrip
+#print axioms Madlul.TashfirKhawass.khawass_dec_enc
+#print axioms Madlul.TashfirKhawass.tayyKhawass_la_yudi
+#print axioms Madlul.TashfirKhawass.khawass_shawahid_tudi
