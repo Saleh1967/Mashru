@@ -16,7 +16,10 @@ import Aql.Mirsat
 import Aql.Isnad
 import Jisr.JisrDal
 import Jisr.JisrDalUtur
+import Jisr.QiraaSimat
+import Jisr.KhulasaIkhbar
 import Jisr.NisabAsnaf
+import Jisr.TartibMamul
 import Jisr.AqsamDalMadlul
 import Jisr.Tawafuq
 import Dal.AqsamAlism
@@ -25,6 +28,7 @@ import Aql.Aqliyya
 import Aql.Qaida
 import Aql.Badiha
 import Aql.SababShartMani
+import Aql.AdawatMaani
 import Aql.Mawsua
 import Aql.Idaa
 import Aql.QawaninDalala
@@ -119,6 +123,24 @@ import Jisr.Utur
 #print axioms SababShartMani.shartWudu
 #print axioms SababShartMani.mani_yusqit_bisabab
 #print axioms SababShartMani.maniDayn
+-- أدواتُ المعاني بوّاباتِ المنطق: و/أو/لا.../إنْ لو، فوق سبب وشرط ومانع (Aql/AdawatMaani.lean)
+#print axioms AdawatMaani.jam_yushhid_ibaha
+#print axioms AdawatMaani.jam_yunafi_takhyir
+#print axioms AdawatMaani.ibaha_tunaqid_takhyir
+#print axioms AdawatMaani.takhyir_maa_asl_alaw_yuaddi_ila_xor
+#print axioms AdawatMaani.xor_yastalzim_al_asl
+#print axioms AdawatMaani.takhyirIkhtiyar
+#print axioms AdawatMaani.ibahaMujalasa
+#print axioms AdawatMaani.nafy_aljihatayn_yusawi_nafy_alaw
+#print axioms AdawatMaani.nor_yastalzim_nand
+#print axioms AdawatMaani.nand_la_yastalzim_nor
+#print axioms AdawatMaani.wudu_shart_usuli_la_nahwi
+#print axioms AdawatMaani.shartNahwiDaw
+#print axioms AdawatMaani.daw_la_yakfi_lilshams
+#print axioms AdawatMaani.shams_intifa_la_yulzim_daw_intifa
+#print axioms AdawatMaani.musawi_yulzim_nafy_altarafayn
+#print axioms AdawatMaani.shartNahwiNahar
+#print axioms AdawatMaani.shartNahwiNaharAksan
 #print axioms Mawsua.Tayy.injective
 #print axioms Mawsua.la_tayy_maa_jam
 #print axioms Mawsua.ilaBits_tul
@@ -877,6 +899,25 @@ import Jisr.Utur
 #print axioms Jisr.JisrDal.intilaq_wasl
 #print axioms Jisr.JisrDalUtur.mufrad_halaIrab
 #print axioms Jisr.JisrDalUtur.mufrad_tanwin
+-- خلاصةُ أسلوب الإخبار: الثمانيةُ بنودٍ الباقية (Jisr/KhulasaIkhbar.lean)
+#print axioms Jisr.KhulasaIkhbar.bund_thamaniya
+#print axioms Jisr.KhulasaIkhbar.bund_mutamayiza
+#print axioms Jisr.KhulasaIkhbar.darajat_ilgha_thalath_mukhtalifa
+#print axioms Jisr.KhulasaIkhbar.arbaa_asbab
+#print axioms Jisr.KhulasaIkhbar.shawahid_arbaa_mustaqilla
+#print axioms Jisr.KhulasaIkhbar.jamay_tashih_bila_jawaz
+#print axioms Jisr.KhulasaIkhbar.yaslahu_khiyar_wahid
+#print axioms Jisr.KhulasaIkhbar.laYaslahu_khiyaran
+#print axioms Jisr.KhulasaIkhbar.bilaQarn_khas_bi_yaslahu
+#print axioms Jisr.KhulasaIkhbar.ghaib_L115_khamsa
+#print axioms Jisr.KhulasaIkhbar.ism_yataqaddam_laqab
+#print axioms Jisr.KhulasaIkhbar.ism_yataqaddam_kunya
+#print axioms Jisr.KhulasaIkhbar.laqab_la_yataqaddam_ism
+#print axioms Jisr.KhulasaIkhbar.halatay_laqab_mustaqillatan
+#print axioms Jisr.KhulasaIkhbar.mukhtassa_sabaa
+#print axioms Jisr.KhulasaIkhbar.mushtaraka_sabaa
+#print axioms Jisr.KhulasaIkhbar.qismat_jarr_tamma
+#print axioms Jisr.KhulasaIkhbar.tasnif_al_bunud_tamm
 #print axioms Jisr.NisabAsnaf.muwafiq_semOf
 #print axioms Jisr.NisabAsnaf.jadwal_nisab
 #print axioms Jisr.NisabAsnaf.kull_mamul_nisba
@@ -884,3 +925,30 @@ import Jisr.Utur
 #print axioms Jisr.NisabAsnaf.taqyidiyya_nida
 #print axioms Jisr.NisabAsnaf.isnadiyya_asnaf
 #print axioms Jisr.NisabAsnaf.ihsa_awamil
+#print axioms Jisr.QiraaSimat.hawamil_malik
+#print axioms Jisr.QiraaSimat.qiraa_salima
+#print axioms Jisr.QiraaSimat.qiraaH_salima
+#print axioms Jisr.QiraaSimat.hawamil_8
+#print axioms Jisr.QiraaSimat.khalaya_10
+#print axioms Jisr.QiraaSimat.anta_anti
+#print axioms Jisr.QiraaSimat.huma_baqiya
+#print axioms Jisr.QiraaSimat.ghayr_damir
+#print axioms Jisr.QiraaSimat.qiraa_min_raqm
+#print axioms Jisr.QiraaSimat.qiraa_min_annEnc
+#print axioms Jisr.QiraaSimat.la_dalla_tasturidd
+#print axioms Jisr.QiraaSimat.attrDec_attrCode
+#print axioms Jisr.QiraaSimat.map_attrDec
+#print axioms Jisr.QiraaSimat.fahs_min_raqm
+#print axioms Jisr.QiraaSimat.kashf_tanaqud
+#print axioms Jisr.QiraaSimat.faid
+#print axioms Jisr.QiraaSimat.ihtizal
+#print axioms Jisr.QiraaSimat.ihtizal_annEnc
+
+-- ترتيبُ الفاعل والمفعول به مع عامله: قطر الندى L219–235 (Jisr/TartibMamul.lean؛ بعد تصحيح أرقام
+-- السند وحذف قسمين غير مسنودين في مراجعة murajii 2026-10-17)
+#print axioms TartibMamul.asl_yali_amilah
+#print axioms TartibMamul.jawaz_taakhir_fail_an_maful
+#print axioms TartibMamul.wujub_taakhir_fail_li_aid
+#print axioms TartibMamul.wujub_taakhir_fail_li_damir_mamul
+#print axioms TartibMamul.shahid_darabani_zayd
+#print axioms TartibMamul.jawaz_taqdim_maful_ala_amil
