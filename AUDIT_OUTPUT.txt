@@ -60,6 +60,14 @@
 'Badiha.tamiyat_alfil_mulahaza' depends on axioms: [propext]
 'Badiha.saraTafkir_la_tastalzim' depends on axioms: [propext]
 'Badiha.badiha_murakhkhas' depends on axioms: [propext, Quot.sound]
+'SababShartMani.ghiyab_la_yunshi_hukm' depends on axioms: [propext]
+'SababShartMani.la_yumkin_hukm_muayyan_maa_ghiyab' depends on axioms: [propext]
+'SababShartMani.sabab_zahir_arkan_waqi' does not depend on any axioms
+'SababShartMani.shahid_hummilat_aljibal' does not depend on any axioms
+'SababShartMani.shart_wahdahu_la_yahkum' does not depend on any axioms
+'SababShartMani.shartWudu' does not depend on any axioms
+'SababShartMani.mani_yusqit_bisabab' does not depend on any axioms
+'SababShartMani.maniDayn' does not depend on any axioms
 'Mawsua.Tayy.injective' does not depend on any axioms
 'Mawsua.la_tayy_maa_jam' does not depend on any axioms
 'Mawsua.ilaBits_tul' depends on axioms: [propext]
@@ -774,3 +782,28 @@
 'Jisr.JisrDal.intilaq_wasl' depends on axioms: [propext]
 'Jisr.JisrDalUtur.mufrad_halaIrab' depends on axioms: [propext, Quot.sound]
 'Jisr.JisrDalUtur.mufrad_tanwin' depends on axioms: [propext]
+'Jisr.KhulasaIkhbar.bund_thamaniya' does not depend on any axioms
+'Jisr.KhulasaIkhbar.bund_mutamayiza' does not depend on any axioms
+'Jisr.KhulasaIkhbar.darajat_ilgha_thalath_mukhtalifa' does not depend on any axioms
+'Jisr.KhulasaIkhbar.arbaa_asbab' does not depend on any axioms
+'Jisr.KhulasaIkhbar.shawahid_arbaa_mustaqilla' does not depend on any axioms
+'Jisr.KhulasaIkhbar.jamay_tashih_bila_jawaz' does not depend on any axioms
+'Jisr.KhulasaIkhbar.yaslahu_khiyar_wahid' does not depend on any axioms
+'Jisr.KhulasaIkhbar.laYaslahu_khiyaran' does not depend on any axioms
+'Jisr.KhulasaIkhbar.bilaQarn_khas_bi_yaslahu' depends on axioms: [propext]
+'Jisr.KhulasaIkhbar.ghaib_L115_arbaa' does not depend on any axioms
+'Jisr.KhulasaIkhbar.ism_yataqaddam_laqab' does not depend on any axioms
+'Jisr.KhulasaIkhbar.ism_yataqaddam_kunya' does not depend on any axioms
+'Jisr.KhulasaIkhbar.laqab_la_yataqaddam_ism' does not depend on any axioms
+'Jisr.KhulasaIkhbar.halatay_laqab_mustaqillatan' does not depend on any axioms
+'Jisr.KhulasaIkhbar.mukhtassa_sabaa' does not depend on any axioms
+'Jisr.KhulasaIkhbar.mushtaraka_sabaa' does not depend on any axioms
+'Jisr.KhulasaIkhbar.qismat_jarr_tamma' does not depend on any axioms
+'Jisr.KhulasaIkhbar.tasnif_al_bunud_tamm' depends on axioms: [propext]
+'Jisr.NisabAsnaf.muwafiq_semOf' does not depend on any axioms
+'Jisr.NisabAsnaf.jadwal_nisab' does not depend on any axioms
+'Jisr.NisabAsnaf.kull_mamul_nisba' does not depend on any axioms
+'Jisr.NisabAsnaf.idafiyya_jarr' does not depend on any axioms
+'Jisr.NisabAsnaf.taqyidiyya_nida' does not depend on any axioms
+'Jisr.NisabAsnaf.isnadiyya_asnaf' does not depend on any axioms
+'Jisr.NisabAsnaf.ihsa_awamil' does not depend on any axioms
