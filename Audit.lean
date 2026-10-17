@@ -5,14 +5,21 @@ import Madlul.AqsamAlmadlul
 import Madlul.Tayin
 import Madlul.Tashfir
 import Madlul.TashfirSullam
+import Madlul.TashfirMadda
+import Madlul.TashfirKhawass
+import Madlul.TashfirNas
 import Madlul.Wiratha
 import Madlul.Jamad
 import Madlul.Shabaka
 import Madlul.Hawass
 import Aql.Awwaliyyat
+import Aql.TashfirAwwaliyyat
 import Aql.Azmina
+import Aql.TashfirAzmina
 import Aql.Makan
+import Aql.TashfirMakan
 import Aql.Mirsat
+import Aql.TashfirMirsat
 import Aql.Isnad
 import Jisr.JisrDal
 import Jisr.JisrDalUtur
@@ -952,3 +959,89 @@ import Jisr.Utur
 #print axioms TartibMamul.wujub_taakhir_fail_li_damir_mamul
 #print axioms TartibMamul.shahid_darabani_zayd
 #print axioms TartibMamul.jawaz_taqdim_maful_ala_amil
+
+-- جسرُ المعلومة المعمَّم: طيُّ وفكُّ Madlul.Jamad.Madda بـ SLGE.mixEnc/mixDec (Madlul/TashfirMadda.lean؛
+-- طلب المالك 2026-10-17: «ابدا بالجسر اعمل lean» على المقترح ١ — جسر المعلومة/المفاهيم بالنمط المعمَّم)
+#print axioms Madlul.TashfirMadda.optNat_dec_enc
+#print axioms Madlul.TashfirMadda.zigzag_unzigzag
+#print axioms Madlul.TashfirMadda.optInt_dec_enc
+#print axioms Madlul.TashfirMadda.bound_pos
+#print axioms Madlul.TashfirMadda.madda_dec_enc
+#print axioms Madlul.TashfirMadda.fakkOf_tawiOf
+#print axioms Madlul.TashfirMadda.tayyMadda_la_yudi
+#print axioms Madlul.TashfirMadda.shawahid_sahih
+#print axioms Madlul.TashfirMadda.madda_shawahid_tudi
+
+-- جسرُ المعلومة المعمَّم: طيُّ وفكُّ Madlul.Tayin.Khawass بترميز قوائمَ عامّ فوق SLGE.mixEnc/mixDec
+-- (Madlul/TashfirKhawass.lean؛ طلب المالك 2026-10-17 22:55: «Khawass … نفذ انت مفوض مني» — يغلق فجوة
+-- القوائم التي أجّلتها TashfirMadda بالاسم؛ غيرُ مشروطٍ (بلا Subtype) لأنّ Qima/QabHaraka محدودان)
+#print axioms Madlul.TashfirKhawass.qima_dec_enc
+#print axioms Madlul.TashfirKhawass.qimaEnc_lt
+#print axioms Madlul.TashfirKhawass.qab_dec_enc
+#print axioms Madlul.TashfirKhawass.qabEnc_lt
+#print axioms Madlul.TashfirKhawass.list_dec_enc
+#print axioms Madlul.TashfirKhawass.khawass_l2_lt
+#print axioms Madlul.TashfirKhawass.qabEnc_map_lt
+#print axioms Madlul.TashfirKhawass.qab_list_roundtrip
+#print axioms Madlul.TashfirKhawass.khawass_dec_enc
+#print axioms Madlul.TashfirKhawass.tayyKhawass_la_yudi
+#print axioms Madlul.TashfirKhawass.khawass_shawahid_tudi
+
+-- جسرُ المعلومة المعمَّم (الثالث): طيُّ وفكُّ Aql.Mirsat.Mirsat بإعادة استعمال zigzag/BOUND من TashfirMadda
+-- (Aql/TashfirMirsat.lean؛ نفس تفويض 2026-10-17 22:55؛ مشروطةٌ بـSahih — Subtype كـMaddaUnit، لا كـKhawass
+-- غيرِ المشروطة — لأنّ حقول Mirsat الأربعة Int طليقةٌ لا أنواعًا محدودة)
+#print axioms Aql.TashfirMirsat.mirsat_dec_enc
+#print axioms Aql.TashfirMirsat.fakkOf_tawiOf
+#print axioms Aql.TashfirMirsat.tayyMirsat_la_yudi
+#print axioms Aql.TashfirMirsat.shawahid_sahih
+#print axioms Aql.TashfirMirsat.mirsat_shawahid_tudi
+
+-- جسرُ المعلومة المعمَّم (الرابع): طيُّ وفكُّ Aql.Azmina.Izaha؛ حقلٌ طليقٌ واحدٌ (adad) يكفيه موضعُ mixEnc
+-- غيرُ المقيَّد فلا شرطَ Sahih هنا أصلًا (Aql/TashfirAzmina.lean؛ نفس تفويض 2026-10-17 22:55)
+#print axioms Aql.TashfirAzmina.wahda_dec_enc
+#print axioms Aql.TashfirAzmina.wahdaEnc_lt
+#print axioms Aql.TashfirAzmina.izaha_dec_enc
+#print axioms Aql.TashfirAzmina.tayyIzaha_la_yudi
+#print axioms Aql.TashfirAzmina.izaha_asma_tudi
+
+-- جسرُ المعلومة المعمَّم (الخامس): طيُّ وفكُّ Aql.Makan.Izaha3/Mawdi/Marja (Aql/TashfirMakan.lean؛ نفس
+-- تفويض 2026-10-17 22:55). Marja نوعُ مجموعٍ: التاجُ محدودٌ في k₁، والحمولةُ طليقةٌ في o — لا blockEnc
+-- (إخفاقانِ فعليّانِ موثَّقانِ في ترويسة الملفّ: تجسيدُ BOUND³ حوسوبيًّا OOM، ونداءُ simp جامعٌ يُعلِّق)
+#print axioms Aql.TashfirMakan.izaha3_dec_enc
+#print axioms Aql.TashfirMakan.izaha3FakkOf_tawiOf
+#print axioms Aql.TashfirMakan.tayyIzaha3_la_yudi
+#print axioms Aql.TashfirMakan.jiha_dec_enc
+#print axioms Aql.TashfirMakan.jihaEnc_lt
+#print axioms Aql.TashfirMakan.wahdaMakan_dec_enc
+#print axioms Aql.TashfirMakan.wahdaMakanEnc_lt
+#print axioms Aql.TashfirMakan.ojiha_dec_enc
+#print axioms Aql.TashfirMakan.ojihaEnc_lt
+#print axioms Aql.TashfirMakan.miq_dec_enc
+#print axioms Aql.TashfirMakan.omiq_dec_enc
+#print axioms Aql.TashfirMakan.mawdi_dec_enc
+#print axioms Aql.TashfirMakan.tayyMawdi_la_yudi
+#print axioms Aql.TashfirMakan.marja_dec_enc
+#print axioms Aql.TashfirMakan.marjaTag_lt
+#print axioms Aql.TashfirMakan.marjaFakkOf_tawiOf
+#print axioms Aql.TashfirMakan.tayyMarja_la_yudi
+#print axioms Aql.TashfirMakan.mawdi_shawahid_tudi
+#print axioms Aql.TashfirMakan.marja_shawahid_sahih
+#print axioms Aql.TashfirMakan.marja_shawahid_tudi
+
+-- جسرُ المعلومة المعمَّم (السادس): طيُّ وفكُّ Aql.Awwaliyyat.Zaman5 (Aql/TashfirAwwaliyyat.lean؛ نفس تفويض
+-- 2026-10-17 22:55). تعدادٌ محدودٌ بلا حمولة؛ ترميزٌ مباشرٌ بلا mixEnc أصلًا — أبسط من كلّ القطع 1–5.
+#print axioms Aql.TashfirAwwaliyyat.zaman5_dec_enc
+#print axioms Aql.TashfirAwwaliyyat.zaman5Enc_lt
+#print axioms Aql.TashfirAwwaliyyat.tayyZaman5_la_yudi
+#print axioms Aql.TashfirAwwaliyyat.zaman5_shawahid_tudi
+
+-- أداةُ طيّ String العامّة (Madlul/TashfirNas.lean؛ نفس تفويض 2026-10-17 22:55). تركيبٌ على listEnc/listDec
+-- من TashfirKhawass + مبرهناتِ نواة Lean (Char.ofNat_toNat، UInt32.toNat_lt، String.ofList_toList) بلا
+-- برهانٍ جديدٍ تقريبًا؛ تفتح جسري Hawass وShabaka(alaqat) اللذين يحملان حقول String.
+#print axioms Madlul.TashfirNas.char_dec_enc
+#print axioms Madlul.TashfirNas.charEnc_lt
+#print axioms Madlul.TashfirNas.charList_dec_enc
+#print axioms Madlul.TashfirNas.charList_map_lt
+#print axioms Madlul.TashfirNas.string_dec_enc
+#print axioms Madlul.TashfirNas.tayyString_la_yudi
+#print axioms Madlul.TashfirNas.string_shawahid_tudi

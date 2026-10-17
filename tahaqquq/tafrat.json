@@ -976,5 +976,131 @@
   "milaf": "Madlul/TashfirSullam.lean",
   "min": "    (fun h => some ⟨fakkRaw n code, h⟩) (fun _ => none)",
   "ila": "    (fun _ => none) (fun _ => none)"
+ },
+ {
+  "ism": "P128_madda_tabdil_kathafa",
+  "milaf": "Madlul/TashfirMadda.lean",
+  "min": "  let l1 := SLGE.mixEnc BOUND BOUND m.haqiqa (optNatEnc m.kJamid) (optNatEnc m.kSail)",
+  "ila": "  let l1 := SLGE.mixEnc BOUND BOUND m.haqiqa (optNatEnc m.kSail) (optNatEnc m.kJamid)"
+ },
+ {
+  "ism": "P129_zigzag_negSucc_khata",
+  "milaf": "Madlul/TashfirMadda.lean",
+  "min": "  | .negSucc n => 2 * n + 1",
+  "ila": "  | .negSucc n => 2 * n"
+ },
+ {
+  "ism": "P130_bound_dun_shawahid",
+  "milaf": "Madlul/TashfirMadda.lean",
+  "min": "def BOUND : Nat := 2 ^ 32",
+  "ila": "def BOUND : Nat := 2 ^ 8"
+ },
+ {
+  "ism": "P131_khawass_tabdil_intiqal_aql",
+  "milaf": "Madlul/TashfirKhawass.lean",
+  "min": "  let l2 := SLGE.mixEnc 3 3 l1 (qimaEnc k.intiqal) (qimaEnc k.aql)",
+  "ila": "  let l2 := SLGE.mixEnc 3 3 l1 (qimaEnc k.aql) (qimaEnc k.intiqal)"
+ },
+ {
+  "ism": "P132_listEnc_shift_khata",
+  "milaf": "Madlul/TashfirKhawass.lean",
+  "min": "  | x :: xs => SLGE.mixEnc B 1 (listEnc B xs) x 0 + 1",
+  "ila": "  | x :: xs => SLGE.mixEnc B 1 (listEnc B xs) x 0 + 2"
+ },
+ {
+  "ism": "P133_qabDec_tabdil_sayr_rakd",
+  "milaf": "Madlul/TashfirKhawass.lean",
+  "min": "  | 0 => .sayr | 1 => .rakd | 2 => .jary | 3 => .zahf | _ => .qafz",
+  "ila": "  | 0 => .rakd | 1 => .sayr | 2 => .jary | 3 => .zahf | _ => .qafz"
+ },
+ {
+  "ism": "P134_mirsatEnc_tabdil_ufuqi_tuli",
+  "milaf": "Aql/TashfirMirsat.lean",
+  "min": "  let l1 := SLGE.mixEnc BOUND BOUND (zigzag r.huna.amudi) (zigzag r.huna.ufuqi) (zigzag r.huna.tuli)",
+  "ila": "  let l1 := SLGE.mixEnc BOUND BOUND (zigzag r.huna.amudi) (zigzag r.huna.tuli) (zigzag r.huna.ufuqi)"
+ },
+ {
+  "ism": "P135_mirsatEnc_hashw_khata",
+  "milaf": "Aql/TashfirMirsat.lean",
+  "min": "  SLGE.mixEnc BOUND BOUND l1 (zigzag r.an) 0",
+  "ila": "  SLGE.mixEnc BOUND BOUND l1 (zigzag r.an) 1"
+ },
+ {
+  "ism": "P136_mirsatDec_tabdil_ufuqi_tuli",
+  "milaf": "Aql/TashfirMirsat.lean",
+  "min": "      { an := unzigzag anC, huna := { amudi := unzigzag amudiC, ufuqi := unzigzag ufuqiC, tuli := unzigzag tuliC } }",
+  "ila": "      { an := unzigzag anC, huna := { amudi := unzigzag amudiC, ufuqi := unzigzag tuliC, tuli := unzigzag ufuqiC } }"
+ },
+ {
+  "ism": "P137_izahaEnc_tabdil_adad_wahda",
+  "milaf": "Aql/TashfirAzmina.lean",
+  "min": "def izahaEnc (i : Izaha) : Nat := SLGE.mixEnc 5 1 (zigzag i.adad) (wahdaEnc i.wahda) 0",
+  "ila": "def izahaEnc (i : Izaha) : Nat := SLGE.mixEnc 5 1 (wahdaEnc i.wahda) (zigzag i.adad) 0"
+ },
+ {
+  "ism": "P138_wahdaDec_tabdil_saa_yawm",
+  "milaf": "Aql/TashfirAzmina.lean",
+  "min": "  | 0 => .saa | 1 => .yawm | 2 => .usbu | 3 => .shahr | _ => .sana",
+  "ila": "  | 0 => .yawm | 1 => .saa | 2 => .usbu | 3 => .shahr | _ => .sana"
+ },
+ {
+  "ism": "P139_izahaEnc_hashw_khata",
+  "milaf": "Aql/TashfirAzmina.lean",
+  "min": "def izahaEnc (i : Izaha) : Nat := SLGE.mixEnc 5 1 (zigzag i.adad) (wahdaEnc i.wahda) 0",
+  "ila": "def izahaEnc (i : Izaha) : Nat := SLGE.mixEnc 5 1 (zigzag i.adad) (wahdaEnc i.wahda) 1"
+ },
+ {
+  "ism": "P140_mawdiEnc_tabdil_miqdar_jiha",
+  "milaf": "Aql/TashfirMakan.lean",
+  "min": "def mawdiEnc (m : Mawdi) : Nat := SLGE.mixEnc 7 1 (omiqEnc m.miqdar) (ojihaEnc m.jiha) 0",
+  "ila": "def mawdiEnc (m : Mawdi) : Nat := SLGE.mixEnc 7 1 (ojihaEnc m.jiha) (omiqEnc m.miqdar) 0"
+ },
+ {
+  "ism": "P141_marjaTag_tabdil_sarih_manwi",
+  "milaf": "Aql/TashfirMakan.lean",
+  "min": "  | .sarih _ => 0 | .manwi _ => 1 | .la => 2",
+  "ila": "  | .sarih _ => 1 | .manwi _ => 0 | .la => 2"
+ },
+ {
+  "ism": "P142_jihaDec_tabdil_fawq_taht",
+  "milaf": "Aql/TashfirMakan.lean",
+  "min": "  | 0 => .fawq | 1 => .taht | 2 => .yamin | 3 => .shimal | 4 => .amam | _ => .khalf",
+  "ila": "  | 0 => .taht | 1 => .fawq | 2 => .yamin | 3 => .shimal | 4 => .amam | _ => .khalf"
+ },
+ {
+  "ism": "P143_zaman5Enc_tabdil_munqati_muttasil",
+  "milaf": "Aql/TashfirAwwaliyyat.lean",
+  "min": "  | .madiMunqati => 0 | .madiMuttasil => 1 | .hal => 2 | .mustaqbal => 3 | .mustaqbalMunaffas => 4",
+  "ila": "  | .madiMunqati => 1 | .madiMuttasil => 0 | .hal => 2 | .mustaqbal => 3 | .mustaqbalMunaffas => 4"
+ },
+ {
+  "ism": "P144_zaman5Dec_tabdil_hal_mustaqbal",
+  "milaf": "Aql/TashfirAwwaliyyat.lean",
+  "min": "  | 0 => .madiMunqati | 1 => .madiMuttasil | 2 => .hal | 3 => .mustaqbal | _ => .mustaqbalMunaffas",
+  "ila": "  | 0 => .madiMunqati | 1 => .madiMuttasil | 2 => .mustaqbal | 3 => .hal | _ => .mustaqbalMunaffas"
+ },
+ {
+  "ism": "P145_tawi_zaman5_hashw",
+  "milaf": "Aql/TashfirAwwaliyyat.lean",
+  "min": "  tawi := zaman5Enc",
+  "ila": "  tawi := fun _ => 0"
+ },
+ {
+  "ism": "P146_charBound_tabdil_saghir",
+  "milaf": "Madlul/TashfirNas.lean",
+  "min": "def charBound : Nat := 2 ^ 32",
+  "ila": "def charBound : Nat := 2 ^ 16"
+ },
+ {
+  "ism": "P147_stringEnc_charDec_khata",
+  "milaf": "Madlul/TashfirNas.lean",
+  "min": "def stringEnc (s : String) : Nat := listEnc charBound (s.toList.map charEnc)",
+  "ila": "def stringEnc (s : String) : Nat := listEnc charBound (s.toList.map charDec)"
+ },
+ {
+  "ism": "P148_tawi_string_hashw",
+  "milaf": "Madlul/TashfirNas.lean",
+  "min": "  tawi := stringEnc",
+  "ila": "  tawi := fun _ => 0"
  }
 ]
