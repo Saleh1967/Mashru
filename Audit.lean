@@ -1135,6 +1135,16 @@ import Madlul.Fard116Shawahid
 #print axioms Madlul.Fard116.Shawahid.jiwar_4_6
 #print axioms Madlul.Fard116.Shawahid.jiwar_7_8
 #print axioms Madlul.Fard116.Shawahid.jiwar_20_24
+#print axioms Madlul.Fard116.Shawahid.jiwar_25_26
+#print axioms Madlul.Fard116.Shawahid.jiwar_7_9
+#print axioms Madlul.Fard116.Shawahid.jiwar_1_4
+#print axioms Madlul.Fard116.Shawahid.jiwar_1_6
+#print axioms Madlul.Fard116.Shawahid.jiwar_8_9
+#print axioms Madlul.Fard116.Shawahid.jiwar_25_27
+#print axioms Madlul.Fard116.Shawahid.jiwar_8_16
+#print axioms Madlul.Fard116.Shawahid.jiwar_9_16
+#print axioms Madlul.Fard116.Shawahid.jiwar_13_15
+#print axioms Madlul.Fard116.Shawahid.jiwar_6_8
 #print axioms Madlul.Fard116.Shawahid.tamathul_12
 #print axioms Madlul.Fard116.Shawahid.tamathul_23
 #print axioms Madlul.Fard116.Shawahid.tamathul_13
@@ -1147,6 +1157,7 @@ import Madlul.Fard116Shawahid
 #print axioms Madlul.Fard116.Shawahid.qayd_16_9
 #print axioms Madlul.Fard116.Shawahid.qayd_0_5
 #print axioms Madlul.Fard116.Shawahid.qayd_6_3
+#print axioms Madlul.Fard116.Shawahid.qayd_21_16
 #print axioms Madlul.Fard116.Shawahid.tawlid4_G1
 #print axioms Madlul.Fard116.Shawahid.tawlid4_G2
 #print axioms Madlul.Fard116.Shawahid.tawlid4_Gr

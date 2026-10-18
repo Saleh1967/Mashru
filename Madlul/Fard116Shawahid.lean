@@ -74,6 +74,36 @@ theorem jiwar_7_8 : (lisan3.filter (fun c => jiwarN c 7 8)).length = 0 ∧ confl
 /-- س–ث (خارج القانون) متجاورين في ثلاثيّ اللسان: 0. -/
 theorem jiwar_20_24 : (lisan3.filter (fun c => jiwarN c 20 24)).length = 0 ∧ conflict 20 24 = false := by decide +kernel
 
+/-- ف–ب (خارج القانون) متجاورين في ثلاثيّ اللسان: 0. -/
+theorem jiwar_25_26 : (lisan3.filter (fun c => jiwarN c 25 26)).length = 0 ∧ conflict 25 26 = false := by decide +kernel
+
+/-- ق–ج (خارج القانون) متجاورين في ثلاثيّ اللسان: 1. -/
+theorem jiwar_7_9 : (lisan3.filter (fun c => jiwarN c 7 9)).length = 1 ∧ conflict 7 9 = false := by decide +kernel
+
+/-- ه–ح (خارج القانون) متجاورين في ثلاثيّ اللسان: 1. -/
+theorem jiwar_1_4 : (lisan3.filter (fun c => jiwarN c 1 4)).length = 1 ∧ conflict 1 4 = false := by decide +kernel
+
+/-- ه–خ (خارج القانون) متجاورين في ثلاثيّ اللسان: 1. -/
+theorem jiwar_1_6 : (lisan3.filter (fun c => jiwarN c 1 6)).length = 1 ∧ conflict 1 6 = false := by decide +kernel
+
+/-- ك–ج (خارج القانون) متجاورين في ثلاثيّ اللسان: 2. -/
+theorem jiwar_8_9 : (lisan3.filter (fun c => jiwarN c 8 9)).length = 2 ∧ conflict 8 9 = false := by decide +kernel
+
+/-- ف–م (خارج القانون) متجاورين في ثلاثيّ اللسان: 5. -/
+theorem jiwar_25_27 : (lisan3.filter (fun c => jiwarN c 25 27)).length = 5 ∧ conflict 25 27 = false := by decide +kernel
+
+/-- ك–ط (خارج القانون) متجاورين في ثلاثيّ اللسان: 2. -/
+theorem jiwar_8_16 : (lisan3.filter (fun c => jiwarN c 8 16)).length = 2 ∧ conflict 8 16 = false := by decide +kernel
+
+/-- ج–ط (خارج القانون) متجاورين في ثلاثيّ اللسان: 3. -/
+theorem jiwar_9_16 : (lisan3.filter (fun c => jiwarN c 9 16)).length = 3 ∧ conflict 9 16 = false := by decide +kernel
+
+/-- ل–ر (خارج القانون) متجاورين في ثلاثيّ اللسان: 11. -/
+theorem jiwar_13_15 : (lisan3.filter (fun c => jiwarN c 13 15)).length = 11 ∧ conflict 13 15 = false := by decide +kernel
+
+/-- خ–ك (خارج القانون) متجاورين في ثلاثيّ اللسان: 4. -/
+theorem jiwar_6_8 : (lisan3.filter (fun c => jiwarN c 6 8)).length = 4 ∧ conflict 6 8 = false := by decide +kernel
+
 /-- الموضعان 1 و2 متماثلان في ثلاثيّ اللسان: 30. -/
 theorem tamathul_12 : (lisan3.filter (fun c => mithlN c 0 1)).length = 30 := by decide +kernel
 
@@ -109,6 +139,9 @@ theorem qayd_0_5 : (lisan3.filter (fun c => maanN3 c 0 5)).length = 3 ∧ (lisan
 
 /-- ابن فارس (maqayis س11825): «اعلم أن الخاء لا يكاد يأتلف مع العين إلا بدخيل» — خ وع معًا: 22 ثلاثيًّا و34 رباعيًّا. -/
 theorem qayd_6_3 : (lisan3.filter (fun c => maanN3 c 6 3)).length = 22 ∧ (lisan4.filter (fun c => maanK 4 c 6 3)).length = 34 := by decide +kernel
+
+/-- شمر (lisan س193447): «لأن الصاد والطاء لا يكاد يجتمعان في محض كلامهم» — ص وط معًا: 9 ثلاثيًّا و10 رباعيًّا. -/
+theorem qayd_21_16 : (lisan3.filter (fun c => maanN3 c 21 16)).length = 9 ∧ (lisan4.filter (fun c => maanK 4 c 21 16)).length = 10 := by decide +kernel
 
 /-- الرباعيُّ من الثلاثيّ: ثلاثيٌّ مشهودٌ بإسقاطِ حامل (G1). -/
 theorem tawlid4_G1 : (lisan4.filter (G1 4 bits3)).length = 2491 := by decide +kernel

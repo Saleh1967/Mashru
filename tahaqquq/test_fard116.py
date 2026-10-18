@@ -42,7 +42,7 @@ for t in ("licB_iff", "runL_imtina", "runL_qabul", "licB_iff_spaced", "illa_la_t
     check(f"theorem {t} " in src or f"theorem {t}\n" in src, f"المبرهنة {t} غائبة عن Fard116.lean")
     check(f"#print axioms Madlul.Fard116.{t}\n" in audit, f"المبرهنة {t} غير مدقّقة في Audit.lean")
 shw_t = re.findall(r"^theorem (\w+)", shw, re.M)
-check(len(shw_t) >= 39, f"مبرهنات الشاهد {len(shw_t)} لا 39")
+check(len(shw_t) == 50, f"مبرهنات الشاهد {len(shw_t)} لا 50 (4 مخالِف، 14 زوجًا، 15 خارج القانون، 3 تماثل، 10 قيود، 4 تولّد)")
 for t in shw_t:
     check(f"#print axioms Madlul.Fard116.Shawahid.{t}\n" in audit, f"المبرهنة {t} غير مدقّقة في Audit.lean")
 check("sorry" not in src and "sorry" not in shw and "native_decide" not in src + shw, "sorry أو native_decide في Fard116")

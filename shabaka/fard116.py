@@ -95,6 +95,7 @@ QUYUD = [  # (الحرفان، القائل، المعجم، السطر، الن
     ("طج", "الجوهري", "lisan", 254417, "وكلاهما معرب لأن الطاء والجيم لا يجتمعان في أصل"),
     ("ءغ", "—", "lisan", 300224, "لأن الهمزة والغين لا يجتمعان في بناء كلمة واحدة"),
     ("خع", "ابن فارس", "maqayis", 11825, "اعلم أن الخاء لا يكاد يأتلف مع العين إلا بدخيل"),
+    ("صط", "شمر", "lisan", 193447, "لأن الصاد والطاء لا يكاد يجتمعان في محض كلامهم"),
 ]
 
 
@@ -196,7 +197,8 @@ def main():
         out["F1"][name] = {"n": len(rs), "mukhalif": len(mukh), "nisba": nisba(obs), "U": nisba(uni),
                            "P_mutawassit": nisba(float(nul.mean())), "P_madan": [nisba(float(nul.min())), nisba(float(nul.max()))],
                            "P_qima": float(np.mean(nul <= obs)), "amthila": mukh}
-        out["F2"][name] = {"mashhud_murakhkhas": int(lic.sum()), "murakhkhas": out["malik"][k],
+        out["F2"][name] = {"mashhud_murakhkhas": int(lic.sum()), "mukhtalif_ramzan": len({rmz(rs[i]) for i in np.where(lic)[0]}),
+                           "murakhkhas": out["malik"][k],
                            "nisba": round(100.0 * lic.sum() / out["malik"][k], 3)}
     # التجاورُ في غير المتجاورَين (1–3): لا يقول فيه القانون شيئًا
     A3 = codes(sorted(pop["lisan3"]))
@@ -261,6 +263,23 @@ def main():
                           "P_mutawassit": round(float(nul[:, b].mean()), 1), "P_madan": [int(nul[:, b].min()), int(nul[:, b].max())],
                           "P_qima": float(np.mean(nul[:, b] <= len(fihi))),
                           "amthila": [(r, allr[r]) for r in fihi]})
+    # قيدُ ابن فارس الثلاثيّ (المقاييس س40850): «النون والراء والباء لا يأتلفان»
+    nass_nrb = "النون والراء والباء لا يأتلفان، وقد يكون بينهما دخيل"
+    if nass_nrb not in M[40850 - 1]:
+        sys.exit("قيد ن ر ب: النصّ ليس في المقاييس س40850")
+    nrb = [r for r in rs if all(ch in r for ch in "نرب")]
+    na, ra, ba = HAW.index("ن"), HAW.index("ر"), HAW.index("ب")
+    nn = []
+    for _ in range(SAHB):
+        c = 0
+        for A in (A3, A4):
+            P = wujud(shuffle(A, rng))
+            c += int(np.sum(P[:, na] & P[:, ra] & P[:, ba]))
+        nn.append(c)
+    nn = np.array(nn)
+    out["F4_nrb"] = {"mujam": "maqayis", "satr": 40850, "nass": nass_nrb, "fihi": len(nrb), "amthila": nrb,
+                     "P_mutawassit": round(float(nn.mean()), 1), "P_madan": [int(nn.min()), int(nn.max())],
+                     "P_qima": float(np.mean(nn <= len(nrb)))}
     # التجاورُ زوجًا زوجًا في ثلاثيّ اللسان: المشهودُ O والمتوقَّعُ E بالبعثرة (E = Σ مواضع n_i(a)·n_j(b)/n، متوسّطُها بعينه)
     n3 = len(A3)
     cnt = [np.bincount(A3[:, j], minlength=N) for j in range(3)]
@@ -273,7 +292,9 @@ def main():
     out["azwaj_qanun"] = [(HAW[a] + HAW[b], *OE(a, b)) for a in range(N) for b in range(a + 1, N) if CONF[a, b]]
     ghayr = [(HAW[a] + HAW[b], *OE(a, b)) for a in range(N) for b in range(a + 1, N)
              if a != ALIF and b != ALIF and not CONF[a, b] and a not in WEAK and b not in WEAK]
-    out["ashadd_tajannuban"] = sorted([g for g in ghayr if g[2] >= 20], key=lambda g: g[1] / g[2])[:15]
+    # أشدُّ ما يُتجنَّب خارج القانون (E ≥ 20) بترتيب O/E، ومعه بُعدُ المخرجين في جدول المالك (|grp a − grp b|)
+    dist = {HAW[a] + HAW[b]: abs(GRP[a] - GRP[b]) for a in range(N) for b in range(N)}
+    out["ashadd_tajannuban"] = [(*g, dist[g[0]]) for g in sorted([g for g in ghayr if g[2] >= 20], key=lambda g: g[1] / g[2])[:15]]
     # التماثل: حاملان متماثلان — القانونُ يجيزهما متجاورين (conflict يشترط الاختلاف)
     tam = {}
     for (i, j) in ((0, 1), (1, 2), (0, 2)):
@@ -340,7 +361,7 @@ def lean(pop, out, d_out=None):
         a, b = H[zawj[0]], H[zawj[1]]
         s.append(f"/-- {zawj[0]}–{zawj[1]} متجاورين في ثلاثيّ اللسان: {O}. -/")
         s.append(f"theorem jiwar_{a}_{b} : (lisan3.filter (fun c => jiwarN c {a} {b})).length = {O} := by decide +kernel\n")
-    for (zawj, O, _E) in out["ashadd_tajannuban"][:5]:
+    for (zawj, O, _E, _d) in out["ashadd_tajannuban"]:
         a, b = H[zawj[0]], H[zawj[1]]
         s.append(f"/-- {zawj[0]}–{zawj[1]} (خارج القانون) متجاورين في ثلاثيّ اللسان: {O}. -/")
         s.append(f"theorem jiwar_{min(a, b)}_{max(a, b)} : (lisan3.filter (fun c => jiwarN c {a} {b})).length = {O} ∧ "
