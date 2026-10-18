@@ -52,6 +52,10 @@ import Jisr.Ikhbar
 import Jisr.AqsamAwamil
 import Jisr.Mulhaqat
 import Jisr.Utur
+import Madlul.JadwalLuzum
+import Madlul.Naht
+import Madlul.Ishtirak
+import Madlul.Tarjih
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1045,3 +1049,47 @@ import Jisr.Utur
 #print axioms Madlul.TashfirNas.string_dec_enc
 #print axioms Madlul.TashfirNas.tayyString_la_yudi
 #print axioms Madlul.TashfirNas.string_shawahid_tudi
+#print axioms JadwalLuzum.qawaninOf_shakl
+#print axioms JadwalLuzum.qaidaOf_shakl
+#print axioms JadwalLuzum.qaidaOf_mutadarrija
+#print axioms JadwalLuzum.asl_rutba_sifr
+#print axioms JadwalLuzum.luzum_min_taalil
+#print axioms JadwalLuzum.juz_min_hadd
+#print axioms JadwalLuzum.aslB_iff
+#print axioms JadwalLuzum.iltizam_min_taalil
+#print axioms JadwalLuzum.tadammun_min_juz
+#print axioms JadwalLuzum.la_iltizam_bila_taalil
+#print axioms JadwalLuzum.fahm_marifa_tadammun
+#print axioms JadwalLuzum.fahm_qalb_tadammun
+#print axioms JadwalLuzum.fahm_ilm_mutabaqa
+#print axioms JadwalLuzum.iqal_talab_iltizam
+#print axioms JadwalLuzum.fahm_la_iltizam
+#print axioms JadwalLuzum.silat_sitt
+#print axioms JadwalLuzum.talab_la_mubashir
+#print axioms Naht.aakhidha_bihazz
+#print axioms Naht.farid_nodup
+#print axioms Naht.manhut_ithnan
+#print axioms Naht.amthila_manhuta
+#print axioms Naht.bulum_yukhalif
+#print axioms Ishtirak.ishtirak_iff
+#print axioms Ishtirak.taraduf_iff
+#print axioms Ishtirak.alaqa_tanazur
+#print axioms Ishtirak.alaqa_hasira
+#print axioms Ishtirak.shawahid_sibawayhi
+#print axioms Ishtirak.isqat_yahfaz
+#print axioms Ishtirak.silat_malik_arba
+#print axioms Ishtirak.isqat_khams
+#print axioms Ishtirak.dars_la_yasil
+#print axioms Ishtirak.katiba_laysat_kitaba
+#print axioms Tarjih.ashara_awjuh
+#print axioms Tarjih.kull_zawj_marra
+#print axioms Tarjih.khayr_min_khayr
+#print axioms Tarjih.awla_la_yaksis
+#print axioms Tarjih.bila_qarina_haqiqa
+#print axioms Tarjih.qarina_tusrif
+#print axioms Tarjih.la_ishtirak_maa_alaqa
+#print axioms Tarjih.mushtarak_bila_qarina
+#print axioms Tarjih.dars_dirasa
+#print axioms Tarjih.dars_bila_siyaq
+#print axioms Tarjih.sibawayhi_nabhani
+#print axioms Tarjih.dars_laysa_mushtarak

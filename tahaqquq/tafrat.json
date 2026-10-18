@@ -1102,5 +1102,89 @@
   "milaf": "Madlul/TashfirNas.lean",
   "min": "  tawi := stringEnc",
   "ila": "  tawi := fun _ => 0"
+ },
+ {
+  "ism": "P149_luzum_bila_asl",
+  "milaf": "Madlul/JadwalLuzum.lean",
+  "min": "  | .luzum => [.wad l m, .luzum m b, .kharij b m]",
+  "ila": "  | .luzum => [.wad l m, .kharij b m]"
+ },
+ {
+  "ism": "P150_tadammun_ala_ghayr_juz",
+  "milaf": "Madlul/JadwalLuzum.lean",
+  "min": "  | .juz | .asl => [qMutabaqa l m, qTadammun l m b]",
+  "ila": "  | .juz | .asl => [qMutabaqa l m, qTadammun l m l]"
+ },
+ {
+  "ism": "P151_luzum_min_taraduf",
+  "milaf": "Madlul/JadwalLuzum.lean",
+  "min": "  | .taraduf => [.wad l b]\n",
+  "ila": "  | .taraduf => [.wad l b, .luzum b b]\n"
+ },
+ {
+  "ism": "P152_formula_fi_tafsir",
+  "milaf": "shabaka/jadwal_luzum.py",
+  "min": "gt = kalimat(FORMULA.sub(\"\", norm(G)))",
+  "ila": "gt = kalimat(norm(G))"
+ },
+ {
+  "ism": "P153_taalil_bila_tasmiya",
+  "milaf": "shabaka/jadwal_luzum.py",
+  "min": "            if m and TASMIYA.search(ns):",
+  "ila": "            if m:"
+ },
+ {
+  "ism": "P154_matufat_ajza",
+  "milaf": "shabaka/jadwal_luzum.py",
+  "min": "                if matufat:  # R3-ب",
+  "ila": "                if False:  # R3-ب"
+ },
+ {
+  "ism": "P155_naht_bithulathi_wahid",
+  "milaf": "Madlul/Naht.lean",
+  "min": "decide (2 ≤ (mashhudat T q).length)",
+  "ila": "decide (1 ≤ (mashhudat T q).length)"
+ },
+ {
+  "ism": "P156_ishtirak_huwiyya",
+  "milaf": "Madlul/Ishtirak.lean",
+  "min": "then (if a.mana = b.mana then .huwiyya else .ishtirak)",
+  "ila": "then (if a.mana = b.mana then .ishtirak else .huwiyya)"
+ },
+ {
+  "ism": "P157_uqad_mukhtalita",
+  "milaf": "Madlul/Ishtirak.lean",
+  "min": "def silaUqad : List (Uqda × Uqda) := silatHiss.map fun e => ((e.1, e.2.1), (e.2.2.1, e.2.2.2.1))",
+  "ila": "def silaUqad : List (Uqda × Uqda) := silatHiss.map fun e => ((e.1, e.2.2.2.1), (e.2.2.1, e.2.1))"
+ },
+ {
+  "ism": "P158_hiss_bila_ittihad",
+  "milaf": "shabaka/hiss.py",
+  "min": "            U.union((A, wf), (A, f))",
+  "ila": "            pass"
+ },
+ {
+  "ism": "P159_naht_bithulathi_wahid_py",
+  "milaf": "shabaka/naht.py",
+  "min": "    if len(mukhtalif) >= 2:",
+  "ila": "    if len(mukhtalif) >= 1:"
+ },
+ {
+  "ism": "P160_idmar_dun_majaz",
+  "milaf": "Madlul/Tarjih.lean",
+  "min": "| .majaz => 2 | .idmar => 2",
+  "ila": "| .majaz => 2 | .idmar => 1"
+ },
+ {
+  "ism": "P161_bila_qarina_la_hukm",
+  "milaf": "Madlul/Tarjih.lean",
+  "min": "      | [] => .mana a.ism",
+  "ila": "      | [] => .laHukm"
+ },
+ {
+  "ism": "P162_mirat_tarjih_py",
+  "milaf": "shabaka/tarjih.py",
+  "min": "            if not q:\n                return (\"mana\", a[0])",
+  "ila": "            if not q:\n                return (\"laHukm\", None)"
  }
 ]
