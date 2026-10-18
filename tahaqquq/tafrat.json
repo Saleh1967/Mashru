@@ -1222,5 +1222,11 @@
   "milaf": "tahaqquq/bawwaba.py",
   "min": "fails.append(f\"خطّ الأساس khatt_asas.json غير صالح: {e}\")",
   "ila": "report.append(f\"خطّ الأساس khatt_asas.json غير صالح: {e}\")"
+ },
+ {
+  "ism": "P164_elan_bootstrap_false_success",
+  "milaf": "scripts/tathbit_lean.sh",
+  "min": "    elan toolchain install \"$TC\" && elan default \"$TC\" && ready && exit 0",
+  "ila": "    exit 0"
  }
 ]

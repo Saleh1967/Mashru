@@ -4,17 +4,22 @@
 # والبديل: أرشيف الإصدار من github.com مباشرة (يكفي إن حُجب raw.githubusercontent.com).
 set -u
 TC="leanprover/lean4:v4.34.1"
-if command -v lake >/dev/null 2>&1 && lean --version 2>/dev/null | grep -q "4.34.1"; then
+export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
+ready() {
+  lean --version 2>/dev/null | grep -Eq 'version 4\.34\.1([, )]|$)' &&
+    lake --version >/dev/null 2>&1
+}
+if ready; then
   echo "Lean 4.34.1 موجود"; exit 0
 fi
-export PATH="$HOME/.elan/bin:$PATH"
 if command -v elan >/dev/null 2>&1; then
-  elan toolchain install "$TC" && elan default "$TC" && exit 0
+  elan toolchain install "$TC" && elan default "$TC" && ready && exit 0
 fi
 if curl -fsSL --retry 2 https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh; then
-  sh /tmp/elan-init.sh -y --default-toolchain "$TC" && exit 0
+  sh /tmp/elan-init.sh -y --default-toolchain "$TC" &&
+    elan toolchain install "$TC" && elan default "$TC" && ready && exit 0
 fi
-echo "elan غير متاح؛ البديل: أرشيف الإصدار من github.com" >&2
+echo "لم يجهز Lean عبر elan؛ البديل: أرشيف الإصدار من github.com" >&2
 URL="https://github.com/leanprover/lean4/releases/download/v4.34.1/lean-4.34.1-linux.zip"
 mkdir -p "$HOME/.lean" && curl -fsSL --retry 2 "$URL" -o /tmp/lean.zip && python3 -c "
 import zipfile,os,sys
@@ -22,5 +27,13 @@ z=zipfile.ZipFile('/tmp/lean.zip'); z.extractall(os.path.expanduser('~/.lean'))
 for i in z.infolist():
     p=os.path.join(os.path.expanduser('~/.lean'), i.filename)
     if i.external_attr >> 16: os.chmod(p, (i.external_attr >> 16) & 0o777)
-" && echo 'export PATH="$HOME/.lean/lean-4.34.1-linux/bin:$PATH"' >> "$HOME/.bashrc" && echo "ثُبّت في ~/.lean" && exit 0
+" && {
+  if command -v elan >/dev/null 2>&1; then
+    elan toolchain link "$TC" "$HOME/.lean/lean-4.34.1-linux" &&
+      elan default "$TC" || exit 1
+  fi
+  ready || exit 1
+  echo 'export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"' >> "$HOME/.bashrc" || exit 1
+  echo "ثُبّت في ~/.lean"; exit 0
+}
 echo "فشل تثبيت Lean" >&2; exit 1

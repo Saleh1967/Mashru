@@ -7,7 +7,7 @@
   ٤. عدد المبرهنات المدقّقة لا ينقص عن خطّ الأساس في khatt_asas.json (نقصه حذفٌ يحتاج إذنًا).
       غياب الملفّ أو تلفه أو بطلان العدد فشلٌ مسمّى، لا خطّ أساسٍ صفريّ بديل.
   ٥. اختبارات بايثون (shabaka/test_shabaka.py) تمرّ، إن وُجد المودَع (MUDAA_MUKHASSAS).
-  ٥أ. اختبارات خطّ الأساس (tahaqquq/test_bawwaba.py): رفض JSON التالف وحفظ حدّ المبرهنات.
+  ٥أ. اختبارات خطّ الأساس والتثبيت (tahaqquq/test_bawwaba.py): رفض JSON التالف وحفظ الحدّ، وفحص بديل تثبيت Lean.
   ٥ب. اختبارات المخزن (mawsua/test_mawsua.py): الفاحص التنفيذيّ المبنيّ من Lean يقبل المخزن ويرفض الفاسد.
   ٥ج. بوّابة الإيداع (mudaat/test_idaa.py): لا ختم بلا إذن ولا نوع، ولا تنظيف؛ وإن عُيّن MUDAA_DIR
       طوبقت بصمات ما حضر من المودَعات فيه.
@@ -108,9 +108,9 @@ def main():
             fails.append(f"نقص عدد المبرهنات المدقّقة من {baseline} إلى {len(lines)}")
 
     code, out = run([sys.executable, "-I", "tahaqquq/test_bawwaba.py"])
-    report.append(f"٥أ اختبارات خطّ الأساس: {'مرّت' if code == 0 else 'فشلت'}")
+    report.append(f"٥أ اختبارات خطّ الأساس والتثبيت: {'مرّت' if code == 0 else 'فشلت'}")
     if code != 0:
-        fails.append("اختبارات خطّ الأساس فشلت:\n" + out[-800:])
+        fails.append("اختبارات خطّ الأساس والتثبيت فشلت:\n" + out[-800:])
 
     mudaa = os.environ.get("MUDAA_MUKHASSAS")
     if mudaa and os.path.exists(mudaa):
