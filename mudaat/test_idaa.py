@@ -41,7 +41,8 @@ def run(*a):
 
 ok = 0
 code, out = run("fahs")
-assert code == 0 and "مختوم 19، مرشح 8، أخطاء 0" in out, out
+# مرشح 9: أُضيف «جدول اللزوم من شبكة المعاجم» (luzum_mujam.tsv) مرشّحًا 2026-10-18 — لا ختمَ جديد (المختوم 19 لم يتغيّر)
+assert code == 0 and "مختوم 19، مرشح 9، أخطاء 0" in out, out
 ok += 1
 
 tmp = tempfile.mkdtemp()
