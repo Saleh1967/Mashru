@@ -1216,5 +1216,11 @@
   "milaf": "shabaka/tarjih.py",
   "min": "            if not q:\n                return (\"mana\", a[0])",
   "ila": "            if not q:\n                return (\"laHukm\", None)"
+ },
+ {
+  "ism": "P163_khatt_asas_fail_open",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "fails.append(f\"خطّ الأساس khatt_asas.json غير صالح: {e}\")",
+  "ila": "report.append(f\"خطّ الأساس khatt_asas.json غير صالح: {e}\")"
  }
 ]
