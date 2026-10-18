@@ -26,6 +26,8 @@
   ٥ق. جدول النِّسَب على الأصناف (tahaqquq/test_nisab_asnaf.py): nisab_asnaf.tsv ببصمته (مرشّح أو مختوم)، ومطابقة Jisr/NisabAsnaf.lean له إن حضر.
   ٥ر. جدول اللزوم من شبكة المعاجم (tahaqquq/test_luzum.py): نصّ Madlul/JadwalLuzum*.lean، والعيّنة المضمَّنة دائمًا، والمقاييس واللسان
       ببصمتيهما ومطابقة جدول Lean لاختيار المولِّد إن حضرا (MUDAA_DIR).
+  ٥ش. فرضية الـ116 (tahaqquq/test_fard116.py): مرآةُ آلة الجذر على أعداد SLGE/Root.lean، وحالاتٌ يدويّة دائمًا؛ وإعادةُ المخرج ومطابقةُ
+      Madlul/Fard116Data.lean وMadlul/Fard116Shawahid.lean له بالبايت إن حضر المودَعان.
   ٦. كلّ طفرة في tafrat.json تُقتل: تُفشل البناء أو تُفشل اختبارات المخزن. طفرة تعيش = اختبارٌ مرآة.
 التشغيل: python3 -I tahaqquq/bawwaba.py [--bila-tafrat]
 """
@@ -168,6 +170,10 @@ def main():
     report.append(f"٥ر جدول اللزوم: {out.strip().splitlines()[-1] if out.strip() else '?'}")
     if code != 0:
         fails.append("اختبار جدول اللزوم فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_fard116.py"])
+    report.append(f"٥ش فرضية الـ116: {out.strip().splitlines()[-1] if out.strip() else '?'}")
+    if code != 0:
+        fails.append("اختبار فرضية الـ116 فشل:\n" + out[-800:])
     mdir = os.environ.get("MUDAA_DIR")
     if mdir and os.path.isdir(mdir):
         code, out = run([sys.executable, "-I", "mudaat/idaa.py", "tahaqqaq", mdir])
@@ -225,6 +231,8 @@ def main():
                 code, _ = run([sys.executable, "-I", "tahaqquq/test_nisab_asnaf.py"], cwd=dst)
             if code == 0:
                 code, _ = run([sys.executable, "-I", "tahaqquq/test_luzum.py"], cwd=dst)
+            if code == 0:
+                code, _ = run([sys.executable, "-I", "tahaqquq/test_fard116.py"], cwd=dst)
             if code == 0:
                 alive.append(t["ism"])
             shutil.rmtree(tmp)
