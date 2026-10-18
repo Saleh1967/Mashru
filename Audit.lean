@@ -59,6 +59,8 @@ import Madlul.Ishtirak
 import Madlul.Tarjih
 import Jisr.Iqtiran
 import Jisr.MantuqMafhum
+import Madlul.TashfirHawass
+import Madlul.TashfirShabaka
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1140,3 +1142,70 @@ import Jisr.MantuqMafhum
 #print axioms Jisr.MantuqMafhum.shahid_la_haml
 #print axioms Jisr.MantuqMafhum.muwafaqa_tabia
 #print axioms Jisr.MantuqMafhum.shahid_tabia
+-- جسرُ المعلومة المعمَّم (السابع): طيُّ وفكُّ Madlul.Hawass (Hassa/Hukm/Shidda/Thubut/Bud/Tasmiya/Khibra)
+-- وMaratib.ShahidWaqi (Madlul/TashfirHawass.lean؛ نفس تفويض 2026-10-17 22:55). أداةٌ جديدةٌ: splitAtSep
+-- (الفصلُ بقيمةٍ محجوزة لا بحدٍّ مختار) تفتح الحقول المتعدّدة من String معًا بلا Sahih/Subtype إلّا على
+-- mawdi وحده (شرطٌ خفيفٌ، لا يُغلَّف بـTayy/Subtype عمدًا).
+#print axioms Madlul.TashfirHawass.splitAtSep_join
+#print axioms Madlul.TashfirHawass.hassa_dec_enc
+#print axioms Madlul.TashfirHawass.hassaEnc_lt
+#print axioms Madlul.TashfirHawass.tayyHassa_la_yudi
+#print axioms Madlul.TashfirHawass.hukm_dec_enc
+#print axioms Madlul.TashfirHawass.hukmEnc_lt
+#print axioms Madlul.TashfirHawass.tayyHukm_la_yudi
+#print axioms Madlul.TashfirHawass.shidda_dec_enc
+#print axioms Madlul.TashfirHawass.shiddaEnc_lt
+#print axioms Madlul.TashfirHawass.tayyShidda_la_yudi
+#print axioms Madlul.TashfirHawass.thubut_dec_enc
+#print axioms Madlul.TashfirHawass.thubutEnc_lt
+#print axioms Madlul.TashfirHawass.tayyThubut_la_yudi
+#print axioms Madlul.TashfirHawass.charBound_ge5
+#print axioms Madlul.TashfirHawass.charBound_notin_charCodes
+#print axioms Madlul.TashfirHawass.charCodes_lt
+#print axioms Madlul.TashfirHawass.charCodes_dec_enc
+#print axioms Madlul.TashfirHawass.bud_dec_enc
+#print axioms Madlul.TashfirHawass.tasmiya_dec_enc
+#print axioms Madlul.TashfirHawass.tayyTasmiya_la_yudi
+#print axioms Madlul.TashfirHawass.shahid_dec_enc
+#print axioms Madlul.TashfirHawass.khibra_dec_enc
+#print axioms Madlul.TashfirHawass.abad_tudi
+#print axioms Madlul.TashfirHawass.mujam_tudi
+#print axioms Madlul.TashfirHawass.qawlMalik_tudi
+#print axioms Madlul.TashfirHawass.qawlMalik_shawahid
+#print axioms Madlul.TashfirHawass.khibrat_tudi
+#print axioms Madlul.TashfirHawass.khibrat_eq
+-- جسرُ المعلومة المعمَّم (الثامن): طيُّ وفكُّ Madlul.Shabaka (Luzum/Uslub/Fil/Qawl/Shabaka) — قطعةُ alaqat
+-- من الاسم الثمانيّ. أداتانِ جديدتان: splitAllSep/joinTrailing (تعميمُ splitAtSep من جزءٍ واحدٍ إلى عددٍ
+-- غيرِ محدود، بفاصلٍ لاحق)، وstringsEnc/stringsListEnc (طيُّ List String وList(List String) بهما، غيرَ
+-- مشروطين بتاتًا). Shabaka (ستّةُ حقول List(String×String)) وQawl (أحدَ عشرَ منشِئًا بحقولَ نصّيّة) كلاهما
+-- غيرُ مشروطٍ — الأشملُ بين قطع هذه السلسلة، بلا استثناءٍ واحدٍ كـmawdi في القطعة السابقة (Hawass).
+#print axioms Madlul.TashfirShabaka.splitAtSep_snd_lt
+#print axioms Madlul.TashfirShabaka.splitAllSep_unfold
+#print axioms Madlul.TashfirShabaka.splitAllSep_joinTrailing
+#print axioms Madlul.TashfirShabaka.joinTrailing_mem
+#print axioms Madlul.TashfirShabaka.stringsEnc_lt
+#print axioms Madlul.TashfirShabaka.stringsEnc_notMem
+#print axioms Madlul.TashfirShabaka.stringsRaw_dec_enc
+#print axioms Madlul.TashfirShabaka.strings_dec_enc
+#print axioms Madlul.TashfirShabaka.stringsListEnc_lt
+#print axioms Madlul.TashfirShabaka.stringsListEnc_notMem
+#print axioms Madlul.TashfirShabaka.stringsList_dec_enc
+#print axioms Madlul.TashfirShabaka.luzum_dec_enc
+#print axioms Madlul.TashfirShabaka.luzumEnc_lt
+#print axioms Madlul.TashfirShabaka.tayyLuzum_la_yudi
+#print axioms Madlul.TashfirShabaka.uslub_dec_enc
+#print axioms Madlul.TashfirShabaka.uslubEnc_lt
+#print axioms Madlul.TashfirShabaka.tayyUslub_la_yudi
+#print axioms Madlul.TashfirShabaka.fil_dec_enc
+#print axioms Madlul.TashfirShabaka.tayyFil_la_yudi
+#print axioms Madlul.TashfirShabaka.tagOf_lt
+#print axioms Madlul.TashfirShabaka.toStrings_ofStrings
+#print axioms Madlul.TashfirShabaka.qawl_dec_enc
+#print axioms Madlul.TashfirShabaka.tayyQawl_la_yudi
+#print axioms Madlul.TashfirShabaka.stringsToPairs_pairsToStrings
+#print axioms Madlul.TashfirShabaka.shabaka_dec_enc
+#print axioms Madlul.TashfirShabaka.tayyShabaka_la_yudi
+#print axioms Madlul.TashfirShabaka.shabaka_tudi
+#print axioms Madlul.TashfirShabaka.shabakaP_tudi
+#print axioms Madlul.TashfirShabaka.qawl_shawahid
+#print axioms Madlul.TashfirShabaka.fil_shahid
