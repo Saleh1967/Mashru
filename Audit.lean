@@ -55,6 +55,7 @@ import Jisr.Utur
 import Madlul.JadwalLuzum
 import Madlul.Naht
 import Nizam.Asas
+import Nizam.Talab
 import Madlul.Ishtirak
 import Madlul.Tarjih
 import Jisr.Iqtiran
@@ -1278,3 +1279,8 @@ import Madlul.Fard116Shawahid
 #print axioms Madlul.Fard116.Shawahid.tawlid4_G2
 #print axioms Madlul.Fard116.Shawahid.tawlid4_Gr
 #print axioms Madlul.Fard116.Shawahid.tawlid5
+-- قرار المالك ٢ (Nizam/Talab.lean؛ ج3 س415): الأمر والالتماس والسؤال لا حكم بلا مقام
+#print axioms Nizam.Talab.la_qisma_bila_maqam
+#print axioms Nizam.Talab.qisma_bil_maqam
+#print axioms Nizam.Talab.la_dalla_min_sigha
+#print axioms Nizam.Talab.qismBiRutba_mutabayin

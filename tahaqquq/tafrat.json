@@ -1348,5 +1348,17 @@
   "milaf": "Madlul/Fard116Shawahid.lean",
   "min": "theorem jiwar_9_10 : (lisan3.filter (fun c => jiwarN c 9 10)).length = 23",
   "ila": "theorem jiwar_9_10 : (lisan3.filter (fun c => jiwarN c 9 10)).length = 22"
+ },
+ {
+  "ism": "P173_talab_rutba_tabdil",
+  "milaf": "Nizam/Talab.lean",
+  "min": "  | .tasawi => .iltimas",
+  "ila": "  | .tasawi => .amr"
+ },
+ {
+  "ism": "P174_talab_bila_maqam_amr",
+  "milaf": "Nizam/Talab.lean",
+  "min": "  | none => .laHukm",
+  "ila": "  | none => .murakhkhas .amr"
  }
 ]
