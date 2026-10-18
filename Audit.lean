@@ -61,6 +61,7 @@ import Jisr.Iqtiran
 import Jisr.MantuqMafhum
 import Madlul.TashfirHawass
 import Madlul.TashfirShabaka
+import Madlul.Fard116Shawahid
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1209,3 +1210,71 @@ import Madlul.TashfirShabaka
 #print axioms Madlul.TashfirShabaka.shabakaP_tudi
 #print axioms Madlul.TashfirShabaka.qawl_shawahid
 #print axioms Madlul.TashfirShabaka.fil_shahid
+#print axioms Madlul.Fard116.licB_iff
+#print axioms Madlul.Fard116.runL_imtina
+#print axioms Madlul.Fard116.runL_qabul
+#print axioms Madlul.Fard116.licB_iff_spaced
+#print axioms Madlul.Fard116.illa_la_tajawur
+#print axioms Madlul.Fard116.tajB_eq
+#print axioms Madlul.Fard116.spacedB_iff
+#print axioms Madlul.Fard116.licF_eq
+#print axioms Madlul.Fard116.illa_sawa
+#print axioms Madlul.Fard116.licN3_eq
+#print axioms Madlul.Fard116.harf3_arqam
+#print axioms Madlul.Fard116.maanN3_eq
+#print axioms Madlul.Fard116.azwajQanun_kulluha
+#print axioms Madlul.Fard116.tamathul_mujaz
+#print axioms Madlul.Fard116.jumhur_atwal
+#print axioms Madlul.Fard116.kharita3
+#print axioms Madlul.Fard116.kharita4
+#print axioms Madlul.Fard116.ramz_arqam3
+#print axioms Madlul.Fard116.Shawahid.mukhalif_lisan3
+#print axioms Madlul.Fard116.Shawahid.mukhalif_maqayis3
+#print axioms Madlul.Fard116.Shawahid.mukhalif_lisan4
+#print axioms Madlul.Fard116.Shawahid.mukhalif_lisan5
+#print axioms Madlul.Fard116.Shawahid.jiwar_0_1
+#print axioms Madlul.Fard116.Shawahid.jiwar_3_4
+#print axioms Madlul.Fard116.Shawahid.jiwar_5_6
+#print axioms Madlul.Fard116.Shawahid.jiwar_9_10
+#print axioms Madlul.Fard116.Shawahid.jiwar_16_17
+#print axioms Madlul.Fard116.Shawahid.jiwar_16_18
+#print axioms Madlul.Fard116.Shawahid.jiwar_17_18
+#print axioms Madlul.Fard116.Shawahid.jiwar_19_20
+#print axioms Madlul.Fard116.Shawahid.jiwar_19_21
+#print axioms Madlul.Fard116.Shawahid.jiwar_20_21
+#print axioms Madlul.Fard116.Shawahid.jiwar_22_23
+#print axioms Madlul.Fard116.Shawahid.jiwar_22_24
+#print axioms Madlul.Fard116.Shawahid.jiwar_23_24
+#print axioms Madlul.Fard116.Shawahid.jiwar_26_27
+#print axioms Madlul.Fard116.Shawahid.jiwar_0_3
+#print axioms Madlul.Fard116.Shawahid.jiwar_3_5
+#print axioms Madlul.Fard116.Shawahid.jiwar_4_6
+#print axioms Madlul.Fard116.Shawahid.jiwar_7_8
+#print axioms Madlul.Fard116.Shawahid.jiwar_20_24
+#print axioms Madlul.Fard116.Shawahid.jiwar_25_26
+#print axioms Madlul.Fard116.Shawahid.jiwar_7_9
+#print axioms Madlul.Fard116.Shawahid.jiwar_1_4
+#print axioms Madlul.Fard116.Shawahid.jiwar_1_6
+#print axioms Madlul.Fard116.Shawahid.jiwar_8_9
+#print axioms Madlul.Fard116.Shawahid.jiwar_25_27
+#print axioms Madlul.Fard116.Shawahid.jiwar_8_16
+#print axioms Madlul.Fard116.Shawahid.jiwar_9_16
+#print axioms Madlul.Fard116.Shawahid.jiwar_13_15
+#print axioms Madlul.Fard116.Shawahid.jiwar_6_8
+#print axioms Madlul.Fard116.Shawahid.tamathul_12
+#print axioms Madlul.Fard116.Shawahid.tamathul_23
+#print axioms Madlul.Fard116.Shawahid.tamathul_13
+#print axioms Madlul.Fard116.Shawahid.qayd_3_4
+#print axioms Madlul.Fard116.Shawahid.qayd_4_1
+#print axioms Madlul.Fard116.Shawahid.qayd_21_20
+#print axioms Madlul.Fard116.Shawahid.qayd_21_19
+#print axioms Madlul.Fard116.Shawahid.qayd_9_7
+#print axioms Madlul.Fard116.Shawahid.qayd_21_9
+#print axioms Madlul.Fard116.Shawahid.qayd_16_9
+#print axioms Madlul.Fard116.Shawahid.qayd_0_5
+#print axioms Madlul.Fard116.Shawahid.qayd_6_3
+#print axioms Madlul.Fard116.Shawahid.qayd_21_16
+#print axioms Madlul.Fard116.Shawahid.tawlid4_G1
+#print axioms Madlul.Fard116.Shawahid.tawlid4_G2
+#print axioms Madlul.Fard116.Shawahid.tawlid4_Gr
+#print axioms Madlul.Fard116.Shawahid.tawlid5

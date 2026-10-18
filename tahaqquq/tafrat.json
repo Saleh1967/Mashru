@@ -1188,19 +1188,19 @@
   "ila": "            if not q:\n                return (\"laHukm\", None)"
  },
  {
-  "ism": "P163_atlas_wasl",
+  "ism": "P170_atlas_wasl",
   "milaf": "Nizam/atlas.tsv",
   "min": "Dal.Makharij\tT0\tنعم\tالمخارج والحالات الأربع",
   "ila": "Dal.Makharij\tT0\tلا\tالمخارج والحالات الأربع"
  },
  {
-  "ism": "P164_atlas_wusul",
+  "ism": "P171_atlas_wusul",
   "milaf": "tahaqquq/test_atlas.py",
   "min": "        st += I[m]\n",
   "ila": "        pass\n"
  },
  {
-  "ism": "P165_asas_mukhalifat",
+  "ism": "P172_asas_mukhalifat",
   "milaf": "Nizam/Asas.lean",
   "min": "m.filter fun x => q.kulli x && !q.hukm x",
   "ila": "m.filter fun x => q.kulli x"
@@ -1306,5 +1306,47 @@
   "milaf": "Madlul/TashfirShabaka.lean",
   "min": "a :: b :: rest => (a, b) :: stringsToPairs rest",
   "ila": "a :: b :: rest => (b, a) :: stringsToPairs rest"
+ },
+ {
+  "ism": "P163_fard_tajawur_bila_illa_py",
+  "milaf": "shabaka/fard116.py",
+  "min": "    return GRP[a] == GRP[b] and a != b and a not in WEAK and b not in WEAK",
+  "ila": "    return GRP[a] == GRP[b] and a != b"
+ },
+ {
+  "ism": "P164_fard_alif_asl_py",
+  "milaf": "shabaka/fard116.py",
+  "min": "        if q >= 30 or c >= 29 or c == ALIF:",
+  "ila": "        if q >= 30 or c >= 29:"
+ },
+ {
+  "ism": "P165_fard_G2_bila_ikhtilaf_py",
+  "milaf": "shabaka/fard116.py",
+  "min": "            g2 |= H[:, i] & H[:, j] & (dcodes[:, i] != dcodes[:, j])",
+  "ila": "            g2 |= H[:, i] & H[:, j]"
+ },
+ {
+  "ism": "P166_fard_alif_ramz_py",
+  "milaf": "shabaka/fard116.py",
+  "min": "    return [HAW.index(\"و\") if ch == \"ا\" else HAW.index(ch) for ch in w]",
+  "ila": "    return [HAW.index(ch) for ch in w]"
+ },
+ {
+  "ism": "P167_fard_licN3_bila_alif",
+  "milaf": "Madlul/Fard116.lean",
+  "min": "  x != 2 && y != 2 && z != 2 && !tajB x y && !tajB y z",
+  "ila": "  y != 2 && z != 2 && !tajB x y && !tajB y z"
+ },
+ {
+  "ism": "P168_fard_azwaj_naqis",
+  "milaf": "Madlul/Fard116.lean",
+  "min": "   (22, 23), (22, 24), (23, 24), (26, 27)]",
+  "ila": "   (22, 23), (22, 24), (23, 24)]"
+ },
+ {
+  "ism": "P169_fard_jiwar_jsh",
+  "milaf": "Madlul/Fard116Shawahid.lean",
+  "min": "theorem jiwar_9_10 : (lisan3.filter (fun c => jiwarN c 9 10)).length = 23",
+  "ila": "theorem jiwar_9_10 : (lisan3.filter (fun c => jiwarN c 9 10)).length = 22"
  }
 ]
