@@ -594,6 +594,19 @@ def main():
     t1 = "mujam\tharf\tadad\n" + tsv(jard)
     t2 = "mujam\tA\tW\tqadiyya\tB\tsatr\tnass\n" + tsv(rows)
     o1, o2 = os.path.join(D, "jard_judhur.tsv"), os.path.join(D, "luzum_mujam.tsv")
+    if "--muhtamal" in sys.argv:
+        mj = []
+        lisan_qadaya(J, ml, majma=mj)
+
+        def illa_faqat(c):  # المرشّحون يختلفون في حروف العلّة وحدها، في المواضع نفسِها
+            c = list(c)
+            return len({len(r) for r in c}) == 1 and all(
+                len({r[i] for r in c}) == 1 or {r[i] for r in c} <= set("ويا") for i in range(len(c[0])))
+        illa = sum(1 for _, _, c in mj if illa_faqat(c))
+        print("المحتمل:", len(mj), "ظهورًا،", len({t for _, t, _ in mj}), "مختلفًا؛ منها بحرف العلّة وحده:", illa,
+              f"({round(100 * illa / max(1, len(mj)), 1)}%)")
+        print("الأكثر:", collections.Counter(t for _, t, _ in mj).most_common(15))
+        sys.exit(0)
     if "--asas" in sys.argv:
         S = sys.argv[sys.argv.index("--asas") + 1:]
         obs, p, dist = asas(rows, S)

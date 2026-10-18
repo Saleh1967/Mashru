@@ -55,6 +55,7 @@ import Jisr.Utur
 import Madlul.JadwalLuzum
 import Madlul.Naht
 import Madlul.Ishtirak
+import Madlul.Tarjih
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1080,3 +1081,15 @@ import Madlul.Ishtirak
 #print axioms Ishtirak.isqat_khams
 #print axioms Ishtirak.dars_la_yasil
 #print axioms Ishtirak.katiba_laysat_kitaba
+#print axioms Tarjih.ashara_awjuh
+#print axioms Tarjih.kull_zawj_marra
+#print axioms Tarjih.khayr_min_khayr
+#print axioms Tarjih.awla_la_yaksis
+#print axioms Tarjih.bila_qarina_haqiqa
+#print axioms Tarjih.qarina_tusrif
+#print axioms Tarjih.la_ishtirak_maa_alaqa
+#print axioms Tarjih.mushtarak_bila_qarina
+#print axioms Tarjih.dars_dirasa
+#print axioms Tarjih.dars_bila_siyaq
+#print axioms Tarjih.sibawayhi_nabhani
+#print axioms Tarjih.dars_laysa_mushtarak

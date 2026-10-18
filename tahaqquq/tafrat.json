@@ -1168,5 +1168,23 @@
   "milaf": "shabaka/naht.py",
   "min": "    if len(mukhtalif) >= 2:",
   "ila": "    if len(mukhtalif) >= 1:"
+ },
+ {
+  "ism": "P160_idmar_dun_majaz",
+  "milaf": "Madlul/Tarjih.lean",
+  "min": "| .majaz => 2 | .idmar => 2",
+  "ila": "| .majaz => 2 | .idmar => 1"
+ },
+ {
+  "ism": "P161_bila_qarina_la_hukm",
+  "milaf": "Madlul/Tarjih.lean",
+  "min": "      | [] => .mana a.ism",
+  "ila": "      | [] => .laHukm"
+ },
+ {
+  "ism": "P162_mirat_tarjih_py",
+  "milaf": "shabaka/tarjih.py",
+  "min": "            if not q:\n                return (\"mana\", a[0])",
+  "ila": "            if not q:\n                return (\"laHukm\", None)"
  }
 ]

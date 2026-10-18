@@ -23,6 +23,9 @@ import jadwal_luzum as J  # noqa: E402
 import bina_luzum_lean as G  # noqa: E402
 import hiss as H  # noqa: E402
 import naht as N  # noqa: E402
+import tarjih as T  # noqa: E402
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+import tahwil_docx as TD  # noqa: E402
 
 fails = []
 
@@ -96,6 +99,22 @@ check(not any(r[1] == "فهم" and r[2] == "وفهمت" and r[3] == "juz" for r 
 check(not any(r[1] == "كتب" and r[4] == "علم" for r in got), "العيّنة: «والله أعلم» دخل التفسير (FORMULA)")
 check(not any(r[1] == "كتب" and r[3] == "luzum" for r in got), "العيّنة: «لأن» احتجاجٍ قُرئ لزومًا (TASMIYA)")
 
+# الترجيح (Madlul/Tarjih.lean): نصُّ Lean، ومرآةُ بايثون على حالاتٍ مكتوبةٍ يدويًّا من ج3 س421–422 وس487
+tarjih_src = open(os.path.join(ROOT, "Madlul", "Tarjih.lean"), encoding="utf-8").read()
+for t in ("ashara_awjuh kull_zawj_marra khayr_min_khayr awla_la_yaksis bila_qarina_haqiqa qarina_tusrif la_ishtirak_maa_alaqa "
+          "mushtarak_bila_qarina dars_dirasa dars_bila_siyaq sibawayhi_nabhani dars_laysa_mushtarak").split():
+    check(f"theorem {t}" in tarjih_src, f"المبرهنة {t} غائبة عن Tarjih.lean")
+    check(f"#print axioms Tarjih.{t}\n" in audit, f"المبرهنة Tarjih.{t} غير مدقّقة في Audit.lean")
+HALAT = [  # (المعاني: اسم، أوّل، علاقة، قرينة) → المتوقَّع بنصّ النبهاني
+    ([("ع", 1, 0, 0), ("د", 0, 1, 1)], ("mana", "د")),           # «إن كان معه قرينة … أعملناه فيه»
+    ([("ع", 1, 0, 0), ("د", 0, 1, 0)], ("mana", "ع")),           # «وإلا أعملناه في الحقيقة»
+    ([("ع", 1, 0, 0), ("ج", 1, 0, 0)], ("mushtarak", ["ع", "ج"])),  # المشترك «مفتقراً إلى قرينة»
+    ([("ع", 1, 0, 1), ("ج", 1, 0, 0)], ("mana", "ع")),           # قرينةٌ تعيّن أحدَ معاني المشترك
+    ([], ("laHukm", None)),
+]
+for ms, want in HALAT:
+    check(T.tarjih([(a, bool(b), bool(c), bool(d)) for a, b, c, d in ms]) == want, f"مرآة الترجيح تخالف النصّ: {ms}")
+
 # العيّنةُ لفصل المعاني (H1): صيغُ «فهمه فهما وفهما وفهامة: علمه» حدٌّ واحد فعقدةٌ واحدة؛ و«الفهم:» حدٌّ غيرُه
 hs_a = []
 J.lisan_qadaya(Jd, ml, hiss=hs_a)
@@ -167,6 +186,19 @@ if hadir:
     check(th_lean == th_regen, "NahtData.thulathiyyat ليس إسقاطاتِ الأمثلة المشهودةَ في اللسان بعينها")
     for t in ("بتر", "حتر", "بحث", "بثر", "بعق", "بثق", "بلع"):
         check(t in th_lean, f"ثلاثيُّ ابن فارس {t} غائبٌ عن NahtData")
+    # شواهدُ «درس» في Tarjih.lean بأسطرها (مقروءةٌ يدويًّا)، وأسطرُ ج3 المستشهَد بها إن حضر a2.docx
+    for src, satr, nass in ((M, 12989, "أصل واحد يدل على خفاء وخفض وعفاء"), (M, 12997, "ومن الباب درست القرآن"),
+                            (L, 115033, "يدرس دروسا: عفا"), (L, 115055, "درسا ودراسة ودارسه، من ذلك، كأنه"),
+                            (L, 115071, "ذللته بكثرة القراءة")):
+        check(nass in src[satr - 1], f"شاهدُ «درس» ليس في سطره: {satr} «{nass}»")
+    a2 = os.path.join(D, "a2.docx")
+    if os.path.exists(a2) and J.basma(a2) == S["a2.docx"]["sha256"]:
+        A2 = TD.fakra(a2).split("\n")
+        for satr, nass in ((417, "إلى سبعة أقسام"), (421, "الأصل عدم الاشتراك"), (422, "يجوز استعمال المشترك في جميع معانيه"),
+                           (434, "المشابهة"), (484, "احتمالات خمسة"), (485, "يؤخذ كل واحد مع ما بعده"),
+                           (486, "النقل أولى من الاشتراك"), (487, "المجاز أولى من الاشتراك"), (493, "الإضمار مثل المجاز"),
+                           (495, "التخصيص أولى من الإضمار"), (548, "ثم المعنى العرفي، ثم المعنى اللغوي")):
+            check(nass in A2[satr - 1], f"ج3 س{satr} لا يحمل «{nass}»")
     for m, a, w, n, b, s in lean_rows:
         if n != "asl":
             src = L if m == "lisan" else M

@@ -6,7 +6,7 @@
   بعثق (بعق، بثق) س5299؛ وبلعوم/بلعم «مأخوذ من بلع، إلا أنه زيد عليه ما زيد» س5285–5287.
 
   المعيار N1 (تعيين البنّاء، `shabaka/naht.py`): الرباعيُّ منحوتٌ إن كان من إسقاطاته (حذفِ حرفٍ واحد) ثلاثيّان مختلفان مشهودان.
-  * مبرهن لكلّ: `aakhidha_bihazz` — إسقاطان مختلفان يحفظ أحدُهما كلَّ حرف («آخذةٌ منهما جميعا بحظ» حرفًا حرفًا)؛
+  * مبرهن لكلّ: `aakhidha_bihazz` — لكلّ كلمةٍ q وإسقاطين مختلفين: كلُّ حرفٍ من q (بموضعه) عضوٌ في أحد الثلاثيَّين المسقَطين؛
     `manhut_ithnan` — المنحوتُ له ثلاثيّان مختلفان مشهودان بعينهما.
   * على الشاهد (الثلاثيّاتُ كلُّ ما في اللسان من إسقاطات الأمثلة، مولَّدةً في `NahtData.lean`): الثلاثةُ منحوتةٌ والكلمتان اللتان
     سمّاهما ابن فارس بين مشهوداتها (`amthila_manhuta`)؛ و«بلعم» منحوتٌ بـ N1 مع أنّ ابن فارس جعله مزيدًا (`bulum_yukhalif`):
@@ -32,11 +32,14 @@ def mashhudat (T : List (List Char)) (q : List Char) : List (List Char) :=
 /-- N1: منحوتٌ إن كان له ثلاثيّان مختلفان مشهودان. -/
 def manhut (T : List (List Char)) (q : List Char) : Bool := decide (2 ≤ (mashhudat T q).length)
 
-/-- «آخذةٌ منهما جميعا بحظ»: إسقاطان مختلفان i ≠ j — كلُّ موضعٍ k يحفظه أحدُهما. -/
-theorem aakhidha_bihazz {i j : Nat} (h : i ≠ j) (k : Nat) : k ≠ i ∨ k ≠ j := by
-  by_cases hk : k = i
-  · exact Or.inr (hk ▸ h)
-  · exact Or.inl hk
+/-- «آخذةٌ منهما جميعا بحظ» حرفًا حرفًا: إسقاطان مختلفان i ≠ j من الكلمة q — كلُّ حرفٍ من q باقٍ في أحد الثلاثيَّين. -/
+theorem aakhidha_bihazz (q : List Char) {i j : Nat} (h : i ≠ j) (k : Nat) (hk : k < q.length) :
+    q[k] ∈ isqat q i ∨ q[k] ∈ isqat q j := by
+  unfold isqat
+  by_cases hki : k = i
+  · subst hki
+    exact Or.inr (List.mem_eraseIdx_iff_getElem.mpr ⟨k, hk, h, rfl⟩)
+  · exact Or.inl (List.mem_eraseIdx_iff_getElem.mpr ⟨k, hk, hki, rfl⟩)
 
 theorem farid_nodup : ∀ l : List (List Char), (farid l).Nodup
   | [] => by simp [farid]
