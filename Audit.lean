@@ -1110,6 +1110,7 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.tasduq_iff
 #print axioms Nizam.tasduq_bi_mukhalifat
 #print axioms Nizam.mukhalifat_dunya
+#print axioms Nizam.mukhalifat_mukhalif
 #print axioms Nizam.la_ilhaq_bila_illa
 -- اقترانُ الدالّ بالمدلول: مرشَّحون من الوضع تقطعهم قيود، لقراءة صيغة الفعل وجنسه من خلاياه، وقرينةٍ تحسم
 -- ما بقي محتملًا (Jisr/Iqtiran.lean؛ تفويضُ المالك 2026-10-18 «إغلاق دَين الاقتران» — إغلاقٌ محلّيٌّ، في

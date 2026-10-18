@@ -1360,5 +1360,11 @@
   "milaf": "Nizam/Talab.lean",
   "min": "  | none => .laHukm",
   "ila": "  | none => .murakhkhas .amr"
+ },
+ {
+  "ism": "P175_mukhalifat_aw",
+  "milaf": "Nizam/Asas.lean",
+  "min": "m.filter fun x => q.kulli x && !q.hukm x",
+  "ila": "m.filter fun x => q.kulli x || !q.hukm x"
  }
 ]

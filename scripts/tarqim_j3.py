@@ -34,7 +34,12 @@ def main():
         # جدولُ المقابلة `hawkama/tarqim_j3.tsv`: كلُّ صفٍّ اقتباسُه في سطره الموحّد بعينه
         rows = [l.split("\t") for l in open(os.path.join(ROOT, "hawkama", "tarqim_j3.tsv"), encoding="utf-8").read().split("\n")[1:] if l]
         # والاقتباسُ فريدٌ في التحويل كلّه: وإلّا لم تُثبت المقابلةُ بالاقتباس (إزاحةُ الصفّ تمرّ)
-        bad = [r for r in rows if [k + 1 for k, t in enumerate(lines) if norm(r[3]) in t] != [int(r[2])]]
+        # استثناءٌ معلن: مفتاحٌ يبدأ بـ «=» سطرُه عنوانٌ قصيرٌ غيرُ فريد، فيُطابَق السطرُ كلُّه بعينه (ب 247→250 «المانع»)
+        def ok(r):
+            if r[3].startswith("="):
+                return lines[int(r[2]) - 1] == norm(r[3][1:])
+            return [k + 1 for k, t in enumerate(lines) if norm(r[3]) in t] == [int(r[2])]
+        bad = [r for r in rows if not ok(r)]
         for r in bad:
             print("لا يطابق أو غير فريد:", "\t".join(r))
         print(f"المقابلة: {len(rows) - len(bad)}/{len(rows)} صفًّا اقتباسُه في سطره الموحّد وحده")
