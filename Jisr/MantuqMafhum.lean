@@ -12,7 +12,8 @@
     يقتضيه، إما لضرورة صدق المتكلم، وإما لصحة وقوع الملفوظ به».
   * س554 التنبيه والإيماء: «إنما تقع فيما يدل على العلية»؛ «التعليل لازماً من مدلول اللفظ وضعاً».
   * س556 الإشارة: «سيق لبيان حكم … ولكنه يفهم منه حكم آخر … مع أن هذا الحكم الآخر لم يكن مقصوداً من الكلام».
-  * س558–564 الموافقة: من التركيب لا من الأولويّة، و«لا توجد دلالة قياسية».
+  * س558–564 الموافقة: من التركيب لا من الأولويّة (قولُ الآمدي في س558 وردُّه في س560)، و«لا توجد دلالة قياسية» (س564)؛ وشرطُها في
+    س560: «بأن لا يكون شرطا للمعنى المطابقي بل تابعا له»، و«يشترط فيه أن يكون المعنى لازما للمعنى المدلول عليه وتابعا له».
   * س566 المخالفة: «مدلـول اللفظ في محل السكوت مخالفاً لمدلوله في محل النطق»؛ س568 الصفة: «وشرطه أن تكون تلك
     الصفة وصفاً مفهماً»؛ س580 العدد: «استكمل شرطين»؛ س582 «فلا يعمل بمفهوم الاسم مطلقاً»؛ س583 الوصف غير المفهم؛
     س584 «إنما»؛ س585 «الأعم الأغلب»؛ س586 «إذا ورد نص من الكتاب أو السنة يعطله»؛ س587 «محصور في الأصناف الأربعة
@@ -20,17 +21,23 @@
 
   **البناء:** المنطوقُ مُدخَلٌ بكلماته المحمولة (`Mahmul` من حمل الخطاب) وبمودَعٍ «معلومات سابقة» لكلّ منطوق: قيدُه،
   وكونُ الوصف مفهمًا، والسياق، والموانع، واللوازم المودَعة لكلّ نوع. والجسرُ `jisr` يُخرج المفاهيم من المنطوقات وحدها.
-  هذا الملفّ **لا يستنتج لازمًا**: اللازمُ مودَعٌ (ج3 س729: «لا محل للعقل في اللغة»)؛ وإنما يبرهن **البوّابات**: متى
+  هذا الملفّ **لا يستنتج لازمًا**: اللازمُ مودَعٌ (ج3 س396: «لا محل للعقل في اللغة»)؛ وإنما يبرهن **البوّابات**: متى
   يُرخَّص لازمٌ مفهومًا بنوعه، ومتى يُمنع، وأنّه لا مفهومَ بلا منطوقٍ محمول.
 
   المبرهن لكلّ مودَع: `mafhum_min_mantuq`، `la_mafhum_bila_haml`، `mukhalafa_min_qayd`، `mukhalafa_shurut`،
-  `mani_yamna_mukhalafa`، `ism_la_mukhalafa`، `mukhalafa_wahida`، `iqtida_shart_lil_mutabaqa`، `adad_mafahim` (حسابُ
-  الالتزام: عددُ مفاهيم المنطوق صيغةٌ مغلقة)، `tariq_mafhum`. وعلى الشاهد (أمثلة ج3 بأسطرها): `shawahid_mafhum`،
-  `shawahid_la_mafhum`، `muwafaqa_bila_awlawiyya`.
+  `mani_yamna_mukhalafa`، `ism_la_mukhalafa`، `mukhalafa_wahida`، `iqtida_shart_lil_mutabaqa`، `muwafaqa_tabia` (س560)،
+  `adad_mafahim` (حسابُ الالتزام: عددُ مفاهيم المنطوق صيغةٌ مغلقة). وإعادةُ مبرهنة المالك: `tariq_mafhum` (لا تذكر المودَع).
+  وعلى الشاهد: من أمثلة ج3 بأسطرها `shawahid_mafhum`، `shawahid_la_mafhum`، `muwafaqa_bila_awlawiyya`؛ ومبنيّان: `shahid_la_haml`،
+  `shahid_tabia`.
   **حدُّ الوسم:** مبرهناتُ «لكلّ» فكٌّ لتعريف الجسر: تثبت أنّ البوّابة تحترم الشروطَ كما رُمِّزت هنا، لا أنّ الترميزَ نفسَه
   مطابقٌ للنبهاني — المطابقةُ قراءةُ البنّاء بالأسطر المذكورة (رأيٌ معروضٌ على المالك). وتعيينُ البنّاء: الإشارةُ والتنبيهُ والموافقةُ
-  لا شرطَ لها هنا غيرُ حمل المنطوق وإيداع اللازم بنوعه؛ والشرطُ والغايةُ لا شرطَ زائدًا (س573–579 لا تذكر شرطًا كالوصف المفهم)؛
-  والإشارةُ لا تشترط نصَّين (س556 «فالآن باشروهن» من نصٍّ واحد). الترجيحُ بين مفهومَين متعارضَين ليس هنا.
+  يُبنى منها هنا: حملُ المنطوق، وإيداعُ اللازم بنوعه، وأنّ الموافقةَ ليست شرطًا للمطابقيّ (س560: ما أُودع اقتضاءً لا يخرج موافقةً).
+  **وأُغفل معلَنًا** (داخلٌ في الإيداع لا يُفحص هنا): موافقةُ المنطوق «في الإيجاب والسلب» (س550)؛ وشروطُ التنبيه في س554 (التعليلُ
+  «لازما من مدلول اللفظ وضعا، لا أن يكون اللفظ دالا بوضعه على التعليل»، ونفيُه إن «كان جامدا، أو كان وصفا ولكنه غير مناسب»)؛
+  وآلةُ الشرط والغاية (س573، س578). وحصرُ وسيلتَي التنبيه في الفاء والوصف المناسب تعيينُ البنّاء من مثالَي س554 («مثال ذلك»)، لا حصرٌ في
+  النصّ. والشرطُ والغايةُ لا شرطَ زائدًا هنا: س573–579 لا تذكر شرطًا كالوصف المفهم، غير أنّ علّةَ شرطَي س580 وس583 عامّة («اللزوم
+  الذهني»)، فإطلاقُ ذلك عليهما تعيين. والإشارةُ لا تشترط نصَّين: تعريفُ س556 «الكلام»، وشاهدُه آيةٌ واحدةٌ بعبارتين («فالآن باشروهن»
+  مع «حتى يتبين لكم الخيط الأبيض من الخيط الأسود من الفجر»). الترجيحُ بين مفهومَين متعارضَين ليس هنا.
   الطفرات P163–P166 تقتلها Lean. بلا sorry ولا axiom ولا native_decide.
 -/
 import SLGE.Madlul
@@ -43,7 +50,7 @@ open QawaninDalala
 
 /-! ## ١. أنواع المفهوم بأقسامها (س550–587) -/
 
-/-- لازمُ الاقتضاء يقتضيه العقلُ أو الشرع (س552)، لا ثالث. -/
+/-- لازمُ الاقتضاء يقتضيه العقلُ أو الشرع (س552 «قد يكون … وقد يكون»؛ الحصرُ في اثنين تعيينُ البنّاء). -/
 inductive MasdarIqtida | aql | shar
   deriving DecidableEq, Repr
 
@@ -51,7 +58,7 @@ inductive MasdarIqtida | aql | shar
 inductive GharadIqtida | sidq | sihha
   deriving DecidableEq, Repr
 
-/-- وسيلةُ التنبيه والإيماء بحسب وضع اللغة (س554): الفاءُ المرتِّبة، أو الوصفُ المناسب المقترنُ بالحكم. -/
+/-- وسيلةُ التنبيه والإيماء بحسب وضع اللغة: الفاءُ، أو الوصفُ المناسب المقترنُ بالحكم — مثالا س554، والحصرُ فيهما تعيينُ البنّاء. -/
 inductive WasilaTanbih | fa | wasfMunasib
   deriving DecidableEq, Repr
 
@@ -111,7 +118,7 @@ structure Mafhum (Mn L : Type) where
   lazim : L
   deriving DecidableEq, Repr
 
-variable {Mn L : Type}
+variable {Mn L : Type} [DecidableEq L]
 
 /-- المنطوقُ محمولٌ: لا كلمةَ فيه «لا حكم» (س548: «قطعاً في محل النطق»). -/
 def mahmul (D : Mudaa Mn L) (m : Mn) : Bool :=
@@ -121,7 +128,7 @@ def mahmul (D : Mudaa Mn L) (m : Mn) : Bool :=
 def mawani (D : Mudaa Mn L) (m : Mn) : Bool :=
   D.innama m || D.aghlab m || D.muattil m
 
-/-- شرطُ الصنف: الصفةُ مفهمةٌ (س568)، والعددُ بسياقه (س580)؛ والشرطُ والغايةُ بآلتهما (س573، س578). -/
+/-- شرطُ الصنف: الصفةُ مفهمةٌ (س568)، والعددُ بسياقه (س580)؛ وآلةُ الشرط والغاية (س573، س578) داخلةٌ في إيداع القيد ولا تُفحص هنا. -/
 def shartSinf (D : Mudaa Mn L) (m : Mn) : Qayd → Bool
   | .sifa => D.mufhim m
   | .adad => D.siyaqAdad m
@@ -136,13 +143,17 @@ def mukhalafaOf (D : Mudaa Mn L) (m : Mn) : List (Mafhum Mn L) :=
     | none => []
   | _, _ => []
 
+/-- الموافقُ التابع (س560): ما أُودع موافقًا ولم يُودَع شرطًا للمطابقيّ (اقتضاءً). -/
+def muwafiqTabi (D : Mudaa Mn L) (m : Mn) : List L :=
+  (D.muwafiq m).filter (fun l => !(D.iqtida m).any (fun x => decide (x.1 = l)))
+
 /-- **الجسر** على منطوقٍ واحد. -/
 def jisrMn (D : Mudaa Mn L) (m : Mn) : List (Mafhum Mn L) :=
   if mahmul D m then
     (D.iqtida m).map (fun x => ⟨.iqtida x.2.1 x.2.2, m, x.1⟩) ++
     (D.tanbih m).map (fun x => ⟨.tanbih x.2, m, x.1⟩) ++
     (D.ishara m).map (fun l => ⟨.ishara, m, l⟩) ++
-    (D.muwafiq m).map (fun l => ⟨.muwafaqa, m, l⟩) ++
+    (muwafiqTabi D m).map (fun l => ⟨.muwafaqa, m, l⟩) ++
     mukhalafaOf D m
   else []
 
@@ -154,6 +165,7 @@ def jisr (D : Mudaa Mn L) (ms : List Mn) : List (Mafhum Mn L) :=
 
 variable (D : Mudaa Mn L)
 
+omit [DecidableEq L] in
 theorem mem_mukhalafaOf {m : Mn} {f : Mafhum Mn L} (h : f ∈ mukhalafaOf D m) :
     ∃ q k l, D.qayd m = some q ∧ D.naqid m = some l ∧ sinfOf q = some k ∧
       shartSinf D m q = true ∧ mawani D m = false ∧ f = ⟨.mukhalafa k, m, l⟩ := by
@@ -245,6 +257,7 @@ theorem ism_la_mukhalafa {m : Mn} (h : D.qayd m = some .ism) :
   obtain ⟨q, _, _, hq, _, hs, _, _, _⟩ := mem_mukhalafaOf D (mukhalafa_min_mukhalafaOf D hf hk)
   rw [h] at hq; cases hq; cases hs
 
+omit [DecidableEq L] in
 /-- لكلّ منطوقٍ مفهومُ مخالفةٍ واحدٌ على الأكثر. -/
 theorem mukhalafa_wahida (m : Mn) : (mukhalafaOf D m).length ≤ 1 := by
   unfold mukhalafaOf
@@ -265,12 +278,36 @@ theorem iqtida_shart_lil_mutabaqa {ms : List Mn} {f : Mafhum Mn L} {s : MasdarIq
   · obtain ⟨_, _, _, _, _, _, _, _, hf⟩ := mem_mukhalafaOf D hm
     rw [hf] at hk; cases hk
 
+/-- **الموافقةُ تابعةٌ لا شرط** (س560: «بأن لا يكون شرطا للمعنى المطابقي بل تابعا له»): لازمُ الموافقة لم يُودَع شرطًا
+للمطابقيّ من المنطوق نفسِه، فلا يخرج لازمٌ واحدٌ اقتضاءً وموافقةً معًا. -/
+theorem muwafaqa_tabia {ms : List Mn} {f : Mafhum Mn L} (h : f ∈ jisr D ms) (hk : f.naw = .muwafaqa) :
+    f.lazim ∈ D.muwafiq f.asl ∧ ∀ x ∈ D.iqtida f.asl, x.1 ≠ f.lazim := by
+  have hm := (mem_jisr D h).2
+  unfold jisrMn at hm
+  cases hp : mahmul D f.asl
+  · simp [hp] at hm
+  · simp only [hp, ite_true, List.mem_append, List.mem_map] at hm
+    rcases hm with (((⟨x, _, he⟩ | ⟨x, _, he⟩) | ⟨x, _, he⟩) | ⟨l, hl, he⟩) | hk'
+    · rw [← he] at hk; cases hk
+    · rw [← he] at hk; cases hk
+    · rw [← he] at hk; cases hk
+    · have hlz : f.lazim = l := by rw [← he]
+      rw [hlz]
+      unfold muwafiqTabi at hl
+      rw [List.mem_filter] at hl
+      refine ⟨hl.1, fun x hx hxl => ?_⟩
+      have := hl.2
+      simp only [Bool.not_eq_true', List.any_eq_false] at this
+      exact this x hx (by simp [hxl])
+    · obtain ⟨_, _, _, _, _, _, _, _, hf⟩ := mem_mukhalafaOf D hk'
+      rw [hf] at hk; cases hk
+
 /-- **حسابُ الالتزام:** عددُ مفاهيم المنطوق المحمول = الاقتضاءُ + التنبيه + الإشارة + الموافقة + (0 أو 1 مخالفة)؛
 وغيرُ المحمول صفر. -/
 theorem adad_mafahim (m : Mn) :
     (jisrMn D m).length =
       if mahmul D m then
-        (D.iqtida m).length + (D.tanbih m).length + (D.ishara m).length + (D.muwafiq m).length +
+        (D.iqtida m).length + (D.tanbih m).length + (D.ishara m).length + (muwafiqTabi D m).length +
           (mukhalafaOf D m).length
       else 0 := by
   unfold jisrMn
@@ -295,10 +332,10 @@ inductive Shahid
   | sariq       -- «والسارق والسارقة فاقطعوا» س554: تنبيهٌ بالفاء
   | ghadban     -- «لا يقضي القاضي بين اثنين وهو غضبان» س554: تنبيهٌ بالوصف المناسب
   | haml30      -- «وحمله وفصاله ثلاثون شهرا» مع «وفصاله في عامين» س556: إشارة
-  | bashiru     -- «فالآن باشروهن» س556: إشارةٌ من نصٍّ واحد
+  | bashiru     -- «فالآن باشروهن» مع «حتى يتبين لكم الخيط الأبيض» س556: إشارةٌ من آيةٍ واحدة
   | uff         -- «فلا تقل لهما أف» س558: موافقة
   | qintar      -- «من إن تأمنه بقنطار يؤده إليك» س558: موافقةٌ بالأعلى على الأدنى
-  | dharra      -- «فمن يعمل مثقال ذرة خيرا يره» س558: موافقةٌ بالأدنى على الأعلى
+  | dharra      -- «فمن يعمل مثقال ذرة خيرا يره» س558: موافقةٌ «من باب أولى» (تصنيفُه أدنى على أعلى تعيينُ البنّاء)
   | yatama      -- «إن الذين يأكلون أموال اليتامى ظلما» س558: موافقةٌ بالمساوي
   | luqata      -- «وليحفظ عفاصها ووكاءها» س559: موافقةٌ لا أعلى ولا أدنى ولا مساوٍ
   | saima       -- «في صدقة الغنم في سائمتها» س568: مخالفة صفةٍ مفهمة
@@ -386,7 +423,7 @@ theorem shawahid_la_mafhum :
     jisrMn wit abyad = [] ∧ jisrMn wit qirshayn = [] ∧ jisrMn wit ghanam = [] ∧ jisrMn wit riba = [] := by
   decide
 
-/-- **الموافقةُ بلا شرط الأولويّة** (س564 يردّ على الآمدي): بالأعلى على الأدنى، وبالأدنى على الأعلى، وبالمساوي،
+/-- **الموافقةُ بلا شرط الأولويّة** (س558–560: قولُ الآمدي وردُّه): بالأعلى على الأدنى، وبالأدنى على الأعلى، وبالمساوي،
 وبما ليس واحدًا منها — كلُّها مفهومُ موافقة. -/
 theorem muwafaqa_bila_awlawiyya :
     (jisrMn wit qintar).map (·.naw) = [.muwafaqa] ∧ (jisrMn wit dharra).map (·.naw) = [.muwafaqa] ∧
@@ -396,6 +433,12 @@ theorem muwafaqa_bila_awlawiyya :
 /-- منطوقٌ فيه كلمةٌ «لا حكم» لا يُخرج شيئًا ولو أُودعت لوازمُه (شاهدٌ مبنيّ على `uff`). -/
 theorem shahid_la_haml :
     jisrMn { wit with kalimat := fun _ => [.haqiqa .lughawiyya, .laHukm] } uff = [] := by
+  decide
+
+/-- شاهدٌ مبنيّ لـ`muwafaqa_tabia`: لازمٌ أُودع اقتضاءً وموافقةً معًا يخرج اقتضاءً وحده. -/
+theorem shahid_tabia :
+    (jisrMn { wit with muwafiq := fun _ => ["الأمر بتحصيل أدوات القتال"] } qatilu).map (·.naw) =
+      [.iqtida .aql .sihha] := by
   decide
 
 end MantuqMafhum

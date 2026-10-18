@@ -1210,5 +1210,11 @@
   "milaf": "Jisr/MantuqMafhum.lean",
   "min": "  if mahmul D m then\n    (D.iqtida m)",
   "ila": "  if true then\n    (D.iqtida m)"
+ },
+ {
+  "ism": "P167_muwafaqa_shart",
+  "milaf": "Jisr/MantuqMafhum.lean",
+  "min": "    (muwafiqTabi D m).map (fun l => ⟨.muwafaqa, m, l⟩) ++",
+  "ila": "    (D.muwafiq m).map (fun l => ⟨.muwafaqa, m, l⟩) ++"
  }
 ]

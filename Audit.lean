@@ -1112,3 +1112,5 @@ import Jisr.MantuqMafhum
 #print axioms Jisr.MantuqMafhum.shawahid_la_mafhum
 #print axioms Jisr.MantuqMafhum.muwafaqa_bila_awlawiyya
 #print axioms Jisr.MantuqMafhum.shahid_la_haml
+#print axioms Jisr.MantuqMafhum.muwafaqa_tabia
+#print axioms Jisr.MantuqMafhum.shahid_tabia
