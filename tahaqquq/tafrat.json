@@ -1226,7 +1226,19 @@
  {
   "ism": "P164_elan_bootstrap_false_success",
   "milaf": "scripts/tathbit_lean.sh",
-  "min": "    elan toolchain install \"$TC\" && elan default \"$TC\" && ready && exit 0",
+  "min": "    timeout 180 elan toolchain install \"$TC\" && timeout 30 elan default \"$TC\" && ready && exit 0",
   "ila": "    exit 0"
+ },
+ {
+  "ism": "P165_lean_checksum_bypass",
+  "milaf": "scripts/tathbit_lean.sh",
+  "min": "| sha256sum --check --status; then",
+  "ila": "| cat > /dev/null; then"
+ },
+ {
+  "ism": "P166_lean_download_unbounded",
+  "milaf": "scripts/tathbit_lean.sh",
+  "min": "--connect-timeout 15 --max-time 900 --retry 2 --retry-max-time 1800",
+  "ila": "--retry 2"
  }
 ]
