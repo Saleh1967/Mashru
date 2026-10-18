@@ -294,6 +294,16 @@
     "sha256": "e8fdceb200c4a6415fd0edd98a2cc2d882b5a454d72a0f03383430873a465d59",
     "ala": "تحويل نصّيّ في الجلسة؛ أرقام الأسطر المستشهد بها في Lean منه"
    }
+  },
+  {
+   "ism": "جدول اللزوم من شبكة المعاجم",
+   "naw": "معلومات-سابقة",
+   "sha256": "520dffc8309c151c098ae5ec01ad688956c56eec3518a018c02ae673bf8d8eec",
+   "milaf": "luzum_mujam.tsv",
+   "masdar": "مولَّدٌ بـ shabaka/jadwal_luzum.py من مقاييس اللغة ولسان العرب المختومين (القواعد R1–R5 وFORMULA وTASMIYA وASL_NAFY وSTOP_WASF وSTOP_HARF وZIYADA_MAWADI في ترويسته)؛ يعيده --check بالبايت",
+   "hala": "مرشح",
+   "idhn": "",
+   "tarikh": "2026-10-18"
   }
  ]
 }

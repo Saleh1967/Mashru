@@ -53,6 +53,10 @@ import Jisr.AqsamAwamil
 import Jisr.Mulhaqat
 import Jisr.Utur
 import Jisr.JadwalLuzum
+import Madlul.JadwalLuzum
+import Madlul.Naht
+import Madlul.Ishtirak
+import Madlul.Tarjih
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
