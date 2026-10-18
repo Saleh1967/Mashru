@@ -52,6 +52,7 @@ import Jisr.Ikhbar
 import Jisr.AqsamAwamil
 import Jisr.Mulhaqat
 import Jisr.Utur
+import Jisr.JadwalLuzum
 import Madlul.JadwalLuzum
 import Madlul.Naht
 import Nizam.Asas
@@ -1285,3 +1286,25 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.Talab.qisma_bil_maqam
 #print axioms Nizam.Talab.la_dalla_min_sigha
 #print axioms Nizam.Talab.qismBiRutba_mutabayin
+
+-- جدولُ اللزوم من مقاييس اللغة ولسان العرب (Jisr/JadwalLuzum.lean؛ تفويض المالك 2026-10-18، مهمّة #87):
+-- سبعةُ جذوعٍ ثلاثيّةٍ بشهاداتٍ معجميّةٍ حرفيّة، شبكةٌ ومركزيّةُ «علم» مبرهنةٌ من الدرجة، وغرسٌ في
+-- Madlul/Dalala.lean وAql/QawaninDalala.lean (مطابقة/تضمّن/التزام حقيقيّةً ثمّ مرخَّصةً جبريًّا).
+#print axioms Jisr.JadwalLuzum.judhur_markhasa
+#print axioms Jisr.JadwalLuzum.qaidaL_mutadarrija
+#print axioms Jisr.JadwalLuzum.shahid_kataba_ilm_murtabit
+#print axioms Jisr.JadwalLuzum.shahid_talab_ilm_murtabit
+#print axioms Jisr.JadwalLuzum.murtabit_qalam_ilm_la_murakhkhas
+#print axioms Jisr.JadwalLuzum.qalam_ilm_marfud
+#print axioms Jisr.JadwalLuzum.ilm_markaz
+#print axioms Jisr.JadwalLuzum.darajat_baqiya
+#print axioms Jisr.JadwalLuzum.masafat_kataba
+#print axioms Jisr.JadwalLuzum.masafat_talab
+#print axioms Jisr.JadwalLuzum.masafat_ilm
+#print axioms Jisr.JadwalLuzum.kull_mutabaqa_nafsiha
+#print axioms Jisr.JadwalLuzum.ilm_tadammun_fahm
+#print axioms Jisr.JadwalLuzum.kataba_iltizam_qalam
+#print axioms Jisr.JadwalLuzum.shahidLuzum_shakl
+#print axioms Jisr.JadwalLuzum.shahidLuzum_mutadarrija
+#print axioms Jisr.JadwalLuzum.shahid_ilm_tadammun_fahm
+#print axioms Jisr.JadwalLuzum.shahid_kataba_iltizam_qalam
