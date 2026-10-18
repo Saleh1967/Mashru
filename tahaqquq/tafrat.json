@@ -1104,6 +1104,36 @@
   "ila": "  tawi := fun _ => 0"
  },
  {
+  "ism": "P149_luzumat_tabdil_kataba_ilm",
+  "milaf": "Jisr/JadwalLuzum.lean",
+  "min": "  [(\"كتب\", \"علم\"), (\"كتب\", \"قلم\"), (\"درس\", \"علم\"), (\"درس\", \"كتب\"),",
+  "ila": "  [(\"كتب\", \"طلب\"), (\"كتب\", \"قلم\"), (\"درس\", \"علم\"), (\"درس\", \"كتب\"),"
+ },
+ {
+  "ism": "P150_adj_tabdil_or_and",
+  "milaf": "Jisr/JadwalLuzum.lean",
+  "min": "  aslB (.luzum a b) || aslB (.luzum b a) || aslB (.talabMaful a b) || aslB (.talabMaful b a)",
+  "ila": "  aslB (.luzum a b) && aslB (.luzum b a) && aslB (.talabMaful a b) && aslB (.talabMaful b a)"
+ },
+ {
+  "ism": "P151_maanaD_ilm_hashw_2",
+  "milaf": "Jisr/JadwalLuzum.lean",
+  "min": "  | \"علم\" => fun x => x = 1 ∨ x = 2",
+  "ila": "  | \"علم\" => fun x => x = 1"
+ },
+ {
+  "ism": "P152_ZD_tabdil_kataba_ilm",
+  "milaf": "Jisr/JadwalLuzum.lean",
+  "min": "def ZD : Dalala.Luzum Nat := fun p q => p = maanaD \"كتب\" ∧ q = maanaD \"قلم\"",
+  "ila": "def ZD : Dalala.Luzum Nat := fun p q => p = maanaD \"علم\" ∧ q = maanaD \"قلم\""
+ },
+ {
+  "ism": "P153_aslShahidLuzum_hashw_luzum",
+  "milaf": "Jisr/JadwalLuzum.lean",
+  "min": "  | .wad 2 20 | .juz 21 20 | .wad 1 10 | .kharij 30 10 | .luzum 10 30 => true",
+  "ila": "  | .wad 2 20 | .juz 21 20 | .wad 1 10 | .kharij 30 10 => true"
+ },
+ {
   "ism": "P149_luzum_bila_asl",
   "milaf": "Madlul/JadwalLuzum.lean",
   "min": "  | .luzum => [.wad l m, .luzum m b, .kharij b m]",
