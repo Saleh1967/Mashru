@@ -52,6 +52,7 @@ import Jisr.Ikhbar
 import Jisr.AqsamAwamil
 import Jisr.Mulhaqat
 import Jisr.Utur
+import Madlul.JadwalLuzum
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1045,3 +1046,20 @@ import Jisr.Utur
 #print axioms Madlul.TashfirNas.string_dec_enc
 #print axioms Madlul.TashfirNas.tayyString_la_yudi
 #print axioms Madlul.TashfirNas.string_shawahid_tudi
+#print axioms JadwalLuzum.qawaninOf_shakl
+#print axioms JadwalLuzum.qaidaOf_shakl
+#print axioms JadwalLuzum.qaidaOf_mutadarrija
+#print axioms JadwalLuzum.asl_rutba_sifr
+#print axioms JadwalLuzum.luzum_min_taalil
+#print axioms JadwalLuzum.juz_min_hadd
+#print axioms JadwalLuzum.aslB_iff
+#print axioms JadwalLuzum.iltizam_min_taalil
+#print axioms JadwalLuzum.tadammun_min_juz
+#print axioms JadwalLuzum.la_iltizam_bila_taalil
+#print axioms JadwalLuzum.fahm_marifa_tadammun
+#print axioms JadwalLuzum.fahm_qalb_tadammun
+#print axioms JadwalLuzum.fahm_ilm_mutabaqa
+#print axioms JadwalLuzum.iqal_talab_iltizam
+#print axioms JadwalLuzum.fahm_la_iltizam
+#print axioms JadwalLuzum.silat_sitt
+#print axioms JadwalLuzum.talab_la_mubashir

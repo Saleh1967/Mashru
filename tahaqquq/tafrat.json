@@ -1102,5 +1102,41 @@
   "milaf": "Madlul/TashfirNas.lean",
   "min": "  tawi := stringEnc",
   "ila": "  tawi := fun _ => 0"
+ },
+ {
+  "ism": "P149_luzum_bila_asl",
+  "milaf": "Madlul/JadwalLuzum.lean",
+  "min": "  | .luzum => [.wad l m, .luzum m b, .kharij b m]",
+  "ila": "  | .luzum => [.wad l m, .kharij b m]"
+ },
+ {
+  "ism": "P150_tadammun_ala_ghayr_juz",
+  "milaf": "Madlul/JadwalLuzum.lean",
+  "min": "  | .juz | .asl => [qMutabaqa l m, qTadammun l m b]",
+  "ila": "  | .juz | .asl => [qMutabaqa l m, qTadammun l m l]"
+ },
+ {
+  "ism": "P151_luzum_min_taraduf",
+  "milaf": "Madlul/JadwalLuzum.lean",
+  "min": "  | .taraduf => [.wad l b]\n",
+  "ila": "  | .taraduf => [.wad l b, .luzum b b]\n"
+ },
+ {
+  "ism": "P152_formula_fi_tafsir",
+  "milaf": "shabaka/jadwal_luzum.py",
+  "min": "gt = kalimat(FORMULA.sub(\"\", norm(G)))",
+  "ila": "gt = kalimat(norm(G))"
+ },
+ {
+  "ism": "P153_taalil_bila_tasmiya",
+  "milaf": "shabaka/jadwal_luzum.py",
+  "min": "            if m and TASMIYA.search(ns):",
+  "ila": "            if m:"
+ },
+ {
+  "ism": "P154_matufat_ajza",
+  "milaf": "shabaka/jadwal_luzum.py",
+  "min": "                if matufat:  # R3-ب",
+  "ila": "                if False:  # R3-ب"
  }
 ]
