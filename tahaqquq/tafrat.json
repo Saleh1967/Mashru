@@ -1204,5 +1204,41 @@
   "milaf": "Nizam/Asas.lean",
   "min": "m.filter fun x => q.kulli x && !q.hukm x",
   "ila": "m.filter fun x => q.kulli x"
+ },
+ {
+  "ism": "P154_iqtiran_all_ila_any",
+  "milaf": "Jisr/Iqtiran.lean",
+  "min": "marashshahun.filter (fun m => quyud.all (fun q => q.yaqbal m))",
+  "ila": "marashshahun.filter (fun m => quyud.any (fun q => q.yaqbal m))"
+ },
+ {
+  "ism": "P155_qaydNaytaIftitah_inkar",
+  "milaf": "Jisr/Iqtiran.lean",
+  "min": "| .mudari => Wad.nayta.contains (harf c0)",
+  "ila": "| .mudari => !(Wad.nayta.contains (harf c0))"
+ },
+ {
+  "ism": "P156_sighaMurashshaha_tabdil",
+  "milaf": "Jisr/Iqtiran.lean",
+  "min": "def sighaMurashshaha : List SighaFil := [.madin, .amr, .mudari]",
+  "ila": "def sighaMurashshaha : List SighaFil := [.madin, .mudari, .amr]"
+ },
+ {
+  "ism": "P157_qaydTaanith_hala_tabdil",
+  "milaf": "Jisr/Iqtiran.lean",
+  "min": "then cells.length == 4 && cells.getLast? == some (kh taa 3)",
+  "ila": "then cells.length == 4 && cells.getLast? == some (kh taa 0)"
+ },
+ {
+  "ism": "P158_qaydTaanith_tul_tabdil",
+  "milaf": "Jisr/Iqtiran.lean",
+  "min": "else if j == 0 then cells.length == 3",
+  "ila": "else if j == 0 then cells.length == 4"
+ },
+ {
+  "ism": "P159_qaydTabaqNaat_inkar",
+  "milaf": "Jisr/Iqtiran.lean",
+  "min": "⟨\"مطابقةُ النعت الرافع ضميرًا مستكنًّا (قطر L378–379)\", fun j => j == jinsNaat⟩",
+  "ila": "⟨\"مطابقةُ النعت الرافع ضميرًا مستكنًّا (قطر L378–379)\", fun j => !(j == jinsNaat)⟩"
  }
 ]
