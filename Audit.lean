@@ -54,6 +54,7 @@ import Jisr.Mulhaqat
 import Jisr.Utur
 import Madlul.JadwalLuzum
 import Madlul.Naht
+import Nizam.Asas
 import Madlul.Ishtirak
 import Madlul.Tarjih
 
@@ -1093,3 +1094,14 @@ import Madlul.Tarjih
 #print axioms Tarjih.dars_bila_siyaq
 #print axioms Tarjih.sibawayhi_nabhani
 #print axioms Tarjih.dars_laysa_mushtarak
+#print axioms Nizam.tarkib_huwiyya_yamin
+#print axioms Nizam.tarkib_huwiyya_yasar
+#print axioms Nizam.tarkib_tajmii
+#print axioms Nizam.salama_tatarakkab
+#print axioms Nizam.la_tarkhis_bila_ma_qablahu
+#print axioms Nizam.la_hukm_yasri
+#print axioms Nizam.mumtani_yasri
+#print axioms Nizam.tasduq_iff
+#print axioms Nizam.tasduq_bi_mukhalifat
+#print axioms Nizam.mukhalifat_dunya
+#print axioms Nizam.la_ilhaq_bila_illa

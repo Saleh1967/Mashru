@@ -1,0 +1,91 @@
+wahda	tabaqa	fi_muharrik	wasf
+SLGE.Core	ADAT	نعم	أدوات الطيّ الرياضيّة mixEnc/blockEnc
+SLGE.Count	ADAT	نعم	العدّ التقابليّ
+SLGE.Ladder	T1	نعم	السلّم: مخرج ← خانة ← مقطع ← كلمة ← جملة (ترميز)
+SLGE.Law	T2	نعم	قانون الابتداء والوصل والوقف
+SLGE.Hamza	T2	نعم	الهمزات تحت القانون
+SLGE.Syllable	T2	نعم	المقطع
+SLGE.Root	T3	نعم	الجذر والوزن والزائد
+SLGE.Necessity	T3	لا	قانون الاستنفاد على الدرجات
+SLGE.Ladder2	T4	لا	الجذر مع أقسام الكلم
+SLGE.Category	T4	لا	اسم وفعل وحرف، والتركيب اسميّ وفعليّ وشبه جملة
+SLGE.MadlulAwwalan	T5	لا	المدلول أوّلًا
+SLGE.Madlul	T6	لا	المدلول وحده والدلالات (فيه no_third للمنطوق والمفهوم)
+SLGE.Bridge	T6	لا	جسر المالك بين المدلول والوضع
+SLGE.Wad	T7	لا	جبر العوامل والإعراب على القطر
+SLGE.Maqam	T7	لا	المقام والإحالة
+SLGE.Tarkib	T7	لا	أطر التركيب
+SLGE.TarkibLit	T7	لا	أطر التركيب حرفيّةً
+SLGE.TarkibExt	T7	لا	تتمّة التركيب
+SLGE.AwamilTable	T7	لا	جدول العوامل (مولَّد)
+SLGE.Awamil	T7	لا	العوامل
+SLGE.Simat	T7	لا	السمات
+SLGE.Simat2	T7	لا	تتمّة السمات
+SLGE.Muwahhad	T7	لا	الإطار الموحَّد
+SLGE.Kull	T7	لا	الجملة الكلّيّة
+Dal.Makharij	T0	نعم	المخارج والحالات الأربع
+Dal.Khaliya	T1	نعم	الخلية حامل × حالة
+Dal.Qanun	T2	نعم	القانون على خلايانا والمقاطع والجذر
+Dal.Jumla	T2	نعم	الجملة في الوصل
+Dal.AqsamAllafz	T4	لا	أقسام اللفظ باعتبار الدال وحده (أسماء الأقسام)
+Dal.AqsamAlism	T4	لا	أقسام الاسم (أسماء الأقسام)
+Jisr.QiraaSimat	T4	لا	قراءة الشخص والجنس والعدد من خلايا الضمير
+Jisr.TasnifAlism	T4	لا	قسم الاسم من مادّة مدلوله
+Madlul.Naht	T3	لا	النحت: الرباعيّ من ثلاثيّين
+Madlul.NahtData	T3	لا	بيانات النحت (مولَّدة)
+Jisr.JisrDal	T3	لا	الجسر إلى الدالّ: الإعراب بالحروف والمجهول من الخلايا
+Madlul.AqsamAlmadlul	T5	لا	أقسام المدلول الخمسة
+Madlul.Tayin	T5	لا	الخواصّ والأقسام الأربعة للأجناس
+Madlul.Wiratha	T5	لا	التوريث والوراثة على شجرة الأجناس
+Madlul.Jamad	T5	لا	الجماد وحالاته
+Madlul.Hawass	T5	لا	الحواسّ الخمس
+Madlul.Shabaka	T5	لا	شبكة العلاقات بين الأجناس والأفعال
+Aql.Awwaliyyat	T5	لا	أوّليات العقل والأزمنة الخمسة
+Aql.Azmina	T5	لا	الأزمنة على محور الآن
+Aql.Makan	T5	لا	التجاور المكانيّ
+Aql.Mirsat	T5	لا	المرساة: الآن وهنا
+Madlul.Dalala	T6	نعم	الدلالات الثلاث
+Aql.QawaninDalala	T6	نعم	قوانين الدلالة في القاعدة
+Madlul.JadwalLuzum	T6	لا	جدول اللزوم من شبكة المعاجم
+Madlul.JadwalLuzumData	T6	لا	بيانات جدول اللزوم (مولَّدة)
+Madlul.JadwalLuzumNaw	T6	لا	أنواع صفّ جدول اللزوم
+Madlul.Ishtirak	T6	لا	اتّفاق اللفظين واختلاف المعنيين
+Madlul.IshtirakData	T6	لا	بيانات الاشتراك (مولَّدة)
+Jisr.AqsamDalMadlul	T6	لا	الأقسام السبعة باعتبار الدال والمدلول
+Jisr.Tawafuq	T6	لا	التوافق بين موضعي الدلالات الثلاث
+Aql.AdawatMaani	T6	لا	أدوات المعاني بوّاباتٍ منطقيّة
+Jisr.Utur	T7	لا	أطر الطبقات الثلاث على القانون العامّ
+Jisr.JisrDalUtur	T7	لا	موافقة الجسر إلى الدالّ لقارئ الطبقة الثالثة
+Jisr.Tarkib	T7	لا	الجملة الاسمية والفعلية والظرفية بأقسام الكلم
+Jisr.Awamil	T7	لا	العوامل المئة وقانون الاستنفاد
+Jisr.AwamilJadwal	T7	لا	جدول العوامل المئة (مولَّد)
+Jisr.AqsamAwamil	T7	لا	أقسام العوامل
+Jisr.Nisab	T7	لا	النسب الثلاث على أطر المالك
+Jisr.NisabAsnaf	T7	لا	النسب الثلاث على أصناف العوامل
+Jisr.TartibMamul	T7	لا	ترتيب الفاعل والمفعول مع العامل
+Aql.Isnad	T7	لا	الرابطة الإسنادية على المرساة
+Jisr.AwamilUslub	T8	لا	أساليب العوامل (مولَّد)
+Jisr.Ikhbar	T8	لا	أساليب الإخبار
+Jisr.Mulhaqat	T8	لا	ملحقات أطر الإخبار
+Jisr.KhulasaIkhbar	T8	لا	خلاصة أسلوب الإخبار
+Madlul.Tarjih	T9	لا	ترجيح الاحتمالات الخمسة: اشتراك ونقل ومجاز وإضمار وتخصيص
+Aql.Aqliyya	T11	نعم	العقل والعقلية: طبقة الحكم
+Aql.Badiha	T11	لا	سرعة البديهة لطبقة الحكم
+Aql.Maratib	T11	نعم	مراتب المخرج الثلاث
+Aql.SababShartMani	T11	لا	السبب والشرط والمانع
+Aql.Qaida	ADAT	نعم	قاعدة المحرّك الواحدة ذات الإصدار
+Aql.Mawsua	ADAT	نعم	الطيّ والفكّ والمخزن والوسم
+Aql.Idaa	ADAT	نعم	بوّابة الإيداع
+Madlul.Tashfir	ADAT	لا	طيّ معجم الأجناس
+Madlul.TashfirSullam	ADAT	لا	الطيّ على سلّم SLGE
+Madlul.TashfirMadda	ADAT	لا	طيّ المادّة
+Madlul.TashfirKhawass	ADAT	لا	طيّ الخواصّ
+Madlul.TashfirNas	ADAT	لا	طيّ النصّ
+Aql.TashfirAwwaliyyat	ADAT	لا	طيّ الأزمنة الخمسة
+Aql.TashfirAzmina	ADAT	لا	طيّ الإزاحة الزمنية
+Aql.TashfirMakan	ADAT	لا	طيّ الموضع والمرجع
+Aql.TashfirMirsat	ADAT	لا	طيّ المرساة
+Faahis.Lib	ADAT	نعم	الفاحص التنفيذيّ (مكتبة)
+Faahis.Main	ADAT	نعم	نقطة دخول الفاحص
+Qari.Main	ADAT	نعم	القارئ
+Nizam.Asas	NIZAM	لا	نواة المنظومة: الحكم الثلاثيّ والجسر والسلامة والقاعدة الكلّيّة والقياس

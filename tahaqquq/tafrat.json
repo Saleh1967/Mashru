@@ -1186,5 +1186,23 @@
   "milaf": "shabaka/tarjih.py",
   "min": "            if not q:\n                return (\"mana\", a[0])",
   "ila": "            if not q:\n                return (\"laHukm\", None)"
+ },
+ {
+  "ism": "P163_atlas_wasl",
+  "milaf": "Nizam/atlas.tsv",
+  "min": "Dal.Makharij\tT0\tنعم\tالمخارج والحالات الأربع",
+  "ila": "Dal.Makharij\tT0\tلا\tالمخارج والحالات الأربع"
+ },
+ {
+  "ism": "P164_atlas_wusul",
+  "milaf": "tahaqquq/test_atlas.py",
+  "min": "        st += I[m]\n",
+  "ila": "        pass\n"
+ },
+ {
+  "ism": "P165_asas_mukhalifat",
+  "milaf": "Nizam/Asas.lean",
+  "min": "m.filter fun x => q.kulli x && !q.hukm x",
+  "ila": "m.filter fun x => q.kulli x"
  }
 ]
