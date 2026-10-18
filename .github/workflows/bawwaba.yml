@@ -32,6 +32,9 @@ jobs:
       - name: install Lean 4.34.1
         run: bash scripts/tathbit_lean.sh
 
+      - name: install Python deps (numpy لفرضية الـ116)
+        run: pip install --break-system-packages numpy
+
       - name: lake build
         run: |
           export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
