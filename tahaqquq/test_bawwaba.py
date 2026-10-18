@@ -65,6 +65,8 @@ if [ "${BOOTSTRAP_TIMEOUT:-0}" = 1 ] && [ "$2" = sh ]; then exit 124; fi
 exec /usr/bin/timeout "$@"
 """)
         self.executable(self.bin / "sh", """
+echo "bootstrap-tmp $TMPDIR" >> "$HOME/calls"
+mkdir -p "$TMPDIR/bootstrap-residue"
 mkdir -p "$HOME/.elan/bin"
 cp "$HOME/elan-fixture" "$HOME/.elan/bin/elan"
 cp "$HOME/proxy" "$HOME/.elan/bin/lean"
@@ -100,6 +102,7 @@ cp "$HOME/tools/"* "$HOME/.lean/lean-4.34.1-linux/bin/"
         self.assertLess(calls.index("checksum"), calls.index("extraction"))
         self.assertIn("3013aba02bb8bf31b1cf8c9d956d60fb95bb1c10920dfe91abcaa59cb461ddac", calls)
         self.assertIn("checksum --check --status", calls)
+        self.assertIn("bootstrap-tmp " + str(self.downloads / "mashru-lean."), calls)
 
     def test_download_policy(self):
         result = self.install()

@@ -1,7 +1,8 @@
 #!/bin/bash
 # تثبيت Lean 4.34.1 (elan) إن لم يكن موجودًا. يصلح لسكربت إعداد البيئة السحابية ولـ CI ولجهاز المالك.
 # المصدر الأوّل elan؛ والبديل عند تعذّره أرشيف GitHub الرسميّ ببصمة SHA-256 مثبتة قبل الاستخراج.
-# التنزيل HTTPS فقط بمهلات ومحاولات محدودة، وملفّاته في مجلّد مؤقّت خاصّ يُنظَّف عند الخروج.
+# التنزيل المباشر HTTPS فقط بمهلات ومحاولات محدودة؛ تنزيل elan الداخليّ محدود بمهلة العملية.
+# ملفّات التنزيل المباشر ومؤقّتات bootstrap في مجلّد خاصّ يُنظَّف عند الخروج.
 set -u
 TC="leanprover/lean4:v4.34.1"
 export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
@@ -26,7 +27,7 @@ if command -v elan >/dev/null 2>&1; then
   timeout 180 elan toolchain install "$TC" && timeout 30 elan default "$TC" && ready && exit 0
 fi
 if download https://raw.githubusercontent.com/leanprover/elan/9605b24b08cf68b78dce0014b6fa01be1f8e2cee/elan-init.sh "$WORK/elan-init.sh"; then
-  timeout 180 sh "$WORK/elan-init.sh" -y --default-toolchain "$TC" &&
+  TMPDIR="$WORK" timeout 180 sh "$WORK/elan-init.sh" -y --default-toolchain "$TC" &&
     timeout 180 elan toolchain install "$TC" && timeout 30 elan default "$TC" && ready && exit 0
 fi
 echo "لم يجهز Lean عبر elan؛ البديل: أرشيف الإصدار من github.com" >&2
