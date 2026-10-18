@@ -1240,5 +1240,35 @@
   "milaf": "Jisr/Iqtiran.lean",
   "min": "⟨\"مطابقةُ النعت الرافع ضميرًا مستكنًّا (قطر L378–379)\", fun j => j == jinsNaat⟩",
   "ila": "⟨\"مطابقةُ النعت الرافع ضميرًا مستكنًّا (قطر L378–379)\", fun j => !(j == jinsNaat)⟩"
+ },
+ {
+  "ism": "P163_mufhim_mulgha",
+  "milaf": "Jisr/MantuqMafhum.lean",
+  "min": "  | .sifa => D.mufhim m\n",
+  "ila": "  | .sifa => true\n"
+ },
+ {
+  "ism": "P164_mawani_mulgha",
+  "milaf": "Jisr/MantuqMafhum.lean",
+  "min": "if shartSinf D m q && !mawani D m then",
+  "ila": "if shartSinf D m q then"
+ },
+ {
+  "ism": "P165_ism_sifa",
+  "milaf": "Jisr/MantuqMafhum.lean",
+  "min": "  | .ism => none\n",
+  "ila": "  | .ism => some .sifa\n"
+ },
+ {
+  "ism": "P166_haml_mulgha",
+  "milaf": "Jisr/MantuqMafhum.lean",
+  "min": "  if mahmul D m then\n    (D.iqtida m)",
+  "ila": "  if true then\n    (D.iqtida m)"
+ },
+ {
+  "ism": "P167_muwafaqa_shart",
+  "milaf": "Jisr/MantuqMafhum.lean",
+  "min": "    (muwafiqTabi D m).map (fun l => ⟨.muwafaqa, m, l⟩) ++",
+  "ila": "    (D.muwafiq m).map (fun l => ⟨.muwafaqa, m, l⟩) ++"
  }
 ]

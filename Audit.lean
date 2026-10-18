@@ -58,6 +58,7 @@ import Nizam.Asas
 import Madlul.Ishtirak
 import Madlul.Tarjih
 import Jisr.Iqtiran
+import Jisr.MantuqMafhum
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1119,3 +1120,23 @@ import Jisr.Iqtiran
 #print axioms Jisr.Iqtiran.shahid_sigha
 #print axioms Jisr.Iqtiran.shahid_jins
 #print axioms Jisr.Iqtiran.shahid_qarina
+#print axioms Jisr.MantuqMafhum.mem_mukhalafaOf
+#print axioms Jisr.MantuqMafhum.mem_jisrMn
+#print axioms Jisr.MantuqMafhum.mem_jisr
+#print axioms Jisr.MantuqMafhum.mafhum_min_mantuq
+#print axioms Jisr.MantuqMafhum.la_mafhum_bila_haml
+#print axioms Jisr.MantuqMafhum.mukhalafa_min_mukhalafaOf
+#print axioms Jisr.MantuqMafhum.mukhalafa_min_qayd
+#print axioms Jisr.MantuqMafhum.mukhalafa_shurut
+#print axioms Jisr.MantuqMafhum.mani_yamna_mukhalafa
+#print axioms Jisr.MantuqMafhum.ism_la_mukhalafa
+#print axioms Jisr.MantuqMafhum.mukhalafa_wahida
+#print axioms Jisr.MantuqMafhum.iqtida_shart_lil_mutabaqa
+#print axioms Jisr.MantuqMafhum.adad_mafahim
+#print axioms Jisr.MantuqMafhum.tariq_mafhum
+#print axioms Jisr.MantuqMafhum.shawahid_mafhum
+#print axioms Jisr.MantuqMafhum.shawahid_la_mafhum
+#print axioms Jisr.MantuqMafhum.muwafaqa_bila_awlawiyya
+#print axioms Jisr.MantuqMafhum.shahid_la_haml
+#print axioms Jisr.MantuqMafhum.muwafaqa_tabia
+#print axioms Jisr.MantuqMafhum.shahid_tabia
