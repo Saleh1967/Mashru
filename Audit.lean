@@ -52,6 +52,10 @@ import Jisr.Ikhbar
 import Jisr.AqsamAwamil
 import Jisr.Mulhaqat
 import Jisr.Utur
+import Madlul.JadwalLuzum
+import Madlul.Naht
+import Madlul.Ishtirak
+import Madlul.Tarjih
 import Jisr.Iqtiran
 
 -- المرحلة ١: الدال وحده
