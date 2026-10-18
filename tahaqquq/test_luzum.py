@@ -21,6 +21,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "shabaka"))
 import jadwal_luzum as J  # noqa: E402
 import bina_luzum_lean as G  # noqa: E402
+import hiss as H  # noqa: E402
+import naht as N  # noqa: E402
 
 fails = []
 
@@ -46,6 +48,14 @@ THEOREMS = ["qawaninOf_shakl", "qaidaOf_shakl", "qaidaOf_mutadarrija", "asl_rutb
 for t in THEOREMS:
     check(f"theorem {t}" in main_src, f"المبرهنة {t} غائبة عن JadwalLuzum.lean")
     check(f"#print axioms JadwalLuzum.{t}\n" in audit, f"المبرهنة {t} غير مدقّقة في Audit.lean")
+naht_src = open(os.path.join(ROOT, "Madlul", "Naht.lean"), encoding="utf-8").read()
+isht_src = open(os.path.join(ROOT, "Madlul", "Ishtirak.lean"), encoding="utf-8").read()
+for ns, src, ts in (("Naht", naht_src, "aakhidha_bihazz farid_nodup manhut_ithnan amthila_manhuta bulum_yukhalif"),
+                    ("Ishtirak", isht_src, "ishtirak_iff taraduf_iff alaqa_tanazur alaqa_hasira shawahid_sibawayhi isqat_yahfaz "
+                     "silat_malik_arba isqat_khams dars_la_yasil katiba_laysat_kitaba")):
+    for t in ts.split():
+        check(f"theorem {t}" in src, f"المبرهنة {t} غائبة عن {ns}.lean")
+        check(f"#print axioms {ns}.{t}\n" in audit, f"المبرهنة {ns}.{t} غير مدقّقة في Audit.lean")
 
 # ---------- ٢. العيّنة المضمَّنة ----------
 LISAN_AYYINA = """### $ فهم: الفهم: معرفتك الشيء بالقلب. فهمه فهما وفهما وفهامة: علمه؛ الأخيرة
@@ -86,6 +96,16 @@ check(not any(r[1] == "فهم" and r[2] == "وفهمت" and r[3] == "juz" for r 
 check(not any(r[1] == "كتب" and r[4] == "علم" for r in got), "العيّنة: «والله أعلم» دخل التفسير (FORMULA)")
 check(not any(r[1] == "كتب" and r[3] == "luzum" for r in got), "العيّنة: «لأن» احتجاجٍ قُرئ لزومًا (TASMIYA)")
 
+# العيّنةُ لفصل المعاني (H1): صيغُ «فهمه فهما وفهما وفهامة: علمه» حدٌّ واحد فعقدةٌ واحدة؛ و«الفهم:» حدٌّ غيرُه
+hs_a = []
+J.lisan_qadaya(Jd, ml, hiss=hs_a)
+U_a, uq_a, sil_a = H.bina(hs_a)
+check(uq_a("فهم", J.qanun_sigha("فهما", "فهم")) == uq_a("فهم", J.qanun_sigha("وفهامة", "فهم")),
+      "العيّنة: صيغُ الحدّ الواحد لم تتّحد عقدةً (H1)")
+check(any(a == uq_a("فهم", "فهما") and b[0] == "علم" for a, _, b, _ in sil_a), "العيّنة: صلةُ «فهما ← علم» على العُقَد غائبة (H2)")
+# النحت (N1) على عيّنةٍ مبنيّة: «بحتر» بثلاثيّين مختلفين منحوت، وبثلاثيٍّ واحدٍ غير منحوت
+check(N.sannif("بحتر", {"بتر", "حتر"})[0] == "manhut" and N.sannif("بحتر", {"بتر"})[0] != "manhut", "العيّنة: معيار النحت N1 خطأ")
+
 # ---------- ٣. المودَعان ----------
 D = os.environ.get("MUDAA_DIR")
 hadir = False
@@ -119,6 +139,34 @@ if hadir:
     shabaka = set(G.SHABAKA)
     kharij_lean = [r for r in full if r[1] in shabaka and r[4] in shabaka and r[1] != r[4] and r not in set(lean_rows)]
     check(not kharij_lean, f"صلةٌ بين جذرين من الشبكة خارج Lean: {kharij_lean[:3]}")
+    # الجدولُ المشتقّ مسجَّلٌ «مرشّحًا»: إن حضر فبصمتُه بصمتُه في السجلّ (تُحدَّث ما دام مرشّحًا)
+    tp = os.path.join(D, "luzum_mujam.tsv")
+    if os.path.exists(tp):
+        check(J.basma(tp) == S["luzum_mujam.tsv"]["sha256"] and S["luzum_mujam.tsv"]["hala"] in ("مرشح", "مختوم"),
+              "luzum_mujam.tsv الحاضر بصمتُه غيرُ بصمته في السجلّ")
+    # فصلُ المعاني على اللسان: IshtirakData.lean مطابقٌ لإعادة البناء، وصلاتٌ مقروءةٌ يدويًّا حاضرة
+    hs_f = []
+    J.lisan_qadaya(Jf, mlf, hiss=hs_f)
+    Uf, uqf, silf = H.bina(hs_f)
+    idata = open(os.path.join(ROOT, "Madlul", "IshtirakData.lean"), encoding="utf-8").read()
+    silat_lean = re.findall(r'\("([^"]+)", "([^"]+)", "([^"]+)", "([^"]+)", (\d+)\)', idata)
+    R7 = ["كتب", "درس", "قلم", "علم", "فهم", "طلب", "عقل"]
+    seen, regen = set(), []
+    for a, _, b, satr in silf:
+        if a[0] in R7 and b[0] in R7 and a[0] != b[0] and (a, b) not in seen:
+            seen.add((a, b))
+            regen.append((a[0], a[1], b[0], b[1], str(satr)))
+    check(regen == silat_lean, "IshtirakData.lean ليس إعادةَ البناء من اللسان بعينها")
+    for satr, (ra, rb) in (("237932", ("قلم", "كتب")), ("237970", ("قلم", "كتب")), ("115082", ("درس", "كتب"))):
+        check(any(x[4] == satr and x[0] == ra and x[2] == rb for x in silat_lean), f"صلةُ اللسان س{satr} غائبة عن IshtirakData")
+    # النحت: ثلاثيّاتُ NahtData كلُّ ما في اللسان من إسقاطات الأمثلة، وكلمتا ابن فارس (مقروءتان يدويًّا: المقاييس س5289–5302) بينها
+    ndata = open(os.path.join(ROOT, "Madlul", "NahtData.lean"), encoding="utf-8").read()
+    th_lean = re.findall(r'"([^"]+)"', ndata.split("def thulathiyyat")[1].split("]")[0])
+    T3f = {r for r, _, _ in mlf if len(r) == 3}
+    th_regen = sorted({t for q in ("بحتر", "بحثر", "بعثق", "بلعم") for _, t in N.isqatat(q) if t in T3f})
+    check(th_lean == th_regen, "NahtData.thulathiyyat ليس إسقاطاتِ الأمثلة المشهودةَ في اللسان بعينها")
+    for t in ("بتر", "حتر", "بحث", "بثر", "بعق", "بثق", "بلع"):
+        check(t in th_lean, f"ثلاثيُّ ابن فارس {t} غائبٌ عن NahtData")
     for m, a, w, n, b, s in lean_rows:
         if n != "asl":
             src = L if m == "lisan" else M

@@ -1138,5 +1138,35 @@
   "milaf": "shabaka/jadwal_luzum.py",
   "min": "                if matufat:  # R3-ب",
   "ila": "                if False:  # R3-ب"
+ },
+ {
+  "ism": "P155_naht_bithulathi_wahid",
+  "milaf": "Madlul/Naht.lean",
+  "min": "decide (2 ≤ (mashhudat T q).length)",
+  "ila": "decide (1 ≤ (mashhudat T q).length)"
+ },
+ {
+  "ism": "P156_ishtirak_huwiyya",
+  "milaf": "Madlul/Ishtirak.lean",
+  "min": "then (if a.mana = b.mana then .huwiyya else .ishtirak)",
+  "ila": "then (if a.mana = b.mana then .ishtirak else .huwiyya)"
+ },
+ {
+  "ism": "P157_uqad_mukhtalita",
+  "milaf": "Madlul/Ishtirak.lean",
+  "min": "def silaUqad : List (Uqda × Uqda) := silatHiss.map fun e => ((e.1, e.2.1), (e.2.2.1, e.2.2.2.1))",
+  "ila": "def silaUqad : List (Uqda × Uqda) := silatHiss.map fun e => ((e.1, e.2.2.2.1), (e.2.2.1, e.2.1))"
+ },
+ {
+  "ism": "P158_hiss_bila_ittihad",
+  "milaf": "shabaka/hiss.py",
+  "min": "            U.union((A, wf), (A, f))",
+  "ila": "            pass"
+ },
+ {
+  "ism": "P159_naht_bithulathi_wahid_py",
+  "milaf": "shabaka/naht.py",
+  "min": "    if len(mukhtalif) >= 2:",
+  "ila": "    if len(mukhtalif) >= 1:"
  }
 ]
