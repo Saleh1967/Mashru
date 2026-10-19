@@ -9,6 +9,13 @@
   ٤أ. قائمة الطفرات لا تنقص عن الأساس: كلّ «ism» في tafrat.json عند نقطة التقاء HEAD بالمرجع (TAFRAT_ASAS_REF، وإلّا
       origin/main) حاضرٌ في القائمة الحاليّة، أو مسجَّلٌ في tahaqquq/tafrat_mahdhufa.json بسببٍ وإذن (قرار المالك 2026-10-19:
       دمجان أسقطا طفرات main بلا تعارضٍ ظاهر، ولا شيء كان يكشفه). تعذُّر الأساس فشلٌ مسمّى لا تخطٍّ صامت.
+  ٤ب. نصُّ كلّ طفرة. القاعدتان بإذن المالك (2026-10-19 16:16، مكمّلتين لـ٤أ): «min» غيرُ فارغٍ يقع في ملفّه مرّةً واحدة
+      (بعدّ المتداخل)، ولا يقع في تعليق. وتنفيذُ «في تعليق» قراءةُ البنّاء: موضعُ «min» في تعليق الأصل أو في بياضٍ بينه، أو
+      أثرُ الطفرة لا يتعدّى التعليقَ والأسطرَ الفارغة وبياضَ أواخر الأسطر؛ ويُستثنى رفعُ تعليقٍ بحذف علامته متى أمكن مسحُ
+      الناتج وتغيّر ما خارج التعليق. Lean: «--» و«/- -/» متداخلًا؛ بايثون: التعليق والتوثيق (إلّا توثيقَ وحدةٍ يُستعمل
+      فيها `__doc__` اسمًا حرًّا)؛ sh: «#». والاستثناءُ وما فوق القاعدتين (الملفُّ داخل المستودع بمساره الحقيقيّ، وامتدادُه
+      معروف، والاسمُ غيرُ مكرَّر) اعتُمدت بتوجيهٍ رفعه المالك 2026-10-19 18:02 وأمر بتنفيذه. يجري مع --bila-tafrat أيضًا،
+      والبند ٦ لا يكتب طفرةً معيبة. وسلامةُ الماسحات مفحوصةٌ (test_bawwaba.py) لا مبرهنة.
   ٥. اختبارات بايثون (shabaka/test_shabaka.py) تمرّ، إن وُجد المودَع (MUDAA_MUKHASSAS).
   ٥أ. اختبارات خطّ الأساس والتثبيت (tahaqquq/test_bawwaba.py): رفض JSON التالف وحفظ الحدّ، وفحص بديل تثبيت Lean.
   ٥ب. اختبارات المخزن (mawsua/test_mawsua.py): الفاحص التنفيذيّ المبنيّ من Lean يقبل المخزن ويرفض الفاسد.
@@ -47,6 +54,29 @@ import tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
+# اختباراتُ البند ٦ بترتيبها بعد lake build: قائمةٌ واحدة يقرؤها tafrat_juz.py أيضًا، فلا تفترق الأداتان.
+IKHTIBARAT_TAFRAT = (
+    "tahaqquq/test_bawwaba.py",
+    "mawsua/test_mawsua.py",
+    "mudaat/test_idaa.py",
+    "tahaqquq/test_qari.py",
+    "tahaqquq/test_awamil.py",
+    "tahaqquq/test_aqsam.py",
+    "tahaqquq/test_ajnas.py",
+    "tahaqquq/test_jamad.py",
+    "tahaqquq/test_shabaka.py",
+    "tahaqquq/test_hawass.py",
+    "tahaqquq/test_awwaliyyat.py",
+    "tahaqquq/test_azmina.py",
+    "tahaqquq/test_makan.py",
+    "tahaqquq/test_mirsat.py",
+    "tahaqquq/test_isnad.py",
+    "tahaqquq/test_jisrdal.py",
+    "tahaqquq/test_nisab_asnaf.py",
+    "tahaqquq/test_luzum.py",
+    "tahaqquq/test_fard116.py",
+    "tahaqquq/test_atlas.py",
+)
 
 
 def run(cmd, cwd=ROOT, timeout=1800):
@@ -96,6 +126,306 @@ def mahdhufa_maadhuna(text):
 def tafrat_naqisa(asas, hali, mahdhufa):
     """طفراتُ الأساس الغائبةُ عن القائمة الحاليّة بلا قيدِ حذفٍ مأذون — كلٌّ منها حذفٌ صامت."""
     return sorted(set(asas) - set(hali) - set(mahdhufa))
+
+
+# ٤ب. نصُّ الطفرة. القاعدتان بإذن المالك (2026-10-19 16:16، مكمّلتين لـ٤أ): «min» يقع في ملفّه مرّةً واحدة، ولا يقع في
+# تعليق. سببُهما: P152_joinTrailing_bila_fasil وقع «min»ها أوّلًا في تعليقٍ فعاشت، و`replace(min, ila, 1)` يصيب أوّلَ موضعٍ
+# وحده — فإن تكرّر النصّ أو وقع في تعليقٍ صارت الطفرةُ تفحص غيرَ ما سُمّيت له. والتعليقُ يُفحص بوجهين (قراءةُ البنّاء): موضعُ
+# «min» في تعليق الأصل أو في بياضٍ بين تعليقه، أو أثرُ الطفرة لا يتعدّى التعليق (يُطرح التعليق من الأصل والمطفَّر ويُقارن
+# الباقيان بلا أسطرٍ فارغة ولا بياضِ أواخر — `musawwa`)؛ ورفعُ التعليق بحذف علامته يُقبل متى أمكن مسحُ الناتج وتغيّر ما
+# خارج التعليق (التوجيه: «إذا كان الأثر تغييرًا تنفيذيًا حقيقيًا»؛ الفحصُ هنا نحويّ، والأثرُ السلوكيّ يحكم به البند ٦ بالقتل).
+# وما فوق القاعدتين: الحقولُ نصوص، والملفُّ داخل المستودع (المطلقُ و«..» مرفوضان، والحكمُ على المسار الحقيقيّ فلا هروبَ
+# برابطٍ رمزيّ)، وامتدادُه ممّا تُعرف فيه قاعدةُ التعليق (.lean .py .sh، وبلا تعليق .tsv .json؛ وما سواها مرفوضٌ باسمه)،
+# والاسمُ غيرُ مكرَّر بلا استثناء. اعتُمدت هي والاستثناءُ بتوجيهٍ رفعه المالك (2026-10-19 18:02) وأمر بتنفيذه.
+# وسلامةُ الماسحات «مفحوصة» (tahaqquq/test_bawwaba.py بطفراته) لا «مبرهنة»: كفايتُها لكلّ صيغةٍ آتية غيرُ مبرهنة.
+# حدودُ الماسحات (معلنة): Lean — النصوصُ المُدرَجة بلا «!» (throwError "…{…}…") لا يُعرف إدراجُها، فنصٌّ فيها يُغلق داخل
+# إدراجٍ يُرفض الملفُّ «نصٌّ لم يُغلق» (فشلٌ مسمّى لا قبولٌ صامت). sh — لا يُعرف من الإسناد إلّا «#» في أوّل كلمة والاقتباس
+# بأنواعه والـheredoc. بايثون — التوثيقُ جملةُ نصٍّ قائمة (من ast)، إلّا توثيقَ الوحدة إن استُعمل `__doc__` اسمًا حرًّا فيها.
+
+LUGHAT_BILA_TAALIQ = {".tsv", ".json"}
+
+
+def _taaliq_lean(s):
+    """مواضعُ التعليق في نصّ Lean: «--» إلى آخر السطر، و«/- … -/» متداخلًا؛ خارج النصوص (والخامِ منها r#"…"#)، والحروف،
+    والأسماء «…»، والنصوص المُدرَجة (s!/m!/f!)."""
+    n, spans = len(s), []
+    harf = re.compile(r"'(?:\\(?:u\{[0-9a-fA-F]+\}|x[0-9a-fA-F]{2}|.)|[^\\'\n])'")
+    kham = re.compile(r'r(#*)"')
+
+    def ism_qabl(i):
+        return i > 0 and (s[i - 1].isalnum() or s[i - 1] in "_'!?.")
+
+    def nass(i, mudraj):            # s[i] == '"'؛ يعيد ما بعد الإغلاق
+        j = i + 1
+        while j < n:
+            c = s[j]
+            if c == "\\":
+                j += 2
+            elif c == '"':
+                return j + 1
+            elif c == "{" and mudraj:
+                j = shifra(j + 1, True)
+            else:
+                j += 1
+        raise ValueError("نصٌّ لم يُغلق")
+
+    def shifra(i, ila_qaws):        # يمسح الشيفرة حتّى «}» المقابلة (ila_qaws) أو آخر الملفّ
+        umq = 0
+        while i < n:
+            m = kham.match(s, i) if s[i] == "r" and not ism_qabl(i) else None
+            if s.startswith("/-", i):
+                j, d = i + 2, 1
+                while j < n and d:
+                    if s.startswith("/-", j):
+                        d, j = d + 1, j + 2
+                    elif s.startswith("-/", j):
+                        d, j = d - 1, j + 2
+                    else:
+                        j += 1
+                if d:
+                    raise ValueError("تعليقٌ كتليّ لم يُغلق")
+                spans.append((i, j))
+                i = j
+            elif s.startswith("--", i):
+                j = s.find("\n", i)
+                j = n if j < 0 else j
+                spans.append((i, j))
+                i = j
+            elif m:
+                ghalq = '"' + m.group(1)
+                j = s.find(ghalq, m.end())
+                if j < 0:
+                    raise ValueError("نصٌّ خامٌ لم يُغلق")
+                i = j + len(ghalq)
+            elif s[i] == "«":
+                j = s.find("»", i + 1)
+                if j < 0:
+                    raise ValueError("اسمٌ «…» لم يُغلق")
+                i = j + 1
+            elif s[i] == '"':
+                i = nass(i, i > 1 and s[i - 1] == "!" and (s[i - 2].isalnum() or s[i - 2] == "_"))
+            elif s[i] == "'" and not ism_qabl(i) and harf.match(s, i):
+                i = harf.match(s, i).end()
+            elif s[i] == "{":
+                umq, i = umq + 1, i + 1
+            elif s[i] == "}":
+                if umq == 0 and ila_qaws:
+                    return i + 1
+                umq, i = max(umq - 1, 0), i + 1
+            else:
+                i += 1
+        if ila_qaws:
+            raise ValueError("إدراجٌ في نصٍّ لم يُغلق")
+        return i
+
+    shifra(0, False)
+    return spans
+
+
+def _taaliq_py(s):
+    """مواضعُ التعليق في نصّ بايثون: رموزُ COMMENT (tokenize)، والنصُّ القائمُ جملةً وحده — التوثيق (ast)؛ إلّا توثيقَ
+    الوحدة إن استُعمل `__doc__` اسمًا حرًّا فيها، فهو سلوكٌ لا تعليق."""
+    import ast
+    import io
+    import tokenize
+    bidayat = [0]                           # tokenize وast يعدّان الأسطر بـ«\n» وحده
+    for satr in s.split("\n"):
+        bidayat.append(bidayat[-1] + len(satr) + 1)
+    asturb = [satr.encode("utf-8") for satr in s.split("\n")]
+
+    def mawdi(satr, amud):                  # tokenize: عمودٌ بالحروف
+        return bidayat[satr - 1] + amud
+
+    def mawdi_b(satr, bayt):                # ast: عمودٌ بالبايتات
+        return bidayat[satr - 1] + len(asturb[satr - 1][:bayt].decode("utf-8"))
+
+    try:
+        rumuz = list(tokenize.generate_tokens(io.StringIO(s, newline="\n").readline))
+        shajara = ast.parse(s)
+    except (tokenize.TokenError, SyntaxError, ValueError) as e:
+        raise ValueError(f"تعذّر تحليل بايثون: {e}")
+    spans = [(mawdi(*t.start), mawdi(*t.end)) for t in rumuz if t.type == tokenize.COMMENT]
+    doc_mustamal = any(isinstance(u, ast.Name) and u.id == "__doc__" for u in ast.walk(shajara))   # اسمٌ حرّ لا صفة
+    for u in ast.walk(shajara):
+        if isinstance(u, ast.Expr) and isinstance(u.value, ast.Constant) and isinstance(u.value.value, str):
+            if doc_mustamal and isinstance(shajara, ast.Module) and shajara.body and shajara.body[0] is u:
+                continue
+            spans.append((mawdi_b(u.lineno, u.col_offset), mawdi_b(u.end_lineno, u.end_col_offset)))
+    return sorted(spans)
+
+
+def _taaliq_sh(s):
+    """مواضعُ التعليق في نصّ sh: «#» في أوّل كلمةٍ إلى آخر السطر، خارج الاقتباس ('…'، "…"، $'…') وأجسام الـheredoc."""
+    n, i, spans, muallaq = len(s), 0, [], []
+    heredoc = re.compile(r"<<(-?)\s*(['\"]?)([A-Za-z_][A-Za-z0-9_]*)\2")
+    aqwas, ghalq = [], {}    # «$(» يُغلق داخل الكلمة؛ وغيرُه عاملٌ يبدأ بعده تعليق
+    while i < n:
+        c = s[i]
+        m = heredoc.match(s, i) if c == "<" and not s.startswith("<<<", i) else None
+        if s.startswith("<<<", i):
+            i += 3
+        elif s.startswith("$(", i):
+            aqwas.append("$(")
+            i += 2
+        elif c == "(":
+            aqwas.append("(")
+            i += 1
+        elif c == ")":
+            ghalq[i] = aqwas.pop() if aqwas else "("
+            i += 1
+        elif m:
+            muallaq.append((m.group(3), bool(m.group(1))))
+            i = m.end()
+        elif c == "\n" and muallaq:
+            i += 1
+            for kalima, tab in muallaq:      # أجسامُ الـheredoc بترتيبها حتّى سطر الإغلاق
+                while True:
+                    if i >= n:
+                        raise ValueError(f"heredoc لم يُغلق: {kalima}")
+                    j = s.find("\n", i)
+                    j = n if j < 0 else j
+                    satr = s[i:j]
+                    i = min(j + 1, n)
+                    if (satr.lstrip("\t") if tab else satr) == kalima:
+                        break
+            muallaq = []
+        elif c == "\\":
+            i += 2
+        elif c == "$" and s.startswith("$'", i):
+            j = i + 2
+            while j < n and s[j] != "'":
+                j += 2 if s[j] == "\\" else 1
+            if j >= n:
+                raise ValueError("اقتباسٌ $'…' لم يُغلق")
+            i = j + 1
+        elif c == "'":
+            j = s.find("'", i + 1)
+            if j < 0:
+                raise ValueError("اقتباسٌ مفردٌ لم يُغلق")
+            i = j + 1
+        elif c == '"':
+            j = i + 1
+            while j < n and s[j] != '"':
+                j += 2 if s[j] == "\\" else 1
+            if j >= n:
+                raise ValueError("اقتباسٌ مزدوجٌ لم يُغلق")
+            i = j + 1
+        elif c == "#" and (i == 0 or s[i - 1] in " \t\n;|&(" or ghalq.get(i - 1) == "("):
+            j = s.find("\n", i)
+            j = n if j < 0 else j
+            spans.append((i, j))
+            i = j
+        else:
+            i += 1
+    return spans
+
+
+# الأنواعُ المدعومة لملفّ الطفرة، حاصرةً (التوجيه: «حصر امتدادات ملفات الطفرات» — «موافق، مع تعريف واضح للأنواع المدعومة» (س194)):
+# امتدادٌ له ماسحُ تعليق، أو امتدادٌ لا تعليق فيه. يُقارن الامتدادُ بحروفه كما هي («.LEAN» غيرُ «.lean»)، وما سواها مرفوضٌ باسمه.
+LUGHAT_TAALIQ = {".lean": _taaliq_lean, ".py": _taaliq_py, ".sh": _taaliq_sh}
+ANWA_MADUMA = frozenset(LUGHAT_TAALIQ) | frozenset(LUGHAT_BILA_TAALIQ)
+
+
+def mawadi_taaliq(s, imtidad):
+    """مواضعُ التعليق [بداية، نهاية) في نصٍّ بلغة امتداده؛ وامتدادٌ ليس في ANWA_MADUMA يُرفض باسمه."""
+    if imtidad in LUGHAT_TAALIQ:
+        return LUGHAT_TAALIQ[imtidad](s)
+    if imtidad in LUGHAT_BILA_TAALIQ:
+        return []
+    raise ValueError(f"امتدادٌ لا تُعرف فيه قاعدةُ التعليق: {imtidad or '(بلا امتداد)'}")
+
+
+def bila_taaliq(s, mawadi_t):
+    """النصُّ وكلُّ تعليقٍ فيه مسافةٌ واحدة."""
+    qita, i = [], 0
+    for a, b in mawadi_t:
+        qita += [s[i:a], " "]
+        i = b
+    return "".join(qita + [s[i:]])
+
+
+def musawwa(t):
+    """الباقي بعد طرح التعليق بلا أسطرٍ فارغة ولا بياضٍ في أواخر الأسطر — ويبقى بياضُ أوائلها (إزاحةُ بايثون معنى)."""
+    return "\n".join(l.rstrip() for l in t.split("\n") if l.strip())
+
+
+def mawadi(s, min_):
+    """مواضعُ «min» في النصّ كلُّها، المتداخلةُ منها أيضًا."""
+    out, i = [], s.find(min_)
+    while i >= 0:
+        out.append(i)
+        i = s.find(min_, i + 1)
+    return out
+
+
+def masar_tafra(t, root):
+    """مسارُ ملفّ الطفرة الحقيقيّ إن كان داخل root، وإلّا None (المسار المطلق و«..» والرابطُ الرمزيّ إلى الخارج)."""
+    milaf = t["milaf"]
+    if os.path.isabs(milaf) or ".." in milaf.replace("\\", "/").split("/"):
+        return None
+    jidhr = os.path.realpath(root)
+    p = os.path.realpath(os.path.join(root, milaf))
+    return p if os.path.commonpath([jidhr, p]) == jidhr and p != jidhr else None
+
+
+def ayb_tafra(t, root):
+    """عيبُ نصّ الطفرة نصًّا مسمًّى، أو None إن سلمت (القاعدتان وما فوقهما: انظر رأس ٤ب)."""
+    if not isinstance(t, dict) or not all(isinstance(t.get(k), str) for k in ("ism", "milaf", "min", "ila")):
+        return "قيدٌ بلا ism أو milaf أو min أو ila نصّيّ"
+    milaf = t["milaf"]
+    try:
+        p = masar_tafra(t, root)
+    except ValueError as e:
+        return f"مسارٌ لا يُقرأ: {e}"
+    if p is None:
+        return f"الملفّ خارج المستودع: {milaf}"
+    if not t["min"]:
+        return "«min» فارغ"
+    try:
+        with open(p, encoding="utf-8") as f:
+            s = f.read()
+    except (OSError, ValueError) as e:              # UnicodeDecodeError فرعٌ من ValueError
+        return f"تعذّرت قراءة {milaf}: {e}"
+    m = mawadi(s, t["min"])
+    if len(m) != 1:
+        return f"«min» يقع في {milaf} {len(m)} مرّة لا مرّةً واحدة"
+    imtidad = os.path.splitext(milaf)[1]
+    try:
+        tm = mawadi_taaliq(s, imtidad)
+    except ValueError as e:
+        return f"تعذّر تعيين التعليق في {milaf}: {e}"
+    bad, nih = m[0], m[0] + len(t["min"])
+    fi_t = [False] * len(s)
+    for a, b in tm:
+        fi_t[a:b] = [True] * (b - a)
+    # «min» في تعليق: كلُّ حرفٍ منه في تعليقٍ أو بياضٌ بين تعليقين، وفيه حرفُ تعليقٍ واحدٌ على الأقلّ
+    fi_taaliq = any(fi_t[bad:nih]) and all(fi_t[i] or s[i].isspace() for i in range(bad, nih))
+    mutaffar = s[:bad] + t["ila"] + s[nih:]
+    try:
+        sawa = musawwa(bila_taaliq(mutaffar, mawadi_taaliq(mutaffar, imtidad))) == musawwa(bila_taaliq(s, tm))
+    except ValueError:
+        sawa = None     # المطفَّر لا يُمسح (أفسد تعليقًا أو نصًّا): الحكمُ بالموضع وحده
+    if fi_taaliq and sawa is not False:
+        return "«min» يقع في تعليق"
+    if sawa:
+        return "الطفرة لا تغيّر إلّا تعليقًا"
+    # تغيّرت الشيفرة: ومنه رفعُ تعليقٍ بحذف علامته متى أمكن مسحُ الناتج؛ أو أُفسدت بنيتُها من موضعٍ خارج التعليق
+    return None
+
+
+def uyub_tafrat(tafrat, root):
+    """عيوبُ القائمة: كلُّ اسمٍ مكرَّر، وكلُّ طفرةٍ معيبةٍ نصًّا — «اسم: عيب»."""
+    uyub, raa = [], set()
+    for t in tafrat:
+        ism = t.get("ism") if isinstance(t, dict) else None
+        if isinstance(ism, str):
+            if ism in raa:
+                uyub.append(f"{ism}: اسمٌ مكرَّر")
+            raa.add(ism)
+        ayb = ayb_tafra(t, root)
+        if ayb:
+            uyub.append(f"{ism if isinstance(ism, str) else repr(ism)}: {ayb}")
+    return uyub
 
 
 def main():
@@ -169,6 +499,21 @@ def main():
         report.append(f"٤أ قائمة الطفرات: الأساس {asas_sha[:7]} ({len(asas)}) ← الآن {len(hali)}؛ غائبٌ بلا إذن {len(naqisa)}")
         if naqisa:
             fails.append("طفراتٌ في الأساس غابت بلا قيدٍ في tahaqquq/tafrat_mahdhufa.json: " + "، ".join(naqisa))
+
+    # ٤ب. نصُّ كلّ طفرة: مرّةً واحدة في ملفّها، وتغييرٌ خارج التعليق، واسمٌ غير مكرَّر (يجري مع --bila-tafrat أيضًا).
+    try:
+        with open(os.path.join(ROOT, "tahaqquq", "tafrat.json"), encoding="utf-8") as f:
+            tafrat_kull = json.load(f)
+        if not isinstance(tafrat_kull, list):
+            raise ValueError("tafrat.json ليس قائمة")
+    except (OSError, ValueError) as e:
+        report.append("٤ب نصوص الطفرات: لم تُفحص")
+        fails.append(f"نصوص الطفرات: {e}")
+    else:
+        uyub = uyub_tafrat(tafrat_kull, ROOT)
+        report.append(f"٤ب نصوص الطفرات: {len(tafrat_kull)} طفرة، معيبةٌ {len(uyub)}")
+        if uyub:
+            fails.append("طفراتٌ معيبةُ النصّ:\n" + "\n".join(uyub))
 
     code, out = run([sys.executable, "-I", "tahaqquq/test_bawwaba.py"])
     report.append(f"٥أ اختبارات خطّ الأساس والتثبيت: {'مرّت' if code == 0 else 'فشلت'}")
@@ -276,54 +621,21 @@ def main():
             dst = os.path.join(tmp, "p")
             # تُنسخ مخرجات البناء (.lake) أيضًا ليكون بناء الطفرة تدريجيًّا لا من الصفر
             shutil.copytree(ROOT, dst, ignore=shutil.ignore_patterns("__pycache__", "mustakshif", "jalsa_haqiqiyya_out"))
-            path = os.path.join(dst, t["milaf"])
-            s = open(path, encoding="utf-8").read()
-            if t["min"] not in s:
-                alive.append(f"{t['ism']} (الاقتباس غاب: عدّل الطفرة مع الكود)")
+            # لا كتابةَ بطفرةٍ معيبة: يُحكم على المستودع نفسِه (النسخُ يحوّل الرابطَ الرمزيّ ملفًّا)، ثمّ على النسخة
+            ayb = ayb_tafra(t, ROOT) or ayb_tafra(t, dst)
+            if ayb:
+                ism = t.get("ism") if isinstance(t, dict) else repr(t)
+                alive.append(f"{ism} (٤ب: {ayb})")
                 shutil.rmtree(tmp)
                 continue
+            path = masar_tafra(t, dst)
+            s = open(path, encoding="utf-8").read()
             open(path, "w", encoding="utf-8").write(s.replace(t["min"], t["ila"], 1))
             code, _ = run(["lake", "build"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_bawwaba.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "mawsua/test_mawsua.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "mudaat/test_idaa.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_qari.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_awamil.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_aqsam.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_ajnas.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_jamad.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_shabaka.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_hawass.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_awwaliyyat.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_azmina.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_makan.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_mirsat.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_isnad.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_jisrdal.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_nisab_asnaf.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_luzum.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_fard116.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_atlas.py"], cwd=dst)
+            for x in IKHTIBARAT_TAFRAT:
+                if code != 0:
+                    break
+                code, _ = run([sys.executable, "-I", x], cwd=dst)
             if code == 0:
                 alive.append(t["ism"])
             shutil.rmtree(tmp)

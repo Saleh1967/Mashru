@@ -1534,5 +1534,221 @@
   "milaf": "Dal/Tamthil.lean",
   "min": "⟨Dal.fakk, Dal.n, n_fakk⟩",
   "ila": "⟨fun _ => Dal.fakk 0, Dal.n, n_fakk⟩"
+ },
+ {
+  "ism": "P186_nass_mukarrar_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if len(m) != 1:",
+  "ila": "    if len(m) < 1:"
+ },
+ {
+  "ism": "P187_mawadi_bila_tadakhul",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        i = s.find(min_, i + 1)",
+  "ila": "        i = s.find(min_, i + len(min_))"
+ },
+ {
+  "ism": "P188_taaliq_lean_bila_tadakhul",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "                        d, j = d + 1, j + 2",
+  "ila": "                        d, j = d, j + 2"
+ },
+ {
+  "ism": "P189_taaliq_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if sawa:\n        return \"الطفرة لا تغيّر إلّا تعليقًا\"",
+  "ila": "    if False:\n        return \"الطفرة لا تغيّر إلّا تعليقًا\""
+ },
+ {
+  "ism": "P190_tawthiq_laysa_taaliqan",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        if isinstance(u, ast.Expr) and isinstance(u.value, ast.Constant) and isinstance(u.value.value, str):",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P191_harf_lean_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            elif s[i] == \"'\" and not",
+  "ila": "            elif False and s[i] == \"'\" and not"
+ },
+ {
+  "ism": "P192_idraj_lean_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "                i = nass(i, i > 1 and",
+  "ila": "                i = nass(i, False and"
+ },
+ {
+  "ism": "P193_uyub_la_tufshil",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        if uyub:\n",
+  "ila": "        if False:\n"
+ },
+ {
+  "ism": "P194_ism_mukarrar_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            if ism in raa:",
+  "ila": "            if False:"
+ },
+ {
+  "ism": "P195_taaliq_sh_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        elif c == \"#\" and",
+  "ila": "        elif False and"
+ },
+ {
+  "ism": "P196_milaf_kharij_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if os.path.isabs(milaf) or",
+  "ila": "    if False and os.path.isabs(milaf) or"
+ },
+ {
+  "ism": "P201_mawdi_taaliq_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    fi_taaliq = any(fi_t[bad:nih]) and all(fi_t[i] or s[i].isspace() for i in range(bad, nih))",
+  "ila": "    fi_taaliq = False"
+ },
+ {
+  "ism": "P202_masar_bila_realpath",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    return p if os.path.commonpath([jidhr, p]) == jidhr and p != jidhr else None",
+  "ila": "    return p"
+ },
+ {
+  "ism": "P203_heredoc_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        elif c == \"\\n\" and muallaq:",
+  "ila": "        elif False:"
+ },
+ {
+  "ism": "P204_doc_mustamal_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            if doc_mustamal and isinstance(shajara, ast.Module)",
+  "ila": "            if False and isinstance(shajara, ast.Module)"
+ },
+ {
+  "ism": "P205_nass_kham_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            m = kham.match(s, i) if s[i] == \"r\" and not ism_qabl(i) else None",
+  "ila": "            m = None"
+ },
+ {
+  "ism": "P206_mash_bila_ayb",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            ayb = ayb_tafra(t, ROOT) or ayb_tafra(t, dst)",
+  "ila": "            ayb = None"
+ },
+ {
+  "ism": "P207_fatha_ism_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        return i > 0 and (s[i - 1].isalnum() or s[i - 1] in \"_'!?.\")",
+  "ila": "        return False"
+ },
+ {
+  "ism": "P221_qaws_sh_ghalq_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": " or ghalq.get(i - 1) == \"(\"):",
+  "ila": "):"
+ },
+ {
+  "ism": "P222_ism_lean_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            elif s[i] == \"«\":",
+  "ila": "            elif False:"
+ },
+ {
+  "ism": "P223_heredoc_tab_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "                    if (satr.lstrip(\"\\t\") if tab else satr) == kalima:",
+  "ila": "                    if satr == kalima:"
+ },
+ {
+  "ism": "P224_here_string_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        if s.startswith(\"<<<\", i):\n            i += 3",
+  "ila": "        if False:\n            i += 3"
+ },
+ {
+  "ism": "P225_doc_ism_hurr_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "isinstance(u, ast.Name) and u.id == \"__doc__\"",
+  "ila": "\"__doc__\" in ast.dump(u)"
+ },
+ {
+  "ism": "P226_bayad_bayn_taaliqayn",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "all(fi_t[i] or s[i].isspace() for i in range(bad, nih))",
+  "ila": "all(fi_t[i] for i in range(bad, nih))"
+ },
+ {
+  "ism": "P227_bayad_ghayr_muwahhad",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    return \"\\n\".join(l.rstrip() for l in t.split(\"\\n\") if l.strip())",
+  "ila": "    return t"
+ },
+ {
+  "ism": "P228_mash_ala_nuskha",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            ayb = ayb_tafra(t, ROOT) or ayb_tafra(t, dst)",
+  "ila": "            ayb = ayb_tafra(t, dst)"
+ },
+ {
+  "ism": "P229_juz_ism_majhul",
+  "milaf": "tahaqquq/tafrat_juz.py",
+  "min": "    if majhul:\n",
+  "ila": "    if False:\n"
+ },
+ {
+  "ism": "P238_juz_muhla_qatl",
+  "milaf": "tahaqquq/tafrat_juz.py",
+  "min": "        raise TajawuzMuhla(f\"{' '.join(cmd[-2:])} تجاوز {MUHLA} ث\")",
+  "ila": "        return 124, \"\""
+ },
+ {
+  "ism": "P239_juz_bila_hukm_jidhr",
+  "milaf": "tahaqquq/tafrat_juz.py",
+  "min": "        ayb = bawwaba.ayb_tafra(t, root)\n",
+  "ila": "        ayb = None\n"
+ },
+ {
+  "ism": "P240_mash_qaima_naqisa",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            for x in IKHTIBARAT_TAFRAT:\n",
+  "ila": "            for x in IKHTIBARAT_TAFRAT[:1]:\n"
+ },
+ {
+  "ism": "P241_mash_la_yaqif",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "                if code != 0:\n                    break\n                code, _ = run([sys.executable, \"-I\", x], cwd=dst)",
+  "ila": "                if code != 0:\n                    pass\n                code, _ = run([sys.executable, \"-I\", x], cwd=dst)"
+ },
+ {
+  "ism": "P243_qaima_tanqus_ikhtibaran",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    \"tahaqquq/test_qari.py\",\n",
+  "ila": ""
+ },
+ {
+  "ism": "P244_juz_mukarrar_yamurr",
+  "milaf": "tahaqquq/tafrat_juz.py",
+  "min": "    if mukarrar:\n        print(",
+  "ila": "    if False:\n        print("
+ },
+ {
+  "ism": "P250_raf_taaliq_bila_athar",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if fi_taaliq and sawa is not False:",
+  "ila": "    if fi_taaliq and t[\"ila\"] == t[\"min\"].lstrip(\"#- \"):\n        return None\n    if fi_taaliq and sawa is not False:"
+ },
+ {
+  "ism": "P251_imtidad_bila_hurufih",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    imtidad = os.path.splitext(milaf)[1]\n",
+  "ila": "    imtidad = os.path.splitext(milaf)[1].lower()\n"
+ },
+ {
+  "ism": "P252_naw_zaid",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "LUGHAT_BILA_TAALIQ = {\".tsv\", \".json\"}",
+  "ila": "LUGHAT_BILA_TAALIQ = {\".tsv\", \".json\", \".yml\"}"
  }
 ]
