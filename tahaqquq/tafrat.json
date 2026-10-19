@@ -2128,5 +2128,11 @@
   "milaf": "Nizam/Phi.lean",
   "min": "  wa (amilQanun A x) (wa (amilMani A x m)\n    (tarkib judhur (fun (_ : Unit) r => amilJidhr A x r)",
   "ila": "  wa (amilQanun A x) (wa P\n    (tarkib judhur (fun (_ : Unit) r => amilJidhr A x r)"
+ },
+ {
+  "ism": "P299_phi_shajaraAqd_bila_mani",
+  "milaf": "Nizam/Phi.lean",
+  "min": "    (.aqda (.waraqa fun _ => amilMani A x m)",
+  "ila": "    (.aqda (.waraqa fun _ => P)"
  }
 ]

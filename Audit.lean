@@ -1419,6 +1419,7 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.Phi.kull_ma_kull_min_phi
 #print axioms Nizam.Phi.jidhr_hadd
 #print axioms Nizam.Phi.aqd_phi_mashru
+#print axioms Nizam.Phi.hukmB_shajara_mashru
 #print axioms Nizam.Phi.kataba_phi
 
 -- جدولُ اللزوم من مقاييس اللغة ولسان العرب (Jisr/JadwalLuzum.lean؛ تفويض المالك 2026-10-18، مهمّة #87):

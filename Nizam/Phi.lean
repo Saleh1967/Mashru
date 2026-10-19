@@ -23,24 +23,26 @@
      (`wajiha_daruriyya`، على قوائم `Bool` لا على `phi`)؛ وعاملا key=0 وkey=1 على `phi` نفسِها: الشجرةُ الصحيحة ممتنعة، والتي تُسقط key
      في الولدين قبل الربط مرخِّصةٌ زورًا وتخالف `Wajiha`، والصحيحةُ تستوفيه (`mithal_miftah`).
   ٦. **العقدُ حالةٌ من Φ**: عواملُ العقد الأربعة — القانونُ (P/N)، والمانعُ (P/N)، والجذرُ (المرشَّحُ P وغيرُه U لا N)، والشاهدُ (المشهودُ P
-     وغيرُه U) — مربوطةٌ بـ`tarkib` على منفذ الجذر، وهو `phi` على شجرة العقد ذاتِ الأوراق الأربع، وشجرتُه تستوفي `Wajiha`
-     (`phiAqd_shajara`)، مرّةً على المواصفة (`phiAqd`، والشاهدُ `Mashhud`) ومرّةً على المنفّذ (`phiAqdB`، والشاهدُ
-     بتُّ `mustawa`)، ومتساويتان بحقول العقد و`mustawa_iff` (`amil_sawa`، `phiAqdB_sawa`). والمنفّذُ `hukmB` يحسب Φ بعينها (`hukmB_phiB`:
+     وغيرُه U) — مربوطةٌ بـ`tarkib` على منفذ الجذر، مرّةً على المواصفة (`phiAqd`، والشاهدُ `Mashhud`) ومرّةً على المنفّذ (`phiAqdB`،
+     والشاهدُ بتُّ `mustawa`)، ومتساويتان بحقول العقد و`mustawa_iff` (`amil_sawa`، `phiAqdB_sawa`). والمنفّذُ `hukmB` يحسب Φ بعينها (`hukmB_phiB`:
      من تعريفه و`tarkib_P`/`tarkib_N`، بلا `kull_ma_kull`)، فـ`aqd_phi`؛ ومنه **مراتبُ `kull_ma_kull` الثلاث مشتقّةٌ من Φ لكلّ عقد**
-     (`kull_ma_kull_min_phi`: من `tarkib_P`/`tarkib_N`، بلا `kull_ma_kull`). وعلى `Mashru` بنطاق الجذور 32768 (`jidhr_hadd`، `aqd_phi_mashru`)، وشاهدُه كَتَبَ ← «علم» ترادفًا P ولزومًا U
+     (`kull_ma_kull_min_phi`: من `tarkib_P`/`tarkib_N`، بلا `kull_ma_kull`). و`phiAqd` (المواصفة) هي `phi` على شجرة العقد ذاتِ الأوراق
+     الأربع، وشجرتُه تستوفي `Wajiha` (`phiAqd_shajara`)؛ فبتركيبها مع `aqd_phi_mashru` يقع حكمُ المحرّك `hukmB` على `Mashru` تحت `phi` على
+     الشجرة (`hukmB_shajara_mashru`). وعلى `Mashru` بنطاق الجذور 32768 (`jidhr_hadd`، `aqd_phi_mashru`)، وشاهدُه كَتَبَ ← «علم» ترادفًا P ولزومًا U
      (`kataba_phi` — يمرّ بـ`kull_ma_kull` عبر شاهدَي `Nizam/Aqd.lean`).
 
-  61 مبرهنة بالمعيار الموحَّد (`Nizam/Asas.lean`): 32 لكلّ (الاستقراءُ على القوائم والسلسلة والشجرة، وما يستدعي مبرهنةً من الملفّ أو من
+  62 مبرهنة بالمعيار الموحَّد (`Nizam/Asas.lean`): 33 لكلّ (الاستقراءُ على القوائم والسلسلة والشجرة، وما يستدعي مبرهنةً من الملفّ أو من
   `Nizam/Aqd.lean`)، و26 تعريفيّة (`phiAqd_shajara`، `tabaqat_*` الثلاث، `wa_P`/`wa_N`/`aw_P`/`aw_N`، `wa_tabadul`، `wa_aw_tawzi`، `ghayruhuma_U`، `tahdith_*`
   الأربع، `rutba_*` الثلاث، وعواملُ العقد الثمانية `amil*_P`/`_N`/`_ghayr_N`)، و3 على الشاهد: `wajiha_daruriyya` بـ decide، و`mithal_miftah`
-  (شطراه الأوّلان decide، والثالثُ تطبيقُ الفرض على معطًى ثمّ decide) و`kataba_phi` (نقلٌ عبر `aqd_phi_mashru` من مبرهنتين على الشاهد في
+  (أشطرُه الأربعة: الأوّلُ simp بالتعريفات، والثاني والثالث decide، والرابعُ تطبيقُ الفرض على معطًى ثمّ decide) و`kataba_phi` (نقلٌ عبر `aqd_phi_mashru` من مبرهنتين على الشاهد في
   `Nizam/Aqd.lean`) — هذان خارجَ حرف المعيار («برهانُها decide»)، معلَن.
-  طفراتُها `P272`–`P282` و`P291`–`P298` في `tahaqquq/tafrat.json` تُفشل `lake build` مباشرة؛ لا جدولَ خارجيًّا فلا مرآة بايثون.
+  طفراتُها `P272`–`P282` و`P291`–`P299` في `tahaqquq/tafrat.json` تُفشل `lake build` مباشرة؛ لا جدولَ خارجيًّا فلا مرآة بايثون.
 
   ما لا يُدّعى:
   * **ما تُسقطه المرتبة**: `rutba` تُسقط القراءةَ واسمَ السبب؛ فشطرُ `kull_ma_kull` الرابع (`QiraaSahiha`) و`mumtani_asbab` لا يُشتقّان من Φ.
   * **التعارض**: المرفق س78 «تعارض P وN يُرفض كتعـارض دليل»؛ و`K3` لا قيمةَ فيه للتعارض، فلا يُمثَّل جمعُ أدلّةٍ مستقلّةٍ متعارضة.
-  * **المستهلك**: لا يقع تحت `zanjir` ولا `phi` شيءٌ من المحرّك بعد غيرُ شجرة العقد (`phiAqd_shajara`)، وهي تركيبٌ واحد على منفذ الجذر.
+  * **المستهلك**: لا يقع تحت `zanjir` ولا `phi` شيءٌ من المحرّك بعد غيرُ حكم العقد على `Mashru` (`hukmB_shajara_mashru`)، وشجرتُه تركيبٌ
+    واحد على منفذ الجذر.
   * **النطاقات**: النطاقُ قائمةٌ واحدة تقيّد المُسقَطات وحدها؛ والمتغيّراتُ غيرُ المُسقَطة حرّةٌ في σ، فقد تُرخِّص Φ على قيمةٍ خارج النطاق.
     والمرفق يشترط مجالًا D_x لكلّ متغيّر (س9) وعواملَ مجال (س24)؛ لم تُبنَ.
   * **الواجهة**: `Wajiha` شرطٌ دلاليّ مكمَّمٌ على كلّ تكليفٍ وكلّ قيمةٍ في D (لا في النطاق وحده)، فلا يحسبه مستهلك؛ وواجهتا المرفق الصريحتان
@@ -594,8 +596,8 @@ def shajaraAqd (A : Aqd) (x : List Nat) (m : Nat) : Shajara Unit Nat :=
     (.aqda (.waraqa fun _ => amilMani A x m)
       (.aqda (.waraqa fun σ => amilJidhr A x (σ ())) (.waraqa fun σ => amilShahid A x (σ ()) m) [()]) []) []
 
-/-- **`phiAqd` هي Φ على شجرة العقد** (لكلّ نطاقٍ وتكليف)، وشجرتُه تستوفي شرطَ الواجهة: فالعقدُ حالةٌ من `phi` وتقع عليه
-    `shajara_P`/`shajara_N`/`shajara_U`. -/
+/-- **`phiAqd` (المواصفة) هي Φ على شجرة العقد** (لكلّ نطاقٍ وتكليف)، وشجرتُه تستوفي شرطَ الواجهة، فتقع عليها
+    `shajara_P`/`shajara_N`/`shajara_U`. والمنفّذُ يصلها بـ`aqd_phi` (`hukmB_shajara_mashru` على `Mashru`). -/
 theorem phiAqd_shajara (A : Aqd) (x : List Nat) (m : Nat) (judhur : List Nat) (σ : Unit → Nat) :
     Wajiha (shajaraAqd A x m) ∧ phi judhur (shajaraAqd A x m) σ = phiAqd A x m judhur := by
   refine ⟨by simp [Wajiha, shajaraAqd, mahdhuf, LaYataallaq, kullAwamil], ?_⟩
@@ -717,6 +719,11 @@ theorem aqd_phi_mashru (n : JadwalLuzum.Naw) (x : List Nat) (m : Nat) :
     rutba (hukmB (Mashru n) x m) = phiAqd (Mashru n) x m (List.range 32768) :=
   aqd_phi (Mashru n) x m (List.range 32768)
     (fun r h => List.mem_range.mpr (jidhr_hadd n x r h)) (by simp)
+
+/-- **حكمُ المحرّك على `Mashru` هو Φ على شجرة العقد** بنطاق الجذور 32768، لكلّ تكليف: `aqd_phi_mashru` ثمّ `phiAqd_shajara`. -/
+theorem hukmB_shajara_mashru (n : JadwalLuzum.Naw) (x : List Nat) (m : Nat) (σ : Unit → Nat) :
+    rutba (hukmB (Mashru n) x m) = phi (List.range 32768) (shajaraAqd (Mashru n) x m) σ := by
+  rw [(phiAqd_shajara (Mashru n) x m (List.range 32768) σ).2, aqd_phi_mashru]
 
 /-- **شاهدان** (نقلٌ عبر `aqd_phi_mashru` من `kataba_ilm_taraduf` و`kataba_luzum_la_hukm`): كَتَبَ ← «علم» ترادفًا مرخَّصٌ في Φ،
     ولزومًا «لا حكم» — الغيابُ ليس امتناعًا. -/
