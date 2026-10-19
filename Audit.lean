@@ -59,6 +59,7 @@ import Madlul.JadwalLuzum
 import Madlul.Naht
 import Madlul.Ishtirak
 import Madlul.Tarjih
+import Jisr.Iqtiran
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1065,6 +1066,20 @@ import Madlul.Tarjih
 #print axioms Madlul.TashfirNas.string_dec_enc
 #print axioms Madlul.TashfirNas.tayyString_la_yudi
 #print axioms Madlul.TashfirNas.string_shawahid_tudi
+
+-- اقترانُ الدالّ بالمدلول: مرشَّحون من الوضع تقطعهم قيود، لقراءة صيغة الفعل وجنسه من خلاياه، وقرينةٍ تحسم
+-- ما بقي محتملًا (Jisr/Iqtiran.lean؛ تفويضُ المالك 2026-10-18 «إغلاق دَين الاقتران» — إغلاقٌ محلّيٌّ، في
+-- Mashru نفسِه، لفراغ QUYUD_ARE_INPUT المعلَن في Alghanem ADR٩٨، ولفراغٍ من نوعه في JisrDal نفسِه
+-- (بابُ الصرف معلَنٌ من المعجم لا من الدالّ)). الأربعةُ مبرهنةٌ لكلّ (iqtiran_iff/tartib_la_yughayyir/
+-- qayd_la_yazid/tabaqat، مسلّماتُها propext/Quot.sound فقط)؛ البقيّة مبرهنةٌ على الشاهد (decide).
+#print axioms Jisr.Iqtiran.iqtiran_iff
+#print axioms Jisr.Iqtiran.tartib_la_yughayyir
+#print axioms Jisr.Iqtiran.qayd_la_yazid
+#print axioms Jisr.Iqtiran.tabaqat
+#print axioms Jisr.Iqtiran.sigha_afal_tartib
+#print axioms Jisr.Iqtiran.shahid_sigha
+#print axioms Jisr.Iqtiran.shahid_jins
+#print axioms Jisr.Iqtiran.shahid_qarina
 #print axioms JadwalLuzum.qawaninOf_shakl
 #print axioms JadwalLuzum.qaidaOf_shakl
 #print axioms JadwalLuzum.qaidaOf_mutadarrija

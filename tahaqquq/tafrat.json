@@ -1104,6 +1104,12 @@
   "ila": "  tawi := fun _ => 0"
  },
  {
+  "ism": "P154_iqtiran_all_ila_any",
+  "milaf": "Jisr/Iqtiran.lean",
+  "min": "marashshahun.filter (fun m => quyud.all (fun q => q.yaqbal m))",
+  "ila": "marashshahun.filter (fun m => quyud.any (fun q => q.yaqbal m))"
+ },
+ {
   "ism": "P149_luzumat_tabdil_kataba_ilm",
   "milaf": "Jisr/JadwalLuzum.lean",
   "min": "  [(\"كتب\", \"علم\"), (\"كتب\", \"قلم\"), (\"درس\", \"علم\"), (\"درس\", \"كتب\"),",
@@ -1140,28 +1146,34 @@
   "ila": "  | .luzum => [.wad l m, .kharij b m]"
  },
  {
-  "ism": "P150_tadammun_ala_ghayr_juz",
-  "milaf": "Madlul/JadwalLuzum.lean",
-  "min": "  | .juz | .asl => [qMutabaqa l m, qTadammun l m b]",
-  "ila": "  | .juz | .asl => [qMutabaqa l m, qTadammun l m l]"
+  "ism": "P155_qaydNaytaIftitah_inkar",
+  "milaf": "Jisr/Iqtiran.lean",
+  "min": "| .mudari => Wad.nayta.contains (harf c0)",
+  "ila": "| .mudari => !(Wad.nayta.contains (harf c0))"
  },
  {
-  "ism": "P151_luzum_min_taraduf",
-  "milaf": "Madlul/JadwalLuzum.lean",
-  "min": "  | .taraduf => [.wad l b]\n",
-  "ila": "  | .taraduf => [.wad l b, .luzum b b]\n"
+  "ism": "P156_sighaMurashshaha_tabdil",
+  "milaf": "Jisr/Iqtiran.lean",
+  "min": "def sighaMurashshaha : List SighaFil := [.madin, .amr, .mudari]",
+  "ila": "def sighaMurashshaha : List SighaFil := [.madin, .mudari, .amr]"
  },
  {
-  "ism": "P152_formula_fi_tafsir",
-  "milaf": "shabaka/jadwal_luzum.py",
-  "min": "gt = kalimat(FORMULA.sub(\"\", norm(G)))",
-  "ila": "gt = kalimat(norm(G))"
+  "ism": "P157_qaydTaanith_hala_tabdil",
+  "milaf": "Jisr/Iqtiran.lean",
+  "min": "then cells.length == 4 && cells.getLast? == some (kh taa 3)",
+  "ila": "then cells.length == 4 && cells.getLast? == some (kh taa 0)"
  },
  {
-  "ism": "P153_taalil_bila_tasmiya",
-  "milaf": "shabaka/jadwal_luzum.py",
-  "min": "            if m and TASMIYA.search(ns):",
-  "ila": "            if m:"
+  "ism": "P158_qaydTaanith_tul_tabdil",
+  "milaf": "Jisr/Iqtiran.lean",
+  "min": "else if j == 0 then cells.length == 3",
+  "ila": "else if j == 0 then cells.length == 4"
+ },
+ {
+  "ism": "P159_qaydTabaqNaat_inkar",
+  "milaf": "Jisr/Iqtiran.lean",
+  "min": "⟨\"مطابقةُ النعت الرافع ضميرًا مستكنًّا (قطر L378–379)\", fun j => j == jinsNaat⟩",
+  "ila": "⟨\"مطابقةُ النعت الرافع ضميرًا مستكنًّا (قطر L378–379)\", fun j => !(j == jinsNaat)⟩"
  },
  {
   "ism": "P154_matufat_ajza",
