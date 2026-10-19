@@ -1556,14 +1556,14 @@
  {
   "ism": "P189_taaliq_yamurr",
   "milaf": "tahaqquq/bawwaba.py",
-  "min": "            return \"الطفرة لا تغيّر إلّا تعليقًا\"",
-  "ila": "            return None"
+  "min": "    if sawa:\n        return \"الطفرة لا تغيّر إلّا تعليقًا\"",
+  "ila": "    if False:\n        return \"الطفرة لا تغيّر إلّا تعليقًا\""
  },
  {
   "ism": "P190_tawthiq_laysa_taaliqan",
   "milaf": "tahaqquq/bawwaba.py",
-  "min": "            if lahiq in fasl:",
-  "ila": "            if False:"
+  "min": "        if isinstance(u, ast.Expr) and isinstance(u.value, ast.Constant) and isinstance(u.value.value, str):",
+  "ila": "        if False:"
  },
  {
   "ism": "P191_harf_lean_mahmal",
@@ -1586,8 +1586,8 @@
  {
   "ism": "P194_ism_mukarrar_yamurr",
   "milaf": "tahaqquq/bawwaba.py",
-  "min": "        if isinstance(ism, str) and ism in raa:",
-  "ila": "        if False:"
+  "min": "            if ism in raa:",
+  "ila": "            if False:"
  },
  {
   "ism": "P195_taaliq_sh_mahmal",
@@ -1600,5 +1600,47 @@
   "milaf": "tahaqquq/bawwaba.py",
   "min": "    if os.path.isabs(milaf) or",
   "ila": "    if False and os.path.isabs(milaf) or"
+ },
+ {
+  "ism": "P201_mawdi_taaliq_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    fi_taaliq = any(a <= bad and nih <= b for a, b in tm)",
+  "ila": "    fi_taaliq = False"
+ },
+ {
+  "ism": "P202_masar_bila_realpath",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    return p if os.path.commonpath([jidhr, p]) == jidhr and p != jidhr else None",
+  "ila": "    return p"
+ },
+ {
+  "ism": "P203_heredoc_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        elif c == \"\\n\" and muallaq:",
+  "ila": "        elif False:"
+ },
+ {
+  "ism": "P204_doc_mustamal_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            if doc_mustamal and isinstance(shajara, ast.Module)",
+  "ila": "            if False and isinstance(shajara, ast.Module)"
+ },
+ {
+  "ism": "P205_nass_kham_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            m = kham.match(s, i) if s[i] == \"r\" and not ism_qabl(i) else None",
+  "ila": "            m = None"
+ },
+ {
+  "ism": "P206_mash_bila_ayb",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            ayb = ayb_tafra(t, dst)",
+  "ila": "            ayb = None"
+ },
+ {
+  "ism": "P207_fatha_ism_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        return i > 0 and (s[i - 1].isalnum() or s[i - 1] in \"_'!?.\")",
+  "ila": "        return False"
  }
 ]
