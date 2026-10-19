@@ -1534,5 +1534,71 @@
   "milaf": "Dal/Tamthil.lean",
   "min": "⟨Dal.fakk, Dal.n, n_fakk⟩",
   "ila": "⟨fun _ => Dal.fakk 0, Dal.n, n_fakk⟩"
+ },
+ {
+  "ism": "P186_nass_mukarrar_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if len(m) != 1:",
+  "ila": "    if len(m) < 1:"
+ },
+ {
+  "ism": "P187_mawadi_bila_tadakhul",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        i = s.find(min_, i + 1)",
+  "ila": "        i = s.find(min_, i + len(min_))"
+ },
+ {
+  "ism": "P188_taaliq_lean_bila_tadakhul",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "                        d, j = d + 1, j + 2",
+  "ila": "                        d, j = d, j + 2"
+ },
+ {
+  "ism": "P189_taaliq_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            return \"الطفرة لا تغيّر إلّا تعليقًا\"",
+  "ila": "            return None"
+ },
+ {
+  "ism": "P190_tawthiq_laysa_taaliqan",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            if lahiq in fasl:",
+  "ila": "            if False:"
+ },
+ {
+  "ism": "P191_harf_lean_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            elif s[i] == \"'\" and not",
+  "ila": "            elif False and s[i] == \"'\" and not"
+ },
+ {
+  "ism": "P192_idraj_lean_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "                i = nass(i, i > 1 and",
+  "ila": "                i = nass(i, False and"
+ },
+ {
+  "ism": "P193_uyub_la_tufshil",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        if uyub:\n",
+  "ila": "        if False:\n"
+ },
+ {
+  "ism": "P194_ism_mukarrar_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        if isinstance(ism, str) and ism in raa:",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P195_taaliq_sh_mahmal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        elif c == \"#\" and",
+  "ila": "        elif False and"
+ },
+ {
+  "ism": "P196_milaf_kharij_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if os.path.isabs(milaf) or",
+  "ila": "    if False and os.path.isabs(milaf) or"
  }
 ]

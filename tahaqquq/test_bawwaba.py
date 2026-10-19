@@ -287,8 +287,11 @@ class TafratGuardTests(unittest.TestCase):
 
     def gate(self, asas, hali, ledger=None, merge_base_ok=True):
         t = os.path.join(self.tmp.name, "tahaqquq")
+        # قيودٌ تامّةٌ يسلم نصُّها (٤ب): لكلّ اسمٍ سطرُ شيفرةٍ واحدٌ في ملفٍّ صغير
+        with open(os.path.join(self.tmp.name, "X.lean"), "w", encoding="utf-8") as f:
+            f.write("".join(f"def {n} := 1\n" for n in hali))
         with open(os.path.join(t, "tafrat.json"), "w", encoding="utf-8") as f:
-            json.dump([{"ism": n} for n in hali], f)
+            json.dump([{"ism": n, "milaf": "X.lean", "min": f"def {n} := 1", "ila": f"def {n} := 2"} for n in hali], f)
         if ledger is not None:
             with open(os.path.join(t, "tafrat_mahdhufa.json"), "w", encoding="utf-8") as f:
                 json.dump(ledger, f)
@@ -329,6 +332,102 @@ class TafratGuardTests(unittest.TestCase):
         self.assertIn("حراسة قائمة الطفرات", err)
         self.assertIn("لم تُقارَن بالأساس", out)
         self.assertNotIn("Traceback", err)
+
+
+class TafraNassTests(unittest.TestCase):
+    """نصُّ الطفرة (٤ب). الملفّات مكتوبةٌ باليد، والتوقّعاتُ من قراءة لغتها لا من الماسح: موضعُ كلّ «min» معروفٌ عند كتابته."""
+
+    LEAN = ("/- رأس: def f := 1 -/\n"
+            "def f := 1 -- def g := 2\n"
+            'def g := "-- ليس تعليقًا"\n'
+            "/- خارج /- متداخل -/ ما زال تعليقًا -/\n"
+            "def k := '\"' -- كاف\n"
+            'def m := s!"{f "--"} نهاية"\n')
+    PY = ('"""وثيقة: x = 1"""\n'
+          "x = 1  # y = 2\n"
+          's = "# ليس تعليقًا"\n'
+          "def f():\n"
+          '    """توثيق الدالّة"""\n'
+          '    return "قيمة"\n')
+    SH = ('#!/bin/bash\n'
+          'echo "# ليس" # تعليق\n'
+          'n=${#arr}\n')
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        for ism, nass in (("a.lean", self.LEAN), ("a.py", self.PY), ("a.sh", self.SH),
+                          ("a.tsv", "x\ty\nz\tw\n"), ("a.md", "x\n")):
+            with open(os.path.join(self.tmp.name, ism), "w", encoding="utf-8") as f:
+                f.write(nass)
+
+    def ayb(self, milaf, min_, ila="تغيير"):
+        return bawwaba.ayb_tafra({"ism": "P0_t", "milaf": milaf, "min": min_, "ila": ila}, self.tmp.name)
+
+    def test_overlapping_occurrences_count(self):
+        self.assertEqual(bawwaba.mawadi("aaa", "aa"), [0, 1])
+        self.assertEqual(bawwaba.mawadi("abc", "x"), [])
+
+    def test_once_exactly(self):
+        self.assertIn("2 مرّة", self.ayb("a.lean", "def f := 1"))     # في الرأس وفي الشيفرة
+        self.assertIn("0 مرّة", self.ayb("a.lean", "غائب"))
+        self.assertIn("2 مرّة", self.ayb("a.py", "x = 1"))
+        self.assertIsNone(self.ayb("a.tsv", "z\tw"))
+
+    def test_lean_comments(self):
+        self.assertEqual(self.ayb("a.lean", "def g := 2"), "الطفرة لا تغيّر إلّا تعليقًا")       # سطريّ
+        self.assertEqual(self.ayb("a.lean", "ما زال تعليقًا"), "الطفرة لا تغيّر إلّا تعليقًا")   # بعد إغلاق المتداخل
+        self.assertEqual(self.ayb("a.lean", "كاف"), "الطفرة لا تغيّر إلّا تعليقًا")              # بعد حرف '"'
+        self.assertIsNone(self.ayb("a.lean", "ليس تعليقًا"))                                     # «--» في نصّ
+        self.assertIsNone(self.ayb("a.lean", "نهاية"))                                           # نصٌّ مُدرَج فيه نصّ
+        self.assertIsNone(self.ayb("a.lean", "-- def g := 2", "def g := 2"))                    # رفعُ التعليق تغييرٌ في الشيفرة
+
+    def test_python_comments_and_docstrings(self):
+        self.assertEqual(self.ayb("a.py", "y = 2"), "الطفرة لا تغيّر إلّا تعليقًا")
+        self.assertEqual(self.ayb("a.py", "توثيق الدالّة"), "الطفرة لا تغيّر إلّا تعليقًا")
+        self.assertIsNone(self.ayb("a.py", "ليس تعليقًا"))
+        self.assertIsNone(self.ayb("a.py", "قيمة"))
+
+    def test_sh_comments(self):
+        self.assertEqual(self.ayb("a.sh", "تعليق"), "الطفرة لا تغيّر إلّا تعليقًا")
+        self.assertIsNone(self.ayb("a.sh", "ليس"))
+        self.assertIsNone(self.ayb("a.sh", "arr"))
+
+    def test_malformed_entries(self):
+        self.assertEqual(self.ayb("a.lean", ""), "«min» فارغ")
+        self.assertIn("خارج المستودع", self.ayb("../a.lean", "x"))
+        self.assertIn("خارج المستودع", self.ayb(os.path.join(self.tmp.name, "a.lean"), "x"))
+        self.assertIn("امتدادٌ لا تُعرف", self.ayb("a.md", "x"))
+        self.assertIn("تعذّرت قراءة", self.ayb("ghaib.lean", "x"))
+        self.assertIn("قيدٌ بلا", bawwaba.ayb_tafra({"ism": "P0", "milaf": "a.lean", "min": "x"}, self.tmp.name))
+
+    def test_duplicate_names(self):
+        t = {"ism": "P0_t", "milaf": "a.tsv", "min": "z\tw", "ila": "z\tv"}
+        self.assertEqual(bawwaba.uyub_tafrat([t, dict(t)], self.tmp.name), ["P0_t: اسمٌ مكرَّر"])
+        self.assertEqual(bawwaba.uyub_tafrat([t], self.tmp.name), [])
+
+    def test_gate_names_the_defect(self):
+        os.mkdir(os.path.join(self.tmp.name, "tahaqquq"))
+        with open(os.path.join(self.tmp.name, "tahaqquq", "khatt_asas.json"), "w", encoding="utf-8") as f:
+            f.write('{"mubarhanat": 0}')
+        tafrat = [{"ism": "P0_taaliq", "milaf": "a.lean", "min": "def g := 2", "ila": "def g := 3"}]
+        with open(os.path.join(self.tmp.name, "tahaqquq", "tafrat.json"), "w", encoding="utf-8") as f:
+            json.dump(tafrat, f)
+        out, err = io.StringIO(), io.StringIO()
+
+        def git(*args):
+            return (0, "abc1234\n") if args[0] == "merge-base" else (0, json.dumps(tafrat))
+
+        with patch.object(bawwaba, "ROOT", self.tmp.name), \
+                patch.object(bawwaba, "run", return_value=(0, "")), \
+                patch.object(bawwaba, "git", side_effect=git), \
+                patch.object(sys, "argv", ["bawwaba.py", "--bila-tafrat"]), \
+                contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            with self.assertRaises(SystemExit) as exit_result:
+                bawwaba.main()
+        self.assertEqual(exit_result.exception.code, 2)
+        self.assertIn("٤ب نصوص الطفرات: 1 طفرة، معيبةٌ 1", out.getvalue())
+        self.assertIn("P0_taaliq: الطفرة لا تغيّر إلّا تعليقًا", err.getvalue())
 
 
 if __name__ == "__main__":

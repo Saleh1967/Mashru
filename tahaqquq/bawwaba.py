@@ -9,6 +9,9 @@
   ٤أ. قائمة الطفرات لا تنقص عن الأساس: كلّ «ism» في tafrat.json عند نقطة التقاء HEAD بالمرجع (TAFRAT_ASAS_REF، وإلّا
       origin/main) حاضرٌ في القائمة الحاليّة، أو مسجَّلٌ في tahaqquq/tafrat_mahdhufa.json بسببٍ وإذن (قرار المالك 2026-10-19:
       دمجان أسقطا طفرات main بلا تعارضٍ ظاهر، ولا شيء كان يكشفه). تعذُّر الأساس فشلٌ مسمّى لا تخطٍّ صامت.
+  ٤ب. نصُّ كلّ طفرة (قرار المالك 2026-10-19 16:16، مكمّلًا لـ٤أ): «min» غيرُ فارغٍ يقع في ملفّه مرّةً واحدة (بعدّ المتداخل)،
+      والطفرةُ تغيّر الملفَّ خارج التعليق (Lean: «--» و«/- -/» متداخلًا؛ بايثون: التعليق والتوثيق؛ sh: «#»)، والملفُّ داخل
+      المستودع بامتدادٍ معروف، والاسمُ غيرُ مكرَّر. يجري مع --bila-tafrat أيضًا.
   ٥. اختبارات بايثون (shabaka/test_shabaka.py) تمرّ، إن وُجد المودَع (MUDAA_MUKHASSAS).
   ٥أ. اختبارات خطّ الأساس والتثبيت (tahaqquq/test_bawwaba.py): رفض JSON التالف وحفظ الحدّ، وفحص بديل تثبيت Lean.
   ٥ب. اختبارات المخزن (mawsua/test_mawsua.py): الفاحص التنفيذيّ المبنيّ من Lean يقبل المخزن ويرفض الفاسد.
@@ -98,6 +101,205 @@ def tafrat_naqisa(asas, hali, mahdhufa):
     return sorted(set(asas) - set(hali) - set(mahdhufa))
 
 
+# ٤ب. نصُّ الطفرة (قرار المالك 2026-10-19 16:16، مكمّلًا لـ٤أ): «min» يقع في ملفّه مرّةً واحدة، والطفرةُ تغيّر شيئًا خارج
+# التعليق. سببُه: P152 وقع «min»ها أوّلًا في تعليقٍ فعاشت، و`replace(min, ila, 1)` يصيب أوّلَ موضعٍ وحده — فإن تكرّر النصّ
+# أو انتقل إلى تعليقٍ صارت الطفرةُ تفحص غيرَ ما سُمّيت له وهي «مقتولة» أو «حيّة» لغير سببها.
+
+LUGHAT_BILA_TAALIQ = {".tsv", ".json"}
+
+
+def _taaliq_lean(s):
+    """مواضعُ التعليق في نصّ Lean: «--» إلى آخر السطر، و«/- … -/» متداخلًا؛ خارج النصوص والحروف والنصوص المُدرَجة (s!/m!/f!)."""
+    n, spans = len(s), []
+    harf = re.compile(r"'(?:\\(?:u\{[0-9a-fA-F]+\}|x[0-9a-fA-F]{2}|.)|[^\\'\n])'")
+
+    def nass(i, mudraj):            # s[i] == '"'؛ يعيد ما بعد الإغلاق
+        j = i + 1
+        while j < n:
+            c = s[j]
+            if c == "\\":
+                j += 2
+            elif c == '"':
+                return j + 1
+            elif c == "{" and mudraj:
+                j = shifra(j + 1, True)
+            else:
+                j += 1
+        raise ValueError("نصٌّ لم يُغلق")
+
+    def shifra(i, ila_qaws):        # يمسح الشيفرة حتّى «}» المقابلة (ila_qaws) أو آخر الملفّ
+        umq = 0
+        while i < n:
+            if s.startswith("/-", i):
+                j, d = i + 2, 1
+                while j < n and d:
+                    if s.startswith("/-", j):
+                        d, j = d + 1, j + 2
+                    elif s.startswith("-/", j):
+                        d, j = d - 1, j + 2
+                    else:
+                        j += 1
+                if d:
+                    raise ValueError("تعليقٌ كتليّ لم يُغلق")
+                spans.append((i, j))
+                i = j
+            elif s.startswith("--", i):
+                j = s.find("\n", i)
+                j = n if j < 0 else j
+                spans.append((i, j))
+                i = j
+            elif s[i] == '"':
+                i = nass(i, i > 1 and s[i - 1] == "!" and (s[i - 2].isalnum() or s[i - 2] == "_"))
+            elif s[i] == "'" and not (i > 0 and (s[i - 1].isalnum() or s[i - 1] in "_'!?.")) and harf.match(s, i):
+                i = harf.match(s, i).end()
+            elif s[i] == "{":
+                umq, i = umq + 1, i + 1
+            elif s[i] == "}":
+                if umq == 0 and ila_qaws:
+                    return i + 1
+                umq, i = max(umq - 1, 0), i + 1
+            else:
+                i += 1
+        if ila_qaws:
+            raise ValueError("إدراجٌ في نصٍّ لم يُغلق")
+        return i
+
+    shifra(0, False)
+    return spans
+
+
+def _taaliq_py(s):
+    """مواضعُ التعليق في نصّ بايثون: رموزُ COMMENT، والنصُّ القائمُ جملةً وحده (التوثيق) — من tokenize نفسِه."""
+    import io
+    import tokenize
+    bidayat = [0]
+    for satr in s.splitlines(keepends=True):
+        bidayat.append(bidayat[-1] + len(satr))
+    mawdi = lambda rc: bidayat[rc[0] - 1] + rc[1]
+    try:
+        rumuz = [t for t in tokenize.generate_tokens(io.StringIO(s).readline) if t.type != tokenize.NL]
+    except (tokenize.TokenError, SyntaxError) as e:
+        raise ValueError(f"تعذّر ترميز بايثون: {e}")
+    fasl = (tokenize.NEWLINE, tokenize.INDENT, tokenize.DEDENT, tokenize.ENDMARKER)
+    spans, sabiq = [], None
+    for k, t in enumerate(rumuz):
+        if t.type == tokenize.COMMENT:
+            spans.append((mawdi(t.start), mawdi(t.end)))
+            continue
+        if t.type == tokenize.STRING and (sabiq is None or sabiq in fasl):
+            lahiq = next((u.type for u in rumuz[k + 1:] if u.type != tokenize.COMMENT), tokenize.ENDMARKER)
+            if lahiq in fasl:
+                spans.append((mawdi(t.start), mawdi(t.end)))
+        sabiq = t.type
+    return spans
+
+
+def _taaliq_sh(s):
+    """مواضعُ التعليق في نصّ sh: «#» في أوّل كلمةٍ إلى آخر السطر، خارج الاقتباس."""
+    n, i, spans = len(s), 0, []
+    while i < n:
+        c = s[i]
+        if c == "\\":
+            i += 2
+        elif c == "'":
+            j = s.find("'", i + 1)
+            if j < 0:
+                raise ValueError("اقتباسٌ مفردٌ لم يُغلق")
+            i = j + 1
+        elif c == '"':
+            j = i + 1
+            while j < n and s[j] != '"':
+                j += 2 if s[j] == "\\" else 1
+            if j >= n:
+                raise ValueError("اقتباسٌ مزدوجٌ لم يُغلق")
+            i = j + 1
+        elif c == "#" and (i == 0 or s[i - 1] in " \t\n;|&()"):
+            j = s.find("\n", i)
+            j = n if j < 0 else j
+            spans.append((i, j))
+            i = j
+        else:
+            i += 1
+    return spans
+
+
+def mawadi_taaliq(s, imtidad):
+    """مواضعُ التعليق [بداية، نهاية) في نصٍّ بلغة امتداده؛ وامتدادٌ لا تُعرف فيه قاعدةُ التعليق يُرفض باسمه."""
+    if imtidad == ".lean":
+        return _taaliq_lean(s)
+    if imtidad == ".py":
+        return _taaliq_py(s)
+    if imtidad == ".sh":
+        return _taaliq_sh(s)
+    if imtidad in LUGHAT_BILA_TAALIQ:
+        return []
+    raise ValueError(f"امتدادٌ لا تُعرف فيه قاعدةُ التعليق: {imtidad or '(بلا امتداد)'}")
+
+
+def bila_taaliq(s, imtidad):
+    """النصُّ وكلُّ تعليقٍ فيه مسافةٌ واحدة."""
+    qita, i = [], 0
+    for a, b in mawadi_taaliq(s, imtidad):
+        qita += [s[i:a], " "]
+        i = b
+    return "".join(qita + [s[i:]])
+
+
+def mawadi(s, min_):
+    """مواضعُ «min» في النصّ كلُّها، المتداخلةُ منها أيضًا."""
+    out, i = [], s.find(min_)
+    while i >= 0:
+        out.append(i)
+        i = s.find(min_, i + 1)
+    return out
+
+
+def ayb_tafra(t, root):
+    """عيبُ نصّ الطفرة نصًّا مسمًّى، أو None إن سلمت: الحقولُ نصوص، والملفُّ داخل المستودع، و«min» غيرُ فارغٍ ويقع مرّةً
+    واحدة، والطفرةُ تغيّر الملفَّ خارج التعليق (تعليقُ الأصل والمطفَّر يُطرح ثمّ يُقارَن الباقيان)."""
+    if not all(isinstance(t.get(k), str) for k in ("ism", "milaf", "min", "ila")):
+        return "قيدٌ بلا ism أو milaf أو min أو ila نصّيّ"
+    milaf = t["milaf"]
+    if os.path.isabs(milaf) or ".." in milaf.replace("\\", "/").split("/"):
+        return f"الملفّ خارج المستودع: {milaf}"
+    if not t["min"]:
+        return "«min» فارغ"
+    try:
+        with open(os.path.join(root, milaf), encoding="utf-8") as f:
+            s = f.read()
+    except (OSError, UnicodeDecodeError) as e:
+        return f"تعذّرت قراءة {milaf}: {e}"
+    m = mawadi(s, t["min"])
+    if len(m) != 1:
+        return f"«min» يقع في {milaf} {len(m)} مرّة لا مرّةً واحدة"
+    imtidad = os.path.splitext(milaf)[1]
+    try:
+        asl = bila_taaliq(s, imtidad)
+    except ValueError as e:
+        return f"تعذّر تعيين التعليق في {milaf}: {e}"
+    mutaffar = s[:m[0]] + t["ila"] + s[m[0] + len(t["min"]):]
+    try:
+        if bila_taaliq(mutaffar, imtidad) == asl:
+            return "الطفرة لا تغيّر إلّا تعليقًا"
+    except ValueError:
+        pass                                # المطفَّر لا يُقرأ تعليقُه: تغييرٌ في الشيفرة لا في التعليق
+    return None
+
+
+def uyub_tafrat(tafrat, root):
+    """عيوبُ القائمة: كلُّ اسمٍ مكرَّر، وكلُّ طفرةٍ معيبةٍ نصًّا — «اسم: عيب»."""
+    uyub, raa = [], set()
+    for t in tafrat:
+        ism = t.get("ism") if isinstance(t, dict) else None
+        if isinstance(ism, str) and ism in raa:
+            uyub.append(f"{ism}: اسمٌ مكرَّر")
+        raa.add(ism)
+        ayb = ayb_tafra(t, root) if isinstance(t, dict) else "قيدٌ ليس كائنًا"
+        if ayb:
+            uyub.append(f"{ism}: {ayb}")
+    return uyub
+
+
 def main():
     fails, report = [], []
     code, out = run(["lake", "build"])
@@ -169,6 +371,21 @@ def main():
         report.append(f"٤أ قائمة الطفرات: الأساس {asas_sha[:7]} ({len(asas)}) ← الآن {len(hali)}؛ غائبٌ بلا إذن {len(naqisa)}")
         if naqisa:
             fails.append("طفراتٌ في الأساس غابت بلا قيدٍ في tahaqquq/tafrat_mahdhufa.json: " + "، ".join(naqisa))
+
+    # ٤ب. نصُّ كلّ طفرة: مرّةً واحدة في ملفّها، وتغييرٌ خارج التعليق، واسمٌ غير مكرَّر (يجري مع --bila-tafrat أيضًا).
+    try:
+        with open(os.path.join(ROOT, "tahaqquq", "tafrat.json"), encoding="utf-8") as f:
+            tafrat_kull = json.load(f)
+        if not isinstance(tafrat_kull, list):
+            raise ValueError("tafrat.json ليس قائمة")
+    except (OSError, ValueError) as e:
+        report.append("٤ب نصوص الطفرات: لم تُفحص")
+        fails.append(f"نصوص الطفرات: {e}")
+    else:
+        uyub = uyub_tafrat(tafrat_kull, ROOT)
+        report.append(f"٤ب نصوص الطفرات: {len(tafrat_kull)} طفرة، معيبةٌ {len(uyub)}")
+        if uyub:
+            fails.append("طفراتٌ معيبةُ النصّ:\n" + "\n".join(uyub))
 
     code, out = run([sys.executable, "-I", "tahaqquq/test_bawwaba.py"])
     report.append(f"٥أ اختبارات خطّ الأساس والتثبيت: {'مرّت' if code == 0 else 'فشلت'}")
