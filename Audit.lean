@@ -1403,6 +1403,15 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.Damj.la_faqd_janib_b
 #print axioms Nizam.Damj.la_ikhtira
 #print axioms Nizam.Damj.damj_tajmii
+#print axioms Nizam.Damj.mutakafi_inikas
+#print axioms Nizam.Damj.mutakafi_tanazur
+#print axioms Nizam.Damj.mutakafi_taaddi
+#print axioms Nizam.Damj.mutakafi_natija
+#print axioms Nizam.Damj.damj_tawafuq
+#print axioms Nizam.Damj.damj_tikrar_mutakafi
+#print axioms Nizam.Damj.damj_tanazur_mutakafi
+#print axioms Nizam.Damj.damj_tajmii_mutakafi
+#print axioms Nizam.Damj.shahid_hadhf_mahmul
 #print axioms Nizam.Damj.salamat_damj
 #print axioms Nizam.Damj.shahid_hadith_35
 #print axioms Nizam.Damj.shahid_hadith_767e09b

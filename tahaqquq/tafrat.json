@@ -1888,5 +1888,17 @@
   "milaf": "Nizam/Damj.lean",
   "min": "    (bahth l s.miftah).isNone &&\n",
   "ila": "    true &&\n"
+ },
+ {
+  "ism": "P248_takafu_bila_takrar",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  bilaTakrar x = true ∧ bilaTakrar y = true ∧\n    ∀ k, ray basmaOf",
+  "ila": "  True ∧ True ∧\n    ∀ k, ray basmaOf"
+ },
+ {
+  "ism": "P249_shawahid_janib_wahid",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  (shawahidKhaliya a ++ shawahidKhaliya b).filter fun s =>",
+  "ila": "  (shawahidKhaliya a).filter fun s =>"
  }
 ]
