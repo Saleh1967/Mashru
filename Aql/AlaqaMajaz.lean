@@ -19,20 +19,16 @@
   وهو نوعُ جداول نظام الفيزياء/الرياضيات في Jamad.lean نفسِها: علميٌّ يُقيَّد مقيسًا لا شاهدَ واقع)
   لا تحقّق الشرط، فلا تُنتج .majaz عبر haml في أيّ تشكيلٍ للحقائق الثلاث.
 
-  تحديثٌ (2026-10-19، بإذن المالك: اختار «تخصيص التسجيل بالدعوى» من بين ثلاثة مسارات عُرضت عليه،
-  ردًّا على تدقيقٍ خارجيٍّ ثانٍ بعد دمج هذا الملفّ في PR #41 — وافق الدخيل الأوّل، ثمّ دقّق ثانيةً
-  فأضاف: اسمٌ نصّيٌّ وحده («سببيّة») لا يُعرِّف الدعوى تعريفًا كافيًا، لأنّ علاقتين مختلفتين قد
-  تتسمّيان باسمٍ واحد؛ ونبّه ألّا يُعدَّل تعريف waqiMakhtum ولا تُصنَّف المصادر المختومة من جديد
-  إرضاءً لمثالٍ، وألّا تُمسّ Qaida.lean أو QawaninDalala.lean): الشرط الأوّل (شاهدٌ من واقعٍ مختوم)
-  كان كافيًا لسدّ حقن بوّابةٍ من معلوماتٍ مقيسة، لكنّه لا يمنع انتقال شاهدٍ اعتُمد لدعوى (ism=
-  "سببية" مثلًا بين معنيين) إلى دعوى أخرى تشارك مصدره ونوعه فقط (ism نفسه بين معنيين مختلفين، أو
-  معنيين متماثلين باسمٍ آخر). فهذا التحديث يضيف هويّةً للدعوى (DawaMajaz: الاسم، والمعنى الحقيقيّ،
-  والمعنى المجازيّ — فهرسا Maana كما في QawaninDalala.Qadiyya) وقيدَ تسجيلٍ (QaydTasjil) يحمل هذه
-  الهويّة لا البصمة والنوع وحدهما، ويعمّم مبرهنتَي haml لتأخذا سقوطَ mashrua حقيقةً مباشرة (hf) لا
-  سببًا بعينه، فيُبنى عليهما من أيّ سببٍ — كمصدرٍ غير مختوم (مبرهنة الأصل) أو كشاهدٍ مسجَّلٍ لدعوى
-  غيرها (la_intiqal، الجديدة). لا تعديل على waqiMakhtum ولا على Qaida.lean أو QawaninDalala.lean.
-  لا AlaqaMajaz حقيقيّةٌ مسجَّلةٌ في المستودع بعدُ (بحثٌ شامل هذه الجلسة) — فالمبرهنات هنا، كما في
-  البناء الأصل، على شاهدٍ عامّ مجرَّد، لا على مثالٍ معجميٍّ معتمد؛ تعميرُ أمثلةٍ حقيقيّةٍ عملٌ منفصل.
+  تحديثٌ (2026-10-19، بإذن المالك: اختار «تخصيص التسجيل بالدعوى» من ثلاثة مسارات عرضتُها عليه، بعد وثيقتَي
+  تدقيقٍ خارجيّتين رفعهما): mashrua في البناء الأصل لم تقرأ ism أصلًا، فشاهدٌ مختومٌ اعتُمد لدعوى كان يشرّع أيّ
+  دعوى أخرى تشارك مصدره ونوعه. فهذا التحديث يضيف هويّةً للدعوى (DawaMajaz: الاسم، والمعنى الحقيقيّ، والمعنى
+  المجازيّ — فهرسا Maana كما في QawaninDalala.Qadiyya) وقيدَ تسجيلٍ (QaydTasjil: بصمة، نوع، دعوى)، وتشترط
+  mashrua قيدًا بهويّة الدعوى نفسِها، ولا تقبل قيدًا بصمته فارغة (كانت تطابق كلّ شاهد: كلّ نصٍّ يبدأ بالفارغ).
+  ومبرهنتا haml العامّتان (٣) تأخذان سقوطَ alaqaOf فرضًا (hf)؛ ومنهما تُشتقّ الطرفيّات لكلّ سبب (٤) عبر تعريف
+  alaqaOf نفسِه، فلو انفصلت alaqaOf عن mashrua سقط برهانها. لا تعديل على waqiMakhtum ولا على Qaida.lean أو
+  QawaninDalala.lean. ولا AlaqaMajaz حقيقيّةٌ مسجَّلةٌ في المستودع بعدُ — فالمبرهنات هنا، كما في البناء الأصل،
+  على شاهدٍ عامّ مجرَّد، لا على مثالٍ معجميٍّ معتمد؛ تعميرُ أمثلةٍ حقيقيّةٍ عملٌ منفصل. وما يبقى خارج Lean
+  بطبيعته: أنّ نصّ الشاهد يقول الدعوى فعلًا — نقلٌ يُقرأ ويُراجَع، لا يُبرهَن.
 
   بناؤه الأصل يُعيد نسق Maratib.la_mafhum_bila_waqi وHawass.shahid_ghayr_mudaa_la_yuthir على alaqa
   بدل الشاهد الحسّيّ. لا جدول خارجيّ لهذه القطعة ولا مرآة بايثون، كـ SababShartMani.lean. بلا sorry
@@ -68,16 +64,16 @@ structure QaydTasjil where
   dawa  : DawaMajaz
 deriving DecidableEq, Repr
 
-/-- شرعيّةُ العلاقة: شاهدُها من مودَعٍ مسجَّلٍ نوعُه «واقعٌ مختوم» بعينه (نسق Maratib.shuhudMutabara)،
-    مسجَّلٍ خصّيصًا لهويّة دعواها هي. -/
+/-- شرعيّةُ العلاقة: قيدٌ بصمتُه غيرُ فارغةٍ يبدأ بها شاهدُها، نوعُه «واقعٌ مختوم» بعينه (نسق
+    Maratib.shuhudMutabara)، مسجَّلٌ خصّيصًا لهويّة دعواها هي. -/
 def mashrua (sijill : List QaydTasjil) (a : AlaqaMajaz) : Bool :=
-  sijill.any fun q => a.shahid.basma.startsWith q.basma && q.naw == .waqiMakhtum && q.dawa == a.dawa
+  sijill.any fun q => !q.basma.isEmpty && a.shahid.basma.startsWith q.basma && q.naw == .waqiMakhtum && q.dawa == a.dawa
 
 /-- إسقاطُها إلى Bool ليُغذَّى به haml.alaqa — فقط إن شُرعت. -/
 def alaqaOf (sijill : List QaydTasjil) (a : AlaqaMajaz) : Bool :=
   mashrua sijill a
 
-/-! ## ١. شاهدٌ من مودَعٍ غير «واقعٍ مختوم» لا يشرّع العلاقة -/
+/-! ## ١. أسبابُ سقوط الشرعيّة -/
 
 /-- **المعلومات السابقة لا تُشرِّع**: شاهدٌ من مودَعٍ كلُّه من نوعٍ آخر غير waqiMakhtum (كجداول نظام
     الفيزياء/الرياضيات — علميٌّ يُقيَّد مقيسًا، لا شاهدَ واقعٍ مختوم) لا يحقّق mashrua، أيًّا كانت
@@ -90,37 +86,41 @@ theorem mashrua_bila_waqi_makhtum
   have := hs q hq
   cases h : q.naw <;> simp_all
 
-/-! ## ٢. ولا انتقال شهادةٍ من دعوى إلى أخرى -/
-
-/-- **عدم انتقال الشهادة بين دعويين**: سجلٌّ لا يحمل قيدًا لهويّة دعوى العلاقة بعينها لا يشرِّعها،
-    ولو طابق شاهدُها بصمةً ونوعًا قيدَ دعوى أخرى تمامًا. فلا تُقبل علاقةٌ باعتماد شاهدٍ اعتُمد
-    لغيرها، ولو اشترك المصدر والنوع. -/
+/-- **عدم انتقال الشهادة بين دعويين**: إن لم يكن في السجلّ قيدٌ يطابق شاهدَ العلاقة (بصمةٌ غير فارغةٍ يبدأ بها،
+    ونوعٌ waqiMakhtum) مسجَّلٌ لهويّة دعواها بعينها، فلا تُشرَّع — ولو كانت بصمةُ شاهدها نفسُها مسجَّلةً مختومةً
+    لدعوى أخرى. فالشرطُ قاصرٌ على القيود المطابقة: ما سُجِّل لغير دعواها لا يشرّعها، وما لم يطابق لا شأن له. -/
 theorem la_intiqal
-    (sijill : List QaydTasjil) (a : AlaqaMajaz) (hd : ∀ q ∈ sijill, q.dawa ≠ a.dawa) :
+    (sijill : List QaydTasjil) (a : AlaqaMajaz)
+    (hd : ∀ q ∈ sijill, q.basma.isEmpty = false → a.shahid.basma.startsWith q.basma = true →
+      q.naw = .waqiMakhtum → q.dawa ≠ a.dawa) :
     mashrua sijill a = false := by
   simp only [mashrua, Bool.not_eq_true, List.any_eq_false]
   intro q hq
   have := hd q hq
-  simp_all
+  cases h0 : q.basma.isEmpty <;> cases h1 : a.shahid.basma.startsWith q.basma <;>
+    cases h2 : (q.naw == .waqiMakhtum) <;> cases h3 : (q.dawa == a.dawa) <;> simp_all
 
-/-! ## ٣. فلا تنتج .majaz عبر haml — بعد الاستنفاد التامّ، لأيّ سببٍ سقطت به mashrua -/
+/-- **قيدٌ بصمتُه فارغةٌ لا يُشرّع**: كلّ نصٍّ يبدأ بالفارغ، فقيدٌ بلا بصمةٍ كان يطابق كلّ شاهد؛ والآن لا يشرّع
+    علاقةً وحدَه، أيًّا كان نوعُه ودعواه. -/
+theorem basma_farigha_la_tushri (n : Idaa.Naw) (d : DawaMajaz) (a : AlaqaMajaz) :
+    mashrua [⟨"", n, d⟩] a = false := by
+  simp [mashrua]
 
-/-- بعد استنفاد الحقائق الثلاث (الثلاث .la): علاقةٌ سقطت شرعيّتُها (alaqaOf = false، بأيّ سببٍ —
-    مصدرٍ غير مختوم أو شاهدٍ لدعوى غيرها) تُنتج لا حكم، لا مجازًا (مركَّبةٌ من majaz_bad_istinfad
-    المستوردة بلا تعديل). -/
-theorem alaqaOf_ghayr_mashrua_la_hukm
+/-! ## ٢. العامّتان: سقوطُ alaqaOf لأيّ سببٍ لا يُنتج .majaz -/
+
+/-- بعد استنفاد الحقائق الثلاث (الثلاث .la): سقوطُ alaqaOf (بأيّ سببٍ) يُنتج لا حكم، لا مجازًا (من
+    majaz_bad_istinfad المستوردة بلا تعديل). -/
+theorem ghayr_mashrua_la_hukm
     (sijill : List QaydTasjil) (a : AlaqaMajaz) (hf : alaqaOf sijill a = false)
     (sabq : Bool) (qarina : Option NawHaqiqa) :
     haml .la .la .la sabq qarina (alaqaOf sijill a) = .laHukm := by
   rw [hf]
   exact (majaz_bad_istinfad sabq qarina).2
 
-/-! ## ٤. التجميع: في أيّ تشكيلٍ للحقائق الثلاث -/
-
-/-- **النتيجة الجامعة**: علاقةٌ سقطت شرعيّتُها (بأيّ سببٍ) لا تُنتج .majaz عبر haml، أيًّا كانت
-    شهادات الحقائق الثلاث — إمّا حقيقةٌ (إن شهدت واحدةٌ، la_majaz_qabl_istinfad المستوردة)، أو
-    لا حكم (الباقي: ghayr_yuqif المستوردة، أو (٣) إن شهدت الثلاث كلّها بالسلب التامّ). -/
-theorem alaqa_ghayr_mashrua_la_tunshi_majaz
+/-- سقوطُ alaqaOf (بأيّ سببٍ) لا يُنتج .majaz عبر haml، أيًّا كانت شهادات الحقائق الثلاث — إمّا حقيقةٌ (إن شهدت
+    واحدةٌ، la_majaz_qabl_istinfad المستوردة)، أو لا حكم (الباقي: ghayr_yuqif المستوردة، أو ghayr_mashrua_la_hukm
+    إن شهدت الثلاث كلّها بالسلب التامّ). -/
+theorem ghayr_mashrua_la_tunshi_majaz
     (sijill : List QaydTasjil) (a : AlaqaMajaz) (hf : alaqaOf sijill a = false)
     (s1 s2 s3 : Shahada) (sabq : Bool) (qarina : Option NawHaqiqa) :
     haml s1 s2 s3 sabq qarina (alaqaOf sijill a) ≠ .majaz := by
@@ -133,27 +133,45 @@ theorem alaqa_ghayr_mashrua_la_tunshi_majaz
       have e2 : s2 = .la := by rcases s2 with _ | _ | _ <;> simp_all
       have e3 : s3 = .la := by rcases s3 with _ | _ | _ <;> simp_all
       subst e1; subst e2; subst e3
-      rw [alaqaOf_ghayr_mashrua_la_hukm sijill a hf sabq qarina]
+      rw [ghayr_mashrua_la_hukm sijill a hf sabq qarina]
       decide
 
-/-! ## ٥. من السبب إلى منع المجاز طرفًا لطرف: لكلّ سببٍ لسقوط الشرعيّة مبرهنةٌ تمرّ بـ alaqaOf نفسِها
+/-! ## ٣. الطرفيّات: من السبب إلى الحكم، عبر تعريف alaqaOf نفسِه
 
-(٣) و(٤) تأخذان «alaqaOf … = false» فرضًا؛ فلا تربطان alaqaOf بـ mashrua. هاتان تربطانهما: تشتقّان ذلك الفرض من السبب
-عبر تعريف alaqaOf نفسِه، فلو انفصلت alaqaOf عن mashrua (كأن تُعيد true دائمًا) سقط برهانهما. -/
+العامّتان تأخذان «alaqaOf … = false» فرضًا فلا تربطان alaqaOf بـ mashrua؛ هذه تربطهما — تشتقّ ذلك الفرض من السبب
+عبر تعريف alaqaOf، فلو انفصلت alaqaOf عن mashrua (كأن تُعيد true دائمًا) سقط برهانها. -/
 
-/-- **بلا واقعٍ مختوم لا مجاز**: سجلٌّ لا قيدَ فيه من نوع waqiMakhtum لا يُنتج .majaz عبر haml في أيّ تشكيل. -/
-theorem bila_waqi_makhtum_la_majaz
+/-- بلا واقعٍ مختوم: بعد الاستنفاد التامّ لا حكم (صيغةُ main نفسُها بفرضها hs). -/
+theorem alaqaOf_ghayr_mashrua_la_hukm
+    (sijill : List QaydTasjil) (hs : ∀ q ∈ sijill, q.naw ≠ .waqiMakhtum)
+    (a : AlaqaMajaz) (sabq : Bool) (qarina : Option NawHaqiqa) :
+    haml .la .la .la sabq qarina (alaqaOf sijill a) = .laHukm :=
+  ghayr_mashrua_la_hukm sijill a (mashrua_bila_waqi_makhtum sijill hs a) sabq qarina
+
+/-- **النتيجة الجامعة** (صيغةُ main نفسُها بفرضها hs): بلا واقعٍ مختوم لا .majaz عبر haml في أيّ تشكيل. -/
+theorem alaqa_ghayr_mashrua_la_tunshi_majaz
     (sijill : List QaydTasjil) (hs : ∀ q ∈ sijill, q.naw ≠ .waqiMakhtum)
     (a : AlaqaMajaz) (s1 s2 s3 : Shahada) (sabq : Bool) (qarina : Option NawHaqiqa) :
     haml s1 s2 s3 sabq qarina (alaqaOf sijill a) ≠ .majaz :=
-  alaqa_ghayr_mashrua_la_tunshi_majaz sijill a (mashrua_bila_waqi_makhtum sijill hs a) s1 s2 s3 sabq qarina
+  ghayr_mashrua_la_tunshi_majaz sijill a (mashrua_bila_waqi_makhtum sijill hs a) s1 s2 s3 sabq qarina
 
-/-- **شاهدُ دعوى أخرى لا يُنتج مجازًا**: سجلٌّ لا قيدَ فيه لهويّة دعوى العلاقة بعينها لا يُنتج .majaz عبر haml في أيّ
-    تشكيل، ولو طابق شاهدُها بصمةً ونوعًا قيدَ دعوى أخرى. -/
+/-- شاهدُ دعوى أخرى: بعد الاستنفاد التامّ لا حكم. -/
+theorem dawa_ukhra_la_hukm
+    (sijill : List QaydTasjil) (a : AlaqaMajaz)
+    (hd : ∀ q ∈ sijill, q.basma.isEmpty = false → a.shahid.basma.startsWith q.basma = true →
+      q.naw = .waqiMakhtum → q.dawa ≠ a.dawa)
+    (sabq : Bool) (qarina : Option NawHaqiqa) :
+    haml .la .la .la sabq qarina (alaqaOf sijill a) = .laHukm :=
+  ghayr_mashrua_la_hukm sijill a (la_intiqal sijill a hd) sabq qarina
+
+/-- **شاهدُ دعوى أخرى لا يُنتج مجازًا**: إن لم يطابق شاهدَ العلاقة قيدٌ مختومٌ مسجَّلٌ لهويّة دعواها بعينها، فلا .majaz
+    عبر haml في أيّ تشكيل — ولو كانت بصمتُه مسجَّلةً لدعوى أخرى. -/
 theorem dawa_ukhra_la_majaz
-    (sijill : List QaydTasjil) (a : AlaqaMajaz) (hd : ∀ q ∈ sijill, q.dawa ≠ a.dawa)
+    (sijill : List QaydTasjil) (a : AlaqaMajaz)
+    (hd : ∀ q ∈ sijill, q.basma.isEmpty = false → a.shahid.basma.startsWith q.basma = true →
+      q.naw = .waqiMakhtum → q.dawa ≠ a.dawa)
     (s1 s2 s3 : Shahada) (sabq : Bool) (qarina : Option NawHaqiqa) :
     haml s1 s2 s3 sabq qarina (alaqaOf sijill a) ≠ .majaz :=
-  alaqa_ghayr_mashrua_la_tunshi_majaz sijill a (la_intiqal sijill a hd) s1 s2 s3 sabq qarina
+  ghayr_mashrua_la_tunshi_majaz sijill a (la_intiqal sijill a hd) s1 s2 s3 sabq qarina
 
 end AlaqaMajaz
