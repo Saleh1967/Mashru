@@ -122,6 +122,27 @@ theorem basma_farigha_la_tuqbal {P : Type} (sanad? : P → Option String) (sijil
     simp [he]
   · rfl
 
+/-- **البصمةُ الفارغة لا أثرَ لها**: حذفُ القيود الفارغة من أيّ سجلٍّ لا يغيّر القبول، أيًّا كان السند — وهي خاصّةُ السدّ. -/
+theorem basma_farigha_khamila {P : Type} (sanad? : P → Option String) (sijill : List String) (p : P) :
+    aslMusajjal sanad? (sijill.filter (· != "")) p = aslMusajjal sanad? sijill p := by
+  unfold aslMusajjal
+  split
+  · rename_i s _
+    induction sijill with
+    | nil => rfl
+    | cons b bs ih =>
+      by_cases hb : b = ""
+      · subst hb
+        have h0 : ("" : String).isEmpty = true := by decide
+        simp [List.filter, h0, ih]
+      · have h1 : b.isEmpty = false := by
+          cases h : b.isEmpty
+          · rfl
+          · exact absurd (String.isEmpty_iff.mp h) hb
+        have hb' : (b != "") = true := bne_iff_ne.mpr hb
+        simp only [List.filter_cons, hb', ite_true, List.any_cons, h1, ih]
+  · rfl
+
 /-- وعلى الشاهد: سندٌ يبدأ ببصمةٍ مسجَّلةٍ غيرِ فارغة مقبول، وسندٌ لا يبدأ بها مرفوض — فالسدُّ لا يُفرغ القبول. -/
 theorem aslMusajjal_shahid :
     aslMusajjal (fun _ : Unit => some "abc@1") ["abc"] () = true ∧

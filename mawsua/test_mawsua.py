@@ -116,4 +116,10 @@ assert code == 0 and out[0] == "حكم (1) بالقاعدة mawsua-0.1:" and "ق
 assert any(l.endswith("معلومة (لا شاهد واقعٍ مودَع)") for l in out) and out[-1].endswith("مفهوم 0"), out
 ok += 1
 
-print(f"{ok}/13")
+# بصمةُ المودَع sha256 (64 حرفًا) شرطُ دخوله السجلّ: الفارغةُ والقصيرة خطآن مسمّيان (Faahis/Lib.lean، سطر «mudaa»)؛
+# وبه لا يبلغ قيدٌ فارغ aslMusajjal ولا shuhudMutabara ولا nawSanadMin من المنفّذ (سدّ البصمة الفارغة 2026-10-19).
+code, rows = faahis("fasid_basma.tsv")
+assert code == 1 and [r[1] for r in rows if r[0] == "خطأ"] == ["سطر 1: بصمة ليست sha256", "سطر 2: بصمة ليست sha256"], rows
+ok += 1
+
+print(f"{ok}/14")

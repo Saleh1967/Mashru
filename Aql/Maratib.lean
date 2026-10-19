@@ -12,7 +12,9 @@
   * قضايا الدلالة والبنية كلُّها «من حيث هي»: دالّتها لا تأخذ قصدًا ولا سامعًا (م17).
   * المعاني المذكورة في القضيّة تُرتَّب كلٌّ بشواهد واقعه: «مفهوم» لا يُبنى إلّا على قائمة شواهد غير خالية
     (في المُنشئ نفسه، م16)؛ وإلّا «معلومة».
-  * الشاهد لا يُعتبر إلّا إن كانت بصمته لمودَعٍ من نوع «واقع مختوم» (الدستور م12): المعجم لا يصنع مفهومًا.
+  * الشاهد لا يُعتبر إلّا إن كانت بصمته لمودَعٍ من نوع «واقع مختوم» (الدستور م12): المعجم لا يصنع مفهومًا؛ وببصمةِ قيدٍ غيرِ
+    فارغة (سُدّ 2026-10-19 بإذن المالك: «""» بادئةُ كلّ بصمة، فقيدٌ فارغٌ من نوع «واقع مختوم» كان يُعتبر كلَّ شاهد؛ و`waqi_yarfa`
+    أُضعفت بالضرورة بفرض `hne`، لأنّ صيغتها القديمة عند `b = ""` كانت هي شاهدَ الثغرة).
   * الفهرس يعدّ الثلاث كلّها.
   بلا sorry ولا axiom ولا native_decide.
 -/
@@ -101,6 +103,30 @@ theorem waqi_yarfa (b : String) (hne : b ≠ "") (s : ShahidWaqi) (hb : s.basma.
     · rfl
     · exact absurd (String.isEmpty_iff.mp h) hne
   simp [shuhudMutabara, he, hb, martabatMaana, Mukhraj.ism]
+
+/-- **البصمةُ الفارغة لا أثرَ لها**: حذفُ القيود الفارغة البصمة من أيّ سجلٍّ لا يغيّر الشواهد المعتبرة — وهي خاصّةُ السدّ. -/
+theorem basma_farigha_la_tuthir (sijill : List (String × Idaa.Naw)) (sh : List ShahidWaqi) :
+    shuhudMutabara (sijill.filter (·.1 != "")) sh = shuhudMutabara sijill sh := by
+  unfold shuhudMutabara
+  congr 1
+  funext s
+  induction sijill with
+  | nil => rfl
+  | cons b bs ih =>
+    by_cases hb : b.1 = ""
+    · have h0 : ("" : String).isEmpty = true := by decide
+      simp [List.filter, hb, h0, ih]
+    · have h1 : b.1.isEmpty = false := by
+        cases h : b.1.isEmpty
+        · rfl
+        · exact absurd (String.isEmpty_iff.mp h) hb
+      have hb' : (b.1 != "") = true := bne_iff_ne.mpr hb
+      simp only [List.filter_cons, hb', ite_true, List.any_cons, h1, ih]
+
+/-- وعلى الشاهد: شاهدٌ تبدأ بصمتُه ببصمة قيدٍ «واقع مختوم» معتبَر، وما لا تبدأ به لا يُعتبر. -/
+theorem shuhudMutabara_shahid :
+    shuhudMutabara [("abc", .waqiMakhtum)] [⟨"abcdef", 1⟩, ⟨"abd", 2⟩] = [⟨"abcdef", 1⟩] := by
+  decide +kernel
 
 /-- **البصمةُ الفارغة لا تُشهِد**: سجلٌّ كلُّ قيدٍ فيه بصمتُه فارغةٌ أو نوعُه غيرُ «واقع مختوم» لا يرفع معنًى إلى مفهوم، أيًّا
     كانت الشواهد — مع أنّ «""» بادئةُ كلّ بصمة. -/

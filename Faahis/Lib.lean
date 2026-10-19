@@ -188,11 +188,22 @@ structure Bina where
   asl? : Qadiyya → Option Asl
   shuhud : Nat → List ShahidWaqi
 
+/-- نوعُ مودَعِ السند (سقفُ وسمه): أوّلُ مودَعٍ مسجَّلٍ ببصمةٍ **غيرِ فارغة** يبدأ بها السند — بشرط `Idaa.aslMusajjal` نفسِه،
+    فلا يعلو الوسمَ قيدٌ فارغٌ لا يقبله ذاك؛ وإلّا «مرجع محجوب» (أدنى السقوف). -/
+def nawSanadMin (mudaat : Array (String × Idaa.Naw)) (s : String) : Idaa.Naw :=
+  ((mudaat.find? (fun m => !m.1.isEmpty && s.startsWith m.1)).map (·.2)).getD .marjaMahjub
+
+/-- **القيدُ الفارغ لا يعطي سندًا نوعَه** (على الشاهد): قيدٌ فارغٌ من نوع «وضع» قبل القيد الحقيقيّ لا يرفع سندًا من «مرجع
+    محجوب» إلى سقف «وضع». -/
+theorem nawSanad_basma_farigha :
+    nawSanadMin #[("", .wad), ("abc", .marjaMahjub)] "abc@1" = .marjaMahjub ∧
+    nawSanadMin #[("abc", .wad)] "abc@1" = .wad := by
+  decide +kernel
+
 def bina (h : Hal) (isdar : String) : Bina :=
   let asl? (p : Qadiyya) : Option Asl := h.usul.find? (·.qadiyya == p)
   let sijill := (h.mudaat.map (·.1)).toList
-  let nawSanad (s : String) : Idaa.Naw :=
-    ((h.mudaat.find? (fun m => s.startsWith m.1)).map (·.2)).getD .marjaMahjub
+  let nawSanad (s : String) : Idaa.Naw := nawSanadMin h.mudaat s
   { q := ⟨isdar, (h.qawanin.map (·.1)).toList⟩
     aslB := fun p => Idaa.aslMusajjal (fun x => (asl? x).map (·.sanad)) sijill p
     aslW := fun p => ((asl? p).map fun a => qayd a.tariqa (Idaa.qaydMudaa (nawSanad a.sanad) a.wasm)).getD .ray
