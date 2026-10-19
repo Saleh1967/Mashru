@@ -266,6 +266,8 @@ import Madlul.Fard116Shawahid
 #print axioms AlaqaMajaz.alaqa_ghayr_mashrua_la_tunshi_majaz
 #print axioms AlaqaMajaz.dawa_ukhra_la_hukm
 #print axioms AlaqaMajaz.dawa_ukhra_la_majaz
+#print axioms AlaqaMajaz.shahid_fard_awwal_muntafin
+#print axioms AlaqaMajaz.shahid_intiqal
 #print axioms Dal.ramz_eq_cellEnc
 #print axioms Dal.ramz_lt
 #print axioms Dal.ahjam_eq

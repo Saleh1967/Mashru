@@ -174,4 +174,27 @@ theorem dawa_ukhra_la_majaz
     haml s1 s2 s3 sabq qarina (alaqaOf sijill a) ≠ .majaz :=
   ghayr_mashrua_la_tunshi_majaz sijill a (la_intiqal sijill a hd) s1 s2 s3 sabq qarina
 
+/-! ## ٤. شاهدُ حالة الانتقال (مثالُ المراجع المستقلّ، مبرهنٌ على الشاهد)
+
+مثالٌ مجرَّد: الأسماء والفهارس للتمثيل لا دعوى معجميّة. بصمةُ الشاهد مسجَّلةٌ مختومةً لدعوى D1، وفي السجلّ قيدٌ آخر
+للدعوى المطلوبة D2 (من نوعٍ غير مختوم). فرضُ الصيغة الأولى لـ la_intiqal («كلّ قيدٍ دعواه غير دعوى العلاقة») منتفٍ هنا،
+والصيغة المقوّاة تنطبق فتمنع الانتقال. -/
+
+def shahidD1 : DawaMajaz := ⟨"سببية", 1, 2⟩
+def shahidD2 : DawaMajaz := ⟨"مشابهة", 1, 3⟩
+def shahidSijill : List QaydTasjil := [⟨"abc", .waqiMakhtum, shahidD1⟩, ⟨"abc", .maalumatSabiqa, shahidD2⟩]
+def shahidAlaqa : AlaqaMajaz := ⟨shahidD2, ⟨"abcdef", 7⟩⟩
+
+/-- فرضُ الصيغة الأولى منتفٍ على الشاهد: في السجلّ قيدٌ دعواه دعوى العلاقة نفسُها. -/
+theorem shahid_fard_awwal_muntafin : ¬ (∀ q ∈ shahidSijill, q.dawa ≠ shahidAlaqa.dawa) := by decide
+
+/-- والصيغة المقوّاة تنطبق: شاهدٌ بصمتُه مختومةٌ لدعوى أخرى لا يُشرِّع. -/
+theorem shahid_intiqal : mashrua shahidSijill shahidAlaqa = false := by
+  apply la_intiqal
+  intro q hq _ _ hn
+  simp only [shahidSijill, List.mem_cons, List.not_mem_nil, or_false] at hq
+  rcases hq with rfl | rfl
+  · decide
+  · cases hn
+
 end AlaqaMajaz
