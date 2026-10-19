@@ -383,7 +383,7 @@ class TafraNassTests(unittest.TestCase):
                           ("a.sh", self.SH), ("a.tsv", "x\ty\nz\tw\n"), ("a.md", "x\n"),
                           ("raf.py", 'def f():\n    # """توثيقٌ مرفوع"""\n    return 1\n'),
                           ("raf.lean", "-- -- ملاحظةٌ مرفوعة\ndef a := 1\n"),
-                          ("A.LEAN", "def a := 1\n"), ("a.txt", "x\n"), ("Makefile", "x:\n"), ("a.yml", "x: 1\n")):
+                          ("K.LEAN", "def k := 1\n"), ("a.txt", "x\n"), ("Makefile", "x:\n"), ("a.yml", "x: 1\n")):
             with open(os.path.join(self.tmp.name, ism), "w", encoding="utf-8") as f:
                 f.write(nass)
 
@@ -411,16 +411,17 @@ class TafraNassTests(unittest.TestCase):
         self.assertIsNone(self.ayb("a.lean", "-- def g := 2", "def g := 2"))              # رفعُ التعليق تغييرٌ في الشيفرة
 
     def test_uncommenting_needs_code_change(self):
-        # استثناءُ رفع التعليق «إذا كان الأثر تغييرًا تنفيذيًا حقيقيًا»: رفعُ العلامة وما ظهر يبقى توثيقًا أو تعليقًا لا يُقبل
+        # استثناءُ رفع التعليق، وشرطُه في التوجيه «إذا كان الأثر تغييرًا تنفيذيًا حقيقيًا»؛ والمفحوصُ هنا نحويّ: رفعُ العلامة وما ظهر
+        # يبقى توثيقًا أو تعليقًا لا يُقبل، ويُقبل إن صار الناتجُ نصًّا خارج التعليق. والأثرُ السلوكيّ لا يُفحص هنا (للبند ٦ بالقتل)
         self.assertEqual(self.ayb("raf.py", '# """توثيقٌ مرفوع"""', '"""توثيقٌ مرفوع"""'), self.FI_TAALIQ)
         self.assertEqual(self.ayb("raf.lean", "-- -- ملاحظةٌ مرفوعة", "-- ملاحظةٌ مرفوعة"), self.FI_TAALIQ)
-        # ورفعُها إلى شيفرةٍ يُقبل
+        # ورفعُها إلى نصٍّ خارج التعليق يُقبل — ولو كان إسنادًا ميّتًا بلا أثرٍ سلوكيّ
         self.assertIsNone(self.ayb("raf.py", '# """توثيقٌ مرفوع"""', 'x = """توثيقٌ مرفوع"""'))
 
     def test_supported_extensions_are_declared(self):
         # «مع تعريف واضح للأنواع المدعومة»: الحصرُ مكتوبٌ هنا باليد، لا مقروءٌ من الشيفرة
         self.assertEqual(bawwaba.ANWA_MADUMA, {".lean", ".py", ".sh", ".tsv", ".json"})
-        for milaf, min_ in (("A.LEAN", "def a"), ("a.txt", "x"), ("Makefile", "x:"), ("a.yml", "x: 1"), ("a.md", "x")):
+        for milaf, min_ in (("K.LEAN", "def k"), ("a.txt", "x"), ("Makefile", "x:"), ("a.yml", "x: 1"), ("a.md", "x")):
             with self.subTest(milaf=milaf):
                 self.assertIn("امتدادٌ لا تُعرف", self.ayb(milaf, min_))
 
