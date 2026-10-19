@@ -203,6 +203,8 @@ import Madlul.Fard116Shawahid
 #print axioms Idaa.la_tanzif_bila_daya
 #print axioms Idaa.aslMusajjal_sanad
 #print axioms Idaa.sijill_faregh
+#print axioms Idaa.basma_farigha_la_tuqbal
+#print axioms Idaa.aslMusajjal_shahid
 #print axioms Qaida.mutadarrija_daifa
 #print axioms Qaida.rutba_sifr_asl_daifa
 #print axioms Mawsua.tartib_hasir
@@ -254,6 +256,7 @@ import Madlul.Fard116Shawahid
 #print axioms Maratib.mujam_la_yasna_mafhum
 #print axioms Maratib.la_mafhum_bila_waqi
 #print axioms Maratib.waqi_yarfa
+#print axioms Maratib.basma_farigha_la_tushhid
 #print axioms Maratib.khatwa_majmu
 #print axioms Maratib.foldl_majmu
 #print axioms Maratib.ihsa_majmu

@@ -48,9 +48,10 @@ theorem qadiyya_min_haythu_hiya (p : Qadiyya) : (martabatQadiyya p).ism = "من 
 
 /-! ## ٢. المعاني: معلومة أو مفهوم بشواهد الواقع -/
 
-/-- الشواهد المعتبرة: ما كانت بصمته لمودَعٍ مسجَّلٍ من نوع «واقع مختوم». -/
+/-- الشواهد المعتبرة: ما كانت بصمته لمودَعٍ مسجَّلٍ من نوع «واقع مختوم» ببصمةٍ **غيرِ فارغة** (الفارغةُ بادئةُ كلّ بصمة؛
+    سُدّ بإذن المالك 2026-10-19 16:16). -/
 def shuhudMutabara (sijill : List (String × Idaa.Naw)) (sh : List ShahidWaqi) : List ShahidWaqi :=
-  sh.filter fun s => sijill.any fun b => s.basma.startsWith b.1 && b.2 == .waqiMakhtum
+  sh.filter fun s => sijill.any fun b => !b.1.isEmpty && s.basma.startsWith b.1 && b.2 == .waqiMakhtum
 
 def martabatMaana (m : Nat) (sh : List ShahidWaqi) : Mukhraj :=
   if h : sh = [] then .maaluma m else .mafhum m sh h
@@ -92,10 +93,30 @@ theorem la_mafhum_bila_waqi (sijill : List (String × Idaa.Naw)) (hs : ∀ b ∈
     cases h : b.2 <;> simp_all
   rw [this]; rfl
 
-/-- وشاهدٌ معتبَرٌ واحد في «واقع مختوم» يرفع المعنى إلى مفهوم. -/
-theorem waqi_yarfa (b : String) (s : ShahidWaqi) (hb : s.basma.startsWith b = true) (m : Nat) :
+/-- وشاهدٌ معتبَرٌ واحد في «واقع مختوم» ببصمةٍ غيرِ فارغة يرفع المعنى إلى مفهوم. -/
+theorem waqi_yarfa (b : String) (hne : b ≠ "") (s : ShahidWaqi) (hb : s.basma.startsWith b = true) (m : Nat) :
     (martabatMaana m (shuhudMutabara [(b, .waqiMakhtum)] [s])).ism = "مفهوم" := by
-  simp [shuhudMutabara, hb, martabatMaana, Mukhraj.ism]
+  have he : b.isEmpty = false := by
+    cases h : b.isEmpty
+    · rfl
+    · exact absurd (String.isEmpty_iff.mp h) hne
+  simp [shuhudMutabara, he, hb, martabatMaana, Mukhraj.ism]
+
+/-- **البصمةُ الفارغة لا تُشهِد**: سجلٌّ كلُّ قيدٍ فيه بصمتُه فارغةٌ أو نوعُه غيرُ «واقع مختوم» لا يرفع معنًى إلى مفهوم، أيًّا
+    كانت الشواهد — مع أنّ «""» بادئةُ كلّ بصمة. -/
+theorem basma_farigha_la_tushhid (sijill : List (String × Idaa.Naw))
+    (hs : ∀ b ∈ sijill, b.1 = "" ∨ b.2 ≠ .waqiMakhtum) (m : Nat) (sh : List ShahidWaqi) :
+    martabatMaana m (shuhudMutabara sijill sh) = .maaluma m := by
+  have : shuhudMutabara sijill sh = [] := by
+    simp only [shuhudMutabara, List.filter_eq_nil_iff]
+    intro s _
+    simp only [Bool.not_eq_true, List.any_eq_false]
+    intro b hb
+    rcases hs b hb with h | h
+    · have he : ("" : String).isEmpty = true := by decide
+      rw [h]; simp [he]
+    · cases h2 : b.2 <;> simp_all
+  rw [this]; rfl
 
 /-! ## ٣. المعاني المذكورة في القضيّة، والفهرس -/
 

@@ -254,8 +254,8 @@
  {
   "ism": "M34_shuhud_min_ayy_mudaa",
   "milaf": "Aql/Maratib.lean",
-  "min": "  sh.filter fun s => sijill.any fun b => s.basma.startsWith b.1 && b.2 == .waqiMakhtum",
-  "ila": "  sh.filter fun s => sijill.any fun b => s.basma.startsWith b.1"
+  "min": "  sh.filter fun s => sijill.any fun b => !b.1.isEmpty && s.basma.startsWith b.1 && b.2 == .waqiMakhtum",
+  "ila": "  sh.filter fun s => sijill.any fun b => !b.1.isEmpty && s.basma.startsWith b.1"
  },
  {
   "ism": "M35_ahjam_naqisa",
@@ -1732,5 +1732,29 @@
   "milaf": "tahaqquq/tafrat_juz.py",
   "min": "    if mukarrar:\n        print(",
   "ila": "    if False:\n        print("
+ },
+ {
+  "ism": "P197_asl_basma_farigha",
+  "milaf": "Aql/Idaa.lean",
+  "min": "  | some s => sijill.any (fun b => !b.isEmpty && s.startsWith b)",
+  "ila": "  | some s => sijill.any (fun b => s.startsWith b)"
+ },
+ {
+  "ism": "P198_shuhud_basma_farigha",
+  "milaf": "Aql/Maratib.lean",
+  "min": "sijill.any fun b => !b.1.isEmpty && s.basma.startsWith b.1",
+  "ila": "sijill.any fun b => s.basma.startsWith b.1"
+ },
+ {
+  "ism": "P199_asl_la_yuqbal_abadan",
+  "milaf": "Aql/Idaa.lean",
+  "min": "  | some s => sijill.any (fun b => !b.isEmpty && s.startsWith b)",
+  "ila": "  | some s => sijill.any (fun b => false && s.startsWith b)"
+ },
+ {
+  "ism": "P200_shuhud_la_tuqbal_abadan",
+  "milaf": "Aql/Maratib.lean",
+  "min": "sijill.any fun b => !b.1.isEmpty && s.basma.startsWith b.1",
+  "ila": "sijill.any fun b => false && s.basma.startsWith b.1"
  }
 ]

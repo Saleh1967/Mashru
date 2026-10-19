@@ -17,7 +17,7 @@
      - الحكاية («المودَع يقول كذا في موضع كذا») تطابَق على النصّ المختوم؛
      - المضمون («اللفظ موضوع لكذا») مرتبته من درجة الخبر: الآحاد ظنّيّ، والمتواتر قطعيّ.
   ٣. «التنظيف» الذي يجمع صورتين مختلفتين في صورة واحدة ليس طيًّا معتبرًا (شاهده التطويل).
-  ٤. الأصل لا يُقبل إلّا إن كان سنده يبدأ ببصمة مودَعٍ مسجَّل.
+  ٤. الأصل لا يُقبل إلّا إن كان سنده يبدأ ببصمة مودَعٍ مسجَّل غيرِ فارغة.
   بلا sorry ولا axiom ولا native_decide.
 -/
 import Aql.Aqliyya
@@ -86,25 +86,46 @@ theorem la_tanzif_bila_daya : ¬ ∃ t : Tayy (List Char) (List Char), t.tawi = 
 
 /-! ## ٤. لا أصل بلا مودَعٍ مسجَّل -/
 
-/-- الأصل مقبول إن كان له سند، وكان سنده يبدأ ببصمة مودَعٍ في السجلّ. -/
+/-- الأصل مقبول إن كان له سند، وكان سنده يبدأ ببصمة مودَعٍ في السجلّ **غيرِ فارغة**: الفارغةُ بادئةُ كلّ نصّ، فقيدٌ
+    بلا بصمةٍ كان يقبل كلَّ سند (سُدّ بإذن المالك 2026-10-19 16:16؛ الفاحص التنفيذيّ يشترط 64 حرفًا عند القراءة، وهذا
+    سدُّه في التعريف نفسِه). -/
 def aslMusajjal {P : Type} (sanad? : P → Option String) (sijill : List String) (p : P) : Bool :=
   match sanad? p with
-  | some s => sijill.any (fun b => s.startsWith b)
+  | some s => sijill.any (fun b => !b.isEmpty && s.startsWith b)
   | none => false
 
 theorem aslMusajjal_sanad {P : Type} (sanad? : P → Option String) (sijill : List String) (p : P)
     (h : aslMusajjal sanad? sijill p = true) :
-    ∃ s b, sanad? p = some s ∧ b ∈ sijill ∧ s.startsWith b = true := by
+    ∃ s b, sanad? p = some s ∧ b ∈ sijill ∧ b ≠ "" ∧ s.startsWith b = true := by
   unfold aslMusajjal at h
   split at h
   · rename_i s hs
     obtain ⟨b, hb, hsb⟩ := List.any_eq_true.mp h
-    exact ⟨s, b, hs, hb, hsb⟩
+    simp only [Bool.and_eq_true, Bool.not_eq_true'] at hsb
+    exact ⟨s, b, hs, hb, by rintro rfl; exact absurd hsb.1 (by decide), hsb.2⟩
   · cases h
 
 /-- سجلٌّ فارغ لا يُقبل منه أصل: لا معرفة بلا مودَع. -/
 theorem sijill_faregh (P : Type) (sanad? : P → Option String) (p : P) :
     aslMusajjal sanad? [] p = false := by
   unfold aslMusajjal; split <;> rfl
+
+/-- **البصمةُ الفارغة لا تُسجِّل**: سجلٌّ كلُّ بصماته فارغةٌ لا يُقبل منه أصل، أيًّا كان السند — مع أنّ «""» بادئةُ كلّ نصّ. -/
+theorem basma_farigha_la_tuqbal {P : Type} (sanad? : P → Option String) (sijill : List String)
+    (hs : ∀ b ∈ sijill, b = "") (p : P) : aslMusajjal sanad? sijill p = false := by
+  unfold aslMusajjal
+  split
+  · rw [List.any_eq_false]
+    intro b hb
+    have he : ("" : String).isEmpty = true := by decide
+    rw [hs b hb]
+    simp [he]
+  · rfl
+
+/-- وعلى الشاهد: سندٌ يبدأ ببصمةٍ مسجَّلةٍ غيرِ فارغة مقبول، وسندٌ لا يبدأ بها مرفوض — فالسدُّ لا يُفرغ القبول. -/
+theorem aslMusajjal_shahid :
+    aslMusajjal (fun _ : Unit => some "abc@1") ["abc"] () = true ∧
+    aslMusajjal (fun _ : Unit => some "abd@1") ["abc"] () = false := by
+  decide +kernel
 
 end Idaa
