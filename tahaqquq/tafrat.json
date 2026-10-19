@@ -2014,5 +2014,41 @@
   "milaf": "Qari/Main.lean",
   "min": "    if wasl then\n",
   "ila": "    if false then\n"
+ },
+ {
+  "ism": "P272_phi_wa_yakfi_wahid",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | P, P => P",
+  "ila": "  | P, _ => P"
+ },
+ {
+  "ism": "P273_phi_nitaq_farigh_la_hukm",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | [] => N",
+  "ila": "  | [] => U"
+ },
+ {
+  "ism": "P274_phi_jidhr_ghaib_yamna",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def amilJidhr (A : Aqd) (x : List Nat) (r : Nat) : K3 := if A.jidhr x = some r then P else U",
+  "ila": "def amilJidhr (A : Aqd) (x : List Nat) (r : Nat) : K3 := if A.jidhr x = some r then P else N"
+ },
+ {
+  "ism": "P275_phi_shahid_ghaib_yamna",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def amilShahid (A : Aqd) (x : List Nat) (r m : Nat) : K3 := if (mustawa A x r).testBit m then P else U",
+  "ila": "def amilShahid (A : Aqd) (x : List Nat) (r m : Nat) : K3 := if (mustawa A x r).testBit m then P else N"
+ },
+ {
+  "ism": "P276_phi_tarkib_bil_fasl",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  fun a c => yujad (dom.map fun b => wa (R a b) (S b c))",
+  "ila": "  fun a c => yujad (dom.map fun b => aw (R a b) (S b c))"
+ },
+ {
+  "ism": "P277_phi_huwiyya_mamnua",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | [], a, c => a ≠ c",
+  "ila": "  | [], a, c => False"
  }
 ]

@@ -64,6 +64,7 @@ import Nizam.Talab
 import Faahis.Lib
 import Nizam.Damj
 import Nizam.Aqd
+import Nizam.Phi
 import Madlul.Ishtirak
 import Madlul.Tarjih
 import Jisr.Iqtiran
@@ -1357,6 +1358,37 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.Aqd.qala_la_hukm
 #print axioms Nizam.Aqd.shawahid_sigha
 #print axioms Nizam.Aqd.kataba_haal
+-- Φ: التركيبُ الجامعُ المانع بالمنطق الثلاثيّ (Nizam/Phi.lean؛ قرار المالك 2026-10-20 00:23 «(ب) Φ العامّة في Lean مع المنطق الثلاثيّ، تُعمِّم kull_ma_kull. موافق»)
+#print axioms Nizam.Phi.tabaqat_wa
+#print axioms Nizam.Phi.tabaqat_aw
+#print axioms Nizam.Phi.tabaqat_la_taarud
+#print axioms Nizam.Phi.wa_P
+#print axioms Nizam.Phi.wa_N
+#print axioms Nizam.Phi.aw_P
+#print axioms Nizam.Phi.aw_N
+#print axioms Nizam.Phi.yujad_P
+#print axioms Nizam.Phi.yujad_N
+#print axioms Nizam.Phi.yujad_map_P
+#print axioms Nizam.Phi.yujad_map_N
+#print axioms Nizam.Phi.tarkib_P
+#print axioms Nizam.Phi.tarkib_N
+#print axioms Nizam.Phi.zanjir_P
+#print axioms Nizam.Phi.zanjir_N
+#print axioms Nizam.Phi.wajiha_daruriyya
+#print axioms Nizam.Phi.amilQanun_P
+#print axioms Nizam.Phi.amilQanun_N
+#print axioms Nizam.Phi.amilMani_P
+#print axioms Nizam.Phi.amilMani_N
+#print axioms Nizam.Phi.amilJidhr_P
+#print axioms Nizam.Phi.amilJidhr_ghayr_N
+#print axioms Nizam.Phi.amilShahid_P
+#print axioms Nizam.Phi.amilShahid_ghayr_N
+#print axioms Nizam.Phi.phi_P
+#print axioms Nizam.Phi.phi_N
+#print axioms Nizam.Phi.aqd_phi
+#print axioms Nizam.Phi.jidhr_hadd
+#print axioms Nizam.Phi.aqd_phi_mashru
+#print axioms Nizam.Phi.kataba_phi
 
 -- جدولُ اللزوم من مقاييس اللغة ولسان العرب (Jisr/JadwalLuzum.lean؛ تفويض المالك 2026-10-18، مهمّة #87):
 -- سبعةُ جذوعٍ ثلاثيّةٍ بشهاداتٍ معجميّةٍ حرفيّة، شبكةٌ ومركزيّةُ «علم» مبرهنةٌ من الدرجة، وغرسٌ في
