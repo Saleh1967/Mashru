@@ -49,6 +49,7 @@ Aql.QawaninDalala	T6	نعم	قوانين الدلالة في القاعدة
 Madlul.JadwalLuzum	T6	لا	جدول اللزوم من شبكة المعاجم
 Madlul.JadwalLuzumData	T6	لا	بيانات جدول اللزوم (مولَّدة)
 Madlul.JadwalLuzumNaw	T6	لا	أنواع صفّ جدول اللزوم
+Jisr.JadwalLuzum	T6	لا	جسرُ جدول اللزوم إلى خلايا الدالّ (مع Madlul.JadwalLuzum؛ أُلحق عند دمج main في PR #36)
 Madlul.Ishtirak	T6	لا	اتّفاق اللفظين واختلاف المعنيين
 Madlul.IshtirakData	T6	لا	بيانات الاشتراك (مولَّدة)
 Jisr.AqsamDalMadlul	T6	لا	الأقسام السبعة باعتبار الدال والمدلول
@@ -69,6 +70,7 @@ Jisr.Ikhbar	T8	لا	أساليب الإخبار
 Jisr.Mulhaqat	T8	لا	ملحقات أطر الإخبار
 Jisr.KhulasaIkhbar	T8	لا	خلاصة أسلوب الإخبار
 Madlul.Tarjih	T9	لا	ترجيح الاحتمالات الخمسة: اشتراك ونقل ومجاز وإضمار وتخصيص
+Aql.AlaqaMajaz	T9	لا	شرطُ شرعيّة علاقة المجاز التي يستهلكها haml: شاهدُ واقعٍ مختوم (PR #41)
 Aql.Aqliyya	T11	نعم	العقل والعقلية: طبقة الحكم
 Aql.Badiha	T11	لا	سرعة البديهة لطبقة الحكم
 Aql.Maratib	T11	نعم	مراتب المخرج الثلاث
@@ -76,6 +78,7 @@ Aql.SababShartMani	T11	لا	السبب والشرط والمانع
 Aql.Qaida	ADAT	نعم	قاعدة المحرّك الواحدة ذات الإصدار
 Aql.Mawsua	ADAT	نعم	الطيّ والفكّ والمخزن والوسم
 Aql.Idaa	ADAT	نعم	بوّابة الإيداع
+Aql.Naql	ADAT	لا	شرطُ الأصل اللغويّ: القضيّة المنقولة ودرجة نقلها، بوّابةٌ على الأصول كـAql.Idaa (PR #40)
 Madlul.Tashfir	ADAT	لا	طيّ معجم الأجناس
 Madlul.TashfirSullam	ADAT	لا	الطيّ على سلّم SLGE
 Madlul.TashfirMadda	ADAT	لا	طيّ المادّة
