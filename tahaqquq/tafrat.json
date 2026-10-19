@@ -1108,6 +1108,8 @@
   "milaf": "Jisr/Iqtiran.lean",
   "min": "marashshahun.filter (fun m => quyud.all (fun q => q.yaqbal m))",
   "ila": "marashshahun.filter (fun m => quyud.any (fun q => q.yaqbal m))"
+ },
+ {
   "ism": "P149_luzumat_tabdil_kataba_ilm",
   "milaf": "Jisr/JadwalLuzum.lean",
   "min": "  [(\"كتب\", \"علم\"), (\"كتب\", \"قلم\"), (\"درس\", \"علم\"), (\"درس\", \"كتب\"),",
