@@ -1240,5 +1240,23 @@
   "milaf": "scripts/tathbit_lean.sh",
   "min": "--connect-timeout 15 --max-time 900 --retry 2 --retry-max-time 1800",
   "ila": "--retry 2"
+ },
+ {
+  "ism": "P167_naql_binadaraja_hadd",
+  "milaf": "Aql/Naql.lean",
+  "min": "if adadMasadirMukhtalifa ≥ 2 then .mutadhafir else .ahad",
+  "ila": "if adadMasadirMukhtalifa ≥ 3 then .mutadhafir else .ahad"
+ },
+ {
+  "ism": "P168_naql_yasluhu_and_to_or",
+  "milaf": "Aql/Naql.lean",
+  "min": "n.qail.isSome && (n.fiAlHadd != some false)",
+  "ila": "n.qail.isSome || (n.fiAlHadd != some false)"
+ },
+ {
+  "ism": "P169_naql_yasluhu_yatruk_qail",
+  "milaf": "Aql/Naql.lean",
+  "min": "  n.qail.isSome && (n.fiAlHadd != some false)",
+  "ila": "  true && (n.fiAlHadd != some false)"
  }
 ]
