@@ -2024,7 +2024,7 @@
  {
   "ism": "P270_qari_baad_ka_kama",
   "milaf": "Qari/Main.lean",
-  "min": "  let baad := (waqfForm l).all (· < 117) && Fwaqf (Nizam.Aqd.runB 0 (waqfForm l))",
+  "min": "  let baad := Nizam.Aqd.baadB l",
   "ila": "  let baad := kama"
  },
  {

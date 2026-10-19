@@ -18,15 +18,17 @@
     وإضافةُ طبقةٍ توسيعٌ للبنية بحقلٍ وقانونه، ثمّ تُبرهن المبرهنةُ الواحدةُ مرّةً أخرى.
 
   العقدُ على Mashru (`Mashru n`، لكلّ نوع علاقةٍ n من `JadwalLuzum`: خمسةُ عقودٍ بمبرهنةٍ واحدة):
-  * القانون (قرار المالك 2026-10-20 00:23، المرحلة «أ» من قانون المواصفة): مواصفتُه إطارُ الدالّ `Jisr.Utur.dalOK`
-    (الابتداء، والوصل كما يُقرأ، والوقف «المكتمل») — بناه البنّاء 2026-10-16 في `Jisr/Utur.lean` قراءةً لـ`SLGE/Necessity.lean` س25 بقرار
-    المالك بناءَ الأطر، ودُمج بـ #10 و#12، وليس من تعييناته التي أمضاها يومئذٍ؛ وتبنّاه المالك مواصفةً هنا. وهو القانونان معًا لكلّ سلسلة
+  * القانون (المرحلة «أ» من قانون المواصفة): مواصفتُه إطارُ الدالّ `Jisr.Utur.dalOK` (الابتداء، والوصل كما يُقرأ، والوقف «المكتمل»)
+    — بناه البنّاء 2026-10-16 في `Jisr/Utur.lean` قراءةً لـ`SLGE/Necessity.lean` س25 بقرار المالك بناءَ الأطر، ودخل main بـ #12 (و#10 دمجٌ
+    في الفرع `jisr/aqsam-55`)، وليس من تعييناته التي أمضاها يومئذٍ؛ وقرّر المالك 2026-10-20 00:23 اتّخاذَه مواصفةً، على مقدّمةٍ خاطئةٍ منّي
+    (أنّه أمضاه) أُبلغ بها في الجلسة نفسها، فالقرارُ ينتظر تثبيتَه. وهو القانونان معًا لكلّ سلسلة
     (`dalOK_taqatu`): `Fwaqf (run 0 x)`
     على الخلايا المعطاة (صورةُ شواهد المالك `qaltu`/`hajja`/`bint`) و`complete'` بعد التسكين (`SLGE.Bridge.DalLic`). ولا واحدَ منهما
     يكفي وحده (`wahid_la_yakfi`: «قَالْتُ» يقبلها الثاني وحده، و«بَ» يقبلها الأوّل وحده)، ومقدارُ الفرق على الخانة والخانتين
     `farq_dalLic` (84 و84، والعقدُ يقبل 0 و9,436). ومنفّذُه الجدولُ نفسُه على الصورتين — فهرسُه [حالة:7][رمز:7] ومدخلُه [وزن:1][حالة:7]
-    (`runB_run`)، وتسكينُ الوقف يحفظ حدود الرموز (`waqfForm_hadd`، `run_kabir`)؛ وسطرا القارئ «على الخلايا كما هي» و«بعد تسكين
-    الآخر» (بحارسهما) مساويان لـ`Fwaqf ∘ run 0` ولـ`complete'` لكلّ سلسلة (`kama_sawa`، `baad_sawa`).
+    (`runB_run`)، وتسكينُ الوقف يُبقي الرموز دون 117 (`waqfForm_hadd`)، والرمزُ فوق 116 يميت السلسلة (`run_kabir`). والمكوّنان بجدول
+    البتّات بحارسهما `kamaB` و`baadB` مساويان لـ`Fwaqf ∘ run 0` ولـ`complete'` لكلّ سلسلة (`kama_sawa`، `baad_sawa`)، والقارئ يستدعيهما
+    بأعيانهما في سطر العقد.
   * الجذر: إسقاطُ ثلاث خاناتٍ حواملُها سالمة (لا ا ي و: `SLGE.Law.weak`) بحرفها `Jisr.JisrDal.harf`؛ منفّذُه الإزاحةُ وقناعُ العلّة
     (`qina_illa`)، ورمزُه حقولُ خمسة بتّات (`fakk_ramz`)؛ وحواملُ المسقَط سالمةٌ بشرط المالك `SLGE.Law.SoundR` (`jidhr_salim` —
     خلوُّها من ا ي و، لا أنّ المسقَطَ جذرٌ). والمعتلُّ يُردّ «لا حكم» (`qala_la_hukm`). أمّا المزيدُ والأدواتُ والضمائرُ فالإسقاطُ
@@ -47,8 +49,8 @@
   `run_kabir`، `waqfForm_hadd`، `kama_sawa`، `baad_sawa`، `dalOK_taqatu`، `fakk_ramz`، `siyagh_sawa`، `jidhr_salim`، `irabMurashshah_la_jazm`)،
   و2 تعريفيّة (`mumtani_asbab`، `irabMin_irabState`)، و12 على الشاهد: ثمانٍ برهانُها decide (`fahras`، `madkhal_fakk`، `qina_illa`،
   `nayta_qina`، `farq_dalLic`، `wahid_la_yakfi`،
-  `shawahid_sigha`، `kataba_haal`)، وأربعٌ قضيّتُها مغلقةٌ على كلمةٍ معيّنة وبرهانُها decide على المواصفة ثمّ نقلٌ بـ `kull_ma_kull` أو
-  `mumtani_asbab` — خارجَ حرف المعيار («برهانُها decide»)، معلَن (`kataba_ilm_taraduf`، `kataba_luzum_la_hukm`، `qaltu_mumtani`،
+  `shawahid_sigha`، `kataba_haal`)، وأربعٌ على كلمةٍ معيّنة (ثلاثٌ منها كمّيّةٌ في المدلول) برهانُها decide على المواصفة ثمّ نقلٌ بـ
+  `kull_ma_kull` أو `mumtani_asbab` — خارجَ حرف المعيار («برهانُها decide»)، ووسمُها هنا أدنى من «لكلّ» الذي يبلغه حرفُه، معلَن (`kataba_ilm_taraduf`، `kataba_luzum_la_hukm`، `qaltu_mumtani`،
   `qala_la_hukm`): الحكمُ على كلمةٍ بعينها لا يُحسب بـ decide مباشرةً لأنّ جدول القانون (`Array.ofFn`) يُعمِّق ردَّ النواة.
   القارئ يطبع سطورَ العقد (`Qari/Main.lean`، `iqraAqd`) ويطابقه `tahaqquq/test_qari.py` §١٨؛ الطفرات P255–P268، وP269–P271 (المرحلة «أ»).
   لم يُبنَ: مطابقةُ صيغة الكلمة للفظ الصفّ (الوزن)، والمسارُ غيرُ الجذريّ، وحقولُ الموضع والعامل وتعدّدِ التقدير.
@@ -367,9 +369,15 @@ theorem waqfForm_hadd : ∀ (x : List Nat), (∀ a ∈ x, a < 117) → ∀ a ∈
     · exact hx a (by simp)
     · exact waqfForm_hadd (c :: l) (fun y hy => hx y (List.mem_cons_of_mem _ hy)) a h
 
-/-- **منفّذُ القانون على الخلايا كما هي مساوٍ لمواصفته لكلّ سلسلة**: الحارسُ (كلُّ رمزٍ دون 117) ثمّ جدولُ البتّات = `Fwaqf ∘ run 0`.
-    وهو سطرُ القارئ «على الخلايا كما هي». -/
-theorem kama_sawa (x : List Nat) : (x.all (· < 117) && Fwaqf (runB 0 x)) = Fwaqf (run 0 x) := by
+/-- **المكوّنُ على الخلايا كما هي بجدول البتّات**: الحارسُ (كلُّ رمزٍ دون 117) ثمّ الجدول. -/
+def kamaB (x : List Nat) : Bool := x.all (· < 117) && Fwaqf (runB 0 x)
+
+/-- **والمكوّنُ بعد تسكين الآخر**: هو نفسُه على صورة الوقف. -/
+def baadB (x : List Nat) : Bool := kamaB (waqfForm x)
+
+/-- **`kamaB` مساوٍ لمواصفته لكلّ سلسلة** (`Fwaqf ∘ run 0`)؛ والقارئ يستدعيه في سطر العقد. -/
+theorem kama_sawa (x : List Nat) : kamaB x = Fwaqf (run 0 x) := by
+  unfold kamaB
   by_cases h : x.all (· < 117) = true
   · have hl : ∀ a ∈ x, a < 117 := fun a ha => by have := List.all_eq_true.mp h a ha; simpa using this
     simp only [h, Bool.true_and]
@@ -380,8 +388,8 @@ theorem kama_sawa (x : List Nat) : (x.all (· < 117) && Fwaqf (runB 0 x)) = Fwaq
     simp only [h, h96, Bool.false_and]
 
 /-- **ومنفّذُه بعد تسكين الآخر مساوٍ لـ `complete'` لكلّ سلسلة** (سطرُ القارئ «بعد تسكين الآخر»). -/
-theorem baad_sawa (x : List Nat) :
-    ((waqfForm x).all (· < 117) && Fwaqf (runB 0 (waqfForm x))) = complete' x := by
+theorem baad_sawa (x : List Nat) : baadB x = complete' x := by
+  unfold baadB
   rw [kama_sawa]
   unfold complete'
   rfl
@@ -413,9 +421,9 @@ theorem dalOK_taqatu (x : List Nat) : Jisr.Utur.dalOK x = (Fwaqf (run 0 x) && co
     exact ⟨hne, hr⟩
 
 /-- **عقدُ Mashru** لنوع علاقةٍ n من `JadwalLuzum`. مواصفاتُه تعريفاتُ المشروع: القانونُ إطارُ الدالّ `Jisr.Utur.dalOK` (الابتداء والوصل
-    كما يُقرأ والوقف «المكتمل»؛ قراءةُ البنّاء لـ Necessity س25، ومواصفةٌ هنا بقرار المالك 2026-10-20 00:23)، وهو بـ `dalOK_taqatu`
+    كما يُقرأ والوقف «المكتمل»؛ قراءةُ البنّاء لـ Necessity س25، ومواصفةٌ هنا بقرار المالك 2026-10-20 00:23 الذي ينتظر تثبيتَه)، وهو بـ `dalOK_taqatu`
     القانونان معًا: `Fwaqf (run 0 x)` على الخلايا المعطاة و`complete'` (`SLGE.Bridge.DalLic`) بعد التسكين — ولا واحدَ منهما يكفي وحده
-    (`wahid_la_yakfi`؛ وقولُ المالك: «ولا واحد يصلح وحده»)؛
+    (`wahid_la_yakfi`؛ وقولُ المالك في الجلسة: «ولا واحد يصلح وحده …»)؛
     والحرفُ والحالُ `Jisr.JisrDal.harf`/`hala`، وحروفُ العلّة `SLGE.Law.weak`، والصيغةُ `Jisr.Iqtiran`. -/
 def Mashru (n : JadwalLuzum.Naw) : Aqd where
   qanun x := Jisr.Utur.dalOK x
