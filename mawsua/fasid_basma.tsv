@@ -1,0 +1,10 @@
+mudaa		وضع	بصمة-فارغة
+mudaa	abc	وضع	بصمة-قصيرة
+mudaa	aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa	وضع	ناقصة-حرفًا
+mudaa	bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb	وضع	زائدة-حرفًا
+mudaa	cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc	وضع	سليمة
+isdar	shahid-basma
+asl	taht:zD:j1	مطابق	
+asl	taht:zE:j1	مطابق	cccccccccccc@7
+iddia	taht:zD:j1	تقدير	a=taht:zD:j1	sanad-farigh
+iddia	taht:zE:j1	تقدير	a=taht:zE:j1	sanad-salim

@@ -12,7 +12,9 @@
   * قضايا الدلالة والبنية كلُّها «من حيث هي»: دالّتها لا تأخذ قصدًا ولا سامعًا (م17).
   * المعاني المذكورة في القضيّة تُرتَّب كلٌّ بشواهد واقعه: «مفهوم» لا يُبنى إلّا على قائمة شواهد غير خالية
     (في المُنشئ نفسه، م16)؛ وإلّا «معلومة».
-  * الشاهد لا يُعتبر إلّا إن كانت بصمته لمودَعٍ من نوع «واقع مختوم» (الدستور م12): المعجم لا يصنع مفهومًا.
+  * الشاهد لا يُعتبر إلّا إن كانت بصمته لمودَعٍ من نوع «واقع مختوم» (الدستور م12): المعجم لا يصنع مفهومًا؛ وببصمةِ قيدٍ غيرِ
+    فارغة (سُدّ 2026-10-19 بإذن المالك: «""» بادئةُ كلّ بصمة، فقيدٌ فارغٌ من نوع «واقع مختوم» كان يُعتبر كلَّ شاهد؛ و`waqi_yarfa`
+    أُضعفت بالضرورة بفرض `hne`، لأنّ صيغتها القديمة عند `b = ""` كانت هي شاهدَ الثغرة).
   * الفهرس يعدّ الثلاث كلّها.
   بلا sorry ولا axiom ولا native_decide.
 -/
@@ -48,9 +50,10 @@ theorem qadiyya_min_haythu_hiya (p : Qadiyya) : (martabatQadiyya p).ism = "من 
 
 /-! ## ٢. المعاني: معلومة أو مفهوم بشواهد الواقع -/
 
-/-- الشواهد المعتبرة: ما كانت بصمته لمودَعٍ مسجَّلٍ من نوع «واقع مختوم». -/
+/-- الشواهد المعتبرة: ما كانت بصمته لمودَعٍ مسجَّلٍ من نوع «واقع مختوم» ببصمةٍ **غيرِ فارغة** (الفارغةُ بادئةُ كلّ بصمة؛
+    سُدّ بإذن المالك 2026-10-19 16:16). -/
 def shuhudMutabara (sijill : List (String × Idaa.Naw)) (sh : List ShahidWaqi) : List ShahidWaqi :=
-  sh.filter fun s => sijill.any fun b => s.basma.startsWith b.1 && b.2 == .waqiMakhtum
+  sh.filter fun s => sijill.any fun b => !b.1.isEmpty && s.basma.startsWith b.1 && b.2 == .waqiMakhtum
 
 def martabatMaana (m : Nat) (sh : List ShahidWaqi) : Mukhraj :=
   if h : sh = [] then .maaluma m else .mafhum m sh h
@@ -92,10 +95,72 @@ theorem la_mafhum_bila_waqi (sijill : List (String × Idaa.Naw)) (hs : ∀ b ∈
     cases h : b.2 <;> simp_all
   rw [this]; rfl
 
-/-- وشاهدٌ معتبَرٌ واحد في «واقع مختوم» يرفع المعنى إلى مفهوم. -/
-theorem waqi_yarfa (b : String) (s : ShahidWaqi) (hb : s.basma.startsWith b = true) (m : Nat) :
+/-- وشاهدٌ معتبَرٌ واحد في «واقع مختوم» ببصمةٍ غيرِ فارغة يرفع المعنى إلى مفهوم. -/
+theorem waqi_yarfa (b : String) (hne : b ≠ "") (s : ShahidWaqi) (hb : s.basma.startsWith b = true) (m : Nat) :
     (martabatMaana m (shuhudMutabara [(b, .waqiMakhtum)] [s])).ism = "مفهوم" := by
-  simp [shuhudMutabara, hb, martabatMaana, Mukhraj.ism]
+  have he : b.isEmpty = false := by
+    cases h : b.isEmpty
+    · rfl
+    · exact absurd (String.isEmpty_iff.mp h) hne
+  simp [shuhudMutabara, he, hb, martabatMaana, Mukhraj.ism]
+
+/-- **البصمةُ الفارغة لا أثرَ لها**: حذفُ القيود الفارغة البصمة من أيّ سجلٍّ لا يغيّر الشواهد المعتبرة — وهي خاصّةُ السدّ. -/
+theorem basma_farigha_la_tuthir (sijill : List (String × Idaa.Naw)) (sh : List ShahidWaqi) :
+    shuhudMutabara (sijill.filter (·.1 != "")) sh = shuhudMutabara sijill sh := by
+  unfold shuhudMutabara
+  congr 1
+  funext s
+  induction sijill with
+  | nil => rfl
+  | cons b bs ih =>
+    by_cases hb : b.1 = ""
+    · have h0 : ("" : String).isEmpty = true := by decide
+      simp [List.filter, hb, h0, ih]
+    · have h1 : b.1.isEmpty = false := by
+        cases h : b.1.isEmpty
+        · rfl
+        · exact absurd (String.isEmpty_iff.mp h) hb
+      have hb' : (b.1 != "") = true := bne_iff_ne.mpr hb
+      simp only [List.filter_cons, hb', ite_true, List.any_cons, h1, ih]
+
+/-- **الشاهدُ المعتبَر سندُه بصمةٌ غيرُ فارغة**: كلُّ شاهدٍ معتبَر تبدأ بصمتُه ببصمة قيدٍ في السجلّ غيرِ فارغة، نوعُه «واقع
+    مختوم» — نظيرُ `Idaa.aslMusajjal_sanad`. -/
+theorem shuhudMutabara_sanad (sijill : List (String × Idaa.Naw)) (sh : List ShahidWaqi) (s : ShahidWaqi)
+    (h : s ∈ shuhudMutabara sijill sh) :
+    s ∈ sh ∧ ∃ b ∈ sijill, b.1 ≠ "" ∧ s.basma.startsWith b.1 = true ∧ b.2 = .waqiMakhtum := by
+  unfold shuhudMutabara at h
+  obtain ⟨hs, hp⟩ := List.mem_filter.mp h
+  obtain ⟨b, hb, hq⟩ := List.any_eq_true.mp hp
+  simp only [Bool.and_eq_true, Bool.not_eq_true', beq_iff_eq] at hq
+  obtain ⟨⟨he, hst⟩, hn⟩ := hq
+  have h0 : ("" : String).isEmpty = true := by decide
+  exact ⟨hs, b, hb, (fun hb0 => by rw [hb0, h0] at he; cases he), hst, hn⟩
+
+/-- **الشاهدُ الفارغ لا يُعتبر** (على الشاهد): مع سجلٍّ فيه قيدٌ سليمٌ وآخرُ فارغ، كلاهما «واقع مختوم». -/
+theorem shahid_farigh_marfud :
+    shuhudMutabara [("abc", .waqiMakhtum), ("", .waqiMakhtum)] [⟨"", 1⟩] = [] := by
+  decide +kernel
+
+/-- وعلى الشاهد: شاهدٌ تبدأ بصمتُه ببصمة قيدٍ «واقع مختوم» معتبَر، وما لا تبدأ به لا يُعتبر. -/
+theorem shuhudMutabara_shahid :
+    shuhudMutabara [("abc", .waqiMakhtum)] [⟨"abcdef", 1⟩, ⟨"abd", 2⟩] = [⟨"abcdef", 1⟩] := by
+  decide +kernel
+
+/-- **البصمةُ الفارغة لا تُشهِد**: سجلٌّ كلُّ قيدٍ فيه بصمتُه فارغةٌ أو نوعُه غيرُ «واقع مختوم» لا يرفع معنًى إلى مفهوم، أيًّا
+    كانت الشواهد — مع أنّ «""» بادئةُ كلّ بصمة. -/
+theorem basma_farigha_la_tushhid (sijill : List (String × Idaa.Naw))
+    (hs : ∀ b ∈ sijill, b.1 = "" ∨ b.2 ≠ .waqiMakhtum) (m : Nat) (sh : List ShahidWaqi) :
+    martabatMaana m (shuhudMutabara sijill sh) = .maaluma m := by
+  have : shuhudMutabara sijill sh = [] := by
+    simp only [shuhudMutabara, List.filter_eq_nil_iff]
+    intro s _
+    simp only [Bool.not_eq_true, List.any_eq_false]
+    intro b hb
+    rcases hs b hb with h | h
+    · have he : ("" : String).isEmpty = true := by decide
+      rw [h]; simp [he]
+    · cases h2 : b.2 <;> simp_all
+  rw [this]; rfl
 
 /-! ## ٣. المعاني المذكورة في القضيّة، والفهرس -/
 

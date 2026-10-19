@@ -61,6 +61,7 @@ import Madlul.JadwalLuzum
 import Madlul.Naht
 import Nizam.Asas
 import Nizam.Talab
+import Faahis.Lib
 import Madlul.Ishtirak
 import Madlul.Tarjih
 import Jisr.Iqtiran
@@ -203,6 +204,10 @@ import Madlul.Fard116Shawahid
 #print axioms Idaa.la_tanzif_bila_daya
 #print axioms Idaa.aslMusajjal_sanad
 #print axioms Idaa.sijill_faregh
+#print axioms Idaa.basma_farigha_la_tuqbal
+#print axioms Idaa.basma_farigha_khamila
+#print axioms Idaa.sanad_farigh_marfud
+#print axioms Idaa.aslMusajjal_shahid
 #print axioms Qaida.mutadarrija_daifa
 #print axioms Qaida.rutba_sifr_asl_daifa
 #print axioms Mawsua.tartib_hasir
@@ -254,6 +259,11 @@ import Madlul.Fard116Shawahid
 #print axioms Maratib.mujam_la_yasna_mafhum
 #print axioms Maratib.la_mafhum_bila_waqi
 #print axioms Maratib.waqi_yarfa
+#print axioms Maratib.basma_farigha_la_tushhid
+#print axioms Maratib.basma_farigha_la_tuthir
+#print axioms Maratib.shuhudMutabara_shahid
+#print axioms Maratib.shuhudMutabara_sanad
+#print axioms Maratib.shahid_farigh_marfud
 #print axioms Maratib.khatwa_majmu
 #print axioms Maratib.foldl_majmu
 #print axioms Maratib.ihsa_majmu
@@ -1340,3 +1350,8 @@ import Madlul.Fard116Shawahid
 #print axioms Jisr.JadwalLuzum.shahidLuzum_mutadarrija
 #print axioms Jisr.JadwalLuzum.shahid_ilm_tadammun_fahm
 #print axioms Jisr.JadwalLuzum.shahid_kataba_iltizam_qalam
+-- الفاحص التنفيذيّ: نوعُ مودَع السند لا يأخذه قيدٌ فارغ (Faahis/Lib.lean؛ سدّ البصمة الفارغة 2026-10-19)
+#print axioms nawSanad_basma_farigha
+#print axioms nawSanad_aslMusajjal
+#print axioms nawSanad_sanad
+#print axioms nawSanad_sanad_farigh
