@@ -2,38 +2,44 @@
   Nizam/Aqd.lean — العقدُ الواحد: البرهانُ المغلق لا يتجزّأ.
 
   قولُ المالك (2026-10-19، 20:08 بتوقيت عمّان): «البرهان المغلق لا يتجزأ يجب ان يعمل ككل واحد لا يتجزأ يعمل الكل مع الكل حتى
-  لا نفطر للترقيع فكر بحل»؛ ثمّ (20:18): «يُبنى طلبُ الدمج الواحد بهذا العقد موافق».
+  لا نفطر للترقيع فكر بحل»؛ ثمّ (20:18): «حلل وقارن ثم  يُبنى طلبُ الدمج الواحد بهذا العقد موافق».
 
   البناءُ (تصميمُ البنّاء الذي وافق عليه المالك):
-  * **العقدُ بنيةٌ واحدة** (`Aqd`): كلُّ طبقةٍ فيه حقلٌ بثلاثة أجزاء — مواصفةٌ من تعريفات المشروع القائمة، ومنفّذٌ بالبتّات،
-    ومساواتُهما شرطًا في البنية نفسها. فلا تُنشأ قيمةٌ من `Aqd` إلّا وقوانينُ حقولها كلِّها مبرهنة: النظامُ الناقص أو
-    المرقَّع لا يُبنى أصلًا.
+  * **العقدُ بنيةٌ واحدة** (`Aqd`): كلُّ طبقةٍ فيه حقلٌ بثلاثة أجزاء — مواصفةٌ، ومنفّذٌ بالبتّات، ومساواتُهما شرطًا في البنية
+    نفسها. فلا يُنشأ عقدٌ إلّا ومنفّذُ كلّ حقلٍ مساوٍ لمواصفته التي تُقدَّم معه. والمساواةُ لا تجعل المواصفةَ صحيحةً لغةً: تلك
+    تُثبَّت في العقد المعيَّن على تعريفات المشروع (`Mashru` أدناه، و`jidhr_salim`)؛ وعقدٌ بمواصفاتٍ تافهةٍ يُبنى ويصدق عليه البرهانُ.
   * **مبرهنةٌ واحدة لكلّ عقد** (`kull_ma_kull`): حكمُ المنفّذ البتّيّ هو حكمُ المواصفة بمراتبه الثلاث (`Nizam.Hukm`):
-    مرخَّص ⟺ القانونُ يقبل الدالّ، ولا مانع، وله جذرٌ يشهد له صفٌّ بالمدلول، واستوفى القيود؛ ممتنعٌ باسم سببه ⟺ القانونُ
-    يردّ الدالّ أو مانعٌ مسمًّى يردّ المدلول؛ وما سواهما «لا حكم» (غيابُ الشاهد لا يصير امتناعًا). ومعها في البيان نفسِه:
-    القراءةُ التي يحملها المرخَّص (الجذر، وحالُ الآخر، وقناعُ الصيغة) صحيحةٌ (`QiraaSahiha`) — فالحكمُ قيمةٌ واحدة.
+    مرخَّص ⟺ القانونُ يقبل الدالّ، ولا مانع، وله جذرٌ يشهد له صفٌّ بالمدلول، واستوفى القيود؛ ممتنعٌ ⟺ القانونُ يردّ الدالّ أو
+    قناعُ الموانع يردّ المدلول، والسببُ باسمه (`mumtani_asbab`)؛ وما سواهما «لا حكم» (غيابُ الشاهد لا يصير امتناعًا). ومعها:
+    القراءةُ التي يحملها المرخَّص (الجذر، وحالُ الآخر، وقناعُ الصيغة) مطابقةٌ للمواصفة (`QiraaSahiha`).
+  * **ما يشترك في الحكم وما لا يشترك**: القانونُ والجذرُ والشواهدُ والقيودُ والموانعُ تشترك في الحكم الواحد؛ وحالُ الآخر والصيغةُ
+    قراءةٌ يحملها الحكمُ ولا تقيّده — لا قيدَ بين الطبقات مبنيٌّ بعد.
   * **البياناتُ قيمٌ لا مبرهنات**: صفوفُ الشواهد ومستوياتُ القيود والموانع حقولٌ بلا برهان؛ فإضافتُها لا تمسّ المبرهنة.
-    وإضافةُ طبقةٍ توسيعٌ للبنية بحقلٍ وقانونه، ثمّ تُبرهن المبرهنةُ الواحدةُ مرّةً أخرى — لا برهانٌ جانبيّ.
+    وإضافةُ طبقةٍ توسيعٌ للبنية بحقلٍ وقانونه، ثمّ تُبرهن المبرهنةُ الواحدةُ مرّةً أخرى.
 
   العقدُ على Mashru (`Mashru n`، لكلّ نوع علاقةٍ n من `JadwalLuzum`: خمسةُ عقودٍ بمبرهنةٍ واحدة):
-  * القانون: مواصفتُه `SLGE.Law.run` موقوفًا عليه، ومنفّذُه جدولٌ فهرسُه [حالة:7][رمز:7] ومدخلُه [وزن:1][حالة:7] (`runB_run`).
-  * الجذر: إسقاطُ الخانات الثلاث إلى حواملها، مواصفتُه القسمةُ على 4 ومنفّذُه الإزاحة؛ ورمزُه بحقولٍ من خمسة بتّات.
-    النطاقُ معلَن: الكلمةُ ذاتُ الخانات الثلاث وحدها (لا مزيدَ ولا معتلَّ بعد).
-  * حالُ الآخر: بتّا الحالة في الخانة الأخيرة (القناع 3)؛ وقراءتُها الإعرابيّةُ الأصليّة بـ`SLGE.Bridge.irabState`
-    (قطر الندى L77، بنصّ `SLGE/Bridge.lean`: «الحالةُ تحمل الإعراب») — مرشَّحةٌ لا حكم: البناءُ والبابُ من المعجم.
-  * الصيغة: مرشَّحو `Jisr.Iqtiran` (ماضٍ/أمر/مضارع) بقيد افتتاح نأيت (قطر L65)، منفّذُها قناعُ ثلاثة بتّات وحاملُ نأيت قناعٌ
-    على الحوامل.
+  * القانون: مواصفتُه `SLGE.Law.run`/`Fwaqf` على الصورة كما كُتبت (صورةُ شواهد المالك `qaltu`/`hajja`/`bint`)، ومنفّذُه جدولٌ
+    فهرسُه [حالة:7][رمز:7] ومدخلُه [وزن:1][حالة:7] (`runB_run`). وهو غيرُ «الدالّ المرخَّص» عند المالك `SLGE.Bridge.DalLic` =
+    `complete'` الذي يُسكّن الآخر قبل الحكم — معلَنٌ بشاهديه `qanun_ghayr_dalLic`؛ وأيُّهما مواصفةُ العقد قرارُ المالك.
+  * الجذر: إسقاطُ ثلاث خاناتٍ حواملُها سالمة (لا ا ي و: `SLGE.Law.weak`) بحرفها `Jisr.JisrDal.harf`؛ منفّذُه الإزاحةُ وقناعُ العلّة
+    (`qina_illa`)، ورمزُه حقولُ خمسة بتّات (`fakk_ramz`)، وما له جذرٌ فسالمٌ بشرط المالك `SLGE.Law.SoundR` (`jidhr_salim`).
+    النطاقُ معلَن: لا مزيدَ ولا معتلَّ (حكمُه «لا حكم»: `qala_la_hukm`)، والإسقاطُ مرشَّحُ جذرٍ لا هويّة: الأدواتُ والضمائرُ
+    والمبنيّاتُ لا تُميَّز بعد (المسارُ غيرُ الجذريّ لم يُبنَ).
+  * حالُ الآخر: `Jisr.JisrDal.hala` للخانة الأخيرة، ومنفّذُه القناع 3. وقراءتُه إعرابًا مرشَّحٌ بتقابل المالك
+    `SLGE.Bridge.irabState` (قطر الندى L77–78) للحركة وحدها؛ والسكونُ في الآخر «لا حكم» (`irabMurashshah_la_jazm`).
+  * الصيغة: مرشَّحو صيغة الفعل من `Jisr.Iqtiran` (ماضٍ/أمر/مضارع) بقيد افتتاح نأيت (قطر L65)، منفّذُها قناعُ ثلاثة بتّات
+    وحاملُ نأيت قناعٌ على الحوامل — إن كان الدالُّ فعلًا؛ والفعليّةُ نفسُها لا تُعيَّن هنا.
   * الشواهد: صفوفُ `Madlul.JadwalLuzum.jadwal` من نوع n بأسطرها، مفتاحُها جذرُ المادّة ومدلولُها الجذرُ الآخر (كما في الجدول).
     فالحكمُ على مستوى المادّة: «في مادّة جذر هذا الدالّ صفٌّ من نوع n إلى الجذر b، بلفظه W وسطره» — لا أنّ صيغةَ الدالّ هي W
     بعينها؛ مطابقةُ الصيغة (الوزن) حقلٌ لم يُبنَ. شاهدُه «كَتَبَ»: سطرُ اللسان س24030 فيه «وكتب الرجل وأكتبه إكتابا: علمه
     الكتاب»، ولفظُ الصفّ W فيه «وءكتبه».
   * القيودُ والموانعُ على المدلول: فارغةٌ في هذا العقد (لا قيدَ مودَعًا على رموز المدلول بعد) — معلَن.
 
-  العدّ: 19 مبرهنة — 14 لكلّ (منها 3 استنفادٌ بـ decide على نطاقٍ محدود: `fahras`، `madkhal_fakk`، `nayta_qina`)، و5 على الشاهد
-  (`kataba_ilm_taraduf`، `kataba_luzum_la_hukm`، `qaltu_mumtani`، `shawahid_sigha`، `kataba_haal`). القارئ يحكم بـ `hukmB`
-  (`Qari/Main.lean`، `iqraAqd`) ويطابقه `tahaqquq/test_qari.py` §١٨؛ الطفرات P255–P263.
-  لم يُبنَ: مطابقةُ صيغة الكلمة للفظ الصفّ (الوزن)، والمسارُ غير الجذريّ (الأدوات والضمائر والمبنيّات)، وحقولُ الموضع والعامل
-  وتعدّدِ التقدير.
+  العدّ: 25 مبرهنة — 13 لكلّ، و4 استنفادٌ بـ decide على نطاقٍ محدود (`fahras`، `madkhal_fakk`، `qina_illa`، `nayta_qina`)،
+  و1 فكُّ تعريف (`irabMin_irabState`)، و7 على الشاهد (`qanun_ghayr_dalLic`، `kataba_ilm_taraduf`، `kataba_luzum_la_hukm`،
+  `qaltu_mumtani`، `qala_la_hukm`، `shawahid_sigha`، `kataba_haal`). القارئ يطبع سطورَ العقد (`Qari/Main.lean`، `iqraAqd`)
+  ويطابقه `tahaqquq/test_qari.py` §١٨؛ الطفرات P255–P267.
+  لم يُبنَ: مطابقةُ صيغة الكلمة للفظ الصفّ (الوزن)، والمسارُ غيرُ الجذريّ، وحقولُ الموضع والعامل وتعدّدِ التقدير.
   بلا sorry ولا axiom ولا native_decide.
 -/
 import Nizam.Asas
@@ -136,19 +142,20 @@ def Mashhud (A : Aqd) (x : List Nat) (r m : Nat) : Prop :=
 def Murakhkhas (A : Aqd) (x : List Nat) (m : Nat) : Prop :=
   A.qanun x = true ∧ (A.mani x).testBit m = false ∧ ∃ r, A.jidhr x = some r ∧ Mashhud A x r m
 
-/-- **المواصفة**: ممتنع — القانونُ يردّ الدالّ، أو مانعٌ مسمًّى يردّ المدلول. -/
+/-- **المواصفة**: ممتنع — القانونُ يردّ الدالّ، أو قناعُ الموانع يردّ المدلول. -/
 def Mumtani (A : Aqd) (x : List Nat) (m : Nat) : Prop :=
   A.qanun x = false ∨ (A.mani x).testBit m = true
 
-/-- **القراءةُ** التي يحملها الحكمُ المرخَّص: رمزُ الجذر، وحالُ الآخر، وقناعُ مرشَّحي الصيغة — كلُّها من المنفّذ البتّيّ،
-    فالحكمُ قيمةٌ واحدةٌ تحمل الطبقاتِ كلَّها لا أحكامٌ متجاورة. -/
+/-- **القراءةُ** التي يحملها الحكمُ المرخَّص: رمزُ الجذر، وحالُ الآخر، وقناعُ مرشَّحي الصيغة — كلُّها من المنفّذ البتّيّ.
+    والحالُ والصيغةُ قراءةٌ محمولةٌ لا قيدٌ على الحكم: لا قيدَ بين الطبقات مبنيٌّ بعد. -/
 structure Qiraa where
   jidhr : Nat
   haal : Option Nat
   sigha : Nat
   deriving DecidableEq, Repr
 
-/-- **المواصفة**: القراءةُ صحيحةٌ للدالّ — جذرُها جذرُ المواصفة، وحالُها حالُها، وقناعُ صيغتها مرشَّحوها بأعيانهم. -/
+/-- **المواصفة**: القراءةُ مطابقةٌ للمواصفة — جذرُها جذرُ المواصفة، وحالُها حالُها، وقناعُ صيغتها مرشَّحوها بأعيانهم.
+    (مطابقةُ المنفّذ للمواصفة، لا صحّةُ المواصفة لغةً: هذه في تعريفات العقد المعيَّن، كـ`Mashru`.) -/
 def QiraaSahiha (A : Aqd) (x : List Nat) (q : Qiraa) : Prop :=
   A.jidhr x = some q.jidhr ∧ q.haal = A.haal x ∧ ∀ s, q.sigha.testBit (rutbaSigha s) = true ↔ s ∈ A.sigha x
 
@@ -157,7 +164,7 @@ def mustawa (A : Aqd) (x : List Nat) (r : Nat) : Nat :=
   iqtiranB (tarkibShawahid (1 <<< r) A.shawahid) (A.quyud x)
 
 def sababQanun : String := "القانون يردّ الدالّ (ابتداء/وصل/وقف)"
-def sababMani : String := "مانعٌ مسمًّى يردّ المدلول"
+def sababMani : String := "قناعُ الموانع يردّ المدلول"
 
 /-- **المنفّذ**: الحكمُ الثلاثيّ؛ المرخَّصُ بقراءته، والممتنعُ باسم سببه. -/
 def hukmB (A : Aqd) (x : List Nat) (m : Nat) : Hukm Qiraa :=
@@ -173,7 +180,7 @@ theorem mustawa_iff (A : Aqd) (x : List Nat) (r m : Nat) : (mustawa A x r).testB
   simp only [bit_wahid]
 
 /-- **المبرهنةُ الواحدة: الكلُّ مع الكلّ.** لكلّ عقدٍ ولكلّ دالٍّ ولكلّ مدلول: حكمُ المنفّذ البتّيّ هو حكمُ المواصفة بمراتبه
-    الثلاث (سلامةً واكتمالًا معًا)، والقراءةُ التي يحملها المرخَّصُ صحيحةٌ في كلّ حقولها. -/
+    الثلاث (سلامةً واكتمالًا معًا)، والقراءةُ التي يحملها المرخَّصُ مطابقةٌ للمواصفة في كلّ حقولها. -/
 theorem kull_ma_kull (A : Aqd) (x : List Nat) (m : Nat) :
     ((∃ q, hukmB A x m = .murakhkhas q) ↔ Murakhkhas A x m) ∧
     ((∃ s, hukmB A x m = .mumtani s) ↔ Mumtani A x m) ∧
@@ -208,6 +215,23 @@ theorem la_shahid_la_hukm (A : Aqd) (x : List Nat) (r : Nat) (hj : A.jidhr x = s
   · rintro (h | h)
     · rw [hq] at h; cases h
     · rw [hn] at h; cases h
+
+/-- **الممتنعُ باسم سببه** (لكلّ عقد): «القانون يردّ الدالّ» ⟺ القانونُ يردّه؛ و«قناعُ الموانع يردّ المدلول» ⟺ القانونُ يقبله
+    والقناعُ يردّ المدلول. فالاسمُ المطبوع شاهدٌ على سببه لا سلسلةٌ حرّة. -/
+theorem mumtani_asbab (A : Aqd) (x : List Nat) (m : Nat) :
+    (hukmB A x m = .mumtani sababQanun ↔ A.qanun x = false) ∧
+    (hukmB A x m = .mumtani sababMani ↔ A.qanun x = true ∧ (A.mani x).testBit m = true) := by
+  have hne : sababMani ≠ sababQanun := by simp [sababMani, sababQanun]
+  unfold hukmB
+  rw [A.qanun_sawa x]
+  cases hq : A.qanun x
+  · simp [hne.symm]
+  · cases hn : (A.mani x).testBit m
+    · simp only [Bool.false_eq_true, ite_false, reduceCtorEq, iff_false, and_false]
+      split
+      · split <;> simp
+      · simp
+    · simp [hne]
 
 /-! ## ٣. العقدُ على Mashru -/
 
@@ -266,6 +290,11 @@ theorem fakk_ramz (a b c : Nat) (hb : b < 32) (hc : c < 32) : fakkRamz (ramz32 [
   simp only [fakkRamz, ramz32, List.foldl, h31, Nat.shiftRight_eq_div_pow, List.cons.injEq, and_true]
   omega
 
+/-- حروفُ العلّة (`SLGE.Law.weak`: ا ي و) قناعًا على الحوامل. -/
+def qinaIlla : Nat := (1 <<< 2) ||| (1 <<< 11) ||| (1 <<< 28)
+
+theorem qina_illa : ∀ c < 116, qinaIlla.testBit (c >>> 2) = weak (c / 4) := by decide +kernel
+
 /-- حواملُ نأيت (`SLGE.Wad.nayta`) قناعًا على الحوامل. -/
 def naytaQina : Nat := SLGE.Wad.nayta.foldl (fun b c => b ||| (1 <<< c)) 0
 
@@ -301,7 +330,10 @@ theorem siyagh_sawa (x : List Nat) (s : Jisr.Iqtiran.SighaFil) :
       cases s <;> simp [Jisr.Iqtiran.sighaMurashshaha, Jisr.Iqtiran.qaydNaytaIftitah, Jisr.JisrDal.harf]
     · simp [hc]
 
-/-- **عقدُ Mashru** لنوع علاقةٍ n من `JadwalLuzum`. -/
+/-- **عقدُ Mashru** لنوع علاقةٍ n من `JadwalLuzum`. مواصفاتُه تعريفاتُ المشروع: القانونُ `SLGE.Law.run`/`Fwaqf` على الصورة كما
+    كُتبت (صورةُ شواهد المالك `qaltu`/`hajja`/`bint` في `SLGE/Law.lean` وسطرِ القارئ القديم)، والحرفُ والحالُ
+    `Jisr.JisrDal.harf`/`hala`، وحروفُ العلّة `SLGE.Law.weak`، والصيغةُ `Jisr.Iqtiran`. والقانونُ هنا غيرُ «الدالّ المرخَّص» عند
+    المالك `SLGE.Bridge.DalLic` = `complete'` (يُسكّن الآخر قبل الحكم) — الفرقُ معلَنٌ بشاهده `qanun_ghayr_dalLic`. -/
 def Mashru (n : JadwalLuzum.Naw) : Aqd where
   qanun x := x.all (· < 117) && Fwaqf (run 0 x)
   qanunB x := x.all (· < 117) && Fwaqf (runB 0 x)
@@ -312,15 +344,24 @@ def Mashru (n : JadwalLuzum.Naw) : Aqd where
       rw [runB_run x 0 (by decide) hl]
     · simp only [Bool.not_eq_true] at h
       simp only [h, Bool.false_and]
-  jidhr x := if x.length = 3 ∧ x.all (· < 116) then some (ramz32 (x.map (· / 4))) else none
-  jidhrB x := if x.length = 3 ∧ x.all (· < 116) then some (ramz32 (x.map (· >>> 2))) else none
+  jidhr x := if x.length = 3 ∧ x.all (fun c => c < 116 && !weak (Jisr.JisrDal.harf c)) then
+    some (ramz32 (x.map Jisr.JisrDal.harf)) else none
+  jidhrB x := if x.length = 3 ∧ x.all (fun c => c < 116 && !qinaIlla.testBit (c >>> 2)) then
+    some (ramz32 (x.map (· >>> 2))) else none
   jidhr_sawa x := by
-    have : (fun a : Nat => a >>> 2) = (fun a => a / 4) := by funext a; rw [Nat.shiftRight_eq_div_pow]
-    simp only [this]
-  haal x := match x.getLast? with | some a => if a < 116 then some (a % 4) else none | none => none
+    have h1 : (fun c => decide (c < 116) && !qinaIlla.testBit (c >>> 2)) =
+        (fun c => decide (c < 116) && !weak (Jisr.JisrDal.harf c)) := by
+      funext c
+      by_cases hc : c < 116
+      · simp only [hc, decide_true, Bool.true_and, qina_illa c hc, Jisr.JisrDal.harf]
+      · simp [hc]
+    have h2 : (fun a : Nat => a >>> 2) = Jisr.JisrDal.harf := by
+      funext a; rw [Nat.shiftRight_eq_div_pow]; rfl
+    simp only [h1, h2]
+  haal x := match x.getLast? with | some a => if a < 116 then some (Jisr.JisrDal.hala a) else none | none => none
   haalB x := match x.getLast? with | some a => if a < 116 then some (a &&& 3) else none | none => none
   haal_sawa x := by
-    have : ∀ a : Nat, a &&& 3 = a % 4 := fun a => Nat.and_two_pow_sub_one_eq_mod a 2
+    have : ∀ a : Nat, a &&& 3 = Jisr.JisrDal.hala a := fun a => Nat.and_two_pow_sub_one_eq_mod a 2
     simp only [this]
   sigha := siyagh
   sighaB := siyaghB
@@ -329,11 +370,48 @@ def Mashru (n : JadwalLuzum.Naw) : Aqd where
   quyud _ := []
   mani _ := 0
 
-/-- قراءةُ حال الآخر إعرابًا أصليًّا (`SLGE.Bridge.irabState`، قطر الندى L77): مرشَّحةٌ لا حكم. -/
+/-- **جذرُ Mashru سالمٌ بشرط المالك**: ما له جذرٌ فحواملُه سالمةٌ بـ `SLGE.Law.SoundR` (دون 29، لا ا ي و)، ورمزُه رمزُ حروفه
+    (`Jisr.JisrDal.harf`). -/
+theorem jidhr_salim (n : JadwalLuzum.Naw) (x : List Nat) (r : Nat) (h : (Mashru n).jidhr x = some r) :
+    SoundR (x.map Jisr.JisrDal.harf) ∧ r = ramz32 (x.map Jisr.JisrDal.harf) := by
+  simp only [Mashru] at h
+  split at h
+  · rename_i hc
+    obtain ⟨_, hall⟩ := hc
+    refine ⟨fun c hc' => ?_, (Option.some.inj h).symm⟩
+    obtain ⟨a, ha, rfl⟩ := List.mem_map.mp hc'
+    have := List.all_eq_true.mp hall a ha
+    simp only [Bool.and_eq_true, decide_eq_true_eq, Bool.not_eq_true', weak, Jisr.JisrDal.harf,
+      Bool.or_eq_false_iff, beq_eq_false_iff_ne] at this
+    obtain ⟨h1, ⟨h2, h3⟩, h4⟩ := this
+    exact ⟨by unfold Jisr.JisrDal.harf; omega, h2, h3, h4⟩
+  · cases h
+
+/-- **القانونُ غيرُ `DalLic` (معلَن بشاهديه)**: «قَالْتُ» كما كُتبت يردّها العقدُ (شاهدُ المالك `SLGE.Law.qaltu`)، ويقبلها
+    `complete'` بعد تسكين آخرها («قالْتْ»)؛ و«بَ» خانةً واحدة يقبلها العقد ويردّها `complete'` (`SLGE.Law.nec_second`). -/
+theorem qanun_ghayr_dalLic (n : JadwalLuzum.Naw) :
+    (Mashru n).qanun [4*7+0, 4*2+3, 4*13+3, 4*18+1] = false ∧ complete' [4*7+0, 4*2+3, 4*13+3, 4*18+1] = true ∧
+    (Mashru n).qanun [4*26+0] = true ∧ complete' [4*26+0] = false := by
+  cases n <;> decide +kernel
+
+/-- قراءةُ حالٍ إعرابًا بتقابل المالك `SLGE.Bridge.irabState` (قطر الندى L77–78). -/
 def irabMin (h : Nat) : Option SLGE.Wad.Irab := SLGE.Wad.allIrab.find? fun r => SLGE.Bridge.irabState r == h
 
 theorem irabMin_irabState : ∀ r : SLGE.Wad.Irab, irabMin (SLGE.Bridge.irabState r) = some r := by
   intro r; cases r <;> decide
+
+/-- **مرشَّحُ إعراب الآخر**: الحركةُ وحدها (فتحة/ضمّة/كسرة) تُقرأ إعرابًا مرشَّحًا؛ والسكونُ في الآخر «لا حكم» — قد يكون وقفًا أو
+    جزمًا أو بناءً، أو حرفَ مدٍّ أو نونَ تنوينٍ أو هاءَ وقف؛ والجزمُ للفعل وحده (`SLGE/Wad.lean`). -/
+def irabMurashshah (h : Nat) : Option SLGE.Wad.Irab := if h < 3 then irabMin h else none
+
+/-- السكونُ لا يُقرأ إعرابًا، ولا يُرشَّح الجزمُ أبدًا. -/
+theorem irabMurashshah_la_jazm : irabMurashshah 3 = none ∧ ∀ h, irabMurashshah h ≠ some .jazm := by
+  refine ⟨rfl, fun h => ?_⟩
+  unfold irabMurashshah
+  split
+  · rename_i hh
+    rcases (by omega : h = 0 ∨ h = 1 ∨ h = 2) with rfl | rfl | rfl <;> decide
+  · simp
 
 /-! ## ٤. شواهدُ على المودَع: تُبرهن على المواصفة وحدها، و`kull_ma_kull` تنقلها إلى المنفّذ بلا برهانٍ جديد -/
 
@@ -365,12 +443,21 @@ theorem kataba_luzum_la_hukm (m : Nat) : hukmB (Mashru .luzum) kataba m = .laHuk
   la_shahid_la_hukm _ _ (ramzNass "كتب") (by decide +kernel) (by decide +kernel) (by decide +kernel) m
     (Nat.zero_testBit m)
 
-/-- **«قَالْتُ» يردّها القانون**: ممتنعةٌ باسم سببها بأيّ مدلولٍ في أيّ عقد. -/
+/-- **«قَالْتُ» يردّها القانون**: ممتنعةٌ بسببها المسمّى («القانون يردّ الدالّ») بأيّ مدلولٍ في كلّ عقدٍ `Mashru n`. -/
 theorem qaltu_mumtani (n : JadwalLuzum.Naw) (m : Nat) :
-    ∃ s, hukmB (Mashru n) [4*7+0, 4*2+3, 4*13+3, 4*18+1] m = .mumtani s :=
-  (kull_ma_kull (Mashru n) _ m).2.1.mpr (Or.inl (by
-    show ([4*7+0, 4*2+3, 4*13+3, 4*18+1].all (· < 117) && Fwaqf (run 0 [4*7+0, 4*2+3, 4*13+3, 4*18+1])) = false
-    decide +kernel))
+    hukmB (Mashru n) [4*7+0, 4*2+3, 4*13+3, 4*18+1] m = .mumtani sababQanun :=
+  (mumtani_asbab (Mashru n) _ m).1.mpr (qanun_ghayr_dalLic n).1
+
+/-- **«قَالَ» لا جذرَ له في العقد**: حاملُه الثاني ألفٌ (حرفُ علّة) فلا إسقاطَ، والقانونُ يقبله — فحكمُه «لا حكم» بأيّ مدلولٍ في
+    كلّ عقدٍ `Mashru n`، لا جذرٌ خاطئ ولا امتناع. -/
+theorem qala_la_hukm (n : JadwalLuzum.Naw) (m : Nat) : hukmB (Mashru n) [4*7+0, 4*2+3, 4*13+0] m = .laHukm := by
+  apply (kull_ma_kull (Mashru n) _ m).2.2.1.mpr
+  have hj : (Mashru n).jidhr [4*7+0, 4*2+3, 4*13+0] = none := by cases n <;> decide +kernel
+  refine ⟨?_, ?_⟩
+  · rintro ⟨_, _, r, hr, _⟩; rw [hj] at hr; cases hr
+  · rintro (h | h)
+    · revert h; cases n <;> decide +kernel
+    · simp [Mashru] at h
 
 /-- **الصيغة**: كَتَبَ (أوّلُها ك، خارجَ نأيت) ماضٍ أو أمر؛ يَكْتُبُ (أوّلُها ي) الثلاثة — كشاهدَي `Jisr.Iqtiran.shahid_sigha`. -/
 theorem shawahid_sigha :
@@ -378,8 +465,8 @@ theorem shawahid_sigha :
     (Mashru .taraduf).sigha [4*11+0, 4*8+3, 4*18+1, 4*26+1] = [.madin, .amr, .mudari] := by
   decide +kernel
 
-/-- **حالُ الآخر** في كَتَبَ فتحة (0)، وقراءتُها الأصليّة النصب — مرشَّحةٌ (كَتَبَ ماضٍ مبنيّ: البناءُ من المعجم). -/
-theorem kataba_haal : (Mashru .taraduf).haal kataba = some 0 ∧ irabMin 0 = some .nasb := by decide +kernel
+/-- **حالُ الآخر** في كَتَبَ فتحة (0)، ومرشَّحُها إعرابًا النصب إن كان معربًا — والإعرابُ والبناءُ من الباب: لا حكم هنا. -/
+theorem kataba_haal : (Mashru .taraduf).haal kataba = some 0 ∧ irabMurashshah 0 = some .nasb := by decide +kernel
 
 end Aqd
 end Nizam

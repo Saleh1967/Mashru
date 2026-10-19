@@ -191,7 +191,7 @@ def siyaghIsm (b : Nat) : String :=
   if l.isEmpty then "لا مرشَّح" else " · ".intercalate (l.map (·.2))
 
 def hukmAqdIsm : Nizam.Hukm Nizam.Aqd.Qiraa → String
-  | .murakhkhas q => s!"مرخَّص (يحمل قراءتَه: الجذر «{jidhrIsm q.jidhr}»)"
+  | .murakhkhas q => s!"مرخَّص (يحمل قراءتَه: الجذر «{jidhrIsm q.jidhr}»، {match q.haal with | some h => halaIsm h | none => "لا حال"}، {siyaghIsm q.sigha})"
   | .laHukm => "لا حكم"
   | .mumtani s => s!"ممتنع — {s}"
 
@@ -203,28 +203,31 @@ def iqraAqd (l : List Nat) : IO Unit := do
   let A := Nizam.Aqd.Mashru .juz
   IO.println "  العقد الواحد (Nizam.Aqd؛ المبرهنة kull_ma_kull):"
   let qb := A.qanunB l
-  IO.println s!"    القانون بجدول البتّات runB (موقوفًا عليها): {if qb then "مقبولة" else "ممتنعة"} — هو run بعينه (runB_run)"
+  IO.println s!"    القانون بجدول البتّات runB (موقوفًا عليها كما كُتبت): {if qb then "مقبولة" else "ممتنعة"} — يساوي Fwaqf (run 0 …) (runB_run)"
   if !qb then
-    IO.println s!"    الحكم: ممتنع — {Nizam.Aqd.sababQanun}، بأيّ مدلولٍ في كلّ نوع"
+    let sabab := match Nizam.Aqd.hukmB A l 0 with
+      | .mumtani s => s
+      | _ => "؟"
+    IO.println s!"    الحكم (hukmB): ممتنع — {sabab}، بأيّ مدلولٍ في كلّ عقدٍ Mashru (mumtani_asbab)"
     return
   let haal := match A.haalB l with
     | some h => s!"{halaIsm h} ({h})"
     | none => "لا حكم"
-  IO.println s!"    القراءة: حال الآخر {haal}؛ مرشَّحو الصيغة (Jisr.Iqtiran، قطر L65): {siyaghIsm (A.sighaB l)}"
+  IO.println s!"    القراءة (حقولُ العقد): حال الآخر {haal}؛ مرشَّحو صيغة الفعل إن كان فعلًا (Jisr.Iqtiran، قطر L65): {siyaghIsm (A.sighaB l)}"
   match A.haalB l with
   | some h =>
-    match Nizam.Aqd.irabMin h with
-    | some r => IO.println s!"    حال الآخر إعرابًا إن كان معربًا (Bridge.irabState، قطر الندى L77): {irabIsm r} — مرشَّح؛ الإعرابُ والبناءُ من الباب في المعجم: لا حكم هنا"
-    | none => pure ()
+    match Nizam.Aqd.irabMurashshah h with
+    | some r => IO.println s!"    حال الآخر إعرابًا إن كان معربًا والحركةُ حركةَ إعراب (Bridge.irabState، قطر الندى L77–78): {irabIsm r} — مرشَّح"
+    | none => IO.println "    حال الآخر إعرابًا: لا حكم — السكونُ في الآخر وقفٌ أو جزمٌ أو بناء، أو حرفُ مدٍّ أو نونُ تنوينٍ أو هاءُ وقف (irabMurashshah_la_jazm)"
   | none => pure ()
   match A.jidhrB l with
   | none =>
-    IO.println "    الجذر: لا حكم — الإسقاطُ للكلمة ذات الخانات الثلاث وحدها (نطاقٌ معلَن)؛ فالحكم «لا حكم» بأيّ مدلول"
+    IO.println "    الجذر: لا حكم — الإسقاطُ لثلاث خاناتٍ حواملُها سالمة (لا ا ي و) وحدها (نطاقٌ معلَن)؛ فالحكم «لا حكم» بأيّ مدلول"
   | some r =>
-    IO.println s!"    الجذر: «{jidhrIsm r}» (رمزُه {r} بحقول خمسة بتّات؛ يُفكّ بـ fakk_ramz)"
+    IO.println s!"    مرشَّح الجذر: «{jidhrIsm r}» (رمزُه {r} بحقول خمسة بتّات، fakk_ramz؛ سالمٌ بـ SoundR، jidhr_salim) — الأدواتُ والضمائرُ لا تُميَّز بعد"
     let rows := JadwalLuzum.jadwal.filter fun s => Nizam.Aqd.ramzNass s.a == r
     if !rows.isEmpty then
-      IO.println s!"    الحكم بالشواهد (JadwalLuzum؛ في مادّة الجذر لا في صيغة الكلمة):"
+      IO.println s!"    الحكم بالشواهد (hukmB؛ JadwalLuzum، في مادّة الجذر لا في صيغة الكلمة):"
       for s in rows do
         let h := Nizam.Aqd.hukmB (Nizam.Aqd.Mashru s.naw) l (Nizam.Aqd.ramzNass s.b)
         IO.println s!"      {nawAqdIsm s.naw} ← «{s.b}» بلفظ «{s.w}»: {hukmAqdIsm h} ({mujamIsm s.mujam} س{s.satr})"

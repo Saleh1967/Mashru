@@ -1804,5 +1804,29 @@
   "milaf": "Qari/Main.lean",
   "min": "let qb := A.qanunB l",
   "ila": "let qb := A.qanunB l || l.length == 4"
+ },
+ {
+  "ism": "P264_sabab_mubaddal",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "  if A.qanunB x = false then .mumtani sababQanun",
+  "ila": "  if A.qanunB x = false then .mumtani sababMani"
+ },
+ {
+  "ism": "P265_qina_illa_bila_waw",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "def qinaIlla : Nat := (1 <<< 2) ||| (1 <<< 11) ||| (1 <<< 28)",
+  "ila": "def qinaIlla : Nat := (1 <<< 2) ||| (1 <<< 11)"
+ },
+ {
+  "ism": "P266_qari_irab_bila_sukun",
+  "milaf": "Qari/Main.lean",
+  "min": "match Nizam.Aqd.irabMurashshah h with",
+  "ila": "match Nizam.Aqd.irabMin h with"
+ },
+ {
+  "ism": "P267_qari_sabab_thabit",
+  "milaf": "Qari/Main.lean",
+  "min": "      | .mumtani s => s\n",
+  "ila": "      | .mumtani _ => Nizam.Aqd.sababMani\n"
  }
 ]
