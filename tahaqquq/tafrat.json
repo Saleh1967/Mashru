@@ -1682,8 +1682,8 @@
  {
   "ism": "P227_bayad_ghayr_muwahhad",
   "milaf": "tahaqquq/bawwaba.py",
-  "min": "    if fi_taaliq and sawa_bayad is not False:",
-  "ila": "    if fi_taaliq and sawa is not False:"
+  "min": "    return \"\\n\".join(l.rstrip() for l in t.split(\"\\n\") if l.strip())",
+  "ila": "    return t"
  },
  {
   "ism": "P228_mash_ala_nuskha",
@@ -1696,5 +1696,41 @@
   "milaf": "tahaqquq/tafrat_juz.py",
   "min": "    if majhul:\n",
   "ila": "    if False:\n"
+ },
+ {
+  "ism": "P238_juz_muhla_qatl",
+  "milaf": "tahaqquq/tafrat_juz.py",
+  "min": "        raise TajawuzMuhla(f\"{' '.join(cmd[-2:])} تجاوز {MUHLA} ث\")",
+  "ila": "        return 124, \"\""
+ },
+ {
+  "ism": "P239_juz_bila_hukm_jidhr",
+  "milaf": "tahaqquq/tafrat_juz.py",
+  "min": "        ayb = bawwaba.ayb_tafra(t, root)\n",
+  "ila": "        ayb = None\n"
+ },
+ {
+  "ism": "P240_mash_qaima_naqisa",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            for x in IKHTIBARAT_TAFRAT:\n",
+  "ila": "            for x in IKHTIBARAT_TAFRAT[:1]:\n"
+ },
+ {
+  "ism": "P241_mash_la_yaqif",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "                if code != 0:\n                    break\n                code, _ = run([sys.executable, \"-I\", x], cwd=dst)",
+  "ila": "                if code != 0:\n                    pass\n                code, _ = run([sys.executable, \"-I\", x], cwd=dst)"
+ },
+ {
+  "ism": "P243_qaima_tanqus_ikhtibaran",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    \"tahaqquq/test_qari.py\",\n",
+  "ila": ""
+ },
+ {
+  "ism": "P244_juz_mukarrar_yamurr",
+  "milaf": "tahaqquq/tafrat_juz.py",
+  "min": "    if mukarrar:\n        print(",
+  "ila": "    if False:\n        print("
  }
 ]

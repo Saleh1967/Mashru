@@ -379,6 +379,7 @@ class TafraNassTests(unittest.TestCase):
                           ("qaws.sh", "(echo hi)#c-mu\necho $(date)#d-wasm\necho $((1))#e-wasm\n"),
                           ("tab.sh", "cat <<-EOF\n\tbayan # x-dakhil\n\tEOF\necho # baad-tab\n"),
                           ("str.sh", "cat <<<EOF # huna\necho z # baad-str\n"),
+                          ("athar.lean", "def a := 5 -- x\n-- y\ndef b := 6\n"), ("izaha.py", "if x:\n    z = 0\n    # c\n    y = 1\n"),
                           ("a.sh", self.SH), ("a.tsv", "x\ty\nz\tw\n"), ("a.md", "x\n")):
             with open(os.path.join(self.tmp.name, ism), "w", encoding="utf-8") as f:
                 f.write(nass)
@@ -418,6 +419,12 @@ class TafraNassTests(unittest.TestCase):
     def test_effect_rule(self):
         # «min» يبدأ في الشيفرة (5) والتغييرُ في التعليق وحده
         self.assertEqual(self.ayb("a.lean", "5 -- أوّل", "5 -- آخر"), self.ATHAR)
+
+    def test_effect_rule_ignores_blank_lines(self):
+        # «min» يبدأ في الشيفرة ويحذف سطرَ تعليقٍ لا غير: أثرُه لا يتعدّى التعليقَ والأسطرَ الفارغة
+        self.assertEqual(self.ayb("athar.lean", "5 -- x\n-- y", "5 -- x"), self.ATHAR)
+        # وإزاحةُ سطرٍ في بايثون معنى: تُقبل وإن وقع «min» في تعليقٍ وبياض
+        self.assertIsNone(self.ayb("izaha.py", "# c\n    ", "# c\n"))
 
     def test_comment_spans_and_whitespace(self):
         # «min» يعبر تعليقين وبينهما سطرٌ جديد: في تعليق
@@ -542,6 +549,54 @@ class TafraNassTests(unittest.TestCase):
         self.assertIn("P0_rabit (٤ب: الملفّ خارج المستودع", err)
 
 
+    def mash(self, fashil=None):
+        """البند ٦ على طفرةٍ واحدةٍ سليمة، مع تسجيل ما يُشغَّل في النسخة؛ fashil: رقمُ اختبارٍ يفشل (من 0)."""
+        with open(os.path.join(self.tmp.name, "m.lean"), "w", encoding="utf-8") as f:
+            f.write("def m0 := 1\n")
+        tafrat = [{"ism": "P0_m", "milaf": "m.lean", "min": "def m0 := 1", "ila": "def m0 := 2"}]
+        os.makedirs(os.path.join(self.tmp.name, "tahaqquq"), exist_ok=True)
+        with open(os.path.join(self.tmp.name, "tahaqquq", "khatt_asas.json"), "w", encoding="utf-8") as f:
+            f.write('{"mubarhanat": 0}')
+        with open(os.path.join(self.tmp.name, "tahaqquq", "tafrat.json"), "w", encoding="utf-8") as f:
+            json.dump(tafrat, f)
+        sijill = []
+
+        def run(cmd, cwd=None, **kw):
+            if cwd is not None and cwd != self.tmp.name:
+                sijill.append(cmd[-1])
+                if fashil is not None and cmd[-1] == bawwaba.IKHTIBARAT_TAFRAT[fashil]:
+                    return (1, "")
+            return (0, "")
+
+        def git(*args):
+            return (0, "abc1234\n") if args[0] == "merge-base" else (0, json.dumps(tafrat))
+
+        out, err = io.StringIO(), io.StringIO()
+        with patch.object(bawwaba, "ROOT", self.tmp.name), patch.object(bawwaba, "run", side_effect=run), \
+                patch.object(bawwaba, "git", side_effect=git), patch.object(sys, "argv", ["bawwaba.py"]), \
+                contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            with self.assertRaises(SystemExit):
+                bawwaba.main()
+        return sijill, out.getvalue()
+
+    def test_sweep_runs_every_test_in_order(self):
+        sijill, out = self.mash()
+        self.assertEqual(sijill, ["build"] + list(bawwaba.IKHTIBARAT_TAFRAT))
+        self.assertIn("٦ الطفرات: قُتلت 0 من 1", out)
+
+    def test_sweep_stops_at_first_failure(self):
+        sijill, out = self.mash(fashil=2)
+        self.assertEqual(sijill, ["build"] + list(bawwaba.IKHTIBARAT_TAFRAT[:3]))
+        self.assertIn("٦ الطفرات: قُتلت 1 من 1", out)
+
+    def test_sweep_list_matches_gate_tests(self):
+        # كلُّ اختبارٍ يشغّله البند ٥ (سوى ما يحتاج مودَعًا بوسيط) يشغّله البند ٦ أيضًا
+        import re
+        src = open(bawwaba.__file__, encoding="utf-8").read()
+        rais = src[src.index("def main():"):src.index('    if "--bila-tafrat" not in sys.argv:')]
+        band5 = re.findall(r'run\(\[sys\.executable, "-I", "([^"]+)"\]\)', rais)
+        self.assertEqual(sorted(band5), sorted(bawwaba.IKHTIBARAT_TAFRAT))
+
 class TafratJuzTests(unittest.TestCase):
     """tahaqquq/tafrat_juz.py: الاستعمالُ الخاطئ يُسمّى ويخرج 2، بلا Traceback وقبل أيّ نسخ."""
 
@@ -565,6 +620,60 @@ class TafratJuzTests(unittest.TestCase):
         code, out = self.juz()
         self.assertEqual(code, 2)
         self.assertIn("الاستعمال", out)
+
+    def juz_lake(self, lake_sh, tafrat, milafat):
+        """tafrat_juz.py على مستودعٍ صغير بـ lake مزيَّف في PATH ومهلةِ ثانية."""
+        with tempfile.TemporaryDirectory() as root, tempfile.TemporaryDirectory() as bindir:
+            os.mkdir(os.path.join(root, "tahaqquq"))
+            shutil.copy(os.path.join(os.path.dirname(__file__), "bawwaba.py"), os.path.join(root, "tahaqquq"))
+            with open(os.path.join(root, "tahaqquq", "tafrat.json"), "w", encoding="utf-8") as f:
+                json.dump(tafrat, f)
+            for ism, nass in milafat.items():
+                if nass.startswith("->"):
+                    os.symlink(nass[2:], os.path.join(root, ism))
+                else:
+                    with open(os.path.join(root, ism), "w", encoding="utf-8") as f:
+                        f.write(nass)
+            alama = os.path.join(bindir, "nudiya")
+            with open(os.path.join(bindir, "lake"), "w", encoding="utf-8") as f:
+                f.write("#!/bin/sh\ntouch " + alama + "\n" + lake_sh + "\n")
+            os.chmod(os.path.join(bindir, "lake"), 0o755)
+            env = dict(os.environ, PATH=bindir + os.pathsep + os.environ.get("PATH", ""), TAFRAT_JUZ_MUHLA="1")
+            names = sorted({t["ism"] for t in tafrat if isinstance(t, dict)})
+            p = subprocess.run([sys.executable, "-I", os.path.join(os.path.dirname(__file__), "tafrat_juz.py"), root, *names],
+                               capture_output=True, text=True, timeout=120, env=env)
+            return p.returncode, p.stdout + p.stderr, os.path.exists(alama)
+
+    SALIMA = [{"ism": "P0_s", "milaf": "a.lean", "min": "def x := 1", "ila": "def x := 2"}]
+
+    def test_timeout_is_not_a_kill(self):
+        code, out, _ = self.juz_lake("sleep 5", self.SALIMA, {"a.lean": "def x := 1\n"})
+        self.assertEqual(code, 3)
+        self.assertIn("تجاوز المهلة", out)
+        self.assertNotIn("قُتلت بـ", out)
+
+    def test_build_error_names_the_file(self):
+        code, out, _ = self.juz_lake('echo "error: a.lean:1:0: x"; exit 1', self.SALIMA, {"a.lean": "def x := 1\n"})
+        self.assertEqual(code, 0)
+        self.assertIn("قُتلت بـlake build (a.lean)", out)
+
+    def test_symlink_judged_on_repository(self):
+        with tempfile.TemporaryDirectory() as kharij:
+            hadaf = os.path.join(kharij, "x.lean")
+            with open(hadaf, "w", encoding="utf-8") as f:
+                f.write("def x := 1\n")
+            code, out, nudiya = self.juz_lake("exit 0", [dict(self.SALIMA[0], milaf="rabit.lean")], {"rabit.lean": "->" + hadaf})
+            with open(hadaf, encoding="utf-8") as f:
+                self.assertEqual(f.read(), "def x := 1\n")
+        self.assertEqual(code, 1)
+        self.assertIn("معيبة (٤ب)", out)
+        self.assertFalse(nudiya)
+
+    def test_duplicate_name_is_refused(self):
+        code, out, nudiya = self.juz_lake("exit 0", self.SALIMA * 2, {"a.lean": "def x := 1\n"})
+        self.assertEqual(code, 2)
+        self.assertIn("مكرَّرة", out)
+        self.assertFalse(nudiya)
 
 
 if __name__ == "__main__":
