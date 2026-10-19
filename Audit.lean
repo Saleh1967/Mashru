@@ -1353,4 +1353,5 @@ import Madlul.Fard116Shawahid
 -- الفاحص التنفيذيّ: نوعُ مودَع السند لا يأخذه قيدٌ فارغ (Faahis/Lib.lean؛ سدّ البصمة الفارغة 2026-10-19)
 #print axioms nawSanad_basma_farigha
 #print axioms nawSanad_aslMusajjal
+#print axioms nawSanad_sanad
 #print axioms nawSanad_sanad_farigh

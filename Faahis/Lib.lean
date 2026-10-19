@@ -191,17 +191,20 @@ structure Bina where
 /-- المودَعُ يطابق السند: بصمتُه غيرُ فارغة، والسندُ يبدأ بها. -/
 def mutabiqSanad (s : String) (m : String × Idaa.Naw) : Bool := !m.1.isEmpty && s.startsWith m.1
 
-/-- نوعُ مودَعِ السند (سقفُ وسمه): أوّلُ مودَعٍ مسجَّلٍ ببصمةٍ **غيرِ فارغة** يبدأ بها السند — وشرطُه شرطُ `Idaa.aslMusajjal`
-    (`nawSanad_aslMusajjal`)، فلا يعلو الوسمَ قيدٌ فارغٌ لا يقبله ذاك؛ وإلّا «مرجع محجوب» (أدنى السقوف). -/
-def nawSanadMin (mudaat : Array (String × Idaa.Naw)) (s : String) : Idaa.Naw :=
-  ((mudaat.toList.find? (mutabiqSanad s)).map (·.2)).getD .marjaMahjub
+/-- مودَعُ السند: أوّلُ مودَعٍ مسجَّلٍ يطابق السندَ (`mutabiqSanad`). -/
+def mudaaSanad? (mudaat : Array (String × Idaa.Naw)) (s : String) : Option (String × Idaa.Naw) :=
+  mudaat.toList.find? (mutabiqSanad s)
 
-/-- **نوعُ السند يُوجد حيث يُقبل السند، لا غير**: لمودَعات الفاحص وسندٍ ما، وجودُ مودَعٍ يعطي السندَ نوعَه هو قبولُ
-    `Idaa.aslMusajjal` له على بصماتها — الشرطُ واحدٌ في الموضعين، فلا يفترقان إن تغيّر أحدهما. -/
+/-- نوعُ مودَعِ السند (سقفُ وسمه): نوعُ `mudaaSanad?`، وإلّا «مرجع محجوب» (أدنى السقوف). -/
+def nawSanadMin (mudaat : Array (String × Idaa.Naw)) (s : String) : Idaa.Naw :=
+  ((mudaaSanad? mudaat s).map (·.2)).getD .marjaMahjub
+
+/-- **مودَعُ السند يُوجد حيث يُقبل السند، لا غير**: وجودُ `mudaaSanad?` هو قبولُ `Idaa.aslMusajjal` للسند على بصمات
+    المودَعات نفسِها. -/
 theorem nawSanad_aslMusajjal (mudaat : Array (String × Idaa.Naw)) (s : String) :
-    (mudaat.toList.find? (mutabiqSanad s)).isSome =
+    (mudaaSanad? mudaat s).isSome =
       Idaa.aslMusajjal (fun _ : Unit => some s) (mudaat.toList.map (·.1)) () := by
-  unfold Idaa.aslMusajjal
+  unfold mudaaSanad? Idaa.aslMusajjal
   apply Bool.eq_iff_iff.mpr
   rw [List.find?_isSome, List.any_eq_true]
   constructor
@@ -209,6 +212,17 @@ theorem nawSanad_aslMusajjal (mudaat : Array (String × Idaa.Naw)) (s : String) 
   · rintro ⟨b, hb, hp⟩
     obtain ⟨m, hm, rfl⟩ := List.mem_map.mp hb
     exact ⟨m, hm, hp⟩
+
+/-- **لا سقفَ فوق «مرجع محجوب» إلّا لسندٍ مقبول**: إن أعطى `nawSanadMin` نفسُه سندًا نوعًا غيرَ «مرجع محجوب» فـ
+    `Idaa.aslMusajjal` يقبله. (والعكسُ لا يلزم: سندٌ مقبولٌ مودَعُه «مرجع محجوب» نوعُه «مرجع محجوب».) -/
+theorem nawSanad_sanad (mudaat : Array (String × Idaa.Naw)) (s : String)
+    (h : nawSanadMin mudaat s ≠ .marjaMahjub) :
+    Idaa.aslMusajjal (fun _ : Unit => some s) (mudaat.toList.map (·.1)) () = true := by
+  rw [← nawSanad_aslMusajjal]
+  unfold nawSanadMin at h
+  cases hm : mudaaSanad? mudaat s with
+  | none => rw [hm] at h; exact absurd rfl h
+  | some m => rfl
 
 /-- **السندُ الفارغ لا يأخذ نوعًا** (على الشاهد): سندٌ فارغٌ مع سجلٍّ فيه بصمةٌ سليمةٌ وأخرى فارغة يبقى «مرجع محجوب». -/
 theorem nawSanad_sanad_farigh : nawSanadMin #[("", .wad), ("abc", .wad)] "" = .marjaMahjub := by

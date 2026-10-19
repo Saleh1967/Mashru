@@ -1780,5 +1780,11 @@
   "milaf": "Faahis/Lib.lean",
   "min": "    | some k => if basma.length == 64 then",
   "ila": "    | some k => if basma.length >= 64 then"
+ },
+ {
+  "ism": "P242_nawSanad_tajawuz",
+  "milaf": "Faahis/Lib.lean",
+  "min": "  ((mudaaSanad? mudaat s).map (·.2)).getD .marjaMahjub",
+  "ila": "  ((mudaat.toList.find? (fun m => s.startsWith m.1)).map (·.2)).getD .marjaMahjub"
  }
 ]
