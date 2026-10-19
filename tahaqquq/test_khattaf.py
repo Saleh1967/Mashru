@@ -29,7 +29,15 @@ def main():
     tmp = tempfile.mkdtemp()
     proj = os.path.join(tmp, "project")
     shutil.copytree(ROOT, proj, ignore=shutil.ignore_patterns("__pycache__", "mustakshif"))
+    # القائمة تُفرَّغ في النسخة لتسريع البوّابة؛ فيُسجَّل كلّ اسمٍ فيها حذفًا مأذونًا في النسخة نفسِها وحدها، وإلّا أفشل
+    # بندُ ٤أ (حراسة قائمة الطفرات) البوّابةَ هنا لا لعلّةٍ في الخطّاف. القائمة الحقيقيّة وسجلّها لا يُمسّان.
+    ism = [t["ism"] for t in json.load(open(os.path.join(ROOT, "tahaqquq", "tafrat.json"), encoding="utf-8"))]
+    sijill_p = os.path.join(ROOT, "tahaqquq", "tafrat_mahdhufa.json")
+    sijill_asli = json.load(open(sijill_p, encoding="utf-8")) if os.path.exists(sijill_p) else []
     open(os.path.join(proj, "tahaqquq", "tafrat.json"), "w").write("[]")
+    with open(os.path.join(proj, "tahaqquq", "tafrat_mahdhufa.json"), "w", encoding="utf-8") as f:
+        json.dump(sijill_asli + [{"ism": n, "sabab": "نسخة test_khattaf: القائمة فُرِّغت لتسريع البوّابة",
+                                  "idhn": "تجهيز اختبار في نسخةٍ مؤقّتة لا تُدفع"} for n in ism], f, ensure_ascii=False)
     hooks = os.path.join(proj, ".claude", "hooks")
     for f in (".marrat_alhajb", "sijill_khattaf.log"):
         p = os.path.join(hooks, f)
