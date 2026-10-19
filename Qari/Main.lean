@@ -324,9 +324,7 @@ def qiyas (path : String) : IO UInt32 := do
         let l := ibtida (kalima q)
         let jidhr := match A.jidhrB l with | some r => jidhrIsm r | none => "-"
         let haal := match A.haalB l with | some h => toString h | none => "-"
-        let irab := match A.haalB l with
-          | some h => match Nizam.Aqd.irabMurashshah h with | some r => irabIsm r | none => "-"
-          | none => "-"
+        let irab := (((A.haalB l).bind Nizam.Aqd.irabMurashshah).map irabIsm).getD "-"
         IO.println s!"{k}\tQABUL\t{" ".intercalate (l.map toString)}\t{b (Fwaqf (run 0 l))}\t{b (Fwaqf (run 0 (waqfForm l)))}\t{b (A.qanunB l)}\t{jidhr}\t{haal}\t{irab}"
     | _ => IO.println s!"{line}\tKHALAL\tسطرٌ ليس «مفتاح⇥كلمة»"
   return 0

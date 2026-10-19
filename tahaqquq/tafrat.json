@@ -2062,5 +2062,65 @@
   "milaf": "tahaqquq/qiyas_d.py",
   "min": "    if out == ROOT or out.startswith(ROOT + os.sep):",
   "ila": "    if False:"
+ },
+ {
+  "ism": "P300_qiyas_la_hukm_ka_khilaf",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "        if r[\"irab\"] == \"-\":\n            f3[tab][\"la_hukm\"] += 1",
+  "ila": "        if False:\n            f3[tab][\"la_hukm\"] += 1"
+ },
+ {
+  "ism": "P301_qiyas_maqam_kull_alkalimat",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "        hasm = f3[tab][\"wifaq\"] + f3[tab][\"khilaf\"]",
+  "ila": "        hasm = f3[tab][\"n\"]"
+ },
+ {
+  "ism": "P302_qiyas_jim_fi_alif",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    t = \"a\" if s[\"alama\"] in ALAMAT_QASIRA else (\"b\" if s[\"alama\"] == MAMNU else \"c\")",
+  "ila": "    t = \"a\" if s[\"alama\"] != MAMNU else \"b\""
+ },
+ {
+  "ism": "P303_qiyas_other_i3rab_qita",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    qita = [s for s in msegs if s[\"naw\"] in (\"Prefix\", \"Stem\", \"Suffix\")]",
+  "ila": "    qita = list(msegs)"
+ },
+ {
+  "ism": "P304_qiyas_hadd_amthila",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "AMTHILA_HADD = 25\n",
+  "ila": "AMTHILA_HADD = 30\n"
+ },
+ {
+  "ism": "P305_qiyas_badhra_ukhra",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "BADHRA = 20261020\n",
+  "ila": "BADHRA = 20261019\n"
+ },
+ {
+  "ism": "P306_qiyas_nisfan_maqlubah",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    return {ayat[i] for i in idx[:nisf]}, {ayat[i] for i in idx[nisf:]}",
+  "ila": "    return {ayat[i] for i in idx[nisf:]}, {ayat[i] for i in idx[:nisf]}"
+ },
+ {
+  "ism": "P307_qiyas_muatal_yuqas",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": " or \"w\" in judhur[0] or \"y\" in judhur[0]",
+  "ila": ""
+ },
+ {
+  "ism": "P308_qiyas_ayyina_ghayr_muammat",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    return [(r[0], r[1]) for r in a], a",
+  "ila": "    return a, a"
+ },
+ {
+  "ism": "P309_qiyas_laysa_fi_qac_samit",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "            f2[\"laysa_fi_qac\"] += 1\n",
+  "ila": "            pass\n"
  }
 ]
