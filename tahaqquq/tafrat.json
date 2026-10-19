@@ -1786,5 +1786,23 @@
   "milaf": "Faahis/Lib.lean",
   "min": "  ((mudaaSanad? mudaat s).map (·.2)).getD .marjaMahjub",
   "ila": "  ((mudaat.toList.find? (fun m => s.startsWith m.1)).map (·.2)).getD .marjaMahjub"
+ },
+ {
+  "ism": "P250_raf_taaliq_bila_athar",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if fi_taaliq and sawa is not False:",
+  "ila": "    if fi_taaliq and t[\"ila\"] == t[\"min\"].lstrip(\"#- \"):\n        return None\n    if fi_taaliq and sawa is not False:"
+ },
+ {
+  "ism": "P251_imtidad_bila_hurufih",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    imtidad = os.path.splitext(milaf)[1]\n",
+  "ila": "    imtidad = os.path.splitext(milaf)[1].lower()\n"
+ },
+ {
+  "ism": "P252_naw_zaid",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "LUGHAT_BILA_TAALIQ = {\".tsv\", \".json\"}",
+  "ila": "LUGHAT_BILA_TAALIQ = {\".tsv\", \".json\", \".yml\"}"
  }
 ]

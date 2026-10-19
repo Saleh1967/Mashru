@@ -380,7 +380,10 @@ class TafraNassTests(unittest.TestCase):
                           ("tab.sh", "cat <<-EOF\n\tbayan # x-dakhil\n\tEOF\necho # baad-tab\n"),
                           ("str.sh", "cat <<<EOF # huna\necho z # baad-str\n"),
                           ("athar.lean", "def a := 5 -- x\n-- y\ndef b := 6\n"), ("izaha.py", "if x:\n    z = 0\n    # c\n    y = 1\n"),
-                          ("a.sh", self.SH), ("a.tsv", "x\ty\nz\tw\n"), ("a.md", "x\n")):
+                          ("a.sh", self.SH), ("a.tsv", "x\ty\nz\tw\n"), ("a.md", "x\n"),
+                          ("raf.py", 'def f():\n    # """توثيقٌ مرفوع"""\n    return 1\n'),
+                          ("raf.lean", "-- -- ملاحظةٌ مرفوعة\ndef a := 1\n"),
+                          ("A.LEAN", "def a := 1\n"), ("a.txt", "x\n"), ("Makefile", "x:\n"), ("a.yml", "x: 1\n")):
             with open(os.path.join(self.tmp.name, ism), "w", encoding="utf-8") as f:
                 f.write(nass)
 
@@ -406,6 +409,20 @@ class TafraNassTests(unittest.TestCase):
         self.assertIsNone(self.ayb("a.lean", "a--b"))                                      # «--» في اسم «…»
         self.assertIsNone(self.ayb("ism.lean", ":= 17"))                                   # بعد اسمٍ «…» فيه «--»
         self.assertIsNone(self.ayb("a.lean", "-- def g := 2", "def g := 2"))              # رفعُ التعليق تغييرٌ في الشيفرة
+
+    def test_uncommenting_needs_code_change(self):
+        # استثناءُ رفع التعليق «إذا كان الأثر تغييرًا تنفيذيًا حقيقيًا»: رفعُ العلامة وما ظهر يبقى توثيقًا أو تعليقًا لا يُقبل
+        self.assertEqual(self.ayb("raf.py", '# """توثيقٌ مرفوع"""', '"""توثيقٌ مرفوع"""'), self.FI_TAALIQ)
+        self.assertEqual(self.ayb("raf.lean", "-- -- ملاحظةٌ مرفوعة", "-- ملاحظةٌ مرفوعة"), self.FI_TAALIQ)
+        # ورفعُها إلى شيفرةٍ يُقبل
+        self.assertIsNone(self.ayb("raf.py", '# """توثيقٌ مرفوع"""', 'x = """توثيقٌ مرفوع"""'))
+
+    def test_supported_extensions_are_declared(self):
+        # «مع تعريف واضح للأنواع المدعومة»: الحصرُ مكتوبٌ هنا باليد، لا مقروءٌ من الشيفرة
+        self.assertEqual(bawwaba.ANWA_MADUMA, {".lean", ".py", ".sh", ".tsv", ".json"})
+        for milaf, min_ in (("A.LEAN", "def a"), ("a.txt", "x"), ("Makefile", "x:"), ("a.yml", "x: 1"), ("a.md", "x")):
+            with self.subTest(milaf=milaf):
+                self.assertIn("امتدادٌ لا تُعرف", self.ayb(milaf, min_))
 
     def test_lean_char_and_prime(self):
         self.assertEqual(self.ayb("harf.lean", "كاف"), self.FI_TAALIQ)                     # بعد حرف '"'
