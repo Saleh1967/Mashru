@@ -19,27 +19,30 @@
     (`mutaarida` تسمّيه)؛ ومفاتيحُ الناتج بلا تكرار، ويحمل الناتجُ شواهدَ ما حُذف من طرفٍ خلا من مفتاحه (`shawahidBaqiya`)، فهو
     طرفٌ صالحٌ لدمجٍ تالٍ.
 
-  ما يُبرهن (لكلّ أساسٍ وطرفين ودالّةِ بصمة):
+  ما يُبرهن (لكلّ أساسٍ وطرفين ودالّةِ بصمة؛ ويُشترط أساسٌ بلا تكرار في التكرار والطرف الواحد والتوافق وتساوي القوى على
+  الأصناف — `ho : bilaTakrar o = true`):
   * التناظر `damj_tanazur`، والتكرار `damj_tikrar`، والطرف الواحد `damj_janib_wahid`، والتجميع `damj_tajmii`
     ((a ⊔ b) ⊔ c و a ⊔ (b ⊔ c) يُقبلان معًا، ويتساويان في كلّ مفتاح، ورأيُهما واحدٌ طرفين في أيّ دمجٍ تالٍ — `ray_tasawi`؛ وفي
-    المفتاح الواحد `damj1_tajmii`). والتساوي الحرفيّ للنسختين لا يصحّ (قائمتا الشواهد المحمولة قد تختلفان لفظًا)، فالقوانينُ
-    مضبوطةٌ على أصناف التكافؤ الدلاليّ (§٦أ): `mutakafi` علاقةُ تكافؤٍ على النسخ بلا تكرار نسبةً إلى أساسٍ ثابت، والدمجُ يحترمها
+    المفتاح الواحد `damj1_tajmii`). والتساوي الحرفيّ للنسختين لا يصحّ (`musawat_harfiyya_la_tasihh`، على الشاهد): في التجميع
+    يختلف ترتيبُ المفاتيح (`farid` يُبقي آخرَ ورود، و`mafatih` تضع الأساسَ قبل الطرفين)، وفي التكرار تتكرّر الشواهدُ المحمولة،
+    وفي التبادل يختلف ترتيبُها. فالقوانينُ مضبوطةٌ على أصناف التكافؤ الدلاليّ (§٦أ): `mutakafi` علاقةُ تكافؤٍ على النسخ بلا تكرار نسبةً إلى أساسٍ ثابت، والدمجُ يحترمها
     (`damj_tawafuq`)، وعليها عمليّةٌ جزئيّة متساويةُ القوى تبادليّةٌ تجميعيّة (`damj_tikrar_mutakafi`، `damj_tanazur_mutakafi`،
-    `damj_tajmii_mutakafi`) — وهذا أضعفُ من المساواة الحرفيّة لا أقوى.
+    `damj_tajmii_mutakafi`) — وهذا أضعفُ من المساواة الحرفيّة لا أقوى. والقوانينُ مبرهنةٌ على الممثّلات مع التوافق، وهما معًا
+    ما يجعل العمليّة معرّفةً على الأصناف؛ أمّا بناءُ الخارج نفسِه في Lean (`Setoid`/`Quotient`) فلم يُبنَ (المرحلة الثانية).
   * متى يُقبل `damj_maqbul_iff` (لا تكرار ولا تعارض — لا أكثر ولا أقلّ)، ومتى يُرفض بأسمائه `damj_marfud_iff`، والتعارضُ يمنع
     القبول `taarud_yamna`.
   * عدمُ الفقد: `la_faqd` لمفاتيح الأساس (نمط #35)، و`la_faqd_janib`/`la_faqd_janib_b` لقيود الطرفين (نمط 767e09b: الإضافةُ لا
     تضيع أبدًا)؛ وعدمُ الاختلاق `la_ikhtira`؛ والناتجُ بلا تكرار `damj_bilaTakrar`، ورأيُه قيمُه `ray_damj`، وشواهدُه يعيّنها الناتجُ
     والأساس وحدهما `hadhfMaadhun_damj`، والمحذوفُ لا يعود `hadhf_yabqa`؛ والجامعة `salamat_damj`.
   * وعلى الشاهد (`decide +kernel`): الحادثتان بنموذجهما وأسمائهما الحقيقيّة، وحالاتُ شاهد الحذف، وعدمُ العودة، والتعارضُ المسمّى،
-    والتكرار، وأسماءُ المبرهنات المحميّة.
+    والتكرار، وأسماءُ المبرهنات المحميّة، وأنّ المساواةَ الحرفيّة لا تصحّ في التجميع والتكرار والتبادل.
 
   الحدّ (معلَن):
   * البصمة دالّةٌ معامِلٌ (`basmaOf`)، وتبايُنُها مفترضٌ لا مبرهن؛ والمثالان هنا (`basmaTafra`، والهويّة لنصّ المبرهنة) تمثيلٌ
     نصّيّ لا SHA-256 — بصمةُ التشغيل الحقيقيّة وسائقُ الدمج وفحصُ CI في المرحلة الثانية.
   * حقلُ الإذن يُشترط غيرَ فارغ، ومصدرُه لا يُتحقّق هنا: فمبرهناتُ عدم الفقد تثبت خواصَّ الدمج بحسب تعريف الشاهد، لا شرعيّةَ كلّ
-    حذفٍ في الواقع (نظيرُ فرض `hA` في `SalamaMaqbul`)؛ وترتيبُ الشواهد (السجلّ التاريخيّ) خارج الحالة الدلاليّة، ويبقى منه شاهدُ
-    كلّ حذفٍ في الناتج (`shahid_hadhf_mahmul`)؛ وصيغةُ الشاهد هنا (مع البصمة) غيرُ صيغة السجلّ القائم
+    حذفٍ في الواقع (نظيرُ فرض `hA` في `SalamaMaqbul`)؛ وترتيبُ الشواهد (السجلّ التاريخيّ) خارج الحالة الدلاليّة، ويبقى منه في الناتج
+    كلُّ شاهدٍ صحيحٍ لمفتاحِ أساسٍ محذوف من طرفٍ خلا منه (`shahid_hadhf_mahmul`)؛ وصيغةُ الشاهد هنا (مع البصمة) غيرُ صيغة السجلّ القائم
     `tahaqquq/tafrat_mahdhufa.json` ({ism، sabab، idhn} بلا بصمة).
   * شاهدُ حذفٍ غيرُ صحيح، أو شاهدٌ والقيمةُ حاضرة، يُهمَل بلا تشخيص (الحضورُ أقوى شاهد).
   * سجلُّ الإيداع `mudaat/sijill.json` خارج المرحلة الأولى (قرار التصميم).
@@ -806,7 +809,7 @@ theorem la_ikhtira (basmaOf : V → String) (o a b : Nuskha K V) (m : Nuskha K V
     · exact Or.inl h1
 
 /-- **التجميع**: (a ⊔ b) ⊔ c و a ⊔ (b ⊔ c) على أساسٍ واحد يُقبلان معًا أو يُرفضان معًا، وقيمُهما واحدةٌ في كلّ مفتاح، ورأيُهما
-    واحدٌ طرفين في أيّ دمجٍ تالٍ (وإن اختلفت قائمتا الشواهد المحمولة لفظًا). -/
+    واحدٌ طرفين في أيّ دمجٍ تالٍ (وإن اختلف الناتجان حرفيًّا في ترتيب المفاتيح: `musawat_harfiyya_la_tasihh`). -/
 theorem damj_tajmii (basmaOf : V → String) (o a b c : Nuskha K V) :
     ((damj basmaOf o a b).bind fun ab => damj basmaOf o ab c).isSome =
       ((damj basmaOf o b c).bind fun bc => damj basmaOf o a bc).isSome ∧
@@ -909,12 +912,14 @@ theorem damj_tajmii (basmaOf : V → String) (o a b c : Nuskha K V) :
 
 /-! ## ٦أ. أصنافُ التكافؤ: الحالةُ الدلاليّة نسبةً إلى أساسٍ ثابت
 
-التجميعُ الحرفيّ (تساوي النسختين بياناتٍ) لا يصحّ: قائمتا الشواهد المحمولة قد تختلفان لفظًا. والصحيحُ قانونٌ على أصناف تكافؤٍ
-مضبوطة المجال: النسخُ بلا تكرار، والأساسُ o ثابت، و`mutakafi` = رأيٌ واحدٌ في كلّ مفتاح (القيمُ الفعّالة نفسُها، وبها وحدها يعمل
-كلُّ دمجٍ تالٍ على o). وهو أضعفُ من المساواة الحرفيّة لا أقوى (المساواةُ تستلزمه ولا عكس). وعليه: علاقةُ تكافؤٍ جزئيّة (انعكاسيّة
-على المجال)، متوافقةٌ مع الدمج، والدمجُ عليها عمليّةٌ جزئيّة (يُرفض بالتعارض) متساويةُ القوى تبادليّةٌ تجميعيّة — قوانينُ نصف الشبكة
-الجزئيّة على الأصناف. أمّا ترتيبُ الشواهد (السجلّ التاريخيّ) فخارج هذه الحالة، ويبقى منه ما يُثبت المسؤوليّة عن كلّ حذف
-(`shahid_hadhf_mahmul`). -/
+المساواةُ الحرفيّة (تساوي النسختين بياناتٍ) لا تصحّ (`musawat_harfiyya_la_tasihh`): في التجميع يختلف ترتيبُ مفاتيح الناتج، وفي
+التكرار والتبادل قائمةُ الشواهد المحمولة. والصحيحُ قانونٌ على أصناف تكافؤٍ مضبوطة المجال: النسخُ بلا تكرار، والأساسُ o ثابت،
+و`mutakafi` = رأيٌ واحدٌ في كلّ مفتاح (القيمُ الفعّالة نفسُها، وبها وحدها يعمل كلُّ دمجٍ تالٍ على o). وهو أضعفُ من المساواة
+الحرفيّة لا أقوى: المساواةُ على النسخ بلا تكرار تستلزمه (`mutakafi_inikas`)، ولا عكس — ناتجا التجميع متكافئان
+(`damj_tajmii_mutakafi`) ومختلفان حرفيًّا في الشاهد. وعليه: علاقةُ تكافؤٍ جزئيّة (انعكاسيّة على المجال)، متوافقةٌ مع الدمج على أساسٍ
+بلا تكرار، والدمجُ عليها عمليّةٌ جزئيّة (يُرفض بالتعارض) متساويةُ القوى تبادليّةٌ تجميعيّة — قوانينُ نصف الشبكة الجزئيّة على الأصناف،
+مبرهنةً على الممثّلات (الخارجُ نفسُه `Quotient` لم يُبنَ). أمّا ترتيبُ الشواهد (السجلّ التاريخيّ) فخارج هذه الحالة، ولا يضيع منه
+شاهدٌ صحيحٌ لحذفٍ وقع (`shahid_hadhf_mahmul`). -/
 
 /-- **التكافؤ الدلاليّ** نسبةً إلى الأساس o: نسختان بلا تكرار، ورأيُهما واحدٌ في كلّ مفتاح. -/
 def mutakafi (basmaOf : V → String) (o x y : Nuskha K V) : Prop :=
@@ -940,7 +945,7 @@ theorem mutakafi_natija (basmaOf : V → String) (o a b x : Nuskha K V) (m : Nus
     (h : ∀ k, bahth m.qaima k = ray basmaOf (bahth o.qaima k) x k) : mutakafi basmaOf o m x :=
   ⟨damj_bilaTakrar basmaOf o a b m hm, hx, fun k => (ray_damj basmaOf o a b m hm k).trans (h k)⟩
 
-/-- **التوافق**: الدمجُ يحترم التكافؤ — طرفان متكافئان بطرفين متكافئين يُقبلان معًا، وناتجاهما متكافئان. -/
+/-- **التوافق**: على أساسٍ بلا تكرار، الدمجُ يحترم التكافؤ — طرفان متكافئان بطرفين متكافئين يُقبلان معًا، وناتجاهما متكافئان. -/
 theorem damj_tawafuq (basmaOf : V → String) (o a a' b b' : Nuskha K V) (ho : bilaTakrar o = true)
     (ha : mutakafi basmaOf o a a') (hb : mutakafi basmaOf o b b') :
     (damj basmaOf o a b).isSome = (damj basmaOf o a' b').isSome ∧
@@ -960,7 +965,7 @@ theorem damj_tawafuq (basmaOf : V → String) (o a a' b b' : Nuskha K V) (ho : b
     rw [ray_damj basmaOf o a' b' m' hm' k]
     exact (Natija.qima.inj e1).symm
 
-/-- **تساوي القوى على الأصناف**: دمجُ نسخةٍ بنفسها يُقبل ويكافئها. -/
+/-- **تساوي القوى على الأصناف**: على أساسٍ بلا تكرار، دمجُ نسخةٍ بلا تكرار بنفسها يُقبل ويكافئها. -/
 theorem damj_tikrar_mutakafi (basmaOf : V → String) (o a : Nuskha K V) (ho : bilaTakrar o = true)
     (ha : bilaTakrar a = true) : ∃ m, damj basmaOf o a a = some m ∧ mutakafi basmaOf o m a := by
   obtain ⟨m, hm, hv⟩ := damj_tikrar basmaOf o a ho ha
@@ -992,12 +997,16 @@ theorem damj_tajmii_mutakafi (basmaOf : V → String) (o a b c : Nuskha K V) :
     | some bc => rw [hbc] at hr; exact damj_bilaTakrar basmaOf o a bc r hr
   exact ⟨hn l hl, hn', fun k => ((hv l r hl hr).2 (bahth o.qaima k) k)⟩
 
-/-- **المسؤوليّةُ عن الحذف محفوظة**: كلّ مفتاحٍ من الأساس غاب عن الناتج يحمل الناتجُ شاهدَ حذفه الصحيح، من طرفٍ خلا منه. -/
+/-- **حملُ شواهد الحذف**: لكلّ مفتاحٍ من الأساس غاب عن الناتج (١) يحمل الناتجُ شاهدًا صحيحًا على الأقلّ لحذفه، من طرفٍ خلا منه؛
+    و(٢) كلُّ شاهدٍ صحيحٍ لحذفه من طرفٍ خلا منه محمولٌ في الناتج — فإن حذفه الطرفان بشاهدين (بإذنين مختلفين مثلًا) حُمل الاثنان.
+    والحدّ: صحّةُ حقل الإذن نفسِه لا تُتحقّق هنا (نظيرُ `hA`). -/
 theorem shahid_hadhf_mahmul (basmaOf : V → String) (o a b : Nuskha K V) (m : Nuskha K V)
     (hm : damj basmaOf o a b = some m) (k : K) (w : V)
     (ho : bahth o.qaima k = some w) (hk : bahth m.qaima k = none) :
-    ∃ s ∈ m.mahdhufa, s.miftah = k ∧ sahih basmaOf w s = true ∧
-      ((s ∈ a.mahdhufa ∧ bahth a.qaima k = none) ∨ (s ∈ b.mahdhufa ∧ bahth b.qaima k = none)) := by
+    (∃ s ∈ m.mahdhufa, s.miftah = k ∧ sahih basmaOf w s = true ∧
+      ((s ∈ a.mahdhufa ∧ bahth a.qaima k = none) ∨ (s ∈ b.mahdhufa ∧ bahth b.qaima k = none))) ∧
+    ∀ s, ((s ∈ a.mahdhufa ∧ bahth a.qaima k = none) ∨ (s ∈ b.mahdhufa ∧ bahth b.qaima k = none)) →
+      s.miftah = k → sahih basmaOf w s = true → s ∈ m.mahdhufa := by
   obtain ⟨_, _, _, _, hsh⟩ := damj_some basmaOf o a b m hm
   have hn := damj_nuqta basmaOf o a b m hm k
   rw [hk] at hn
@@ -1011,13 +1020,17 @@ theorem shahid_hadhf_mahmul (basmaOf : V → String) (o a b : Nuskha K V) (m : N
     refine ⟨hs, ?_⟩
     rw [hsk, hk, ho]
     simp [hsa]
-  rcases damj1_la_ikhtira _ _ _ _ hn with ha | hb
-  · obtain ⟨hak, s, hs, hsk, hsa⟩ := ray_ghaib_sahih basmaOf w a k ha.symm
-    have hf : s ∈ shawahidKhaliya a := List.mem_filter.mpr ⟨hs, by rw [hsk, hak]; rfl⟩
-    exact ⟨s, mem s (List.mem_append_left _ hf) hsk hsa, hsk, hsa, Or.inl ⟨hs, hak⟩⟩
-  · obtain ⟨hbk, s, hs, hsk, hsa⟩ := ray_ghaib_sahih basmaOf w b k hb.symm
-    have hf : s ∈ shawahidKhaliya b := List.mem_filter.mpr ⟨hs, by rw [hsk, hbk]; rfl⟩
-    exact ⟨s, mem s (List.mem_append_right _ hf) hsk hsa, hsk, hsa, Or.inr ⟨hs, hbk⟩⟩
+  refine ⟨?_, fun s hs hsk hsa => mem s ?_ hsk hsa⟩
+  · rcases damj1_la_ikhtira _ _ _ _ hn with ha | hb
+    · obtain ⟨hak, s, hs, hsk, hsa⟩ := ray_ghaib_sahih basmaOf w a k ha.symm
+      have hf : s ∈ shawahidKhaliya a := List.mem_filter.mpr ⟨hs, by rw [hsk, hak]; rfl⟩
+      exact ⟨s, mem s (List.mem_append_left _ hf) hsk hsa, hsk, hsa, Or.inl ⟨hs, hak⟩⟩
+    · obtain ⟨hbk, s, hs, hsk, hsa⟩ := ray_ghaib_sahih basmaOf w b k hb.symm
+      have hf : s ∈ shawahidKhaliya b := List.mem_filter.mpr ⟨hs, by rw [hsk, hbk]; rfl⟩
+      exact ⟨s, mem s (List.mem_append_right _ hf) hsk hsa, hsk, hsa, Or.inr ⟨hs, hbk⟩⟩
+  · rcases hs with ⟨hs, hak⟩ | ⟨hs, hbk⟩
+    · exact List.mem_append_left _ (List.mem_filter.mpr ⟨hs, by rw [hsk, hak]; rfl⟩)
+    · exact List.mem_append_right _ (List.mem_filter.mpr ⟨hs, by rw [hsk, hbk]; rfl⟩)
 
 /-- **سلامةُ الدمج** (الجامعة): الدمجُ المقبول لا يفقد مفتاحَ أساسٍ ولا قيدَ طرفٍ بلا شاهد، ولا يختلق قيمة، ويأخذ ما اتّفق عليه
     الطرفان، ويأخذ تغييرَ الطرف الذي غيّر حين لم يغيّر الآخر — أيًّا كان الطرفُ الذي لم يغيّر. -/
@@ -1137,6 +1150,24 @@ theorem shawahid_taarud :
 theorem shahid_la_yuhmal_min_hadir :
     (damj basmaTafra ⟨[("P1", tA)], []⟩ ⟨[("P1", tA)], [⟨"P1", basmaTafra tA, "قديم-a", "المالك"⟩]⟩
       ⟨[], [⟨"P1", basmaTafra tA, "حذف-b", "المالك"⟩]⟩).map (fun n => n.mahdhufa.map (·.sabab)) = some ["حذف-b"] := by
+  decide +kernel
+
+/-- **المساواةُ الحرفيّة لا تصحّ** (على الشاهد)، فالقوانينُ على الأصناف (§٦أ): (١) التجميع — الجهتان بلا شواهد، ومفاتيحُهما
+    مرتّبةٌ ترتيبين (`farid` يُبقي آخرَ ورود، و`mafatih` تضع الأساسَ قبل الطرفين)، وهما متكافئان بـ`damj_tajmii_mutakafi`؛
+    (٢) التكرار — شاهدُ الطرف يُحمل مرّتين؛ (٣) التبادل — شاهدا الطرفين بترتيبين، ويُحمل الاثنان (`shahid_hadhf_mahmul`). -/
+theorem musawat_harfiyya_la_tasihh :
+    ((damj basmaTafra ⟨[("P1", tA), ("P2", tB)], []⟩ ⟨[("P2", tB), ("P1", tA)], []⟩ ⟨[], []⟩).bind
+      fun ab => damj basmaTafra ⟨[("P1", tA), ("P2", tB)], []⟩ ab ⟨[], []⟩).map (fun n => (n.qaima, n.mahdhufa)) =
+      some ([("P2", tB), ("P1", tA)], []) ∧
+    ((damj basmaTafra ⟨[("P1", tA), ("P2", tB)], []⟩ ⟨[], []⟩ ⟨[], []⟩).bind
+      fun bc => damj basmaTafra ⟨[("P1", tA), ("P2", tB)], []⟩ ⟨[("P2", tB), ("P1", tA)], []⟩ bc).map
+        (fun n => (n.qaima, n.mahdhufa)) = some ([("P1", tA), ("P2", tB)], []) ∧
+    (damj basmaTafra ⟨[("P1", tA)], []⟩ ⟨[], [⟨"P1", basmaTafra tA, "حذف-a", "المالك"⟩]⟩
+      ⟨[], [⟨"P1", basmaTafra tA, "حذف-a", "المالك"⟩]⟩).map (fun n => n.mahdhufa.map (·.sabab)) = some ["حذف-a", "حذف-a"] ∧
+    (damj basmaTafra ⟨[("P1", tA)], []⟩ ⟨[], [⟨"P1", basmaTafra tA, "حذف-a", "إذن-1"⟩]⟩
+      ⟨[], [⟨"P1", basmaTafra tA, "حذف-b", "إذن-2"⟩]⟩).map (fun n => n.mahdhufa.map (·.sabab)) = some ["حذف-a", "حذف-b"] ∧
+    (damj basmaTafra ⟨[("P1", tA)], []⟩ ⟨[], [⟨"P1", basmaTafra tA, "حذف-b", "إذن-2"⟩]⟩
+      ⟨[], [⟨"P1", basmaTafra tA, "حذف-a", "إذن-1"⟩]⟩).map (fun n => n.mahdhufa.map (·.sabab)) = some ["حذف-b", "حذف-a"] := by
   decide +kernel
 
 /-- **أسماءُ المبرهنات المحميّة** (على الشاهد): اسمٌ غاب عن طرفٍ بلا شاهدٍ يبقى؛ وبشاهدٍ ببصمة نصّه وإذنٍ يُحذف؛ وقيمةٌ

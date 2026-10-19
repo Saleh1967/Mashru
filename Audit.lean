@@ -1419,4 +1419,5 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.Damj.shahid_hadhf_la_yaud
 #print axioms Nizam.Damj.shawahid_taarud
 #print axioms Nizam.Damj.shahid_la_yuhmal_min_hadir
+#print axioms Nizam.Damj.musawat_harfiyya_la_tasihh
 #print axioms Nizam.Damj.shawahid_mubarhanat

@@ -1918,5 +1918,17 @@
   "milaf": "tahaqquq/bawwaba.py",
   "min": "LUGHAT_BILA_TAALIQ = {\".tsv\", \".json\"}",
   "ila": "LUGHAT_BILA_TAALIQ = {\".tsv\", \".json\", \".yml\"}"
+ },
+ {
+  "ism": "P253_shahid_wahid_li_miftah",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  (shawahidKhaliya a ++ shawahidKhaliya b).filter fun s =>",
+  "ila": "  (shawahidKhaliya a ++ (shawahidKhaliya b).filter (fun t => !(shawahidKhaliya a).any (·.miftah == t.miftah))).filter fun s =>"
+ },
+ {
+  "ism": "P254_mafatih_asas_akhiran",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  farid (o.qaima.map Prod.fst ++ a.qaima.map Prod.fst ++ b.qaima.map Prod.fst)",
+  "ila": "  farid (a.qaima.map Prod.fst ++ b.qaima.map Prod.fst ++ o.qaima.map Prod.fst)"
  }
 ]
