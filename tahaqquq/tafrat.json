@@ -1396,5 +1396,65 @@
   "milaf": "Nizam/Asas.lean",
   "min": "m.filter fun x => q.kulli x && !q.hukm x",
   "ila": "m.filter fun x => q.kulli x || !q.hukm x"
+ },
+ {
+  "ism": "P163_khatt_asas_fail_open",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "fails.append(f\"خطّ الأساس khatt_asas.json غير صالح: {e}\")",
+  "ila": "report.append(f\"خطّ الأساس khatt_asas.json غير صالح: {e}\")"
+ },
+ {
+  "ism": "P164_elan_bootstrap_false_success",
+  "milaf": "scripts/tathbit_lean.sh",
+  "min": "    timeout 180 elan toolchain install \"$TC\" && timeout 30 elan default \"$TC\" && ready && exit 0",
+  "ila": "    exit 0"
+ },
+ {
+  "ism": "P165_lean_checksum_bypass",
+  "milaf": "scripts/tathbit_lean.sh",
+  "min": "| sha256sum --check --status; then",
+  "ila": "| cat > /dev/null; then"
+ },
+ {
+  "ism": "P166_lean_download_unbounded",
+  "milaf": "scripts/tathbit_lean.sh",
+  "min": "--connect-timeout 15 --max-time 900 --retry 2 --retry-max-time 1800",
+  "ila": "--retry 2"
+ },
+ {
+  "ism": "P167_naql_binadaraja_hadd",
+  "milaf": "Aql/Naql.lean",
+  "min": "if adadMasadirMukhtalifa ≥ 2 then .mutadhafir else .ahad",
+  "ila": "if adadMasadirMukhtalifa ≥ 3 then .mutadhafir else .ahad"
+ },
+ {
+  "ism": "P168_naql_yasluhu_and_to_or",
+  "milaf": "Aql/Naql.lean",
+  "min": "n.qail.isSome && (n.fiAlHadd != some false)",
+  "ila": "n.qail.isSome || (n.fiAlHadd != some false)"
+ },
+ {
+  "ism": "P169_naql_yasluhu_yatruk_qail",
+  "milaf": "Aql/Naql.lean",
+  "min": "  n.qail.isSome && (n.fiAlHadd != some false)",
+  "ila": "  true && (n.fiAlHadd != some false)"
+ },
+ {
+  "ism": "P170_alaqamajaz_mashrua_and_to_or",
+  "milaf": "Aql/AlaqaMajaz.lean",
+  "min": "a.shahid.basma.startsWith b.1 && b.2 == .waqiMakhtum",
+  "ila": "a.shahid.basma.startsWith b.1 || b.2 == .waqiMakhtum"
+ },
+ {
+  "ism": "P171_alaqamajaz_mashrua_naw_wrong",
+  "milaf": "Aql/AlaqaMajaz.lean",
+  "min": "b.2 == .waqiMakhtum",
+  "ila": "b.2 == .maalumatSabiqa"
+ },
+ {
+  "ism": "P172_alaqamajaz_alaqaof_always_true",
+  "milaf": "Aql/AlaqaMajaz.lean",
+  "min": "def alaqaOf (sijill : List (String × Idaa.Naw)) (a : AlaqaMajaz) : Bool :=\n  mashrua sijill a",
+  "ila": "def alaqaOf (sijill : List (String × Idaa.Naw)) (a : AlaqaMajaz) : Bool :=\n  true"
  }
 ]
