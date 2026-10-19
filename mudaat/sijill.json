@@ -304,6 +304,16 @@
    "hala": "مرشح",
    "idhn": "",
    "tarikh": "2026-10-18"
+  },
+  {
+   "ism": "المدوّنة القرآنية الصرفية QAC 0.4",
+   "naw": "مرجع-محجوب",
+   "sha256": "a1d12923815341face765083805d2148ed2d9f5cc3f7d6665219d887675d8c46",
+   "milaf": "quranic-corpus-morphology-0.4.txt",
+   "masdar": "Quranic Arabic Corpus (morphology, version 0.4)، © 2011 Kais Dukes، GPL (ترويسة الملفّ: النسخ الحرفيّ مأذون والتغيير ممنوع)، corpus.quran.com/download (غير مبلوغٍ من هذه البيئة). البايتات: فكُّ ضغط corpora/qac/quranic-corpus-morphology-0.4.txt.gz (sha256 الملفّ المضغوط bcfed711c720fdcb27e6deb49484ed6488c71040a292ab2e5322393322108514) من مستودع المالك Saleh1967/Alghanem فرع claude/official-gate الإيداع b2da7a2 (2026-10-12)، وهو بنصّ LICENSE.md بجواره نسخةٌ حرفيّة من q-ran/quran@bb97fe4b sources/1.0/quranic-corpus-morphology-0.4.txt؛ والبصمةُ نفسُها مسجَّلةٌ في Alghanem main (src/alghanem/arabic/irab_corpus_witness.py، QURANIC_ARABIC_CORPUS_WITNESS) مقيسةً على مرآةٍ ثانية alstat/QuranTree.jl بطول 6,309,503 بايتًا — مرآتان مستقلّتان ببايتاتٍ واحدة. لا يُرفع إلى المستودع؛ مكانُه MUDAA_DIR. مرجعٌ محجوب: للقياس وحده، ولا يقرؤه بناءٌ في المحرّك.",
+   "hala": "مختوم",
+   "idhn": "قول المالك 2026-10-19 20:18 بتوقيت عمّان: «نعم تأذن بختم QAC 0.4 وMASAQ 5 مرجعين محجوبين بعد أن ترفعهما انت ارفعها ووقع»؛ ثمّ 21:43: «ابحث انت وفق افضل الممارسا ولكن ابحث في المستودع ممكن موجود المودع»",
+   "tarikh": "2026-10-19"
   }
  ]
 }
