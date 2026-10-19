@@ -188,11 +188,57 @@ structure Bina where
   asl? : Qadiyya → Option Asl
   shuhud : Nat → List ShahidWaqi
 
+/-- المودَعُ يطابق السند: بصمتُه غيرُ فارغة، والسندُ يبدأ بها. -/
+def mutabiqSanad (s : String) (m : String × Idaa.Naw) : Bool := !m.1.isEmpty && s.startsWith m.1
+
+/-- مودَعُ السند: أوّلُ مودَعٍ مسجَّلٍ يطابق السندَ (`mutabiqSanad`). -/
+def mudaaSanad? (mudaat : Array (String × Idaa.Naw)) (s : String) : Option (String × Idaa.Naw) :=
+  mudaat.toList.find? (mutabiqSanad s)
+
+/-- نوعُ مودَعِ السند (سقفُ وسمه): نوعُ `mudaaSanad?`، وإلّا «مرجع محجوب» (أدنى السقوف). -/
+def nawSanadMin (mudaat : Array (String × Idaa.Naw)) (s : String) : Idaa.Naw :=
+  ((mudaaSanad? mudaat s).map (·.2)).getD .marjaMahjub
+
+/-- **مودَعُ السند يُوجد حيث يُقبل السند، لا غير**: وجودُ `mudaaSanad?` هو قبولُ `Idaa.aslMusajjal` للسند على بصمات
+    المودَعات نفسِها. -/
+theorem nawSanad_aslMusajjal (mudaat : Array (String × Idaa.Naw)) (s : String) :
+    (mudaaSanad? mudaat s).isSome =
+      Idaa.aslMusajjal (fun _ : Unit => some s) (mudaat.toList.map (·.1)) () := by
+  unfold mudaaSanad? Idaa.aslMusajjal
+  apply Bool.eq_iff_iff.mpr
+  rw [List.find?_isSome, List.any_eq_true]
+  constructor
+  · rintro ⟨m, hm, hp⟩; exact ⟨m.1, List.mem_map_of_mem hm, hp⟩
+  · rintro ⟨b, hb, hp⟩
+    obtain ⟨m, hm, rfl⟩ := List.mem_map.mp hb
+    exact ⟨m, hm, hp⟩
+
+/-- **لا سقفَ فوق «مرجع محجوب» إلّا لسندٍ مقبول**: إن أعطى `nawSanadMin` نفسُه سندًا نوعًا غيرَ «مرجع محجوب» فـ
+    `Idaa.aslMusajjal` يقبله. (والعكسُ لا يلزم: سندٌ مقبولٌ مودَعُه «مرجع محجوب» نوعُه «مرجع محجوب».) -/
+theorem nawSanad_sanad (mudaat : Array (String × Idaa.Naw)) (s : String)
+    (h : nawSanadMin mudaat s ≠ .marjaMahjub) :
+    Idaa.aslMusajjal (fun _ : Unit => some s) (mudaat.toList.map (·.1)) () = true := by
+  rw [← nawSanad_aslMusajjal]
+  unfold nawSanadMin at h
+  cases hm : mudaaSanad? mudaat s with
+  | none => rw [hm] at h; exact absurd rfl h
+  | some m => rfl
+
+/-- **السندُ الفارغ لا يأخذ نوعًا** (على الشاهد): سندٌ فارغٌ مع سجلٍّ فيه بصمةٌ سليمةٌ وأخرى فارغة يبقى «مرجع محجوب». -/
+theorem nawSanad_sanad_farigh : nawSanadMin #[("", .wad), ("abc", .wad)] "" = .marjaMahjub := by
+  decide +kernel
+
+/-- **القيدُ الفارغ لا يعطي سندًا نوعَه** (على الشاهد): قيدٌ فارغٌ من نوع «وضع» قبل القيد الحقيقيّ لا يرفع سندًا من «مرجع
+    محجوب» إلى سقف «وضع». -/
+theorem nawSanad_basma_farigha :
+    nawSanadMin #[("", .wad), ("abc", .marjaMahjub)] "abc@1" = .marjaMahjub ∧
+    nawSanadMin #[("abc", .wad)] "abc@1" = .wad := by
+  decide +kernel
+
 def bina (h : Hal) (isdar : String) : Bina :=
   let asl? (p : Qadiyya) : Option Asl := h.usul.find? (·.qadiyya == p)
   let sijill := (h.mudaat.map (·.1)).toList
-  let nawSanad (s : String) : Idaa.Naw :=
-    ((h.mudaat.find? (fun m => s.startsWith m.1)).map (·.2)).getD .marjaMahjub
+  let nawSanad (s : String) : Idaa.Naw := nawSanadMin h.mudaat s
   { q := ⟨isdar, (h.qawanin.map (·.1)).toList⟩
     aslB := fun p => Idaa.aslMusajjal (fun x => (asl? x).map (·.sanad)) sijill p
     aslW := fun p => ((asl? p).map fun a => qayd a.tariqa (Idaa.qaydMudaa (nawSanad a.sanad) a.wasm)).getD .ray

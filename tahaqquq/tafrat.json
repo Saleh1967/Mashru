@@ -254,8 +254,8 @@
  {
   "ism": "M34_shuhud_min_ayy_mudaa",
   "milaf": "Aql/Maratib.lean",
-  "min": "  sh.filter fun s => sijill.any fun b => s.basma.startsWith b.1 && b.2 == .waqiMakhtum",
-  "ila": "  sh.filter fun s => sijill.any fun b => s.basma.startsWith b.1"
+  "min": "  sh.filter fun s => sijill.any fun b => !b.1.isEmpty && s.basma.startsWith b.1 && b.2 == .waqiMakhtum",
+  "ila": "  sh.filter fun s => sijill.any fun b => !b.1.isEmpty && s.basma.startsWith b.1"
  },
  {
   "ism": "M35_ahjam_naqisa",
@@ -1734,6 +1734,174 @@
   "ila": "    if False:\n        print("
  },
  {
+  "ism": "P197_asl_basma_farigha",
+  "milaf": "Aql/Idaa.lean",
+  "min": "  | some s => sijill.any (fun b => !b.isEmpty && s.startsWith b)",
+  "ila": "  | some s => sijill.any (fun b => s.startsWith b)"
+ },
+ {
+  "ism": "P198_shuhud_basma_farigha",
+  "milaf": "Aql/Maratib.lean",
+  "min": "sijill.any fun b => !b.1.isEmpty && s.basma.startsWith b.1",
+  "ila": "sijill.any fun b => s.basma.startsWith b.1"
+ },
+ {
+  "ism": "P199_asl_la_yuqbal_abadan",
+  "milaf": "Aql/Idaa.lean",
+  "min": "  | some s => sijill.any (fun b => !b.isEmpty && s.startsWith b)",
+  "ila": "  | some s => sijill.any (fun b => false && s.startsWith b)"
+ },
+ {
+  "ism": "P200_shuhud_la_tuqbal_abadan",
+  "milaf": "Aql/Maratib.lean",
+  "min": "sijill.any fun b => !b.1.isEmpty && s.basma.startsWith b.1",
+  "ila": "sijill.any fun b => false && s.basma.startsWith b.1"
+ },
+ {
+  "ism": "P208_basma_64_mahmal",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    | some k => if basma.length == 64 then",
+  "ila": "    | some k => if true then"
+ },
+ {
+  "ism": "P209_nawSanad_farigh",
+  "milaf": "Faahis/Lib.lean",
+  "min": ":= !m.1.isEmpty && s.startsWith m.1",
+  "ila": ":= s.startsWith m.1"
+ },
+ {
+  "ism": "P210_shuhud_bada_daiman",
+  "milaf": "Aql/Maratib.lean",
+  "min": "s.basma.startsWith b.1 && b.2",
+  "ila": "true && b.2"
+ },
+ {
+  "ism": "P230_basma_64_aw_akthar",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    | some k => if basma.length == 64 then",
+  "ila": "    | some k => if basma.length >= 64 then"
+ },
+ {
+  "ism": "P242_nawSanad_tajawuz",
+  "milaf": "Faahis/Lib.lean",
+  "min": "  ((mudaaSanad? mudaat s).map (·.2)).getD .marjaMahjub",
+  "ila": "  ((mudaat.toList.find? (fun m => s.startsWith m.1)).map (·.2)).getD .marjaMahjub"
+ },
+ {
+  "ism": "P211_damj1_janib_khata",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  else if a = o then .qima b",
+  "ila": "  else if a = o then .qima a"
+ },
+ {
+  "ism": "P212_ghiyab_hadhf_bila_shahid",
+  "milaf": "Nizam/Damj.lean",
+  "min": "    | some w => if hadhfMaadhun basmaOf x k w then none else some w",
+  "ila": "    | some w => none"
+ },
+ {
+  "ism": "P213_shahid_bila_idhn",
+  "milaf": "Nizam/Damj.lean",
+  "min": "s.basma == basmaOf w && !s.sabab.isEmpty && !s.idhn.isEmpty",
+  "ila": "s.basma == basmaOf w && !s.sabab.isEmpty"
+ },
+ {
+  "ism": "P214_taarud_la_yamna",
+  "milaf": "Nizam/Damj.lean",
+  "min": "    | .taarud, _ => none",
+  "ila": "    | .taarud, l => l"
+ },
+ {
+  "ism": "P215_shahid_bila_basma",
+  "milaf": "Nizam/Damj.lean",
+  "min": "!s.basma.isEmpty && s.basma == basmaOf w && !s.sabab.isEmpty",
+  "ila": "!s.basma.isEmpty && !s.sabab.isEmpty"
+ },
+ {
+  "ism": "P216_taarud_ikhtiyar_janib",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  else .taarud",
+  "ila": "  else .qima a"
+ },
+ {
+  "ism": "P217_hadir_yughlab_bil_asas",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  match bahth x.qaima k with\n  | some v => some v",
+  "ila": "  match bahth x.qaima k with\n  | some v => o"
+ },
+ {
+  "ism": "P231_shahid_bila_miftah",
+  "milaf": "Nizam/Damj.lean",
+  "min": "x.mahdhufa.any fun s => s.miftah == k && sahih basmaOf w s",
+  "ila": "x.mahdhufa.any fun s => sahih basmaOf w s"
+ },
+ {
+  "ism": "P232_shahid_bila_sabab",
+  "milaf": "Nizam/Damj.lean",
+  "min": "s.basma == basmaOf w && !s.sabab.isEmpty && !s.idhn.isEmpty",
+  "ila": "s.basma == basmaOf w && !s.idhn.isEmpty"
+ },
+ {
+  "ism": "P233_shahid_basma_farigha",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  !s.basma.isEmpty && s.basma == basmaOf w",
+  "ila": "  s.basma == basmaOf w"
+ },
+ {
+  "ism": "P234_shawahid_la_tuhmal",
+  "milaf": "Nizam/Damj.lean",
+  "min": "fun l => ⟨l, shawahidBaqiya basmaOf o a b l⟩",
+  "ila": "fun l => ⟨l, []⟩"
+ },
+ {
+  "ism": "P235_takrar_maqbul",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  if bilaTakrar o && bilaTakrar a && bilaTakrar b then",
+  "ila": "  if true then"
+ },
+ {
+  "ism": "P236_farid_bila_ikhraj",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  | k :: ks => if k ∈ farid ks then farid ks else k :: farid ks",
+  "ila": "  | k :: ks => k :: farid ks"
+ },
+ {
+  "ism": "P237_naqisa_bila_tartib",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    return sorted(set(asas) - set(hali) - set(mahdhufa))",
+  "ila": "    return list(set(asas) - set(hali) - set(mahdhufa))"
+ },
+ {
+  "ism": "P245_shawahid_min_hadir",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  x.mahdhufa.filter fun s => (bahth x.qaima s.miftah).isNone",
+  "ila": "  x.mahdhufa"
+ },
+ {
+  "ism": "P246_takrar_ghayr_musamma",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  | k :: ks => if k ∈ ks then k :: takrarFi ks else takrarFi ks",
+  "ila": "  | k :: ks => takrarFi ks"
+ },
+ {
+  "ism": "P247_shahid_li_hadir_fi_natij",
+  "milaf": "Nizam/Damj.lean",
+  "min": "    (bahth l s.miftah).isNone &&\n",
+  "ila": "    true &&\n"
+ },
+ {
+  "ism": "P248_takafu_bila_takrar",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  bilaTakrar x = true ∧ bilaTakrar y = true ∧\n    ∀ k, ray basmaOf",
+  "ila": "  True ∧ True ∧\n    ∀ k, ray basmaOf"
+ },
+ {
+  "ism": "P249_shawahid_janib_wahid",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  (shawahidKhaliya a ++ shawahidKhaliya b).filter fun s =>",
+  "ila": "  (shawahidKhaliya a).filter fun s =>"
+ },
+ {
   "ism": "P250_raf_taaliq_bila_athar",
   "milaf": "tahaqquq/bawwaba.py",
   "min": "    if fi_taaliq and sawa is not False:",
@@ -1750,5 +1918,17 @@
   "milaf": "tahaqquq/bawwaba.py",
   "min": "LUGHAT_BILA_TAALIQ = {\".tsv\", \".json\"}",
   "ila": "LUGHAT_BILA_TAALIQ = {\".tsv\", \".json\", \".yml\"}"
+ },
+ {
+  "ism": "P253_shahid_wahid_li_miftah",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  (shawahidKhaliya a ++ shawahidKhaliya b).filter fun s =>",
+  "ila": "  (shawahidKhaliya a ++ (shawahidKhaliya b).filter (fun t => !(shawahidKhaliya a).any (·.miftah == t.miftah))).filter fun s =>"
+ },
+ {
+  "ism": "P254_mafatih_asas_akhiran",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  farid (o.qaima.map Prod.fst ++ a.qaima.map Prod.fst ++ b.qaima.map Prod.fst)",
+  "ila": "  farid (a.qaima.map Prod.fst ++ b.qaima.map Prod.fst ++ o.qaima.map Prod.fst)"
  }
 ]
