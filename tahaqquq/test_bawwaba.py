@@ -374,6 +374,11 @@ class TafraNassTests(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         for ism, nass in (("a.lean", self.LEAN), ("harf.lean", self.HARF), ("fatha.lean", self.FATHA),
                           ("b.lean", "def b := 1\n/- لم يُغلق\n"), ("a.py", self.PY), ("doc.py", self.PY_DOC),
+                          ("bayad.lean", "-- def x := 1\ndef y := 2\n"), ("bayad.py", "x = 1\n# a\n# b\ny = 2\n"),
+                          ("ism.lean", "def «a--b» := 17\n"), ("sifa.py", '"""Module doc"""\nimport m\nprint(m.g.__doc__)\n'),
+                          ("qaws.sh", "(echo hi)#c-mu\necho $(date)#d-wasm\necho $((1))#e-wasm\n"),
+                          ("tab.sh", "cat <<-EOF\n\tbayan # x-dakhil\n\tEOF\necho # baad-tab\n"),
+                          ("str.sh", "cat <<<EOF # huna\necho z # baad-str\n"),
                           ("a.sh", self.SH), ("a.tsv", "x\ty\nz\tw\n"), ("a.md", "x\n")):
             with open(os.path.join(self.tmp.name, ism), "w", encoding="utf-8") as f:
                 f.write(nass)
@@ -398,6 +403,7 @@ class TafraNassTests(unittest.TestCase):
         self.assertIsNone(self.ayb("a.lean", "ليس تعليقًا"))                               # «--» في نصّ
         self.assertIsNone(self.ayb("a.lean", "نهاية"))                                     # نصٌّ مُدرَج فيه نصّ
         self.assertIsNone(self.ayb("a.lean", "a--b"))                                      # «--» في اسم «…»
+        self.assertIsNone(self.ayb("ism.lean", ":= 17"))                                   # بعد اسمٍ «…» فيه «--»
         self.assertIsNone(self.ayb("a.lean", "-- def g := 2", "def g := 2"))              # رفعُ التعليق تغييرٌ في الشيفرة
 
     def test_lean_char_and_prime(self):
@@ -410,8 +416,15 @@ class TafraNassTests(unittest.TestCase):
         self.assertEqual(self.ayb("a.py", "توثيق الدالّة", 'توثيق """ الدالّة'), self.FI_TAALIQ)
 
     def test_effect_rule(self):
-        # «min» يعبر سطرين (بين التعليقين سطرٌ جديدٌ ليس تعليقًا) والتغييرُ في التعليق وحده
-        self.assertEqual(self.ayb("a.lean", "أوّل\n-- ثانٍ", "أوّل\n-- ثالث"), self.ATHAR)
+        # «min» يبدأ في الشيفرة (5) والتغييرُ في التعليق وحده
+        self.assertEqual(self.ayb("a.lean", "5 -- أوّل", "5 -- آخر"), self.ATHAR)
+
+    def test_comment_spans_and_whitespace(self):
+        # «min» يعبر تعليقين وبينهما سطرٌ جديد: في تعليق
+        self.assertEqual(self.ayb("a.lean", "أوّل\n-- ثانٍ", "أوّل\n-- ثالث"), self.FI_TAALIQ)
+        # «min» كلُّه في تعليق و«ila» يزيد سطرًا فارغًا لا غير: في تعليق (لا يُقبل لأنّ الباقي اختلف ببياض)
+        self.assertEqual(self.ayb("bayad.lean", "def x := 1", "def x := 1\n"), self.FI_TAALIQ)
+        self.assertEqual(self.ayb("bayad.py", "a\n# b", "q"), self.FI_TAALIQ)
 
     def test_broken_mutant_in_code_is_accepted(self):
         self.assertIsNone(self.ayb("a.lean", "def g := \"", "def g := /- \""))
@@ -427,6 +440,7 @@ class TafraNassTests(unittest.TestCase):
         self.assertIsNone(self.ayb("a.py", "ليس تعليقًا"))
         self.assertIsNone(self.ayb("a.py", "قيمة"))
         self.assertIsNone(self.ayb("doc.py", "ابدأ"))                                      # __doc__ مستعمَل: سلوك
+        self.assertEqual(self.ayb("sifa.py", "Module doc"), self.FI_TAALIQ)                # m.g.__doc__ صفةٌ لا اسمٌ حرّ
 
     def test_sh_comments(self):
         self.assertEqual(self.ayb("a.sh", "تعليقُ السطر"), self.FI_TAALIQ)
@@ -436,6 +450,12 @@ class TafraNassTests(unittest.TestCase):
         self.assertIsNone(self.ayb("a.sh", "arr"))
         self.assertIsNone(self.ayb("a.sh", "وسم"))                                         # $(date)#وسم كلمةٌ واحدة
         self.assertIsNone(self.ayb("a.sh", "سطرُ بيانات"))                                 # داخل الـheredoc بيانات
+        self.assertEqual(self.ayb("qaws.sh", "c-mu"), self.FI_TAALIQ)                      # «#» بعد «)» عامل: تعليق
+        self.assertIsNone(self.ayb("qaws.sh", "d-wasm"))                                   # بعد «$(…)»: الكلمة نفسُها
+        self.assertIsNone(self.ayb("qaws.sh", "e-wasm"))                                   # بعد «$((…))»
+        self.assertEqual(self.ayb("tab.sh", "baad-tab"), self.FI_TAALIQ)                  # بعد «<<-» بإغلاقٍ مُزاح
+        self.assertIsNone(self.ayb("tab.sh", "x-dakhil"))
+        self.assertEqual(self.ayb("str.sh", "huna"), self.FI_TAALIQ)                       # «<<<» ليس heredoc
 
     def test_malformed_entries(self):
         self.assertEqual(self.ayb("a.lean", ""), "«min» فارغ")
@@ -506,6 +526,45 @@ class TafraNassTests(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertIn("P0_kharij (٤ب: الملفّ خارج المستودع", err)
         self.assertNotIn("Traceback", err)
+
+    def test_sweep_judges_repository_not_copy(self):
+        # رابطٌ رمزيّ داخل المستودع إلى ملفٍّ خارجه: النسخُ يجعله ملفًّا عاديًّا، فيُحكم على المستودع لا على النسخة
+        with tempfile.TemporaryDirectory() as kharij:
+            hadaf = os.path.join(kharij, "x.lean")
+            with open(hadaf, "w", encoding="utf-8") as f:
+                f.write("def v := 1\n")
+            os.symlink(hadaf, os.path.join(self.tmp.name, "rabit.lean"))
+            code, out, err = self.gate(json.dumps([{"ism": "P0_rabit", "milaf": "rabit.lean", "min": "def v := 1",
+                                                    "ila": "def v := 999"}]), bila_tafrat=False)
+            with open(hadaf, encoding="utf-8") as f:
+                self.assertEqual(f.read(), "def v := 1\n")
+        self.assertEqual(code, 2)
+        self.assertIn("P0_rabit (٤ب: الملفّ خارج المستودع", err)
+
+
+class TafratJuzTests(unittest.TestCase):
+    """tahaqquq/tafrat_juz.py: الاستعمالُ الخاطئ يُسمّى ويخرج 2، بلا Traceback وقبل أيّ نسخ."""
+
+    def juz(self, *names):
+        with tempfile.TemporaryDirectory() as root:
+            os.mkdir(os.path.join(root, "tahaqquq"))
+            shutil.copy(os.path.join(os.path.dirname(__file__), "bawwaba.py"), os.path.join(root, "tahaqquq"))
+            with open(os.path.join(root, "tahaqquq", "tafrat.json"), "w", encoding="utf-8") as f:
+                json.dump([{"ism": ["ghayr", "nassi"]}, {"ism": "P0_a", "milaf": "a.lean", "min": "x", "ila": "y"}], f)
+            p = subprocess.run([sys.executable, "-I", os.path.join(os.path.dirname(__file__), "tafrat_juz.py"), root, *names],
+                               capture_output=True, text=True, timeout=60)
+            return p.returncode, p.stdout + p.stderr
+
+    def test_unknown_name_is_named(self):
+        code, out = self.juz("P9_majhul")
+        self.assertEqual(code, 2)
+        self.assertIn("P9_majhul", out)
+        self.assertNotIn("Traceback", out)
+
+    def test_no_names_is_usage(self):
+        code, out = self.juz()
+        self.assertEqual(code, 2)
+        self.assertIn("الاستعمال", out)
 
 
 if __name__ == "__main__":

@@ -51,6 +51,29 @@ import tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
+# اختباراتُ البند ٦ بترتيبها بعد lake build: قائمةٌ واحدة يقرؤها tafrat_juz.py أيضًا، فلا تفترق الأداتان.
+IKHTIBARAT_TAFRAT = (
+    "tahaqquq/test_bawwaba.py",
+    "mawsua/test_mawsua.py",
+    "mudaat/test_idaa.py",
+    "tahaqquq/test_qari.py",
+    "tahaqquq/test_awamil.py",
+    "tahaqquq/test_aqsam.py",
+    "tahaqquq/test_ajnas.py",
+    "tahaqquq/test_jamad.py",
+    "tahaqquq/test_shabaka.py",
+    "tahaqquq/test_hawass.py",
+    "tahaqquq/test_awwaliyyat.py",
+    "tahaqquq/test_azmina.py",
+    "tahaqquq/test_makan.py",
+    "tahaqquq/test_mirsat.py",
+    "tahaqquq/test_isnad.py",
+    "tahaqquq/test_jisrdal.py",
+    "tahaqquq/test_nisab_asnaf.py",
+    "tahaqquq/test_luzum.py",
+    "tahaqquq/test_fard116.py",
+    "tahaqquq/test_atlas.py",
+)
 
 
 def run(cmd, cwd=ROOT, timeout=1800):
@@ -215,7 +238,7 @@ def _taaliq_py(s):
     except (tokenize.TokenError, SyntaxError, ValueError) as e:
         raise ValueError(f"تعذّر تحليل بايثون: {e}")
     spans = [(mawdi(*t.start), mawdi(*t.end)) for t in rumuz if t.type == tokenize.COMMENT]
-    doc_mustamal = any(t.type == tokenize.NAME and t.string == "__doc__" for t in rumuz)
+    doc_mustamal = any(isinstance(u, ast.Name) and u.id == "__doc__" for u in ast.walk(shajara))   # اسمٌ حرّ لا صفة
     for u in ast.walk(shajara):
         if isinstance(u, ast.Expr) and isinstance(u.value, ast.Constant) and isinstance(u.value.value, str):
             if doc_mustamal and isinstance(shajara, ast.Module) and shajara.body and shajara.body[0] is u:
@@ -228,11 +251,21 @@ def _taaliq_sh(s):
     """مواضعُ التعليق في نصّ sh: «#» في أوّل كلمةٍ إلى آخر السطر، خارج الاقتباس ('…'، "…"، $'…') وأجسام الـheredoc."""
     n, i, spans, muallaq = len(s), 0, [], []
     heredoc = re.compile(r"<<(-?)\s*(['\"]?)([A-Za-z_][A-Za-z0-9_]*)\2")
+    aqwas, ghalq = [], {}    # «$(» يُغلق داخل الكلمة؛ وغيرُه عاملٌ يبدأ بعده تعليق
     while i < n:
         c = s[i]
         m = heredoc.match(s, i) if c == "<" and not s.startswith("<<<", i) else None
         if s.startswith("<<<", i):
             i += 3
+        elif s.startswith("$(", i):
+            aqwas.append("$(")
+            i += 2
+        elif c == "(":
+            aqwas.append("(")
+            i += 1
+        elif c == ")":
+            ghalq[i] = aqwas.pop() if aqwas else "("
+            i += 1
         elif m:
             muallaq.append((m.group(3), bool(m.group(1))))
             i = m.end()
@@ -270,7 +303,7 @@ def _taaliq_sh(s):
             if j >= n:
                 raise ValueError("اقتباسٌ مزدوجٌ لم يُغلق")
             i = j + 1
-        elif c == "#" and (i == 0 or s[i - 1] in " \t\n;|&("):
+        elif c == "#" and (i == 0 or s[i - 1] in " \t\n;|&(" or ghalq.get(i - 1) == "("):
             j = s.find("\n", i)
             j = n if j < 0 else j
             spans.append((i, j))
@@ -348,17 +381,24 @@ def ayb_tafra(t, root):
     except ValueError as e:
         return f"تعذّر تعيين التعليق في {milaf}: {e}"
     bad, nih = m[0], m[0] + len(t["min"])
-    fi_taaliq = any(a <= bad and nih <= b for a, b in tm)      # «min» كلُّه داخل تعليقٍ واحد من الأصل
+    fi_t = [False] * len(s)
+    for a, b in tm:
+        fi_t[a:b] = [True] * (b - a)
+    # «min» في تعليق: كلُّ حرفٍ منه في تعليقٍ أو بياضٌ بين تعليقين، وفيه حرفُ تعليقٍ واحدٌ على الأقلّ
+    fi_taaliq = any(fi_t[bad:nih]) and all(fi_t[i] or s[i].isspace() for i in range(bad, nih))
     mutaffar = s[:bad] + t["ila"] + s[nih:]
     try:
-        sawa = bila_taaliq(mutaffar, mawadi_taaliq(mutaffar, imtidad)) == bila_taaliq(s, tm)
+        baqi_asl, baqi_mut = bila_taaliq(s, tm), bila_taaliq(mutaffar, mawadi_taaliq(mutaffar, imtidad))
+        sawa = baqi_mut == baqi_asl
+        sawa_bayad = re.sub(r"\s+", " ", baqi_mut).strip() == re.sub(r"\s+", " ", baqi_asl).strip()
     except ValueError:
-        sawa = None     # المطفَّر لا يُمسح (أفسد تعليقًا أو نصًّا): الحكمُ بالموضع وحده
-    if fi_taaliq and sawa is not False:
+        sawa = sawa_bayad = None    # المطفَّر لا يُمسح (أفسد تعليقًا أو نصًّا): الحكمُ بالموضع وحده
+    if fi_taaliq and sawa_bayad is not False:
         return "«min» يقع في تعليق"
     if sawa:
         return "الطفرة لا تغيّر إلّا تعليقًا"
-    return None         # تغيّرت الشيفرة (ومنه رفعُ تعليقٍ بحذف علامته)، أو أُفسدت بنيتُها من موضعٍ خارج التعليق
+    # تغيّرت الشيفرة: ومنه رفعُ تعليقٍ بحذف علامته متى أمكن مسحُ الناتج؛ أو أُفسدت بنيتُها من موضعٍ خارج التعليق
+    return None
 
 
 def uyub_tafrat(tafrat, root):
@@ -569,7 +609,8 @@ def main():
             dst = os.path.join(tmp, "p")
             # تُنسخ مخرجات البناء (.lake) أيضًا ليكون بناء الطفرة تدريجيًّا لا من الصفر
             shutil.copytree(ROOT, dst, ignore=shutil.ignore_patterns("__pycache__", "mustakshif", "jalsa_haqiqiyya_out"))
-            ayb = ayb_tafra(t, dst)       # لا كتابةَ بطفرةٍ معيبة: لا خارج النسخة، ولا في تعليق، ولا في نصٍّ مكرَّر
+            # لا كتابةَ بطفرةٍ معيبة: يُحكم على المستودع نفسِه (النسخُ يحوّل الرابطَ الرمزيّ ملفًّا)، ثمّ على النسخة
+            ayb = ayb_tafra(t, ROOT) or ayb_tafra(t, dst)
             if ayb:
                 ism = t.get("ism") if isinstance(t, dict) else repr(t)
                 alive.append(f"{ism} (٤ب: {ayb})")
@@ -579,46 +620,10 @@ def main():
             s = open(path, encoding="utf-8").read()
             open(path, "w", encoding="utf-8").write(s.replace(t["min"], t["ila"], 1))
             code, _ = run(["lake", "build"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_bawwaba.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "mawsua/test_mawsua.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "mudaat/test_idaa.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_qari.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_awamil.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_aqsam.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_ajnas.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_jamad.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_shabaka.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_hawass.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_awwaliyyat.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_azmina.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_makan.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_mirsat.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_isnad.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_jisrdal.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_nisab_asnaf.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_luzum.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_fard116.py"], cwd=dst)
-            if code == 0:
-                code, _ = run([sys.executable, "-I", "tahaqquq/test_atlas.py"], cwd=dst)
+            for x in IKHTIBARAT_TAFRAT:
+                if code != 0:
+                    break
+                code, _ = run([sys.executable, "-I", x], cwd=dst)
             if code == 0:
                 alive.append(t["ism"])
             shutil.rmtree(tmp)
