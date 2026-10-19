@@ -1,17 +1,24 @@
 /-
-  Dal/Tamthil.lean — ثباتُ التمثيل: تبديلُ الترميز بترميزٍ لا يفقد شيئًا لا يغيّر عمل الآلة — حالتَها الأخيرة، ومجموعَ
-  أوزانها، وقبولَها — ثمّ تطبيقُه على ترميز الخلية `Dal.Khaliya` إلى رقمها في `Fin 116` بالاتّجاهين.
+  Dal/Tamthil.lean — ثباتُ التمثيل: آلةٌ تُنقل إلى أبجديّةٍ مرمَّزة **بالفكّ** (`naql`: تفكّ الرمز ثمّ تعمل كما كانت) تعمل
+  على الكلمة المرمَّزة عملَها على الأصل — حالتَها الأخيرة، ومجموعَ أوزانها، وقبولَها — متى كان الترميز لا يفقد شيئًا؛ ثمّ
+  تطبيقُه على ترميز الخلية `Dal.Khaliya` إلى رقمها في `Fin 116` بالاتّجاهين.
 
   السند: وثيقةٌ رفعها المالك (2026-10-19) بعنوان «Representation-Invariance & Semantic Preservation»، بقوله: «تغيير جوهري
   يجب برهانه واعتماده … برهن ذلك او اعتذر عن البرهان». شيفرتها كما رُفعت لم تُبنَ: خطآن في البرهانين، لا في القضيّة —
   `weight_preserved`: ‏`simp only [… transport …]` فكّ التعريف داخل الحدّ التكراريّ فلم يجد `rw [ih]` نمطه (أُصلح بحقائق
   `have` معزولة ثمّ `show` ثمّ `rw` مرتّب)؛ و`acceptance_preserved`: ‏`rw` لم يُغلق هدفًا مساويًا بالتعريف وحده (أُصلح
   بـ `congrArg`). بُنيت مُصلحةً خارج المستودع، وأذن المالك بنقلها (2026-10-19 16:11: «أوافق على نقل المبرهنات وفق افضل
-  الممارسات للمشروع»). وصُحِّح جدولُ المقابلة في الوثيقة: آلاتُ `SLGE.Law` (δ، ω، run) تعمل على الأعداد مباشرةً فلا تمثيلَ
-  ثانيًا لها اليوم تنقله القضيّة؛ و`SLGE.Core.decS_encS` ترميزٌ آخر (قائمة أعداد إلى عدد) لا ترميزُ الخلية؛ والمقابلُ
-  الصحيح على مستوى الخلية `Dal.n`/`Dal.fakk` بمبرهنتيهما `fakk_n` و`n_fakk`.
+  الممارسات للمشروع»). وصُحِّح جدولُ المقابلة في الوثيقة: `SLGE.Core.decS_encS` ترميزٌ آخر (قائمة أعداد إلى عدد) لا ترميزُ
+  الخلية؛ وترميزُ الخلية عند المالك `SLGE.cellEnc`/`cellDec` (`cell_dec_enc`/`cell_enc_dec` في `SLGE/Ladder.lean`)، وجسرُه إلى
+  ترميزنا `Dal.ramz_eq_cellEnc` (`Dal/Qanun.lean`)؛ والمقابلُ هنا `Dal.n`/`Dal.fakk` بمبرهنتيهما `fakk_n` و`n_fakk`.
 
-  الحدّ (معلَن): القضيّة عامّة؛ وتطبيقها هنا على الخلية ورقمها وحده. وصلُها بقارئ المحرّك أو بآلات SLGE لم يُبنَ.
+  الحدّ (معلَن):
+  * القضيّة عن الآلة المنقولة بالفكّ وحدها، فمحتواها على الخلية `fakk_n` ممدودةً على القوائم؛ ولا تقول شيئًا عن آلةٍ
+    عُرّفت على `Fin 116` تعريفًا مستقلًّا (ذلك يحتاج برهانَ تساوي الآلتين، لم يُبنَ).
+  * آلاتُ `SLGE.Law` (δ، ω، run) تعمل على الأعداد، ولها تمثيلٌ ثانٍ قائم: `sym`/`chainOf`/`chainCells` في `SLGE/Law.lean`،
+    و`Dal.ramz`/`ramzKull` (`murakhkhasWaqf := Fwaqf (run 0 (ramzKull ks))` في `Dal/Qanun.lean`). والقضيّة هنا لا تنقلها، لأنّ
+    نقلَ آلةٍ على `Nat` إلى الخلايا يحتاج `Tarmiz Nat Khaliya` يفكّ كلَّ عددٍ إلى أصله — ممتنعٌ والخلايا 116. وصلُها بقارئ
+    المحرّك لم يُبنَ.
 -/
 import Dal.Khaliya
 
@@ -88,7 +95,7 @@ def tarmizKhaliya : Tarmiz Khaliya (Fin 116) := ⟨Dal.n, Dal.fakk, fakk_n⟩
 /-- والرقمُ إلى خليته: ترميزٌ لا يفقد أيضًا (`n_fakk`)؛ فالتمثيلان متكافئان في الاتّجاهين. -/
 def tarmizRaqm : Tarmiz (Fin 116) Khaliya := ⟨Dal.fakk, Dal.n, n_fakk⟩
 
-/-- **أيُّ آلةٍ على الخلايا تعمل على أرقامها عملَها نفسَه**: الحالة الأخيرة والأوزان والقبول سواء. -/
+/-- **الآلةُ على الخلايا، منقولةً بالفكّ إلى أرقامها، تعمل عليها عملَها نفسَه**: الحالة الأخيرة والأوزان والقبول سواء. -/
 theorem khaliya_raqm_sawa (M : Ala Khaliya) (q : M.Hala) (xs : List Khaliya) :
     tashghil (naql M tarmizKhaliya) q (xs.map Dal.n) = tashghil M q xs ∧
     majmuWazn (naql M tarmizKhaliya) q (xs.map Dal.n) = majmuWazn M q xs ∧
@@ -96,7 +103,7 @@ theorem khaliya_raqm_sawa (M : Ala Khaliya) (q : M.Hala) (xs : List Khaliya) :
   ⟨naql_yahfaz_tashghil M tarmizKhaliya q xs, naql_yahfaz_wazn M tarmizKhaliya q xs,
    naql_yahfaz_qubul M tarmizKhaliya q xs⟩
 
-/-- **وبالعكس**: أيُّ آلةٍ على الأرقام تعمل على خلاياها عملَها نفسَه. -/
+/-- **وبالعكس**: الآلةُ على الأرقام، منقولةً بالفكّ إلى خلاياها، تعمل عليها عملَها نفسَه. -/
 theorem raqm_khaliya_sawa (M : Ala (Fin 116)) (q : M.Hala) (xs : List (Fin 116)) :
     tashghil (naql M tarmizRaqm) q (xs.map Dal.fakk) = tashghil M q xs ∧
     majmuWazn (naql M tarmizRaqm) q (xs.map Dal.fakk) = majmuWazn M q xs ∧

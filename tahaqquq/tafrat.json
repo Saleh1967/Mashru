@@ -1516,5 +1516,23 @@
   "milaf": "Aql/SalamaMaqbul.lean",
   "min": "    (hA : ∀ a, aslB a = true → tafsir W Z lf mn Fi Taht a)\n    (htadiya : ∀ z c p, Taht z c → Fi c p → Taht z p)\n    (h : maqbul q aslB c = true)",
   "ila": "    (hA : ∀ a, aslB a = true → True)\n    (htadiya : ∀ z c p, Taht z c → Fi c p → Taht z p)\n    (h : maqbul q aslB c = true)"
+ },
+ {
+  "ism": "P218_naql_khatwa_thabita",
+  "milaf": "Dal/Tamthil.lean",
+  "min": "    khatwa := fun q b => M.khatwa q (E.fakk b)",
+  "ila": "    khatwa := fun q _ => q"
+ },
+ {
+  "ism": "P219_jawab_bila_sidq_usul",
+  "milaf": "Aql/SalamaMaqbul.lean",
+  "min": "    (hA : ∀ a, aslB a = true → tafsir W Z lf mn Fi Taht a)\n    (htadiya : ∀ z c p, Taht z c → Fi c p → Taht z p) :\n    ∀ c ∈ j.iddiaat",
+  "ila": "    (hA : ∀ a, aslB a = true → True)\n    (htadiya : ∀ z c p, Taht z c → Fi c p → Taht z p) :\n    ∀ c ∈ j.iddiaat"
+ },
+ {
+  "ism": "P220_tarmiz_raqm_tayy_thabit",
+  "milaf": "Dal/Tamthil.lean",
+  "min": "⟨Dal.fakk, Dal.n, n_fakk⟩",
+  "ila": "⟨fun _ => Dal.fakk 0, Dal.n, n_fakk⟩"
  }
 ]
