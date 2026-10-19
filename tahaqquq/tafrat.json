@@ -2014,5 +2014,125 @@
   "milaf": "Qari/Main.lean",
   "min": "    if wasl then\n",
   "ila": "    if false then\n"
+ },
+ {
+  "ism": "P272_phi_wa_yakfi_wahid",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | P, P => P",
+  "ila": "  | P, _ => P"
+ },
+ {
+  "ism": "P273_phi_nitaq_farigh_la_hukm",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | [] => N",
+  "ila": "  | [] => U"
+ },
+ {
+  "ism": "P274_phi_jidhr_ghaib_yamna",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def amilJidhr (A : Aqd) (x : List Nat) (r : Nat) : K3 := if A.jidhr x = some r then P else U",
+  "ila": "def amilJidhr (A : Aqd) (x : List Nat) (r : Nat) : K3 := if A.jidhr x = some r then P else N"
+ },
+ {
+  "ism": "P275_phi_shahid_ghaib_yamna",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def amilShahid (A : Aqd) (x : List Nat) (r m : Nat) : K3 := if Mashhud A x r m then P else U",
+  "ila": "def amilShahid (A : Aqd) (x : List Nat) (r m : Nat) : K3 := if Mashhud A x r m then P else N"
+ },
+ {
+  "ism": "P276_phi_tarkib_bil_fasl",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  fun a c => yujad (dom.map fun b => wa (R a b) (S b c))",
+  "ila": "  fun a c => yujad (dom.map fun b => aw (R a b) (S b c))"
+ },
+ {
+  "ism": "P277_phi_huwiyya_mamnua",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | [], a, c => a ≠ c",
+  "ila": "  | [], a, c => False"
+ },
+ {
+  "ism": "P278_phi_xor3_bila_nafy",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def xor3 (t : Bool × Bool × Bool) : Bool := !(t.1 ^^ t.2.1 ^^ t.2.2)",
+  "ila": "def xor3 (t : Bool × Bool × Bool) : Bool := (t.1 ^^ t.2.1 ^^ t.2.2)"
+ },
+ {
+  "ism": "P279_phi_shahidB_ghaib_yamna",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def amilShahidB (A : Aqd) (x : List Nat) (r m : Nat) : K3 := if (mustawa A x r).testBit m then P else U",
+  "ila": "def amilShahidB (A : Aqd) (x : List Nat) (r m : Nat) : K3 := if (mustawa A x r).testBit m then P else N"
+ },
+ {
+  "ism": "P280_phi_wajiha_bila_shart",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | .aqda l r _ => Wajiha l ∧ Wajiha r ∧ LaYataallaq (kullAwamil r) (mahdhuf l) ∧ LaYataallaq (kullAwamil l) (mahdhuf r)",
+  "ila": "  | .aqda l r _ => Wajiha l ∧ Wajiha r ∧ LaYataallaq (kullAwamil l) (mahdhuf r)"
+ },
+ {
+  "ism": "P281_phi_tahdith_la_yughayyir",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def tahdith (σ : V → D) (v : V) (d : D) : V → D := fun w => if w = v then d else σ w",
+  "ila": "def tahdith (σ : V → D) (v : V) (d : D) : V → D := fun w => σ w"
+ },
+ {
+  "ism": "P282_phi_miftah_wahid",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def miftah1 : (Nat → Nat) → K3 := fun σ => if σ 0 = 1 then P else N",
+  "ila": "def miftah1 : (Nat → Nat) → K3 := fun σ => if σ 0 = 0 then P else N"
+ },
+ {
+  "ism": "P291_phi_bila_isqat",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | .aqda l r hs => yujadV dom hs (fun σ => wa (phi dom l σ) (phi dom r σ))",
+  "ila": "  | .aqda l r hs => (fun σ => wa (phi dom l σ) (phi dom r σ))"
+ },
+ {
+  "ism": "P292_phi_rutba_la_hukm_mumtani",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | .laHukm => U",
+  "ila": "  | .laHukm => N"
+ },
+ {
+  "ism": "P293_phi_mahdhuf_bila_ayman",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | .aqda l r hs => hs ++ (mahdhuf l ++ mahdhuf r)",
+  "ila": "  | .aqda l r hs => hs ++ mahdhuf l"
+ },
+ {
+  "ism": "P294_phi_kull_bil_fasl",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | .aqda l r _ => fun σ => wa (kullAwamil l σ) (kullAwamil r σ)",
+  "ila": "  | .aqda l r _ => fun σ => aw (kullAwamil l σ) (kullAwamil r σ)"
+ },
+ {
+  "ism": "P295_phi_yujadV_bila_isqat",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | v :: vs, F, σ => yujad (dom.map fun d => yujadV dom vs F (tahdith σ v d))",
+  "ila": "  | v :: vs, F, σ => yujadV dom vs F σ"
+ },
+ {
+  "ism": "P296_phi_qanun_la_hukm",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def amilQanun (A : Aqd) (x : List Nat) : K3 := if A.qanun x then P else N",
+  "ila": "def amilQanun (A : Aqd) (x : List Nat) : K3 := if A.qanun x then P else U"
+ },
+ {
+  "ism": "P297_phi_mani_la_hukm",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def amilMani (A : Aqd) (x : List Nat) (m : Nat) : K3 := if (A.mani x).testBit m then N else P",
+  "ila": "def amilMani (A : Aqd) (x : List Nat) (m : Nat) : K3 := if (A.mani x).testBit m then U else P"
+ },
+ {
+  "ism": "P298_phi_aqd_bila_mani",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  wa (amilQanun A x) (wa (amilMani A x m)\n    (tarkib judhur (fun (_ : Unit) r => amilJidhr A x r)",
+  "ila": "  wa (amilQanun A x) (wa P\n    (tarkib judhur (fun (_ : Unit) r => amilJidhr A x r)"
+ },
+ {
+  "ism": "P299_phi_shajaraAqd_bila_mani",
+  "milaf": "Nizam/Phi.lean",
+  "min": "    (.aqda (.waraqa fun _ => amilMani A x m)",
+  "ila": "    (.aqda (.waraqa fun _ => P)"
  }
 ]
