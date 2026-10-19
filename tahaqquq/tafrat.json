@@ -2032,6 +2032,8 @@
   "milaf": "Qari/Main.lean",
   "min": "runB): {qabul qb} — على الخلايا",
   "ila": "runB): {qabul kama} — على الخلايا"
+ },
+ {
   "ism": "P272_phi_wa_yakfi_wahid",
   "milaf": "Nizam/Phi.lean",
   "min": "  | P, P => P",
