@@ -18,10 +18,12 @@
     وإضافةُ طبقةٍ توسيعٌ للبنية بحقلٍ وقانونه، ثمّ تُبرهن المبرهنةُ الواحدةُ مرّةً أخرى.
 
   العقدُ على Mashru (`Mashru n`، لكلّ نوع علاقةٍ n من `JadwalLuzum`: خمسةُ عقودٍ بمبرهنةٍ واحدة):
-  * القانون: مواصفتُه `SLGE.Law.run`/`Fwaqf` على الخلايا المعطاة بلا تسكين (صورةُ شواهد المالك `qaltu`/`hajja`/`bint`؛ وفي القارئ
-    خلاياه بعد قراراته)، ومنفّذُه جدولٌ فهرسُه [حالة:7][رمز:7] ومدخلُه [وزن:1][حالة:7] (`runB_run`). وهو غيرُ «الدالّ المرخَّص» عند
-    المالك `SLGE.Bridge.DalLic` = `complete'` الذي يُسكّن الآخر قبل الحكم — معلَنٌ بشاهديه `qanun_ghayr_dalLic` وبمقداره على
-    الخانة والخانتين `farq_dalLic` (84 خانةً يقبلها العقدُ وحده، و84 زوجًا يقبلها `complete'` وحده)؛ وأيُّهما المواصفةُ قرارُ المالك.
+  * القانون (قرار المالك 2026-10-20 00:23، المرحلة «أ» من قانون المواصفة): مواصفتُه إطارُ الدالّ `Jisr.Utur.dalOK` الذي أمضاه
+    المالك 2026-10-16 (الابتداء، والوصل كما يُقرأ، والوقف «المكتمل»)، وهو القانونان معًا لكلّ سلسلة (`dalOK_taqatu`): `Fwaqf (run 0 x)`
+    على الخلايا المعطاة (صورةُ شواهد المالك `qaltu`/`hajja`/`bint`) و`complete'` بعد التسكين (`SLGE.Bridge.DalLic`). ولا واحدَ منهما
+    يكفي وحده (`wahid_la_yakfi`: «قَالْتُ» يقبلها الثاني وحده، و«بَ» يقبلها الأوّل وحده)، ومقدارُ الفرق على الخانة والخانتين
+    `farq_dalLic` (84 و84، والعقدُ يقبل 0 و9,436). ومنفّذُه الجدولُ نفسُه على الصورتين — فهرسُه [حالة:7][رمز:7] ومدخلُه [وزن:1][حالة:7]
+    (`runB_run`)، وتسكينُ الوقف يحفظ حدود الرموز (`waqfForm_hadd`، `waqfForm_kabir`، `run_kabir`).
   * الجذر: إسقاطُ ثلاث خاناتٍ حواملُها سالمة (لا ا ي و: `SLGE.Law.weak`) بحرفها `Jisr.JisrDal.harf`؛ منفّذُه الإزاحةُ وقناعُ العلّة
     (`qina_illa`)، ورمزُه حقولُ خمسة بتّات (`fakk_ramz`)؛ وحواملُ المسقَط سالمةٌ بشرط المالك `SLGE.Law.SoundR` (`jidhr_salim` —
     خلوُّها من ا ي و، لا أنّ المسقَطَ جذرٌ). والمعتلُّ يُردّ «لا حكم» (`qala_la_hukm`). أمّا المزيدُ والأدواتُ والضمائرُ فالإسقاطُ
@@ -37,14 +39,15 @@
     الكتاب»، ولفظُ الصفّ W فيه «وءكتبه».
   * القيودُ والموانعُ على المدلول: فارغةٌ في هذا العقد (لا قيدَ مودَعًا على رموز المدلول بعد) — معلَن.
 
-  العدّ بالمعيار الموحَّد في `Nizam/Asas.lean` (جدولُ توجيهٍ رفعه المالك 2026-10-19 18:02): 26 مبرهنة —
-  12 لكلّ (`iqtiranB_iff`، `tarkib_iff`، `bit_wahid`، `mustawa_iff`، `kull_ma_kull`، `la_shahid_la_hukm`، `khatwa_qanun`، `runB_run`،
-  `fakk_ramz`، `siyagh_sawa`، `jidhr_salim`، `irabMurashshah_la_jazm`)، و2 تعريفيّة (`mumtani_asbab`، `irabMin_irabState`)، و12 على
-  الشاهد: ثمانٍ برهانُها decide (`fahras`، `madkhal_fakk`، `qina_illa`، `nayta_qina`، `farq_dalLic`، `qanun_ghayr_dalLic`،
+  العدّ بالمعيار الموحَّد في `Nizam/Asas.lean` (جدولُ توجيهٍ رفعه المالك 2026-10-19 18:02): 30 مبرهنة —
+  16 لكلّ (`iqtiranB_iff`، `tarkib_iff`، `bit_wahid`، `mustawa_iff`، `kull_ma_kull`، `la_shahid_la_hukm`، `khatwa_qanun`، `runB_run`،
+  `run_kabir`، `waqfForm_kabir`، `waqfForm_hadd`، `dalOK_taqatu`، `fakk_ramz`، `siyagh_sawa`، `jidhr_salim`، `irabMurashshah_la_jazm`)،
+  و2 تعريفيّة (`mumtani_asbab`، `irabMin_irabState`)، و12 على الشاهد: ثمانٍ برهانُها decide (`fahras`، `madkhal_fakk`، `qina_illa`،
+  `nayta_qina`، `farq_dalLic`، `wahid_la_yakfi`،
   `shawahid_sigha`، `kataba_haal`)، وأربعٌ قضيّتُها مغلقةٌ على كلمةٍ معيّنة وبرهانُها decide على المواصفة ثمّ نقلٌ بـ `kull_ma_kull` أو
   `mumtani_asbab` — خارجَ حرف المعيار («برهانُها decide»)، معلَن (`kataba_ilm_taraduf`، `kataba_luzum_la_hukm`، `qaltu_mumtani`،
-  `qala_la_hukm`): الحكمُ على كلمةٍ بعينها لا يُحسب بـ decide مباشرةً لأنّ جدول القانون (`Array.ofFn`) يُعمِّق ردَّ النواة. القارئ يطبع سطورَ العقد (`Qari/Main.lean`، `iqraAqd`)
-  ويطابقه `tahaqquq/test_qari.py` §١٨؛ الطفرات P255–P268.
+  `qala_la_hukm`): الحكمُ على كلمةٍ بعينها لا يُحسب بـ decide مباشرةً لأنّ جدول القانون (`Array.ofFn`) يُعمِّق ردَّ النواة.
+  القارئ يطبع سطورَ العقد (`Qari/Main.lean`، `iqraAqd`) ويطابقه `tahaqquq/test_qari.py` §١٨؛ الطفرات P255–P268، وP269–P271 (المرحلة «أ»).
   لم يُبنَ: مطابقةُ صيغة الكلمة للفظ الصفّ (الوزن)، والمسارُ غيرُ الجذريّ، وحقولُ الموضع والعامل وتعدّدِ التقدير.
   بلا sorry ولا axiom ولا native_decide.
 -/
@@ -54,6 +57,7 @@ import SLGE.Bridge
 import Jisr.Iqtiran
 import Madlul.JadwalLuzumData
 import Dal.Makharij
+import Jisr.Utur
 
 namespace Nizam
 namespace Aqd
@@ -336,20 +340,88 @@ theorem siyagh_sawa (x : List Nat) (s : Jisr.Iqtiran.SighaFil) :
       cases s <;> simp [Jisr.Iqtiran.sighaMurashshaha, Jisr.Iqtiran.qaydNaytaIftitah, Jisr.JisrDal.harf]
     · simp [hc]
 
-/-- **عقدُ Mashru** لنوع علاقةٍ n من `JadwalLuzum`. مواصفاتُه تعريفاتُ المشروع: القانونُ `SLGE.Law.run`/`Fwaqf` على الخلايا
-    المعطاة بلا تسكين (صورةُ شواهد المالك `qaltu`/`hajja`/`bint` في `SLGE/Law.lean` وسطرِ القارئ القديم)، والحرفُ والحالُ
-    `Jisr.JisrDal.harf`/`hala`، وحروفُ العلّة `SLGE.Law.weak`، والصيغةُ `Jisr.Iqtiran`. والقانونُ هنا غيرُ «الدالّ المرخَّص» عند
-    المالك `SLGE.Bridge.DalLic` = `complete'` (يُسكّن الآخر قبل الحكم) — الفرقُ معلَنٌ بشاهده `qanun_ghayr_dalLic`. -/
+/-- رمزٌ فوق الـ116 والحدّ يميت السلسلة أينما وقع. -/
+theorem run_kabir : ∀ (l : List Nat) (q a : Nat), a ∈ l → 117 ≤ a → run q l = 96
+  | [], _, _, h, _ => by simp at h
+  | b :: l, q, a, h, ha => by
+    simp only [run]
+    rcases List.mem_cons.mp h with rfl | h
+    · rw [show δ q a = 96 by simp [δ, ha]]; exact run_dead l
+    · exact run_kabir l _ a h ha
+
+/-- تسكينُ الوقف (`SLGE.Law.waqfForm`) لا يمسّ ما فوق الخلايا. -/
+theorem waqfForm_kabir : ∀ (x : List Nat) (a : Nat), a ∈ x → 116 ≤ a → a ∈ waqfForm x
+  | [], _, h, _ => by simp at h
+  | [b], a, h, ha => by
+    have e : waqfForm [b] = if b < 116 ∧ b % 4 < 3 then [4 * (b / 4) + 3] else [b] := rfl
+    simp only [List.mem_singleton] at h; subst h
+    rw [e, if_neg (by omega)]; simp
+  | b :: c :: l, a, h, ha => by
+    have e : waqfForm (b :: c :: l) = b :: waqfForm (c :: l) := rfl
+    rw [e]
+    rcases List.mem_cons.mp h with rfl | h
+    · exact List.mem_cons_self ..
+    · exact List.mem_cons_of_mem _ (waqfForm_kabir (c :: l) a h ha)
+
+/-- وتسكينُ الوقف يُبقي الرموز دون 117. -/
+theorem waqfForm_hadd : ∀ (x : List Nat), (∀ a ∈ x, a < 117) → ∀ a ∈ waqfForm x, a < 117
+  | [], _, a, h => by simp [waqfForm] at h
+  | [b], hx, a, h => by
+    have hb := hx b (by simp)
+    have e : waqfForm [b] = if b < 116 ∧ b % 4 < 3 then [4 * (b / 4) + 3] else [b] := rfl
+    rw [e] at h
+    split at h <;> simp at h <;> omega
+  | b :: c :: l, hx, a, h => by
+    have e : waqfForm (b :: c :: l) = b :: waqfForm (c :: l) := rfl
+    rw [e] at h
+    rcases List.mem_cons.mp h with rfl | h
+    · exact hx a (by simp)
+    · exact waqfForm_hadd (c :: l) (fun y hy => hx y (List.mem_cons_of_mem _ hy)) a h
+
+/-- **إطارُ الدالّ عند المالك هو تقاطعُ القانونين بعينه** (لكلّ سلسلة): `Jisr.Utur.dalOK` (الابتداء والوصل كما يُقرأ والوقف
+    «المكتمل»، أمضاه المالك 2026-10-16) = ما يُقبل كما يُقرأ موقوفًا عليه (`Fwaqf ∘ run 0`) ∧ ما يكتمل بعد التسكين (`complete'`). -/
+theorem dalOK_taqatu (x : List Nat) : Jisr.Utur.dalOK x = (Fwaqf (run 0 x) && complete' x) := by
+  cases hc : (Fwaqf (run 0 x) && complete' x)
+  · cases h : Jisr.Utur.dalOK x
+    · rfl
+    · have h1 := Jisr.Utur.dal_waqf_kama_yuqra x h
+      have h2 := Jisr.Utur.dal_yastalzim_complete x h
+      rw [h1, h2] at hc; cases hc
+  · simp only [Bool.and_eq_true] at hc
+    obtain ⟨hl, hcmp⟩ := hc
+    have hr : run 0 x ≠ 96 := fun e => by rw [e] at hl; exact absurd hl (by decide)
+    have hne : x ≠ [] := fun e => by subst e; exact absurd hl (by decide)
+    have hib : Jisr.Utur.ibtidaDal x = true := by
+      match x, hne, hr with
+      | a :: l, _, hr' =>
+        simp only [Jisr.Utur.ibtidaDal, bne_iff_ne, ne_eq]
+        intro h0
+        apply hr'
+        simp only [run, h0]
+        exact run_dead l
+    simp only [Jisr.Utur.dalOK, Jisr.Utur.waslDal, Jisr.Utur.waqfDal, hib, hcmp, Bool.and_true, Bool.true_and,
+      Bool.and_eq_true, Bool.not_eq_true', List.isEmpty_eq_false_iff, bne_iff_ne, ne_eq]
+    exact ⟨hne, hr⟩
+
+/-- **عقدُ Mashru** لنوع علاقةٍ n من `JadwalLuzum`. مواصفاتُه تعريفاتُ المشروع: القانونُ إطارُ الدالّ `Jisr.Utur.dalOK` الذي أمضاه
+    المالك (الابتداء والوصل كما يُقرأ والوقف «المكتمل»)، وهو بـ `dalOK_taqatu` القانونان معًا: `Fwaqf (run 0 x)` على الخلايا
+    المعطاة و`complete'` (`SLGE.Bridge.DalLic`) بعد التسكين — ولا واحدَ منهما يكفي وحده (`wahid_la_yakfi`، قرار المالك 2026-10-20)؛
+    والحرفُ والحالُ `Jisr.JisrDal.harf`/`hala`، وحروفُ العلّة `SLGE.Law.weak`، والصيغةُ `Jisr.Iqtiran`. -/
 def Mashru (n : JadwalLuzum.Naw) : Aqd where
-  qanun x := x.all (· < 117) && Fwaqf (run 0 x)
-  qanunB x := x.all (· < 117) && Fwaqf (runB 0 x)
+  qanun x := Jisr.Utur.dalOK x
+  qanunB x := (x.all (· < 117) && Fwaqf (runB 0 x)) && Fwaqf (runB 0 (waqfForm x))
   qanun_sawa x := by
+    rw [dalOK_taqatu]
     by_cases h : x.all (· < 117) = true
     · have hl : ∀ a ∈ x, a < 117 := fun a ha => by have := List.all_eq_true.mp h a ha; simpa using this
       simp only [h, Bool.true_and]
-      rw [runB_run x 0 (by decide) hl]
-    · simp only [Bool.not_eq_true] at h
-      simp only [h, Bool.false_and]
+      rw [runB_run x 0 (by decide) hl, runB_run (waqfForm x) 0 (by decide) (waqfForm_hadd x hl)]
+      unfold complete'
+      rfl
+    · obtain ⟨a, ha, hb⟩ : ∃ a ∈ x, ¬ a < 117 := by simpa [List.all_eq_true] using h
+      simp only [Bool.not_eq_true] at h
+      have h96 : Fwaqf (run 0 x) = false := by rw [run_kabir x 0 a ha (by omega)]; decide
+      simp only [h, h96, Bool.false_and]
   jidhr x := if x.length = 3 ∧ x.all (fun c => c < 116 && !weak (Jisr.JisrDal.harf c)) then
     some (ramz32 (x.map Jisr.JisrDal.harf)) else none
   jidhrB x := if x.length = 3 ∧ x.all (fun c => c < 116 && !qinaIlla.testBit (c >>> 2)) then
@@ -393,22 +465,27 @@ theorem jidhr_salim (n : JadwalLuzum.Naw) (x : List Nat) (r : Nat) (h : (Mashru 
     exact ⟨by unfold Jisr.JisrDal.harf; omega, h2, h3, h4⟩
   · cases h
 
-/-- **القانونُ غيرُ `DalLic` (معلَن بشاهديه)**: «قَالْتُ» بخلاياها يردّها العقدُ (شاهدُ المالك `SLGE.Law.qaltu`)، ويقبلها
-    `complete'` بعد تسكين آخرها («قالْتْ»)؛ و«بَ» خانةً واحدة يقبلها العقد ويردّها `complete'` (`SLGE.Law.nec_second`). -/
-theorem qanun_ghayr_dalLic (n : JadwalLuzum.Naw) :
-    (Mashru n).qanun [4*7+0, 4*2+3, 4*13+3, 4*18+1] = false ∧ complete' [4*7+0, 4*2+3, 4*13+3, 4*18+1] = true ∧
-    (Mashru n).qanun [4*26+0] = true ∧ complete' [4*26+0] = false := by
+/-- **لا واحدَ من القانونين يكفي وحده** (شاهدان): «قَالْتُ» بخلاياها يردّها القانونُ على الخلايا (شاهدُ المالك
+    `SLGE.Law.qaltu`) ويقبلها `complete'` بعد تسكين آخرها («قالْتْ»)؛ و«بَ» خانةً واحدة يقبلها الأوّل ويردّها `complete'`
+    (`SLGE.Law.nec_second`)؛ والعقدُ بهما معًا (`dalOK`) يردّ الاثنتين. -/
+theorem wahid_la_yakfi (n : JadwalLuzum.Naw) :
+    (Fwaqf (run 0 [4*7+0, 4*2+3, 4*13+3, 4*18+1]) = false ∧ complete' [4*7+0, 4*2+3, 4*13+3, 4*18+1] = true ∧
+      (Mashru n).qanun [4*7+0, 4*2+3, 4*13+3, 4*18+1] = false) ∧
+    (Fwaqf (run 0 [4*26+0]) = true ∧ complete' [4*26+0] = false ∧ (Mashru n).qanun [4*26+0] = false) := by
   cases n <;> decide +kernel
 
-/-- **مقدارُ الفرق على الخانة والخانتين** (على الشاهد، بـ decide على النطاق كلّه): من 116 خانةً 84 يقبلها القانونُ ويردّها `complete'`، ولا عكس؛ ومن 13,456 زوجًا
-    84 يقبلها `complete'` ويردّها القانون، ولا عكس. -/
+/-- **مقدارُ الفرق على الخانة والخانتين** (على الشاهد، بـ decide على النطاق كلّه): من 116 خانةً 84 يقبلها القانونُ على الخلايا
+    ويردّها `complete'`، ولا عكس؛ ومن 13,456 زوجًا 84 يقبلها `complete'` ويردّها الأوّل، ولا عكس. والعقدُ بهما معًا يقبل من الخانة
+    الواحدة صفرًا ومن الأزواج 9,436 (= ما يقبله الأوّل؛ وهو عددُ `Jisr.Utur.itar_dal_anmat_2`). -/
 theorem farq_dalLic :
     ((List.range 116).filter fun a => Fwaqf (run 0 [a]) && !complete' [a]).length = 84 ∧
     ((List.range 116).filter fun a => complete' [a] && !Fwaqf (run 0 [a])).length = 0 ∧
     (((List.range 116).flatMap fun a => (List.range 116).map fun b => [a, b]).filter
       fun l => complete' l && !Fwaqf (run 0 l)).length = 84 ∧
     (((List.range 116).flatMap fun a => (List.range 116).map fun b => [a, b]).filter
-      fun l => Fwaqf (run 0 l) && !complete' l).length = 0 := by
+      fun l => Fwaqf (run 0 l) && !complete' l).length = 0 ∧
+    ((List.range 116).filter fun a => Jisr.Utur.dalOK [a]).length = 0 ∧
+    (((List.range 116).flatMap fun a => (List.range 116).map fun b => [a, b]).filter Jisr.Utur.dalOK).length = 9436 := by
   decide +kernel
 
 /-- قراءةُ حالٍ إعرابًا بتقابل المالك `SLGE.Bridge.irabState` (قطر الندى L77–78). -/
@@ -463,7 +540,7 @@ theorem kataba_luzum_la_hukm (m : Nat) : hukmB (Mashru .luzum) kataba m = .laHuk
 /-- **«قَالْتُ» يردّها القانون**: ممتنعةٌ بسببها المسمّى («القانون يردّ الدالّ») بأيّ مدلولٍ في كلّ عقدٍ `Mashru n`. -/
 theorem qaltu_mumtani (n : JadwalLuzum.Naw) (m : Nat) :
     hukmB (Mashru n) [4*7+0, 4*2+3, 4*13+3, 4*18+1] m = .mumtani sababQanun :=
-  (mumtani_asbab (Mashru n) _ m).1.mpr (qanun_ghayr_dalLic n).1
+  (mumtani_asbab (Mashru n) _ m).1.mpr (wahid_la_yakfi n).1.2.2
 
 /-- **«قَالَ» لا جذرَ له في العقد**: حاملُه الثاني ألفٌ (حرفُ علّة) فلا إسقاطَ، والقانونُ يقبله — فحكمُه «لا حكم» بأيّ مدلولٍ في
     كلّ عقدٍ `Mashru n`، لا جذرٌ خاطئ ولا امتناع. -/
