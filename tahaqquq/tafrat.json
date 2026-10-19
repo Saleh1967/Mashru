@@ -2014,5 +2014,53 @@
   "milaf": "Qari/Main.lean",
   "min": "    if wasl then\n",
   "ila": "    if false then\n"
+ },
+ {
+  "ism": "P283_qiyas_kama_baad_maqluban",
+  "milaf": "Qari/Main.lean",
+  "min": "\\t{b (Fwaqf (run 0 l))}\\t{b (Fwaqf (run 0 (waqfForm l)))}\\t",
+  "ila": "\\t{b (Fwaqf (run 0 (waqfForm l)))}\\t{b (Fwaqf (run 0 l))}\\t"
+ },
+ {
+  "ism": "P284_qiyas_bw_hamza_alif",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    \"A\": \"ء\",",
+  "ila": "    \"A\": \"ا\","
+ },
+ {
+  "ism": "P285_qiyas_shatr_kulluh",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    nisf = len(ayat) // 2\n",
+  "ila": "    nisf = len(ayat)\n"
+ },
+ {
+  "ism": "P286_qiyas_shudhudh_yuqas",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "        out.pop(k, None)\n",
+  "ila": "        pass\n"
+ },
+ {
+  "ism": "P287_qiyas_irab_bila_akhir",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    if len(murab) != 1 or not qita or qita[-1] is not murab[0]:",
+  "ila": "    if len(murab) != 1:"
+ },
+ {
+  "ism": "P288_qiyas_f1_ala_alkhalaya_wahdaha",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "        if not (r[\"kama\"] and r[\"baad\"]):",
+  "ila": "        if not r[\"kama\"]:"
+ },
+ {
+  "ism": "P289_qiyas_bila_basma",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "        if basma(p) != rows[0][\"sha256\"]:",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P290_qiyas_ikhraj_fil_mustawda",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    if out == ROOT or out.startswith(ROOT + os.sep):",
+  "ila": "    if False:"
  }
 ]
