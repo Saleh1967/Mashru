@@ -32,6 +32,7 @@
 -/
 import Dal.Jumla
 import Faahis.Lib
+import Nizam.Aqd
 
 open Dal SLGE SLGE.Law QawaninDalala Qaida Mawsua
 
@@ -171,6 +172,66 @@ def nawIsm : NawMaqta → String
 
 def silsilaIsm (l : List Nat) : String := " ".intercalate (l.map khaliyaIsm)
 
+/-! ## ٢أ. العقدُ الواحد (Nizam/Aqd.lean): الحكمُ بالمنفّذ البتّيّ `hukmB`، و`kull_ma_kull` تجعله حكمَ المواصفة -/
+
+def nawAqdIsm : JadwalLuzum.Naw → String
+  | .juz => "جزء" | .taraduf => "ترادف" | .luzum => "لزوم" | .kharij => "خارج" | .asl => "أصل"
+
+def mujamIsm : JadwalLuzum.Mujam → String
+  | .lisan => "لسان العرب" | .maqayis => "مقاييس اللغة"
+
+def irabIsm : SLGE.Wad.Irab → String
+  | .raf => "الرفع" | .nasb => "النصب" | .jarr => "الجرّ" | .jazm => "الجزم"
+
+def jidhrIsm (r : Nat) : String := String.ofList ((Nizam.Aqd.fakkRamz r).map fun c => hawamil.getD c '?')
+
+def siyaghIsm (b : Nat) : String :=
+  let l := [(Jisr.Iqtiran.SighaFil.madin, "ماضٍ"), (.amr, "أمر"), (.mudari, "مضارع")].filter
+    fun (s, _) => b.testBit (Nizam.Aqd.rutbaSigha s)
+  if l.isEmpty then "لا مرشَّح" else " · ".intercalate (l.map (·.2))
+
+def hukmAqdIsm : Nizam.Hukm Nizam.Aqd.Qiraa → String
+  | .murakhkhas q => s!"مرخَّص (يحمل قراءتَه: الجذر «{jidhrIsm q.jidhr}»)"
+  | .laHukm => "لا حكم"
+  | .mumtani s => s!"ممتنع — {s}"
+
+def allNaw : List JadwalLuzum.Naw := [.juz, .taraduf, .luzum, .kharij, .asl]
+
+/-- الكلمةُ في العقد: القانونُ بجدول البتّات، والقراءة، والحكمُ لكلّ صفٍّ في مادّة جذرها، و«لا حكم» لكلّ نوعٍ لا صفَّ له. -/
+def iqraAqd (l : List Nat) : IO Unit := do
+  -- حقولُ القانون والجذر والحال والصيغة لا تتعلّق بنوع العلاقة؛ تُقرأ من أيّ عقد.
+  let A := Nizam.Aqd.Mashru .juz
+  IO.println "  العقد الواحد (Nizam.Aqd؛ المبرهنة kull_ma_kull):"
+  let qb := A.qanunB l
+  IO.println s!"    القانون بجدول البتّات runB (موقوفًا عليها): {if qb then "مقبولة" else "ممتنعة"} — هو run بعينه (runB_run)"
+  if !qb then
+    IO.println s!"    الحكم: ممتنع — {Nizam.Aqd.sababQanun}، بأيّ مدلولٍ في كلّ نوع"
+    return
+  let haal := match A.haalB l with
+    | some h => s!"{halaIsm h} ({h})"
+    | none => "لا حكم"
+  IO.println s!"    القراءة: حال الآخر {haal}؛ مرشَّحو الصيغة (Jisr.Iqtiran، قطر L65): {siyaghIsm (A.sighaB l)}"
+  match A.haalB l with
+  | some h =>
+    match Nizam.Aqd.irabMin h with
+    | some r => IO.println s!"    حال الآخر إعرابًا إن كان معربًا (Bridge.irabState، قطر الندى L77): {irabIsm r} — مرشَّح؛ الإعرابُ والبناءُ من الباب في المعجم: لا حكم هنا"
+    | none => pure ()
+  | none => pure ()
+  match A.jidhrB l with
+  | none =>
+    IO.println "    الجذر: لا حكم — الإسقاطُ للكلمة ذات الخانات الثلاث وحدها (نطاقٌ معلَن)؛ فالحكم «لا حكم» بأيّ مدلول"
+  | some r =>
+    IO.println s!"    الجذر: «{jidhrIsm r}» (رمزُه {r} بحقول خمسة بتّات؛ يُفكّ بـ fakk_ramz)"
+    let rows := JadwalLuzum.jadwal.filter fun s => Nizam.Aqd.ramzNass s.a == r
+    if !rows.isEmpty then
+      IO.println s!"    الحكم بالشواهد (JadwalLuzum؛ في مادّة الجذر لا في صيغة الكلمة):"
+      for s in rows do
+        let h := Nizam.Aqd.hukmB (Nizam.Aqd.Mashru s.naw) l (Nizam.Aqd.ramzNass s.b)
+        IO.println s!"      {nawAqdIsm s.naw} ← «{s.b}» بلفظ «{s.w}»: {hukmAqdIsm h} ({mujamIsm s.mujam} س{s.satr})"
+    let ghaib := allNaw.filter fun n => !rows.any (·.naw == n)
+    if !ghaib.isEmpty then
+      IO.println s!"    لا حكم بأيّ مدلول في: {" · ".intercalate (ghaib.map nawAqdIsm)} — لا صفَّ بها في مادّة «{jidhrIsm r}»؛ الغيابُ ليس امتناعًا (la_shahid_la_hukm)"
+
 /-! ## ٢. قراءة الكلمة وحدها -/
 
 def iqraKalima (h : Hal) (b : Bina) (w : String) (q : Qiraa) : IO Unit := do
@@ -185,6 +246,7 @@ def iqraKalima (h : Hal) (b : Bina) (w : String) (q : Qiraa) : IO Unit := do
     match qatta l with
     | some sy => IO.println s!"  المقاطع ({sy.length}): {" · ".intercalate (sy.map fun x => nawIsm (nawMaqta x))} — واحدٌ بمبرهنة qatta_wahid"
     | none => IO.println "  المقاطع: لم يُقسَّم (خلل في التقطيع التنفيذيّ؛ الوجود مبرهن في word_structure)"
+  iqraAqd l
   -- المدلول من المخزن
   let key := mujarrad w
   let yuwafiq (p : Qadiyya) : Bool := match p with

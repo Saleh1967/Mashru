@@ -61,6 +61,7 @@ import Madlul.JadwalLuzum
 import Madlul.Naht
 import Nizam.Asas
 import Nizam.Talab
+import Nizam.Aqd
 import Madlul.Ishtirak
 import Madlul.Tarjih
 import Jisr.Iqtiran
@@ -1318,6 +1319,26 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.Talab.qisma_bil_maqam
 #print axioms Nizam.Talab.la_dalla_min_sigha
 #print axioms Nizam.Talab.qismBiRutba_mutabayin
+-- العقد الواحد (Nizam/Aqd.lean؛ قول المالك «البرهان المغلق لا يتجزأ» و«يُبنى طلبُ الدمج الواحد بهذا العقد موافق»)
+#print axioms Nizam.Aqd.iqtiranB_iff
+#print axioms Nizam.Aqd.tarkib_iff
+#print axioms Nizam.Aqd.bit_wahid
+#print axioms Nizam.Aqd.mustawa_iff
+#print axioms Nizam.Aqd.kull_ma_kull
+#print axioms Nizam.Aqd.la_shahid_la_hukm
+#print axioms Nizam.Aqd.fahras
+#print axioms Nizam.Aqd.madkhal_fakk
+#print axioms Nizam.Aqd.khatwa_qanun
+#print axioms Nizam.Aqd.runB_run
+#print axioms Nizam.Aqd.fakk_ramz
+#print axioms Nizam.Aqd.nayta_qina
+#print axioms Nizam.Aqd.siyagh_sawa
+#print axioms Nizam.Aqd.irabMin_irabState
+#print axioms Nizam.Aqd.kataba_ilm_taraduf
+#print axioms Nizam.Aqd.kataba_luzum_la_hukm
+#print axioms Nizam.Aqd.qaltu_mumtani
+#print axioms Nizam.Aqd.shawahid_sigha
+#print axioms Nizam.Aqd.kataba_haal
 
 -- جدولُ اللزوم من مقاييس اللغة ولسان العرب (Jisr/JadwalLuzum.lean؛ تفويض المالك 2026-10-18، مهمّة #87):
 -- سبعةُ جذوعٍ ثلاثيّةٍ بشهاداتٍ معجميّةٍ حرفيّة، شبكةٌ ومركزيّةُ «علم» مبرهنةٌ من الدرجة، وغرسٌ في

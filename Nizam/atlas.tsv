@@ -6,13 +6,13 @@ SLGE.Law	T2	نعم	قانون الابتداء والوصل والوقف
 SLGE.Hamza	T2	نعم	الهمزات تحت القانون
 SLGE.Syllable	T2	نعم	المقطع
 SLGE.Root	T3	نعم	الجذر والوزن والزائد
-SLGE.Necessity	T3	لا	قانون الاستنفاد على الدرجات
-SLGE.Ladder2	T4	لا	الجذر مع أقسام الكلم
-SLGE.Category	T4	لا	اسم وفعل وحرف، والتركيب اسميّ وفعليّ وشبه جملة
-SLGE.MadlulAwwalan	T5	لا	المدلول أوّلًا
-SLGE.Madlul	T6	لا	المدلول وحده والدلالات (فيه no_third للمنطوق والمفهوم)
-SLGE.Bridge	T6	لا	جسر المالك بين المدلول والوضع
-SLGE.Wad	T7	لا	جبر العوامل والإعراب على القطر
+SLGE.Necessity	T3	نعم	قانون الاستنفاد على الدرجات
+SLGE.Ladder2	T4	نعم	الجذر مع أقسام الكلم
+SLGE.Category	T4	نعم	اسم وفعل وحرف، والتركيب اسميّ وفعليّ وشبه جملة
+SLGE.MadlulAwwalan	T5	نعم	المدلول أوّلًا
+SLGE.Madlul	T6	نعم	المدلول وحده والدلالات (فيه no_third للمنطوق والمفهوم)
+SLGE.Bridge	T6	نعم	جسر المالك بين المدلول والوضع
+SLGE.Wad	T7	نعم	جبر العوامل والإعراب على القطر
 SLGE.Maqam	T7	لا	المقام والإحالة
 SLGE.Tarkib	T7	لا	أطر التركيب
 SLGE.TarkibLit	T7	لا	أطر التركيب حرفيّةً
@@ -34,7 +34,7 @@ Jisr.QiraaSimat	T4	لا	قراءة الشخص والجنس والعدد من خ�
 Jisr.TasnifAlism	T4	لا	قسم الاسم من مادّة مدلوله
 Madlul.Naht	T3	لا	النحت: الرباعيّ من ثلاثيّين
 Madlul.NahtData	T3	لا	بيانات النحت (مولَّدة)
-Jisr.JisrDal	T3	لا	الجسر إلى الدالّ: الإعراب بالحروف والمجهول من الخلايا
+Jisr.JisrDal	T3	نعم	الجسر إلى الدالّ: الإعراب بالحروف والمجهول من الخلايا
 Madlul.AqsamAlmadlul	T5	لا	أقسام المدلول الخمسة
 Madlul.Tayin	T5	لا	الخواصّ والأقسام الأربعة للأجناس
 Madlul.Wiratha	T5	لا	التوريث والوراثة على شجرة الأجناس
@@ -49,8 +49,8 @@ Madlul.Dalala	T6	نعم	الدلالات الثلاث
 Aql.QawaninDalala	T6	نعم	قوانين الدلالة في القاعدة
 Aql.SalamaMaqbul	T6	لا	ما تقبله Qaida.maqbul صادقٌ في نموذج الدلالة بفروض hq وhA وhtadiya (تركيبُ maqbul_murakhkhas/jawab_sahih وsalama)
 Madlul.JadwalLuzum	T6	لا	جدول اللزوم من شبكة المعاجم
-Madlul.JadwalLuzumData	T6	لا	بيانات جدول اللزوم (مولَّدة)
-Madlul.JadwalLuzumNaw	T6	لا	أنواع صفّ جدول اللزوم
+Madlul.JadwalLuzumData	T6	نعم	بيانات جدول اللزوم (مولَّدة)
+Madlul.JadwalLuzumNaw	T6	نعم	أنواع صفّ جدول اللزوم
 Jisr.JadwalLuzum	T6	لا	جدول اللزوم من المقاييس واللسان: سبعة جذوعٍ ثلاثيّة (حوامل بلا حركة، لا 116) ومركزيّة «علم»، مغروسٌ في Madlul.Dalala وAql.QawaninDalala
 Madlul.Ishtirak	T6	لا	اتّفاق اللفظين واختلاف المعنيين
 Madlul.IshtirakData	T6	لا	بيانات الاشتراك (مولَّدة)
@@ -93,8 +93,8 @@ Aql.TashfirMirsat	ADAT	لا	طيّ المرساة
 Faahis.Lib	ADAT	نعم	الفاحص التنفيذيّ (مكتبة)
 Faahis.Main	ADAT	نعم	نقطة دخول الفاحص
 Qari.Main	ADAT	نعم	القارئ
-Nizam.Asas	NIZAM	لا	نواة المنظومة: الحكم الثلاثيّ والجسر والسلامة والقاعدة الكلّيّة والقياس
-Jisr.Iqtiran	T3	لا	اقتران الدالّ بالمدلول: صيغة الفعل وجنسه من الخلايا بقيود (PR #35)
+Nizam.Asas	NIZAM	نعم	نواة المنظومة: الحكم الثلاثيّ والجسر والسلامة والقاعدة الكلّيّة والقياس
+Jisr.Iqtiran	T3	نعم	اقتران الدالّ بالمدلول: صيغة الفعل وجنسه من الخلايا بقيود (PR #35)
 Jisr.MantuqMafhum	T10	لا	الجسر من المنطوق إلى المفهوم: الموافقة والمخالفة بشروطها (ج3 س548–587)
 Madlul.TashfirHawass	ADAT	لا	طيّ الحواسّ والتسمية والخبرة
 Madlul.TashfirShabaka	ADAT	لا	طيّ شبكة العلاقات (alaqat)
@@ -102,3 +102,4 @@ Madlul.Fard116	T3	لا	فرضية الـ116: آلة الجذر على المعج
 Madlul.Fard116Data	T3	لا	بيانات فرضية الـ116 (مولَّدة)
 Madlul.Fard116Shawahid	T3	لا	شواهد فرضية الـ116 (مولَّدة)
 Nizam.Talab	T8	لا	أقسام الطلب الثلاثة لا حكم بلا مقام (ج3 س415؛ قرار المالك ٢)
+Nizam.Aqd	NIZAM	نعم	العقد الواحد: كلّ طبقة مواصفةٌ ومنفّذٌ بالبتّات ومساواتهما، ومبرهنة kull_ma_kull لكلّ عقد؛ عقد Mashru (القانون، الجذر، حال الآخر، الصيغة، شواهد JadwalLuzum)

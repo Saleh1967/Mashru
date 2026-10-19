@@ -1750,5 +1750,59 @@
   "milaf": "tahaqquq/bawwaba.py",
   "min": "LUGHAT_BILA_TAALIQ = {\".tsv\", \".json\"}",
   "ila": "LUGHAT_BILA_TAALIQ = {\".tsv\", \".json\", \".yml\"}"
+ },
+ {
+  "ism": "P255_qanunB_bil_wasl",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "  qanunB x := x.all (· < 117) && Fwaqf (runB 0 x)",
+  "ila": "  qanunB x := x.all (· < 117) && Fwasl (runB 0 x)"
+ },
+ {
+  "ism": "P256_jidhrB_izaha_khata",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "some (ramz32 (x.map (· >>> 2)))",
+  "ila": "some (ramz32 (x.map (· >>> 1)))"
+ },
+ {
+  "ism": "P257_haalB_qinaa_naqis",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "some (a &&& 3)",
+  "ila": "some (a &&& 1)"
+ },
+ {
+  "ism": "P258_siyaghB_bila_amr",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "then 3 ||| (((naytaQina",
+  "ila": "then 1 ||| (((naytaQina"
+ },
+ {
+  "ism": "P259_hukmB_bila_mani",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "else if (A.mani x).testBit m then .mumtani sababMani",
+  "ila": "else if false then .mumtani sababMani"
+ },
+ {
+  "ism": "P260_madkhal_wazn_mutadakhil",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "def madkhal (q a : Nat) : Nat := (ω q a <<< 7) ||| δ q a",
+  "ila": "def madkhal (q a : Nat) : Nat := (ω q a <<< 6) ||| δ q a"
+ },
+ {
+  "ism": "P261_qari_naw_wahid",
+  "milaf": "Qari/Main.lean",
+  "min": "Nizam.Aqd.hukmB (Nizam.Aqd.Mashru s.naw) l",
+  "ila": "Nizam.Aqd.hukmB (Nizam.Aqd.Mashru .juz) l"
+ },
+ {
+  "ism": "P262_qari_ghaib_kull",
+  "milaf": "Qari/Main.lean",
+  "min": "let ghaib := allNaw.filter fun n => !rows.any (·.naw == n)",
+  "ila": "let ghaib := allNaw"
+ },
+ {
+  "ism": "P263_qari_qanun_munfasil",
+  "milaf": "Qari/Main.lean",
+  "min": "let qb := A.qanunB l",
+  "ila": "let qb := A.qanunB l || l.length == 4"
  }
 ]
