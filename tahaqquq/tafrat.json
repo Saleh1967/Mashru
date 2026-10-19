@@ -1934,8 +1934,8 @@
  {
   "ism": "P255_qanunB_bil_wasl",
   "milaf": "Nizam/Aqd.lean",
-  "min": "  qanunB x := (x.all (· < 117) && Fwaqf (runB 0 x)) && Fwaqf (runB 0 (waqfForm x))",
-  "ila": "  qanunB x := (x.all (· < 117) && Fwaqf (runB 0 x)) && Fwasl (runB 0 (waqfForm x))"
+  "min": "  qanunB x := kamaB x && baadB x",
+  "ila": "  qanunB x := kamaB x && Fwasl (runB 0 (waqfForm x))"
  },
  {
   "ism": "P256_jidhrB_izaha_khata",

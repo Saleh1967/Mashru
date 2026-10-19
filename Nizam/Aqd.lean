@@ -26,9 +26,9 @@
     على الخلايا المعطاة (صورةُ شواهد المالك `qaltu`/`hajja`/`bint`) و`complete'` بعد التسكين (`SLGE.Bridge.DalLic`). ولا واحدَ منهما
     يكفي وحده (`wahid_la_yakfi`: «قَالْتُ» يقبلها الثاني وحده، و«بَ» يقبلها الأوّل وحده)، ومقدارُ الفرق على الخانة والخانتين
     `farq_dalLic` (84 و84، والعقدُ يقبل 0 و9,436). ومنفّذُه الجدولُ نفسُه على الصورتين — فهرسُه [حالة:7][رمز:7] ومدخلُه [وزن:1][حالة:7]
-    (`runB_run`)، وتسكينُ الوقف يُبقي الرموز دون 117 (`waqfForm_hadd`)، والرمزُ فوق 116 يميت السلسلة (`run_kabir`). والمكوّنان بجدول
-    البتّات بحارسهما `kamaB` و`baadB` مساويان لـ`Fwaqf ∘ run 0` ولـ`complete'` لكلّ سلسلة (`kama_sawa`، `baad_sawa`)، والقارئ يستدعيهما
-    بأعيانهما في سطر العقد.
+    (`runB_run`)، والرمزُ فوق 116 يميت السلسلة (`run_kabir`). والمنفّذُ `qanunB` هو المكوّنان بجدول البتّات بحارسهما `kamaB && baadB`،
+    وهما مساويان لـ`Fwaqf ∘ run 0` ولـ`complete'` لكلّ سلسلة (`kama_sawa`، `baad_sawa`)، فـ`qanun_sawa` منهما ومن `dalOK_taqatu`؛ والقارئ
+    يستدعي `kamaB`/`baadB` بأعيانهما في سطر العقد.
   * الجذر: إسقاطُ ثلاث خاناتٍ حواملُها سالمة (لا ا ي و: `SLGE.Law.weak`) بحرفها `Jisr.JisrDal.harf`؛ منفّذُه الإزاحةُ وقناعُ العلّة
     (`qina_illa`)، ورمزُه حقولُ خمسة بتّات (`fakk_ramz`)؛ وحواملُ المسقَط سالمةٌ بشرط المالك `SLGE.Law.SoundR` (`jidhr_salim` —
     خلوُّها من ا ي و، لا أنّ المسقَطَ جذرٌ). والمعتلُّ يُردّ «لا حكم» (`qala_la_hukm`). أمّا المزيدُ والأدواتُ والضمائرُ فالإسقاطُ
@@ -44,9 +44,9 @@
     الكتاب»، ولفظُ الصفّ W فيه «وءكتبه».
   * القيودُ والموانعُ على المدلول: فارغةٌ في هذا العقد (لا قيدَ مودَعًا على رموز المدلول بعد) — معلَن.
 
-  العدّ بالمعيار الموحَّد في `Nizam/Asas.lean` (جدولُ توجيهٍ رفعه المالك 2026-10-19 18:02): 31 مبرهنة —
-  17 لكلّ (`iqtiranB_iff`، `tarkib_iff`، `bit_wahid`، `mustawa_iff`، `kull_ma_kull`، `la_shahid_la_hukm`، `khatwa_qanun`، `runB_run`،
-  `run_kabir`، `waqfForm_hadd`، `kama_sawa`، `baad_sawa`، `dalOK_taqatu`، `fakk_ramz`، `siyagh_sawa`، `jidhr_salim`، `irabMurashshah_la_jazm`)،
+  العدّ بالمعيار الموحَّد في `Nizam/Asas.lean` (جدولُ توجيهٍ رفعه المالك 2026-10-19 18:02): 30 مبرهنة —
+  16 لكلّ (`iqtiranB_iff`، `tarkib_iff`، `bit_wahid`، `mustawa_iff`، `kull_ma_kull`، `la_shahid_la_hukm`، `khatwa_qanun`، `runB_run`،
+  `run_kabir`، `kama_sawa`، `baad_sawa`، `dalOK_taqatu`، `fakk_ramz`، `siyagh_sawa`، `jidhr_salim`، `irabMurashshah_la_jazm`)،
   و2 تعريفيّة (`mumtani_asbab`، `irabMin_irabState`)، و12 على الشاهد: ثمانٍ برهانُها decide (`fahras`، `madkhal_fakk`، `qina_illa`،
   `nayta_qina`، `farq_dalLic`، `wahid_la_yakfi`،
   `shawahid_sigha`، `kataba_haal`)، وأربعٌ على كلمةٍ معيّنة (ثلاثٌ منها كمّيّةٌ في المدلول) برهانُها decide على المواصفة ثمّ نقلٌ بـ
@@ -354,21 +354,6 @@ theorem run_kabir : ∀ (l : List Nat) (q a : Nat), a ∈ l → 117 ≤ a → ru
     · rw [show δ q a = 96 by simp [δ, ha]]; exact run_dead l
     · exact run_kabir l _ a h ha
 
-/-- وتسكينُ الوقف يُبقي الرموز دون 117. -/
-theorem waqfForm_hadd : ∀ (x : List Nat), (∀ a ∈ x, a < 117) → ∀ a ∈ waqfForm x, a < 117
-  | [], _, a, h => by simp [waqfForm] at h
-  | [b], hx, a, h => by
-    have hb := hx b (by simp)
-    have e : waqfForm [b] = if b < 116 ∧ b % 4 < 3 then [4 * (b / 4) + 3] else [b] := rfl
-    rw [e] at h
-    split at h <;> simp at h <;> omega
-  | b :: c :: l, hx, a, h => by
-    have e : waqfForm (b :: c :: l) = b :: waqfForm (c :: l) := rfl
-    rw [e] at h
-    rcases List.mem_cons.mp h with rfl | h
-    · exact hx a (by simp)
-    · exact waqfForm_hadd (c :: l) (fun y hy => hx y (List.mem_cons_of_mem _ hy)) a h
-
 /-- **المكوّنُ على الخلايا كما هي بجدول البتّات**: الحارسُ (كلُّ رمزٍ دون 117) ثمّ الجدول. -/
 def kamaB (x : List Nat) : Bool := x.all (· < 117) && Fwaqf (runB 0 x)
 
@@ -387,7 +372,7 @@ theorem kama_sawa (x : List Nat) : kamaB x = Fwaqf (run 0 x) := by
     have h96 : Fwaqf (run 0 x) = false := by rw [run_kabir x 0 a ha (by omega)]; decide
     simp only [h, h96, Bool.false_and]
 
-/-- **ومنفّذُه بعد تسكين الآخر مساوٍ لـ `complete'` لكلّ سلسلة** (سطرُ القارئ «بعد تسكين الآخر»). -/
+/-- **`baadB` مساوٍ لمواصفته لكلّ سلسلة** (`complete'`)؛ والقارئ يستدعيه في سطر العقد. -/
 theorem baad_sawa (x : List Nat) : baadB x = complete' x := by
   unfold baadB
   rw [kama_sawa]
@@ -427,19 +412,10 @@ theorem dalOK_taqatu (x : List Nat) : Jisr.Utur.dalOK x = (Fwaqf (run 0 x) && co
     والحرفُ والحالُ `Jisr.JisrDal.harf`/`hala`، وحروفُ العلّة `SLGE.Law.weak`، والصيغةُ `Jisr.Iqtiran`. -/
 def Mashru (n : JadwalLuzum.Naw) : Aqd where
   qanun x := Jisr.Utur.dalOK x
-  qanunB x := (x.all (· < 117) && Fwaqf (runB 0 x)) && Fwaqf (runB 0 (waqfForm x))
+  qanunB x := kamaB x && baadB x
   qanun_sawa x := by
-    rw [dalOK_taqatu]
-    by_cases h : x.all (· < 117) = true
-    · have hl : ∀ a ∈ x, a < 117 := fun a ha => by have := List.all_eq_true.mp h a ha; simpa using this
-      simp only [h, Bool.true_and]
-      rw [runB_run x 0 (by decide) hl, runB_run (waqfForm x) 0 (by decide) (waqfForm_hadd x hl)]
-      unfold complete'
-      rfl
-    · obtain ⟨a, ha, hb⟩ : ∃ a ∈ x, ¬ a < 117 := by simpa [List.all_eq_true] using h
-      simp only [Bool.not_eq_true] at h
-      have h96 : Fwaqf (run 0 x) = false := by rw [run_kabir x 0 a ha (by omega)]; decide
-      simp only [h, h96, Bool.false_and]
+    show (kamaB x && baadB x) = Jisr.Utur.dalOK x
+    rw [kama_sawa, baad_sawa, dalOK_taqatu]
   jidhr x := if x.length = 3 ∧ x.all (fun c => c < 116 && !weak (Jisr.JisrDal.harf c)) then
     some (ramz32 (x.map Jisr.JisrDal.harf)) else none
   jidhrB x := if x.length = 3 ∧ x.all (fun c => c < 116 && !qinaIlla.testBit (c >>> 2)) then

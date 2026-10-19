@@ -249,7 +249,7 @@ def iqraKalima (h : Hal) (b : Bina) (w : String) (q : Qiraa) : IO Unit := do
   if q.wasl then IO.println s!"  ملاحظة: همزة الوصل أُصلحت بـ ibtidaForm (isAl={q.al}) — حركتها وسيط المالك waslHaraka (شاهده قطر الندى L449–453)"
   let waqf := Fwaqf (run 0 l)
   let wasl := Fwasl (run 0 l)
-  IO.println s!"  على الخلايا كما هي (موقوفًا عليها Fwaqf ∘ run: مكوّنُ القانون dalOK؛ وفي الوصل Fwasl ∘ run: ليس من القانون — وصلُ dalOK هو run ≠ 96، wasl_ghayr_Fwasl): موقوفًا عليها {if waqf then "مرخَّصة" else "ممتنعة"}؛ في الوصل {if wasl then "مرخَّصة" else "ممتنعة"}"
+  IO.println s!"  على الخلايا كما هي (موقوفًا عليها Fwaqf ∘ run: مكوّنُ القانون dalOK؛ وفي الوصل Fwasl ∘ run: ليس من القانون — وصلُ dalOK غيرُ فارغةٍ و run ≠ 96، wasl_ghayr_Fwasl): موقوفًا عليها {if waqf then "مرخَّصة" else "ممتنعة"}؛ في الوصل {if wasl then "مرخَّصة" else "ممتنعة"}"
   if waqf then
     match qatta l with
     | some sy => IO.println s!"  المقاطع ({sy.length}): {" · ".intercalate (sy.map fun x => nawIsm (nawMaqta x))} — واحدٌ بمبرهنة qatta_wahid"
