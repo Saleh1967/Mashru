@@ -42,6 +42,8 @@ import Aql.QawaninDalala
 import Aql.Naql
 import Aql.Maratib
 import Aql.AlaqaMajaz
+import Aql.SalamaMaqbul
+import Dal.Tamthil
 import Dal.Makharij
 import Dal.Qanun
 import Dal.Jumla
@@ -268,6 +270,13 @@ import Madlul.Fard116Shawahid
 #print axioms AlaqaMajaz.dawa_ukhra_la_majaz
 #print axioms AlaqaMajaz.shahid_fard_awwal_muntafin
 #print axioms AlaqaMajaz.shahid_intiqal
+#print axioms SalamaMaqbul.maqbul_sadiq
+#print axioms SalamaMaqbul.jawab_sadiq
+#print axioms Dal.Tamthil.naql_yahfaz_tashghil
+#print axioms Dal.Tamthil.naql_yahfaz_wazn
+#print axioms Dal.Tamthil.naql_yahfaz_qubul
+#print axioms Dal.Tamthil.khaliya_raqm_sawa
+#print axioms Dal.Tamthil.raqm_khaliya_sawa
 #print axioms Dal.ramz_eq_cellEnc
 #print axioms Dal.ramz_lt
 #print axioms Dal.ahjam_eq

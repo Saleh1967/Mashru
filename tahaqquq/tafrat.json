@@ -1492,5 +1492,47 @@
   "milaf": "Aql/AlaqaMajaz.lean",
   "min": "!q.basma.isEmpty && a.shahid.basma.startsWith q.basma",
   "ila": "a.shahid.basma.startsWith q.basma"
+ },
+ {
+  "ism": "P182_tamthil_wazn_zaid",
+  "milaf": "Dal/Tamthil.lean",
+  "min": "    wazn := fun q b => M.wazn q (E.fakk b)\n",
+  "ila": "    wazn := fun q b => M.wazn q (E.fakk b) + 1\n"
+ },
+ {
+  "ism": "P183_tamthil_qubul_daiman",
+  "milaf": "Dal/Tamthil.lean",
+  "min": "    qubul := M.qubul }",
+  "ila": "    qubul := fun _ => true }"
+ },
+ {
+  "ism": "P184_tarmiz_khaliya_fakk_thabit",
+  "milaf": "Dal/Tamthil.lean",
+  "min": "⟨Dal.n, Dal.fakk, fakk_n⟩",
+  "ila": "⟨Dal.n, fun _ => Dal.fakk 0, fakk_n⟩"
+ },
+ {
+  "ism": "P185_maqbul_sadiq_bila_sidq_usul",
+  "milaf": "Aql/SalamaMaqbul.lean",
+  "min": "    (hA : ∀ a, aslB a = true → tafsir W Z lf mn Fi Taht a)\n    (htadiya : ∀ z c p, Taht z c → Fi c p → Taht z p)\n    (h : maqbul q aslB c = true)",
+  "ila": "    (hA : ∀ a, aslB a = true → True)\n    (htadiya : ∀ z c p, Taht z c → Fi c p → Taht z p)\n    (h : maqbul q aslB c = true)"
+ },
+ {
+  "ism": "P218_naql_khatwa_thabita",
+  "milaf": "Dal/Tamthil.lean",
+  "min": "    khatwa := fun q b => M.khatwa q (E.fakk b)",
+  "ila": "    khatwa := fun q _ => q"
+ },
+ {
+  "ism": "P219_jawab_bila_sidq_usul",
+  "milaf": "Aql/SalamaMaqbul.lean",
+  "min": "    (hA : ∀ a, aslB a = true → tafsir W Z lf mn Fi Taht a)\n    (htadiya : ∀ z c p, Taht z c → Fi c p → Taht z p) :\n    ∀ c ∈ j.iddiaat",
+  "ila": "    (hA : ∀ a, aslB a = true → True)\n    (htadiya : ∀ z c p, Taht z c → Fi c p → Taht z p) :\n    ∀ c ∈ j.iddiaat"
+ },
+ {
+  "ism": "P220_tarmiz_raqm_tayy_thabit",
+  "milaf": "Dal/Tamthil.lean",
+  "min": "⟨Dal.fakk, Dal.n, n_fakk⟩",
+  "ila": "⟨fun _ => Dal.fakk 0, Dal.n, n_fakk⟩"
  }
 ]

@@ -25,6 +25,7 @@ SLGE.Muwahhad	T7	لا	الإطار الموحَّد
 SLGE.Kull	T7	لا	الجملة الكلّيّة
 Dal.Makharij	T0	نعم	المخارج والحالات الأربع
 Dal.Khaliya	T1	نعم	الخلية حامل × حالة
+Dal.Tamthil	T1	لا	ثباتُ التمثيل: الآلةُ المنقولة بالفكّ عبر ترميزٍ لا يفقد لا يتغيّر تشغيلُها ولا أوزانها ولا قبولها؛ مطبَّقًا على الخلية ورقمها في Fin 116 بالاتّجاهين
 Dal.Qanun	T2	نعم	القانون على خلايانا والمقاطع والجذر
 Dal.Jumla	T2	نعم	الجملة في الوصل
 Dal.AqsamAllafz	T4	لا	أقسام اللفظ باعتبار الدال وحده (أسماء الأقسام)
@@ -46,6 +47,7 @@ Aql.Makan	T5	لا	التجاور المكانيّ
 Aql.Mirsat	T5	لا	المرساة: الآن وهنا
 Madlul.Dalala	T6	نعم	الدلالات الثلاث
 Aql.QawaninDalala	T6	نعم	قوانين الدلالة في القاعدة
+Aql.SalamaMaqbul	T6	لا	ما تقبله Qaida.maqbul صادقٌ في نموذج الدلالة بفروض hq وhA وhtadiya (تركيبُ maqbul_murakhkhas/jawab_sahih وsalama)
 Madlul.JadwalLuzum	T6	لا	جدول اللزوم من شبكة المعاجم
 Madlul.JadwalLuzumData	T6	لا	بيانات جدول اللزوم (مولَّدة)
 Madlul.JadwalLuzumNaw	T6	لا	أنواع صفّ جدول اللزوم
