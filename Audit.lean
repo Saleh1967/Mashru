@@ -1387,14 +1387,20 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.Damj.damj_bilaTakrar
 #print axioms Nizam.Damj.damj_maqbul_iff
 #print axioms Nizam.Damj.mem_mutaarida
+#print axioms Nizam.Damj.takrarFi_nil_iff
+#print axioms Nizam.Damj.bilaTakrar_iff
+#print axioms Nizam.Damj.damj_marfud_iff
 #print axioms Nizam.Damj.taarud_yamna
 #print axioms Nizam.Damj.ray_damj
 #print axioms Nizam.Damj.hadhf_yabqa
+#print axioms Nizam.Damj.hadhfMaadhun_damj
+#print axioms Nizam.Damj.ray_tasawi
 #print axioms Nizam.Damj.damj_tanazur
 #print axioms Nizam.Damj.damj_tikrar
 #print axioms Nizam.Damj.damj_janib_wahid
 #print axioms Nizam.Damj.la_faqd
 #print axioms Nizam.Damj.la_faqd_janib
+#print axioms Nizam.Damj.la_faqd_janib_b
 #print axioms Nizam.Damj.la_ikhtira
 #print axioms Nizam.Damj.damj_tajmii
 #print axioms Nizam.Damj.salamat_damj
@@ -1403,4 +1409,5 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.Damj.shawahid_hadhf
 #print axioms Nizam.Damj.shahid_hadhf_la_yaud
 #print axioms Nizam.Damj.shawahid_taarud
+#print axioms Nizam.Damj.shahid_la_yuhmal_min_hadir
 #print axioms Nizam.Damj.shawahid_mubarhanat

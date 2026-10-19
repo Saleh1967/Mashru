@@ -1870,5 +1870,23 @@
   "milaf": "tahaqquq/bawwaba.py",
   "min": "    return sorted(set(asas) - set(hali) - set(mahdhufa))",
   "ila": "    return list(set(asas) - set(hali) - set(mahdhufa))"
+ },
+ {
+  "ism": "P245_shawahid_min_hadir",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  x.mahdhufa.filter fun s => (bahth x.qaima s.miftah).isNone",
+  "ila": "  x.mahdhufa"
+ },
+ {
+  "ism": "P246_takrar_ghayr_musamma",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  | k :: ks => if k ∈ ks then k :: takrarFi ks else takrarFi ks",
+  "ila": "  | k :: ks => takrarFi ks"
+ },
+ {
+  "ism": "P247_shahid_li_hadir_fi_natij",
+  "milaf": "Nizam/Damj.lean",
+  "min": "    (bahth l s.miftah).isNone &&\n",
+  "ila": "    true &&\n"
  }
 ]
