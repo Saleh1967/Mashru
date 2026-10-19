@@ -39,6 +39,7 @@ import Aql.AdawatMaani
 import Aql.Mawsua
 import Aql.Idaa
 import Aql.QawaninDalala
+import Aql.Naql
 import Aql.Maratib
 import Dal.Makharij
 import Dal.Qanun
@@ -142,6 +143,16 @@ import Madlul.Fard116Shawahid
 #print axioms SababShartMani.shartWudu
 #print axioms SababShartMani.mani_yusqit_bisabab
 #print axioms SababShartMani.maniDayn
+
+-- بروتوكول النقل من المعاجم: المهمّة الأولى (Aql/Naql.lean)
+#print axioms Naql.la_mutawatir_min_al_add
+#print axioms Naql.ahad_idha_wahid
+#print axioms Naql.mutadhafir_idha_ithnan_faakthar
+#print axioms Naql.la_asl_bila_qail
+#print axioms Naql.la_asl_idha_kharij_al_hadd
+#print axioms Naql.la_yasluhu_bila_qail_aw_kharij_al_hadd
+#print axioms Naql.yasluhu_idha_qail_wa_la_nafy
+#print axioms Naql.yasluhu_bool
 -- أدواتُ المعاني بوّاباتِ المنطق: و/أو/لا.../إنْ لو، فوق سبب وشرط ومانع (Aql/AdawatMaani.lean)
 #print axioms AdawatMaani.jam_yushhid_ibaha
 #print axioms AdawatMaani.jam_yunafi_takhyir
