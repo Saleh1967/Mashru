@@ -57,9 +57,15 @@ import Jisr.Utur
 import Jisr.JadwalLuzum
 import Madlul.JadwalLuzum
 import Madlul.Naht
+import Nizam.Asas
+import Nizam.Talab
 import Madlul.Ishtirak
 import Madlul.Tarjih
 import Jisr.Iqtiran
+import Jisr.MantuqMafhum
+import Madlul.TashfirHawass
+import Madlul.TashfirShabaka
+import Madlul.Fard116Shawahid
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1066,20 +1072,6 @@ import Jisr.Iqtiran
 #print axioms Madlul.TashfirNas.string_dec_enc
 #print axioms Madlul.TashfirNas.tayyString_la_yudi
 #print axioms Madlul.TashfirNas.string_shawahid_tudi
-
--- اقترانُ الدالّ بالمدلول: مرشَّحون من الوضع تقطعهم قيود، لقراءة صيغة الفعل وجنسه من خلاياه، وقرينةٍ تحسم
--- ما بقي محتملًا (Jisr/Iqtiran.lean؛ تفويضُ المالك 2026-10-18 «إغلاق دَين الاقتران» — إغلاقٌ محلّيٌّ، في
--- Mashru نفسِه، لفراغ QUYUD_ARE_INPUT المعلَن في Alghanem ADR٩٨، ولفراغٍ من نوعه في JisrDal نفسِه
--- (بابُ الصرف معلَنٌ من المعجم لا من الدالّ)). الأربعةُ مبرهنةٌ لكلّ (iqtiran_iff/tartib_la_yughayyir/
--- qayd_la_yazid/tabaqat، مسلّماتُها propext/Quot.sound فقط)؛ البقيّة مبرهنةٌ على الشاهد (decide).
-#print axioms Jisr.Iqtiran.iqtiran_iff
-#print axioms Jisr.Iqtiran.tartib_la_yughayyir
-#print axioms Jisr.Iqtiran.qayd_la_yazid
-#print axioms Jisr.Iqtiran.tabaqat
-#print axioms Jisr.Iqtiran.sigha_afal_tartib
-#print axioms Jisr.Iqtiran.shahid_sigha
-#print axioms Jisr.Iqtiran.shahid_jins
-#print axioms Jisr.Iqtiran.shahid_qarina
 #print axioms JadwalLuzum.qawaninOf_shakl
 #print axioms JadwalLuzum.qaidaOf_shakl
 #print axioms JadwalLuzum.qaidaOf_mutadarrija
@@ -1124,6 +1116,191 @@ import Jisr.Iqtiran
 #print axioms Tarjih.dars_bila_siyaq
 #print axioms Tarjih.sibawayhi_nabhani
 #print axioms Tarjih.dars_laysa_mushtarak
+#print axioms Nizam.tarkib_huwiyya_yamin
+#print axioms Nizam.tarkib_huwiyya_yasar
+#print axioms Nizam.tarkib_tajmii
+#print axioms Nizam.salama_tatarakkab
+#print axioms Nizam.la_tarkhis_bila_ma_qablahu
+#print axioms Nizam.la_hukm_yasri
+#print axioms Nizam.mumtani_yasri
+#print axioms Nizam.tasduq_iff
+#print axioms Nizam.tasduq_bi_mukhalifat
+#print axioms Nizam.mukhalifat_dunya
+#print axioms Nizam.mukhalifat_mukhalif
+#print axioms Nizam.la_ilhaq_bila_illa
+-- اقترانُ الدالّ بالمدلول: مرشَّحون من الوضع تقطعهم قيود، لقراءة صيغة الفعل وجنسه من خلاياه، وقرينةٍ تحسم
+-- ما بقي محتملًا (Jisr/Iqtiran.lean؛ تفويضُ المالك 2026-10-18 «إغلاق دَين الاقتران» — إغلاقٌ محلّيٌّ، في
+-- Mashru نفسِه، لفراغ QUYUD_ARE_INPUT المعلَن في Alghanem ADR٩٨، ولفراغٍ من نوعه في JisrDal نفسِه
+-- (بابُ الصرف معلَنٌ من المعجم لا من الدالّ)). الأربعةُ مبرهنةٌ لكلّ (iqtiran_iff/tartib_la_yughayyir/
+-- qayd_la_yazid/tabaqat، مسلّماتُها propext/Quot.sound فقط)؛ البقيّة مبرهنةٌ على الشاهد (decide).
+#print axioms Jisr.Iqtiran.iqtiran_iff
+#print axioms Jisr.Iqtiran.tartib_la_yughayyir
+#print axioms Jisr.Iqtiran.qayd_la_yazid
+#print axioms Jisr.Iqtiran.tabaqat
+#print axioms Jisr.Iqtiran.sigha_afal_tartib
+#print axioms Jisr.Iqtiran.shahid_sigha
+#print axioms Jisr.Iqtiran.shahid_jins
+#print axioms Jisr.Iqtiran.shahid_qarina
+#print axioms Jisr.MantuqMafhum.mem_mukhalafaOf
+#print axioms Jisr.MantuqMafhum.mem_jisrMn
+#print axioms Jisr.MantuqMafhum.mem_jisr
+#print axioms Jisr.MantuqMafhum.mafhum_min_mantuq
+#print axioms Jisr.MantuqMafhum.la_mafhum_bila_haml
+#print axioms Jisr.MantuqMafhum.mukhalafa_min_mukhalafaOf
+#print axioms Jisr.MantuqMafhum.mukhalafa_min_qayd
+#print axioms Jisr.MantuqMafhum.mukhalafa_shurut
+#print axioms Jisr.MantuqMafhum.mani_yamna_mukhalafa
+#print axioms Jisr.MantuqMafhum.ism_la_mukhalafa
+#print axioms Jisr.MantuqMafhum.mukhalafa_wahida
+#print axioms Jisr.MantuqMafhum.iqtida_shart_lil_mutabaqa
+#print axioms Jisr.MantuqMafhum.adad_mafahim
+#print axioms Jisr.MantuqMafhum.tariq_mafhum
+#print axioms Jisr.MantuqMafhum.shawahid_mafhum
+#print axioms Jisr.MantuqMafhum.shawahid_la_mafhum
+#print axioms Jisr.MantuqMafhum.muwafaqa_bila_awlawiyya
+#print axioms Jisr.MantuqMafhum.shahid_la_haml
+#print axioms Jisr.MantuqMafhum.muwafaqa_tabia
+#print axioms Jisr.MantuqMafhum.shahid_tabia
+-- جسرُ المعلومة المعمَّم (السابع): طيُّ وفكُّ Madlul.Hawass (Hassa/Hukm/Shidda/Thubut/Bud/Tasmiya/Khibra)
+-- وMaratib.ShahidWaqi (Madlul/TashfirHawass.lean؛ نفس تفويض 2026-10-17 22:55). أداةٌ جديدةٌ: splitAtSep
+-- (الفصلُ بقيمةٍ محجوزة لا بحدٍّ مختار) تفتح الحقول المتعدّدة من String معًا بلا Sahih/Subtype إلّا على
+-- mawdi وحده (شرطٌ خفيفٌ، لا يُغلَّف بـTayy/Subtype عمدًا).
+#print axioms Madlul.TashfirHawass.splitAtSep_join
+#print axioms Madlul.TashfirHawass.hassa_dec_enc
+#print axioms Madlul.TashfirHawass.hassaEnc_lt
+#print axioms Madlul.TashfirHawass.tayyHassa_la_yudi
+#print axioms Madlul.TashfirHawass.hukm_dec_enc
+#print axioms Madlul.TashfirHawass.hukmEnc_lt
+#print axioms Madlul.TashfirHawass.tayyHukm_la_yudi
+#print axioms Madlul.TashfirHawass.shidda_dec_enc
+#print axioms Madlul.TashfirHawass.shiddaEnc_lt
+#print axioms Madlul.TashfirHawass.tayyShidda_la_yudi
+#print axioms Madlul.TashfirHawass.thubut_dec_enc
+#print axioms Madlul.TashfirHawass.thubutEnc_lt
+#print axioms Madlul.TashfirHawass.tayyThubut_la_yudi
+#print axioms Madlul.TashfirHawass.charBound_ge5
+#print axioms Madlul.TashfirHawass.charBound_notin_charCodes
+#print axioms Madlul.TashfirHawass.charCodes_lt
+#print axioms Madlul.TashfirHawass.charCodes_dec_enc
+#print axioms Madlul.TashfirHawass.bud_dec_enc
+#print axioms Madlul.TashfirHawass.tasmiya_dec_enc
+#print axioms Madlul.TashfirHawass.tayyTasmiya_la_yudi
+#print axioms Madlul.TashfirHawass.shahid_dec_enc
+#print axioms Madlul.TashfirHawass.khibra_dec_enc
+#print axioms Madlul.TashfirHawass.abad_tudi
+#print axioms Madlul.TashfirHawass.mujam_tudi
+#print axioms Madlul.TashfirHawass.qawlMalik_tudi
+#print axioms Madlul.TashfirHawass.qawlMalik_shawahid
+#print axioms Madlul.TashfirHawass.khibrat_tudi
+#print axioms Madlul.TashfirHawass.khibrat_eq
+-- جسرُ المعلومة المعمَّم (الثامن): طيُّ وفكُّ Madlul.Shabaka (Luzum/Uslub/Fil/Qawl/Shabaka) — قطعةُ alaqat
+-- من الاسم الثمانيّ. أداتانِ جديدتان: splitAllSep/joinTrailing (تعميمُ splitAtSep من جزءٍ واحدٍ إلى عددٍ
+-- غيرِ محدود، بفاصلٍ لاحق)، وstringsEnc/stringsListEnc (طيُّ List String وList(List String) بهما، غيرَ
+-- مشروطين بتاتًا). Shabaka (ستّةُ حقول List(String×String)) وQawl (أحدَ عشرَ منشِئًا بحقولَ نصّيّة) كلاهما
+-- غيرُ مشروطٍ — الأشملُ بين قطع هذه السلسلة، بلا استثناءٍ واحدٍ كـmawdi في القطعة السابقة (Hawass).
+#print axioms Madlul.TashfirShabaka.splitAtSep_snd_lt
+#print axioms Madlul.TashfirShabaka.splitAllSep_unfold
+#print axioms Madlul.TashfirShabaka.splitAllSep_joinTrailing
+#print axioms Madlul.TashfirShabaka.joinTrailing_mem
+#print axioms Madlul.TashfirShabaka.stringsEnc_lt
+#print axioms Madlul.TashfirShabaka.stringsEnc_notMem
+#print axioms Madlul.TashfirShabaka.stringsRaw_dec_enc
+#print axioms Madlul.TashfirShabaka.strings_dec_enc
+#print axioms Madlul.TashfirShabaka.stringsListEnc_lt
+#print axioms Madlul.TashfirShabaka.stringsListEnc_notMem
+#print axioms Madlul.TashfirShabaka.stringsList_dec_enc
+#print axioms Madlul.TashfirShabaka.luzum_dec_enc
+#print axioms Madlul.TashfirShabaka.luzumEnc_lt
+#print axioms Madlul.TashfirShabaka.tayyLuzum_la_yudi
+#print axioms Madlul.TashfirShabaka.uslub_dec_enc
+#print axioms Madlul.TashfirShabaka.uslubEnc_lt
+#print axioms Madlul.TashfirShabaka.tayyUslub_la_yudi
+#print axioms Madlul.TashfirShabaka.fil_dec_enc
+#print axioms Madlul.TashfirShabaka.tayyFil_la_yudi
+#print axioms Madlul.TashfirShabaka.tagOf_lt
+#print axioms Madlul.TashfirShabaka.toStrings_ofStrings
+#print axioms Madlul.TashfirShabaka.qawl_dec_enc
+#print axioms Madlul.TashfirShabaka.tayyQawl_la_yudi
+#print axioms Madlul.TashfirShabaka.stringsToPairs_pairsToStrings
+#print axioms Madlul.TashfirShabaka.shabaka_dec_enc
+#print axioms Madlul.TashfirShabaka.tayyShabaka_la_yudi
+#print axioms Madlul.TashfirShabaka.shabaka_tudi
+#print axioms Madlul.TashfirShabaka.shabakaP_tudi
+#print axioms Madlul.TashfirShabaka.qawl_shawahid
+#print axioms Madlul.TashfirShabaka.fil_shahid
+#print axioms Madlul.Fard116.licB_iff
+#print axioms Madlul.Fard116.runL_imtina
+#print axioms Madlul.Fard116.runL_qabul
+#print axioms Madlul.Fard116.licB_iff_spaced
+#print axioms Madlul.Fard116.illa_la_tajawur
+#print axioms Madlul.Fard116.tajB_eq
+#print axioms Madlul.Fard116.spacedB_iff
+#print axioms Madlul.Fard116.licF_eq
+#print axioms Madlul.Fard116.illa_sawa
+#print axioms Madlul.Fard116.licN3_eq
+#print axioms Madlul.Fard116.harf3_arqam
+#print axioms Madlul.Fard116.maanN3_eq
+#print axioms Madlul.Fard116.azwajQanun_kulluha
+#print axioms Madlul.Fard116.tamathul_mujaz
+#print axioms Madlul.Fard116.jumhur_atwal
+#print axioms Madlul.Fard116.kharita3
+#print axioms Madlul.Fard116.kharita4
+#print axioms Madlul.Fard116.ramz_arqam3
+#print axioms Madlul.Fard116.Shawahid.mukhalif_lisan3
+#print axioms Madlul.Fard116.Shawahid.mukhalif_maqayis3
+#print axioms Madlul.Fard116.Shawahid.mukhalif_lisan4
+#print axioms Madlul.Fard116.Shawahid.mukhalif_lisan5
+#print axioms Madlul.Fard116.Shawahid.jiwar_0_1
+#print axioms Madlul.Fard116.Shawahid.jiwar_3_4
+#print axioms Madlul.Fard116.Shawahid.jiwar_5_6
+#print axioms Madlul.Fard116.Shawahid.jiwar_9_10
+#print axioms Madlul.Fard116.Shawahid.jiwar_16_17
+#print axioms Madlul.Fard116.Shawahid.jiwar_16_18
+#print axioms Madlul.Fard116.Shawahid.jiwar_17_18
+#print axioms Madlul.Fard116.Shawahid.jiwar_19_20
+#print axioms Madlul.Fard116.Shawahid.jiwar_19_21
+#print axioms Madlul.Fard116.Shawahid.jiwar_20_21
+#print axioms Madlul.Fard116.Shawahid.jiwar_22_23
+#print axioms Madlul.Fard116.Shawahid.jiwar_22_24
+#print axioms Madlul.Fard116.Shawahid.jiwar_23_24
+#print axioms Madlul.Fard116.Shawahid.jiwar_26_27
+#print axioms Madlul.Fard116.Shawahid.jiwar_0_3
+#print axioms Madlul.Fard116.Shawahid.jiwar_3_5
+#print axioms Madlul.Fard116.Shawahid.jiwar_4_6
+#print axioms Madlul.Fard116.Shawahid.jiwar_7_8
+#print axioms Madlul.Fard116.Shawahid.jiwar_20_24
+#print axioms Madlul.Fard116.Shawahid.jiwar_25_26
+#print axioms Madlul.Fard116.Shawahid.jiwar_7_9
+#print axioms Madlul.Fard116.Shawahid.jiwar_1_4
+#print axioms Madlul.Fard116.Shawahid.jiwar_1_6
+#print axioms Madlul.Fard116.Shawahid.jiwar_8_9
+#print axioms Madlul.Fard116.Shawahid.jiwar_25_27
+#print axioms Madlul.Fard116.Shawahid.jiwar_8_16
+#print axioms Madlul.Fard116.Shawahid.jiwar_9_16
+#print axioms Madlul.Fard116.Shawahid.jiwar_13_15
+#print axioms Madlul.Fard116.Shawahid.jiwar_6_8
+#print axioms Madlul.Fard116.Shawahid.tamathul_12
+#print axioms Madlul.Fard116.Shawahid.tamathul_23
+#print axioms Madlul.Fard116.Shawahid.tamathul_13
+#print axioms Madlul.Fard116.Shawahid.qayd_3_4
+#print axioms Madlul.Fard116.Shawahid.qayd_4_1
+#print axioms Madlul.Fard116.Shawahid.qayd_21_20
+#print axioms Madlul.Fard116.Shawahid.qayd_21_19
+#print axioms Madlul.Fard116.Shawahid.qayd_9_7
+#print axioms Madlul.Fard116.Shawahid.qayd_21_9
+#print axioms Madlul.Fard116.Shawahid.qayd_16_9
+#print axioms Madlul.Fard116.Shawahid.qayd_0_5
+#print axioms Madlul.Fard116.Shawahid.qayd_6_3
+#print axioms Madlul.Fard116.Shawahid.qayd_21_16
+#print axioms Madlul.Fard116.Shawahid.tawlid4_G1
+#print axioms Madlul.Fard116.Shawahid.tawlid4_G2
+#print axioms Madlul.Fard116.Shawahid.tawlid4_Gr
+#print axioms Madlul.Fard116.Shawahid.tawlid5
+-- قرار المالك ٢ (Nizam/Talab.lean؛ ج3 س415): الأمر والالتماس والسؤال لا حكم بلا مقام
+#print axioms Nizam.Talab.la_qisma_bila_maqam
+#print axioms Nizam.Talab.qisma_bil_maqam
+#print axioms Nizam.Talab.la_dalla_min_sigha
+#print axioms Nizam.Talab.qismBiRutba_mutabayin
 
 -- جدولُ اللزوم من مقاييس اللغة ولسان العرب (Jisr/JadwalLuzum.lean؛ تفويض المالك 2026-10-18، مهمّة #87):
 -- سبعةُ جذوعٍ ثلاثيّةٍ بشهاداتٍ معجميّةٍ حرفيّة، شبكةٌ ومركزيّةُ «علم» مبرهنةٌ من الدرجة، وغرسٌ في

@@ -1,6 +1,6 @@
 name = "mashru"
 version = "0.1.0"
-defaultTargets = ["SLGE", "Dal", "Madlul", "Jisr", "Aql", "faahis", "qari"]
+defaultTargets = ["SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "faahis", "qari"]
 
 [[lean_lib]]
 name = "SLGE"
@@ -21,6 +21,10 @@ globs = ["Jisr.+"]
 [[lean_lib]]
 name = "Aql"
 globs = ["Aql.+"]
+
+[[lean_lib]]
+name = "Nizam"
+globs = ["Nizam.+"]
 
 [[lean_lib]]
 name = "Faahis"
