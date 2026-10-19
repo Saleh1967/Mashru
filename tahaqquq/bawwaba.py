@@ -6,6 +6,9 @@
   ٣. Audit.lean يُبنى، وكلّ مبرهنة فيه مسلّماتها من الثلاث: propext، Classical.choice، Quot.sound.
   ٤. عدد المبرهنات المدقّقة لا ينقص عن خطّ الأساس في khatt_asas.json (نقصه حذفٌ يحتاج إذنًا).
       غياب الملفّ أو تلفه أو بطلان العدد فشلٌ مسمّى، لا خطّ أساسٍ صفريّ بديل.
+  ٤أ. قائمة الطفرات لا تنقص عن الأساس: كلّ «ism» في tafrat.json عند نقطة التقاء HEAD بالمرجع (TAFRAT_ASAS_REF، وإلّا
+      origin/main) حاضرٌ في القائمة الحاليّة، أو مسجَّلٌ في tahaqquq/tafrat_mahdhufa.json بسببٍ وإذن (قرار المالك 2026-10-19:
+      دمجان أسقطا طفرات main بلا تعارضٍ ظاهر، ولا شيء كان يكشفه). تعذُّر الأساس فشلٌ مسمّى لا تخطٍّ صامت.
   ٥. اختبارات بايثون (shabaka/test_shabaka.py) تمرّ، إن وُجد المودَع (MUDAA_MUKHASSAS).
   ٥أ. اختبارات خطّ الأساس والتثبيت (tahaqquq/test_bawwaba.py): رفض JSON التالف وحفظ الحدّ، وفحص بديل تثبيت Lean.
   ٥ب. اختبارات المخزن (mawsua/test_mawsua.py): الفاحص التنفيذيّ المبنيّ من Lean يقبل المخزن ويرفض الفاسد.
@@ -66,6 +69,35 @@ def load_baseline(path):
     return base["mubarhanat"]
 
 
+def git(*args):
+    p = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True, timeout=120)
+    return p.returncode, p.stdout
+
+
+def asmaa_tafrat(text):
+    """أسماءُ الطفرات من نصّ tafrat.json؛ ما ليس قائمةَ قيودٍ لكلٍّ منها «ism» نصّيٌّ يُرفض باسمه."""
+    data = json.loads(text)
+    if not isinstance(data, list) or not all(isinstance(t, dict) and isinstance(t.get("ism"), str) for t in data):
+        raise ValueError("tafrat.json يجب أن يكون قائمةً، لكلّ قيدٍ فيها «ism» نصّيّ")
+    return [t["ism"] for t in data]
+
+
+def mahdhufa_maadhuna(text):
+    """سجلُّ الحذف المأذون (tahaqquq/tafrat_mahdhufa.json): قائمةُ {ism، sabab، idhn} لا حقلَ فيها فارغ."""
+    data = json.loads(text)
+    if not isinstance(data, list):
+        raise ValueError("tafrat_mahdhufa.json يجب أن يكون قائمة")
+    for t in data:
+        if not isinstance(t, dict) or not all(isinstance(t.get(k), str) and t[k].strip() for k in ("ism", "sabab", "idhn")):
+            raise ValueError(f"قيدُ حذفٍ بلا ism أو sabab أو idhn: {t}")
+    return [t["ism"] for t in data]
+
+
+def tafrat_naqisa(asas, hali, mahdhufa):
+    """طفراتُ الأساس الغائبةُ عن القائمة الحاليّة بلا قيدِ حذفٍ مأذون — كلٌّ منها حذفٌ صامت."""
+    return sorted(set(asas) - set(hali) - set(mahdhufa))
+
+
 def main():
     fails, report = [], []
     code, out = run(["lake", "build"])
@@ -109,6 +141,34 @@ def main():
         report.append(f"٤ خطّ الأساس: {baseline} ← الآن {len(lines)}")
         if len(lines) < baseline:
             fails.append(f"نقص عدد المبرهنات المدقّقة من {baseline} إلى {len(lines)}")
+
+    # ٤أ. قائمة الطفرات لا تنقص عن الأساس إلّا بقيدٍ مأذون (قرار المالك 2026-10-19). الأساسُ نقطةُ التقاء HEAD بالمرجع
+    # (TAFRAT_ASAS_REF، وإلّا origin/main): في CI على الطلب هو قاعدةُ الدمج نفسُها، فيُكشف ما أسقطه دمجٌ بلا تعارض.
+    marja = os.environ.get("TAFRAT_ASAS_REF") or "origin/main"
+    try:
+        code, mb = git("merge-base", "HEAD", marja)
+        asas_sha = mb.strip()
+        if code != 0 or not asas_sha:
+            raise ValueError(f"تعذّر حساب نقطة التقاء HEAD بـ{marja} (اجلب {marja} أو عيّن TAFRAT_ASAS_REF)")
+        code, txt = git("show", f"{asas_sha}:tahaqquq/tafrat.json")
+        if code != 0:
+            raise ValueError(f"تعذّرت قراءة tafrat.json عند {asas_sha[:7]}")
+        asas = asmaa_tafrat(txt)
+        with open(os.path.join(ROOT, "tahaqquq", "tafrat.json"), encoding="utf-8") as f:
+            hali = asmaa_tafrat(f.read())
+        mp = os.path.join(ROOT, "tahaqquq", "tafrat_mahdhufa.json")
+        mahdhufa = []
+        if os.path.exists(mp):
+            with open(mp, encoding="utf-8") as f:
+                mahdhufa = mahdhufa_maadhuna(f.read())
+    except (OSError, ValueError, subprocess.SubprocessError) as e:
+        report.append("٤أ قائمة الطفرات: لم تُقارَن بالأساس")
+        fails.append(f"حراسة قائمة الطفرات: {e}")
+    else:
+        naqisa = tafrat_naqisa(asas, hali, mahdhufa)
+        report.append(f"٤أ قائمة الطفرات: الأساس {asas_sha[:7]} ({len(asas)}) ← الآن {len(hali)}؛ غائبٌ بلا إذن {len(naqisa)}")
+        if naqisa:
+            fails.append("طفراتٌ في الأساس غابت بلا قيدٍ في tahaqquq/tafrat_mahdhufa.json: " + "، ".join(naqisa))
 
     code, out = run([sys.executable, "-I", "tahaqquq/test_bawwaba.py"])
     report.append(f"٥أ اختبارات خطّ الأساس والتثبيت: {'مرّت' if code == 0 else 'فشلت'}")

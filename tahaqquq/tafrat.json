@@ -1456,5 +1456,29 @@
   "milaf": "Aql/AlaqaMajaz.lean",
   "min": "def alaqaOf (sijill : List (String × Idaa.Naw)) (a : AlaqaMajaz) : Bool :=\n  mashrua sijill a",
   "ila": "def alaqaOf (sijill : List (String × Idaa.Naw)) (a : AlaqaMajaz) : Bool :=\n  true"
+ },
+ {
+  "ism": "P176_tafrat_naqisa_farigh",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    return sorted(set(asas) - set(hali) - set(mahdhufa))",
+  "ila": "    return []"
+ },
+ {
+  "ism": "P177_mahdhufa_bila_idhn",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "for k in (\"ism\", \"sabab\", \"idhn\")):",
+  "ila": "for k in (\"ism\", \"sabab\")):"
+ },
+ {
+  "ism": "P178_hirasat_tafrat_fail_open",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        fails.append(f\"حراسة قائمة الطفرات: {e}\")",
+  "ila": "        report.append(f\"حراسة قائمة الطفرات: {e}\")"
+ },
+ {
+  "ism": "P179_naqisa_la_tufshil",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        if naqisa:\n            fails.append(",
+  "ila": "        if False:\n            fails.append("
  }
 ]

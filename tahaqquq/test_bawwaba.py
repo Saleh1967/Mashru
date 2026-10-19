@@ -1,9 +1,10 @@
-"""اختبارات خطّ الأساس والتثبيت: رفض التلف، وعدم إعلان نجاح Lean قبل تشغيله.
+"""اختبارات خطّ الأساس والتثبيت: رفض التلف، وعدم إعلان نجاح Lean قبل تشغيله؛ وحراسة قائمة الطفرات (٤أ).
 
 التشغيل: python3 -I tahaqquq/test_bawwaba.py
 """
 import contextlib
 import io
+import json
 import os
 from pathlib import Path
 import shutil
@@ -183,6 +184,9 @@ class BaselineTests(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         os.mkdir(os.path.join(self.tmp.name, "tahaqquq"))
         self.path = os.path.join(self.tmp.name, "tahaqquq", "khatt_asas.json")
+        # بند ٤أ يقرأ قائمة الطفرات وأساسها؛ قائمتان فارغتان هنا فلا يؤثّر في اختبارات خطّ الأساس
+        with open(os.path.join(self.tmp.name, "tahaqquq", "tafrat.json"), "w", encoding="utf-8") as f:
+            f.write("[]")
 
     def write(self, data):
         with open(self.path, "wb") as f:
@@ -195,8 +199,12 @@ class BaselineTests(unittest.TestCase):
         def run(cmd, **kwargs):
             return (0, audit) if cmd[:3] == ["lake", "env", "lean"] else (0, "")
 
+        def git(*args):
+            return (0, "asas\n") if args[0] == "merge-base" else (0, "[]")
+
         with patch.object(bawwaba, "ROOT", self.tmp.name), \
                 patch.object(bawwaba, "run", side_effect=run), \
+                patch.object(bawwaba, "git", side_effect=git), \
                 patch.object(sys, "argv", ["bawwaba.py", "--bila-tafrat"]), \
                 contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
             with self.assertRaises(SystemExit) as exit_result:
@@ -242,6 +250,85 @@ class BaselineTests(unittest.TestCase):
     def test_zero_baseline(self):
         self.write(b'{"mubarhanat": 0}')
         self.assertEqual(self.gate(count=0)[0], 0)
+
+
+class TafratGuardTests(unittest.TestCase):
+    """حراسة قائمة الطفرات (٤أ). التوقّعات مكتوبةٌ باليد من القاعدة: كلّ اسمٍ في الأساس حاضرٌ الآن أو مأذونٌ بحذفه."""
+
+    def test_silent_drop_is_named(self):
+        self.assertEqual(bawwaba.tafrat_naqisa(["P1_a", "P2_b", "P3_c"], ["P1_a", "P3_c", "P4_d"], []), ["P2_b"])
+
+    def test_additions_are_free(self):
+        self.assertEqual(bawwaba.tafrat_naqisa(["P1_a"], ["P1_a", "P2_b"], []), [])
+
+    def test_ledger_permits_removal(self):
+        self.assertEqual(bawwaba.tafrat_naqisa(["P1_a", "P2_b"], ["P1_a"], ["P2_b"]), [])
+
+    def test_ledger_needs_reason_and_permission(self):
+        for rec in ({"ism": "P2_b", "sabab": "x"}, {"ism": "P2_b", "idhn": "y"},
+                    {"ism": "P2_b", "sabab": "x", "idhn": " "}, {"sabab": "x", "idhn": "y"}, "P2_b"):
+            with self.subTest(rec=rec):
+                with self.assertRaises(ValueError):
+                    bawwaba.mahdhufa_maadhuna(json.dumps([rec]))
+        self.assertEqual(bawwaba.mahdhufa_maadhuna(json.dumps([{"ism": "P2_b", "sabab": "x", "idhn": "y"}])), ["P2_b"])
+
+    def test_malformed_list_is_rejected(self):
+        for text in ("{}", '[{"min": "x"}]', '[{"ism": 7}]', "[1]"):
+            with self.subTest(text=text):
+                with self.assertRaises(ValueError):
+                    bawwaba.asmaa_tafrat(text)
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        os.mkdir(os.path.join(self.tmp.name, "tahaqquq"))
+        with open(os.path.join(self.tmp.name, "tahaqquq", "khatt_asas.json"), "w", encoding="utf-8") as f:
+            f.write('{"mubarhanat": 0}')
+
+    def gate(self, asas, hali, ledger=None, merge_base_ok=True):
+        t = os.path.join(self.tmp.name, "tahaqquq")
+        with open(os.path.join(t, "tafrat.json"), "w", encoding="utf-8") as f:
+            json.dump([{"ism": n} for n in hali], f)
+        if ledger is not None:
+            with open(os.path.join(t, "tafrat_mahdhufa.json"), "w", encoding="utf-8") as f:
+                json.dump(ledger, f)
+        out, err = io.StringIO(), io.StringIO()
+
+        def git(*args):
+            if args[0] == "merge-base":
+                return (0, "abc1234def\n") if merge_base_ok else (128, "")
+            return (0, json.dumps([{"ism": n} for n in asas]))
+
+        with patch.object(bawwaba, "ROOT", self.tmp.name), \
+                patch.object(bawwaba, "run", return_value=(0, "")), \
+                patch.object(bawwaba, "git", side_effect=git), \
+                patch.object(sys, "argv", ["bawwaba.py", "--bila-tafrat"]), \
+                contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            with self.assertRaises(SystemExit) as exit_result:
+                bawwaba.main()
+        return exit_result.exception.code, out.getvalue(), err.getvalue()
+
+    def test_gate_fails_on_silent_drop(self):
+        code, out, err = self.gate(["P1_a", "P2_b"], ["P1_a"])
+        self.assertEqual(code, 2)
+        self.assertIn("P2_b", err)
+        self.assertIn("٤أ قائمة الطفرات: الأساس abc1234 (2) ← الآن 1؛ غائبٌ بلا إذن 1", out)
+
+    def test_gate_passes_when_all_kept(self):
+        code, out, _ = self.gate(["P1_a"], ["P1_a", "P2_b"])
+        self.assertEqual(code, 0)
+        self.assertIn("غائبٌ بلا إذن 0", out)
+
+    def test_gate_passes_with_permitted_removal(self):
+        code, _, _ = self.gate(["P1_a", "P2_b"], ["P1_a"], [{"ism": "P2_b", "sabab": "حُذف الكود", "idhn": "المالك"}])
+        self.assertEqual(code, 0)
+
+    def test_gate_fails_closed_without_base(self):
+        code, out, err = self.gate(["P1_a"], ["P1_a"], merge_base_ok=False)
+        self.assertEqual(code, 2)
+        self.assertIn("حراسة قائمة الطفرات", err)
+        self.assertIn("لم تُقارَن بالأساس", out)
+        self.assertNotIn("Traceback", err)
 
 
 if __name__ == "__main__":
