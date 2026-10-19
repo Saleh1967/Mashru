@@ -2080,5 +2080,53 @@
   "milaf": "Nizam/Phi.lean",
   "min": "def miftah1 : (Nat → Nat) → K3 := fun σ => if σ 0 = 1 then P else N",
   "ila": "def miftah1 : (Nat → Nat) → K3 := fun σ => if σ 0 = 0 then P else N"
+ },
+ {
+  "ism": "P291_phi_bila_isqat",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | .aqda l r hs => yujadV dom hs (fun σ => wa (phi dom l σ) (phi dom r σ))",
+  "ila": "  | .aqda l r hs => (fun σ => wa (phi dom l σ) (phi dom r σ))"
+ },
+ {
+  "ism": "P292_phi_rutba_la_hukm_mumtani",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | .laHukm => U",
+  "ila": "  | .laHukm => N"
+ },
+ {
+  "ism": "P293_phi_mahdhuf_bila_ayman",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | .aqda l r hs => hs ++ (mahdhuf l ++ mahdhuf r)",
+  "ila": "  | .aqda l r hs => hs ++ mahdhuf l"
+ },
+ {
+  "ism": "P294_phi_kull_bil_fasl",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | .aqda l r _ => fun σ => wa (kullAwamil l σ) (kullAwamil r σ)",
+  "ila": "  | .aqda l r _ => fun σ => aw (kullAwamil l σ) (kullAwamil r σ)"
+ },
+ {
+  "ism": "P295_phi_yujadV_bila_isqat",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  | v :: vs, F, σ => yujad (dom.map fun d => yujadV dom vs F (tahdith σ v d))",
+  "ila": "  | v :: vs, F, σ => yujadV dom vs F σ"
+ },
+ {
+  "ism": "P296_phi_qanun_la_hukm",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def amilQanun (A : Aqd) (x : List Nat) : K3 := if A.qanun x then P else N",
+  "ila": "def amilQanun (A : Aqd) (x : List Nat) : K3 := if A.qanun x then P else U"
+ },
+ {
+  "ism": "P297_phi_mani_la_hukm",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def amilMani (A : Aqd) (x : List Nat) (m : Nat) : K3 := if (A.mani x).testBit m then N else P",
+  "ila": "def amilMani (A : Aqd) (x : List Nat) (m : Nat) : K3 := if (A.mani x).testBit m then U else P"
+ },
+ {
+  "ism": "P298_phi_aqd_bila_mani",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  wa (amilQanun A x) (wa (amilMani A x m)\n    (tarkib judhur (fun (_ : Unit) r => amilJidhr A x r)",
+  "ila": "  wa (amilQanun A x) (wa P\n    (tarkib judhur (fun (_ : Unit) r => amilJidhr A x r)"
  }
 ]
