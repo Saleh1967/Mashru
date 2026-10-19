@@ -33,7 +33,12 @@ jobs:
         run: bash scripts/tathbit_lean.sh
 
       - name: install Python deps (numpy لفرضية الـ116)
-        run: pip install --break-system-packages numpy
+        # البوّابة تُشغَّل بـ python3 -I، و-I يُسقط site-packages المستخدم (~/.local)؛ وpip بلا صلاحيّة كتابةٍ نظاميّة
+        # يثبّت هناك، فيبقى numpy غائبًا عن البوّابة (هذا ما أفشل ٥ش على PR #36 رغم وجود هذه الخطوة).
+        # فالتثبيتُ نظاميٌّ بـ sudo على python3 نفسِه، والسطرُ الثاني يفحص الشرطَ بالعزل نفسِه فيفشل هنا لا داخل البوّابة.
+        run: |
+          sudo python3 -m pip install --break-system-packages numpy
+          python3 -I -c "import numpy; print('numpy', numpy.__version__)"
 
       - name: lake build
         run: |
