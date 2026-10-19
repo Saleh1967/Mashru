@@ -6,11 +6,12 @@
 ١. يتحقّق من بصمتي المرجعين المحجوبين في `mudaat/sijill.json` (MASAQ.csv وquranic-corpus-morphology-0.4.txt في MUDAA_DIR)
    قبل أن يقرأ منهما شيئًا؛ وتغيُّرُ بصمةٍ يوقفه باسمه.
 ٢. يقسم الآيات (6,236 في MASAQ) شطرين بالبذرة المختومة BADHRA: الشطرُ الأوّل للتشغيل الأوّل، والثاني محجوبٌ لتشغيلٍ مؤكِّد
-   بتسجيلٍ لاحق (لا يُشغَّل إلّا بـ --shatr 2 --tasjil <معرِّف تسجيلٍ لاحق>).
+   بتسجيلٍ لاحق (لا يُشغَّل إلّا بـ --shatr 2 --tasjil hawkama/<ملفٌّ أُضيف إلى main بعد هذا التسجيل>).
 ٣. يكتب كلماتِ الشطر (MASAQ: Word لكلّ (سورة، آية، Column5)) ملفًّا، ويشغّل `qari --qiyas` عليه.
 ٤. يحسب ف0–ف3 بقواعد العدّ المسجَّلة، ويكتب الخلاصة (`khulasa.json`) والتفصيل (`kalimat.tsv`) وعيّنتي الفحص المستقلّ
    معمّاتٍ وأحكامَها منفصلةً في مجلّد الإخراج.
-ولا يبدأ إلّا على شجرةٍ نظيفة، HEAD فيها origin/main والتسجيلُ مدموج، بعد `lake build qari`، وببصمة الشطر الأوّل المسجَّلة.
+ولا يبدأ إلّا على شجرةٍ نظيفة، HEAD فيها origin/main والتسجيلُ مدموج والوثيقةُ والسكربت كما دُمجا، بعد `lake build qari`، وببصمة
+الشطر الأوّل المسجَّلة (`hirasat`، `iedad`).
 لا يغيّر شيئًا في المستودع، ولا يقرأ المرجعين إلّا من MUDAA_DIR.
 
 التشغيل: MUDAA_DIR=<مجلّد> python3 -I tahaqquq/qiyas_d.py <مجلّد الإخراج خارج المستودع> [--shatr 1]
@@ -29,12 +30,12 @@ from collections import Counter, OrderedDict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BADHRA = 20261020
-# بصمةُ قائمة آيات الشطر الأوّل («سورة:آية» مرتّبةً، سطرًا سطرًا) — مسجَّلةٌ في الوثيقة §٣؛ ويرفض السكربت التشغيل إن خالفتها.
+# بصمةُ قائمة آيات الشطر الأوّل («سورة:آية» مرتّبةً عدديًّا بالسورة ثمّ الآية، وكلُّ سطرٍ ينتهي بسطرٍ جديد) — مسجَّلةٌ في الوثيقة §٣؛ ويرفض السكربت التشغيل إن خالفتها.
 SHATR1_SHA256 = "4210b6fb3fefc86d4d19be17b20bfe757e6d760417ac785d05c40e21e6a66e3b"
 BADHRA_QAYYIS = 20261021
 AYYINA_N = 100
 BADHRA_AHLIYYA = 20261022
-AYYINA_AHLIYYA_N = 50
+AYYINA_AHLIYYA_N = 10
 AMTHILA_HADD = 25
 MASAQ = "MASAQ.csv"
 QAC = "quranic-corpus-morphology-0.4.txt"
@@ -122,7 +123,7 @@ def jidhr_arabi(bw):
 
 
 def basmat_shatr(ayat):
-    """بصمةُ قائمة آياتٍ: «سورة:آية» مرتّبةً سطرًا سطرًا."""
+    """بصمةُ قائمة آياتٍ: «سورة:آية» مرتّبةً عدديًّا (السورة ثمّ الآية)، وكلُّ سطرٍ ينتهي بـ «\n»."""
     return hashlib.sha256("".join(f"{s}:{v}\n" for s, v in sorted(ayat)).encode()).hexdigest()
 
 
@@ -158,7 +159,7 @@ def wilson(k, n, z=1.96):
     d = 1 + z * z / n
     c = (p + z * z / (2 * n)) / d
     h = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
-    return [round(c - h, 4), round(c + h, 4)]
+    return [max(0.0, round(c - h, 4)), min(1.0, round(c + h, 4))]
 
 
 def miftah(k):
@@ -196,19 +197,20 @@ def hisab(masaq, qac, qari, ayat_shatr):
 
     # ف1: «على الخلايا» ∧ «بعد التسكين»؛ ويُعدّ كلُّ مكوّنٍ وحده أيضًا.
     fashl = []
-    fashl_kama = fashl_baad = 0
+    fashl_kama = fashl_baad = fashl_kilahuma = 0
     suwar_maqbula, suwar_fashl = set(), set()
     for k in maqbula:
         r = qari[miftah(k)]
         suwar_maqbula.add(masaq[k]["word"])
         fashl_kama += not r["kama"]
         fashl_baad += not r["baad"]
+        fashl_kilahuma += not r["kama"] and not r["baad"]
         if not (r["kama"] and r["baad"]):
             fashl.append({"mawdi": miftah(k), "kalima": masaq[k]["word"], "ala_alkhalaya": int(r["kama"]),
                           "baad_altaskin": int(r["baad"])})
             suwar_fashl.add(masaq[k]["word"])
     f1 = {"maqbula": len(maqbula), "dalOK": len(maqbula) - len(fashl), "fashl": len(fashl),
-          "fashl_ala_alkhalaya": fashl_kama, "fashl_baad_altaskin": fashl_baad,
+          "fashl_ala_alkhalaya": fashl_kama, "fashl_baad_altaskin": fashl_baad, "fashl_kilahuma": fashl_kilahuma,
           "suwar_maqbula": len(suwar_maqbula), "suwar_fashl": len(suwar_fashl), "qaimat_alfashl": fashl}
 
     # ف2: مرشَّحُ الجذر مقابل جذر QAC، في الآيات التي تتساوى فيها عدّةُ الكلمات بين المرجعين.
@@ -272,23 +274,75 @@ def hisab(masaq, qac, qari, ayat_shatr):
 
 
 def ayyina_qayyis(muahhal, n=AYYINA_N, badhra=BADHRA_QAYYIS):
-    """عيّنةُ الفحص المستقلّ الأولى (§٦): n حكمًا (كلمةً في فرض) من المؤهَّلين في ف2 وف3، مرتّبين ثمّ مسحوبين بالبذرة.
-    تُعيد (المعمّى: الموضع والفرض وحدهما، والأحكام: الصفوف كاملةً) — فلا يرى القائسُ حكمَ السكربت."""
+    """عيّنةُ الفحص المستقلّ الأولى (§٦): الأحكامُ (كلمةً في فرض) مرتّبةً نصًّا، ثمّ `random.Random(badhra).sample` بـ n منها.
+    تُعيد (المعمّى: الموضع والفرض «f2»/«f3» وحدهما — لا الطبقة —، والأحكام: الصفوف كاملةً)."""
     m = sorted(muahhal)
     a = random.Random(badhra).sample(m, min(n, len(m)))
-    return [(r[0], r[1]) for r in a], a
+    return [(r[0], r[1].split(":")[0]) for r in a], a
 
 
 def ayyina_ahliyya(ahliyya, n=AYYINA_AHLIYYA_N, badhra=BADHRA_AHLIYYA):
-    """عيّنةُ الفحص المستقلّ الثانية (§٦): n كلمةً من كلمات الشطر كلِّها، مرتّبةً ثمّ مسحوبةً بالبذرة، لفحص الأهليّة.
-    تُعيد (المعمّى: المواضع وحدها، والأحكام: الموضع وطبقتاه في ف2 وف3 أو «-»)."""
-    m = sorted(ahliyya)
-    a = random.Random(badhra).sample(m, min(n, len(m)))
+    """عيّنةُ الفحص المستقلّ الثانية (§٦): لكلّ طبقةٍ (f2:i، f2:ii، f3:a، f3:b، f3:c) ولغير المؤهَّلة (la) n كلمةً، من مواضعها
+    مرتّبةً نصًّا بـ `random.Random(badhra).sample`، بالترتيب المذكور ومولِّدٍ واحد؛ ثمّ تُجمع بلا تكرار.
+    تُعيد (المعمّى: المواضع وحدها مرتّبة، والأحكام: الموضع وطبقتاه في ف2 وف3 أو «-»)."""
+    rng = random.Random(badhra)
+    majmu = set()
+    for tab in ("f2:i", "f2:ii", "f3:a", "f3:b", "f3:c", "la"):
+        if tab == "la":
+            ks = sorted(k for k, v in ahliyya.items() if v == ["-", "-"])
+        else:
+            h, t = tab.split(":")
+            ks = sorted(k for k, v in ahliyya.items() if v[0 if h == "f2" else 1] == t)
+        majmu.update(rng.sample(ks, min(n, len(ks))))
+    a = sorted(majmu)
     return a, [(k, ahliyya[k][0], ahliyya[k][1]) for k in a]
 
 
-def git(*args):
-    return subprocess.run(["git", "-C", ROOT, *args], capture_output=True, text=True)
+def git(root, *args):
+    return subprocess.run(["git", "-C", root, *args], capture_output=True, text=True)
+
+
+WATHIQA = "hawkama/tasjil_qiyas_d.md"
+SCRIPT = "tahaqquq/qiyas_d.py"
+
+
+def hirasat(root, out, n_shatr, tasjil):
+    """حراساتُ ما قبل القياس بترتيبها؛ تُعيد رسالةَ الرفض أو None:
+    الإخراجُ خارج المستودع؛ الشجرةُ نظيفة؛ HEAD = origin/main؛ الوثيقةُ في HEAD؛ والوثيقةُ والسكربت كما كانا في آخر إيداعٍ غيّر الوثيقة
+    (إيداعِ التسجيل)؛ والشطرُ الثاني بـ `--tasjil` يسمّي ملفًّا (blob) في `hawkama/` غيرَ هذه الوثيقة، أُضيف إلى origin/main بعد إيداع التسجيل."""
+    out = os.path.abspath(out)
+    if out == root or out.startswith(root + os.sep):
+        return "مجلّد الإخراج داخل المستودع: مرفوض (المودَعات ومشتقّاتُها لا تُرفع)"
+    if git(root, "status", "--porcelain").stdout.strip():
+        return "الشجرة غير نظيفة: لا يُقاس إلّا على إيداعٍ كما هو"
+    head = git(root, "rev-parse", "HEAD").stdout.strip()
+    if not head or head != git(root, "rev-parse", "origin/main").stdout.strip():
+        return "HEAD ليس origin/main: لا يُقاس إلّا على main بعد دمج التسجيل"
+    if git(root, "cat-file", "-e", f"HEAD:{WATHIQA}").returncode:
+        return "التسجيل المسبق غير مدموج في main"
+    t0 = git(root, "log", "-1", "--format=%H", "HEAD", "--", WATHIQA).stdout.strip()
+    if git(root, "diff", "--quiet", t0, "HEAD", "--", WATHIQA, SCRIPT).returncode:
+        return "الوثيقة أو السكربت تغيّرا بعد إيداع التسجيل: هذا تسجيلٌ جديد"
+    if n_shatr == 2:
+        ok = bool(tasjil) and tasjil.startswith("hawkama/") and tasjil != WATHIQA
+        ok = ok and git(root, "cat-file", "-t", f"origin/main:{tasjil}").stdout.strip() == "blob"
+        if ok:
+            t1 = git(root, "log", "--diff-filter=A", "-1", "--format=%H", "origin/main", "--", tasjil).stdout.strip()
+            ok = bool(t1) and t1 != t0 and git(root, "merge-base", "--is-ancestor", t0, t1).returncode == 0
+        if not ok:
+            return "الشطرُ الثاني محجوبٌ لتشغيلٍ مؤكِّد: يلزم --tasjil hawkama/<ملفُّ تسجيلٍ أُضيف إلى origin/main بعد هذا التسجيل>"
+    return None
+
+
+def iedad(mdir, n_shatr, sijill_path=None, basmat_shatr1=SHATR1_SHA256):
+    """البصماتُ أوّلًا، ثمّ القراءة، ثمّ الشطران وبصمةُ الأوّل؛ تُعيد (masaq، shudhudh، qac، ayat)."""
+    tahaqquq_basamat(mdir, *([sijill_path] if sijill_path else []))
+    masaq, shudhudh = kalimat_masaq(os.path.join(mdir, MASAQ))
+    qac = kalimat_qac(os.path.join(mdir, QAC))
+    s1, s2 = shatr([(k[0], k[1]) for k in masaq])
+    if basmat_shatr(s1) != basmat_shatr1:
+        raise Khalal("بصمةُ الشطر الأوّل تخالف المسجَّلة في الوثيقة §٣")
+    return masaq, shudhudh, qac, (s1 if n_shatr == 1 else s2)
 
 
 def main(argv):
@@ -301,41 +355,18 @@ def main(argv):
     except SystemExit:
         print(__doc__)
         return 2
-    out = os.path.abspath(a.out)
-    if out == ROOT or out.startswith(ROOT + os.sep):
-        print("مجلّد الإخراج داخل المستودع: مرفوض (المودَعات ومشتقّاتُها لا تُرفع)")
-        return 2
-    n_shatr = a.shatr
-    if n_shatr == 2:
-        if not a.tasjil or not a.tasjil.startswith("hawkama/") or git("cat-file", "-e", f"origin/main:{a.tasjil}").returncode:
-            print("الشطرُ الثاني محجوبٌ لتشغيلٍ مؤكِّد بتسجيلٍ لاحق: يلزم --tasjil hawkama/<ملفّ تسجيلٍ مدموجٍ في origin/main>")
-            return 2
     mdir = os.environ.get("MUDAA_DIR")
-    if not mdir:
-        print("MUDAA_DIR غير معيَّن")
-        return 2
-    if git("status", "--porcelain").stdout.strip():
-        print("الشجرة غير نظيفة: لا يُقاس إلّا على إيداعٍ كما هو")
-        return 2
-    head = git("rev-parse", "HEAD").stdout.strip()
-    if not head or head != git("rev-parse", "origin/main").stdout.strip():
-        print("HEAD ليس origin/main: لا يُقاس إلّا على main بعد دمج التسجيل")
-        return 2
-    if git("cat-file", "-e", "HEAD:hawkama/tasjil_qiyas_d.md").returncode:
-        print("التسجيل المسبق غير مدموج في main")
+    rafd = hirasat(ROOT, a.out, a.shatr, a.tasjil) or (None if mdir else "MUDAA_DIR غير معيَّن")
+    if rafd:
+        print(rafd)
         return 2
     b = subprocess.run(["lake", "build", "qari"], cwd=ROOT, capture_output=True, text=True)
     if b.returncode != 0:
         raise Khalal("lake build qari فشل:\n" + (b.stdout + b.stderr)[-2000:])
     qari_bin = os.path.join(ROOT, ".lake", "build", "bin", "qari")
-    tahaqquq_basamat(mdir)
-    masaq, shudhudh = kalimat_masaq(os.path.join(mdir, MASAQ))
-    qac = kalimat_qac(os.path.join(mdir, QAC))
-    s1, s2 = shatr([(k[0], k[1]) for k in masaq])
-    if basmat_shatr(s1) != SHATR1_SHA256:
-        raise Khalal("بصمةُ الشطر الأوّل تخالف المسجَّلة في الوثيقة §٣")
-    ayat = s1 if n_shatr == 1 else s2
-    os.makedirs(out, exist_ok=True)
+    masaq, shudhudh, qac, ayat = iedad(mdir, a.shatr)
+    out = os.path.abspath(a.out)
+    os.makedirs(os.path.join(out, "ahkam"), exist_ok=True)
     madkhal = os.path.join(out, "madkhal.tsv")
     with open(madkhal, "w", encoding="utf-8") as f:
         for k, w in masaq.items():
@@ -346,28 +377,27 @@ def main(argv):
         raise Khalal("qari --qiyas فشل:\n" + p.stderr[-2000:])
     qari = mukhrij_qari(p.stdout.splitlines())
     natija = hisab(masaq, qac, qari, ayat)
-    muahhal = natija.pop("muahhal")
-    ahliyya = natija.pop("ahliyya")
-    muamma1, ahkam1 = ayyina_qayyis(muahhal)
-    muamma2, ahkam2 = ayyina_ahliyya(ahliyya)
-    for ism, rows in (("ayyina_qayyis.tsv", muamma1), ("ayyina_qayyis_ahkam.tsv", ahkam1),
-                      ("ayyina_ahliyya.tsv", [(k,) for k in muamma2]), ("ayyina_ahliyya_ahkam.tsv", ahkam2)):
+    muamma1, ahkam1 = ayyina_qayyis(natija.pop("muahhal"))
+    muamma2, ahkam2 = ayyina_ahliyya(natija.pop("ahliyya"))
+    for ism, rows in (("ayyina_qayyis.tsv", muamma1), ("ahkam/ayyina_qayyis_ahkam.tsv", ahkam1),
+                      ("ayyina_ahliyya.tsv", [(k,) for k in muamma2]), ("ahkam/ayyina_ahliyya_ahkam.tsv", ahkam2)):
         with open(os.path.join(out, ism), "w", encoding="utf-8") as f:
             for row in rows:
                 f.write("\t".join(row) + "\n")
-    natija["shudhudh_masaq"] = [miftah(k) for k in shudhudh]
-    natija["shatr"] = n_shatr
-    natija["badhra"] = BADHRA
-    natija["basmat_alshatr1"] = SHATR1_SHA256
-    natija["iltizam"] = head
-    natija["basmat_qari"] = basma(qari_bin)
+    natija.update({
+        "shudhudh_masaq": [miftah(k) for k in shudhudh], "shatr": a.shatr, "badhra": BADHRA,
+        "basmat_alshatr1": SHATR1_SHA256, "iltizam": git(ROOT, "rev-parse", "HEAD").stdout.strip(),
+        "basmat_qari": basma(qari_bin), "basmat_alwathiqa": basma(os.path.join(ROOT, WATHIQA)),
+        "basmat_alskript": basma(os.path.join(ROOT, SCRIPT)),
+        "tasjil": None if a.shatr == 1 else {"milaf": a.tasjil, "basma": basma(os.path.join(ROOT, a.tasjil))},
+    })
     with open(os.path.join(out, "khulasa.json"), "w", encoding="utf-8") as f:
         json.dump(natija, f, ensure_ascii=False, indent=1)
     with open(os.path.join(out, "kalimat.tsv"), "w", encoding="utf-8") as f:
         for line in p.stdout.splitlines():
             f.write(line + "\n")
     f0, f1 = natija["f0"], natija["f1"]
-    print(f"الشطر {n_shatr}: {f0['kalimat']} كلمة، قُبل ترميزُها {f0['maqbula']}، وقُبل في ف1 {f1['dalOK']}، وفشل {f1['fashl']}")
+    print(f"الشطر {a.shatr}: {f0['kalimat']} كلمة، قُبل ترميزُها {f0['maqbula']}، وقُبل في ف1 {f1['dalOK']}، وفشل {f1['fashl']}")
     return 0
 
 

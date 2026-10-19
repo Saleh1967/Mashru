@@ -8,10 +8,12 @@
 ٣. قارئا MASAQ وQAC على ملفّين مصنوعين: الكلمةُ بمفتاحها وقطعها، وكلمةٌ اختلفت Word في صفّيها شذوذٌ لا يُقاس.
 ٤. الطبقات: ف2 (i) قطعةٌ واحدة ذاتُ جذرٍ صحيح، (ii) أكثر، ولا طبقة لكلمةٍ بلا جذر أو بجذرٍ رباعيّ أو معتلّ (w/y)؛ ف3 «أ» بحركةٍ
    قصيرة، «ب» ممنوعٌ من الصرف، «ج» ما سواهما، وصفُّ Other_i3rab لا يُعدّ قطعة، ولا طبقة لمعربٍ بعده لاحقة.
-٥. العدّ على شطرٍ مصنوع بأعدادٍ محسوبةٍ باليد (التفصيل عند كلّ توقّع)، وفترةُ ولسن يدويًّا، والعيّنتان معمّاتين وأحكامُهما منفصلة،
-   وحدُّ الأمثلة 25 على ثلاثين خلافًا.
+٥. العدّ على شطرٍ مصنوع بأعدادٍ محسوبةٍ باليد (التفصيل عند كلّ توقّع)، وفترةُ ولسن يدويًّا (بلا «-0.0»)، والعيّنتان معمّاتين
+   (الفرضُ f2/f3 لا الطبقة) وأحكامُهما منفصلة، وعيّنةُ الأهليّة مطبَّقة، وحدُّ الأمثلة 25 على ثلاثين خلافًا.
 ٦. البصمات: تُقبل المطابقة، ويُرفض الملفّ المغيَّر باسمه.
-٧. الحراسة: مجلّدُ إخراجٍ داخل المستودع مرفوض، والشطرُ الثاني بلا --tasjil أو بتسجيلٍ غير مدموج مرفوض.
+٧. الحراسة على مستودع git مصنوع: الوثيقةُ غائبة، والإخراجُ داخل المستودع، والشجرةُ غير النظيفة، وHEAD غيرُ origin/main، والسكربتُ
+   المغيَّر بعد التسجيل — كلٌّ يُرفض باسمه؛ والشطرُ الثاني لا يُقبل إلّا بملفٍّ في hawkama/ أُضيف بعد التسجيل؛ وiedad يتحقّق من البصمات
+   قبل القراءة، ومن بصمة الشطر، ويختار الشطرَ المطلوب؛ والسطرُ الشاذّ من القارئ خلل.
 ٨. `qari --qiyas` على كلماتٍ باليد: الخلايا 4×الحامل+الحال (فهارسُ `Dal.hawamil`: ك8 ت18 ب26 ق7 ا2 ل13 ر15 ف25)، والقانونُ
    على الخلايا وبعد التسكين (كَتَبَ 1/1، وقَالْتُ 0/1 شاهدُ المالك qaltu، وبِ 1/0 بخانةٍ واحدة)، ومرشَّحُ الجذر، وحالُ الآخر،
    والإعرابُ المرشَّح (الفتحة نصب، والكسرة جرّ، والسكون «-»)؛ وغيرُ المشكول مرفوضٌ باسمه.
@@ -20,6 +22,7 @@
 import csv
 import hashlib
 import json
+import math
 import os
 import subprocess
 import sys
@@ -57,10 +60,11 @@ najah("جدول بكوالتر للجذور (28 حرفًا يدويًّا)")
 WATHIQA = open(os.path.join(ROOT, "hawkama", "tasjil_qiyas_d.md"), encoding="utf-8").read()
 SHATR1 = "4210b6fb3fefc86d4d19be17b20bfe757e6d760417ac785d05c40e21e6a66e3b"
 assert (Q.BADHRA, Q.BADHRA_QAYYIS, Q.BADHRA_AHLIYYA, Q.AYYINA_N, Q.AYYINA_AHLIYYA_N, Q.AMTHILA_HADD, Q.SHATR1_SHA256) == \
-    (20261020, 20261021, 20261022, 100, 50, 25, SHATR1)
-for x in ("20261020", "20261021", "20261022", SHATR1, "مئةَ حكمٍ", "خمسين كلمةً", "أوّلُ 25"):
+    (20261020, 20261021, 20261022, 100, 10, 25, SHATR1)
+for x in ("20261020", "20261021", "20261022", SHATR1, "مئةَ حكمٍ", "عشرَ كلماتٍ من كلّ طبقة", "أوّلُ 25"):
     assert x in WATHIQA, x
-assert Q.basmat_shatr({(1, 2), (1, 1), (2, 7)}) == hashlib.sha256(b"1:1\n1:2\n2:7\n").hexdigest()
+# الترتيبُ عدديّ: 1:2 قبل 1:10 (ونصًّا تكون 1:10 أوّلًا)، وكلُّ سطرٍ ينتهي بسطرٍ جديد.
+assert Q.basmat_shatr({(1, 10), (1, 2), (2, 7)}) == hashlib.sha256(b"1:2\n1:10\n2:7\n").hexdigest()
 ayat = [(1, i) for i in range(1, 11)] + [(2, i) for i in range(1, 6)]
 s1, s2 = Q.shatr(ayat)
 assert s1.isdisjoint(s2) and s1 | s2 == set(ayat) and len(s1) == 7 and len(s2) == 8, (s1, s2)
@@ -159,7 +163,7 @@ qari = Q.mukhrij_qari([
     "1:1:2\tQABUL\t60 107 106\t1\t1\t1\tربب\t2\tالجرّ",      # جذرٌ موافق (i)؛ ف3 «أ» موافق
     "1:1:3\tQABUL\t100 25 95\t1\t1\t1\tفخذ\t3\t-",          # جذرٌ مخالف (ii): فخذ/ءخذ
     "1:2:1\tQABUL\t1 2 3\t0\t1\t0\t-\t1\tالرفع",            # فشلُ ف1 على الخلايا؛ لا طبقة ف3 (لاحقة)
-    "1:2:2\tQABUL\t106\t1\t0\t0\t-\t2\tالجرّ",              # فشلُ ف1 بعد التسكين
+    "1:2:2\tQABUL\t106\t0\t0\t0\t-\t2\tالجرّ",              # فشلُ ف1 بالمكوّنين كليهما
     "1:3:1\tQABUL\t3 4 5\t1\t1\t1\t-\t0\tالنصب",            # ف3 «ب»: مرشَّح النصب، MASAQ جرّ ← خلاف
     "1:3:2\tRAFD\tحرف ليس في جدول المخارج: «x»",
     "1:4:1\tQABUL\t6 7 8\t1\t1\t1\t-\t3\t-",                # ف3 «أ»: لا حكم (السكون)
@@ -169,7 +173,9 @@ qari = Q.mukhrij_qari([
 ])
 N = Q.hisab(masaq, qac, qari, {(1, 1), (1, 2), (1, 3), (1, 4)})
 assert N["f0"] == {"kalimat": 11, "maqbula": 10, "marfuda": 1, "asbab_alrafd": {"حرف ليس في جدول المخارج: «x»": 1}}, N["f0"]
-assert (N["f1"]["dalOK"], N["f1"]["fashl"], N["f1"]["fashl_ala_alkhalaya"], N["f1"]["fashl_baad_altaskin"]) == (8, 2, 1, 1)
+# على الخلايا ردّ 1:2:1 و1:2:2، وبعد التسكين ردّ 1:2:2، وكلاهما ردّا 1:2:2.
+assert (N["f1"]["dalOK"], N["f1"]["fashl"], N["f1"]["fashl_ala_alkhalaya"], N["f1"]["fashl_baad_altaskin"],
+        N["f1"]["fashl_kilahuma"]) == (8, 2, 2, 1, 1), N["f1"]
 assert [x["mawdi"] for x in N["f1"]["qaimat_alfashl"]] == ["1:2:1", "1:2:2"]
 assert N["f1"]["suwar_maqbula"] == 10 and N["f1"]["suwar_fashl"] == 2
 # الآية 1:2: كلمتان في MASAQ بعد حذف الشاذّة، وثلاث في QAC ← غيرُ متساوية؛ و1:1 و1:3 و1:4 متساوية.
@@ -182,6 +188,8 @@ assert N["f3"]["a"]["nisbat_alwifaq_mimma_hukima"] == 1.0 and N["f3"]["a"]["wils
 assert (N["f3"]["b"]["n"], N["f3"]["b"]["khilaf"], N["f3"]["b"]["wilson95"]) == (1, 1, [0.0, 0.7935]), N["f3"]["b"]
 assert (N["f3"]["c"]["n"], N["f3"]["c"]["wifaq"], N["f3"]["c"]["khilaf"], N["f3"]["c"]["la_hukm"]) == (2, 0, 1, 1), N["f3"]["c"]
 assert Q.wilson(0, 0) is None and Q.wilson(50, 100) == [0.4038, 0.5962]
+# 0/5 ← [0.0، 0.4345]، والحدُّ الأدنى صفرٌ موجب لا «-0.0».
+assert Q.wilson(0, 5) == [0.0, 0.4345] and math.copysign(1, Q.wilson(0, 5)[0]) == 1
 MUAHHAL = [("1:1:1", "f2:i", "wifaq", "كتب", "كتب"), ("1:1:2", "f2:i", "wifaq", "ربب", "ربب"),
            ("1:1:2", "f3:a", "wifaq", "الجرّ", "الجرّ"), ("1:1:3", "f2:ii", "khilaf", "فخذ", "ءخذ"),
            ("1:3:1", "f3:b", "khilaf", "النصب", "الجرّ"), ("1:4:1", "f3:a", "la_hukm", "-", "الرفع"),
@@ -191,11 +199,17 @@ assert N["ahliyya"] == {"1:1:1": ["i", "-"], "1:1:2": ["i", "a"], "1:1:3": ["ii"
                         "1:2:2": ["-", "-"], "1:3:1": ["-", "b"], "1:3:2": ["-", "-"], "1:4:1": ["-", "a"],
                         "1:4:2": ["-", "c"], "1:4:3": ["-", "c"], "1:4:4": ["-", "-"]}, N["ahliyya"]
 mu, ah = Q.ayyina_qayyis(N["muahhal"], 3)
-assert len(ah) == 3 and set(ah) <= set(MUAHHAL) and mu == [(r[0], r[1]) for r in ah] and all(len(r) == 2 for r in mu)
+assert len(ah) == 3 and set(ah) <= set(MUAHHAL) and all(len(r) == 2 and r[1] in ("f2", "f3") for r in mu)
+assert mu == [(r[0], r[1].split(":")[0]) for r in ah]
 assert Q.ayyina_qayyis(list(reversed(N["muahhal"])), 3) == (mu, ah)
 assert sorted(Q.ayyina_qayyis(N["muahhal"])[1]) == MUAHHAL
-mu2, ah2 = Q.ayyina_ahliyya(N["ahliyya"], 4)
-assert len(mu2) == 4 and ah2 == [(k, N["ahliyya"][k][0], N["ahliyya"][k][1]) for k in mu2]
+# عيّنةُ الأهليّة مطبَّقة: كلمةٌ من كلّ طبقة ومن غير المؤهَّلة (الطبقات هنا بأعضائها يدويًّا).
+TABAQAT = {"f2:i": {"1:1:1", "1:1:2"}, "f2:ii": {"1:1:3"}, "f3:a": {"1:1:2", "1:4:1"}, "f3:b": {"1:3:1"},
+           "f3:c": {"1:4:2", "1:4:3"}, "la": {"1:2:1", "1:2:2", "1:3:2", "1:4:4"}}
+mu2, ah2 = Q.ayyina_ahliyya(N["ahliyya"], 1)
+assert mu2 == sorted(mu2) and all(set(mu2) & ks for ks in TABAQAT.values()) and len(mu2) <= 6, mu2
+assert ah2 == [(k, N["ahliyya"][k][0], N["ahliyya"][k][1]) for k in mu2]
+assert Q.ayyina_ahliyya(N["ahliyya"])[0] == sorted(N["ahliyya"])
 # حدُّ الأمثلة: ثلاثون خلافًا في «ب» تُعدّ كلُّها ويُسرد منها 25.
 rows2 = [saff(2, 1, w, 1, "أَحْمَدَ", "Stem", "معرب", "مجرور", "الفتحة (ممنوع من الصرف)") for w in range(1, 31)]
 with open(os.path.join(tmp, "M2.csv"), "w", encoding="utf-8-sig", newline="") as f:
@@ -230,22 +244,83 @@ except Q.Khalal as e:
     assert "MASAQ.csv" in str(e) and "بصمته" in str(e), e
 najah("البصمات: المطابقة تُقبل والمغيَّرة تُرفض باسمها")
 
-# ٧. الحراسة
-env = dict(os.environ, MUDAA_DIR=tmp)
+# ٧. الحراسة: hirasat على مستودعٍ مصنوع، وiedad على مرجعَين مصنوعَين، ومخرجٌ شاذّ من القارئ
+repo = os.path.join(tmp, "repo")
+os.makedirs(os.path.join(repo, "hawkama"))
+os.makedirs(os.path.join(repo, "tahaqquq"))
+GENV = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t", GIT_COMMITTER_NAME="t", GIT_COMMITTER_EMAIL="t@t")
 
 
-def shaghghil(*args):
-    return subprocess.run([sys.executable, "-I", os.path.join(ROOT, "tahaqquq", "qiyas_d.py"), *args],
-                          capture_output=True, text=True, env=env)
+def g(*args):
+    r = subprocess.run(["git", "-C", repo, *args], capture_output=True, text=True, env=GENV)
+    assert r.returncode == 0, r.stderr
+    return r.stdout.strip()
 
 
-p = shaghghil(os.path.join(ROOT, "x"))
+def ktb(path, txt):
+    open(os.path.join(repo, path), "w", encoding="utf-8").write(txt)
+
+
+def awdi(msg, *paths):
+    g("add", *paths)
+    g("commit", "-q", "-m", msg)
+    g("update-ref", "refs/remotes/origin/main", "HEAD")
+
+
+g("init", "-q")
+ktb("hawkama/qadim.md", "قديم")
+awdi("0", "hawkama/qadim.md")
+H = lambda **kw: Q.hirasat(repo, kw.get("out", os.path.join(tmp, "out")), kw.get("n", 1), kw.get("tasjil"))
+assert "غير مدموج" in H()
+ktb(Q.WATHIQA, "وثيقة")
+ktb(Q.SCRIPT, "سكربت")
+awdi("tasjil", Q.WATHIQA, Q.SCRIPT)
+assert H() is None
+assert "داخل المستودع" in H(out=os.path.join(repo, "x"))
+ktb("hawkama/zaid.md", "x")
+assert "غير نظيفة" in H()
+os.remove(os.path.join(repo, "hawkama", "zaid.md"))
+ktb("hawkama/tasjil2.md", "تسجيلٌ لاحق")
+g("add", "hawkama/tasjil2.md")
+g("commit", "-q", "-m", "laysa_ala_main")
+assert "HEAD ليس origin/main" in H()
+g("update-ref", "refs/remotes/origin/main", "HEAD")
+assert H() is None
+for t in (None, Q.WATHIQA, "hawkama/", "hawkama/qadim.md", "hawkama/la_wujud.md", "tahaqquq/qiyas_d.py"):
+    assert "الشطرُ الثاني" in H(n=2, tasjil=t), t
+assert H(n=2, tasjil="hawkama/tasjil2.md") is None
+ktb(Q.SCRIPT, "سكربتٌ مغيَّر")
+awdi("taghyir", Q.SCRIPT)
+assert "تغيّرا" in H()
+m3 = os.path.join(tmp, "m3")
+os.makedirs(m3)
+for src, dst in (("MASAQ.csv", "MASAQ.csv"), ("quranic-corpus-morphology-0.4.txt", "quranic-corpus-morphology-0.4.txt")):
+    open(os.path.join(m3, dst), "wb").write(open(os.path.join(tmp, src), "rb").read())
+ktb_sijill(Q.basma(os.path.join(m3, "MASAQ.csv")))
+try:
+    Q.iedad(m3, 1, sij)
+    raise AssertionError("بصمةُ شطرٍ مخالفة قُبلت")
+except Q.Khalal as e:
+    assert "بصمةُ الشطر" in str(e), e
+ayat_m = sorted({(k[0], k[1]) for k in masaq})
+t1, t2 = Q.shatr(ayat_m)
+b1 = Q.basmat_shatr(t1)
+assert Q.iedad(m3, 1, sij, b1)[3] == t1 and Q.iedad(m3, 2, sij, b1)[3] == t2 and len(t1) == 2 and len(t2) == 2
+ktb_sijill("0" * 64)
+try:
+    Q.iedad(m3, 1, sij, b1)
+    raise AssertionError("iedad قرأ قبل البصمات")
+except Q.Khalal as e:
+    assert "بصمته" in str(e), e
+try:
+    Q.mukhrij_qari(["k\tKHALAL\tسطرٌ ليس «مفتاح⇥كلمة»"])
+    raise AssertionError("سطرٌ شاذّ قُبل")
+except Q.Khalal:
+    pass
+p = subprocess.run([sys.executable, "-I", os.path.join(ROOT, "tahaqquq", "qiyas_d.py"), os.path.join(ROOT, "x")],
+                   capture_output=True, text=True, env=dict(os.environ, MUDAA_DIR=tmp))
 assert p.returncode == 2 and "داخل المستودع" in p.stdout, p.stdout
-p = shaghghil(os.path.join(tmp, "out"), "--shatr", "2")
-assert p.returncode == 2 and "--tasjil" in p.stdout, p.stdout
-p = shaghghil(os.path.join(tmp, "out"), "--shatr", "2", "--tasjil", "hawkama/la_wujud_lahu.md")
-assert p.returncode == 2 and "--tasjil" in p.stdout, p.stdout
-najah("الحراسة: الإخراجُ داخل المستودع مرفوض، والشطر الثاني بلا تسجيلٍ لاحقٍ مدموج مرفوض")
+najah("الحراسة: hirasat بحالاتها على مستودعٍ مصنوع، وiedad (البصمات أوّلًا وبصمة الشطر واختيار الشطر)، والسطر الشاذّ")
 
 # ٨. qari --qiyas على كلماتٍ باليد
 qari_bin = os.path.join(ROOT, ".lake", "build", "bin", "qari")
