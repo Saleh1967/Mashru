@@ -37,10 +37,13 @@
     الكتاب»، ولفظُ الصفّ W فيه «وءكتبه».
   * القيودُ والموانعُ على المدلول: فارغةٌ في هذا العقد (لا قيدَ مودَعًا على رموز المدلول بعد) — معلَن.
 
-  العدّ (بمعيار `Nizam/Asas.lean`: «فكُّ تعريف» ما يتمّ بفكّ التعريف أو تفكيك حالاته، والحدّيُّ يُنزَل): 26 مبرهنة — 10 لكلّ،
-  و5 استنفادٌ بـ decide على نطاقٍ محدود (`fahras`، `madkhal_fakk`، `qina_illa`، `nayta_qina`، `farq_dalLic`)، و4 فكُّ تعريف
-  (`irabMin_irabState`، `irabMurashshah_la_jazm`، `mumtani_asbab`، `jidhr_salim`)، و7 على الشاهد (`qanun_ghayr_dalLic`،
-  `kataba_ilm_taraduf`، `kataba_luzum_la_hukm`، `qaltu_mumtani`، `qala_la_hukm`، `shawahid_sigha`، `kataba_haal`). القارئ يطبع سطورَ العقد (`Qari/Main.lean`، `iqraAqd`)
+  العدّ بالمعيار الموحَّد في `Nizam/Asas.lean` (جدولُ توجيهٍ رفعه المالك 2026-10-19 18:02): 26 مبرهنة —
+  12 لكلّ (`iqtiranB_iff`، `tarkib_iff`، `bit_wahid`، `mustawa_iff`، `kull_ma_kull`، `la_shahid_la_hukm`، `khatwa_qanun`، `runB_run`،
+  `fakk_ramz`، `siyagh_sawa`، `jidhr_salim`، `irabMurashshah_la_jazm`)، و2 تعريفيّة (`mumtani_asbab`، `irabMin_irabState`)، و12 على
+  الشاهد: ثمانٍ برهانُها decide (`fahras`، `madkhal_fakk`، `qina_illa`، `nayta_qina`، `farq_dalLic`، `qanun_ghayr_dalLic`،
+  `shawahid_sigha`، `kataba_haal`)، وأربعٌ قضيّتُها مغلقةٌ على كلمةٍ معيّنة وبرهانُها decide على المواصفة ثمّ نقلٌ بـ `kull_ma_kull` أو
+  `mumtani_asbab` — خارجَ حرف المعيار («برهانُها decide»)، معلَن (`kataba_ilm_taraduf`، `kataba_luzum_la_hukm`، `qaltu_mumtani`،
+  `qala_la_hukm`): الحكمُ على كلمةٍ بعينها لا يُحسب بـ decide مباشرةً لأنّ جدول القانون (`Array.ofFn`) يُعمِّق ردَّ النواة. القارئ يطبع سطورَ العقد (`Qari/Main.lean`، `iqraAqd`)
   ويطابقه `tahaqquq/test_qari.py` §١٨؛ الطفرات P255–P268.
   لم يُبنَ: مطابقةُ صيغة الكلمة للفظ الصفّ (الوزن)، والمسارُ غيرُ الجذريّ، وحقولُ الموضع والعامل وتعدّدِ التقدير.
   بلا sorry ولا axiom ولا native_decide.
@@ -230,7 +233,7 @@ theorem mumtani_asbab (A : Aqd) (x : List Nat) (m : Nat) :
   cases hq : A.qanun x
   · simp [hne.symm]
   · cases hn : (A.mani x).testBit m
-    · simp only [Bool.false_eq_true, ite_false, reduceCtorEq, iff_false, and_false]
+    · simp
       split
       · split <;> simp
       · simp
@@ -397,7 +400,7 @@ theorem qanun_ghayr_dalLic (n : JadwalLuzum.Naw) :
     (Mashru n).qanun [4*26+0] = true ∧ complete' [4*26+0] = false := by
   cases n <;> decide +kernel
 
-/-- **مقدارُ الفرق على الخانة والخانتين** (استنفاد): من 116 خانةً 84 يقبلها القانونُ ويردّها `complete'`، ولا عكس؛ ومن 13,456 زوجًا
+/-- **مقدارُ الفرق على الخانة والخانتين** (على الشاهد، بـ decide على النطاق كلّه): من 116 خانةً 84 يقبلها القانونُ ويردّها `complete'`، ولا عكس؛ ومن 13,456 زوجًا
     84 يقبلها `complete'` ويردّها القانون، ولا عكس. -/
 theorem farq_dalLic :
     ((List.range 116).filter fun a => Fwaqf (run 0 [a]) && !complete' [a]).length = 84 ∧
@@ -412,7 +415,7 @@ theorem farq_dalLic :
 def irabMin (h : Nat) : Option SLGE.Wad.Irab := SLGE.Wad.allIrab.find? fun r => SLGE.Bridge.irabState r == h
 
 theorem irabMin_irabState : ∀ r : SLGE.Wad.Irab, irabMin (SLGE.Bridge.irabState r) = some r := by
-  intro r; cases r <;> decide
+  intro r; cases r <;> rfl
 
 /-- **مرشَّحُ إعراب الآخر**: الحركةُ وحدها (فتحة/ضمّة/كسرة) تُقرأ إعرابًا مرشَّحًا؛ والسكونُ في الآخر «لا حكم» — قد يكون وقفًا أو
     جزمًا أو بناءً، أو حرفَ مدٍّ أو نونَ تنوينٍ أو هاءَ وقف؛ والجزمُ للفعل وحده (`SLGE/Wad.lean`). -/

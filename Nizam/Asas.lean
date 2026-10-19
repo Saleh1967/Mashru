@@ -3,10 +3,11 @@
   لا تستورد شيئًا. أطلسُ الطبقات `Nizam/atlas.tsv`؛ وصوغُ جسور المحرّك عليها وتركيبُها سلسلةً واحدة م3.
 
   ما هنا خواصُّ صوريّةٌ لكلّ جسرٍ يُصاغ على `Nizam.Jisr`، لا لجسور المحرّك القائمة (لها أنواعُ أحكامٍ خاصّة: `Utur.Hukm`،
-  `HukmDal`، `Hawass.Hukm`؛ ولا يقع تحت هذه المبرهنات منها شيءٌ حتّى يُعاد صوغُه عليها — م3). العدّ (المعيار: «فكُّ تعريف» ما يتمّ بفكّ التعريف أو تفكيك حالاته وحدها، بلا فرضٍ يُستعمل ولا مبرهنةٍ وسيطة): 12 مبرهنة —
-  4 لكلّ بمقدّمات (`salama_tatarakkab`، `tasduq_iff`، `tasduq_bi_mukhalifat`، `mukhalifat_dunya`)، و8 فكُّ تعريف (`tarkib_huwiyya_yamin`،
-  `tarkib_huwiyya_yasar`، `tarkib_tajmii`، `la_tarkhis_bila_ma_qablahu`، `la_hukm_yasri`، `mumtani_yasri`، `mukhalifat_mukhalif`،
-  `la_ilhaq_bila_illa`).
+  `HukmDal`، `Hawass.Hukm`؛ ولا يقع تحت هذه المبرهنات منها شيءٌ حتّى يُعاد صوغُه عليها — م3). العدّ بالمعيار الموحَّد (جدولُ توجيهٍ رفعه المالك 2026-10-19 18:02 وأمر بتنفيذه: «توحيد تصنيف المبرهنات» — «موافق، مع فصل البرهان الرياضي عن الاختبار على شاهد» (س198)؛ وصياغةُ المعيار قراءةُ البنّاء): «على الشاهد» قضيّةٌ مغلقةٌ على معطياتٍ معيّنة برهانُها decide؛ و«تعريفيّة» برهانُها فكُّ التعريفات وتفكيكُ الحالات (unfold، cases، split، by_cases، subst، rfl، funext، simp/simp_all بمجموعته الافتراضيّة وبالتعريفات)، ولا يستدعي من المبرهنات المسمّاة إلّا قائمةً محصورة: ite_eq_left/ite_eq_right وite_true/ite_false، وBool.and_eq_true وBool.false_eq_true وbeq_iff_eq وdecide_eq_true_iff، ومعادلاتِ دالّةٍ على منشئ (Option.map_some، Option.bind_some)، وحقنَ المنشئات (Option.some.injEq، Natija.qima.inj)، وEq.symm/Eq.trans، وabsurd؛ ويُستعمل فرضُه بإعادة الكتابة، أو حدًّا مباشرًا (exact h، ⟨h, …⟩، Or.inl h)، أو لنفي حالةٍ ولو طُبّق على برهان (h1 h.symm) — فلا مبرهنةَ من الملفّ، ولا استقراء، ولا تطبيقَ فرضٍ كمّيٍّ أو دالّيٍّ على معطيات (h k)؛ و«لكلّ» ما سواهما من مبرهنةٍ عامّة. والتطبيقُ يدويٌّ بقائمة البنّاء؛ لا مصنِّفَ آليًّا: 12 مبرهنة —
+  5 لكلّ (`salama_tatarakkab`، `tasduq_iff`، `tasduq_bi_mukhalifat`، `mukhalifat_dunya`، `mukhalifat_mukhalif`)، و7 تعريفيّة
+  (`tarkib_huwiyya_yamin`، `tarkib_huwiyya_yasar`، `tarkib_tajmii`، `la_tarkhis_bila_ma_qablahu`، `la_hukm_yasri`، `mumtani_yasri`،
+  `la_ilhaq_bila_illa`)، ولا شيء على الشاهد. (كان العدُّ «4 لكلّ بمقدّمات و8 فكُّ تعريف» بمعيارٍ لم يطّرد: خمسٌ من الثماني تستعمل
+  فرضها، و`mukhalifat_mukhalif` تستدعي `List.mem_filter`.)
   ١. التركيب: `tarkib` تجميعيّ وله محايد، والسلامةُ تتركّب معه (`salama_tatarakkab`).
   ٢. «شرطُ الإمكان» بتعريف `bind`: لا ترخيصَ إلّا بترخيص ما قبله، و«لا حكم» والممتنعُ يسريان.
   ٣. الاستقراءُ على مودَعٍ مسمّى (قرار المالك ١): `tasduq_bi_mukhalifat` خاصّيّةٌ صوريّةٌ تصدق على **أيّ** قاعدةٍ وأيّ

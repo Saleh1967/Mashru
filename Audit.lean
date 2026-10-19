@@ -61,6 +61,8 @@ import Madlul.JadwalLuzum
 import Madlul.Naht
 import Nizam.Asas
 import Nizam.Talab
+import Faahis.Lib
+import Nizam.Damj
 import Nizam.Aqd
 import Madlul.Ishtirak
 import Madlul.Tarjih
@@ -204,6 +206,10 @@ import Madlul.Fard116Shawahid
 #print axioms Idaa.la_tanzif_bila_daya
 #print axioms Idaa.aslMusajjal_sanad
 #print axioms Idaa.sijill_faregh
+#print axioms Idaa.basma_farigha_la_tuqbal
+#print axioms Idaa.basma_farigha_khamila
+#print axioms Idaa.sanad_farigh_marfud
+#print axioms Idaa.aslMusajjal_shahid
 #print axioms Qaida.mutadarrija_daifa
 #print axioms Qaida.rutba_sifr_asl_daifa
 #print axioms Mawsua.tartib_hasir
@@ -255,6 +261,11 @@ import Madlul.Fard116Shawahid
 #print axioms Maratib.mujam_la_yasna_mafhum
 #print axioms Maratib.la_mafhum_bila_waqi
 #print axioms Maratib.waqi_yarfa
+#print axioms Maratib.basma_farigha_la_tushhid
+#print axioms Maratib.basma_farigha_la_tuthir
+#print axioms Maratib.shuhudMutabara_shahid
+#print axioms Maratib.shuhudMutabara_sanad
+#print axioms Maratib.shahid_farigh_marfud
 #print axioms Maratib.khatwa_majmu
 #print axioms Maratib.foldl_majmu
 #print axioms Maratib.ihsa_majmu
@@ -1368,3 +1379,73 @@ import Madlul.Fard116Shawahid
 #print axioms Jisr.JadwalLuzum.shahidLuzum_mutadarrija
 #print axioms Jisr.JadwalLuzum.shahid_ilm_tadammun_fahm
 #print axioms Jisr.JadwalLuzum.shahid_kataba_iltizam_qalam
+-- الفاحص التنفيذيّ: نوعُ مودَع السند لا يأخذه قيدٌ فارغ (Faahis/Lib.lean؛ سدّ البصمة الفارغة 2026-10-19)
+#print axioms nawSanad_basma_farigha
+#print axioms nawSanad_aslMusajjal
+#print axioms nawSanad_sanad
+#print axioms nawSanad_sanad_farigh
+-- جبرُ الدمج المبرهن (مرحلة الدمج الأولى، سمّاها عرضُ الدمج «م1» وليست م1 البروتوكول؛ Nizam/Damj.lean؛ إذن المالك 2026-10-19 16:16)
+#print axioms Nizam.Damj.bahth_mawjud
+#print axioms Nizam.Damj.bahth_ghaib
+#print axioms Nizam.Damj.ghayr_farigh
+#print axioms Nizam.Damj.sahih_iff
+#print axioms Nizam.Damj.damj1_tanazur
+#print axioms Nizam.Damj.damj1_tikrar
+#print axioms Nizam.Damj.damj1_janib_wahid
+#print axioms Nizam.Damj.damj1_taarud_iff
+#print axioms Nizam.Damj.damj1_la_ikhtira
+#print axioms Nizam.Damj.damj1_ghaib
+#print axioms Nizam.Damj.damj1_tajmii
+#print axioms Nizam.Damj.ray_ghaib_sahih
+#print axioms Nizam.Damj.ray_ghaib
+#print axioms Nizam.Damj.ray_qima
+#print axioms Nizam.Damj.ray_hadir
+#print axioms Nizam.Damj.ray_asas
+#print axioms Nizam.Damj.mem_farid
+#print axioms Nizam.Damj.farid_nodup
+#print axioms Nizam.Damj.jam_taarud
+#print axioms Nizam.Damj.jam_juz
+#print axioms Nizam.Damj.jam_mafatih
+#print axioms Nizam.Damj.jam_sahih
+#print axioms Nizam.Damj.jam_some
+#print axioms Nizam.Damj.mem_mafatih
+#print axioms Nizam.Damj.damjMiftah_kharij
+#print axioms Nizam.Damj.damj_some
+#print axioms Nizam.Damj.damj_nuqta
+#print axioms Nizam.Damj.damj_bilaTakrar
+#print axioms Nizam.Damj.damj_maqbul_iff
+#print axioms Nizam.Damj.mem_mutaarida
+#print axioms Nizam.Damj.takrarFi_nil_iff
+#print axioms Nizam.Damj.bilaTakrar_iff
+#print axioms Nizam.Damj.damj_marfud_iff
+#print axioms Nizam.Damj.taarud_yamna
+#print axioms Nizam.Damj.ray_damj
+#print axioms Nizam.Damj.hadhf_yabqa
+#print axioms Nizam.Damj.hadhfMaadhun_damj
+#print axioms Nizam.Damj.ray_tasawi
+#print axioms Nizam.Damj.damj_tanazur
+#print axioms Nizam.Damj.damj_tikrar
+#print axioms Nizam.Damj.damj_janib_wahid
+#print axioms Nizam.Damj.la_faqd
+#print axioms Nizam.Damj.la_faqd_janib
+#print axioms Nizam.Damj.la_faqd_janib_b
+#print axioms Nizam.Damj.la_ikhtira
+#print axioms Nizam.Damj.damj_tajmii
+#print axioms Nizam.Damj.mutakafi_inikas
+#print axioms Nizam.Damj.mutakafi_tanazur
+#print axioms Nizam.Damj.mutakafi_taaddi
+#print axioms Nizam.Damj.mutakafi_natija
+#print axioms Nizam.Damj.damj_tawafuq
+#print axioms Nizam.Damj.damj_tikrar_mutakafi
+#print axioms Nizam.Damj.damj_tanazur_mutakafi
+#print axioms Nizam.Damj.damj_tajmii_mutakafi
+#print axioms Nizam.Damj.shahid_hadhf_mahmul
+#print axioms Nizam.Damj.salamat_damj
+#print axioms Nizam.Damj.shahid_hadith_35
+#print axioms Nizam.Damj.shahid_hadith_767e09b
+#print axioms Nizam.Damj.shawahid_hadhf
+#print axioms Nizam.Damj.shahid_hadhf_la_yaud
+#print axioms Nizam.Damj.shawahid_taarud
+#print axioms Nizam.Damj.shahid_la_yuhmal_min_hadir
+#print axioms Nizam.Damj.musawat_harfiyya_la_tasihh
+#print axioms Nizam.Damj.shawahid_mubarhanat
