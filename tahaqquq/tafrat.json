@@ -1258,5 +1258,23 @@
   "milaf": "Aql/Naql.lean",
   "min": "  n.qail.isSome && (n.fiAlHadd != some false)",
   "ila": "  true && (n.fiAlHadd != some false)"
+ },
+ {
+  "ism": "P170_alaqamajaz_mashrua_and_to_or",
+  "milaf": "Aql/AlaqaMajaz.lean",
+  "min": "a.shahid.basma.startsWith b.1 && b.2 == .waqiMakhtum",
+  "ila": "a.shahid.basma.startsWith b.1 || b.2 == .waqiMakhtum"
+ },
+ {
+  "ism": "P171_alaqamajaz_mashrua_naw_wrong",
+  "milaf": "Aql/AlaqaMajaz.lean",
+  "min": "b.2 == .waqiMakhtum",
+  "ila": "b.2 == .maalumatSabiqa"
+ },
+ {
+  "ism": "P172_alaqamajaz_alaqaof_always_true",
+  "milaf": "Aql/AlaqaMajaz.lean",
+  "min": "def alaqaOf (sijill : List (String × Idaa.Naw)) (a : AlaqaMajaz) : Bool :=\n  mashrua sijill a",
+  "ila": "def alaqaOf (sijill : List (String × Idaa.Naw)) (a : AlaqaMajaz) : Bool :=\n  true"
  }
 ]
