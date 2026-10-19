@@ -204,7 +204,7 @@ def iqraAqd (l : List Nat) (wasl : Bool) : IO Unit := do
   IO.println "  العقد الواحد (Nizam.Aqd؛ المبرهنة kull_ma_kull):"
   let qb := A.qanunB l
   let kama := l.all (· < 117) && Fwaqf (Nizam.Aqd.runB 0 l)
-  let baad := Fwaqf (Nizam.Aqd.runB 0 (waqfForm l))
+  let baad := (waqfForm l).all (· < 117) && Fwaqf (Nizam.Aqd.runB 0 (waqfForm l))
   let qabul (b : Bool) : String := if b then "مقبولة" else "ممتنعة"
   IO.println s!"    القانون (إطار الدالّ dalOK = القانونان معًا، dalOK_taqatu؛ بجدول البتّات runB): {qabul qb} — على الخلايا كما هي (Fwaqf ∘ run): {qabul kama}؛ بعد تسكين الآخر (complete'): {qabul baad}"
   if !qb then
@@ -249,7 +249,7 @@ def iqraKalima (h : Hal) (b : Bina) (w : String) (q : Qiraa) : IO Unit := do
   if q.wasl then IO.println s!"  ملاحظة: همزة الوصل أُصلحت بـ ibtidaForm (isAl={q.al}) — حركتها وسيط المالك waslHaraka (شاهده قطر الندى L449–453)"
   let waqf := Fwaqf (run 0 l)
   let wasl := Fwasl (run 0 l)
-  IO.println s!"  القانون (ابتداء/وصل/وقف): موقوفًا عليها {if waqf then "مرخَّصة" else "ممتنعة"}؛ في الوصل {if wasl then "مرخَّصة" else "ممتنعة"}"
+  IO.println s!"  على الخلايا كما هي (Fwaqf/Fwasl ∘ run — مكوّنٌ من القانون، والقانونُ dalOK في سطر العقد): موقوفًا عليها {if waqf then "مرخَّصة" else "ممتنعة"}؛ في الوصل {if wasl then "مرخَّصة" else "ممتنعة"}"
   if waqf then
     match qatta l with
     | some sy => IO.println s!"  المقاطع ({sy.length}): {" · ".intercalate (sy.map fun x => nawIsm (nawMaqta x))} — واحدٌ بمبرهنة qatta_wahid"

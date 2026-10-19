@@ -1347,8 +1347,9 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.Aqd.nayta_qina
 #print axioms Nizam.Aqd.siyagh_sawa
 #print axioms Nizam.Aqd.run_kabir
-#print axioms Nizam.Aqd.waqfForm_kabir
 #print axioms Nizam.Aqd.waqfForm_hadd
+#print axioms Nizam.Aqd.kama_sawa
+#print axioms Nizam.Aqd.baad_sawa
 #print axioms Nizam.Aqd.dalOK_taqatu
 #print axioms Nizam.Aqd.jidhr_salim
 #print axioms Nizam.Aqd.wahid_la_yakfi
