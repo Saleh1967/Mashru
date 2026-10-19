@@ -1814,8 +1814,8 @@
  {
   "ism": "P215_shahid_bila_basma",
   "milaf": "Nizam/Damj.lean",
-  "min": "  s.basma == basmaOf w && !s.sabab.isEmpty",
-  "ila": "  !s.sabab.isEmpty"
+  "min": "!s.basma.isEmpty && s.basma == basmaOf w && !s.sabab.isEmpty",
+  "ila": "!s.basma.isEmpty && !s.sabab.isEmpty"
  },
  {
   "ism": "P216_taarud_ikhtiyar_janib",
@@ -1828,5 +1828,47 @@
   "milaf": "Nizam/Damj.lean",
   "min": "  match bahth x.qaima k with\n  | some v => some v",
   "ila": "  match bahth x.qaima k with\n  | some v => o"
+ },
+ {
+  "ism": "P231_shahid_bila_miftah",
+  "milaf": "Nizam/Damj.lean",
+  "min": "x.mahdhufa.any fun s => s.miftah == k && sahih basmaOf w s",
+  "ila": "x.mahdhufa.any fun s => sahih basmaOf w s"
+ },
+ {
+  "ism": "P232_shahid_bila_sabab",
+  "milaf": "Nizam/Damj.lean",
+  "min": "s.basma == basmaOf w && !s.sabab.isEmpty && !s.idhn.isEmpty",
+  "ila": "s.basma == basmaOf w && !s.idhn.isEmpty"
+ },
+ {
+  "ism": "P233_shahid_basma_farigha",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  !s.basma.isEmpty && s.basma == basmaOf w",
+  "ila": "  s.basma == basmaOf w"
+ },
+ {
+  "ism": "P234_shawahid_la_tuhmal",
+  "milaf": "Nizam/Damj.lean",
+  "min": "fun l => ⟨l, shawahidBaqiya basmaOf o a b l⟩",
+  "ila": "fun l => ⟨l, []⟩"
+ },
+ {
+  "ism": "P235_takrar_maqbul",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  if bilaTakrar o && bilaTakrar a && bilaTakrar b then",
+  "ila": "  if true then"
+ },
+ {
+  "ism": "P236_farid_bila_ikhraj",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  | k :: ks => if k ∈ farid ks then farid ks else k :: farid ks",
+  "ila": "  | k :: ks => k :: farid ks"
+ },
+ {
+  "ism": "P237_naqisa_bila_tartib",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    return sorted(set(asas) - set(hali) - set(mahdhufa))",
+  "ila": "    return list(set(asas) - set(hali) - set(mahdhufa))"
  }
 ]
