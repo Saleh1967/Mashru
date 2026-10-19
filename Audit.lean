@@ -39,7 +39,9 @@ import Aql.AdawatMaani
 import Aql.Mawsua
 import Aql.Idaa
 import Aql.QawaninDalala
+import Aql.Naql
 import Aql.Maratib
+import Aql.AlaqaMajaz
 import Dal.Makharij
 import Dal.Qanun
 import Dal.Jumla
@@ -136,6 +138,16 @@ import Jisr.Iqtiran
 #print axioms SababShartMani.shartWudu
 #print axioms SababShartMani.mani_yusqit_bisabab
 #print axioms SababShartMani.maniDayn
+
+-- بروتوكول النقل من المعاجم: المهمّة الأولى (Aql/Naql.lean)
+#print axioms Naql.la_mutawatir_min_al_add
+#print axioms Naql.ahad_idha_wahid
+#print axioms Naql.mutadhafir_idha_ithnan_faakthar
+#print axioms Naql.la_asl_bila_qail
+#print axioms Naql.la_asl_idha_kharij_al_hadd
+#print axioms Naql.la_yasluhu_bila_qail_aw_kharij_al_hadd
+#print axioms Naql.yasluhu_idha_qail_wa_la_nafy
+#print axioms Naql.yasluhu_bool
 -- أدواتُ المعاني بوّاباتِ المنطق: و/أو/لا.../إنْ لو، فوق سبب وشرط ومانع (Aql/AdawatMaani.lean)
 #print axioms AdawatMaani.jam_yushhid_ibaha
 #print axioms AdawatMaani.jam_yunafi_takhyir
@@ -239,6 +251,9 @@ import Jisr.Iqtiran
 #print axioms Maratib.ihsa_majmu
 #print axioms Maratib.khatwa_maana_fst
 #print axioms Maratib.mukhraj_wahid_min_haythu
+#print axioms AlaqaMajaz.mashrua_bila_waqi_makhtum
+#print axioms AlaqaMajaz.alaqaOf_ghayr_mashrua_la_hukm
+#print axioms AlaqaMajaz.alaqa_ghayr_mashrua_la_tunshi_majaz
 #print axioms Dal.ramz_eq_cellEnc
 #print axioms Dal.ramz_lt
 #print axioms Dal.ahjam_eq

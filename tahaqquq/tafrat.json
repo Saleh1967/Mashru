@@ -1174,5 +1174,119 @@
   "milaf": "Jisr/Iqtiran.lean",
   "min": "⟨\"مطابقةُ النعت الرافع ضميرًا مستكنًّا (قطر L378–379)\", fun j => j == jinsNaat⟩",
   "ila": "⟨\"مطابقةُ النعت الرافع ضميرًا مستكنًّا (قطر L378–379)\", fun j => !(j == jinsNaat)⟩"
+ },
+ {
+  "ism": "P154_matufat_ajza",
+  "milaf": "shabaka/jadwal_luzum.py",
+  "min": "                if matufat:  # R3-ب",
+  "ila": "                if False:  # R3-ب"
+ },
+ {
+  "ism": "P155_naht_bithulathi_wahid",
+  "milaf": "Madlul/Naht.lean",
+  "min": "decide (2 ≤ (mashhudat T q).length)",
+  "ila": "decide (1 ≤ (mashhudat T q).length)"
+ },
+ {
+  "ism": "P156_ishtirak_huwiyya",
+  "milaf": "Madlul/Ishtirak.lean",
+  "min": "then (if a.mana = b.mana then .huwiyya else .ishtirak)",
+  "ila": "then (if a.mana = b.mana then .ishtirak else .huwiyya)"
+ },
+ {
+  "ism": "P157_uqad_mukhtalita",
+  "milaf": "Madlul/Ishtirak.lean",
+  "min": "def silaUqad : List (Uqda × Uqda) := silatHiss.map fun e => ((e.1, e.2.1), (e.2.2.1, e.2.2.2.1))",
+  "ila": "def silaUqad : List (Uqda × Uqda) := silatHiss.map fun e => ((e.1, e.2.2.2.1), (e.2.2.1, e.2.1))"
+ },
+ {
+  "ism": "P158_hiss_bila_ittihad",
+  "milaf": "shabaka/hiss.py",
+  "min": "            U.union((A, wf), (A, f))",
+  "ila": "            pass"
+ },
+ {
+  "ism": "P159_naht_bithulathi_wahid_py",
+  "milaf": "shabaka/naht.py",
+  "min": "    if len(mukhtalif) >= 2:",
+  "ila": "    if len(mukhtalif) >= 1:"
+ },
+ {
+  "ism": "P160_idmar_dun_majaz",
+  "milaf": "Madlul/Tarjih.lean",
+  "min": "| .majaz => 2 | .idmar => 2",
+  "ila": "| .majaz => 2 | .idmar => 1"
+ },
+ {
+  "ism": "P161_bila_qarina_la_hukm",
+  "milaf": "Madlul/Tarjih.lean",
+  "min": "      | [] => .mana a.ism",
+  "ila": "      | [] => .laHukm"
+ },
+ {
+  "ism": "P162_mirat_tarjih_py",
+  "milaf": "shabaka/tarjih.py",
+  "min": "            if not q:\n                return (\"mana\", a[0])",
+  "ila": "            if not q:\n                return (\"laHukm\", None)"
+ },
+ {
+  "ism": "P163_khatt_asas_fail_open",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "fails.append(f\"خطّ الأساس khatt_asas.json غير صالح: {e}\")",
+  "ila": "report.append(f\"خطّ الأساس khatt_asas.json غير صالح: {e}\")"
+ },
+ {
+  "ism": "P164_elan_bootstrap_false_success",
+  "milaf": "scripts/tathbit_lean.sh",
+  "min": "    timeout 180 elan toolchain install \"$TC\" && timeout 30 elan default \"$TC\" && ready && exit 0",
+  "ila": "    exit 0"
+ },
+ {
+  "ism": "P165_lean_checksum_bypass",
+  "milaf": "scripts/tathbit_lean.sh",
+  "min": "| sha256sum --check --status; then",
+  "ila": "| cat > /dev/null; then"
+ },
+ {
+  "ism": "P166_lean_download_unbounded",
+  "milaf": "scripts/tathbit_lean.sh",
+  "min": "--connect-timeout 15 --max-time 900 --retry 2 --retry-max-time 1800",
+  "ila": "--retry 2"
+ },
+ {
+  "ism": "P167_naql_binadaraja_hadd",
+  "milaf": "Aql/Naql.lean",
+  "min": "if adadMasadirMukhtalifa ≥ 2 then .mutadhafir else .ahad",
+  "ila": "if adadMasadirMukhtalifa ≥ 3 then .mutadhafir else .ahad"
+ },
+ {
+  "ism": "P168_naql_yasluhu_and_to_or",
+  "milaf": "Aql/Naql.lean",
+  "min": "n.qail.isSome && (n.fiAlHadd != some false)",
+  "ila": "n.qail.isSome || (n.fiAlHadd != some false)"
+ },
+ {
+  "ism": "P169_naql_yasluhu_yatruk_qail",
+  "milaf": "Aql/Naql.lean",
+  "min": "  n.qail.isSome && (n.fiAlHadd != some false)",
+  "ila": "  true && (n.fiAlHadd != some false)"
+ },
+ {
+  "ism": "P170_alaqamajaz_mashrua_and_to_or",
+  "milaf": "Aql/AlaqaMajaz.lean",
+  "min": "a.shahid.basma.startsWith b.1 && b.2 == .waqiMakhtum",
+  "ila": "a.shahid.basma.startsWith b.1 || b.2 == .waqiMakhtum"
+ },
+ {
+  "ism": "P171_alaqamajaz_mashrua_naw_wrong",
+  "milaf": "Aql/AlaqaMajaz.lean",
+  "min": "b.2 == .waqiMakhtum",
+  "ila": "b.2 == .maalumatSabiqa"
+ },
+ {
+  "ism": "P172_alaqamajaz_alaqaof_always_true",
+  "milaf": "Aql/AlaqaMajaz.lean",
+  "min": "def alaqaOf (sijill : List (String × Idaa.Naw)) (a : AlaqaMajaz) : Bool :=\n  mashrua sijill a",
+  "ila": "def alaqaOf (sijill : List (String × Idaa.Naw)) (a : AlaqaMajaz) : Bool :=\n  true"
  }
 ]

@@ -5,7 +5,9 @@
   ٢. لا sorry ولا axiom ولا native_decide في ملفّات Lean (خارج التعليقات).
   ٣. Audit.lean يُبنى، وكلّ مبرهنة فيه مسلّماتها من الثلاث: propext، Classical.choice، Quot.sound.
   ٤. عدد المبرهنات المدقّقة لا ينقص عن خطّ الأساس في khatt_asas.json (نقصه حذفٌ يحتاج إذنًا).
+      غياب الملفّ أو تلفه أو بطلان العدد فشلٌ مسمّى، لا خطّ أساسٍ صفريّ بديل.
   ٥. اختبارات بايثون (shabaka/test_shabaka.py) تمرّ، إن وُجد المودَع (MUDAA_MUKHASSAS).
+  ٥أ. اختبارات خطّ الأساس والتثبيت (tahaqquq/test_bawwaba.py): رفض JSON التالف وحفظ الحدّ، وفحص بديل تثبيت Lean.
   ٥ب. اختبارات المخزن (mawsua/test_mawsua.py): الفاحص التنفيذيّ المبنيّ من Lean يقبل المخزن ويرفض الفاسد.
   ٥ج. بوّابة الإيداع (mudaat/test_idaa.py): لا ختم بلا إذن ولا نوع، ولا تنظيف؛ وإن عُيّن MUDAA_DIR
       طوبقت بصمات ما حضر من المودَعات فيه.
@@ -51,6 +53,16 @@ def strip_comments(src):
     return re.sub(r"--.*", "", src)
 
 
+def load_baseline(path):
+    with open(path, encoding="utf-8") as f:
+        base = json.load(f)
+    if (not isinstance(base, dict)
+            or type(base.get("mubarhanat")) is not int
+            or base["mubarhanat"] < 0):
+        raise ValueError("mubarhanat يجب أن يكون عددًا صحيحًا غير سالب")
+    return base["mubarhanat"]
+
+
 def main():
     fails, report = [], []
     code, out = run(["lake", "build"])
@@ -85,10 +97,20 @@ def main():
         fails.append("التدقيق: " + ("\n".join(nonstd) or out[-800:]))
 
     base_p = os.path.join(ROOT, "tahaqquq", "khatt_asas.json")
-    base = json.load(open(base_p)) if os.path.exists(base_p) else {"mubarhanat": 0}
-    report.append(f"٤ خطّ الأساس: {base['mubarhanat']} ← الآن {len(lines)}")
-    if len(lines) < base["mubarhanat"]:
-        fails.append(f"نقص عدد المبرهنات المدقّقة من {base['mubarhanat']} إلى {len(lines)}")
+    try:
+        baseline = load_baseline(base_p)
+    except (OSError, ValueError) as e:
+        report.append("٤ خطّ الأساس: تعذّرت قراءة khatt_asas.json")
+        fails.append(f"خطّ الأساس khatt_asas.json غير صالح: {e}")
+    else:
+        report.append(f"٤ خطّ الأساس: {baseline} ← الآن {len(lines)}")
+        if len(lines) < baseline:
+            fails.append(f"نقص عدد المبرهنات المدقّقة من {baseline} إلى {len(lines)}")
+
+    code, out = run([sys.executable, "-I", "tahaqquq/test_bawwaba.py"])
+    report.append(f"٥أ اختبارات خطّ الأساس والتثبيت: {'مرّت' if code == 0 else 'فشلت'}")
+    if code != 0:
+        fails.append("اختبارات خطّ الأساس والتثبيت فشلت:\n" + out[-800:])
 
     mudaa = os.environ.get("MUDAA_MUKHASSAS")
     if mudaa and os.path.exists(mudaa):
@@ -191,6 +213,8 @@ def main():
                 continue
             open(path, "w", encoding="utf-8").write(s.replace(t["min"], t["ila"], 1))
             code, _ = run(["lake", "build"], cwd=dst)
+            if code == 0:
+                code, _ = run([sys.executable, "-I", "tahaqquq/test_bawwaba.py"], cwd=dst)
             if code == 0:
                 code, _ = run([sys.executable, "-I", "mawsua/test_mawsua.py"], cwd=dst)
             if code == 0:
