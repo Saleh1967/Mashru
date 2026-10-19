@@ -1828,5 +1828,11 @@
   "milaf": "Qari/Main.lean",
   "min": "      | .mumtani s => s\n",
   "ila": "      | .mumtani _ => Nizam.Aqd.sababMani\n"
+ },
+ {
+  "ism": "P268_qari_bila_wasl",
+  "milaf": "Qari/Main.lean",
+  "min": "    if wasl then\n",
+  "ila": "    if false then\n"
  }
 ]

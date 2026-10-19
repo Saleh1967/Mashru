@@ -6,8 +6,8 @@
 
   البناءُ (تصميمُ البنّاء الذي وافق عليه المالك):
   * **العقدُ بنيةٌ واحدة** (`Aqd`): كلُّ طبقةٍ فيه حقلٌ بثلاثة أجزاء — مواصفةٌ، ومنفّذٌ بالبتّات، ومساواتُهما شرطًا في البنية
-    نفسها. فلا يُنشأ عقدٌ إلّا ومنفّذُ كلّ حقلٍ مساوٍ لمواصفته التي تُقدَّم معه. والمساواةُ لا تجعل المواصفةَ صحيحةً لغةً: تلك
-    تُثبَّت في العقد المعيَّن على تعريفات المشروع (`Mashru` أدناه، و`jidhr_salim`)؛ وعقدٌ بمواصفاتٍ تافهةٍ يُبنى ويصدق عليه البرهانُ.
+    نفسها. فلا يُنشأ عقدٌ إلّا ومنفّذُ كلّ حقلٍ مساوٍ لمواصفته التي تُقدَّم معه. والمساواةُ لا تجعل المواصفةَ صحيحةً لغةً، ولا
+    يُبرهَن ذلك هنا: العقدُ المعيَّن يأخذ مواصفاتِه من تعريفات المشروع (`Mashru` أدناه)؛ وعقدٌ بمواصفاتٍ تافهةٍ يُبنى ويصدق عليه البرهان.
   * **مبرهنةٌ واحدة لكلّ عقد** (`kull_ma_kull`): حكمُ المنفّذ البتّيّ هو حكمُ المواصفة بمراتبه الثلاث (`Nizam.Hukm`):
     مرخَّص ⟺ القانونُ يقبل الدالّ، ولا مانع، وله جذرٌ يشهد له صفٌّ بالمدلول، واستوفى القيود؛ ممتنعٌ ⟺ القانونُ يردّ الدالّ أو
     قناعُ الموانع يردّ المدلول، والسببُ باسمه (`mumtani_asbab`)؛ وما سواهما «لا حكم» (غيابُ الشاهد لا يصير امتناعًا). ومعها:
@@ -18,13 +18,15 @@
     وإضافةُ طبقةٍ توسيعٌ للبنية بحقلٍ وقانونه، ثمّ تُبرهن المبرهنةُ الواحدةُ مرّةً أخرى.
 
   العقدُ على Mashru (`Mashru n`، لكلّ نوع علاقةٍ n من `JadwalLuzum`: خمسةُ عقودٍ بمبرهنةٍ واحدة):
-  * القانون: مواصفتُه `SLGE.Law.run`/`Fwaqf` على الصورة كما كُتبت (صورةُ شواهد المالك `qaltu`/`hajja`/`bint`)، ومنفّذُه جدولٌ
-    فهرسُه [حالة:7][رمز:7] ومدخلُه [وزن:1][حالة:7] (`runB_run`). وهو غيرُ «الدالّ المرخَّص» عند المالك `SLGE.Bridge.DalLic` =
-    `complete'` الذي يُسكّن الآخر قبل الحكم — معلَنٌ بشاهديه `qanun_ghayr_dalLic`؛ وأيُّهما مواصفةُ العقد قرارُ المالك.
+  * القانون: مواصفتُه `SLGE.Law.run`/`Fwaqf` على الخلايا المعطاة بلا تسكين (صورةُ شواهد المالك `qaltu`/`hajja`/`bint`؛ وفي القارئ
+    خلاياه بعد قراراته)، ومنفّذُه جدولٌ فهرسُه [حالة:7][رمز:7] ومدخلُه [وزن:1][حالة:7] (`runB_run`). وهو غيرُ «الدالّ المرخَّص» عند
+    المالك `SLGE.Bridge.DalLic` = `complete'` الذي يُسكّن الآخر قبل الحكم — معلَنٌ بشاهديه `qanun_ghayr_dalLic` وبمقداره على
+    الخانة والخانتين `farq_dalLic` (84 خانةً يقبلها العقدُ وحده، و84 زوجًا يقبلها `complete'` وحده)؛ وأيُّهما المواصفةُ قرارُ المالك.
   * الجذر: إسقاطُ ثلاث خاناتٍ حواملُها سالمة (لا ا ي و: `SLGE.Law.weak`) بحرفها `Jisr.JisrDal.harf`؛ منفّذُه الإزاحةُ وقناعُ العلّة
-    (`qina_illa`)، ورمزُه حقولُ خمسة بتّات (`fakk_ramz`)، وما له جذرٌ فسالمٌ بشرط المالك `SLGE.Law.SoundR` (`jidhr_salim`).
-    النطاقُ معلَن: لا مزيدَ ولا معتلَّ (حكمُه «لا حكم»: `qala_la_hukm`)، والإسقاطُ مرشَّحُ جذرٍ لا هويّة: الأدواتُ والضمائرُ
-    والمبنيّاتُ لا تُميَّز بعد (المسارُ غيرُ الجذريّ لم يُبنَ).
+    (`qina_illa`)، ورمزُه حقولُ خمسة بتّات (`fakk_ramz`)؛ وحواملُ المسقَط سالمةٌ بشرط المالك `SLGE.Law.SoundR` (`jidhr_salim` —
+    خلوُّها من ا ي و، لا أنّ المسقَطَ جذرٌ). والمعتلُّ يُردّ «لا حكم» (`qala_la_hukm`). أمّا المزيدُ والأدواتُ والضمائرُ فالإسقاطُ
+    يأخذ خاناتها الثلاث كما هي فيُعطي مرشَّحًا ليس جذرًا («اسْمٌ» بهمزة الوصل المُصلَحة → «ءسم»، «أَنْتَ» → «ءنت»): مرشَّحُ جذرٍ
+    لا هويّة، والمسارُ غيرُ الجذريّ لم يُبنَ.
   * حالُ الآخر: `Jisr.JisrDal.hala` للخانة الأخيرة، ومنفّذُه القناع 3. وقراءتُه إعرابًا مرشَّحٌ بتقابل المالك
     `SLGE.Bridge.irabState` (قطر الندى L77–78) للحركة وحدها؛ والسكونُ في الآخر «لا حكم» (`irabMurashshah_la_jazm`).
   * الصيغة: مرشَّحو صيغة الفعل من `Jisr.Iqtiran` (ماضٍ/أمر/مضارع) بقيد افتتاح نأيت (قطر L65)، منفّذُها قناعُ ثلاثة بتّات
@@ -35,10 +37,11 @@
     الكتاب»، ولفظُ الصفّ W فيه «وءكتبه».
   * القيودُ والموانعُ على المدلول: فارغةٌ في هذا العقد (لا قيدَ مودَعًا على رموز المدلول بعد) — معلَن.
 
-  العدّ: 25 مبرهنة — 13 لكلّ، و4 استنفادٌ بـ decide على نطاقٍ محدود (`fahras`، `madkhal_fakk`، `qina_illa`، `nayta_qina`)،
-  و1 فكُّ تعريف (`irabMin_irabState`)، و7 على الشاهد (`qanun_ghayr_dalLic`، `kataba_ilm_taraduf`، `kataba_luzum_la_hukm`،
-  `qaltu_mumtani`، `qala_la_hukm`، `shawahid_sigha`، `kataba_haal`). القارئ يطبع سطورَ العقد (`Qari/Main.lean`، `iqraAqd`)
-  ويطابقه `tahaqquq/test_qari.py` §١٨؛ الطفرات P255–P267.
+  العدّ (بمعيار `Nizam/Asas.lean`: «فكُّ تعريف» ما يتمّ بفكّ التعريف أو تفكيك حالاته، والحدّيُّ يُنزَل): 26 مبرهنة — 10 لكلّ،
+  و5 استنفادٌ بـ decide على نطاقٍ محدود (`fahras`، `madkhal_fakk`، `qina_illa`، `nayta_qina`، `farq_dalLic`)، و4 فكُّ تعريف
+  (`irabMin_irabState`، `irabMurashshah_la_jazm`، `mumtani_asbab`، `jidhr_salim`)، و7 على الشاهد (`qanun_ghayr_dalLic`،
+  `kataba_ilm_taraduf`، `kataba_luzum_la_hukm`، `qaltu_mumtani`، `qala_la_hukm`، `shawahid_sigha`، `kataba_haal`). القارئ يطبع سطورَ العقد (`Qari/Main.lean`، `iqraAqd`)
+  ويطابقه `tahaqquq/test_qari.py` §١٨؛ الطفرات P255–P268.
   لم يُبنَ: مطابقةُ صيغة الكلمة للفظ الصفّ (الوزن)، والمسارُ غيرُ الجذريّ، وحقولُ الموضع والعامل وتعدّدِ التقدير.
   بلا sorry ولا axiom ولا native_decide.
 -/
@@ -330,8 +333,8 @@ theorem siyagh_sawa (x : List Nat) (s : Jisr.Iqtiran.SighaFil) :
       cases s <;> simp [Jisr.Iqtiran.sighaMurashshaha, Jisr.Iqtiran.qaydNaytaIftitah, Jisr.JisrDal.harf]
     · simp [hc]
 
-/-- **عقدُ Mashru** لنوع علاقةٍ n من `JadwalLuzum`. مواصفاتُه تعريفاتُ المشروع: القانونُ `SLGE.Law.run`/`Fwaqf` على الصورة كما
-    كُتبت (صورةُ شواهد المالك `qaltu`/`hajja`/`bint` في `SLGE/Law.lean` وسطرِ القارئ القديم)، والحرفُ والحالُ
+/-- **عقدُ Mashru** لنوع علاقةٍ n من `JadwalLuzum`. مواصفاتُه تعريفاتُ المشروع: القانونُ `SLGE.Law.run`/`Fwaqf` على الخلايا
+    المعطاة بلا تسكين (صورةُ شواهد المالك `qaltu`/`hajja`/`bint` في `SLGE/Law.lean` وسطرِ القارئ القديم)، والحرفُ والحالُ
     `Jisr.JisrDal.harf`/`hala`، وحروفُ العلّة `SLGE.Law.weak`، والصيغةُ `Jisr.Iqtiran`. والقانونُ هنا غيرُ «الدالّ المرخَّص» عند
     المالك `SLGE.Bridge.DalLic` = `complete'` (يُسكّن الآخر قبل الحكم) — الفرقُ معلَنٌ بشاهده `qanun_ghayr_dalLic`. -/
 def Mashru (n : JadwalLuzum.Naw) : Aqd where
@@ -370,8 +373,8 @@ def Mashru (n : JadwalLuzum.Naw) : Aqd where
   quyud _ := []
   mani _ := 0
 
-/-- **جذرُ Mashru سالمٌ بشرط المالك**: ما له جذرٌ فحواملُه سالمةٌ بـ `SLGE.Law.SoundR` (دون 29، لا ا ي و)، ورمزُه رمزُ حروفه
-    (`Jisr.JisrDal.harf`). -/
+/-- **حواملُ المسقَط سالمةٌ بشرط المالك**: ما أُسقط فحواملُه سالمةٌ بـ `SLGE.Law.SoundR` (دون 29، لا ا ي و)، ورمزُه رمزُ حروفه
+    (`Jisr.JisrDal.harf`). لا يثبت أنّ المسقَطَ جذرٌ: المزيدُ والأدواتُ والضمائرُ تُسقَط كما هي. -/
 theorem jidhr_salim (n : JadwalLuzum.Naw) (x : List Nat) (r : Nat) (h : (Mashru n).jidhr x = some r) :
     SoundR (x.map Jisr.JisrDal.harf) ∧ r = ramz32 (x.map Jisr.JisrDal.harf) := by
   simp only [Mashru] at h
@@ -387,12 +390,23 @@ theorem jidhr_salim (n : JadwalLuzum.Naw) (x : List Nat) (r : Nat) (h : (Mashru 
     exact ⟨by unfold Jisr.JisrDal.harf; omega, h2, h3, h4⟩
   · cases h
 
-/-- **القانونُ غيرُ `DalLic` (معلَن بشاهديه)**: «قَالْتُ» كما كُتبت يردّها العقدُ (شاهدُ المالك `SLGE.Law.qaltu`)، ويقبلها
+/-- **القانونُ غيرُ `DalLic` (معلَن بشاهديه)**: «قَالْتُ» بخلاياها يردّها العقدُ (شاهدُ المالك `SLGE.Law.qaltu`)، ويقبلها
     `complete'` بعد تسكين آخرها («قالْتْ»)؛ و«بَ» خانةً واحدة يقبلها العقد ويردّها `complete'` (`SLGE.Law.nec_second`). -/
 theorem qanun_ghayr_dalLic (n : JadwalLuzum.Naw) :
     (Mashru n).qanun [4*7+0, 4*2+3, 4*13+3, 4*18+1] = false ∧ complete' [4*7+0, 4*2+3, 4*13+3, 4*18+1] = true ∧
     (Mashru n).qanun [4*26+0] = true ∧ complete' [4*26+0] = false := by
   cases n <;> decide +kernel
+
+/-- **مقدارُ الفرق على الخانة والخانتين** (استنفاد): من 116 خانةً 84 يقبلها القانونُ ويردّها `complete'`، ولا عكس؛ ومن 13,456 زوجًا
+    84 يقبلها `complete'` ويردّها القانون، ولا عكس. -/
+theorem farq_dalLic :
+    ((List.range 116).filter fun a => Fwaqf (run 0 [a]) && !complete' [a]).length = 84 ∧
+    ((List.range 116).filter fun a => complete' [a] && !Fwaqf (run 0 [a])).length = 0 ∧
+    (((List.range 116).flatMap fun a => (List.range 116).map fun b => [a, b]).filter
+      fun l => complete' l && !Fwaqf (run 0 l)).length = 84 ∧
+    (((List.range 116).flatMap fun a => (List.range 116).map fun b => [a, b]).filter
+      fun l => Fwaqf (run 0 l) && !complete' l).length = 0 := by
+  decide +kernel
 
 /-- قراءةُ حالٍ إعرابًا بتقابل المالك `SLGE.Bridge.irabState` (قطر الندى L77–78). -/
 def irabMin (h : Nat) : Option SLGE.Wad.Irab := SLGE.Wad.allIrab.find? fun r => SLGE.Bridge.irabState r == h
