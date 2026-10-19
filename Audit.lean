@@ -41,6 +41,7 @@ import Aql.Idaa
 import Aql.QawaninDalala
 import Aql.Naql
 import Aql.Maratib
+import Aql.AlaqaMajaz
 import Dal.Makharij
 import Dal.Qanun
 import Dal.Jumla
@@ -249,6 +250,9 @@ import Madlul.Tarjih
 #print axioms Maratib.ihsa_majmu
 #print axioms Maratib.khatwa_maana_fst
 #print axioms Maratib.mukhraj_wahid_min_haythu
+#print axioms AlaqaMajaz.mashrua_bila_waqi_makhtum
+#print axioms AlaqaMajaz.alaqaOf_ghayr_mashrua_la_hukm
+#print axioms AlaqaMajaz.alaqa_ghayr_mashrua_la_tunshi_majaz
 #print axioms Dal.ramz_eq_cellEnc
 #print axioms Dal.ramz_lt
 #print axioms Dal.ahjam_eq
