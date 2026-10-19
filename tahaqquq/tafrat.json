@@ -1930,5 +1930,89 @@
   "milaf": "Nizam/Damj.lean",
   "min": "  farid (o.qaima.map Prod.fst ++ a.qaima.map Prod.fst ++ b.qaima.map Prod.fst)",
   "ila": "  farid (a.qaima.map Prod.fst ++ b.qaima.map Prod.fst ++ o.qaima.map Prod.fst)"
+ },
+ {
+  "ism": "P255_qanunB_bil_wasl",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "  qanunB x := x.all (· < 117) && Fwaqf (runB 0 x)",
+  "ila": "  qanunB x := x.all (· < 117) && Fwasl (runB 0 x)"
+ },
+ {
+  "ism": "P256_jidhrB_izaha_khata",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "some (ramz32 (x.map (· >>> 2)))",
+  "ila": "some (ramz32 (x.map (· >>> 1)))"
+ },
+ {
+  "ism": "P257_haalB_qinaa_naqis",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "some (a &&& 3)",
+  "ila": "some (a &&& 1)"
+ },
+ {
+  "ism": "P258_siyaghB_bila_amr",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "then 3 ||| (((naytaQina",
+  "ila": "then 1 ||| (((naytaQina"
+ },
+ {
+  "ism": "P259_hukmB_bila_mani",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "else if (A.mani x).testBit m then .mumtani sababMani",
+  "ila": "else if false then .mumtani sababMani"
+ },
+ {
+  "ism": "P260_madkhal_wazn_mutadakhil",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "def madkhal (q a : Nat) : Nat := (ω q a <<< 7) ||| δ q a",
+  "ila": "def madkhal (q a : Nat) : Nat := (ω q a <<< 6) ||| δ q a"
+ },
+ {
+  "ism": "P261_qari_naw_wahid",
+  "milaf": "Qari/Main.lean",
+  "min": "Nizam.Aqd.hukmB (Nizam.Aqd.Mashru s.naw) l",
+  "ila": "Nizam.Aqd.hukmB (Nizam.Aqd.Mashru .juz) l"
+ },
+ {
+  "ism": "P262_qari_ghaib_kull",
+  "milaf": "Qari/Main.lean",
+  "min": "let ghaib := allNaw.filter fun n => !rows.any (·.naw == n)",
+  "ila": "let ghaib := allNaw"
+ },
+ {
+  "ism": "P263_qari_qanun_munfasil",
+  "milaf": "Qari/Main.lean",
+  "min": "let qb := A.qanunB l",
+  "ila": "let qb := A.qanunB l || l.length == 4"
+ },
+ {
+  "ism": "P264_sabab_mubaddal",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "  if A.qanunB x = false then .mumtani sababQanun",
+  "ila": "  if A.qanunB x = false then .mumtani sababMani"
+ },
+ {
+  "ism": "P265_qina_illa_bila_waw",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "def qinaIlla : Nat := (1 <<< 2) ||| (1 <<< 11) ||| (1 <<< 28)",
+  "ila": "def qinaIlla : Nat := (1 <<< 2) ||| (1 <<< 11)"
+ },
+ {
+  "ism": "P266_qari_irab_bila_sukun",
+  "milaf": "Qari/Main.lean",
+  "min": "match Nizam.Aqd.irabMurashshah h with",
+  "ila": "match Nizam.Aqd.irabMin h with"
+ },
+ {
+  "ism": "P267_qari_sabab_thabit",
+  "milaf": "Qari/Main.lean",
+  "min": "      | .mumtani s => s\n",
+  "ila": "      | .mumtani _ => Nizam.Aqd.sababMani\n"
+ },
+ {
+  "ism": "P268_qari_bila_wasl",
+  "milaf": "Qari/Main.lean",
+  "min": "    if wasl then\n",
+  "ila": "    if false then\n"
  }
 ]
