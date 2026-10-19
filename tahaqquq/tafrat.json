@@ -1442,20 +1442,20 @@
  {
   "ism": "P170_alaqamajaz_mashrua_and_to_or",
   "milaf": "Aql/AlaqaMajaz.lean",
-  "min": "a.shahid.basma.startsWith b.1 && b.2 == .waqiMakhtum",
-  "ila": "a.shahid.basma.startsWith b.1 || b.2 == .waqiMakhtum"
+  "min": "a.shahid.basma.startsWith q.basma && q.naw == .waqiMakhtum",
+  "ila": "a.shahid.basma.startsWith q.basma || q.naw == .waqiMakhtum"
  },
  {
   "ism": "P171_alaqamajaz_mashrua_naw_wrong",
   "milaf": "Aql/AlaqaMajaz.lean",
-  "min": "b.2 == .waqiMakhtum",
-  "ila": "b.2 == .maalumatSabiqa"
+  "min": "q.naw == .waqiMakhtum",
+  "ila": "q.naw == .maalumatSabiqa"
  },
  {
   "ism": "P172_alaqamajaz_alaqaof_always_true",
   "milaf": "Aql/AlaqaMajaz.lean",
-  "min": "def alaqaOf (sijill : List (String × Idaa.Naw)) (a : AlaqaMajaz) : Bool :=\n  mashrua sijill a",
-  "ila": "def alaqaOf (sijill : List (String × Idaa.Naw)) (a : AlaqaMajaz) : Bool :=\n  true"
+  "min": "def alaqaOf (sijill : List QaydTasjil) (a : AlaqaMajaz) : Bool :=\n  mashrua sijill a",
+  "ila": "def alaqaOf (sijill : List QaydTasjil) (a : AlaqaMajaz) : Bool :=\n  true"
  },
  {
   "ism": "P176_tafrat_naqisa_farigh",
@@ -1480,5 +1480,11 @@
   "milaf": "tahaqquq/bawwaba.py",
   "min": "        if naqisa:\n            fails.append(",
   "ila": "        if False:\n            fails.append("
+ },
+ {
+  "ism": "P180_alaqamajaz_mashrua_dawa_ignored",
+  "milaf": "Aql/AlaqaMajaz.lean",
+  "min": "q.naw == .waqiMakhtum && q.dawa == a.dawa",
+  "ila": "q.naw == .waqiMakhtum && true"
  }
 ]

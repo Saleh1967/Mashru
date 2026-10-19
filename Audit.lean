@@ -258,8 +258,11 @@ import Madlul.Fard116Shawahid
 #print axioms Maratib.khatwa_maana_fst
 #print axioms Maratib.mukhraj_wahid_min_haythu
 #print axioms AlaqaMajaz.mashrua_bila_waqi_makhtum
+#print axioms AlaqaMajaz.la_intiqal
 #print axioms AlaqaMajaz.alaqaOf_ghayr_mashrua_la_hukm
 #print axioms AlaqaMajaz.alaqa_ghayr_mashrua_la_tunshi_majaz
+#print axioms AlaqaMajaz.bila_waqi_makhtum_la_majaz
+#print axioms AlaqaMajaz.dawa_ukhra_la_majaz
 #print axioms Dal.ramz_eq_cellEnc
 #print axioms Dal.ramz_lt
 #print axioms Dal.ahjam_eq
