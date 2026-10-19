@@ -123,6 +123,24 @@ theorem basma_farigha_la_tuthir (sijill : List (String × Idaa.Naw)) (sh : List 
       have hb' : (b.1 != "") = true := bne_iff_ne.mpr hb
       simp only [List.filter_cons, hb', ite_true, List.any_cons, h1, ih]
 
+/-- **الشاهدُ المعتبَر سندُه بصمةٌ غيرُ فارغة**: كلُّ شاهدٍ معتبَر تبدأ بصمتُه ببصمة قيدٍ في السجلّ غيرِ فارغة، نوعُه «واقع
+    مختوم» — نظيرُ `Idaa.aslMusajjal_sanad`. -/
+theorem shuhudMutabara_sanad (sijill : List (String × Idaa.Naw)) (sh : List ShahidWaqi) (s : ShahidWaqi)
+    (h : s ∈ shuhudMutabara sijill sh) :
+    s ∈ sh ∧ ∃ b ∈ sijill, b.1 ≠ "" ∧ s.basma.startsWith b.1 = true ∧ b.2 = .waqiMakhtum := by
+  unfold shuhudMutabara at h
+  obtain ⟨hs, hp⟩ := List.mem_filter.mp h
+  obtain ⟨b, hb, hq⟩ := List.any_eq_true.mp hp
+  simp only [Bool.and_eq_true, Bool.not_eq_true', beq_iff_eq] at hq
+  obtain ⟨⟨he, hst⟩, hn⟩ := hq
+  have h0 : ("" : String).isEmpty = true := by decide
+  exact ⟨hs, b, hb, (fun hb0 => by rw [hb0, h0] at he; cases he), hst, hn⟩
+
+/-- **الشاهدُ الفارغ لا يُعتبر** (على الشاهد): مع سجلٍّ فيه قيدٌ سليمٌ وآخرُ فارغ، كلاهما «واقع مختوم». -/
+theorem shahid_farigh_marfud :
+    shuhudMutabara [("abc", .waqiMakhtum), ("", .waqiMakhtum)] [⟨"", 1⟩] = [] := by
+  decide +kernel
+
 /-- وعلى الشاهد: شاهدٌ تبدأ بصمتُه ببصمة قيدٍ «واقع مختوم» معتبَر، وما لا تبدأ به لا يُعتبر. -/
 theorem shuhudMutabara_shahid :
     shuhudMutabara [("abc", .waqiMakhtum)] [⟨"abcdef", 1⟩, ⟨"abd", 2⟩] = [⟨"abcdef", 1⟩] := by

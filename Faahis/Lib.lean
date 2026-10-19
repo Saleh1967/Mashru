@@ -188,10 +188,31 @@ structure Bina where
   asl? : Qadiyya → Option Asl
   shuhud : Nat → List ShahidWaqi
 
-/-- نوعُ مودَعِ السند (سقفُ وسمه): أوّلُ مودَعٍ مسجَّلٍ ببصمةٍ **غيرِ فارغة** يبدأ بها السند — بشرط `Idaa.aslMusajjal` نفسِه،
-    فلا يعلو الوسمَ قيدٌ فارغٌ لا يقبله ذاك؛ وإلّا «مرجع محجوب» (أدنى السقوف). -/
+/-- المودَعُ يطابق السند: بصمتُه غيرُ فارغة، والسندُ يبدأ بها. -/
+def mutabiqSanad (s : String) (m : String × Idaa.Naw) : Bool := !m.1.isEmpty && s.startsWith m.1
+
+/-- نوعُ مودَعِ السند (سقفُ وسمه): أوّلُ مودَعٍ مسجَّلٍ ببصمةٍ **غيرِ فارغة** يبدأ بها السند — وشرطُه شرطُ `Idaa.aslMusajjal`
+    (`nawSanad_aslMusajjal`)، فلا يعلو الوسمَ قيدٌ فارغٌ لا يقبله ذاك؛ وإلّا «مرجع محجوب» (أدنى السقوف). -/
 def nawSanadMin (mudaat : Array (String × Idaa.Naw)) (s : String) : Idaa.Naw :=
-  ((mudaat.find? (fun m => !m.1.isEmpty && s.startsWith m.1)).map (·.2)).getD .marjaMahjub
+  ((mudaat.toList.find? (mutabiqSanad s)).map (·.2)).getD .marjaMahjub
+
+/-- **نوعُ السند يُوجد حيث يُقبل السند، لا غير**: لمودَعات الفاحص وسندٍ ما، وجودُ مودَعٍ يعطي السندَ نوعَه هو قبولُ
+    `Idaa.aslMusajjal` له على بصماتها — الشرطُ واحدٌ في الموضعين، فلا يفترقان إن تغيّر أحدهما. -/
+theorem nawSanad_aslMusajjal (mudaat : Array (String × Idaa.Naw)) (s : String) :
+    (mudaat.toList.find? (mutabiqSanad s)).isSome =
+      Idaa.aslMusajjal (fun _ : Unit => some s) (mudaat.toList.map (·.1)) () := by
+  unfold Idaa.aslMusajjal
+  apply Bool.eq_iff_iff.mpr
+  rw [List.find?_isSome, List.any_eq_true]
+  constructor
+  · rintro ⟨m, hm, hp⟩; exact ⟨m.1, List.mem_map_of_mem hm, hp⟩
+  · rintro ⟨b, hb, hp⟩
+    obtain ⟨m, hm, rfl⟩ := List.mem_map.mp hb
+    exact ⟨m, hm, hp⟩
+
+/-- **السندُ الفارغ لا يأخذ نوعًا** (على الشاهد): سندٌ فارغٌ مع سجلٍّ فيه بصمةٌ سليمةٌ وأخرى فارغة يبقى «مرجع محجوب». -/
+theorem nawSanad_sanad_farigh : nawSanadMin #[("", .wad), ("abc", .wad)] "" = .marjaMahjub := by
+  decide +kernel
 
 /-- **القيدُ الفارغ لا يعطي سندًا نوعَه** (على الشاهد): قيدٌ فارغٌ من نوع «وضع» قبل القيد الحقيقيّ لا يرفع سندًا من «مرجع
     محجوب» إلى سقف «وضع». -/

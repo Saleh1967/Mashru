@@ -1766,13 +1766,19 @@
  {
   "ism": "P209_nawSanad_farigh",
   "milaf": "Faahis/Lib.lean",
-  "min": "(fun m => !m.1.isEmpty && s.startsWith m.1)",
-  "ila": "(fun m => s.startsWith m.1)"
+  "min": ":= !m.1.isEmpty && s.startsWith m.1",
+  "ila": ":= s.startsWith m.1"
  },
  {
   "ism": "P210_shuhud_bada_daiman",
   "milaf": "Aql/Maratib.lean",
   "min": "s.basma.startsWith b.1 && b.2",
   "ila": "true && b.2"
+ },
+ {
+  "ism": "P230_basma_64_aw_akthar",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    | some k => if basma.length == 64 then",
+  "ila": "    | some k => if basma.length >= 64 then"
  }
 ]

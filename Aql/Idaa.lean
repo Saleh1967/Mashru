@@ -143,6 +143,10 @@ theorem basma_farigha_khamila {P : Type} (sanad? : P → Option String) (sijill 
         simp only [List.filter_cons, hb', ite_true, List.any_cons, h1, ih]
   · rfl
 
+/-- **السندُ الفارغ لا يُقبل** (على الشاهد): مع سجلٍّ غير فارغ فيه بصمةٌ سليمةٌ وأخرى فارغة. -/
+theorem sanad_farigh_marfud : aslMusajjal (fun _ : Unit => some "") ["abc", ""] () = false := by
+  decide +kernel
+
 /-- وعلى الشاهد: سندٌ يبدأ ببصمةٍ مسجَّلةٍ غيرِ فارغة مقبول، وسندٌ لا يبدأ بها مرفوض — فالسدُّ لا يُفرغ القبول. -/
 theorem aslMusajjal_shahid :
     aslMusajjal (fun _ : Unit => some "abc@1") ["abc"] () = true ∧
