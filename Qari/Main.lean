@@ -191,7 +191,7 @@ def siyaghIsm (b : Nat) : String :=
   if l.isEmpty then "لا مرشَّح" else " · ".intercalate (l.map (·.2))
 
 def hukmAqdIsm : Nizam.Hukm Nizam.Aqd.Qiraa → String
-  | .murakhkhas q => s!"مرخَّص (يحمل قراءتَه: الجذر «{jidhrIsm q.jidhr}»، {match q.haal with | some h => halaIsm h | none => "لا حال"}، صيغةُ الفعل إن كان فعلًا: {siyaghIsm q.sigha})"
+  | .murakhkhas q => s!"مرخَّص (يحمل قراءتَه: مرشَّح الجذر «{jidhrIsm q.jidhr}»، {match q.haal with | some h => halaIsm h | none => "لا حال"}، صيغةُ الفعل إن كان فعلًا: {siyaghIsm q.sigha})"
   | .laHukm => "لا حكم"
   | .mumtani s => s!"ممتنع — {s}"
 
