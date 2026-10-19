@@ -1322,8 +1322,8 @@
  {
   "ism": "P152_joinTrailing_bila_fasil",
   "milaf": "Madlul/TashfirShabaka.lean",
-  "min": "c ++ (sep :: joinTrailing sep cs)",
-  "ila": "c ++ (joinTrailing sep cs)"
+  "min": "  | c :: cs => c ++ (sep :: joinTrailing sep cs)",
+  "ila": "  | c :: cs => c ++ (joinTrailing sep cs)"
  },
  {
   "ism": "P153_qawlEnc_hadd_khati",
