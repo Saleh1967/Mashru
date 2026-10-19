@@ -1786,5 +1786,47 @@
   "milaf": "Faahis/Lib.lean",
   "min": "  ((mudaaSanad? mudaat s).map (·.2)).getD .marjaMahjub",
   "ila": "  ((mudaat.toList.find? (fun m => s.startsWith m.1)).map (·.2)).getD .marjaMahjub"
+ },
+ {
+  "ism": "P211_damj1_janib_khata",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  else if a = o then .qima b",
+  "ila": "  else if a = o then .qima a"
+ },
+ {
+  "ism": "P212_ghiyab_hadhf_bila_shahid",
+  "milaf": "Nizam/Damj.lean",
+  "min": "    | some w => if hadhfMaadhun basmaOf x k w then none else some w",
+  "ila": "    | some w => none"
+ },
+ {
+  "ism": "P213_shahid_bila_idhn",
+  "milaf": "Nizam/Damj.lean",
+  "min": "s.basma == basmaOf w && !s.sabab.isEmpty && !s.idhn.isEmpty",
+  "ila": "s.basma == basmaOf w && !s.sabab.isEmpty"
+ },
+ {
+  "ism": "P214_taarud_la_yamna",
+  "milaf": "Nizam/Damj.lean",
+  "min": "    | .taarud, _ => none",
+  "ila": "    | .taarud, l => l"
+ },
+ {
+  "ism": "P215_shahid_bila_basma",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  s.basma == basmaOf w && !s.sabab.isEmpty",
+  "ila": "  !s.sabab.isEmpty"
+ },
+ {
+  "ism": "P216_taarud_ikhtiyar_janib",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  else .taarud",
+  "ila": "  else .qima a"
+ },
+ {
+  "ism": "P217_hadir_yughlab_bil_asas",
+  "milaf": "Nizam/Damj.lean",
+  "min": "  match bahth x.qaima k with\n  | some v => some v",
+  "ila": "  match bahth x.qaima k with\n  | some v => o"
  }
 ]
