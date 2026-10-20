@@ -709,7 +709,7 @@ class TafratJuzTests(unittest.TestCase):
         self.assertNotIn("قُتلت بـ", out)
 
     def test_failing_test_is_a_kill(self):
-        # اختبارٌ فشل برمزٍ موجب قتلٌ لا «غيرُ محسوم»
+        # اختبارٌ فشل برمزٍ موجب قتلٌ لا «غيرُ محسومة»
         code, out, _ = self.juz_lake("exit 0", self.SALIMA, {"a.lean": "def x := 1\n", "tahaqquq/test_bawwaba.py": "import sys; sys.exit(1)\n"})
         self.assertEqual(code, 0)
         self.assertIn("قُتلت بـtahaqquq/test_bawwaba.py", out)
