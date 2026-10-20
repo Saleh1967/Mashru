@@ -633,6 +633,8 @@ import Madlul.Fard116Shawahid
 #print axioms Jisr.Utur.la_tamthil_la_hukm
 #print axioms Jisr.Utur.mumtani_itarOK
 #print axioms Jisr.Utur.shahid_asbab
+#print axioms Jisr.Utur.shahid_hadd_asbab
+#print axioms Jisr.Utur.shahid_qiraa
 #print axioms Jisr.Utur.shahid_baqi
 #print axioms Jisr.Utur.itar3_yahtawi
 #print axioms Jisr.Utur.itar3_yahtawi_hukm

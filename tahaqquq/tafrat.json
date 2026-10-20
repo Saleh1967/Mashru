@@ -716,8 +716,8 @@
  {
   "ism": "P329_utur_la_tamthil_yumna",
   "milaf": "Jisr/Utur.lean",
-  "min": "  (if Mulhaqat.itarOK u.jisr then [] else if framesL.contains u.jisr.ud.f then [.itarYarudd] else [.laTamthil]) ++",
-  "ila": "  ([] : List SababLaHukm) ++"
+  "min": "  (if Mulhaqat.itarOK u.jisr then [] else if framesL.contains u.jisr.ud.f then [.itarYarudd] else [.laTamthil])",
+  "ila": "  ([] : List SababLaHukm)"
  },
  {
   "ism": "P330_utur_illa_akhir_mulgha",
@@ -746,8 +746,92 @@
  {
   "ism": "P336_utur_illa_fi_aljazm",
   "milaf": "Jisr/Utur.lean",
-  "min": "def laIllaAkhir (hs : List Nat) (w : Kalima) (_ : Bool) : Bool := !(illaAkhir w.khalaya && !hs.contains 3)",
-  "ila": "def laIllaAkhir (hs : List Nat) (w : Kalima) (_ : Bool) : Bool := !(illaAkhir w.khalaya && hs.length > 0)"
+  "min": "  illaAkhir w && !hs.contains 3 && (w.getLast? != some 115 || !(hs.contains 0 || hs.contains 2))",
+  "ila": "  illaAkhir w && hs.length > 0 && (w.getLast? != some 115 || !(hs.contains 0 || hs.contains 2))"
+ },
+ {
+  "ism": "P345_utur_waw_nasb_muqaddara",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  illaAkhir w && !hs.contains 3 && (w.getLast? != some 115 || !(hs.contains 0 || hs.contains 2))",
+  "ila": "  illaAkhir w && !hs.contains 3"
+ },
+ {
+  "ism": "P346_utur_muqaddar_base_mahdhuf",
+  "milaf": "Jisr/Utur.lean",
+  "min": "                    | some h => halaIrab (isNom r) w.khalaya == h || muqaddar [h] w (mudafAlayh u i) | none => true)) &&",
+  "ila": "                    | some h => halaIrab (isNom r) w.khalaya == h | none => true)) &&"
+ },
+ {
+  "ism": "P347_utur_hukm_qiraa_mahdhuf",
+  "milaf": "Jisr/Utur.lean",
+  "min": "    (damm (ofBool (waslBase u && waslMl u && jisrMadlul u)) (damm (hukmQiraa u) (waslMadlul u.isnad)))",
+  "ila": "    (damm (ofBool (waslBase u && waslMl u && jisrMadlul u)) (waslMadlul u.isnad))"
+ },
+ {
+  "ism": "P348_utur_muqaddar_ml_mahdhuf",
+  "milaf": "Jisr/Utur.lean",
+  "min": "        (m.t.2.2.2 || (halatMl u j).isEmpty || (halatMl u j).contains (halaIrab true w.khalaya) ||\n          muqaddar (halatMl u j) w (mudafAlayh u (Mulhaqat.nBase u.jisr + j))) &&",
+  "ila": "        (m.t.2.2.2 || (halatMl u j).isEmpty || (halatMl u j).contains (halaIrab true w.khalaya)) &&"
+ },
+ {
+  "ism": "P349_hadd_thani_ism",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  (if u.jisr.thani.isNone then [] else [.itarThani]) ++",
+  "ila": "  (if u.jisr.thani.isNone then [] else [.amilIsmi]) ++"
+ },
+ {
+  "ism": "P350_hadd_qabl_ism",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  (if u.jisr.ml.all (fun m => !m.qabl) then [] else [.mulhaqMutaqaddim]) ++",
+  "ila": "  (if u.jisr.ml.all (fun m => !m.qabl) then [] else [.itarThani]) ++"
+ },
+ {
+  "ism": "P351_hadd_amil_ism",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  (if u.jisr.ml.all (fun m => m.dawr != .amilIsmi) then [] else [.amilIsmi]) ++",
+  "ila": "  (if u.jisr.ml.all (fun m => m.dawr != .amilIsmi) then [] else [.naibMajrur]) ++"
+ },
+ {
+  "ism": "P352_hadd_naib_ism",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  (if u.jisr.ml.all (fun m => !(m.dawr == .naib && m.naw == 2)) then [] else [.naibMajrur]) ++",
+  "ila": "  (if u.jisr.ml.all (fun m => !(m.dawr == .naib && m.naw == 2)) then [] else [.amilIsmi]) ++"
+ },
+ {
+  "ism": "P353_hadd_nutq_ism",
+  "milaf": "Jisr/Utur.lean",
+  "min": "   else [.mawdiNutq]) ++",
+  "ila": "   else [.mulhaqMutaqaddim]) ++"
+ },
+ {
+  "ism": "P354_hadd_ml_mufrad_ism",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  (if u.jisr.ml.all (fun m => m.t.2.2.2 || m.t.2.2.1.2.2 == 0) then [] else [.mulhaqGhayrMufrad]) ++",
+  "ila": "  (if u.jisr.ml.all (fun m => m.t.2.2.2 || m.t.2.2.1.2.2 == 0) then [] else [.ismGhayrMufrad]) ++"
+ },
+ {
+  "ism": "P355_hadd_musnad_ism",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  (if (match musnadIdx u with | some i => fillAt (baseSlots u) i == 0 | none => false) then [] else [.musnadGhayrZahir]) ++",
+  "ila": "  (if (match musnadIdx u with | some i => fillAt (baseSlots u) i == 0 | none => false) then [] else [.musnadIlayhGhayrZahir]) ++"
+ },
+ {
+  "ism": "P356_hadd_musnad_ilayh_ism",
+  "milaf": "Jisr/Utur.lean",
+  "min": "   else [.musnadIlayhGhayrZahir]) ++",
+  "ila": "   else [.musnadGhayrZahir]) ++"
+ },
+ {
+  "ism": "P357_hadd_fil_ism",
+  "milaf": "Jisr/Utur.lean",
+  "min": "        Mulhaqat.roleOf u.jisr.ud.f i != 2 || u.jisr.ud.f.1 == 1) then [] else [.filMurabKharij]) ++",
+  "ila": "        Mulhaqat.roleOf u.jisr.ud.f i != 2 || u.jisr.ud.f.1 == 1) then [] else [.ismGhayrMufrad]) ++"
+ },
+ {
+  "ism": "P358_hadd_ism_mufrad_ism",
+  "milaf": "Jisr/Utur.lean",
+  "min": "        (attrAt u.jisr.ud.ats i).2.2.1.2.2 == 0) then [] else [.ismGhayrMufrad])",
+  "ila": "        (attrAt u.jisr.ud.ats i).2.2.1.2.2 == 0) then [] else [.filMurabKharij])"
  },
  {
   "ism": "P84_nabat_hayawan",
