@@ -632,8 +632,8 @@
  {
   "ism": "P70_hala_muhmala",
   "milaf": "Jisr/Utur.lean",
-  "min": "                    | some h => halaIrab (isNom r) w.khalaya == h | none => true)) &&",
-  "ila": "                    | some _ => true | none => true)) &&"
+  "min": "                    | some h => halaIrab (isNom r) w.khalaya == h || muqaddar (isNom r) [h] w (mudafAlayh u i) | none => true)) &&\n",
+  "ila": "                    | some _ => true | none => true)) &&\n"
  },
  {
   "ism": "P71_ibtida_bila_zaman",
@@ -674,8 +674,8 @@
  {
   "ism": "P77_hala_mulhaq_muhmala",
   "milaf": "Jisr/Utur.lean",
-  "min": "        (m.t.2.2.2 || (halatMl u j).isEmpty || (halatMl u j).contains (halaIrab true w.khalaya)) &&",
-  "ila": "        true &&"
+  "min": "        (m.t.2.2.2 || (halatMl u j).isEmpty || (halatMl u j).contains (halaIrab true w.khalaya) ||\n          muqaddar true (halatMl u j) w (mudafAlayh u (Mulhaqat.nBase u.jisr + j))) &&\n",
+  "ila": "        true &&\n"
  },
  {
   "ism": "P78_qism_mulhaq_muhmal",
@@ -704,8 +704,8 @@
  {
   "ism": "P82_mudari_khabar_dakhil",
   "milaf": "Jisr/Utur.lean",
-  "min": "    (if Mulhaqat.roleOf u.jisr.ud.f i == 2 then u.jisr.ud.f.1 == 1\n",
-  "ila": "    (if Mulhaqat.roleOf u.jisr.ud.f i == 2 then true\n"
+  "min": "i).2.2.2 ||\n    (if Mulhaqat.roleOf u.jisr.ud.f i == 2 then u.jisr.ud.f.1 == 1\n",
+  "ila": "i).2.2.2 ||\n    (if Mulhaqat.roleOf u.jisr.ud.f i == 2 then true\n"
  },
  {
   "ism": "P83_mutlaq_la_yataakhkhar",
@@ -746,20 +746,20 @@
  {
   "ism": "P336_utur_illa_fi_aljazm",
   "milaf": "Jisr/Utur.lean",
-  "min": "  illaAkhir w && !hs.contains 3 && (w.getLast? != some 115 || !(hs.contains 0 || hs.contains 2))",
-  "ila": "  illaAkhir w && hs.length > 0 && (w.getLast? != some 115 || !(hs.contains 0 || hs.contains 2))"
+  "min": "  illaAkhir w && !hs.contains 3 &&\n",
+  "ila": "  illaAkhir w && hs.length > 0 &&\n"
  },
  {
   "ism": "P345_utur_waw_nasb_muqaddara",
   "milaf": "Jisr/Utur.lean",
-  "min": "  illaAkhir w && !hs.contains 3 && (w.getLast? != some 115 || !(hs.contains 0 || hs.contains 2))",
-  "ila": "  illaAkhir w && !hs.contains 3"
+  "min": "   | some 115 => !nom && hs.contains 1\n",
+  "ila": "   | some 115 => true\n"
  },
  {
   "ism": "P346_utur_muqaddar_base_mahdhuf",
   "milaf": "Jisr/Utur.lean",
-  "min": "                    | some h => halaIrab (isNom r) w.khalaya == h || muqaddar [h] w (mudafAlayh u i) | none => true)) &&",
-  "ila": "                    | some h => halaIrab (isNom r) w.khalaya == h | none => true)) &&"
+  "min": "                    | some h => halaIrab (isNom r) w.khalaya == h || muqaddar (isNom r) [h] w (mudafAlayh u i) | none => true)) &&\n",
+  "ila": "                    | some h => halaIrab (isNom r) w.khalaya == h | none => true)) &&\n"
  },
  {
   "ism": "P347_utur_hukm_qiraa_mahdhuf",
@@ -770,8 +770,8 @@
  {
   "ism": "P348_utur_muqaddar_ml_mahdhuf",
   "milaf": "Jisr/Utur.lean",
-  "min": "        (m.t.2.2.2 || (halatMl u j).isEmpty || (halatMl u j).contains (halaIrab true w.khalaya) ||\n          muqaddar (halatMl u j) w (mudafAlayh u (Mulhaqat.nBase u.jisr + j))) &&",
-  "ila": "        (m.t.2.2.2 || (halatMl u j).isEmpty || (halatMl u j).contains (halaIrab true w.khalaya)) &&"
+  "min": "        (m.t.2.2.2 || (halatMl u j).isEmpty || (halatMl u j).contains (halaIrab true w.khalaya) ||\n          muqaddar true (halatMl u j) w (mudafAlayh u (Mulhaqat.nBase u.jisr + j))) &&\n",
+  "ila": "        (m.t.2.2.2 || (halatMl u j).isEmpty || (halatMl u j).contains (halaIrab true w.khalaya)) &&\n"
  },
  {
   "ism": "P349_hadd_thani_ism",
@@ -832,6 +832,24 @@
   "milaf": "Jisr/Utur.lean",
   "min": "        (attrAt u.jisr.ud.ats i).2.2.1.2.2 == 0) then [] else [.ismGhayrMufrad])",
   "ila": "        (attrAt u.jisr.ud.ats i).2.2.1.2.2 == 0) then [] else [.filMurabKharij])"
+ },
+ {
+  "ism": "P361_utur_ya_nasb_bi_al",
+  "milaf": "Jisr/Utur.lean",
+  "min": "(nom && !al && hs.contains 0)",
+  "ila": "(nom && hs.contains 0)"
+ },
+ {
+  "ism": "P362_utur_ya_nasb_fil",
+  "milaf": "Jisr/Utur.lean",
+  "min": "(nom && !al && hs.contains 0)",
+  "ila": "(!al && hs.contains 0)"
+ },
+ {
+  "ism": "P363_utur_waw_ism",
+  "milaf": "Jisr/Utur.lean",
+  "min": "   | some 115 => !nom && hs.contains 1\n",
+  "ila": "   | some 115 => hs.contains 1\n"
  },
  {
   "ism": "P84_nabat_hayawan",

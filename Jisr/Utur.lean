@@ -56,7 +56,7 @@
   **وصل**: التركيبُ بإصلاح همزة الوصل ثلاثيًّا (`Dal.rakkib`: ما لا إصلاحَ له عند المالك `Khalal.laHukm` لا حكم، والميّتُ ممتنع —
   `hukmTarkib`)، وكلُّ كلمةٍ مكتملةٌ دالًّا في صورة ابتدائها (`complete'` كما في `SentOK` المالك)، وحالةُ آخر كلّ كلمةٍ معربةٍ ما يطلبه
   موضعُها (`reqState` لخانات المالك، `Mulhaqat.halatAt` للملحقات) — إلّا ما لا تُقرأ حالتُه من الدالّ (`muqaddar`: حرفُ علّةٍ ساكنٌ تُقدَّر
-  عليه الحالة `illaMuqaddara` بنصّ القطر L92–95، أو ممنوعٌ محتمل؛ منذ 2026-10-20) فيُتجاوز ويُحكم عليه بالقراءة `hukmQiraa` «لا حكم»
+  عليه الحالة `illaMuqaddara` بنصّ القطر L92–95، أو فتحةٌ في موضع الجرّ؛ منذ 2026-10-20) فيُتجاوز ويُحكم عليه بالقراءة `hukmQiraa` «لا حكم»
   ثلاثيًّا يُضمّ فلا يُسقط امتناعًا قاطعًا في موضعٍ آخر —، والتنوينُ في الاسم المعرب نونٌ ساكنة بعد حركة الإعراب (قرار القارئ)
   فتُقرأ الحركةُ قبلَه (`halaIrab`) — **وهذان دون `SentOK` المالك: هو يفحص المبنيَّ أيضًا (فيطلب للماضي ضمّةً: `reqState 1 0 2`) ويقرأ
   آخرَ خليةٍ (`lastSt`) فيردّ «ذَهَبَ الْوَلَدُ» و«ذَهَبَ وَلَدٌ» كليهما**، معلَن؛ وقسمُ مدلول كلّ خانةٍ عند المالك (`Cat.kindOfMadlul`) قسمُ خانتها بدورها وأداة الإطار (فعلٌ لدور الفعل وللناسخ الفعليّ كان/ظنّ،
@@ -81,9 +81,10 @@
   الوسم: مبرهن (الاستلزامات، `dal_waqf_kama_yuqra`، الاحتواء، الفكّ، ثلاثُ النِّسَب، ثلاثيّةُ الحكم، حدُّ الطبقة)، ومبرهن على الشاهد
   (decide/decide +kernel على الأمثلة والعدّ — ومنه الاستقلالُ `wasl_waqf_mustaqillan` و`wasl_ghayr_Fwasl`). وأسبابُ «لا حكم» (2026-10-20) بالمعيار الموحَّد (`Nizam/Asas.lean`): 6 لكلّ (`asbabHadd_nil`،
   `laHukm_iff_sabab`، `fiHadd_shurut`، `la_hukm_ma_radda_itar`، `la_tamthil_la_hukm`، `mumtani_itarOK`)، و2 تعريفيّتان (`ofBool_ne_laHukm`،
-  `damm_laHukm`)، و4 على الشاهد (`shahid_asbab`، `shahid_hadd_asbab`، `shahid_qiraa`، `shahid_baqi`)؛ ومساعدتان داخليّتان (`all_and_bool`،
-  `ite_sabab_nil`). وتغيّر برهانُ `hukm3_murakhkhas` و`hukm_la_yusqit_tarkhis` و`itar3_yahtawi` و`itar3_yahtawi_hukm` و`fiHadd_shurut` دون نصّها؛
-  ومعنى المبرهنات التي تفترض `fiHadd` أو تنتهي إليه تبعٌ لتعريفه الجديد (ما يردّه `itarOK` خارجَه). طفراتها P329–P332 وP335–P336 وP345–P358. موادُّ دستور الوكيل
+  `damm_laHukm`)، و4 على الشاهد (`shahid_asbab`، `shahid_hadd_asbab`، `shahid_qiraa`، `shahid_baqi`)؛ ومساعدتان خاصّتان: `all_and_bool`
+  (لكلّ، بالاستقراء) و`ite_sabab_nil` (تعريفيّة). وتغيّر برهانُ `hukm3_murakhkhas` و`hukm_la_yusqit_tarkhis` و`itar3_yahtawi` و`itar3_yahtawi_hukm`
+  و`fiHadd_shurut` و`laHukm_iff_sabab` دون نصّها؛
+  ومعنى المبرهنات التي تفترض `fiHadd` أو تنتهي إليه تبعٌ لتعريفه الجديد (ما يردّه `itarOK` خارجَه). طفراتها P329–P332 وP335–P336 وP345–P358 وP361–P363. موادُّ دستور الوكيل
   (AGENT_CONSTITUTION.md في Saleh1967/Alghanem — ليس في هذا المستودع؛ نصُّها من خلاصته في مهارة dustur-al-wakil): م10 «الحكمُ فوق
   الترخيص لا فيه»، م13 «الحكمُ ثلاثيٌّ … ولا يُسقط ترخيصًا … لا يُستنتج الامتناع من غياب الشاهد».
 -/
@@ -419,24 +420,32 @@ def fathaAkhir (w : List Nat) : Bool :=
 def mudafAlayh (u : Itar3) (idx : Nat) : Bool :=
   u.jisr.ml.any fun m => m.dawr == .mudafIlayhi && m.marsa == idx
 
-/-- **حرفُ علّةٍ ساكنٌ آخرًا تُقدَّر عليه حالةٌ من `hs`** (القطر L92–95): الألفُ في غير الجزم (L92 «تقدر جميع الحركات في نحو
-"غلامي والفتى"»، L93 «والضمة والفتحة في نحو "يخشى"»)؛ والياءُ في غير الجزم (L92–93 «والكسرة في نحو "القاضي"»، L93 «والضمة في نحو …
-ويقضي»؛ ونصبًا لاحتمال المضاف إلى الياء «غلامي» L92 — وفي المنقوص والمضارع «وتظهر الفتحة» L94: لا يُفرَّق بينهما بلا معجم، معلَن)؛
-والواوُ في الرفع وحده (L93 «والضمة في نحو "يدعو"»، وL94–95 «وتظهر الفتحة في نحو "إن القاضي لن يقضي ولن / يدعو"»). ولا تقديرَ في
-الجزم (L90–91 «فيجزم بحذف آخره»). -/
-def illaMuqaddara (hs : List Nat) (w : List Nat) : Bool :=
-  illaAkhir w && !hs.contains 3 && (w.getLast? != some 115 || !(hs.contains 0 || hs.contains 2))
+/-- **حرفُ علّةٍ ساكنٌ آخرًا تُقدَّر عليه حالةٌ من `hs`** (القطر L92–95؛ `nom`: الخانةُ اسميّة، `al`: الكلمةُ بأل):
+- الألف: الرفعُ والنصبُ والجرّ — L92 «تقدر جميع الحركات في نحو "غلامي والفتى"»، وL93 «والضمة والفتحة في نحو "يخشى"».
+- الياء: الرفع — L94 «والضمة في نحو "يدعو ويقضي"»؛ والجرُّ في الاسم — L92–93 «والكسرة في نحو "القاضي"»؛ والنصبُ في الاسم بلا أل
+  وحده، لاحتمال المضاف إلى الياء «غلامي» (L92) — والمنقوصُ المضاف لا يُفرَّق منه بلا معجم، معلَن. أمّا الفعلُ والاسمُ بأل فالفتحةُ فيهما
+  ظاهرةٌ نصبًا: L94–95 «وتظهر الفتحة في نحو "إن القاضي لن يقضي ولن يدعو"».
+- الواو: الرفعُ في الفعل وحده — L94 «والضمة في نحو "يدعو …"»؛ والواوُ آخرَ الاسم علامةُ إعرابٍ لا محلُّ تقدير (L79 «فترفع بالواو»).
+- ولا تقديرَ في الجزم (L90–91 «والفعل المضارع المعتل الآخر فيجزم بحذف آخره»). -/
+def illaMuqaddara (nom al : Bool) (hs : List Nat) (w : List Nat) : Bool :=
+  illaAkhir w && !hs.contains 3 &&
+  (match w.getLast? with
+   | some 47 => hs.contains 1 || (nom && hs.contains 2) || (nom && !al && hs.contains 0)
+   | some 115 => !nom && hs.contains 1
+   | _ => true)
 
 /-- لا حرفَ علّةٍ ساكنًا آخرًا تُقدَّر عليه الحالةُ المطلوبة. -/
-def laIllaAkhir (hs : List Nat) (w : Kalima) (_ : Bool) : Bool := !illaMuqaddara hs w.khalaya
+def laIllaAkhir (nom : Bool) (hs : List Nat) (w : Kalima) (_ : Bool) : Bool := !illaMuqaddara nom w.al hs w.khalaya
 
-/-- ولا فتحةَ بلا تنوينٍ ولا أل ولا إضافة حيث يُطلب الجرّ ولا تُقبل الفتحة. -/
-def laMamnuMuhtamal (hs : List Nat) (w : Kalima) (mudaf : Bool) : Bool :=
+/-- ولا فتحةَ آخرًا بلا تنوينٍ ولا أل ولا مضافٍ إليه ملحق حيث يُطلب الجرّ ولا تُقبل الفتحة: ممنوعٌ من الصرف محتمل (القطر L87 «وما لا ينصرف
+فيجر بالفتحة»)، أو ضميرٌ متّصلٌ حركتُه فتحة («دَارِكَ»، «أَبِيكَ»: آخرُ الخلايا حركةُ الضمير لا حركةُ الإعراب) — لا يُفرَّق بينهما بلا معجم. -/
+def laFathaJarr (_ : Bool) (hs : List Nat) (w : Kalima) (mudaf : Bool) : Bool :=
   !(hs.contains 2 && !hs.contains 0 && fathaAkhir w.khalaya && !w.al && !mudaf)
 
-/-- **حالةٌ لا تُقرأ من الدالّ** في موضعٍ يطلب `hs`: حرفُ علّةٍ ساكنٌ تُقدَّر عليه، أو ممنوعٌ محتمل. فلا يُقرأ ما فيه مخالفًا ولا موافقًا:
+/-- **حالةٌ لا تُقرأ من الدالّ** في موضعٍ يطلب `hs`: حرفُ علّةٍ ساكنٌ تُقدَّر عليه، أو فتحةٌ في موضع الجرّ. فلا يُقرأ ما فيه مخالفًا ولا موافقًا:
 تتجاوزه قراءةُ الحالات (`waslBase`، `waslMl`)، وحكمُه «لا حكم» من `hukmQiraa` — فلا يُسقط امتناعًا قاطعًا في موضعٍ آخر. -/
-def muqaddar (hs : List Nat) (w : Kalima) (mudaf : Bool) : Bool := !laIllaAkhir hs w mudaf || !laMamnuMuhtamal hs w mudaf
+def muqaddar (nom : Bool) (hs : List Nat) (w : Kalima) (mudaf : Bool) : Bool :=
+  !laIllaAkhir nom hs w mudaf || !laFathaJarr nom hs w mudaf
 
 /-- خاناتُ المالك الظاهرة: كلمتُها مكتملة، وحالتُها (إن كانت معربة) ما يطلبه موضعُها، وقسمُ مدلولها قسمُ دورها. -/
 def waslBase (u : Itar3) : Bool :=
@@ -448,7 +457,7 @@ def waslBase (u : Itar3) : Bool :=
      | some w, some m =>
        complete' (ibtida w) &&
        (t.2.2.2 || (match reqState u.jisr.ud.f.1 u.jisr.ud.f.2.1 r with
-                    | some h => halaIrab (isNom r) w.khalaya == h || muqaddar [h] w (mudafAlayh u i) | none => true)) &&
+                    | some h => halaIrab (isNom r) w.khalaya == h || muqaddar (isNom r) [h] w (mudafAlayh u i) | none => true)) &&
        SLGE.Cat.kindOfMadlul m == qismDawr u.jisr.ud.f.2.1 r
      | _, _ => false)
 
@@ -461,29 +470,29 @@ def waslMl (u : Itar3) : Bool :=
       | some m, some w, some md =>
         complete' (ibtida w) &&
         (m.t.2.2.2 || (halatMl u j).isEmpty || (halatMl u j).contains (halaIrab true w.khalaya) ||
-          muqaddar (halatMl u j) w (mudafAlayh u (Mulhaqat.nBase u.jisr + j))) &&
+          muqaddar true (halatMl u j) w (mudafAlayh u (Mulhaqat.nBase u.jisr + j))) &&
         SLGE.Cat.kindOfMadlul md == .ism
       | _, _, _ => false
     | none => false
 
-/-- كلُّ كلمةٍ تُطلب حالتُها من موضعها تستوفي `p` بحالاتِ موضعها وبإضافتها: خاناتُ المالك الظاهرة غيرُ المبنيّة (`reqState`)، والملحقاتُ
+/-- كلُّ كلمةٍ تُطلب حالتُها من موضعها تستوفي `p` باسميّة موضعها وحالاتِه وبإضافتها: خاناتُ المالك الظاهرة غيرُ المبنيّة (`reqState`)، والملحقاتُ
 الظاهرة غيرُ المبنيّة ذاتُ الحالات (`halatMl`) — المواضعُ نفسُها التي يفحصها `waslBase` و`waslMl`. -/
-def kullMawdi (u : Itar3) (p : List Nat → Kalima → Bool → Bool) : Bool :=
+def kullMawdi (u : Itar3) (p : Bool → List Nat → Kalima → Bool → Bool) : Bool :=
   ((List.range (nB u)).all fun i =>
     fillAt (baseSlots u) i != 0 || (attrAt u.jisr.ud.ats i).2.2.2 ||
     (match reqState u.jisr.ud.f.1 u.jisr.ud.f.2.1 (Mulhaqat.roleOf u.jisr.ud.f i), u.kalimat[overtIdx u i]? with
-     | some h, some w => p [h] w (mudafAlayh u i)
+     | some h, some w => p (isNom (Mulhaqat.roleOf u.jisr.ud.f i)) [h] w (mudafAlayh u i)
      | _, _ => true)) &&
   ((List.range (zawahirMl u).length).all fun k =>
     match (zawahirMl u)[k]? with
     | some j =>
       (match u.jisr.ml[j]?, u.kalimat[zawahirBase u + k]? with
-       | some m, some w => m.t.2.2.2 || (halatMl u j).isEmpty || p (halatMl u j) w (mudafAlayh u (Mulhaqat.nBase u.jisr + j))
+       | some m, some w => m.t.2.2.2 || (halatMl u j).isEmpty || p true (halatMl u j) w (mudafAlayh u (Mulhaqat.nBase u.jisr + j))
        | _, _ => true)
     | none => true)
 
-/-- **القراءة:** لا موضعَ حالتُه مقدَّرةٌ على حرف علّة ولا ممنوعٌ محتمل. -/
-def qiraa (u : Itar3) : Bool := kullMawdi u laIllaAkhir && kullMawdi u laMamnuMuhtamal
+/-- **القراءة:** لا موضعَ حالتُه مقدَّرةٌ على حرف علّة، ولا فتحةَ في موضع الجرّ. -/
+def qiraa (u : Itar3) : Bool := kullMawdi u laIllaAkhir && kullMawdi u laFathaJarr
 
 /-- حكمُ القراءة ثلاثيًّا: ما لا يُقرأ «لا حكم» لا «ممتنع» (م13). -/
 def hukmQiraa (u : Itar3) : Hukm := if qiraa u then .murakhkhas else .laHukm
@@ -555,21 +564,24 @@ def haddMuallan (u : Itar3) : Bool :=
   عدمُ تمثيلٍ لا منعٌ بنصّ: الإطارُ خارج `framesL`، وتوكيدُ الفعل لفظيًّا («أتاك أتاك»، القطر L387)، وضميرُ المتكلّم في خانةٍ ظاهرة،
   والمفرَّغُ بعد «هل»، ومسوّغاتُ النكرة خارج رموزها، والمعدودُ فوق المئة (وجدها المراجعُ المستقلّ). فلا يُميَّز عدمُ التمثيل من المنع
   بالبوليّ وحده، وبم13 لا امتناعَ بلا مانعٍ مسمّى: **فكلُّ ما يردّه `itarOK` «لا حكم»** — `laTamthil` إن كان الإطارُ خارج `framesL`،
-  وإلّا `itarYarudd`. وهذا يعكس جزءًا من إمضاء 2026-10-16 («ممتنع ولو لعدم التمثيل»): يصير «لا حكم» ما ردّه قانونٌ بنصٍّ لم يُسمَّ
-  مانعُه (كتوكيد النكرة توكيدًا معنويًّا)؛ وإرجاعُه ممتنعًا بمانعٍ مسمّى عملُ م3 الباقي.
+  وإلّا `itarYarudd`. فيصير «لا حكم» ما ردّه قانونٌ بنصٍّ لم يُسمَّ مانعُه (كتوكيد النكرة توكيدًا معنويًّا)؛ وإرجاعُه ممتنعًا بمانعٍ مسمّى
+  عملُ م3 الباقي. وهذا يعكس جزءًا من إعلان البنّاء على ca5ed3c في رأس هذا الملفّ (س66 هناك: «فممتنعٌ هنا ولو كان لعدم التمثيل»)،
+  لا من قائمة ما أمضيتَه 2026-10-16 (`CLAUDE.md:88` على ca5ed3c) — فقولي في السؤال «كما أمضيتَ» لم يكن مسنودًا.
 - **التعميم:** «لكلّ «لا حكم» سببٌ مسمّى» على الطبقة كلّها (`laHukm_iff_sabab`) قراءتي لقرارٍ كان عن LC11.
 - **الحدّ:** الحدُّ المعلَن (`haddMuallan`) بنصّه لم يتغيّر؛ وأسبابُ الخروج عنه عشرةٌ مفصّلة (`asbabHadd`) تطابقه بلا احتياط
   (`asbabHadd_nil`، برهانُ المراجع المستقلّ)، ولكلٍّ منها شاهد (`shahid_hadd_asbab`).
 - **القراءة:** ما لا تُقرأ حالتُه من الدالّ لا يُقرأ مخالفًا ولا موافقًا، بل «لا حكم» يُضمّ في الوصل (`hukmQiraa`)، فيغلبه امتناعٌ قاطعٌ في
   موضعٍ آخر (`shahid_qiraa`):
-  - حرفُ علّةٍ ساكنٌ آخرًا تُقدَّر عليه الحالةُ المطلوبة (`illaMuqaddara`، بنصّ القطر L92–95): الألفُ والياءُ في غير الجزم، والواوُ في الرفع
-    وحده — «وتظهر الفتحة في نحو … ولن / يدعو» (L94–95)، فـ«لَنْ يَدْعُوْ» بواوٍ ساكنة ممتنع؛ والياءُ نصبًا «لا حكم» لاحتمال «غلامي» (L92) — فلا
-    يُفرَّق المنقوصُ والمضارعُ («لَنْ يَقْضِيْ») بلا معجم، معلَن.
-  - وفتحةٌ بلا تنوينٍ ولا أل ولا إضافة حيث يُطلب الجرّ ولا تُقبل الفتحة (`laMamnuMuhtamal`، كـ`JisrDal.mamnu_fatha`؛ ومع أل أو الإضافة جرُّه
-    الكسرة بنصّ القطر L87–88، فالفتحةُ هناك ممتنعة).
+  - حرفُ علّةٍ ساكنٌ آخرًا تُقدَّر عليه الحالةُ المطلوبة (`illaMuqaddara`، بنصّ القطر L92–95): الألفُ في غير الجزم؛ والياءُ رفعًا، وجرًّا في
+    الاسم، ونصبًا في الاسم بلا أل وحده (لاحتمال «غلامي» L92؛ والمنقوصُ المضاف لا يُفرَّق منه بلا معجم، معلَن)؛ والواوُ رفعًا في الفعل وحده.
+    والفتحةُ ظاهرةٌ نصبًا في الفعل وفي الاسم بأل — «وتظهر الفتحة في نحو "إن القاضي لن يقضي ولن يدعو"» (L94–95) —، فـ«لَنْ يَدْعُوْ»
+    و«لَنْ يَقْضِيْ» و«ضَرَبَ الْوَلَدُ الْقَاضِيْ» ممتنعة؛ والواوُ آخرَ الاسم علامةُ إعرابٍ لا محلُّ تقدير (L79 «فترفع بالواو»).
+  - وفتحةٌ آخرًا بلا تنوينٍ ولا أل ولا مضافٍ إليه ملحق حيث يُطلب الجرّ ولا تُقبل الفتحة (`laFathaJarr`): ممنوعٌ من الصرف محتمل
+    (كـ`JisrDal.mamnu_fatha`؛ ومع أل أو الإضافة جرُّه الكسرة بنصّ القطر L87–88، فالفتحةُ هناك ممتنعة)، أو ضميرٌ متّصلٌ حركتُه فتحة
+    («فِي دَارِكَ»، «فِي أَبِيكَ»؛ و«فِي أَبُوكَ» — خطأٌ بنصّ L79 «وتجر بالياء» — «لا حكم» كذلك: يُقرأ آخرُ الخلايا لا ما قبل الضمير).
 
 **وما بقي** (معلَن؛ `shahid_baqi`، وكلُّه كما كان على ca5ed3c): «فِي أَفْضَلِ» (ممنوعٌ مجرورٌ بالكسرة) مرخَّص — الممنوعُ لا يُعرف بلا معجم؛
-والمقصورُ والمنقوصُ المنوَّنان («ذَهَبَ فَتًى»، «ذَهَبَ قَاضٍ») والاسمُ بضميرٍ متّصل («ذَهَبَ أَبُوكَ») ممتنعة — يُقرأ ما قبل التنوين أو آخرُ
+والمقصورُ والمنقوصُ المنوَّنان («ذَهَبَ فَتًى»، «ذَهَبَ قَاضٍ») والاسمُ بضميرٍ متّصل رفعًا («ذَهَبَ أَبُوكَ») ممتنعة — يُقرأ ما قبل التنوين أو آخرُ
 خليةٍ حركةَ إعراب؛ والمضارعُ المعتلّ مجزومًا بإثبات حرف العلّة («لَمْ يَدْعُو») مرخَّص، و«لَمْ يَغْزُ»/«لَمْ يَخْشَ»/«لَمْ يَرْمِ» (القطر L91
 «فيجزم بحذف آخره») ممتنعة — مقلوبٌ على شاهد القطر، والبابُ `mudariMutall` من المعجم (اقتراحُ سببٍ «لا حكم» للمجزوم المنتهي بحركة أو بحرف
 علّةٍ ساكن معروضٌ عليك)؛ والتوكيدُ اللفظيّ والبدلُ بلا فحصٍ للّفظ ولا للعلاقة («ذَهَبَ الْوَلَدُ الدَّارُ»: LC08، LC09؛ بـ #eval في الجلسة)؛
@@ -604,8 +616,9 @@ inductive SababLaHukm
   | itarYarudd
   /-- حرفُ علّةٍ ساكنٌ آخرَ كلمةٍ تُقدَّر عليه حالتُها المطلوبة (`illaMuqaddara`): لا تُقرأ من الدالّ بلا معجم. -/
   | illaAkhir
-  /-- فتحةٌ بلا تنوينٍ ولا أل ولا إضافة حيث يُطلب الجرّ ولا تُقبل الفتحة: ممنوعٌ من الصرف محتمل، والبابُ من المعجم. -/
-  | mamnuMuhtamal
+  /-- فتحةٌ آخرًا بلا تنوينٍ ولا أل ولا مضافٍ إليه ملحق حيث يُطلب الجرّ ولا تُقبل الفتحة (`laFathaJarr`): ممنوعٌ من الصرف محتمل، أو
+  ضميرٌ متّصلٌ حركتُه فتحة — والفرقُ من المعجم. -/
+  | fathaJarr
   /-- همزةُ وصلٍ بعد حالةٍ لا إصلاحَ لها عند المالك (`Khalal.laHukm` في `Dal.rakkib`). -/
   | tarkib
   /-- المحمولُ يحتمل النسبةَ وليس في حقول الموضوع: غيابُ الشاهد (`wasl_thulathi`). -/
@@ -638,7 +651,7 @@ def asbabKharij (u : Itar3) : List SababLaHukm :=
 /-- **حدُّ الطبقة:** ما يحكم فيه الإطارُ الثلاثيّ — لا سببَ للخروج عنه. وما خرج عنه «لا حكم» لا «ممتنع» (`kharij_alhadd`). -/
 def fiHadd (u : Itar3) : Bool := (asbabKharij u).isEmpty
 
-/-- الإطارُ الثلاثيّ: حكمُه ثلاثيٌّ — «لا حكم» خارجَ الحدّ، ويرث «لا حكم» من التركيب ومن وصل المدلول. -/
+/-- الإطارُ الثلاثيّ: حكمُه ثلاثيٌّ — «لا حكم» خارجَ الحدّ، ويرث «لا حكم» من التركيب ومن القراءة ومن وصل المدلول. -/
 def hukm3 (u : Itar3) : Hukm :=
   if fiHadd u then damm (ofBool (ibtida3 u)) (damm (wasl3 u) (ofBool (waqf3 u))) else .laHukm
 
@@ -699,7 +712,7 @@ theorem kharij_alhadd (u : Itar3) (h : fiHadd u = false) : hukm3 u = .laHukm := 
 def asbabDakhil (u : Itar3) : List SababLaHukm :=
   (if hukmTarkib (rakkib u.kalimat) == .laHukm then [.tarkib] else []) ++
   (if kullMawdi u laIllaAkhir then [] else [.illaAkhir]) ++
-  (if kullMawdi u laMamnuMuhtamal then [] else [.mamnuMuhtamal]) ++
+  (if kullMawdi u laFathaJarr then [] else [.fathaJarr]) ++
   (if waslMadlul u.isnad == .laHukm then [.madlul] else [])
 
 /-- **أسبابُ «لا حكم»** للإطار الثلاثيّ إن كان حكمُه «لا حكم»: أسبابُ الخروج إن خرج عن الحدّ، وإلّا أسبابُ داخله؛ ولغيره لا شيء. -/
@@ -721,7 +734,7 @@ private theorem ite_sabab_nil (c : Bool) (s : SababLaHukm) : ((if c = true then 
   cases c <;> simp
 
 /-- **التفصيلُ يطابق الحدَّ المعلَن:** لا سببَ من الأسباب العشرة إذا وفقط إذا استوفى الإطارُ الحدَّ الذي أمضاه المالك 2026-10-16
-(`haddMuallan` بنصّه) — فلكلّ خروجٍ عنه سببٌ من العشرة، ولا احتياطَ بلا اسم. (برهانُ المراجع المستقلّ في مراجعته، بنصّه.) -/
+(`haddMuallan` بنصّه) — فلكلّ خروجٍ عنه سببٌ من العشرة، ولا احتياطَ بلا اسم. (برهانُ المراجع المستقلّ في مراجعته، بتصرّفٍ في الأسماء.) -/
 theorem asbabHadd_nil (u : Itar3) : asbabHadd u = [] ↔ haddMuallan u = true := by
   unfold asbabHadd haddMuallan
   have hr : ∀ i, (fillAt (baseSlots u) i != 0 || (attrAt u.jisr.ud.ats i).2.2.2 ||
@@ -770,7 +783,7 @@ theorem laHukm_iff_sabab (u : Itar3) : hukm3 u = .laHukm ↔ asbabLaHukm u ≠ [
             · exact absurd h4 (ofBool_ne_laHukm _)
             · rcases damm_laHukm _ _ h4 with h5 | h5
               · unfold hukmQiraa qiraa at h5
-                cases hi1 : kullMawdi u laIllaAkhir <;> cases hi2 : kullMawdi u laMamnuMuhtamal <;>
+                cases hi1 : kullMawdi u laIllaAkhir <;> cases hi2 : kullMawdi u laFathaJarr <;>
                   simp_all [asbabDakhil]
               · simp [asbabDakhil, h5]
         · exact absurd h2 (ofBool_ne_laHukm _)
@@ -1017,7 +1030,7 @@ def yaduuWaladun : Itar3 :=
 
 /-- **«لا حكم» بسببه** (2026-10-20). كانت الستّةُ الأولى ممتنعةً على ca5ed3c (مخرجُ `#eval` في الجلسة، لا هذه المبرهنة):
 - «ذَهَبَ الْفَتَى»، «ذَهَبَ الْقَاضِي» — `illaAkhir`؛ و«يَدْعُو وَلَدٌ» — `illaAkhir`.
-- «فِي أَفْضَلَ» — `mamnuMuhtamal`.
+- «فِي أَفْضَلَ» — `fathaJarr`.
 - فعلٌ وفاعلٌ ومفعولان — `laTamthil`؛ و«الْوَلَدُ ذَهَبَ ذَهَبَ» — `itarYarudd`.
 - وكانت «لا حكم» بلا سببٍ مسمّى: «طَارَ الْوَلَدُ» — `madlul`؛ «حَاجْ» ثمّ همزةُ الوصل — `tarkib`؛ والفاعلُ المستتر — `musnadIlayhGhayrZahir`.
 - و«ذَهَبَ الْوَلَدُ» مرخَّصٌ بلا أسباب. -/
@@ -1026,7 +1039,7 @@ theorem shahid_asbab :
     asbabLaHukm { dhahabaAlWalad with kalimat := [dhahaba, alFata] } = [.illaAkhir] ∧
     asbabLaHukm { dhahabaAlWalad with kalimat := [dhahaba, alQadi] } = [.illaAkhir] ∧
     asbabLaHukm yaduuWaladun = [.illaAkhir] ∧
-    asbabLaHukm { fiDar with kalimat := [fiK, afdala] } = [.mamnuMuhtamal] ∧
+    asbabLaHukm { fiDar with kalimat := [fiK, afdala] } = [.fathaJarr] ∧
     asbabLaHukm bimafulayn = [.laTamthil] ∧
     asbabLaHukm alWaladDhahabaDhahaba = [.itarYarudd] ∧
     asbabLaHukm taraAlWalad = [.madlul] ∧
@@ -1040,7 +1053,8 @@ def biMulhaq (m : Mulhaqat.Mulhaq) : Itar3 :=
 
 /-- **لكلّ سببٍ من أسباب الحدّ العشرة شاهد** (على الشاهد): إطارٌ ثانٍ؛ والحالُ متقدّمًا؛ وعاملٌ اسميّ؛ ونائبٌ مجرور؛ ونعتٌ يرسو على الفعل
 (لا يتأخّر بدوره، ومرساه غيرُ آخر الظواهر)؛ والحالُ مثنًّى؛ والفعلُ غيرُ ظاهر؛ والفاعلُ مستتر؛ و«الْوَلَدُ يَذْهَبَ» (المضارعُ خبرًا)؛ والفاعلُ
-مثنًّى — كلٌّ بسببه وحده. -/
+مثنًّى — في كلٍّ منها سببُ الحدّ الوحيد (`asbabHadd`). وفي ستّةٍ منها يزيد `asbabLaHukm` ردَّ `itarOK` (`itarYarudd` أو
+`laTamthil`)، فالشاهدُ يعزل سببَ الحدّ بين أسباب الحدّ، لا عن ردّ الإطار. -/
 theorem shahid_hadd_asbab :
     asbabHadd { dhahabaAlWalad with jisr := { ud := Mulhaqat.darabaZayd, thani := some Mulhaqat.darabaZayd } } = [.itarThani] ∧
     asbabHadd (biMulhaq { dawr := .hal, marsa := 1, t := noun 0 0 0, qabl := true }) = [.mulhaqMutaqaddim] ∧
@@ -1069,30 +1083,48 @@ def yaduwaK : Kalima := ⟨[4 * 11 + 0, 4 * 17 + 3, 4 * 3 + 1, 4 * 28 + 0], fals
 def badalFata : Itar3 :=
   { dhahabaAlWalad with jisr := { ud := Mulhaqat.darabaZayd, ml := [{ dawr := .badal, marsa := 1, naw := 0, t := noun 1 0 0 }] }, kalimat := [dhahaba, alWalad, alFata], maani := [dhahab, walad, walad] }
 
+def fatan : Kalima := ⟨[4 * 25 + 0, 4 * 18 + 0, 59], false, false⟩                             -- فَتًى (التنوين نونٌ ساكنة)
+def qadin : Kalima := ⟨[4 * 7 + 0, 4 * 2 + 3, 4 * 12 + 2, 59], false, false⟩                  -- قَاضٍ
+def abuka : Kalima := ⟨[4 * 0 + 0, 4 * 26 + 1, 4 * 28 + 3, 4 * 8 + 0], false, false⟩          -- أَبُوكَ (ك=8)
+def yakhshaK : Kalima := ⟨[4 * 11 + 0, 4 * 6 + 3, 4 * 10 + 0], false, false⟩                  -- يَخْشَ (خ=6 ش=10)
+def yarmiK : Kalima := ⟨[4 * 11 + 0, 4 * 15 + 3, 4 * 27 + 2], false, false⟩                   -- يَرْمِ (ر=15 م=27)
+def abuK : Kalima := ⟨[4 * 0 + 0, 4 * 26 + 1, 4 * 28 + 3], false, false⟩                       -- أَبُوْ
+def yakhshaAlif : Kalima := ⟨[4 * 11 + 0, 4 * 6 + 3, 4 * 10 + 0, 4 * 2 + 3], false, false⟩     -- يَخْشَى (ى ألفٌ ساكنة)
+def qadiK : Kalima := ⟨[4 * 7 + 0, 4 * 2 + 3, 4 * 12 + 2, 4 * 11 + 3], false, false⟩          -- قَاضِيْ (بلا أل)
+def yaqdiK : Kalima := ⟨[4 * 11 + 0, 4 * 7 + 3, 4 * 12 + 2, 4 * 11 + 3], false, false⟩         -- يَقْضِيْ (ق=7 ض=12)
+def dariK : Kalima := ⟨[4 * 17 + 0, 4 * 2 + 3, 4 * 15 + 2, 4 * 8 + 0], false, false⟩           -- دَارِكَ (ك=8)
+def abikaK : Kalima := ⟨[4 * 0 + 0, 4 * 26 + 2, 4 * 11 + 3, 4 * 8 + 0], false, false⟩          -- أَبِيكَ
+
 /-- **القراءةُ «لا حكم» لا تُسقط امتناعًا قاطعًا** (على الشاهد): «ضَرَبَ الْفَتَى الْوَلَدَ» لا حكم (`illaAkhir`)، و«ضَرَبَ الْفَتَى الْوَلَدُ» (المفعولُ
 مرفوع) ممتنع؛ و«ذَهَبَ الْفَتَى الْوَلَدُ» (ثلاثُ كلماتٍ لخانتين) ممتنع؛ و«فِي أَفْضَلَ» بنسبةٍ إسنادية (لا إسنادَ في شبه الجملة) ممتنع؛
-و«لَنْ يَدْعُوْ وَلَدٌ» بواوٍ ساكنة ممتنع («وتظهر الفتحة في نحو … ولن / يدعو»، القطر L94–95)، و«لَنْ يَدْعُوَ وَلَدٌ» مرخَّص؛ والقراءةُ في
-الملحق كذلك: «ذَهَبَ الْوَلَدُ الْفَتَى» بدلًا لا حكم (`illaAkhir`). -/
+و«لَنْ يَدْعُوْ وَلَدٌ» بواوٍ ساكنة و«لَنْ يَقْضِيْ وَلَدٌ» بياءٍ ساكنة و«ضَرَبَ الْوَلَدُ الْقَاضِيْ» ممتنعة («وتظهر الفتحة في نحو "إن القاضي لن
+يقضي ولن يدعو"»، القطر L94–95)، و«لَنْ يَدْعُوَ وَلَدٌ» مرخَّص، و«ضَرَبَ الْوَلَدُ قَاضِيْ» بلا أل لا حكم (`illaAkhir`: لاحتمال «غلامي»، L92)؛
+و«فِي دَارِكَ» و«فِي أَبِيكَ» و«فِي أَبُوكَ» لا حكم (`fathaJarr`: آخرُ الخلايا حركةُ الضمير)؛ والقراءةُ في الملحق كذلك: «ذَهَبَ الْوَلَدُ الْفَتَى»
+بدلًا لا حكم (`illaAkhir`). -/
 theorem shahid_qiraa :
     hukm3 (darabaFata alWaladaK) = .laHukm ∧ asbabLaHukm (darabaFata alWaladaK) = [.illaAkhir] ∧
     hukm3 (darabaFata alWalad) = .mumtani ∧
     hukm3 { dhahabaAlWalad with kalimat := [dhahaba, alFata, alWalad] } = .mumtani ∧
     hukm3 { fiDar with kalimat := [fiK, afdala], isnad := ⟨walad, .alaqa 1 30, .isnadiyya⟩ } = .mumtani ∧
     hukm3 (lanYafal yaduuK) = .mumtani ∧ hukm3 (lanYafal yaduwaK) = .murakhkhas ∧
+    hukm3 (lanYafal yaqdiK) = .mumtani ∧
+    hukm3 { darabaFata alQadi with kalimat := [darabaK, alWalad, alQadi] } = .mumtani ∧
+    hukm3 { darabaFata alQadi with kalimat := [darabaK, alWalad, qadiK] } = .laHukm ∧
+    asbabLaHukm { darabaFata alQadi with kalimat := [darabaK, alWalad, qadiK] } = [.illaAkhir] ∧
+    asbabLaHukm { fiDar with kalimat := [fiK, dariK] } = [.fathaJarr] ∧
+    asbabLaHukm { fiDar with kalimat := [fiK, abikaK] } = [.fathaJarr] ∧
+    asbabLaHukm { fiDar with kalimat := [fiK, abuka] } = [.fathaJarr] ∧
     hukm3 badalFata = .laHukm ∧ asbabLaHukm badalFata = [.illaAkhir] := by decide +kernel
 
-def fatan : Kalima := ⟨[4 * 25 + 0, 4 * 18 + 0, 59], false, false⟩                             -- فَتًى (التنوين نونٌ ساكنة)
-def qadin : Kalima := ⟨[4 * 7 + 0, 4 * 2 + 3, 4 * 12 + 2, 59], false, false⟩                  -- قَاضٍ
-def abuka : Kalima := ⟨[4 * 0 + 0, 4 * 26 + 1, 4 * 28 + 3, 4 * 8 + 0], false, false⟩          -- أَبُوكَ (ك=8)
-def yakhshaK : Kalima := ⟨[4 * 11 + 0, 4 * 6 + 3, 4 * 10 + 0], false, false⟩                  -- يَخْشَ (خ=6 ش=10)
-def yarmiK : Kalima := ⟨[4 * 11 + 0, 4 * 15 + 3, 4 * 27 + 2], false, false⟩                   -- يَرْمِ (ر=15 م=27)
 
 /-- **وما بقي** (معلَن؛ كلُّه كما كان على ca5ed3c):
 - «فِي أَفْضَلِ» (ممنوعٌ مجرورٌ بالكسرة بلا أل ولا إضافة) مرخَّص — الممنوعُ لا يُعرف بلا معجم؛ ومضافًا «فِي أَفْضَلِ الدُّورِ» مرخَّص
   و«فِي أَفْضَلَ الدُّورِ» ممتنع (القطر L87–88)؛ و«فِي الدَّارَ» بأل وفتحة ممتنع.
 - «لَمْ يَدْعُو وَلَدٌ» (إثباتُ حرف العلّة مجزومًا) مرخَّص، و«لَمْ يَغْزُ»/«لَمْ يَخْشَ»/«لَمْ يَرْمِ» وَلَدٌ (القطر L91) ممتنعة — البابُ
   `mudariMutall` من المعجم.
-- «ذَهَبَ فَتًى» و«ذَهَبَ قَاضٍ» (المنوَّنان) و«ذَهَبَ أَبُوكَ» (بضميرٍ متّصل) ممتنعة.
+- «ذَهَبَ فَتًى» و«ذَهَبَ قَاضٍ» (المنوَّنان) و«ذَهَبَ أَبُوكَ» (بضميرٍ متّصل، رفعًا) ممتنعة؛ و«ذَهَبَ أَبُوْ» ممتنع — الأسماءُ الستّة بالحروف
+  غيرُ مجسورة، والواوُ آخرَ الاسم لا تقديرَ عليها (L79).
+- «لَمْ يَخْشَى وَلَدٌ» (إثباتُ الألف مجزومًا) مرخَّص كـ«لَمْ يَدْعُو».
 - و«ممتنع» بلا أسباب: «طَارَ» كلمةً واحدة. -/
 theorem shahid_baqi :
     hukm3 { fiDar with kalimat := [fiK, afdali] } = .murakhkhas ∧
@@ -1103,6 +1135,7 @@ theorem shahid_baqi :
     hukm3 { dhahabaWaladun with kalimat := [dhahaba, fatan] } = .mumtani ∧
     hukm3 { dhahabaWaladun with kalimat := [dhahaba, qadin] } = .mumtani ∧
     hukm3 { dhahabaAlWalad with kalimat := [dhahaba, abuka] } = .mumtani ∧
+    hukm3 { dhahabaAlWalad with kalimat := [dhahaba, abuK] } = .mumtani ∧ hukm3 (lamYafal yakhshaAlif) = .murakhkhas ∧
     hukm3 { dhahabaAlWalad with kalimat := [taraK], maani := [tara] } = .mumtani ∧
     asbabLaHukm { dhahabaAlWalad with kalimat := [taraK], maani := [tara] } = [] := by decide +kernel
 
