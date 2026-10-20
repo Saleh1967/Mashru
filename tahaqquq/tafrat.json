@@ -938,14 +938,26 @@
  {
   "ism": "P343_majhul_madi_ghayr_maftuh_mulgha",
   "milaf": "Jisr/JisrDal.lean",
-  "min": "  (if madi then (if (akhir l).map hala != some 0 then [.madiGhayrMaftuh] else [])",
+  "min": "  (if madi then (if (akhir l).map hala != some 0 then [.madiAkhirGhayrFatha] else [])",
   "ila": "  (if madi then ([] : List SababMajhul)"
  },
  {
   "ism": "P344_majhul_mudari_ghayr_marfu_mulgha",
   "milaf": "Jisr/JisrDal.lean",
-  "min": "   else (if (akhir l).map hala != some 1 then [.mudariGhayrMarfu] else [])) ++",
+  "min": "   else (if (akhir l).map hala != some 1 then [.mudariAkhirGhayrDamma] else [])) ++",
   "ila": "   else ([] : List SababMajhul)) ++"
+ },
+ {
+  "ism": "P359_majhul_namat_waw_akhir",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "      mutaharrik a && hala a == 0 && mutaharrik b && mutaharrik c && hala c == 0 && harf c != waw",
+  "ila": "      mutaharrik a && hala a == 0 && mutaharrik b && mutaharrik c && hala c == 0"
+ },
+ {
+  "ism": "P360_majhul_harf_mudara_mutlaq",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "  c < 116 && (harf c == nun || harf c == 0 || harf c == ya || harf c == 18) && (hala c == 0 || hala c == 1)",
+  "ila": "  c < 116 && (hala c == 0 || hala c == 1)"
  },
  {
   "ism": "P340_majhul_mudaaf_mulgha",
