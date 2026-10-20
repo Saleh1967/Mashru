@@ -716,7 +716,7 @@
  {
   "ism": "P329_utur_la_tamthil_yumna",
   "milaf": "Jisr/Utur.lean",
-  "min": "  (if framesL.contains u.jisr.ud.f then [] else [.laTamthil]) ++",
+  "min": "  (if Mulhaqat.itarOK u.jisr then [] else if framesL.contains u.jisr.ud.f then [.itarYarudd] else [.laTamthil]) ++",
   "ila": "  ([] : List SababLaHukm) ++"
  },
  {
@@ -728,14 +728,26 @@
  {
   "ism": "P331_utur_mamnu_bi_al",
   "milaf": "Jisr/Utur.lean",
-  "min": "  !(hs.contains 2 && !hs.contains 0 && fathaAkhir w.khalaya && !w.al)",
-  "ila": "  !(hs.contains 2 && !hs.contains 0 && fathaAkhir w.khalaya)"
+  "min": "  !(hs.contains 2 && !hs.contains 0 && fathaAkhir w.khalaya && !w.al && !mudaf)",
+  "ila": "  !(hs.contains 2 && !hs.contains 0 && fathaAkhir w.khalaya && !mudaf)"
  },
  {
   "ism": "P332_utur_sabab_madlul_mahdhuf",
   "milaf": "Jisr/Utur.lean",
   "min": "  (if waslMadlul u.isnad == .laHukm then [.madlul] else [])",
   "ila": "  ([] : List SababLaHukm)"
+ },
+ {
+  "ism": "P335_utur_mamnu_bil_idafa",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  !(hs.contains 2 && !hs.contains 0 && fathaAkhir w.khalaya && !w.al && !mudaf)",
+  "ila": "  !(hs.contains 2 && !hs.contains 0 && fathaAkhir w.khalaya && !w.al)"
+ },
+ {
+  "ism": "P336_utur_illa_fi_aljazm",
+  "milaf": "Jisr/Utur.lean",
+  "min": "def laIllaAkhir (hs : List Nat) (w : Kalima) (_ : Bool) : Bool := !(illaAkhir w.khalaya && !hs.contains 3)",
+  "ila": "def laIllaAkhir (hs : List Nat) (w : Kalima) (_ : Bool) : Bool := !(illaAkhir w.khalaya && hs.length > 0)"
  },
  {
   "ism": "P84_nabat_hayawan",
