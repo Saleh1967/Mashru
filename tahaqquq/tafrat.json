@@ -1002,6 +1002,18 @@
   "ila": "def akhirMudari (c : Nat) : Bool := mutaharrikBi c 1"
  },
  {
+  "ism": "P374_majhul_akhir_khumasi",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "      harfMudara p && akhirMudari d && mutaharrikBi c 2 &&\n",
+  "ila": "      harfMudara p && mutaharrikBi c 2 &&\n"
+ },
+ {
+  "ism": "P375_majhul_akhir_sudasi",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "      harfMudara p && hala p == 0 && akhirMudari e &&\n",
+  "ila": "      harfMudara p && hala p == 0 &&\n"
+ },
+ {
   "ism": "P340_majhul_mudaaf_mulgha",
   "milaf": "Jisr/JisrDal.lean",
   "min": "  | c :: d :: _ => harf d == harf c && hala d == 3",
