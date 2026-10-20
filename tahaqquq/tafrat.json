@@ -2148,9 +2148,9 @@
   "ila": "    if False:"
  },
  {
-  "ism": "P314_qiyas_tasjil_nafsuh",
+  "ism": "P314_qiyas_tasjil_kharij_hawkama",
   "milaf": "tahaqquq/qiyas_d.py",
-  "min": " and tasjil != WATHIQA",
+  "min": " and tasjil.startswith(\"hawkama/\")",
   "ila": ""
  },
  {

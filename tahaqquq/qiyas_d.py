@@ -324,7 +324,8 @@ def hirasat(root, out, n_shatr, tasjil):
     if git(root, "diff", "--quiet", t0, "HEAD", "--", WATHIQA, SCRIPT).returncode:
         return "الوثيقة أو السكربت تغيّرا بعد إيداع التسجيل: هذا تسجيلٌ جديد"
     if n_shatr == 2:
-        ok = bool(tasjil) and tasjil.startswith("hawkama/") and tasjil != WATHIQA
+        # هذه الوثيقةُ نفسُها تُرفض بـ t1 ≠ t0 أدناه (أُضيفت في إيداع التسجيل أو قبله).
+        ok = bool(tasjil) and tasjil.startswith("hawkama/")
         ok = ok and git(root, "cat-file", "-t", f"origin/main:{tasjil}").stdout.strip() == "blob"
         if ok:
             t1 = git(root, "log", "--diff-filter=A", "-1", "--format=%H", "origin/main", "--", tasjil).stdout.strip()

@@ -169,15 +169,15 @@ qari = Q.mukhrij_qari([
     "1:4:1\tQABUL\t6 7 8\t1\t1\t1\t-\t3\t-",                # ف3 «أ»: لا حكم (السكون)
     "1:4:2\tQABUL\t9 10 11\t1\t1\t1\t-\t0\tالنصب",          # ف3 «ج»: مرشَّح النصب، MASAQ رفع ← خلاف
     "1:4:3\tQABUL\t12 13\t1\t1\t1\t-\t3\t-",                # ف3 «ج»: لا حكم
-    "1:4:4\tQABUL\t29 55 73\t1\t1\t1\tقلت\t1\tالرفع",       # ليست في QAC بموضعها (1:4 متساوية العدّة)؛ مبنيّة فلا ف3
+    "1:4:4\tQABUL\t29 55 73\t1\t0\t1\tقلت\t1\tالرفع",       # فشلُ ف1 بعد التسكين وحده؛ ليست في QAC بموضعها (1:4 متساوية العدّة)؛ مبنيّة
 ])
 N = Q.hisab(masaq, qac, qari, {(1, 1), (1, 2), (1, 3), (1, 4)})
 assert N["f0"] == {"kalimat": 11, "maqbula": 10, "marfuda": 1, "asbab_alrafd": {"حرف ليس في جدول المخارج: «x»": 1}}, N["f0"]
-# على الخلايا ردّ 1:2:1 و1:2:2، وبعد التسكين ردّ 1:2:2، وكلاهما ردّا 1:2:2.
+# على الخلايا ردّ 1:2:1 و1:2:2، وبعد التسكين ردّ 1:2:2 و1:4:4، وكلاهما ردّا 1:2:2.
 assert (N["f1"]["dalOK"], N["f1"]["fashl"], N["f1"]["fashl_ala_alkhalaya"], N["f1"]["fashl_baad_altaskin"],
-        N["f1"]["fashl_kilahuma"]) == (8, 2, 2, 1, 1), N["f1"]
-assert [x["mawdi"] for x in N["f1"]["qaimat_alfashl"]] == ["1:2:1", "1:2:2"]
-assert N["f1"]["suwar_maqbula"] == 10 and N["f1"]["suwar_fashl"] == 2
+        N["f1"]["fashl_kilahuma"]) == (7, 3, 2, 2, 1), N["f1"]
+assert [x["mawdi"] for x in N["f1"]["qaimat_alfashl"]] == ["1:2:1", "1:2:2", "1:4:4"]
+assert N["f1"]["suwar_maqbula"] == 10 and N["f1"]["suwar_fashl"] == 3
 # الآية 1:2: كلمتان في MASAQ بعد حذف الشاذّة، وثلاث في QAC ← غيرُ متساوية؛ و1:1 و1:3 و1:4 متساوية.
 assert N["f2"]["ayat_mutasawiya"] == 3 and N["f2"]["laysa_fi_qac"] == 1, N["f2"]
 assert (N["f2"]["i"]["n"], N["f2"]["i"]["wifaq"], N["f2"]["ii"]["n"], N["f2"]["ii"]["wifaq"]) == (2, 2, 1, 0), N["f2"]
@@ -281,12 +281,13 @@ ktb("hawkama/zaid.md", "x")
 assert "غير نظيفة" in H()
 os.remove(os.path.join(repo, "hawkama", "zaid.md"))
 ktb("hawkama/tasjil2.md", "تسجيلٌ لاحق")
-g("add", "hawkama/tasjil2.md")
+ktb("tahaqquq/jadid.md", "خارج hawkama")
+g("add", "hawkama/tasjil2.md", "tahaqquq/jadid.md")
 g("commit", "-q", "-m", "laysa_ala_main")
 assert "HEAD ليس origin/main" in H()
 g("update-ref", "refs/remotes/origin/main", "HEAD")
 assert H() is None
-for t in (None, Q.WATHIQA, "hawkama/", "hawkama/qadim.md", "hawkama/la_wujud.md", "tahaqquq/qiyas_d.py"):
+for t in (None, Q.WATHIQA, "hawkama/", "hawkama/qadim.md", "hawkama/la_wujud.md", "tahaqquq/qiyas_d.py", "tahaqquq/jadid.md"):
     assert "الشطرُ الثاني" in H(n=2, tasjil=t), t
 assert H(n=2, tasjil="hawkama/tasjil2.md") is None
 ktb(Q.SCRIPT, "سكربتٌ مغيَّر")
