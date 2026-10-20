@@ -854,7 +854,7 @@
  {
   "ism": "P371_utur_irab_bil_harf_mulgha",
   "milaf": "Jisr/Utur.lean",
-  "min": "  !(nom && mudaf && hs.contains 1 && w.khalaya.getLast? == some 115)",
+  "min": "  !(nom && mudaf && hs.contains 1 && wawBadDamma w.khalaya)",
   "ila": "  true"
  },
  {
@@ -862,6 +862,12 @@
   "milaf": "Jisr/Utur.lean",
   "min": "(nom && !al && !mudaf && hs.contains 0)",
   "ila": "(nom && !al && hs.contains 0)"
+ },
+ {
+  "ism": "P373_utur_waw_bad_damma",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  | 115 :: d :: _ => d % 4 == 1\n",
+  "ila": "  | 115 :: _ :: _ => true\n"
  },
  {
   "ism": "P84_nabat_hayawan",
