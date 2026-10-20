@@ -2346,6 +2346,18 @@
   "ila": "  yujad (n.qaima.map F)"
  },
  {
+  "ism": "P337_phi_khali_bila_istinfad",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def nitaqKhali : Nitaq Empty := ⟨[], true, fun _ d => d.elim⟩",
+  "ila": "def nitaqKhali : Nitaq Empty := ⟨[], false, fun _ d => d.elim⟩"
+ },
+ {
+  "ism": "P338_phi_min_qaima_bila_istinfad",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def nitaqMinQaima {α : Type} (l : List α) : Nitaq {a // a ∈ l} := ⟨l.attach, true, fun _ d => List.mem_attach l d⟩",
+  "ila": "def nitaqMinQaima {α : Type} (l : List α) : Nitaq {a // a ∈ l} := ⟨l.attach, false, fun _ d => List.mem_attach l d⟩"
+ },
+ {
   "ism": "P269_qanun_ala_alkhalaya_wahdah",
   "milaf": "Nizam/Aqd.lean",
   "min": "  qanun x := Jisr.Utur.dalOK x",

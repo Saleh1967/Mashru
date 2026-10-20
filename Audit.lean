@@ -1381,6 +1381,7 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.Phi.yujadN_N
 #print axioms Nizam.Phi.la_N_bila_istinfad
 #print axioms Nizam.Phi.istinfad_shawahid
+#print axioms Nizam.Phi.shahada_nisbiyya
 #print axioms Nizam.Phi.tarkib_P
 #print axioms Nizam.Phi.tarkib_N
 #print axioms Nizam.Phi.zanjir_P
@@ -1427,6 +1428,7 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.Phi.aqd_phi
 #print axioms Nizam.Phi.phiAqd_P
 #print axioms Nizam.Phi.phiAqd_N
+#print axioms Nizam.Phi.phiAqd_farigh
 #print axioms Nizam.Phi.kull_ma_kull_min_phi
 #print axioms Nizam.Phi.jidhr_hadd
 #print axioms Nizam.Phi.aqd_phi_mashru
