@@ -13,16 +13,16 @@ SLGE.MadlulAwwalan	T5	نعم	المدلول أوّلًا
 SLGE.Madlul	T6	نعم	المدلول وحده والدلالات (فيه no_third للمنطوق والمفهوم)
 SLGE.Bridge	T6	نعم	جسر المالك بين المدلول والوضع
 SLGE.Wad	T7	نعم	جبر العوامل والإعراب على القطر
-SLGE.Maqam	T7	لا	المقام والإحالة
-SLGE.Tarkib	T7	لا	أطر التركيب
-SLGE.TarkibLit	T7	لا	أطر التركيب حرفيّةً
-SLGE.TarkibExt	T7	لا	تتمّة التركيب
-SLGE.AwamilTable	T7	لا	جدول العوامل (مولَّد)
-SLGE.Awamil	T7	لا	العوامل
-SLGE.Simat	T7	لا	السمات
-SLGE.Simat2	T7	لا	تتمّة السمات
-SLGE.Muwahhad	T7	لا	الإطار الموحَّد
-SLGE.Kull	T7	لا	الجملة الكلّيّة
+SLGE.Maqam	T7	نعم	المقام والإحالة
+SLGE.Tarkib	T7	نعم	أطر التركيب
+SLGE.TarkibLit	T7	نعم	أطر التركيب حرفيّةً
+SLGE.TarkibExt	T7	نعم	تتمّة التركيب
+SLGE.AwamilTable	T7	نعم	جدول العوامل (مولَّد)
+SLGE.Awamil	T7	نعم	العوامل
+SLGE.Simat	T7	نعم	السمات
+SLGE.Simat2	T7	نعم	تتمّة السمات
+SLGE.Muwahhad	T7	نعم	الإطار الموحَّد
+SLGE.Kull	T7	نعم	الجملة الكلّيّة
 Dal.Makharij	T0	نعم	المخارج والحالات الأربع
 Dal.Khaliya	T1	نعم	الخلية حامل × حالة
 Dal.Tamthil	T1	لا	ثباتُ التمثيل: الآلةُ المنقولة بالفكّ عبر ترميزٍ لا يفقد لا يتغيّر تشغيلُها ولا أوزانها ولا قبولها؛ مطبَّقًا على الخلية ورقمها في Fin 116 بالاتّجاهين
@@ -57,19 +57,19 @@ Madlul.IshtirakData	T6	لا	بيانات الاشتراك (مولَّدة)
 Jisr.AqsamDalMadlul	T6	لا	الأقسام السبعة باعتبار الدال والمدلول
 Jisr.Tawafuq	T6	لا	التوافق بين موضعي الدلالات الثلاث
 Aql.AdawatMaani	T6	لا	أدوات المعاني بوّاباتٍ منطقيّة
-Jisr.Utur	T7	لا	أطر الطبقات الثلاث على القانون العامّ
+Jisr.Utur	T7	نعم	أطر الطبقات الثلاث على القانون العامّ
 Jisr.JisrDalUtur	T7	لا	موافقة الجسر إلى الدالّ لقارئ الطبقة الثالثة
 Jisr.Tarkib	T7	لا	الجملة الاسمية والفعلية والظرفية بأقسام الكلم
-Jisr.Awamil	T7	لا	العوامل المئة وقانون الاستنفاد
-Jisr.AwamilJadwal	T7	لا	جدول العوامل المئة (مولَّد)
+Jisr.Awamil	T7	نعم	العوامل المئة وقانون الاستنفاد
+Jisr.AwamilJadwal	T7	نعم	جدول العوامل المئة (مولَّد)
 Jisr.AqsamAwamil	T7	لا	أقسام العوامل
-Jisr.Nisab	T7	لا	النسب الثلاث على أطر المالك
+Jisr.Nisab	T7	نعم	النسب الثلاث على أطر المالك
 Jisr.NisabAsnaf	T7	لا	النسب الثلاث على أصناف العوامل
 Jisr.TartibMamul	T7	لا	ترتيب الفاعل والمفعول مع العامل
 Aql.Isnad	T7	لا	الرابطة الإسنادية على المرساة
-Jisr.AwamilUslub	T8	لا	أساليب العوامل (مولَّد)
-Jisr.Ikhbar	T8	لا	أساليب الإخبار
-Jisr.Mulhaqat	T8	لا	ملحقات أطر الإخبار
+Jisr.AwamilUslub	T8	نعم	أساليب العوامل (مولَّد)
+Jisr.Ikhbar	T8	نعم	أساليب الإخبار
+Jisr.Mulhaqat	T8	نعم	ملحقات أطر الإخبار
 Jisr.KhulasaIkhbar	T8	لا	خلاصة أسلوب الإخبار
 Madlul.Tarjih	T9	لا	ترجيح الاحتمالات الخمسة: اشتراك ونقل ومجاز وإضمار وتخصيص
 Aql.AlaqaMajaz	T9	لا	شرطُ شرعيّة علاقة المجاز التي يستهلكها haml: شاهدُ واقعٍ مختوم مسجَّلٌ لهويّة الدعوى بعينها (PR #41 وتخصيصه بالدعوى)
