@@ -624,6 +624,13 @@ import Madlul.Fard116Shawahid
 #print axioms Jisr.Utur.hukm_la_yusqit_tarkhis
 #print axioms Jisr.Utur.fiHadd_of_hukm
 #print axioms Jisr.Utur.kharij_alhadd
+#print axioms Jisr.Utur.ofBool_ne_laHukm
+#print axioms Jisr.Utur.damm_laHukm
+#print axioms Jisr.Utur.laHukm_bisabab
+#print axioms Jisr.Utur.fiHadd_mumaththal
+#print axioms Jisr.Utur.la_tamthil_la_hukm
+#print axioms Jisr.Utur.mumtani_mumaththal
+#print axioms Jisr.Utur.shahid_asbab
 #print axioms Jisr.Utur.itar3_yahtawi
 #print axioms Jisr.Utur.itar3_yahtawi_hukm
 #print axioms Jisr.Utur.shahid_dhahaba_alwalad

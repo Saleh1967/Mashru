@@ -714,6 +714,30 @@
   "ila": "  | .lahu | .fihi | .maahu | .hal => true\n"
  },
  {
+  "ism": "P329_utur_la_tamthil_yumna",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  (if framesL.contains u.jisr.ud.f then [] else [.laTamthil]) ++",
+  "ila": "  ([] : List SababLaHukm) ++"
+ },
+ {
+  "ism": "P330_utur_illa_akhir_mulgha",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  | a :: _ => a == 11 || a == 47 || a == 115",
+  "ila": "  | _ :: _ => false"
+ },
+ {
+  "ism": "P331_utur_mamnu_bi_al",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  !(hs.contains 2 && !hs.contains 0 && fathaAkhir w.khalaya && !w.al)",
+  "ila": "  !(hs.contains 2 && !hs.contains 0 && fathaAkhir w.khalaya)"
+ },
+ {
+  "ism": "P332_utur_sabab_madlul_mahdhuf",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  (if waslMadlul u.isnad == .laHukm then [.madlul] else [])",
+  "ila": "  ([] : List SababLaHukm)"
+ },
+ {
   "ism": "P84_nabat_hayawan",
   "milaf": "Madlul/Tayin.lean",
   "min": "  | .naam, .la, _ => some .nabat\n  | .naam, .naam, .la => some .hayawan\n  | .naam, .naam, .naam => some .insan\n  | _, _, _ => none\n\n/-- في غير الجمادية",
