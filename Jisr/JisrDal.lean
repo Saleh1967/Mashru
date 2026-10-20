@@ -22,13 +22,16 @@
 
   **الصورة.** الخليةُ `4·حرف + حالة` (فتحة 0، ضمّة 1، كسرة 2، سكون 3)؛ `kh`/`harf`/`hala` هي خانةُ المالك `SLGE.cellEnc`/`cellDec` بعينها
   (`khaliya_malik`) ومرآةُ البنّاء `Dal.fakk` (`harf_fakk`)، والحواملُ مواضعُها في جدول المخارج `Dal.hawamil` (ا 2، ي 11، ن 14، و 28:
-  `hawamil_huruf`)، ولا حكمَ إن كانت الخليةُ الأخيرة فوق 116 (`hukm`؛ وما قبلها محصورٌ بحرفه). (١) **البابُ معلَن** `Bab`: المفردُ المنصرف، والفعلُ الصحيح، والمقصور، والمنقوص، والمضافُ
+  `hawamil_huruf`)، ولا حكمَ إن كانت الخليةُ الأخيرة 116 فما فوق (`hukm`؛ وما قبلها محصورٌ بحرفه). (١) **البابُ معلَن** `Bab`: المفردُ المنصرف، والفعلُ الصحيح، والمقصور، والمنقوص، والمضافُ
   إلى الياء، والأسماءُ الستّة، والمثنّى، وجمعُ المذكر السالم، وجمعُ المؤنث السالم، والممنوعُ من الصرف (مجرّدًا أو مع أل والإضافة)، والأمثلةُ الخمسة،
   والمضارعُ المعتلّ الآخر — فالدالُّ لا يقرّر بابَ الكلمة (أهي مثنًّى أم اسمٌ آخرُه ألفٌ ونون؟): البابُ من المعجم، والجسرُ يقرأ الإعرابَ من الخلايا
   **بعد** إعلان الباب (كما أنّ الدالَّ وحده لا يقرّر المدلول: `Bridge.dal_undetermines`)؛ والملحقاتُ بالمثنّى والجمع (L83–85) وأولات (L86) وهن
   (L79–80) تدخل بإعلان بابها من المعجم لا بشاهدٍ هنا. (٢) **الحكمُ من الدالّ** `HukmDal` ثلاثيّ: معيَّنٌ، أو محتمَلٌ بين أكثر من إعرابٍ (الدالُّ
   لا يفرّق: ياءُ المثنّى والجمع نصبًا وجرًّا، فتحةُ الممنوع نصبًا وجرًّا، تقديرُ المقصور)، أو لا حكم (خليةٌ لا يقبلها الباب: حرفُ العلّة الحاملُ غيرُ
-  ساكنٍ في المثنّى والجمع والستّة والمقصور، ومضارعٌ معتلٌّ آخرُه واوٌ مضمومة …). `hukm` يقرأ الخليةَ الأخيرة (وقبلَها في المثنّى والجمع). (٣)
+  ساكنٍ في المثنّى والجمع والستّة والمقصور، ومضارعٌ معتلٌّ آخرُه واوٌ مضمومة …). `hukm` يقرأ الخليةَ الأخيرة (وقبلَها في المثنّى والجمع).
+  ولـ«لا حكم» سببٌ واحدٌ مسمّى `SababDal` (`sababDal`): كلمةٌ بلا خلايا، أو خليتُها الأخيرة 116 فما فوق، أو خليةٌ لا يقبلها البابُ المعلَن
+  (`laYaqbaluhuBab` هو `hukmKhaliya = .laHukm` بعينه: لا يفرّق خطأَ إعلان الباب من خطأ الحركة) — `hukm_laHukm_sabab`: «لا حكم» ⟺ سبب.
+  وتسميةُ السبب هنا رأيُ البنّاء على مبدأ LC11 («فصل عدم التمثيل عن الامتناع اللغوي») لا من LC06. (٣)
   **الأصليةُ** تقابلُ المالك بعينه (`Bridge.irabState`: `asliyya_tuqabil`)؛ **والفرعيةُ**: صفوفُ جدول المالك `Bridge.farIya` العشرة بأبوابنا
   (`farIyaBab_malik`)، ولكلّ صفٍّ القاعدةُ على كلّ كلمة (`farIya_kull`) وشاهدٌ يحمله (`muwafiq_farIya`)، وحواملُها من حروف الزيادة (`sitta_hamil`؛
   وعند المالك `Bridge.fariya_augs`). (٤) **التقدير**: المقصورُ والمضافُ إلى الياء لا يعيّنان شيئًا (`maqsur_la_yuayyin`، `mudaf_la_yuayyin`)،
@@ -36,22 +39,42 @@
   (`mamnu_fatha`، `mamnu_bi_al`). (٦) **الأمثلةُ الخمسة**: بالنون رفعٌ وبحذفها نصبٌ أو جزم (`amthila_nun`). (٧) **المجهول** `majhul`: ضمُّ الأوّل
   (ومعه الثاني في نحو تعلّم، والثالث في نحو انطلق — بالصيغة المعلَنة `Siga`، في الماضي وحده: مثالا القطر ماضيان، ومضارعُهما بضمّ الأوّل وحده)، وفتحُ
   ما قبل الآخر في المضارع وكسرُه في الماضي؛ يحفظ الحروفَ والطولَ والخلايا دون 116 (`majhul_huruf`، `majhul_tul`، `majhul_dun_116`)، ويُرفض باسمه
-  ما قصُر عن موضع المشارِك بثلاثٍ أو فيه حرفُ علّةٍ ساكن (`illaSakin`: ألفٌ أو واوٌ أو ياءٌ ساكنة أيًّا كان ما قبلها — فيُرفض الأجوفُ والناقصُ
-  اللذان فيهما قلبٌ، قال وباع: ثلاثةُ أوجهٍ L244 لم تُبنَ؛ ويُرفض معهما ما مجهولُه بتبديل الحركات وحده نحو أَوْعَدَ وبَيَّنَ ويُقَاتِلُ — رفضٌ
-  لا خطأ، معلَن) (`majhul_marfud`)؛ وما لا يُرفض وليس على القاعدة غيرُ مبنيّ: المثالُ الواويّ في المضارع (يَعِدُ ← يُوعَدُ) بابُه من المعجم.
+  ما له سببٌ في `sababMajhul` (`majhul_none_iff`: لا رفضَ إلّا بسببٍ مسمّى؛ والأسبابُ حدودٌ للأداة لا امتناعٌ في العربية — LC06 «حدود تحويل
+  المجهول وتفسير رفض التحويل» من «سجل التزامات إغلاق الإخبار ثم الإنشاء»، مرفق المالك `CLOSURE_LEDGER_AR.md`، غيرُ مودَعٍ ولا في المستودع؛ وموضعُ القراءة فيه لهذا البند سطرُ المرفق 85: «`Jisr/JisrDal.lean` —
+  `majhul / majhul_marfud`؛ الالتزام `ca5ed3cd250cc6fb3000d5bae161f407a895f0c1`»).
+  **والترخيصُ بنمطٍ موجب لا بغياب مانع** (`majhul_namat`: لا مخرجَ إلّا على نمطٍ معلَن `namat`)، على قاعدة القطر L242 «ويضم أول الفعل مطلقا»
+  ومثاليها (تعلم، انطلق؛ L242–243). والأنماطُ تعيينُ البنّاء: الماضي فَعَلَ/فَعِلَ/فَعُلَ، وفَعَّلَ/فَعْلَلَ/أَفْعَلَ، وتَفَعَّلَ/تَفَعْلَلَ، واِنْفَعَلَ/اِفْتَعَلَ،
+  واِسْتَفْعَلَ/اِفْعَنْلَلَ/اِفَّعَّلَ، آخرُه مفتوحٌ غيرُ واو (الكتاب س20543 «هذه الواو لا تقع قبلها أبدا كسرة إلا قلبت ياء وذلك نحو غاز وغزي»)؛ والمضارعُ
+  مضمومَ الآخر ظاهرًا غيرَ واوٍ ولا ياء (`akhirMudari`) بحرفٍ من «نأيت» (L65): يَفْعِلُ/يُفْعِلُ، ويَنْفَعِلُ/يَفْتَعِلُ، ويُفَعِّلُ/يُفَعْلِلُ، ويَتَفَعَّلُ/يَتَفَعْلَلُ، ويَسْتَفْعِلُ/يَفْعَنْلِلُ، ويَفَّعَّلُ.
+  **عقدُ المُدخَل** (تعيينُ البنّاء): الفعلُ وحده بلا سابقةٍ ولا لاحقة —؛ وما لا تُميّزه الخلايا يمرّ على عهدته (`shahid_anmat`): اللاحقةُ
+  المضمومة في المضارع والمفتوحة في الماضي على نمط (يَدْعُهُ ← يُدْعَهُ، غَرَّكَ ← غُرِّكَ)، والزمنُ المعلَن خطأً على نمطه (يَشْرَبَ ماضيًا ← يُشْرِبَ)، وصورةُ الأصل للأجوف لا تُميّزها الخلايا
+  ممّا جاء على الأصل غيرَ معتلّ (الكتاب س19976–19979 «وقد جاءت حروف على الأصل غير معتلة … نحو قولهم أجودت وأطولت واستحوذ»؛ وأَعْوَزَ من «عوز»، اللسان س110455–110457) (قَوَلَ ← قُوِلَ، بَيَعَ ← بُيِعَ، أَقْوَمَ ← أُقْوِمَ، يَقْوُلُ ← يُقْوَلُ، وأَعْوَزَ ← أُعْوِزَ) —، الماضي مفتوحَ الآخر ظاهرًا والمضارعُ مضمومَه، بزمنه (`madi`) وصيغته (`Siga`) المعلَنَين —
+  على عهدة من يعلنه كما يُعلَن الباب؛ وما خرج عن الأنماط يُرفض باسمه. الأسبابُ التشخيصيّة: ما قصُر عن موضع المشارِك بثلاث (`qasir`)؛ والمضارعُ
+  دون أربع خلايا (`mudariDunArba`: أصولُه ثلاثةٌ فأكثر بعد حرف المضارعة — تعيينُ البنّاء —، فما دون الأربع سقط منه أصلٌ لا يُعرف من الخلايا:
+  المثالُ الواويّ يَعِدُ ويَضَعُ، والكتاب س19844 «ولم تذهب الواو كما ذهبت في الفعل»؛ وردُّه، يَعِدُ ← يُوعَدُ، بابُه من المعجم)؛ والماضي غيرُ
+  المفتوح الآخر ظاهرًا (`madiAkhirGhayrFatha`: ضَرَبَتْ، قُلْتُ، رَدَّتْ، رَمَى) والمضارعُ غيرُ المضموم الآخر ظاهرًا (`mudariAkhirGhayrDamma`:
+  يَدْعُوَ، يَعِدْنَ، يَقُمْ، يَضْرِبَ، يَضْرِبْ، ويَدْعُو المرفوعُ تقديرًا)؛ والآخرُ المشدَّد (`mudaafAkhir`: الإدغامُ لم يُبنَ — مَدَّ، يَمُدُّ)؛
+  وحرفُ العلّة الساكن (`illaSakin`: فيُرفض الأجوفُ والناقصُ اللذان فيهما قلبٌ، قال وباع: ثلاثةُ أوجهٍ L244 لم تُبنَ، ومعهما أَوْعَدَ وبَيَّنَ
+  ويُقَاتِلُ — `majhul_marfud`)؛ وإلّا فـ«خارج الأنماط» (`kharijAnmat`). وكانت هذه كلُّها تمرّ على غير القاعدة على ca5ed3c (`#eval`): يُعَدُ،
+  يُضَعُ، يُغَزُ، يُدْعَوَ، يُعِدَنَ، ضُرَبِتْ، قُلِتُ، رُدِّتْ، مُدِدَ، يُمُدَدُ (`shawahid_sabab`)؛ سُيَعَدُ، فُضَرِبَ، يُعِدَهُ، ضُرَبِنَ، ضُرَبِتَ، سُرِوَ،
+  اُنْطَلِقَ بالبسيطة، ويُضْرِبَ ماضيًا، ويُغْزَوُ ويُرْمَيُ من يَغْزُوُ ويَرْمِيُ بضمّةٍ ظاهرة (`shahid_anmat`؛ والزمنُ المعلَن خطأً لا يُرفض إلّا إذا خالف الشكلُ نمطَه). **ورفضٌ لا خطأ** (كانت صحيحةً على ca5ed3c وصارت تُرفض): يَقُمْ ويَقُلْ ويَضْرِبَ ويَضْرِبْ ويَمْدُدْ
+  (المنصوبُ والمجزومُ خارج العقد)، ويَدَّحْرَجُ ويَزَّلْزَلُ (تَفَعْلَلَ المدغَمُ في المضارع خارج الأنماط، وماضيه اِدَّحْرَجَ يمرّ). وداخلَ الأنماط لم يُوجد مخرجٌ على غير القاعدة في الشواهد ولا في مداخلَ فحصها المراجعُ المستقلّ بـ`#eval`
+  في الجلسة (غيرُ مودَعة ولا معدودةٍ هنا) إلّا ما لا تُميّزه الخلايا مما أُعلن على عهدة المُدخِل (ومنه صورةُ الأصل للأجوف: وجدها المراجعُ في السادسة، وكانت تمرّ منذ ca5ed3c)، وإلّا آخرَ المضارع واوًا أو ياءً مضمومةً ظاهرًا
+  (يَغْزُوُ ← يُغْزَوُ؛ فات المراجعاتِ الأربعَ الأولى، وصُحّح بـ`akhirMudari`) — رأيٌ، لا برهانٌ ولا تقدير؛ وكونُ المُدخَل فعلًا مجرّدًا على عهدة المُدخِل. وقولُ المالك 2026-10-20، 13:01 («انت خبير
+  أوافق على قرارك ونفذ») كان جوابًا عن سؤال البنّاء من أين يبدأ؛ وتصميمُ الأسباب والأنماط والعقد بعده قرارُ البنّاء.
   وعلى صورة الابتداء عند المالك (`Law.ibtidaForm`): مجهولُ «انطلق» هو صورةُ ابتداء مجهوله، فضمُّ الثالث يضمّ همزةَ الوصل بقاعدته `waslHaraka`
   (`intilaq_wasl`)؛ وهو نظيرُ `Shabaka.jahhil` على الأدوار. (٨) **الشواهد** مبنيّةً خلايا (32، كلُّها بلفظ القطر بأسطرها، وللأبواب الاثني عشر كلِّها
   شاهد): زيد (رفعًا ونصبًا)، بزيد، يقوم (رفعًا ونصبًا)، يقم، ذو، أخا، أبي، الزيدان، فعلين، بشرطين، الزيدون، مفسدين، للمسلمين، الهندات، السموات، بأفضل،
   بالأفضل، تفعلان، تفعلوا (نصبًا وجزمًا)، يغز، يخش، يرم، يخشى، يدعو (رفعًا ونصبًا)، القاضي (رفعًا ونصبًا)، غلامي، الفتى؛ والمجهول: ضَرَبَ→ضُرِبَ،
   يَضْرِبُ→يُضْرَبُ، تَعَلَّمَ→تُعُلِّمَ، اِنْطَلَقَ→اُنْطُلِقَ.
 
-  **المبرهنات (22: 15 «مبرهن» و7 «مبرهن على الشاهد» بوسمَي `Mawsua.Wasm.tartib`):** لكلّ بالاستقراء على القائمة (3): `majhul_huruf`، `majhul_tul`، `majhul_dun_116`؛
-  لكلّ بفكّ التعريف على الخلية الأخيرة (12؛ بالقواعد المساعدة `harf_kh`/`hala_kh`/`akhir_append`، وبالتقسيم على الحالة): `harf_fakk`،
-  `khaliya_malik`، `asliyya_tuqabil`، `maqsur_la_yuayyin`، `mudaf_la_yuayyin`، `yayn_la_yufarriq`، `manqus_fatha_zahira`، `mamnu_fatha`،
-  `mamnu_bi_al`، `amthila_nun`، `farIya_kull`، `majhul_marfud`؛ على الشاهد (7؛ `decide`): `hawamil_huruf` (على `Dal.hawamil`)، `sitta_hamil` (على
-  `Law.augs`)، `farIyaBab_malik` (على `Bridge.farIya`)، `muwafiq_farIya` (لكلّ صفٍّ من العشرة شاهدٌ يحمله)، `shawahid_hukm`، `shawahid_majhul`،
-  `intilaq_wasl` (على `Law.ibtidaForm`). (22 في `Audit.lean`، ومعها 2 في `Jisr/JisrDalUtur.lean`؛ والقواعدُ المساعدة `badilInda_*`/`musharik_*`
-  داخليّة.) الإعرابُ المخرَج `SLGE.Wad.Irab` (إعراباتُ المالك الأربعة) لا `Jisr.Awamil.Irab` (إعرابُ جدول العوامل؛ الجسرُ بينهما لم يُبنَ).
+  **المبرهنات (27: 18 «مبرهن» و9 «مبرهن على الشاهد» بوسمَي `Mawsua.Wasm.tartib`)، بالمعيار الموحَّد** (`Nizam/Asas.lean` س6؛ 2026-10-20):
+  13 لكلّ — `khaliya_malik` (بـ omega)، و`majhul_huruf`/`majhul_tul`/`majhul_dun_116` (بمبرهنات الاستقراء `badilInda_*`/`musharik_*`)، والتسعُ
+  بمبرهناتٍ من الملفّ (`hukm_append`، `kh_lt`، `hala_kh`…): `asliyya_tuqabil`، `maqsur_la_yuayyin`، `mudaf_la_yuayyin`، `yayn_la_yufarriq`،
+  `manqus_fatha_zahira`، `mamnu_fatha`، `mamnu_bi_al`، `amthila_nun`، `farIya_kull`؛ و5 تعريفيّة: `harf_fakk`، `majhul_marfud`، `hukm_laHukm_sabab`،
+  `majhul_none_iff`، `majhul_namat`؛ و9 على الشاهد (`decide`): `hawamil_huruf` (على `Dal.hawamil`)، `sitta_hamil` (على `Law.augs`)، `farIyaBab_malik`
+  (على `Bridge.farIya`)، `muwafiq_farIya` (لكلّ صفٍّ من العشرة شاهدٌ يحمله)، `shawahid_hukm`، `shawahid_majhul`، `intilaq_wasl` (على
+  `Law.ibtidaForm`)، `shawahid_sabab`، `shahid_anmat`. (27 في `Audit.lean`، ومعها 2 في `Jisr/JisrDalUtur.lean`؛ والقواعدُ المساعدة `badilInda_*`/`musharik_*` داخليّة.) الإعرابُ المخرَج `SLGE.Wad.Irab` (إعراباتُ المالك الأربعة) لا `Jisr.Awamil.Irab` (إعرابُ جدول العوامل؛ الجسرُ بينهما لم يُبنَ).
 
   تعييناتُ البنّاء (تُعرض على المالك): البابُ معلَنٌ من المعجم لا من الدالّ (ومن أعلن الصحيحَ معتلًّا فجزمُه المقروء على عهدته)؛ حرفُ العلّة
   الحاملُ ساكنٌ، وحركةُ النون في المثنّى والجمع والأمثلة لا تُقرأ، وحركةُ ياء المضاف إليها لا تُقرأ؛ الأسماءُ الستّة تُقرأ قبل المضاف إليه (ضميرًا
@@ -59,7 +82,7 @@
   والشدّةُ في غيرها خليتين) ولا يقرأ الجسرُ إلّا الخليةَ الأخيرة وقبلَها — فحركاتُ الخلايا غيرِ المقروءة والفرقُ بين الهمزة (0) والألف (2) في أوّل الكلمة
   قراءةُ البنّاء لا يفحصها Lean ولا الاختبار (الاختبارُ يفحص الحروفَ وحدَها، وهمزةُ الوصل والقطع والألف عنده صنفٌ واحد)؛ التنوينُ (زيدٌ) في القارئ لا في الجسر فشواهدُ المفرد بلا تنوين؛ موانعُ الصرف التسعة نفسُها من المعجم
   (`Wad.mawani9` بالاسم)؛ المضارعُ المعتلّ: الجزمُ بحذف حرف العلّة يُقرأ من غياب حرف العلّة آخرًا؛ صيغُ المجهول الثلاث (بسيط/تفعّل/انفعل) على
-  مثالَي القطر في الماضي، وموضعُ المشارِك بثلاثٍ أقلَّ طولٍ، ورفضُ ذي حرف العلّة الساكن؛ والمجهولُ على صورة الابتداء (همزةُ الوصل خليةً). الجدولُ
+  مثالَي القطر في الماضي، وموضعُ المشارِك بثلاثٍ أقلَّ طولٍ، والمضارعُ أربعٌ أقلَّ طولٍ، ورفضُ ذي حرف العلّة الساكن والآخرِ المشدَّد، والأنماطُ على قاعدة L242–243 (`namat`) وعقدُ المُدخَل؛ والمجهولُ على صورة الابتداء (همزةُ الوصل خليةً). الجدولُ
   `jisr_dal.tsv` مسجَّلٌ «مرشّحًا» حتّى يأذن المالك بختمه؛ ومطابقتُه `tahaqquq/test_jisrdal.py`.
 -/
 import SLGE.Bridge
@@ -185,11 +208,31 @@ def hukmKhaliya (b : Bab) (l : List Nat) (c : Nat) : HukmDal :=
                          (match hala c with | 0 => .muayyan .nasb | 3 => .muayyan .raf | _ => .laHukm)
                        else .muayyan .jazm
 
-/-- **الجسر:** حكمُ الإعراب من الباب المعلَن وخلايا الكلمة: على الخلية الأخيرة، ولا حكمَ على خليةٍ فوق 116 (`Dal.Khaliya`). -/
+/-- **الجسر:** حكمُ الإعراب من الباب المعلَن وخلايا الكلمة: على الخلية الأخيرة، ولا حكمَ على خليةٍ 116 فما فوق (`Dal.Khaliya`). -/
 def hukm (b : Bab) (l : List Nat) : HukmDal :=
   match akhir l with
   | none => .laHukm
   | some c => if c < 116 then hukmKhaliya b l c else .laHukm
+
+/-- **أسبابُ «لا حكم» في الجسر:** كلمةٌ بلا خلايا، أو خليتُها الأخيرة 116 فما فوق، أو خليةٌ لا يقبلها البابُ المعلَن — سببٌ واحدٌ مسمّى. -/
+inductive SababDal
+  | farigh          -- لا خليةَ أخيرة
+  | fawqHadd        -- الخليةُ الأخيرة 116 فما فوق (`Dal.Khaliya`: الخلايا دون 116)
+  | laYaqbaluhuBab  -- الخليةُ لا يقبلها البابُ المعلَن (`hukmKhaliya`)
+deriving DecidableEq, Repr
+
+def sababDal (b : Bab) (l : List Nat) : Option SababDal :=
+  match akhir l with
+  | none => some .farigh
+  | some c => if c < 116 then (if hukmKhaliya b l c = .laHukm then some .laYaqbaluhuBab else none) else some .fawqHadd
+
+/-- **لا «لا حكم» في الجسر إلّا بسببٍ مسمّى**، ولكلّ سببٍ «لا حكم». -/
+theorem hukm_laHukm_sabab (b : Bab) (l : List Nat) : hukm b l = .laHukm ↔ sababDal b l ≠ none := by
+  unfold hukm sababDal
+  split
+  · simp
+  · rename_i c _
+    by_cases hc : c < 116 <;> by_cases hk : hukmKhaliya b l c = .laHukm <;> simp [hc, hk]
 
 theorem kh_lt (h s : Nat) (hh : h < 29) (hs : s < 4) : kh h s < 116 := by unfold kh; omega
 
@@ -424,11 +467,91 @@ theorem musharik_lt (g : Siga) (l : List Nat) (hl : ∀ c ∈ l, c < 116) : ∀ 
 /-- الصيغةُ الفعليّة: المشاركةُ في الماضي وحده (مثالا القطر ماضيان)، والمضارعُ بسيطٌ أبدًا (ضمُّ الأوّل وحده: يُتَعَلَّمُ، يُنْطَلَقُ). -/
 def sigaFiliyya (madi : Bool) (g : Siga) : Siga := if madi then g else .basit
 
+/-- **أسبابُ رفض المجهول** (LC06): حدودٌ للأداة لا امتناعٌ في العربية. الأداةُ تبدّل حركاتِ الخلايا وحدها على قاعدة القطر L242–243،
+فلا تُخرج صورةً إلّا لمُدخَلٍ على **نمطٍ معلَن** (`namat`) — ترخيصٌ بشاهدٍ موجب لا بغياب مانعٍ معروف؛ وما سواه يُرفض باسمه: سببٌ
+تشخيصيٌّ إن عُرف، وإلّا «خارج الأنماط». -/
+inductive SababMajhul
+  | qasir                 -- أقصرُ من موضع المشارِك بثلاث خلايا
+  | mudariDunArba         -- مضارعٌ دون أربع خلايا: سقط منه أصلٌ لا يُعرف من الخلايا (يَعِدُ، يَضَعُ، يَقُمْ) — ردُّه من المعجم
+  | madiAkhirGhayrFatha   -- ماضٍ آخرُ خلاياه غيرُ مفتوحٍ ظاهرًا: لاحقةٌ (ضَرَبَتْ، ضَرَبْتُ) أو مقصورٌ (رَمَى) — لا يُبنى
+  | mudariAkhirGhayrDamma -- مضارعٌ آخرُ خلاياه غيرُ مضمومٍ ظاهرًا: منصوبٌ أو مجزوم أو بلاحقة أو مقدَّرٌ (يَضْرِبَ، يَرْمِ، يَعِدْنَ، يَدْعُو)
+  | mudaafAkhir           -- آخرُه مشدَّد (قبل الأخيرة ساكنةٌ من حرفها): الإدغامُ لم يُبنَ (مَدَّ، يَمُدُّ)
+  | illaSakin             -- حرفُ علّةٍ ساكن: القلبُ (قال وباع، L244) وتبديلُ الحركات وحده (أَوْعَدَ، بَيَّنَ) لم يُبنيا
+  | kharijAnmat           -- لا سببَ تشخيصيًّا ولا نمطَ معلَنًا: سابقةٌ، أو لاحقةٌ تُخرجه عن الأنماط، أو بابٌ لم يُبنَ (سَيَعِدُ، ضَرَبْنَ، سَرُوَ)
+deriving DecidableEq, Repr
+
+/-- آخرُ الكلمة مشدَّد: الخليةُ قبل الأخيرة ساكنةٌ من حرف الأخيرة (الشدّةُ خليتان). -/
+def mudaafAkhir (l : List Nat) : Bool :=
+  match l.reverse with
+  | c :: d :: _ => harf d == harf c && hala d == 3
+  | _ => false
+
+/-- حرفٌ متحرّكٌ غيرُ الألف (دون 116). -/
+def mutaharrik (c : Nat) : Bool := c < 116 && harf c != alif && hala c != 3
+/-- حرفٌ صحيحٌ ساكن: ليس ألفًا ولا واوًا ولا ياءً. -/
+def sahihSakin (c : Nat) : Bool := c < 116 && harf c != alif && harf c != waw && harf c != ya && hala c == 3
+/-- حرفُ المضارعة: من «نأيت» (القطر L65 «وافتتاحه بحرف من نأيت»: ن 14، ء 0، ي 11، ت 18) مفتوحًا أو مضمومًا. -/
+def harfMudara (c : Nat) : Bool :=
+  c < 116 && (harf c == nun || harf c == 0 || harf c == ya || harf c == 18) && (hala c == 0 || hala c == 1)
+
+/-- متحرّكٌ بحركةٍ معيّنة. -/
+def mutaharrikBi (c h : Nat) : Bool := mutaharrik c && hala c == h
+/-- آخرُ الماضي في النمط: مفتوحٌ غيرُ واو — الكتاب س20543 «هذه الواو لا تقع قبلها أبدا كسرة إلا قلبت ياء وذلك نحو غاز وغزي» (وفيه س20488
+«سرو يسرو»). -/
+def akhirMadi (c : Nat) : Bool := mutaharrikBi c 0 && harf c != waw
+/-- آخرُ المضارع في النمط: مضمومٌ ظاهرًا غيرُ واوٍ ولا ياء — فالضمّةُ عليهما مقدَّرة: القطر L92–94 «تقدر جميع الحركات … والضمة في نحو
+"يدعو ويقضي"»؛ والمخرجُ بفتحٍ قبلهما (يُغْزَوُ) على غير القاعدة: الكتاب س20502–20506 «وإذا كانت الياء والواو قبلها فتحة اعتلت وقلبت ألفا …
+وذلك قولك رمى ويرمى وغزا ويغزى». -/
+def akhirMudari (c : Nat) : Bool := mutaharrikBi c 1 && harf c != waw && harf c != ya
+
+/-- **أنماطُ المُدخَل المعلَنة** (تعيينُ البنّاء على قاعدة القطر L242–243 «ويضم أول الفعل مطلقا، ويشاركه ثاني نحو / تعلم، وثالث نحو انطلق»
+ومثاليها، وL243 «ويفتح ما قبل الآخر في المضارع، ويكسر في الماضي»): كلُّ خليةٍ متحرّكةٌ أو صحيحةٌ ساكنة في موضعها، وآخرُ الماضي مفتوحٌ
+غيرُ واو (`akhirMadi`)، والمضارعُ بحرفٍ من «نأيت» (L65) مضمومَ الآخر ظاهرًا غيرَ واوٍ ولا ياء (`akhirMudari`):
+- الماضي البسيط: فَعَلَ/فَعِلَ/فَعُلَ (ثلاثُ خلايا)؛ وفَعَّلَ/فَعْلَلَ/أَفْعَلَ (أربعٌ، الثانيةُ ساكنة).
+- بمشاركة الثاني (`thani`): تَفَعَّلَ/تَفَعْلَلَ (تاءٌ مفتوحة، والثالثةُ ساكنة).
+- بمشاركة الثالث (`thalith`): اِنْفَعَلَ/اِفْتَعَلَ (همزةُ وصلٍ مكسورة، والثانيةُ ساكنة)؛ واِسْتَفْعَلَ/اِفْعَنْلَلَ/اِفَّعَّلَ (ستٌّ، الثانيةُ والرابعةُ ساكنتان).
+- المضارع: يَفْعِلُ/يُفْعِلُ (أربعٌ، الثانيةُ ساكنة)؛ ويَنْفَعِلُ/يَفْتَعِلُ (مفتوحُ الأوّل، الثانيةُ ساكنة) ويُفَعِّلُ/يُفَعْلِلُ (مضمومُ الأوّل، الثالثةُ ساكنة)؛
+  ويَتَفَعَّلُ/يَتَفَعْلَلُ ويَسْتَفْعِلُ/يَفْعَنْلِلُ ويَفَّعَّلُ (يَذَّكَّرُ: الثانيةُ ساكنةٌ من حرف الثالثة والرابعةُ من حرف الخامسة) (ستّ).
+ولا تُقرأ في النمط سابقة. **وما لا تُميّزه الخلايا يمرّ على عهدة المُدخِل** (`shahid_anmat`): اللاحقةُ المضمومة في المضارع والمفتوحة في
+الماضي إذا وافق الشكلُ نمطًا (يَدْعُهُ في صورة يَكْرَهُ ← يُدْعَهُ؛ غَرَّكَ في صورة فَعَّلَ ← غُرِّكَ)، والزمنُ المعلَن خطأً إذا وافق الشكلُ نمطَ
+الزمن المعلَن (يَشْرَبَ ماضيًا ← يُشْرِبَ)، وصورةُ الأصل للأجوف (قَوَلَ ← قُوِلَ)؛ واللاحقةُ غيرُ المضمومة في المضارع وغيرُ المفتوحة في الماضي تُرفض بسببها، وما سوى ذلك خارجَ الأنماط. -/
+def namat (madi : Bool) (g : Siga) (l : List Nat) : Bool :=
+  match madi, g, l with
+  | true, .basit, [a, b, c] => mutaharrikBi a 0 && mutaharrik b && akhirMadi c
+  | true, .basit, [a, x, b, c] => mutaharrikBi a 0 && sahihSakin x && mutaharrikBi b 0 && akhirMadi c
+  | true, .thani, [t, a, x, b, c] => t == kh 18 0 && mutaharrikBi a 0 && sahihSakin x && mutaharrikBi b 0 && akhirMadi c
+  | true, .thalith, [h, x, a, b, c] => h == kh 0 2 && sahihSakin x && mutaharrikBi a 0 && mutaharrikBi b 0 && akhirMadi c
+  | true, .thalith, [h, x, t, y, b, c] =>
+      h == kh 0 2 && sahihSakin x && mutaharrikBi t 0 && sahihSakin y && mutaharrikBi b 0 && akhirMadi c
+  | false, _, [p, x, b, c] => harfMudara p && sahihSakin x && mutaharrik b && akhirMudari c
+  | false, _, [p, a, b, c, d] =>
+      harfMudara p && akhirMudari d && mutaharrikBi c 2 &&
+      ((hala p == 0 && sahihSakin a && mutaharrikBi b 0) || (hala p == 1 && mutaharrikBi a 0 && sahihSakin b))
+  | false, _, [p, a, b, c, d, e] =>
+      harfMudara p && hala p == 0 && akhirMudari e &&
+      ((a == kh 18 0 && mutaharrikBi b 0 && sahihSakin c && mutaharrikBi d 0) ||
+       (sahihSakin a && mutaharrikBi b 0 && sahihSakin c && mutaharrikBi d 2) ||
+       (sahihSakin a && mutaharrikBi b 0 && harf a == harf b && sahihSakin c && mutaharrikBi d 0 && harf c == harf d))
+  | _, _, _ => false
+
+/-- الأسبابُ التشخيصيّة بترتيبها: الطولُ (القصيرُ، ثمّ المضارعُ دون أربع — تعيينُ البنّاء)، ثمّ حالةُ الآخر ظاهرًا، ثمّ الآخرُ
+المشدَّد، ثمّ حرفُ العلّة الساكن. -/
+def sababTashkhis (madi : Bool) (g : Siga) (l : List Nat) : List SababMajhul :=
+  (if l.length < mawdiMusharik (sigaFiliyya madi g) + 3 then [.qasir]
+   else if !madi && l.length < 4 then [.mudariDunArba] else []) ++
+  (if madi then (if (akhir l).map hala != some 0 then [.madiAkhirGhayrFatha] else [])
+   else (if (akhir l).map hala != some 1 then [.mudariAkhirGhayrDamma] else [])) ++
+  (if mudaafAkhir l then [.mudaafAkhir] else []) ++
+  (if l.any illaSakin then [.illaSakin] else [])
+
+/-- أسبابُ الرفض: التشخيصيّةُ إن وُجدت، وإلّا «خارج الأنماط» إن لم يكن المُدخَل على نمطٍ معلَن. -/
+def sababMajhul (madi : Bool) (g : Siga) (l : List Nat) : List SababMajhul :=
+  sababTashkhis madi g l ++ (if (sababTashkhis madi g l).isEmpty && !namat madi g l then [.kharijAnmat] else [])
+
 /-- **المجهول** (L242–244): ضمُّ الأوّل — ومعه الثاني في نحو تعلّم، والثالث في نحو انطلق، في الماضي — وكسرُ ما قبل الآخر في الماضي وفتحُه في
-المضارع، على صورة الابتداء (همزةُ الوصل خليةً). يُرفض باسمه ما قصُر عن موضع المشارِك بثلاث خلايا، وما فيه حرفُ علّةٍ ساكن (الأجوفُ والناقص
-وفيهما القلب: قال وباع ثلاثةُ أوجهٍ L244 لم تُبنَ؛ ومعهما ما مجهولُه بتبديل الحركات وحده — رفضٌ لا خطأ). -/
+المضارع، على صورة الابتداء (همزةُ الوصل خليةً). يُرفض باسمه ما له سببٌ في `sababMajhul` — رفضٌ لا خطأ، وحدٌّ للأداة لا امتناعٌ لغويّ. -/
 def majhul (madi : Bool) (g : Siga) (l : List Nat) : Option (List Nat) :=
-  if l.length < mawdiMusharik (sigaFiliyya madi g) + 3 ∨ l.any illaSakin = true then none
+  if sababMajhul madi g l ≠ [] then none
   else some (badilInda (musharik (sigaFiliyya madi g) (badilInda l 0 1)) (l.length - 2) (if madi then 2 else 0))
 
 /-- **المجهولُ يحفظ الحروف**: الحروفُ بعينها وإنّما تتبدّل الحركات — لكلّ كلمة. -/
@@ -463,7 +586,129 @@ theorem majhul_marfud (madi : Bool) (g : Siga) (l : List Nat)
   unfold majhul
   split
   · rfl
-  · rename_i hn; exact absurd hl hn
+  · rename_i hn
+    refine absurd ?_ hn
+    unfold sababMajhul sababTashkhis
+    rcases hl with h | h
+    · simp [h]
+    · simp [h]
+
+/-- **لا مخرجَ إلّا على نمطٍ معلَن:** ترخيصُ المجهول بشاهدٍ موجب (`namat`) لا بغياب سببٍ تشخيصيّ. -/
+theorem majhul_namat (madi : Bool) (g : Siga) (l l' : List Nat) (h : majhul madi g l = some l') : namat madi g l = true := by
+  unfold majhul at h
+  split at h
+  · exact absurd h (by simp)
+  · rename_i hn
+    unfold sababMajhul at hn
+    cases hd : (sababTashkhis madi g l).isEmpty <;> cases hm : namat madi g l <;> simp_all
+
+/-- **لا رفضَ للمجهول إلّا بسببٍ مسمّى** (LC06): `none` ⟺ قائمةُ الأسباب غيرُ فارغة. -/
+theorem majhul_none_iff (madi : Bool) (g : Siga) (l : List Nat) : majhul madi g l = none ↔ sababMajhul madi g l ≠ [] := by
+  unfold majhul
+  split <;> simp_all
+
+/-- **على الشاهد (LC06):** ما كان يُخرج صورةً على غير قاعدةٍ تعرفها الأداة صار يُرفض باسمه (`#eval` على ca5ed3c للحال قبله):
+- المضارعُ دون الأربع: يَعِدُ ويَضَعُ (كانا يُعَدُ ويُضَعُ؛ والواوُ ساقطةٌ من الفعل: الكتاب س19844–19845 «ولم تذهب الواو كما ذهبت في الفعل …
+  ما في يعد»)، ويَغْزُ (كان يُغَزُ).
+- المضارعُ غيرُ المضموم الآخر ظاهرًا: يَدْعُوَ (كان يُدْعَوَ)، ويَعِدْنَ بنون النسوة (كان يُعِدَنَ)، ويَدْعُو مرفوعًا تقديرًا (ومعه حرفُ العلّة
+  الساكن)؛ و**رفضٌ لا خطأ**: يَقُمْ (كان يُقَمْ)، ويَضْرِبَ منصوبًا (كان يُضْرَبَ)، ويَضْرِبْ مجزومًا (كان يُضْرَبْ) — المنصوبُ والمجزومُ خارج العقد،
+  والأداةُ لا تفرّق المجزومَ الأجوفَ من الناقص الذي كان يُخرج يُرَمِ من يَرْمِ.
+- الماضي غيرُ المفتوح الآخر ظاهرًا: ضَرَبَتْ (كان ضُرَبِتْ)، وقُلْتُ (كان قُلِتُ)، ورَدَّتْ (كان رُدِّتْ)، ورَمَى (ومعه حرفُ العلّة الساكن).
+- الآخرُ المشدَّد: مَدَّ ويَمُدُّ (كانا مُدِدَ ويُمُدَدُ).
+- وما كان يُرفض بقي بأسبابه (قَالَ، والقصير)؛ ووَعَدَ ← وُعِدَ ويَضْرِبُ ← يُضْرَبُ وتَعَلَّمَ ← تُعُلِّمَ كما كانت.
+وأسبابُ الجسر الثلاثة: كلمةٌ فارغة، وخليةٌ 116، وضَرْ بالسكون في المفرد؛ وضَرُ بالضمّة لا سبب.
+ع 3، د 17، ض 12، م 27، ق 7، ل 13، ت 18، ر 15، غ 5، ز 19، ن 14، و 28. -/
+theorem shawahid_sabab :
+    sababMajhul false .basit [kh ya 0, kh 3 2, kh 17 1] = [.mudariDunArba] ∧
+    sababMajhul false .basit [kh ya 0, kh 12 0, kh 3 1] = [.mudariDunArba] ∧
+    sababMajhul false .basit [kh ya 0, kh 5 3, kh 19 1] = [.mudariDunArba] ∧
+    sababMajhul false .basit [kh ya 0, kh 17 3, kh 3 1, kh waw 0] = [.mudariAkhirGhayrDamma] ∧
+    sababMajhul false .basit [kh ya 0, kh 3 2, kh 17 3, kh nun 0] = [.mudariAkhirGhayrDamma] ∧
+    sababMajhul false .basit [kh ya 0, kh 7 1, kh 27 3] = [.mudariDunArba, .mudariAkhirGhayrDamma] ∧
+    sababMajhul false .basit [kh ya 0, kh 12 3, kh 15 2, kh 26 0] = [.mudariAkhirGhayrDamma] ∧
+    sababMajhul false .basit [kh ya 0, kh 12 3, kh 15 2, kh 26 3] = [.mudariAkhirGhayrDamma] ∧
+    sababMajhul false .basit [kh ya 0, kh 17 3, kh 3 1, kh waw 3] = [.mudariAkhirGhayrDamma, .illaSakin] ∧
+    sababMajhul true .basit [kh 15 0, kh 27 0, kh alif 3] = [.madiAkhirGhayrFatha, .illaSakin] ∧
+    sababMajhul true .basit [kh 12 0, kh 15 0, kh 26 0, kh 18 3] = [.madiAkhirGhayrFatha] ∧
+    sababMajhul true .basit [kh 7 1, kh 13 3, kh 18 1] = [.madiAkhirGhayrFatha] ∧
+    sababMajhul true .basit [kh 15 0, kh 17 3, kh 17 0, kh 18 3] = [.madiAkhirGhayrFatha] ∧
+    sababMajhul true .basit [kh 27 0, kh 17 3, kh 17 0] = [.mudaafAkhir] ∧
+    sababMajhul false .basit [kh ya 0, kh 27 1, kh 17 3, kh 17 1] = [.mudaafAkhir] ∧
+    sababMajhul true .basit [kh 7 0, kh alif 3, kh 13 0] = [.illaSakin] ∧
+    sababMajhul true .basit [kh 12 0, kh 15 0] = [.qasir] ∧
+    majhul false .basit [kh ya 0, kh 3 2, kh 17 1] = none ∧
+    majhul true .basit [kh waw 0, kh 3 0, kh 17 0] = some [kh waw 1, kh 3 2, kh 17 0] ∧
+    majhul false .basit [kh ya 0, kh 12 3, kh 15 2, kh 26 1] = some [kh ya 1, kh 12 3, kh 15 0, kh 26 1] ∧
+    majhul true .thani [kh 18 0, kh 3 0, kh 13 3, kh 13 0, kh 27 0] = some [kh 18 1, kh 3 1, kh 13 3, kh 13 2, kh 27 0] ∧
+    sababDal .mufrad [] = some .farigh ∧ sababDal .mufrad [kh 12 0, 116] = some .fawqHadd ∧
+    sababDal .mufrad [kh 12 0, kh 15 3] = some .laYaqbaluhuBab ∧ sababDal .mufrad [kh 12 0, kh 15 1] = none := by
+  decide
+
+set_option synthInstance.maxSize 8192 in
+/-- **الأنماطُ على الشاهد (LC06):** ترخيصٌ بنمطٍ موجب —
+- الماضي: رَضِيَ ← رُضِيَ، أَكَلَ ← أُكِلَ؛ عَلَّمَ ← عُلِّمَ، أَكْرَمَ ← أُكْرِمَ؛ تَزَلْزَلَ ← تُزُلْزِلَ؛ اِكْتَسَبَ ← اُكْتُسِبَ؛ اِسْتَغْفَرَ ← اُسْتُغْفِرَ.
+- المضارع: يَقْرَأُ ← يُقْرَأُ، يُكْرِمُ ← يُكْرَمُ، تَضْرِبُ ← تُضْرَبُ؛ يَنْطَلِقُ ← يُنْطَلَقُ، يَكْتَسِبُ ← يُكْتَسَبُ، يُعَلِّمُ ← يُعَلَّمُ؛ يَتَزَلْزَلُ ← يُتَزَلْزَلُ،
+  يَسْتَغْفِرُ ← يُسْتَغْفَرُ.
+- يَفَّعَّلُ: يَذَّكَّرُ ← يُذَّكَّرُ.
+- **وما لا تُميّزه الخلايا يمرّ على عهدة المُدخِل:** يَدْعُهُ ← يُدْعَهُ (في صورة يَكْرَهُ ← يُكْرَهُ)؛ غَرَّكَ ← غُرِّكَ (في صورة فَعَّلَ)؛ ويَشْرَبَ
+  معلَنًا ماضيًا ← يُشْرِبَ (الزمنُ على عهدة المُدخِل)؛ وصورةُ الأصل للأجوف: قَوَلَ ← قُوِلَ، بَيَعَ ← بُيِعَ، أَقْوَمَ ← أُقْوِمَ، يَقْوُلُ ← يُقْوَلُ (لا تُميّزها الخلايا
+  ممّا جاء على الأصل غيرَ معتلّ: أَعْوَزَ ← أُعْوِزَ — الكتاب س19976–19979؛ والأجوفُ بعد القلب بأوجهه الثلاثة L244 لم يُبنَ).
+و**خارجَ الأنماط** يُرفض باسمه ما كان يمرّ على غير القاعدة (`#eval` على ca5ed3c): السابقةُ (سَيَعِدُ ← سُيَعَدُ، فَضَرَبَ ← فُضَرِبَ)، واللاحقةُ
+التي تُخرجه عن الأنماط (يَعِدُهُ ← يُعِدَهُ، ضَرَبْنَ ← ضُرَبِنَ، ضَرَبْتَ ← ضُرَبِتَ)، وواوُ الماضي آخرًا (سَرُوَ ← سُرِوَ)، والصيغةُ والزمنُ المعلَنان
+خطأً إذا خالف الشكلُ نمطَه (اِنْطَلَقَ بالبسيطة ← اُنْطَلِقَ؛ يَضْرِبَ ماضيًا ← يُضْرِبَ)؛ ومَكْتَبُ مُعلَنًا مضارعًا (الميمُ ليست من «نأيت»، L65)؛ وآخرُ المضارع واوًا أو ياءً
+مضمومةً ظاهرًا (يَغْزُوُ ← يُغْزَوُ، يَرْمِيُ ← يُرْمَيُ).
+وشواهدُ سالبةٌ لكلّ نمطٍ أطول (صورٌ مصنوعةٌ للحدّ، لا شواهدُ لغة): يَشْتَرِيُ ويَسْتَدْعِيُ (الياءُ مضمومةً في الخماسيّ والسداسيّ)، يَفْتَحُهُ، ومُعَلِّمُ مضارعًا، ويُسْتَخْرِجُ ومَسْتَخْرِجُ مضارعًا، ونَعَلَّمَ بالثانية،
+وتَكْتَسَبَ بالثالثة، واِسْتَغْفِرَ ماضيًا.
+س 20، ف 25، ه 1، ك 8، ط 16، ق 7، ء 0، م 27، ب 26، ع 3، ل 13، ز 19، ت 18، غ 5، ر 15، د 17، ض 12، ش 10، ذ 23، ح 4، خ 6، ج 9، و `waw`، ي `ya`. -/
+theorem shahid_anmat :
+    (majhul true .basit [kh 15 0, kh 12 2, kh ya 0] = some [kh 15 1, kh 12 2, kh ya 0] ∧
+    majhul true .basit [kh 0 0, kh 8 0, kh 13 0] = some [kh 0 1, kh 8 2, kh 13 0] ∧
+    majhul true .basit [kh 3 0, kh 13 3, kh 13 0, kh 27 0] = some [kh 3 1, kh 13 3, kh 13 2, kh 27 0] ∧
+    majhul true .basit [kh 0 0, kh 8 3, kh 15 0, kh 27 0] = some [kh 0 1, kh 8 3, kh 15 2, kh 27 0] ∧
+    majhul true .thani [kh 18 0, kh 19 0, kh 13 3, kh 19 0, kh 13 0] = some [kh 18 1, kh 19 1, kh 13 3, kh 19 2, kh 13 0] ∧
+    majhul true .thalith [kh 0 2, kh 8 3, kh 18 0, kh 20 0, kh 26 0] = some [kh 0 1, kh 8 3, kh 18 1, kh 20 2, kh 26 0] ∧
+    majhul true .thalith [kh 0 2, kh 20 3, kh 18 0, kh 5 3, kh 25 0, kh 15 0] =
+      some [kh 0 1, kh 20 3, kh 18 1, kh 5 3, kh 25 2, kh 15 0] ∧
+    majhul false .basit [kh ya 0, kh 7 3, kh 15 0, kh 0 1] = some [kh ya 1, kh 7 3, kh 15 0, kh 0 1] ∧
+    majhul false .basit [kh ya 1, kh 8 3, kh 15 2, kh 27 1] = some [kh ya 1, kh 8 3, kh 15 0, kh 27 1] ∧
+    majhul false .basit [kh 18 0, kh 12 3, kh 15 2, kh 26 1] = some [kh 18 1, kh 12 3, kh 15 0, kh 26 1] ∧
+    majhul false .basit [kh ya 0, kh nun 3, kh 16 0, kh 13 2, kh 7 1] = some [kh ya 1, kh nun 3, kh 16 0, kh 13 0, kh 7 1] ∧
+    majhul false .basit [kh ya 0, kh 8 3, kh 18 0, kh 20 2, kh 26 1] = some [kh ya 1, kh 8 3, kh 18 0, kh 20 0, kh 26 1] ∧
+    majhul false .basit [kh ya 1, kh 3 0, kh 13 3, kh 13 2, kh 27 1] = some [kh ya 1, kh 3 0, kh 13 3, kh 13 0, kh 27 1] ∧
+    majhul false .basit [kh ya 0, kh 18 0, kh 19 0, kh 13 3, kh 19 0, kh 13 1] =
+      some [kh ya 1, kh 18 0, kh 19 0, kh 13 3, kh 19 0, kh 13 1] ∧
+    majhul false .basit [kh ya 0, kh 20 3, kh 18 0, kh 5 3, kh 25 2, kh 15 1] =
+      some [kh ya 1, kh 20 3, kh 18 0, kh 5 3, kh 25 0, kh 15 1] ∧
+    majhul false .basit [kh ya 0, kh 17 3, kh 3 1, kh 1 1] = some [kh ya 1, kh 17 3, kh 3 0, kh 1 1] ∧
+    majhul true .basit [kh 5 0, kh 15 3, kh 15 0, kh 8 0] = some [kh 5 1, kh 15 3, kh 15 2, kh 8 0] ∧
+    majhul true .basit [kh ya 0, kh 10 3, kh 15 0, kh 26 0] = some [kh ya 1, kh 10 3, kh 15 2, kh 26 0] ∧
+    majhul false .basit [kh ya 0, kh 23 3, kh 23 0, kh 8 3, kh 8 0, kh 15 1] = some [kh ya 1, kh 23 3, kh 23 0, kh 8 3, kh 8 0, kh 15 1] ∧
+    majhul true .basit [kh 7 0, kh waw 0, kh 13 0] = some [kh 7 1, kh waw 2, kh 13 0] ∧
+    majhul false .basit [kh ya 0, kh 7 3, kh waw 1, kh 13 1] = some [kh ya 1, kh 7 3, kh waw 0, kh 13 1] ∧
+    majhul true .basit [kh 26 0, kh ya 0, kh 3 0] = some [kh 26 1, kh ya 2, kh 3 0] ∧
+    majhul true .basit [kh 0 0, kh 7 3, kh waw 0, kh 27 0] = some [kh 0 1, kh 7 3, kh waw 2, kh 27 0] ∧
+    majhul true .basit [kh 0 0, kh 3 3, kh waw 0, kh 19 0] = some [kh 0 1, kh 3 3, kh waw 2, kh 19 0]) ∧
+    (sababMajhul false .basit [kh 20 0, kh ya 0, kh 3 2, kh 17 1] = [.kharijAnmat] ∧
+    sababMajhul false .basit [kh ya 0, kh 5 3, kh 19 1, kh waw 1] = [.kharijAnmat] ∧
+    sababMajhul false .basit [kh ya 0, kh 15 3, kh 27 2, kh ya 1] = [.kharijAnmat] ∧
+    sababMajhul true .basit [kh 25 0, kh 12 0, kh 15 0, kh 26 0] = [.kharijAnmat] ∧
+    sababMajhul false .basit [kh ya 0, kh 3 2, kh 17 1, kh 1 1] = [.kharijAnmat] ∧
+    sababMajhul true .basit [kh 12 0, kh 15 0, kh 26 3, kh nun 0] = [.kharijAnmat] ∧
+    sababMajhul true .basit [kh 12 0, kh 15 0, kh 26 3, kh 18 0] = [.kharijAnmat] ∧
+    sababMajhul true .basit [kh 20 0, kh 15 1, kh waw 0] = [.kharijAnmat] ∧
+    sababMajhul true .basit [kh 0 2, kh nun 3, kh 16 0, kh 13 0, kh 7 0] = [.kharijAnmat] ∧
+    sababMajhul true .basit [kh ya 0, kh 12 3, kh 15 2, kh 26 0] = [.kharijAnmat] ∧
+    sababMajhul false .basit [kh 27 0, kh 8 3, kh 18 0, kh 26 1] = [.kharijAnmat] ∧
+    sababMajhul false .basit [kh ya 0, kh 25 3, kh 18 0, kh 4 1, kh 1 1] = [.kharijAnmat] ∧
+    sababMajhul false .basit [kh 27 1, kh 3 0, kh 13 3, kh 13 2, kh 27 1] = [.kharijAnmat] ∧
+    sababMajhul false .basit [kh ya 1, kh 20 3, kh 18 0, kh 6 3, kh 15 2, kh 9 1] = [.kharijAnmat] ∧
+    sababMajhul false .basit [kh 27 0, kh 20 3, kh 18 0, kh 6 3, kh 15 2, kh 9 1] = [.kharijAnmat] ∧
+    sababMajhul true .thani [kh nun 0, kh 3 0, kh 13 3, kh 13 0, kh 27 0] = [.kharijAnmat] ∧
+    sababMajhul true .thalith [kh 18 0, kh 8 3, kh 18 0, kh 20 0, kh 26 0] = [.kharijAnmat] ∧
+    sababMajhul true .thalith [kh 0 2, kh 20 3, kh 18 0, kh 5 3, kh 25 2, kh 15 0] = [.kharijAnmat] ∧
+    sababMajhul false .basit [kh ya 0, kh 10 3, kh 18 0, kh 15 2, kh ya 1] = [.kharijAnmat] ∧
+    sababMajhul false .basit [kh ya 0, kh 20 3, kh 18 0, kh 17 3, kh 3 2, kh ya 1] = [.kharijAnmat]) := by
+  decide
 
 /-- الشواهد: ضَرَبَ→ضُرِبَ، يَضْرِبُ→يُضْرَبُ، تَعَلَّمَ→تُعُلِّمَ (الشدّة خليتان: ساكنٌ فمتحرّك)، اِنْطَلَقَ→اُنْطُلِقَ (همزةُ الوصل حاملًا 0 مكسورةً في
 الابتداء، ومضمومةً في المجهول)؛ ومضارعُ تعلّم بالصيغة الثانية يُتَعَلَّمُ (ضمُّ الأوّل وحده). ض 12، ر 15، ب 26، ط 16، ق 7. -/

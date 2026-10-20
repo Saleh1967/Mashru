@@ -930,6 +930,108 @@
   "ila": "| .muthanna, h, sn => [kh h 0, kh nun sn]"
  },
  {
+  "ism": "P339_majhul_mudari_bi_thalath",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "   else if !madi && l.length < 4 then [.mudariDunArba] else []) ++",
+  "ila": "   else if !madi && l.length < 3 then [.mudariDunArba] else []) ++"
+ },
+ {
+  "ism": "P343_majhul_madi_akhir_ghayr_fatha_mulgha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "  (if madi then (if (akhir l).map hala != some 0 then [.madiAkhirGhayrFatha] else [])",
+  "ila": "  (if madi then ([] : List SababMajhul)"
+ },
+ {
+  "ism": "P344_majhul_mudari_akhir_ghayr_damma_mulgha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "   else (if (akhir l).map hala != some 1 then [.mudariAkhirGhayrDamma] else [])) ++",
+  "ila": "   else ([] : List SababMajhul)) ++"
+ },
+ {
+  "ism": "P359_majhul_namat_waw_akhir",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "def akhirMadi (c : Nat) : Bool := mutaharrikBi c 0 && harf c != waw",
+  "ila": "def akhirMadi (c : Nat) : Bool := mutaharrikBi c 0"
+ },
+ {
+  "ism": "P360_majhul_harf_mudara_mutlaq",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "  c < 116 && (harf c == nun || harf c == 0 || harf c == ya || harf c == 18) && (hala c == 0 || hala c == 1)",
+  "ila": "  c < 116 && (hala c == 0 || hala c == 1)"
+ },
+ {
+  "ism": "P364_majhul_harf_mudara_bila_ta",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "harf c == ya || harf c == 18)",
+  "ila": "harf c == ya)"
+ },
+ {
+  "ism": "P365_majhul_madi_rubai_mulgha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "  | true, .basit, [a, x, b, c] => mutaharrikBi a 0 && sahihSakin x && mutaharrikBi b 0 && akhirMadi c",
+  "ila": "  | true, .basit, [a, x, b, c] => false"
+ },
+ {
+  "ism": "P366_majhul_istafala_mulgha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "      h == kh 0 2 && sahihSakin x && mutaharrikBi t 0 && sahihSakin y && mutaharrikBi b 0 && akhirMadi c",
+  "ila": "      false"
+ },
+ {
+  "ism": "P367_majhul_yufaillu_mulgha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "(hala p == 1 && mutaharrikBi a 0 && sahihSakin b))",
+  "ila": "false)"
+ },
+ {
+  "ism": "P368_majhul_yastafilu_mulgha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "       (sahihSakin a && mutaharrikBi b 0 && sahihSakin c && mutaharrikBi d 2) ||",
+  "ila": "       false ||"
+ },
+ {
+  "ism": "P369_majhul_yaffaalu_mulgha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "(sahihSakin a && mutaharrikBi b 0 && harf a == harf b && sahihSakin c && mutaharrikBi d 0 && harf c == harf d))",
+  "ila": "false)"
+ },
+ {
+  "ism": "P370_majhul_mudari_illa_madmum",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "def akhirMudari (c : Nat) : Bool := mutaharrikBi c 1 && harf c != waw && harf c != ya",
+  "ila": "def akhirMudari (c : Nat) : Bool := mutaharrikBi c 1"
+ },
+ {
+  "ism": "P374_majhul_akhir_khumasi",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "      harfMudara p && akhirMudari d && mutaharrikBi c 2 &&\n",
+  "ila": "      harfMudara p && mutaharrikBi c 2 &&\n"
+ },
+ {
+  "ism": "P375_majhul_akhir_sudasi",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "      harfMudara p && hala p == 0 && akhirMudari e &&\n",
+  "ila": "      harfMudara p && hala p == 0 &&\n"
+ },
+ {
+  "ism": "P340_majhul_mudaaf_mulgha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "  | c :: d :: _ => harf d == harf c && hala d == 3",
+  "ila": "  | c :: d :: _ => false"
+ },
+ {
+  "ism": "P341_sabab_dal_fawq_farigh",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "  | some c => if c < 116 then (if hukmKhaliya b l c = .laHukm then some .laYaqbaluhuBab else none) else some .fawqHadd",
+  "ila": "  | some c => if c < 116 then (if hukmKhaliya b l c = .laHukm then some .laYaqbaluhuBab else none) else some .farigh"
+ },
+ {
+  "ism": "P342_majhul_illa_mahdhuf",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "  (if l.any illaSakin then [.illaSakin] else [])",
+  "ila": "  ([] : List SababMajhul)"
+ },
+ {
   "ism": "P120_sabab_fail_wasf_daim",
   "milaf": "Aql/SababShartMani.lean",
   "min": "def sababFail : SababZahir (Option String) String String := ⟨id, fun _ => \"صدقٌ عقديّ\"⟩",
