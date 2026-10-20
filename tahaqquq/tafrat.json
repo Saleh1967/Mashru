@@ -1934,8 +1934,8 @@
  {
   "ism": "P255_qanunB_bil_wasl",
   "milaf": "Nizam/Aqd.lean",
-  "min": "  qanunB x := x.all (· < 117) && Fwaqf (runB 0 x)",
-  "ila": "  qanunB x := x.all (· < 117) && Fwasl (runB 0 x)"
+  "min": "  qanunB x := kamaB x && baadB x",
+  "ila": "  qanunB x := kamaB x && Fwasl (runB 0 (waqfForm x))"
  },
  {
   "ism": "P256_jidhrB_izaha_khata",
@@ -2014,6 +2014,24 @@
   "milaf": "Qari/Main.lean",
   "min": "    if wasl then\n",
   "ila": "    if false then\n"
+ },
+ {
+  "ism": "P269_qanun_ala_alkhalaya_wahdah",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "  qanun x := Jisr.Utur.dalOK x",
+  "ila": "  qanun x := x.all (· < 117) && Fwaqf (run 0 x)"
+ },
+ {
+  "ism": "P270_qari_baad_ka_kama",
+  "milaf": "Qari/Main.lean",
+  "min": "  let baad := Nizam.Aqd.baadB l",
+  "ila": "  let baad := kama"
+ },
+ {
+  "ism": "P271_qari_aqd_ka_kama",
+  "milaf": "Qari/Main.lean",
+  "min": "runB): {qabul qb} — على الخلايا",
+  "ila": "runB): {qabul kama} — على الخلايا"
  },
  {
   "ism": "P272_phi_wa_yakfi_wahid",
