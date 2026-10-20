@@ -836,20 +836,32 @@
  {
   "ism": "P361_utur_ya_nasb_bi_al",
   "milaf": "Jisr/Utur.lean",
-  "min": "(nom && !al && hs.contains 0)",
-  "ila": "(nom && hs.contains 0)"
+  "min": "(nom && !al && !mudaf && hs.contains 0)",
+  "ila": "(nom && !mudaf && hs.contains 0)"
  },
  {
   "ism": "P362_utur_ya_nasb_fil",
   "milaf": "Jisr/Utur.lean",
-  "min": "(nom && !al && hs.contains 0)",
-  "ila": "(!al && hs.contains 0)"
+  "min": "(nom && !al && !mudaf && hs.contains 0)",
+  "ila": "(!al && !mudaf && hs.contains 0)"
  },
  {
   "ism": "P363_utur_waw_ism",
   "milaf": "Jisr/Utur.lean",
   "min": "   | some 115 => !nom && hs.contains 1\n",
   "ila": "   | some 115 => hs.contains 1\n"
+ },
+ {
+  "ism": "P371_utur_irab_bil_harf_mulgha",
+  "milaf": "Jisr/Utur.lean",
+  "min": "  !(nom && mudaf && hs.contains 1 && w.khalaya.getLast? == some 115)",
+  "ila": "  true"
+ },
+ {
+  "ism": "P372_utur_ya_nasb_mudaf",
+  "milaf": "Jisr/Utur.lean",
+  "min": "(nom && !al && !mudaf && hs.contains 0)",
+  "ila": "(nom && !al && hs.contains 0)"
  },
  {
   "ism": "P84_nabat_hayawan",
