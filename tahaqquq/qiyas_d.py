@@ -198,7 +198,7 @@ def hisab(masaq, qac, qari, ayat_shatr):
     # ف1: «على الخلايا» ∧ «بعد التسكين»؛ ويُعدّ كلُّ مكوّنٍ وحده أيضًا.
     fashl = []
     fashl_kama = fashl_baad = fashl_kilahuma = 0
-    suwar_maqbula, suwar_fashl = set(), set()
+    suwar_maqbula, suwar_fashl, suwar_dalOK = set(), set(), set()   # صورُ المقبول ترميزُه، وما ردّه أحدُهما، وما قبلاه معًا (§٥ ف1)
     for k in maqbula:
         r = qari[miftah(k)]
         suwar_maqbula.add(masaq[k]["word"])
@@ -209,9 +209,12 @@ def hisab(masaq, qac, qari, ayat_shatr):
             fashl.append({"mawdi": miftah(k), "kalima": masaq[k]["word"], "ala_alkhalaya": int(r["kama"]),
                           "baad_altaskin": int(r["baad"])})
             suwar_fashl.add(masaq[k]["word"])
+        else:
+            suwar_dalOK.add(masaq[k]["word"])
     f1 = {"maqbula": len(maqbula), "dalOK": len(maqbula) - len(fashl), "fashl": len(fashl),
           "fashl_ala_alkhalaya": fashl_kama, "fashl_baad_altaskin": fashl_baad, "fashl_kilahuma": fashl_kilahuma,
-          "suwar_maqbula": len(suwar_maqbula), "suwar_fashl": len(suwar_fashl), "qaimat_alfashl": fashl}
+          "suwar_maqbula": len(suwar_maqbula), "suwar_dalOK": len(suwar_dalOK), "suwar_fashl": len(suwar_fashl),
+          "qaimat_alfashl": fashl}
 
     # ف2: مرشَّحُ الجذر مقابل جذر QAC، في الآيات التي تتساوى فيها عدّةُ الكلمات بين المرجعين.
     adad_m = Counter((k[0], k[1]) for k in masaq)
