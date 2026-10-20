@@ -932,8 +932,20 @@
  {
   "ism": "P339_majhul_mudari_bi_thalath",
   "milaf": "Jisr/JisrDal.lean",
-  "min": "   else if !madi && l.length < 4 then [.mudariNaqis] else []) ++",
-  "ila": "   else if !madi && l.length < 3 then [.mudariNaqis] else []) ++"
+  "min": "   else if !madi && l.length < 4 then [.mudariDunArba] else []) ++",
+  "ila": "   else if !madi && l.length < 3 then [.mudariDunArba] else []) ++"
+ },
+ {
+  "ism": "P343_majhul_madi_ghayr_maftuh_mulgha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "  (if madi then (if (akhir l).map hala != some 0 then [.madiGhayrMaftuh] else [])",
+  "ila": "  (if madi then ([] : List SababMajhul)"
+ },
+ {
+  "ism": "P344_majhul_mudari_ghayr_marfu_mulgha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "   else (if (akhir l).map hala != some 1 then [.mudariGhayrMarfu] else [])) ++",
+  "ila": "   else ([] : List SababMajhul)) ++"
  },
  {
   "ism": "P340_majhul_mudaaf_mulgha",

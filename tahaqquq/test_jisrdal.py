@@ -94,10 +94,13 @@ def fahs_lean():
     # LC06: أسبابُ رفض المجهول مسمّاةٌ بترتيبها، والمضارعُ دون أربع خلايا مرفوض، والآخرُ المشدَّد مرفوض
     sm = block("def sababMajhul ", "\n\n")
     assert "(if l.length < mawdiMusharik (sigaFiliyya madi g) + 3 then [.qasir]" in sm
-    assert "else if !madi && l.length < 4 then [.mudariNaqis] else []) ++" in sm
+    assert "else if !madi && l.length < 4 then [.mudariDunArba] else []) ++" in sm
+    assert "(if madi then (if (akhir l).map hala != some 0 then [.madiGhayrMaftuh] else [])" in sm
+    assert "else (if (akhir l).map hala != some 1 then [.mudariGhayrMarfu] else [])) ++" in sm
     assert "(if mudaafAkhir l then [.mudaafAkhir] else []) ++" in sm and "(if l.any illaSakin then [.illaSakin] else [])" in sm
     assert "| c :: d :: _ => harf d == harf c && hala d == 3" in block("def mudaafAkhir ", "\n\n")
-    assert munshiat_of("SababMajhul") == ["qasir", "mudariNaqis", "mudaafAkhir", "illaSakin"], munshiat_of("SababMajhul")
+    assert munshiat_of("SababMajhul") == ["qasir", "mudariDunArba", "madiGhayrMaftuh", "mudariGhayrMarfu", "mudaafAkhir", "illaSakin"], \
+        munshiat_of("SababMajhul")
     assert munshiat_of("SababDal") == ["farigh", "fawqHadd", "laYaqbaluhuBab"], munshiat_of("SababDal")
     sd = block("def sababDal ", "\n\n")
     assert "| none => some .farigh" in sd
@@ -111,7 +114,7 @@ def fahs_lean():
     for name in ("harf_fakk", "khaliya_malik", "hawamil_huruf", "asliyya_tuqabil", "maqsur_la_yuayyin", "mudaf_la_yuayyin", "yayn_la_yufarriq",
                  "manqus_fatha_zahira", "mamnu_fatha", "mamnu_bi_al", "amthila_nun", "sitta_hamil", "farIyaBab_malik", "farIya_kull",
                  "shawahid_hukm", "muwafiq_farIya", "majhul_huruf", "majhul_tul", "majhul_dun_116", "majhul_marfud", "shawahid_majhul",
-                 "intilaq_wasl", "hukm_laHukm_sabab", "majhul_none_iff", "shawahid_sabab"):
+                 "intilaq_wasl", "hukm_laHukm_sabab", "majhul_none_iff", "shawahid_sabab", "shahid_aqd_mudkhal"):
         assert re.search(rf"^theorem {name}\b", lean, re.M), name
     for name in ("mufrad_halaIrab", "mufrad_tanwin"):
         assert re.search(rf"^theorem {name}\b", lean_utur, re.M), name
