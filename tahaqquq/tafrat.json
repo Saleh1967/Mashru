@@ -2334,6 +2334,18 @@
   "ila": "    (.aqda (.waraqa fun _ => P)"
  },
  {
+  "ism": "P333_phi_maftuh_mughlaq",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def yujadMaftuh (l : List K3) : K3 := aw (yujad l) U",
+  "ila": "def yujadMaftuh (l : List K3) : K3 := yujad l"
+ },
+ {
+  "ism": "P334_phi_bila_istinfad_mughlaq",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  if n.mustanfad then yujad (n.qaima.map F) else yujadMaftuh (n.qaima.map F)",
+  "ila": "  yujad (n.qaima.map F)"
+ },
+ {
   "ism": "P269_qanun_ala_alkhalaya_wahdah",
   "milaf": "Nizam/Aqd.lean",
   "min": "  qanun x := Jisr.Utur.dalOK x",
