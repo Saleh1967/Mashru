@@ -42,6 +42,8 @@
       Madlul/Fard116Data.lean وMadlul/Fard116Shawahid.lean له بالبايت إن حضر المودَعان.
   ٥ت. أطلس الجسور (tahaqquq/test_atlas.py): كلّ وحدة Lean مسجَّلة بطبقتها في Nizam/atlas.tsv، ووصلُها بالمحرّك مطابقٌ لرسم الاستيراد.
   ٥ث. حادثتا الدمج (tahaqquq/test_hawadith.py): على تاريخ git الحقيقيّ، ٤أ يسمّي ما أسقطه 767e09b (7) وfeb12a8 (4)؛ بلا تاريخٍ لا يُشغَّل.
+  ٥ذ. منفّذ القياس المسجَّل (tahaqquq/test_qiyas_d.py): qiyas_d.py ووضعُ القياس في القارئ على بياناتٍ مصنوعة وكلماتٍ باليد، لا على المرجعين
+      (التسجيل المسبق hawkama/tasjil_qiyas_d.md).
   ٦. كلّ طفرة في tafrat.json تُقتل: تُفشل البناء أو تُفشل اختبارات المخزن. طفرة تعيش = اختبارٌ مرآة.
 التشغيل: python3 -I tahaqquq/bawwaba.py [--bila-tafrat]
 """
@@ -78,6 +80,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_fard116.py",
     "tahaqquq/test_atlas.py",
     "tahaqquq/test_hawadith.py",
+    "tahaqquq/test_qiyas_d.py",
 )
 
 
@@ -612,6 +615,10 @@ def main():
     report.append(f"٥ث {out.strip().splitlines()[-1] if out.strip() else 'حادثتا الدمج: ?'}")
     if code != 0:
         fails.append("اختبار حادثتي الدمج فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_qiyas_d.py"])
+    report.append(f"٥ذ منفّذ القياس المسجَّل: {out.strip().splitlines()[-1] if out.strip() else '?'}")
+    if code != 0:
+        fails.append("اختبار منفّذ القياس المسجَّل فشل:\n" + out[-800:])
     mdir = os.environ.get("MUDAA_DIR")
     if mdir and os.path.isdir(mdir):
         code, out = run([sys.executable, "-I", "mudaat/idaa.py", "tahaqqaq", mdir])

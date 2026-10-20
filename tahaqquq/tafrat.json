@@ -2016,22 +2016,202 @@
   "ila": "    if false then\n"
  },
  {
-  "ism": "P269_qanun_ala_alkhalaya_wahdah",
-  "milaf": "Nizam/Aqd.lean",
-  "min": "  qanun x := Jisr.Utur.dalOK x",
-  "ila": "  qanun x := x.all (· < 117) && Fwaqf (run 0 x)"
+  "ism": "P283_qiyas_kama_baad_maqluban",
+  "milaf": "Qari/Main.lean",
+  "min": "\\t{b (Fwaqf (run 0 l))}\\t{b (Fwaqf (run 0 (waqfForm l)))}\\t",
+  "ila": "\\t{b (Fwaqf (run 0 (waqfForm l)))}\\t{b (Fwaqf (run 0 l))}\\t"
  },
  {
-  "ism": "P270_qari_baad_ka_kama",
-  "milaf": "Qari/Main.lean",
-  "min": "  let baad := Nizam.Aqd.baadB l",
-  "ila": "  let baad := kama"
+  "ism": "P284_qiyas_bw_hamza_alif",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    \"A\": \"ء\",",
+  "ila": "    \"A\": \"ا\","
  },
  {
-  "ism": "P271_qari_aqd_ka_kama",
-  "milaf": "Qari/Main.lean",
-  "min": "runB): {qabul qb} — على الخلايا",
-  "ila": "runB): {qabul kama} — على الخلايا"
+  "ism": "P285_qiyas_shatr_kulluh",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    nisf = len(ayat) // 2\n",
+  "ila": "    nisf = len(ayat)\n"
+ },
+ {
+  "ism": "P286_qiyas_shudhudh_yuqas",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "        out.pop(k, None)\n",
+  "ila": "        pass\n"
+ },
+ {
+  "ism": "P287_qiyas_irab_bila_akhir",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    if len(murab) != 1 or not qita or qita[-1] is not murab[0]:",
+  "ila": "    if len(murab) != 1:"
+ },
+ {
+  "ism": "P288_qiyas_f1_ala_alkhalaya_wahdaha",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "        if not (r[\"kama\"] and r[\"baad\"]):",
+  "ila": "        if not r[\"kama\"]:"
+ },
+ {
+  "ism": "P289_qiyas_bila_basma",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "        if basma(p) != rows[0][\"sha256\"]:",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P290_qiyas_ikhraj_fil_mustawda",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    if out == root or out.startswith(root + os.sep):",
+  "ila": "    if False:"
+ },
+ {
+  "ism": "P300_qiyas_la_hukm_ka_khilaf",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "        if r[\"irab\"] == \"-\":\n            f3[tab][\"la_hukm\"] += 1",
+  "ila": "        if False:\n            f3[tab][\"la_hukm\"] += 1"
+ },
+ {
+  "ism": "P301_qiyas_maqam_kull_alkalimat",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "        hasm = f3[tab][\"wifaq\"] + f3[tab][\"khilaf\"]",
+  "ila": "        hasm = f3[tab][\"n\"]"
+ },
+ {
+  "ism": "P302_qiyas_jim_fi_alif",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    t = \"a\" if s[\"alama\"] in ALAMAT_QASIRA else (\"b\" if s[\"alama\"] == MAMNU else \"c\")",
+  "ila": "    t = \"a\" if s[\"alama\"] != MAMNU else \"b\""
+ },
+ {
+  "ism": "P303_qiyas_other_i3rab_qita",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    qita = [s for s in msegs if s[\"naw\"] in (\"Prefix\", \"Stem\", \"Suffix\")]",
+  "ila": "    qita = list(msegs)"
+ },
+ {
+  "ism": "P304_qiyas_hadd_amthila",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "AMTHILA_HADD = 25\n",
+  "ila": "AMTHILA_HADD = 30\n"
+ },
+ {
+  "ism": "P305_qiyas_badhra_ukhra",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "BADHRA = 20261020\n",
+  "ila": "BADHRA = 20261019\n"
+ },
+ {
+  "ism": "P306_qiyas_nisfan_maqlubah",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    return {ayat[i] for i in idx[:nisf]}, {ayat[i] for i in idx[nisf:]}",
+  "ila": "    return {ayat[i] for i in idx[nisf:]}, {ayat[i] for i in idx[:nisf]}"
+ },
+ {
+  "ism": "P307_qiyas_muatal_yuqas",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": " or \"w\" in judhur[0] or \"y\" in judhur[0]",
+  "ila": ""
+ },
+ {
+  "ism": "P308_qiyas_ayyina_ghayr_muammat",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    return [(r[0], r[1].split(\":\")[0]) for r in a], a",
+  "ila": "    return a, a"
+ },
+ {
+  "ism": "P309_qiyas_laysa_fi_qac_samit",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "            f2[\"laysa_fi_qac\"] += 1\n",
+  "ila": "            pass\n"
+ },
+ {
+  "ism": "P310_qiyas_shajara_ghayr_nazifa",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    if git(root, \"status\", \"--porcelain\").stdout.strip():",
+  "ila": "    if False:"
+ },
+ {
+  "ism": "P311_qiyas_head_ghayr_main",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    if not head or head != git(root, \"rev-parse\", \"origin/main\").stdout.strip():",
+  "ila": "    if not head:"
+ },
+ {
+  "ism": "P312_qiyas_wathiqa_ghaiba",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    if git(root, \"cat-file\", \"-e\", f\"HEAD:{WATHIQA}\").returncode:",
+  "ila": "    if False:"
+ },
+ {
+  "ism": "P313_qiyas_skript_mughayyar",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    if git(root, \"diff\", \"--quiet\", t0, \"HEAD\", \"--\", WATHIQA, SCRIPT).returncode:",
+  "ila": "    if False:"
+ },
+ {
+  "ism": "P314_qiyas_tasjil_kharij_hawkama",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": " and tasjil.startswith(\"hawkama/\")",
+  "ila": ""
+ },
+ {
+  "ism": "P315_qiyas_tasjil_majallad",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "        ok = ok and git(root, \"cat-file\", \"-t\", f\"origin/main:{tasjil}\").stdout.strip() == \"blob\"",
+  "ila": "        ok = ok and git(root, \"cat-file\", \"-t\", f\"origin/main:{tasjil}\").returncode == 0"
+ },
+ {
+  "ism": "P316_qiyas_tasjil_sabiq",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "            ok = bool(t1) and t1 != t0 and git(root, \"merge-base\", \"--is-ancestor\", t0, t1).returncode == 0",
+  "ila": "            ok = bool(t1)"
+ },
+ {
+  "ism": "P317_qiyas_shatr_mahjub_yuhraq",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    return masaq, shudhudh, qac, (s1 if n_shatr == 1 else s2)",
+  "ila": "    return masaq, shudhudh, qac, s2"
+ },
+ {
+  "ism": "P318_qiyas_bila_basmat_shatr",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    if basmat_shatr(s1) != basmat_shatr1:",
+  "ila": "    if False:"
+ },
+ {
+  "ism": "P319_qiyas_qiraa_qabla_albasamat",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    tahaqquq_basamat(mdir, *([sijill_path] if sijill_path else []))",
+  "ila": "    pass"
+ },
+ {
+  "ism": "P320_qiyas_tabaqa_makshufa",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    return [(r[0], r[1].split(\":\")[0]) for r in a], a",
+  "ila": "    return [(r[0], r[1]) for r in a], a"
+ },
+ {
+  "ism": "P321_qiyas_kilahuma_ka_ahaduhuma",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "        fashl_kilahuma += not r[\"kama\"] and not r[\"baad\"]",
+  "ila": "        fashl_kilahuma += not r[\"kama\"] or not r[\"baad\"]"
+ },
+ {
+  "ism": "P322_qiyas_ahliyya_ghayr_mutabbaqa",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    for tab in (\"f2:i\", \"f2:ii\", \"f3:a\", \"f3:b\", \"f3:c\", \"la\"):",
+  "ila": "    for tab in (\"la\",):"
+ },
+ {
+  "ism": "P323_qiyas_wilson_salib",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "    return [max(0.0, round(c - h, 4)), min(1.0, round(c + h, 4))]",
+  "ila": "    return [round(c - h, 4), round(c + h, 4)]"
+ },
+ {
+  "ism": "P324_qiyas_khalal_yutajawaz",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "            raise Khalal(f\"سطرٌ من القارئ بغير الصيغة المسجَّلة: {line!r}\")",
+  "ila": "            continue"
  },
  {
   "ism": "P272_phi_wa_yakfi_wahid",
@@ -2152,5 +2332,23 @@
   "milaf": "Nizam/Phi.lean",
   "min": "    (.aqda (.waraqa fun _ => amilMani A x m)",
   "ila": "    (.aqda (.waraqa fun _ => P)"
+ },
+ {
+  "ism": "P269_qanun_ala_alkhalaya_wahdah",
+  "milaf": "Nizam/Aqd.lean",
+  "min": "  qanun x := Jisr.Utur.dalOK x",
+  "ila": "  qanun x := x.all (· < 117) && Fwaqf (run 0 x)"
+ },
+ {
+  "ism": "P270_qari_baad_ka_kama",
+  "milaf": "Qari/Main.lean",
+  "min": "  let baad := Nizam.Aqd.baadB l",
+  "ila": "  let baad := kama"
+ },
+ {
+  "ism": "P271_qari_aqd_ka_kama",
+  "milaf": "Qari/Main.lean",
+  "min": "runB): {qabul qb} — على الخلايا",
+  "ila": "runB): {qabul kama} — على الخلايا"
  }
 ]
