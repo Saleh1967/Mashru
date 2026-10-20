@@ -986,8 +986,14 @@
  {
   "ism": "P368_majhul_yastafilu_mulgha",
   "milaf": "Jisr/JisrDal.lean",
-  "min": "       (sahihSakin a && mutaharrikBi b 0 && sahihSakin c && mutaharrikBi d 2))",
-  "ila": "       false)"
+  "min": "       (sahihSakin a && mutaharrikBi b 0 && sahihSakin c && mutaharrikBi d 2) ||",
+  "ila": "       false ||"
+ },
+ {
+  "ism": "P369_majhul_yaffaalu_mulgha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "(sahihSakin a && mutaharrikBi b 0 && harf a == harf b && sahihSakin c && mutaharrikBi d 0 && harf c == harf d))",
+  "ila": "false)"
  },
  {
   "ism": "P340_majhul_mudaaf_mulgha",

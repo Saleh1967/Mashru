@@ -110,7 +110,10 @@ def fahs_lean():
     assert "| false, _, [p, x, b, c] => harfMudara p && sahihSakin x && mutaharrik b && akhirMudari c" in nm
     assert "((hala p == 0 && sahihSakin a && mutaharrikBi b 0) || (hala p == 1 && mutaharrikBi a 0 && sahihSakin b))" in nm
     assert "((a == kh 18 0 && mutaharrikBi b 0 && sahihSakin c && mutaharrikBi d 0) ||" in nm
-    assert "(sahihSakin a && mutaharrikBi b 0 && sahihSakin c && mutaharrikBi d 2))" in nm
+    assert "(sahihSakin a && mutaharrikBi b 0 && sahihSakin c && mutaharrikBi d 2) ||" in nm
+    assert "(sahihSakin a && mutaharrikBi b 0 && harf a == harf b && sahihSakin c && mutaharrikBi d 0 && harf c == harf d))" in nm
+    assert "harfMudara p && akhirMudari d && mutaharrikBi c 2 &&" in nm
+    assert "harfMudara p && hala p == 0 && akhirMudari e &&" in nm
     assert "(harf c == nun || harf c == 0 || harf c == ya || harf c == 18)" in block("def harfMudara ", "\n\n")
     assert "(if mudaafAkhir l then [.mudaafAkhir] else []) ++" in sm and "(if l.any illaSakin then [.illaSakin] else [])" in sm
     assert "| c :: d :: _ => harf d == harf c && hala d == 3" in block("def mudaafAkhir ", "\n\n")
