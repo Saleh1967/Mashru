@@ -2214,6 +2214,12 @@
   "ila": "            continue"
  },
  {
+  "ism": "P325_qiyas_suwar_dalOK_kull_almaqbul",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "\"suwar_dalOK\": len(suwar_dalOK)",
+  "ila": "\"suwar_dalOK\": len(suwar_maqbula)"
+ },
+ {
   "ism": "P272_phi_wa_yakfi_wahid",
   "milaf": "Nizam/Phi.lean",
   "min": "  | P, P => P",

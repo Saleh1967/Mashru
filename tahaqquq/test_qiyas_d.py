@@ -178,6 +178,8 @@ assert (N["f1"]["dalOK"], N["f1"]["fashl"], N["f1"]["fashl_ala_alkhalaya"], N["f
         N["f1"]["fashl_kilahuma"]) == (7, 3, 2, 2, 1), N["f1"]
 assert [x["mawdi"] for x in N["f1"]["qaimat_alfashl"]] == ["1:2:1", "1:2:2", "1:4:4"]
 assert N["f1"]["suwar_maqbula"] == 10 and N["f1"]["suwar_fashl"] == 3
+# صورُ ما قبله المكوّنان معًا (§٥ ف1): 1:1:1 و1:1:2 و1:1:3 و1:3:1 و1:4:1 و1:4:2 و1:4:3 — سبعُ كلماتٍ مختلفة الصور.
+assert N["f1"]["suwar_dalOK"] == 7, N["f1"]["suwar_dalOK"]
 # الآية 1:2: كلمتان في MASAQ بعد حذف الشاذّة، وثلاث في QAC ← غيرُ متساوية؛ و1:1 و1:3 و1:4 متساوية.
 assert N["f2"]["ayat_mutasawiya"] == 3 and N["f2"]["laysa_fi_qac"] == 1, N["f2"]
 assert (N["f2"]["i"]["n"], N["f2"]["i"]["wifaq"], N["f2"]["ii"]["n"], N["f2"]["ii"]["wifaq"]) == (2, 2, 1, 0), N["f2"]
