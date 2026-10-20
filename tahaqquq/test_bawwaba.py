@@ -567,8 +567,9 @@ class TafraNassTests(unittest.TestCase):
         self.assertIn("P0_rabit (٤ب: الملفّ خارج المستودع", err)
 
 
-    def mash(self, fashil=None):
-        """البند ٦ على طفرةٍ واحدةٍ سليمة، مع تسجيل ما يُشغَّل في النسخة؛ fashil: رقمُ اختبارٍ يفشل (من 0)."""
+    def mash(self, fashil=None, bina=(0, ""), ramz=1):
+        """البند ٦ على طفرةٍ واحدةٍ سليمة، مع تسجيل ما يُشغَّل في النسخة؛ fashil: رقمُ اختبارٍ يفشل (من 0) برمز ramz؛
+        bina: خروجُ lake build في النسخة ومخرجُه. ويحفظ رمزَ خروج البوّابة ومخرجَ خطئها في self.khuruj وself.err."""
         with open(os.path.join(self.tmp.name, "m.lean"), "w", encoding="utf-8") as f:
             f.write("def m0 := 1\n")
         tafrat = [{"ism": "P0_m", "milaf": "m.lean", "min": "def m0 := 1", "ila": "def m0 := 2"}]
@@ -582,8 +583,10 @@ class TafraNassTests(unittest.TestCase):
         def run(cmd, cwd=None, **kw):
             if cwd is not None and cwd != self.tmp.name:
                 sijill.append(cmd[-1])
+                if cmd[-1] == "build":
+                    return bina
                 if fashil is not None and cmd[-1] == bawwaba.IKHTIBARAT_TAFRAT[fashil]:
-                    return (1, "")
+                    return (ramz, "")
             return (0, "")
 
         def git(*args):
@@ -593,8 +596,9 @@ class TafraNassTests(unittest.TestCase):
         with patch.object(bawwaba, "ROOT", self.tmp.name), patch.object(bawwaba, "run", side_effect=run), \
                 patch.object(bawwaba, "git", side_effect=git), patch.object(sys, "argv", ["bawwaba.py"]), \
                 contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
-            with self.assertRaises(SystemExit):
+            with self.assertRaises(SystemExit) as khuruj:
                 bawwaba.main()
+        self.khuruj, self.err = khuruj.exception.code, err.getvalue()
         return sijill, out.getvalue()
 
     def test_sweep_runs_every_test_in_order(self):
@@ -606,6 +610,26 @@ class TafraNassTests(unittest.TestCase):
         sijill, out = self.mash(fashil=2)
         self.assertEqual(sijill, ["build"] + list(bawwaba.IKHTIBARAT_TAFRAT[:3]))
         self.assertIn("٦ الطفرات: قُتلت 1 من 1", out)
+
+    def test_sweep_unnamed_build_failure_is_not_a_kill(self):
+        # قتلُ المعالج لنفاد الذاكرة: lake يخرج بغير صفرٍ بلا خطأٍ في ملفٍّ وسطر — لا قتلٌ ولا حياة، والبوّابةُ تفشل باسمه
+        sijill, out = self.mash(bina=(1, "error: Lean exited with code 137"))
+        self.assertEqual(sijill, ["build"])
+        self.assertIn("٦ الطفرات: قُتلت 0 من 1، وغيرُ محسومة 1", out)
+        self.assertNotEqual(self.khuruj, 0)
+        self.assertIn("P0_m (lake build خرج 1 بلا خطأٍ في ملفٍّ مسمّى)", self.err)
+
+    def test_sweep_named_build_error_is_a_kill(self):
+        sijill, out = self.mash(bina=(1, "error: m.lean:1:9: type mismatch"))
+        self.assertEqual(sijill, ["build"])
+        self.assertIn("٦ الطفرات: قُتلت 1 من 1", out)
+        self.assertNotIn("غيرُ محسومة", out)
+
+    def test_sweep_test_killed_by_signal_is_not_a_kill(self):
+        sijill, out = self.mash(fashil=1, ramz=-9)
+        self.assertEqual(sijill, ["build"] + list(bawwaba.IKHTIBARAT_TAFRAT[:2]))
+        self.assertIn("٦ الطفرات: قُتلت 0 من 1، وغيرُ محسومة 1", out)
+        self.assertIn(f"P0_m ({bawwaba.IKHTIBARAT_TAFRAT[1]} قُتل بالإشارة 9)", self.err)
 
     def test_sweep_list_matches_gate_tests(self):
         # كلُّ اختبارٍ يشغّله البند ٥ (سوى ما يحتاج مودَعًا بوسيط) يشغّله البند ٦ أيضًا
@@ -669,6 +693,27 @@ class TafratJuzTests(unittest.TestCase):
         self.assertEqual(code, 3)
         self.assertIn("تجاوز المهلة", out)
         self.assertNotIn("قُتلت بـ", out)
+
+    def test_build_without_named_error_is_not_a_kill(self):
+        # خروجُ lake كقتل المعالج لنفاد الذاكرة: لا خطأَ في ملفٍّ وسطر
+        code, out, _ = self.juz_lake('echo "error: Lean exited with code 137"; exit 1', self.SALIMA, {"a.lean": "def x := 1\n"})
+        self.assertEqual(code, 3)
+        self.assertIn("غيرُ محسومة (لا قتلٌ ولا حياة): lake build خرج 1 بلا خطأٍ في ملفٍّ مسمّى", out)
+        self.assertNotIn("قُتلت بـ", out)
+
+    def test_test_killed_by_signal_is_not_a_kill(self):
+        qatil = "import os, signal\nos.kill(os.getpid(), signal.SIGKILL)\n"
+        code, out, _ = self.juz_lake("exit 0", self.SALIMA, {"a.lean": "def x := 1\n", "tahaqquq/test_bawwaba.py": qatil})
+        self.assertEqual(code, 3)
+        self.assertIn("tahaqquq/test_bawwaba.py قُتل بالإشارة 9", out)
+        self.assertNotIn("قُتلت بـ", out)
+
+    def test_failing_test_is_a_kill(self):
+        # اختبارٌ فشل برمزٍ موجب قتلٌ لا «غيرُ محسومة»
+        code, out, _ = self.juz_lake("exit 0", self.SALIMA, {"a.lean": "def x := 1\n", "tahaqquq/test_bawwaba.py": "import sys; sys.exit(1)\n"})
+        self.assertEqual(code, 0)
+        self.assertIn("قُتلت بـtahaqquq/test_bawwaba.py", out)
+        self.assertNotIn("غيرُ محسومة", out)
 
     def test_build_error_names_the_file(self):
         code, out, _ = self.juz_lake('echo "error: a.lean:1:0: x"; exit 1', self.SALIMA, {"a.lean": "def x := 1\n"})

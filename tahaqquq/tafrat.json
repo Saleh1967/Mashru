@@ -2398,5 +2398,35 @@
   "milaf": "Qari/Main.lean",
   "min": "runB): {qabul qb} — على الخلايا",
   "ila": "runB): {qabul kama} — على الخلايا"
+ },
+ {
+  "ism": "P376_juz_ghayr_bina",
+  "milaf": "tahaqquq/tafrat_juz.py",
+  "min": "                if ghayr:\n                    raise GhayrMahsum(ghayr)\n                why = \"lake build\"",
+  "ila": "                why = \"lake build\""
+ },
+ {
+  "ism": "P377_juz_ghayr_ishara",
+  "milaf": "tahaqquq/tafrat_juz.py",
+  "min": "                        if ghayr:\n                            raise GhayrMahsum(ghayr)\n",
+  "ila": ""
+ },
+ {
+  "ism": "P378_bawwaba_ghayr_bina",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if code != 0 and not re.search(KHATA_BINA, out, re.M):",
+  "ila": "    if False:"
+ },
+ {
+  "ism": "P379_bawwaba_ghayr_ishara",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if code < 0:\n        return f\"{x} قُتل",
+  "ila": "    if False:\n        return f\"{x} قُتل"
+ },
+ {
+  "ism": "P380_juz_fashal_ikhtibar_ghayr",
+  "milaf": "tahaqquq/tafrat_juz.py",
+  "min": "                        ghayr = bawwaba.ghayr_mahsum_ikhtibar(x, code)\n                        if ghayr:\n",
+  "ila": "                        ghayr = bawwaba.ghayr_mahsum_ikhtibar(x, code)\n                        if ghayr or code != 0:\n"
  }
 ]
