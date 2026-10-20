@@ -2220,6 +2220,24 @@
   "ila": "\"suwar_dalOK\": len(suwar_maqbula)"
  },
  {
+  "ism": "P326_qiyas_suwar_dalOK_mawadi",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "suwar_dalOK.add(masaq[k][\"word\"])",
+  "ila": "suwar_dalOK.add(k)"
+ },
+ {
+  "ism": "P327_qiyas_suwar_maqbula_mawadi",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "suwar_maqbula.add(masaq[k][\"word\"])",
+  "ila": "suwar_maqbula.add(k)"
+ },
+ {
+  "ism": "P328_qiyas_suwar_fashl_mawadi",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "suwar_fashl.add(masaq[k][\"word\"])",
+  "ila": "suwar_fashl.add(k)"
+ },
+ {
   "ism": "P272_phi_wa_yakfi_wahid",
   "milaf": "Nizam/Phi.lean",
   "min": "  | P, P => P",

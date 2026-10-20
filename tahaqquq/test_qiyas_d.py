@@ -222,7 +222,21 @@ m2, _ = Q.kalimat_masaq(os.path.join(tmp, "M2.csv"))
 q2 = Q.mukhrij_qari([f"2:1:{w}\tQABUL\t3 4 5\t1\t1\t1\t-\t0\tالنصب" for w in range(1, 31)])
 N2 = Q.hisab(m2, {}, q2, {(2, 1)})
 assert N2["f3"]["b"]["khilaf"] == 30 and len(N2["f3"]["khilaf_amthila"]["b"]) == 25
-najah("العدّ على شطرٍ مصنوع بأعدادٍ يدويّة (ف0–ف3)، وولسن يدويًّا، والعيّنتان معمّاتين، وحدّ الأمثلة 25")
+# الصورُ المميّزة لا المواضع (§٥ ف1): «كَتَبَ» في ثلاثة مواضع قبلها المكوّنان، و«بِ» في موضعين ردّاها —
+# فالمواضع 3 و2 والصور 1 و1، وصورُ ما قُبل ترميزُه 2.
+rows3 = [saff(3, 1, w, 1, "كَتَبَ", "Stem", "مبني", "مبني", "الفتح") for w in (1, 2, 3)] + \
+        [saff(3, 1, w, 1, "بِ", "Stem", "مبني", "مبني", "الكسرة") for w in (4, 5)]
+with open(os.path.join(tmp, "M3.csv"), "w", encoding="utf-8-sig", newline="") as f:
+    wr = csv.DictWriter(f, HEAD)
+    wr.writeheader()
+    wr.writerows(rows3)
+m3, _ = Q.kalimat_masaq(os.path.join(tmp, "M3.csv"))
+q3 = Q.mukhrij_qari([f"3:1:{w}\tQABUL\t32 72 104\t1\t1\t1\t-\t0\t-" for w in (1, 2, 3)] +
+                    [f"3:1:{w}\tQABUL\t106\t0\t0\t0\t-\t2\t-" for w in (4, 5)])
+N3 = Q.hisab(m3, {}, q3, {(3, 1)})
+assert (N3["f1"]["dalOK"], N3["f1"]["fashl"]) == (3, 2), N3["f1"]
+assert (N3["f1"]["suwar_dalOK"], N3["f1"]["suwar_fashl"], N3["f1"]["suwar_maqbula"]) == (1, 1, 2), N3["f1"]
+najah("العدّ على شطرٍ مصنوع بأعدادٍ يدويّة (ف0–ف3)، وولسن يدويًّا، والعيّنتان معمّاتين، وحدّ الأمثلة 25، والصور المميّزة لا المواضع")
 
 # ٦. البصمات
 sij = os.path.join(tmp, "sijill.json")
