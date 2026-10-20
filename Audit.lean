@@ -961,6 +961,9 @@ import Madlul.Fard116Shawahid
 #print axioms Jisr.JisrDal.majhul_marfud
 #print axioms Jisr.JisrDal.shawahid_majhul
 #print axioms Jisr.JisrDal.intilaq_wasl
+#print axioms Jisr.JisrDal.hukm_laHukm_sabab
+#print axioms Jisr.JisrDal.majhul_none_iff
+#print axioms Jisr.JisrDal.shawahid_sabab
 #print axioms Jisr.JisrDalUtur.mufrad_halaIrab
 #print axioms Jisr.JisrDalUtur.mufrad_tanwin
 -- خلاصةُ أسلوب الإخبار: الثمانيةُ بنودٍ الباقية (Jisr/KhulasaIkhbar.lean)

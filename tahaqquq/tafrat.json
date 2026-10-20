@@ -930,6 +930,30 @@
   "ila": "| .muthanna, h, sn => [kh h 0, kh nun sn]"
  },
  {
+  "ism": "P339_majhul_mudari_bi_thalath",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "   else if !madi && l.length < 4 then [.mudariNaqis] else []) ++",
+  "ila": "   else if !madi && l.length < 3 then [.mudariNaqis] else []) ++"
+ },
+ {
+  "ism": "P340_majhul_mudaaf_mulgha",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "  | c :: d :: _ => harf d == harf c && hala d == 3",
+  "ila": "  | c :: d :: _ => false"
+ },
+ {
+  "ism": "P341_sabab_dal_fawq_farigh",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "  | some c => if c < 116 then (if hukmKhaliya b l c = .laHukm then some .laYaqbaluhuBab else none) else some .fawqHadd",
+  "ila": "  | some c => if c < 116 then (if hukmKhaliya b l c = .laHukm then some .laYaqbaluhuBab else none) else some .farigh"
+ },
+ {
+  "ism": "P342_majhul_illa_mahdhuf",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "  (if l.any illaSakin then [.illaSakin] else [])",
+  "ila": "  ([] : List SababMajhul)"
+ },
+ {
   "ism": "P120_sabab_fail_wasf_daim",
   "milaf": "Aql/SababShartMani.lean",
   "min": "def sababFail : SababZahir (Option String) String String := ⟨id, fun _ => \"صدقٌ عقديّ\"⟩",

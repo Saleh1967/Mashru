@@ -90,7 +90,18 @@ def fahs_lean():
     assert "| .maqsur => if harf c == alif && hala c == 3 then .muhtamal [.raf, .nasb, .jarr] else .laHukm" in h
     assert "| some c => if c < 116 then hukmKhaliya b l c else .laHukm" in block("def hukm ", "\n\n")
     mj = block("def majhul ", "\n\n")
-    assert "(if madi then 2 else 0)" in mj and "l.any illaSakin = true then none" in mj and "musharik (sigaFiliyya madi g)" in mj
+    assert "(if madi then 2 else 0)" in mj and "if sababMajhul madi g l ≠ [] then none" in mj and "musharik (sigaFiliyya madi g)" in mj
+    # LC06: أسبابُ رفض المجهول مسمّاةٌ بترتيبها، والمضارعُ دون أربع خلايا مرفوض، والآخرُ المشدَّد مرفوض
+    sm = block("def sababMajhul ", "\n\n")
+    assert "(if l.length < mawdiMusharik (sigaFiliyya madi g) + 3 then [.qasir]" in sm
+    assert "else if !madi && l.length < 4 then [.mudariNaqis] else []) ++" in sm
+    assert "(if mudaafAkhir l then [.mudaafAkhir] else []) ++" in sm and "(if l.any illaSakin then [.illaSakin] else [])" in sm
+    assert "| c :: d :: _ => harf d == harf c && hala d == 3" in block("def mudaafAkhir ", "\n\n")
+    assert munshiat_of("SababMajhul") == ["qasir", "mudariNaqis", "mudaafAkhir", "illaSakin"], munshiat_of("SababMajhul")
+    assert munshiat_of("SababDal") == ["farigh", "fawqHadd", "laYaqbaluhuBab"], munshiat_of("SababDal")
+    sd = block("def sababDal ", "\n\n")
+    assert "| none => some .farigh" in sd
+    assert "| some c => if c < 116 then (if hukmKhaliya b l c = .laHukm then some .laYaqbaluhuBab else none) else some .fawqHadd" in sd
     assert "def sigaFiliyya (madi : Bool) (g : Siga) : Siga := if madi then g else .basit" in lean
     # ٤: الحوامل من جدول المخارج نصًّا
     hawamil = hawamil_makharij()
@@ -100,7 +111,7 @@ def fahs_lean():
     for name in ("harf_fakk", "khaliya_malik", "hawamil_huruf", "asliyya_tuqabil", "maqsur_la_yuayyin", "mudaf_la_yuayyin", "yayn_la_yufarriq",
                  "manqus_fatha_zahira", "mamnu_fatha", "mamnu_bi_al", "amthila_nun", "sitta_hamil", "farIyaBab_malik", "farIya_kull",
                  "shawahid_hukm", "muwafiq_farIya", "majhul_huruf", "majhul_tul", "majhul_dun_116", "majhul_marfud", "shawahid_majhul",
-                 "intilaq_wasl"):
+                 "intilaq_wasl", "hukm_laHukm_sabab", "majhul_none_iff", "shawahid_sabab"):
         assert re.search(rf"^theorem {name}\b", lean, re.M), name
     for name in ("mufrad_halaIrab", "mufrad_tanwin"):
         assert re.search(rf"^theorem {name}\b", lean_utur, re.M), name
