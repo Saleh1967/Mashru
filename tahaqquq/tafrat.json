@@ -2422,5 +2422,11 @@
   "milaf": "tahaqquq/bawwaba.py",
   "min": "    if code < 0:\n        return f\"{x} قُتل",
   "ila": "    if False:\n        return f\"{x} قُتل"
+ },
+ {
+  "ism": "P380_juz_fashal_ikhtibar_ghayr",
+  "milaf": "tahaqquq/tafrat_juz.py",
+  "min": "                        ghayr = bawwaba.ghayr_mahsum_ikhtibar(x, code)\n                        if ghayr:\n",
+  "ila": "                        ghayr = bawwaba.ghayr_mahsum_ikhtibar(x, code)\n                        if ghayr or code != 0:\n"
  }
 ]

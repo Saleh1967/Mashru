@@ -115,7 +115,7 @@ def main(argv):
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
     print(f"قُتلت {len(names) - len(alive) - len(muhla)} من {len(names)}" + (f"؛ عاشت: {alive}" if alive else "")
-          + (f"؛ غيرُ محسومة (تجاوزُ المهلة أو خروجٌ بلا سببٍ مسمّى): {muhla}" if muhla else ""))
+          + (f"؛ غيرُ محسومة (تجاوزُ المهلة، أو بناءٌ بلا خطأٍ في ملفٍّ مسمّى، أو اختبارٌ قُتل بإشارة): {muhla}" if muhla else ""))
     return 1 if alive else 3 if muhla else 0
 
 

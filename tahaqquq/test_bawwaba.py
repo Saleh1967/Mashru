@@ -708,6 +708,13 @@ class TafratJuzTests(unittest.TestCase):
         self.assertIn("tahaqquq/test_bawwaba.py قُتل بالإشارة 9", out)
         self.assertNotIn("قُتلت بـ", out)
 
+    def test_failing_test_is_a_kill(self):
+        # اختبارٌ فشل برمزٍ موجب قتلٌ لا «غيرُ محسوم»
+        code, out, _ = self.juz_lake("exit 0", self.SALIMA, {"a.lean": "def x := 1\n", "tahaqquq/test_bawwaba.py": "import sys; sys.exit(1)\n"})
+        self.assertEqual(code, 0)
+        self.assertIn("قُتلت بـtahaqquq/test_bawwaba.py", out)
+        self.assertNotIn("غيرُ محسومة", out)
+
     def test_build_error_names_the_file(self):
         code, out, _ = self.juz_lake('echo "error: a.lean:1:0: x"; exit 1', self.SALIMA, {"a.lean": "def x := 1\n"})
         self.assertEqual(code, 0)
