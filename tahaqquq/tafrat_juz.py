@@ -1,7 +1,8 @@
 """تشغيل طفراتٍ مسمّاة وحدها بإجراء البند ٦ في tahaqquq/bawwaba.py نفسِه: يُحكم على نصّ الطفرة (٤ب) في المستودع ثمّ في
 النسخة، وتُنسخ الشجرة مع .lake، ويُستبدل أوّلُ ظهور، ثمّ lake build ثمّ اختباراتُ `bawwaba.IKHTIBARAT_TAFRAT` بترتيبها (القائمةُ
 نفسُها، لا نسخةٌ منها)، بمهلة البوّابة. للفحص المحلّيّ لما تغيّر من الطفرات؛ والمسح الكامل على CI.
-يخرج 1 إن عاشت طفرة، و3 إن تجاوزت طفرةٌ المهلة (حالٌ ثالثة: لا قتلٌ ولا حياة)، و2 لاستعمالٍ خاطئ (بلا أسماء، أو اسمٌ لا قيدَ
+يخرج 1 إن عاشت طفرة، و3 إن بقيت طفرةٌ غيرَ محسومة (حالٌ ثالثة: لا قتلٌ ولا حياة — تجاوزُ المهلة، أو خروجُ lake build بلا خطأٍ في ملفٍّ
+مسمّى كقتل المعالج لنفاد الذاكرة، أو اختبارٌ قُتل بإشارة؛ القاعدةُ من `bawwaba.ghayr_mahsum_bina`/`ghayr_mahsum_ikhtibar`)، و2 لاستعمالٍ خاطئ (بلا أسماء، أو اسمٌ لا قيدَ
 له، أو اسمٌ مكرَّر في القائمة). المهلة من TAFRAT_JUZ_MUHLA إن عُيّن (للاختبار)، وإلّا 1800 ث كالبوّابة.
 التشغيل: python3 -I tahaqquq/tafrat_juz.py <جذر المستودع> <اسم طفرة>...
 """
@@ -16,7 +17,11 @@ import tempfile
 MUHLA = int(os.environ.get("TAFRAT_JUZ_MUHLA", "1800"))   # ثوانٍ، كمهلة run في البوّابة
 
 
-class TajawuzMuhla(Exception):
+class GhayrMahsum(Exception):
+    """حالٌ ثالثة: لا قتلٌ ولا حياة."""
+
+
+class TajawuzMuhla(GhayrMahsum):
     """أمرٌ تجاوز المهلة: لا يُعدّ قتلًا (البوّابة تنهار عنده ولا تعدّه قتلًا كذلك)."""
 
 
@@ -83,15 +88,25 @@ def main(argv):
                 f.write(s.replace(t["min"], t["ila"], 1))
             try:
                 code, out = shaghghil(["lake", "build"], dst)
-                why = "lake build" + sabab(out, r"^error: (\S+?):\d+") if code != 0 else None
+                ghayr = bawwaba.ghayr_mahsum_bina(code, out)
+                if ghayr:
+                    raise GhayrMahsum(ghayr)
+                why = "lake build" + sabab(out, bawwaba.KHATA_BINA) if code != 0 else None
                 if why is None:
                     for x in tests:
                         code, out = shaghghil([sys.executable, "-I", x], dst)
+                        ghayr = bawwaba.ghayr_mahsum_ikhtibar(x, code)
+                        if ghayr:
+                            raise GhayrMahsum(ghayr)
                         if code != 0:
                             why = x + sabab(out, r"^(?:FAIL|ERROR): (\S+)")
                             break
             except TajawuzMuhla as e:
                 print(n, "— تجاوز المهلة:", e, flush=True)
+                muhla.append(n)
+                continue
+            except GhayrMahsum as e:
+                print(n, "— غيرُ محسومة (لا قتلٌ ولا حياة):", e, flush=True)
                 muhla.append(n)
                 continue
             print(n, "— قُتلت بـ" + why if why else "— عاشت", flush=True)
@@ -100,7 +115,7 @@ def main(argv):
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
     print(f"قُتلت {len(names) - len(alive) - len(muhla)} من {len(names)}" + (f"؛ عاشت: {alive}" if alive else "")
-          + (f"؛ تجاوزت المهلة: {muhla}" if muhla else ""))
+          + (f"؛ غيرُ محسومة (تجاوزُ المهلة أو خروجٌ بلا سببٍ مسمّى): {muhla}" if muhla else ""))
     return 1 if alive else 3 if muhla else 0
 
 

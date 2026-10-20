@@ -57,6 +57,25 @@ import tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
+# القتلُ بالبناء يُثبته خطأُ Lean في ملفٍّ وسطر؛ وخروجُ lake بغير صفرٍ بلا هذا (قتلُ المعالج لنفاد الذاكرة يُخرجه هكذا) حالٌ ثالثة: لا قتلٌ
+# ولا حياة. وكذلك اختبارٌ قُتل بإشارة (رمزٌ سالب). قاعدةٌ واحدة يقرؤها tafrat_juz.py أيضًا.
+KHATA_BINA = r"^error: (\S+?):\d+"
+
+
+def ghayr_mahsum_bina(code, out):
+    """سببُ كون خروج `lake build` غيرَ محسوم، أو None: غيرُ صفريّ بلا خطأٍ في ملفٍّ وسطر."""
+    if code != 0 and not re.search(KHATA_BINA, out, re.M):
+        return f"lake build خرج {code} بلا خطأٍ في ملفٍّ مسمّى"
+    return None
+
+
+def ghayr_mahsum_ikhtibar(x, code):
+    """سببُ كون خروج اختبارٍ غيرَ محسوم، أو None: قُتل بإشارة."""
+    if code < 0:
+        return f"{x} قُتل بالإشارة {-code}"
+    return None
+
+
 # اختباراتُ البند ٦ بترتيبها بعد lake build: قائمةٌ واحدة يقرؤها tafrat_juz.py أيضًا، فلا تفترق الأداتان.
 IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_bawwaba.py",
@@ -628,7 +647,7 @@ def main():
 
     if "--bila-tafrat" not in sys.argv:
         tafrat = json.load(open(os.path.join(ROOT, "tahaqquq", "tafrat.json"), encoding="utf-8"))
-        alive = []
+        alive, ghayr = [], []
         for t in tafrat:
             tmp = tempfile.mkdtemp()
             dst = os.path.join(tmp, "p")
@@ -644,17 +663,24 @@ def main():
             path = masar_tafra(t, dst)
             s = open(path, encoding="utf-8").read()
             open(path, "w", encoding="utf-8").write(s.replace(t["min"], t["ila"], 1))
-            code, _ = run(["lake", "build"], cwd=dst)
+            code, out = run(["lake", "build"], cwd=dst)
+            sabab_ghayr = ghayr_mahsum_bina(code, out)
             for x in IKHTIBARAT_TAFRAT:
                 if code != 0:
                     break
                 code, _ = run([sys.executable, "-I", x], cwd=dst)
-            if code == 0:
+                sabab_ghayr = ghayr_mahsum_ikhtibar(x, code)
+            if sabab_ghayr:
+                ghayr.append(f"{t['ism']} ({sabab_ghayr})")
+            elif code == 0:
                 alive.append(t["ism"])
             shutil.rmtree(tmp)
-        report.append(f"٦ الطفرات: قُتلت {len(tafrat) - len(alive)} من {len(tafrat)}")
+        report.append(f"٦ الطفرات: قُتلت {len(tafrat) - len(alive) - len(ghayr)} من {len(tafrat)}"
+                      + (f"، وغيرُ محسومة {len(ghayr)}" if ghayr else ""))
         if alive:
             fails.append("طفرات عاشت: " + "، ".join(alive))
+        if ghayr:
+            fails.append("طفرات غيرُ محسومة (لا قتلٌ ولا حياة؛ تُعاد): " + "، ".join(ghayr))
     else:
         report.append("٦ الطفرات: تُركت بطلب (--bila-tafrat)")
 
