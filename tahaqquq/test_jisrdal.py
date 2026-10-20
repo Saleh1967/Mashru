@@ -100,8 +100,17 @@ def fahs_lean():
     # الترخيص بنمطٍ موجب: «خارج الأنماط» حين لا سببَ تشخيصيًّا ولا نمط
     assert "sababTashkhis madi g l ++ (if (sababTashkhis madi g l).isEmpty && !namat madi g l then [.kharijAnmat] else [])" in block("def sababMajhul ", "\n\n")
     nm = block("def namat ", "\n\n")
-    assert "mutaharrik a && hala a == 0 && mutaharrik b && mutaharrik c && hala c == 0 && harf c != waw" in nm
-    assert "| false, _, [p, a, b, c] => harfMudara p && sahihSakin a && mutaharrik b && mutaharrik c && hala c == 1" in nm
+    assert "def akhirMadi (c : Nat) : Bool := mutaharrikBi c 0 && harf c != waw" in lean
+    assert "def akhirMudari (c : Nat) : Bool := mutaharrikBi c 1" in lean
+    assert "| true, .basit, [a, b, c] => mutaharrikBi a 0 && mutaharrik b && akhirMadi c" in nm
+    assert "| true, .basit, [a, x, b, c] => mutaharrikBi a 0 && sahihSakin x && mutaharrikBi b 0 && akhirMadi c" in nm
+    assert "| true, .thani, [t, a, x, b, c] => t == kh 18 0 && mutaharrikBi a 0 && sahihSakin x && mutaharrikBi b 0 && akhirMadi c" in nm
+    assert "| true, .thalith, [h, x, a, b, c] => h == kh 0 2 && sahihSakin x && mutaharrikBi a 0 && mutaharrikBi b 0 && akhirMadi c" in nm
+    assert "h == kh 0 2 && sahihSakin x && mutaharrikBi t 0 && sahihSakin y && mutaharrikBi b 0 && akhirMadi c" in nm
+    assert "| false, _, [p, x, b, c] => harfMudara p && sahihSakin x && mutaharrik b && akhirMudari c" in nm
+    assert "((hala p == 0 && sahihSakin a && mutaharrikBi b 0) || (hala p == 1 && mutaharrikBi a 0 && sahihSakin b))" in nm
+    assert "((a == kh 18 0 && mutaharrikBi b 0 && sahihSakin c && mutaharrikBi d 0) ||" in nm
+    assert "(sahihSakin a && mutaharrikBi b 0 && sahihSakin c && mutaharrikBi d 2))" in nm
     assert "(harf c == nun || harf c == 0 || harf c == ya || harf c == 18)" in block("def harfMudara ", "\n\n")
     assert "(if mudaafAkhir l then [.mudaafAkhir] else []) ++" in sm and "(if l.any illaSakin then [.illaSakin] else [])" in sm
     assert "| c :: d :: _ => harf d == harf c && hala d == 3" in block("def mudaafAkhir ", "\n\n")
