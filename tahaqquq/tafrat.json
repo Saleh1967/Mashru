@@ -996,6 +996,12 @@
   "ila": "false)"
  },
  {
+  "ism": "P370_majhul_mudari_illa_madmum",
+  "milaf": "Jisr/JisrDal.lean",
+  "min": "def akhirMudari (c : Nat) : Bool := mutaharrikBi c 1 && harf c != waw && harf c != ya",
+  "ila": "def akhirMudari (c : Nat) : Bool := mutaharrikBi c 1"
+ },
+ {
   "ism": "P340_majhul_mudaaf_mulgha",
   "milaf": "Jisr/JisrDal.lean",
   "min": "  | c :: d :: _ => harf d == harf c && hala d == 3",

@@ -101,7 +101,7 @@ def fahs_lean():
     assert "sababTashkhis madi g l ++ (if (sababTashkhis madi g l).isEmpty && !namat madi g l then [.kharijAnmat] else [])" in block("def sababMajhul ", "\n\n")
     nm = block("def namat ", "\n\n")
     assert "def akhirMadi (c : Nat) : Bool := mutaharrikBi c 0 && harf c != waw" in lean
-    assert "def akhirMudari (c : Nat) : Bool := mutaharrikBi c 1" in lean
+    assert "def akhirMudari (c : Nat) : Bool := mutaharrikBi c 1 && harf c != waw && harf c != ya" in lean
     assert "| true, .basit, [a, b, c] => mutaharrikBi a 0 && mutaharrik b && akhirMadi c" in nm
     assert "| true, .basit, [a, x, b, c] => mutaharrikBi a 0 && sahihSakin x && mutaharrikBi b 0 && akhirMadi c" in nm
     assert "| true, .thani, [t, a, x, b, c] => t == kh 18 0 && mutaharrikBi a 0 && sahihSakin x && mutaharrikBi b 0 && akhirMadi c" in nm
