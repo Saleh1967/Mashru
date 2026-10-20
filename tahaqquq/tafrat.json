@@ -2316,6 +2316,30 @@
   "ila": "            continue"
  },
  {
+  "ism": "P325_qiyas_suwar_dalOK_kull_almaqbul",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "\"suwar_dalOK\": len(suwar_dalOK)",
+  "ila": "\"suwar_dalOK\": len(suwar_maqbula)"
+ },
+ {
+  "ism": "P326_qiyas_suwar_dalOK_mawadi",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "suwar_dalOK.add(masaq[k][\"word\"])",
+  "ila": "suwar_dalOK.add(k)"
+ },
+ {
+  "ism": "P327_qiyas_suwar_maqbula_mawadi",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "suwar_maqbula.add(masaq[k][\"word\"])",
+  "ila": "suwar_maqbula.add(k)"
+ },
+ {
+  "ism": "P328_qiyas_suwar_fashl_mawadi",
+  "milaf": "tahaqquq/qiyas_d.py",
+  "min": "suwar_fashl.add(masaq[k][\"word\"])",
+  "ila": "suwar_fashl.add(k)"
+ },
+ {
   "ism": "P272_phi_wa_yakfi_wahid",
   "milaf": "Nizam/Phi.lean",
   "min": "  | P, P => P",
@@ -2434,6 +2458,30 @@
   "milaf": "Nizam/Phi.lean",
   "min": "    (.aqda (.waraqa fun _ => amilMani A x m)",
   "ila": "    (.aqda (.waraqa fun _ => P)"
+ },
+ {
+  "ism": "P333_phi_maftuh_mughlaq",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def yujadMaftuh (l : List K3) : K3 := aw (yujad l) U",
+  "ila": "def yujadMaftuh (l : List K3) : K3 := yujad l"
+ },
+ {
+  "ism": "P334_phi_bila_istinfad_mughlaq",
+  "milaf": "Nizam/Phi.lean",
+  "min": "  if n.mustanfad then yujad (n.qaima.map F) else yujadMaftuh (n.qaima.map F)",
+  "ila": "  yujad (n.qaima.map F)"
+ },
+ {
+  "ism": "P337_phi_khali_bila_istinfad",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def nitaqKhali : Nitaq Empty := ⟨[], true, fun _ d => d.elim⟩",
+  "ila": "def nitaqKhali : Nitaq Empty := ⟨[], false, fun _ d => d.elim⟩"
+ },
+ {
+  "ism": "P338_phi_min_qaima_bila_istinfad",
+  "milaf": "Nizam/Phi.lean",
+  "min": "def nitaqMinQaima {α : Type} (l : List α) : Nitaq {a // a ∈ l} := ⟨l.attach, true, fun _ d => List.mem_attach l d⟩",
+  "ila": "def nitaqMinQaima {α : Type} (l : List α) : Nitaq {a // a ∈ l} := ⟨l.attach, false, fun _ d => List.mem_attach l d⟩"
  },
  {
   "ism": "P269_qanun_ala_alkhalaya_wahdah",

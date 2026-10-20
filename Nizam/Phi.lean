@@ -10,7 +10,10 @@
      (قبول، ردّ) كما في المرفق س78: الربطُ (∧، ∨) والفصلُ (∨، ∧) (`tabaqat_wa`، `tabaqat_aw`)، والتمثيلُ حقنيّ ولا تجتمع الطبقتان فيه
      (`tabaqat_la_taarud` — صادقٌ بالبناء، إذ لا قيمةَ للتعارض في `K3`). و«لا حكم» غيابُ البتّين معًا، لا ردّ.
   ٢. **الإسقاطُ الوجوديّ** `yujad`: مرخَّصٌ ⟺ امتدادٌ مرخَّص، وممتنعٌ ⟺ كلُّ امتدادٍ ممتنع (`yujad_P`، `yujad_N`، `yujad_map_P`،
-     `yujad_map_N`)؛ والنطاقُ الفارغ ممتنع.
+     `yujad_map_N`)؛ والنطاقُ الفارغ ممتنع — في المغلق. **و§٢أ (LC19 جزئيًّا، 2026-10-20؛ تصميمُه قرارُ البنّاء):** الإسقاطُ المفتوح
+     `yujadMaftuh` لا يُخرج «ممتنع» أبدًا (`yujadMaftuh_ne_N`)، والنطاقُ `Nitaq` بشهادة استنفادٍ اختياريّة، و`yujadN` مغلقٌ بها ومفتوحٌ
+     بدونها: لا امتناعَ كلّيًّا إلّا بالشهادة وامتناعِ كلّ قيمةٍ من النوع (`yujadN_N`، `la_N_bila_istinfad`)؛ والشهادةُ نسبيّةٌ إلى النوع
+     (`shahada_nisbiyya`).
   ٣. **التركيبُ على منفذٍ مشترك** `tarkib` (`tarkib_P`، `tarkib_N`)، **والسلسلة** `zanjir`: مرخَّصةٌ ⟺ مسارٌ في النطاق كلُّ عوامله مرخِّصة
      (`zanjir_P`)، وممتنعةٌ ⟺ في كلّ مسارٍ عاملٌ يمنع (`zanjir_N`)، وما سواهما «لا حكم» (`zanjir_U`) — بالاستقراء على طول السلسلة.
   ٤. **Φ على الشجرة** (حالةُ المرفق العامّة، س38): عقدةٌ تربط ولدين ثمّ تُسقط متغيّراتٍ مسمّاة (`Shajara`، `phi`). بشرط الواجهة
@@ -31,12 +34,15 @@
      الشجرة (`hukmB_shajara_mashru`). وعلى `Mashru` بنطاق الجذور 32768 (`jidhr_hadd`، `aqd_phi_mashru`)، وشاهدُه كَتَبَ ← «علم» ترادفًا P ولزومًا U
      (`kataba_phi` — يمرّ بـ`kull_ma_kull` عبر شاهدَي `Nizam/Aqd.lean`).
 
-  62 مبرهنة بالمعيار الموحَّد (`Nizam/Asas.lean`): 33 لكلّ (الاستقراءُ على القوائم والسلسلة والشجرة، وما يستدعي مبرهنةً من الملفّ أو من
-  `Nizam/Aqd.lean`)، و26 تعريفيّة (`phiAqd_shajara`، `tabaqat_*` الثلاث، `wa_P`/`wa_N`/`aw_P`/`aw_N`، `wa_tabadul`، `wa_aw_tawzi`، `ghayruhuma_U`، `tahdith_*`
-  الأربع، `rutba_*` الثلاث، وعواملُ العقد الثمانية `amil*_P`/`_N`/`_ghayr_N`)، و3 على الشاهد: `wajiha_daruriyya` بـ decide، و`mithal_miftah`
-  (أشطرُه الأربعة: الأوّلُ simp بالتعريفات، والثاني والثالث decide، والرابعُ تطبيقُ الفرض على معطًى ثمّ decide) و`kataba_phi` (نقلٌ عبر `aqd_phi_mashru` من مبرهنتين على الشاهد في
-  `Nizam/Aqd.lean`) — هذان خارجَ حرف المعيار («برهانُها decide»)، معلَن.
-  طفراتُها `P272`–`P282` و`P291`–`P299` في `tahaqquq/tafrat.json` تُفشل `lake build` مباشرة؛ لا جدولَ خارجيًّا فلا مرآة بايثون.
+  71 مبرهنة بالمعيار الموحَّد (`Nizam/Asas.lean`): 40 لكلّ (منها سبعٌ في §٢أ: `yujadMaftuh_P`، `yujadMaftuh_ne_N`، `yujadMaftuh_U`،
+  `yujadN_P`، `yujadN_N`، `la_N_bila_istinfad`، `shahada_nisbiyya`) (الاستقراءُ على القوائم والسلسلة والشجرة، وما يستدعي مبرهنةً من الملفّ
+  أو من المكتبة أو من `Nizam/Aqd.lean`)، و27 تعريفيّة (`phiAqd_shajara`، `phiAqd_farigh`، `tabaqat_*` الثلاث، `wa_P`/`wa_N`/`aw_P`/`aw_N`،
+  `wa_tabadul`، `wa_aw_tawzi`، `ghayruhuma_U`، `tahdith_*` الأربع، `rutba_*` الثلاث، وعواملُ العقد الثمانية `amil*_P`/`_N`/`_ghayr_N`)،
+  و4 على الشاهد: `wajiha_daruriyya` بـ decide، و`mithal_miftah` (أشطرُه الأربعة: الأوّلُ simp بالتعريفات، والثاني والثالث decide، والرابعُ
+  تطبيقُ الفرض على معطًى ثمّ decide) و`istinfad_shawahid` بـ decide (§٢أ)، و`kataba_phi` (نقلٌ عبر `aqd_phi_mashru` من مبرهنتين على الشاهد
+  في `Nizam/Aqd.lean`) — و`mithal_miftah` و`kataba_phi` خارجَ حرف المعيار («برهانُها decide»)، معلَن.
+  طفراتُها `P272`–`P282` و`P291`–`P299` و`P333`–`P334` و`P337`–`P338` في `tahaqquq/tafrat.json` تُفشل `lake build` مباشرة؛ لا جدولَ
+  خارجيًّا فلا مرآة بايثون.
 
   ما لا يُدّعى:
   * **ما تُسقطه المرتبة**: `rutba` تُسقط القراءةَ واسمَ السبب؛ فشطرُ `kull_ma_kull` الرابع (`QiraaSahiha`) و`mumtani_asbab` لا يُشتقّان من Φ.
@@ -53,6 +59,15 @@
     حقنيًّا للتكاليف (§1).
   * **المرفق**: `src/bitjoin.py` المذكور في س4 غيرُ مرفوع، ولم يُقارَن به شيء؛ ولا تُعاد مقارنتُه «بمعدّد مباشر مستقل في 1000 نظام قيود منتهٍ» (س4).
   * **آلةُ δ** (المرفق §7، س67–73): المرحلة «ج».
+  * **الاستنفاد** (§٢أ؛ LC19 جزئيًّا — الأداةُ `yujadN` وحدها؛ وLC وأسطرُه من سجلّ المالك `CLOSURE_LEDGER_AR.md`، غيرِ المودَع — §٢أ):
+    اختبارُ LC19 المضادّ (السجلّ س238 «قائمة مرشحين فارغة بسبب غياب معجم لا تفسر
+    حكما لغويا بالامتناع») يجتازه `yujadN` بلا شهادة (`nitaqFarigh` ← «لا حكم»)، ويسقط على `yujad` (`istinfad_shawahid`: `yujad [] = N`)
+    وعلى `phiAqd` (`phiAqd_farigh`)، ولا مستهلكَ لـ`yujadN` في المحرّك. والشهادةُ نسبيّةٌ إلى النوع `D` (`shahada_nisbiyya`: على نوعٍ فرعيٍّ
+    من القائمة تصدق على أيّ قائمة، وعلى `Empty` على الفارغة)، فلا تعني تمامَ البدائل إلّا مع «نطاق ثابت وجرد مستقل» (LC18، السجلّ س225). ولم
+    يُبنَ: `phi` و`tarkib` و`zanjir` على `Nitaq` (فهي على `yujad` المغلق كما كانت)، ولا مجالٌ مستقلٌّ لكلّ متغيّر (LC12)، ولا مولِّدُ
+    شهاداتٍ لتعداد الأطر النحويّة (LC18)، ولا «فشل البحث أو نفاد الميزانية تعليق» (LC19، السجلّ س237؛ لا بحثَ ولا ميزانيّةَ هنا)، ولا مانعٌ مسمًّى
+    لكلّ بديل (بقراءة البنّاء لـ«موانع لكل بديل» س237: `yujadN_N` تشترط امتناعَ كلّ بديل، و`K3` لا يحمل السبب — LC15). والعقدُ على المغلق: نطاقُه قائمةٌ غيرُ فارغة تحوي كلَّ مرشّح
+    بفرضَي `hd` و`hne` في مبرهناته؛ و`phiAqd` على القائمة الفارغة ممتنعٌ من الخلوّ (`phiAqd_farigh`) — تمنعه الفروضُ لا التعريف.
   * ولا تشهد المبرهنات بصحّة قيدٍ لغويّ: تضمن أنّ الحكم هو حكمُ العوامل المعطاة بعينه.
   بلا sorry ولا axiom ولا native_decide.
 -/
@@ -141,6 +156,136 @@ theorem yujad_map_N {β : Type} (f : β → K3) : ∀ l : List β, yujad (l.map 
   | [] => by simp [yujad]
   | b :: l => by
     simp only [List.map, yujad, aw_N, yujad_map_N f l, List.mem_cons, forall_eq_or_imp]
+
+/-! ## ٢أ. النطاقُ المستوعَب: لا امتناعَ كلّيًّا بلا شهادة استنفاد (LC19 جزئيًّا)
+
+قولُ المالك في الجلسة (2026-10-20، 13:01 بتوقيت عمّان)، جوابًا عن سؤال البنّاء من أين يبدأ بعد تحليل «سجل التزامات إغلاق الإخبار ثم
+الإنشاء» (س1؛ مرفق المالك `CLOSURE_LEDGER_AR.md` على ca5ed3c، غيرُ مودَع؛ وأرقامُ LC وأسطرُه منه):
+«انت خبير أوافق على قرارك ونفذ». وقرارُ البنّاء المعروضُ البدءُ بما سمّاه «النواة ١» وعنونه «لا امتناعَ من غياب» — التسميةُ والعنوانُ
+من البنّاء لا من السجلّ؛ وتصميمُ ما هنا (`yujadMaftuh`، `Nitaq`، `yujadN`) قرارُ البنّاء.
+
+و`yujad` أعلاه مغلقٌ: يجعل القائمةَ نطاقًا مستوعَبًا، فالفارغُ ممتنعٌ وامتناعُ كلّ ما فيها امتناعٌ كلّيّ. وذلك صحيحٌ إذا شُهد أنّ القائمة
+تستوعب كلَّ قيمةٍ ممكنة، وإلّا كان غيابُ المرشَّح (معجمٌ لم يُودَع، بحثٌ لم يكتمل) امتناعًا — خلافَ م13، وخلافَ عنوان `Aql/Mawsua.lean`
+س333 «والغياب ليس امتناعًا» و`Madlul/Shabaka.lean` س40 «لا إغلاقَ للعالم». فهنا: الإسقاطُ المفتوح `yujadMaftuh` لا يُخرج «ممتنع» أبدًا،
+والنطاقُ `Nitaq` يحمل شهادةَ استنفادٍ اختياريّة، و`yujadN` مغلقٌ بها ومفتوحٌ بدونها (`yujadN_N`: لا امتناعَ كلّيًّا إلّا بالشهادة وامتناعِ
+كلّ قيمةٍ من النوع `D`، لا من القائمة وحدها).
+
+حدودٌ معلَنة:
+* LC19 جزئيًّا يعني الأداةَ `yujadN` وحدها: اختبارُه المضادّ (س238 «قائمة مرشحين فارغة بسبب غياب معجم لا تفسر حكما لغويا بالامتناع»)
+  يجتازه `yujadN` بلا شهادة (`istinfad_shawahid`: `nitaqFarigh` ← «لا حكم»)، ويسقط على `yujad` (`yujad [] = N` في الشاهد نفسِه) وعلى
+  `phiAqd` (`phiAqd_farigh`).
+* الشهادةُ نسبيّةٌ إلى `D` (`shahada_nisbiyya`): على النوع الفرعيّ من القائمة نفسِها تصدق على أيّ قائمة فيرجع `yujadN` إلى `yujad`
+  المغلق بعينه، وعلى `Empty` تصدق على الفارغة فيمتنع. فلا تعني تمامَ البدائل إلّا مع «نطاق ثابت وجرد مستقل» ومولِّدٍ تامّ (LC18 س225)؛
+  ولم يُبنَ، ولا المجالُ المستقلُّ لكلّ متغيّر (LC12 س148).
+* `phi` و`tarkib` و`zanjir` والعقدُ (§٦) على `yujad` المغلق كما كانت، ولا مستهلكَ لـ`yujadN` في المحرّك بعد. والعقدُ: نطاقُه قائمةٌ غيرُ
+  فارغة تحوي كلَّ مرشّح بفرضَي `hd` و`hne` في مبرهناته، وبالثاني منهما فممتنعُه من القانون والمانع وحدهما (`phiAqd_N`)، إذ عاملا الجذر
+  والشاهد لا يُخرجان N (`amilJidhr_ghayr_N`، `amilShahid_ghayr_N`)؛ و`phiAqd` على القائمة الفارغة ممتنعٌ من الخلوّ (`phiAqd_farigh`) —
+  تمنعه الفروضُ لا التعريف.
+* ولم يُبنَ من LC19 (س237) أنّ «فشل البحث أو نفاد الميزانية تعليق» (لا بحثَ ولا ميزانيّةَ هنا)، ولا مانعٌ مسمًّى لكلّ بديل (بقراءة البنّاء
+  لـ«موانع لكل بديل»): `yujadN_N` تشترط امتناعَ كلّ بديل، لكنّ `K3` لا يحمل سببَ الامتناع (`rutba` تُسقطه — LC15). وتبعيّتاه في السجلّ (س239) LC11 «فصل عدم التمثيل عن
+  الامتناع اللغوي» (س136؛ في إطار الطبقة الثالثة `Jisr/Utur.lean`) وLC18. -/
+
+/-- **الإسقاطُ المفتوح:** امتدادٌ مرخَّص ← مرخَّص؛ وإلّا «لا حكم» — ولو خلت القائمة أو امتنع كلُّ ما فيها. -/
+def yujadMaftuh (l : List K3) : K3 := aw (yujad l) U
+
+theorem yujadMaftuh_P (l : List K3) : yujadMaftuh l = P ↔ ∃ x ∈ l, x = P := by
+  unfold yujadMaftuh
+  rw [aw_P, yujad_P]
+  constructor
+  · rintro (h | h)
+    · exact h
+    · cases h
+  · exact Or.inl
+
+/-- **لا امتناعَ من الإسقاط المفتوح.** -/
+theorem yujadMaftuh_ne_N (l : List K3) : yujadMaftuh l ≠ N := by
+  unfold yujadMaftuh
+  intro h
+  rw [aw_N] at h
+  cases h.2
+
+/-- وما سوى الترخيص «لا حكم». -/
+theorem yujadMaftuh_U (l : List K3) : yujadMaftuh l = U ↔ ∀ x ∈ l, x ≠ P := by
+  constructor
+  · intro h x hx hp
+    have := (yujadMaftuh_P l).2 ⟨x, hx, hp⟩
+    rw [h] at this
+    cases this
+  · intro h
+    cases hk : yujadMaftuh l
+    · obtain ⟨x, hx, hxp⟩ := (yujadMaftuh_P l).1 hk
+      exact absurd hxp (h x hx)
+    · exact absurd hk (yujadMaftuh_ne_N l)
+    · rfl
+
+/-- **النطاق:** قائمةُ قيم، وشهادةُ استنفادٍ اختياريّة — `mustanfad` يقتضي أنّ كلَّ قيمةٍ من النوع في القائمة. -/
+structure Nitaq (D : Type) where
+  qaima : List D
+  mustanfad : Bool
+  sahih : mustanfad = true → ∀ d : D, d ∈ qaima
+
+/-- الإسقاطُ على نطاق: مغلقٌ بشهادة الاستنفاد، ومفتوحٌ بدونها. -/
+def yujadN {D : Type} (n : Nitaq D) (F : D → K3) : K3 :=
+  if n.mustanfad then yujad (n.qaima.map F) else yujadMaftuh (n.qaima.map F)
+
+/-- الترخيصُ واحدٌ في المغلق والمفتوح: قيمةٌ في القائمة مرخَّصة. -/
+theorem yujadN_P {D : Type} (n : Nitaq D) (F : D → K3) : yujadN n F = P ↔ ∃ d ∈ n.qaima, F d = P := by
+  unfold yujadN
+  cases n.mustanfad
+  · simp only [Bool.false_eq_true, ite_false, yujadMaftuh_P, List.mem_map]
+    constructor
+    · rintro ⟨_, ⟨d, hd, rfl⟩, h⟩
+      exact ⟨d, hd, h⟩
+    · rintro ⟨d, hd, h⟩
+      exact ⟨F d, ⟨d, hd, rfl⟩, h⟩
+  · simp only [ite_true]
+    exact yujad_map_P F n.qaima
+
+/-- **لا امتناعَ كلّيًّا إلّا بشهادة الاستنفاد وامتناعِ كلّ قيمةٍ من النوع** — لا من القائمة وحدها. -/
+theorem yujadN_N {D : Type} (n : Nitaq D) (F : D → K3) :
+    yujadN n F = N ↔ n.mustanfad = true ∧ ∀ d : D, F d = N := by
+  unfold yujadN
+  cases hm : n.mustanfad
+  · simp only [Bool.false_eq_true, ite_false, false_and, iff_false]
+    exact yujadMaftuh_ne_N _
+  · simp only [ite_true, true_and]
+    rw [yujad_map_N F n.qaima]
+    constructor
+    · intro h d
+      exact h d (n.sahih hm d)
+    · intro h d _
+      exact h d
+
+/-- **ولا امتناعَ بلا شهادة.** -/
+theorem la_N_bila_istinfad {D : Type} (n : Nitaq D) (F : D → K3) (h : n.mustanfad = false) : yujadN n F ≠ N := by
+  intro hn
+  have := ((yujadN_N n F).1 hn).1
+  rw [h] at this
+  cases this
+
+/-- نطاقُ Bool مستوعَبٌ بقيمتيه؛ ونطاقٌ من Nat قائمةٌ بلا شهادة. -/
+def nitaqBool : Nitaq Bool := ⟨[false, true], true, fun _ d => by cases d <;> simp⟩
+def nitaqSifr : Nitaq Nat := ⟨[0], false, fun h => by cases h⟩
+def nitaqFarigh : Nitaq Nat := ⟨[], false, fun h => by cases h⟩
+
+/-- **حدٌّ معلَن:** نطاقُ النوع الفرعيّ من قائمةٍ ما مستوعَبٌ بها أيًّا كانت؛ ونطاقُ النوع الخالي مستوعَبٌ بالقائمة الفارغة. -/
+def nitaqMinQaima {α : Type} (l : List α) : Nitaq {a // a ∈ l} := ⟨l.attach, true, fun _ d => List.mem_attach l d⟩
+def nitaqKhali : Nitaq Empty := ⟨[], true, fun _ d => d.elim⟩
+
+/-- **الشهادةُ نسبيّةٌ إلى النوع:** على النوع الفرعيّ من القائمة يرجع `yujadN` إلى `yujad` المغلق بعينه، وعلى `Empty` يمتنع — فلا تعني
+الشهادةُ تمامَ البدائل إلّا مع «نطاق ثابت وجرد مستقل» ومولِّدٍ تامّ (LC18 س225). -/
+theorem shahada_nisbiyya {α : Type} (l : List α) (F : α → K3) :
+    yujadN (nitaqMinQaima l) (fun a => F a.val) = yujad (l.map F) ∧ ∀ G : Empty → K3, yujadN nitaqKhali G = N := by
+  refine ⟨?_, fun _ => rfl⟩
+  show yujad (l.attach.map fun a => F a.val) = yujad (l.map F)
+  rw [List.attach_map_val]
+
+/-- **على الشاهد:** القائمةُ الفارغة في المغلق ممتنعة وفي المفتوح «لا حكم»، وكذلك قائمةٌ كلُّ ما فيها ممتنع؛ والنطاقُ المستوعَب يمتنع
+بامتناع قيمتيه كلتيهما، ولا يمتنع ما لم يُستوعَب ولو امتنع كلُّ ما في قائمته. -/
+theorem istinfad_shawahid :
+    yujad [] = N ∧ yujadMaftuh [] = U ∧ yujad [N, N] = N ∧ yujadMaftuh [N, N] = U ∧ yujadMaftuh [N, P] = P ∧
+    yujadN nitaqBool (fun _ => N) = N ∧ yujadN nitaqBool (fun b => if b then P else N) = P ∧
+    yujadN nitaqSifr (fun _ => N) = U ∧ yujadN nitaqFarigh (fun _ => N) = U := by decide
 
 /-! ## ٣. التركيبُ على منفذٍ مشترك، والسلسلة -/
 
@@ -681,6 +826,12 @@ theorem phiAqd_N (A : Aqd) (x : List Nat) (m : Nat) (judhur : List Nat) (hne : j
   · rintro (h | h)
     · exact Or.inl h
     · exact Or.inr (Or.inl h)
+
+/-- **حدٌّ معلَن (§٢أ):** `phiAqd` على نطاق جذورٍ فارغ ممتنعٌ من الخلوّ لا من القانون ولا المانع — فلا يمنعه إلّا فرضُ `hne` في
+    مبرهنات العقد، و`hd` حين يوجد مرشّح، لا التعريف. وعليه يسقط اختبارُ LC19 المضادّ (س238). -/
+theorem phiAqd_farigh (A : Aqd) (x : List Nat) (m : Nat) : phiAqd A x m [] = N := by
+  unfold phiAqd tarkib
+  cases amilQanun A x <;> cases amilMani A x m <;> rfl
 
 /-- **مراتبُ `kull_ma_kull` الثلاث مشتقّةٌ من Φ** (لا من `kull_ma_kull`): لكلّ عقدٍ ودالٍّ ومدلول، ونطاقُ الجذور مرشَّحُ الدالّ
     (أو 0). ولا يشمل شطرَه الرابع (القراءة `QiraaSahiha`) ولا اسمَ السبب (`mumtani_asbab`): `rutba` تُسقطهما. -/
