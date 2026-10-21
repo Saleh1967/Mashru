@@ -37,7 +37,7 @@
     له ولا وقف ليست الكلمةُ صورةَ رفعٍ لصفٍّ من الجدول (`ghayr_sitta`) — والوصلُ بين الإطار ومواضعه بتعريف `kullMawdi` لا بمبرهنة؛ والرخصةُ سلسلةٌ
     مرخَّصةٌ في القاعدة (`rukhsa_murakhkhasa`)، والسلسلةُ مقبولةٌ إذا كانت مقدّماتُ قانونٍ أصولًا (`silsila_maqbula`)؛ والصحبةُ لا تثبت
     (`sahib_la_yathbut`) فلا رخصةَ لصور «ذو» في أيّ موضع (`dhu_la_rukhsa` — نفيُ الرخصة؛ و«لا حكم» لـ«ذُو» مضافةً في موضع الرفع من `mawquf`، ولـ«ذَا» مضافةً
-    في موضع النصب وسببُه في `Utur` حرفُ العلّة `illaAkhir`، على الشاهد؛ و«ذَهَبَ ذُو» بلا مضافٍ إليه ممتنعٌ في `Utur` نفسِه كـ«ذَهَبَ أَبُوْ»، و«ذَا» و«ذِي» بلا مضافٍ إليه «لا حكم» فيه بحرف العلّة)؛ والقاعدةُ لا تُنتج إعرابًا بالحرف إلّا لصور قوانينها (`la_tamdid`؛ صادقةٌ
+    في موضع النصب وسببُه في `Utur` حرفُ العلّة `illaAkhir`، على الشاهد؛ و«ذَهَبَ ذُو» بلا مضافٍ إليه ممتنعٌ في `Utur` نفسِه كـ«ذَهَبَ أَبُوْ»، و«ضَرَبَ الْوَلَدُ ذَا» و«فِي ذِي» بلا مضافٍ إليه «لا حكم» فيه وهنا وسببُه في `Utur` حرفُ العلّة)؛ والقاعدةُ لا تُنتج إعرابًا بالحرف إلّا لصور قوانينها (`la_tamdid`؛ صادقةٌ
     بالبناء: النتيجةُ لا تكون أصلًا — فلا قياسَ في القاعدة على الستّة؛ وأنّ اللغة كذلك قراءةُ البنّاء)؛ و`natija_murab`، `qanun_raf_fi`،
     `kullMawdi_mono`، `qiraaSitta_min_qiraa`.
   * تعريفيّة: ما خرج عن الحدّ «لا حكم» (`hukmSitta_kharij`)؛ و`shakl` وثلاثُ مبرهناته وصورتا الحكمين عليه، و`hukmQiraa_ne_mumtani`.
@@ -475,6 +475,7 @@ def abaK : Kalima := ⟨[4 * 0 + 0, 4 * 26 + 0, 4 * 2 + 3], false, false⟩     
 def abiK : Kalima := ⟨[4 * 0 + 0, 4 * 26 + 2, 4 * 11 + 3], false, false⟩    -- أَبِي
 def hanaK : Kalima := ⟨[4 * 1 + 0, 4 * 14 + 0, 4 * 2 + 3], false, false⟩    -- هَنَا
 def dhaK : Kalima := ⟨[4 * 23 + 0, 4 * 2 + 3], false, false⟩                -- ذَا
+def dhiK : Kalima := ⟨[4 * 23 + 2, 4 * 11 + 3], false, false⟩               -- ذِي
 def hanuDamma : Kalima := ⟨[4 * 1 + 0, 4 * 14 + 1], false, false⟩           -- هَنُ (النقص: كغد)
 /-- «ذَهَبَ <فاعلٌ> الْوَلَدِ» والفاعلُ معلَنٌ بعدده `n` (0 مفرد؛ وغيرُه خارجَ الحدّ). -/
 def dhahabaMudafAdad (w : Kalima) (n : Nat) : Itar3 :=
@@ -490,27 +491,28 @@ def dhahabaMudafAdad (w : Kalima) (n : Nat) : Itar3 :=
 - «ذَهَبَ هَنَا الْوَلَدِ» و«ضَرَبَ الْوَلَدُ ذَا الْوَلَدِ» كانا «لا حكم» ويبقيان (لا قصرَ في «هن»؛ والصحبة)، و«ضَرَبَ الْوَلَدُ أَبَا» بلا مضافٍ إليه يبقى
   «لا حكم» (شرطُ الإضافة، الألفية L79).
 - وما كان ممتنعًا باقٍ: «ذَهَبَ أَبَوْ الْوَلَدِ» و«ذَهَبَ دَلْوْ الْوَلَدِ» و«ضَرَبَ الْوَلَدُ أَبُو الْوَلَدِ»؛ وما كان «لا حكم» بغير الجدول باقٍ: «ضَرَبَ
-  الْفَتَى الْوَلَدَ» (`illaAkhir` في «الفتى»). -/
+  الْفَتَى الْوَلَدَ» (`illaAkhir` في «الفتى»)، و«ضَرَبَ الْوَلَدُ ذَا» و«فِي ذِي» بلا مضافٍ إليه (`illaAkhir`). -/
 theorem shawahid_sitta :
-    hukm3 abuAlWalad = .laHukm ∧ hukmSitta abuAlWalad = .murakhkhas ∧
-    [akhuK, hamuK, hanuK, fuK].all (fun w => hukm3 (dhahabaMudaf w) == .laHukm && hukmSitta (dhahabaMudaf w) == .murakhkhas) ∧
-    hukm3 (dhahabaMudaf dhuK) = .laHukm ∧ hukmSitta (dhahabaMudaf dhuK) = .laHukm ∧
+    hukm3 abuAlWalad = .laHukm ∧ asbabLaHukm abuAlWalad = [.irabBilHarf] ∧ hukmSitta abuAlWalad = .murakhkhas ∧
+    [akhuK, hamuK, hanuK, fuK].all (fun w => hukm3 (dhahabaMudaf w) == .laHukm &&
+      asbabLaHukm (dhahabaMudaf w) == [.irabBilHarf] && hukmSitta (dhahabaMudaf w) == .murakhkhas) ∧
+    hukm3 (dhahabaMudaf dhuK) = .laHukm ∧ asbabLaHukm (dhahabaMudaf dhuK) = [.irabBilHarf] ∧ hukmSitta (dhahabaMudaf dhuK) = .laHukm ∧
     hukm3 { dhahabaAlWalad with kalimat := [dhahaba, dhuK] } = .mumtani ∧
     hukmSitta { dhahabaAlWalad with kalimat := [dhahaba, dhuK] } = .mumtani ∧
-    hukm3 (dhahabaMudaf daluK) = .laHukm ∧ hukmSitta (dhahabaMudaf daluK) = .mumtani ∧
-    hukm3 (dhahabaMudafAdad bunuK 0) = .laHukm ∧ hukmSitta (dhahabaMudafAdad bunuK 0) = .mumtani ∧
+    [dhahabaMudaf daluK, dhahabaMudafAdad bunuK 0, dhahabaMudafAdad muslimuK 0].all (fun u =>
+      hukm3 u == .laHukm && asbabLaHukm u == [.irabBilHarf] && hukmSitta u == .mumtani) ∧
     hukmSitta (dhahabaMudafAdad bunuK 2) = .laHukm ∧ asbabLaHukm (dhahabaMudafAdad bunuK 2) = [.ismGhayrMufrad] ∧
-    hukm3 (dhahabaMudafAdad muslimuK 0) = .laHukm ∧ hukmSitta (dhahabaMudafAdad muslimuK 0) = .mumtani ∧
     hukmSitta (dhahabaMudafAdad muslimuK 2) = .laHukm ∧ asbabLaHukm (dhahabaMudafAdad muslimuK 2) = [.ismGhayrMufrad] ∧
-    hukm3 (darabaMudaf abaK) = .laHukm ∧ hukmSitta (darabaMudaf abaK) = .murakhkhas ∧
-    hukm3 (fiAfdalAdDur abiK) = .laHukm ∧ hukmSitta (fiAfdalAdDur abiK) = .murakhkhas ∧
+    [darabaMudaf abaK, fiAfdalAdDur abiK].all (fun u =>
+      hukm3 u == .laHukm && asbabLaHukm u == [.illaAkhir] && hukmSitta u == .murakhkhas) ∧
     hukm3 (dhahabaMudaf abaK) = .laHukm ∧ hukmSitta (dhahabaMudaf abaK) = .murakhkhas ∧
     hukm3 (dhahabaMudaf hanaK) = .laHukm ∧ hukmSitta (dhahabaMudaf hanaK) = .laHukm ∧
     hukm3 (darabaMudaf dhaK) = .laHukm ∧ asbabLaHukm (darabaMudaf dhaK) = [.illaAkhir] ∧ hukmSitta (darabaMudaf dhaK) = .laHukm ∧
     hukm3 (dhahabaMudaf abawK) = .mumtani ∧ hukmSitta (dhahabaMudaf abawK) = .mumtani ∧
     hukm3 (dhahabaMudaf dalwK) = .mumtani ∧ hukmSitta (dhahabaMudaf dalwK) = .mumtani ∧
     hukm3 (darabaMudaf abuK) = .mumtani ∧ hukmSitta (darabaMudaf abuK) = .mumtani ∧
-    hukm3 (darabaFata alWaladaK) = .laHukm ∧ hukmSitta (darabaFata alWaladaK) = .laHukm ∧
+    [darabaFata alWaladaK, { darabaFata alQadi with kalimat := [darabaK, alWalad, dhaK] }, { fiDar with kalimat := [fiK, dhiK] }].all (fun u =>
+      hukm3 u == .laHukm && asbabLaHukm u == [.illaAkhir] && hukmSitta u == .laHukm) ∧
     hukm3 { darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] } = .laHukm ∧
     hukmSitta { darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] } = .laHukm := by decide +kernel
 
