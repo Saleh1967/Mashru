@@ -9,8 +9,10 @@
    QawaidSitta.lean: القاعدةُ إصدارُها البصمة، والقوانينُ من `sitta` بوجوهها وأحوالها الثلاث، وشرطُ الإضافة والطلب والصحبة في المقدّمات،
    والحكمُ `hukm3` بعينه والقراءةُ فيه `qiraaSitta`، والمبرهناتُ المسمّاة موجودة — وهذا فحصُ نصٍّ لا سلوك (تأكيداتٌ تنسخ أسطر Lean)، والسلوكُ
    تفحصه Lean بمبرهنات الشاهد (`shawahid_sitta` وحدها تقتل P393 وP397 وP400؛ وP392 وP394 وP396 وP398 تقتلها Lean وهذه التأكيدات معًا)؛
-   ومن فحص النصّ (بعد نزع التعليقات، وفي جسم التعريف أو المبرهنة نفسِه): عددُ عناصر `mawadiShawahid` ثمانية عشر (يقتل P401)، وشرطُها في جسم
-   `shawahid_sitta` (يقتل P402)، وشرطُ الوجود في جسم `fiMawdi` (يحرس حذفَه نصًّا، بجانب P400 في Lean).
+   وفحصُ النصّ على النصّ بلا تعليقات (ماسحُ البوّابة `_taaliq_lean`، متداخلًا)، وفي جسم التصريح المسمّى (رأسُه بحدّ اسمٍ في أوّل سطر، حتّى أوّل سطرٍ
+   يبدأ في عموده الأوّل): عددُ عناصر `mawadiShawahid` ثمانية عشر (يقتل P401)، وشرطُها في جسم `shawahid_sitta` (يقتل P402)، وشرطُ الوجود في جسم
+   `fiMawdi` (يقتل P403)، وإصدارُ القاعدة بالبصمة في جسم `qSitta` (يقتل P404). وحدُّه معلَن: لا يصمد لتحايلٍ يكتب الشيفرةَ المفحوصةَ نصًّا مقتبسًا
+   داخل التصريح.
 ٢. بالمودَع: بصمةُ الجدول هي بصمتُه في mudaat/sijill.json (وإلّا رُفض باسمه)، ونوعُه «معلومات-سابقة»، وحالتُه مختوم أو مرشّح (تُطبع)؛ والمولِّد
    `scripts/bina_qawaid.py` على الجدول يعيد QawaidJadwal.lean بايتًا بايتًا (فالبصمةُ فيه بصمةُ الجدول).
 ٣. بالمودَع: اقتباساتُ عمود السند اثنان وأربعون (عدٌّ يدويٌّ صفًّا صفًّا: 8، 10، 5، 7، 5، 7)، كلٌّ بعمودٍ من الأعمدة المعلنة ومصدرٍ من الثلاثة، وكلٌّ
@@ -27,6 +29,8 @@ import sys
 import tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import bawwaba  # noqa: E402 — ماسحُ تعليقات Lean (متداخلًا) نفسُه الذي تستعمله البوّابة
 ISM = "جدول القواعد"
 
 jadwal = open(os.path.join(ROOT, "Jisr", "QawaidJadwal.lean"), encoding="utf-8").read()
@@ -119,32 +123,37 @@ def fahs_lean():
                    daraja_nass[DARAJA[ism]], "س"]) + "\n" for ism, r, n, j in SUWAR)
     fahs_sufuf(sufuf_lean(muwallid(tsv_text)))
     assert re.search(r'^def basma : String := "[0-9a-f]{64}"$', jadwal, re.M)
-    # QawaidSitta: القاعدة والقوانين والحكم نصًّا
+    # QawaidSitta: القاعدة والقوانين والحكم نصًّا — على النصّ بلا تعليقات (ماسحُ البوّابة `_taaliq_lean`، متداخلًا)، فحصُ نصٍّ لا سلوك
     s = sitta_src
-    assert 'def qSitta : Qaida.Qaida Qadiyya := ⟨"الأسماء الستّة @ " ++ basma, qawanin⟩' in s
-    assert "sitta.flatMap fun s => (wujuh s).flatMap fun w => halat.map fun h => qanun s w h" in s
-    assert "def halat : List Nat := [1, 0, 2]" in s
-    assert "def wujuh (s : Saff) : List Wajh := if s.qasr then [.tamam, .qasr] else [.tamam]" in s
-    assert "[.sura (suraBi s w h), .mudaf (suraBi s w h), .matlub h (suraBi s w h)] ++" in s
-    assert "(if s.sahib then [.sahib (suraBi s w h)] else [])" in s
-    assert "  | .sahib _ => false\n  | .murab _ _ => false" in s   # الصحبة والنتيجة لا تُقرآن
-    assert "  | .matlub h c => nom && hs.contains h && c == w.khalaya" in s
-    assert "Qaida.maqbulM qSitta (aslMawdi nom hs w mudaf) ⟨r.natija, silsila r⟩" in s   # الفاحص بالمحتوى
-    assert "(damm (ofBool (waslBase u && waslMl u && jisrMadlul u)) (damm (qiraaSitta u) (waslMadlul u.isnad))))" in s
-    assert "kullMawdi u (fun n hs w m => laIrabBilHarf n hs w m || rukhsa n hs w m || mawquf n hs w m) then .laHukm" in s
+    bila = bawwaba.bila_taaliq(s, bawwaba._taaliq_lean(s))
+
+    def jism(ras):
+        """التصريحُ `ras` (رأسُه في أوّل سطرٍ بحدّ اسم) حتّى أوّل سطرٍ يبدأ في عموده الأوّل."""
+        m = re.search(rf"^{re.escape(ras)}(?=[\s:(])", bila, re.M)
+        assert m, ras
+        z = re.search(r"\n(?=\S)", bila[m.end():])
+        return bila[m.start():m.end() + z.start()] if z else bila[m.start():]
+
+    assert '⟨"الأسماء الستّة @ " ++ basma, qawanin⟩' in jism("def qSitta")
+    assert "sitta.flatMap fun s => (wujuh s).flatMap fun w => halat.map fun h => qanun s w h" in jism("def qawanin")
+    assert "[1, 0, 2]" in jism("def halat")
+    assert "if s.qasr then [.tamam, .qasr] else [.tamam]" in jism("def wujuh")
+    q = jism("def qanun")
+    assert "[.sura (suraBi s w h), .mudaf (suraBi s w h), .matlub h (suraBi s w h)] ++" in q and "(if s.sahib then [.sahib (suraBi s w h)] else [])" in q
+    am = jism("def aslMawdi")
+    assert "  | .sahib _ => false\n  | .murab _ _ => false" in am   # الصحبة والنتيجة لا تُقرآن
+    assert "  | .matlub h c => nom && hs.contains h && c == w.khalaya" in am
+    assert "Qaida.maqbulM qSitta (aslMawdi nom hs w mudaf) ⟨r.natija, silsila r⟩" in jism("def rukhsa")   # الفاحص بالمحتوى
+    assert "(damm (ofBool (waslBase u && waslMl u && jisrMadlul u)) (damm (qiraaSitta u) (waslMadlul u.isnad))))" in jism("def hukmSitta")
+    assert ("kullMawdi u (fun n hs w m => laIrabBilHarf n hs w m || rukhsa n hs w m || mawquf n hs w m) then .laHukm"
+            in jism("def qiraaSitta"))
     for name in ("kullMawdi_mono", "qiraaSitta_min_qiraa", "hukmSitta_murakhkhas_thabit", "hukm3_shakl", "hukmSitta_shakl", "shakl_mumtani",
                  "shakl_laHukm_mumtani", "shakl_murakhkhas", "hukmQiraa_ne_mumtani", "hukmSitta_mumtani_thabit", "hukmSitta_kharij",
                  "raf_bi_qiraa", "mumtani_bi_qiraa", "natija_murab", "silsila_maqbula", "rukhsa_murakhkhasa", "la_tamdid", "suwar_sitta",
                  "sahib_la_yathbut", "sahib_muqaddima", "dhu_la_rukhsa", "qanun_raf_fi", "ghayr_sitta", "jadwal_jisrdal",
                  "shawahid_jisrdal", "abuK_jadwal", "shawahid_sitta", "daraja_wujuh"):
-        assert re.search(rf"^theorem {name}\b", s, re.M), name
-    # مواضعُ الشواهد: عناصرُها الثمانية عشر (عدٌّ يدويّ)، وشرطُها في shawahid_sitta بالموضع ووجوده والرخصة والوقف — فحصُ نصٍّ لا سلوك
-    bila = re.sub(r"--.*", "", re.sub(r"/-.*?-/", "", s, flags=re.S))   # بلا تعليقات
-
-    def jism(ras):
-        a = bila.index(ras)
-        return bila[a:bila.index("\n\n", a)]
-
+        assert re.search(rf"^theorem {name}(?=[\s:(])", bila, re.M), name
+    # مواضعُ الشواهد: عناصرُها الثمانية عشر (عدٌّ يدويّ)، وشرطُها في shawahid_sitta بالموضع ووجوده والرخصة والوقف
     mw = jism("def mawadiShawahid")
     # كلُّ عنصرٍ ينتهي بقيمتي (الرخصة، الوقف) مرّةً واحدة، ولا عنصرَ بهما معًا
     assert mw.count(", true, false)") + mw.count(", false, true)") + mw.count(", false, false)") == 18 and ", true, true)" not in mw

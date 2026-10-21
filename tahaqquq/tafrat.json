@@ -2818,5 +2818,17 @@
   "milaf": "Jisr/QawaidSitta.lean",
   "min": "mawadiShawahid.all (fun (u, w, h, m, r, q) => fiMawdi u w h m && rukhsa true [h] w m == r && mawquf true [h] w m == q)",
   "ila": "mawadiShawahid.all (fun (u, w, h, m, r, q) => rukhsa true [h] w m == r && mawquf true [h] w m == q)"
+ },
+ {
+  "ism": "P403_fiMawdi_bila_wujud",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  !kullMawdi u (fun _ _ v _ => !(v.khalaya == w.khalaya)) &&\n",
+  "ila": ""
+ },
+ {
+  "ism": "P404_isdar_bila_basma",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "def qSitta : Qaida.Qaida Qadiyya := ⟨\"الأسماء الستّة @ \" ++ basma, qawanin⟩",
+  "ila": "def qSitta : Qaida.Qaida Qadiyya := ⟨\"الأسماء الستّة\", qawanin⟩"
  }
 ]
