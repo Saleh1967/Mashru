@@ -28,7 +28,7 @@
 
   29 مبرهنة بالمعيار الموحَّد (`Nizam/Asas.lean`): 24 لكلّ (`dimn_iff`، `dimn_nafs`، `dimn_trans`، `dimn_asghar`، `dimn_sifr`، `dimn_aw`،
   `adna_min`، `adna_kamil`، `adna_silsila`، `qima_ratiba`، `qima_dharrat`، `baqi_sahih`، `baqi_kamil`، `baqi_adna`، `P_iff`، `qinaMin_bit`،
-  `N_iff`، `k3_P`، `k3_N`، `hukm_k3`، `natija_hukm`، `usulB_sghir`، `naqsB_baqi`، `rukhsaB_k3` — وهذه على هذا الجدول)، ولا تعريفيّة، و5 على الشاهد (`taarud_yukhfa`، `baqi_talab`
+  `N_iff`، `k3_P`، `k3_N`، `hukm_k3`، `natija_hukm`، `usulB_sghir`، `naqsB_baqi`، و`rukhsaB_k3` على هذا الجدول)، ولا تعريفيّة، و5 على الشاهد (`taarud_yukhfa`، `baqi_talab`
   — decide على القناعين في البتّات الأربع —، `mithal_badilan`، `mithal_tasghir`، `mithal_dhu`). ومساعدتان خاصّتان غيرُ معدودتين: `bit_wahid'` لكلّ،
   و`talab_sghir` على الشاهد (decide على جدول #68). طفراتُها P426–P433 في `tahaqquq/tafrat.json` تُفشل `lake build`؛ لا جدولَ خارجيًّا فلا
   مرآة بايثون.
