@@ -4,13 +4,16 @@
 يُشغَّل على الجدول حين يحضر (MUDAA_DIR وفيه qawaid.tsv)؛ وإلّا أُجريت فحوصُ نصّ Lean وحدها وخرج 0.
 ١. بلا مودَع (دائمًا): صفوفُ `sitta` في QawaidJadwal.lean ستّةٌ بأسمائها وترتيب القطر L78–79 (أب، أخ، حم، هن، فم، ذو)، وخلاياها مفكوكةً بجدول
    المخارج `Dal/Makharij.hawamil` المقروء نصًّا هي الصورُ المكتوبة هنا يدويًّا حرفًا وحركة (SUWAR — توقّعٌ مستقلٌّ عن الجدول والمولِّد)، والقصرُ
-   في أب وأخ وحم وحدها (الألفية L78 «وفي أب وتالييه»)، والصحبةُ في ذو وحده (L76)، والدرجاتُ (قصر>نقص في الثلاثة، نقص>تمام في هن)؛ وفي
+   في أب وأخ وحم وحدها (الألفية L78 «وفي أب وتالييه»)، والصحبةُ في ذو وحده (L76)، والدرجاتُ بلفظ مصدرها (قصر>نقص «أشهر» في الثلاثة،
+   ونقص>تمام «أحسن» و«الأفصح» في هن)؛ وفي
    QawaidSitta.lean: القاعدةُ إصدارُها البصمة، والقوانينُ من `sitta` بوجوهها وأحوالها الثلاث، وشرطُ الإضافة والطلب والصحبة في المقدّمات،
-   والحكمُ `hukm3` بعينه والقراءةُ فيه `qiraaSitta`، والمبرهناتُ المسمّاة موجودة.
+   والحكمُ `hukm3` بعينه والقراءةُ فيه `qiraaSitta`، والمبرهناتُ المسمّاة موجودة — وهذا فحصُ نصٍّ لا سلوك (تأكيداتٌ تنسخ أسطر Lean)، والسلوكُ
+   تفحصه Lean بمبرهنات الشاهد (`shawahid_sitta` وحدها تقتل P393 وP397؛ وP392 وP394 وP396 وP398 تقتلها Lean وهذه التأكيدات معًا).
 ٢. بالمودَع: بصمةُ الجدول هي بصمتُه في mudaat/sijill.json (وإلّا رُفض باسمه)، ونوعُه «معلومات-سابقة»، وحالتُه مختوم أو مرشّح (تُطبع)؛ والمولِّد
    `scripts/bina_qawaid.py` على الجدول يعيد QawaidJadwal.lean بايتًا بايتًا (فالبصمةُ فيه بصمةُ الجدول).
 ٣. بالمودَع: اقتباساتُ عمود السند أربعون (عدٌّ يدويٌّ صفًّا صفًّا: 7، 9، 5، 7، 5، 7)، كلٌّ بعمودٍ من الأعمدة المعلنة ومصدرٍ من الثلاثة، وكلٌّ
-   في سطره أو أسطره من المودَع الحاضر بلفظه على النصّ الموصول (بلا بادئات OpenITI).
+   في سطره أو أسطره من المودَع الحاضر بلفظه على النصّ الموصول (بلا بادئات OpenITI)؛ ووسمُ العمود قد يحمل قيدًا بين قوسين («العلّة (في باب
+   التسمية)»، «الشاهد (بضميرٍ متّصل، لم يُبنَ)»).
 التشغيل: python3 -I tahaqquq/test_qawaid.py
 """
 import hashlib
@@ -33,7 +36,8 @@ SUWAR = [("أب", "أَبُو", "أَبَا", "أَبِي"), ("أخ", "أَخُ�
          ("هن", "هَنُو", "هَنَا", "هَنِي"), ("فم", "فُو", "فَا", "فِي"), ("ذو", "ذُو", "ذَا", "ذِي")]
 QASR = {"أب", "أخ", "حم"}
 SAHIB = {"ذو"}
-AFDAL = {"أب": "[(.qasr, .naqs)]", "أخ": "[(.qasr, .naqs)]", "حم": "[(.qasr, .naqs)]", "هن": "[(.naqs, .tamam)]", "فم": "[]", "ذو": "[]"}
+DARAJA = {"أب": '[(.qasr, .naqs, "أشهر")]', "أخ": '[(.qasr, .naqs, "أشهر")]', "حم": '[(.qasr, .naqs, "أشهر")]',
+          "هن": '[(.naqs, .tamam, "أحسن"), (.naqs, .tamam, "الأفصح")]', "فم": "[]", "ذو": "[]"}
 HARAKAT = {"َ": 0, "ُ": 1, "ِ": 2, "ْ": 3}
 MADD_BAD = {0: "ا", 1: "و", 2: "ي"}
 # ٣: عدُّ الاقتباسات في كلّ صفٍّ يدويًّا
@@ -68,11 +72,11 @@ def huruf_harakat(sura):
 
 
 def sufuf_lean(text=None):
-    """صفوف `sitta` من QawaidJadwal.lean نصًّا (أو من نصٍّ مولَّد): (الاسم، رفع، نصب، جرّ، قصر، صحبة، أفضل)."""
+    """صفوف `sitta` من QawaidJadwal.lean نصًّا (أو من نصٍّ مولَّد): (الاسم، رفع، نصب، جرّ، قصر، صحبة، درجة)."""
     text = jadwal if text is None else text
     body = text[text.index("def sitta : List Saff :="):]
     out = []
-    for m in re.finditer(r"⟨\"([^\"]+)\", \[([\d, ]*)\], \[([\d, ]*)\], \[([\d, ]*)\], (true|false), (true|false), (\[[^\]]*\])", body):
+    for m in re.finditer(r"⟨\"([^\"]+)\", \[([\d, ]*)\], \[([\d, ]*)\], \[([\d, ]*)\], (true|false), (true|false), (\[(?:[^\]\"]|\"[^\"]*\")*\])", body):
         cells = [[int(x) for x in g.split(", ")] for g in m.group(2, 3, 4)]
         out.append((m.group(1), *cells, m.group(5) == "true", m.group(6) == "true", m.group(7)))
     return out
@@ -95,22 +99,22 @@ def muwallid(tsv_text):
 def fahs_sufuf(rows):
     h = hawamil()
     assert [r[0] for r in rows] == [s[0] for s in SUWAR], [r[0] for r in rows]
-    for (ism, raf, nasb, jarr, qasr, sahib, afdal), (_, *suwar) in zip(rows, SUWAR):
+    for (ism, raf, nasb, jarr, qasr, sahib, daraja), (_, *suwar) in zip(rows, SUWAR):
         for cells, sura in zip((raf, nasb, jarr), suwar):
             got = [(h[c // 4], c % 4) for c in cells]
             assert got == huruf_harakat(sura), ("الخلايا لا تطابق الصورة", ism, sura, got)
         assert qasr == (ism in QASR), (ism, qasr)
         assert sahib == (ism in SAHIB), (ism, sahib)
-        assert afdal == AFDAL[ism], (ism, afdal)
+        assert daraja == DARAJA[ism], (ism, daraja)
 
 
 def fahs_lean():
     fahs_sufuf(sufuf_lean())
     # المولِّدُ نفسُه بلا مودَع: جدولٌ يكتبه الاختبارُ من صوره اليدوية يُخرج الخلايا والأعلامَ المتوقَّعة
-    afdal_nass = {"[(.qasr, .naqs)]": "قصر>نقص", "[(.naqs, .tamam)]": "نقص>تمام", "[]": "—"}
-    tsv_text = "qaida\tism\traf\tnasb\tjarr\tqasr\tshart\tafdal\tsanad\n" + "".join(
+    daraja_nass = {DARAJA["أب"]: "قصر>نقص=أشهر", DARAJA["هن"]: "نقص>تمام=أحسن، نقص>تمام=الأفصح", "[]": "—"}
+    tsv_text = "qaida\tism\traf\tnasb\tjarr\tqasr\tshart\tdaraja\tsanad\n" + "".join(
         "\t".join(["الأسماء الستّة", ism, r, n, j, "نعم" if ism in QASR else "لا", "إضافة، صحبة" if ism in SAHIB else "إضافة",
-                   afdal_nass[AFDAL[ism]], "س"]) + "\n" for ism, r, n, j in SUWAR)
+                   daraja_nass[DARAJA[ism]], "س"]) + "\n" for ism, r, n, j in SUWAR)
     fahs_sufuf(sufuf_lean(muwallid(tsv_text)))
     assert re.search(r'^def basma : String := "[0-9a-f]{64}"$', jadwal, re.M)
     # QawaidSitta: القاعدة والقوانين والحكم نصًّا
@@ -140,8 +144,8 @@ d = os.environ.get("MUDAA_DIR")
 p = os.path.join(d, "qawaid.tsv") if d else None
 if not p or not os.path.exists(p):
     fahs_lean()
-    print("لم يُشغَّل على الجدول (غير حاضر؛ عيّن MUDAA_DIR وفيه qawaid.tsv)؛ فحص نصّ Lean: الصفوف الستّة بخلاياها صورَها اليدوية، والقصرُ "
-          "والصحبةُ والدرجات، والقاعدةُ والقوانينُ والحكمُ والمبرهناتُ المسمّاة موجودة")
+    print("لم يُشغَّل على الجدول (غير حاضر؛ عيّن MUDAA_DIR وفيه qawaid.tsv)؛ الصفوف الستّة بخلاياها صورَها اليدوية والمولِّدُ يُخرجها منها، والقصرُ "
+          "والصحبةُ والدرجات، ونصُّ Lean: القاعدةُ والقوانينُ والحكمُ والمبرهناتُ المسمّاة موجودة")
     sys.exit(0)
 
 # ٢
@@ -174,7 +178,7 @@ def mawsul(src, a, z):
     return " ".join(parts)
 
 
-pat = re.compile(r"^(" + "|".join(AMIDA) + r"): (" + "|".join(MASADIR) + r") س(\d+)(?:–(\d+))?: «([^»]+)»$")
+pat = re.compile(r"^(" + "|".join(AMIDA) + r")(?: \([^)]*\))?: (" + "|".join(MASADIR) + r") س(\d+)(?:–(\d+))?: «([^»]+)»$")
 kull = 0
 for r in tsv:
     n = 0

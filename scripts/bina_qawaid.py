@@ -53,20 +53,22 @@ def lean_str(s):
 def safif(path):
     lines = [l for l in open(path, encoding="utf-8").read().split("\n") if l]
     hdr = lines[0].split("\t")
-    want = ["qaida", "ism", "raf", "nasb", "jarr", "qasr", "shart", "afdal", "sanad"]
+    want = ["qaida", "ism", "raf", "nasb", "jarr", "qasr", "shart", "daraja", "sanad"]
     if hdr != want:
         raise SystemExit(f"رأسُ الجدول {hdr} لا {want}")
     return [dict(zip(hdr, l.split("\t"))) for l in lines[1:]]
 
 
-def afdal(cell):
+def daraja(cell):
+    """«أ>ب=لفظ، …»: الوجهُ الأوّل أرجحُ من الثاني بلفظ مصدره (أشهر، أحسن، الأفصح)؛ و«—» لا درجة."""
     if cell == "—":
         return "[]"
-    pairs = []
+    out = []
     for p in cell.split("، "):
-        a, b = p.split(">")
-        pairs.append(f"(.{WAJH[a]}, .{WAJH[b]})")
-    return "[" + ", ".join(pairs) + "]"
+        ab, lafz = p.split("=")
+        a, b = ab.split(">")
+        out.append(f"(.{WAJH[a]}, .{WAJH[b]}, {lean_str(lafz)})")
+    return "[" + ", ".join(out) + "]"
 
 
 def wallid(path):
@@ -91,8 +93,8 @@ def wallid(path):
         "inductive Wajh | tamam | qasr | naqs",
         "deriving DecidableEq, Repr",
         "",
-        "/-- صفٌّ من «الأسماء الستّة»: الاسم، وصورُ التمام رفعًا ونصبًا وجرًّا خلايا، والقصرُ، وشرطُ الصحبة، والدرجةُ بين الوجوه بنصّها",
-        "(الأوّلُ أفضل)، والسند. -/",
+        "/-- صفٌّ من «الأسماء الستّة»: الاسم، وصورُ التمام رفعًا ونصبًا وجرًّا خلايا، والقصرُ، وشرطُ الصحبة، والدرجةُ بين الوجوه (الأوّلُ",
+        "أرجحُ من الثاني بلفظ مصدره: «أشهر»، «أحسن»، «الأفصح»)، والسند. -/",
         "structure Saff where",
         "  ism : String",
         "  raf : List Nat",
@@ -100,7 +102,7 @@ def wallid(path):
         "  jarr : List Nat",
         "  qasr : Bool",
         "  sahib : Bool",
-        "  afdal : List (Wajh × Wajh)",
+        "  daraja : List (Wajh × Wajh × String)",
         "  sanad : String",
         "deriving DecidableEq, Repr",
         "",
@@ -121,7 +123,7 @@ def wallid(path):
                 *("[" + ", ".join(map(str, c)) + "]" for c in cells),
                 "true" if r["qasr"] == "نعم" else "false",
                 "true" if "صحبة" in shart else "false",
-                afdal(r["afdal"]),
+                daraja(r["daraja"]),
                 lean_str(r["sanad"]),
             ]) + "⟩")
     out.append("  [" + items[0][2:] if items else "  [")
