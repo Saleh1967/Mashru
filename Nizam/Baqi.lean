@@ -17,17 +17,18 @@
      إلى `P/N/U`»، س185 «قانوني إسقاط K3»)، فهذا التعريفُ قراءةُ البنّاء؛ وهو تقويمُ الصيغة بـ`K3.wa`/`K3.aw` من Phi بعينه (`k3`؛ المعلومُ P
      والمنفيُّ N والمجهولُ U). وP ⟺ الصيغةُ صادقةٌ بالمعلوم وحده (`P_iff`)، وN ⟺ كاذبةٌ ولو صدقت كلُّ ذرّةٍ معلومةٍ أو غيرِ منفيّة (`N_iff`) —
      وهو N الذي يسمّيه المرفق «للترخيص المغلق» (س131)؛ والنطاقُ المفتوح (N يصير U) في `Phi.yujadMaftuh` ولم يُوصل هنا.
-  ٥. **التعارضُ حالٌ خارج K3** (`Natija`، `natija`؛ المرفق س125: «ولا يضيف قيمة رابعة إلى `Phi`»): `taarud_yukhfa` شاهدُ أنّ `k3` وحده يُقوّم
-     الذرّةَ المعلومةَ المنفيّةَ معًا P بالترتيب، فلا بدّ من تسميتها خارجه.
-  ٦. **الجسرُ إلى #68** (`Nizam/QawaidB.lean`): متبقّي صيغة R⁺ فوق أصول الموضع هو `naqsB` بعينه (`naqsB_baqi`)، فرخصةُ الصفّ على الأعداد
-     قانونٌ ينتج الكلمةَ وصيغةُ مقدّماته P بـ`K3` (`rukhsaB_k3`).
+  ٥. **التعارضُ حالٌ خارج K3** (`Natija`، `natija`؛ المرفق س125: «ولا يضيف قيمة رابعة إلى `Phi`»): بلا تعارضٍ في ذرّات الصيغة فالنتيجةُ حكمُها
+     الثلاثيّ (`natija_hukm`، لكلّ صيغة)؛ و`taarud_yukhfa` شاهدُ أنّ `k3` وحده يُقوّم الذرّةَ المعلومةَ المنفيّةَ معًا P بالترتيب، فلا بدّ من تسميتها خارجه.
+  ٦. **الجسرُ إلى #68** (`Nizam/QawaidB.lean`): متبقّي صيغة R⁺ فوق أصول الموضع هو `naqsB` بعينه (`naqsB_baqi`، لكلّ قانونٍ قناعُه في البتّات
+     الأربع)، فرخصةُ الصفّ على الأعداد قانونٌ ينتج الكلمةَ وصيغةُ مقدّماته P بـ`K3` (`rukhsaB_k3`، لكلّ موضعٍ **على هذا الجدول**: عمومُها على
+     المساعد `talab_sghir` على الشاهد، وصحّتُها على جدولٍ آخر تحتاجه عليه).
   وعلى الشاهد: مثالُ المرفق C معلومٌ في C ∧ (A ∨ B) فالمطلوبُ {{A}، {B}} (س123، `mithal_badilan`)؛ وشاهدٌ يمرّ بالتصغير Min (A ∨ (A ∧ B)
   فالمطلوبُ {{A}} وحده، `mithal_tasghir`)؛ و«ذو» (`mithal_dhu`): الناقصُ الصحبةُ وحدها والحكمُ U ثمّ ∅ وP بثبوتها (س64)، ونفيُ الصحبة فلا
   إكمال وN مثالُ البنّاء (والنفيُ في المرفق على الإضافة، س70، ونتيجتُه N في س155).
 
-  28 مبرهنة بالمعيار الموحَّد (`Nizam/Asas.lean`): 23 لكلّ (`dimn_iff`، `dimn_nafs`، `dimn_trans`، `dimn_asghar`، `dimn_sifr`، `dimn_aw`،
+  29 مبرهنة بالمعيار الموحَّد (`Nizam/Asas.lean`): 24 لكلّ (`dimn_iff`، `dimn_nafs`، `dimn_trans`، `dimn_asghar`، `dimn_sifr`، `dimn_aw`،
   `adna_min`، `adna_kamil`، `adna_silsila`، `qima_ratiba`، `qima_dharrat`، `baqi_sahih`، `baqi_kamil`، `baqi_adna`، `P_iff`، `qinaMin_bit`،
-  `N_iff`، `k3_P`، `k3_N`، `hukm_k3`، `usulB_sghir`، `naqsB_baqi`، `rukhsaB_k3`)، ولا تعريفيّة، و5 على الشاهد (`taarud_yukhfa`، `baqi_talab`
+  `N_iff`، `k3_P`، `k3_N`، `hukm_k3`، `natija_hukm`، `usulB_sghir`، `naqsB_baqi`، `rukhsaB_k3` — وهذه على هذا الجدول)، ولا تعريفيّة، و5 على الشاهد (`taarud_yukhfa`، `baqi_talab`
   — decide على القناعين في البتّات الأربع —، `mithal_badilan`، `mithal_tasghir`، `mithal_dhu`). ومساعدتان خاصّتان غيرُ معدودتين: `bit_wahid'` لكلّ،
   و`talab_sghir` على الشاهد (decide على جدول #68). طفراتُها P426–P433 في `tahaqquq/tafrat.json` تُفشل `lake build`؛ لا جدولَ خارجيًّا فلا
   مرآة بايثون.
@@ -412,8 +413,13 @@ deriving DecidableEq, Repr
 def natija (K D : Nat) (f : Sigha) : Natija :=
   if K &&& D &&& qinaMin 0 (dharrat f) = 0 then .hukm (hukmBaqi K D f) else .taarud (K &&& D &&& qinaMin 0 (dharrat f))
 
-/-- **الحكمُ الثلاثيّ وحده يُخفي التعارض:** ذرّةٌ معلومةٌ منفيّةٌ معًا تُقوَّم P بالترتيب، والنتيجةُ تسمّيها تعارضًا؛ والتعارضُ في ذرّةٍ ليست في
-الصيغة لا يمسّ حكمَها. -/
+/-- **لا تعارضَ في ذرّات الصيغة ⇒ النتيجةُ حكمُها الثلاثيّ** (لكلّ صيغةٍ ومعلومٍ ومنفيّ). -/
+theorem natija_hukm (K D : Nat) (f : Sigha) (h : K &&& D &&& qinaMin 0 (dharrat f) = 0) : natija K D f = .hukm (k3 K D f) := by
+  unfold natija
+  simp [h, hukm_k3]
+
+/-- **الحكمُ الثلاثيّ وحده يُخفي التعارض** (على الشاهد): الذرّةُ 0 معلومةٌ منفيّةٌ معًا فتُقوَّم P بالترتيب، والنتيجةُ تسمّيها تعارضًا؛ والصيغةُ
+الذرّةُ 1 والتعارضُ في الذرّة 0 فالنتيجةُ حكمُها U. -/
 theorem taarud_yukhfa : k3 1 1 (.dharra 0) = .P ∧ natija 1 1 (.dharra 0) = .taarud 1 ∧ natija 1 1 (.dharra 1) = .hukm .U := by decide
 
 /-! ## ٧. الجسرُ إلى صفّ الأسماء الستّة (`Nizam/QawaidB.lean`) -/
@@ -435,10 +441,7 @@ theorem naqsB_baqi (a : Nat) (q : QawaidB.QanunB) (ht : q.talab < 16) :
   rw [baqi_talab q.talab ht _ (usulB_sghir a q.hala)]
   rfl
 
-private theorem talab_sghir : ∀ q ∈ QawaidB.qawaninB, q.talab < 16 := by
-  intro q hq
-  have h : QawaidB.qawaninB.all (fun q => decide (q.talab < 16)) = true := by decide
-  simpa using List.all_eq_true.1 h q hq
+private theorem talab_sghir : ∀ q ∈ QawaidB.qawaninB, q.talab < 16 := by decide
 
 /-- **الرخصةُ على الأعداد تقويمٌ ثلاثيّ:** قانونٌ ينتج الكلمةَ وصيغةُ مقدّماته P بـ`K3` على أصول الموضع. -/
 theorem rukhsaB_k3 (k : Option Nat) (a : Nat) :
@@ -457,7 +460,7 @@ theorem rukhsaB_k3 (k : Option Nat) (a : Nat) :
     · exfalso
       simp [Ne.symm hn] at h
 
-/-! ## ٨. على الشاهد: مثالا README -/
+/-! ## ٨. على الشاهد: مثالا README وشاهدُ التصغير -/
 
 /-- README §4: C معلومٌ في C ∧ (A ∨ B)، فالمطلوبُ {{A}، {B}} لا {A، B}. -/
 theorem mithal_badilan : baqi 1 0 (.wa (.dharra 0) (.aw (.dharra 1) (.dharra 2))) = [2, 4] := by decide

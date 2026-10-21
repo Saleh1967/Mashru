@@ -1661,6 +1661,7 @@ import Nizam.Baqi
 #print axioms Nizam.Baqi.k3_P
 #print axioms Nizam.Baqi.k3_N
 #print axioms Nizam.Baqi.hukm_k3
+#print axioms Nizam.Baqi.natija_hukm
 #print axioms Nizam.Baqi.taarud_yukhfa
 #print axioms Nizam.Baqi.baqi_talab
 #print axioms Nizam.Baqi.usulB_sghir
