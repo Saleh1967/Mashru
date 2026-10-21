@@ -2752,5 +2752,53 @@
   "milaf": "tahaqquq/bawwaba.py",
   "min": "        raise ValueError(f\"لا عنوانَ «{UNWAN_DABT}» في CLAUDE.md\")",
   "ila": "        return []"
+ },
+ {
+  "ism": "P392_sitta_bila_sahib",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "     (if s.sahib then [.sahib (suraBi s w h)] else []),",
+  "ila": "     ([] : List Qadiyya),"
+ },
+ {
+  "ism": "P393_ghayr_sitta_la_hukm",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "mawquf n hs w m) then .laHukm\n  else .mumtani",
+  "ila": "mawquf n hs w m) then .laHukm\n  else .laHukm"
+ },
+ {
+  "ism": "P394_sitta_bila_qasr",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "def wujuh (s : Saff) : List Wajh := if s.qasr then [.tamam, .qasr] else [.tamam]",
+  "ila": "def wujuh (_s : Saff) : List Wajh := [.tamam]"
+ },
+ {
+  "ism": "P395_jadwal_akhu_fatha",
+  "milaf": "Jisr/QawaidJadwal.lean",
+  "min": "⟨\"أخ\", [0, 25, 115]",
+  "ila": "⟨\"أخ\", [0, 24, 115]"
+ },
+ {
+  "ism": "P396_rukhsa_bila_fahis",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  qSitta.qawanin.any fun r => yuntij hs w r && Qaida.maqbulM qSitta (aslMawdi nom hs w mudaf) ⟨r.natija, silsila r⟩",
+  "ila": "  qSitta.qawanin.any fun r => yuntij hs w r"
+ },
+ {
+  "ism": "P397_idafa_la_tushtarat",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  | .mudaf c => mudaf && c == w.khalaya",
+  "ila": "  | .mudaf c => c == w.khalaya"
+ },
+ {
+  "ism": "P398_hukmSitta_bi_hukmQiraa",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "(damm (ofBool (waslBase u && waslMl u && jisrMadlul u)) (damm (qiraaSitta u) (waslMadlul u.isnad))))",
+  "ila": "(damm (ofBool (waslBase u && waslMl u && jisrMadlul u)) (damm (hukmQiraa u) (waslMadlul u.isnad))))"
+ },
+ {
+  "ism": "P399_muwallid_damma_fatha",
+  "milaf": "scripts/bina_qawaid.py",
+  "min": "HARAKA = {\"َ\": 0, \"ُ\": 1,",
+  "ila": "HARAKA = {\"َ\": 0, \"ُ\": 0,"
  }
 ]
