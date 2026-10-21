@@ -120,7 +120,7 @@ import Madlul.Fard116Shawahid
 #print axioms Aql.taaddud_alqawaid_la_lawn
 #print axioms Aql.haqiqa_zanniyya
 #print axioms Aql.la_mafhum_bila_shahid
--- القاعدةُ المرخَّصة قاعدةً للعقليّة: لا حكمَ إلّا ما يقبله Qaida.maqbul، وأحكامُها جوابٌ واحد (قرار المالك 2026-10-21)
+-- مثالُ قاعدة العقليّة من فاحص المحرّك: إذا بُنيت به فلا حكمَ إلّا ما يقبله Qaida.maqbul، وأحكامُها تُعبَّأ في جوابٍ واحد (قرار المالك 2026-10-21)
 #print axioms Aql.aqliyya_maqbula
 #print axioms Aql.aqliyya_murakhkhasa
 #print axioms Aql.aqliyya_jawab
