@@ -6,11 +6,14 @@
       بصمةُ بايتات الجدول الصغير؛ ووجهٌ مجهولٌ يُرفض. (P438)
    ب. قواعدُ الاستخراج في `scripts/rasd_waqi.py` على مدخلاتٍ يدويّة بتوقّعاتٍ يدويّة (منها: «kamil» يردّ ما كان أكثرَ من سطر). (P437)
    ج. الرصدُ على حواسَّ يضعها الاختبار: حاسّةٌ تخرج بغير صفرٍ تُرفض الدفعةُ باسمها ولا يُكتب شيءٌ في المجلّد — لا الجدول ولا مخرجُ الحاسّة
-      الناجحة قبلها؛ وحاسّتان ناجحتان تُكتبان بأعمدتهما. (P441)
-   د. مرآةُ الحكم (مكتوبةٌ هنا مستقلّةً عن Lean) على جدولٍ يدويّ بأحكامٍ متوقَّعةٍ يدويًّا، قبل الختم وبعده.
+      الناجحة قبلها (P441؛ والكتابةُ بعد النجاح يحرسها هذا التأكيد بلا طفرةٍ تخصّها)؛ وحاسّتان ناجحتان تُكتبان بأعمدتهما؛ ودفعةٌ ثانيةٌ
+      بصمةُ سابقتها ليست قيدًا مختومًا في السجلّ تُردّ بلا كتابة (P442).
+   د. مرآةُ الحكم (مكتوبةٌ هنا مستقلّةً عن Lean) على جدولٍ يدويّ بأحكامٍ متوقَّعةٍ يدويًّا، قبل الختم وبعده — بلا طفرةٍ تخصّها: تُستعمل
+      في ٢هـ لعدّ القضايا على الجدول الحقيقيّ.
    هـ. نصُّ `Aql/Waqi.lean` بلا تعليقات فيه قاعدةُ الحكم وشرطُ الختم وشرطُ الشواهد — فحصُ نصٍّ كاشفٌ لا حارس، والحراسةُ في Lean
       (P434–P436، P439–P440 تُفشل البناء).
-٢. بالمودَع (MUDAA_DIR وفيه waqi_001.tsv وtaarifat.tsv؛ وإلّا خرج 0 بعد ١) — مطابَق، لا طفرةَ له (لا يُشغَّل في CI):
+٢. بالمودَع (MUDAA_DIR وفيه waqi_001.tsv وtaarifat.tsv؛ وإلّا خرج 0 بعد ١) — فحصٌ بالمودَع بلا طفرة (لا يُشغَّل في CI)، فلا يُوسم
+   فوق ما دون «مفحوص»:
    أ. بصمتا الجدولين بصمتاهما في mudaat/sijill.json، بنوعيهما «واقع-مختوم» و«وضع».
    ب. المولِّد على waqi_001.tsv يعيد `Aql/WaqiJadwal.lean` بايتًا بايتًا.
    ج. كلُّ صفٍّ يطابق مدخلَه في سجلّ الحواسّ `HAWASS` (الأمرُ بقالبه، والحاسّة، والمصدر، والشيء، والخاصّة، والوجه، والقاعدة) — فلا صفَّ
@@ -110,6 +113,20 @@ safs = open(os.path.join(tmp, "waqi_001.tsv"), encoding="utf-8").read().split("\
 assert safs[1].split("\t")[:9] == ["1", "printf", "printf 'x\\n'", "م", "ش", "خ", "x", "قياس", "kamil"], safs[1]
 assert safs[2].split("\t")[6] == "1" and safs[2].split("\t")[10] == "1", safs[2]
 assert os.path.exists(os.path.join(tmp, "waqi_shawahid", hashlib.sha256(b"x\n").hexdigest()))
+shutil.rmtree(tmp)
+# دفعةٌ ثانية بلا بصمةِ سابقةٍ مختومة في السجلّ تُردّ، ولا يُكتب شيء
+asli = sys.argv
+tmp = tempfile.mkdtemp()
+asli_h, rasd.HAWASS = rasd.HAWASS, [("printf", "printf 'x\n'", "م", "ش", "خ", Q, "kamil")]
+sys.argv = ["rasd", tmp, "--commit", "0000000", "--dafa", "2", "--sabiq", "0" * 64]
+try:
+    rasd.main()
+    khata = None
+except SystemExit as e:
+    khata = str(e.code)
+finally:
+    rasd.HAWASS, sys.argv = asli_h, asli
+assert khata and "--sabiq" in khata and os.listdir(tmp) == [], khata
 shutil.rmtree(tmp)
 ok += 1
 
@@ -263,6 +280,7 @@ for t in tarifat.values():
         src_bytes = subprocess.run(["git", "show", f"{c}:{path}"], cwd=ROOT, capture_output=True, check=True).stdout
     nass = " / ".join(x.lstrip() for x in src_bytes.decode("utf-8").split("\n")[a - 1:b])
     assert nass == t["taarif"] and hashlib.sha256(src_bytes).hexdigest() == t["basmat_masdar"], t["raqm"]
+    assert t["basmat_waqi"] == bw, t["raqm"]
     for s in filter(lambda x: x != "-", t["shawahid_waqi"].split(",")):
         assert s in raqmat, (t["raqm"], s)
     tuida += 1

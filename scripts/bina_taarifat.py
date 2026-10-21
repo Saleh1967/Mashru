@@ -3,14 +3,15 @@
 القرار: قولُ المالك في الجلسة 2026-10-22 (01:57 بتوقيت عمّان): «… ما هو الوكيل وما هو جيت هب وما هوmashru وما مكوناته وما
 تعريفاته وما إطار عمله وكيف تتم عملياته وما هو بايثون وما هو الدستور …».
 
-لماذا جدولٌ ثانٍ (الدستور م12: لا يُقاس نوعٌ بمقياس غيره): التعريفُ وضعٌ — خبرٌ عمّا اصطُلح عليه — لا واقعٌ مشهود؛ فلا
-يدخل «الواقع المختوم». وما شوهد من مكوّنات Mashru وعمليّاته صفوفٌ في waqi_001.tsv يحيل إليها عمودُ shawahid_waqi.
+لماذا جدولٌ ثانٍ (الدستور م12: لا يُقاس نوعٌ بمقياس غيره): التعريفُ وضعٌ — خبرٌ عمّا اصطُلح عليه — لا واقعٌ مشهود. وإن دخل
+«الواقع المختوم» فروايةٌ من مصدرٍ واحد لا ترتفع (`Waqi.masdar_wahid_la_yarfa`)؛ ونصُّه يُحفظ هنا وضعًا بدرجته. وما شوهد من مكوّنات
+Mashru وعمليّاته صفوفٌ في waqi_001.tsv يحيل إليها عمودُ shawahid_waqi.
 
 القواعد:
   * النصُّ يُستخرج آليًّا من مصدره بأسطره عند الإيداع المرصود (git show <إيداع>:<مسار>) أو من ملفّ دستور الوكيل في البيئة
     (غيرُ مودَع: نسخةُ مهارةٍ تُزامَن، وبصمتُها في الصفّ) أو من مخرجٍ خامّ في waqi_shawahid؛ والأسطرُ تُضمّ بـ « / » وتُحذف مسافةُ
     أوّل السطر وحدها (عُرفُ الاقتباس في المستودع).
-  * لكلّ صفٍّ بصمةُ مصدره (sha256 لبايتاته)، وواضعُه كما يُعرف من مصدره، ودرجتُه (م12: آحاد/مشهور/متواتر بعدد المصادر المستقلّة —
+  * لكلّ صفٍّ بصمةُ مصدره (sha256 لبايتاته)، وواضعُه كما يُعرف من مصدره، وبصمةُ دفعة الواقع التي تحيل إليها أرقامُ صفوفه، ودرجتُه (م12: آحاد/مشهور/متواتر بعدد المصادر المستقلّة —
     كلُّها هنا آحاد)، وصفوفُ الواقع التي تشهد له. ومن الصفوف ما ليس تعريفًا بالمعنى الدقيق (عنوانٌ مع مادّة، قاعدةُ عمل، سطرُ
     استدعاء)، فاسمُ اللفظ فيها يقول ما هو.
   * المخرجُ مرشّحٌ؛ الختمُ بإذن المالك وحده.
@@ -26,7 +27,7 @@ import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-AMDA = ["raqm", "lafz", "taarif", "masdar", "basmat_masdar", "wadi", "daraja", "shawahid_waqi"]
+AMDA = ["raqm", "lafz", "taarif", "masdar", "basmat_masdar", "wadi", "daraja", "shawahid_waqi", "basmat_waqi"]
 MASHRU, TALIMAT, WAKIL, SANI = "نصّ المشروع (CLAUDE.md)", "تعليمات المالك (تعليمات_المشروع.md)", "دستور الوكيل", "صانع الأداة"
 MILAF = "ملفّ المشروع"  # يُلحق به مسارُه
 
@@ -88,6 +89,7 @@ def main():
     waqi = {int(r["raqm"]): r for r in csv.DictReader(open(wpath, encoding="utf-8"), delimiter="\t")}
     if not waqi[2]["qima"].startswith(commit):
         sys.exit(f"مرفوض: الإيداع {commit} ليس المرصودَ في waqi_001.tsv (الصفّ 2)")
+    bwaqi = hashlib.sha256(open(wpath, "rb").read()).hexdigest()
     out = []
     for i, (lafz, masdar, a, b, wadi, shawahid) in enumerate(TAARIFAT, 1):
         data, ism = masdarBytes(masdar, commit, mudaa, waqi)
@@ -104,7 +106,7 @@ def main():
         if wadi == MILAF:
             wadi = f"{MILAF} ({masdar})"
         # الدرجة (م12): كلُّ تعريفٍ هنا من مصدرٍ واحد، فهو آحاد
-        out.append([str(i), lafz, text, loc, hashlib.sha256(data).hexdigest(), wadi, "آحاد", shawahid or "-"])
+        out.append([str(i), lafz, text, loc, hashlib.sha256(data).hexdigest(), wadi, "آحاد", shawahid or "-", bwaqi])
     name = os.path.join(mudaa, "taarifat.tsv")
     if os.path.exists(name):
         sys.exit(f"مرفوض: {name} موجود؛ لا يُعاد كتابتُه")

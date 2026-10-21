@@ -8,7 +8,8 @@
     <المجلّد>/waqi_shawahid/، ورمزُ الخروج، ووقتُ المشاهدة (UTC)، والقيمةُ بقاعدة استخراجٍ معلَنة من المخرج.
   * الوجه: «قياس» إذا كانت القيمةُ خاصّةً للبايتات أو للعمليّة المشهودة نفسها (بصمة، عدد، محتوى شجرة، مخرجُ تشغيلٍ على مدخلٍ
     معيَّن، رمزُ خروج)؛ «رواية» إذا كانت قولًا عن غير البايتات الحاضرة أو عن القائل نفسه (إصدار، تاريخ، رابط، وصف، تعريف، ما يرويه
-    خادم). والمصدرُ الراوي الفعليّ (البرنامجُ أو الحزمةُ أو الملفّ): روايتان من مصدرٍ واحد ليستا مستقلّتين (lean وlake مصدرٌ واحد).
+    خادم). والمصدرُ الراوي الفعليّ (البرنامجُ أو الحزمةُ أو كاتبُ النصّ وناشرُه، لا مسارُ الملفّ): روايتان من مصدرٍ واحد ليستا مستقلّتين
+    (lean وlake مصدرٌ واحد، وملفّاتُ المشروع كلُّها مصدرٌ واحد).
     الوجهُ والمصدرُ تعيينُ البنّاء في هذا الجدول، فهما معلَنان ويُعرضان على المالك.
   * لا تنظيف ولا قياسَ من فشل: ما لا يُستخرج بقاعدته، أو قيمةٌ فيها جدولةٌ أو سطرٌ جديد، أو أمرٌ خرج بغير صفر (إلّا في قاعدة
     «khuruj» التي تسجّل رمزَ الخروج نفسَه)، تُرفض الدفعةُ باسم حاسّتها؛ ولا يُكتب شيءٌ — لا الجدولُ ولا المخرجاتُ الخامّة — قبل أن
@@ -52,7 +53,7 @@ HAWASS = [
     ("git", "git log --format=%H {C}", "git: حسابٌ محلّيّ", "مستودع:Mashru@{C}", "عدد الإيداعات", QIYAS, "adad"),
     ("git", "git log --format=%b {C}", "git: حسابٌ محلّيّ", "مستودع:Mashru@{C}", "أسطرُ «Co-Authored-By: Claude» في رسائل الإيداعات",
      QIYAS, "adad_fih:Co-Authored-By: Claude"),
-    ("git", "git show {C}:CLAUDE.md", "CLAUDE.md (نصّ المشروع)", "Mashru", "تعريفُه في سطره الأوّل", RIWAYA,
+    ("git", "git show {C}:CLAUDE.md", "نصوص المشروع (مستودع Mashru)", "Mashru", "تعريفُه في سطره الأوّل", RIWAYA,
      "awwal"),
     ("sha256sum", "git show {C}:CLAUDE.md | sha256sum", "sha256sum", "ملفّ:CLAUDE.md@{C}", "بصمة sha256", QIYAS,
      "regex:^([0-9a-f]{64})"),
@@ -60,9 +61,9 @@ HAWASS = [
      "python3 hashlib", "ملفّ:CLAUDE.md@{C}", "بصمة sha256", QIYAS, "kamil"),
     ("git", "git show {C}:Audit.lean", "git: حسابٌ محلّيّ", "مستودع:Mashru@{C}", "أسطر «#print axioms» في Audit.lean", QIYAS,
      "adad_bidaya:#print axioms"),
-    ("git", "git show {C}:tahaqquq/khatt_asas.json", "خطّ الأساس (يسجّله البنّاء بعد البوّابة)", "مستودع:Mashru@{C}",
+    ("git", "git show {C}:tahaqquq/khatt_asas.json", "نصوص المشروع (مستودع Mashru)", "مستودع:Mashru@{C}",
      "عدد المبرهنات المدقَّقة", RIWAYA, "json:mubarhanat"),
-    ("git", "git show {C}:lean-toolchain", "lean-toolchain (ملفّ المستودع)", "Lean", "الإصدار المطلوب في المستودع", RIWAYA,
+    ("git", "git show {C}:lean-toolchain", "نصوص المشروع (مستودع Mashru)", "Lean", "الإصدار المطلوب في المستودع", RIWAYA,
      "regex:v([0-9.]+)"),
     # — GitHub: ما يرويه الخادم —
     ("gh", "gh api repos/Saleh1967/Mashru --jq .full_name", "GitHub", "مستودع:Mashru", "الاسم على GitHub", RIWAYA, "kamil"),
@@ -78,21 +79,21 @@ HAWASS = [
     ("git", "git --version", "git (الأداة نفسها)", "git", "الإصدار", RIWAYA, "regex:git version ([0-9.]+)"),
     # — الوكيل —
     ("claude", "claude --version", "claude (الأداة نفسها)", "Claude Code", "الإصدار", RIWAYA, "kamil"),
-    ("git", "git show {C}:CLAUDE.md", "CLAUDE.md (نصّ المشروع)", "البنّاء", "تعريفُه", RIWAYA,
+    ("git", "git show {C}:CLAUDE.md", "نصوص المشروع (مستودع Mashru)", "البنّاء", "تعريفُه", RIWAYA,
      "satr:البنّاء (الجلسة الرئيسة)"),
-    ("git", "git show {C}:.claude/agents/murajii.md", ".claude/agents/murajii.md", "وكيل:murajii", "تعريفُه", RIWAYA,
+    ("git", "git show {C}:.claude/agents/murajii.md", "نصوص المشروع (مستودع Mashru)", "وكيل:murajii", "تعريفُه", RIWAYA,
      "regex:^description: (.*)$"),
-    ("git", "git show {C}:.claude/agents/qayyis.md", ".claude/agents/qayyis.md", "وكيل:qayyis", "تعريفُه", RIWAYA,
+    ("git", "git show {C}:.claude/agents/qayyis.md", "نصوص المشروع (مستودع Mashru)", "وكيل:qayyis", "تعريفُه", RIWAYA,
      "regex:^description: (.*)$"),
     # — الدستور —
-    ("git", "git show {C}:CLAUDE.md", "CLAUDE.md (نصّ المشروع)", "الدستور", "مادّتُه الأولى", RIWAYA,
+    ("git", "git show {C}:CLAUDE.md", "نصوص المشروع (مستودع Mashru)", "الدستور", "مادّتُه الأولى", RIWAYA,
      "satr:- لا كلام قبل الطبعة"),
-    ("cat", "cat {DUSTUR}", "دستور الوكيل (ملفّ المهارة في هذه البيئة)", "دستور الوكيل", "عنوانُه", RIWAYA,
+    ("cat", "cat {DUSTUR}", "دستور الوكيل (ملفّ مهارة المالك في هذه البيئة)", "دستور الوكيل", "عنوانُه", RIWAYA,
      "regex:^# (.*)$"),
     ("sha256sum", "sha256sum {DUSTUR}", "sha256sum", "ملفّ:دستور الوكيل", "بصمة sha256", QIYAS, "regex:^([0-9a-f]{64})"),
-    ("git", "git show {C}:tahaqquq/bawwaba.py", "tahaqquq/bawwaba.py", "البوّابة", "وصفُها نفسَها", RIWAYA,
+    ("git", "git show {C}:tahaqquq/bawwaba.py", "نصوص المشروع (مستودع Mashru)", "البوّابة", "وصفُها نفسَها", RIWAYA,
      "regex:^\"\"\"(.*)$"),
-    ("git", "git show {C}:mudaat/idaa.py", "mudaat/idaa.py", "بوّابة الإيداع", "وصفُها نفسَها", RIWAYA,
+    ("git", "git show {C}:mudaat/idaa.py", "نصوص المشروع (مستودع Mashru)", "بوّابة الإيداع", "وصفُها نفسَها", RIWAYA,
      "regex:^\"\"\"(.*)$"),
     # — العمليّات، مشاهدةً بالتشغيل على الشجرة العاملة وقت الرصد (إيداعُها وما لم يُودَع منها صفّان أوّلَها) —
     ("git", "git rev-parse HEAD", "git: حسابٌ محلّيّ", "الشجرة العاملة وقت الرصد", "إيداعُها", QIYAS, "kamil"),

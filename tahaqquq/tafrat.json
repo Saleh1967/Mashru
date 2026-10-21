@@ -3052,5 +3052,11 @@
   "milaf": "scripts/rasd_waqi.py",
   "min": "        if p.returncode != 0 and qaida != \"khuruj\":",
   "ila": "        if False:"
+ },
+ {
+  "ism": "P442_rasd_sabiq_bila_sijill",
+  "milaf": "scripts/rasd_waqi.py",
+  "min": "        if not any(m[\"sha256\"] == sabiq and m[\"hala\"] == \"مختوم\" and m[\"naw\"] == \"واقع-مختوم\" for m in sijill):",
+  "ila": "        if False:"
  }
 ]
