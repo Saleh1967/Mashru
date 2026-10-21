@@ -3,6 +3,7 @@
 التشغيل: python3 -I tahaqquq/test_bawwaba.py
 """
 import contextlib
+import hashlib
 import io
 import json
 import os
@@ -16,6 +17,8 @@ from unittest.mock import patch
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bawwaba
+
+QISM_FARIGH = "## ما ضُبطتُ عليه\n"   # CLAUDE.md الأساس في الدوالّ البديلة لـ git: القسمُ بلا بنود (٤ج)
 
 
 class InstallerTests(unittest.TestCase):
@@ -200,6 +203,8 @@ class BaselineTests(unittest.TestCase):
             return (0, audit) if cmd[:3] == ["lake", "env", "lean"] else (0, "")
 
         def git(*args):
+            if args[-1].endswith(":CLAUDE.md"):
+                return (0, QISM_FARIGH)
             return (0, "asas\n") if args[0] == "merge-base" else (0, "[]")
 
         with patch.object(bawwaba, "ROOT", self.tmp.name), \
@@ -300,6 +305,8 @@ class TafratGuardTests(unittest.TestCase):
         def git(*args):
             if args[0] == "merge-base":
                 return (0, "abc1234def\n") if merge_base_ok else (128, "")
+            if args[-1].endswith(":CLAUDE.md"):
+                return (0, QISM_FARIGH)
             return (0, json.dumps([{"ism": n} for n in asas]))
 
         with patch.object(bawwaba, "ROOT", self.tmp.name), \
@@ -331,6 +338,136 @@ class TafratGuardTests(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertIn("حراسة قائمة الطفرات", err)
         self.assertIn("لم تُقارَن بالأساس", out)
+        self.assertNotIn("Traceback", err)
+
+
+
+class DabtGuardTests(unittest.TestCase):
+    """حراسة سجلّ «ما ضُبطتُ عليه» (٤ج). التوقّعات مكتوبةٌ باليد من القاعدة: كلُّ بندٍ في الأساس حاضرٌ الآن بنصّه أو مأذون."""
+
+    NASS = ("# المشروع\n\n## البناء\n- ليس بندَ ضبط\n\n## ما ضُبطتُ عليه\n"
+            "- 2026-10-15 — أوّل\n  تتمّةُ الأوّل.\n- 2026-10-16 — ثانٍ\n")
+    AWWAL = "- 2026-10-15 — أوّل\n  تتمّةُ الأوّل."
+    THANI = "- 2026-10-16 — ثانٍ"
+
+    def test_entries_are_read_from_their_section_only(self):
+        self.assertEqual(bawwaba.bunud_dabt(self.NASS), [self.AWWAL, self.THANI])
+
+    def test_section_ends_at_next_heading(self):
+        self.assertEqual(bawwaba.bunud_dabt(self.NASS + "\n## بعده\n- 2026-10-17 — خارج القسم\n"), [self.AWWAL, self.THANI])
+
+    def test_blank_lines_and_trailing_space_do_not_count(self):
+        nass = "## ما ضُبطتُ عليه\n- 2026-10-15 — أوّل   \n\n  تتمّةُ الأوّل.\t\n- 2026-10-16 — ثانٍ\n"
+        self.assertEqual(bawwaba.bunud_dabt(nass), [self.AWWAL, self.THANI])
+
+    def test_missing_heading_is_a_named_error(self):
+        with self.assertRaises(ValueError):
+            bawwaba.bunud_dabt("# المشروع\n- 2026-10-15 — ليس في القسم\n")
+
+    def test_heading_with_trailing_space_is_still_the_heading(self):
+        self.assertEqual(bawwaba.bunud_dabt("## ما ضُبطتُ عليه  \n- 2026-10-16 — ثانٍ\n"), [self.THANI])
+
+    def test_dropped_entry_is_named(self):
+        self.assertEqual(bawwaba.dabt_naqis([self.AWWAL, self.THANI], [self.AWWAL], []), ["- 2026-10-16 — ثانٍ"])
+
+    def test_edited_entry_counts_as_missing(self):
+        mughayyar = "- 2026-10-15 — أوّل\n  تتمّةٌ أخرى."
+        self.assertEqual(bawwaba.dabt_naqis([self.AWWAL], [mughayyar], []), ["- 2026-10-15 — أوّل"])
+
+    def test_additions_are_free(self):
+        self.assertEqual(bawwaba.dabt_naqis([self.AWWAL], [self.AWWAL, self.THANI, "- 2026-10-21 — جديد"], []), [])
+
+    @staticmethod
+    def basma(nass):
+        return hashlib.sha256(nass.encode("utf-8")).hexdigest()
+
+    def test_permission_by_fingerprint(self):
+        self.assertEqual(bawwaba.dabt_naqis([self.AWWAL, self.THANI], [self.AWWAL], [self.basma(self.THANI)]), [])
+
+    def test_permission_for_one_version_does_not_cover_the_next(self):
+        thani2 = "- 2026-10-16 — ثانٍ\n  تتمّةٌ أُضيفت بعد الإذن."
+        self.assertEqual(bawwaba.dabt_naqis([self.AWWAL, thani2], [self.AWWAL], [self.basma(self.THANI)]),
+                         ["- 2026-10-16 — ثانٍ"])
+
+    def test_permission_ledger_needs_all_fields(self):
+        b = "a" * 64
+        for rec in ({"basma": b, "awwal": "- x", "sabab": "s"}, {"basma": b, "awwal": "- x", "idhn": "i"},
+                    {"awwal": "- x", "sabab": "s", "idhn": "i"}, {"basma": b, "awwal": " ", "sabab": "s", "idhn": "i"},
+                    {"basma": "abc", "awwal": "- x", "sabab": "s", "idhn": "i"}, {"basma": "A" * 64, "awwal": "- x", "sabab": "s", "idhn": "i"},
+                    "- x"):
+            with self.subTest(rec=rec):
+                with self.assertRaises(ValueError):
+                    bawwaba.dabt_maadhun(json.dumps([rec]))
+        self.assertEqual(bawwaba.dabt_maadhun(json.dumps([{"basma": b, "awwal": "- x", "sabab": "s", "idhn": "i"}])), [b])
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        os.mkdir(os.path.join(self.tmp.name, "tahaqquq"))
+        with open(os.path.join(self.tmp.name, "tahaqquq", "khatt_asas.json"), "w", encoding="utf-8") as f:
+            f.write('{"mubarhanat": 0}')
+        with open(os.path.join(self.tmp.name, "tahaqquq", "tafrat.json"), "w", encoding="utf-8") as f:
+            f.write("[]")
+
+    def gate(self, asas_nass, hali_nass, ledger=None, show_ok=True):
+        if hali_nass is not None:
+            with open(os.path.join(self.tmp.name, "CLAUDE.md"), "w", encoding="utf-8") as f:
+                f.write(hali_nass)
+        if ledger is not None:
+            with open(os.path.join(self.tmp.name, "tahaqquq", "dabt_maadhun.json"), "w", encoding="utf-8") as f:
+                json.dump(ledger, f)
+        out, err = io.StringIO(), io.StringIO()
+
+        def git(*args):
+            if args[0] == "merge-base":
+                return (0, "abc1234def\n")
+            if args[1].endswith(":CLAUDE.md"):
+                return (0, asas_nass) if show_ok else (128, "")
+            return (0, "[]")
+
+        with patch.object(bawwaba, "ROOT", self.tmp.name), \
+                patch.object(bawwaba, "run", return_value=(0, "")), \
+                patch.object(bawwaba, "git", side_effect=git), \
+                patch.object(sys, "argv", ["bawwaba.py", "--bila-tafrat"]), \
+                contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            with self.assertRaises(SystemExit) as exit_result:
+                bawwaba.main()
+        return exit_result.exception.code, out.getvalue(), err.getvalue()
+
+    def test_gate_fails_when_an_entry_is_dropped(self):
+        hali = self.NASS.replace("- 2026-10-16 — ثانٍ\n", "")
+        code, out, err = self.gate(self.NASS, hali)
+        self.assertEqual(code, 2)
+        self.assertIn("- 2026-10-16 — ثانٍ", err)
+        self.assertIn("٤ج سجلّ ما ضُبطتُ عليه: الأساس abc1234 (2 بندًا) ← الآن 1؛ غائبٌ أو مغيَّرٌ بلا إذن 1", out)
+
+    def test_gate_fails_when_the_file_is_gone(self):
+        code, out, err = self.gate(self.NASS, None)
+        self.assertEqual(code, 2)
+        self.assertIn("الآن 0؛ غائبٌ أو مغيَّرٌ بلا إذن 2", out)
+
+    def test_gate_passes_when_entries_kept_and_added(self):
+        code, out, _ = self.gate(self.NASS, self.NASS + "- 2026-10-21 — جديد\n")
+        self.assertEqual(code, 0)
+        self.assertIn("الأساس abc1234 (2 بندًا) ← الآن 3؛ غائبٌ أو مغيَّرٌ بلا إذن 0", out)
+
+    def test_gate_passes_with_permitted_removal(self):
+        hali = self.NASS.replace("- 2026-10-16 — ثانٍ\n", "")
+        code, _, _ = self.gate(self.NASS, hali, [{"basma": self.basma(self.THANI), "awwal": "- 2026-10-16 — ثانٍ",
+                                                  "sabab": "مكرَّر", "idhn": "المالك"}])
+        self.assertEqual(code, 0)
+
+    def test_gate_fails_closed_when_base_has_no_heading(self):
+        code, out, err = self.gate("# المشروع\n- 2026-10-15 — أوّل\n", self.NASS)
+        self.assertEqual(code, 2)
+        self.assertIn("لم يُقارَن بالأساس", out)
+        self.assertIn("لا عنوانَ", err)
+
+    def test_gate_fails_closed_when_base_unreadable(self):
+        code, out, err = self.gate(self.NASS, self.NASS, show_ok=False)
+        self.assertEqual(code, 2)
+        self.assertIn("لم يُقارَن بالأساس", out)
+        self.assertIn("حراسة سجلّ ما ضُبطتُ عليه: تعذّرت قراءة CLAUDE.md عند abc1234", err)   # سببُه باسمه، لا غيابُ العنوان
         self.assertNotIn("Traceback", err)
 
 
@@ -515,6 +652,8 @@ class TafraNassTests(unittest.TestCase):
         out, err = io.StringIO(), io.StringIO()
 
         def git(*args):
+            if args[-1].endswith(":CLAUDE.md"):
+                return (0, QISM_FARIGH)
             return (0, "abc1234\n") if args[0] == "merge-base" else (0, "[]")
 
         argv = ["bawwaba.py", "--bila-tafrat"] if bila_tafrat else ["bawwaba.py"]
@@ -590,6 +729,8 @@ class TafraNassTests(unittest.TestCase):
             return (0, "")
 
         def git(*args):
+            if args[-1].endswith(":CLAUDE.md"):
+                return (0, QISM_FARIGH)
             return (0, "abc1234\n") if args[0] == "merge-base" else (0, json.dumps(tafrat))
 
         out, err = io.StringIO(), io.StringIO()

@@ -16,6 +16,13 @@
       فيها `__doc__` اسمًا حرًّا)؛ sh: «#». والاستثناءُ وما فوق القاعدتين (الملفُّ داخل المستودع بمساره الحقيقيّ، وامتدادُه
       معروف، والاسمُ غيرُ مكرَّر) اعتُمدت بتوجيهٍ رفعه المالك 2026-10-19 18:02 وأمر بتنفيذه. يجري مع --bila-tafrat أيضًا،
       والبند ٦ لا يكتب طفرةً معيبة. وسلامةُ الماسحات مفحوصةٌ (test_bawwaba.py) لا مبرهنة.
+  ٤ج. سجلُّ «ما ضُبطتُ عليه» في CLAUDE.md لا ينقص (قرار المالك 2026-10-21، 12:15–12:16: «موافق على الاصلاح»، ثمّ خيارُ «الاثنان:
+      ابنِ فحص البوّابة أيضًا (موصى به)»، و«موصى به» وسمُ البنّاء): كلُّ بندٍ فيه عند الأساس (نقطةِ التقاء ٤أ) حاضرٌ الآن بنصّه، أو
+      بصمتُه (sha256 لنصّه) مسجَّلةٌ في tahaqquq/dabt_maadhun.json بسببٍ وإذن — فالإذنُ لنسخةٍ بعينها لا يُعفي ما بعدها، وحقلُ الإذن
+      يراجعه المالك في الطلب لا الحارس. سببُه: ثماني دمجاتٍ لـ main في فروعٍ على GitHub (4b4db8f، 43d9179، 5d278a1، dfa7701، 9edde9c،
+      b66e004، 79056cf، d3ca615؛ بمسح الدمجات كلّها، `git rev-list --merges --all`) حلّت تعارضَ آخر الملفّ بطرف الفرع فأسقطت من الفرع
+      ستّةَ بنودٍ من طرف main، وبلغ فقدُ أربعةٍ منها main. فالتصحيحُ يُضاف بندًا
+      جديدًا، وتعديلُ بندٍ قائم يُعدّ غيابًا له. وغيابُ عنوان القسم في الأساس، أو تعذُّرُ الأساس أو قراءتِه، فشلٌ مسمّى.
   ٥. اختبارات بايثون (shabaka/test_shabaka.py) تمرّ، إن وُجد المودَع (MUDAA_MUKHASSAS).
   ٥أ. اختبارات خطّ الأساس والتثبيت (tahaqquq/test_bawwaba.py): رفض JSON التالف وحفظ الحدّ، وفحص بديل تثبيت Lean.
   ٥ب. اختبارات المخزن (mawsua/test_mawsua.py): الفاحص التنفيذيّ المبنيّ من Lean يقبل المخزن ويرفض الفاسد.
@@ -41,7 +48,8 @@
   ٥ش. فرضية الـ116 (tahaqquq/test_fard116.py): مرآةُ آلة الجذر على أعداد SLGE/Root.lean، وحالاتٌ يدويّة دائمًا؛ وإعادةُ المخرج ومطابقةُ
       Madlul/Fard116Data.lean وMadlul/Fard116Shawahid.lean له بالبايت إن حضر المودَعان.
   ٥ت. أطلس الجسور (tahaqquq/test_atlas.py): كلّ وحدة Lean مسجَّلة بطبقتها في Nizam/atlas.tsv، ووصلُها بالمحرّك مطابقٌ لرسم الاستيراد.
-  ٥ث. حادثتا الدمج (tahaqquq/test_hawadith.py): على تاريخ git الحقيقيّ، ٤أ يسمّي ما أسقطه 767e09b (7) وfeb12a8 (4)؛ بلا تاريخٍ لا يُشغَّل.
+  ٥ث. حوادث الدمج (tahaqquq/test_hawadith.py): على تاريخ git الحقيقيّ، ٤أ يسمّي ما أسقطه 767e09b (7) وfeb12a8 (4)، و٤ج يسمّي بنودَ
+      «ما ضُبطتُ عليه» التي أسقطتها الدمجاتُ الثماني؛ بلا تاريخٍ لا يُشغَّل.
   ٥ذ. منفّذ القياس المسجَّل (tahaqquq/test_qiyas_d.py): qiyas_d.py ووضعُ القياس في القارئ على بياناتٍ مصنوعة وكلماتٍ باليد، لا على المرجعين
       (التسجيل المسبق hawkama/tasjil_qiyas_d.md).
   ٦. كلّ طفرة في tafrat.json تُقتل: تُفشل البناء بخطأ Lean في ملفٍّ وسطر (`KHATA_BINA`) أو تُفشل اختبارًا برمزٍ موجب. طفرة تعيش = اختبارٌ مرآة.
@@ -50,6 +58,7 @@
      نفادَ ذاكرةٍ في عمليّةٍ تابعة له أو MemoryError (لا يُشترط سطرُ FAIL/ERROR).
 التشغيل: python3 -I tahaqquq/bawwaba.py [--bila-tafrat]
 """
+import hashlib
 import json
 import os
 import re
@@ -153,6 +162,56 @@ def mahdhufa_maadhuna(text):
 def tafrat_naqisa(asas, hali, mahdhufa):
     """طفراتُ الأساس الغائبةُ عن القائمة الحاليّة بلا قيدِ حذفٍ مأذون — كلٌّ منها حذفٌ صامت."""
     return sorted(set(asas) - set(hali) - set(mahdhufa))
+
+
+UNWAN_DABT = "## ما ضُبطتُ عليه"
+
+
+def bunud_dabt(text):
+    """بنودُ قسم «ما ضُبطتُ عليه»: من السطر التالي لعنوانه إلى العنوان التالي «## » أو آخر الملفّ. البندُ سطرٌ أوّلُه «- » وما يليه
+    حتّى البند التالي؛ والأسطرُ الفارغة لا تدخل، وبياضُ أواخر الأسطر يُقصّ. وكلُّ سطرٍ غيرِ فارغ لا يبدأ بـ«- » (تتمّةٌ ببياض، أو
+    فقرةٌ، أو «### ») يُلحق بالبند قبله، فيُعدّ تغييرًا له — خطأٌ نحو الفشل لا نحو المرور. وغيابُ العنوان خطأٌ مسمّى (ValueError)."""
+    lines = [line.rstrip() for line in text.split("\n")]
+    if UNWAN_DABT not in lines:
+        raise ValueError(f"لا عنوانَ «{UNWAN_DABT}» في CLAUDE.md")
+    bunud, cur = [], None
+    for line in lines[lines.index(UNWAN_DABT) + 1:]:
+        if line.startswith("## "):
+            break
+        if line.startswith("- "):
+            if cur is not None:
+                bunud.append("\n".join(cur))
+            cur = [line]
+        elif line and cur is not None:
+            cur.append(line)
+    if cur is not None:
+        bunud.append("\n".join(cur))
+    return bunud
+
+
+def basma_band(band):
+    """بصمةُ البند: sha256 لنصّه كما يقرؤه `bunud_dabt`."""
+    return hashlib.sha256(band.encode("utf-8")).hexdigest()
+
+
+def dabt_maadhun(text):
+    """سجلُّ الإذن (tahaqquq/dabt_maadhun.json): قائمةُ {basma، awwal، sabab، idhn} — basma بصمةُ نسخة البند المأذونِ تغييرُها أو
+    حذفُها (64 خانةً ستّ‑عشريّة)، وawwal سطرُها الأوّل للقارئ — لا حقلَ فيها فارغ."""
+    data = json.loads(text)
+    if not isinstance(data, list):
+        raise ValueError("dabt_maadhun.json يجب أن يكون قائمة")
+    for t in data:
+        if not isinstance(t, dict) or not all(isinstance(t.get(k), str) and t[k].strip() for k in ("basma", "awwal", "sabab", "idhn")):
+            raise ValueError(f"قيدُ إذنٍ بلا basma أو awwal أو sabab أو idhn: {t}")
+        if not re.fullmatch(r"[0-9a-f]{64}", t["basma"]):
+            raise ValueError(f"basma ليست sha256: {t['basma']}")
+    return [t["basma"] for t in data]
+
+
+def dabt_naqis(asas, hali, maadhun):
+    """بنودُ الأساس التي ليست في الحاليّ بنصّها ولا إذنَ لبصمتها — أسطرُها الأولى بترتيبها في الأساس."""
+    hali, maadhun = set(hali), set(maadhun)
+    return [b.split("\n")[0] for b in asas if b not in hali and basma_band(b) not in maadhun]
 
 
 # ٤ب. نصُّ الطفرة. القاعدتان بإذن المالك (2026-10-19 16:16، مكمّلتين لـ٤أ): «min» يقع في ملفّه مرّةً واحدة، ولا يقع في
@@ -542,6 +601,37 @@ def main():
         if uyub:
             fails.append("طفراتٌ معيبةُ النصّ:\n" + "\n".join(uyub))
 
+    # ٤ج. سجلُّ «ما ضُبطتُ عليه» لا ينقص عن الأساس نفسِه (قرار المالك 2026-10-21): كلُّ بندٍ فيه حاضرٌ الآن بنصّه أو مأذون.
+    try:
+        code, mb = git("merge-base", "HEAD", marja)
+        asas_d_sha = mb.strip()
+        if code != 0 or not asas_d_sha:
+            raise ValueError(f"تعذّر حساب نقطة التقاء HEAD بـ{marja} (اجلب {marja} أو عيّن TAFRAT_ASAS_REF)")
+        code, txt = git("show", f"{asas_d_sha}:CLAUDE.md")
+        if code != 0:
+            raise ValueError(f"تعذّرت قراءة CLAUDE.md عند {asas_d_sha[:7]}")
+        asas_d = bunud_dabt(txt)
+        cp = os.path.join(ROOT, "CLAUDE.md")
+        hali_d = []   # لا CLAUDE.md فلا بنود: يُسمّى كلُّ بندٍ في الأساس
+        if os.path.exists(cp):
+            with open(cp, encoding="utf-8") as f:
+                hali_d = bunud_dabt(f.read())
+        mp = os.path.join(ROOT, "tahaqquq", "dabt_maadhun.json")
+        maadhun_d = []
+        if os.path.exists(mp):
+            with open(mp, encoding="utf-8") as f:
+                maadhun_d = dabt_maadhun(f.read())
+    except (OSError, ValueError, subprocess.SubprocessError) as e:
+        report.append("٤ج سجلّ ما ضُبطتُ عليه: لم يُقارَن بالأساس")
+        fails.append(f"حراسة سجلّ ما ضُبطتُ عليه: {e}")
+    else:
+        naqis_d = dabt_naqis(asas_d, hali_d, maadhun_d)
+        report.append(f"٤ج سجلّ ما ضُبطتُ عليه: الأساس {asas_d_sha[:7]} ({len(asas_d)} بندًا) ← الآن {len(hali_d)}؛ "
+                      f"غائبٌ أو مغيَّرٌ بلا إذن {len(naqis_d)}")
+        if naqis_d:
+            fails.append("بنودٌ في «ما ضُبطتُ عليه» عند الأساس غابت أو تغيّرت بلا قيدٍ ببصمتها في tahaqquq/dabt_maadhun.json: "
+                         + "؛ ".join(b[:100] for b in naqis_d))
+
     code, out = run([sys.executable, "-I", "tahaqquq/test_bawwaba.py"])
     report.append(f"٥أ اختبارات خطّ الأساس والتثبيت: {'مرّت' if code == 0 else 'فشلت'}")
     if code != 0:
@@ -634,7 +724,7 @@ def main():
     if code != 0:
         fails.append("اختبار أطلس الجسور فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_hawadith.py"])
-    report.append(f"٥ث {out.strip().splitlines()[-1] if out.strip() else 'حادثتا الدمج: ?'}")
+    report.append(f"٥ث {out.strip().splitlines()[-1] if out.strip() else 'حوادث الدمج: ?'}")
     if code != 0:
         fails.append("اختبار حادثتي الدمج فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_qiyas_d.py"])
