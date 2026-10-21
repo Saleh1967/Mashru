@@ -2530,5 +2530,41 @@
   "milaf": "tahaqquq/tafrat_juz.py",
   "min": "                        ghayr = bawwaba.ghayr_mahsum_ikhtibar(x, code)\n                        if ghayr:\n",
   "ila": "                        ghayr = bawwaba.ghayr_mahsum_ikhtibar(x, code)\n                        if ghayr or code != 0:\n"
+ },
+ {
+  "ism": "P381_khatwa_muhtawa_bila_udwiyya",
+  "milaf": "Aql/Qaida.lean",
+  "min": "    if decide (r ∈ q.qawanin) && r.muqaddimat.all (fun m => decide (m ∈ thabit)) then some (thabit ++ [r.natija])",
+  "ila": "    if r.muqaddimat.all (fun m => decide (m ∈ thabit)) then some (thabit ++ [r.natija])"
+ },
+ {
+  "ism": "P382_tarjama_raqm_sifr",
+  "milaf": "Aql/Qaida.lean",
+  "min": "  | .qanun i => q.qawanin[i]?.map KhatwaM.qanun",
+  "ila": "  | .qanun i => q.qawanin[0]?.map KhatwaM.qanun"
+ },
+ {
+  "ism": "P383_khatwa_muhtawa_asl_mutlaq",
+  "milaf": "Aql/Qaida.lean",
+  "min": "  | .asl p => if aslB p = true then some (thabit ++ [p]) else none",
+  "ila": "  | .asl p => some (thabit ++ [p])"
+ },
+ {
+  "ism": "P384_aqliyya_bila_fahs",
+  "milaf": "Aql/Aqliyya.lean",
+  "min": "    | some c => if _root_.Qaida.maqbul q aslB c = true then some c else none",
+  "ila": "    | some c => some c"
+ },
+ {
+  "ism": "P385_aqliyya_fahs_maqlub",
+  "milaf": "Aql/Aqliyya.lean",
+  "min": "    | some c => if _root_.Qaida.maqbul q aslB c = true then some c else none",
+  "ila": "    | some c => if _root_.Qaida.maqbul q aslB c = true then none else some c"
+ },
+ {
+  "ism": "P386_iqtirah_bila_qanun",
+  "milaf": "Aql/Aqliyya.lean",
+  "min": "  | (), \"الإنسان\" => some ⟨\"الحيوان\", [.asl \"الإنسان\", .qanun 0]⟩",
+  "ila": "  | (), \"الإنسان\" => some ⟨\"الحيوان\", [.asl \"الإنسان\"]⟩"
  }
 ]

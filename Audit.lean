@@ -120,6 +120,12 @@ import Madlul.Fard116Shawahid
 #print axioms Aql.taaddud_alqawaid_la_lawn
 #print axioms Aql.haqiqa_zanniyya
 #print axioms Aql.la_mafhum_bila_shahid
+-- القاعدةُ المرخَّصة قاعدةً للعقليّة: لا حكمَ إلّا ما يقبله Qaida.maqbul، وأحكامُها جوابٌ واحد (قرار المالك 2026-10-21)
+#print axioms Aql.aqliyya_maqbula
+#print axioms Aql.aqliyya_murakhkhasa
+#print axioms Aql.aqliyya_jawab
+#print axioms Aql.iqtirah_la_yahkum
+#print axioms Aql.shahid_aqliyya_murakhkhasa
 -- قاعدة المحرّك: الجبر المرخَّص (ج1 29، 57)
 #print axioms Qaida.tatbiq_sahih
 #print axioms Qaida.fahs_sahih
@@ -130,6 +136,25 @@ import Madlul.Fard116Shawahid
 #print axioms Qaida.shahid_maqbul
 #print axioms Qaida.shahid_marfud_tartib
 #print axioms Qaida.shahid_marfud_asl
+-- الخطوةُ بمحتوى القانون: فاحصان متكافئان في اللقطة، والسلسلةُ تبقى مقبولةً بزيادة القوانين وإعادة ترتيبها (قرار المالك 2026-10-21)
+#print axioms Qaida.tatbiqM_sahih
+#print axioms Qaida.fahsM_sahih
+#print axioms Qaida.maqbulM_murakhkhas
+#print axioms Qaida.tatbiq_tarjama
+#print axioms Qaida.fahs_tarjama
+#print axioms Qaida.fahs_tarjama_none
+#print axioms Qaida.maqbul_tarjama
+#print axioms Qaida.tatbiqM_ihtiwa
+#print axioms Qaida.fahsM_ihtiwa
+#print axioms Qaida.maqbulM_ihtiwa
+#print axioms Qaida.maqbulM_tartib
+#print axioms Qaida.maqbul_naql
+#print axioms Qaida.tatbiqM_min_tatbiq
+#print axioms Qaida.fahsM_min_fahs
+#print axioms Qaida.maqbulM_min_maqbul
+#print axioms Qaida.maqbul_takafu
+#print axioms Qaida.shahid_raqm_yabtul
+#print axioms Qaida.shahid_muhtawa_yabqa
 #print axioms Badiha.la_dhaka_bila_intibah
 #print axioms Badiha.la_dhaka_bila_maalumat
 #print axioms Badiha.la_badiha_fi_alahkam
