@@ -73,6 +73,8 @@ import Madlul.TashfirHawass
 import Madlul.TashfirShabaka
 import Madlul.Fard116Shawahid
 import Jisr.QawaidSitta
+import Dal.Adad
+import Nizam.QawaidB
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1603,3 +1605,38 @@ import Jisr.QawaidSitta
 #print axioms Jisr.QawaidSitta.fiMawdi_wujud
 #print axioms Jisr.QawaidSitta.isdar_basma
 #print axioms Jisr.QawaidSitta.asl_mawdi
+#print axioms Dal.Adad.adadR_append
+#print axioms Dal.Adad.adad_wasl
+#print axioms Dal.Adad.adadR_inj
+#print axioms Dal.Adad.adad_inj
+#print axioms Dal.Adad.fakkR_adadR
+#print axioms Dal.Adad.adadR_fakkR
+#print axioms Dal.Adad.fakkR_majal
+#print axioms Dal.Adad.fakk_adad
+#print axioms Dal.Adad.adad_fakk
+#print axioms Dal.Adad.fakk_majal
+#print axioms Dal.Adad.adad_tabdil
+#print axioms Dal.Adad.kataba_wasl
+#print axioms Dal.Adad.kataba_kutiba
+#print axioms Dal.Adad.bila_tul_yajma
+#print axioms Dal.Adad.majmuAwwal_succ
+#print axioms Dal.Adad.jam_darb
+#print axioms Dal.Adad.qima_snoc
+#print axioms Dal.Adad.adad_sigha
+#print axioms Dal.Adad.kharij_majal
+#print axioms Nizam.QawaidB.fahsM_usul
+#print axioms Nizam.QawaidB.maqbul_silsila
+#print axioms Nizam.QawaidB.rukhsa_usul
+#print axioms Nizam.QawaidB.ramz_majal
+#print axioms Nizam.QawaidB.ramz_sawa
+#print axioms Nizam.QawaidB.qawaninB_qiyam
+#print axioms Nizam.QawaidB.qinaHalat_bit
+#print axioms Nizam.QawaidB.qinaHalat_sifr
+#print axioms Nizam.QawaidB.alamat_bitat
+#print axioms Nizam.QawaidB.qanun_bitat
+#print axioms Nizam.QawaidB.rukhsaB_sawa
+#print axioms Nizam.QawaidB.mawqufB_sawa
+#print axioms Nizam.QawaidB.qiraaB_sawa
+#print axioms Nizam.QawaidB.hukmB_sawa
+#print axioms Nizam.QawaidB.mawadi_bitat
+#print axioms Nizam.QawaidB.naqs_shawahid
