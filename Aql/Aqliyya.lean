@@ -15,8 +15,11 @@
 
   الفرق بين العقل والعقلية في هذا الملف: العقل = اجتماع الأركان الأربعة وتعلّق المعلومة بالواقع
   (`aql`)؛ والعقلية = ذلك مقيسًا إلى قاعدة (`aqliyya`). القاعدة معامل، فلا عقلية بلا قاعدة معيّنة.
+  و§٧ (2026-10-21، ويستورد `Aql.Qaida`): مثالٌ من القاعدة يُبنى من فاحص المحرّك `Qaida.maqbul` (`qaidaMurakhkhasa`).
   بلا sorry ولا axiom ولا native_decide.
 -/
+import Aql.Qaida
+
 namespace Aql
 
 variable {W M H : Type}   -- الواقع، المعلومة السابقة، الحكم
@@ -161,5 +164,97 @@ def martabaMana (shuhud : List String) : MartabaMana :=
 theorem la_mafhum_bila_shahid : martabaMana [] = .maaluma := rfl
 
 theorem mafhum_bishahid (s : String) (ss : List String) : martabaMana (s :: ss) = .mafhum := rfl
+
+/-! ## ٧. القاعدةُ المرخَّصة قاعدةً للعقليّة (قرار المالك 2026-10-21، 09:51)
+
+  `Qaida W M H` أعلاه دالّةُ قياسٍ حرّة: أيُّ دالّةٍ تُخرج حكمًا تصلح لها، وشاهدُ ٥ يبني قاعدتين بلا قانون (`qAkhdh`، `qRadd`).
+  وهذا النوعُ باقٍ كما هو. وهنا يُبنى منه مثالٌ من قاعدة المحرّك الواحدة ذات الإصدار (`_root_.Qaida.Qaida`) وفاحصِها
+  (`_root_.Qaida.maqbul`)، `qaidaMurakhkhasa`: الربطُ يقترح ادّعاءً بسلسلته (`iqtirah`)، ولا يخرج حكمًا إلّا ما يقبله الفاحص،
+  والحكمُ يحمل سلسلتَه. **إذا بُنيت قاعدةُ العقليّة بـ`qaidaMurakhkhasa`** فلا يخرج حكمٌ إلّا ما يقبله `maqbul`. ولا يستعملها
+  المحرّك بعدُ: القارئ والفاحص التنفيذيّ لا يستدعيان `aqliyya`.
+  وج1 س29 بنصّه: «الكيفية التي يُربط فيها الواقع بالمعلومات، أو المعلومات بالواقع بقياسها إلى قاعدة واحدة أو قواعد معينة».
+  وجعلُ «القاعدة» فيه `Qaida.Qaida` ذاتَ الإصدار قراءةُ البنّاء، على قرار المالك (15 أكتوبر 2026) أن يكون الحكمُ كلُّه جبريًّا مرخَّصًا
+  (رأس `Aql/Qaida.lean`).
+
+  * كلُّ حكمٍ تُخرجه مقبولٌ بالفاحص (`aqliyya_maqbula`) ومرخَّصٌ في القاعدة (`aqliyya_murakhkhasa`).
+  * وأحكامُها تُعبَّأ في `Jawab q aslB` واحد (`aqliyya_jawab`). وأنّ جوابًا بالقاعدة q لا يُضمّ إليه جوابٌ بقاعدةٍ أخرى فمن نوع
+    `Jawab` و`Qaida.damm` (`Aql/Qaida.lean`)، لا من هذه المبرهنة؛ وضمُّ قائمتين بقاعدتين حرّتين ممكنٌ كما في §٥.
+  * وإن لم يقبل الفاحصُ شيئًا ممّا يُقترح فلا حكمَ أصلًا (`iqtirah_la_yahkum`)؛ وأنّ المرفوضَ وحده لا يخرج فمن `aqliyya_maqbula`.
+  * والأركانُ الأربعة باقيةٌ شرطًا: مبرهناتُ §١–§٣ عامّةٌ في كلّ `Qaida W M H`، فتصدق على هذه القاعدة بلا مبرهنةٍ جديدة.
+  شاهدُه على قاعدة `Qaida.qShahid` نفسِها (`shahid_aqliyya_murakhkhasa`).
+  ولا يدّعي هذا أنّ الاقتراح صحيحٌ لغةً: الاقتراحُ من الدماغ، والقبولُ من القاعدة؛ ووجهُ إخراج الاقتراح لم يُبنَ.
+-/
+
+section Murakhkhasa
+
+variable {P : Type} [DecidableEq P]
+
+/-- قاعدةُ العقليّة من القاعدة المرخَّصة: يخرج الادّعاءُ المقترح حكمًا إن قبله الفاحص، بسلسلته. -/
+def qaidaMurakhkhasa (q : _root_.Qaida.Qaida P) (aslB : P → Bool)
+    (iqtirah : W → M → Option (_root_.Qaida.Iddia P)) : Qaida W M (_root_.Qaida.Iddia P) where
+  qis w m := match iqtirah w m with
+    | some c => if _root_.Qaida.maqbul q aslB c = true then some c else none
+    | none => none
+
+theorem aqliyya_maqbula (t : W → M → Bool) (q : _root_.Qaida.Qaida P) (aslB : P → Bool)
+    (iqtirah : W → M → Option (_root_.Qaida.Iddia P)) (a : Arkan W M) :
+    ∀ c ∈ aqliyya t (qaidaMurakhkhasa q aslB iqtirah) a, _root_.Qaida.maqbul q aslB c = true := by
+  intro c hc
+  obtain ⟨w, m, _, _, _, hq⟩ := kull_hukm_min_alqaida t _ a c hc
+  simp only [qaidaMurakhkhasa] at hq
+  split at hq
+  · split at hq
+    · rename_i c' _ hm
+      cases hq
+      exact hm
+    · cases hq
+  · cases hq
+
+theorem aqliyya_murakhkhasa (t : W → M → Bool) (q : _root_.Qaida.Qaida P) (aslB : P → Bool)
+    (iqtirah : W → M → Option (_root_.Qaida.Iddia P)) (a : Arkan W M) :
+    ∀ c ∈ aqliyya t (qaidaMurakhkhasa q aslB iqtirah) a,
+      _root_.Qaida.Murakhkhas q (fun y => aslB y = true) c.qawl :=
+  fun c hc => _root_.Qaida.maqbul_murakhkhas q aslB c (aqliyya_maqbula t q aslB iqtirah a c hc)
+
+/-- أحكامُ العقليّة بهذه القاعدة تُعبَّأ في جوابٍ واحدٍ بالقاعدة q. -/
+theorem aqliyya_jawab (t : W → M → Bool) (q : _root_.Qaida.Qaida P) (aslB : P → Bool)
+    (iqtirah : W → M → Option (_root_.Qaida.Iddia P)) (a : Arkan W M) :
+    ∃ j : _root_.Qaida.Jawab q aslB, j.iddiaat = aqliyya t (qaidaMurakhkhasa q aslB iqtirah) a :=
+  ⟨⟨aqliyya t (qaidaMurakhkhasa q aslB iqtirah) a,
+    List.all_eq_true.mpr (aqliyya_maqbula t q aslB iqtirah a)⟩, rfl⟩
+
+/-- إن لم يقبل الفاحصُ شيئًا ممّا يُقترح فلا حكمَ أصلًا. -/
+theorem iqtirah_la_yahkum (t : W → M → Bool) (q : _root_.Qaida.Qaida P) (aslB : P → Bool)
+    (iqtirah : W → M → Option (_root_.Qaida.Iddia P)) (a : Arkan W M)
+    (h : ∀ w m c, iqtirah w m = some c → _root_.Qaida.maqbul q aslB c = false) :
+    aqliyya t (qaidaMurakhkhasa q aslB iqtirah) a = [] := by
+  rcases ha : aqliyya t (qaidaMurakhkhasa q aslB iqtirah) a with _ | ⟨c, cs⟩
+  · rfl
+  · exfalso
+    have hc : c ∈ aqliyya t (qaidaMurakhkhasa q aslB iqtirah) a := by rw [ha]; exact List.mem_cons_self
+    obtain ⟨w, m, _, _, _, hq⟩ := kull_hukm_min_alqaida t _ a c hc
+    simp only [qaidaMurakhkhasa] at hq
+    split at hq
+    · rename_i c' hi
+      split at hq
+      · rename_i hm
+        rw [h w m c' hi] at hm
+        cases hm
+      · cases hq
+    · cases hq
+
+end Murakhkhasa
+
+/-- شاهدٌ على قاعدة `Qaida.qShahid` (مثالٌ مبنيٌّ للبرهان): الواقعُ واحد، والمعلومتان «الإنسان» و«الحيوان»، والدماغُ يقترح
+    لـ«الإنسان» سلسلةً يقبلها الفاحص، ولـ«الحيوان» سلسلةً أصلُها غيرُ مودَع. فيخرج الحكمُ الأوّل بسلسلته، ولا يخرج الثاني. -/
+def wMurakhkhas : Arkan Unit String := ⟨some (), true, true, ["الإنسان", "الحيوان"]⟩
+def iqtirahShahid : Unit → String → Option (_root_.Qaida.Iddia String)
+  | (), "الإنسان" => some ⟨"الحيوان", [.asl "الإنسان", .qanun 0]⟩
+  | (), _ => some ⟨"الحيوان", [.asl "الحيوان"]⟩
+def tKull : Unit → String → Bool := fun _ _ => true
+
+theorem shahid_aqliyya_murakhkhasa :
+    (aqliyya tKull (qaidaMurakhkhasa _root_.Qaida.qShahid _root_.Qaida.aslShahid iqtirahShahid) wMurakhkhas).map
+      (fun c => (c.qawl, c.silsila.length)) = [("الحيوان", 2)] := by decide
 
 end Aql
