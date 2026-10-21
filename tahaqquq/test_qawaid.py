@@ -8,11 +8,10 @@
    ونقص>تمام «أحسن» و«الأفصح» في هن)؛ وفي
    QawaidSitta.lean: القاعدةُ إصدارُها البصمة، والقوانينُ من `sitta` بوجوهها وأحوالها الثلاث، وشرطُ الإضافة والطلب والصحبة في المقدّمات،
    والحكمُ `hukm3` بعينه والقراءةُ فيه `qiraaSitta`، والمبرهناتُ المسمّاة موجودة — وهذا فحصُ نصٍّ لا سلوك (تأكيداتٌ تنسخ أسطر Lean)، والسلوكُ
-   تفحصه Lean بمبرهنات الشاهد (`shawahid_sitta` وحدها تقتل P393 وP397 وP400؛ وP392 وP394 وP396 وP398 تقتلها Lean وهذه التأكيدات معًا)؛
-   وفحصُ النصّ على النصّ بلا تعليقات (ماسحُ البوّابة `_taaliq_lean`، متداخلًا)، وفي جسم التصريح المسمّى (رأسُه بحدّ اسمٍ في أوّل سطر، حتّى أوّل سطرٍ
-   يبدأ في عموده الأوّل): عددُ عناصر `mawadiShawahid` ثمانية عشر (يقتل P401)، وشرطُها في جسم `shawahid_sitta` (يقتل P402)، وشرطُ الوجود في جسم
-   `fiMawdi` (يقتل P403)، وإصدارُ القاعدة بالبصمة في جسم `qSitta` (يقتل P404). وحدُّه معلَن: لا يصمد لتحايلٍ يكتب الشيفرةَ المفحوصةَ نصًّا مقتبسًا
-   داخل التصريح.
+   تفحصه Lean بمبرهنات الشاهد (`shawahid_sitta` وحدها تقتل P393 وP397؛ وP392 وP394 وP396 وP398 تقتلها Lean وهذه التأكيدات معًا)؛
+   وفحصُ النصّ على النصّ بلا تعليقات (ماسحُ البوّابة `_taaliq_lean`، متداخلًا)، وفي جسم التصريح المسمّى — كاشفٌ لتغييرٍ عاديٍّ لا حارسٌ من التحايل
+   (تصريحٌ مجاورٌ أو سابقٌ بالاسم نفسه في فضاءٍ آخر، أو شيفرةٌ تُبطل الشرطَ وتُبقي نصَّه، تمرّ)؛ والحراسةُ في Lean (`mawadi_shawahid`، `shartMawdi_fiMawdi`،
+   `fiMawdi_wujud`، `isdar_basma` تقتل P400–P404).
 ٢. بالمودَع: بصمةُ الجدول هي بصمتُه في mudaat/sijill.json (وإلّا رُفض باسمه)، ونوعُه «معلومات-سابقة»، وحالتُه مختوم أو مرشّح (تُطبع)؛ والمولِّد
    `scripts/bina_qawaid.py` على الجدول يعيد QawaidJadwal.lean بايتًا بايتًا (فالبصمةُ فيه بصمةُ الجدول).
 ٣. بالمودَع: اقتباساتُ عمود السند اثنان وأربعون (عدٌّ يدويٌّ صفًّا صفًّا: 8، 10، 5، 7، 5، 7)، كلٌّ بعمودٍ من الأعمدة المعلنة ومصدرٍ من الثلاثة، وكلٌّ
@@ -134,7 +133,6 @@ def fahs_lean():
         z = re.search(r"\n(?=\S)", bila[m.end():])
         return bila[m.start():m.end() + z.start()] if z else bila[m.start():]
 
-    assert '⟨"الأسماء الستّة @ " ++ basma, qawanin⟩' in jism("def qSitta")
     assert "sitta.flatMap fun s => (wujuh s).flatMap fun w => halat.map fun h => qanun s w h" in jism("def qawanin")
     assert "[1, 0, 2]" in jism("def halat")
     assert "if s.qasr then [.tamam, .qasr] else [.tamam]" in jism("def wujuh")
@@ -151,15 +149,9 @@ def fahs_lean():
                  "shakl_laHukm_mumtani", "shakl_murakhkhas", "hukmQiraa_ne_mumtani", "hukmSitta_mumtani_thabit", "hukmSitta_kharij",
                  "raf_bi_qiraa", "mumtani_bi_qiraa", "natija_murab", "silsila_maqbula", "rukhsa_murakhkhasa", "la_tamdid", "suwar_sitta",
                  "sahib_la_yathbut", "sahib_muqaddima", "dhu_la_rukhsa", "qanun_raf_fi", "ghayr_sitta", "jadwal_jisrdal",
-                 "shawahid_jisrdal", "abuK_jadwal", "shawahid_sitta", "daraja_wujuh"):
+                 "shawahid_jisrdal", "abuK_jadwal", "shawahid_sitta", "daraja_wujuh", "shartMawdi_fiMawdi", "mawadi_shawahid",
+                 "fiMawdi_wujud", "isdar_basma"):
         assert re.search(rf"^theorem {name}(?=[\s:(])", bila, re.M), name
-    # مواضعُ الشواهد: عناصرُها الثمانية عشر (عدٌّ يدويّ)، وشرطُها في shawahid_sitta بالموضع ووجوده والرخصة والوقف
-    mw = jism("def mawadiShawahid")
-    # كلُّ عنصرٍ ينتهي بقيمتي (الرخصة، الوقف) مرّةً واحدة، ولا عنصرَ بهما معًا
-    assert mw.count(", true, false)") + mw.count(", false, true)") + mw.count(", false, false)") == 18 and ", true, true)" not in mw
-    assert ("mawadiShawahid.all (fun (u, w, h, m, r, q) => fiMawdi u w h m && rukhsa true [h] w m == r && mawquf true [h] w m == q)"
-            in jism("theorem shawahid_sitta"))
-    assert "  !kullMawdi u (fun _ _ v _ => !(v.khalaya == w.khalaya)) &&" in jism("def fiMawdi")
     assert "sorry" not in s and "native_decide" not in s and not re.search(r"^axiom ", s, re.M)
     return sufuf_lean()
 

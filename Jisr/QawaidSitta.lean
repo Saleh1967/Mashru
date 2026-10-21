@@ -31,7 +31,7 @@
      جمعًا «لا حكم» (`shawahid_sitta`). وموضعُ حرف العلّة بلا رخصة يبقى «لا حكم»
      (قد يكون مقصورًا أو منقوصًا: `Utur.illaMuqaddara`).
 
-  **ما ثبت** (28 مبرهنة بالمعيار الموحَّد في `Nizam/Asas.lean`: 14 لكلّ، و7 تعريفيّة، و7 على الشاهد).
+  **ما ثبت** (32 مبرهنة بالمعيار الموحَّد في `Nizam/Asas.lean`: 14 لكلّ، و9 تعريفيّة، و9 على الشاهد).
   * لكلّ: لا يغيّر الحكمَ المقطوع (`hukmSitta_murakhkhas_thabit`، `hukmSitta_mumtani_thabit`)؛ ولا يرفع «لا حكم» إلى الترخيص إلّا ما سببُه
     القراءةُ بحرف العلّة أو بالحرف (`raf_bi_qiraa`)، ولا امتناعَ جديدًا إلّا من قراءة الجدول (`mumtani_bi_qiraa`)؛ وفي موضعِ إعرابٍ بالحرف لا رخصةَ
     له ولا وقف ليست الكلمةُ صورةَ رفعٍ لصفٍّ من الجدول (`ghayr_sitta`) — والوصلُ بين الإطار ومواضعه بتعريف `kullMawdi` لا بمبرهنة؛ والرخصةُ سلسلةٌ
@@ -40,11 +40,13 @@
     في موضع النصب وسببُه في `Utur` حرفُ العلّة `illaAkhir`، على الشاهد؛ و«ذَهَبَ ذُو» بلا مضافٍ إليه ممتنعٌ في `Utur` نفسِه كـ«ذَهَبَ أَبُوْ»، و«ضَرَبَ الْوَلَدُ ذَا» و«فِي ذِي» بلا مضافٍ إليه «لا حكم» فيه وهنا وسببُه في `Utur` حرفُ العلّة)؛ والقاعدةُ لا تُنتج إعرابًا بالحرف إلّا لصور قوانينها (`la_tamdid`؛ صادقةٌ
     بالبناء: النتيجةُ لا تكون أصلًا — فلا قياسَ في القاعدة على الستّة؛ وأنّ اللغة كذلك قراءةُ البنّاء)؛ و`natija_murab`، `qanun_raf_fi`،
     `kullMawdi_mono`، `qiraaSitta_min_qiraa`.
-  * تعريفيّة: ما خرج عن الحدّ «لا حكم» (`hukmSitta_kharij`)؛ و`shakl` وثلاثُ مبرهناته وصورتا الحكمين عليه، و`hukmQiraa_ne_mumtani`.
+  * تعريفيّة: ما خرج عن الحدّ «لا حكم» (`hukmSitta_kharij`)؛ و`shakl` وثلاثُ مبرهناته وصورتا الحكمين عليه، و`hukmQiraa_ne_mumtani`؛ وإصدارُ
+    القاعدة بصمةُ الجدول (`isdar_basma`)، وشرطُ موضع الشاهد يتضمّن `fiMawdi` (`shartMawdi_fiMawdi`).
   * على الشاهد: الجدولُ وبابُ الستّة في `Jisr.JisrDal` سواءٌ في التمام، وصورةُ القصر في بابه المقصور (`.maqsur`) تحتمل الأحوال الثلاث
     (`jadwal_jisrdal`؛ وإعلانُ القصر بابَ المقصور تعيينُ البنّاء — `JisrDal` لا يذكر قصرَ الستّة، و`.maqsur` فيه «تقدر جميع الحركات» L92)، وشواهدُه
     في باب الستّة صورٌ في الجدول (`shawahid_jisrdal`)، و`abuK_jadwal`؛ وصورُ القوانين صورُ الصفوف (`suwar_sitta`)، وقوانينُ «ذو» فيها الصحبة
-    (`sahib_muqaddima`)، وشواهدُ الإطار (`shawahid_sitta`)، وتعدّدُ الوجوه بدرجةٍ لا يغيّر الحكم (`daraja_wujuh`).
+    (`sahib_muqaddima`)، وشواهدُ الإطار (`shawahid_sitta`) ومواضعُها (`mawadi_shawahid`)، و`fiMawdi` تشترط وجودَ الموضع (`fiMawdi_wujud`)، وتعدّدُ
+    الوجوه بدرجةٍ لا يغيّر الحكم (`daraja_wujuh`).
 
   **تعيينُ البنّاء** (معلَن، §١٠هـ: «ترميزُ نصّ القاعدة شروطًا مكتوبةً تأويل»): الصورُ بلا ضميرٍ متّصل (المضافُ إليه كلمةٌ ملحقة، فقيدُ «لا للياء»
   في L79 لا يقع؛ وشاهدُ القطر L385 «أخاك أخاك» بضميرٍ متّصل معلَّمٌ في الجدول «لم يُبنَ»)، وشرطُ «حيث الميم منه بانا» (L76) في الصورة نفسِها (فُو
@@ -56,9 +58,9 @@
   وتسميةُ الأوّل علّةً قراءةُ البنّاء.
   ولم يُبنَ: الضميرُ المتّصل («أبوه»: يُقرأ آخرُ خليّته في الطبقة الثالثة، `Utur.shahid_baqi`)، والنقصُ في غير ما تقرؤه القاعدة العامّة،
   وجسرُ `Utur.Hukm` إلى `Nizam.Hukm` (مطلوبٌ قبل تعميم الجدول، الخطّة §١٠ج-1).
-  واختبارُ الجدول يفحص نصَّ Lean (فحصُ نصٍّ لا سلوك)، والسلوكُ تفحصه Lean بمبرهنات الشاهد: `shawahid_sitta` وحدها تقتل P393 وP397 وP400
-  (P400 بشرط الوجود في `fiMawdi` وحده)؛ وفحصُ النصّ في الاختبار يقتل P401 (عددُ عناصر `mawadiShawahid`) وP402 (شرطُها في `shawahid_sitta`)
-  وP403 (شرطُ الوجود في `fiMawdi`) وP404 (إصدارُ القاعدة بالبصمة).
+  واختبارُ الجدول يفحص نصَّ Lean فحصًا كاشفًا لتغييرٍ عاديٍّ لا حارسًا من التحايل؛ والحراسةُ في Lean: `shawahid_sitta` وحدها تقتل P393 وP397،
+  و`mawadi_shawahid` تقتل P400 (بشرط الوجود في `fiMawdi` وحده) وP401، و`shartMawdi_fiMawdi` تقتل P402، و`fiMawdi_wujud` تقتل P403،
+  و`isdar_basma` تقتل P404.
 -/
 import Aql.Qaida
 import Jisr.JisrDal
@@ -505,9 +507,31 @@ def mawadiShawahid : List (Itar3 × Kalima × Nat × Bool × Bool × Bool) :=
    (darabaFata alWaladaK, alFata, 1, false, false, false),
    ({ dhahabaAlWalad with kalimat := [dhahaba, dhuK] }, dhuK, 1, false, false, false)]
 
+/-- شرطُ عنصرٍ من مواضع الشواهد: الموضعُ في إطاره (`fiMawdi`)، والرخصةُ والوقفُ بقيمتيهما. -/
+def shartMawdi : Itar3 × Kalima × Nat × Bool × Bool × Bool → Bool
+  | (u, w, h, m, r, q) => fiMawdi u w h m && rukhsa true [h] w m == r && mawquf true [h] w m == q
+
+/-- شرطُ العنصر يتضمّن موضعَه في إطاره (حارسٌ في Lean لأنّ الشرطَ فيه `fiMawdi`). -/
+theorem shartMawdi_fiMawdi (x : Itar3 × Kalima × Nat × Bool × Bool × Bool) (h : shartMawdi x = true) :
+    fiMawdi x.1 x.2.1 x.2.2.1 x.2.2.2.1 = true := by
+  obtain ⟨u, w, k, m, r, q⟩ := x
+  simp only [shartMawdi, Bool.and_eq_true] at h
+  exact h.1.1
+
+/-- **مواضعُ الشواهد** (على الشاهد): ثمانيةَ عشرَ عنصرًا، كلٌّ بشرطه. -/
+theorem mawadi_shawahid : mawadiShawahid.length = 18 ∧ mawadiShawahid.all shartMawdi = true := by decide +kernel
+
+/-- **`fiMawdi` تشترط وجودَ الموضع** (على الشاهد): «هَنَا» ليست في «فِي أَبِي الدُّورِ»، فلا موضعَ لها فيه — ولو صدق شرطُ الحالة على كلّ موضعٍ
+لها، لأنّه لا موضع. -/
+theorem fiMawdi_wujud : fiMawdi (fiAfdalAdDur abiK) hanaK 2 true = false ∧
+    kullMawdi (fiAfdalAdDur abiK) (fun n hs v mm => !(v.khalaya == hanaK.khalaya) || (n && hs == [2] && mm == true)) = true := by decide +kernel
+
+/-- **إصدارُ القاعدة بصمةُ الجدول** (على الشاهد). -/
+theorem isdar_basma : qSitta.isdar = "الأسماء الستّة @ " ++ Jisr.QawaidJadwal.basma := rfl
+
 /-- **الشواهد** (على الشاهد). الحكمُ السابق (`hukm3`) وسببُه (`asbabLaHukm`) والحكمُ بالجدول (`hukmSitta`) شروطٌ على الإطار، وسببُ الحكم بالجدول
-شرطٌ على موضع الكلمة في إطارها: قائمةٌ واحدة `mawadiShawahid`، لكلّ عنصرٍ منها `fiMawdi` (للكلمة في الإطار موضعٌ، وكلُّ موضعٍ لها بحالته
-وإضافته) و`rukhsa` (رخصة) و`mawquf` (وقف) بقيمتيهما.
+شرطٌ على موضع الكلمة في إطارها في المبرهنة `mawadi_shawahid`: قائمةٌ واحدة `mawadiShawahid`، لكلّ عنصرٍ منها `shartMawdi` —
+`fiMawdi` (للكلمة في الإطار موضعٌ، وكلُّ موضعٍ لها بحالته وإضافته) و`rukhsa` (رخصة) و`mawquf` (وقف) بقيمتيهما.
 - «ذَهَبَ أَبُو الْوَلَدِ»، ومثلُه أخو وحمو وهنو وفو: كانت «لا حكم» (`irabBilHarf`) فصارت مرخَّصة؛ وموضعُ «أَبُو» رفعًا مضافًا له رخصة (القطر L79
   «فترفع بالواو»).
 - «ذَهَبَ ذُو الْوَلَدِ» كان «لا حكم» (`irabBilHarf`) ويبقى: لا رخصةَ لموضعه وله وقف (الصحبةُ لا تُقرأ: الألفية L76؛ تعيينُ البنّاء)؛ و«ذَهَبَ ذُو» بلا
@@ -546,7 +570,6 @@ theorem shawahid_sitta :
     [darabaFata alWaladaK, { darabaFata alQadi with kalimat := [darabaK, alWalad, dhaK] }, { fiDar with kalimat := [fiK, dhiK] }].all (fun u =>
       hukm3 u == .laHukm && asbabLaHukm u == [.illaAkhir] && hukmSitta u == .laHukm) ∧
     -- أسبابُ الحكم بالجدول على مواضع الشواهد: الموضعُ في إطاره، والرخصةُ والوقفُ بقيمتيهما
-    mawadiShawahid.all (fun (u, w, h, m, r, q) => fiMawdi u w h m && rukhsa true [h] w m == r && mawquf true [h] w m == q) ∧
     (sitta.find? (·.ism == "هن")).map (·.qasr) = some false ∧ !suwar.contains alFata.khalaya ∧
     hukm3 { darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] } = .laHukm ∧
     asbabLaHukm { darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] } = [.illaAkhir] ∧

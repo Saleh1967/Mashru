@@ -2816,8 +2816,8 @@
  {
   "ism": "P402_shahid_bila_fiMawdi",
   "milaf": "Jisr/QawaidSitta.lean",
-  "min": "mawadiShawahid.all (fun (u, w, h, m, r, q) => fiMawdi u w h m && rukhsa true [h] w m == r && mawquf true [h] w m == q)",
-  "ila": "mawadiShawahid.all (fun (u, w, h, m, r, q) => rukhsa true [h] w m == r && mawquf true [h] w m == q)"
+  "min": "  | (u, w, h, m, r, q) => fiMawdi u w h m && rukhsa true [h] w m == r && mawquf true [h] w m == q",
+  "ila": "  | (_u, w, h, m, r, q) => rukhsa true [h] w m == r && mawquf true [h] w m == q"
  },
  {
   "ism": "P403_fiMawdi_bila_wujud",

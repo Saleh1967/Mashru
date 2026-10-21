@@ -1597,3 +1597,7 @@ import Jisr.QawaidSitta
 #print axioms Jisr.QawaidSitta.abuK_jadwal
 #print axioms Jisr.QawaidSitta.shawahid_sitta
 #print axioms Jisr.QawaidSitta.daraja_wujuh
+#print axioms Jisr.QawaidSitta.shartMawdi_fiMawdi
+#print axioms Jisr.QawaidSitta.mawadi_shawahid
+#print axioms Jisr.QawaidSitta.fiMawdi_wujud
+#print axioms Jisr.QawaidSitta.isdar_basma
