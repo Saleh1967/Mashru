@@ -443,7 +443,8 @@ theorem naqsB_baqi (a : Nat) (q : QawaidB.QanunB) (ht : q.talab < 16) :
 
 private theorem talab_sghir : ∀ q ∈ QawaidB.qawaninB, q.talab < 16 := by decide
 
-/-- **الرخصةُ على الأعداد تقويمٌ ثلاثيّ:** قانونٌ ينتج الكلمةَ وصيغةُ مقدّماته P بـ`K3` على أصول الموضع. -/
+/-- **الرخصةُ على الأعداد تقويمٌ ثلاثيّ:** قانونٌ ينتج الكلمةَ وصيغةُ مقدّماته P بـ`K3` على أصول الموضع — لكلّ موضعٍ على هذا الجدول (عمومُها على
+`talab_sghir` على الشاهد). -/
 theorem rukhsaB_k3 (k : Option Nat) (a : Nat) :
     QawaidB.rukhsaB k a = QawaidB.qawaninB.any (fun q =>
       QawaidB.yuntijB k a q && k3 (QawaidB.usulB a q.hala) 0 (sighaTalab q.talab) == .P) := by
