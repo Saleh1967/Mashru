@@ -8,7 +8,7 @@
 import hashlib
 import sys
 
-WAJH = {"قياس": ".qiyas", "حكاية": ".hikaya"}
+WAJH = {"قياس": ".qiyas", "رواية": ".riwaya"}
 
 
 def lit(s):
@@ -24,7 +24,7 @@ def wallid(data):
     col = {k: i for i, k in enumerate(head)}
     out = ["/-",
            "  Aql/WaqiJadwal.lean — مولَّدٌ بـ `python3 -I scripts/bina_waqi.py <waqi_001.tsv>` من دفعة «الواقع المختوم»؛ لا يُحرَّر يدويًّا.",
-           "  أعمدةُ الحكم وحدها (الموضع، الحاسّة، المصدر، الشيء، الخاصّة، القيمة، الوجه)؛ وبصمةُ الملفّ كاملًا.",
+           "  أعمدةُ الحكم وحدها (الدفعة، الموضع، الحاسّة، المصدر، الشيء، الخاصّة، القيمة، الوجه)؛ وبصمةُ الملفّ كاملًا.",
            "-/",
            "import Aql.Waqi",
            "",
@@ -41,7 +41,7 @@ def wallid(data):
         if w is None:
             raise SystemExit(f"مرفوض: وجهٌ مجهول في الصفّ {r[0]}")
         sep = "," if n + 1 < len(rows) else ""
-        out.append(f"  ⟨{int(r[col['raqm']])}, {lit(r[col['hassa']])}, {lit(r[col['masdar']])}, {lit(r[col['mawdu']])}, "
+        out.append(f"  ⟨{int(r[col['dafa']])}, {int(r[col['raqm']])}, {lit(r[col['hassa']])}, {lit(r[col['masdar']])}, {lit(r[col['mawdu']])}, "
                    f"{lit(r[col['sifa']])}, {lit(r[col['qima']])}, {w}⟩{sep}")
     out += ["]", "", "end Waqi.Jadwal", ""]
     return "\n".join(out)

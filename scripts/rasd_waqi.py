@@ -6,10 +6,15 @@
   * الحاسّةُ أداةٌ مسجَّلةٌ هنا بأمرها الحرفيّ؛ لا تُضاف حاسّةٌ إلّا في هذا الجدول (HAWASS)، فيظهر إيداعُها.
   * كلُّ صفٍّ مشاهدةٌ واحدة: الأمرُ كما شُغِّل، ومخرجُه الخامّ (stdout) محفوظًا باسم بصمته sha256 في
     <المجلّد>/waqi_shawahid/، ورمزُ الخروج، ووقتُ المشاهدة (UTC)، والقيمةُ بقاعدة استخراجٍ معلَنة من المخرج.
-  * الوجه: «قياس» ما حسبته الحاسّة أو شوهد تشغيلُه؛ «حكاية» ما رواه مصدرٌ عن نفسه أو غيره. والمصدرُ اسمُ الراوي:
-    حكايتان من مصدرٍ واحد ليستا مستقلّتين.
-  * لا تنظيف: ما لا يُستخرج بقاعدته، أو قيمةٌ فيها جدولةٌ أو سطرٌ جديد، تُرفض الدفعةُ باسم حاسّتها، ولا يُكتب شيء.
-  * النموّ: دفعةٌ جديدة (--dafa n) تحمل بصمةَ الدفعة المختومة قبلها (--sabiq)؛ ولا يُعدَّل صفٌّ مكتوب.
+  * الوجه: «قياس» إذا كانت القيمةُ خاصّةً للبايتات أو للعمليّة المشهودة نفسها (بصمة، عدد، محتوى شجرة، مخرجُ تشغيلٍ على مدخلٍ
+    معيَّن، رمزُ خروج)؛ «رواية» إذا كانت قولًا عن غير البايتات الحاضرة أو عن القائل نفسه (إصدار، تاريخ، رابط، وصف، تعريف، ما يرويه
+    خادم). والمصدرُ الراوي الفعليّ (البرنامجُ أو الحزمةُ أو الملفّ): روايتان من مصدرٍ واحد ليستا مستقلّتين (lean وlake مصدرٌ واحد).
+    الوجهُ والمصدرُ تعيينُ البنّاء في هذا الجدول، فهما معلَنان ويُعرضان على المالك.
+  * لا تنظيف ولا قياسَ من فشل: ما لا يُستخرج بقاعدته، أو قيمةٌ فيها جدولةٌ أو سطرٌ جديد، أو أمرٌ خرج بغير صفر (إلّا في قاعدة
+    «khuruj» التي تسجّل رمزَ الخروج نفسَه)، تُرفض الدفعةُ باسم حاسّتها؛ ولا يُكتب شيءٌ — لا الجدولُ ولا المخرجاتُ الخامّة — قبل أن
+    تنجح الحواسُّ كلُّها.
+  * النموّ: دفعةٌ جديدة (--dafa n) تحمل بصمةَ الدفعة السابقة (--sabiq)، ولا تُقبل إلّا إن كانت تلك البصمةُ قيدًا «مختومًا» من نوع
+    «واقع-مختوم» في mudaat/sijill.json؛ ولا يُعدَّل صفٌّ مكتوب.
   * المخرجُ مرشّحٌ لا مختوم: الختمُ بـ mudaat/idaa.py sajjil بإذن المالك وحده.
 
 التشغيل (من جذر المستودع):
@@ -25,7 +30,7 @@ import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-QIYAS, HIKAYA = "قياس", "حكاية"
+QIYAS, RIWAYA = "قياس", "رواية"
 AMDA = ["raqm", "hassa", "amr", "masdar", "mawdu", "sifa", "qima", "wajh", "istikhraj", "basmat_mukhraj", "khuruj",
         "waqt", "dafa", "sabiq"]
 
@@ -33,10 +38,10 @@ AMDA = ["raqm", "hassa", "amr", "masdar", "mawdu", "sifa", "qima", "wajh", "isti
 # في الأمر: {C} الإيداع، {MUDAA} مجلّد المودَعات، {DUSTUR} ملفّ دستور الوكيل في هذه البيئة.
 HAWASS = [
     # — الرصدُ نفسُه —
-    ("date", "date -u +%Y-%m-%dT%H:%M:%SZ", "ساعة النظام", "بيئة الرصد", "وقتُ بدء الرصد (UTC)", QIYAS, "kamil"),
+    ("date", "date -u +%Y-%m-%dT%H:%M:%SZ", "ساعة النظام", "بيئة الرصد", "وقتُ بدء الرصد (UTC)", RIWAYA, "kamil"),
     # — Mashru: المستودع وإيداعه ومكوّناته —
     ("git", "git rev-parse {C}", "git: حسابٌ محلّيّ", "مستودع:Mashru", "معرّف الإيداع المرصود", QIYAS, "kamil"),
-    ("git", "git remote get-url origin", "git: إعداد النسخة المحلّيّة", "مستودع:Mashru", "الأصل البعيد", QIYAS, "kamil"),
+    ("git", "git remote get-url origin", "git: إعداد النسخة المحلّيّة", "مستودع:Mashru", "الأصل البعيد", RIWAYA, "kamil"),
     ("git", "git ls-tree --name-only -d {C}", "git: حسابٌ محلّيّ", "مستودع:Mashru@{C}", "المجلّدات العليا", QIYAS,
      "satran"),
     ("git", "git ls-tree -r --name-only {C}", "git: حسابٌ محلّيّ", "مستودع:Mashru@{C}", "عدد الملفّات", QIYAS, "adad"),
@@ -47,7 +52,7 @@ HAWASS = [
     ("git", "git log --format=%H {C}", "git: حسابٌ محلّيّ", "مستودع:Mashru@{C}", "عدد الإيداعات", QIYAS, "adad"),
     ("git", "git log --format=%b {C}", "git: حسابٌ محلّيّ", "مستودع:Mashru@{C}", "أسطرُ «Co-Authored-By: Claude» في رسائل الإيداعات",
      QIYAS, "adad_fih:Co-Authored-By: Claude"),
-    ("git", "git show {C}:CLAUDE.md", "CLAUDE.md (نصّ المشروع)", "Mashru", "تعريفُه في سطره الأوّل", HIKAYA,
+    ("git", "git show {C}:CLAUDE.md", "CLAUDE.md (نصّ المشروع)", "Mashru", "تعريفُه في سطره الأوّل", RIWAYA,
      "awwal"),
     ("sha256sum", "git show {C}:CLAUDE.md | sha256sum", "sha256sum", "ملفّ:CLAUDE.md@{C}", "بصمة sha256", QIYAS,
      "regex:^([0-9a-f]{64})"),
@@ -56,65 +61,67 @@ HAWASS = [
     ("git", "git show {C}:Audit.lean", "git: حسابٌ محلّيّ", "مستودع:Mashru@{C}", "أسطر «#print axioms» في Audit.lean", QIYAS,
      "adad_bidaya:#print axioms"),
     ("git", "git show {C}:tahaqquq/khatt_asas.json", "خطّ الأساس (يسجّله البنّاء بعد البوّابة)", "مستودع:Mashru@{C}",
-     "عدد المبرهنات المدقَّقة", HIKAYA, "json:mubarhanat"),
-    ("git", "git show {C}:lean-toolchain", "lean-toolchain (ملفّ المستودع)", "Lean", "الإصدار", HIKAYA,
+     "عدد المبرهنات المدقَّقة", RIWAYA, "json:mubarhanat"),
+    ("git", "git show {C}:lean-toolchain", "lean-toolchain (ملفّ المستودع)", "Lean", "الإصدار المطلوب في المستودع", RIWAYA,
      "regex:v([0-9.]+)"),
     # — GitHub: ما يرويه الخادم —
-    ("gh", "gh api repos/Saleh1967/Mashru --jq .full_name", "GitHub", "مستودع:Mashru", "الاسم على GitHub", HIKAYA, "kamil"),
-    ("gh", "gh api repos/Saleh1967/Mashru --jq .private", "GitHub", "مستودع:Mashru", "خاصّ", HIKAYA, "kamil"),
-    ("gh", "gh api repos/Saleh1967/Mashru --jq .default_branch", "GitHub", "مستودع:Mashru", "الفرع الافتراضيّ", HIKAYA,
+    ("gh", "gh api repos/Saleh1967/Mashru --jq .full_name", "GitHub", "مستودع:Mashru", "الاسم على GitHub", RIWAYA, "kamil"),
+    ("gh", "gh api repos/Saleh1967/Mashru --jq .private", "GitHub", "مستودع:Mashru", "خاصّ", RIWAYA, "kamil"),
+    ("gh", "gh api repos/Saleh1967/Mashru --jq .default_branch", "GitHub", "مستودع:Mashru", "الفرع الافتراضيّ", RIWAYA,
      "kamil"),
-    ("gh", "gh api repos/Saleh1967/Mashru --jq .created_at", "GitHub", "مستودع:Mashru", "تاريخ الإنشاء", HIKAYA, "kamil"),
-    ("git", "git ls-remote origin refs/heads/main", "GitHub", "مستودع:Mashru", "رأس main على الخادم", HIKAYA,
+    ("gh", "gh api repos/Saleh1967/Mashru --jq .created_at", "GitHub", "مستودع:Mashru", "تاريخ الإنشاء", RIWAYA, "kamil"),
+    ("git", "git ls-remote origin refs/heads/main", "GitHub", "مستودع:Mashru", "رأس main على الخادم", RIWAYA,
      "regex:^([0-9a-f]{40})"),
-    ("gh", "gh api repos/Saleh1967/Mashru/pulls/70 --jq .state", "GitHub", "طلب دمج:Mashru#70", "الحال", HIKAYA, "kamil"),
-    ("gh", "gh --help", "gh (الأداة نفسها)", "gh", "وصفُها نفسَها", HIKAYA, "awwal"),
-    ("gh", "gh --version", "gh (الأداة نفسها)", "gh", "الإصدار", HIKAYA, "regex:gh version ([0-9.]+)"),
-    ("git", "git --version", "git (الأداة نفسها)", "git", "الإصدار", HIKAYA, "regex:git version ([0-9.]+)"),
+    ("gh", "gh api repos/Saleh1967/Mashru/pulls/70 --jq .state", "GitHub", "طلب دمج:Mashru#70", "الحال", RIWAYA, "kamil"),
+    ("gh", "gh --help", "gh (الأداة نفسها)", "gh", "وصفُها نفسَها", RIWAYA, "awwal"),
+    ("gh", "gh --version", "gh (الأداة نفسها)", "gh", "الإصدار", RIWAYA, "regex:gh version ([0-9.]+)"),
+    ("git", "git --version", "git (الأداة نفسها)", "git", "الإصدار", RIWAYA, "regex:git version ([0-9.]+)"),
     # — الوكيل —
-    ("claude", "claude --version", "claude (الأداة نفسها)", "Claude Code", "الإصدار", HIKAYA, "kamil"),
-    ("git", "git show {C}:CLAUDE.md", "CLAUDE.md (نصّ المشروع)", "البنّاء", "تعريفُه", HIKAYA,
+    ("claude", "claude --version", "claude (الأداة نفسها)", "Claude Code", "الإصدار", RIWAYA, "kamil"),
+    ("git", "git show {C}:CLAUDE.md", "CLAUDE.md (نصّ المشروع)", "البنّاء", "تعريفُه", RIWAYA,
      "satr:البنّاء (الجلسة الرئيسة)"),
-    ("git", "git show {C}:.claude/agents/murajii.md", ".claude/agents/murajii.md", "وكيل:murajii", "تعريفُه", HIKAYA,
+    ("git", "git show {C}:.claude/agents/murajii.md", ".claude/agents/murajii.md", "وكيل:murajii", "تعريفُه", RIWAYA,
      "regex:^description: (.*)$"),
-    ("git", "git show {C}:.claude/agents/qayyis.md", ".claude/agents/qayyis.md", "وكيل:qayyis", "تعريفُه", HIKAYA,
+    ("git", "git show {C}:.claude/agents/qayyis.md", ".claude/agents/qayyis.md", "وكيل:qayyis", "تعريفُه", RIWAYA,
      "regex:^description: (.*)$"),
     # — الدستور —
-    ("git", "git show {C}:CLAUDE.md", "CLAUDE.md (نصّ المشروع)", "الدستور", "مادّتُه الأولى", HIKAYA,
+    ("git", "git show {C}:CLAUDE.md", "CLAUDE.md (نصّ المشروع)", "الدستور", "مادّتُه الأولى", RIWAYA,
      "satr:- لا كلام قبل الطبعة"),
-    ("cat", "cat {DUSTUR}", "دستور الوكيل (ملفّ المهارة في هذه البيئة)", "دستور الوكيل", "عنوانُه", HIKAYA,
+    ("cat", "cat {DUSTUR}", "دستور الوكيل (ملفّ المهارة في هذه البيئة)", "دستور الوكيل", "عنوانُه", RIWAYA,
      "regex:^# (.*)$"),
     ("sha256sum", "sha256sum {DUSTUR}", "sha256sum", "ملفّ:دستور الوكيل", "بصمة sha256", QIYAS, "regex:^([0-9a-f]{64})"),
-    ("git", "git show {C}:tahaqquq/bawwaba.py", "tahaqquq/bawwaba.py", "البوّابة", "وصفُها نفسَها", HIKAYA,
+    ("git", "git show {C}:tahaqquq/bawwaba.py", "tahaqquq/bawwaba.py", "البوّابة", "وصفُها نفسَها", RIWAYA,
      "regex:^\"\"\"(.*)$"),
-    ("git", "git show {C}:mudaat/idaa.py", "mudaat/idaa.py", "بوّابة الإيداع", "وصفُها نفسَها", HIKAYA,
+    ("git", "git show {C}:mudaat/idaa.py", "mudaat/idaa.py", "بوّابة الإيداع", "وصفُها نفسَها", RIWAYA,
      "regex:^\"\"\"(.*)$"),
-    # — العمليّات، مشاهدةً بالتشغيل —
-    ("python3", "python3 -I mudaat/idaa.py fahs", "تشغيل", "سجلّ المودَعات", "فحصُه", QIYAS, "kamil"),
-    ("python3", "python3 -I mudaat/idaa.py tahaqqaq {MUDAA}", "تشغيل", "بصمات المودَعات الحاضرة", "عددُ المطابق", QIYAS,
+    # — العمليّات، مشاهدةً بالتشغيل على الشجرة العاملة وقت الرصد (إيداعُها وما لم يُودَع منها صفّان أوّلَها) —
+    ("git", "git rev-parse HEAD", "git: حسابٌ محلّيّ", "الشجرة العاملة وقت الرصد", "إيداعُها", QIYAS, "kamil"),
+    ("git", "git status --porcelain", "git: حسابٌ محلّيّ", "الشجرة العاملة وقت الرصد", "ملفّاتٌ غيرُ مودَعة", QIYAS, "adad"),
+    ("python3", "python3 -I mudaat/idaa.py fahs", "تشغيل", "سجلّ المودَعات (الشجرة العاملة)", "فحصُه", QIYAS, "kamil"),
+    ("python3", "python3 -I mudaat/idaa.py tahaqqaq {MUDAA}", "تشغيل", "بصمات المودَعات الحاضرة (الشجرة العاملة)", "عددُ المطابق", QIYAS,
      "adad_bidaya:مطابق"),
-    ("python3", "python3 -I mudaat/test_idaa.py", "تشغيل", "اختبار بوّابة الإيداع", "النتيجة", QIYAS, "kamil"),
-    ("faahis", ".lake/build/bin/faahis mudaat/sijill.tsv mawsua/makhzan.tsv", "تشغيل", "الفاحص على المخزن",
+    ("python3", "python3 -I mudaat/test_idaa.py", "تشغيل", "اختبار بوّابة الإيداع (الشجرة العاملة)", "النتيجة", QIYAS, "kamil"),
+    ("faahis", ".lake/build/bin/faahis mudaat/sijill.tsv mawsua/makhzan.tsv", "تشغيل", "الفاحص على المخزن (الشجرة العاملة)",
      "سطرُ الخلاصة", QIYAS, "satr:القاعدة"),
-    ("qari", ".lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv ذَهَبَ", "تشغيل", "القارئ على «ذَهَبَ»",
+    ("qari", ".lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv ذَهَبَ", "تشغيل", "القارئ على «ذَهَبَ» (الشجرة العاملة)",
      "المقاطع", QIYAS, "regex:المقاطع \\(\\d+\\): (.*?) —"),
     # — بايثون —
-    ("python3", "python3 --version", "python3 (الأداة نفسها)", "Python", "الإصدار", HIKAYA, "regex:Python ([0-9.]+)"),
+    ("python3", "python3 --version", "python3 (الأداة نفسها)", "Python", "الإصدار", RIWAYA, "regex:Python ([0-9.]+)"),
     ("python3", "python3 -I -c \"import sys; print('.'.join(map(str, sys.version_info[:3])))\"", "python3 (الأداة نفسها)",
-     "Python", "الإصدار", HIKAYA, "kamil"),
+     "Python", "الإصدار", RIWAYA, "kamil"),
     ("python3", "python3 -I -c \"import sys; print(sys.implementation.name)\"", "python3 (الأداة نفسها)", "Python",
-     "التنفيذ", HIKAYA, "kamil"),
-    ("python3", "python3 --help", "python3 (الأداة نفسها)", "Python", "وصفُ استدعائه", HIKAYA, "awwal"),
+     "التنفيذ", RIWAYA, "kamil"),
+    ("python3", "python3 --help", "python3 (الأداة نفسها)", "Python", "وصفُ استدعائه", RIWAYA, "awwal"),
     ("python3", "python3 -I -c \"print(2+3)\"", "تشغيل", "Python", "يُخرج لـ print(2+3)", QIYAS, "kamil"),
     # — Lean —
-    ("lean", "lean --version", "lean (الأداة نفسها)", "Lean", "الإصدار", HIKAYA, "regex:version ([0-9.]+)"),
-    ("lake", "lake --version", "lake (الأداة نفسها)", "Lean", "الإصدار", HIKAYA, "regex:Lean version ([0-9.]+)"),
+    ("lean", "lean --version", "حزمة Lean (lean وlake بناءٌ واحد)", "Lean", "الإصدار", RIWAYA, "regex:version ([0-9.]+)"),
+    ("lake", "lake --version", "حزمة Lean (lean وlake بناءٌ واحد)", "Lean", "الإصدار", RIWAYA, "regex:Lean version ([0-9.]+)"),
     ("lean", "printf '%s\\n' 'example : 2 + 3 = 5 := by decide' | lean --stdin", "تشغيل", "Lean",
      "رمزُ الخروج لـ «example : 2 + 3 = 5 := by decide»", QIYAS, "khuruj"),
     ("lean", "printf '%s\\n' 'example : 2 + 3 = 6 := by decide' | lean --stdin", "تشغيل", "Lean",
      "رمزُ الخروج لـ «example : 2 + 3 = 6 := by decide»", QIYAS, "khuruj"),
     # — البيئة —
-    ("uname", "uname -sr", "uname (النواة)", "بيئة الرصد", "النظام", HIKAYA, "kamil"),
+    ("uname", "uname -sr", "uname (النواة)", "بيئة الرصد", "النظام", RIWAYA, "kamil"),
 ]
 
 
@@ -171,12 +178,13 @@ def main():
     commit, dafa, sabiq = arg("--commit"), arg("--dafa", "1"), arg("--sabiq", "-")
     if not commit or not re.fullmatch(r"[0-9a-f]{7,40}", commit):
         sys.exit("مرفوض: --commit إيداعٌ بمعرّفه")
-    if dafa != "1" and not re.fullmatch(r"[0-9a-f]{64}", sabiq):
-        sys.exit("مرفوض: دفعةٌ بعد الأولى تحمل بصمةَ سابقتها المختومة (--sabiq)")
+    if dafa != "1":
+        sijill = json.load(open(os.path.join(ROOT, "mudaat", "sijill.json"), encoding="utf-8"))["sijill"]
+        if not any(m["sha256"] == sabiq and m["hala"] == "مختوم" and m["naw"] == "واقع-مختوم" for m in sijill):
+            sys.exit("مرفوض: دفعةٌ بعد الأولى تحمل بصمةَ سابقتها، قيدًا مختومًا «واقع-مختوم» في mudaat/sijill.json (--sabiq)")
     dustur = sorted(glob.glob("/root/.claude/skills/synced/*/dustur-al-wakil/SKILL.md"))
     shdir = os.path.join(mudaa, "waqi_shawahid")
-    os.makedirs(shdir, exist_ok=True)
-    rows = []
+    rows, khamat = [], {}
     for i, (hassa, amr, masdar, mawdu, sifa, wajh, qaida) in enumerate(HAWASS, 1):
         if "{DUSTUR}" in amr and not dustur:
             sys.exit(f"مرفوض: الحاسّة {i} ({hassa}) تحتاج ملفّ دستور الوكيل، ولم يحضر")
@@ -185,14 +193,13 @@ def main():
         waqt = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         p = subprocess.run(["bash", "-c", amr], cwd=ROOT, capture_output=True, timeout=600)
         out = p.stdout
+        if p.returncode != 0 and qaida != "khuruj":
+            sys.exit(f"مرفوض: الحاسّة {i} ({hassa}: {amr}) خرجت {p.returncode}؛ لا قياسَ من فشل")
         qima = istakhrij(qaida, out, p.returncode)
         if qima is None or not qima or "\t" in qima or "\n" in qima:
             sys.exit(f"مرفوض: الحاسّة {i} ({hassa}: {amr}) لم تُستخرج قيمتُها بقاعدة «{qaida}» (خروج {p.returncode})")
         b = hashlib.sha256(out).hexdigest()
-        path = os.path.join(shdir, b)
-        if not os.path.exists(path):
-            with open(path, "wb") as f:
-                f.write(out)
+        khamat[b] = out
         rows.append([str(i), hassa, amr, masdar, mawdu, sifa, qima, wajh, qaida, b, str(p.returncode), waqt, dafa, sabiq])
     for r in rows:
         for v in r:
@@ -201,6 +208,12 @@ def main():
     name = os.path.join(mudaa, f"waqi_{int(dafa):03d}.tsv")
     if os.path.exists(name):
         sys.exit(f"مرفوض: {name} موجود؛ الدفعةُ لا تُعاد كتابتُها")
+    os.makedirs(shdir, exist_ok=True)
+    for b, out in khamat.items():
+        path = os.path.join(shdir, b)
+        if not os.path.exists(path):
+            with open(path, "wb") as f:
+                f.write(out)
     with open(name, "w", encoding="utf-8") as f:
         f.write("\t".join(AMDA) + "\n")
         for r in rows:

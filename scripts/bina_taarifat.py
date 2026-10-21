@@ -8,8 +8,11 @@
 
 القواعد:
   * النصُّ يُستخرج آليًّا من مصدره بأسطره عند الإيداع المرصود (git show <إيداع>:<مسار>) أو من ملفّ دستور الوكيل في البيئة
-    أو من مخرجٍ خامّ في waqi_shawahid؛ والأسطرُ تُضمّ بـ « / » وتُحذف مسافةُ أوّل السطر وحدها (عُرفُ الاقتباس في المستودع).
-  * لكلّ صفٍّ بصمةُ مصدره (sha256 لبايتاته)، وواضعُه كما يُعرف من مصدره، وصفوفُ الواقع التي تشهد له.
+    (غيرُ مودَع: نسخةُ مهارةٍ تُزامَن، وبصمتُها في الصفّ) أو من مخرجٍ خامّ في waqi_shawahid؛ والأسطرُ تُضمّ بـ « / » وتُحذف مسافةُ
+    أوّل السطر وحدها (عُرفُ الاقتباس في المستودع).
+  * لكلّ صفٍّ بصمةُ مصدره (sha256 لبايتاته)، وواضعُه كما يُعرف من مصدره، ودرجتُه (م12: آحاد/مشهور/متواتر بعدد المصادر المستقلّة —
+    كلُّها هنا آحاد)، وصفوفُ الواقع التي تشهد له. ومن الصفوف ما ليس تعريفًا بالمعنى الدقيق (عنوانٌ مع مادّة، قاعدةُ عمل، سطرُ
+    استدعاء)، فاسمُ اللفظ فيها يقول ما هو.
   * المخرجُ مرشّحٌ؛ الختمُ بإذن المالك وحده.
 
 التشغيل (من جذر المستودع):
@@ -23,8 +26,9 @@ import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-AMDA = ["raqm", "lafz", "taarif", "masdar", "basmat_masdar", "wadi", "shawahid_waqi"]
+AMDA = ["raqm", "lafz", "taarif", "masdar", "basmat_masdar", "wadi", "daraja", "shawahid_waqi"]
 MASHRU, TALIMAT, WAKIL, SANI = "نصّ المشروع (CLAUDE.md)", "تعليمات المالك (تعليمات_المشروع.md)", "دستور الوكيل", "صانع الأداة"
+MILAF = "ملفّ المشروع"  # يُلحق به مسارُه
 
 # (اللفظ، المصدر، أوّل سطر، آخر سطر، الواضع، صفوف الواقع الشاهدة)
 # المصدر: مسارٌ في المستودع، أو «DUSTUR» لملفّ دستور الوكيل، أو «waqi:<رقم>» لمخرجٍ خامّ مرصود.
@@ -32,31 +36,31 @@ TAARIFAT = [
     ("Mashru", "CLAUDE.md", 1, 1, MASHRU, "2,3,10,11,12,16"),
     ("هدفُ Mashru", "تعليمات_المشروع.md", 4, 5, TALIMAT, ""),
     ("مراحلُ Mashru", "تعليمات_المشروع.md", 6, 6, TALIMAT, ""),
-    ("الدستور", "CLAUDE.md", 3, 4, MASHRU, "29"),
+    ("الدستور: عنوانُه ومادّتُه الأولى", "CLAUDE.md", 3, 4, MASHRU, "29"),
     ("الوسم", "CLAUDE.md", 5, 7, MASHRU, ""),
     ("مراتبُ المخرج", "CLAUDE.md", 14, 15, MASHRU, ""),
     ("الحكمُ المرخَّص", "CLAUDE.md", 18, 19, MASHRU, ""),
-    ("المخزن والفاحص", "CLAUDE.md", 20, 22, MASHRU, "37"),
-    ("المودَع والختم", "CLAUDE.md", 23, 25, MASHRU, "34,35"),
+    ("المخزن والفاحص", "CLAUDE.md", 20, 22, MASHRU, "39"),
+    ("المودَع والختم", "CLAUDE.md", 23, 25, MASHRU, "36,37"),
     ("السلطة", "CLAUDE.md", 26, 26, MASHRU, ""),
     ("سيرُ العمل على GitHub", "CLAUDE.md", 28, 30, MASHRU, "16,17,18,20,21"),
-    ("البناء بـ Lean", "CLAUDE.md", 80, 80, MASHRU, "13,14,15,44,45"),
-    ("القارئ", "CLAUDE.md", 391, 395, MASHRU, "38"),
+    ("البناء بـ Lean", "CLAUDE.md", 80, 83, MASHRU, "13,14,15,46,47"),
+    ("القارئ", "CLAUDE.md", 391, 395, MASHRU, "40"),
     ("البنّاء (الوكيل)", "CLAUDE.md", 48, 48, MASHRU, "9,26"),
-    ("murajii (الوكيل المراجع)", ".claude/agents/murajii.md", 3, 3, MASHRU, "27"),
-    ("qayyis (الوكيل القائس)", ".claude/agents/qayyis.md", 3, 3, MASHRU, "28"),
-    ("البوّابة", "tahaqquq/bawwaba.py", 1, 1, MASHRU, "32"),
-    ("بوّابة الإيداع", "mudaat/idaa.py", 1, 1, MASHRU, "33,34"),
-    ("أنواعُ المودَع", "mudaat/idaa.py", 6, 6, MASHRU, ""),
-    ("النواةُ في Lean", "تعليمات_المشروع.md", 5, 5, TALIMAT, "46,47"),
-    ("دورُ بايثون", "تعليمات_المشروع.md", 17, 17, TALIMAT, "7,43"),
+    ("murajii (الوكيل المراجع)", ".claude/agents/murajii.md", 3, 3, MILAF, "27"),
+    ("qayyis (الوكيل القائس)", ".claude/agents/qayyis.md", 3, 3, MILAF, "28"),
+    ("البوّابة", "tahaqquq/bawwaba.py", 1, 1, MILAF, "32"),
+    ("بوّابة الإيداع", "mudaat/idaa.py", 1, 1, MILAF, "33,36"),
+    ("أنواعُ المودَع", "mudaat/idaa.py", 6, 6, MILAF, ""),
+    ("النواةُ في Lean", "تعليمات_المشروع.md", 5, 5, TALIMAT, "48,49"),
+    ("موضعُ بايثون في طريقة العمل (القاعدة الرابعة)", "تعليمات_المشروع.md", 17, 17, TALIMAT, "7,45"),
     ("دستورُ الوكيل", "DUSTUR", 6, 6, WAKIL, "30,31"),
     ("أنواعُ المودَع (دستور الوكيل م12)", "DUSTUR", 26, 26, WAKIL, ""),
     ("أركانُ العقل (دستور الوكيل م14)", "DUSTUR", 28, 28, WAKIL, ""),
     ("مراتبُ المخرج (دستور الوكيل م15)", "DUSTUR", 32, 32, WAKIL, ""),
     ("الواقعُ المودَع (دستور الوكيل م16)", "DUSTUR", 33, 33, WAKIL, ""),
-    ("gh (أداة GitHub)", "waqi:22", 1, 1, SANI, "22,23"),
-    ("Python (استدعاؤه)", "waqi:42", 1, 1, SANI, "39,40,41,42,43"),
+    ("gh: وصفُه نفسَه", "waqi:22", 1, 1, SANI, "22,23"),
+    ("python3: سطرُ استدعائه", "waqi:44", 1, 1, SANI, "41,42,43,44,45"),
 ]
 
 
@@ -90,14 +94,17 @@ def main():
         lines = data.decode("utf-8").split("\n")
         if b > len(lines) or a < 1 or a > b:
             sys.exit(f"مرفوض: الأسطر {a}–{b} خارج {ism}")
-        text = " / ".join(l.strip() for l in lines[a - 1:b])
+        text = " / ".join(l.lstrip() for l in lines[a - 1:b])
         if not text or "\t" in text:
             sys.exit(f"مرفوض: نصُّ «{lafz}» فارغ أو فيه جدولة")
         for s in filter(None, shawahid.split(",")):
             if int(s) not in waqi:
                 sys.exit(f"مرفوض: «{lafz}» يحيل إلى صفّ واقعٍ غير موجود: {s}")
         loc = f"{ism}:L{a}" if a == b else f"{ism}:L{a}–{b}"
-        out.append([str(i), lafz, text, loc, hashlib.sha256(data).hexdigest(), wadi, shawahid or "-"])
+        if wadi == MILAF:
+            wadi = f"{MILAF} ({masdar})"
+        # الدرجة (م12): كلُّ تعريفٍ هنا من مصدرٍ واحد، فهو آحاد
+        out.append([str(i), lafz, text, loc, hashlib.sha256(data).hexdigest(), wadi, "آحاد", shawahid or "-"])
     name = os.path.join(mudaa, "taarifat.tsv")
     if os.path.exists(name):
         sys.exit(f"مرفوض: {name} موجود؛ لا يُعاد كتابتُه")
