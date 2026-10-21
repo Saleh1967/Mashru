@@ -2722,5 +2722,35 @@
   "milaf": "Aql/Aqliyya.lean",
   "min": "  | (), \"الإنسان\" => some ⟨\"الحيوان\", [.asl \"الإنسان\", .qanun 0]⟩",
   "ila": "  | (), \"الإنسان\" => some ⟨\"الحيوان\", [.asl \"الإنسان\"]⟩"
+ },
+ {
+  "ism": "P387_dabt_bil_awwal_wahdah",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    return [b.split(\"\\n\")[0] for b in asas if b not in hali and basma_band(b) not in maadhun]",
+  "ila": "    return [b.split(\"\\n\")[0] for b in asas if b.split(\"\\n\")[0] not in {h.split(\"\\n\")[0] for h in hali} and basma_band(b) not in maadhun]"
+ },
+ {
+  "ism": "P388_dabt_qism_bila_nihaya",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        if line.startswith(\"## \"):\n            break\n",
+  "ila": ""
+ },
+ {
+  "ism": "P389_dabt_asas_ghayr_maqru",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        if code != 0:\n            raise ValueError(f\"تعذّرت قراءة CLAUDE.md عند {asas_d_sha[:7]}\")",
+  "ila": "        if False:\n            raise ValueError(f\"تعذّرت قراءة CLAUDE.md عند {asas_d_sha[:7]}\")"
+ },
+ {
+  "ism": "P390_dabt_idhn_yuifi_kull",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "if b not in hali and basma_band(b) not in maadhun]",
+  "ila": "if b not in hali and not maadhun]"
+ },
+ {
+  "ism": "P391_dabt_bila_unwan_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        raise ValueError(f\"لا عنوانَ «{UNWAN_DABT}» في CLAUDE.md\")",
+  "ila": "        return []"
  }
 ]
