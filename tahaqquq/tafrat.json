@@ -2752,5 +2752,137 @@
   "milaf": "tahaqquq/bawwaba.py",
   "min": "        raise ValueError(f\"لا عنوانَ «{UNWAN_DABT}» في CLAUDE.md\")",
   "ila": "        return []"
+ },
+ {
+  "ism": "P392_sitta_bila_sahib",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "     (if s.sahib then [.sahib (suraBi s w h)] else []),",
+  "ila": "     ([] : List Qadiyya),"
+ },
+ {
+  "ism": "P393_ghayr_sitta_la_hukm",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "mawquf n hs w m) then .laHukm\n  else .mumtani",
+  "ila": "mawquf n hs w m) then .laHukm\n  else .laHukm"
+ },
+ {
+  "ism": "P394_sitta_bila_qasr",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "def wujuh (s : Saff) : List Wajh := if s.qasr then [.tamam, .qasr] else [.tamam]",
+  "ila": "def wujuh (_s : Saff) : List Wajh := [.tamam]"
+ },
+ {
+  "ism": "P395_jadwal_akhu_fatha",
+  "milaf": "Jisr/QawaidJadwal.lean",
+  "min": "⟨\"أخ\", [0, 25, 115]",
+  "ila": "⟨\"أخ\", [0, 24, 115]"
+ },
+ {
+  "ism": "P396_rukhsa_bila_fahis",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  qSitta.qawanin.any fun r => yuntij hs w r && Qaida.maqbulM qSitta (aslMawdi nom hs w mudaf) ⟨r.natija, silsila r⟩",
+  "ila": "  qSitta.qawanin.any fun r => yuntij hs w r"
+ },
+ {
+  "ism": "P397_idafa_la_tushtarat",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  | .mudaf c => mudaf && c == w.khalaya",
+  "ila": "  | .mudaf c => c == w.khalaya"
+ },
+ {
+  "ism": "P398_hukmSitta_bi_hukmQiraa",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "(damm (ofBool (waslBase u && waslMl u && jisrMadlul u)) (damm (qiraaSitta u) (waslMadlul u.isnad))))",
+  "ila": "(damm (ofBool (waslBase u && waslMl u && jisrMadlul u)) (damm (hukmQiraa u) (waslMadlul u.isnad))))"
+ },
+ {
+  "ism": "P399_muwallid_damma_fatha",
+  "milaf": "scripts/bina_qawaid.py",
+  "min": "HARAKA = {\"َ\": 0, \"ُ\": 1,",
+  "ila": "HARAKA = {\"َ\": 0, \"ُ\": 0,"
+ },
+ {
+  "ism": "P400_mawdi_bila_wujud",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "   (fiAfdalAdDur abiK, abiK, 2, true, true, false), (dhahabaMudaf abaK, abaK, 1, true, true, false),",
+  "ila": "   (fiAfdalAdDur abiK, hanaK, 2, true, false, false), (dhahabaMudaf abaK, abaK, 1, true, true, false),"
+ },
+ {
+  "ism": "P401_mawadi_naqisa",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "   (fiAfdalAdDur hanaK, hanaK, 2, true, false, false),\n",
+  "ila": ""
+ },
+ {
+  "ism": "P402_shahid_bila_fiMawdi",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  | (u, w, h, m, r, q) => fiMawdi u w h m && rukhsa true [h] w m == r && mawquf true [h] w m == q",
+  "ila": "  | (_u, w, h, m, r, q) => rukhsa true [h] w m == r && mawquf true [h] w m == q"
+ },
+ {
+  "ism": "P403_fiMawdi_bila_wujud",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  !kullMawdi u (fun _ _ v _ => !(v.khalaya == w.khalaya)) &&\n",
+  "ila": ""
+ },
+ {
+  "ism": "P404_isdar_bila_basma",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "def qSitta : Qaida.Qaida Qadiyya := ⟨\"الأسماء الستّة @ \" ++ basma, qawanin⟩",
+  "ila": "def qSitta : Qaida.Qaida Qadiyya := ⟨\"الأسماء الستّة\", qawanin⟩"
+ },
+ {
+  "ism": "P405_shart_bila_rukhsa",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  | (u, w, h, m, r, q) => fiMawdi u w h m && rukhsa true [h] w m == r && mawquf true [h] w m == q",
+  "ila": "  | (u, w, h, m, _r, q) => fiMawdi u w h m && true && mawquf true [h] w m == q"
+ },
+ {
+  "ism": "P406_fiMawdi_bila_idafa",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  kullMawdi u (fun n hs v mm => !(v.khalaya == w.khalaya) || (n && hs == [h] && mm == m))\n\n/-- **مواضعُ الشواهد** بإطاراتها",
+  "ila": "  kullMawdi u (fun n hs v _ => !(v.khalaya == w.khalaya) || (n && hs == [h]))\n\n/-- **مواضعُ الشواهد** بإطاراتها"
+ },
+ {
+  "ism": "P407_halat_bila_jarr",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "def halat : List Nat := [1, 0, 2]",
+  "ila": "def halat : List Nat := [1, 0]"
+ },
+ {
+  "ism": "P408_qawanin_bila_dhu",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  sitta.flatMap fun s => (wujuh s).flatMap fun w => halat.map fun h => qanun s w h",
+  "ila": "  (sitta.take 5).flatMap fun s => (wujuh s).flatMap fun w => halat.map fun h => qanun s w h"
+ },
+ {
+  "ism": "P409_qanun_bila_matlub",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "   [.sura (suraBi s w h), .mudaf (suraBi s w h), .matlub h (suraBi s w h)] ++",
+  "ila": "   [.sura (suraBi s w h), .mudaf (suraBi s w h)] ++"
+ },
+ {
+  "ism": "P410_sahib_yuqra",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  | .sahib _ => false\n  | .murab _ _ => false",
+  "ila": "  | .sahib _ => true\n  | .murab _ _ => false"
+ },
+ {
+  "ism": "P411_qiraa_bila_mawquf",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "laIrabBilHarf n hs w m || rukhsa n hs w m || mawquf n hs w m) then .laHukm",
+  "ila": "laIrabBilHarf n hs w m || rukhsa n hs w m) then .laHukm"
+ },
+ {
+  "ism": "P412_matlub_bila_ismiyya",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  | .matlub h c => nom && hs.contains h && c == w.khalaya",
+  "ila": "  | .matlub h c => hs.contains h && c == w.khalaya"
+ },
+ {
+  "ism": "P413_matlub_bila_hala",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  | .matlub h c => nom && hs.contains h && c == w.khalaya",
+  "ila": "  | .matlub _ c => nom && c == w.khalaya"
  }
 ]

@@ -72,6 +72,7 @@ import Jisr.MantuqMafhum
 import Madlul.TashfirHawass
 import Madlul.TashfirShabaka
 import Madlul.Fard116Shawahid
+import Jisr.QawaidSitta
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1568,3 +1569,37 @@ import Madlul.Fard116Shawahid
 #print axioms Nizam.Damj.shahid_la_yuhmal_min_hadir
 #print axioms Nizam.Damj.musawat_harfiyya_la_tasihh
 #print axioms Nizam.Damj.shawahid_mubarhanat
+#print axioms Jisr.QawaidSitta.kullMawdi_mono
+#print axioms Jisr.QawaidSitta.qiraaSitta_min_qiraa
+#print axioms Jisr.QawaidSitta.hukmSitta_murakhkhas_thabit
+#print axioms Jisr.QawaidSitta.hukm3_shakl
+#print axioms Jisr.QawaidSitta.hukmSitta_shakl
+#print axioms Jisr.QawaidSitta.shakl_mumtani
+#print axioms Jisr.QawaidSitta.shakl_laHukm_mumtani
+#print axioms Jisr.QawaidSitta.shakl_murakhkhas
+#print axioms Jisr.QawaidSitta.hukmQiraa_ne_mumtani
+#print axioms Jisr.QawaidSitta.hukmSitta_mumtani_thabit
+#print axioms Jisr.QawaidSitta.hukmSitta_kharij
+#print axioms Jisr.QawaidSitta.raf_bi_qiraa
+#print axioms Jisr.QawaidSitta.mumtani_bi_qiraa
+#print axioms Jisr.QawaidSitta.natija_murab
+#print axioms Jisr.QawaidSitta.silsila_maqbula
+#print axioms Jisr.QawaidSitta.rukhsa_murakhkhasa
+#print axioms Jisr.QawaidSitta.la_tamdid
+#print axioms Jisr.QawaidSitta.suwar_sitta
+#print axioms Jisr.QawaidSitta.sahib_la_yathbut
+#print axioms Jisr.QawaidSitta.sahib_muqaddima
+#print axioms Jisr.QawaidSitta.dhu_la_rukhsa
+#print axioms Jisr.QawaidSitta.qanun_raf_fi
+#print axioms Jisr.QawaidSitta.ghayr_sitta
+#print axioms Jisr.QawaidSitta.jadwal_jisrdal
+#print axioms Jisr.QawaidSitta.shawahid_jisrdal
+#print axioms Jisr.QawaidSitta.abuK_jadwal
+#print axioms Jisr.QawaidSitta.shawahid_sitta
+#print axioms Jisr.QawaidSitta.daraja_wujuh
+#print axioms Jisr.QawaidSitta.shartMawdi_shurut
+#print axioms Jisr.QawaidSitta.fiMawdi_shartan
+#print axioms Jisr.QawaidSitta.mawadi_shawahid
+#print axioms Jisr.QawaidSitta.fiMawdi_wujud
+#print axioms Jisr.QawaidSitta.isdar_basma
+#print axioms Jisr.QawaidSitta.asl_mawdi
