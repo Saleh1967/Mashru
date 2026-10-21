@@ -481,14 +481,30 @@ def hanuDamma : Kalima := ⟨[4 * 1 + 0, 4 * 14 + 1], false, false⟩           
 def dhahabaMudafAdad (w : Kalima) (n : Nat) : Itar3 :=
   { dhahabaMudaf w with jisr := { (dhahabaMudaf w).jisr with ud := { Mulhaqat.darabaZayd with ats := [SLGE.Simat.past 0 0, SLGE.Simat.noun 1 0 n] } } }
 
-/-- كلُّ موضعٍ للكلمة `w` في الإطار `u` اسميٌّ يطلب الحالة `h` وحدها وإضافتُه `m` (ولا يقول إنّ للكلمة فيه موضعًا). -/
+/-- **موضعُ الكلمة في إطارها:** للكلمة `w` في الإطار `u` موضعٌ تُطلب حالتُه (ليس كلُّ موضعٍ غيرَها)، وكلُّ موضعٍ لها اسميٌّ يطلب الحالة `h` وحدها
+وإضافتُه `m` — على `kullMawdi` نفسِه. -/
 def fiMawdi (u : Itar3) (w : Kalima) (h : Nat) (m : Bool) : Bool :=
+  !kullMawdi u (fun _ _ v _ => !(v.khalaya == w.khalaya)) &&
   kullMawdi u (fun n hs v mm => !(v.khalaya == w.khalaya) || (n && hs == [h] && mm == m))
 
+/-- **مواضعُ الشواهد** بإطاراتها: (الإطار، الكلمة، الحالة، الإضافة، الرخصة، الوقف) — قائمةٌ واحدة يُشترط عليها الموضعُ وسببُ الحكم بالجدول معًا. -/
+def mawadiShawahid : List (Itar3 × Kalima × Nat × Bool × Bool × Bool) :=
+  [(abuAlWalad, abuK, 1, true, true, false), (darabaMudaf abaK, abaK, 0, true, true, false),
+   (fiAfdalAdDur abiK, abiK, 2, true, true, false), (dhahabaMudaf abaK, abaK, 1, true, true, false),
+   (darabaMudaf hanaK, hanaK, 0, true, true, false),
+   (dhahabaMudaf dhuK, dhuK, 1, true, false, true), (darabaMudaf dhaK, dhaK, 0, true, false, true),
+   (fiAfdalAdDur dhiK, dhiK, 2, true, false, true),
+   (dhahabaMudaf daluK, daluK, 1, true, false, false), (dhahabaMudafAdad bunuK 0, bunuK, 1, true, false, false),
+   (dhahabaMudafAdad muslimuK 0, muslimuK, 1, true, false, false), (dhahabaMudaf hanaK, hanaK, 1, true, false, false),
+   (fiAfdalAdDur hanaK, hanaK, 2, true, false, false),
+   ({ darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] }, abaK, 0, false, false, false),
+   ({ darabaFata alQadi with kalimat := [darabaK, alWalad, dhaK] }, dhaK, 0, false, false, false),
+   ({ fiDar with kalimat := [fiK, dhiK] }, dhiK, 2, false, false, false),
+   (darabaFata alWaladaK, alFata, 1, false, false, false)]
+
 /-- **الشواهد** (على الشاهد). الحكمُ السابق (`hukm3`) وسببُه (`asbabLaHukm`) والحكمُ بالجدول (`hukmSitta`) شروطٌ على الإطار، وسببُ الحكم بالجدول
-شرطٌ على الموضع: `rukhsa` (رخصة) و`mawquf` (وقف) باسميّة الموضع وحالته المطلوبة وإضافته — والثلاثيّاتُ (كلمة، حالة، إضافة) مكتوبةٌ باليد، ومطابقتُها
-لما يمرّره `kullMawdi` لمواضع الكلمة في إطارها المسمّى شرطٌ في المبرهنة (`fiMawdi`)، إلّا «هَنَا» نصبًا وجرًّا و«ذِي» جرًّا مضافاتٍ: مواضعُ بلا إطارٍ
-مسمّى.
+شرطٌ على موضع الكلمة في إطارها: قائمةٌ واحدة `mawadiShawahid`، لكلّ عنصرٍ منها `fiMawdi` (للكلمة في الإطار موضعٌ، وكلُّ موضعٍ لها بحالته
+وإضافته) و`rukhsa` (رخصة) و`mawquf` (وقف) بقيمتيهما.
 - «ذَهَبَ أَبُو الْوَلَدِ»، ومثلُه أخو وحمو وهنو وفو: كانت «لا حكم» (`irabBilHarf`) فصارت مرخَّصة؛ وموضعُ «أَبُو» رفعًا مضافًا له رخصة (القطر L79
   «فترفع بالواو»).
 - «ذَهَبَ ذُو الْوَلَدِ» كان «لا حكم» (`irabBilHarf`) ويبقى: لا رخصةَ لموضعه وله وقف (الصحبةُ لا تُقرأ: الألفية L76؛ تعيينُ البنّاء)؛ و«ذَهَبَ ذُو» بلا
@@ -499,7 +515,8 @@ def fiMawdi (u : Itar3) (w : Kalima) (h : Nat) (m : Bool) : Bool :=
 - «ضَرَبَ الْوَلَدُ أَبَا الْوَلَدِ» و«فِي أَبِي الدُّورِ» كانا «لا حكم» (`illaAkhir`) فصارا مرخَّصين، ولموضعيهما رخصة (L79 «وتنصب بالألف وتجر بالياء»)؛
   و«ذَهَبَ أَبَا الْوَلَدِ» كان «لا حكم» فصار مرخَّصًا، ولموضع «أَبَا» رفعًا مضافًا رخصة (القصر، الألفية L78).
 - «ذَهَبَ هَنَا الْوَلَدِ» كان «لا حكم» ويبقى: لا رخصةَ لموضعه رفعًا ولا وقف، ولا لـ«هَنَا» جرًّا مضافًا، ولـ«هَنَا» نصبًا مضافًا رخصة، ولا قصرَ لـ«هن»
-  في الجدول (فالألفُ نصبٌ وحدَه)؛ و«ضَرَبَ الْوَلَدُ ذَا الْوَلَدِ» كان «لا حكم» (`illaAkhir`) ويبقى: لموضعه وقفٌ بلا رخصة (الصحبة)، ومثلُه «ذِي» جرًّا مضافًا.
+  في الجدول (فالألفُ نصبٌ وحدَه)؛ و«ضَرَبَ الْوَلَدُ ذَا الْوَلَدِ» كان «لا حكم» (`illaAkhir`) ويبقى: لموضعه وقفٌ بلا رخصة (الصحبة)؛ ولموضع «ذِي» جرًّا
+  مضافًا («فِي ذِي الدُّورِ») وقفٌ بلا رخصة.
 - «ضَرَبَ الْوَلَدُ أَبَا» و«ضَرَبَ الْوَلَدُ ذَا» و«فِي ذِي» بلا مضافٍ إليه كانت «لا حكم» (`illaAkhir`) وتبقى: لا رخصةَ لمواضعها ولا وقف (شرطُ الإضافة،
   الألفية L79).
 - وما كان ممتنعًا باقٍ: «ذَهَبَ أَبَوْ الْوَلَدِ» و«ذَهَبَ دَلْوْ الْوَلَدِ» و«ضَرَبَ الْوَلَدُ أَبُو الْوَلَدِ»؛ وما كان «لا حكم» بغير صور الجدول باقٍ: «ضَرَبَ
@@ -525,19 +542,9 @@ theorem shawahid_sitta :
     hukm3 (darabaMudaf abuK) = .mumtani ∧ hukmSitta (darabaMudaf abuK) = .mumtani ∧
     [darabaFata alWaladaK, { darabaFata alQadi with kalimat := [darabaK, alWalad, dhaK] }, { fiDar with kalimat := [fiK, dhiK] }].all (fun u =>
       hukm3 u == .laHukm && asbabLaHukm u == [.illaAkhir] && hukmSitta u == .laHukm) ∧
-    -- أسبابُ الحكم بالجدول على المواضع: (كلمة، حالة، إضافة) ← (رخصة، وقف)
-    [(abuK, 1, true), (abaK, 0, true), (abiK, 2, true), (abaK, 1, true), (hanaK, 0, true)].all (fun (w, h, m) => rukhsa true [h] w m) ∧
-    [(dhuK, 1, true), (dhaK, 0, true), (dhiK, 2, true)].all (fun (w, h, m) => !rukhsa true [h] w m && mawquf true [h] w m) ∧
-    [(daluK, 1, true), (bunuK, 1, true), (muslimuK, 1, true), (hanaK, 1, true), (hanaK, 2, true), (abaK, 0, false), (dhaK, 0, false),
-      (dhiK, 2, false), (alFata, 1, false)].all (fun (w, h, m) => !rukhsa true [h] w m && !mawquf true [h] w m) ∧
+    -- أسبابُ الحكم بالجدول على مواضع الشواهد: الموضعُ في إطاره، والرخصةُ والوقفُ بقيمتيهما
+    mawadiShawahid.all (fun (u, w, h, m, r, q) => fiMawdi u w h m && rukhsa true [h] w m == r && mawquf true [h] w m == q) ∧
     (sitta.find? (·.ism == "هن")).map (·.qasr) = some false ∧ !suwar.contains alFata.khalaya ∧
-    -- كلُّ موضعٍ للكلمة في إطارها يمرّر ثلاثيّتَها
-    [(abuAlWalad, abuK, 1, true), (darabaMudaf abaK, abaK, 0, true), (fiAfdalAdDur abiK, abiK, 2, true), (dhahabaMudaf abaK, abaK, 1, true),
-      (dhahabaMudaf dhuK, dhuK, 1, true), (darabaMudaf dhaK, dhaK, 0, true), (dhahabaMudaf daluK, daluK, 1, true),
-      (dhahabaMudafAdad bunuK 0, bunuK, 1, true), (dhahabaMudafAdad muslimuK 0, muslimuK, 1, true), (dhahabaMudaf hanaK, hanaK, 1, true),
-      ({ darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] }, abaK, 0, false),
-      ({ darabaFata alQadi with kalimat := [darabaK, alWalad, dhaK] }, dhaK, 0, false), ({ fiDar with kalimat := [fiK, dhiK] }, dhiK, 2, false),
-      (darabaFata alWaladaK, alFata, 1, false)].all (fun (u, w, h, m) => fiMawdi u w h m) ∧
     hukm3 { darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] } = .laHukm ∧
     asbabLaHukm { darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] } = [.illaAkhir] ∧
     hukmSitta { darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] } = .laHukm := by decide +kernel
