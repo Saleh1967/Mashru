@@ -36,8 +36,8 @@
     القراءةُ بحرف العلّة أو بالحرف (`raf_bi_qiraa`)، ولا امتناعَ جديدًا إلّا من قراءة الجدول (`mumtani_bi_qiraa`)؛ وفي موضعِ إعرابٍ بالحرف لا رخصةَ
     له ولا وقف ليست الكلمةُ صورةَ رفعٍ لصفٍّ من الجدول (`ghayr_sitta`) — والوصلُ بين الإطار ومواضعه بتعريف `kullMawdi` لا بمبرهنة؛ والرخصةُ سلسلةٌ
     مرخَّصةٌ في القاعدة (`rukhsa_murakhkhasa`)، والسلسلةُ مقبولةٌ إذا كانت مقدّماتُ قانونٍ أصولًا (`silsila_maqbula`)؛ والصحبةُ لا تثبت
-    (`sahib_la_yathbut`) فلا رخصةَ لصور «ذو» في أيّ موضع (`dhu_la_rukhsa` — نفيُ الرخصة؛ و«لا حكم» لها مضافةً في موضع الرفع من `mawquf` على
-    الشاهد؛ و«ذَهَبَ ذُو» بلا مضافٍ إليه ممتنعٌ في `Utur` نفسِه كـ«ذَهَبَ أَبُوْ»، و«ذَا» و«ذِي» بلا مضافٍ إليه «لا حكم» فيه بحرف العلّة)؛ والقاعدةُ لا تُنتج إعرابًا بالحرف إلّا لصور قوانينها (`la_tamdid`؛ صادقةٌ
+    (`sahib_la_yathbut`) فلا رخصةَ لصور «ذو» في أيّ موضع (`dhu_la_rukhsa` — نفيُ الرخصة؛ و«لا حكم» لـ«ذُو» مضافةً في موضع الرفع من `mawquf`، ولـ«ذَا» مضافةً
+    في موضع النصب وسببُه في `Utur` حرفُ العلّة `illaAkhir`، على الشاهد؛ و«ذَهَبَ ذُو» بلا مضافٍ إليه ممتنعٌ في `Utur` نفسِه كـ«ذَهَبَ أَبُوْ»، و«ذَا» و«ذِي» بلا مضافٍ إليه «لا حكم» فيه بحرف العلّة)؛ والقاعدةُ لا تُنتج إعرابًا بالحرف إلّا لصور قوانينها (`la_tamdid`؛ صادقةٌ
     بالبناء: النتيجةُ لا تكون أصلًا — فلا قياسَ في القاعدة على الستّة؛ وأنّ اللغة كذلك قراءةُ البنّاء)؛ و`natija_murab`، `qanun_raf_fi`،
     `kullMawdi_mono`، `qiraaSitta_min_qiraa`.
   * تعريفيّة: ما خرج عن الحدّ «لا حكم» (`hukmSitta_kharij`)؛ و`shakl` وثلاثُ مبرهناته وصورتا الحكمين عليه، و`hukmQiraa_ne_mumtani`.
@@ -51,7 +51,8 @@
   بلا ميم)، والقصرُ بالإضافة كالتمام، والقصرُ صورةُ النصب في الأحوال الثلاث؛ والإفرادُ من حدّ الطبقة (`Utur.fiHadd`)؛ والخلايا ملفوظة (فواوُ «عمرو»
   الرسميّة ليست خلية — لا يعالجها القارئ: لا ذكرَ لـ«عمرو» في `Qari/` ولا `Dal/`)؛ والدرجةُ (`Saff.daraja`) بلفظ مصدرها («أشهر» الألفية L78،
   «أحسن» L77، «الأفصح» القطر L79–80؛ و«كغد» نقصًا قراءةُ البنّاء) بيانٌ لا يدخل الحكم — قيمةُ ج3 ذاتُ الرتبة لم تُبنَ؛ وعمودا «العلّة»
-  و«الاستعمال» في الجدول نقلٌ من الكتاب بأسطره (س12976–12978 في الباب س12974 «هذا باب ما يتغير في الإضافة إلى الاسم إذا جعلته اسم رجل أو امرأة»، س12349–12350) لا يدخل القوانين،
+  و«الاستعمال» في الجدول نقلٌ من الكتاب بأسطره (س12976–12978 في الباب س12974–12975 «هذا باب ما يتغير في الإضافة إلى الاسم إذا جعلته اسم رجل أو امرأة وما لا يتغير إذا كان اسم رجل أو
+  امرأة» — وأب وأخ ممّا لا يتغيّر، س12976 «أما ما لا يتغير فأب وأخ» —، س12349–12350) لا يدخل القوانين،
   وتسميةُ الأوّل علّةً قراءةُ البنّاء.
   ولم يُبنَ: الضميرُ المتّصل («أبوه»: يُقرأ آخرُ خليّته في الطبقة الثالثة، `Utur.shahid_baqi`)، والنقصُ في غير ما تقرؤه القاعدة العامّة،
   وجسرُ `Utur.Hukm` إلى `Nizam.Hukm` (مطلوبٌ قبل تعميم الجدول، الخطّة §١٠ج-1).
@@ -500,14 +501,16 @@ theorem shawahid_sitta :
     hukm3 (dhahabaMudafAdad bunuK 0) = .laHukm ∧ hukmSitta (dhahabaMudafAdad bunuK 0) = .mumtani ∧
     hukmSitta (dhahabaMudafAdad bunuK 2) = .laHukm ∧ asbabLaHukm (dhahabaMudafAdad bunuK 2) = [.ismGhayrMufrad] ∧
     hukm3 (dhahabaMudafAdad muslimuK 0) = .laHukm ∧ hukmSitta (dhahabaMudafAdad muslimuK 0) = .mumtani ∧
-    hukmSitta (dhahabaMudafAdad muslimuK 2) = .laHukm ∧
+    hukmSitta (dhahabaMudafAdad muslimuK 2) = .laHukm ∧ asbabLaHukm (dhahabaMudafAdad muslimuK 2) = [.ismGhayrMufrad] ∧
     hukm3 (darabaMudaf abaK) = .laHukm ∧ hukmSitta (darabaMudaf abaK) = .murakhkhas ∧
     hukm3 (fiAfdalAdDur abiK) = .laHukm ∧ hukmSitta (fiAfdalAdDur abiK) = .murakhkhas ∧
     hukm3 (dhahabaMudaf abaK) = .laHukm ∧ hukmSitta (dhahabaMudaf abaK) = .murakhkhas ∧
     hukm3 (dhahabaMudaf hanaK) = .laHukm ∧ hukmSitta (dhahabaMudaf hanaK) = .laHukm ∧
-    hukm3 (darabaMudaf dhaK) = .laHukm ∧ hukmSitta (darabaMudaf dhaK) = .laHukm ∧
-    hukmSitta (dhahabaMudaf abawK) = .mumtani ∧ hukmSitta (dhahabaMudaf dalwK) = .mumtani ∧
-    hukmSitta (darabaMudaf abuK) = .mumtani ∧ hukmSitta (darabaFata alWaladaK) = .laHukm ∧
+    hukm3 (darabaMudaf dhaK) = .laHukm ∧ asbabLaHukm (darabaMudaf dhaK) = [.illaAkhir] ∧ hukmSitta (darabaMudaf dhaK) = .laHukm ∧
+    hukm3 (dhahabaMudaf abawK) = .mumtani ∧ hukmSitta (dhahabaMudaf abawK) = .mumtani ∧
+    hukm3 (dhahabaMudaf dalwK) = .mumtani ∧ hukmSitta (dhahabaMudaf dalwK) = .mumtani ∧
+    hukm3 (darabaMudaf abuK) = .mumtani ∧ hukmSitta (darabaMudaf abuK) = .mumtani ∧
+    hukm3 (darabaFata alWaladaK) = .laHukm ∧ hukmSitta (darabaFata alWaladaK) = .laHukm ∧
     hukm3 { darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] } = .laHukm ∧
     hukmSitta { darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] } = .laHukm := by decide +kernel
 
