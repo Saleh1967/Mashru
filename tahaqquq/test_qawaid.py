@@ -20,6 +20,11 @@
 ٣. بالمودَع: اقتباساتُ عمود السند اثنان وأربعون (عدٌّ يدويٌّ صفًّا صفًّا: 8، 10، 5، 7، 5، 7)، كلٌّ بعمودٍ من الأعمدة المعلنة ومصدرٍ من الثلاثة، وكلٌّ
    في سطره أو أسطره من المودَع الحاضر بلفظه على النصّ الموصول (بلا بادئات OpenITI)؛ ووسمُ العمود قد يحمل قيدًا بين قوسين («العلّة (قراءة
    البنّاء)»، «الشاهد (بضميرٍ متّصل، لم يُبنَ)»، «الدرجة («كغد» نقصًا: قراءة البنّاء)»).
+٤. بلا مودَع (دائمًا): أعدادُ القوانين في `Nizam/QawaidB.lean` (`qawaninB_qiyam`: عددُ الصورة، والحالة، وقناعُ المقدّمات) هي ما يحسبه الاختبارُ
+   من الصور اليدوية SUWAR بصيغة التحليل الذي لصقه المالك (2026-10-21 20:35) بحدّيها — F(w) = Σ_{j<n} 116^j + Σ dᵢ·116^(n−1−i) — لا بتعريف
+   Lean التراجعيّ (`Dal.Adad.adad`)؛ بترتيب القوانين (الصفوف، ثمّ التمام فالقصر حيث هو، ثمّ الرفع فالنصب فالجرّ)، والقصرُ بصورة النصب، والقناعُ
+   7 (الصورة 1، الإضافة 2، طلبُ الحالة 4) و15 لـ«ذو» (والصحبة 8). وأعدادُ «كَتَبَ» و«كُتِبَ» في `Dal/Adad.lean` (`kataba_wasl`، `kataba_kutiba`)
+   من صورتيهما اليدويّتين كذلك. مطابقةٌ لنصّ Lean (والقيمُ نفسُها تحرسها `decide` في Lean).
 التشغيل: python3 -I tahaqquq/test_qawaid.py
 """
 import hashlib
@@ -116,8 +121,46 @@ def fahs_sufuf(rows):
         assert daraja == DARAJA[ism], (ism, daraja)
 
 
+def adad_malik(cells):
+    """F(w) = Σ_{j<n} 116^j + Σ dᵢ·116^(n−1−i) بحدّيها كما في التحليل الملصق."""
+    n = len(cells)
+    return sum(116 ** j for j in range(n)) + sum(d * 116 ** (n - 1 - i) for i, d in enumerate(cells))
+
+
+def khalaya_yadawiyya(sura):
+    h = hawamil()
+    return [4 * h.index(c) + st for c, st in huruf_harakat(sura)]
+
+
+def fahs_adad():
+    qb = open(os.path.join(ROOT, "Nizam", "QawaidB.lean"), encoding="utf-8").read()
+    bila = bawwaba.bila_taaliq(qb, bawwaba._taaliq_lean(qb))
+    m = re.search(r"^theorem qawaninB_qiyam : qawaninB =\s*\[(.*?)\] := by decide", bila, re.M | re.S)
+    assert m, "qawaninB_qiyam"
+    lean = [tuple(int(x) for x in t) for t in re.findall(r"⟨(\d+), (\d+), (\d+)⟩", m.group(1))]
+    tawaqqu = []
+    for ism, raf, nasb, jarr in SUWAR:
+        bihala = {1: raf, 0: nasb, 2: jarr}
+        talab = 15 if ism in SAHIB else 7
+        for wajh in (["tamam", "qasr"] if ism in QASR else ["tamam"]):
+            for hala in (1, 0, 2):
+                sura = bihala[hala] if wajh == "tamam" else nasb
+                tawaqqu.append((adad_malik(khalaya_yadawiyya(sura)), hala, talab))
+    assert len(tawaqqu) == 27 and lean == tawaqqu, ("أعدادُ القوانين", lean, tawaqqu)
+    ad = open(os.path.join(ROOT, "Dal", "Adad.lean"), encoding="utf-8").read()
+    kataba, kutiba = adad_malik(khalaya_yadawiyya("كَتَبَ")), adad_malik(khalaya_yadawiyya("كُتِبَ"))
+    ka, taba = adad_malik(khalaya_yadawiyya("كَ")), adad_malik(khalaya_yadawiyya("تَبَ"))
+    assert khalaya_yadawiyya("كَتَبَ") == [32, 72, 104] and khalaya_yadawiyya("كُتِبَ") == [33, 74, 104]
+    assert (f"adad [32, 72, 104] = {kataba} ∧ adad [32] = {ka} ∧ adad [72, 104] = {taba} ∧ 116 ^ 2 * {ka} + {taba} = {kataba}"
+            in ad), "kataba_wasl"
+    assert kataba == 116 ** 2 * ka + taba
+    assert f"adad [33, 74, 104] = adad [32, 72, 104] + {kutiba - kataba}" in ad, "kataba_kutiba"
+    return len(lean)
+
+
 def fahs_lean():
     fahs_sufuf(sufuf_lean())
+    fahs_adad()
     # المولِّدُ نفسُه بلا مودَع: جدولٌ يكتبه الاختبارُ من صوره اليدوية يُخرج الخلايا والأعلامَ المتوقَّعة
     daraja_nass = {DARAJA["أب"]: "قصر>نقص=أشهر", DARAJA["هن"]: "نقص>تمام=أحسن، نقص>تمام=الأفصح", "[]": "—"}
     tsv_text = "qaida\tism\traf\tnasb\tjarr\tqasr\tshart\tdaraja\tsanad\n" + "".join(
@@ -164,7 +207,7 @@ p = os.path.join(d, "qawaid.tsv") if d else None
 if not p or not os.path.exists(p):
     fahs_lean()
     print("لم يُشغَّل على الجدول (غير حاضر؛ عيّن MUDAA_DIR وفيه qawaid.tsv)؛ الصفوف الستّة بخلاياها صورَها اليدوية والمولِّدُ يُخرجها منها، والقصرُ "
-          "والصحبةُ والدرجات، ونصُّ Lean: القاعدةُ والقوانينُ والحكمُ والمبرهناتُ المسمّاة موجودة")
+          "والصحبةُ والدرجات، ونصُّ Lean: القاعدةُ والقوانينُ والحكمُ والمبرهناتُ المسمّاة موجودة، وأعدادُ القوانين الـ27 بصيغة F من الصور اليدوية")
     sys.exit(0)
 
 # ٢
@@ -214,4 +257,4 @@ for r in tsv:
     kull += n
 assert kull == 42, kull
 print(f"جدول القواعد ({m['hala']}، {b[:12]}…): 6 صفوف، وQawaidJadwal.lean مخرجُ المولِّد بايتًا، وخلاياه صورُه اليدوية، و{kull} اقتباسًا في "
-      f"أسطرها من المودَعات")
+      f"أسطرها من المودَعات، وأعدادُ القوانين الـ27 بصيغة F من الصور اليدوية")
