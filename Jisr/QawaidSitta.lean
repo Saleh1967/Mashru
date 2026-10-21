@@ -500,7 +500,8 @@ def mawadiShawahid : List (Itar3 × Kalima × Nat × Bool × Bool × Bool) :=
    ({ darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] }, abaK, 0, false, false, false),
    ({ darabaFata alQadi with kalimat := [darabaK, alWalad, dhaK] }, dhaK, 0, false, false, false),
    ({ fiDar with kalimat := [fiK, dhiK] }, dhiK, 2, false, false, false),
-   (darabaFata alWaladaK, alFata, 1, false, false, false)]
+   (darabaFata alWaladaK, alFata, 1, false, false, false),
+   ({ dhahabaAlWalad with kalimat := [dhahaba, dhuK] }, dhuK, 1, false, false, false)]
 
 /-- **الشواهد** (على الشاهد). الحكمُ السابق (`hukm3`) وسببُه (`asbabLaHukm`) والحكمُ بالجدول (`hukmSitta`) شروطٌ على الإطار، وسببُ الحكم بالجدول
 شرطٌ على موضع الكلمة في إطارها: قائمةٌ واحدة `mawadiShawahid`، لكلّ عنصرٍ منها `fiMawdi` (للكلمة في الإطار موضعٌ، وكلُّ موضعٍ لها بحالته

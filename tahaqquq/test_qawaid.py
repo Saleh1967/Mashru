@@ -8,7 +8,8 @@
    ونقص>تمام «أحسن» و«الأفصح» في هن)؛ وفي
    QawaidSitta.lean: القاعدةُ إصدارُها البصمة، والقوانينُ من `sitta` بوجوهها وأحوالها الثلاث، وشرطُ الإضافة والطلب والصحبة في المقدّمات،
    والحكمُ `hukm3` بعينه والقراءةُ فيه `qiraaSitta`، والمبرهناتُ المسمّاة موجودة — وهذا فحصُ نصٍّ لا سلوك (تأكيداتٌ تنسخ أسطر Lean)، والسلوكُ
-   تفحصه Lean بمبرهنات الشاهد (`shawahid_sitta` وحدها تقتل P393 وP397؛ وP392 وP394 وP396 وP398 تقتلها Lean وهذه التأكيدات معًا).
+   تفحصه Lean بمبرهنات الشاهد (`shawahid_sitta` وحدها تقتل P393 وP397 وP400؛ وP392 وP394 وP396 وP398 تقتلها Lean وهذه التأكيدات معًا)؛
+   ومن فحص النصّ: عناصرُ `mawadiShawahid` ثمانية عشر وشرطُها في المبرهنة وشرطُ الوجود في `fiMawdi` (يقتل P401 وP402).
 ٢. بالمودَع: بصمةُ الجدول هي بصمتُه في mudaat/sijill.json (وإلّا رُفض باسمه)، ونوعُه «معلومات-سابقة»، وحالتُه مختوم أو مرشّح (تُطبع)؛ والمولِّد
    `scripts/bina_qawaid.py` على الجدول يعيد QawaidJadwal.lean بايتًا بايتًا (فالبصمةُ فيه بصمةُ الجدول).
 ٣. بالمودَع: اقتباساتُ عمود السند اثنان وأربعون (عدٌّ يدويٌّ صفًّا صفًّا: 8، 10، 5، 7، 5، 7)، كلٌّ بعمودٍ من الأعمدة المعلنة ومصدرٍ من الثلاثة، وكلٌّ
@@ -136,6 +137,12 @@ def fahs_lean():
                  "sahib_la_yathbut", "sahib_muqaddima", "dhu_la_rukhsa", "qanun_raf_fi", "ghayr_sitta", "jadwal_jisrdal",
                  "shawahid_jisrdal", "abuK_jadwal", "shawahid_sitta", "daraja_wujuh"):
         assert re.search(rf"^theorem {name}\b", s, re.M), name
+    # مواضعُ الشواهد: عناصرُها الثمانية عشر (عدٌّ يدويّ)، وشرطُها في shawahid_sitta بالموضع ووجوده والرخصة والوقف — فحصُ نصٍّ لا سلوك
+    mw = s[s.index("def mawadiShawahid"):s.index("\n\n", s.index("def mawadiShawahid"))]
+    # كلُّ عنصرٍ ينتهي بقيمتي (الرخصة، الوقف) مرّةً واحدة، ولا عنصرَ بهما معًا
+    assert mw.count(", true, false)") + mw.count(", false, true)") + mw.count(", false, false)") == 18 and ", true, true)" not in mw
+    assert "mawadiShawahid.all (fun (u, w, h, m, r, q) => fiMawdi u w h m && rukhsa true [h] w m == r && mawquf true [h] w m == q)" in s
+    assert "  !kullMawdi u (fun _ _ v _ => !(v.khalaya == w.khalaya)) &&" in s
     assert "sorry" not in s and "native_decide" not in s and not re.search(r"^axiom ", s, re.M)
     return sufuf_lean()
 

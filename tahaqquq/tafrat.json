@@ -2800,5 +2800,23 @@
   "milaf": "scripts/bina_qawaid.py",
   "min": "HARAKA = {\"َ\": 0, \"ُ\": 1,",
   "ila": "HARAKA = {\"َ\": 0, \"ُ\": 0,"
+ },
+ {
+  "ism": "P400_mawdi_bila_wujud",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "   (fiAfdalAdDur abiK, abiK, 2, true, true, false), (dhahabaMudaf abaK, abaK, 1, true, true, false),",
+  "ila": "   (fiAfdalAdDur abiK, hanaK, 2, true, false, false), (dhahabaMudaf abaK, abaK, 1, true, true, false),"
+ },
+ {
+  "ism": "P401_mawadi_naqisa",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "   (fiAfdalAdDur hanaK, hanaK, 2, true, false, false),\n",
+  "ila": ""
+ },
+ {
+  "ism": "P402_shahid_bila_fiMawdi",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "mawadiShawahid.all (fun (u, w, h, m, r, q) => fiMawdi u w h m && rukhsa true [h] w m == r && mawquf true [h] w m == q)",
+  "ila": "mawadiShawahid.all (fun (u, w, h, m, r, q) => rukhsa true [h] w m == r && mawquf true [h] w m == q)"
  }
 ]
