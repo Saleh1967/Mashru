@@ -62,8 +62,10 @@
   واختبارُ الجدول يفحص نصَّ Lean فحصًا كاشفًا لتغييرٍ عاديٍّ لا حارسًا من التحايل؛ والحراسةُ في Lean: `shawahid_sitta` وحدها تقتل P393، وP397
   مع `mawadi_shawahid`، و`mawadi_shawahid` تقتل P400 (بشرط الوجود في `fiMawdi` وحده) وP401، و`shartMawdi_shurut` تقتل P402 وP405،
   و`fiMawdi_wujud` و`fiMawdi_shartan` تقتلان P403، و`fiMawdi_shartan` تقتل P406، و`isdar_basma` تقتل P404؛ وP407–P411 (تغييرُ ما يكشفه
-  فحصُ النصّ) تقتلها Lean — P409 بـ`asl_mawdi` (قضيّةٌ تكذب) وبانكسار صيغة برهان `ghayr_sitta` —، و`asl_mawdi` تقتل P412 (حذفُ اسميّة الموضع)
-  وP413 (حذفُ طلب الحالة من أصله).
+  فحصُ النصّ) تقتلها Lean — P409 بـ`asl_mawdi` (قضيّةٌ تكذب) وبانكسار صيغة برهان `ghayr_sitta` —، و`asl_mawdi` تقتل P412 (حذفُ اسميّة الموضع:
+  يغيّر الرخصة) وP413 (حذفُ طلب الحالة من أصله). وP413 لا تغيّر `rukhsa` ولا `mawquf` ولا `hukmSitta`: كلُّ قانونٍ مقدّمتُه `.matlub h` ونتيجتُه
+  `.murab h` بالحالة نفسها، و`yuntij` يشترط `hs.contains h`؛ فقتلُها بـ`asl_mawdi` تقييمٌ لـ`aslMawdi` نفسِها — تثبيتٌ لتعريف أصول الموضع، لا
+  حراسةٌ لحكم.
 -/
 import Aql.Qaida
 import Jisr.JisrDal
@@ -537,8 +539,8 @@ theorem mawadi_shawahid : mawadiShawahid.length = 18 ∧ mawadiShawahid.all shar
 theorem fiMawdi_wujud : fiMawdi (fiAfdalAdDur abiK) hanaK 2 true = false ∧
     kullMawdi (fiAfdalAdDur abiK) (fun n hs v mm => !(v.khalaya == hanaK.khalaya) || (n && hs == [2] && mm == true)) = true := by decide +kernel
 
-/-- **أصولُ الموضع** (على الشاهد): اسميّةُ الموضع شرطٌ في الرخصة — «أَبُو» رفعًا مضافًا لها رخصةٌ في موضعٍ اسميٍّ ولا رخصةَ في غيره —، وطلبُ
-الحالة أصلٌ بحالته وحدها — في موضعٍ يطلب الرفع طلبُ الرفع أصلٌ وطلبُ النصب ليس أصلًا. -/
+/-- **أصولُ الموضع** (على الشاهد): «أَبُو» رفعًا مضافًا لها رخصةٌ في موضعٍ اسميٍّ يطلب الرفع، ولا رخصةَ لها في موضعٍ غيرِ اسميٍّ يطلبه؛ وفي
+موضعٍ اسميٍّ مضافٍ يطلب الرفع، طلبُ الرفع لـ«أَبَا» من أصوله وطلبُ النصب ليس منها. -/
 theorem asl_mawdi : rukhsa true [1] abuK true = true ∧ rukhsa false [1] abuK true = false ∧
     aslMawdi true [1] abaK true (.matlub 1 abaK.khalaya) = true ∧ aslMawdi true [1] abaK true (.matlub 0 abaK.khalaya) = false := by
   decide +kernel
