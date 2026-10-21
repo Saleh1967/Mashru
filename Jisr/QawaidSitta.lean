@@ -482,7 +482,8 @@ def dhahabaMudafAdad (w : Kalima) (n : Nat) : Itar3 :=
   { dhahabaMudaf w with jisr := { (dhahabaMudaf w).jisr with ud := { Mulhaqat.darabaZayd with ats := [SLGE.Simat.past 0 0, SLGE.Simat.noun 1 0 n] } } }
 
 /-- **الشواهد** (على الشاهد). الحكمُ السابق (`hukm3`) وسببُه (`asbabLaHukm`) والحكمُ بالجدول (`hukmSitta`) شروطٌ على الإطار، وسببُ الحكم بالجدول
-شرطٌ على الموضع: `rukhsa` (رخصة) و`mawquf` (وقف) باسميّة الموضع وحالته المطلوبة وإضافته.
+شرطٌ على الموضع: `rukhsa` (رخصة) و`mawquf` (وقف) باسميّة الموضع وحالته المطلوبة وإضافته — والثلاثيّاتُ (كلمة، حالة، إضافة) مكتوبةٌ باليد مطابقةً لما
+يمرّره `kullMawdi` لمواضع الأطر المسمّاة (بالتقييم، لا بمبرهنةٍ تربطها بالإطار)، إلّا «هَنَا» نصبًا و«ذِي» جرًّا مضافتين: موضعان بلا إطارٍ مسمّى.
 - «ذَهَبَ أَبُو الْوَلَدِ»، ومثلُه أخو وحمو وهنو وفو: كانت «لا حكم» (`irabBilHarf`) فصارت مرخَّصة؛ وموضعُ «أَبُو» رفعًا مضافًا له رخصة (القطر L79
   «فترفع بالواو»).
 - «ذَهَبَ ذُو الْوَلَدِ» كان «لا حكم» (`irabBilHarf`) ويبقى: لا رخصةَ لموضعه وله وقف (الصحبةُ لا تُقرأ: الألفية L76؛ تعيينُ البنّاء)؛ و«ذَهَبَ ذُو» بلا
@@ -492,12 +493,12 @@ def dhahabaMudafAdad (w : Kalima) (n : Nat) : Itar3 :=
   (`ismGhayrMufrad`؛ L82–85).
 - «ضَرَبَ الْوَلَدُ أَبَا الْوَلَدِ» و«فِي أَبِي الدُّورِ» كانا «لا حكم» (`illaAkhir`) فصارا مرخَّصين، ولموضعيهما رخصة (L79 «وتنصب بالألف وتجر بالياء»)؛
   و«ذَهَبَ أَبَا الْوَلَدِ» كان «لا حكم» فصار مرخَّصًا، ولموضع «أَبَا» رفعًا مضافًا رخصة (القصر، الألفية L78).
-- «ذَهَبَ هَنَا الْوَلَدِ» كان «لا حكم» ويبقى: لا رخصةَ لموضعه ولا وقف (لا قصرَ في «هن»)؛ و«ضَرَبَ الْوَلَدُ ذَا الْوَلَدِ» كذلك (`illaAkhir`) ولموضعه وقفٌ
-  بلا رخصة (الصحبة).
+- «ذَهَبَ هَنَا الْوَلَدِ» كان «لا حكم» ويبقى: لا رخصةَ لموضعه رفعًا ولا وقف، ولـ«هَنَا» نصبًا مضافًا رخصة، ولا قصرَ لـ«هن» في الجدول (فالألفُ نصبٌ
+  وحدَه)؛ و«ضَرَبَ الْوَلَدُ ذَا الْوَلَدِ» كان «لا حكم» (`illaAkhir`) ويبقى: لموضعه وقفٌ بلا رخصة (الصحبة)، ومثلُه «ذِي» جرًّا مضافًا.
 - «ضَرَبَ الْوَلَدُ أَبَا» و«ضَرَبَ الْوَلَدُ ذَا» و«فِي ذِي» بلا مضافٍ إليه كانت «لا حكم» (`illaAkhir`) وتبقى: لا رخصةَ لمواضعها ولا وقف (شرطُ الإضافة،
   الألفية L79).
 - وما كان ممتنعًا باقٍ: «ذَهَبَ أَبَوْ الْوَلَدِ» و«ذَهَبَ دَلْوْ الْوَلَدِ» و«ضَرَبَ الْوَلَدُ أَبُو الْوَلَدِ»؛ وما كان «لا حكم» بغير صور الجدول باقٍ: «ضَرَبَ
-  الْفَتَى الْوَلَدَ» (`illaAkhir` في «الفتى»). -/
+  الْفَتَى الْوَلَدَ» (`illaAkhir`؛ «الفتى» ليست من صور القوانين، ولا رخصةَ لموضعها ولا وقف). -/
 theorem shawahid_sitta :
     hukm3 abuAlWalad = .laHukm ∧ asbabLaHukm abuAlWalad = [.irabBilHarf] ∧ hukmSitta abuAlWalad = .murakhkhas ∧
     [akhuK, hamuK, hanuK, fuK].all (fun w => hukm3 (dhahabaMudaf w) == .laHukm &&
@@ -520,10 +521,11 @@ theorem shawahid_sitta :
     [darabaFata alWaladaK, { darabaFata alQadi with kalimat := [darabaK, alWalad, dhaK] }, { fiDar with kalimat := [fiK, dhiK] }].all (fun u =>
       hukm3 u == .laHukm && asbabLaHukm u == [.illaAkhir] && hukmSitta u == .laHukm) ∧
     -- أسبابُ الحكم بالجدول على المواضع: (كلمة، حالة، إضافة) ← (رخصة، وقف)
-    [(abuK, 1, true), (abaK, 0, true), (abiK, 2, true), (abaK, 1, true)].all (fun (w, h, m) => rukhsa true [h] w m) ∧
-    [(dhuK, 1, true), (dhaK, 0, true)].all (fun (w, h, m) => !rukhsa true [h] w m && mawquf true [h] w m) ∧
+    [(abuK, 1, true), (abaK, 0, true), (abiK, 2, true), (abaK, 1, true), (hanaK, 0, true)].all (fun (w, h, m) => rukhsa true [h] w m) ∧
+    [(dhuK, 1, true), (dhaK, 0, true), (dhiK, 2, true)].all (fun (w, h, m) => !rukhsa true [h] w m && mawquf true [h] w m) ∧
     [(daluK, 1, true), (bunuK, 1, true), (muslimuK, 1, true), (hanaK, 1, true), (abaK, 0, false), (dhaK, 0, false),
-      (dhiK, 2, false)].all (fun (w, h, m) => !rukhsa true [h] w m && !mawquf true [h] w m) ∧
+      (dhiK, 2, false), (alFata, 1, false)].all (fun (w, h, m) => !rukhsa true [h] w m && !mawquf true [h] w m) ∧
+    (sitta.find? (·.ism == "هن")).map (·.qasr) = some false ∧ !suwar.contains alFata.khalaya ∧
     hukm3 { darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] } = .laHukm ∧
     asbabLaHukm { darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] } = [.illaAkhir] ∧
     hukmSitta { darabaFata alQadi with kalimat := [darabaK, alWalad, abaK] } = .laHukm := by decide +kernel
