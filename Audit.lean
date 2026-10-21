@@ -75,6 +75,7 @@ import Madlul.Fard116Shawahid
 import Jisr.QawaidSitta
 import Dal.Adad
 import Nizam.QawaidB
+import Nizam.Baqi
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1640,3 +1641,32 @@ import Nizam.QawaidB
 #print axioms Nizam.QawaidB.hukmB_sawa
 #print axioms Nizam.QawaidB.mawadi_bitat
 #print axioms Nizam.QawaidB.naqs_shawahid
+#print axioms Nizam.Baqi.dimn_iff
+#print axioms Nizam.Baqi.dimn_nafs
+#print axioms Nizam.Baqi.dimn_trans
+#print axioms Nizam.Baqi.dimn_asghar
+#print axioms Nizam.Baqi.dimn_sifr
+#print axioms Nizam.Baqi.dimn_aw
+#print axioms Nizam.Baqi.adna_min
+#print axioms Nizam.Baqi.adna_kamil
+#print axioms Nizam.Baqi.adna_silsila
+#print axioms Nizam.Baqi.qima_ratiba
+#print axioms Nizam.Baqi.qima_dharrat
+#print axioms Nizam.Baqi.baqi_sahih
+#print axioms Nizam.Baqi.baqi_kamil
+#print axioms Nizam.Baqi.baqi_adna
+#print axioms Nizam.Baqi.P_iff
+#print axioms Nizam.Baqi.qinaMin_bit
+#print axioms Nizam.Baqi.N_iff
+#print axioms Nizam.Baqi.k3_P
+#print axioms Nizam.Baqi.k3_N
+#print axioms Nizam.Baqi.hukm_k3
+#print axioms Nizam.Baqi.natija_hukm
+#print axioms Nizam.Baqi.taarud_yukhfa
+#print axioms Nizam.Baqi.baqi_talab
+#print axioms Nizam.Baqi.usulB_sghir
+#print axioms Nizam.Baqi.naqsB_baqi
+#print axioms Nizam.Baqi.rukhsaB_k3
+#print axioms Nizam.Baqi.mithal_badilan
+#print axioms Nizam.Baqi.mithal_tasghir
+#print axioms Nizam.Baqi.mithal_dhu
