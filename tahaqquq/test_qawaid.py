@@ -11,8 +11,8 @@
    تفحصه Lean بمبرهنات الشاهد (`shawahid_sitta` وحدها تقتل P393، وP397 مع `mawadi_shawahid`؛ وP392 وP394 وP396 وP398 تقتلها Lean وهذه التأكيدات معًا)؛
    وفحصُ النصّ على النصّ بلا تعليقات (ماسحُ البوّابة `_taaliq_lean`، متداخلًا)، وفي جسم التصريح المسمّى — كاشفٌ لتغييرٍ عاديٍّ لا حارسٌ من التحايل
    (تصريحٌ مجاورٌ أو سابقٌ بالاسم نفسه في فضاءٍ آخر، أو شيفرةٌ تُبطل الشرطَ وتُبقي نصَّه، تمرّ)؛ والحراسةُ في Lean (`mawadi_shawahid`،
-   `shartMawdi_shurut`، `fiMawdi_wujud`، `fiMawdi_shartan`، `isdar_basma` تقتل P400–P406)؛ وما يكشفه فحصُ النصّ هنا (P407–P411) تقتله Lean أيضًا،
-   إلّا حذفَ `hs.contains h` من `aslMawdi`: طفرةٌ مكافئة لا تُسجَّل (`yuntij` يشترطه في كلّ رخصة).
+   `shartMawdi_shurut`، `fiMawdi_wujud`، `fiMawdi_shartan`، `isdar_basma`، `asl_mawdi` تقتل P400–P406 وP412–P413)؛ وما يكشفه فحصُ النصّ هنا
+   من تغييرٍ في `halat` و`qawanin` و`qanun` و`aslMawdi` و`qiraaSitta` تقتله Lean أيضًا في الطفرات المسجَّلة (P407–P413).
 ٢. بالمودَع: بصمةُ الجدول هي بصمتُه في mudaat/sijill.json (وإلّا رُفض باسمه)، ونوعُه «معلومات-سابقة»، وحالتُه مختوم أو مرشّح (تُطبع)؛ والمولِّد
    `scripts/bina_qawaid.py` على الجدول يعيد QawaidJadwal.lean بايتًا بايتًا (فالبصمةُ فيه بصمةُ الجدول).
 ٣. بالمودَع: اقتباساتُ عمود السند اثنان وأربعون (عدٌّ يدويٌّ صفًّا صفًّا: 8، 10، 5، 7، 5، 7)، كلٌّ بعمودٍ من الأعمدة المعلنة ومصدرٍ من الثلاثة، وكلٌّ
@@ -151,7 +151,7 @@ def fahs_lean():
                  "raf_bi_qiraa", "mumtani_bi_qiraa", "natija_murab", "silsila_maqbula", "rukhsa_murakhkhasa", "la_tamdid", "suwar_sitta",
                  "sahib_la_yathbut", "sahib_muqaddima", "dhu_la_rukhsa", "qanun_raf_fi", "ghayr_sitta", "jadwal_jisrdal",
                  "shawahid_jisrdal", "abuK_jadwal", "shawahid_sitta", "daraja_wujuh", "shartMawdi_shurut", "fiMawdi_shartan", "mawadi_shawahid",
-                 "fiMawdi_wujud", "isdar_basma"):
+                 "fiMawdi_wujud", "isdar_basma", "asl_mawdi"):
         assert re.search(rf"^theorem {name}(?=[\s:(])", bila, re.M), name
     assert "sorry" not in s and "native_decide" not in s and not re.search(r"^axiom ", s, re.M)
     return sufuf_lean()

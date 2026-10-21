@@ -31,7 +31,7 @@
      جمعًا «لا حكم» (`shawahid_sitta`). وموضعُ حرف العلّة بلا رخصة يبقى «لا حكم»
      (قد يكون مقصورًا أو منقوصًا: `Utur.illaMuqaddara`).
 
-  **ما ثبت** (33 مبرهنة بالمعيار الموحَّد في `Nizam/Asas.lean`: 15 لكلّ، و9 تعريفيّة، و9 على الشاهد).
+  **ما ثبت** (34 مبرهنة بالمعيار الموحَّد في `Nizam/Asas.lean`: 14 لكلّ، و10 تعريفيّة، و10 على الشاهد).
   * لكلّ: لا يغيّر الحكمَ المقطوع (`hukmSitta_murakhkhas_thabit`، `hukmSitta_mumtani_thabit`)؛ ولا يرفع «لا حكم» إلى الترخيص إلّا ما سببُه
     القراءةُ بحرف العلّة أو بالحرف (`raf_bi_qiraa`)، ولا امتناعَ جديدًا إلّا من قراءة الجدول (`mumtani_bi_qiraa`)؛ وفي موضعِ إعرابٍ بالحرف لا رخصةَ
     له ولا وقف ليست الكلمةُ صورةَ رفعٍ لصفٍّ من الجدول (`ghayr_sitta`) — والوصلُ بين الإطار ومواضعه بتعريف `kullMawdi` لا بمبرهنة؛ والرخصةُ سلسلةٌ
@@ -39,13 +39,14 @@
     (`sahib_la_yathbut`) فلا رخصةَ لصور «ذو» في أيّ موضع (`dhu_la_rukhsa` — نفيُ الرخصة؛ و«لا حكم» لـ«ذُو» مضافةً في موضع الرفع من `mawquf`، ولـ«ذَا» مضافةً
     في موضع النصب وسببُه في `Utur` حرفُ العلّة `illaAkhir`، على الشاهد؛ و«ذَهَبَ ذُو» بلا مضافٍ إليه ممتنعٌ في `Utur` نفسِه كـ«ذَهَبَ أَبُوْ»، و«ضَرَبَ الْوَلَدُ ذَا» و«فِي ذِي» بلا مضافٍ إليه «لا حكم» فيه وهنا وسببُه في `Utur` حرفُ العلّة)؛ والقاعدةُ لا تُنتج إعرابًا بالحرف إلّا لصور قوانينها (`la_tamdid`؛ صادقةٌ
     بالبناء: النتيجةُ لا تكون أصلًا — فلا قياسَ في القاعدة على الستّة؛ وأنّ اللغة كذلك قراءةُ البنّاء)؛ و`natija_murab`، `qanun_raf_fi`،
-    `kullMawdi_mono`، `qiraaSitta_min_qiraa`؛ و`fiMawdi` بشرطيها لكلّ إطارٍ وكلمة (`fiMawdi_shartan`).
+    `kullMawdi_mono`، `qiraaSitta_min_qiraa`.
   * تعريفيّة: ما خرج عن الحدّ «لا حكم» (`hukmSitta_kharij`)؛ و`shakl` وثلاثُ مبرهناته وصورتا الحكمين عليه، و`hukmQiraa_ne_mumtani`؛ وإصدارُ
-    القاعدة بصمةُ الجدول (`isdar_basma`)، وشرطُ موضع الشاهد بأجزائه الثلاثة (`shartMawdi_shurut`).
+    القاعدة بصمةُ الجدول (`isdar_basma`)، وشرطُ موضع الشاهد بأجزائه الثلاثة (`shartMawdi_shurut`)، و`fiMawdi` بشرطيها لكلّ إطارٍ وكلمة
+    (`fiMawdi_shartan`).
   * على الشاهد: الجدولُ وبابُ الستّة في `Jisr.JisrDal` سواءٌ في التمام، وصورةُ القصر في بابه المقصور (`.maqsur`) تحتمل الأحوال الثلاث
     (`jadwal_jisrdal`؛ وإعلانُ القصر بابَ المقصور تعيينُ البنّاء — `JisrDal` لا يذكر قصرَ الستّة، و`.maqsur` فيه «تقدر جميع الحركات» L92)، وشواهدُه
     في باب الستّة صورٌ في الجدول (`shawahid_jisrdal`)، و`abuK_jadwal`؛ وصورُ القوانين صورُ الصفوف (`suwar_sitta`)، وقوانينُ «ذو» فيها الصحبة
-    (`sahib_muqaddima`)، وشواهدُ الإطار (`shawahid_sitta`) ومواضعُها (`mawadi_shawahid`)، و`fiMawdi` تشترط وجودَ الموضع (`fiMawdi_wujud`)، وتعدّدُ
+    (`sahib_muqaddima`)، وشواهدُ الإطار (`shawahid_sitta`) ومواضعُها (`mawadi_shawahid`)، و`fiMawdi` تشترط وجودَ الموضع (`fiMawdi_wujud`)، وأصولُ الموضع باسميّته وحالته (`asl_mawdi`)، وتعدّدُ
     الوجوه بدرجةٍ لا يغيّر الحكم (`daraja_wujuh`).
 
   **تعيينُ البنّاء** (معلَن، §١٠هـ: «ترميزُ نصّ القاعدة شروطًا مكتوبةً تأويل»): الصورُ بلا ضميرٍ متّصل (المضافُ إليه كلمةٌ ملحقة، فقيدُ «لا للياء»
@@ -61,7 +62,8 @@
   واختبارُ الجدول يفحص نصَّ Lean فحصًا كاشفًا لتغييرٍ عاديٍّ لا حارسًا من التحايل؛ والحراسةُ في Lean: `shawahid_sitta` وحدها تقتل P393، وP397
   مع `mawadi_shawahid`، و`mawadi_shawahid` تقتل P400 (بشرط الوجود في `fiMawdi` وحده) وP401، و`shartMawdi_shurut` تقتل P402 وP405،
   و`fiMawdi_wujud` و`fiMawdi_shartan` تقتلان P403، و`fiMawdi_shartan` تقتل P406، و`isdar_basma` تقتل P404؛ وP407–P411 (تغييرُ ما يكشفه
-  فحصُ النصّ) تقتلها Lean.
+  فحصُ النصّ) تقتلها Lean — P409 بـ`asl_mawdi` (قضيّةٌ تكذب) وبانكسار صيغة برهان `ghayr_sitta` —، و`asl_mawdi` تقتل P412 (حذفُ اسميّة الموضع)
+  وP413 (حذفُ طلب الحالة من أصله).
 -/
 import Aql.Qaida
 import Jisr.JisrDal
@@ -522,8 +524,10 @@ theorem shartMawdi_shurut (u : Itar3) (w : Kalima) (h : Nat) (m r q : Bool) (hs 
 theorem fiMawdi_shartan (u : Itar3) (w : Kalima) (h : Nat) (m : Bool) (hf : fiMawdi u w h m = true) :
     kullMawdi u (fun _ _ v _ => !(v.khalaya == w.khalaya)) = false ∧
     kullMawdi u (fun n hs v mm => !(v.khalaya == w.khalaya) || (n && hs == [h] && mm == m)) = true := by
-  simp only [fiMawdi, Bool.and_eq_true, Bool.not_eq_true'] at hf
-  exact hf
+  unfold fiMawdi at hf
+  revert hf
+  cases kullMawdi u (fun _ _ v _ => !(v.khalaya == w.khalaya)) <;>
+    cases kullMawdi u (fun n hs v mm => !(v.khalaya == w.khalaya) || (n && hs == [h] && mm == m)) <;> simp
 
 /-- **مواضعُ الشواهد** (على الشاهد): ثمانيةَ عشرَ عنصرًا، كلٌّ بشرطه. -/
 theorem mawadi_shawahid : mawadiShawahid.length = 18 ∧ mawadiShawahid.all shartMawdi = true := by decide +kernel
@@ -532,6 +536,12 @@ theorem mawadi_shawahid : mawadiShawahid.length = 18 ∧ mawadiShawahid.all shar
 لها، لأنّه لا موضع. -/
 theorem fiMawdi_wujud : fiMawdi (fiAfdalAdDur abiK) hanaK 2 true = false ∧
     kullMawdi (fiAfdalAdDur abiK) (fun n hs v mm => !(v.khalaya == hanaK.khalaya) || (n && hs == [2] && mm == true)) = true := by decide +kernel
+
+/-- **أصولُ الموضع** (على الشاهد): اسميّةُ الموضع شرطٌ في الرخصة — «أَبُو» رفعًا مضافًا لها رخصةٌ في موضعٍ اسميٍّ ولا رخصةَ في غيره —، وطلبُ
+الحالة أصلٌ بحالته وحدها — في موضعٍ يطلب الرفع طلبُ الرفع أصلٌ وطلبُ النصب ليس أصلًا. -/
+theorem asl_mawdi : rukhsa true [1] abuK true = true ∧ rukhsa false [1] abuK true = false ∧
+    aslMawdi true [1] abaK true (.matlub 1 abaK.khalaya) = true ∧ aslMawdi true [1] abaK true (.matlub 0 abaK.khalaya) = false := by
+  decide +kernel
 
 /-- **إصدارُ القاعدة بصمةُ الجدول** (تعريفيّة). -/
 theorem isdar_basma : qSitta.isdar = "الأسماء الستّة @ " ++ Jisr.QawaidJadwal.basma := rfl

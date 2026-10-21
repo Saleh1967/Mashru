@@ -1602,3 +1602,4 @@ import Jisr.QawaidSitta
 #print axioms Jisr.QawaidSitta.mawadi_shawahid
 #print axioms Jisr.QawaidSitta.fiMawdi_wujud
 #print axioms Jisr.QawaidSitta.isdar_basma
+#print axioms Jisr.QawaidSitta.asl_mawdi

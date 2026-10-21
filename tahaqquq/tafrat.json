@@ -2872,5 +2872,17 @@
   "milaf": "Jisr/QawaidSitta.lean",
   "min": "laIrabBilHarf n hs w m || rukhsa n hs w m || mawquf n hs w m) then .laHukm",
   "ila": "laIrabBilHarf n hs w m || rukhsa n hs w m) then .laHukm"
+ },
+ {
+  "ism": "P412_matlub_bila_ismiyya",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  | .matlub h c => nom && hs.contains h && c == w.khalaya",
+  "ila": "  | .matlub h c => hs.contains h && c == w.khalaya"
+ },
+ {
+  "ism": "P413_matlub_bila_hala",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  | .matlub h c => nom && hs.contains h && c == w.khalaya",
+  "ila": "  | .matlub _ c => nom && c == w.khalaya"
  }
 ]
