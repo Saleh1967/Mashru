@@ -1667,4 +1667,5 @@ import Nizam.Baqi
 #print axioms Nizam.Baqi.naqsB_baqi
 #print axioms Nizam.Baqi.rukhsaB_k3
 #print axioms Nizam.Baqi.mithal_badilan
+#print axioms Nizam.Baqi.mithal_tasghir
 #print axioms Nizam.Baqi.mithal_dhu

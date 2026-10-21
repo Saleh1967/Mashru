@@ -2998,5 +2998,11 @@
   "milaf": "Nizam/Baqi.lean",
   "min": "  [0, 1, 2, 3].foldr (fun i f => if t.testBit i then .wa (.dharra i) f else f) .sadiq",
   "ila": "  [0, 1, 2].foldr (fun i f => if t.testBit i then .wa (.dharra i) f else f) .sadiq"
+ },
+ {
+  "ism": "P433_natija_kull_dharrat",
+  "milaf": "Nizam/Baqi.lean",
+  "min": "  if K &&& D &&& qinaMin 0 (dharrat f) = 0 then .hukm (hukmBaqi K D f) else .taarud (K &&& D &&& qinaMin 0 (dharrat f))",
+  "ila": "  if K &&& D = 0 then .hukm (hukmBaqi K D f) else .taarud (K &&& D)"
  }
 ]
