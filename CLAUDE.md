@@ -396,7 +396,7 @@
 - المودَع: `MUDAA_MUKHASSAS=<مسار mukhassas.txt>` لاختبارات الشبكة، و`MUDAA_DIR=<مجلّد المودَعات>` لمطابقة بصماتها
   (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`؛ و`qatr.txt`، `mughni.txt`، `alfiyya.txt`،
   `janadani.txt`، `sibawayhi.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib/AqsamAwamil بأسطرها؛ و`ajnas.tsv` جدول الأجناس —
-  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`؛ و`azmina.tsv` (مرشّح) الذي يطابقه `test_azmina.py`؛ و`makan.tsv` (مرشّح) الذي يطابقه `test_makan.py`؛ و`mirsat.tsv` (مرشّح) الذي يطابقه `test_mirsat.py`؛ و`isnad.tsv` (مرشّح) الذي يطابقه `test_isnad.py`؛ و`jisr_dal.tsv` (مرشّح) الذي يطابقه `test_jisrdal.py`؛ و`nisab_asnaf.tsv` (مرشّح) الذي يطابقه `test_nisab_asnaf.py`؛ و`qawaid.tsv` (مرشّح) الذي يطابقه `test_qawaid.py`).
+  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`؛ و`azmina.tsv` (مرشّح) الذي يطابقه `test_azmina.py`؛ و`makan.tsv` (مرشّح) الذي يطابقه `test_makan.py`؛ و`mirsat.tsv` (مرشّح) الذي يطابقه `test_mirsat.py`؛ و`isnad.tsv` (مرشّح) الذي يطابقه `test_isnad.py`؛ و`jisr_dal.tsv` (مرشّح) الذي يطابقه `test_jisrdal.py`؛ و`nisab_asnaf.tsv` (مرشّح) الذي يطابقه `test_nisab_asnaf.py`؛ و`qawaid.tsv` الذي يطابقه `test_qawaid.py`).
 - المرجع المحجوب QAC 0.4 (إذن المالك 2026-10-19، 20:18 بتوقيت عمّان: «نعم تأذن بختم QAC 0.4 وMASAQ 5 مرجعين محجوبين بعد أن ترفعهما انت
   ارفعها ووقع»؛ و21:43: «ابحث انت وفق افضل الممارسا ولكن ابحث في المستودع ممكن موجود المودع»): `quranic-corpus-morphology-0.4.txt` في
   `MUDAA_DIR`، مختومٌ «مرجعًا محجوبًا» باسم «المدوّنة القرآنية الصرفية QAC 0.4» (`a1d12923…`، 6,309,503 بايتًا). وُجد في مستودع المالك
@@ -919,7 +919,9 @@
 - جدولُ القواعد، صفُّه الأوّل الأسماءُ الستّة (الخطّة §١٠ج-1؛ رسالةُ المالك في الجلسة 2026-10-21، وهي نصُّ عرض البنّاء ثمّ «موافق»: «The first
   rules-table row (the six names): the first build step in plan §١٠, using content-keyed rules from (أ). It needs your permission to seal its
   table when it's ready. موافق»): `qawaid.tsv` في MUDAA_DIR (6 صفوف: أب، أخ، حم، هن، فم، ذو؛ وعمودُ السند 42 اقتباسًا من القطر والألفية والكتاب
-  بأسطرها) مسجَّلٌ «مرشّحًا» حتّى يأذن المالك بختمه (اختار «بإذنٍ منّي لكلّ جدول (موصى به)» من خياراتٍ صاغها البنّاء، الخطّة §١٠و)؛ ومنه
+  بأسطرها) مختومٌ «معلومات-سابقة» بإذن المالك في الجلسة 2026-10-22 (00:46 بتوقيت عمّان)، ردًّا على بند الختم ببياناته (الاسم والبصمة وعدد
+  الصفوف): «موافق ولك اذن الختم والايداع والتوثيق» — بـ `mudaat/idaa.py sajjil` على بايتاته كما هي، بصمته `0e5941ae…` في `mudaat/sijill.json`؛
+  وكان مسجَّلًا «مرشّحًا» منذ 2026-10-21 على اختياره «بإذنٍ منّي لكلّ جدول (موصى به)» من خياراتٍ صاغها البنّاء، الخطّة §١٠و؛ ومنه
   `Jisr/QawaidJadwal.lean` مولَّدًا بـ `python3 -I scripts/bina_qawaid.py <qawaid.tsv>` (لا يُحرَّر يدويًّا)، و`Jisr/QawaidSitta.lean`: قوانينُ
   بالمحتوى (`Qaida.KhatwaM.qanun r`) من صفوف الجدول — صورةُ الاسم بوجهه (التمام، والقصرُ لأب وأخ وحم: الألفية L78) وحالته، ومقدّماتُها الصورةُ
   والإضافةُ (L79) وطلبُ الحالة، والصحبةُ لـ«ذو» (L76) ولا تُقرأ من الدالّ (تعيينُ البنّاء) — في قاعدةٍ واحدةٍ إصدارُها بصمةُ الجدول، يقبل سلاسلَها
