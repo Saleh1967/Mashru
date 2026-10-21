@@ -148,6 +148,7 @@ def fahs_adad():
                 tawaqqu.append((adad_malik(khalaya_yadawiyya(sura)), hala, talab))
     assert len(tawaqqu) == 27 and lean == tawaqqu, ("أعدادُ القوانين", lean, tawaqqu)
     ad = open(os.path.join(ROOT, "Dal", "Adad.lean"), encoding="utf-8").read()
+    ad = bawwaba.bila_taaliq(ad, bawwaba._taaliq_lean(ad))
     kataba, kutiba = adad_malik(khalaya_yadawiyya("كَتَبَ")), adad_malik(khalaya_yadawiyya("كُتِبَ"))
     ka, taba = adad_malik(khalaya_yadawiyya("كَ")), adad_malik(khalaya_yadawiyya("تَبَ"))
     assert khalaya_yadawiyya("كَتَبَ") == [32, 72, 104] and khalaya_yadawiyya("كُتِبَ") == [33, 74, 104]

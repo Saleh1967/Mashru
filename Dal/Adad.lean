@@ -1,26 +1,31 @@
 /-
   Dal/Adad.lean — عددُ سلسلة الخلايا: ترقيمٌ تقابليٌّ لكلّ سلسلةٍ منتهية، والوصلُ عمليّةٌ على الأعداد.
 
-  قولُ المالك (2026-10-21، 20:35 بتوقيت عمّان)، في آخر تحليلٍ لصقه عن «ترميزٍ يحفظ العمليات»: «انت يجب انت تعمل بمنطق رقمي وفق
-  الطريقة العقلية ححل واستنتج وطبق». والصيغةُ من ذلك التحليل نفسِه: F(w) = Σ_{j<n} 116^j + Σ_i dᵢ·116^(n−1−i)، وقانونُ الوصل
-  F(uv) = 116^|v|·F(u) + F(v) — وقال إنّه فحصه حسابيًّا ولم يُبرهَن في Lean. وهنا يُبرهَن على خلايا Mashru (`4·حامل + حالة` بترتيب
-  `Dal.hawamil`)؛ فأعدادُ أمثلته («كَ» 84، «كَتَبَ» 1,144,809) على ترتيب حوامل مستودعٍ آخر لم أقرأه، ولا تنتقل إلى هنا (`kataba_wasl`).
+  قولُ المالك (2026-10-21، 20:35 بتوقيت عمّان)، في آخر تحليلٍ لصقه (أُحيل إلى سطور رسالته بالحرف ر): «انت يجب انت تعمل بمنطق رقمي وفق
+  الطريقة العقلية ححل واستنتج وطبق». والتحليلُ يقترح «ترميز يحفظ العمليات» (ر5)، وصيغتُه لعدد السلسلة F(w) = Σ_{j<n} 116^j +
+  Σ_i dᵢ·116^(n−1−i) (ر75–79)، وقانونُ الوصل F(uv) = 116^|v|·F(u) + F(v) (ر229) وقال فيه: «لم أضف مبرهنة Lean لهذا القانون في هذه
+  الجولة» (ر274)؛ وذكر لـF «براهين التباين والشمول في `Numbering.lean`» من مستودع Alghanem (ر102) — لم أقرأه. وهنا يُبرهَن ذلك على خلايا
+  Mashru (`4·حامل + حالة` بترتيب `Dal.hawamil`). وأرقامُ أمثلته على رقم الخانة d(c,h) = 4·i(c) + i(h) بترتيب الجسر عنده (ر25، ر34)، وقد ذكر
+  اختلافَ ترتيب الحوامل بين الجسر والتعريف الصوريّ فيه (ر58): خانةُ «كَ» عنده 84 (ر66) وهنا 32 (ك ثامنُ الحوامل)، وF(كَ) عنده 85 (ر243) وهنا 33،
+  وF(كَتَبَ) عنده 1,144,809 (ر89) وهنا 452,621 (`kataba_wasl`) — فالأرقامُ لا تنتقل بين الترتيبين.
 
-  الصيغتان واحدة: F(w) = Σ (dᵢ+1)·116^(n−1−i)، أي كلُّ خانةٍ d تُعدّ d+1 فلا منزلةَ صفر؛ فيُحسب من آخر السلسلة (`adadR` على المقلوب).
+  `adad` تُحسب من آخر السلسلة (`adadR` على المقلوب، كلُّ خانةٍ d تُعدّ d+1)، وهي صيغةُ التحليل بحدّيها: `adad_sigha` (لكلّ سلسلة) —
+  adad w = majmuAwwal |w| + qima w، و`majmuAwwal n` = Σ_{j<n} 116^j، و`qima w` = Σ_i dᵢ·116^(n−1−i).
 
   ما يُبرهَن:
   ١. **الوصل** (`adad_wasl`): عددُ الموصول من عددَي الجزأين وطولِ الثاني وحده.
   ٢. **التقابل على المجال** (الخلايا أقلّ من 116): لا يجمع سلسلتين في عدد (`adad_inj`)، ولكلّ عددٍ سلسلةٌ في المجال تعود إليه
-     (`adad_fakk`، `fakk_majal`)، والفكُّ يعيد السلسلة (`fakk_adad`). وخارجَ المجال (حدُّ الكلمة 116 فما فوق) لا تقابل، فمن يستعمل العددَ
-     رمزًا يحرس المجال أوّلًا.
-  ٣. **أثرُ تبديل خانةٍ في موضعها** (`adad_tabdil`): يتغيّر العددُ بفرق الخانتين في منزلتها وحده؛ وتبديلُ الحركة وحدها فرقُ حالتين لا يتعلّق
-     بترتيب الحوامل («كَتَبَ» ← «كُتِبَ»: 13,688، `kataba_kutiba`).
+     (`adad_fakk`، `fakk_majal`)، والفكُّ يعيد السلسلة (`fakk_adad`). وخارجَ المجال لا تقابل: [116] و[0، 0] عددٌ واحد (`kharij_majal`)،
+     فمن يستعمل العددَ رمزًا يحرس المجال أوّلًا.
+  ٣. **أثرُ تبديل خانةٍ في موضعها** (`adad_tabdil`): يتغيّر العددُ بفرق الخانتين في منزلتها وحده. وتبديلُ الحركة وحدها في الخليّة 4c+h
+     فرقُه فرقُ الحالتين — حسابٌ على الترميز لا مبرهنة —، فلا يتعلّق بترتيب الحوامل؛ وشاهدُه «كَتَبَ» ← «كُتِبَ»: 13,688 (`kataba_kutiba`).
   ٤. **لماذا d+1** (`bila_tul_yajma`): الطيُّ بالأساس 116 بلا إزاحةٍ يجمع «أَبُو» (أوّلُها «ءَ» خليّةُ 0) و«بُو» في عددٍ واحد، وعددُهما هنا مختلف.
 
-  14 مبرهنة بالمعيار الموحَّد (`Nizam/Asas.lean`): 11 لكلّ (`adadR_append`، `adad_wasl`، `adadR_inj`، `adad_inj`، `fakkR_adadR`،
-  `adadR_fakkR`، `fakkR_majal`، `fakk_adad`، `adad_fakk`، `fakk_majal`، `adad_tabdil`)، ولا تعريفيّة، و3 على الشاهد (`kataba_wasl`،
-  `kataba_kutiba`، `bila_tul_yajma`). طفراتُها P414–P415 في `tahaqquq/tafrat.json` تُفشل `lake build`؛ وأعدادُ «كَتَبَ» و«كُتِبَ» فيهما يحسبها
-  `tahaqquq/test_qawaid.py` §٤ من صورتيهما اليدويّتين بصيغة التحليل بحدّيها، مستقلًّا عن `adadR`.
+  19 مبرهنة بالمعيار الموحَّد (`Nizam/Asas.lean`): 15 لكلّ (`adadR_append`، `adad_wasl`، `adadR_inj`، `adad_inj`، `fakkR_adadR`،
+  `adadR_fakkR`، `fakkR_majal`، `fakk_adad`، `adad_fakk`، `fakk_majal`، `adad_tabdil`، `majmuAwwal_succ`، `jam_darb`، `qima_snoc`،
+  `adad_sigha`)، ولا تعريفيّة، و4 على الشاهد (`kataba_wasl`، `kataba_kutiba`، `bila_tul_yajma`، `kharij_majal`). طفراتُها P414–P415 في
+  `tahaqquq/tafrat.json` تُفشل `lake build`؛ وأعدادُ «كَتَبَ» و«كُتِبَ» فيهما يحسبها `tahaqquq/test_qawaid.py` §٤ من صورتيهما اليدويّتين
+  بصيغة التحليل بحدّيها، مستقلًّا عن `adadR`.
   لا يُدّعى: أنّ هذا العددَ عددُ الشهادة (لا يحمل همزةَ الوصل ولا «ال» ولا حدودَ الكلمات)؛ ولا أنّ وصلَ خليّتين مرخَّصٌ لغةً — الوصلُ
   هنا حسابٌ على الأعداد، والترخيصُ لقانون الدالّ.
   بلا sorry ولا axiom ولا native_decide.
@@ -34,7 +39,7 @@ def adadR : List Nat → Nat
   | [] => 0
   | d :: l => d + 1 + 116 * adadR l
 
-/-- **عددُ السلسلة**: F(w) = Σ (dᵢ+1)·116^(n−1−i). -/
+/-- **عددُ السلسلة**: Σ (dᵢ+1)·116^(n−1−i)، وهي صيغةُ التحليل بحدّيها (`adad_sigha`). -/
 def adad (w : List Nat) : Nat := adadR w.reverse
 
 theorem adadR_append : ∀ (a b : List Nat), adadR (a ++ b) = adadR a + 116 ^ a.length * adadR b
@@ -138,6 +143,54 @@ theorem adad_tabdil (a b : List Nat) (d e : Nat) :
   rw [k e, k d, Nat.mul_add, Nat.mul_add, Nat.mul_add, Nat.mul_add]
   omega
 
+/-! ## صيغةُ التحليل بحدّيها -/
+
+/-- Σ_{j<n} 116^j: الحدُّ الأوّل في صيغة التحليل. -/
+def majmuAwwal (n : Nat) : Nat := ((List.range n).map (116 ^ ·)).sum
+
+/-- Σ_i dᵢ·116^(n−1−i): الحدُّ الثاني. -/
+def qima (w : List Nat) : Nat := ((List.range w.length).map (fun i => w.getD i 0 * 116 ^ (w.length - 1 - i))).sum
+
+theorem majmuAwwal_succ (n : Nat) : majmuAwwal (n + 1) = 116 * majmuAwwal n + 1 := by
+  have e : ∀ n, majmuAwwal (n + 1) = majmuAwwal n + 116 ^ n := by
+    intro n; simp [majmuAwwal, List.range_succ, List.map_append, List.sum_append]
+  have h : ∀ n, majmuAwwal n + 116 ^ n = 116 * majmuAwwal n + 1 := by
+    intro n
+    induction n with
+    | zero => simp [majmuAwwal]
+    | succ n ih => rw [e, Nat.pow_succ]; omega
+  rw [e, h]
+
+theorem jam_darb : ∀ (l : List Nat) (f : Nat → Nat), (l.map (fun i => 116 * f i)).sum = 116 * (l.map f).sum
+  | [], _ => rfl
+  | a :: l, f => by simp [List.map_cons, List.sum_cons, jam_darb l f, Nat.mul_add]
+
+theorem qima_snoc (u : List Nat) (d : Nat) : qima (u ++ [d]) = 116 * qima u + d := by
+  unfold qima
+  simp only [List.length_append, List.length_singleton]
+  rw [List.range_succ, List.map_append, List.sum_append]
+  have hm : (List.range u.length).map (fun i => (u ++ [d]).getD i 0 * 116 ^ (u.length + 1 - 1 - i)) =
+      (List.range u.length).map (fun i => 116 * (u.getD i 0 * 116 ^ (u.length - 1 - i))) := by
+    apply List.map_congr_left
+    intro i hi
+    have hi' : i < u.length := List.mem_range.mp hi
+    have hg : (u ++ [d]).getD i 0 = u.getD i 0 := by
+      simp [List.getD_eq_getElem?_getD, List.getElem?_append_left hi']
+    rw [hg, show u.length + 1 - 1 - i = (u.length - 1 - i) + 1 by omega, Nat.pow_succ,
+      Nat.mul_comm (116 ^ (u.length - 1 - i)) 116, ← Nat.mul_assoc, Nat.mul_comm (u.getD i 0) 116, Nat.mul_assoc]
+  rw [hm, jam_darb]
+  simp [List.getD_eq_getElem?_getD]
+
+/-- **`adad` هي صيغةُ التحليل بحدّيها** لكلّ سلسلة. -/
+theorem adad_sigha (w : List Nat) : adad w = majmuAwwal w.length + qima w := by
+  obtain ⟨r, rfl⟩ : ∃ r, w = r.reverse := ⟨w.reverse, (List.reverse_reverse w).symm⟩
+  induction r with
+  | nil => rfl
+  | cons d r ih =>
+    rw [List.reverse_cons, adad_wasl, ih, List.length_append, List.length_singleton, majmuAwwal_succ, qima_snoc]
+    simp only [adad, adadR, List.reverse_singleton, Nat.pow_one]
+    rw [Nat.mul_add]; omega
+
 /-! ## على الشاهد -/
 
 /-- «كَتَبَ» بخلايا Mashru (`Nizam.Aqd.kataba`: ك 8، ت 18، ب 26 بالفتحة) عددُها 452,621؛ وهو وصلُ «كَ» (33) و«تَبَ» (8,573) بقانون الوصل. -/
@@ -152,6 +205,9 @@ theorem kataba_kutiba : adad [33, 74, 104] = adad [32, 72, 104] + 13688 := by de
 theorem bila_tul_yajma :
     [0, 105, 115].foldl (fun n d => 116 * n + d) 0 = [105, 115].foldl (fun n d => 116 * n + d) 0 ∧
     adad [0, 105, 115] ≠ adad [105, 115] := by decide
+
+/-- **خارجَ المجال لا تقابل**: حدُّ الكلمة 116 وحده و[0، 0] عددٌ واحد (117). -/
+theorem kharij_majal : adad [116] = adad [0, 0] := by decide
 
 end Adad
 end Dal

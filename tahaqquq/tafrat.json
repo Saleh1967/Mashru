@@ -2938,5 +2938,17 @@
   "milaf": "Nizam/QawaidB.lean",
   "min": "    [⟨25868, 1, 7⟩, ⟨25648, 0, 7⟩",
   "ila": "    [⟨25869, 1, 7⟩, ⟨25648, 0, 7⟩"
+ },
+ {
+  "ism": "P423_bit_matlub_sahib",
+  "milaf": "Nizam/QawaidB.lean",
+  "min": "| .matlub _ _ => 4 |",
+  "ila": "| .matlub _ _ => 8 |"
+ },
+ {
+  "ism": "P424_yuntij_bila_hala",
+  "milaf": "Nizam/QawaidB.lean",
+  "min": "def yuntijB (k : Option Nat) (a : Nat) (q : QanunB) : Bool := k == some q.ramz && a.testBit (q.hala + 2)",
+  "ila": "def yuntijB (k : Option Nat) (a : Nat) (q : QanunB) : Bool := k == some q.ramz"
  }
 ]

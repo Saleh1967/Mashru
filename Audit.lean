@@ -1619,6 +1619,11 @@ import Nizam.QawaidB
 #print axioms Dal.Adad.kataba_wasl
 #print axioms Dal.Adad.kataba_kutiba
 #print axioms Dal.Adad.bila_tul_yajma
+#print axioms Dal.Adad.majmuAwwal_succ
+#print axioms Dal.Adad.jam_darb
+#print axioms Dal.Adad.qima_snoc
+#print axioms Dal.Adad.adad_sigha
+#print axioms Dal.Adad.kharij_majal
 #print axioms Nizam.QawaidB.fahsM_usul
 #print axioms Nizam.QawaidB.maqbul_silsila
 #print axioms Nizam.QawaidB.rukhsa_usul
