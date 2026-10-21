@@ -38,7 +38,7 @@
   `qanun_bitat`)، و3 على الشاهد (`qawaninB_qiyam`، `mawadi_bitat`، `naqs_shawahid`). ومساعداتٌ خاصّةٌ غيرُ معدودة ولا مدقّقة بأسمائها في
   `Audit.lean` (كمساعدتَي `Jisr/Utur.lean` الخاصّتين؛ ومسلّماتُها داخلةٌ في تدقيق ما يستعملها)، مصنَّفةً بالمعيار: `qanun_fi` لكلّ (تستدعي
   `List.mem_flatMap`/`List.mem_map`)، و`majal_qawanin` على الشاهد (decide على الجدول: صورُ القوانين كلُّها في المجال)، و`naqs_7_15`
-  و`waqf_7_15` على الشاهد (decide على حالات ثلاثةِ بتّاتٍ الثماني). فعمومُ `rukhsaB_sawa` و`mawqufB_sawa` في الموضع والكلمة على هذا الجدول،
+  و`waqf_7_15` لكلّ (قضيّتان عامّتان في ثلاثة بتّات، برهانُهما cases ثمّ decide — بسابقة `Nizam.Aqd.irabMurashshah_la_jazm`). فعمومُ `rukhsaB_sawa` و`mawqufB_sawa` في الموضع والكلمة على هذا الجدول،
   وصحّتُهما على جدولٍ آخر تحتاج `majal_qawanin` عليه. و`maqbul_silsila` مساواةٌ تُتمّ `QawaidSitta.silsila_maqbula` (الاتّجاهُ الواحد).
   وأعدادُ `qawaninB_qiyam` مخرجُ `#eval qawaninB` نُقل إليها، فـ decide تحرسها من التغيّر لا تشهد لها؛ والشاهدُ المستقلّ
   `tahaqquq/test_qawaid.py` §٤: يحسبها من الصور اليدوية بصيغة التحليل بحدّيها (لا بتعريف `Dal.Adad.adad`) ويطابقها.
@@ -46,8 +46,8 @@
   `qawaninB_qiyam`) ويقتلها الاختبارُ §٤ أيضًا.
 
   لا يُدّعى: أنّ الترميزَ وحده يحكم — الحكمُ من القوانين المرمَّزة، وهي من الجدول؛ ولا أنّ القراءةَ والحكمَ منفَّذان على الأعداد كلُّهما:
-  في `qiraaB` المحمولاتُ `laIllaAkhir` و`laFathaJarr` و`laIrabBilHarf` والمرورُ `kullMawdi` على محتوى الكلمة والإطار، وفي `hukmB` الابتداءُ
-  والوصلُ والوقفُ والتركيبُ (`ibtida3`، `waslBase`، `waslMl`، `jisrMadlul`، `waslMadlul`، `waqf3`، `rakkib`) كما هي (وقانونُ الدالّ منفَّذٌ
+  في `qiraaB` المحمولاتُ `laIllaAkhir` و`laFathaJarr` و`laIrabBilHarf` والمرورُ `kullMawdi` على محتوى الكلمة والإطار، وفي `hukmB` حدُّ الطبقة
+  `fiHadd` والابتداءُ والوصلُ والوقفُ والتركيبُ (`ibtida3`، `waslBase`، `waslMl`، `jisrMadlul`، `waslMadlul`، `waqf3`، `rakkib`) كما هي (وقانونُ الدالّ منفَّذٌ
   بالبتّات في `Nizam/Aqd.lean`، ولم يُوصل هنا)؛ ولا قناعَ نفيٍ N: قوانينُ الصفّ مقدّماتُها موجبةٌ كلُّها.
   بلا sorry ولا axiom ولا native_decide.
 -/
@@ -100,7 +100,7 @@ theorem rukhsa_usul (n : Bool) (hs : List Nat) (w : Kalima) (m : Bool) :
 /-- **رمزُ الكلمة**: عددُ خلاياها إن كانت كلُّها في المجال، وإلّا فلا رمز. -/
 def ramz (c : List Nat) : Option Nat := if c.all (· < 116) then some (Adad.adad c) else none
 
-/-- **حفظُ المجال:** للكلمة رمزٌ ⟺ خلاياها كلُّها أقلُّ من 116. -/
+/-- **مجالُ الترميز:** للكلمة رمزٌ ⟺ خلاياها كلُّها أقلُّ من 116. -/
 theorem ramz_majal (c : List Nat) : (ramz c).isSome = c.all (· < 116) := by
   unfold ramz
   split <;> simp_all
