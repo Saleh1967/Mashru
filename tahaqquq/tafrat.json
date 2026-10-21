@@ -2830,5 +2830,47 @@
   "milaf": "Jisr/QawaidSitta.lean",
   "min": "def qSitta : Qaida.Qaida Qadiyya := ⟨\"الأسماء الستّة @ \" ++ basma, qawanin⟩",
   "ila": "def qSitta : Qaida.Qaida Qadiyya := ⟨\"الأسماء الستّة\", qawanin⟩"
+ },
+ {
+  "ism": "P405_shart_bila_rukhsa",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  | (u, w, h, m, r, q) => fiMawdi u w h m && rukhsa true [h] w m == r && mawquf true [h] w m == q",
+  "ila": "  | (u, w, h, m, _r, q) => fiMawdi u w h m && true && mawquf true [h] w m == q"
+ },
+ {
+  "ism": "P406_fiMawdi_bila_idafa",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  kullMawdi u (fun n hs v mm => !(v.khalaya == w.khalaya) || (n && hs == [h] && mm == m))\n\n/-- **مواضعُ الشواهد** بإطاراتها",
+  "ila": "  kullMawdi u (fun n hs v _ => !(v.khalaya == w.khalaya) || (n && hs == [h]))\n\n/-- **مواضعُ الشواهد** بإطاراتها"
+ },
+ {
+  "ism": "P407_halat_bila_jarr",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "def halat : List Nat := [1, 0, 2]",
+  "ila": "def halat : List Nat := [1, 0]"
+ },
+ {
+  "ism": "P408_qawanin_bila_dhu",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  sitta.flatMap fun s => (wujuh s).flatMap fun w => halat.map fun h => qanun s w h",
+  "ila": "  (sitta.take 5).flatMap fun s => (wujuh s).flatMap fun w => halat.map fun h => qanun s w h"
+ },
+ {
+  "ism": "P409_qanun_bila_matlub",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "   [.sura (suraBi s w h), .mudaf (suraBi s w h), .matlub h (suraBi s w h)] ++",
+  "ila": "   [.sura (suraBi s w h), .mudaf (suraBi s w h)] ++"
+ },
+ {
+  "ism": "P410_sahib_yuqra",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "  | .sahib _ => false\n  | .murab _ _ => false",
+  "ila": "  | .sahib _ => true\n  | .murab _ _ => false"
+ },
+ {
+  "ism": "P411_qiraa_bila_mawquf",
+  "milaf": "Jisr/QawaidSitta.lean",
+  "min": "laIrabBilHarf n hs w m || rukhsa n hs w m || mawquf n hs w m) then .laHukm",
+  "ila": "laIrabBilHarf n hs w m || rukhsa n hs w m) then .laHukm"
  }
 ]

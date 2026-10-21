@@ -6,12 +6,13 @@
    المخارج `Dal/Makharij.hawamil` المقروء نصًّا هي الصورُ المكتوبة هنا يدويًّا حرفًا وحركة (SUWAR — توقّعٌ مستقلٌّ عن الجدول والمولِّد)، والقصرُ
    في أب وأخ وحم وحدها (الألفية L78 «وفي أب وتالييه»)، والصحبةُ في ذو وحده (L76)، والدرجاتُ بلفظ مصدرها (قصر>نقص «أشهر» في الثلاثة،
    ونقص>تمام «أحسن» و«الأفصح» في هن)؛ وفي
-   QawaidSitta.lean: القاعدةُ إصدارُها البصمة، والقوانينُ من `sitta` بوجوهها وأحوالها الثلاث، وشرطُ الإضافة والطلب والصحبة في المقدّمات،
+   QawaidSitta.lean: القوانينُ من `sitta` بوجوهها وأحوالها الثلاث، وشرطُ الإضافة والطلب والصحبة في المقدّمات،
    والحكمُ `hukm3` بعينه والقراءةُ فيه `qiraaSitta`، والمبرهناتُ المسمّاة موجودة — وهذا فحصُ نصٍّ لا سلوك (تأكيداتٌ تنسخ أسطر Lean)، والسلوكُ
-   تفحصه Lean بمبرهنات الشاهد (`shawahid_sitta` وحدها تقتل P393 وP397؛ وP392 وP394 وP396 وP398 تقتلها Lean وهذه التأكيدات معًا)؛
+   تفحصه Lean بمبرهنات الشاهد (`shawahid_sitta` وحدها تقتل P393، وP397 مع `mawadi_shawahid`؛ وP392 وP394 وP396 وP398 تقتلها Lean وهذه التأكيدات معًا)؛
    وفحصُ النصّ على النصّ بلا تعليقات (ماسحُ البوّابة `_taaliq_lean`، متداخلًا)، وفي جسم التصريح المسمّى — كاشفٌ لتغييرٍ عاديٍّ لا حارسٌ من التحايل
-   (تصريحٌ مجاورٌ أو سابقٌ بالاسم نفسه في فضاءٍ آخر، أو شيفرةٌ تُبطل الشرطَ وتُبقي نصَّه، تمرّ)؛ والحراسةُ في Lean (`mawadi_shawahid`، `shartMawdi_fiMawdi`،
-   `fiMawdi_wujud`، `isdar_basma` تقتل P400–P404).
+   (تصريحٌ مجاورٌ أو سابقٌ بالاسم نفسه في فضاءٍ آخر، أو شيفرةٌ تُبطل الشرطَ وتُبقي نصَّه، تمرّ)؛ والحراسةُ في Lean (`mawadi_shawahid`،
+   `shartMawdi_shurut`، `fiMawdi_wujud`، `fiMawdi_shartan`، `isdar_basma` تقتل P400–P406)؛ وما يكشفه فحصُ النصّ هنا (P407–P411) تقتله Lean أيضًا،
+   إلّا حذفَ `hs.contains h` من `aslMawdi`: طفرةٌ مكافئة لا تُسجَّل (`yuntij` يشترطه في كلّ رخصة).
 ٢. بالمودَع: بصمةُ الجدول هي بصمتُه في mudaat/sijill.json (وإلّا رُفض باسمه)، ونوعُه «معلومات-سابقة»، وحالتُه مختوم أو مرشّح (تُطبع)؛ والمولِّد
    `scripts/bina_qawaid.py` على الجدول يعيد QawaidJadwal.lean بايتًا بايتًا (فالبصمةُ فيه بصمةُ الجدول).
 ٣. بالمودَع: اقتباساتُ عمود السند اثنان وأربعون (عدٌّ يدويٌّ صفًّا صفًّا: 8، 10، 5، 7، 5، 7)، كلٌّ بعمودٍ من الأعمدة المعلنة ومصدرٍ من الثلاثة، وكلٌّ
@@ -149,7 +150,7 @@ def fahs_lean():
                  "shakl_laHukm_mumtani", "shakl_murakhkhas", "hukmQiraa_ne_mumtani", "hukmSitta_mumtani_thabit", "hukmSitta_kharij",
                  "raf_bi_qiraa", "mumtani_bi_qiraa", "natija_murab", "silsila_maqbula", "rukhsa_murakhkhasa", "la_tamdid", "suwar_sitta",
                  "sahib_la_yathbut", "sahib_muqaddima", "dhu_la_rukhsa", "qanun_raf_fi", "ghayr_sitta", "jadwal_jisrdal",
-                 "shawahid_jisrdal", "abuK_jadwal", "shawahid_sitta", "daraja_wujuh", "shartMawdi_fiMawdi", "mawadi_shawahid",
+                 "shawahid_jisrdal", "abuK_jadwal", "shawahid_sitta", "daraja_wujuh", "shartMawdi_shurut", "fiMawdi_shartan", "mawadi_shawahid",
                  "fiMawdi_wujud", "isdar_basma"):
         assert re.search(rf"^theorem {name}(?=[\s:(])", bila, re.M), name
     assert "sorry" not in s and "native_decide" not in s and not re.search(r"^axiom ", s, re.M)
