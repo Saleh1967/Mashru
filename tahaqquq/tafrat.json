@@ -2950,5 +2950,11 @@
   "milaf": "Nizam/QawaidB.lean",
   "min": "def yuntijB (k : Option Nat) (a : Nat) (q : QanunB) : Bool := k == some q.ramz && a.testBit (q.hala + 2)",
   "ila": "def yuntijB (k : Option Nat) (a : Nat) (q : QanunB) : Bool := k == some q.ramz"
+ },
+ {
+  "ism": "P425_kataba_khalaya",
+  "milaf": "Dal/Adad.lean",
+  "min": "adad [32, 72, 104] = 452621 ∧ adad [32] = 33 ∧ adad [72, 104] = 8573 ∧ 116 ^ 2 * 33 + 8573 = 452621",
+  "ila": "adad [33, 72, 104] = 466077 ∧ adad [33] = 34 ∧ adad [72, 104] = 8573 ∧ 116 ^ 2 * 34 + 8573 = 466077"
  }
 ]

@@ -25,8 +25,8 @@
   19 مبرهنة بالمعيار الموحَّد (`Nizam/Asas.lean`): 15 لكلّ (`adadR_append`، `adad_wasl`، `adadR_inj`، `adad_inj`، `fakkR_adadR`،
   `adadR_fakkR`، `fakkR_majal`، `fakk_adad`، `adad_fakk`، `fakk_majal`، `adad_tabdil`، `majmuAwwal_succ`، `jam_darb`، `qima_snoc`،
   `adad_sigha`)، ولا تعريفيّة، و4 على الشاهد (`kataba_wasl`، `kataba_kutiba`، `bila_tul_yajma`، `kharij_majal`). طفراتُها P414–P415 في
-  `tahaqquq/tafrat.json` تُفشل `lake build`؛ وأعدادُ «كَتَبَ» و«كُتِبَ» فيهما يحسبها `tahaqquq/test_qawaid.py` §٤ من صورتيهما اليدويّتين
-  بصيغة التحليل بحدّيها، مستقلًّا عن `adadR`.
+  `tahaqquq/tafrat.json` تُفشل `lake build`؛ وأعدادُ «كَتَبَ» و«كُتِبَ» فيهما وخلاياهما يحسبها `tahaqquq/test_qawaid.py` §٤ من صورتيهما
+  اليدويّتين بصيغة التحليل بحدّيها، مستقلًّا عن `adadR`؛ وP425 (شاهدُ «كَتَبَ» بخليّةٍ أخرى متّسقًا: يمرّ في Lean) يقتلها الاختبارُ وحده.
   لا يُدّعى: أنّ هذا العددَ عددُ الشهادة (لا يحمل همزةَ الوصل ولا «ال» ولا حدودَ الكلمات)؛ ولا أنّ وصلَ خليّتين مرخَّصٌ لغةً — الوصلُ
   هنا حسابٌ على الأعداد، والترخيصُ لقانون الدالّ.
   بلا sorry ولا axiom ولا native_decide.
