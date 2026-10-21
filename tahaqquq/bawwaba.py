@@ -56,6 +56,9 @@
       ونصُّ Jisr/QawaidSitta.lean، وأعدادُ القوانين في Nizam/QawaidB.lean (`qawaninB_qiyam`) وأعدادُ «كَتَبَ»/«كُتِبَ» في Dal/Adad.lean
       محسوبةً من الصور اليدوية بصيغة التحليل بحدّيها، دائمًا؛ وqawaid.tsv ببصمته (مرشّح أو مختوم) ومطابقةُ المولَّد له بايتًا واقتباساتُه في
       أسطرها إن حضر.
+  ٥ظ. الواقع المختوم والتعريفات (tahaqquq/test_waqi.py): المولِّدُ على جدولٍ يدويّ، وقواعدُ الاستخراج، ومرآةُ الحكم بأحكامٍ يدويّة، ونصُّ
+      قاعدة الحكم في Aql/Waqi.lean، دائمًا؛ وwaqi_001.tsv وtaarifat.tsv ببصمتيهما (مرشّحين أو مختومين)، والمولَّدُ بايتًا، والمخرجاتُ الخامّة
+      ببصماتها، وإعادةُ المشاهدات الحتميّة، وأعدادُ Aql/WaqiShawahid.lean، والتعريفاتُ مستخرجةً ثانيةً من مصادرها، إن حضرا.
   ٦. كلّ طفرة في tafrat.json تُقتل: تُفشل البناء بخطأ Lean في ملفٍّ وسطر (`KHATA_BINA`) أو تُفشل اختبارًا برمزٍ موجب. طفرة تعيش = اختبارٌ مرآة.
      وخروجُ البناء بغير صفرٍ بلا خطأٍ مسمّى (قتلُ المعالج لنفاد الذاكرة؛ وكذلك خطأُ استيرادٍ أو ملفٍّ مفقود بلا سطر — لا طفرةَ اليوم تمسّ
      `import` أو lakefile) أو اختبارٌ قُتل بإشارة: «غيرُ محسومة»، تفشل بها البوّابة باسمها. وحدُّه: اختبارٌ رمزُه موجبٌ قتلٌ ولو كان سببُه
@@ -117,6 +120,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_hawadith.py",
     "tahaqquq/test_qiyas_d.py",
     "tahaqquq/test_qawaid.py",
+    "tahaqquq/test_waqi.py",
 )
 
 
@@ -740,6 +744,10 @@ def main():
     report.append(f"٥ض جدول القواعد (الأسماء الستّة): {out.strip().splitlines()[-1] if out.strip() else '?'}")
     if code != 0:
         fails.append("اختبار جدول القواعد فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_waqi.py"])
+    report.append(f"٥ظ الواقع المختوم والتعريفات: {out.strip().splitlines()[-1] if out.strip() else '?'}")
+    if code != 0:
+        fails.append("اختبار الواقع المختوم فشل:\n" + out[-800:])
     mdir = os.environ.get("MUDAA_DIR")
     if mdir and os.path.isdir(mdir):
         code, out = run([sys.executable, "-I", "mudaat/idaa.py", "tahaqqaq", mdir])

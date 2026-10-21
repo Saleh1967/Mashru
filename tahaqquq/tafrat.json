@@ -3004,5 +3004,35 @@
   "milaf": "Nizam/Baqi.lean",
   "min": "  if K &&& D &&& qinaMin 0 (dharrat f) = 0 then .hukm (hukmBaqi K D f) else .taarud (K &&& D &&& qinaMin 0 (dharrat f))",
   "ila": "  if K &&& D = 0 then .hukm (hukmBaqi K D f) else .taarud (K &&& D)"
+ },
+ {
+  "ism": "P434_waqi_bila_tawatur",
+  "milaf": "Aql/Waqi.lean",
+  "min": "  if fiihiQiyas l || tasdiq l then .mafhum",
+  "ila": "  if fiihiQiyas l then .mafhum"
+ },
+ {
+  "ism": "P435_waqi_istiqlal_bil_hassa",
+  "milaf": "Aql/Waqi.lean",
+  "min": "a.wajh == .hikaya && b.wajh == .hikaya && a.masdar != b.masdar",
+  "ila": "a.wajh == .hikaya && b.wajh == .hikaya && a.hassa != b.hassa"
+ },
+ {
+  "ism": "P436_waqi_ghiyab_maaluma",
+  "milaf": "Aql/Waqi.lean",
+  "min": "  else if l.isEmpty then .laHukm",
+  "ila": "  else if l.isEmpty then .maaluma"
+ },
+ {
+  "ism": "P437_rasd_kamil_yaqbal_aksar",
+  "milaf": "scripts/rasd_waqi.py",
+  "min": "        return nonempty[0].strip() if len(nonempty) == 1 else None",
+  "ila": "        return nonempty[0].strip() if nonempty else None"
+ },
+ {
+  "ism": "P438_bina_waqi_bila_tahrib",
+  "milaf": "scripts/bina_waqi.py",
+  "min": ".replace('\"', '\\\\\"')",
+  "ila": ".replace('\"', '\"')"
  }
 ]
