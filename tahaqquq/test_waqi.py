@@ -11,10 +11,12 @@
    د. مرآةُ الحكم (مكتوبةٌ هنا مستقلّةً عن Lean) على جدولٍ يدويّ بأحكامٍ متوقَّعةٍ يدويًّا، قبل الختم وبعده — بلا طفرةٍ تخصّها: تُستعمل
       في ٢هـ لعدّ القضايا على الجدول الحقيقيّ.
    هـ. نصُّ `Aql/Waqi.lean` بلا تعليقات فيه قاعدةُ الحكم وشرطُ الختم وشرطُ الشواهد — فحصُ نصٍّ كاشفٌ لا حارس، والحراسةُ في Lean
-      (P434–P436، P439–P440 تُفشل البناء).
+      (P434–P436، P439–P440 تُفشل البناء)؛ وبصمةُ الدفعة في `Aql/WaqiJadwal.lean` هي قيدُها في mudaat/sijill.json، وإن كان «مختومًا»
+      فهي قيدٌ «واقع-مختوم» في mudaat/sijill.tsv (ما تفترضه `ihsa_ala_kull_sijill` في السجلّ الحقيقيّ) — بلا طفرةٍ تخصّه.
 ٢. بالمودَع (MUDAA_DIR وفيه waqi_001.tsv وtaarifat.tsv؛ وإلّا خرج 0 بعد ١) — فحصٌ بالمودَع بلا طفرة (لا يُشغَّل في CI)، فلا يُوسم
    «مفحوص» ولا ما فوقه:
-   أ. بصمتا الجدولين بصمتاهما في mudaat/sijill.json، بنوعيهما «واقع-مختوم» و«وضع».
+   أ. بصمتا الجدولين بصمتاهما في mudaat/sijill.json، بنوعيهما «واقع-مختوم» و«وضع»؛ وإن كانت الدفعةُ مختومةً فقيدُها في mudaat/sijill.tsv
+      ببصمتها كاملةً ونوعِها (فالسجلُّ الحقيقيّ يحوي ما تفترضه `ihsa_ala_kull_sijill`).
    ب. المولِّد على waqi_001.tsv يعيد `Aql/WaqiJadwal.lean` بايتًا بايتًا.
    ج. كلُّ صفٍّ يطابق مدخلَه في سجلّ الحواسّ `HAWASS` (الأمرُ بقالبه، والحاسّة، والمصدر، والشيء، والخاصّة، والوجه، والقاعدة) — فلا صفَّ
       بيد؛ ومخرجُه الخامّ حاضرٌ باسم بصمته وبصمتُه تطابق، والقيمةُ تُستخرج منه بقاعدتها، ولا خروجَ بغير صفرٍ إلّا في قاعدة «khuruj».
@@ -164,6 +166,12 @@ for s in ("let k := makhtuma sijill basmaOf l", "if fiihiQiyas k || tawatur k th
           "else .maaluma", "a.wajh == .riwaya && b.wajh == .riwaya && a.masdar != b.masdar",
           "l.filter fun r => makhtum sijill (basmaOf r.dafa)", "if hukm sijill basmaOf T m s q = .mafhum then"):
     assert s in src, s
+# والسجلُّ الحقيقيّ (بلا مودَع): إن كان قيدُ الدفعة في sijill.json «مختومًا» فبصمتُها في WaqiJadwal.lean قيدٌ «واقع-مختوم» في sijill.tsv
+basma_lean = re.search(r'def basma : String := "([0-9a-f]{64})"', open(os.path.join(ROOT, "Aql", "WaqiJadwal.lean"), encoding="utf-8").read()).group(1)
+qayd_waqi = [x for x in json.load(open(os.path.join(ROOT, "mudaat", "sijill.json"), encoding="utf-8"))["sijill"] if x["milaf"] == "waqi_001.tsv"]
+fi_tsv = any(l.split("\t")[:3] == ["mudaa", basma_lean, "واقع-مختوم"]
+             for l in open(os.path.join(ROOT, "mudaat", "sijill.tsv"), encoding="utf-8").read().split("\n"))
+assert len(qayd_waqi) == 1 and qayd_waqi[0]["sha256"] == basma_lean and fi_tsv == (qayd_waqi[0]["hala"] == "مختوم"), (qayd_waqi, fi_tsv)
 ok += 1
 
 d = os.environ.get("MUDAA_DIR")

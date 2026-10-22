@@ -1693,3 +1693,5 @@ import Aql.WaqiShawahid
 #print axioms Waqi.Shawahid.isdar_ahad
 #print axioms Waqi.Shawahid.github_riwaya
 #print axioms Waqi.Shawahid.jisr_haqiqi
+#print axioms Waqi.Shawahid.hukm_ala_kull_sijill
+#print axioms Waqi.Shawahid.ihsa_ala_kull_sijill
