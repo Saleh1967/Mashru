@@ -396,7 +396,7 @@
 - المودَع: `MUDAA_MUKHASSAS=<مسار mukhassas.txt>` لاختبارات الشبكة، و`MUDAA_DIR=<مجلّد المودَعات>` لمطابقة بصماتها
   (وفيه `awamil_mia.xlsx` جدول العوامل المئة، أو `MUDAA_AWAMIL=<مساره>`؛ و`qatr.txt`، `mughni.txt`، `alfiyya.txt`،
   `janadani.txt`، `sibawayhi.txt` نصوص OpenITI التي يحيل إليها Wad/Ladder2/Tarkib/AqsamAwamil بأسطرها؛ و`ajnas.tsv` جدول الأجناس —
-  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`؛ و`azmina.tsv` (مرشّح) الذي يطابقه `test_azmina.py`؛ و`makan.tsv` (مرشّح) الذي يطابقه `test_makan.py`؛ و`mirsat.tsv` (مرشّح) الذي يطابقه `test_mirsat.py`؛ و`isnad.tsv` (مرشّح) الذي يطابقه `test_isnad.py`؛ و`jisr_dal.tsv` (مرشّح) الذي يطابقه `test_jisrdal.py`؛ و`nisab_asnaf.tsv` (مرشّح) الذي يطابقه `test_nisab_asnaf.py`؛ و`qawaid.tsv` الذي يطابقه `test_qawaid.py`؛ و`waqi_001.tsv` مع `waqi_shawahid/` و`taarifat.tsv` (مرشّحان) اللذان يطابقهما `test_waqi.py`).
+  القطعة الأولى الذي يطابقه `test_ajnas.py`؛ و`ajnas_jamad.tsv`، `nizam_fizya.tsv`، `nizam_riyadiyyat.tsv` التي يطابقها `test_jamad.py`؛ و`alaqat.tsv` الذي يطابقه `test_shabaka.py`؛ و`hawass.tsv` (مرشّح) الذي يطابقه `test_hawass.py`؛ و`awwaliyyat.tsv` (مرشّح) الذي يطابقه `test_awwaliyyat.py`؛ و`azmina.tsv` (مرشّح) الذي يطابقه `test_azmina.py`؛ و`makan.tsv` (مرشّح) الذي يطابقه `test_makan.py`؛ و`mirsat.tsv` (مرشّح) الذي يطابقه `test_mirsat.py`؛ و`isnad.tsv` (مرشّح) الذي يطابقه `test_isnad.py`؛ و`jisr_dal.tsv` (مرشّح) الذي يطابقه `test_jisrdal.py`؛ و`nisab_asnaf.tsv` (مرشّح) الذي يطابقه `test_nisab_asnaf.py`؛ و`qawaid.tsv` الذي يطابقه `test_qawaid.py`؛ و`waqi_001.tsv` مع `waqi_shawahid/` و`taarifat.tsv` (مختومان) اللذان يطابقهما `test_waqi.py`).
 - المرجع المحجوب QAC 0.4 (إذن المالك 2026-10-19، 20:18 بتوقيت عمّان: «نعم تأذن بختم QAC 0.4 وMASAQ 5 مرجعين محجوبين بعد أن ترفعهما انت
   ارفعها ووقع»؛ و21:43: «ابحث انت وفق افضل الممارسا ولكن ابحث في المستودع ممكن موجود المودع»): `quranic-corpus-morphology-0.4.txt` في
   `MUDAA_DIR`، مختومٌ «مرجعًا محجوبًا» باسم «المدوّنة القرآنية الصرفية QAC 0.4» (`a1d12923…`، 6,309,503 بايتًا). وُجد في مستودع المالك
@@ -980,7 +980,10 @@
   الدفعةُ `waqi_001.tsv` («واقع-مختوم»، `e29bf2a9…`) رصدها `python3 -I scripts/rasd_waqi.py <MUDAA_DIR> --commit 2608833 --dafa 1`
   (50 مشاهدة بـ46 أمرًا من 13 أداة؛ ومخرجاتُها الخامّة في `waqi_shawahid/` بأسماء بصماتها؛ والحاسّةُ الفاشلة تردّ الدفعةَ بلا كتابة)؛
   و«جدول التعريفات» `taarifat.tsv` («وضع»، آحاد، `74cbcf13…`؛ 28 صفًّا منقولةً آليًّا بأسطرها بـ `scripts/bina_taarifat.py`) — التعريفُ
-  وضعٌ بدرجته، وإن دخل الواقعَ فروايةُ مصدرٍ واحد لا ترتفع (الدستور م12). كلاهما **مرشّح** حتّى يأذن المالك بختمه (والنسخُ السابقة قبل
+  وضعٌ بدرجته، وإن دخل الواقعَ فروايةُ مصدرٍ واحد لا ترتفع (الدستور م12). كلاهما **مختوم** بإذن المالك في الجلسة 2026-10-22 (07:51): رسالةٌ صدرُها نصُّ
+  «ما بقي باسمه» من جواب البنّاء ألصقه، وآخرُها «موفق هلى الختم للجدولين» — إذنُ الختم وحده، والقراراتُ الأربعة المعروضة لم تُقرَّر بها؛
+  فقيدُ الدفعة «واقع-مختوم» في سجلّ الفاحص، والقضايا العشرون المستوفية «مفهوم» على السجلّ الحقيقيّ (`ihsa` على `bad` و`khatm_la_yunzil`)،
+  و«مفهوم» في المخزن صفرٌ بعد (لا ادّعاءَ سندُه الدفعة) (والنسخُ السابقة قبل
   مراجعتَي murajii نُقلت إلى `MUDAA_DIR/_qadim_2a9c5ed/` و`_qadim_d14418c/` بلا حذف)؛ والاختبار `tahaqquq/test_waqi.py` (٥ظ): مفحوصٌ بلا
   مودَع (المولِّد، والاستخراج، ورفضُ الحاسّة الفاشلة، وردُّ دفعةٍ سابقتُها غيرُ مختومة؛ P437–P438، P441–P442؛ وقاعدةُ الحكم تحرسها Lean:
   P434–P436، P439–P440)، وفحصٌ بالمودَع بلا طفرة (كلُّ صفٍّ من سجلّ الحواسّ، وإعادةُ 22 مشاهدةً حتميّة، والتعريفات). الشرحُ وقانونُ

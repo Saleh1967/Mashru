@@ -1,4 +1,4 @@
-"""اختبار جدول «الواقع المختوم» (`waqi_001.tsv`، مرشّحٌ حتّى يأذن المالك بختمه) و«جدول التعريفات» (`taarifat.tsv`، «وضع»، مرشّح)،
+"""اختبار جدول «الواقع المختوم» (`waqi_001.tsv`) و«جدول التعريفات» (`taarifat.tsv`، «وضع») — مختومان بإذن المالك 2026-10-22 (07:51)، وكانا مرشّحَين —
 ومطابقة `Aql/WaqiJadwal.lean` (مولَّد) و`Aql/WaqiShawahid.lean` لهما.
 
 ١. بلا مودَع (دائمًا) — مفحوص بطفرات:
@@ -185,6 +185,10 @@ def qayd(milaf, naw):
 
 qw, bw = qayd("waqi_001.tsv", "واقع-مختوم")
 qt, bt = qayd("taarifat.tsv", "وضع")
+# المختومُ في سجلّ الفاحص ببصمته كاملةً ونوعِه، فالسجلُّ الحقيقيّ يحوي `bad` في WaqiShawahid.lean
+tsv = open(os.path.join(ROOT, "mudaat", "sijill.tsv"), encoding="utf-8").read().split("\n")
+fi_sijill = any(l.split("\t")[:3] == ["mudaa", bw, "واقع-مختوم"] for l in tsv)
+assert fi_sijill == (qw["hala"] == "مختوم"), (qw["hala"], fi_sijill)
 
 # ٢ب: المولَّد بايتًا
 data = open(os.path.join(d, "waqi_001.tsv"), "rb").read()
@@ -286,7 +290,7 @@ for t in tarifat.values():
     tuida += 1
 ok += 1
 
-print(f"جدول الواقع المختوم ({qw['hala']}، {bw[:12]}…): {len(rows)} مشاهدة ({kwiya} قياسًا)، كلُّها من سجلّ الحواسّ، WaqiJadwal.lean "
+print(f"جدول الواقع المختوم ({qw['hala']}{'، في سجلّ الفاحص' if fi_sijill else ''}، {bw[:12]}…): {len(rows)} مشاهدة ({kwiya} قياسًا)، كلُّها من سجلّ الحواسّ، WaqiJadwal.lean "
       f"مخرجُ المولِّد بايتًا، والمخرجاتُ الخامّة ببصماتها، وأُعيدت {uida} مشاهدةً حتميّة فطابقت"
       + (f" (لم يُعَد: {'،'.join(lam)})" if lam else "")
       + f"؛ القضايا {len(qadaya)}: قبل الختم معلومة كلُّها، وبعده مفهوم {bad.count('مفهوم')} ومعلومة {bad.count('معلومة')}؛ "
