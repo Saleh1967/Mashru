@@ -1,10 +1,11 @@
 /-
   Aql/WaqiShawahid.lean — شواهدُ الحكم على الدفعة الأولى من «الواقع المختوم» (`Aql/WaqiJadwal.lean`، مولَّدٌ من waqi_001.tsv).
 
-  الدفعةُ **مرشّحة**: لا قيدَ لها في سجلّ الفاحص. فالشواهدُ هنا على سجلّين: `qabl` بلا قيدٍ «واقع مختوم» (حالُها اليوم، وكلُّ سجلٍّ
-  مثلِه بـ `Waqi.la_mafhum_bila_khatm`)، و`bad` بقيدٍ واحد هو بصمتُها «واقعًا مختومًا» (ما يكون لو أذن المالك بختمها).
+  الشواهدُ على سجلّين: `qabl` بلا قيدٍ «واقع مختوم» (حالُ الدفعة وهي مرشّحة، وكلُّ سجلٍّ مثلِه بـ `Waqi.la_mafhum_bila_khatm`)، و`bad`
+  بقيدٍ واحد هو بصمتُها «واقعًا مختومًا». وقد خُتمت بإذن المالك 2026-10-22 (07:51)، فقيدُها في سجلّ الفاحص (`mudaat/sijill.tsv`)؛
+  والحكمُ على كلّ سجلٍّ فيه قيدُها هو حكمُها على `bad` (`hukm_ala_kull_sijill`، `ihsa_ala_kull_sijill` أدناه).
 
-  كلُّها «على الشاهد» (`decide +kernel` على الجدول المولَّد)، بالمعيار الموحَّد في `Nizam/Asas.lean`: 8 مبرهنات.
+  بالمعيار الموحَّد في `Nizam/Asas.lean`: 10 مبرهنات — 8 «على الشاهد» (`decide +kernel` على الجدول المولَّد) و2 لكلّ سجلّ:
   * `adad`: 50 مشاهدة، 21 قياسًا و29 رواية.
   * `ihsa`: القضايا المتمايزة 47 — قبل الختم كلُّها معلومة؛ وبعده مفهوم 20 (كلُّها بقياس) ومعلومة 27، ولا «لا حكم».
   * `python_yahsub`: بايثون يُخرج 5 لـ print(2+3) — قياسٌ بالتشغيل: معلومةٌ قبل الختم، مفهومٌ بعده.
@@ -14,6 +15,8 @@
     ولو خُتمت الدفعة: الآحادُ لا يرفع، والتكرارُ لا يرفع.
   * `github_riwaya`: ما يرويه GitHub وحده (الفرع الافتراضيّ main) معلومةٌ ولو خُتمت؛ و«master» لا حكم، لا «ممتنع».
   * `jisr_haqiqi`: في `Maratib` بعد الختم: «بايثون يُخرج 5» مفهوم، و«إصدارُ بايثون» معلومة؛ وقبل الختم معلومة.
+  * لكلّ سجلّ: `hukm_ala_kull_sijill` (حكمُ كلّ قضيّةٍ على سجلٍّ فيه قيدُ الدفعة حكمُها على `bad`)، و`ihsa_ala_kull_sijill` (على كلّ سجلٍّ
+    يحوي `(basma, .waqiMakhtum)`: مفهوم 20 ومعلومة 27). وأنّ السجلّ الحقيقيّ يحويه يفحصه `tahaqquq/test_waqi.py` على `mudaat/sijill.tsv`.
   بلا sorry ولا axiom ولا native_decide.
 -/
 import Aql.WaqiJadwal
@@ -22,7 +25,7 @@ namespace Waqi.Shawahid
 
 open Waqi Waqi.Jadwal
 
-/-- سجلٌّ بلا قيدٍ «واقع مختوم» (حالُ الدفعة اليوم). -/
+/-- سجلٌّ بلا قيدٍ «واقع مختوم» (حالُ الدفعة وهي مرشّحة، قبل ختمها 2026-10-22). -/
 def qabl : List (String × Idaa.Naw) := []
 
 /-- سجلٌّ فيه بصمةُ الدفعة «واقعًا مختومًا». -/
@@ -78,5 +81,26 @@ theorem jisr_haqiqi :
       (shuhud bad B jadwal "Python" "الإصدار" "3.13.16"))).ism = "معلومة" ∧
     (Maratib.martabatMaana 0 (Maratib.shuhudMutabara qabl
       (shuhud qabl B jadwal "Python" "يُخرج لـ print(2+3)" "5"))).ism = "معلومة" := by decide +kernel
+
+/-- **الحكمُ واحدٌ على كلّ سجلٍّ فيه قيدُ الدفعة:** إذا كانت بصمتُها مختومةً «واقعًا» في سجلٍّ ما، فحكمُ كلّ قضيّةٍ فيه حكمُها على `bad`. -/
+theorem hukm_ala_kull_sijill (R : List (String × Idaa.Naw)) (h : makhtum R basma = true) (m s q : String) :
+    hukm R B jadwal m s q = hukm bad B jadwal m s q := by
+  have hb : makhtum bad basma = true := by decide +kernel
+  unfold hukm makhtuma
+  simp only [B, h, hb]
+
+/-- **على كلّ سجلٍّ يحوي قيدَ الدفعة «واقعًا مختومًا»** (والسجلُّ الحقيقيّ بعد ختمها منها): مفهوم 20 ومعلومة 27. -/
+theorem ihsa_ala_kull_sijill (R : List (String × Idaa.Naw)) (hR : (basma, Idaa.Naw.waqiMakhtum) ∈ R) :
+    (qadaya.map (hukmQ R)).count .mafhum = 20 ∧ (qadaya.map (hukmQ R)).count .maaluma = 27 := by
+  have h : makhtum R basma = true := by
+    unfold makhtum
+    exact List.any_eq_true.mpr ⟨_, hR, by decide +kernel⟩
+  have e : qadaya.map (hukmQ R) = qadaya.map (hukmQ bad) := by
+    apply List.map_congr_left
+    intro k _
+    simp only [hukmQ]
+    exact hukm_ala_kull_sijill R h _ _ _
+  rw [e]
+  exact ⟨ihsa.2.2.1, ihsa.2.2.2.1⟩
 
 end Waqi.Shawahid
