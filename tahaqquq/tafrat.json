@@ -3004,5 +3004,59 @@
   "milaf": "Nizam/Baqi.lean",
   "min": "  if K &&& D &&& qinaMin 0 (dharrat f) = 0 then .hukm (hukmBaqi K D f) else .taarud (K &&& D &&& qinaMin 0 (dharrat f))",
   "ila": "  if K &&& D = 0 then .hukm (hukmBaqi K D f) else .taarud (K &&& D)"
+ },
+ {
+  "ism": "P434_waqi_bila_tawatur",
+  "milaf": "Aql/Waqi.lean",
+  "min": "  if fiihiQiyas k || tawatur k then .mafhum",
+  "ila": "  if fiihiQiyas k then .mafhum"
+ },
+ {
+  "ism": "P435_waqi_istiqlal_bil_hassa",
+  "milaf": "Aql/Waqi.lean",
+  "min": "a.wajh == .riwaya && b.wajh == .riwaya && a.masdar != b.masdar",
+  "ila": "a.wajh == .riwaya && b.wajh == .riwaya && a.hassa != b.hassa"
+ },
+ {
+  "ism": "P436_waqi_ghiyab_maaluma",
+  "milaf": "Aql/Waqi.lean",
+  "min": "  else if l.isEmpty then .laHukm",
+  "ila": "  else if l.isEmpty then .maaluma"
+ },
+ {
+  "ism": "P437_rasd_kamil_yaqbal_aksar",
+  "milaf": "scripts/rasd_waqi.py",
+  "min": "        return nonempty[0].strip() if len(nonempty) == 1 else None",
+  "ila": "        return nonempty[0].strip() if nonempty else None"
+ },
+ {
+  "ism": "P438_bina_waqi_bila_tahrib",
+  "milaf": "scripts/bina_waqi.py",
+  "min": ".replace('\"', '\\\\\"')",
+  "ila": ".replace('\"', '\"')"
+ },
+ {
+  "ism": "P439_waqi_bila_khatm",
+  "milaf": "Aql/Waqi.lean",
+  "min": "  l.filter fun r => makhtum sijill (basmaOf r.dafa)",
+  "ila": "  l.filter fun _ => true"
+ },
+ {
+  "ism": "P440_waqi_shuhud_bila_hukm",
+  "milaf": "Aql/Waqi.lean",
+  "min": "  if hukm sijill basmaOf T m s q = .mafhum then",
+  "ila": "  if true then"
+ },
+ {
+  "ism": "P441_rasd_qiyas_min_fashal",
+  "milaf": "scripts/rasd_waqi.py",
+  "min": "        if p.returncode != 0 and qaida != \"khuruj\":",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P442_rasd_sabiq_bila_sijill",
+  "milaf": "scripts/rasd_waqi.py",
+  "min": "        if not any(m[\"sha256\"] == sabiq and m[\"hala\"] == \"مختوم\" and m[\"naw\"] == \"واقع-مختوم\" for m in sijill):",
+  "ila": "        if False:"
  }
 ]

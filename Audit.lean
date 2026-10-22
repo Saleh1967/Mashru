@@ -76,6 +76,8 @@ import Jisr.QawaidSitta
 import Dal.Adad
 import Nizam.QawaidB
 import Nizam.Baqi
+import Aql.Waqi
+import Aql.WaqiShawahid
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1670,3 +1672,24 @@ import Nizam.Baqi
 #print axioms Nizam.Baqi.mithal_badilan
 #print axioms Nizam.Baqi.mithal_tasghir
 #print axioms Nizam.Baqi.mithal_dhu
+
+-- الواقع المختوم: المشاهدة والحكم بشرط الختم والنموّ (Aql/Waqi.lean)، وشواهدُ الدفعة الأولى (Aql/WaqiShawahid.lean)
+#print axioms Waqi.la_hukm_bila_mushahada
+#print axioms Waqi.laHukm_iff
+#print axioms Waqi.la_mafhum_bila_khatm
+#print axioms Waqi.qiyas_makhtum_mafhum
+#print axioms Waqi.riwayatan_mafhum
+#print axioms Waqi.masdar_wahid_la_yarfa
+#print axioms Waqi.mutabiq_append
+#print axioms Waqi.numuw_la_yunzil
+#print axioms Waqi.khatm_la_yunzil
+#print axioms Waqi.akhir_numuw
+#print axioms Waqi.jisr_iff
+#print axioms Waqi.Shawahid.adad
+#print axioms Waqi.Shawahid.ihsa
+#print axioms Waqi.Shawahid.python_yahsub
+#print axioms Waqi.Shawahid.lean_yaqbal_wa_yarud
+#print axioms Waqi.Shawahid.basma_bihassatayn
+#print axioms Waqi.Shawahid.isdar_ahad
+#print axioms Waqi.Shawahid.github_riwaya
+#print axioms Waqi.Shawahid.jisr_haqiqi
