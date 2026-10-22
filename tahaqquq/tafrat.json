@@ -3058,5 +3058,35 @@
   "milaf": "scripts/rasd_waqi.py",
   "min": "        if not any(m[\"sha256\"] == sabiq and m[\"hala\"] == \"مختوم\" and m[\"naw\"] == \"واقع-مختوم\" for m in sijill):",
   "ila": "        if False:"
+ },
+ {
+  "ism": "P443_muhtawa_yusajjil",
+  "milaf": "Faahis/Lib.lean",
+  "min": "      if raas line == \"mudaa\" then khata h n \"المحتوى لا يسجّل مودَعًا: السلطة في سجلّ المودَعات وحده\"",
+  "ila": "      if false then khata h n \"المحتوى لا يسجّل مودَعًا: السلطة في سجلّ المودَعات وحده\""
+ },
+ {
+  "ism": "P444_sijill_yaqbal_kull",
+  "milaf": "Faahis/Lib.lean",
+  "min": "      if raas line == \"mudaa\" then qira h n line",
+  "ila": "      if true then qira h n line"
+ },
+ {
+  "ism": "P445_sual_yuskit_khata_tahmil",
+  "milaf": "Faahis/Main.lean",
+  "min": "      match muhaqqaq h with",
+  "ila": "      match (Except.ok h : Except (Array String) Hal) with"
+ },
+ {
+  "ism": "P446_qari_yuskit_khata_tahmil",
+  "milaf": "Qari/Main.lean",
+  "min": "    let h ← match muhaqqaq h with",
+  "ila": "    let h ← match (Except.ok h : Except (Array String) Hal) with"
+ },
+ {
+  "ism": "P447_khatwa_tuqsam_ala_musawi",
+  "milaf": "Faahis/Lib.lean",
+  "min": "      | \"a\" :: baqi@(_ :: _) => let (d, q) := qadiyyaMin d (\"=\".intercalate baqi); (d, q.map fun q => ks ++ [.asl q])",
+  "ila": "      | [\"a\", p] => let (d, q) := qadiyyaMin d p; (d, q.map fun q => ks ++ [.asl q])"
  }
 ]

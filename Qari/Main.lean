@@ -337,9 +337,15 @@ def main (args : List String) : IO UInt32 := do
   | ["--qiyas", path] => qiyas path
   | sijill :: makhzan :: nass =>
     if nass.isEmpty then IO.eprintln "لا نصّ"; return 2
-    let mut lines : Array String := #[]
-    for p in [sijill, makhzan] do lines := lines ++ (← IO.FS.lines p)
-    let h := (lines.toList.zipIdx 1).foldl (fun h (l, n) => qira h n l) {}
+    -- التحميل المحقَّق نفسُه الذي يستعمله الفاحص (Faahis/Lib.lean: `tahmil`، `muhaqqaq`): السجلّ سلطةٌ وحده،
+    -- وخطأُ التحميل يُطبع باسمه ولا يُقرأ النصّ على قاعدةٍ جزئيّة.
+    let h := tahmil (← IO.FS.lines sijill).toList (← IO.FS.lines makhzan).toList
+    let h ← match muhaqqaq h with
+      | .ok h => pure h
+      | .error e =>
+        for x in e do IO.println s!"خطأ تحميل\t{x}"
+        IO.println s!"لا قراءة: التحميل لم يتحقّق ({e.size} خطأ)."
+        return 1
     let some isdar := h.isdar | IO.eprintln "لا إصدار للقاعدة"; return 1
     let b := bina h isdar
     let words := ((" ".intercalate nass).splitOn " " |>.filter (· != "")).toArray

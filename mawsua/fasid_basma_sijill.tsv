@@ -1,0 +1,5 @@
+mudaa		وضع	بصمة-فارغة
+mudaa	abc	وضع	بصمة-قصيرة
+mudaa	aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa	وضع	ناقصة-حرفًا
+mudaa	bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb	وضع	زائدة-حرفًا
+mudaa	cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc	وضع	سليمة
