@@ -2884,5 +2884,125 @@
   "milaf": "Jisr/QawaidSitta.lean",
   "min": "  | .matlub h c => nom && hs.contains h && c == w.khalaya",
   "ila": "  | .matlub _ c => nom && c == w.khalaya"
+ },
+ {
+  "ism": "P414_adad_bila_izaha",
+  "milaf": "Dal/Adad.lean",
+  "min": "  | d :: l => d + 1 + 116 * adadR l",
+  "ila": "  | d :: l => d + 116 * adadR l"
+ },
+ {
+  "ism": "P415_fakk_bila_izaha",
+  "milaf": "Dal/Adad.lean",
+  "min": "  | f + 1, n => if n = 0 then [] else (n - 1) % 116 :: fakkR f ((n - 1) / 116)",
+  "ila": "  | f + 1, n => if n = 0 then [] else n % 116 :: fakkR f (n / 116)"
+ },
+ {
+  "ism": "P416_usul_sahib",
+  "milaf": "Nizam/QawaidB.lean",
+  "min": "  1 ||| (if a.testBit 1 then 2 else 0) ||| (if a.testBit 0 && a.testBit (h + 2) then 4 else 0)",
+  "ila": "  9 ||| (if a.testBit 1 then 2 else 0) ||| (if a.testBit 0 && a.testBit (h + 2) then 4 else 0)"
+ },
+ {
+  "ism": "P417_ramz_bila_majal",
+  "milaf": "Nizam/QawaidB.lean",
+  "min": "def ramz (c : List Nat) : Option Nat := if c.all (· < 116) then some (Adad.adad c) else none",
+  "ila": "def ramz (c : List Nat) : Option Nat := some (Adad.adad c)"
+ },
+ {
+  "ism": "P418_alamat_bila_idafa",
+  "milaf": "Nizam/QawaidB.lean",
+  "min": "  qinaHalat hs ||| (if mudaf then 2 else 0) ||| (if nom then 1 else 0)",
+  "ila": "  qinaHalat hs ||| (if nom then 1 else 0)"
+ },
+ {
+  "ism": "P419_naqs_bila_tafriq",
+  "milaf": "Nizam/QawaidB.lean",
+  "min": "def naqsB (a : Nat) (q : QanunB) : Nat := q.talab ^^^ (q.talab &&& usulB a q.hala)",
+  "ila": "def naqsB (a : Nat) (q : QanunB) : Nat := q.talab &&& usulB a q.hala"
+ },
+ {
+  "ism": "P420_waqf_bila_layuqra",
+  "milaf": "Nizam/QawaidB.lean",
+  "min": "  qawaninB.any fun q => yuntijB k a q && q.talab &&& qinaLaYuqra != 0 && (naqsB a q ||| qinaLaYuqra) == qinaLaYuqra",
+  "ila": "  qawaninB.any fun q => yuntijB k a q && (naqsB a q ||| qinaLaYuqra) == qinaLaYuqra"
+ },
+ {
+  "ism": "P421_qiraaB_bila_waqf",
+  "milaf": "Nizam/QawaidB.lean",
+  "min": "  else if kullMawdi u (fun n hs w m => laIrabBilHarf n hs w m || rukhsaB (ramz w.khalaya) (alamat n hs m) ||\n      mawqufB (ramz w.khalaya) (alamat n hs m)) then .laHukm",
+  "ila": "  else if kullMawdi u (fun n hs w m => laIrabBilHarf n hs w m || rukhsaB (ramz w.khalaya) (alamat n hs m)) then .laHukm"
+ },
+ {
+  "ism": "P422_qiyam_raqm",
+  "milaf": "Nizam/QawaidB.lean",
+  "min": "    [⟨25868, 1, 7⟩, ⟨25648, 0, 7⟩",
+  "ila": "    [⟨25869, 1, 7⟩, ⟨25648, 0, 7⟩"
+ },
+ {
+  "ism": "P423_bit_matlub_sahib",
+  "milaf": "Nizam/QawaidB.lean",
+  "min": "| .matlub _ _ => 4 |",
+  "ila": "| .matlub _ _ => 8 |"
+ },
+ {
+  "ism": "P424_yuntij_bila_hala",
+  "milaf": "Nizam/QawaidB.lean",
+  "min": "def yuntijB (k : Option Nat) (a : Nat) (q : QanunB) : Bool := k == some q.ramz && a.testBit (q.hala + 2)",
+  "ila": "def yuntijB (k : Option Nat) (a : Nat) (q : QanunB) : Bool := k == some q.ramz"
+ },
+ {
+  "ism": "P425_kataba_khalaya",
+  "milaf": "Dal/Adad.lean",
+  "min": "adad [32, 72, 104] = 452621 ∧ adad [32] = 33 ∧ adad [72, 104] = 8573 ∧ 116 ^ 2 * 33 + 8573 = 452621",
+  "ila": "adad [33, 72, 104] = 466077 ∧ adad [33] = 34 ∧ adad [72, 104] = 8573 ∧ 116 ^ 2 * 34 + 8573 = 466077"
+ },
+ {
+  "ism": "P426_adna_bila_tasghir",
+  "milaf": "Nizam/Baqi.lean",
+  "min": "def adna (l : List Nat) : List Nat := l.filter fun x => !l.any fun y => dimn y x && y != x",
+  "ila": "def adna (l : List Nat) : List Nat := l"
+ },
+ {
+  "ism": "P427_wa_bila_ittihad",
+  "milaf": "Nizam/Baqi.lean",
+  "min": "  | .wa a b => adna ((baqi K D a).flatMap fun x => (baqi K D b).map fun y => x ||| y)",
+  "ila": "  | .wa a b => adna ((baqi K D a).flatMap fun x => (baqi K D b).map fun y => x &&& y)"
+ },
+ {
+  "ism": "P428_aw_bila_thani",
+  "milaf": "Nizam/Baqi.lean",
+  "min": "  | .aw a b => adna (baqi K D a ++ baqi K D b)",
+  "ila": "  | .aw a b => adna (baqi K D a)"
+ },
+ {
+  "ism": "P429_dharra_bila_nafy",
+  "milaf": "Nizam/Baqi.lean",
+  "min": "  | .dharra i => if K.testBit i then [0] else if D.testBit i then [] else [1 <<< i]",
+  "ila": "  | .dharra i => if K.testBit i then [0] else [1 <<< i]"
+ },
+ {
+  "ism": "P430_k3_aw_ka_wa",
+  "milaf": "Nizam/Baqi.lean",
+  "min": "  | .aw a b => K3.aw (k3 K D a) (k3 K D b)",
+  "ila": "  | .aw a b => K3.wa (k3 K D a) (k3 K D b)"
+ },
+ {
+  "ism": "P431_natija_bila_taarud",
+  "milaf": "Nizam/Baqi.lean",
+  "min": "  if K &&& D &&& qinaMin 0 (dharrat f) = 0 then .hukm (hukmBaqi K D f) else .taarud (K &&& D &&& qinaMin 0 (dharrat f))",
+  "ila": "  .hukm (hukmBaqi K D f)"
+ },
+ {
+  "ism": "P432_talab_bila_sahib",
+  "milaf": "Nizam/Baqi.lean",
+  "min": "  [0, 1, 2, 3].foldr (fun i f => if t.testBit i then .wa (.dharra i) f else f) .sadiq",
+  "ila": "  [0, 1, 2].foldr (fun i f => if t.testBit i then .wa (.dharra i) f else f) .sadiq"
+ },
+ {
+  "ism": "P433_natija_kull_dharrat",
+  "milaf": "Nizam/Baqi.lean",
+  "min": "  if K &&& D &&& qinaMin 0 (dharrat f) = 0 then .hukm (hukmBaqi K D f) else .taarud (K &&& D &&& qinaMin 0 (dharrat f))",
+  "ila": "  if K &&& D = 0 then .hukm (hukmBaqi K D f) else .taarud (K &&& D)"
  }
 ]
