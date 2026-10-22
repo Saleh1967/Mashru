@@ -78,6 +78,7 @@ import Nizam.QawaidB
 import Nizam.Baqi
 import Aql.Waqi
 import Aql.WaqiShawahid
+import Nizam.Qiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1707,3 +1708,20 @@ import Aql.WaqiShawahid
 #print axioms Waqi.Shawahid.jisr_haqiqi
 #print axioms Waqi.Shawahid.hukm_ala_kull_sijill
 #print axioms Waqi.Shawahid.ihsa_ala_kull_sijill
+-- عقدُ القياس (Nizam/Qiyas.lean؛ hawkama/معايير_القياس.md؛ قول المالك 2026-10-22 16:10)
+#print axioms Nizam.Qiyas.diqqa_none_iff
+#print axioms Nizam.Qiyas.adad_imtina_sahih
+#print axioms Nizam.Qiyas.adad_imtina_khata
+#print axioms Nizam.Qiyas.kull_imtina_la_diqqa
+#print axioms Nizam.Qiyas.adad_append
+#print axioms Nizam.Qiyas.imtina_la_yughayyir_diqqa
+#print axioms Nizam.Qiyas.imtina_taghtiya_sifr
+#print axioms Nizam.Qiyas.khata_dun_imtina
+#print axioms Nizam.Qiyas.imtina_dun_sahih
+#print axioms Nizam.Qiyas.majmu_eq
+#print axioms Nizam.Qiyas.jawab_afdal_iff
+#print axioms Nizam.Qiyas.majmuBunud_eq
+#print axioms Nizam.Qiyas.jawab_afdal_bunud
+#print axioms Nizam.Qiyas.tahwil_khata_imtina
+#print axioms Nizam.Qiyas.khata_la_yarfa
+#print axioms Nizam.Qiyas.shahid_diqqa_taghtiya
