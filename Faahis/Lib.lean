@@ -10,8 +10,10 @@
     مخرجه الثلاث (`Maratib.mukhraj`): القضيّة «من حيث هي»، ومعانيها «معلومة» أو «مفهوم» بشواهد واقعٍ في مودَع
     «واقع مختوم» وحده (`Maratib.shuhudMutabara`).
 
-  صيغة الملفّ (TAB بين الحقول):
-    mudaa   <sha256>  <النوع: واقع-مختوم|وضع|معلومات-سابقة|مرجع-محجوب>  <الاسم>
+  الملفّان (TAB بين الحقول؛ والسطر الفارغ والسطر أوّلُه «#» يُتجاوزان):
+  * سجلُّ المودَعات (الملفّ الأوّل) لا يحمل إلّا أسطر `mudaa`؛ وهو السلطة وحده (`tahmil`، `tahmil_mudaat`).
+  * المحتوى (بقيّة الملفّات) يحمل ما سوى `mudaa`؛ وسطرُ `mudaa` فيه خطأٌ باسمه (`muhtawa_la_yudif_mudaa`).
+    mudaa   <sha256>  <النوع: واقع-مختوم|وضع|معلومات-سابقة|مرجع-محجوب>  <الاسم>      (في السجلّ وحده)
     isdar   <الإصدار>
     qanun   <الاسم>  <مقدّمة|مقدّمة…>  <النتيجة>  <الوسم>
     asl     <القضيّة>  <الوسم>  <السند>  [<الطريقة: عقلي|علمي>]
@@ -19,7 +21,7 @@
     shahid  <المعنى>  <بصمة>@<موضع>
   القضيّة: نوع:أ:ب حيث النوع أحد: wad juz kharij luzum mutabaqa tadammun iltizam fi taht.
   الخطوة: a=<قضيّة> أو q=<رقم القانون>. السند: <أوّل 12 من البصمة>@<الموضع>…
-  التشغيل: faahis <ملفّ>…   |   faahis --sual <بادئة القضيّة> <ملفّ>…
+  التشغيل: faahis <سجلّ> <محتوى>…   |   faahis --sual <بادئة القضيّة> <سجلّ> <محتوى>…
 -/
 import Std.Data.HashMap
 import Aql.Qaida
@@ -109,8 +111,10 @@ def khatawatMin (d : Dhurrat) (s : String) : Dhurrat × Option (List (Khatwa Qad
     match acc with
     | none => (d, none)
     | some ks =>
+      -- «a=» رأسٌ والباقي قضيّةٌ قد يحمل معناها «=» (شطرا بيتٍ في شرح المعجم: سطرا makhzan_kamil 138997 و139031،
+      -- كانا خطأَي «سلسلة لا تُقرأ» يُسقطهما القارئ بصمت حتّى صار التحميلُ محقَّقًا)
       match t.splitOn "=" with
-      | ["a", p] => let (d, q) := qadiyyaMin d p; (d, q.map fun q => ks ++ [.asl q])
+      | "a" :: baqi@(_ :: _) => let (d, q) := qadiyyaMin d ("=".intercalate baqi); (d, q.map fun q => ks ++ [.asl q])
       | ["q", i] => (d, i.toNat?.map fun i => ks ++ [.qanun i])
       | _ => (d, none)) (d, some [])
 
@@ -177,6 +181,152 @@ def qira (h0 : Hal) (n : Nat) (line : String) : Hal :=
       | none => ⟨dh, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta.push s!"سطر {n}: موضع الشاهد ليس رقمًا"⟩
     | _ => ⟨dh, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta.push s!"سطر {n}: شاهد لا يُقرأ"⟩
   | _ => ⟨dh, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta.push s!"سطر {n}: سجلّ لا يُعرف"⟩
+
+/-! ## التحميل المحقَّق: السلطة من سجلّ المودَعات وحده (خطّة الإطلاق التجريبي، الحزمة P1-أ)
+
+  كان الفاحص والقارئ يصلان أسطر الملفّات كلّها في سيلٍ واحد، فيقبلان سطر `mudaa` من أيّ ملفّ: محتوًى يُفحص كان يستطيع
+  أن يسجّل لنفسه مودَعًا «واقعًا مختومًا» ببصمةٍ مصطنعة، ثمّ يستشهد به فيرفع معنًى إلى «مفهوم» (أُعيدت التجربة على
+  1bff783؛ مثالُه `mawsua/fasid_haqn.tsv`). فصار للسطر مصدر: السجلُّ لا يحمل إلّا `mudaa` (`sijill_la_muhtawa`)، والمحتوى لا يحمل
+  `mudaa` (`tahmil_mudaat`). وخطأُ التحميل يُسلَّم إلى الواجهات باسمه (`muhaqqaq`) فلا تجيب على قاعدةٍ جزئيّة بصمت.
+  وما لا يسدّه هذا القسم: شاهدُ `shahid` بموضعٍ في مودَعٍ مسجَّلٍ حقًّا يُقبل بلا فحصٍ لوجود الموضع ولا لقضيّته، فيرفع معنًى إلى
+  «مفهوم» من المحتوى (P2-أ)؛ والسجلّ هو الملفّ الذي يمرّره المستدعي أوّلًا، لا يُفحص أنّه `mudaat/sijill.tsv` المختوم (P1-ج). -/
+
+/-- مصدرُ السطر: سجلُّ المودَعات (السلطة)، أو المحتوى الذي يُفحص. -/
+inductive Masdar | sijill | muhtawa
+deriving DecidableEq, Repr
+
+/-- رأسُ السطر: حقلُه الأوّل قبل أوّل TAB. -/
+def raas (line : String) : String := (line.splitOn "\t").headD ""
+
+/-- سطرٌ يُتجاوز: فارغٌ، أو تعليقٌ أوّلُه «#». -/
+def mutajawaz (line : String) : Bool := line.isEmpty || line.startsWith "#"
+
+/-- قراءةُ سطرٍ بحسب مصدره: السجلُّ لا يحمل إلّا `mudaa`، والمحتوى لا يحمل `mudaa`؛ وما سوى ذلك `qira` نفسُها. -/
+def qiraMin (m : Masdar) (h : Hal) (n : Nat) (line : String) : Hal :=
+  if mutajawaz line then h
+  else match m with
+    | .sijill =>
+      if raas line == "mudaa" then qira h n line
+      else khata h n "السجلّ لا يحمل إلّا مودَعات (mudaa)"
+    | .muhtawa =>
+      if raas line == "mudaa" then khata h n "المحتوى لا يسجّل مودَعًا: السلطة في سجلّ المودَعات وحده"
+      else qira h n line
+
+/-- **لا يزيد `qira` المودَعاتِ إلّا من سطر `mudaa`**: سطرٌ رأسُه غيرُه يترك المودَعات كما هي. -/
+theorem qira_mudaat (h : Hal) (n : Nat) (line : String) (hr : raas line ≠ "mudaa") :
+    (qira h n line).mudaat = h.mudaat := by
+  obtain ⟨dh, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta⟩ := h
+  unfold raas at hr
+  unfold qira
+  by_cases he : line.isEmpty = true
+  · simp only [he, ite_true]
+  · simp only [he, Bool.false_eq_true, ite_false]
+    generalize line.splitOn "\t" = parts at hr ⊢
+    split
+    · simp at hr
+    all_goals (repeat' split) <;> rfl
+
+theorem khata_mudaat (h : Hal) (n : Nat) (s : String) : (khata h n s).mudaat = h.mudaat := by
+  cases h; rfl
+
+/-- **سطرُ المحتوى لا يسجّل مودَعًا**، أيًّا كان. -/
+theorem muhtawa_la_yudif_mudaa (h : Hal) (n : Nat) (line : String) :
+    (qiraMin .muhtawa h n line).mudaat = h.mudaat := by
+  unfold qiraMin
+  by_cases hm : mutajawaz line = true
+  · simp only [hm, ite_true]
+  · simp only [hm, Bool.false_eq_true, ite_false]
+    by_cases hr : raas line = "mudaa"
+    · simp only [hr, beq_self_eq_true, ite_true, khata_mudaat]
+    · have : (raas line == "mudaa") = false := by simpa using hr
+      simp only [this, Bool.false_eq_true, ite_false]
+      exact qira_mudaat h n line hr
+
+/-- ما يحمله المحتوى من الحال: الإصدار والقوانين والأصول والادّعاءات والشواهد (لا المودَعات ولا الأخطاء ولا جدول المعرّفات). -/
+def Hal.muhtawa (h : Hal) :
+    Option String × Array (Qanun Qadiyya × Wasm) × Array Asl ×
+      Array (Nat × Qadiyya × Wasm × List (Khatwa Qadiyya) × String) × Array (Nat × ShahidWaqi) :=
+  (h.isdar, h.qawanin, h.usul, h.iddiaat, h.shawahid)
+
+/-- **سطرُ `mudaa` لا يحمل محتوى**: `qira` عليه لا تغيّر إصدارًا ولا قانونًا ولا أصلًا ولا ادّعاءً ولا شاهدًا. -/
+theorem qira_mudaa_muhtawa (h : Hal) (n : Nat) (line : String) (hr : raas line = "mudaa") :
+    (qira h n line).muhtawa = h.muhtawa := by
+  obtain ⟨dh, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta⟩ := h
+  unfold raas at hr
+  unfold qira
+  by_cases he : line.isEmpty = true
+  · simp only [he, ite_true]
+  · simp only [he, Bool.false_eq_true, ite_false]
+    generalize line.splitOn "\t" = parts at hr ⊢
+    split <;> (try simp at hr) <;> (repeat' split) <;> rfl
+
+/-- **سطرُ السجلّ لا يحمل محتوى**، أيًّا كان. -/
+theorem sijill_la_yahmil_muhtawa (h : Hal) (n : Nat) (line : String) :
+    (qiraMin .sijill h n line).muhtawa = h.muhtawa := by
+  unfold qiraMin
+  by_cases hm : mutajawaz line = true
+  · simp only [hm, ite_true]
+  · simp only [hm, Bool.false_eq_true, ite_false]
+    by_cases hr : raas line = "mudaa"
+    · simp only [hr, beq_self_eq_true, ite_true]
+      exact qira_mudaa_muhtawa h n line hr
+    · have : (raas line == "mudaa") = false := by simpa using hr
+      simp only [this, Bool.false_eq_true, ite_false]
+      cases h; rfl
+
+/-- التحميلُ من مصدرٍ واحد، بترقيم أسطره من 1. -/
+def tahmilMin (m : Masdar) (h : Hal) (lines : List String) : Hal :=
+  (lines.zipIdx 1).foldl (fun h (l, n) => qiraMin m h n l) h
+
+/-- **المحتوى كلُّه لا يسجّل مودَعًا**: أيًّا كانت أسطره، تبقى مودَعات الحال كما كانت قبله. -/
+theorem tahmil_muhtawa_mudaat (h : Hal) (lines : List String) :
+    (tahmilMin .muhtawa h lines).mudaat = h.mudaat := by
+  unfold tahmilMin
+  generalize lines.zipIdx 1 = ps
+  induction ps generalizing h with
+  | nil => rfl
+  | cons p ps ih => simp only [List.foldl_cons]; rw [ih, muhtawa_la_yudif_mudaa]
+
+/-- **السجلُّ كلُّه لا يحمل محتوى**: أيًّا كانت أسطره، يبقى محتوى الحال كما كان قبله. -/
+theorem tahmil_sijill_muhtawa (h : Hal) (lines : List String) :
+    (tahmilMin .sijill h lines).muhtawa = h.muhtawa := by
+  unfold tahmilMin
+  generalize lines.zipIdx 1 = ps
+  induction ps generalizing h with
+  | nil => rfl
+  | cons p ps ih => simp only [List.foldl_cons]; rw [ih, sijill_la_yahmil_muhtawa]
+
+/-- **السجلُّ لا يحمل إلّا `mudaa`**: تحميلُه وحده لا يُدخل إصدارًا ولا قانونًا ولا أصلًا ولا ادّعاءً ولا شاهدًا. -/
+theorem sijill_la_muhtawa (lines : List String) :
+    (tahmilMin .sijill {} lines).muhtawa = (none, #[], #[], #[], #[]) := by
+  rw [tahmil_sijill_muhtawa]; rfl
+
+/-- التحميل: السجلُّ أوّلًا (وأخطاؤه تُسمّى «السجلّ»)، ثمّ المحتوى؛ ولكلٍّ ترقيمُه. -/
+def tahmil (sijill muhtawa : List String) : Hal :=
+  let h0 := tahmilMin .sijill {} sijill
+  tahmilMin .muhtawa { h0 with akhta := h0.akhta.map ("السجلّ، " ++ ·) } muhtawa
+
+/-- **المودَعاتُ مودَعاتُ السجلّ وحده**: لا يغيّرها المحتوى أيًّا كان. -/
+theorem tahmil_mudaat (sijill muhtawa : List String) :
+    (tahmil sijill muhtawa).mudaat = (tahmilMin .sijill {} sijill).mudaat := by
+  unfold tahmil
+  rw [tahmil_muhtawa_mudaat]
+
+/-- **بلا سجلّ لا مودَع**، أيًّا كان المحتوى. ومنه، استنتاجًا لا مبرهنةً على `bina`: لا أصلَ يُقبل (`Idaa.sijill_faregh`)،
+    ولا شاهدَ يرفع معنًى إلى «مفهوم» (`Maratib.la_mafhum_bila_waqi`). -/
+theorem bila_sijill_la_mudaa (muhtawa : List String) : (tahmil [] muhtawa).mudaat = #[] := by
+  rw [tahmil_mudaat]; rfl
+
+/-- ما يُسلَّم إلى الواجهات: الحالُ إن خلت من أخطاء التحميل، وإلّا الأخطاءُ بأسمائها — وخطأُ التحميل غيرُ «لا حكم». -/
+def muhaqqaq (h : Hal) : Except (Array String) Hal :=
+  if h.akhta.isEmpty then .ok h else .error h.akhta
+
+/-- لا تُسلَّم حالٌ فيها خطأ تحميل. -/
+theorem muhaqqaq_salim (h h' : Hal) (hk : muhaqqaq h = .ok h') : h' = h ∧ h.akhta = #[] := by
+  unfold muhaqqaq at hk
+  split at hk
+  · rename_i he; cases hk; exact ⟨rfl, Array.isEmpty_iff.mp he⟩
+  · cases hk
 
 /-! ## البناء -/
 

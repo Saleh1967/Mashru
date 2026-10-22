@@ -1509,6 +1509,18 @@ import Aql.WaqiShawahid
 #print axioms nawSanad_aslMusajjal
 #print axioms nawSanad_sanad
 #print axioms nawSanad_sanad_farigh
+-- التحميل المحقَّق: السلطة من سجلّ المودَعات وحده، وخطأ التحميل يُسلَّم باسمه (Faahis/Lib.lean؛ خطّة الإطلاق P1-أ)
+#print axioms qira_mudaat
+#print axioms khata_mudaat
+#print axioms muhtawa_la_yudif_mudaa
+#print axioms tahmil_muhtawa_mudaat
+#print axioms tahmil_mudaat
+#print axioms bila_sijill_la_mudaa
+#print axioms muhaqqaq_salim
+#print axioms qira_mudaa_muhtawa
+#print axioms sijill_la_yahmil_muhtawa
+#print axioms tahmil_sijill_muhtawa
+#print axioms sijill_la_muhtawa
 -- جبرُ الدمج المبرهن (مرحلة الدمج الأولى، سمّاها عرضُ الدمج «م1» وليست م1 البروتوكول؛ Nizam/Damj.lean؛ إذن المالك 2026-10-19 16:16)
 #print axioms Nizam.Damj.bahth_mawjud
 #print axioms Nizam.Damj.bahth_ghaib
