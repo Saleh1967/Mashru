@@ -3088,5 +3088,29 @@
   "milaf": "Faahis/Lib.lean",
   "min": "      | \"a\" :: baqi@(_ :: _) => let (d, q) := qadiyyaMin d (\"=\".intercalate baqi); (d, q.map fun q => ks ++ [.asl q])",
   "ila": "      | [\"a\", p] => let (d, q) := qadiyyaMin d p; (d, q.map fun q => ks ++ [.asl q])"
+ },
+ {
+  "ism": "P448_diqqa_bila_mahsum",
+  "milaf": "Nizam/Qiyas.lean",
+  "min": "  if adad .sahih xs + adad .khata xs = 0 then none else some (adad .sahih xs, adad .sahih xs + adad .khata xs)",
+  "ila": "  some (adad .sahih xs, adad .sahih xs + adad .khata xs)"
+ },
+ {
+  "ism": "P449_khata_bila_khasm",
+  "milaf": "Nizam/Qiyas.lean",
+  "min": "  | .khata => -a",
+  "ila": "  | .khata => 0"
+ },
+ {
+  "ism": "P450_taghtiya_tadummu_imtina",
+  "milaf": "Nizam/Qiyas.lean",
+  "min": "def mahsum (b : Band) : Bool := b.natija == .sahih || b.natija == .khata",
+  "ila": "def mahsum (b : Band) : Bool := b.natija == .sahih || b.natija == .khata || b.natija == .imtina"
+ },
+ {
+  "ism": "P451_majmu_bila_khata",
+  "milaf": "Nizam/Qiyas.lean",
+  "min": "def majmu (a b c d : Int) : Int := c * (b - a) + (d - c) * (-a)",
+  "ila": "def majmu (a b c d : Int) : Int := c * (b - a) + (d - c) * 0"
  }
 ]
