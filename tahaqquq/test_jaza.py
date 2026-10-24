@@ -3,15 +3,18 @@
 يفحص، بلا مودَع:
 ١. التجميد: بصماتُ wasf.md وcases.json وfahs_cases.py وtaalif.md هي المسجَّلة في tajmid.json.
 ٢. المولَّد: Jisr/BabJazaDawabit.lean مخرجُ scripts/bina_dawabit_jaza.py على cases.json بايتًا.
-٣. النتيجة: آخرُ natija_N.json لبصمة Jisr/BabJaza.lean الحاليّة ولبصمة الحالات المجمَّدة. وأعدادُه هي أعدادُ مبرهنته
-   في Jisr/BabJazaQiyas.lean. وكلُّ نتيجةٍ قبله باقيةٌ، وأرقامُها متتالية.
-٤. المجال: أعدادُ الحالات والحقول المسؤولة والمتوقَّعات محسوبةٌ من cases.json هنا، لا من Lean. وهي أعدادُ `majal_1`.
-ويفحص، إن حضر المودَع (MUDAA_DIR/sibawayhi.txt ببصمته):
-٥. الأسانيد: كلُّ قطعةٍ في `asanid` (Jisr/BabJaza.lean) وكلُّ `sanad.nass` في الحالات حرفيّةٌ في أسطرها، على النصّ موصولَ
-   الأسطر بحذف البادئة («~~» أو «# ») وعلامات الصفحات (PageV..P..) والمخطوط (ms..).
+٣. السجلّات: natija_1.json … natija_N.json متتالية، كلٌّ للحالات المجمَّدة، وكلٌّ من الثاني يحمل بصمةَ ما قبله (فلا يُعدَّل سجلٌّ
+   قديم). وآخرُها لبصمة Jisr/BabJaza.lean الحاليّة، وأعدادُه (ihsa، halat، huqul_masula، bil_fia، akhta) هي أعدادُ مبرهنات
+   Jisr/BabJazaQiyas.lean (natija، majal، natija_fia، akhta_sifr).
+٤. المجال: أعدادُ الحالات والحقول المسؤولة والمتوقَّعات محسوبةٌ من cases.json هنا، لا من Lean، وهي أعدادُ `majal`. فحصٌ مكرَّر:
+   ما يغيّره يُسقطه ١ أو ٢ أو البناءُ قبله، فلا طفرةَ تخصّه.
+ويفحص، إن حضر المودَع (MUDAA_DIR/sibawayhi.txt ببصمته)، ولا طفرةَ له لأنّ CI بلا مودَع:
+٥. الأسانيد: كلُّ قطعةٍ في `asanid` (Jisr/BabJaza.lean) في أسطرها، على النصّ موصولَ الأسطر بحذف البادئة («~~» أو «# ») وعلامات
+   الصفحات (PageV..P..) والمخطوط (ms..) وتوحيد البياض؛ وكلُّ `sanad.nass` في الحالات في سطره بحذف البادئة وحدها، كما تشترط
+   المواصفة؛ ثمّ فاحصُ المؤلّف نفسُه (fahs_cases.py) يخرج 0.
 
-الطفرات: P492 (بصمة الحالات في tajmid.json)، P493 (بصمة الشفرة في natija_1.json)، P494 (حالةٌ في المولَّد)،
-P495 (عدُّ الصواب في natija_1.json).
+الطفرات: P492 (بصمة الحالات في tajmid.json)، P493 (بصمة الشفرة في آخر سجلّ)، P494 (حالةٌ في المولَّد)،
+P495 (عدُّ الصواب في آخر سجلّ)، P497 (بصمةُ ما قبله في natija_2.json).
 التشغيل: python3 -I tahaqquq/test_jaza.py
 """
 import hashlib
@@ -56,25 +59,35 @@ r = subprocess.run([sys.executable, "-I", str(JADHR / "scripts" / "bina_dawabit_
                    capture_output=True, text=True)
 tahaqqaq(r.returncode == 0, "Jisr/BabJazaDawabit.lean ليس مخرجَ المولِّد: " + r.stdout.strip())
 
-# ٣. النتيجة
+# ٣. السجلّات
 natayij = sorted(D.glob("natija_*.json"), key=lambda p: int(re.search(r"natija_(\d+)\.json$", p.name).group(1)))
 arqam = [int(re.search(r"natija_(\d+)\.json$", p.name).group(1)) for p in natayij]
-tahaqqaq(arqam == list(range(1, len(arqam) + 1)) and arqam, f"أرقامُ النتائج غيرُ متتالية من 1: {arqam}")
+tahaqqaq(bool(arqam) and arqam == list(range(1, len(arqam) + 1)), f"أرقامُ السجلّات غيرُ متتالية من 1: {arqam}")
 qiyas = QIYAS.read_text(encoding="utf-8")
-for p in natayij:
+for k, p in enumerate(natayij):
     n = json.loads(p.read_text(encoding="utf-8"))
+    tahaqqaq(n["tashghil"] == k + 1, f"{p.name}: رقمُ التشغيل فيه {n['tashghil']}")
     tahaqqaq(n["cases_sha256"] == tajmid["cases_sha256"], f"{p.name}: لغير الحالات المجمَّدة")
-    m = re.search(r"theorem natija_%d : ihsa natayij = ⟨(\d+), (\d+), (\d+), (\d+), (\d+), (\d+)⟩" % n["tashghil"], qiyas)
-    tahaqqaq(m is not None, f"{p.name}: لا مبرهنةَ natija_{n['tashghil']} في Jisr/BabJazaQiyas.lean")
-    if m:
-        ihsa = n["ihsa"]
-        lean = [int(x) for x in m.groups()]
-        json_ = [ihsa[k] for k in ("sawab", "naqsTaghtiya", "tajawuz", "qabulKhati", "raddKhati", "ikhtilafDaraja")]
-        tahaqqaq(lean == json_, f"{p.name}: أعدادُه {json_} غيرُ أعداد مبرهنته {lean}")
-if natayij:
-    akhir = json.loads(natayij[-1].read_text(encoding="utf-8"))
+    if k > 0:
+        qabl = natayij[k - 1]
+        tahaqqaq(n.get("qablaha", {}).get(qabl.name) == sha(qabl), f"{p.name} لا يحمل بصمةَ {qabl.name}: سجلٌّ قديمٌ تغيّر")
+akhir = json.loads(natayij[-1].read_text(encoding="utf-8")) if natayij else None
+if akhir:
     tahaqqaq(akhir["shifra"]["sha256"] == sha(SHIFRA),
              f"{natayij[-1].name} لغير الشفرة الحاليّة: Jisr/BabJaza.lean تغيّر بعد آخر تشغيل")
+    m = re.search(r"theorem natija : ihsa natayij = ⟨(\d+), (\d+), (\d+), (\d+), (\d+), (\d+)⟩", qiyas)
+    tahaqqaq(m is not None, "لا مبرهنةَ natija بصيغتها في Jisr/BabJazaQiyas.lean")
+    if m:
+        ihsa = akhir["ihsa"]
+        json_ = [ihsa[k] for k in ("sawab", "naqsTaghtiya", "tajawuz", "qabulKhati", "raddKhati", "ikhtilafDaraja")]
+        tahaqqaq([int(x) for x in m.groups()] == json_, f"{natayij[-1].name}: ihsa {json_} غيرُ مبرهنة natija")
+    m = re.search(r"theorem natija_fia :.*?=\s*\[⟨(\d+), 0, 0, 0, 0, 0⟩, ⟨(\d+), 0, 0, 0, 0, 0⟩, ⟨(\d+), 0, 0, 0, 0, 0⟩, ⟨(\d+), 0, 0, 0, 0, 0⟩\]",
+                  qiyas, re.S)
+    bf = akhir["bil_fia"]
+    tahaqqaq(m is not None and [int(x) for x in m.groups()] == [bf["موجب"], bf["حد"], bf["خارج"], bf["عموم"]],
+             f"{natayij[-1].name}: bil_fia غيرُ مبرهنة natija_fia")
+    tahaqqaq(akhir["akhta"] == [] and "theorem akhta_sifr : akhta = []" in qiyas,
+             f"{natayij[-1].name}: akhta غيرُ مبرهنة akhta_sifr")
 
 # ٤. المجال من cases.json وحده
 halat = json.loads((D / "cases.json").read_text(encoding="utf-8"))
@@ -83,13 +96,16 @@ shir = [h["kharij"]["shir"] for h in halat]
 masul = len(halat) + sum(1 for x in shir if x != "غير_مسؤول")
 adad_kalam = [kalam.count(x) for x in ("مقبول", "قبيح", "خطأ", "لا_حكم")]
 adad_shir = [shir.count(x) for x in ("مقبول", "قبيح", "خطأ", "لا_حكم", "غير_مسؤول")]
-m = re.search(r"halat\.length = (\d+) ∧ natayij\.length = (\d+) ∧.*?= \[(\d+), (\d+), (\d+), (\d+)\] ∧.*?= \[(\d+), (\d+), (\d+), (\d+), (\d+)\]",
+m = re.search(r"theorem majal :\s*halat\.length = (\d+) ∧ natayij\.length = (\d+) ∧.*?= \[(\d+), (\d+), (\d+), (\d+)\] ∧.*?= \[(\d+), (\d+), (\d+), (\d+), (\d+)\]",
               qiyas, re.S)
-tahaqqaq(m is not None, "لا مبرهنةَ majal_1 بصيغتها في Jisr/BabJazaQiyas.lean")
+tahaqqaq(m is not None, "لا مبرهنةَ majal بصيغتها في Jisr/BabJazaQiyas.lean")
 if m:
     g = [int(x) for x in m.groups()]
     tahaqqaq(g[0] == len(halat) and g[1] == masul and g[2:6] == adad_kalam and g[6:] == adad_shir,
-             f"majal_1 {g} غيرُ ما في cases.json {[len(halat), masul] + adad_kalam + adad_shir}")
+             f"majal {g} غيرُ ما في cases.json {[len(halat), masul] + adad_kalam + adad_shir}")
+if akhir:
+    tahaqqaq(akhir["halat"] == len(halat) and akhir["huqul_masula"] == masul,
+             f"{natayij[-1].name}: halat/huqul_masula غيرُ ما في cases.json")
 
 # ٥. الأسانيد على المودَع
 mdir = os.environ.get("MUDAA_DIR")
@@ -114,7 +130,11 @@ if hadir:
         tahaqqaq(nass in mawsul(a, b), f"سندُ {qaida} ليس في س{a}–{b}: «{nass}»")
     for h in halat:
         for s in h["sanad"]:
-            tahaqqaq(s["nass"] in nazzif(sutur[s["satr"] - 1]), f"سندُ {h['id']} ليس في س{s['satr']}")
+            satr = re.sub(r"^(~~|# )", "", sutur[s["satr"] - 1])
+            tahaqqaq(s["nass"] in satr, f"سندُ {h['id']} ليس في س{s['satr']} بحذف البادئة وحدها")
+    r = subprocess.run([sys.executable, "-I", str(D / "fahs_cases.py"), str(D / "cases.json"), str(kitab)],
+                       capture_output=True, text=True)
+    tahaqqaq(r.returncode == 0, "فاحصُ المؤلّف رفض الحالات: " + (r.stdout + r.stderr)[-400:])
     ziyada = f"؛ و{len(asanid)} سندًا للشفرة و{sum(len(h['sanad']) for h in halat)} للحالات في أسطرها"
 else:
     ziyada = "؛ الأسانيدُ لم تُفحص (المودَع غائب)"
@@ -124,4 +144,5 @@ if fashal:
     print(f"ضابط باب الجزاء: فشل {len(fashal)}")
     sys.exit(1)
 print(f"ضابط باب الجزاء: {najah}/{najah} — {len(halat)} حالةً و{masul} حقلًا مسؤولًا، "
-      f"وآخرُ نتيجةٍ natija_{arqam[-1]} لبصمة الشفرة الحاليّة{ziyada}")
+      f"و{len(arqam)} سجلًّا آخرُها natija_{arqam[-1]} لبصمة الشفرة الحاليّة{ziyada}، وفاحصُ المؤلّف 0" if hadir else
+      f"ضابط باب الجزاء: {najah}/{najah} — {len(halat)} حالةً و{masul} حقلًا مسؤولًا، و{len(arqam)} سجلًّا آخرُها natija_{arqam[-1]} لبصمة الشفرة الحاليّة{ziyada}")

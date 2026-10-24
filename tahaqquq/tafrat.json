@@ -3361,9 +3361,9 @@
  },
  {
   "ism": "P493_natija_basma_shifra",
-  "milaf": "tahaqquq/dawabit/jaza/natija_1.json",
-  "min": "\"sha256\": \"16af675d0a2e2050b0d0f4e434bb1f4bcdcff09682b684136185b519b5a4743d\"",
-  "ila": "\"sha256\": \"16af675d0a2e2050b0d0f4e434bb1f4bcdcff09682b684136185b519b5a4743e\""
+  "milaf": "tahaqquq/dawabit/jaza/natija_2.json",
+  "min": "\"sha256\": \"b3dd834f0b271786df630043b4c768559ab1ef65202c0885cdc59f98256ca64e\"",
+  "ila": "\"sha256\": \"b3dd834f0b271786df630043b4c768559ab1ef65202c0885cdc59f98256ca64f\""
  },
  {
   "ism": "P494_hala_mawlud_mughayyara",
@@ -3373,7 +3373,7 @@
  },
  {
   "ism": "P495_natija_sawab_naqis",
-  "milaf": "tahaqquq/dawabit/jaza/natija_1.json",
+  "milaf": "tahaqquq/dawabit/jaza/natija_2.json",
   "min": "\"sawab\": 55",
   "ila": "\"sawab\": 54"
  },
@@ -3382,5 +3382,11 @@
   "milaf": "Jisr/BabJazaQiyas.lean",
   "min": "  if mutawaqqa = bani then .sawab",
   "ila": "  if true then .sawab"
+ },
+ {
+  "ism": "P497_sijill_qadim_mughayyar",
+  "milaf": "tahaqquq/dawabit/jaza/natija_2.json",
+  "min": "\"natija_1.json\": \"4417cf9f9c1860d4173720d446e0ffd6acbc13ad3e9db023fec46d1b25f02fa1\"",
+  "ila": "\"natija_1.json\": \"4417cf9f9c1860d4173720d446e0ffd6acbc13ad3e9db023fec46d1b25f02fa0\""
  }
 ]

@@ -16,8 +16,11 @@
 **الوسم.** العدُّ «مبرهن على الشاهد» (`decide` على الحالات المجمَّدة). ومعناه موافقةُ الشفرة لقراءةٍ مستقلّةٍ للباب، لا تغطيةُ
 اللغة: الحالاتُ مؤلَّفة لا عيّنةٌ من استعمال.
 
-**التشغيلُ الأوّل** على الشفرة المجمَّدة في `b442a34` (بصمةُ `Jisr/BabJaza.lean` فيه
-`16af675d0a2e2050b0d0f4e434bb1f4bcdcff09682b684136185b519b5a4743d`)، وسجلُّه `tahaqquq/dawabit/jaza/natija_1.json`.
+**التشغيلات.** المبرهناتُ هنا على الشفرة الحاليّة دائمًا. وسجلُّ كلّ تشغيلٍ ملفٌّ في `tahaqquq/dawabit/jaza/` لا يُعدَّل:
+- `natija_1.json`: التشغيلُ الأوّل على الشفرة المجمَّدة في `b442a34` (بصمةُ `Jisr/BabJaza.lean` فيه
+  `16af675d0a2e2050b0d0f4e434bb1f4bcdcff09682b684136185b519b5a4743d`)، قبل أيّ تعديل: 55 صوابًا من 55.
+- `natija_2.json`: بعد إكمال الرأس والتعليقات بمراجعة `murajii`، بلا تغييرٍ في الأحكام، على مادّةٍ مكشوفة. ويحمل بصمةَ ما قبله.
+ويفحص `tahaqquq/test_jaza.py` أنّ آخرَها لبصمة الشفرة الحاليّة وأعدادُه أعدادُ هذه المبرهنات، وأنّ كلّ سجلٍّ يحمل بصمةَ ما قبله.
 -/
 import Jisr.BabJaza
 import Jisr.BabJazaDawabit
@@ -83,11 +86,11 @@ def ihsaFia (f : Fia) : Ihsa := ihsa (natayij.filter (fun x => x.2.1 == f))
 def akhta : List (String × Haql × Natija) :=
   (natayij.filter (fun x => x.2.2.2 != .sawab)).map (fun x => (x.1, x.2.2.1, x.2.2.2))
 
-/-! ## التشغيلُ الأوّل (على الشاهد) -/
+/-! ## النتيجةُ على الشفرة الحاليّة (على الشاهد) -/
 
 /-- **المجالُ غيرُ فارغ ولا مائل:** 39 حالةً، و55 حقلًا مسؤولًا. ومتوقَّعُ الكلام: 16 مقبولًا، و8 قبيحًا، و9 خطأً، و6 «لا حكم».
     ومتوقَّعُ الشعر: 10 مقبولًا، و6 «لا حكم»، و23 غيرَ مسؤول. -/
-theorem majal_1 :
+theorem majal :
     halat.length = 39 ∧ natayij.length = 55 ∧
     [Daraja.maqbul, .qabih, .khata, .laHukm].map (fun d => (halat.filter (·.kalam == d)).length) = [16, 8, 9, 6] ∧
     [some Daraja.maqbul, some .qabih, some .khata, some .laHukm, none].map
@@ -95,17 +98,17 @@ theorem majal_1 :
   decide +kernel
 
 /-- **النتيجة:** 55 صوابًا من 55، بلا نقص تغطيةٍ ولا تجاوزٍ ولا قبولٍ خاطئٍ ولا ردٍّ خاطئٍ ولا اختلافِ درجة. -/
-theorem natija_1 : ihsa natayij = ⟨55, 0, 0, 0, 0, 0⟩ := by
+theorem natija : ihsa natayij = ⟨55, 0, 0, 0, 0, 0⟩ := by
   decide +kernel
 
 /-- **بالفئات:** موجب 17، حدّ 18، خارج 12، عموم 8 — كلُّها صواب. -/
-theorem natija_1_fia :
+theorem natija_fia :
     [Fia.mujib, .hadd, .kharij, .umum].map ihsaFia =
       [⟨17, 0, 0, 0, 0, 0⟩, ⟨18, 0, 0, 0, 0, 0⟩, ⟨12, 0, 0, 0, 0, 0⟩, ⟨8, 0, 0, 0, 0, 0⟩] := by
   decide +kernel
 
 /-- **ولا إخفاق.** -/
-theorem akhta_1 : akhta = [] := by
+theorem akhta_sifr : akhta = [] := by
   decide +kernel
 
 end Qiyas
