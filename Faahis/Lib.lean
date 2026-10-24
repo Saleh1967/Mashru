@@ -6,7 +6,11 @@
     وسلامتها بالنسبة إلى نموذج المدلول مبرهنة (`salama`)، وتدرّجها (`shakl_mutadarrija`).
   * القبول = `Qaida.maqbul` (`maqbul_murakhkhas`)؛ الوسم المحسوب = `Mawsua.quwwatSilsila` على وسم الأصل بعد
     قيد طريقته (`Mawsua.qayd`) وقيد نوع مودَعه (`Idaa.qaydMudaa`)؛ لا أصل إلّا من مودَع مسجَّل (`Idaa.aslMusajjal`).
-  * السؤال (`--sual`): المخزن يُبنى بـ `Makhzan.udkhul`، ويُسأل بـ `Mawsua.sual`؛ وكلّ قولٍ يُطبع بسلسلته وبمراتب
+  * التنفيذ (س1، 2026-10-24): القبولُ يُجرى بـ `Qaida.maqbulA` على مصفوفة القوانين `Bina.qs`، وهو `maqbul` بعينه
+    (`Qaida.maqbulA_eq` بـ `Bina.hq`)؛ والأصلُ من `jadwalUsul`، وهو أوّلُ أصلٍ للقضيّة كما في `find?` (`jadwalUsul_find`،
+    `bina_asl`، `bina_aslB`، `bina_aslW`). فحقولُ البناء التي يقبل بها الفاحص ويحسب الوسم هي نظائرُها على `find?` والقائمة، والزمنُ
+    وحده تغيّر: نموُّه عند مضاعفة المخزن ليس تربيعيًّا (tahaqquq/test_sura.py)، والأصلُ المكرَّر أوّلُه أصلُه (mawsua/test_mawsua.py §١٦).
+  * السؤال (`--sual`): المخزن يُبنى بـ `Makhzan.udkhulA` (`udkhul` بعينه: `Mawsua.udkhulA_eq`)، ويُسأل بـ `Mawsua.sual`؛ وكلّ قولٍ يُطبع بسلسلته وبمراتب
     مخرجه الثلاث (`Maratib.mukhraj`): القضيّة «من حيث هي»، ومعانيها «معلومة» أو «مفهوم» بشواهد واقعٍ في مودَع
     «واقع مختوم» وحده (`Maratib.shuhudMutabara`).
 
@@ -330,8 +334,42 @@ theorem muhaqqaq_salim (h h' : Hal) (hk : muhaqqaq h = .ok h') : h' = h ∧ h.ak
 
 /-! ## البناء -/
 
+/-! ### جدولُ الأصول (س1؛ قولُ المالك 2026-10-24، 18:07)
+
+  كان الأصلُ يُطلب بـ `h.usul.find?` في كلّ سؤالٍ عنه، أي مرورًا على ما قبله من الأصول. `jadwalUsul` يبنيها مرّةً جدولَ تجزئةٍ،
+  وأوّلُ أصلٍ لكلّ قضيّةٍ هو الباقي (`insertIfNew`)، كما في `find?`: `jadwalUsul_find` لكلّ مصفوفة أصول، و`bina_asl` على
+  `bina` نفسِها. فالبحثُ واحدٌ بالطريقين، والزمنُ وحده يتغيّر. -/
+
+deriving instance Hashable for QawaninDalala.Qadiyya
+
+/-- جدولُ الأصول بالقضيّة: أوّلُ أصلٍ لكلّ قضيّة. -/
+def jadwalUsul (usul : Array Asl) : Std.HashMap Qadiyya Asl :=
+  usul.foldl (fun m a => m.insertIfNew a.qadiyya a) ∅
+
+/-- الطيُّ على قائمة: الجدولُ بعده ما كان فيه، وإلّا أوّلُ أصلٍ في القائمة لتلك القضيّة. -/
+theorem jadwalUsul_foldl (l : List Asl) (m : Std.HashMap Qadiyya Asl) (p : Qadiyya) :
+    (l.foldl (fun m a => m.insertIfNew a.qadiyya a) m)[p]? = (m[p]?).or (l.find? (·.qadiyya == p)) := by
+  induction l generalizing m with
+  | nil => simp
+  | cons a l ih =>
+    rw [List.foldl_cons, ih, List.find?_cons, Std.HashMap.getElem?_insertIfNew]
+    by_cases hp : a.qadiyya = p
+    · subst hp
+      by_cases hm : a.qadiyya ∈ m <;> simp [hm]
+    · have hb : (a.qadiyya == p) = false := by simpa using hp
+      simp [hb]
+
+/-- **التكافؤ:** البحثُ في الجدول هو `find?` على الأصول. -/
+theorem jadwalUsul_find (usul : Array Asl) (p : Qadiyya) :
+    (jadwalUsul usul)[p]? = usul.find? (·.qadiyya == p) := by
+  rw [jadwalUsul, ← Array.foldl_toList, jadwalUsul_foldl, Std.HashMap.getElem?_empty, Option.none_or,
+    Array.find?_toList]
+
 structure Bina where
   q    : Qaida.Qaida Qadiyya
+  /-- القوانينُ مصفوفةً، وقائمتُها قائمةُ القاعدة (`hq`): بها يُفحص (`Qaida.maqbulA_eq`). -/
+  qs   : Array (Qaida.Qanun Qadiyya)
+  hq   : q.qawanin = qs.toList
   aslB : Qadiyya → Bool
   aslW : Qadiyya → Wasm
   qW   : Nat → Wasm
@@ -386,15 +424,41 @@ theorem nawSanad_basma_farigha :
   decide +kernel
 
 def bina (h : Hal) (isdar : String) : Bina :=
-  let asl? (p : Qadiyya) : Option Asl := h.usul.find? (·.qadiyya == p)
+  let jadwal := jadwalUsul h.usul
+  let asl? (p : Qadiyya) : Option Asl := jadwal[p]?
   let sijill := (h.mudaat.map (·.1)).toList
   let nawSanad (s : String) : Idaa.Naw := nawSanadMin h.mudaat s
-  { q := ⟨isdar, (h.qawanin.map (·.1)).toList⟩
+  let qs := h.qawanin.map (·.1)
+  { q := ⟨isdar, qs.toList⟩
+    qs := qs
+    hq := rfl
     aslB := fun p => Idaa.aslMusajjal (fun x => (asl? x).map (·.sanad)) sijill p
     aslW := fun p => ((asl? p).map fun a => qayd a.tariqa (Idaa.qaydMudaa (nawSanad a.sanad) a.wasm)).getD .ray
     qW := fun i => ((h.qawanin[i]?).map (·.2)).getD .ray
     asl? := asl?
     shuhud := fun m => shuhudMutabara h.mudaat.toList ((h.shawahid.filter (·.1 == m)).map (·.2)).toList }
+
+/-- أصلُ القضيّة في البناء هو أوّلُ أصلٍ لها في الأصول، كما كان بـ `find?` (س1). -/
+theorem bina_asl (h : Hal) (isdar : String) (p : Qadiyya) :
+    (bina h isdar).asl? p = h.usul.find? (·.qadiyya == p) :=
+  jadwalUsul_find h.usul p
+
+/-- وحكمُ «مودَع» على الأصل (`aslB`، وبه يقبل الفاحص) هو حكمُه على أوّل أصلٍ للقضيّة بـ `find?`، كما كان (س1). -/
+theorem bina_aslB (h : Hal) (isdar : String) (p : Qadiyya) :
+    (bina h isdar).aslB p =
+      Idaa.aslMusajjal (fun x => (h.usul.find? (·.qadiyya == x)).map (·.sanad)) (h.mudaat.map (·.1)).toList p := by
+  simp only [bina, jadwalUsul_find]
+
+/-- ووسمُ الأصل (`aslW`، وبه تُحسب قوّة السلسلة) هو وسمُ أوّل أصلٍ للقضيّة بـ `find?` بعد قيدَيه، كما كان (س1). -/
+theorem bina_aslW (h : Hal) (isdar : String) (p : Qadiyya) :
+    (bina h isdar).aslW p =
+      ((h.usul.find? (·.qadiyya == p)).map fun a =>
+        qayd a.tariqa (Idaa.qaydMudaa (nawSanadMin h.mudaat a.sanad) a.wasm)).getD .ray := by
+  simp only [bina, jadwalUsul_find]
+
+/-- وقاعدةُ البناء قوانينُ المحتوى بترتيبها، بإصدارها (س1: الفحصُ على `qs` يكافئها بـ `hq`). -/
+theorem bina_q (h : Hal) (isdar : String) :
+    (bina h isdar).q = ⟨isdar, (h.qawanin.map (·.1)).toList⟩ := rfl
 
 def tatabbu (h : Hal) (b : Bina) (c : Iddia Qadiyya) : IO Unit := do
   let d := h.dh
@@ -421,7 +485,8 @@ def faahis (h : Hal) (b : Bina) (isdar : String) : IO UInt32 := do
   let mut marfud := 0
   for (n, p, w, ks, _) in h.iddiaat do
     let quwwa := quwwatSilsila b.aslW b.qW ks
-    if !(maqbul b.q b.aslB ⟨p, ks⟩) then
+    -- `maqbulA` على مصفوفة القوانين هو `maqbul b.q` بعينه (`Qaida.maqbulA_eq` بـ `b.hq`)
+    if !(maqbulA b.qs b.aslB ⟨p, ks⟩) then
       IO.println s!"{n}\tمرفوض\tسلسلة لا يقبلها الفاحص"; marfud := marfud + 1
     else if w.quwwa > quwwa then
       IO.println s!"{n}\tمرفوض\tوسم فوق سنده"; marfud := marfud + 1
@@ -432,8 +497,9 @@ def faahis (h : Hal) (b : Bina) (isdar : String) : IO UInt32 := do
   return (if marfud == 0 && h.akhta.isEmpty then 0 else 1)
 
 def sualMain (h : Hal) (b : Bina) (badia : String) : IO UInt32 := do
+  -- `udkhulA` هو `udkhul` بعينه (`Mawsua.udkhulA_eq`)
   let s := h.iddiaat.foldl (fun (s : Makhzan b.q b.aslB) (_, p, _, ks, sn) =>
-    s.udkhul ⟨⟨p, ks⟩, sn⟩) (Makhzan.faregh b.q b.aslB)
+    s.udkhulA b.qs b.hq ⟨⟨p, ks⟩, sn⟩) (Makhzan.faregh b.q b.aslB)
   match sual s (fun p => (qadiyyaIsm h.dh p).startsWith badia) with
   | .laHukm =>
     IO.println s!"لا حكم: لا مدخل في المخزن يوافق «{badia}». الغياب ليس امتناعًا."

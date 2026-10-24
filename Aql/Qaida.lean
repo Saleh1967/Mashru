@@ -13,8 +13,10 @@
   * الجواب مفهرَس بالقاعدة في نوعه: `Jawab q` لا يحوي إلّا أحكامًا بالقاعدة q،
     فخلط قاعدتين في جواب واحد لا يُكتب أصلًا (ج1 57).
   * التدرّج: كلّ قانون مقدّماته أدنى رتبةً من نتيجته؛ فما كان في الرتبة صفر لا يكون إلّا أصلًا.
-  * الخطوةُ بمحتوى القانون (آخر الملفّ، 2026-10-21): `fahsM` يكافئ `fahs` في اللقطة الواحدة في الاتّجاهين، وما قبله يبقى
+  * الخطوةُ بمحتوى القانون (2026-10-21): `fahsM` يكافئ `fahs` في اللقطة الواحدة في الاتّجاهين، وما قبله يبقى
     مقبولًا بزيادة القوانين وإعادة ترتيبها.
+  * الفاحصُ على مصفوفة القوانين (آخر الملفّ، س1، 2026-10-24): `maqbulA` هو `maqbul` حين تكون القائمةُ قائمةَ المصفوفة
+    (`tatbiqA_eq`، `fahsA_eq`، `maqbulA_eq`)؛ يأخذ القانون بموضعه في زمنٍ ثابت، وبه يُنفَّذ الفاحص التنفيذيّ.
   بلا sorry ولا axiom ولا native_decide.
 -/
 namespace Qaida
@@ -551,5 +553,59 @@ theorem shahid_muhtawa_yabqa :
     maqbulM qShahid aslShahid ⟨"الحيوان", [.asl "الإنسان", .qanun ⟨"تضمّن-الإنسان", ["الإنسان"], "الحيوان"⟩]⟩ = true ∧
     maqbulM qShahid2 aslShahid ⟨"الحيوان", [.asl "الإنسان", .qanun ⟨"تضمّن-الإنسان", ["الإنسان"], "الحيوان"⟩]⟩ = true := by
   decide
+
+/-! ## الفاحصُ على مصفوفة القوانين: التنفيذُ السريع مكافئًا (س1؛ قولُ المالك 2026-10-24، 18:07 «نفذ وفق افضل الممارسات»)
+
+  `tatbiq` يأخذ القانونَ بموضعه من `q.qawanin`، وهي `List`: فالوصولُ إلى القانون i يمرّ على ما قبله، وفحصُ مخزنٍ قوانينُه
+  بالآلاف يصير أبطأ من عدد ادّعاءاته. `tatbiqA` يأخذه بموضعه من `Array`، وهو هو حين تكون القائمةُ قائمةَ المصفوفة
+  (`tatbiqA_eq`، `fahsA_eq`، `maqbulA_eq`، لكلّ مصفوفةٍ وقاعدةٍ بهذا الشرط). فلا فاحصَ ثانٍ: ما يقبله `maqbulA` هو ما يقبله
+  `maqbul`، وسلامتُه `maqbul_murakhkhas` بإعادة الكتابة. وما يُكسب في الزمن تقديرٌ يُرصد خارج هذا الملفّ، لا مبرهنة. -/
+
+/-- خطوةٌ على ما ثبت، والقانونُ من المصفوفة بموضعه. -/
+def tatbiqA (qs : Array (Qanun P)) (aslB : P → Bool) (thabit : List P) : Khatwa P → Option (List P)
+  | .asl a => if aslB a then some (thabit ++ [a]) else none
+  | .qanun i =>
+    match qs[i]? with
+    | none => none
+    | some r => if r.muqaddimat.all (fun x => decide (x ∈ thabit)) then some (thabit ++ [r.natija]) else none
+
+/-- الفاحصُ على المصفوفة: يمرّ على الخطوات بالترتيب. -/
+def fahsA (qs : Array (Qanun P)) (aslB : P → Bool) : List P → List (Khatwa P) → Option (List P)
+  | thabit, [] => some thabit
+  | thabit, k :: ks =>
+    match tatbiqA qs aslB thabit k with
+    | none => none
+    | some t => fahsA qs aslB t ks
+
+/-- القبولُ على المصفوفة. -/
+def maqbulA (qs : Array (Qanun P)) (aslB : P → Bool) (c : Iddia P) : Bool :=
+  match fahsA qs aslB [] c.silsila with
+  | none => false
+  | some out => decide (c.qawl ∈ out)
+
+/-- الخطوةُ على المصفوفة هي الخطوةُ على القاعدة التي قائمتُها قائمةُ المصفوفة. -/
+theorem tatbiqA_eq (q : Qaida P) (qs : Array (Qanun P)) (hq : q.qawanin = qs.toList) (aslB : P → Bool)
+    (thabit : List P) (k : Khatwa P) : tatbiqA qs aslB thabit k = tatbiq q aslB thabit k := by
+  cases k with
+  | asl p => rfl
+  | qanun i => simp only [tatbiqA, tatbiq, hq, Array.getElem?_toList]
+
+/-- والسلسلةُ كذلك، من أيّ ثابتٍ بُدئ. -/
+theorem fahsA_eq (q : Qaida P) (qs : Array (Qanun P)) (hq : q.qawanin = qs.toList) (aslB : P → Bool) :
+    ∀ (ks : List (Khatwa P)) (thabit : List P), fahsA qs aslB thabit ks = fahs q aslB thabit ks := by
+  intro ks
+  induction ks with
+  | nil => intro thabit; rfl
+  | cons k ks ih =>
+    intro thabit
+    simp only [fahsA, fahs, tatbiqA_eq q qs hq]
+    cases tatbiq q aslB thabit k with
+    | none => rfl
+    | some t => exact ih t
+
+/-- **التكافؤ:** قبولُ الادّعاء على المصفوفة هو قبولُه بالفاحص `maqbul`. -/
+theorem maqbulA_eq (q : Qaida P) (qs : Array (Qanun P)) (hq : q.qawanin = qs.toList) (aslB : P → Bool)
+    (c : Iddia P) : maqbulA qs aslB c = maqbul q aslB c := by
+  simp only [maqbulA, maqbul, fahsA_eq q qs hq]
 
 end Qaida
