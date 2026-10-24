@@ -269,13 +269,14 @@ def iqraKalima (h : Hal) (b : Bina) (w : String) (q : Qiraa) : IO Unit := do
   else
     IO.println s!"    المنطوق (مطابقة/تضمّن): {mantuq.size}"
     for (_, p, _, ks, _) in mantuq do
-      if maqbul b.q b.aslB ⟨p, ks⟩ then tatabbu h b ⟨p, ks⟩
+      -- `maqbulA` هو `maqbul b.q` بعينه (`Qaida.maqbulA_eq` بـ `b.hq`)
+      if maqbulA b.qs b.aslB ⟨p, ks⟩ then tatabbu h b ⟨p, ks⟩
       else IO.println s!"      {qadiyyaIsm h.dh p}: مرفوض — سلسلة لا يقبلها الفاحص"
   if mafhum.isEmpty then IO.println "    المفهوم (التزام): لا مدخل في المخزن — لا حكم."
   else
     IO.println s!"    المفهوم (التزام): {mafhum.size}"
     for (_, p, _, ks, _) in mafhum do
-      if maqbul b.q b.aslB ⟨p, ks⟩ then tatabbu h b ⟨p, ks⟩
+      if maqbulA b.qs b.aslB ⟨p, ks⟩ then tatabbu h b ⟨p, ks⟩
       else IO.println s!"      {qadiyyaIsm h.dh p}: مرفوض — سلسلة لا يقبلها الفاحص"
 
 /-! ## ٣. الجملة في الوصل -/

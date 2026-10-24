@@ -212,7 +212,7 @@
  {
   "ism": "P9_sual_bila_udkhul",
   "milaf": "Faahis/Lib.lean",
-  "min": "    s.udkhul ⟨⟨p, ks⟩, sn⟩) (Makhzan.faregh b.q b.aslB)",
+  "min": "    s.udkhulA b.qs b.hq ⟨⟨p, ks⟩, sn⟩) (Makhzan.faregh b.q b.aslB)",
   "ila": "    s) (Makhzan.faregh b.q b.aslB)"
  },
  {
@@ -3178,5 +3178,101 @@
   "milaf": "scripts/check_nabt.py",
   "min": "    if not stat.S_ISDIR(path.lstat().st_mode) or path.resolve(strict=True) != path:",
   "ila": "    if False:"
+ },
+ {
+  "ism": "P463_jadwal_akhir_yafuz",
+  "milaf": "Faahis/Lib.lean",
+  "min": "usul.foldl (fun m a => m.insertIfNew a.qadiyya a) ∅",
+  "ila": "usul.foldl (fun m a => m.insert a.qadiyya a) ∅"
+ },
+ {
+  "ism": "P464_qanun_mawdi_akhar",
+  "milaf": "Aql/Qaida.lean",
+  "min": "    match qs[i]? with",
+  "ila": "    match qs[i+1]? with"
+ },
+ {
+  "ism": "P465_udkhulA_shart_maqlub",
+  "milaf": "Aql/Mawsua.lean",
+  "min": "  if h : maqbulA qs aslB m.iddia = true then",
+  "ila": "  if h : maqbulA qs aslB m.iddia = false then"
+ },
+ {
+  "ism": "P466_faahis_qaima_khattiyya",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    if !(maqbulA b.qs b.aslB ⟨p, ks⟩) then",
+  "ila": "    if !(maqbul b.q b.aslB ⟨p, ks⟩) then"
+ },
+ {
+  "ism": "P467_sual_qaima_khattiyya",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    s.udkhulA b.qs b.hq ⟨⟨p, ks⟩, sn⟩) (Makhzan.faregh b.q b.aslB)",
+  "ila": "    s.udkhul ⟨⟨p, ks⟩, sn⟩) (Makhzan.faregh b.q b.aslB)"
+ },
+ {
+  "ism": "P468_tatbiqA_bila_muqaddimat",
+  "milaf": "Aql/Qaida.lean",
+  "min": "if r.muqaddimat.all (fun x => decide (x ∈ thabit)) then",
+  "ila": "if true then"
+ },
+ {
+  "ism": "P469_tatbiqA_asl_mutlaq",
+  "milaf": "Aql/Qaida.lean",
+  "min": "  | .asl a => if aslB a then some (thabit ++ [a]) else none",
+  "ila": "  | .asl a => some (thabit ++ [a])"
+ },
+ {
+  "ism": "P470_tahmil_akhir_asl",
+  "milaf": "Faahis/Lib.lean",
+  "min": "usul.push ⟨q, w, t, s⟩",
+  "ila": "(usul.filter (·.qadiyya != q)).push ⟨q, w, t, s⟩"
+ },
+ {
+  "ism": "P471_maqbulA_bila_fahs",
+  "milaf": "Aql/Qaida.lean",
+  "min": "match fahsA qs aslB [] c.silsila with\n  | none => false",
+  "ila": "match fahsA qs aslB [] c.silsila with\n  | none => true"
+ },
+ {
+  "ism": "P472_shart_yashmal_istifham",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "    if sinf == 10 || sinf == 11 then some .shart",
+  "ila": "    if sinf == 10 || sinf == 11 || sinf == 12 then some .shart"
+ },
+ {
+  "ism": "P473_ghaya_bila_hatta",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "    else if ism == \"إلى\" || ism.startsWith \"حتى\" then some .ghaya",
+  "ila": "    else if ism == \"إلى\" then some .ghaya"
+ },
+ {
+  "ism": "P474_qayd_bila_shahada",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "    qayd := fun m => (D.qayd m).filter (mashud (b m))",
+  "ila": "    qayd := fun m => D.qayd m"
+ },
+ {
+  "ism": "P475_innama_muhmala",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "    innama := fun m => D.innama m || (b m).contains .innama }",
+  "ila": "    innama := fun m => D.innama m }"
+ },
+ {
+  "ism": "P476_wasf_la_yashhad",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "  | .wasf _ => some .sifa",
+  "ila": "  | .wasf _ => none"
+ },
+ {
+  "ism": "P477_adad_la_yashhad",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "  | .adad => some .adad",
+  "ila": "  | .adad => none"
+ },
+ {
+  "ism": "P478_muthanna_la_yashhad",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "  | .bab .muthanna => some .adad",
+  "ila": "  | .bab .muthanna => none"
  }
 ]
