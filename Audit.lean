@@ -1523,6 +1523,17 @@ import Nizam.Qiyas
 #print axioms sijill_la_yahmil_muhtawa
 #print axioms tahmil_sijill_muhtawa
 #print axioms sijill_la_muhtawa
+-- س1 (قولُ المالك 2026-10-24، 18:07): التنفيذُ السريع مكافئٌ للفاحص — القوانينُ مصفوفةً والأصولُ جدولًا، والقبولُ والمخزنُ والأصلُ هي هي
+#print axioms Qaida.tatbiqA_eq
+#print axioms Qaida.fahsA_eq
+#print axioms Qaida.maqbulA_eq
+#print axioms Mawsua.udkhulA_eq
+#print axioms jadwalUsul_foldl
+#print axioms jadwalUsul_find
+#print axioms bina_asl
+#print axioms bina_aslB
+#print axioms bina_aslW
+#print axioms bina_q
 -- جبرُ الدمج المبرهن (مرحلة الدمج الأولى، سمّاها عرضُ الدمج «م1» وليست م1 البروتوكول؛ Nizam/Damj.lean؛ إذن المالك 2026-10-19 16:16)
 #print axioms Nizam.Damj.bahth_mawjud
 #print axioms Nizam.Damj.bahth_ghaib
