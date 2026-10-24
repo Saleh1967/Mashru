@@ -3361,9 +3361,9 @@
  },
  {
   "ism": "P493_natija_basma_shifra",
-  "milaf": "tahaqquq/dawabit/jaza/natija_3.json",
-  "min": "\"sha256\": \"7ccb48b607184896ebaffa42ab547c6a9011a7e25665a64047464758f452cde6\"",
-  "ila": "\"sha256\": \"7ccb48b607184896ebaffa42ab547c6a9011a7e25665a64047464758f452cde0\""
+  "milaf": "tahaqquq/dawabit/jaza/natija_4.json",
+  "min": "\"sha256\": \"7c504ca838ccb34458a05abaac150d7270b4f3b5697d0c16fa746e06749cf527\"",
+  "ila": "\"sha256\": \"7c504ca838ccb34458a05abaac150d7270b4f3b5697d0c16fa746e06749cf520\""
  },
  {
   "ism": "P494_hala_mawlud_mughayyara",
@@ -3373,7 +3373,7 @@
  },
  {
   "ism": "P495_natija_sawab_naqis",
-  "milaf": "tahaqquq/dawabit/jaza/natija_3.json",
+  "milaf": "tahaqquq/dawabit/jaza/natija_4.json",
   "min": "\"sawab\": 55",
   "ila": "\"sawab\": 54"
  },
@@ -3385,9 +3385,9 @@
  },
  {
   "ism": "P497_sijill_qadim_mughayyar",
-  "milaf": "tahaqquq/dawabit/jaza/natija_3.json",
-  "min": "\"natija_2.json\": \"1d9d18c3421fb561d2f57e076543cf9c50b6b122de7364e67a78cae0b30b960a\"",
-  "ila": "\"natija_2.json\": \"1d9d18c3421fb561d2f57e076543cf9c50b6b122de7364e67a78cae0b30b9600\""
+  "milaf": "tahaqquq/dawabit/jaza/natija_4.json",
+  "min": "\"natija_3.json\": \"558c24180ffc0ddf27f5046271bd7464fbfe34ee0ee289cc82d2907536b28afc\"",
+  "ila": "\"natija_3.json\": \"558c24180ffc0ddf27f5046271bd7464fbfe34ee0ee289cc82d2907536b28af0\""
  },
  {
   "ism": "P498_natija_1_mughayyar",
@@ -3397,8 +3397,14 @@
  },
  {
   "ism": "P499_halat_naqisa",
-  "milaf": "tahaqquq/dawabit/jaza/natija_3.json",
+  "milaf": "tahaqquq/dawabit/jaza/natija_4.json",
   "min": "\"halat\": 39",
   "ila": "\"halat\": 38"
+ },
+ {
+  "ism": "P500_mirsat_natija_1",
+  "milaf": "tahaqquq/test_jaza.py",
+  "min": "NATIJA_1 = \"4417cf9f9c1860d4173720d446e0ffd6acbc13ad3e9db023fec46d1b25f02fa1\"",
+  "ila": "NATIJA_1 = \"4417cf9f9c1860d4173720d446e0ffd6acbc13ad3e9db023fec46d1b25f02fa0\""
  }
 ]
