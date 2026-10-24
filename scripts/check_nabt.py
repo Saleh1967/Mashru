@@ -18,6 +18,7 @@ from pathlib import Path
 import platform
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -52,6 +53,115 @@ def output_directory(path: Path) -> Path:
     # A fresh directory prevents old reports from masquerading as this run.
     destination.mkdir(parents=True, exist_ok=False)
     return destination
+
+
+def real_directory(path: Path):
+    if not stat.S_ISDIR(path.lstat().st_mode) or path.resolve(strict=True) != path:
+        raise CheckFailed("NABT_EVIDENCE_PATH_UNSAFE: expected an unlinked directory: " + str(path))
+
+
+def evidence_parent(*, create: bool = False) -> Path:
+    """Only the ignored artifacts/local subtree may contain generated work."""
+    current = VENDOR
+    real_directory(current)
+    for component in ("artifacts", "local"):
+        current = current / component
+        if create:
+            try:
+                current.mkdir()
+            except FileExistsError:
+                pass
+        real_directory(current)
+    return current
+
+
+def check_work_directory(work: Path):
+    if work.parent != evidence_parent() or not work.name.startswith("mashru-check-"):
+        raise CheckFailed("NABT_EVIDENCE_PATH_UNSAFE: work directory escaped artifacts/local")
+    real_directory(work)
+
+
+def fresh_work_directory() -> Path:
+    work = Path(tempfile.mkdtemp(prefix="mashru-check-", dir=evidence_parent(create=True)))
+    check_work_directory(work)
+    (work / "evidence").mkdir()
+    return work
+
+
+def evidence_inventory(root: Path) -> dict:
+    """Inventory every regular output, including archives and raw journals."""
+    real_directory(root)
+    directories, files = [], []
+
+    def walk_error(error):
+        raise error
+
+    for folder, children, names in os.walk(root, followlinks=False, onerror=walk_error):
+        directory = Path(folder)
+        real_directory(directory)
+        directories.append(directory.relative_to(root).as_posix())
+        for child in children:
+            real_directory(directory / child)
+        for name in names:
+            path = directory / name
+            if not stat.S_ISREG(path.lstat().st_mode):
+                raise CheckFailed("NABT_EVIDENCE_FILE_UNSAFE: expected a regular output: " + str(path))
+            digest, size = sha256(), 0
+            with os.fdopen(os.open(path, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)), "rb") as stream:
+                for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                    digest.update(chunk)
+                    size += len(chunk)
+            files.append({"path": path.relative_to(root).as_posix(), "bytes": size,
+                          "sha256": digest.hexdigest()})
+    return {"directories": sorted(directories), "files": sorted(files, key=lambda row: row["path"])}
+
+
+def retain_evidence(work: Path, output: Path, report: dict):
+    relocation = report["evidence_relocation"]
+    try:
+        check_work_directory(work)
+        source, destination = work / "evidence", output / "evidence"
+        before = evidence_inventory(source)
+        # The destination must also be fresh. Preserve links as links during
+        # copying so a changed source cannot make copytree follow an escape;
+        # both complete inventories reject links before claiming retention.
+        shutil.copytree(source, destination, symlinks=True)
+        if evidence_inventory(destination) != before or evidence_inventory(source) != before:
+            raise CheckFailed("NABT_EVIDENCE_COPY_MISMATCH: retained output differs from generated evidence")
+        relocation.update(status="RETAINED", inventory=before, reports_rewritten=False)
+        write_report(output, report)
+        check_work_directory(work)
+        shutil.rmtree(work)
+        relocation["internal_removed"] = True
+    except BaseException as error:
+        if relocation["status"] != "RETAINED":
+            relocation["status"] = "FAILED"
+        relocation["error"] = str(error)
+        raise
+    finally:
+        write_report(output, report)
+
+
+def run_upstream_check(report: dict, output: Path, make: list[str], qac: Path, env: dict):
+    work = fresh_work_directory()
+    evidence = work / "evidence"
+    report["evidence_relocation"] = {
+        "schema": "mashru.nabt.evidence-relocation.v1", "status": "PENDING",
+        "source_root": str(evidence), "source_relative_to_vendor": evidence.relative_to(VENDOR).as_posix(),
+        "retained_root": str(output / "evidence"), "retained_relative_to_output": "evidence",
+        "reports_rewritten": False, "internal_removed": False,
+        "path_mapping": "Generated absolute or vendor-relative source prefixes map to retained_root; raw report bytes are unchanged",
+    }
+    write_report(output, report)
+    try:
+        variables = ["EVIDENCE_DIR=" + safe_make_path(evidence), "QAC_SOURCE=" + safe_make_path(qac),
+                     "ARABIC_EVALUATION_DIR=" + str(evidence / "arabic-regression"),
+                     "GOVERNOR_EVALUATION_DIR=" + str(evidence / "governor-regression")]
+        run_step(report, output, "upstream-check", [*make, *variables, "check"], VENDOR, env, tests=True)
+    finally:
+        # Failed commands may have produced the only explanation of a failure.
+        # Retain those bytes too; failed retention leaves the internal tree.
+        retain_evidence(work, output, report)
 
 
 def test_counts(text: str) -> dict:
@@ -133,7 +243,8 @@ def execute(args, output: Path, report: dict):
         safe_make_path(cache)
         env = dict(os.environ)
         for key in ("MAKEFLAGS", "MFLAGS", "GNUMAKEFLAGS", "MAKEFILES", "PYTHONHOME",
-                    "PYTHONOPTIMIZE", "PYTHONINSPECT", "PYTHONSTARTUP", "PYTHONBREAKPOINT"):
+                    "PYTHONOPTIMIZE", "PYTHONINSPECT", "PYTHONSTARTUP", "PYTHONBREAKPOINT",
+                    "GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_INDEX_FILE"):
             env.pop(key, None)
         env.update(PYTHONPATH=str(VENDOR / "src"), PYTHONNOUSERSITE="1", PYTHONDONTWRITEBYTECODE="1",
                    PYTHONPYCACHEPREFIX=cache, LEAN_NUM_THREADS="2")
@@ -156,11 +267,17 @@ def execute(args, output: Path, report: dict):
             run_step(report, output, "upstream-runtime", [*make, "test"], VENDOR, env, tests=True)
             run_step(report, output, "upstream-integrity", [*python, str(VENDOR / "tools/check_integrity.py")], VENDOR, env)
         else:
-            evidence = output / "evidence"
-            variables = ["EVIDENCE_DIR=" + str(evidence), "QAC_SOURCE=" + str(qac),
-                         "ARABIC_EVALUATION_DIR=" + str(evidence / "arabic-regression"),
-                         "GOVERNOR_EVALUATION_DIR=" + str(evidence / "governor-regression")]
-            run_step(report, output, "upstream-check", [*make, *variables, "check"], VENDOR, env, tests=True)
+            run_step(report, output, "enclosing-revision", ["git", "rev-parse", "--verify", "HEAD"], ROOT, env)
+            head = Path(report["steps"][-1]["log"]).read_text().strip()
+            if not re.fullmatch(r"[0-9a-f]{40}", head):
+                raise CheckFailed("NABT_CHECKOUT_IDENTITY_INVALID: expected the enclosing Mashru Git commit")
+            report["provenance"] = {
+                "upstream_commit": report["snapshot"]["upstream_commit"],
+                "upstream_lock_sha256": report["snapshot"]["lock_sha256"],
+                "runtime_git_head": head, "runtime_git_head_scope": "ENCLOSING_MASHRU_CHECKOUT",
+                "runtime_git_head_is_upstream_identity": False,
+            }
+            run_upstream_check(report, output, make, qac, env)
         for name in NATIVE_TESTS:
             run_step(report, output, "native-" + name,
                      [*python, str(ROOT / ("tahaqquq/test_nabt_" + name + ".py"))], ROOT, env, tests=True)

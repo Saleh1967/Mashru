@@ -1,0 +1,41 @@
+{
+  "alphabet_id": "nabt.a116.v1",
+  "law_id": "nabt-sound-shape-v1",
+  "scope": "WORD_SHAPE",
+  "cells": [
+    84,
+    8,
+    4
+  ],
+  "mode": "waqf",
+  "start_state": 0,
+  "final_state": 1,
+  "licensed": true,
+  "cell_length": 3,
+  "consonant_weight": 3,
+  "trace": [
+    {
+      "position": 0,
+      "state_before": 0,
+      "cell": 84,
+      "state_after": 1,
+      "weight_delta": 1
+    },
+    {
+      "position": 1,
+      "state_before": 1,
+      "cell": 8,
+      "state_after": 1,
+      "weight_delta": 1
+    },
+    {
+      "position": 2,
+      "state_before": 1,
+      "cell": 4,
+      "state_after": 1,
+      "weight_delta": 1
+    }
+  ],
+  "failure_code": null,
+  "blocking_step": null
+}

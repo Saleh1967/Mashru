@@ -1,0 +1,157 @@
+{
+  "schema": "nabt.discourse-answer.v2",
+  "law_id": "nabt.discourse-evidence.v1",
+  "law_sha256": "30d990bf93aa436d9452e5a0a4172349727c9e5bb2c6fd1491e53d518b546325",
+  "language_id": "nabt.arabic-discourse-frames.v5",
+  "reader_version": "nabt.discourse-reader.v5",
+  "source_id": "input",
+  "scope": "default",
+  "source_text": "ظن زيدٌ سالمًا حكيمًا.\n",
+  "question_text": "هل سالمٌ حكيمٌ؟",
+  "source_sha256": "550c339bd341ec815673a719f7dd4afbb9aaaa9eeebdb51e7e3376cff3102b70",
+  "question_sha256": "7f5be3cd7be02034f8f7f05872614d4f0a05d2c2307fe3bec0e1bbbf9650c7b5",
+  "document_report_id": "095a4feda89421036240435e91b680c2882bd07bc298415181677d67a57c8866",
+  "question_report_id": "ae87941b80d470eae4de27c5688db2f4d15cad03969a6ef4bf2b5ef15dd98a56",
+  "context_sha256": "aa7e0ce87b815b4335546a7ee614ea43ff56ba5bba14fb4250d97a06a87725de",
+  "lexical_model": {
+    "authority": "SOURCE_RELATIVE_TRAINING_WITNESSES_NOT_FREE_ARABIC_ACQUISITION",
+    "boundaries": {
+      "outside_lexical_pos": 4
+    },
+    "excluded_verses": [],
+    "inventory_sha256": "87dfe4e663a58df9b45e2d65563400e78cdfc75045b1edcf73a6145db016d1bf",
+    "learner_version": "nabt.qac-lexical-evidence.v2",
+    "lexical_readings": 50,
+    "lookup_id": "qac.lookup.wasl-equivalence.v1",
+    "lookup_keys": 48,
+    "masked_features": [
+      "NOM",
+      "ACC",
+      "GEN",
+      "MOOD:IND",
+      "MOOD:SUBJ",
+      "MOOD:JUS"
+    ],
+    "projection_id": "qac.extended-buckwalter.unicode.v1",
+    "source": {
+      "byte_length": 4581,
+      "id": "qac",
+      "sha256": "06ff1e42fb60dfc45b49df9d029e197314a791f72c683ae8e692fc1e2e6f4e0e"
+    },
+    "target_role_labels_available": false,
+    "training_words": 77
+  },
+  "status": "UNKNOWN",
+  "kind": "polar",
+  "query": {
+    "predicate": "حَكِيم",
+    "args": [
+      "salim"
+    ],
+    "positive": true,
+    "predicate_kind": "property",
+    "voice": null,
+    "tense": "unspecified",
+    "time": [],
+    "place": [],
+    "restriction": []
+  },
+  "bindings": [],
+  "question_interpretations": [
+    {
+      "clause_id": "b9261b0e9de1d37153e6b686e59db20a833799f84db4b55a1d9fc7c6da94acfb",
+      "analysis_id": "4263ee2865ff896bc1f0c742f4c02d3c99f807bd63d803bff03b899c33f18fb1",
+      "kind": "polar",
+      "query": {
+        "predicate": "حَكِيم",
+        "args": [
+          "salim"
+        ],
+        "positive": true,
+        "predicate_kind": "property",
+        "voice": null,
+        "tense": "unspecified",
+        "time": [],
+        "place": [],
+        "restriction": []
+      },
+      "status": "UNKNOWN",
+      "bindings": [],
+      "proofs": [],
+      "counterproofs": []
+    },
+    {
+      "clause_id": "b9261b0e9de1d37153e6b686e59db20a833799f84db4b55a1d9fc7c6da94acfb",
+      "analysis_id": "7cec51636a673a9918ebf93ac9f0b82267bff7306e4c1c7731724bae923bbb29",
+      "kind": "polar",
+      "query": {
+        "predicate": "حَكِيم",
+        "args": [
+          "salim"
+        ],
+        "positive": true,
+        "predicate_kind": "property",
+        "voice": null,
+        "tense": "unspecified",
+        "time": [],
+        "place": [],
+        "restriction": []
+      },
+      "status": "UNKNOWN",
+      "bindings": [],
+      "proofs": [],
+      "counterproofs": []
+    },
+    {
+      "clause_id": "b9261b0e9de1d37153e6b686e59db20a833799f84db4b55a1d9fc7c6da94acfb",
+      "analysis_id": "60876e20bc4c96eb643d44bbcf2a7827ae23ad9053891b010a632e05c4a68fa4",
+      "kind": "polar",
+      "query": {
+        "predicate": "حَكِيم",
+        "args": [
+          "salim"
+        ],
+        "positive": true,
+        "predicate_kind": "property",
+        "voice": null,
+        "tense": "unspecified",
+        "time": [],
+        "place": [],
+        "restriction": []
+      },
+      "status": "UNKNOWN",
+      "bindings": [],
+      "proofs": [],
+      "counterproofs": []
+    },
+    {
+      "clause_id": "b9261b0e9de1d37153e6b686e59db20a833799f84db4b55a1d9fc7c6da94acfb",
+      "analysis_id": "d7084032ad854ce5ae76c18bc5fca6e50fed155e7f69213eded7bf13477bfcfc",
+      "kind": "polar",
+      "query": {
+        "predicate": "حَكِيم",
+        "args": [
+          "salim"
+        ],
+        "positive": true,
+        "predicate_kind": "property",
+        "voice": null,
+        "tense": "unspecified",
+        "time": [],
+        "place": [],
+        "restriction": []
+      },
+      "status": "UNKNOWN",
+      "bindings": [],
+      "proofs": [],
+      "counterproofs": []
+    }
+  ],
+  "answer_basis": "ALL_COMPLETE_QUERY_INTERPRETATIONS_AGREE",
+  "proofs": [],
+  "counterproofs": [],
+  "missing_premises": [],
+  "authority": "SOURCE_RELATIVE_ANSWER_REPLAY_NOT_WORLD_TRUTH",
+  "world_truth": "NOT_ESTABLISHED",
+  "answer_id": "5f0efe69f59a425f4f12b464d58c0644abfbe5fa2f23f8346c1663e8b48b6d23"
+}

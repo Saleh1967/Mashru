@@ -1,0 +1,127 @@
+{
+  "schema": "mashru.nabt.retained-selection.v1",
+  "scope": "Selected raw reports and journals retained in Git; the original manifest inventories the full execution tree, which CI uploads as its complete artifact.",
+  "all_step_logs_verified": 11,
+  "all_generated_json_reports_verified": 53,
+  "all_evidence_files_verified": 81,
+  "all_evidence_directories_verified": 5,
+  "selected_reports": [
+    {
+      "path": "evidence/arabic-holdout-postreview/original_raw.jsonl.gz",
+      "bytes": 403927,
+      "sha256": "9d602279c64285341e6a71ce2b9ea69a6528517446a1ff7d3b24482d37478ba7"
+    },
+    {
+      "path": "evidence/arabic-holdout-postreview/original_result.json",
+      "bytes": 134742,
+      "sha256": "c4c78668740fd036d6b55ba687816083dafeb80132f5f04025456f3b84bbafa7"
+    },
+    {
+      "path": "evidence/arabic-holdout-postreview/question_report.json",
+      "bytes": 51463,
+      "sha256": "c9aa86a28dc1e638fccf4f3d08576e4bbc5d98202a419ef01c4f012116b9f9d2"
+    },
+    {
+      "path": "evidence/arabic-holdout-postreview/review.json",
+      "bytes": 6058,
+      "sha256": "63cf742ff13e795d4cec21df373aad1a485c77dbc818b18e7bf3cf53f64b579e"
+    },
+    {
+      "path": "evidence/arabic-holdout-postreview/review_code.tar.gz",
+      "bytes": 75597,
+      "sha256": "20e8b375e7720632b53643ee07866b96e1655c8a876f11762e91d90d4c02ff4a"
+    },
+    {
+      "path": "evidence/arabic-holdout-postreview/verification_replay.json",
+      "bytes": 31317,
+      "sha256": "1ef10e0fddce888fe7c98315b01d888fb05e78340de8ba9bf5af143292893900"
+    },
+    {
+      "path": "evidence/arabic-holdout.json",
+      "bytes": 134742,
+      "sha256": "c4c78668740fd036d6b55ba687816083dafeb80132f5f04025456f3b84bbafa7"
+    },
+    {
+      "path": "evidence/arabic-holdout.raw.jsonl",
+      "bytes": 5666138,
+      "sha256": "1b9d35da024aa3093c3489b5e7126079420732e2da8473102972a0e6440b4fe0"
+    },
+    {
+      "path": "evidence/axioms.json",
+      "bytes": 80169,
+      "sha256": "ca91327ae9c754cb89d036ca6f6a58e521e564e5551e316a9acd6c5adf3aefc4"
+    },
+    {
+      "path": "evidence/axioms.log",
+      "bytes": 77604,
+      "sha256": "9d09368d5df138b4a4155d91c076665b15b7bf19a36a17998309caf51c59ba83"
+    },
+    {
+      "path": "evidence/classical-language-conformance.json",
+      "bytes": 2824,
+      "sha256": "a4fcdea5359e7f01584e9600db959d6e0a814c12a8ad419e106b37db145a3964"
+    },
+    {
+      "path": "evidence/classical-language-sources.json",
+      "bytes": 35131,
+      "sha256": "a659bdc18ee3301f4d87f2692c7e56d0f9eb18ebe178f69f6ab093e20cab54a4"
+    },
+    {
+      "path": "evidence/conformance.json",
+      "bytes": 2309,
+      "sha256": "f61606f9d019a67d478299ac417ea0ee791670b813927406d72ee15d935c76f5"
+    },
+    {
+      "path": "evidence/construction-conformance.json",
+      "bytes": 738,
+      "sha256": "ab6fee09be8bba06c52e775b4e57222824ae03ca550a1402903e8e0dec0b7ea7"
+    },
+    {
+      "path": "evidence/construction-regression.json",
+      "bytes": 159029,
+      "sha256": "1e1be5a001cdeeef9cdc701a0015b9bcc372c32c7a4024c942db346ad5271ac3"
+    },
+    {
+      "path": "evidence/construction-regression.raw.jsonl.gz",
+      "bytes": 1425897,
+      "sha256": "65e4e2c080ebfae4a04fc92cb1c5deaed6fd2e2aed31ac23b131ba0e9da5f56d"
+    },
+    {
+      "path": "evidence/discourse-conformance.json",
+      "bytes": 1571,
+      "sha256": "40d8d85f46aa9c2ec785b5c1b1c1b930ba6d2f8f987d2a719b12e5c9a2459590"
+    },
+    {
+      "path": "evidence/discourse-regression.json",
+      "bytes": 140382,
+      "sha256": "8f03be22018d644bfc164a2debe234ccfe0401d72520c6dd684bb578c541a286"
+    },
+    {
+      "path": "evidence/discourse-regression.raw.jsonl.gz",
+      "bytes": 1111811,
+      "sha256": "62c47b1814ddaa761e22df2752cb47d1e1d52c493351d59cdd173027041909df"
+    },
+    {
+      "path": "evidence/inquiry-conformance.json",
+      "bytes": 2356,
+      "sha256": "66acb1923ee95b4463f1fa5187a4c6779074bd5cf939040dad7d0f65308ed08a"
+    },
+    {
+      "path": "evidence/progressive-unit-conformance.json",
+      "bytes": 45612,
+      "sha256": "83ffe28032d1c1c987ec50aa8f047ccf874fd27bd0896a5c6e43da1b65dd68ea"
+    },
+    {
+      "path": "evidence/recursive-bridge-conformance.json",
+      "bytes": 464890,
+      "sha256": "55f631d0b57424e6c7e3c621cbba7c2c00f83eb8efe3ddf187804aeb3099d120"
+    },
+    {
+      "path": "evidence/unit-discovery-conformance.json",
+      "bytes": 103977,
+      "sha256": "78f4469343dfbc13fb0bc7daaadfcfd5117ac2103e84aa3d1e35825e6767ee03"
+    }
+  ],
+  "reports_rewritten": false,
+  "post_run_storage_observation": "../pr17_development/post_run_storage_observation.json"
+}

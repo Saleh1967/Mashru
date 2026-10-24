@@ -1,0 +1,107 @@
+{
+  "schema": "mashru.nabt.current-validation.v1",
+  "status": "PASSED_LOCAL_VALIDATION",
+  "finished": "2026-10-24T13:23:08.914471+00:00",
+  "mashru_base": "e4c801ffe9171dadedcc3aae23051ea0953ae361",
+  "snapshot": {
+    "bytes": 29497502,
+    "files": 598,
+    "lock_sha256": "3be972ea9ecc797c15aaa5489220d0716fa21aeaabaa03f646d0f07611d3c5ea",
+    "schema": "mashru.nabt.snapshot.v1",
+    "status": "VERIFIED",
+    "upstream_commit": "f0064f0a4baab3cc816087a322aabc0c8fbb2d19"
+  },
+  "full_replay_manifest": "full_v2/manifest.json",
+  "upstream_principal_tests": 1233,
+  "upstream_explicit_probe_reruns": [
+    7,
+    25,
+    12,
+    23,
+    31
+  ],
+  "native_integration_tests": {
+    "native-vendor": 27,
+    "native-cli": 12,
+    "native-bridge": 7,
+    "native-runner": 16
+  },
+  "skipped": 0,
+  "retained_logs_verified": 10,
+  "all_generated_report_hashes_verified": 48,
+  "output_materialization_recovery": [
+    {
+      "step": "upstream-build",
+      "observed_bytes": 72,
+      "observed_sha256": "4e6887ba20714607a6a24197df11d205de3c74f1f69e0f5038e2dc173a28cbfd",
+      "expected_sha256": "9b5572707662e90d465c023770ff46299af586d764a4b85d4413721b53df4151",
+      "replay_bytes": 112,
+      "replay_returncode": 0,
+      "replay_command": [
+        "make",
+        "-j1",
+        "LAKE=/tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lake",
+        "formal"
+      ],
+      "recorded_log_restored_from_identical_replay": true,
+      "cause": "Incomplete output materialization observed; synchronization cause inferred, not established"
+    }
+  ],
+  "native_gate": {
+    "log": "native_gate_before_baseline.log",
+    "mode": "--bila-tafrat",
+    "audited_results": 1579,
+    "previous_baseline": 1538,
+    "unexpected_axioms": 0,
+    "original_correction_records_unchanged": 45,
+    "deposit_dependent_tests": "NOT_RUN_WHEN_DEPOSITS_ABSENT; each absent scope is named in the log"
+  },
+  "mutations": {
+    "preserved": 519,
+    "added": 8,
+    "inventory_total": 527,
+    "new_killed": 8,
+    "log": "new_mutations.log",
+    "complete_inventory_execution": "REQUIRED_ON_GITHUB_CI; not represented by the local eight-case run"
+  },
+  "builds": {
+    "native": "native_build_final.log",
+    "upstream": "upstream_build.log",
+    "initial_resource_failure_retained": "initial_build.log"
+  },
+  "known_limits": {
+    "recursive_assertions_pass": 65,
+    "recursive_assertions_unmeasured": 41,
+    "recursive_authored_cases": 40,
+    "construction_pass": 71,
+    "construction_cases": 86,
+    "discourse_pass": 56,
+    "discourse_cases": 86,
+    "strict_language_coverage": false,
+    "language_acquisition_measured": false,
+    "general_python_refinement_proof": false,
+    "external_world_truth_certified": false,
+    "source_position_scope": "DECLARED_CELL_COORDINATES"
+  },
+  "native_changed_input_hashes": {
+    ".github/workflows/bawwaba.yml": "a337313468937ffb8df3911a8a61feefb8550cb8dcd256ad7759679ed105e3f8",
+    ".github/workflows/nabt.yml": "7d3d5ca3e51fe25fe962acd5fee84af9e0ee5ca230e634c59eb9617dfc597656",
+    "Audit.lean": "a8c7b5e90acefe6a5c477f059dba96637633c5787f00e9ec3522ebc90546f25c",
+    "Jisr/Nabt.lean": "0c696a795991953e0c36c91f2a08a5c4fa7671d196924732ed05618393170b48",
+    "Jisr/NabtExport.lean": "b567543839c7280be90c1a1fc92f652c8749d78b58fb860f33573cdf62cc78cf",
+    "Nizam/atlas.tsv": "42b57bba7563019db181ea378da4d3eea32f171efb3ff5c69e033798dcdb5ee2",
+    "integrations/nabt.lock.json": "3be972ea9ecc797c15aaa5489220d0716fa21aeaabaa03f646d0f07611d3c5ea",
+    "lake-manifest.json": "1514a9bac4965d109d76627dc734b4dd0a85cdf0a777a528ddb11180a62e215d",
+    "lakefile.toml": "9658af5ecb5cedfd03420f5c4a0c03d577849c549253cc0039500e9f25b7b055",
+    "scripts/check_nabt.py": "56c040c66caf0b8abb4ba7e35bc4c998d22e4e5346448751015a4ebcd39ec4d6",
+    "scripts/check_nabt_vendor.py": "763d168a441af6f74a4c6b3736467107b115169a44ee4916d9e04adee3e4444c",
+    "scripts/nabt.py": "a71492bf974c09469b5ac23326fa4bfe0d9d4e38c51bce36f7aae5c5fc939fa5",
+    "tahaqquq/bawwaba.py": "a4ded56bfaf94ee940d348b9883c115368d763fb1f8ac9ba9bdf26b81f93bc52",
+    "tahaqquq/khatt_asas.json": "992b2491d93373a06dea30d8f19518ea395f51c4255a9e023646dc2b88d787d2",
+    "tahaqquq/tafrat.json": "0d1a28e45d8b2a40c50375d61e276cccc2787353f3af016121f95411e154d3e5",
+    "tahaqquq/test_nabt_bridge.py": "307b5d0e1fc0eef7fab6d45aed2659bac5d0c0b497459fd47243d54547ac1ccc",
+    "tahaqquq/test_nabt_cli.py": "9d3b3bd882304c8f1f6d1dc7b29dea743bab9369f4d3485f22df1849aaf5d5dd",
+    "tahaqquq/test_nabt_runner.py": "9fb4de2401a3fbf24f0075cb9f58e3ab80aafac9a8e01447f528f5d963b964e5",
+    "tahaqquq/test_nabt_vendor.py": "d3824ee7f93c630d68988dfd67b1ef9ca476336e6f08af4606eaa177e70417f3"
+  }
+}

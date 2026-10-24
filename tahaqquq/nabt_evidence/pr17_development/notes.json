@@ -1,0 +1,130 @@
+{
+  "schema": "mashru.nabt.pr17-development.v1",
+  "base_merge": "2bb5b1c262ab66ca5b5c12f4cf6bf20b63960cde",
+  "upstream_commit": "d791fd7730cde2256dfac8a27687010b392876b3",
+  "upstream_tree": "40ecbc5db4097173c752ef5ff147a29b534c96a0",
+  "version": "0.16.0a1",
+  "source_inventory": {
+    "files": 648,
+    "bytes": 40629629,
+    "lock_sha256": "056ab2c0fe3b3a96abdf19a5970be44add3a2049876263b810dcd3b309f331d9",
+    "old_selected_paths_preserved": 598,
+    "new_source_files": 20,
+    "new_evidence_paths": 30,
+    "old_evidence_files_byte_unchanged": 206
+  },
+  "source_copy_correction": {
+    "observed": "An initial copy2 pass unexpectedly left the Makefile and 40 other changed destination files (41 total) stale; the production checker rejected the Makefile size. The cause was not established. Explicit verified byte writes corrected them.",
+    "validation": "All648 paths and executable modes were then compared directly with Git objects; see ../pr17_direct-git-blob-verification.json.",
+    "upstream_modified_to_pass": false
+  },
+  "runner_integration": {
+    "reason": "The unchanged PR17 holdout requires report paths relative to its own ROOT.",
+    "behavior": "Fresh confined work below ignored vendor artifacts/local; complete byte-verified external retention even after a failed subprocess; clean internal work only after verified retention.",
+    "upstream_make_check_unchanged": true,
+    "runtime_git_head_scope": "ENCLOSING_MASHRU_CHECKOUT; distinct from pinned upstream commit"
+  },
+  "test_fixture_correction": {
+    "initial": "21-test run had one ERROR in a copy-corruption mock that did not accept recursive copytree positional arguments.",
+    "fix": "Fixture accepts positional arguments; production source unchanged by this correction.",
+    "rerun": "21/21 passed"
+  },
+  "native_tests": {
+    "snapshot": 27,
+    "cli": 12,
+    "runner": 21,
+    "bridge": "Required in complete replay"
+  },
+  "mutations": {
+    "old_inventory_preserved": 527,
+    "new_names": [
+      "P460_nabt_partial_evidence_lost",
+      "P461_nabt_corrupt_copy_accepted",
+      "P462_nabt_linked_evidence_path"
+    ],
+    "new_killed": 3,
+    "total_inventory": 530,
+    "full_inventory_status": "Required in followup CI; not established by local3-case run"
+  },
+  "reference_scope": "reference_* logs are executions in NABT-current used to determine immutable fixture closure, not new Mashru integration results.",
+  "native_bridge_source_changes": 0,
+  "logs": {
+    "native_build.log": {
+      "sha256": "b4070e3fa2169736c8809600eb816ce590b3b06781d509579f2636300e141d2d",
+      "bytes": 8822
+    },
+    "upstream_formal_build.log": {
+      "sha256": "35629541530d126661f1deb8497dabc522d23095bff3210f1a77230c9afa2052",
+      "bytes": 469
+    },
+    "new_mutations.log": {
+      "sha256": "890af3511aca859da11054f5948a83a2518f2fafd1fc250b5189d906f011f55b",
+      "bytes": 482
+    },
+    "runner_initial_fixture_error.log": {
+      "sha256": "3d924da44df3aace1527ab0629df601d8060da6e3ed37efbce1ef30bcb7e1b66",
+      "bytes": 6490
+    },
+    "runner_tests.log": {
+      "sha256": "cdefd36ab739f6aeb6f4377b1980dc9c446d1b61750cecd4ba3cff9bf0de85a5",
+      "bytes": 3355
+    },
+    "cli_tests.log": {
+      "sha256": "a208049fbe62cd2585a7b4a0911c98e8b1ac513364f544278af0d771a831e310",
+      "bytes": 1847
+    },
+    "snapshot_checker_tests.log": {
+      "sha256": "1c6980adc72b8cf1c391a27ec81045b0a7d7a5508318f8bbf265deffdd89a75d",
+      "bytes": 3852
+    },
+    "reference_upstream_tests.log": {
+      "sha256": "dc2e276a2070fffd726c2d2e8b81e7049477f781205648c007495bce0b173b8c",
+      "bytes": 238817
+    },
+    "reference_holdout_trace.log": {
+      "sha256": "10f7a42934960573f5cf3de5cf29c6885150040310f9551e3016525353fd48b9",
+      "bytes": 3174
+    },
+    "native_gate_initial.log": {
+      "bytes": 5372,
+      "sha256": "2296ac6a74cb13c71e45bb553b9a79e40cb9b60fba58acce1969dc906b894fe2"
+    },
+    "native_gate.log": {
+      "bytes": 5372,
+      "sha256": "2296ac6a74cb13c71e45bb553b9a79e40cb9b60fba58acce1969dc906b894fe2"
+    },
+    "native_gate_receipt.json": {
+      "bytes": 627,
+      "sha256": "d92c7d4f70e5b25c59c319c0a8f1c556e1c4485e2ca6c380ee7eca511619899c"
+    },
+    "post_run_storage_observation.json": {
+      "bytes": 1073,
+      "sha256": "4b2184d9b3239f3b7b6b2ea577cdcddf7f885ded969e811366e32c83c27cade8"
+    }
+  },
+  "native_gate": {
+    "audited_results": 1579,
+    "unexpected_axioms": 0,
+    "inventory_total": 530,
+    "old_inventory_preserved": 527,
+    "corrective_records_unchanged": 45,
+    "mode": "--bila-tafrat",
+    "returncode": 0,
+    "log": "native_gate.log",
+    "receipt": "native_gate_receipt.json",
+    "repeat_scope": "Initial successful report retained; gate rerun only to capture an explicit process-exit receipt lost when the previous tool output was compacted.",
+    "complete_mutation_execution": "REQUIRED_ON_FOLLOWUP_CI"
+  },
+  "ci_failure_retention": {
+    "file": ".github/workflows/nabt.yml",
+    "fallback_artifact": "nabt-full-unrelocated-evidence",
+    "scope": "Only leftover integrations/nabt/artifacts/local/mashru-check-*/evidence; normal archive layout unchanged; uploaded on always() when files remain",
+    "validation": "Pinned upload action input checked, YAML parsed, runtime job and original full steps unchanged; no general guarantee after hard termination of a runner"
+  },
+  "post_run_storage_observation": {
+    "receipt": "post_run_storage_observation.json",
+    "persistent_internal_cleanup": "NOT_ESTABLISHED",
+    "scope": "Both full81-file copies matched. Independent deletion observed immediate absence; the identical work tree appeared again16seconds later. Cause unestablished. Original manifest and all reports retained unchanged.",
+    "production_code_changed_for_this_observation": false
+  }
+}
