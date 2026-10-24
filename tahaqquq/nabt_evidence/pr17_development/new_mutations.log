@@ -1,0 +1,5 @@
+الاختبارات: 28
+P460_nabt_partial_evidence_lost — قُتلت بـtahaqquq/test_nabt_runner.py (test_failed_upstream_command_retains_complete_raw_evidence_before_cleanup)
+P461_nabt_corrupt_copy_accepted — قُتلت بـtahaqquq/test_nabt_runner.py (test_corrupted_copy_fails_and_preserves_original_evidence)
+P462_nabt_linked_evidence_path — قُتلت بـtahaqquq/test_nabt_runner.py (test_generated_work_rejects_linked_artifact_path_components)
+قُتلت 3 من 3

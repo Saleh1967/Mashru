@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-I",
+    "tahaqquq/bawwaba.py",
+    "--bila-tafrat"
+  ],
+  "scope": "Local native gate without full mutation replay; repeated solely to retain explicit process-exit receipt after tool-output compaction lost original session ID",
+  "started": "2026-10-24T15:23:00.178641+00:00",
+  "finished": "2026-10-24T15:23:35.344182+00:00",
+  "seconds": 35.166,
+  "returncode": 0,
+  "log": "/tmp/mashru_pr17_native_gate_receipt.log",
+  "log_sha256": "2296ac6a74cb13c71e45bb553b9a79e40cb9b60fba58acce1969dc906b894fe2",
+  "log_bytes": 5372
+}

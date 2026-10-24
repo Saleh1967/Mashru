@@ -1,0 +1,72 @@
+{
+  "schema": "mashru.nabt.pr75-ci.v1",
+  "recorded_utc": "2026-10-24 15:08:22 UTC",
+  "pr": 75,
+  "url": "https://github.com/Saleh1967/Mashru/pull/75",
+  "head": "e2baa8ae39879ec907afc87d859b829c1184c11e",
+  "merge": "2bb5b1c262ab66ca5b5c12f4cf6bf20b63960cde",
+  "tree": "8df5a45a0a3c20bff3e9fdf281631cc89260bd8d",
+  "upstream_commit": "f0064f0a4baab3cc816087a322aabc0c8fbb2d19",
+  "checks": [
+    {
+      "id": 120886944135,
+      "name": "Runtime Python 3.13",
+      "head_sha": "e2baa8ae39879ec907afc87d859b829c1184c11e",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-10-24T13:39:42Z",
+      "url": "https://github.com/Saleh1967/Mashru/actions/runs/40098225539/job/120886944135"
+    },
+    {
+      "id": 120886944107,
+      "name": "Runtime Python 3.11",
+      "head_sha": "e2baa8ae39879ec907afc87d859b829c1184c11e",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-10-24T13:39:27Z",
+      "url": "https://github.com/Saleh1967/Mashru/actions/runs/40098225539/job/120886944107"
+    },
+    {
+      "id": 120886944096,
+      "name": "Runtime Python 3.12",
+      "head_sha": "e2baa8ae39879ec907afc87d859b829c1184c11e",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-10-24T13:39:26Z",
+      "url": "https://github.com/Saleh1967/Mashru/actions/runs/40098225539/job/120886944096"
+    },
+    {
+      "id": 120884847505,
+      "name": "Full Lean and NABT parity",
+      "head_sha": "e2baa8ae39879ec907afc87d859b829c1184c11e",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-10-24T13:37:39Z",
+      "url": "https://github.com/Saleh1967/Mashru/actions/runs/40098225539/job/120884847505"
+    },
+    {
+      "id": 120884847258,
+      "name": "bawwaba",
+      "head_sha": "e2baa8ae39879ec907afc87d859b829c1184c11e",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-10-24T14:53:15Z",
+      "url": "https://github.com/Saleh1967/Mashru/actions/runs/40098225457/job/120884847258"
+    }
+  ],
+  "native_gate": {
+    "audited_declarations": 1579,
+    "disallowed_axioms": 0,
+    "mutations_killed": 527,
+    "mutation_total": 527,
+    "old_correction_entries_preserved": 45,
+    "comment_url": "https://github.com/Saleh1967/Mashru/pull/75#issuecomment-6385632969",
+    "scope": "External-deposit checks without their inputs are explicitly NOT_RUN in the published comment."
+  },
+  "subsequent_source_advance": {
+    "commit": "d791fd7730cde2256dfac8a27687010b392876b3",
+    "upstream_pr": 17,
+    "merged_utc": "2026-10-24T13:41:41Z",
+    "scope": "Arrived while PR75 CI was running; validated PR75 was merged before the separately validated PR17 followup."
+  }
+}
