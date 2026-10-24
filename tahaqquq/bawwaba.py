@@ -128,7 +128,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_nabt_cli.py",
     "tahaqquq/test_nabt_bridge.py",
     "tahaqquq/test_nabt_runner.py",
-    # آخرُها عمدًا: نموُّ الزمن (س1) لا يقتل إلّا طفرةً لا تغيّر الدلالة (P463، P464)، فلا يجري إلّا على ما نجا ممّا قبله.
+    # آخرُها عمدًا: نموُّ الزمن (س1) لا يقتل إلّا طفرةً لا تغيّر الدلالة (P466، P467)، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_sura.py",
 )
 
