@@ -3274,5 +3274,83 @@
   "milaf": "Jisr/QaydMafhum.lean",
   "min": "  | .bab .muthanna => some .adad",
   "ila": "  | .bab .muthanna => none"
+ },
+ {
+  "ism": "P479_maqbul_bila_shir",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "def maqbul : Hukm := ⟨.maqbul, .maqbul⟩",
+  "ila": "def maqbul : Hukm := ⟨.maqbul, .laHukm⟩"
+ },
+ {
+  "ism": "P480_ghayr_maqbul",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "  | .ghayr => laHukm",
+  "ila": "  | .ghayr => maqbul"
+ },
+ {
+  "ism": "P481_madi_jawab_maqbul",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "  | .madi => laHukm",
+  "ila": "  | .madi => maqbul"
+ },
+ {
+  "ism": "P482_waw_jawab",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "  | .waw => ⟨.khata, .laHukm⟩",
+  "ila": "  | .waw => maqbul"
+ },
+ {
+  "ism": "P483_fa_majzum_maqbul",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "  | .faMudariMajzum => ⟨.khata, .laHukm⟩",
+  "ila": "  | .faMudariMajzum => maqbul"
+ },
+ {
+  "ism": "P484_ismiyya_la_shir",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "  | .ismiyya => ⟨.khata, .maqbul⟩",
+  "ila": "  | .ismiyya => ⟨.khata, .laHukm⟩"
+ },
+ {
+  "ism": "P485_muqaddam_jazm_maqbul",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "    | .mudariMajzum => ⟨.qabih, .maqbul⟩",
+  "ila": "    | .mudariMajzum => maqbul"
+ },
+ {
+  "ism": "P486_muqaddam_madi_la_hukm",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "    | .madi => maqbul",
+  "ila": "    | .madi => laHukm"
+ },
+ {
+  "ism": "P487_haythu_jazm_la_hukm",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "if j.shart = .mudariMajzum then ⟨.khata, .laHukm⟩",
+  "ila": "if j.shart = .mudariMajzum then laHukm"
+ },
+ {
+  "ism": "P488_idha_jazm_khata_shir",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "else if j.shart = .mudariMajzum ∨ j.jawab = .mudariMajzum then ⟨.khata, .maqbul⟩",
+  "ila": "else if j.shart = .mudariMajzum ∨ j.jawab = .mudariMajzum then ⟨.khata, .khata⟩"
+ },
+ {
+  "ism": "P489_bila_ayyuhum",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "  [\"من\", \"ما\", \"أيهم\", \"أي\", \"أي حين\",",
+  "ila": "  [\"من\", \"ما\", \"أي\", \"أي حين\","
+ },
+ {
+  "ism": "P490_idha_jaza",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "  else if a == \"إذا\" || a == \"إذا ما\" then .idha",
+  "ila": "  else if a == \"إذا\" || a == \"إذا ما\" then .jaza"
+ },
+ {
+  "ism": "P491_idha_jawab_la_hukm",
+  "milaf": "Jisr/BabJaza.lean",
+  "min": "  | .idhaIsmiyya => maqbul",
+  "ila": "  | .idhaIsmiyya => laHukm"
  }
 ]

@@ -71,6 +71,7 @@ import Madlul.Tarjih
 import Jisr.Iqtiran
 import Jisr.MantuqMafhum
 import Jisr.QaydMafhum
+import Jisr.BabJaza
 import Madlul.TashfirHawass
 import Madlul.TashfirShabaka
 import Madlul.Fard116Shawahid
@@ -1258,6 +1259,20 @@ import Nizam.Qiyas
 #print axioms Jisr.QaydMafhum.shawahid_mashuda
 #print axioms Jisr.QaydMafhum.shawahid_sawa
 #print axioms Jisr.QaydMafhum.shahid_bila_bunya_wa_innama
+-- «هذا باب الجزاء» عند سيبويه (الكتاب س9190–9304؛ Jisr/BabJaza.lean): الحكمُ على تركيب الجزاء في الكلام والشعر، والجسرُ إلى القطر وجدول العوامل
+#print axioms Jisr.BabJaza.maqbul_kalam_maqbul_shir
+#print axioms Jisr.BabJaza.ghayr_la_hukm
+#print axioms Jisr.BabJaza.jawab_bifil_aw_bilfa
+#print axioms Jisr.BabJaza.waw_thumma_khata
+#print axioms Jisr.BabJaza.fa_majzum_la_yuqbal
+#print axioms Jisr.BabJaza.ismiyya_bila_rabit
+#print axioms Jisr.BabJaza.raf_baad_jazm
+#print axioms Jisr.BabJaza.raf_baad_madi
+#print axioms Jisr.BabJaza.jazm_haythu_idh
+#print axioms Jisr.BabJaza.idha_jazm
+#print axioms Jisr.BabJaza.adawat_qatr
+#print axioms Jisr.BabJaza.adawat_jadwal
+#print axioms Jisr.BabJaza.qarn_qatr_tawafuq
 -- جسرُ المعلومة المعمَّم (السابع): طيُّ وفكُّ Madlul.Hawass (Hassa/Hukm/Shidda/Thubut/Bud/Tasmiya/Khibra)
 -- وMaratib.ShahidWaqi (Madlul/TashfirHawass.lean؛ نفس تفويض 2026-10-17 22:55). أداةٌ جديدةٌ: splitAtSep
 -- (الفصلُ بقيمةٍ محجوزة لا بحدٍّ مختار) تفتح الحقول المتعدّدة من String معًا بلا Sahih/Subtype إلّا على
