@@ -1,0 +1,17 @@
+test_child_streams_status_and_literal_arguments_are_preserved (__main__.LauncherBoundaryTests.test_child_streams_status_and_literal_arguments_are_preserved) ... ok
+test_failed_integrity_check_blocks_execution (__main__.LauncherBoundaryTests.test_failed_integrity_check_blocks_execution) ... ok
+test_help_is_available_without_running_the_snapshot (__main__.LauncherBoundaryTests.test_help_is_available_without_running_the_snapshot) ... ok
+test_missing_checker_and_missing_tool_are_named_deferrals (__main__.LauncherBoundaryTests.test_missing_checker_and_missing_tool_are_named_deferrals) ... ok
+test_unknown_entry_is_rejected (__main__.LauncherBoundaryTests.test_unknown_entry_is_rejected) ... ok
+test_valid_unchecked_bytecode_is_not_executed (__main__.LauncherBoundaryTests.test_valid_unchecked_bytecode_is_not_executed) ... ok
+test_classical_unknown_condition_stays_deferred (__main__.PinnedNabtIntegrationTests.test_classical_unknown_condition_stays_deferred) ... ok
+test_conformance_commands_forward_help_without_installing_lean (__main__.PinnedNabtIntegrationTests.test_conformance_commands_forward_help_without_installing_lean) ... ok
+test_inquiry_replay_does_not_certify_world_truth (__main__.PinnedNabtIntegrationTests.test_inquiry_replay_does_not_certify_world_truth) ... ok
+test_recursive_relative_paths_and_changed_source_replay (__main__.PinnedNabtIntegrationTests.test_recursive_relative_paths_and_changed_source_replay) ... ok
+test_runtime_missing_source_retains_upstream_deferral (__main__.PinnedNabtIntegrationTests.test_runtime_missing_source_retains_upstream_deferral) ... ok
+test_runtime_uses_pinned_source_from_another_directory (__main__.PinnedNabtIntegrationTests.test_runtime_uses_pinned_source_from_another_directory) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 12.041s
+
+OK

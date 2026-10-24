@@ -1,0 +1,141 @@
+PYTHON ?= python3
+LAKE ?= lake
+LOCAL_RUN := $(shell $(PYTHON) -c 'import time; print(time.time_ns())')
+EVIDENCE_DIR ?= artifacts/local/$(LOCAL_RUN)
+# Change both selectors only after the evaluator registries pin the new freeze.
+RUNTIME_FREEZE_VERSION ?= rational_inquiry_v2
+TEXT_CODE_FREEZE ?= evidence/rational_inquiry/code_freeze_v2.json
+QAC_SOURCE ?= artifacts/local/external/quranic-corpus-morphology-0.4.txt.gz
+ARABIC_EVALUATION_DIR ?= artifacts/local/$(LOCAL_RUN)/arabic-regression
+GOVERNOR_EVALUATION_DIR ?= $(EVIDENCE_DIR)/governor-regression
+export PYTHONPATH := $(CURDIR)/src
+
+.PHONY: test formal conformance learned-conformance property-conformance arabic-conformance governor-conformance word-conformance morphology-conformance morphology-evaluation text-evidence-conformance text-morphology-evaluation derivation-conformance derivation-evaluation nominal-conformance nominal-evaluation inflection-conformance inflection-evaluation discourse-conformance person-conformance construction-conformance construction-evaluation discourse-evaluation source-experiment text-evaluation arabic-evaluation governor-evaluation word-evaluation axioms check benchmark demo
+
+test:
+	$(PYTHON) -m unittest discover -s tests -v
+
+formal:
+	cd formal && $(LAKE) build
+
+conformance:
+	$(PYTHON) tools/check_conformance.py --lake $(LAKE) --output $(EVIDENCE_DIR)/conformance.json
+
+learned-conformance:
+	$(PYTHON) tools/export_learned_model.py --check
+
+property-conformance:
+	$(PYTHON) tools/check_property_evidence_table.py --lake $(LAKE) --output $(EVIDENCE_DIR)/property-conformance.json
+
+arabic-conformance:
+	$(PYTHON) tools/check_arabic_conformance.py --lake $(LAKE) --output $(EVIDENCE_DIR)/arabic-conformance.json
+
+governor-conformance:
+	$(PYTHON) tools/check_governor_conformance.py --lake $(LAKE) --output $(EVIDENCE_DIR)/governor-conformance.json
+
+word-conformance:
+	$(PYTHON) tools/check_word_conformance.py --lake $(LAKE) --output $(EVIDENCE_DIR)/word-conformance.json
+
+morphology-conformance:
+	$(PYTHON) tools/check_morphology_conformance.py --lake $(LAKE) --output $(EVIDENCE_DIR)/morphology-conformance.json
+
+morphology-evaluation:
+	$(PYTHON) tools/morphology_evaluation.py --freeze-version $(RUNTIME_FREEZE_VERSION) --output $(EVIDENCE_DIR)/morphology-regression.json --allow-documented-boundaries
+
+text-evidence-conformance:
+	$(PYTHON) tools/check_text_evidence_conformance.py --lake $(LAKE) --output $(EVIDENCE_DIR)/text-evidence-conformance.json
+
+text-morphology-evaluation:
+	$(PYTHON) tools/text_morphology_evaluation.py --output $(EVIDENCE_DIR)/text-morphology-regression.json
+
+derivation-conformance:
+	$(PYTHON) tools/check_derivation_conformance.py --lake $(LAKE) --output $(EVIDENCE_DIR)/derivation-conformance.json
+
+derivation-evaluation:
+	$(PYTHON) tools/derivation_evaluation.py --output $(EVIDENCE_DIR)/derivation-regression.json
+
+nominal-conformance:
+	$(PYTHON) tools/check_nominal_conformance.py --lake $(LAKE) --output $(EVIDENCE_DIR)/nominal-conformance.json
+
+nominal-evaluation:
+	$(PYTHON) tools/nominal_evaluation.py --output $(EVIDENCE_DIR)/nominal-regression.json
+
+inflection-conformance:
+	$(PYTHON) tools/check_inflection_conformance.py --lake $(LAKE) --output $(EVIDENCE_DIR)/inflection-conformance.json
+
+inflection-evaluation:
+	$(PYTHON) tools/fetch_qac_source.py --output $(QAC_SOURCE)
+	$(PYTHON) tools/inflection_evaluation.py --qac $(QAC_SOURCE) --runtime-freeze $(TEXT_CODE_FREEZE) --output $(EVIDENCE_DIR)/inflection-regression.json --allow-documented-boundaries
+	$(PYTHON) tools/inflection_evaluation.py --post-review --runtime-freeze $(TEXT_CODE_FREEZE) --output $(EVIDENCE_DIR)/inflection-post-review-regression.json
+	$(PYTHON) tools/inflection_cli_evaluation.py --runtime-freeze $(TEXT_CODE_FREEZE) --output $(EVIDENCE_DIR)/inflection-cli-regression.json
+
+discourse-conformance:
+	$(PYTHON) tools/check_discourse_conformance.py --lake $(LAKE) --output $(EVIDENCE_DIR)/discourse-conformance.json
+
+person-conformance:
+	$(PYTHON) tools/check_person_conformance.py --lake $(LAKE) --output $(EVIDENCE_DIR)/person-conformance.json
+
+construction-conformance:
+	$(PYTHON) tools/check_construction_conformance.py --lake $(LAKE) --output $(EVIDENCE_DIR)/construction-conformance.json
+
+.PHONY: unit-discovery-conformance
+unit-discovery-conformance:
+	$(PYTHON) tools/check_unit_discovery.py --lake $(LAKE) --output $(EVIDENCE_DIR)/unit-discovery-conformance.json
+	NABT_UNIT_DISCOVERY_PROBE=$(CURDIR)/formal/.lake/build/bin/unitDiscoveryProbe $(PYTHON) -B -m unittest discover -s tests -p test_unit_discovery_probe.py -v
+
+.PHONY: progressive-unit-conformance
+progressive-unit-conformance:
+	$(PYTHON) tools/check_progressive_units.py --lake $(LAKE) --output $(EVIDENCE_DIR)/progressive-unit-conformance.json
+	NABT_PROGRESSIVE_UNIT_PROBE=$(CURDIR)/formal/.lake/build/bin/progressiveUnitProbe $(PYTHON) -B -m unittest discover -s tests -p test_progressive_unit_probe.py -v
+	NABT_PROGRESSIVE_UNIT_PROBE=$(CURDIR)/formal/.lake/build/bin/progressiveUnitProbe $(PYTHON) -B -m unittest discover -s tests -p test_binary_unit_domain_probe.py -v
+
+.PHONY: recursive-bridge-conformance
+recursive-bridge-conformance:
+	$(PYTHON) tools/check_recursive_bridge.py --lake $(LAKE) --output $(EVIDENCE_DIR)/recursive-bridge-conformance.json
+	NABT_RECURSIVE_BRIDGE_PROBE=$(CURDIR)/formal/.lake/build/bin/recursiveBridgeProbe $(PYTHON) -B -m unittest discover -s tests -p test_recursive_bridge_probe.py -v
+	NABT_RECURSIVE_BRIDGE_PROBE=$(CURDIR)/formal/.lake/build/bin/recursiveBridgeProbe $(PYTHON) -B -m unittest discover -s tests -p test_recursive_source_bridge.py -v
+
+.PHONY: inquiry-conformance
+inquiry-conformance:
+	$(PYTHON) tools/check_rational_inquiry.py --lake $(LAKE) --output $(EVIDENCE_DIR)/inquiry-conformance.json
+
+construction-evaluation:
+	$(PYTHON) tools/construction_evaluation.py --runtime-root $(CURDIR) --runtime-freeze $(TEXT_CODE_FREEZE) --allow-documented-boundaries --output $(EVIDENCE_DIR)/construction-regression.json
+
+discourse-evaluation:
+	$(PYTHON) tools/fetch_qac_source.py --output $(QAC_SOURCE)
+	$(PYTHON) tools/discourse_evaluation.py --qac $(QAC_SOURCE) --runtime-freeze $(TEXT_CODE_FREEZE) --output $(EVIDENCE_DIR)/discourse-regression.json --allow-documented-boundaries
+
+source-experiment:
+	$(PYTHON) tools/source_learning_experiment.py --output $(EVIDENCE_DIR)/source-learning.json
+
+text-evaluation:
+	$(PYTHON) tools/text_inquiry_evaluation.py --code-freeze $(TEXT_CODE_FREEZE) --output-dir $(EVIDENCE_DIR)/text-regression
+
+arabic-evaluation:
+	$(PYTHON) tools/arabic_syntax_evaluation.py --code-freeze $(TEXT_CODE_FREEZE) --output-dir $(ARABIC_EVALUATION_DIR)
+
+governor-evaluation:
+	$(PYTHON) tools/governor_evaluation.py --code-freeze $(TEXT_CODE_FREEZE) --output-dir $(GOVERNOR_EVALUATION_DIR) --require-regression-gates
+
+word-evaluation:
+	$(PYTHON) tools/word_evaluation.py --freeze-version $(RUNTIME_FREEZE_VERSION) --output $(EVIDENCE_DIR)/word-regression.json --require-regression-gates
+
+axioms:
+	$(PYTHON) tools/check_axioms.py --lake $(LAKE) --output $(EVIDENCE_DIR)/axioms.json
+
+check: test conformance learned-conformance property-conformance arabic-conformance governor-conformance word-conformance morphology-conformance morphology-evaluation text-evidence-conformance text-morphology-evaluation derivation-conformance derivation-evaluation nominal-conformance nominal-evaluation inflection-conformance inflection-evaluation discourse-conformance person-conformance construction-conformance unit-discovery-conformance progressive-unit-conformance recursive-bridge-conformance construction-evaluation discourse-evaluation source-experiment text-evaluation arabic-evaluation governor-evaluation word-evaluation axioms inquiry-conformance classical-language-conformance
+	$(PYTHON) tools/check_integrity.py
+
+benchmark:
+	$(PYTHON) tools/benchmark.py
+
+demo:
+	$(PYTHON) -m nabt analyse 'كَتَبَ'
+	$(PYTHON) -m nabt count --weight 4 --mode waqf
+	$(PYTHON) -m nabt generate --weight 4 --rank 0 --mode waqf
+
+.PHONY: classical-language-conformance
+classical-language-conformance:
+	$(PYTHON) tools/check_classical_language_evidence.py --lake $(LAKE) --output $(EVIDENCE_DIR)/classical-language-conformance.json
+	$(PYTHON) tools/classical_language_evidence.py audit --output $(EVIDENCE_DIR)/classical-language-sources.json

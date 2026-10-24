@@ -1,5 +1,6 @@
 # مخرجات البناء والتشغيل (تُعاد بـ lake build والبوّابة)
 .lake/
 __pycache__/
+artifacts/local/
 .claude/hooks/.marrat_alhajb
 .claude/hooks/sijill_khattaf.log

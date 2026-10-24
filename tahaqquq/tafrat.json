@@ -3112,5 +3112,53 @@
   "milaf": "Nizam/Qiyas.lean",
   "min": "def majmu (a b c d : Int) : Int := c * (b - a) + (d - c) * (-a)",
   "ila": "def majmu (a b c d : Int) : Int := c * (b - a) + (d - c) * 0"
+ },
+ {
+  "ism": "P452_nabt_alphabet_identity",
+  "milaf": "Jisr/Nabt.lean",
+  "min": "Nabt.Bridges.convertCell .mashruDal .nabt (Dal.n cell)",
+  "ila": "Nabt.Bridges.convertCell .nabt .nabt (Dal.n cell)"
+ },
+ {
+  "ism": "P453_nabt_method_rank_bypass",
+  "milaf": "Jisr/Nabt.lean",
+  "min": "evidenceRank := (Mawsua.qayd method evidence).quwwa",
+  "ila": "evidenceRank := evidence.quwwa"
+ },
+ {
+  "ism": "P454_nabt_lock_check_bypass",
+  "milaf": "scripts/check_nabt_vendor.py",
+  "min": "if sha256(lock).hexdigest() != expected_lock_sha256:",
+  "ila": "if False and sha256(lock).hexdigest() != expected_lock_sha256:"
+ },
+ {
+  "ism": "P455_nabt_source_check_bypass",
+  "milaf": "scripts/check_nabt_vendor.py",
+  "min": "if sha256(content).hexdigest() != row[\"sha256\"]:",
+  "ila": "if False and sha256(content).hexdigest() != row[\"sha256\"]:"
+ },
+ {
+  "ism": "P456_nabt_execute_after_failed_check",
+  "milaf": "scripts/nabt.py",
+  "min": "if checked.returncode:",
+  "ila": "if False:"
+ },
+ {
+  "ism": "P457_nabt_unchecked_bytecode",
+  "milaf": "scripts/nabt.py",
+  "min": "python = [sys.executable, \"-I\", \"-B\", \"-X\", \"pycache_prefix=\" + cache]",
+  "ila": "python = [sys.executable, \"-I\", \"-B\"]"
+ },
+ {
+  "ism": "P458_nabt_zero_test_run",
+  "milaf": "scripts/check_nabt.py",
+  "min": "if tests and any(count == 0 for count in step[\"unittest_runs\"]):",
+  "ila": "if False and tests and any(count == 0 for count in step[\"unittest_runs\"]):"
+ },
+ {
+  "ism": "P459_nabt_skipped_suite",
+  "milaf": "scripts/check_nabt.py",
+  "min": "if step[\"skipped\"]:",
+  "ila": "if False and step[\"skipped\"]:"
  }
 ]

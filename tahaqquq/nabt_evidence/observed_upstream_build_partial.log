@@ -1,0 +1,1 @@
+cd formal && /tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lake build

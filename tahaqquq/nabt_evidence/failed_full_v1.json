@@ -1,0 +1,363 @@
+{
+  "error": "NABT_COMMAND_FAILED: upstream-check exited 2",
+  "finished": "2026-10-24T13:05:24.099322+00:00",
+  "formal_conformance": "NOT_RUN",
+  "full_parity": false,
+  "generated_reports": [
+    {
+      "bytes": 180,
+      "path": "evidence/arabic-conformance.json",
+      "reported_summary": {
+        "scope": "fresh Lean tags and finite cell-codec examples; not Python parser refinement"
+      },
+      "sha256": "85abd978002feef1e3c983ece982c8656d1eb612288e03a6bd2a969f48e15bea"
+    },
+    {
+      "bytes": 2309,
+      "path": "evidence/conformance.json",
+      "reported_summary": {
+        "scope": "Lean kernel build and complete table conformance; not a full Python refinement proof"
+      },
+      "sha256": "b4809f6756a48b96277124691abe4ac840c63ab86e5512942750f541a8a0347d"
+    },
+    {
+      "bytes": 573,
+      "path": "evidence/derivation-conformance.json",
+      "reported_summary": {
+        "scope": "Fresh Lean registry equality; bounded inverse refinement; complete conditional availability algebra. No unrestricted Arabic reader, lexical classification, weak-form realization, or linguistic completeness claim."
+      },
+      "sha256": "a68c4ed30e7802dda5a37482e13305fd34a7a4d12e5040f65f9a296be7781a73"
+    },
+    {
+      "bytes": 150895,
+      "path": "evidence/derivation-regression.json",
+      "reported_summary": {
+        "passed": true,
+        "scope": {
+          "api_contract_communication_read": true,
+          "authored_by": "independent review agent /root/text_cue_review",
+          "claim": "Authored source-informed cases frozen before this reviewer opened any new derivation implementation; not a statistically representative corpus.",
+          "external_untouched_corpus": false,
+          "new_derivation_runtime_read": false,
+          "source_lean_read": true,
+          "source_python_read_for_audit": true
+        }
+      },
+      "sha256": "33572a7cee575cf3ee9e466fbdb3083cedf5177edf78a30a1c9ab6ab35548190"
+    },
+    {
+      "bytes": 405,
+      "path": "evidence/governor-conformance.json",
+      "reported_summary": {
+        "scope": "finite class algebra/codec conformance; no Python parser refinement or all-Arabic claim"
+      },
+      "sha256": "a59124afba3c1219566092a895c5f85b749724b1d4b54031b74b1e990861dee0"
+    },
+    {
+      "bytes": 896,
+      "path": "evidence/inflection-conformance.json",
+      "reported_summary": {
+        "counts": {
+          "conditional_surface_inverse_checks": 165,
+          "construction_domains": 2,
+          "diptote_contexts": 16,
+          "nun_kinds": 7,
+          "receipt_masks": 256,
+          "relation_requirements": 11,
+          "sign_rows": 45
+        },
+        "scope": "Finite conditional law correspondence; not class/segmentation/relation acquisition, source truth or unrestricted Arabic."
+      },
+      "sha256": "3f52684be6e6006302a3e5f1c929ae31589adf669b06b01d017c473f1fedf41d"
+    },
+    {
+      "bytes": 112543,
+      "path": "evidence/inflection-post-review-regression.json",
+      "reported_summary": {
+        "gate_pass": true,
+        "passed": 22
+      },
+      "sha256": "2a25b328d3bc7e7d125d0c5834d2f53d99b741cf7432a598ff52e0f220bfa3d6"
+    },
+    {
+      "bytes": 356292,
+      "path": "evidence/inflection-regression.json",
+      "reported_summary": {
+        "gate_pass": true,
+        "strict_pass": false,
+        "summary": {
+          "adapter_error_cases": 0,
+          "coverage_miss_cases": 2,
+          "execution_error_cases": 0,
+          "false_accept_cases": 0,
+          "passed": 72,
+          "total": 74
+        }
+      },
+      "sha256": "5343b5b16ed05f55be43526e73b2f800764d57675dfc5f34cac4ba7d3ac37117"
+    },
+    {
+      "bytes": 458,
+      "path": "evidence/morphology-conformance.json",
+      "reported_summary": {
+        "scope": "Finite conditional algebra and reader projections; not unrestricted Arabic understanding"
+      },
+      "sha256": "dc24b7a6cc7e45f401a294e342a98c12543227ef9499031d880e69996cb22758"
+    },
+    {
+      "bytes": 219518,
+      "path": "evidence/morphology-regression.json",
+      "reported_summary": {
+        "summary": {
+          "documented_boundary_ids": [
+            "m12",
+            "m13",
+            "m32",
+            "m33"
+          ],
+          "failed_ids": [
+            "m12",
+            "m13",
+            "m32",
+            "m33"
+          ],
+          "groups": {
+            "certificate_integrity": {
+              "passed": 5,
+              "total": 5
+            },
+            "contradiction": {
+              "passed": 3,
+              "total": 3
+            },
+            "malformed_input": {
+              "passed": 1,
+              "total": 1
+            },
+            "missing_information": {
+              "passed": 6,
+              "total": 6
+            },
+            "property_inference": {
+              "passed": 16,
+              "total": 16
+            },
+            "reading_isolation": {
+              "passed": 2,
+              "total": 2
+            },
+            "scope_boundary": {
+              "passed": 1,
+              "total": 5
+            },
+            "source_retraction": {
+              "passed": 2,
+              "total": 2
+            },
+            "source_semantic_counterexample": {
+              "passed": 1,
+              "total": 1
+            },
+            "unseen_identifier_transfer": {
+              "passed": 2,
+              "total": 2
+            }
+          },
+          "passed": 39,
+          "regression_gate_with_declared_boundaries": true,
+          "total": 43
+        }
+      },
+      "sha256": "b35af72792d2ab5bcc76be03ed342504beb6ee7ec0595a4b3e1aeaf85ffbfa08"
+    },
+    {
+      "bytes": 901,
+      "path": "evidence/nominal-conformance.json",
+      "reported_summary": {
+        "scope": "Complete finite generated-law correspondence; public nominal/cardinal projections; bounded weak-root and canonical-pronoun checks. Receipt and manqus truth tables are checked, not unrestricted source qualification, partial-mark reader correctness, lexical attestation, actual syntactic case, ordinal meaning, or world cardinality."
+      },
+      "sha256": "12cf138fbee6d085add94a32cf427aace05ba5d12942073f5e7e6ad249152c03"
+    },
+    {
+      "bytes": 548159,
+      "path": "evidence/nominal-regression.json",
+      "reported_summary": {
+        "passed": true,
+        "scope": {
+          "authored_before_reviewer_opened_new_runtime": true,
+          "new_runtime_generated_table_new_formal_or_implementation_tests_read": false,
+          "not_claimed": [
+            "Untouched external corpus",
+            "Arabic-wide accuracy",
+            "Natural-language fact acquisition from the controlled descriptions",
+            "Lexical truth of explicit source claims",
+            "World-object counting"
+          ],
+          "prior_inputs": [
+            "Pinned existing primary texts and upstream Lean passages",
+            "Agreed public API and controlled-source grammar",
+            "The planned five-flag manqus correction agreed before freeze"
+          ]
+        }
+      },
+      "sha256": "f93a0149547aeeb30791493290e47e770c7d8351e970f0d2c15815bf21e63eec"
+    },
+    {
+      "bytes": 499,
+      "path": "evidence/property-conformance.json",
+      "reported_summary": {
+        "scope": "all required/positive/negative masks at width four"
+      },
+      "sha256": "9c679266c7891416bb0c895772b62df4f99acb90cd6ca6cd438a879db7dec3c6"
+    },
+    {
+      "bytes": 486,
+      "path": "evidence/text-evidence-conformance.json",
+      "reported_summary": {
+        "scope": "Complete finite conditional algebra correspondence and bounded list properties; not source-reader refinement, linguistic cue activation or Arabic completeness"
+      },
+      "sha256": "41dda992f85c39f08b1bd6e916cd48af396186b2495a1f463c8bd3c56ac75862"
+    },
+    {
+      "bytes": 221343,
+      "path": "evidence/text-morphology-regression.json",
+      "reported_summary": {
+        "passed": true,
+        "scope": "Bounded independent regression/reference cases, not an untouched external corpus, training run, or full Arabic coverage benchmark."
+      },
+      "sha256": "3d6a34a62e8922f65d34810c5bcc39222546440eae06f0e1e4d927025b878e66"
+    },
+    {
+      "bytes": 372,
+      "path": "evidence/word-conformance.json",
+      "reported_summary": {
+        "scope": "finite conditional algebra and codecs; not parser refinement or Arabic completeness"
+      },
+      "sha256": "64be8d10dea16fe3052631e03cf7349fd878925f2068aef83e2d49904d849b77"
+    }
+  ],
+  "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "mode": "full",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "qac_source": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/full-v1/external/qac-original.txt.gz",
+  "schema": "mashru.nabt.validation.v1",
+  "scope": "Pinned implementation replay; upstream unmeasured cases and linguistic limits remain explicit",
+  "snapshot": {
+    "bytes": 29425756,
+    "files": 586,
+    "lock_sha256": "bf5797e459e31f30ec08bf4d7e12ca16f953e64fe46ecea62f5e24a4a73ee9b1",
+    "schema": "mashru.nabt.snapshot.v1",
+    "status": "VERIFIED",
+    "upstream_commit": "f0064f0a4baab3cc816087a322aabc0c8fbb2d19"
+  },
+  "started": "2026-10-24T13:01:29.076216+00:00",
+  "status": "FAILED",
+  "steps": [
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-X",
+        "pycache_prefix=/tmp/mashru-nabt-check-pyc-rtx0dh8_",
+        "/workspace/scratch/8408df0fc25f/Mashru/scripts/check_nabt_vendor.py"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru",
+      "finished": "2026-10-24T13:01:30.809894+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/full-v1/01-snapshot-before.log",
+      "log_sha256": "cb388a9d725132def6ae8e0b829de206f9bd43323638451eeb1202eaa5b0cca6",
+      "name": "snapshot-before",
+      "returncode": 0,
+      "seconds": 1.731,
+      "skipped": 0,
+      "started": "2026-10-24T13:01:29.078913+00:00",
+      "status": "PASSED",
+      "unittest_runs": []
+    },
+    {
+      "argv": [
+        "/tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lake",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru",
+      "finished": "2026-10-24T13:01:31.375663+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/full-v1/02-lean-version.log",
+      "log_sha256": "355a9a028f81641782d75d6e6b58dec70f29d2f61238a9e271690259d9bf5680",
+      "name": "lean-version",
+      "returncode": 0,
+      "seconds": 0.565,
+      "skipped": 0,
+      "started": "2026-10-24T13:01:30.810331+00:00",
+      "status": "PASSED",
+      "unittest_runs": []
+    },
+    {
+      "argv": [
+        "/tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lake",
+        "build",
+        "nabtBridge"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru",
+      "finished": "2026-10-24T13:01:32.783065+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/full-v1/03-native-build.log",
+      "log_sha256": "1097042a7757852840a50b6b1314ed74260ea5df73926ecc3d705943a845975d",
+      "name": "native-build",
+      "returncode": 0,
+      "seconds": 1.406,
+      "skipped": 0,
+      "started": "2026-10-24T13:01:31.376273+00:00",
+      "status": "PASSED",
+      "unittest_runs": []
+    },
+    {
+      "argv": [
+        "make",
+        "-j1",
+        "PYTHON=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B -X pycache_prefix=/tmp/mashru-nabt-check-pyc-rtx0dh8_",
+        "LAKE=/tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lake",
+        "formal"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt",
+      "finished": "2026-10-24T13:01:33.341926+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/full-v1/04-upstream-build.log",
+      "log_sha256": "9b5572707662e90d465c023770ff46299af586d764a4b85d4413721b53df4151",
+      "name": "upstream-build",
+      "returncode": 0,
+      "seconds": 0.558,
+      "skipped": 0,
+      "started": "2026-10-24T13:01:32.783631+00:00",
+      "status": "PASSED",
+      "unittest_runs": []
+    },
+    {
+      "argv": [
+        "make",
+        "-j1",
+        "PYTHON=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B -X pycache_prefix=/tmp/mashru-nabt-check-pyc-rtx0dh8_",
+        "LAKE=/tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lake",
+        "EVIDENCE_DIR=/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/full-v1/evidence",
+        "QAC_SOURCE=/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/full-v1/external/qac-original.txt.gz",
+        "ARABIC_EVALUATION_DIR=/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/full-v1/evidence/arabic-regression",
+        "GOVERNOR_EVALUATION_DIR=/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/full-v1/evidence/governor-regression",
+        "check"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt",
+      "error": "NABT_COMMAND_FAILED: upstream-check exited 2",
+      "finished": "2026-10-24T13:05:24.097949+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/full-v1/05-upstream-check.log",
+      "log_sha256": "ee5b2f8fea5e28e36ebe4c5c2b6cb3146f8ed7b3e992de35f8b4605f3026c524",
+      "name": "upstream-check",
+      "returncode": 2,
+      "seconds": 230.754,
+      "skipped": 0,
+      "started": "2026-10-24T13:01:33.342417+00:00",
+      "status": "FAILED",
+      "unittest_runs": [
+        1233
+      ]
+    }
+  ]
+}

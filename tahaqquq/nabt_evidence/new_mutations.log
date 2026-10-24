@@ -1,0 +1,10 @@
+الاختبارات: 28
+P452_nabt_alphabet_identity — قُتلت بـlake build (Jisr/Nabt.lean)
+P453_nabt_method_rank_bypass — قُتلت بـlake build (Jisr/Nabt.lean)
+P454_nabt_lock_check_bypass — قُتلت بـtahaqquq/test_nabt_vendor.py (test_changed_lock_cannot_reauthorize_changed_source)
+P455_nabt_source_check_bypass — قُتلت بـtahaqquq/test_nabt_vendor.py (test_equal_size_byte_change_is_rejected)
+P456_nabt_execute_after_failed_check — قُتلت بـtahaqquq/test_nabt_cli.py (test_failed_integrity_check_blocks_execution)
+P457_nabt_unchecked_bytecode — قُتلت بـtahaqquq/test_nabt_cli.py (test_valid_unchecked_bytecode_is_not_executed)
+P458_nabt_zero_test_run — قُتلت بـtahaqquq/test_nabt_runner.py (test_zero_test_summary_cannot_pass_even_beside_a_positive_suite)
+P459_nabt_skipped_suite — قُتلت بـtahaqquq/test_nabt_runner.py (test_zero_exit_with_skipped_tests_cannot_pass)
+قُتلت 8 من 8

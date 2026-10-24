@@ -12,6 +12,9 @@ permissions:
   contents: read
   pull-requests: write
 
+env:
+  LEAN_NUM_THREADS: '2'
+
 jobs:
   bawwaba:
     runs-on: ubuntu-latest
@@ -33,6 +36,7 @@ jobs:
           path: |
             ~/.elan
             .lake
+            integrations/nabt/formal/.lake
           key: lean-4.34.1-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'SLGE/**/*.lean') }}
           restore-keys: |
             lean-4.34.1-${{ runner.os }}-

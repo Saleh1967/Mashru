@@ -1,0 +1,422 @@
+✔ [1/57] Built Madlul.IshtirakData (949ms)
+✔ [2/57] Built SLGE.AwamilTable (1.2s)
+ℹ [3/57] Built Dal.Khaliya (1.3s)
+info: Dal/Khaliya.lean:52:0: 'Dal.fakk_n' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dal/Khaliya.lean:53:0: 'Dal.n_fakk' depends on axioms: [propext, Quot.sound]
+info: Dal/Khaliya.lean:54:0: 'Dal.n_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dal/Khaliya.lean:55:0: 'Dal.n_surjective' depends on axioms: [propext, Quot.sound]
+✔ [4/57] Built Dal.AqsamAllafz (1.5s)
+✔ [5/57] Built Dal.AqsamAlism (1.6s)
+✔ [6/57] Built Madlul.NahtData (388ms)
+✔ [7/59] Built SLGE.MadlulAwwalan (2.0s)
+✔ [8/59] Built Dal.Adad (2.0s)
+⚠ [9/59] Built SLGE.Core (2.5s)
+warning: SLGE/Core.lean:80:34: Variable name `hB` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hB
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SLGE/Core.lean:80:47: Variable name `hC` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hC
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [10/59] Built Madlul.JadwalLuzumNaw (1.0s)
+✔ [11/59] Built Madlul.AqsamAlmadlul (964ms)
+✔ [12/59] Built Dal.Tamthil (699ms)
+ℹ [13/67] Built Madlul.Dalala (1.1s)
+info: Madlul/Dalala.lean:123:0: 'Dalala.tadammun_needs_mutabaqa' does not depend on any axioms
+info: Madlul/Dalala.lean:124:0: 'Dalala.iltizam_needs_mutabaqa' does not depend on any axioms
+info: Madlul/Dalala.lean:125:0: 'Dalala.mutabaqa_not_tadammun' does not depend on any axioms
+info: Madlul/Dalala.lean:126:0: 'Dalala.mutabaqa_not_iltizam' does not depend on any axioms
+info: Madlul/Dalala.lean:127:0: 'Dalala.tadammun_not_iltizam' does not depend on any axioms
+info: Madlul/Dalala.lean:128:0: 'Dalala.dakhil_mutabaqa_or_tadammun' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Madlul/Dalala.lean:129:0: 'Dalala.kharij_only_iltizam' does not depend on any axioms
+info: Madlul/Dalala.lean:130:0: 'Dalala.no_witness_no_dalala' does not depend on any axioms
+info: Madlul/Dalala.lean:131:0: 'Dalala.iltizam_needs_luzum_table' does not depend on any axioms
+info: Madlul/Dalala.lean:132:0: 'Dalala.mutabaqa_without_tadammun' depends on axioms: [propext]
+✔ [14/67] Built SLGE.TarkibLit (4.1s)
+✔ [15/67] Built SLGE.Category (1.5s)
+✔ [16/67] Built Aql.Qaida (3.1s)
+✔ [17/67] Built Madlul.Ishtirak (2.9s)
+✔ [18/67] Built Dal.Makharij (2.4s)
+✔ [19/67] Built Madlul.JadwalLuzumData (528ms)
+✔ [20/67] Built Madlul.Naht (2.6s)
+✔ [21/67] Built Madlul.Tayin (2.8s)
+✔ [22/80] Built Aql.Aqliyya (1.9s)
+✔ [23/80] Built SLGE.Madlul (1.9s)
+✔ [24/80] Built Jisr.AwamilJadwal (1000ms)
+⚠ [25/83] Built SLGE.Ladder (3.1s)
+warning: SLGE/Ladder.lean:153:29: Variable name `hm` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hm
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SLGE/Ladder.lean:253:48: This simp argument is unused:
+  List.takeWhile
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [List.dropWhile, this]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Ladder.lean:253:64: This simp argument is unused:
+  List.dropWhile
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [List.takeWhile, this]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Ladder.lean:257:10: This simp argument is unused:
+  List.takeWhile
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [List.dropWhile, hy, this.1, this.2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Ladder.lean:257:26: This simp argument is unused:
+  List.dropWhile
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [List.takeWhile, hy, this.1, this.2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [27/87] Built SLGE.Count (3.5s)
+warning: SLGE/Count.lean:76:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:79:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Count.lean:131:39: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:144:72: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:146:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Count.lean:160:25: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:161:25: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Count.lean:168:12: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:172:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Count.lean:394:0: automatically included section variable(s) unused in theorem `SLGE.Machine.bsizes_getD`:
+  [BEq α]
+  [LawfulBEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [BEq α] [LawfulBEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: SLGE/Count.lean:398:0: automatically included section variable(s) unused in theorem `SLGE.Machine.getD_eq`:
+  [BEq α]
+  [LawfulBEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [BEq α] [LawfulBEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [28/87] Built Madlul.Tarjih (3.2s)
+warning: Madlul/Tarjih.lean:116:37: `if_true` has been deprecated: Use `ite_true` instead
+warning: Madlul/Tarjih.lean:128:41: `if_true` has been deprecated: Use `ite_true` instead
+warning: Madlul/Tarjih.lean:141:37: `if_true` has been deprecated: Use `ite_true` instead
+warning: Madlul/Tarjih.lean:147:41: `if_true` has been deprecated: Use `ite_true` instead
+✔ [29/101] Built Madlul.Wiratha (2.3s)
+✔ [30/101] Built Jisr.AwamilUslub (712ms)
+✔ [31/101] Built Aql.Mawsua (3.8s)
+✔ [32/101] Built Jisr.AqsamDalMadlul (1.3s)
+✔ [33/101] Built Nabt.Transition (1.7s)
+✔ [34/101] Built Jisr.QawaidJadwal (1.3s)
+✔ [35/101] Built Jisr.TasnifAlism (1.9s)
+✔ [36/101] Built Jisr.TartibMamul (1.1s)
+✔ [37/101] Built Jisr.Tawafuq (1.7s)
+✔ [38/101] Built Nabt.Cell (4.4s)
+✔ [39/101] Built Aql.QawaninDalala (7.4s)
+✔ [40/101] Built Madlul.Tashfir (1.2s)
+✔ [41/101] Built Madlul.TashfirSullam (859ms)
+✔ [42/101] Built Aql.Idaa (1.9s)
+✔ [43/101] Built Madlul.TashfirKhawass (1.9s)
+✔ [44/101] Built Madlul.Jamad (3.9s)
+✔ [45/101] Built Nabt.Sequence (2.8s)
+✔ [46/101] Built Aql.Maratib (2.3s)
+✔ [47/101] Built Madlul.TashfirNas (1.6s)
+✔ [48/120] Built Madlul.TashfirMadda (1.5s)
+✔ [49/120] Built Jisr.MantuqMafhum (7.0s)
+✔ [50/120] Built Aql.Waqi (3.6s)
+✔ [51/120] Built Nabt.Derivation (13s)
+✔ [52/120] Built Aql.SalamaMaqbul (1.7s)
+✔ [53/120] Built Aql.Naql (1.6s)
+✔ [54/120] Built Aql.SababShartMani (1.6s)
+✔ [55/120] Built Aql.WaqiJadwal (989ms)
+✔ [56/120] Built Aql.Badiha (1.6s)
+✔ [57/120] Built Nabt.Bridges (7.8s)
+✔ [58/120] Built Madlul.Shabaka (8.2s)
+✔ [59/129] Built Aql.AdawatMaani (1.7s)
+✔ [60/129] Built Aql.AlaqaMajaz (3.9s)
+✔ [61/129] Built Nabt.RationalInquiry (18s)
+✔ [62/142] Built Nizam.Asas (2.2s)
+✔ [63/142] Built Nizam.Qiyas (1.0s)
+✔ [64/142] Built Dal.Khaliya:c.o (437ms)
+✔ [65/142] Built Nabt.UnitDiscovery (4.8s)
+✔ [66/142] Built Aql.Aqliyya:c.o (742ms)
+✔ [67/142] Built Aql.Qaida:c.o (1.7s)
+✔ [68/142] Built Madlul.Hawass (5.1s)
+✔ [69/142] Built Madlul.Dalala:c.o (195ms)
+✔ [71/185] Built Aql.Mawsua:c.o (2.1s)
+✔ [72/185] Built Aql.Maratib:c.o (647ms)
+✔ [73/185] Built Aql.Idaa:c.o (1.2s)
+✔ [74/185] Built Dal.Makharij:c.o (349ms)
+✔ [75/185] Built SLGE.Core:c.o (681ms)
+✔ [76/185] Built SLGE.Ladder:c.o (820ms)
+✔ [77/185] Built Nizam.Asas:c.o (252ms)
+✔ [78/185] Built Aql.QawaninDalala:c.o (2.2s)
+✔ [79/185] Built SLGE.Category:c.o (665ms)
+✔ [80/185] Built SLGE.Count:c.o (1.5s)
+✔ [81/185] Built SLGE.MadlulAwwalan:c.o (1.2s)
+✔ [82/185] Built Madlul.JadwalLuzumData:c.o (224ms)
+✔ [83/185] Built Nizam.Damj (6.5s)
+✔ [84/185] Built Madlul.JadwalLuzumNaw:c.o (869ms)
+✔ [85/185] Built SLGE.AwamilTable:c.o (187ms)
+✔ [86/185] Built Jisr.AwamilJadwal:c.o (128ms)
+✔ [87/185] Built SLGE.Madlul:c.o (1.2s)
+✔ [88/185] Built Jisr.AwamilUslub:c.o (155ms)
+✔ [89/185] Built SLGE.TarkibLit:c.o (663ms)
+✔ [90/185] Built Nizam.Talab (2.1s)
+✔ [91/185] Built Aql.Awwaliyyat (2.6s)
+⚠ [92/185] Built Madlul.TashfirHawass (2.8s)
+warning: Madlul/TashfirHawass.lean:79:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+✔ [93/185] Built Aql.TashfirAwwaliyyat (587ms)
+⚠ [94/185] Built Madlul.TashfirShabaka (2.6s)
+warning: Madlul/TashfirShabaka.lean:110:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+✔ [95/185] Built Aql.Azmina (3.3s)
+✔ [96/185] Built Faahis.Lib (9.4s)
+✔ [97/185] Built Nabt.LicensedDerivation (6.7s)
+✔ [98/185] Built Aql.TashfirAzmina (1.1s)
+✔ [99/185] Built Faahis.Main (1.2s)
+✔ [100/185] Built Faahis.Main:c.o (475ms)
+✔ [101/185] Built Madlul.JadwalLuzum (28s)
+✔ [102/185] Built Aql.Makan (2.8s)
+✖ [103/185] Building Jisr.Nabt (2.2s)
+trace: .> LEAN_PATH=/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt/formal/.lake/build/lib/lean:/workspace/scratch/8408df0fc25f/Mashru/.lake/build/lib/lean /tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lean /workspace/scratch/8408df0fc25f/Mashru/Jisr/Nabt.lean -o /workspace/scratch/8408df0fc25f/Mashru/.lake/build/lib/lean/Jisr/Nabt.olean -i /workspace/scratch/8408df0fc25f/Mashru/.lake/build/lib/lean/Jisr/Nabt.ilean -c /workspace/scratch/8408df0fc25f/Mashru/.lake/build/ir/Jisr/Nabt.c --setup /workspace/scratch/8408df0fc25f/Mashru/.lake/build/ir/Jisr/Nabt.setup.json --json
+error: Jisr/Nabt.lean:84:49: unsolved goals
+cells : List Dal.Khaliya
+⊢ List.map (cellFromNabt ∘ cellToNabt) cells = cells
+warning: Jisr/Nabt.lean:85:50: This simp argument is unused:
+  cell_roundtrip
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [cellsFromNabt, cellsToNabt, List.map_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Jisr/Nabt.lean:88:49: unsolved goals
+atoms : List Nabt.Atom
+⊢ List.map (cellToNabt ∘ cellFromNabt) atoms = atoms
+warning: Jisr/Nabt.lean:89:50: This simp argument is unused:
+  atom_roundtrip
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [cellsFromNabt, cellsToNabt, List.map_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Jisr/Nabt.lean:116:41: Unknown constant `List.reverse_map`
+error: Jisr/Nabt.lean:114:43: unsolved goals
+atoms : List Nabt.Atom
+⊢ Dal.Adad.adadR (List.map Fin.val atoms.reverse) = Dal.Adad.adadR (List.map Fin.val atoms).reverse
+error: Jisr/Nabt.lean:121:50: unsolved goals
+cells : List Dal.Khaliya
+native :
+  Nabt.Bridges.encodeNumber Nabt.Bridges.NumberCodec.mashruAdad (List.map Dal.n cells) =
+    Dal.Adad.adad (List.map (fun x => ↑(Dal.n x)) cells)
+⊢ Nabt.Sequence.encode
+      (List.map (Nabt.Bridges.convertCell Nabt.Bridges.Alphabet.mashruDal Nabt.Bridges.Alphabet.nabt)
+        (Nabt.Bridges.decodeNumber Nabt.Bridges.NumberCodec.mashruAdad (Nabt.Sequence.encode (List.map Dal.n cells)))) =
+    Nabt.Sequence.encode (List.map cellToNabt cells)
+warning: Jisr/Nabt.lean:125:41: This simp argument is unused:
+  Nabt.Bridges.decodeNumber_encodeNumber
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nabt.Bridges.convertNumber, Nabt.Bridges.NumberCodec.alphabet, Nabt.Bridges.encodeNumber,
+    Nabt.Bridges.orient, Nabt.Bridges.convertCells, List.map_map, cellsToNabt, cellToNabt, Function.comp_def]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Jisr/Nabt.lean:127:52: This simp argument is unused:
+  List.map_map
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nabt.Bridges.convertNumber, Nabt.Bridges.decodeNumber_encodeNumber,
+    Nabt.Bridges.NumberCodec.alphabet, Nabt.Bridges.encodeNumber, Nabt.Bridges.orient, Nabt.Bridges.convertCells,
+    cellsToNabt, cellToNabt, Function.comp_def]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Jisr/Nabt.lean:128:17: This simp argument is unused:
+  cellToNabt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nabt.Bridges.convertNumber, Nabt.Bridges.decodeNumber_encodeNumber,
+    Nabt.Bridges.NumberCodec.alphabet, Nabt.Bridges.encodeNumber, Nabt.Bridges.orient, Nabt.Bridges.convertCells,
+    List.map_map, cellsToNabt, Function.comp_def]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Jisr/Nabt.lean:128:29: This simp argument is unused:
+  Function.comp_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nabt.Bridges.convertNumber, Nabt.Bridges.decodeNumber_encodeNumber,
+    Nabt.Bridges.NumberCodec.alphabet, Nabt.Bridges.encodeNumber, Nabt.Bridges.orient, Nabt.Bridges.convertCells,
+    List.map_map, cellsToNabt, cellToNabt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Jisr/Nabt.lean:141:53: unsolved goals
+case mk
+sourceId✝ revision✝ scopeId✝ atomizationId✝ : Nat
+atoms✝ : List Dal.Khaliya
+⊢ List.map (cellFromNabt ∘ cellToNabt) atoms✝ = atoms✝
+warning: Jisr/Nabt.lean:143:63: This simp argument is unused:
+  cell_roundtrip
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [sourceFromNabt, sourceToNabt, mapSource, List.map_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Jisr/Nabt.lean:146:53: unsolved goals
+case mk
+sourceId✝ revision✝ scopeId✝ atomizationId✝ : Nat
+atoms✝ : List Nabt.Atom
+⊢ List.map (cellToNabt ∘ cellFromNabt) atoms✝ = atoms✝
+warning: Jisr/Nabt.lean:148:63: This simp argument is unused:
+  atom_roundtrip
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [sourceFromNabt, sourceToNabt, mapSource, List.map_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Jisr/Nabt.lean:225:49: unexpected identifier; expected '}'
+error: Jisr/Nabt.lean:238:4: Application type mismatch: The argument
+  Mawsua.qayd_la_yarfa method evidence
+has type
+  (Mawsua.qayd method evidence).quwwa ≤ evidence.quwwa
+but is expected to have type
+  (inquiryChecks checks requested evidence method).evidenceRank ≤ evidence.quwwa
+in the application
+  Nat.le_trans (Nabt.RationalInquiry.authorized_rank_bounded (inquiryChecks checks requested evidence method))
+    (Mawsua.qayd_la_yarfa method evidence)
+error: Jisr/Nabt.lean:246:4: Application type mismatch: The argument
+  Mawsua.qayd_ilmi evidence
+has type
+  (Mawsua.qayd Mawsua.Tariqa.ilmiyya evidence).quwwa ≤ Mawsua.Wasm.maqis.quwwa
+but is expected to have type
+  (inquiryChecks checks requested evidence Mawsua.Tariqa.ilmiyya).evidenceRank ≤ Mawsua.Wasm.maqis.quwwa
+in the application
+  Nat.le_trans
+    (Nabt.RationalInquiry.authorized_rank_bounded (inquiryChecks checks requested evidence Mawsua.Tariqa.ilmiyya))
+    (Mawsua.qayd_ilmi evidence)
+error: Jisr/Nabt.lean:252:49: Application type mismatch: The argument
+  licensed
+has type
+  (assessInquiry checks requested evidence method).verdict = Nabt.RationalInquiry.Verdict.licensed
+but is expected to have type
+  (Nabt.RationalInquiry.assess checks).verdict = Nabt.RationalInquiry.Verdict.licensed
+in the application
+  Nabt.RationalInquiry.licensed_requires_scope checks licensed
+error: Jisr/Nabt.lean:258:54: Application type mismatch: The argument
+  licensed
+has type
+  (assessInquiry checks requested evidence method).verdict = Nabt.RationalInquiry.Verdict.licensed
+but is expected to have type
+  (Nabt.RationalInquiry.assess checks).verdict = Nabt.RationalInquiry.Verdict.licensed
+in the application
+  Nabt.RationalInquiry.licensed_requires_provenance checks licensed
+error: Jisr/Nabt.lean:344:2: Tactic `decide` proved that the proposition
+  (assessInquiry exampleChecks Mawsua.Wasm.mubarhan Mawsua.Wasm.mafhus Mawsua.Tariqa.aqliyya).verdict =
+      Nabt.RationalInquiry.Verdict.deferred ∧
+    (assessInquiry exampleChecks Mawsua.Wasm.mafhus Mawsua.Wasm.mafhus Mawsua.Tariqa.aqliyya).authorizedRank = 3 ∧
+      (assessInquiry exampleChecks Mawsua.Wasm.mubarhan Mawsua.Wasm.mubarhan Mawsua.Tariqa.ilmiyya).verdict =
+        Nabt.RationalInquiry.Verdict.deferred
+is false
+✔ [104/185] Built Aql.TashfirMakan (906ms)
+✔ [105/185] Built Aql.Mirsat (1.2s)
+✔ [106/185] Built Aql.TashfirMirsat (809ms)
+✔ [107/185] Built Faahis.Lib:c.o (5.2s)
+✔ [108/185] Built Aql.Isnad (2.2s)
+✔ [109/185] Built faahis:exe (991ms)
+✔ [110/185] Built Madlul.Fard116Data (56s)
+✖ [111/185] Building Aql.WaqiShawahid (67s)
+trace: .> LEAN_PATH=/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt/formal/.lake/build/lib/lean:/workspace/scratch/8408df0fc25f/Mashru/.lake/build/lib/lean /tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lean /workspace/scratch/8408df0fc25f/Mashru/Aql/WaqiShawahid.lean -o /workspace/scratch/8408df0fc25f/Mashru/.lake/build/lib/lean/Aql/WaqiShawahid.olean -i /workspace/scratch/8408df0fc25f/Mashru/.lake/build/lib/lean/Aql/WaqiShawahid.ilean -c /workspace/scratch/8408df0fc25f/Mashru/.lake/build/ir/Aql/WaqiShawahid.c --setup /workspace/scratch/8408df0fc25f/Mashru/.lake/build/ir/Aql/WaqiShawahid.setup.json --json
+error: Lean exited with code 137
+⚠ [113/185] Built SLGE.Law (144s)
+warning: SLGE/Law.lean:127:6: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:127:25: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:292:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Law.lean:292:22: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Law.lean:302:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:302:34: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:317:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:317:34: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:396:59: Variable name `hne` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hne
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SLGE/Law.lean:441:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Law.lean:441:20: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Law.lean:489:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:489:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:702:23: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:709:41: `if_neg` has been deprecated: Use `ite_eq_right` instead
+✔ [114/185] Built SLGE.Law:c.o (1.7s)
+⚠ [115/185] Built SLGE.Syllable (54s)
+warning: SLGE/Syllable.lean:184:23: `if_pos` has been deprecated: Use `ite_eq_left` instead
+✔ [116/185] Built SLGE.Syllable:c.o (325ms)
+⚠ [117/185] Built SLGE.Root (56s)
+warning: SLGE/Root.lean:157:16: This simp argument is unused:
+  hcl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Root.lean:412:43: This simp argument is unused:
+  run_dead
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [δ_big _ (Nat.le_refl 96)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [118/185] Built SLGE.Root:c.o (1.1s)
+⚠ [119/185] Built Madlul.Fard116 (7.0s)
+warning: Madlul/Fard116.lean:169:125: This simp argument is unused:
+  Bool.and_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Bool.and_assoc, Bool.and_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✖ [120/185] Building SLGE.Hamza (85s)
+trace: .> LEAN_PATH=/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt/formal/.lake/build/lib/lean:/workspace/scratch/8408df0fc25f/Mashru/.lake/build/lib/lean /tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lean /workspace/scratch/8408df0fc25f/Mashru/SLGE/Hamza.lean -o /workspace/scratch/8408df0fc25f/Mashru/.lake/build/lib/lean/SLGE/Hamza.olean -i /workspace/scratch/8408df0fc25f/Mashru/.lake/build/lib/lean/SLGE/Hamza.ilean -c /workspace/scratch/8408df0fc25f/Mashru/.lake/build/ir/SLGE/Hamza.c --setup /workspace/scratch/8408df0fc25f/Mashru/.lake/build/ir/SLGE/Hamza.setup.json --json
+error: Lean exited with code 137
+✔ [130/185] Built SLGE.Necessity (32s)
+✔ [131/185] Built SLGE.Necessity:c.o (231ms)
+✔ [132/185] Built SLGE.Ladder2 (43s)
+✔ [133/185] Built SLGE.Ladder2:c.o (179ms)
+✔ [134/185] Built SLGE.Maqam (1.0s)
+✔ [135/185] Built SLGE.Maqam:c.o (153ms)
+✔ [136/185] Built SLGE.Wad (1.3s)
+✔ [139/185] Built SLGE.Wad:c.o (375ms)
+✔ [140/185] Built SLGE.Bridge (682ms)
+✔ [145/185] Built SLGE.Bridge:c.o (126ms)
+✔ [146/185] Built Jisr.KhulasaIkhbar (3.2s)
+✔ [147/185] Built SLGE.Tarkib (115s)
+✔ [148/185] Built SLGE.Tarkib:c.o (743ms)
+✔ [149/185] Built SLGE.Awamil (982ms)
+✔ [150/185] Built SLGE.Awamil:c.o (142ms)
+✔ [151/185] Built SLGE.TarkibExt (11s)
+✔ [152/185] Built SLGE.TarkibExt:c.o (359ms)
+✔ [153/185] Built SLGE.Simat (2.3s)
+✔ [155/185] Built SLGE.Simat:c.o (625ms)
+✔ [156/185] Built SLGE.Simat2 (1.6s)
+✔ [157/185] Built Jisr.Nisab (1.0s)
+✔ [159/185] Built Jisr.Nisab:c.o (307ms)
+✔ [160/185] Built SLGE.Simat2:c.o (1.5s)
+⚠ [161/185] Built SLGE.Muwahhad (1.9s)
+warning: SLGE/Muwahhad.lean:63:60: `if_true` has been deprecated: Use `ite_true` instead
+✔ [162/185] Built SLGE.Muwahhad:c.o (373ms)
+✔ [163/185] Built SLGE.Kull (2.1s)
+✔ [182/185] Built SLGE.Kull:c.o (1.5s)
+✔ [184/185] Built Madlul.Fard116Shawahid (217s)
+Some required targets logged failures:
+- Jisr.Nabt
+- Aql.WaqiShawahid
+- SLGE.Hamza
+error: build failed

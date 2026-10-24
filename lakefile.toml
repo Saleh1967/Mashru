@@ -1,6 +1,10 @@
 name = "mashru"
 version = "0.1.0"
-defaultTargets = ["SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "faahis", "qari"]
+defaultTargets = ["SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "faahis", "qari", "nabtBridge"]
+
+[[require]]
+name = "nabt"
+path = "integrations/nabt/formal"
 
 [[lean_lib]]
 name = "SLGE"
@@ -37,3 +41,7 @@ root = "Faahis.Main"
 [[lean_exe]]
 name = "qari"
 root = "Qari.Main"
+
+[[lean_exe]]
+name = "nabtBridge"
+root = "Jisr.NabtExport"

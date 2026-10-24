@@ -1,0 +1,183 @@
+⚠ [1/67] Replayed SLGE.Core
+warning: SLGE/Core.lean:80:34: Variable name `hB` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hB
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SLGE/Core.lean:80:47: Variable name `hC` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hC
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [2/67] Replayed SLGE.Ladder
+warning: SLGE/Ladder.lean:153:29: Variable name `hm` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hm
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SLGE/Ladder.lean:253:48: This simp argument is unused:
+  List.takeWhile
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [List.dropWhile, this]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Ladder.lean:253:64: This simp argument is unused:
+  List.dropWhile
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [List.takeWhile, this]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Ladder.lean:257:10: This simp argument is unused:
+  List.takeWhile
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [List.dropWhile, hy, this.1, this.2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Ladder.lean:257:26: This simp argument is unused:
+  List.dropWhile
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [List.takeWhile, hy, this.1, this.2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3/67] Replayed SLGE.Count
+warning: SLGE/Count.lean:76:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:79:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Count.lean:131:39: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:144:72: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:146:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Count.lean:160:25: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:161:25: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Count.lean:168:12: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Count.lean:172:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Count.lean:394:0: automatically included section variable(s) unused in theorem `SLGE.Machine.bsizes_getD`:
+  [BEq α]
+  [LawfulBEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [BEq α] [LawfulBEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: SLGE/Count.lean:398:0: automatically included section variable(s) unused in theorem `SLGE.Machine.getD_eq`:
+  [BEq α]
+  [LawfulBEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [BEq α] [LawfulBEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [4/67] Replayed SLGE.Law
+warning: SLGE/Law.lean:127:6: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:127:25: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:292:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Law.lean:292:22: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Law.lean:302:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:302:34: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:317:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:317:34: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:396:59: Variable name `hne` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hne
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SLGE/Law.lean:441:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Law.lean:441:20: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: SLGE/Law.lean:489:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:489:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:702:23: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SLGE/Law.lean:709:41: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [5/67] Replayed SLGE.Root
+warning: SLGE/Root.lean:157:16: This simp argument is unused:
+  hcl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SLGE/Root.lean:412:43: This simp argument is unused:
+  run_dead
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [δ_big _ (Nat.le_refl 96)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [21/67] Replayed SLGE.Muwahhad
+warning: SLGE/Muwahhad.lean:63:60: `if_true` has been deprecated: Use `ite_true` instead
+⚠ [23/67] Replayed SLGE.Syllable
+warning: SLGE/Syllable.lean:184:23: `if_pos` has been deprecated: Use `ite_eq_left` instead
+⚠ [24/67] Replayed SLGE.Hamza
+warning: SLGE/Hamza.lean:121:43: `if_false` has been deprecated: Use `ite_false` instead
+warning: SLGE/Hamza.lean:137:43: `if_false` has been deprecated: Use `ite_false` instead
+ℹ [26/67] Replayed Dal.Khaliya
+info: Dal/Khaliya.lean:52:0: 'Dal.fakk_n' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dal/Khaliya.lean:53:0: 'Dal.n_fakk' depends on axioms: [propext, Quot.sound]
+info: Dal/Khaliya.lean:54:0: 'Dal.n_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dal/Khaliya.lean:55:0: 'Dal.n_surjective' depends on axioms: [propext, Quot.sound]
+⚠ [42/67] Replayed Madlul.Tarjih
+warning: Madlul/Tarjih.lean:116:37: `if_true` has been deprecated: Use `ite_true` instead
+warning: Madlul/Tarjih.lean:128:41: `if_true` has been deprecated: Use `ite_true` instead
+warning: Madlul/Tarjih.lean:141:37: `if_true` has been deprecated: Use `ite_true` instead
+warning: Madlul/Tarjih.lean:147:41: `if_true` has been deprecated: Use `ite_true` instead
+⚠ [49/67] Replayed Madlul.Fard116
+warning: Madlul/Fard116.lean:169:125: This simp argument is unused:
+  Bool.and_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Bool.and_assoc, Bool.and_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ℹ [53/67] Replayed Madlul.Dalala
+info: Madlul/Dalala.lean:123:0: 'Dalala.tadammun_needs_mutabaqa' does not depend on any axioms
+info: Madlul/Dalala.lean:124:0: 'Dalala.iltizam_needs_mutabaqa' does not depend on any axioms
+info: Madlul/Dalala.lean:125:0: 'Dalala.mutabaqa_not_tadammun' does not depend on any axioms
+info: Madlul/Dalala.lean:126:0: 'Dalala.mutabaqa_not_iltizam' does not depend on any axioms
+info: Madlul/Dalala.lean:127:0: 'Dalala.tadammun_not_iltizam' does not depend on any axioms
+info: Madlul/Dalala.lean:128:0: 'Dalala.dakhil_mutabaqa_or_tadammun' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Madlul/Dalala.lean:129:0: 'Dalala.kharij_only_iltizam' does not depend on any axioms
+info: Madlul/Dalala.lean:130:0: 'Dalala.no_witness_no_dalala' does not depend on any axioms
+info: Madlul/Dalala.lean:131:0: 'Dalala.iltizam_needs_luzum_table' does not depend on any axioms
+info: Madlul/Dalala.lean:132:0: 'Dalala.mutabaqa_without_tadammun' depends on axioms: [propext]
+⚠ [60/80] Replayed Madlul.TashfirHawass
+warning: Madlul/TashfirHawass.lean:79:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [61/80] Replayed Madlul.TashfirShabaka
+warning: Madlul/TashfirShabaka.lean:110:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+✔ [65/80] Built Dal.Qanun (1.3s)
+✔ [69/80] Built Dal.Jumla (2.3s)
+✔ [72/102] Built Jisr.JisrDal (4.4s)
+✔ [80/102] Built Jisr.Iqtiran (428ms)
+✔ [82/102] Built Jisr.QiraaSimat (1.3s)
+✔ [88/121] Built Jisr.JadwalLuzum (2.0s)
+✔ [130/198] Built SLGE.Hamza:c.o (165ms)
+✔ [133/198] Built Dal.Qanun:c.o (451ms)
+✔ [134/198] Built Dal.Jumla:c.o (1000ms)
+✔ [143/198] Built Jisr.JisrDal:c.o (2.6s)
+✔ [148/198] Built Jisr.Iqtiran:c.o (324ms)
+✔ [176/198] Built Jisr.Awamil (17s)
+✔ [177/198] Built Jisr.Awamil:c.o (1.5s)
+✔ [178/198] Built Jisr.NisabAsnaf (4.0s)
+✔ [179/198] Built Jisr.Ikhbar (2.9s)
+✔ [180/198] Built Jisr.Tarkib (681ms)
+✔ [181/198] Built Jisr.Ikhbar:c.o (1.2s)
+✔ [182/198] Built Jisr.Mulhaqat (8.6s)
+✔ [183/198] Built Jisr.Mulhaqat:c.o (3.2s)
+✔ [184/198] Built Jisr.AqsamAwamil (50s)
+⚠ [185/198] Built Jisr.Utur (105s)
+warning: Jisr/Utur.lean:793:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Jisr/Utur.lean:822:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+✔ [186/198] Built Jisr.Utur:c.o (2.6s)
+✔ [187/198] Built Jisr.QawaidSitta (5.8s)
+✔ [188/198] Built Jisr.JisrDalUtur (473ms)
+✔ [190/198] Built Nizam.Aqd (37s)
+✔ [191/198] Built Nizam.Aqd:c.o (789ms)
+✔ [192/198] Built Qari.Main (1.1s)
+✔ [193/198] Built Nizam.QawaidB (1.8s)
+✔ [194/198] Built Nizam.Phi (2.6s)
+✔ [195/198] Built Qari.Main:c.o (1.9s)
+✔ [196/198] Built qari:exe (477ms)
+✔ [197/198] Built Nizam.Baqi (2.6s)
+Build completed successfully (198 jobs).
