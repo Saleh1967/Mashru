@@ -1,0 +1,36 @@
+{
+ "tashghil": 2,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد إكمال رأس Jisr/BabJaza.lean وتعليقات مبرهناته وتصحيح مدى سندٍ واحد في asanid (س9268–9269 ← س9269) بمراجعة murajii، بلا تغييرٍ في hukm",
+ "qablaha": {
+  "natija_1.json": "4417cf9f9c1860d4173720d446e0ffd6acbc13ad3e9db023fec46d1b25f02fa1"
+ },
+ "cases_sha256": "999ce1fd3019f211c4641b9a0e19a3df15e255764279d22bc1748c62320a22f7",
+ "shifra": {
+  "milaf": "Jisr/BabJaza.lean",
+  "sha256": "b3dd834f0b271786df630043b4c768559ab1ef65202c0885cdc59f98256ca64e"
+ },
+ "lean": [
+  "Jisr.BabJaza.Qiyas.majal",
+  "Jisr.BabJaza.Qiyas.natija",
+  "Jisr.BabJaza.Qiyas.natija_fia",
+  "Jisr.BabJaza.Qiyas.akhta_sifr"
+ ],
+ "halat": 39,
+ "huqul_masula": 55,
+ "ihsa": {
+  "sawab": 55,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0
+ },
+ "bil_fia": {
+  "موجب": 17,
+  "حد": 18,
+  "خارج": 12,
+  "عموم": 8
+ },
+ "akhta": [],
+ "tarikh": "2026-10-24"
+}

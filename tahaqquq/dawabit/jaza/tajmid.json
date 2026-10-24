@@ -1,0 +1,23 @@
+{
+ "naw": "ضابط مجمَّد",
+ "qita": "هذا باب الجزاء (كتاب سيبويه، س9190–9304)",
+ "masdar": {
+  "milaf": "sibawayhi.txt",
+  "sha256": "a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625"
+ },
+ "wasf_sha256": "04a56c21dd31c62da5060797905b4a6f1908adad7fa5207380babc997ff450ea",
+ "cases_sha256": "999ce1fd3019f211c4641b9a0e19a3df15e255764279d22bc1748c62320a22f7",
+ "fahs_cases_sha256": "4c124419125fa0831867670b4300a6b249e3be6ab52e162fd1c3eba7e4a21ee3",
+ "taalif_sha256": "c9fc91619258911f7584c504eabb0716eeefa27ecf2d1e14899cabdc60a4f3f2",
+ "muallif": "وكيلٌ جديد (general-purpose) لم يقرأ المستودع، بالمواصفة والمصدر وحدهما؛ أجاب البنّاءَ بالبصمات والأعداد وحدها",
+ "aadad_muallif": {
+  "jumla": 39,
+  "موجب": 13,
+  "حد": 13,
+  "خارج": 6,
+  "عموم": 7,
+  "harfi": 19
+ },
+ "tajmid": "2026-10-24T22:12+03:00",
+ "qabl_shifra": "جُمّد قبل إيداع Jisr/BabJaza.lean؛ والبنّاء لم يقرأ cases.json ولا taalif.md عند التجميد"
+}

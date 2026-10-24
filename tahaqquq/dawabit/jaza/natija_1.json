@@ -1,0 +1,35 @@
+{
+ "tashghil": 1,
+ "naw": "التشغيلُ الأوّل على الحالات المجمَّدة، بعد دفع الشفرة وقبل أيّ تعديلٍ لها",
+ "cases_sha256": "999ce1fd3019f211c4641b9a0e19a3df15e255764279d22bc1748c62320a22f7",
+ "shifra": {
+  "milaf": "Jisr/BabJaza.lean",
+  "sha256": "16af675d0a2e2050b0d0f4e434bb1f4bcdcff09682b684136185b519b5a4743d",
+  "iydaa": "b442a349255852a6bc5f47d84de161a6b9563fea"
+ },
+ "lean": [
+  "Jisr.BabJaza.Qiyas.majal_1",
+  "Jisr.BabJaza.Qiyas.natija_1",
+  "Jisr.BabJaza.Qiyas.natija_1_fia",
+  "Jisr.BabJaza.Qiyas.akhta_1"
+ ],
+ "halat": 39,
+ "huqul_masula": 55,
+ "ihsa": {
+  "sawab": 55,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0
+ },
+ "bil_fia": {
+  "موجب": 17,
+  "حد": 18,
+  "خارج": 12,
+  "عموم": 8
+ },
+ "akhta": [],
+ "tarikh": "2026-10-24",
+ "malahiz": "الأعدادُ من #eval على Jisr/BabJazaQiyas.lean ثمّ مبرهناتٍ بـ decide +kernel؛ وbil_fia عددُ الحقول المسؤولة الصائبة في كلّ فئة"
+}
