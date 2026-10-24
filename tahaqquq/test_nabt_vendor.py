@@ -56,8 +56,8 @@ class SnapshotFixtureTests(unittest.TestCase):
             "schema": "mashru.nabt.snapshot.v1",
             "upstream": {
                 "repository": "sonaiso/NABT",
-                "commit": "f0064f0a4baab3cc816087a322aabc0c8fbb2d19",
-                "tree": "63453db8c545403b22c137307bda64c9ac5656d9",
+                "commit": "d791fd7730cde2256dfac8a27687010b392876b3",
+                "tree": "40ecbc5db4097173c752ef5ff147a29b534c96a0",
             },
             "selection": {"purpose": "independently authored test fixture"},
             "files": rows,

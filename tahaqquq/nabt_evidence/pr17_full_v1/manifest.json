@@ -1,0 +1,1561 @@
+{
+  "evidence_relocation": {
+    "internal_removed": true,
+    "inventory": {
+      "directories": [
+        ".",
+        "arabic-holdout-postreview",
+        "arabic-regression",
+        "governor-regression",
+        "text-regression"
+      ],
+      "files": [
+        {
+          "bytes": 180,
+          "path": "arabic-conformance.json",
+          "sha256": "85abd978002feef1e3c983ece982c8656d1eb612288e03a6bd2a969f48e15bea"
+        },
+        {
+          "bytes": 403927,
+          "path": "arabic-holdout-postreview/original_raw.jsonl.gz",
+          "sha256": "9d602279c64285341e6a71ce2b9ea69a6528517446a1ff7d3b24482d37478ba7"
+        },
+        {
+          "bytes": 134742,
+          "path": "arabic-holdout-postreview/original_result.json",
+          "sha256": "c4c78668740fd036d6b55ba687816083dafeb80132f5f04025456f3b84bbafa7"
+        },
+        {
+          "bytes": 51463,
+          "path": "arabic-holdout-postreview/question_report.json",
+          "sha256": "c9aa86a28dc1e638fccf4f3d08576e4bbc5d98202a419ef01c4f012116b9f9d2"
+        },
+        {
+          "bytes": 6058,
+          "path": "arabic-holdout-postreview/review.json",
+          "sha256": "63cf742ff13e795d4cec21df373aad1a485c77dbc818b18e7bf3cf53f64b579e"
+        },
+        {
+          "bytes": 75597,
+          "path": "arabic-holdout-postreview/review_code.tar.gz",
+          "sha256": "20e8b375e7720632b53643ee07866b96e1655c8a876f11762e91d90d4c02ff4a"
+        },
+        {
+          "bytes": 31317,
+          "path": "arabic-holdout-postreview/verification_replay.json",
+          "sha256": "1ef10e0fddce888fe7c98315b01d888fb05e78340de8ba9bf5af143292893900"
+        },
+        {
+          "bytes": 134742,
+          "path": "arabic-holdout.json",
+          "sha256": "c4c78668740fd036d6b55ba687816083dafeb80132f5f04025456f3b84bbafa7"
+        },
+        {
+          "bytes": 5666138,
+          "path": "arabic-holdout.raw.jsonl",
+          "sha256": "1b9d35da024aa3093c3489b5e7126079420732e2da8473102972a0e6440b4fe0"
+        },
+        {
+          "bytes": 3092,
+          "path": "arabic-regression/receipt.json",
+          "sha256": "d6baf94b78883ddcd6da645065bb25207e696709d77d379f159a2dac6f37c37e"
+        },
+        {
+          "bytes": 686812,
+          "path": "arabic-regression/results.json",
+          "sha256": "6cefe9ca7d1fb35321d92565be5bb57eda7a173a0930d57ba055a6415a2a45fa"
+        },
+        {
+          "bytes": 80169,
+          "path": "axioms.json",
+          "sha256": "ca91327ae9c754cb89d036ca6f6a58e521e564e5551e316a9acd6c5adf3aefc4"
+        },
+        {
+          "bytes": 77604,
+          "path": "axioms.log",
+          "sha256": "9d09368d5df138b4a4155d91c076665b15b7bf19a36a17998309caf51c59ba83"
+        },
+        {
+          "bytes": 2824,
+          "path": "classical-language-conformance.json",
+          "sha256": "a4fcdea5359e7f01584e9600db959d6e0a814c12a8ad419e106b37db145a3964"
+        },
+        {
+          "bytes": 35131,
+          "path": "classical-language-sources.json",
+          "sha256": "a659bdc18ee3301f4d87f2692c7e56d0f9eb18ebe178f69f6ab093e20cab54a4"
+        },
+        {
+          "bytes": 2309,
+          "path": "conformance.json",
+          "sha256": "f61606f9d019a67d478299ac417ea0ee791670b813927406d72ee15d935c76f5"
+        },
+        {
+          "bytes": 738,
+          "path": "construction-conformance.json",
+          "sha256": "ab6fee09be8bba06c52e775b4e57222824ae03ca550a1402903e8e0dec0b7ea7"
+        },
+        {
+          "bytes": 2442075,
+          "path": "construction-regression.code.tar.gz",
+          "sha256": "4ff66671aacbefecd3fa1cc22fa74b1b718da0b15f8d8f057b3d672186a0b469"
+        },
+        {
+          "bytes": 159029,
+          "path": "construction-regression.json",
+          "sha256": "1e1be5a001cdeeef9cdc701a0015b9bcc372c32c7a4024c942db346ad5271ac3"
+        },
+        {
+          "bytes": 1425897,
+          "path": "construction-regression.raw.jsonl.gz",
+          "sha256": "65e4e2c080ebfae4a04fc92cb1c5deaed6fd2e2aed31ac23b131ba0e9da5f56d"
+        },
+        {
+          "bytes": 573,
+          "path": "derivation-conformance.json",
+          "sha256": "a68c4ed30e7802dda5a37482e13305fd34a7a4d12e5040f65f9a296be7781a73"
+        },
+        {
+          "bytes": 151300,
+          "path": "derivation-regression.json",
+          "sha256": "4d1bd2afdf4f2c85e2dc6383439d32c2638013f06a1d47ee42b1d5784fb75afc"
+        },
+        {
+          "bytes": 1571,
+          "path": "discourse-conformance.json",
+          "sha256": "40d8d85f46aa9c2ec785b5c1b1c1b930ba6d2f8f987d2a719b12e5c9a2459590"
+        },
+        {
+          "bytes": 2441908,
+          "path": "discourse-regression.code.tar.gz",
+          "sha256": "2f1b5cd5305af45c0bf2428233743355b1d2b3d076bcf2ab1784145eb71de8a5"
+        },
+        {
+          "bytes": 140382,
+          "path": "discourse-regression.json",
+          "sha256": "8f03be22018d644bfc164a2debe234ccfe0401d72520c6dd684bb578c541a286"
+        },
+        {
+          "bytes": 1111811,
+          "path": "discourse-regression.raw.jsonl.gz",
+          "sha256": "62c47b1814ddaa761e22df2752cb47d1e1d52c493351d59cdd173027041909df"
+        },
+        {
+          "bytes": 405,
+          "path": "governor-conformance.json",
+          "sha256": "a59124afba3c1219566092a895c5f85b749724b1d4b54031b74b1e990861dee0"
+        },
+        {
+          "bytes": 787,
+          "path": "governor-regression/regression_gate.json",
+          "sha256": "bde14e2428aa2634c7ec30a7ecd122ee95ce49529f1af5349f3143b5fd78b8aa"
+        },
+        {
+          "bytes": 3169514,
+          "path": "governor-regression/results.json",
+          "sha256": "27e200e29d158e8254fb0cbbc843172e1ec2b295b035a17f061a38ab4b949c30"
+        },
+        {
+          "bytes": 2132,
+          "path": "governor-regression/summary.json",
+          "sha256": "1c143f55b054595501e02368b0ce6af805c601c7747a1efcda9af5b5f1d7c73f"
+        },
+        {
+          "bytes": 2415740,
+          "path": "inflection-cli-regression.code.tar.gz",
+          "sha256": "cfb3a6325d8e7ee6e900346460a500dfadb905b8ff214aa88c5e6d391af39361"
+        },
+        {
+          "bytes": 217413,
+          "path": "inflection-cli-regression.json",
+          "sha256": "efb850734dce2e104b26e57d59e310e74f793715abd7a7bea64953f73067e899"
+        },
+        {
+          "bytes": 60768,
+          "path": "inflection-cli-regression.raw.jsonl.gz",
+          "sha256": "6e6e1d4813bc3197d0703ec9c6250f9d841dc75aef5cf328e96d170d15dff722"
+        },
+        {
+          "bytes": 896,
+          "path": "inflection-conformance.json",
+          "sha256": "3f52684be6e6006302a3e5f1c929ae31589adf669b06b01d017c473f1fedf41d"
+        },
+        {
+          "bytes": 2405369,
+          "path": "inflection-post-review-regression.code.tar.gz",
+          "sha256": "d12ea47d45ebeeeafc410e7e0698f754177ecb93995cf827707b539dcedeac84"
+        },
+        {
+          "bytes": 112947,
+          "path": "inflection-post-review-regression.json",
+          "sha256": "1fde811f546b5df8d7ce31f2a34881d926c30cd89884c5160e7d464d4a3e08cf"
+        },
+        {
+          "bytes": 22326,
+          "path": "inflection-post-review-regression.raw.jsonl.gz",
+          "sha256": "7ee4c247c45c62ff27b67b42b397c6a8f85a1646f86bd8859942f5c0c4a5bd64"
+        },
+        {
+          "bytes": 2405357,
+          "path": "inflection-regression.code.tar.gz",
+          "sha256": "c57ec0fd7d951e6f68e0f76ecffd926b92ed8421c6693ee5ead25ce5486e7209"
+        },
+        {
+          "bytes": 356696,
+          "path": "inflection-regression.json",
+          "sha256": "5681f09bd13844697e6b3789d36c6fcaeac8388fab103056f2549d3bb147bc8a"
+        },
+        {
+          "bytes": 86131,
+          "path": "inflection-regression.raw.jsonl.gz",
+          "sha256": "3b1351b9c5102cbec6927666f78c3f04f73974ca2a30872a0136b9f43315c32d"
+        },
+        {
+          "bytes": 2356,
+          "path": "inquiry-conformance.json",
+          "sha256": "66acb1923ee95b4463f1fa5187a4c6779074bd5cf939040dad7d0f65308ed08a"
+        },
+        {
+          "bytes": 458,
+          "path": "morphology-conformance.json",
+          "sha256": "dc24b7a6cc7e45f401a294e342a98c12543227ef9499031d880e69996cb22758"
+        },
+        {
+          "bytes": 219922,
+          "path": "morphology-regression.json",
+          "sha256": "7c3cd721145d8ef79c0e55e4e2afbec4b801311f8a58fb57af74919cb9a12a7c"
+        },
+        {
+          "bytes": 901,
+          "path": "nominal-conformance.json",
+          "sha256": "12cf138fbee6d085add94a32cf427aace05ba5d12942073f5e7e6ad249152c03"
+        },
+        {
+          "bytes": 548564,
+          "path": "nominal-regression.json",
+          "sha256": "da55eedc597f83dce92b67299344deb4295ec59bd9f1096968885d54e190431f"
+        },
+        {
+          "bytes": 563,
+          "path": "person-conformance.json",
+          "sha256": "f1a184c52877db6bdd11cc0a6a27ab5ea888005fb0de935fa8184c681ac89a53"
+        },
+        {
+          "bytes": 45612,
+          "path": "progressive-unit-conformance.json",
+          "sha256": "83ffe28032d1c1c987ec50aa8f047ccf874fd27bd0896a5c6e43da1b65dd68ea"
+        },
+        {
+          "bytes": 336214,
+          "path": "progressive-unit-conformance.plan.json",
+          "sha256": "fbc7dd2364b78f9b6127f78955d101fcea58d365af03b20c04101d93b3366205"
+        },
+        {
+          "bytes": 210370,
+          "path": "progressive-unit-conformance.sources.tar.gz",
+          "sha256": "36cf28862a3c0790d04361cbeed53eb3781d085ed3e7a32a37fefaaead12a7a0"
+        },
+        {
+          "bytes": 0,
+          "path": "progressive-unit-conformance.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 96886,
+          "path": "progressive-unit-conformance.stdin.jsonl",
+          "sha256": "d19d25df3a7b7e18fe18eb97746b9536287d457ba0ab9252b7c614f915ce9c92"
+        },
+        {
+          "bytes": 102648,
+          "path": "progressive-unit-conformance.stdout.jsonl",
+          "sha256": "67e1fa52fed275f47ede2fa8474a0c4951ef4fb997cd048e4a07cadc1a67247a"
+        },
+        {
+          "bytes": 499,
+          "path": "property-conformance.json",
+          "sha256": "9c679266c7891416bb0c895772b62df4f99acb90cd6ca6cd438a879db7dec3c6"
+        },
+        {
+          "bytes": 464890,
+          "path": "recursive-bridge-conformance.json",
+          "sha256": "55f631d0b57424e6c7e3c621cbba7c2c00f83eb8efe3ddf187804aeb3099d120"
+        },
+        {
+          "bytes": 579606,
+          "path": "recursive-bridge-conformance.json.code.tar.gz",
+          "sha256": "543b223968828f4e62d3734442c1da5d24ce847576615df9300afe6cd78194c8"
+        },
+        {
+          "bytes": 0,
+          "path": "recursive-bridge-conformance.json.lean.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 72724,
+          "path": "recursive-bridge-conformance.json.lean.stdin.jsonl",
+          "sha256": "67bfb68393830c9b96d011621983a777d88771a5d265bbcf8c6db2ebf26581d1"
+        },
+        {
+          "bytes": 103709,
+          "path": "recursive-bridge-conformance.json.lean.stdout.jsonl",
+          "sha256": "8cc7983058b79ecd99f9965d6ab14541e626f11954530a8176eb1ad4c0424e48"
+        },
+        {
+          "bytes": 0,
+          "path": "recursive-bridge-conformance.json.native.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 1188,
+          "path": "recursive-bridge-conformance.json.native.stdin.jsonl",
+          "sha256": "b260d6bd678581472c06632f5d209e3cdc91bfc555895aeec582ef6376cd3703"
+        },
+        {
+          "bytes": 90282,
+          "path": "recursive-bridge-conformance.json.native.stdout.jsonl",
+          "sha256": "ea108ad907a1b428af1d5385ae300898315fd2cb8924e2a149b6bb0b79514700"
+        },
+        {
+          "bytes": 339625,
+          "path": "recursive-bridge-conformance.json.plan.json",
+          "sha256": "419eb210bc8baf943738c87159f4cc869959b2178eb5849603491d112e15d915"
+        },
+        {
+          "bytes": 32861,
+          "path": "source-learning.json",
+          "sha256": "e3cac1cb8d403d520816c47ea8bcf81e647c3fd13b352aa4c2f2308a8f0baeeb"
+        },
+        {
+          "bytes": 486,
+          "path": "text-evidence-conformance.json",
+          "sha256": "41dda992f85c39f08b1bd6e916cd48af396186b2495a1f463c8bd3c56ac75862"
+        },
+        {
+          "bytes": 221748,
+          "path": "text-morphology-regression.json",
+          "sha256": "fb5a70b9ff10c806744af46eb95eab7312ca4e8886b861407d478004eb2b32ba"
+        },
+        {
+          "bytes": 34008,
+          "path": "text-regression/attacks_rerun.json",
+          "sha256": "f70acc8932d3e00dea5044b11a1423714be074e30935eb84bc133bc32f084fbe"
+        },
+        {
+          "bytes": 47278,
+          "path": "text-regression/baseline_rerun.json",
+          "sha256": "d59ec560493eda82418ac1749874f7f7e34b540ee93af1490004ec66bf10099c"
+        },
+        {
+          "bytes": 18713,
+          "path": "text-regression/boundaries_rerun.json",
+          "sha256": "e6288e3bbe918071116524ab67e46e53ce9b42491e8707647ea13df11a66cc23"
+        },
+        {
+          "bytes": 905064,
+          "path": "text-regression/controlled_rerun.json",
+          "sha256": "2bca473f76c247886b07b48314d16cf23dc351eb1e053e004f5d7707230357bf"
+        },
+        {
+          "bytes": 52241,
+          "path": "text-regression/natural_rerun.json",
+          "sha256": "772fb9d8c826521b2bdcceac7a8109e58578ebeba6751058edccddcb25a24c29"
+        },
+        {
+          "bytes": 20615,
+          "path": "text-regression/plans_rerun.json",
+          "sha256": "d76f6912ae407e28914cee26e015fc65f2b0c14f9f737e8fbad4b9488d554772"
+        },
+        {
+          "bytes": 5647,
+          "path": "text-regression/summary.json",
+          "sha256": "8ad860f6e49e1ac4b9be7a90e1c2aa8df9f5d38f9f3c34550d758f56535fe3a7"
+        },
+        {
+          "bytes": 14671,
+          "path": "unit-discovery-conformance.inputs.json",
+          "sha256": "a607386b6fcf07c6d828d67c13e363e365a327ad72860c77b7fc4e745d8045c6"
+        },
+        {
+          "bytes": 103977,
+          "path": "unit-discovery-conformance.json",
+          "sha256": "78f4469343dfbc13fb0bc7daaadfcfd5117ac2103e84aa3d1e35825e6767ee03"
+        },
+        {
+          "bytes": 29811,
+          "path": "unit-discovery-conformance.raw.jsonl.gz",
+          "sha256": "16bb032d79aaa43f9dc5273f27015a2d5849795a43bd5203921a72826801b042"
+        },
+        {
+          "bytes": 183357,
+          "path": "unit-discovery-conformance.requests.json",
+          "sha256": "763b43edd4be214d6eb1cec93025bb3e2cfb334614988bb7c6f6b45666e2d060"
+        },
+        {
+          "bytes": 53843,
+          "path": "unit-discovery-conformance.snapshot.tar.gz",
+          "sha256": "b9abcac55efd70ac15b42a8004b45a8ae50cb09231d1b90f68afd01eda168879"
+        },
+        {
+          "bytes": 255445,
+          "path": "unit-discovery-conformance.sources.tar.gz",
+          "sha256": "a67de55c1f7ae1b687874733e008c61cf564403b64b115aa166d2d8e5c97bd5e"
+        },
+        {
+          "bytes": 144841,
+          "path": "unit-discovery-conformance.stdio.json",
+          "sha256": "32ead4e9a7a97f89e17a5a3c1deb3211f4595e2ea9340a207acb9a63d9365293"
+        },
+        {
+          "bytes": 372,
+          "path": "word-conformance.json",
+          "sha256": "64be8d10dea16fe3052631e03cf7349fd878925f2068aef83e2d49904d849b77"
+        },
+        {
+          "bytes": 375338,
+          "path": "word-regression.json",
+          "sha256": "8e433e3134fea87370e2a9762699188d395be18f86d3252eee2b06cd93cd1272"
+        }
+      ]
+    },
+    "path_mapping": "Generated absolute or vendor-relative source prefixes map to retained_root; raw report bytes are unchanged",
+    "reports_rewritten": false,
+    "retained_relative_to_output": "evidence",
+    "retained_root": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/pr17-full-v1/evidence",
+    "schema": "mashru.nabt.evidence-relocation.v1",
+    "source_relative_to_vendor": "artifacts/local/mashru-check-x5s5c4ac/evidence",
+    "source_root": "/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt/artifacts/local/mashru-check-x5s5c4ac/evidence",
+    "status": "RETAINED"
+  },
+  "finished": "2026-10-24T15:33:21.918923+00:00",
+  "formal_conformance": "PASSED",
+  "full_parity": true,
+  "generated_reports": [
+    {
+      "bytes": 180,
+      "path": "evidence/arabic-conformance.json",
+      "reported_summary": {
+        "scope": "fresh Lean tags and finite cell-codec examples; not Python parser refinement"
+      },
+      "sha256": "85abd978002feef1e3c983ece982c8656d1eb612288e03a6bd2a969f48e15bea"
+    },
+    {
+      "bytes": 134742,
+      "path": "evidence/arabic-holdout-postreview/original_result.json",
+      "reported_summary": {
+        "strict_pass": false
+      },
+      "sha256": "c4c78668740fd036d6b55ba687816083dafeb80132f5f04025456f3b84bbafa7"
+    },
+    {
+      "bytes": 51463,
+      "path": "evidence/arabic-holdout-postreview/question_report.json",
+      "reported_summary": {
+        "scope": "independent_holdout_v1",
+        "status": "LICENSED_DISCOURSE"
+      },
+      "sha256": "c9aa86a28dc1e638fccf4f3d08576e4bbc5d98202a419ef01c4f012116b9f9d2"
+    },
+    {
+      "bytes": 6058,
+      "path": "evidence/arabic-holdout-postreview/review.json",
+      "reported_summary": {
+        "gate_pass": true
+      },
+      "sha256": "63cf742ff13e795d4cec21df373aad1a485c77dbc818b18e7bf3cf53f64b579e"
+    },
+    {
+      "bytes": 31317,
+      "path": "evidence/arabic-holdout-postreview/verification_replay.json",
+      "sha256": "1ef10e0fddce888fe7c98315b01d888fb05e78340de8ba9bf5af143292893900"
+    },
+    {
+      "bytes": 134742,
+      "path": "evidence/arabic-holdout.json",
+      "reported_summary": {
+        "strict_pass": false
+      },
+      "sha256": "c4c78668740fd036d6b55ba687816083dafeb80132f5f04025456f3b84bbafa7"
+    },
+    {
+      "bytes": 3092,
+      "path": "evidence/arabic-regression/receipt.json",
+      "reported_summary": {
+        "summary": {
+          "declared_scope": {
+            "budget_pass": 12,
+            "complete_episodes": 8,
+            "covered_query_matches": 9,
+            "episodes": 12,
+            "licensed_claim_episodes": 12,
+            "queries": 11,
+            "raw_query_matches": 9,
+            "source_admission_and_projection_complete": 8,
+            "source_restoration_episodes": 12
+          },
+          "real_excerpts": {
+            "licensed_claims": 8,
+            "semantic_read": 0,
+            "source_restored": 8,
+            "total": 8
+          },
+          "standalone": {
+            "budget_pass": 40,
+            "complete_episodes": 0,
+            "covered_query_matches": 0,
+            "episodes": 40,
+            "licensed_claim_episodes": 40,
+            "queries": 43,
+            "raw_query_matches": 0,
+            "source_admission_and_projection_complete": 1,
+            "source_restoration_episodes": 40
+          }
+        }
+      },
+      "sha256": "d6baf94b78883ddcd6da645065bb25207e696709d77d379f159a2dac6f37c37e"
+    },
+    {
+      "bytes": 686812,
+      "path": "evidence/arabic-regression/results.json",
+      "reported_summary": {
+        "summary": {
+          "declared_scope": {
+            "budget_pass": 12,
+            "complete_episodes": 8,
+            "covered_query_matches": 9,
+            "episodes": 12,
+            "licensed_claim_episodes": 12,
+            "queries": 11,
+            "raw_query_matches": 9,
+            "source_admission_and_projection_complete": 8,
+            "source_restoration_episodes": 12
+          },
+          "real_excerpts": {
+            "licensed_claims": 8,
+            "semantic_read": 0,
+            "source_restored": 8,
+            "total": 8
+          },
+          "standalone": {
+            "budget_pass": 40,
+            "complete_episodes": 0,
+            "covered_query_matches": 0,
+            "episodes": 40,
+            "licensed_claim_episodes": 40,
+            "queries": 43,
+            "raw_query_matches": 0,
+            "source_admission_and_projection_complete": 1,
+            "source_restoration_episodes": 40
+          }
+        }
+      },
+      "sha256": "6cefe9ca7d1fb35321d92565be5bb57eda7a173a0930d57ba055a6415a2a45fa"
+    },
+    {
+      "bytes": 80169,
+      "path": "evidence/axioms.json",
+      "reported_summary": {},
+      "sha256": "ca91327ae9c754cb89d036ca6f6a58e521e564e5551e316a9acd6c5adf3aefc4"
+    },
+    {
+      "bytes": 2824,
+      "path": "evidence/classical-language-conformance.json",
+      "reported_summary": {
+        "scope": "Exhaustive finite correspondence of conditional grammar laws on supplied interpretations. Source attestation and the applicability of those interpretations to a target sentence are separate obligations."
+      },
+      "sha256": "a4fcdea5359e7f01584e9600db959d6e0a814c12a8ad419e106b37db145a3964"
+    },
+    {
+      "bytes": 35131,
+      "path": "evidence/classical-language-sources.json",
+      "reported_summary": {
+        "status": "VERIFIED"
+      },
+      "sha256": "a659bdc18ee3301f4d87f2692c7e56d0f9eb18ebe178f69f6ab093e20cab54a4"
+    },
+    {
+      "bytes": 2309,
+      "path": "evidence/conformance.json",
+      "reported_summary": {
+        "scope": "Lean kernel build and complete table conformance; not a full Python refinement proof"
+      },
+      "sha256": "f61606f9d019a67d478299ac417ea0ee791670b813927406d72ee15d935c76f5"
+    },
+    {
+      "bytes": 738,
+      "path": "evidence/construction-conformance.json",
+      "reported_summary": {
+        "counts": {
+          "activation_rows": 256,
+          "agreement_rows": 81,
+          "an_rows": 7,
+          "idafa_rows": 256,
+          "identity_rows": 16,
+          "operator_rows": 4,
+          "predicate_agreement_rows": 18,
+          "role_rows": 68,
+          "scope_rows": 88
+        },
+        "scope": "Conditional constituent, evidence and scoped-projection algebra only; not source acquisition, parser correctness, linguistic coverage or external truth."
+      },
+      "sha256": "ab6fee09be8bba06c52e775b4e57222824ae03ca550a1402903e8e0dec0b7ea7"
+    },
+    {
+      "bytes": 159029,
+      "path": "evidence/construction-regression.json",
+      "reported_summary": {
+        "gate_pass": true,
+        "passed": 80,
+        "scope": "Independent authored composition from supplied lexical/context premises; first frozen material unchanged.",
+        "strict_pass": false
+      },
+      "sha256": "1e1be5a001cdeeef9cdc701a0015b9bcc372c32c7a4024c942db346ad5271ac3"
+    },
+    {
+      "bytes": 573,
+      "path": "evidence/derivation-conformance.json",
+      "reported_summary": {
+        "scope": "Fresh Lean registry equality; bounded inverse refinement; complete conditional availability algebra. No unrestricted Arabic reader, lexical classification, weak-form realization, or linguistic completeness claim."
+      },
+      "sha256": "a68c4ed30e7802dda5a37482e13305fd34a7a4d12e5040f65f9a296be7781a73"
+    },
+    {
+      "bytes": 151300,
+      "path": "evidence/derivation-regression.json",
+      "reported_summary": {
+        "passed": true,
+        "scope": {
+          "api_contract_communication_read": true,
+          "authored_by": "independent review agent /root/text_cue_review",
+          "claim": "Authored source-informed cases frozen before this reviewer opened any new derivation implementation; not a statistically representative corpus.",
+          "external_untouched_corpus": false,
+          "new_derivation_runtime_read": false,
+          "source_lean_read": true,
+          "source_python_read_for_audit": true
+        }
+      },
+      "sha256": "4d1bd2afdf4f2c85e2dc6383439d32c2638013f06a1d47ee42b1d5784fb75afc"
+    },
+    {
+      "bytes": 1571,
+      "path": "evidence/discourse-conformance.json",
+      "reported_summary": {
+        "counts": {
+          "assertion_rows": 576,
+          "causal_rows": 16,
+          "claim_projection_rows": 128,
+          "combine_rows": 9,
+          "coordination_rows": 8,
+          "feature_rows": 25,
+          "negation_rows": 2,
+          "reference_rows": 2304,
+          "role_rows": 5,
+          "selection_rows": 12,
+          "truth_rows": 16
+        },
+        "scope": "Conditional algebra correspondence and exact source windows; not acquisition, external reference, free-text correctness or external truth."
+      },
+      "sha256": "40d8d85f46aa9c2ec785b5c1b1c1b930ba6d2f8f987d2a719b12e5c9a2459590"
+    },
+    {
+      "bytes": 140382,
+      "path": "evidence/discourse-regression.json",
+      "reported_summary": {
+        "gate_pass": true,
+        "passed": 63,
+        "scope": "Authored independent source-informed episodes; known QAC labels/context premises; four withheld realizations.",
+        "strict_pass": false
+      },
+      "sha256": "8f03be22018d644bfc164a2debe234ccfe0401d72520c6dd684bb578c541a286"
+    },
+    {
+      "bytes": 405,
+      "path": "evidence/governor-conformance.json",
+      "reported_summary": {
+        "scope": "finite class algebra/codec conformance; no Python parser refinement or all-Arabic claim"
+      },
+      "sha256": "a59124afba3c1219566092a895c5f85b749724b1d4b54031b74b1e990861dee0"
+    },
+    {
+      "bytes": 787,
+      "path": "evidence/governor-regression/regression_gate.json",
+      "reported_summary": {
+        "status": "REGRESSION_PASS"
+      },
+      "sha256": "bde14e2428aa2634c7ec30a7ecd122ee95ce49529f1af5349f3143b5fd78b8aa"
+    },
+    {
+      "bytes": 3169514,
+      "path": "evidence/governor-regression/results.json",
+      "reported_summary": {
+        "summary": {
+          "beyond_declared_scope": {
+            "certificate_count": 0,
+            "complete_episodes": 0,
+            "complete_governor_cue_reports": 1,
+            "complete_source_readings": 0,
+            "episodes": 4,
+            "governor_cue_errors": 0,
+            "governor_cue_reports": 1,
+            "independent_certificate_episodes": 4,
+            "licensed_claim_episodes": 4,
+            "numeric_program_roundtrips": 4,
+            "production_receipt_replays": 4,
+            "queries": 0,
+            "query_matches": 0,
+            "required_sources": 0,
+            "source_restoration_episodes": 4
+          },
+          "declared_scope": {
+            "certificate_count": 1,
+            "complete_episodes": 0,
+            "complete_governor_cue_reports": 14,
+            "complete_source_readings": 1,
+            "episodes": 12,
+            "governor_cue_errors": 0,
+            "governor_cue_reports": 14,
+            "independent_certificate_episodes": 12,
+            "licensed_claim_episodes": 12,
+            "numeric_program_roundtrips": 12,
+            "production_receipt_replays": 12,
+            "queries": 20,
+            "query_matches": 3,
+            "required_sources": 16,
+            "source_restoration_episodes": 12
+          },
+          "identity_supplement": {
+            "certificate_count": 4,
+            "complete_episodes": 4,
+            "complete_governor_cue_reports": 5,
+            "complete_source_readings": 4,
+            "episodes": 6,
+            "governor_cue_errors": 0,
+            "governor_cue_reports": 7,
+            "independent_certificate_episodes": 6,
+            "licensed_claim_episodes": 6,
+            "numeric_program_roundtrips": 6,
+            "production_receipt_replays": 6,
+            "queries": 8,
+            "query_matches": 6,
+            "required_sources": 6,
+            "source_restoration_episodes": 6
+          },
+          "original_excerpts": {
+            "licensed_claims": 6,
+            "semantic_read": 0,
+            "source_restored": 6,
+            "total": 6
+          },
+          "safety_control": {
+            "certificate_count": 0,
+            "complete_episodes": 0,
+            "complete_governor_cue_reports": 0,
+            "complete_source_readings": 0,
+            "episodes": 16,
+            "governor_cue_errors": 0,
+            "governor_cue_reports": 0,
+            "independent_certificate_episodes": 16,
+            "licensed_claim_episodes": 16,
+            "numeric_program_roundtrips": 16,
+            "production_receipt_replays": 16,
+            "queries": 0,
+            "query_matches": 0,
+            "required_sources": 0,
+            "source_restoration_episodes": 16
+          }
+        }
+      },
+      "sha256": "27e200e29d158e8254fb0cbbc843172e1ec2b295b035a17f061a38ab4b949c30"
+    },
+    {
+      "bytes": 2132,
+      "path": "evidence/governor-regression/summary.json",
+      "reported_summary": {},
+      "sha256": "1c143f55b054595501e02368b0ce6af805c601c7747a1efcda9af5b5f1d7c73f"
+    },
+    {
+      "bytes": 217413,
+      "path": "evidence/inflection-cli-regression.json",
+      "reported_summary": {
+        "gate_pass": true,
+        "passed": 32
+      },
+      "sha256": "efb850734dce2e104b26e57d59e310e74f793715abd7a7bea64953f73067e899"
+    },
+    {
+      "bytes": 896,
+      "path": "evidence/inflection-conformance.json",
+      "reported_summary": {
+        "counts": {
+          "conditional_surface_inverse_checks": 165,
+          "construction_domains": 2,
+          "diptote_contexts": 16,
+          "nun_kinds": 7,
+          "receipt_masks": 256,
+          "relation_requirements": 11,
+          "sign_rows": 45
+        },
+        "scope": "Finite conditional law correspondence; not class/segmentation/relation acquisition, source truth or unrestricted Arabic."
+      },
+      "sha256": "3f52684be6e6006302a3e5f1c929ae31589adf669b06b01d017c473f1fedf41d"
+    },
+    {
+      "bytes": 112947,
+      "path": "evidence/inflection-post-review-regression.json",
+      "reported_summary": {
+        "gate_pass": true,
+        "passed": 22
+      },
+      "sha256": "1fde811f546b5df8d7ce31f2a34881d926c30cd89884c5160e7d464d4a3e08cf"
+    },
+    {
+      "bytes": 356696,
+      "path": "evidence/inflection-regression.json",
+      "reported_summary": {
+        "gate_pass": true,
+        "strict_pass": false,
+        "summary": {
+          "adapter_error_cases": 0,
+          "coverage_miss_cases": 2,
+          "execution_error_cases": 0,
+          "false_accept_cases": 0,
+          "passed": 72,
+          "total": 74
+        }
+      },
+      "sha256": "5681f09bd13844697e6b3789d36c6fcaeac8388fab103056f2549d3bb147bc8a"
+    },
+    {
+      "bytes": 2356,
+      "path": "evidence/inquiry-conformance.json",
+      "reported_summary": {
+        "scope": "Exhaustive finite Python/Lean decision-gate correspondence. Input extraction, declared provenance authenticity, real-world truth and human thinking ranks are not established."
+      },
+      "sha256": "66acb1923ee95b4463f1fa5187a4c6779074bd5cf939040dad7d0f65308ed08a"
+    },
+    {
+      "bytes": 458,
+      "path": "evidence/morphology-conformance.json",
+      "reported_summary": {
+        "scope": "Finite conditional algebra and reader projections; not unrestricted Arabic understanding"
+      },
+      "sha256": "dc24b7a6cc7e45f401a294e342a98c12543227ef9499031d880e69996cb22758"
+    },
+    {
+      "bytes": 219922,
+      "path": "evidence/morphology-regression.json",
+      "reported_summary": {
+        "summary": {
+          "documented_boundary_ids": [
+            "m12",
+            "m13",
+            "m32",
+            "m33"
+          ],
+          "failed_ids": [
+            "m12",
+            "m13",
+            "m32",
+            "m33"
+          ],
+          "groups": {
+            "certificate_integrity": {
+              "passed": 5,
+              "total": 5
+            },
+            "contradiction": {
+              "passed": 3,
+              "total": 3
+            },
+            "malformed_input": {
+              "passed": 1,
+              "total": 1
+            },
+            "missing_information": {
+              "passed": 6,
+              "total": 6
+            },
+            "property_inference": {
+              "passed": 16,
+              "total": 16
+            },
+            "reading_isolation": {
+              "passed": 2,
+              "total": 2
+            },
+            "scope_boundary": {
+              "passed": 1,
+              "total": 5
+            },
+            "source_retraction": {
+              "passed": 2,
+              "total": 2
+            },
+            "source_semantic_counterexample": {
+              "passed": 1,
+              "total": 1
+            },
+            "unseen_identifier_transfer": {
+              "passed": 2,
+              "total": 2
+            }
+          },
+          "passed": 39,
+          "regression_gate_with_declared_boundaries": true,
+          "total": 43
+        }
+      },
+      "sha256": "7c3cd721145d8ef79c0e55e4e2afbec4b801311f8a58fb57af74919cb9a12a7c"
+    },
+    {
+      "bytes": 901,
+      "path": "evidence/nominal-conformance.json",
+      "reported_summary": {
+        "scope": "Complete finite generated-law correspondence; public nominal/cardinal projections; bounded weak-root and canonical-pronoun checks. Receipt and manqus truth tables are checked, not unrestricted source qualification, partial-mark reader correctness, lexical attestation, actual syntactic case, ordinal meaning, or world cardinality."
+      },
+      "sha256": "12cf138fbee6d085add94a32cf427aace05ba5d12942073f5e7e6ad249152c03"
+    },
+    {
+      "bytes": 548564,
+      "path": "evidence/nominal-regression.json",
+      "reported_summary": {
+        "passed": true,
+        "scope": {
+          "authored_before_reviewer_opened_new_runtime": true,
+          "new_runtime_generated_table_new_formal_or_implementation_tests_read": false,
+          "not_claimed": [
+            "Untouched external corpus",
+            "Arabic-wide accuracy",
+            "Natural-language fact acquisition from the controlled descriptions",
+            "Lexical truth of explicit source claims",
+            "World-object counting"
+          ],
+          "prior_inputs": [
+            "Pinned existing primary texts and upstream Lean passages",
+            "Agreed public API and controlled-source grammar",
+            "The planned five-flag manqus correction agreed before freeze"
+          ]
+        }
+      },
+      "sha256": "da55eedc597f83dce92b67299344deb4295ec59bd9f1096968885d54e190431f"
+    },
+    {
+      "bytes": 563,
+      "path": "evidence/person-conformance.json",
+      "reported_summary": {
+        "counts": {
+          "attached_allomorphs": 20,
+          "correlated_profiles": 14,
+          "family_prefix_rows": 20,
+          "separate_pronouns": 14
+        },
+        "scope": "Finite conditional person/shape registry, not source truth, acquisition, reference, case or role."
+      },
+      "sha256": "f1a184c52877db6bdd11cc0a6a27ab5ea888005fb0de935fa8184c681ac89a53"
+    },
+    {
+      "bytes": 45612,
+      "path": "evidence/progressive-unit-conformance.json",
+      "reported_summary": {
+        "scope": "frozen independently authored contracts; not natural-language acquisition"
+      },
+      "sha256": "83ffe28032d1c1c987ec50aa8f047ccf874fd27bd0896a5c6e43da1b65dd68ea"
+    },
+    {
+      "bytes": 336214,
+      "path": "evidence/progressive-unit-conformance.plan.json",
+      "reported_summary": {},
+      "sha256": "fbc7dd2364b78f9b6127f78955d101fcea58d365af03b20c04101d93b3366205"
+    },
+    {
+      "bytes": 499,
+      "path": "evidence/property-conformance.json",
+      "reported_summary": {
+        "scope": "all required/positive/negative masks at width four"
+      },
+      "sha256": "9c679266c7891416bb0c895772b62df4f99acb90cd6ca6cd438a879db7dec3c6"
+    },
+    {
+      "bytes": 464890,
+      "path": "evidence/recursive-bridge-conformance.json",
+      "reported_summary": {},
+      "sha256": "55f631d0b57424e6c7e3c621cbba7c2c00f83eb8efe3ddf187804aeb3099d120"
+    },
+    {
+      "bytes": 339625,
+      "path": "evidence/recursive-bridge-conformance.json.plan.json",
+      "reported_summary": {},
+      "sha256": "419eb210bc8baf943738c87159f4cc869959b2178eb5849603491d112e15d915"
+    },
+    {
+      "bytes": 32861,
+      "path": "evidence/source-learning.json",
+      "reported_summary": {
+        "scope": {
+          "actual_observed_examples": 3,
+          "distinct_prescription_operation_marker_pairs": 3,
+          "general_arabic_accuracy_measured": false,
+          "generated_forms_counted_as_observations": 0,
+          "independent_heldout_examples": 0,
+          "observed_lexemes": 1,
+          "prescription_compilation_records": 6,
+          "source_agreement_implies_independence": false,
+          "target": "observed/selected carrier is waw, within each separately typed schema"
+        }
+      },
+      "sha256": "e3cac1cb8d403d520816c47ea8bcf81e647c3fd13b352aa4c2f2308a8f0baeeb"
+    },
+    {
+      "bytes": 486,
+      "path": "evidence/text-evidence-conformance.json",
+      "reported_summary": {
+        "scope": "Complete finite conditional algebra correspondence and bounded list properties; not source-reader refinement, linguistic cue activation or Arabic completeness"
+      },
+      "sha256": "41dda992f85c39f08b1bd6e916cd48af396186b2495a1f463c8bd3c56ac75862"
+    },
+    {
+      "bytes": 221748,
+      "path": "evidence/text-morphology-regression.json",
+      "reported_summary": {
+        "passed": true,
+        "scope": "Bounded independent regression/reference cases, not an untouched external corpus, training run, or full Arabic coverage benchmark."
+      },
+      "sha256": "fb5a70b9ff10c806744af46eb95eab7312ca4e8886b861407d478004eb2b32ba"
+    },
+    {
+      "bytes": 34008,
+      "path": "evidence/text-regression/attacks_rerun.json",
+      "reported_summary": {
+        "summary": {
+          "failed_ids": [],
+          "passed": 37,
+          "probes": 37,
+          "scope": "Public-contract adversarial probes and valid controls; separate from heldout controlled-Arabic accuracy."
+        }
+      },
+      "sha256": "f70acc8932d3e00dea5044b11a1423714be074e30935eb84bc133bc32f084fbe"
+    },
+    {
+      "bytes": 47278,
+      "path": "evidence/text-regression/baseline_rerun.json",
+      "reported_summary": {
+        "summary": {
+          "all": {
+            "answer_precision": 0.9655172413793104,
+            "answers": 29,
+            "baseline_status_counts": {
+              "CONFLICT": 9,
+              "REFUTED": 10,
+              "SUPPORTED": 19,
+              "UNKNOWN": 88
+            },
+            "checkpoints": 126,
+            "correct_answers": 28,
+            "episodes": 60,
+            "justified_coverage": 0.45901639344262296,
+            "status_checkpoints_passed": 84,
+            "status_episode_passed": 28,
+            "sufficient_evidence_queries": 61
+          },
+          "first40": {
+            "answer_precision": 1.0,
+            "answers": 21,
+            "baseline_status_counts": {
+              "CONFLICT": 8,
+              "REFUTED": 6,
+              "SUPPORTED": 15,
+              "UNKNOWN": 52
+            },
+            "checkpoints": 81,
+            "correct_answers": 21,
+            "episodes": 40,
+            "justified_coverage": 0.5121951219512195,
+            "status_checkpoints_passed": 56,
+            "status_episode_passed": 20,
+            "sufficient_evidence_queries": 41
+          },
+          "reserve20": {
+            "answer_precision": 0.875,
+            "answers": 8,
+            "baseline_status_counts": {
+              "CONFLICT": 1,
+              "REFUTED": 4,
+              "SUPPORTED": 4,
+              "UNKNOWN": 36
+            },
+            "checkpoints": 45,
+            "correct_answers": 7,
+            "episodes": 20,
+            "justified_coverage": 0.35,
+            "status_checkpoints_passed": 28,
+            "status_episode_passed": 8,
+            "sufficient_evidence_queries": 20
+          }
+        }
+      },
+      "sha256": "d59ec560493eda82418ac1749874f7f7e34b540ee93af1490004ec66bf10099c"
+    },
+    {
+      "bytes": 18713,
+      "path": "evidence/text-regression/boundaries_rerun.json",
+      "reported_summary": {
+        "summary": {
+          "failed_ids": [],
+          "note": "Caller-created parsed ASTs cannot grant claims or erase residual source material. Added after first40 without seeing hidden reserve cases.",
+          "passed": 3,
+          "probes": 3
+        }
+      },
+      "sha256": "e6288e3bbe918071116524ab67e46e53ce9b42491e8707647ea13df11a66cc23"
+    },
+    {
+      "bytes": 905064,
+      "path": "evidence/text-regression/controlled_rerun.json",
+      "reported_summary": {
+        "summary": {
+          "by_family": {
+            "definitions": {
+              "episodes": 10,
+              "passed": 10
+            },
+            "facts": {
+              "episodes": 10,
+              "passed": 10
+            },
+            "relations": {
+              "episodes": 10,
+              "passed": 10
+            },
+            "revision": {
+              "episodes": 10,
+              "passed": 10
+            },
+            "rules": {
+              "episodes": 10,
+              "passed": 10
+            },
+            "uncertainty": {
+              "episodes": 10,
+              "passed": 10
+            }
+          },
+          "elapsed_seconds": 0.6378263299993705,
+          "episodes": 60,
+          "episodes_passed": 60,
+          "error_classes": {},
+          "query_checkpoints": 126,
+          "query_checkpoints_passed": 126
+        }
+      },
+      "sha256": "2bca473f76c247886b07b48314d16cf23dc351eb1e053e004f5d7707230357bf"
+    },
+    {
+      "bytes": 52241,
+      "path": "evidence/text-regression/natural_rerun.json",
+      "reported_summary": {
+        "summary": {
+          "fully_admitted": 0,
+          "note": "A safe unsupported result contributes zero semantic coverage. Any unexpected admission needs independent semantic review.",
+          "raw_book_spans": 12,
+          "safety_passed": 12,
+          "semantic_coverage_denominator": 12,
+          "semantic_successes_confirmed": 0
+        }
+      },
+      "sha256": "772fb9d8c826521b2bdcceac7a8109e58578ebeba6751058edccddcb25a24c29"
+    },
+    {
+      "bytes": 20615,
+      "path": "evidence/text-regression/plans_rerun.json",
+      "reported_summary": {
+        "summary": {
+          "invalid_returned_plans": 0,
+          "note": "Created after an independent root-review counterexample; not part of the sealed 60-episode language benchmark.",
+          "passed": 7,
+          "plans_replayed": 7,
+          "reviewer_regression_scenarios": 7
+        }
+      },
+      "sha256": "d76f6912ae407e28914cee26e015fc65f2b0c14f9f737e8fbad4b9488d554772"
+    },
+    {
+      "bytes": 5647,
+      "path": "evidence/text-regression/summary.json",
+      "reported_summary": {
+        "passed": true
+      },
+      "sha256": "8ad860f6e49e1ac4b9be7a90e1c2aa8df9f5d38f9f3c34550d758f56535fe3a7"
+    },
+    {
+      "bytes": 14671,
+      "path": "evidence/unit-discovery-conformance.inputs.json",
+      "reported_summary": {},
+      "sha256": "a607386b6fcf07c6d828d67c13e363e365a327ad72860c77b7fc4e745d8045c6"
+    },
+    {
+      "bytes": 103977,
+      "path": "evidence/unit-discovery-conformance.json",
+      "reported_summary": {
+        "scope": "conditional_on_supplied_interpretations",
+        "summary": {
+          "acquisition_measured": false,
+          "by_group": {
+            "annotated_arabic": {
+              "cases": 24,
+              "failed_checks": 0,
+              "fully_passed": 0,
+              "measured_checks": 20,
+              "unmeasured_checks": 89
+            },
+            "evidence_binding": {
+              "cases": 8,
+              "failed_checks": 0,
+              "fully_passed": 3,
+              "measured_checks": 28,
+              "unmeasured_checks": 6
+            },
+            "mechanical": {
+              "cases": 8,
+              "failed_checks": 0,
+              "fully_passed": 4,
+              "measured_checks": 19,
+              "unmeasured_checks": 5
+            }
+          },
+          "case_statuses": {
+            "MEASURED": 7,
+            "PARTIALLY_MEASURED": 23,
+            "UNMEASURED": 10
+          },
+          "coverage_complete": false,
+          "failed_checks": 0,
+          "false_accept_count": 0,
+          "fully_passed_cases": 7,
+          "gate_pass": true,
+          "gate_scope": "conditional_contract_checks_only",
+          "measured_checks": 67,
+          "measured_contract_gate_pass": true,
+          "required_core_judgments_missing": {},
+          "strict_pass": false,
+          "total_cases": 40,
+          "unmeasured_checks": 100
+        }
+      },
+      "sha256": "78f4469343dfbc13fb0bc7daaadfcfd5117ac2103e84aa3d1e35825e6767ee03"
+    },
+    {
+      "bytes": 183357,
+      "path": "evidence/unit-discovery-conformance.requests.json",
+      "reported_summary": {},
+      "sha256": "763b43edd4be214d6eb1cec93025bb3e2cfb334614988bb7c6f6b45666e2d060"
+    },
+    {
+      "bytes": 144841,
+      "path": "evidence/unit-discovery-conformance.stdio.json",
+      "reported_summary": {},
+      "sha256": "32ead4e9a7a97f89e17a5a3c1deb3211f4595e2ea9340a207acb9a63d9365293"
+    },
+    {
+      "bytes": 372,
+      "path": "evidence/word-conformance.json",
+      "reported_summary": {
+        "scope": "finite conditional algebra and codecs; not parser refinement or Arabic completeness"
+      },
+      "sha256": "64be8d10dea16fe3052631e03cf7349fd878925f2068aef83e2d49904d849b77"
+    },
+    {
+      "bytes": 375338,
+      "path": "evidence/word-regression.json",
+      "reported_summary": {
+        "scope": {
+          "attached_pronoun": "The source-attested taa of darabtu must remain distinct from the verb in grammatical segmentation while restoring one written run.",
+          "contextual_frames": [
+            "inna_two_nouns",
+            "min_noun",
+            "lam_imperfect"
+          ],
+          "existing_profiles": "This dataset does not authorize changing existing text/governor acceptance.",
+          "new_unknown_words": "Named DEFER or explicitly limited cues; never count as required lexical coverage.",
+          "precomposition": "Source-bound candidates for noun, verb, particle and grammatical segmentation, without contextual case or semantic admission.",
+          "source_fact_or_atom_admission": false
+        },
+        "summary": {
+          "all_cases_passed": false,
+          "cases": 30,
+          "full_coverage_goal_passed": false,
+          "passed": 27,
+          "positive_capability_cases": 15,
+          "positive_capability_passed": 12,
+          "release_regression_gates_passed": true
+        }
+      },
+      "sha256": "8e433e3134fea87370e2a9762699188d395be18f86d3252eee2b06cd93cd1272"
+    }
+  ],
+  "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "mode": "full",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "provenance": {
+    "runtime_git_head": "2bb5b1c262ab66ca5b5c12f4cf6bf20b63960cde",
+    "runtime_git_head_is_upstream_identity": false,
+    "runtime_git_head_scope": "ENCLOSING_MASHRU_CHECKOUT",
+    "upstream_commit": "d791fd7730cde2256dfac8a27687010b392876b3",
+    "upstream_lock_sha256": "056ab2c0fe3b3a96abdf19a5970be44add3a2049876263b810dcd3b309f331d9"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "qac_source": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/full-v1/external/qac-original.txt.gz",
+  "schema": "mashru.nabt.validation.v1",
+  "scope": "Pinned implementation replay; upstream unmeasured cases and linguistic limits remain explicit",
+  "snapshot": {
+    "bytes": 40629629,
+    "files": 648,
+    "lock_sha256": "056ab2c0fe3b3a96abdf19a5970be44add3a2049876263b810dcd3b309f331d9",
+    "schema": "mashru.nabt.snapshot.v1",
+    "status": "VERIFIED",
+    "upstream_commit": "d791fd7730cde2256dfac8a27687010b392876b3"
+  },
+  "started": "2026-10-24T15:18:31.463333+00:00",
+  "status": "PASSED",
+  "steps": [
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-X",
+        "pycache_prefix=/tmp/mashru-nabt-check-pyc-_mk60c98",
+        "/workspace/scratch/8408df0fc25f/Mashru/scripts/check_nabt_vendor.py"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru",
+      "finished": "2026-10-24T15:18:32.189933+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/pr17-full-v1/01-snapshot-before.log",
+      "log_sha256": "d0e27eaaac4201516c348f6d2a8533931c4c28164384d691e279b82d493f0fd2",
+      "name": "snapshot-before",
+      "returncode": 0,
+      "seconds": 0.72,
+      "skipped": 0,
+      "started": "2026-10-24T15:18:31.469154+00:00",
+      "status": "PASSED",
+      "unittest_runs": []
+    },
+    {
+      "argv": [
+        "/tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lake",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru",
+      "finished": "2026-10-24T15:18:32.830861+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/pr17-full-v1/02-lean-version.log",
+      "log_sha256": "355a9a028f81641782d75d6e6b58dec70f29d2f61238a9e271690259d9bf5680",
+      "name": "lean-version",
+      "returncode": 0,
+      "seconds": 0.638,
+      "skipped": 0,
+      "started": "2026-10-24T15:18:32.191399+00:00",
+      "status": "PASSED",
+      "unittest_runs": []
+    },
+    {
+      "argv": [
+        "/tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lake",
+        "build",
+        "nabtBridge"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru",
+      "finished": "2026-10-24T15:18:33.535587+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/pr17-full-v1/03-native-build.log",
+      "log_sha256": "1097042a7757852840a50b6b1314ed74260ea5df73926ecc3d705943a845975d",
+      "name": "native-build",
+      "returncode": 0,
+      "seconds": 0.702,
+      "skipped": 0,
+      "started": "2026-10-24T15:18:32.832523+00:00",
+      "status": "PASSED",
+      "unittest_runs": []
+    },
+    {
+      "argv": [
+        "make",
+        "-j1",
+        "PYTHON=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B -X pycache_prefix=/tmp/mashru-nabt-check-pyc-_mk60c98",
+        "LAKE=/tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lake",
+        "formal"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt",
+      "finished": "2026-10-24T15:18:34.160971+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/pr17-full-v1/04-upstream-build.log",
+      "log_sha256": "9b4a50cdfd3d163ce6af9956db8a8cea39aeb92348caa1119d8a47c7651fb346",
+      "name": "upstream-build",
+      "returncode": 0,
+      "seconds": 0.623,
+      "skipped": 0,
+      "started": "2026-10-24T15:18:33.537435+00:00",
+      "status": "PASSED",
+      "unittest_runs": []
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--verify",
+        "HEAD"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru",
+      "finished": "2026-10-24T15:18:34.167191+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/pr17-full-v1/05-enclosing-revision.log",
+      "log_sha256": "87f49782f9ad37b86f0a0ee2c580ac985cecc301546fff75a14f1da9813f285c",
+      "name": "enclosing-revision",
+      "returncode": 0,
+      "seconds": 0.004,
+      "skipped": 0,
+      "started": "2026-10-24T15:18:34.162097+00:00",
+      "status": "PASSED",
+      "unittest_runs": []
+    },
+    {
+      "argv": [
+        "make",
+        "-j1",
+        "PYTHON=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B -X pycache_prefix=/tmp/mashru-nabt-check-pyc-_mk60c98",
+        "LAKE=/tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lake",
+        "EVIDENCE_DIR=/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt/artifacts/local/mashru-check-x5s5c4ac/evidence",
+        "QAC_SOURCE=/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/full-v1/external/qac-original.txt.gz",
+        "ARABIC_EVALUATION_DIR=/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt/artifacts/local/mashru-check-x5s5c4ac/evidence/arabic-regression",
+        "GOVERNOR_EVALUATION_DIR=/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt/artifacts/local/mashru-check-x5s5c4ac/evidence/governor-regression",
+        "check"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt",
+      "finished": "2026-10-24T15:33:00.019746+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/pr17-full-v1/06-upstream-check.log",
+      "log_sha256": "e9b230e7e7d33035a57fd46172a87597ffe1112723969c0de3425c9551cee1b6",
+      "name": "upstream-check",
+      "returncode": 0,
+      "seconds": 865.848,
+      "skipped": 0,
+      "started": "2026-10-24T15:18:34.170961+00:00",
+      "status": "PASSED",
+      "unittest_runs": [
+        1368,
+        7,
+        25,
+        12,
+        23,
+        31
+      ]
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-X",
+        "pycache_prefix=/tmp/mashru-nabt-check-pyc-_mk60c98",
+        "/workspace/scratch/8408df0fc25f/Mashru/tahaqquq/test_nabt_vendor.py"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru",
+      "finished": "2026-10-24T15:33:01.395672+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/pr17-full-v1/07-native-vendor.log",
+      "log_sha256": "a9fa10634a05649c5a5405cc9e3d8de2cf52e82b212822260477222804978d61",
+      "name": "native-vendor",
+      "returncode": 0,
+      "seconds": 1.004,
+      "skipped": 0,
+      "started": "2026-10-24T15:33:00.391144+00:00",
+      "status": "PASSED",
+      "unittest_runs": [
+        27
+      ]
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-X",
+        "pycache_prefix=/tmp/mashru-nabt-check-pyc-_mk60c98",
+        "/workspace/scratch/8408df0fc25f/Mashru/tahaqquq/test_nabt_cli.py"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru",
+      "finished": "2026-10-24T15:33:19.587779+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/pr17-full-v1/08-native-cli.log",
+      "log_sha256": "bb685be12541830c27e6ba5ebf3b97086dfdd8f1a92dd7f3ce18139a8e3ca809",
+      "name": "native-cli",
+      "returncode": 0,
+      "seconds": 18.19,
+      "skipped": 0,
+      "started": "2026-10-24T15:33:01.396660+00:00",
+      "status": "PASSED",
+      "unittest_runs": [
+        12
+      ]
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-X",
+        "pycache_prefix=/tmp/mashru-nabt-check-pyc-_mk60c98",
+        "/workspace/scratch/8408df0fc25f/Mashru/tahaqquq/test_nabt_bridge.py"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru",
+      "finished": "2026-10-24T15:33:20.575653+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/pr17-full-v1/09-native-bridge.log",
+      "log_sha256": "ea6375e4680d2ccb508f825c95fb4c69d22c8506adf304ffbf408374c8285e5e",
+      "name": "native-bridge",
+      "returncode": 0,
+      "seconds": 0.976,
+      "skipped": 0,
+      "started": "2026-10-24T15:33:19.589978+00:00",
+      "status": "PASSED",
+      "unittest_runs": [
+        7
+      ]
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-X",
+        "pycache_prefix=/tmp/mashru-nabt-check-pyc-_mk60c98",
+        "/workspace/scratch/8408df0fc25f/Mashru/tahaqquq/test_nabt_runner.py"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru",
+      "finished": "2026-10-24T15:33:21.422774+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/pr17-full-v1/10-native-runner.log",
+      "log_sha256": "be977c1e9f04547dbfc1a49bc85fd7fd414e8584a3f887aced3526314574b109",
+      "name": "native-runner",
+      "returncode": 0,
+      "seconds": 0.846,
+      "skipped": 0,
+      "started": "2026-10-24T15:33:20.576532+00:00",
+      "status": "PASSED",
+      "unittest_runs": [
+        21
+      ]
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-X",
+        "pycache_prefix=/tmp/mashru-nabt-check-pyc-_mk60c98",
+        "/workspace/scratch/8408df0fc25f/Mashru/scripts/check_nabt_vendor.py"
+      ],
+      "cwd": "/workspace/scratch/8408df0fc25f/Mashru",
+      "finished": "2026-10-24T15:33:21.915024+00:00",
+      "log": "/workspace/scratch/8408df0fc25f/Mashru/artifacts/local/nabt/pr17-full-v1/11-snapshot-after.log",
+      "log_sha256": "d0e27eaaac4201516c348f6d2a8533931c4c28164384d691e279b82d493f0fd2",
+      "name": "snapshot-after",
+      "returncode": 0,
+      "seconds": 0.486,
+      "skipped": 0,
+      "started": "2026-10-24T15:33:21.424355+00:00",
+      "status": "PASSED",
+      "unittest_runs": []
+    }
+  ]
+}

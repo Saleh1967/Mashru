@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 from contextlib import redirect_stdout
+from hashlib import sha256
 import importlib.util
 import io
 import json
@@ -96,6 +97,106 @@ class ValidationRunnerTests(unittest.TestCase):
                 runner.safe_make_path(path)
         self.assertEqual(runner.safe_make_path("/tmp/safe-path.v1"), "/tmp/safe-path.v1")
 
+    def test_generated_work_rejects_linked_artifact_path_components(self):
+        for component in ("artifacts", "local"):
+            with self.subTest(component=component):
+                vendor = self.root / ("vendor-" + component)
+                vendor.mkdir()
+                outside = self.root / ("outside-" + component)
+                outside.mkdir()
+                linked = vendor / "artifacts"
+                if component == "local":
+                    linked.mkdir()
+                    linked = linked / "local"
+                linked.symlink_to(outside, target_is_directory=True)
+                with patch.object(runner, "VENDOR", vendor):
+                    with self.assertRaisesRegex(runner.CheckFailed, "NABT_EVIDENCE_PATH_UNSAFE"):
+                        runner.fresh_work_directory()
+                self.assertEqual(list(outside.iterdir()), [])
+
+    def test_generated_work_is_fresh_and_preserves_other_partial_runs(self):
+        vendor = self.root / "vendor"
+        vendor.mkdir()
+        with patch.object(runner, "VENDOR", vendor):
+            first = runner.fresh_work_directory()
+            (first / "evidence/partial.raw").write_bytes(b"previous unfinished run\x00")
+            second = runner.fresh_work_directory()
+            self.assertNotEqual(first, second)
+            self.assertEqual(first.parent, vendor / "artifacts/local")
+            self.assertEqual(second.parent, first.parent)
+            self.assertEqual(list((second / "evidence").iterdir()), [])
+            self.assertEqual((first / "evidence/partial.raw").read_bytes(), b"previous unfinished run\x00")
+            with self.assertRaisesRegex(runner.CheckFailed, "NABT_EVIDENCE_PATH_UNSAFE"):
+                runner.check_work_directory(self.output)
+
+    def upstream_fixture(self, *, exitcode=0):
+        """A real short process produces files and exits; it does not run NABT."""
+        code = """import json, sys
+from pathlib import Path
+evidence = Path(next(a.split('=', 1)[1] for a in sys.argv if a.startswith('EVIDENCE_DIR=')))
+(evidence / 'nested/empty').mkdir(parents=True)
+(evidence / 'nested/journal.raw.jsonl').write_bytes(b'{"first":1}\\n{"partial":')
+(evidence / 'binary.dat').write_bytes(bytes(range(256)))
+(evidence / 'result.json').write_text(json.dumps({'raw_path': str(evidence / 'nested/journal.raw.jsonl'),
+    'runtime_git_head': 'enclosing-checkout-fixture', 'strict_pass': False}, indent=1) + '\\n')
+print('Ran 1 test in 0.001s\\n\\nOK')
+sys.exit(int(sys.argv[1]))
+"""
+        vendor = self.root / "vendor"
+        vendor.mkdir(exist_ok=True)
+        with patch.object(runner, "VENDOR", vendor), redirect_stdout(io.StringIO()):
+            runner.run_upstream_check(self.report, self.output,
+                [sys.executable, "-I", "-B", "-c", code, str(exitcode)],
+                self.root / "external/qac.gz", dict(os.environ))
+
+    def test_failed_upstream_command_retains_complete_raw_evidence_before_cleanup(self):
+        with self.assertRaisesRegex(runner.CheckFailed, "NABT_COMMAND_FAILED.*exited 7"):
+            self.upstream_fixture(exitcode=7)
+        report = json.loads((self.output / "manifest.json").read_text())
+        relocation = report["evidence_relocation"]
+        retained = self.output / "evidence"
+        self.assertEqual(relocation["status"], "RETAINED")
+        self.assertTrue(relocation["internal_removed"])
+        self.assertFalse(relocation["reports_rewritten"])
+        self.assertFalse(Path(relocation["source_root"]).parent.exists())
+        self.assertEqual((retained / "binary.dat").read_bytes(), bytes(range(256)))
+        self.assertEqual((retained / "nested/journal.raw.jsonl").read_bytes(), b'{"first":1}\n{"partial":')
+        expected = json.dumps({"raw_path": str(Path(relocation["source_root"]) / "nested/journal.raw.jsonl"),
+                              "runtime_git_head": "enclosing-checkout-fixture", "strict_pass": False}, indent=1) + "\n"
+        self.assertEqual((retained / "result.json").read_bytes(), expected.encode())
+        self.assertTrue((retained / "nested/empty").is_dir())
+        rows = {row["path"]: row for row in relocation["inventory"]["files"]}
+        self.assertEqual(set(rows), {"binary.dat", "nested/journal.raw.jsonl", "result.json"})
+        self.assertEqual(rows["binary.dat"]["sha256"], sha256(bytes(range(256))).hexdigest())
+        self.assertEqual((report["steps"][0]["status"], report["steps"][0]["returncode"]), ("FAILED", 7))
+
+    def test_retention_never_overwrites_an_existing_destination_or_deletes_its_source(self):
+        destination = self.output / "evidence"
+        destination.mkdir()
+        (destination / "earlier.txt").write_bytes(b"do not replace")
+        with self.assertRaises(FileExistsError):
+            self.upstream_fixture()
+        relocation = self.report["evidence_relocation"]
+        self.assertEqual(relocation["status"], "FAILED")
+        self.assertFalse(relocation["internal_removed"])
+        self.assertEqual((Path(relocation["source_root"]) / "binary.dat").read_bytes(), bytes(range(256)))
+        self.assertEqual((destination / "earlier.txt").read_bytes(), b"do not replace")
+
+    def test_corrupted_copy_fails_and_preserves_original_evidence(self):
+        copytree = runner.shutil.copytree
+        def corrupt_copy(source, destination, *arguments, **kwargs):
+            result = copytree(source, destination, *arguments, **kwargs)
+            if Path(destination) == self.output / "evidence":
+                (Path(destination) / "binary.dat").write_bytes(b"truncated")
+            return result
+        with patch.object(runner.shutil, "copytree", side_effect=corrupt_copy):
+            with self.assertRaisesRegex(runner.CheckFailed, "NABT_EVIDENCE_COPY_MISMATCH"):
+                self.upstream_fixture()
+        relocation = self.report["evidence_relocation"]
+        self.assertEqual(relocation["status"], "FAILED")
+        self.assertFalse(relocation["internal_removed"])
+        self.assertEqual((Path(relocation["source_root"]) / "binary.dat").read_bytes(), bytes(range(256)))
+
     def test_temporary_cache_path_is_checked_before_entering_make_recipes(self):
         args = argparse.Namespace(lake="lake", qac=None, runtime_only=False)
         for cache in ("/tmp/with spaces/cache", "/tmp/$(touch injected)/cache"):
@@ -112,14 +213,18 @@ class ValidationRunnerTests(unittest.TestCase):
         def fake_step(report, output, name, argv, cwd, env, *, tests=False):
             log = output / (name + ".log")
             if name.startswith("snapshot"):
-                log.write_text(json.dumps({"status": "VERIFIED", "files": 3}))
+                log.write_text(json.dumps({"status": "VERIFIED", "files": 3,
+                                           "upstream_commit": "a" * 40, "lock_sha256": "b" * 64}))
             elif name == "lean-version":
                 log.write_text(version)
+            elif name == "enclosing-revision":
+                log.write_text("c" * 40 + "\n")
             else:
                 log.write_text("Ran 1 test in 0.01s\nOK\n")
             report["steps"].append({"name": name, "log": str(log), "status": "PASSED"})
             calls.append((name, argv, cwd, env, tests))
         args = argparse.Namespace(lake="lake", qac=None, runtime_only=runtime_only)
+        (self.root / "vendor").mkdir(exist_ok=True)
         with patch.object(runner, "ROOT", self.root), patch.object(runner, "VENDOR", self.root / "vendor"), \
                 patch.object(runner.shutil, "which", return_value="/usr/bin/lake"), \
                 patch.object(runner, "run_step", side_effect=fake_step):
@@ -127,7 +232,8 @@ class ValidationRunnerTests(unittest.TestCase):
         return calls
 
     def test_full_pipeline_builds_before_tests_and_runs_upstream_check_unchanged(self):
-        with patch.dict(os.environ, {"MAKEFILES": "untrusted.mk", "MAKEFLAGS": "-n", "PYTHONOPTIMIZE": "1"}):
+        with patch.dict(os.environ, {"MAKEFILES": "untrusted.mk", "MAKEFLAGS": "-n", "PYTHONOPTIMIZE": "1",
+                                     "GIT_DIR": "/unrelated/repository"}):
             calls = self.fake_pipeline()
         names = [call[0] for call in calls]
         self.assertLess(names.index("snapshot-before"), names.index("native-build"))
@@ -136,10 +242,19 @@ class ValidationRunnerTests(unittest.TestCase):
         self.assertEqual(names[-1], "snapshot-after")
         stage = next(call for call in calls if call[0] == "upstream-check")
         self.assertEqual(stage[1][-1], "check")
-        self.assertIn("EVIDENCE_DIR=" + str(self.output / "evidence"), stage[1])
+        evidence = Path(next(value.split("=", 1)[1] for value in stage[1] if value.startswith("EVIDENCE_DIR=")))
+        self.assertEqual(evidence.parent.parent, self.root / "vendor/artifacts/local")
+        self.assertEqual(evidence.name, "evidence")
+        self.assertFalse(evidence.parent.exists())
+        self.assertTrue((self.output / "evidence").is_dir())
         self.assertNotIn("MAKEFILES", stage[3])
         self.assertNotIn("MAKEFLAGS", stage[3])
         self.assertNotIn("PYTHONOPTIMIZE", stage[3])
+        self.assertNotIn("GIT_DIR", stage[3])
+        self.assertEqual(self.report["provenance"]["upstream_commit"], "a" * 40)
+        self.assertEqual(self.report["provenance"]["runtime_git_head"], "c" * 40)
+        self.assertEqual(self.report["provenance"]["runtime_git_head_scope"], "ENCLOSING_MASHRU_CHECKOUT")
+        self.assertFalse(self.report["provenance"]["runtime_git_head_is_upstream_identity"])
         self.assertTrue(stage[3]["NABT_RECURSIVE_BRIDGE_PROBE"].endswith("/recursiveBridgeProbe"))
         self.assertEqual(stage[3]["LEAN_NUM_THREADS"], "2")
         self.assertTrue(stage[4])
@@ -149,6 +264,9 @@ class ValidationRunnerTests(unittest.TestCase):
         names = [call[0] for call in calls]
         self.assertLess(names.index("upstream-build"), names.index("upstream-runtime"))
         self.assertNotIn("upstream-check", names)
+        self.assertNotIn("enclosing-revision", names)
+        self.assertNotIn("evidence_relocation", self.report)
+        self.assertFalse((self.root / "vendor/artifacts").exists())
         self.assertIn("upstream-integrity", names)
         for name in ("native-vendor", "native-cli", "native-bridge", "native-runner"):
             self.assertIn(name, names)

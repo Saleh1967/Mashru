@@ -1,0 +1,6644 @@
+{
+  "boundary_policy": "EXACT_RESIDUAL_FAILURE_PAYLOADS_COMPLETE_INVENTORIES_NO_SAFETY_WAIVER",
+  "boundary_policy_revision": "arabic_coverage_v2_reviewed_residuals_v1",
+  "boundary_policy_runtime_approved": true,
+  "by_check": {
+    "claim": {
+      "passed": 9,
+      "total": 9
+    },
+    "coherent_analysis": {
+      "passed": 38,
+      "total": 43
+    },
+    "complete_construction": {
+      "passed": 38,
+      "total": 43
+    },
+    "forbidden_claim": {
+      "passed": 52,
+      "total": 52
+    },
+    "force": {
+      "passed": 3,
+      "total": 3
+    },
+    "hal_owner_candidates": {
+      "passed": 1,
+      "total": 1
+    },
+    "idafa_chain_order": {
+      "passed": 1,
+      "total": 1
+    },
+    "no_activated_badal_part": {
+      "passed": 1,
+      "total": 1
+    },
+    "no_activated_hal": {
+      "passed": 2,
+      "total": 2
+    },
+    "no_activated_idafa": {
+      "passed": 3,
+      "total": 3
+    },
+    "no_activated_tamyiz": {
+      "passed": 4,
+      "total": 4
+    },
+    "no_activated_tawkeed": {
+      "passed": 2,
+      "total": 2
+    },
+    "no_bare_embedded_property": {
+      "passed": 2,
+      "total": 2
+    },
+    "no_categorical_rejection": {
+      "passed": 1,
+      "total": 1
+    },
+    "no_context_identity_merge": {
+      "passed": 3,
+      "total": 3
+    },
+    "no_grounded_claims": {
+      "passed": 26,
+      "total": 26
+    },
+    "no_unique_badal": {
+      "passed": 1,
+      "total": 1
+    },
+    "no_unique_hal_owner": {
+      "passed": 1,
+      "total": 1
+    },
+    "no_unlicensed_cognitive_disambiguation": {
+      "passed": 2,
+      "total": 2
+    },
+    "no_whole_from_part": {
+      "passed": 1,
+      "total": 1
+    },
+    "qualification": {
+      "passed": 9,
+      "total": 12
+    },
+    "question": {
+      "passed": 95,
+      "total": 106
+    },
+    "relation": {
+      "passed": 27,
+      "total": 30
+    },
+    "relation_candidates": {
+      "passed": 2,
+      "total": 2
+    },
+    "relations_same_analysis": {
+      "passed": 25,
+      "total": 28
+    },
+    "replay_changed_answer": {
+      "passed": 6,
+      "total": 6
+    },
+    "replay_changed_report": {
+      "passed": 6,
+      "total": 6
+    },
+    "replay_original_answer": {
+      "passed": 6,
+      "total": 6
+    },
+    "replay_original_report": {
+      "passed": 6,
+      "total": 6
+    },
+    "report_replay": {
+      "passed": 86,
+      "total": 86
+    },
+    "role": {
+      "passed": 84,
+      "total": 94
+    },
+    "roles_same_analysis": {
+      "passed": 41,
+      "total": 45
+    },
+    "scope": {
+      "passed": 18,
+      "total": 20
+    }
+  },
+  "by_group": {
+    "A": {
+      "passed": 12,
+      "total": 12
+    },
+    "B": {
+      "passed": 4,
+      "total": 4
+    },
+    "C": {
+      "passed": 4,
+      "total": 4
+    },
+    "D": {
+      "passed": 6,
+      "total": 6
+    },
+    "H": {
+      "passed": 6,
+      "total": 6
+    },
+    "I": {
+      "passed": 10,
+      "total": 10
+    },
+    "K": {
+      "passed": 12,
+      "total": 12
+    },
+    "M": {
+      "passed": 4,
+      "total": 6
+    },
+    "N": {
+      "passed": 5,
+      "total": 6
+    },
+    "R": {
+      "passed": 6,
+      "total": 6
+    },
+    "W": {
+      "passed": 4,
+      "total": 4
+    },
+    "Z": {
+      "passed": 7,
+      "total": 10
+    }
+  },
+  "by_mode": {
+    "ambiguity": {
+      "passed": 6,
+      "total": 6
+    },
+    "boundary": {
+      "passed": 31,
+      "total": 31
+    },
+    "positive": {
+      "passed": 37,
+      "total": 43
+    },
+    "replay": {
+      "passed": 6,
+      "total": 6
+    }
+  },
+  "by_question_outcome": {
+    "NO_GROUNDED_SUPPORT": {
+      "passed": 19,
+      "total": 19
+    },
+    "SUPPORTED": {
+      "passed": 36,
+      "total": 42
+    },
+    "UNKNOWN": {
+      "passed": 34,
+      "total": 39
+    }
+  },
+  "cases": [
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "control",
+      "id": "CON-C01",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.065316
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "control",
+      "id": "CON-C02",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 0.944894
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "time_place",
+      "id": "CON-C03",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 1.693409
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "force",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "force",
+      "id": "CON-C04",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 0.949085
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kana",
+      "id": "CON-K01",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 2.218187
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kana",
+      "id": "CON-K02",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.833305
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kana",
+      "id": "CON-K03",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.800506
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kana",
+      "id": "CON-K04",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.650868
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kana_aspect",
+      "id": "CON-K05",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.737605
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kana_future",
+      "id": "CON-K06",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 2.037068
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kana_continuation",
+      "id": "CON-K07",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.680617
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kana_boundary",
+      "id": "CON-K08",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 0.959431
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kana_boundary",
+      "id": "CON-K09",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 0.962869
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kana_boundary",
+      "id": "CON-K10",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.97085
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kana_boundary",
+      "id": "CON-K11",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.958457
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kana_time",
+      "id": "CON-K12",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 2.134417
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "inna",
+      "id": "CON-I01",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.232472
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "inna_time",
+      "id": "CON-I02",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 2.223183
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "similitude",
+      "id": "CON-I03",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 2.310346
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "force",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "inna_nonassertive",
+      "id": "CON-I04",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.716459
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "force",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "inna_nonassertive",
+      "id": "CON-I05",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.629058
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "inna_boundary",
+      "id": "CON-I06",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 1.129341
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "inna_boundary",
+      "id": "CON-I07",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 1.095971
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "inna_boundary",
+      "id": "CON-I08",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.321536
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "inna_boundary",
+      "id": "CON-I09",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 1.075263
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "inna_boundary",
+      "id": "CON-I10",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 1.036877
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "role:2",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "zanna",
+      "id": "CON-Z01",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 8,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 8
+      },
+      "passed": true,
+      "seconds": 2.064934
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": false
+        },
+        {
+          "check": "role:0",
+          "passed": false
+        },
+        {
+          "check": "role:1",
+          "passed": false
+        },
+        {
+          "check": "role:2",
+          "passed": false
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "relation:0",
+          "passed": false
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "scope:0",
+          "passed": false
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": false
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": false
+        }
+      ],
+      "failures": [
+        {
+          "check": "complete_construction",
+          "passed": false
+        },
+        {
+          "check": "role:0",
+          "passed": false
+        },
+        {
+          "check": "role:1",
+          "passed": false
+        },
+        {
+          "check": "role:2",
+          "passed": false
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "relation:0",
+          "passed": false
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "scope:0",
+          "passed": false
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": false
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": false
+        }
+      ],
+      "false_accepts": [],
+      "group": "zanna",
+      "id": "CON-Z02",
+      "mode": "positive",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 8
+      },
+      "passed": false,
+      "seconds": 1.870035
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "role:2",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "zanna",
+      "id": "CON-Z03",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 8,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 8
+      },
+      "passed": true,
+      "seconds": 1.935433
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "role:2",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "zanna",
+      "id": "CON-Z04",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 8,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 8
+      },
+      "passed": true,
+      "seconds": 1.990969
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "no_unlicensed_cognitive_disambiguation",
+          "passed": true
+        },
+        {
+          "check": "no_bare_embedded_property",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "cognitive_perceptual_ambiguity",
+      "id": "CON-Z05",
+      "mode": "ambiguity",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 0.951945
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "no_unlicensed_cognitive_disambiguation",
+          "passed": true
+        },
+        {
+          "check": "no_bare_embedded_property",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "cognitive_perceptual_ambiguity",
+      "id": "CON-Z06",
+      "mode": "ambiguity",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 0.933325
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": false
+        },
+        {
+          "check": "role:0",
+          "passed": false
+        },
+        {
+          "check": "role:1",
+          "passed": false
+        },
+        {
+          "check": "role:2",
+          "passed": false
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "scope:0",
+          "passed": false
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": false
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": false
+        }
+      ],
+      "failures": [
+        {
+          "check": "complete_construction",
+          "passed": false
+        },
+        {
+          "check": "role:0",
+          "passed": false
+        },
+        {
+          "check": "role:1",
+          "passed": false
+        },
+        {
+          "check": "role:2",
+          "passed": false
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "scope:0",
+          "passed": false
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": false
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": false
+        }
+      ],
+      "false_accepts": [],
+      "group": "attributed_certainty",
+      "id": "CON-Z07",
+      "mode": "positive",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 8
+      },
+      "passed": false,
+      "seconds": 1.894384
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "zanna_case_boundary",
+      "id": "CON-Z08",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 1.231945
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "zanna_case_boundary",
+      "id": "CON-Z09",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.99676
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "role:2",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        }
+      ],
+      "false_accepts": [],
+      "group": "matrix_negation",
+      "id": "CON-Z10",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 8,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 8
+      },
+      "passed": false,
+      "seconds": 1.832137
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kada_approximation",
+      "id": "CON-A01",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 1.535018
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kada_approximation",
+      "id": "CON-A02",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 1.634856
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kada_approximation",
+      "id": "CON-A03",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 2.673033
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kada_hope",
+      "id": "CON-A04",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 2.082551
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kada_hope",
+      "id": "CON-A05",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 2.548005
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kada_hope",
+      "id": "CON-A06",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 5.140274
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kada_onset",
+      "id": "CON-A07",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 1.654206
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kada_onset",
+      "id": "CON-A08",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 1.63151
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "scope:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kada_onset",
+      "id": "CON-A09",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 1.777155
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kada_boundary",
+      "id": "CON-A10",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.957804
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "kada_boundary",
+      "id": "CON-A11",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.940823
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "no_categorical_rejection",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "rare_licensed_form_boundary",
+      "id": "CON-A12",
+      "mode": "boundary",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 0.954577
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "qualification:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "idafa",
+      "id": "CON-D01",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 8,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 8
+      },
+      "passed": true,
+      "seconds": 1.849713
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relation:1",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "idafa_chain_order",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "nested_idafa",
+      "id": "CON-D02",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 16,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 16
+      },
+      "passed": true,
+      "seconds": 2.164034
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relation:1",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "idafa_preposition",
+      "id": "CON-D03",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 2.032221
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "no_activated_idafa",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "idafa_boundary",
+      "id": "CON-D04",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.480829
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "no_activated_idafa",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "idafa_boundary",
+      "id": "CON-D05",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.402107
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "no_activated_idafa",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "idafa_boundary",
+      "id": "CON-D06",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.274486
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": false
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "qualification:0",
+          "passed": false
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": false
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        }
+      ],
+      "failures": [
+        {
+          "check": "complete_construction",
+          "passed": false
+        },
+        {
+          "check": "qualification:0",
+          "passed": false
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": false
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        }
+      ],
+      "false_accepts": [],
+      "group": "naat",
+      "id": "CON-N01",
+      "mode": "positive",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 1
+      },
+      "passed": false,
+      "seconds": 1.735594
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "qualification:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "naat_genitive",
+      "id": "CON-N02",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 1.917296
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "qualification:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "naat_accusative",
+      "id": "CON-N03",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 1.897341
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "naat_boundary",
+      "id": "CON-N04",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.286676
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "naat_boundary",
+      "id": "CON-N05",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.305058
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "naat_boundary",
+      "id": "CON-N06",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.276522
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "qualification:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "hal",
+      "id": "CON-H01",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 2.056783
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "hal_owner_candidates",
+          "details": {
+            "observed": [
+              "basim",
+              "samir"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "no_unique_hal_owner",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "hal_owner_ambiguity",
+      "id": "CON-H02",
+      "mode": "ambiguity",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 16
+      },
+      "passed": true,
+      "seconds": 1.266019
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "qualification:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "hal_object_owner",
+      "id": "CON-H03",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 8,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 8
+      },
+      "passed": true,
+      "seconds": 2.375868
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "no_activated_hal",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "hal_case_boundary",
+      "id": "CON-H04",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.302665
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "qualification:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:1",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "hal_time",
+      "id": "CON-H05",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.968303
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "no_activated_hal",
+          "passed": true
+        },
+        {
+          "check": "no_activated_tamyiz",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "unknown_modifier",
+      "id": "CON-H06",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.936709
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": false
+        },
+        {
+          "check": "role:0",
+          "passed": false
+        },
+        {
+          "check": "role:1",
+          "passed": false
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "relation:0",
+          "passed": false
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "qualification:0",
+          "passed": false
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": false
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": false
+        }
+      ],
+      "failures": [
+        {
+          "check": "complete_construction",
+          "passed": false
+        },
+        {
+          "check": "role:0",
+          "passed": false
+        },
+        {
+          "check": "role:1",
+          "passed": false
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "relation:0",
+          "passed": false
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "qualification:0",
+          "passed": false
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": false
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": false
+        }
+      ],
+      "false_accepts": [],
+      "group": "tamyiz",
+      "id": "CON-M01",
+      "mode": "positive",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": false,
+      "seconds": 1.608954
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "qualification:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "UNKNOWN"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "tamyiz",
+      "id": "CON-M02",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.716903
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": false
+        },
+        {
+          "check": "role:0",
+          "passed": false
+        },
+        {
+          "check": "role:1",
+          "passed": false
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "relation:0",
+          "passed": false
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "qualification:0",
+          "passed": false
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": false
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": false
+        }
+      ],
+      "failures": [
+        {
+          "check": "complete_construction",
+          "passed": false
+        },
+        {
+          "check": "role:0",
+          "passed": false
+        },
+        {
+          "check": "role:1",
+          "passed": false
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "relation:0",
+          "passed": false
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": false
+        },
+        {
+          "check": "qualification:0",
+          "passed": false
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": false
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": false,
+            "status": "DEFER"
+          },
+          "passed": false
+        },
+        {
+          "check": "question:1",
+          "details": {
+            "certificate": true,
+            "expected": "UNKNOWN",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": false
+        }
+      ],
+      "false_accepts": [],
+      "group": "tamyiz",
+      "id": "CON-M03",
+      "mode": "positive",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 2
+      },
+      "passed": false,
+      "seconds": 1.635397
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_activated_tamyiz",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "tamyiz_not_any_accusative",
+      "id": "CON-M04",
+      "mode": "boundary",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 0.314576
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "no_activated_tamyiz",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "count_tamyiz_case",
+      "id": "CON-M05",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.254721
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "no_activated_tamyiz",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "unknown_tamyiz",
+      "id": "CON-M06",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.257875
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "relation_candidates",
+          "details": {
+            "observed": [
+              "badal",
+              "bayan"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "no_context_identity_merge",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "badal_bayan_ambiguity",
+      "id": "CON-B01",
+      "mode": "ambiguity",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 0.279746
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "relation_candidates",
+          "details": {
+            "observed": [
+              "badal_association",
+              "badal_part"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "no_whole_from_part",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "NO_GROUNDED_SUPPORT",
+            "query_complete": true,
+            "status": "DEFER"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "part_badal",
+      "id": "CON-B02",
+      "mode": "ambiguity",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.011256
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "forbidden_claim:0",
+          "passed": true
+        },
+        {
+          "check": "no_activated_badal_part",
+          "passed": true
+        },
+        {
+          "check": "no_context_identity_merge",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "part_badal_pronoun_boundary",
+      "id": "CON-B03",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.306793
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_context_identity_merge",
+          "passed": true
+        },
+        {
+          "check": "no_unique_badal",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "badal_identity_boundary",
+      "id": "CON-B04",
+      "mode": "ambiguity",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.259021
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "qualification:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "tawkeed",
+      "id": "CON-W01",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 1.190841
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "complete_construction",
+          "passed": true
+        },
+        {
+          "check": "role:0",
+          "passed": true
+        },
+        {
+          "check": "role:1",
+          "passed": true
+        },
+        {
+          "check": "roles_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "relation:0",
+          "passed": true
+        },
+        {
+          "check": "relations_same_analysis",
+          "passed": true
+        },
+        {
+          "check": "qualification:0",
+          "passed": true
+        },
+        {
+          "check": "coherent_analysis",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "tawkeed_genitive",
+      "id": "CON-W02",
+      "mode": "positive",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 2,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 2
+      },
+      "passed": true,
+      "seconds": 1.022313
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "no_activated_tawkeed",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "tawkeed_pronoun_boundary",
+      "id": "CON-W03",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.281631
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "no_grounded_claims",
+          "passed": true
+        },
+        {
+          "check": "no_activated_tawkeed",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "repetition_not_always_tawkeed",
+      "id": "CON-W04",
+      "mode": "boundary",
+      "observed": {
+        "claims": 0,
+        "complete_analyses": 0,
+        "report_status": "DEFER",
+        "viable_analyses": 0
+      },
+      "passed": true,
+      "seconds": 0.275362
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "replay_original_report",
+          "passed": true
+        },
+        {
+          "check": "replay_original_answer",
+          "passed": true
+        },
+        {
+          "check": "replay_changed_report",
+          "passed": true
+        },
+        {
+          "check": "replay_changed_answer",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "replay",
+      "id": "CON-R01",
+      "mode": "replay",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.291999
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "replay_original_report",
+          "passed": true
+        },
+        {
+          "check": "replay_original_answer",
+          "passed": true
+        },
+        {
+          "check": "replay_changed_report",
+          "passed": true
+        },
+        {
+          "check": "replay_changed_answer",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "replay",
+      "id": "CON-R02",
+      "mode": "replay",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.173957
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "replay_original_report",
+          "passed": true
+        },
+        {
+          "check": "replay_original_answer",
+          "passed": true
+        },
+        {
+          "check": "replay_changed_report",
+          "passed": true
+        },
+        {
+          "check": "replay_changed_answer",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "replay",
+      "id": "CON-R03",
+      "mode": "replay",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.394835
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "replay_original_report",
+          "passed": true
+        },
+        {
+          "check": "replay_original_answer",
+          "passed": true
+        },
+        {
+          "check": "replay_changed_report",
+          "passed": true
+        },
+        {
+          "check": "replay_changed_answer",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "replay",
+      "id": "CON-R04",
+      "mode": "replay",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.351402
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "replay_original_report",
+          "passed": true
+        },
+        {
+          "check": "replay_original_answer",
+          "passed": true
+        },
+        {
+          "check": "replay_changed_report",
+          "passed": true
+        },
+        {
+          "check": "replay_changed_answer",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "replay",
+      "id": "CON-R05",
+      "mode": "replay",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.585358
+    },
+    {
+      "checks": [
+        {
+          "check": "report_replay",
+          "passed": true
+        },
+        {
+          "check": "question:0",
+          "details": {
+            "certificate": true,
+            "expected": "SUPPORTED",
+            "query_complete": true,
+            "status": "SUPPORTED"
+          },
+          "passed": true
+        },
+        {
+          "check": "replay_original_report",
+          "passed": true
+        },
+        {
+          "check": "replay_original_answer",
+          "passed": true
+        },
+        {
+          "check": "replay_changed_report",
+          "passed": true
+        },
+        {
+          "check": "replay_changed_answer",
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "false_accepts": [],
+      "group": "replay",
+      "id": "CON-R06",
+      "mode": "replay",
+      "observed": {
+        "claims": 1,
+        "complete_analyses": 4,
+        "report_status": "LICENSED_DISCOURSE",
+        "viable_analyses": 4
+      },
+      "passed": true,
+      "seconds": 1.377954
+    }
+  ],
+  "code_archive": {
+    "filename": "construction-regression.code.tar.gz",
+    "sha256": "4ff66671aacbefecd3fa1cc22fa74b1b718da0b15f8d8f057b3d672186a0b469"
+  },
+  "completed_at_utc": "2026-10-24T15:27:12.519409+00:00",
+  "comprehension": {
+    "passed": 74,
+    "total": 80
+  },
+  "coverage_complete": false,
+  "documented_boundary_failures": [
+    {
+      "check": "complete_construction",
+      "id": "CON-Z02",
+      "signature_sha256": "cd3bfc2185ff5a788e2dfffbae722e594584f08d4bf0e1238b11d698555a66c6"
+    },
+    {
+      "check": "role:0",
+      "id": "CON-Z02",
+      "signature_sha256": "87c2394e52b2c83810bf32b76ad421affeb589fb1132876c13fe8c6261d89434"
+    },
+    {
+      "check": "role:1",
+      "id": "CON-Z02",
+      "signature_sha256": "df54acb5171339bccbee9b7f6f4c72ec24138fa742765267cde7a86d92912178"
+    },
+    {
+      "check": "role:2",
+      "id": "CON-Z02",
+      "signature_sha256": "a0ae21b5caea9b1809c680db2ea0a21270426830ec795ef3af50b6df657d584b"
+    },
+    {
+      "check": "roles_same_analysis",
+      "id": "CON-Z02",
+      "signature_sha256": "0d11ac317d5129330d5385bb04943cd7ed30abfb6c588f46609c8c84899c1c12"
+    },
+    {
+      "check": "relation:0",
+      "id": "CON-Z02",
+      "signature_sha256": "11185d703aad095dad7058031fb006926e4b3c1da21af1a0ff084168f93c5214"
+    },
+    {
+      "check": "relations_same_analysis",
+      "id": "CON-Z02",
+      "signature_sha256": "fda3360898e632dc40a4bc49970ca3ea72ac9250c53448e1bc528b783dc37eca"
+    },
+    {
+      "check": "scope:0",
+      "id": "CON-Z02",
+      "signature_sha256": "0199c8f5733e9f840d251da49a1fe05008970638a7281693b8cc3e69c78e010e"
+    },
+    {
+      "check": "coherent_analysis",
+      "id": "CON-Z02",
+      "signature_sha256": "3864ab28835d8933269ac231957b6369760e276a3e1f013a434b3207b1be5476"
+    },
+    {
+      "check": "question:0",
+      "id": "CON-Z02",
+      "signature_sha256": "6bf2c3a9d1ca49b54dd5177ad14dfbe0692eaa05858e1af85398c183e122c393"
+    },
+    {
+      "check": "question:1",
+      "id": "CON-Z02",
+      "signature_sha256": "1c9fec784f6e5aeb9b10826153a2e975721544767f685bce3916475cbc6bee97"
+    },
+    {
+      "check": "complete_construction",
+      "id": "CON-Z07",
+      "signature_sha256": "cd3bfc2185ff5a788e2dfffbae722e594584f08d4bf0e1238b11d698555a66c6"
+    },
+    {
+      "check": "role:0",
+      "id": "CON-Z07",
+      "signature_sha256": "87c2394e52b2c83810bf32b76ad421affeb589fb1132876c13fe8c6261d89434"
+    },
+    {
+      "check": "role:1",
+      "id": "CON-Z07",
+      "signature_sha256": "df54acb5171339bccbee9b7f6f4c72ec24138fa742765267cde7a86d92912178"
+    },
+    {
+      "check": "role:2",
+      "id": "CON-Z07",
+      "signature_sha256": "a0ae21b5caea9b1809c680db2ea0a21270426830ec795ef3af50b6df657d584b"
+    },
+    {
+      "check": "roles_same_analysis",
+      "id": "CON-Z07",
+      "signature_sha256": "0d11ac317d5129330d5385bb04943cd7ed30abfb6c588f46609c8c84899c1c12"
+    },
+    {
+      "check": "scope:0",
+      "id": "CON-Z07",
+      "signature_sha256": "0199c8f5733e9f840d251da49a1fe05008970638a7281693b8cc3e69c78e010e"
+    },
+    {
+      "check": "coherent_analysis",
+      "id": "CON-Z07",
+      "signature_sha256": "3864ab28835d8933269ac231957b6369760e276a3e1f013a434b3207b1be5476"
+    },
+    {
+      "check": "question:0",
+      "id": "CON-Z07",
+      "signature_sha256": "6bf2c3a9d1ca49b54dd5177ad14dfbe0692eaa05858e1af85398c183e122c393"
+    },
+    {
+      "check": "question:1",
+      "id": "CON-Z07",
+      "signature_sha256": "1c9fec784f6e5aeb9b10826153a2e975721544767f685bce3916475cbc6bee97"
+    },
+    {
+      "check": "question:0",
+      "id": "CON-Z10",
+      "signature_sha256": "6bf2c3a9d1ca49b54dd5177ad14dfbe0692eaa05858e1af85398c183e122c393"
+    },
+    {
+      "check": "complete_construction",
+      "id": "CON-N01",
+      "signature_sha256": "cd3bfc2185ff5a788e2dfffbae722e594584f08d4bf0e1238b11d698555a66c6"
+    },
+    {
+      "check": "qualification:0",
+      "id": "CON-N01",
+      "signature_sha256": "56f583062d05df67cefccae06f7b2e93a65d3252f8a0402f84ca41306fdcd0fa"
+    },
+    {
+      "check": "coherent_analysis",
+      "id": "CON-N01",
+      "signature_sha256": "3864ab28835d8933269ac231957b6369760e276a3e1f013a434b3207b1be5476"
+    },
+    {
+      "check": "question:0",
+      "id": "CON-N01",
+      "signature_sha256": "6bf2c3a9d1ca49b54dd5177ad14dfbe0692eaa05858e1af85398c183e122c393"
+    },
+    {
+      "check": "question:1",
+      "id": "CON-N01",
+      "signature_sha256": "330fad608288c688b4e10c81eec8f96d1fe3899040e098b239850620d4e4aecf"
+    },
+    {
+      "check": "complete_construction",
+      "id": "CON-M01",
+      "signature_sha256": "cd3bfc2185ff5a788e2dfffbae722e594584f08d4bf0e1238b11d698555a66c6"
+    },
+    {
+      "check": "role:0",
+      "id": "CON-M01",
+      "signature_sha256": "87c2394e52b2c83810bf32b76ad421affeb589fb1132876c13fe8c6261d89434"
+    },
+    {
+      "check": "role:1",
+      "id": "CON-M01",
+      "signature_sha256": "df54acb5171339bccbee9b7f6f4c72ec24138fa742765267cde7a86d92912178"
+    },
+    {
+      "check": "roles_same_analysis",
+      "id": "CON-M01",
+      "signature_sha256": "0d11ac317d5129330d5385bb04943cd7ed30abfb6c588f46609c8c84899c1c12"
+    },
+    {
+      "check": "relation:0",
+      "id": "CON-M01",
+      "signature_sha256": "11185d703aad095dad7058031fb006926e4b3c1da21af1a0ff084168f93c5214"
+    },
+    {
+      "check": "relations_same_analysis",
+      "id": "CON-M01",
+      "signature_sha256": "fda3360898e632dc40a4bc49970ca3ea72ac9250c53448e1bc528b783dc37eca"
+    },
+    {
+      "check": "qualification:0",
+      "id": "CON-M01",
+      "signature_sha256": "56f583062d05df67cefccae06f7b2e93a65d3252f8a0402f84ca41306fdcd0fa"
+    },
+    {
+      "check": "coherent_analysis",
+      "id": "CON-M01",
+      "signature_sha256": "3864ab28835d8933269ac231957b6369760e276a3e1f013a434b3207b1be5476"
+    },
+    {
+      "check": "question:0",
+      "id": "CON-M01",
+      "signature_sha256": "6bf2c3a9d1ca49b54dd5177ad14dfbe0692eaa05858e1af85398c183e122c393"
+    },
+    {
+      "check": "question:1",
+      "id": "CON-M01",
+      "signature_sha256": "1c9fec784f6e5aeb9b10826153a2e975721544767f685bce3916475cbc6bee97"
+    },
+    {
+      "check": "complete_construction",
+      "id": "CON-M03",
+      "signature_sha256": "cd3bfc2185ff5a788e2dfffbae722e594584f08d4bf0e1238b11d698555a66c6"
+    },
+    {
+      "check": "role:0",
+      "id": "CON-M03",
+      "signature_sha256": "87c2394e52b2c83810bf32b76ad421affeb589fb1132876c13fe8c6261d89434"
+    },
+    {
+      "check": "role:1",
+      "id": "CON-M03",
+      "signature_sha256": "df54acb5171339bccbee9b7f6f4c72ec24138fa742765267cde7a86d92912178"
+    },
+    {
+      "check": "roles_same_analysis",
+      "id": "CON-M03",
+      "signature_sha256": "0d11ac317d5129330d5385bb04943cd7ed30abfb6c588f46609c8c84899c1c12"
+    },
+    {
+      "check": "relation:0",
+      "id": "CON-M03",
+      "signature_sha256": "11185d703aad095dad7058031fb006926e4b3c1da21af1a0ff084168f93c5214"
+    },
+    {
+      "check": "relations_same_analysis",
+      "id": "CON-M03",
+      "signature_sha256": "fda3360898e632dc40a4bc49970ca3ea72ac9250c53448e1bc528b783dc37eca"
+    },
+    {
+      "check": "qualification:0",
+      "id": "CON-M03",
+      "signature_sha256": "56f583062d05df67cefccae06f7b2e93a65d3252f8a0402f84ca41306fdcd0fa"
+    },
+    {
+      "check": "coherent_analysis",
+      "id": "CON-M03",
+      "signature_sha256": "3864ab28835d8933269ac231957b6369760e276a3e1f013a434b3207b1be5476"
+    },
+    {
+      "check": "question:0",
+      "id": "CON-M03",
+      "signature_sha256": "6bf2c3a9d1ca49b54dd5177ad14dfbe0692eaa05858e1af85398c183e122c393"
+    },
+    {
+      "check": "question:1",
+      "id": "CON-M03",
+      "signature_sha256": "1c9fec784f6e5aeb9b10826153a2e975721544767f685bce3916475cbc6bee97"
+    }
+  ],
+  "documented_boundary_inventory_sha256": "cc4a05e19d516b548cc7f935e9506a3cbd85a97c5c0ad9def4dec1c2dbee274a",
+  "documented_boundary_runtime_sha256": "1818fc27f076535734d9d9e90a857683f27d464f0a205637e7231cd6e870c40c",
+  "execution_errors": [],
+  "false_accept_case_count": 0,
+  "false_accept_count": 0,
+  "finalization_errors": [],
+  "gate_integrity_errors": [],
+  "gate_mode": "documented_partial_coverage_arabic_v1",
+  "gate_pass": true,
+  "gold_freeze_sha256": "5e4e9856b00ee648888e58c84e62c0a334cd3875d14cea326273d7c0f732254e",
+  "measurement_valid": true,
+  "model_summary": {
+    "authority": "SOURCE_RELATIVE_TRAINING_WITNESSES_NOT_FREE_ARABIC_ACQUISITION",
+    "boundaries": {
+      "attested_suffix_candidates": 5,
+      "outside_lexical_pos": 3
+    },
+    "excluded_verses": [],
+    "inventory_sha256": "79b7da94581e2cd3dbff9f410c6cfb4b7b89893444c4df20986bcda6d5843ef3",
+    "learner_version": "nabt.qac-lexical-evidence.v2",
+    "lexical_readings": 78,
+    "lookup_id": "qac.lookup.wasl-equivalence.v1",
+    "lookup_keys": 78,
+    "masked_features": [
+      "NOM",
+      "ACC",
+      "GEN",
+      "MOOD:IND",
+      "MOOD:SUBJ",
+      "MOOD:JUS"
+    ],
+    "projection_id": "qac.extended-buckwalter.unicode.v1",
+    "source": {
+      "byte_length": 9627,
+      "id": "construction_authored_lexicon",
+      "sha256": "af5f62c03f8904bee6ddd3d3d80307c455e68c39010640b6f2c86e13ee23b340"
+    },
+    "target_role_labels_available": false,
+    "training_words": 140
+  },
+  "not_claimed": [
+    "untouched external corpus",
+    "unsupervised lexical knowledge",
+    "world truth",
+    "general Arabic completeness"
+  ],
+  "passed": 80,
+  "question_execution_errors": [],
+  "raw_log": {
+    "bytes": 1425897,
+    "canonical_json_verified": true,
+    "case_count": 86,
+    "case_ids": [
+      "CON-C01",
+      "CON-C02",
+      "CON-C03",
+      "CON-C04",
+      "CON-K01",
+      "CON-K02",
+      "CON-K03",
+      "CON-K04",
+      "CON-K05",
+      "CON-K06",
+      "CON-K07",
+      "CON-K08",
+      "CON-K09",
+      "CON-K10",
+      "CON-K11",
+      "CON-K12",
+      "CON-I01",
+      "CON-I02",
+      "CON-I03",
+      "CON-I04",
+      "CON-I05",
+      "CON-I06",
+      "CON-I07",
+      "CON-I08",
+      "CON-I09",
+      "CON-I10",
+      "CON-Z01",
+      "CON-Z02",
+      "CON-Z03",
+      "CON-Z04",
+      "CON-Z05",
+      "CON-Z06",
+      "CON-Z07",
+      "CON-Z08",
+      "CON-Z09",
+      "CON-Z10",
+      "CON-A01",
+      "CON-A02",
+      "CON-A03",
+      "CON-A04",
+      "CON-A05",
+      "CON-A06",
+      "CON-A07",
+      "CON-A08",
+      "CON-A09",
+      "CON-A10",
+      "CON-A11",
+      "CON-A12",
+      "CON-D01",
+      "CON-D02",
+      "CON-D03",
+      "CON-D04",
+      "CON-D05",
+      "CON-D06",
+      "CON-N01",
+      "CON-N02",
+      "CON-N03",
+      "CON-N04",
+      "CON-N05",
+      "CON-N06",
+      "CON-H01",
+      "CON-H02",
+      "CON-H03",
+      "CON-H04",
+      "CON-H05",
+      "CON-H06",
+      "CON-M01",
+      "CON-M02",
+      "CON-M03",
+      "CON-M04",
+      "CON-M05",
+      "CON-M06",
+      "CON-B01",
+      "CON-B02",
+      "CON-B03",
+      "CON-B04",
+      "CON-W01",
+      "CON-W02",
+      "CON-W03",
+      "CON-W04",
+      "CON-R01",
+      "CON-R02",
+      "CON-R03",
+      "CON-R04",
+      "CON-R05",
+      "CON-R06"
+    ],
+    "complete_gzip_verified": true,
+    "decoded_bytes": 16797424,
+    "decoded_sha256": "debc3877ab6ce4fe977d90299e11f465ca9692022ee799c20c415cbce13fdcd2",
+    "early_failure_skipped_questions": 0,
+    "execution_error_count": 0,
+    "expected_question_count": 106,
+    "filename": "construction-regression.raw.jsonl.gz",
+    "question_count": 106,
+    "question_error_count": 0,
+    "record_count": 87,
+    "record_inventory": [
+      {
+        "bytes": 816,
+        "id": null,
+        "index": 0,
+        "kind": "model",
+        "sha256": "e39896cb6f4b760f62028b577c764a2803f578b16d8cb1fe7a6ff58d13a5383e"
+      },
+      {
+        "bytes": 128081,
+        "id": "CON-C01",
+        "index": 1,
+        "kind": "case",
+        "sha256": "e37207da61b7922657c82442ad45421d09960f578a2b806add07aa3a55302a08"
+      },
+      {
+        "bytes": 71240,
+        "id": "CON-C02",
+        "index": 2,
+        "kind": "case",
+        "sha256": "f7cb4b9a7a7e36734c0a73a9ddec75879432e4d5f213b3452ad11a5afcc71d9f"
+      },
+      {
+        "bytes": 143102,
+        "id": "CON-C03",
+        "index": 3,
+        "kind": "case",
+        "sha256": "6994980631ae719ee3e182bd1ff8f40968c5eb240563dbc6646982899f9486bc"
+      },
+      {
+        "bytes": 112903,
+        "id": "CON-C04",
+        "index": 4,
+        "kind": "case",
+        "sha256": "7742df545f7dfa75bf6ccef8cbe70563980c6190cd0d760a6e7a4dbca9322fc8"
+      },
+      {
+        "bytes": 288979,
+        "id": "CON-K01",
+        "index": 5,
+        "kind": "case",
+        "sha256": "5c1a21f206119222ee2f8b6bebb5afd0edffd75e917915926becce3466d8e9a1"
+      },
+      {
+        "bytes": 291209,
+        "id": "CON-K02",
+        "index": 6,
+        "kind": "case",
+        "sha256": "c67897477286bf16e1dd77ab11231bea5b1347c9f57ad4ca11360810535f5b87"
+      },
+      {
+        "bytes": 290907,
+        "id": "CON-K03",
+        "index": 7,
+        "kind": "case",
+        "sha256": "e7388709decbbd609e371768bfdd0c319c50af767f2d962ea2d7380ca0b4f31c"
+      },
+      {
+        "bytes": 298396,
+        "id": "CON-K04",
+        "index": 8,
+        "kind": "case",
+        "sha256": "586f84364ab7d6fe61272c98a8db090d4c0119b298147b05e9ed05a57e178780"
+      },
+      {
+        "bytes": 350078,
+        "id": "CON-K05",
+        "index": 9,
+        "kind": "case",
+        "sha256": "0c84f2929c365a9ea05fc946d65a240a44d522d28ca6b757d9ce991dceb8b123"
+      },
+      {
+        "bytes": 362939,
+        "id": "CON-K06",
+        "index": 10,
+        "kind": "case",
+        "sha256": "987e6e427af3043fe9c3c5d85e1b896d8f2c6e331594f0906712c0def3620d54"
+      },
+      {
+        "bytes": 294847,
+        "id": "CON-K07",
+        "index": 11,
+        "kind": "case",
+        "sha256": "d09cc310a47889fddc191574f126b0a1fe43c7c2db02d14bbea302fae641cc15"
+      },
+      {
+        "bytes": 162137,
+        "id": "CON-K08",
+        "index": 12,
+        "kind": "case",
+        "sha256": "897e633f8c99d964a28e8a9ebe2bc3a1d418d7b010422331fe74089f0ed15f47"
+      },
+      {
+        "bytes": 164019,
+        "id": "CON-K09",
+        "index": 13,
+        "kind": "case",
+        "sha256": "e04212acc5f59ebedbca3749c640811baaffe6715b479db1db9a0e1266027703"
+      },
+      {
+        "bytes": 142235,
+        "id": "CON-K10",
+        "index": 14,
+        "kind": "case",
+        "sha256": "bcfaba138552ef985dd9c1a0821558689a82deb068c6ac3a58590c65f7d2f1a6"
+      },
+      {
+        "bytes": 179800,
+        "id": "CON-K11",
+        "index": 15,
+        "kind": "case",
+        "sha256": "f4e1bf267d842ddbf125a4eb7143266a662611d4dc8c4a0e29025e148b97e219"
+      },
+      {
+        "bytes": 355602,
+        "id": "CON-K12",
+        "index": 16,
+        "kind": "case",
+        "sha256": "d2a58936d6189ff57c67f1a0cd29b32e1c8b46ca6fdec1da64a9278b38548d66"
+      },
+      {
+        "bytes": 172232,
+        "id": "CON-I01",
+        "index": 17,
+        "kind": "case",
+        "sha256": "6a4fa459b48f1103dfe031e24712b73b88a2f9dafc611dbf4283d03e3eaa19c7"
+      },
+      {
+        "bytes": 246696,
+        "id": "CON-I02",
+        "index": 18,
+        "kind": "case",
+        "sha256": "c25183eba89fa7486463f337fe060b6f97eec92c96d476cbb0403e6362df7986"
+      },
+      {
+        "bytes": 158206,
+        "id": "CON-I03",
+        "index": 19,
+        "kind": "case",
+        "sha256": "99956a9eb0abe23af69a285ec7fc936792d7aa5d7483226caefe6cc868df4142"
+      },
+      {
+        "bytes": 154916,
+        "id": "CON-I04",
+        "index": 20,
+        "kind": "case",
+        "sha256": "c50461dd82801ff8b4e46b3ff445de5968da5a2753997b120bf9d9492d0f20e7"
+      },
+      {
+        "bytes": 154869,
+        "id": "CON-I05",
+        "index": 21,
+        "kind": "case",
+        "sha256": "30fb9dfc0bae1953a795185ba5c77165c5da388eed8830748e21029772d3a488"
+      },
+      {
+        "bytes": 135811,
+        "id": "CON-I06",
+        "index": 22,
+        "kind": "case",
+        "sha256": "6c2e2da4ede41e099629c66eeec427237ec411deb3d08e260d0a5e5c1bf2692b"
+      },
+      {
+        "bytes": 173375,
+        "id": "CON-I07",
+        "index": 23,
+        "kind": "case",
+        "sha256": "f993006d9431da049dcce2cbca2e7bad41ebdf1180310791c0a0860243e9654d"
+      },
+      {
+        "bytes": 154887,
+        "id": "CON-I08",
+        "index": 24,
+        "kind": "case",
+        "sha256": "6b5f7ceee51e52588fb0d5e2926efb599b6aff8e253d4d4d778bfed05fd03dd0"
+      },
+      {
+        "bytes": 100236,
+        "id": "CON-I09",
+        "index": 25,
+        "kind": "case",
+        "sha256": "99e1f4ae58c5210dbd05658745ceaa561f4ef730e680e87365057b7c8df34967"
+      },
+      {
+        "bytes": 100292,
+        "id": "CON-I10",
+        "index": 26,
+        "kind": "case",
+        "sha256": "fa3765624757b7437f48a4ebad4979c616b5a63a259900801544cea2c841e5af"
+      },
+      {
+        "bytes": 567293,
+        "id": "CON-Z01",
+        "index": 27,
+        "kind": "case",
+        "sha256": "7b12d191aa00a80fdbbc26e15c67d03a21458d8d60b3812d7601aae630b41a69"
+      },
+      {
+        "bytes": 501936,
+        "id": "CON-Z02",
+        "index": 28,
+        "kind": "case",
+        "sha256": "5591dfdb3522fc10b233453f233e61747992c5ca2c619f5c81da1f4aa433e176"
+      },
+      {
+        "bytes": 565321,
+        "id": "CON-Z03",
+        "index": 29,
+        "kind": "case",
+        "sha256": "b0f0311403916452b8f650e215293a954aa73f9a46295bdd6c88dba811bb1688"
+      },
+      {
+        "bytes": 565383,
+        "id": "CON-Z04",
+        "index": 30,
+        "kind": "case",
+        "sha256": "96f1a12e8d4b3b2f123cab207c28dc7fc8db8506c53fa61855b5a42dfd6bf48d"
+      },
+      {
+        "bytes": 168886,
+        "id": "CON-Z05",
+        "index": 31,
+        "kind": "case",
+        "sha256": "d1e7272ab4a1cf76c57965262c7da7ff2e20d29d80257d2426b08922ddbc3f1f"
+      },
+      {
+        "bytes": 168934,
+        "id": "CON-Z06",
+        "index": 32,
+        "kind": "case",
+        "sha256": "045ecc0003797393f470e1286ea2af519721cca31e3dc1af32ae4c7637c46b5b"
+      },
+      {
+        "bytes": 501825,
+        "id": "CON-Z07",
+        "index": 33,
+        "kind": "case",
+        "sha256": "46f2c1e4f1f100dcfc616c0fa45d342f2b4c002e7841608e177cfe6a35324ce8"
+      },
+      {
+        "bytes": 255618,
+        "id": "CON-Z08",
+        "index": 34,
+        "kind": "case",
+        "sha256": "b61e378dea42789bfa5a6aa1ab2331a34b6061a60562b01ec553a5bdcc7affb8"
+      },
+      {
+        "bytes": 256653,
+        "id": "CON-Z09",
+        "index": 35,
+        "kind": "case",
+        "sha256": "bdd281e5bb0e4f6b85e4f6ff452c4fb01590d77d4f3c573935cbd134030b25ca"
+      },
+      {
+        "bytes": 536408,
+        "id": "CON-Z10",
+        "index": 36,
+        "kind": "case",
+        "sha256": "19e6becf03771490fff9d8b276f1df0334442ac9064dbba5e75da3383925a788"
+      },
+      {
+        "bytes": 153820,
+        "id": "CON-A01",
+        "index": 37,
+        "kind": "case",
+        "sha256": "9f3a805468d58cb78ab4ec29e72ac670f799490cf5cf72ade3174e5c1a9aa45a"
+      },
+      {
+        "bytes": 153758,
+        "id": "CON-A02",
+        "index": 38,
+        "kind": "case",
+        "sha256": "c060f3f332710e9bcf74c1a54d226a72b92b3de63c6bdd9bbbb9daf149fb816a"
+      },
+      {
+        "bytes": 156266,
+        "id": "CON-A03",
+        "index": 39,
+        "kind": "case",
+        "sha256": "a166f3e27f5bc09ea2596928b43ed80c9270b6a76ccd8f9f04e06824f8c69ce0"
+      },
+      {
+        "bytes": 155959,
+        "id": "CON-A04",
+        "index": 40,
+        "kind": "case",
+        "sha256": "35e4af51b169bd0a7749f28e7a0f61418f153e1fd386ff59123c1b8fc4b4cf51"
+      },
+      {
+        "bytes": 155831,
+        "id": "CON-A05",
+        "index": 41,
+        "kind": "case",
+        "sha256": "d20236e90e2166a6a2cabce30bd4412c2545c5d698ec8e99183852cc5ba4818f"
+      },
+      {
+        "bytes": 156335,
+        "id": "CON-A06",
+        "index": 42,
+        "kind": "case",
+        "sha256": "83374b1a2e5f420aa3ab7c1bfdd780b209b8d88f63b90ad19aced6994c67ec18"
+      },
+      {
+        "bytes": 160042,
+        "id": "CON-A07",
+        "index": 43,
+        "kind": "case",
+        "sha256": "b64fe6ee1ab073d0bfc2be92db745a3d308e3713f219ca3c93f72e7f196f52be"
+      },
+      {
+        "bytes": 153747,
+        "id": "CON-A08",
+        "index": 44,
+        "kind": "case",
+        "sha256": "20d0f1e45f368a16998ae65252221767bf79c332f6cc3b258be310be5dba169d"
+      },
+      {
+        "bytes": 153874,
+        "id": "CON-A09",
+        "index": 45,
+        "kind": "case",
+        "sha256": "b4b277e7048a671245b0c80b36b2b7965baa1759457e2562334cc2ff735bfae9"
+      },
+      {
+        "bytes": 92637,
+        "id": "CON-A10",
+        "index": 46,
+        "kind": "case",
+        "sha256": "5a10a1e02b5f9a75e5e5b853f856c565d04460cd4800fc3e791652e36c94d8d8"
+      },
+      {
+        "bytes": 88345,
+        "id": "CON-A11",
+        "index": 47,
+        "kind": "case",
+        "sha256": "be2247d4d5bcfc38d91795aa1f4b9d6dcb947ebd89bb3c02bd72e44a0f0f0869"
+      },
+      {
+        "bytes": 90850,
+        "id": "CON-A12",
+        "index": 48,
+        "kind": "case",
+        "sha256": "95ea330ee14002a369e2c8094f0df81cc1ff2d1f629be15dc009ba16c4745d02"
+      },
+      {
+        "bytes": 368239,
+        "id": "CON-D01",
+        "index": 49,
+        "kind": "case",
+        "sha256": "da72858d3e034e11dfbc744da56626e16d3216375465369bab9e57170d66cae5"
+      },
+      {
+        "bytes": 834976,
+        "id": "CON-D02",
+        "index": 50,
+        "kind": "case",
+        "sha256": "4488e127e4a049739d3576609209a5d3722412e7f26482d67517674c2d400485"
+      },
+      {
+        "bytes": 207524,
+        "id": "CON-D03",
+        "index": 51,
+        "kind": "case",
+        "sha256": "c1b14ec4f606eb457bcddd0d45d19cd3e8d1e44651f475cce6fde2ae95dabf1e"
+      },
+      {
+        "bytes": 31838,
+        "id": "CON-D04",
+        "index": 52,
+        "kind": "case",
+        "sha256": "aabc3466c29f33a2bd9ba73ac1fd044047ff4a655cf3a5c9201e3020448b8430"
+      },
+      {
+        "bytes": 26701,
+        "id": "CON-D05",
+        "index": 53,
+        "kind": "case",
+        "sha256": "0caf3f65bf637e625d1b7c232db5607537f38c5fdcc62316772d37f5abe74a1a"
+      },
+      {
+        "bytes": 15548,
+        "id": "CON-D06",
+        "index": 54,
+        "kind": "case",
+        "sha256": "888aedbdf2322a8ea7d48fed0173db22ae37133b94760ba5723946e296a248a2"
+      },
+      {
+        "bytes": 88999,
+        "id": "CON-N01",
+        "index": 55,
+        "kind": "case",
+        "sha256": "2b2a92e0a6e508655d2f8658148b6aaec1c6de61047292611be6fcf1d4a27b3e"
+      },
+      {
+        "bytes": 178172,
+        "id": "CON-N02",
+        "index": 56,
+        "kind": "case",
+        "sha256": "2990a4a1631a80a32348fec4ddff9eb9c70876a40552fe94a2b6b19939d4dc25"
+      },
+      {
+        "bytes": 169949,
+        "id": "CON-N03",
+        "index": 57,
+        "kind": "case",
+        "sha256": "1f7951f50cae90d1c81e8a40c2e6eb1ac5b99f9c5a0cc4d72428109aa6ffbddc"
+      },
+      {
+        "bytes": 42442,
+        "id": "CON-N04",
+        "index": 58,
+        "kind": "case",
+        "sha256": "59fe198e0ec1f423c5eb09fbdc838de6175399d807f6bfd9f682caf732173294"
+      },
+      {
+        "bytes": 56212,
+        "id": "CON-N05",
+        "index": 59,
+        "kind": "case",
+        "sha256": "93324a18f6865a2d76afbd8926308b6b11348cf85be4beb77513e77faab219a3"
+      },
+      {
+        "bytes": 17353,
+        "id": "CON-N06",
+        "index": 60,
+        "kind": "case",
+        "sha256": "f5ce3bcbaafe0a1497d07540ec7c90744321802a884a26912db19736d56bd7be"
+      },
+      {
+        "bytes": 259953,
+        "id": "CON-H01",
+        "index": 61,
+        "kind": "case",
+        "sha256": "6cea177304365cf26c2836de91140711d92c146d0a3ce528735c99c299456a29"
+      },
+      {
+        "bytes": 361867,
+        "id": "CON-H02",
+        "index": 62,
+        "kind": "case",
+        "sha256": "c60fa583100369cf41b36a5f0b4e5ae116fd78280aa67e5abd5e048062d8a548"
+      },
+      {
+        "bytes": 729102,
+        "id": "CON-H03",
+        "index": 63,
+        "kind": "case",
+        "sha256": "54c5f5be2198c0b34c1a6d8e008a9e487ed1a089030072efacab907480ffd0c6"
+      },
+      {
+        "bytes": 82065,
+        "id": "CON-H04",
+        "index": 64,
+        "kind": "case",
+        "sha256": "099d76b712fc1b65373a6883ae82864ea74b20d9687a9340a9703ff337e14261"
+      },
+      {
+        "bytes": 235076,
+        "id": "CON-H05",
+        "index": 65,
+        "kind": "case",
+        "sha256": "76e50ef37be47e40f39ee8e13f0eb07eb52dc735c120769953aa96f402a328fd"
+      },
+      {
+        "bytes": 54150,
+        "id": "CON-H06",
+        "index": 66,
+        "kind": "case",
+        "sha256": "9afbf156c5f57f0d385ad9ac36c6fdb840a2e963c24c9ec04057c4b362ff8186"
+      },
+      {
+        "bytes": 135512,
+        "id": "CON-M01",
+        "index": 67,
+        "kind": "case",
+        "sha256": "06d8d0c14320ec0e038e0e89d7b147c7f7f3c77255c49717ee1b79fbc1214179"
+      },
+      {
+        "bytes": 223109,
+        "id": "CON-M02",
+        "index": 68,
+        "kind": "case",
+        "sha256": "7a915ad020328164d9f3a32fca62486b97e4efbac66a3b0905d0760d8fb43a78"
+      },
+      {
+        "bytes": 146807,
+        "id": "CON-M03",
+        "index": 69,
+        "kind": "case",
+        "sha256": "dd6e2f79d24b335fb2b8c592ec7f45c20a464539bcde4a141b03e6618695b4c9"
+      },
+      {
+        "bytes": 102813,
+        "id": "CON-M04",
+        "index": 70,
+        "kind": "case",
+        "sha256": "f41e6d08dcdd0b6dc5b01ffb5ccfab31b7bf123e6f7f1caaf292d04f2dcdd032"
+      },
+      {
+        "bytes": 16170,
+        "id": "CON-M05",
+        "index": 71,
+        "kind": "case",
+        "sha256": "d0c5f85b11bec06f9ae3f5535941b09ee764e915ebf0fb3cbf0c9bfb3c6500d3"
+      },
+      {
+        "bytes": 18493,
+        "id": "CON-M06",
+        "index": 72,
+        "kind": "case",
+        "sha256": "ebd3c1d4a5dfbd68a87bfe6d9b65b6f9fecc8e8956939e28e0c04f8d80385b71"
+      },
+      {
+        "bytes": 54798,
+        "id": "CON-B01",
+        "index": 73,
+        "kind": "case",
+        "sha256": "37eeff818a0b96ddb35be53d9969a1a8f26200b78fc21c172c5071f1330eb6dc"
+      },
+      {
+        "bytes": 132274,
+        "id": "CON-B02",
+        "index": 74,
+        "kind": "case",
+        "sha256": "7d7ca83f4db650eff47b8e0eaba8c6f60d806ff9d50be615da14b079e927f473"
+      },
+      {
+        "bytes": 86625,
+        "id": "CON-B03",
+        "index": 75,
+        "kind": "case",
+        "sha256": "4fe527f91885a59ab300aa3450822c01a1c3e6857271edbab07ddce35aa29932"
+      },
+      {
+        "bytes": 30622,
+        "id": "CON-B04",
+        "index": 76,
+        "kind": "case",
+        "sha256": "f7e31bddeb6032e739ec4f16773bee8c94f915a53d9dd6839e67f166a61f3803"
+      },
+      {
+        "bytes": 109146,
+        "id": "CON-W01",
+        "index": 77,
+        "kind": "case",
+        "sha256": "82a9b54a06eb976d68d21c57f8b7fe3b793d034ffa311ffd34ce28b9e3168001"
+      },
+      {
+        "bytes": 139503,
+        "id": "CON-W02",
+        "index": 78,
+        "kind": "case",
+        "sha256": "26e522696612804bc0cf79c8cde8afa07c66fe326d8e3d792c2675e171da0de4"
+      },
+      {
+        "bytes": 49408,
+        "id": "CON-W03",
+        "index": 79,
+        "kind": "case",
+        "sha256": "bbc2cac1ac3d2ece5bf59cd85116f7c31bb76c5bfb0296f63e060981b2ffe148"
+      },
+      {
+        "bytes": 74315,
+        "id": "CON-W04",
+        "index": 80,
+        "kind": "case",
+        "sha256": "a255acebfbff7c5e9e61bb4e46cf804109207254ca751520d8e35e372c0e6c2f"
+      },
+      {
+        "bytes": 128194,
+        "id": "CON-R01",
+        "index": 81,
+        "kind": "case",
+        "sha256": "39d70401875bdbe6e6bb3d67f655332d5c9aae011a94c7327adde9b3c6db4321"
+      },
+      {
+        "bytes": 128162,
+        "id": "CON-R02",
+        "index": 82,
+        "kind": "case",
+        "sha256": "9991cb2d51c9068eff01e7de9c490a3e27d2fcb39f6c1b41c9beb4a3431d2d8a"
+      },
+      {
+        "bytes": 128194,
+        "id": "CON-R03",
+        "index": 83,
+        "kind": "case",
+        "sha256": "0d79e69a968ff31104c9a44ac037bc38f6e8a734e657fc59100abe3601d8beaa"
+      },
+      {
+        "bytes": 128194,
+        "id": "CON-R04",
+        "index": 84,
+        "kind": "case",
+        "sha256": "b82cc13f6d105ace726e05452bd6b82b3fc2852544a459a48d670586f2ccc6f6"
+      },
+      {
+        "bytes": 128194,
+        "id": "CON-R05",
+        "index": 85,
+        "kind": "case",
+        "sha256": "02a532563cee07051234123657bc4a7cc1e562c86558807ce8e39967077077f7"
+      },
+      {
+        "bytes": 128194,
+        "id": "CON-R06",
+        "index": 86,
+        "kind": "case",
+        "sha256": "bca8c82b8ed45f522232e6229e9a220a1c645de256cb9df48fef1e16f0868d57"
+      }
+    ],
+    "record_inventory_sha256": "f0fcef2cb27f7f3b455dfc04bdeb375e21a6233cd3bfbbd783398e484bf9b607",
+    "sha256": "65e4e2c080ebfae4a04fc92cb1c5deaed6fd2e2aed31ac23b131ba0e9da5f56d",
+    "write_time_inventory_verified": true
+  },
+  "replay": {
+    "passed": 6,
+    "total": 6
+  },
+  "schema": "nabt.constructions.independent-evaluation.v2",
+  "scope": "Independent authored composition from supplied lexical/context premises; first frozen material unchanged.",
+  "seconds": 119.950503,
+  "snapshot": {
+    "excluded_existing_documentation_metadata": [
+      "src/nabt/data/source_evidence/.gitattributes",
+      "src/nabt/data/source_evidence/LICENSE-DATA.md",
+      "src/nabt/data/source_evidence/README.md"
+    ],
+    "files": [
+      {
+        "bytes": 814,
+        "path": "pyproject.toml",
+        "sha256": "0ebcdf61c0a4a82a09042604456efc41915b19b42f8b59a98ed0aea091f1cf32"
+      },
+      {
+        "bytes": 950,
+        "path": "src/nabt/__init__.py",
+        "sha256": "a5567979c27b2b599ed6211926cc28630e7be80b073af4d94abed083380b6705"
+      },
+      {
+        "bytes": 48,
+        "path": "src/nabt/__main__.py",
+        "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+      },
+      {
+        "bytes": 9281,
+        "path": "src/nabt/acquisition.py",
+        "sha256": "e61b90f77abbe16f4b0a9cc0ca70740cdaf523905e1c43fd05e7813c36e89661"
+      },
+      {
+        "bytes": 4777,
+        "path": "src/nabt/alphabet.py",
+        "sha256": "07014c0ddd129cd821ab35e7b332f730f9341dc110e6b7e4517b9a89df8d0abe"
+      },
+      {
+        "bytes": 8612,
+        "path": "src/nabt/ambiguity.py",
+        "sha256": "d67e62b50ad6e1aa0776262d46916e01a438c80aa0732e3b27013e67917a7422"
+      },
+      {
+        "bytes": 43824,
+        "path": "src/nabt/arabic_reader.py",
+        "sha256": "96a543508f74a7edc43275c12766b6544f33e0a15071bdf751913f96a79c6888"
+      },
+      {
+        "bytes": 17546,
+        "path": "src/nabt/bridges.py",
+        "sha256": "46f9da4eb9e3e92dc353ce24f6feabca39243b3910811647761c60ae38979b82"
+      },
+      {
+        "bytes": 8219,
+        "path": "src/nabt/certificates.py",
+        "sha256": "3645425d1d2af2a67faeed4d94a181fdb4496a6810980f06a09fa6677869a0f9"
+      },
+      {
+        "bytes": 37508,
+        "path": "src/nabt/cli.py",
+        "sha256": "02730002cfed710b441f284004f9e1b218c94a5dfd413db57ee6b4097ba6f17f"
+      },
+      {
+        "bytes": 4992,
+        "path": "src/nabt/codec.py",
+        "sha256": "6f0c5a9dd7a04a340e3d28fa74b6ec18dd4e24e875ddc933c37e3aaf568756b1"
+      },
+      {
+        "bytes": 25405,
+        "path": "src/nabt/construction_complements.py",
+        "sha256": "6f89bf1864a20bc516faec5183fecf9455155b9b7016b89ca1b3f705cba69ffc"
+      },
+      {
+        "bytes": 11104,
+        "path": "src/nabt/construction_laws.py",
+        "sha256": "0464fadb7c67e390e30620bbc67dee9416c44fc51032c44803b128aeb6df1fd7"
+      },
+      {
+        "bytes": 6038,
+        "path": "src/nabt/construction_nominals.py",
+        "sha256": "17a70400c0885ca0b8ea1c8f79ab08c0b6d2cefce2ba07b9d986a68cca440e8d"
+      },
+      {
+        "bytes": 64562,
+        "path": "src/nabt/construction_reader.py",
+        "sha256": "b4f0c9f43fd181aca589ddbf5879eec9d2c31760ee5401b76441bafb039b9b4d"
+      },
+      {
+        "bytes": 9454,
+        "path": "src/nabt/construction_sources.py",
+        "sha256": "19a77070d2c0463cd9e52d7e703f14cbaab9ff0b43189574c0e719d5c62dbc5a"
+      },
+      {
+        "bytes": 33709,
+        "path": "src/nabt/corpus_evidence.py",
+        "sha256": "68f1f3cc0ffa104b221edb0fe758b3b0bb1525b8fa0e83a41750e1a667f2ceae"
+      },
+      {
+        "bytes": 14691,
+        "path": "src/nabt/corpus_sources.py",
+        "sha256": "ad743021b99396ad0d3e6dd6be9ba0530768e48cf86b85f85c84450f55f6f00f"
+      },
+      {
+        "bytes": 15607,
+        "path": "src/nabt/counting.py",
+        "sha256": "bfdb1e43b7a56db9e365fac2238953e33afbac81f88169fc8a3f8b51c4fb1837"
+      },
+      {
+        "bytes": 70074,
+        "path": "src/nabt/data/construction_evidence.json",
+        "sha256": "8b42ef10b963ea025005c1255abd643a47a37b31b9566af98983adf390b76f88"
+      },
+      {
+        "bytes": 28213,
+        "path": "src/nabt/data/derivation_patterns.json",
+        "sha256": "0b4d6673c033955490468ad595fc1e988890bba282101e81a80580d3fc1fbf2f"
+      },
+      {
+        "bytes": 211841,
+        "path": "src/nabt/data/discourse_evidence.json",
+        "sha256": "30d990bf93aa436d9452e5a0a4172349727c9e5bb2c6fd1491e53d518b546325"
+      },
+      {
+        "bytes": 20053,
+        "path": "src/nabt/data/governors.json",
+        "sha256": "708eebc31f9600fded7a7dd33e89d77170c451c1fe2779740178b52fe50382e0"
+      },
+      {
+        "bytes": 14136,
+        "path": "src/nabt/data/inflection_evidence_table.json",
+        "sha256": "f8bc2f04fc1225a4f495d71a4c283289a3e8e9c74b9949008eb51e6445e7deb5"
+      },
+      {
+        "bytes": 77563,
+        "path": "src/nabt/data/law.json",
+        "sha256": "14e32ae208ac5ed2f754e83506e72133d0962756ef0c944d12370746febddcdd"
+      },
+      {
+        "bytes": 65230,
+        "path": "src/nabt/data/morphology.json",
+        "sha256": "643abb2ec66ca0c153e840b2f59a0a75b7af4344a476db7e77d29171487f162f"
+      },
+      {
+        "bytes": 33622,
+        "path": "src/nabt/data/nominal_evidence.json",
+        "sha256": "0b0218d75329e1b04302ebdf875a4a43db772d4650b3415bc767f2a6a96d07a8"
+      },
+      {
+        "bytes": 4418,
+        "path": "src/nabt/data/person_evidence.json",
+        "sha256": "f77c9b65b3a7b638166b5807fff1218cb30079d2d301c815b1b512a665858d15"
+      },
+      {
+        "bytes": 97798,
+        "path": "src/nabt/data/source_evidence/alfiyya.txt",
+        "sha256": "13b351a0a02d9060fdedbb5db568544718eb4e89bef323f5572b8a26c0921ca0"
+      },
+      {
+        "bytes": 50102,
+        "path": "src/nabt/data/source_evidence/construction_policy.json",
+        "sha256": "4b68eed56aa8015daabc804329a297edcc6da3bf6725a64ad314c9b7b05969b3"
+      },
+      {
+        "bytes": 2587,
+        "path": "src/nabt/data/source_evidence/construction_supplementary_sources_v1.json",
+        "sha256": "816e3a89aa80138b31f88b8dd33752160468c17b84927623b43fa41def39fdf0"
+      },
+      {
+        "bytes": 45675,
+        "path": "src/nabt/data/source_evidence/discourse_policy.json",
+        "sha256": "584dce90517121ba5e1fad8015f50e14b1adad437c6af879753038703222b3b7"
+      },
+      {
+        "bytes": 6558,
+        "path": "src/nabt/data/source_evidence/governor_policy.json",
+        "sha256": "26fdd34913ccca180bb1bf19bd58d725881117c0d01027f51374fd29d578dfa6"
+      },
+      {
+        "bytes": 3485,
+        "path": "src/nabt/data/source_evidence/inflection_policy.json",
+        "sha256": "87d28b0d9a23ea3300f033aeef38884132d4863f4906e57dda1ee490c1365f09"
+      },
+      {
+        "bytes": 1658,
+        "path": "src/nabt/data/source_evidence/license_evidence.json",
+        "sha256": "4a1cfef0eb7ce0647a3da85db59783d59a03502bc175d50a49a5faa392e9e60b"
+      },
+      {
+        "bytes": 872,
+        "path": "src/nabt/data/source_evidence/morphology_j3.txt",
+        "sha256": "793c1534373c602240a1a0dc40ce8292994e9acba22d0e4aa5f333399d1995d5"
+      },
+      {
+        "bytes": 13814,
+        "path": "src/nabt/data/source_evidence/morphology_policy.json",
+        "sha256": "14463f75b6cfa54ed2a9a5ad56b2a595ac87ee0ad97dab43ef6a376079cb3f1a"
+      },
+      {
+        "bytes": 6026,
+        "path": "src/nabt/data/source_evidence/pilot_conditions.json",
+        "sha256": "3ffd79d951a5ce21647441f9b325fd26129dec4d48b3b28d9b39ac0db66a3dd1"
+      },
+      {
+        "bytes": 8011,
+        "path": "src/nabt/data/source_evidence/pilot_examples.json",
+        "sha256": "b3e000e455e2551962c332ec16b8814a2dfdc07d90a0f457c0cb6829650ad0ac"
+      },
+      {
+        "bytes": 40168,
+        "path": "src/nabt/data/source_evidence/qatr.txt",
+        "sha256": "2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d"
+      },
+      {
+        "bytes": 5332827,
+        "path": "src/nabt/data/source_evidence/sabban.txt",
+        "sha256": "8b9e86da786cf65e7b32498b2524ee48a8dcf9f61b59e1bbc32b99ce7db5b396"
+      },
+      {
+        "bytes": 2639395,
+        "path": "src/nabt/data/source_evidence/sibawayhi.txt",
+        "sha256": "a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625"
+      },
+      {
+        "bytes": 60101,
+        "path": "src/nabt/data/source_evidence/source_manifest.json",
+        "sha256": "4eb5f589f8a016adcf070cf1995905c78b65c18c1963c0d158f04a5beb349998"
+      },
+      {
+        "bytes": 51087,
+        "path": "src/nabt/data/source_evidence/word_policy.json",
+        "sha256": "c03134674fb8702af2d0ff4ce91c06d6b6b2f1422373da52e6449f24d1efd5f1"
+      },
+      {
+        "bytes": 2888,
+        "path": "src/nabt/data/text_evidence.json",
+        "sha256": "047d2409b280e488f4af3d635de190752a30938dbc47f053db4ae7670ef9d3ae"
+      },
+      {
+        "bytes": 19484,
+        "path": "src/nabt/data/words.json",
+        "sha256": "e3e796e849386dedd6abc3a473cb15dcece2e7b35583c45d16139d3c183dbcc3"
+      },
+      {
+        "bytes": 19591,
+        "path": "src/nabt/derivation.py",
+        "sha256": "cf9b911f2d69eba5413acfa3e46bffe1e724b1e49b107d642e5360422420d2f2"
+      },
+      {
+        "bytes": 18497,
+        "path": "src/nabt/discourse.py",
+        "sha256": "b6fde60c51d981a880dfc1cb63b6326f5853ffb508f5b65a73dceb97b1ff09b4"
+      },
+      {
+        "bytes": 3466,
+        "path": "src/nabt/discourse_adverbs.py",
+        "sha256": "e9a1f605f2e4e3f7f67c1efac5d144d58c6cc017bfa941f078f5b962b3e62e16"
+      },
+      {
+        "bytes": 10899,
+        "path": "src/nabt/discourse_context.py",
+        "sha256": "8e97ff076941b940475ba8efd50256884bfc8ec221ea08c4d52a7fcc6b96f786"
+      },
+      {
+        "bytes": 12128,
+        "path": "src/nabt/discourse_laws.py",
+        "sha256": "70b14e9e43c4e25a57b1b29ee0931af8b5ff0703dfb9cb5aea9319f4faf21c7e"
+      },
+      {
+        "bytes": 88115,
+        "path": "src/nabt/discourse_reader.py",
+        "sha256": "f8c5638fd1aaf104e51baed0f681f30d187997e49aaaecc5128e50e614c88f4a"
+      },
+      {
+        "bytes": 1436,
+        "path": "src/nabt/errors.py",
+        "sha256": "bbe25cbd5eae2c81cc226c2897dc9600d74c26d740567d90fde72bc3174e0974"
+      },
+      {
+        "bytes": 11795,
+        "path": "src/nabt/governor_reader.py",
+        "sha256": "7f6b01fd0d8d111eff0a1b85b4f37b26d56aa61a99540e40caf3b1641fbb547b"
+      },
+      {
+        "bytes": 5698,
+        "path": "src/nabt/governors.py",
+        "sha256": "af0113b4b1f343edc4fc7ce75f4a37e59bfb1e334dc631b81491c865926e37d3"
+      },
+      {
+        "bytes": 5231,
+        "path": "src/nabt/inflection.py",
+        "sha256": "8ec4fef4129a6c6e5414402ae6f75b12431b020413d05cec3f3841c5860c5e79"
+      },
+      {
+        "bytes": 26941,
+        "path": "src/nabt/inflection_reader.py",
+        "sha256": "15805c91f4349bef87f9a263c2bda221518c49009640c815a3e12e1720ed233e"
+      },
+      {
+        "bytes": 1845,
+        "path": "src/nabt/learning/__init__.py",
+        "sha256": "bb5ede45c2a48dcdc1b8ab404a50a43e03e3b65854567598ce021ffa378e3d8c"
+      },
+      {
+        "bytes": 19834,
+        "path": "src/nabt/learning/arabic_six_nouns.py",
+        "sha256": "472ffd3f83334e4650abccfe35d3423043969ca07b2949e04fb6cd856a690a7a"
+      },
+      {
+        "bytes": 19500,
+        "path": "src/nabt/learning/finite_guard.py",
+        "sha256": "d1df31c5055fa876b210ae53461233a687d56d24526b53ddd1bcb5c6571d248c"
+      },
+      {
+        "bytes": 13418,
+        "path": "src/nabt/learning/source_evidence.py",
+        "sha256": "7598c2c51990364778e9b22bc1cd62558c166311d984321ff316b8ce5210f354"
+      },
+      {
+        "bytes": 12576,
+        "path": "src/nabt/machine.py",
+        "sha256": "676e79ec353204ea9eab3324ebeec8381964de6b3655b9904109acad2d47826e"
+      },
+      {
+        "bytes": 5551,
+        "path": "src/nabt/morphology.py",
+        "sha256": "99559d863b3e7f506a86af7170f9541b54df3e079d0db174bdea114e03a95013"
+      },
+      {
+        "bytes": 26080,
+        "path": "src/nabt/morphology_reader.py",
+        "sha256": "1acfc895b076c885a4d915f86c7f98a556b06f86a350939996aaaa4931f0aaed"
+      },
+      {
+        "bytes": 32837,
+        "path": "src/nabt/nominal.py",
+        "sha256": "f4ad1a116e5039cf7d9fb90793ee517f46903c0eaaf9144f0b6b36e2e6de6cff"
+      },
+      {
+        "bytes": 30247,
+        "path": "src/nabt/obligations.py",
+        "sha256": "18094827e05e492ae8856f9c7f35d37826ba6d7760e35c3e6c65c9a5e70f2f62"
+      },
+      {
+        "bytes": 41065,
+        "path": "src/nabt/person_evidence.py",
+        "sha256": "d6d57ed35726301489317eee39d6ea060c07f24ac4c55632658078fe7535741f"
+      },
+      {
+        "bytes": 41963,
+        "path": "src/nabt/program.py",
+        "sha256": "5955db8e16972a5a6904aafad0b94321142bc5e14ca7aab736387ce5e106ad4b"
+      },
+      {
+        "bytes": 23749,
+        "path": "src/nabt/rational_inquiry.py",
+        "sha256": "a00dac231514ad7829b333ec4411cf5c31b97c48706b3a0dc4118acffd82981e"
+      },
+      {
+        "bytes": 42789,
+        "path": "src/nabt/semantics.py",
+        "sha256": "b4c6bd2a8b4b8279f31e1337a2d15a581b6f7c79f2ed6f5db3fb54d4a1b9d516"
+      },
+      {
+        "bytes": 1866,
+        "path": "src/nabt/text_evidence.py",
+        "sha256": "840026ebcd1dae869aa697baaa11e262fde4c72079583cd9f6651d076508dd66"
+      },
+      {
+        "bytes": 6700,
+        "path": "src/nabt/text_ir.py",
+        "sha256": "0270e39c46833d3b9691ca5e5acf0137a1ba3a4f4940b8e4b60b948e5da68af8"
+      },
+      {
+        "bytes": 28570,
+        "path": "src/nabt/text_morphology.py",
+        "sha256": "d86c666f386ecec51a0a0c8b9104f44e1acac6b6ce2d2a258f2339485f8bfd88"
+      },
+      {
+        "bytes": 18274,
+        "path": "src/nabt/text_reader.py",
+        "sha256": "80ace3fb4378fd0bf0cd54c094da8683c9e90abe6419b43f7086585d4522bbd3"
+      },
+      {
+        "bytes": 9377,
+        "path": "src/nabt/verb_paradigm.py",
+        "sha256": "18234ee76da3d43576409fc66138aff60a2f6e7922d1304a92cc25d1a23bdb28"
+      },
+      {
+        "bytes": 29353,
+        "path": "src/nabt/word_reader.py",
+        "sha256": "d75fd23559d1f2c8bf70f2e866dbc2f44542bca95d043565d8b756ea534b4338"
+      },
+      {
+        "bytes": 5836,
+        "path": "src/nabt/words.py",
+        "sha256": "cabbbbd64163bf26052dd1fbf872273c5926580a68fa6581bf62515ef893e8c9"
+      },
+      {
+        "bytes": 104662,
+        "path": "tools/construction_evaluation.py",
+        "sha256": "e2ff9c7ba59a5a623efbd4f2bac62ebc61f805cfdcfbe9cd45d804b72305dd51"
+      },
+      {
+        "bytes": 25158,
+        "path": "tools/question_answer_validation.py",
+        "sha256": "117852630da7458bb6ed524ac39af64a772b18bb331cc3b1e7c534aaab736a36"
+      },
+      {
+        "bytes": 44186,
+        "path": "tests/test_construction_evaluator.py",
+        "sha256": "57ab6f3295e4572154e5cccfbf3a48f55257643f471fbcfd514656e7a4d75f9f"
+      },
+      {
+        "bytes": 25430,
+        "path": "tests/test_question_interpretation_validation.py",
+        "sha256": "bf07d908303978ee6992e426b3b83a2c17f70fc75c0bed1a805b531503ef8e9e"
+      },
+      {
+        "bytes": 9287,
+        "path": "tools/arabic_coverage_gate.py",
+        "sha256": "eb50aedefe8f38fb41990a8a76b1b39c6faa6a130befaaef05500ab0af7ecc28"
+      },
+      {
+        "bytes": 96519,
+        "path": "evidence/arabic_coverage/regression_policy_v1.json",
+        "sha256": "cc4a05e19d516b548cc7f935e9506a3cbd85a97c5c0ad9def4dec1c2dbee274a"
+      },
+      {
+        "bytes": 10827,
+        "path": "tests/test_arabic_coverage_gate.py",
+        "sha256": "e5e9b418fc9af9e2f3b46ee0125aee6043cda4ee5b5db8dd4412c470eaa21eb2"
+      }
+    ],
+    "measured_snapshot_sha256": "df2c7a8c71e90fecce781c1e4a15f936a8577398c358295a68c06c306b1b0c59",
+    "runtime_archive_sha256": "8446ae35115ba9eb1b332ea7395a7be9b1d1be9285073918d711a7466237b163",
+    "runtime_file_count": 77,
+    "runtime_freeze": "evidence/arabic_coverage/code_freeze_v2.json",
+    "runtime_freeze_sha256": "1818fc27f076535734d9d9e90a857683f27d464f0a205637e7231cd6e870c40c",
+    "runtime_root": "/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt",
+    "runtime_snapshot_sha256": "46070144ca2e2fe7bcfb73292498fceebf669c6a8756c9ec771c6f4dee528851",
+    "runtime_version": "0.16.0a1"
+  },
+  "source_authority": "AUTHORED_LEXICAL_PREMISES_NOT_QUOTED_QAC",
+  "source_sha256": "af5f62c03f8904bee6ddd3d3d80307c455e68c39010640b6f2c86e13ee23b340",
+  "started_at_utc": "2026-10-24T15:25:12.265963+00:00",
+  "strict_pass": false,
+  "total": 86,
+  "unexpected_failures": []
+}

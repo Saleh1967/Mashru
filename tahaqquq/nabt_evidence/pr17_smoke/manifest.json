@@ -1,0 +1,137 @@
+{
+  "scope": "Current Mashru CLI smoke with supplied example corpus/context premises; no external-world truth or independent acquisition claim",
+  "finished": "2026-10-24T15:22:06.366153+00:00",
+  "source_sha256": "550c339bd341ec815673a719f7dd4afbb9aaaa9eeebdb51e7e3376cff3102b70",
+  "runs": [
+    {
+      "name": "shape",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "scripts/nabt.py",
+        "runtime",
+        "analyse",
+        "كَتَبَ"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "4890e1e6d61cd52b6a3987b6d818650ffde2742a8956229f4f528d1f3b79157b",
+      "stdout_bytes": 697,
+      "stderr_bytes": 0,
+      "result": {
+        "cells": [
+          84,
+          8,
+          4
+        ],
+        "licensed": true
+      }
+    },
+    {
+      "name": "scoped-question",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "scripts/nabt.py",
+        "runtime",
+        "ask-discourse",
+        "/tmp/mashru_pr17_smoke/source.txt",
+        "هل ظن زيدٌ سالمًا حكيمًا؟",
+        "--qac",
+        "integrations/nabt/examples/construction_training.tsv",
+        "--context",
+        "integrations/nabt/examples/construction_context.json"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "fa1338d588be8e4bd3f25880367a768054f0343cef8def236f4d89a07e3b878b",
+      "stdout_bytes": 89906,
+      "stderr_bytes": 0,
+      "result": {
+        "schema": "nabt.discourse-answer.v2",
+        "status": "SUPPORTED",
+        "kind": "polar",
+        "world_truth": "NOT_ESTABLISHED",
+        "answer_basis": "ALL_COMPLETE_QUERY_INTERPRETATIONS_AGREE",
+        "query": {
+          "predicate": "@operator:ظن",
+          "args": [
+            "zayd"
+          ],
+          "positive": true,
+          "predicate_kind": "scoped",
+          "voice": null,
+          "tense": "past",
+          "time": [],
+          "place": [],
+          "restriction": [
+            {
+              "kind": "operator_scope",
+              "family": "zanna",
+              "lemma": "ظن",
+              "sense": "belief",
+              "aspect": "PERF",
+              "embedded": [
+                {
+                  "predicate": "حَكِيم",
+                  "args": [
+                    "salim"
+                  ],
+                  "positive": true,
+                  "predicate_kind": "property",
+                  "voice": null,
+                  "tense": "relative_to_operator",
+                  "time": [],
+                  "place": [],
+                  "restriction": []
+                }
+              ],
+              "embedded_fact_projection": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "unscoped-question",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "scripts/nabt.py",
+        "runtime",
+        "ask-discourse",
+        "/tmp/mashru_pr17_smoke/source.txt",
+        "هل سالمٌ حكيمٌ؟",
+        "--qac",
+        "integrations/nabt/examples/construction_training.tsv",
+        "--context",
+        "integrations/nabt/examples/construction_context.json"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "023c0b11b1c48f4ba18b48c976a57253f14a97816e854252db81e4407a9e9b41",
+      "stdout_bytes": 4786,
+      "stderr_bytes": 0,
+      "result": {
+        "schema": "nabt.discourse-answer.v2",
+        "status": "UNKNOWN",
+        "kind": "polar",
+        "world_truth": "NOT_ESTABLISHED",
+        "answer_basis": "ALL_COMPLETE_QUERY_INTERPRETATIONS_AGREE",
+        "query": {
+          "predicate": "حَكِيم",
+          "args": [
+            "salim"
+          ],
+          "positive": true,
+          "predicate_kind": "property",
+          "voice": null,
+          "tense": "unspecified",
+          "time": [],
+          "place": [],
+          "restriction": []
+        }
+      }
+    }
+  ]
+}

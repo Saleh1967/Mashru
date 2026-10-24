@@ -142,7 +142,7 @@ class PinnedNabtIntegrationTests(unittest.TestCase):
             env = dict(os.environ, PYTHONPATH=directory)
             result = invoke("runtime", "--version", cwd=directory, env=env)
             self.assertEqual(result.returncode, 0, result.stderr)
-            self.assertEqual(result.stdout, "0.15.0a1\n")
+            self.assertEqual(result.stdout, "0.16.0a1\n")
             self.assertEqual(result.stderr, "")
 
     def test_runtime_missing_source_retains_upstream_deferral(self):

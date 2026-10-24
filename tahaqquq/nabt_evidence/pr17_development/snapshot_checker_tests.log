@@ -1,0 +1,32 @@
+test_added_python_file_is_rejected (test_nabt_vendor.SnapshotFixtureTests.test_added_python_file_is_rejected) ... ok
+test_changed_lock_cannot_reauthorize_changed_source (test_nabt_vendor.SnapshotFixtureTests.test_changed_lock_cannot_reauthorize_changed_source) ... ok
+test_cli_failure_is_named_json_even_when_quiet (test_nabt_vendor.SnapshotFixtureTests.test_cli_failure_is_named_json_even_when_quiet) ... ok
+test_cli_has_no_root_manifest_or_digest_override (test_nabt_vendor.SnapshotFixtureTests.test_cli_has_no_root_manifest_or_digest_override) ... ok
+test_cli_success_is_json_and_quiet_success_is_silent (test_nabt_vendor.SnapshotFixtureTests.test_cli_success_is_json_and_quiet_success_is_silent) ... ok
+test_declared_generated_file_is_rejected (test_nabt_vendor.SnapshotFixtureTests.test_declared_generated_file_is_rejected) ... ok
+test_duplicate_inventory_path_is_rejected (test_nabt_vendor.SnapshotFixtureTests.test_duplicate_inventory_path_is_rejected) ... ok
+test_duplicate_json_key_is_rejected_after_digest_binding (test_nabt_vendor.SnapshotFixtureTests.test_duplicate_json_key_is_rejected_after_digest_binding) ... ok
+test_empty_and_malformed_inventory_is_rejected (test_nabt_vendor.SnapshotFixtureTests.test_empty_and_malformed_inventory_is_rejected) ... ok
+test_equal_size_byte_change_is_rejected (test_nabt_vendor.SnapshotFixtureTests.test_equal_size_byte_change_is_rejected) ... ok
+test_exact_independent_fixture_is_verified (test_nabt_vendor.SnapshotFixtureTests.test_exact_independent_fixture_is_verified) ... ok
+test_extra_manifest_fields_and_unknown_schema_are_rejected (test_nabt_vendor.SnapshotFixtureTests.test_extra_manifest_fields_and_unknown_schema_are_rejected) ... ok
+test_file_link_is_rejected_even_with_identical_bytes (test_nabt_vendor.SnapshotFixtureTests.test_file_link_is_rejected_even_with_identical_bytes) ... ok
+test_file_metadata_is_strictly_typed (test_nabt_vendor.SnapshotFixtureTests.test_file_metadata_is_strictly_typed) ... ok
+test_generated_path_cannot_hide_a_link (test_nabt_vendor.SnapshotFixtureTests.test_generated_path_cannot_hide_a_link) ... ok
+test_git_blob_identity_is_verified_independently_of_sha256 (test_nabt_vendor.SnapshotFixtureTests.test_git_blob_identity_is_verified_independently_of_sha256) ... ok
+test_linked_integration_parent_and_lock_are_rejected (test_nabt_vendor.SnapshotFixtureTests.test_linked_integration_parent_and_lock_are_rejected) ... ok
+test_linked_parent_is_rejected_even_with_identical_tree (test_nabt_vendor.SnapshotFixtureTests.test_linked_parent_is_rejected_even_with_identical_tree) ... ok
+test_linked_vendor_root_is_rejected (test_nabt_vendor.SnapshotFixtureTests.test_linked_vendor_root_is_rejected) ... ok
+test_missing_declared_file_is_rejected (test_nabt_vendor.SnapshotFixtureTests.test_missing_declared_file_is_rejected) ... ok
+test_mode_change_is_rejected (test_nabt_vendor.SnapshotFixtureTests.test_mode_change_is_rejected) ... ok
+test_non_json_constants_and_invalid_utf8_are_named (test_nabt_vendor.SnapshotFixtureTests.test_non_json_constants_and_invalid_utf8_are_named) ... ok
+test_only_documented_generated_paths_are_excluded (test_nabt_vendor.SnapshotFixtureTests.test_only_documented_generated_paths_are_excluded) ... ok
+test_similar_names_are_not_ignored (test_nabt_vendor.SnapshotFixtureTests.test_similar_names_are_not_ignored) ... ok
+test_size_change_is_rejected (test_nabt_vendor.SnapshotFixtureTests.test_size_change_is_rejected) ... ok
+test_traversal_absolute_and_noncanonical_paths_are_rejected (test_nabt_vendor.SnapshotFixtureTests.test_traversal_absolute_and_noncanonical_paths_are_rejected) ... ok
+test_wrong_repository_commit_and_tree_are_rejected (test_nabt_vendor.SnapshotFixtureTests.test_wrong_repository_commit_and_tree_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.235s
+
+OK

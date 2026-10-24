@@ -1,0 +1,66 @@
+test_corrupted_copy_fails_and_preserves_original_evidence (__main__.ValidationRunnerTests.test_corrupted_copy_fails_and_preserves_original_evidence) ... ERROR
+test_failed_run_preserves_failure_and_never_marks_parity (__main__.ValidationRunnerTests.test_failed_run_preserves_failure_and_never_marks_parity) ... ok
+test_failed_upstream_command_retains_complete_raw_evidence_before_cleanup (__main__.ValidationRunnerTests.test_failed_upstream_command_retains_complete_raw_evidence_before_cleanup) ... ok
+test_full_pipeline_builds_before_tests_and_runs_upstream_check_unchanged (__main__.ValidationRunnerTests.test_full_pipeline_builds_before_tests_and_runs_upstream_check_unchanged) ... ok
+test_generated_unmeasured_result_is_preserved (__main__.ValidationRunnerTests.test_generated_unmeasured_result_is_preserved) ... ok
+test_generated_work_is_fresh_and_preserves_other_partial_runs (__main__.ValidationRunnerTests.test_generated_work_is_fresh_and_preserves_other_partial_runs) ... ok
+test_generated_work_rejects_linked_artifact_path_components (__main__.ValidationRunnerTests.test_generated_work_rejects_linked_artifact_path_components) ... ok
+test_launch_failure_remains_in_the_manifest (__main__.ValidationRunnerTests.test_launch_failure_remains_in_the_manifest) ... ok
+test_make_paths_reject_shell_and_make_interpolation (__main__.ValidationRunnerTests.test_make_paths_reject_shell_and_make_interpolation) ... ok
+test_nonzero_subprocess_exit_is_retained_and_fails (__main__.ValidationRunnerTests.test_nonzero_subprocess_exit_is_retained_and_fails) ... ok
+test_output_must_be_fresh_and_outside_snapshot (__main__.ValidationRunnerTests.test_output_must_be_fresh_and_outside_snapshot) ... ok
+test_retention_never_overwrites_an_existing_destination_or_deletes_its_source (__main__.ValidationRunnerTests.test_retention_never_overwrites_an_existing_destination_or_deletes_its_source) ... ok
+test_runtime_pipeline_builds_probe_prerequisites_but_omits_full_check (__main__.ValidationRunnerTests.test_runtime_pipeline_builds_probe_prerequisites_but_omits_full_check) ... ok
+test_runtime_success_cannot_claim_full_parity (__main__.ValidationRunnerTests.test_runtime_success_cannot_claim_full_parity) ... ok
+test_success_records_actual_exit_log_and_test_count (__main__.ValidationRunnerTests.test_success_records_actual_exit_log_and_test_count) ... ok
+test_temporary_cache_path_is_checked_before_entering_make_recipes (__main__.ValidationRunnerTests.test_temporary_cache_path_is_checked_before_entering_make_recipes) ... ok
+test_unittest_counts_do_not_mistake_test_names_for_skips (__main__.ValidationRunnerTests.test_unittest_counts_do_not_mistake_test_names_for_skips) ... ok
+test_wrong_lean_version_stops_before_build (__main__.ValidationRunnerTests.test_wrong_lean_version_stops_before_build) ... ok
+test_zero_exit_with_skipped_tests_cannot_pass (__main__.ValidationRunnerTests.test_zero_exit_with_skipped_tests_cannot_pass) ... ok
+test_zero_exit_without_test_execution_cannot_pass_a_test_step (__main__.ValidationRunnerTests.test_zero_exit_without_test_execution_cannot_pass_a_test_step) ... ok
+test_zero_test_summary_cannot_pass_even_beside_a_positive_suite (__main__.ValidationRunnerTests.test_zero_test_summary_cannot_pass_even_beside_a_positive_suite) ... ok
+
+======================================================================
+ERROR: test_corrupted_copy_fails_and_preserves_original_evidence (__main__.ValidationRunnerTests.test_corrupted_copy_fails_and_preserves_original_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/8408df0fc25f/Mashru/tahaqquq/test_nabt_runner.py", line 193, in test_corrupted_copy_fails_and_preserves_original_evidence
+    self.upstream_fixture()
+  File "/workspace/scratch/8408df0fc25f/Mashru/tahaqquq/test_nabt_runner.py", line 148, in upstream_fixture
+    runner.run_upstream_check(self.report, self.output,
+  File "/workspace/scratch/8408df0fc25f/Mashru/scripts/check_nabt.py", line 164, in run_upstream_check
+    retain_evidence(work, output, report)
+  File "/workspace/scratch/8408df0fc25f/Mashru/scripts/check_nabt.py", line 128, in retain_evidence
+    shutil.copytree(source, destination, symlinks=True)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/8408df0fc25f/Mashru/tahaqquq/test_nabt_runner.py", line 188, in corrupt_copy
+    result = copytree(source, destination, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py", line 600, in copytree
+    return _copytree(entries=entries, src=src, dst=dst, symlinks=symlinks,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py", line 536, in _copytree
+    copytree(srcobj, dstname, symlinks, ignore, copy_function,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1204, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ValidationRunnerTests.test_corrupted_copy_fails_and_preserves_original_evidence.<locals>.corrupt_copy() takes 2 positional arguments but 7 were given
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.264s
+
+FAILED (errors=1)
