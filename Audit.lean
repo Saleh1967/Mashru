@@ -1,3 +1,4 @@
+import Jisr.Nabt
 import Dal.Khaliya
 import Dal.AqsamAllafz
 import Madlul.Dalala
@@ -1725,3 +1726,46 @@ import Nizam.Qiyas
 #print axioms Nizam.Qiyas.tahwil_khata_imtina
 #print axioms Nizam.Qiyas.khata_la_yarfa
 #print axioms Nizam.Qiyas.shahid_diqqa_taghtiya
+
+-- الجسر المحلي المثبت إلى NABT؛ حدود المصدر والتمثيل والرتبة محفوظة.
+#print axioms Jisr.NabtBridge.cell_roundtrip
+#print axioms Jisr.NabtBridge.atom_roundtrip
+#print axioms Jisr.NabtBridge.cell_transport_injective
+#print axioms Jisr.NabtBridge.carrier_names
+#print axioms Jisr.NabtBridge.cell_decode_native
+#print axioms Jisr.NabtBridge.cell_preserves_mark
+#print axioms Jisr.NabtBridge.cell_preserves_name
+#print axioms Jisr.NabtBridge.numeric_identity_is_wrong
+#print axioms Jisr.NabtBridge.cells_roundtrip
+#print axioms Jisr.NabtBridge.atoms_roundtrip
+#print axioms Jisr.NabtBridge.cells_length
+#print axioms Jisr.NabtBridge.cells_append
+#print axioms Jisr.NabtBridge.cells_injective
+#print axioms Jisr.NabtBridge.little_number_native
+#print axioms Jisr.NabtBridge.number_native
+#print axioms Jisr.NabtBridge.number_transport
+#print axioms Jisr.NabtBridge.source_roundtrip
+#print axioms Jisr.NabtBridge.canonical_source_roundtrip
+#print axioms Jisr.NabtBridge.source_metadata
+#print axioms Jisr.NabtBridge.source_injective
+#print axioms Jisr.NabtBridge.valid_span_iff
+#print axioms Jisr.NabtBridge.span_atoms
+#print axioms Jisr.NabtBridge.certificate_source
+#print axioms Jisr.NabtBridge.certificate_reconstruct
+#print axioms Jisr.NabtBridge.certificate_bounds
+#print axioms Jisr.NabtBridge.certificate_transport_reconstruct
+#print axioms Jisr.NabtBridge.no_composite_without_evidence
+#print axioms Jisr.NabtBridge.certificate_join_boundary
+#print axioms Jisr.NabtBridge.inquiry_rank_bounded
+#print axioms Jisr.NabtBridge.experimental_rank_bounded
+#print axioms Jisr.NabtBridge.inquiry_requires_scope
+#print axioms Jisr.NabtBridge.inquiry_requires_provenance
+#print axioms Jisr.NabtBridge.inquiry_exhaustion_not_license
+#print axioms Jisr.NabtBridge.no_meaning_promotion_without_world_witness
+#print axioms Jisr.NabtBridge.empty_registry_stays_information
+#print axioms Jisr.NabtBridge.kataba_transport
+#print axioms Jisr.NabtBridge.atom_does_not_license_join
+#print axioms Jisr.NabtBridge.filtered_gap_is_invalid
+#print axioms Jisr.NabtBridge.same_ids_different_source_is_invalid
+#print axioms Jisr.NabtBridge.insufficient_budget_stays_exhausted
+#print axioms Jisr.NabtBridge.supplied_numeric_rank_does_not_override_mashru

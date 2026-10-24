@@ -1,0 +1,12 @@
+test_all_116_cells_match_the_independent_spelling_oracle (__main__.NativeNabtBridgeTests.test_all_116_cells_match_the_independent_spelling_oracle) ... ok
+test_all_98_inquiry_rows_obey_native_method_and_label_limits (__main__.NativeNabtBridgeTests.test_all_98_inquiry_rows_obey_native_method_and_label_limits) ... ok
+test_conditional_inquiry_does_not_create_a_sealed_world_witness (__main__.NativeNabtBridgeTests.test_conditional_inquiry_does_not_create_a_sealed_world_witness) ... ok
+test_export_is_recomputed_by_the_executable_and_rejects_arguments (__main__.NativeNabtBridgeTests.test_export_is_recomputed_by_the_executable_and_rejects_arguments) ... ok
+test_export_schema_and_scope (__main__.NativeNabtBridgeTests.test_export_schema_and_scope) ... ok
+test_native_composition_cannot_invent_evidence_adjacency_or_source_membership (__main__.NativeNabtBridgeTests.test_native_composition_cannot_invent_evidence_adjacency_or_source_membership) ... ok
+test_source_identity_and_declared_cell_span_are_preserved (__main__.NativeNabtBridgeTests.test_source_identity_and_declared_cell_span_are_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.527s
+
+OK

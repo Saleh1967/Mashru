@@ -1,0 +1,34 @@
+{
+  "schema": "mashru.nabt.development-findings.v1",
+  "upstream": "f0064f0a4baab3cc816087a322aabc0c8fbb2d19",
+  "findings": [
+    {
+      "issue": "BUILD_RESOURCE_LIMIT",
+      "observation": "Initial parallel build exited137 in unchanged Aql.WaqiShawahid and SLGE.Hamza.",
+      "resolution": "Built affected existing targets sequentially with LEAN_NUM_THREADS=2; subsequent full198-job build passed.",
+      "proof_source_changed": false
+    },
+    {
+      "issue": "PYTHON_BYTECODE_BYPASS",
+      "observation": "Python -I -B can read valid unchecked bytecode.",
+      "resolution": "Fresh pycache_prefix for checker and runtime, tested against actually executable mismatched bytecode."
+    },
+    {
+      "issue": "ZERO_TEST_FALSE_SUCCESS",
+      "observation": "Nonempty list [0] was accepted as proof of executed tests.",
+      "resolution": "Every zero-test summary is rejected; independently tested."
+    },
+    {
+      "issue": "MAKE_CACHE_PATH_AND_OPTIMIZATION",
+      "observation": "Temporary cache path reached Make recipes without validation; inherited PYTHONOPTIMIZE could remove assertions.",
+      "resolution": "Validate cache path and clear optimization/interactive overrides; regression tests pass."
+    },
+    {
+      "issue": "MISSING_REPLAY_FIXTURE",
+      "observation": "First full imported make check stopped on missing evidence/inflection/review_fixes/independent_cli_freeze_v1.json.",
+      "resolution": "Added12 exact upstream replay inputs (71,746 bytes). Completed reference replay succeeded; full Mashru replay rerun uses598 pinned files. No upstream code or expected results changed.",
+      "upstream_code_or_expectations_changed": false
+    }
+  ],
+  "native_gate_scope": "Complete gate excluding mutations, then all8 added mutations; original deposit-dependent checks run only their declared embedded scope when deposits are absent."
+}

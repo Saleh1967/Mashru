@@ -1,0 +1,19 @@
+{
+  "added_exact_upstream_files": [
+    "evidence/inflection/review_fixes/fixtures/bad_magic.gz",
+    "evidence/inflection/review_fixes/fixtures/invalid_deflate.gz",
+    "evidence/inflection/review_fixes/fixtures/limit_8192.txt",
+    "evidence/inflection/review_fixes/fixtures/over_8193.txt",
+    "evidence/inflection/review_fixes/fixtures/oversized_32781.txt",
+    "evidence/inflection/review_fixes/fixtures/qac.tsv",
+    "evidence/inflection/review_fixes/fixtures/qac.tsv.gz",
+    "evidence/inflection/review_fixes/fixtures/small.txt",
+    "evidence/inflection/review_fixes/fixtures/truncated.gz",
+    "evidence/inflection/review_fixes/independent_cli_cases_v1.json",
+    "evidence/inflection/review_fixes/independent_cli_freeze_v1.json",
+    "evidence/inflection/review_fixes/independent_cli_protocol_v1.md"
+  ],
+  "initial_lock_sha256": "bf5797e459e31f30ec08bf4d7e12ca16f953e64fe46ecea62f5e24a4a73ee9b1",
+  "completed_lock_sha256": "3be972ea9ecc797c15aaa5489220d0716fa21aeaabaa03f646d0f07611d3c5ea",
+  "code_or_test_changes": false
+}

@@ -1,0 +1,3 @@
+integrations/nabt/** linguist-vendored=true
+tahaqquq/nabt_evidence/*.log linguist-generated=true
+tahaqquq/nabt_evidence/*_snapshot.lock.json linguist-generated=true

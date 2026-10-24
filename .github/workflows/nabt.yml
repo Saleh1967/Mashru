@@ -1,0 +1,95 @@
+name: NABT pinned parity
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mashru-nabt-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  LEAN_NUM_THREADS: '2'
+
+jobs:
+  full:
+    name: Full Lean and NABT parity
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Cache pinned Lean and compiled prerequisites
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: |
+            ~/.elan
+            ~/.lean
+            .lake
+            integrations/nabt/formal/.lake
+          key: mashru-nabt-4.34.1-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'integrations/nabt.lock.json', 'Jisr/Nabt*.lean') }}
+          restore-keys: |
+            mashru-nabt-4.34.1-${{ runner.os }}-
+      - name: Install pinned Lean 4.34.1
+        run: bash scripts/tathbit_lean.sh
+      - name: Rebuild and replay the complete pinned implementation
+        run: |
+          export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
+          python -I -B scripts/check_nabt.py --lake "$(command -v lake)" --output artifacts/local/nabt/full
+      - name: Retain commands, logs and current-run evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: nabt-full-validation
+          path: artifacts/local/nabt/full
+          if-no-files-found: warn
+
+  runtime:
+    name: Runtime Python ${{ matrix.python }}
+    needs: full
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Restore compiled prerequisites; Lake still checks the current sources
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: |
+            ~/.elan
+            ~/.lean
+            .lake
+            integrations/nabt/formal/.lake
+          key: mashru-nabt-4.34.1-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'integrations/nabt.lock.json', 'Jisr/Nabt*.lean') }}
+          restore-keys: |
+            mashru-nabt-4.34.1-${{ runner.os }}-
+      - name: Install or verify pinned Lean
+        run: bash scripts/tathbit_lean.sh
+      - name: Run all runtime and native integration tests without skipped probes
+        run: |
+          export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
+          python -I -B scripts/check_nabt.py --runtime-only --lake "$(command -v lake)" --output artifacts/local/nabt/runtime
+      - name: Retain this interpreter's scoped validation
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: nabt-runtime-python-${{ matrix.python }}
+          path: artifacts/local/nabt/runtime
+          if-no-files-found: warn
