@@ -1,0 +1,8 @@
+# الأصلُ المكرَّر (س1): أوّلُ سطرٍ لقضيّةٍ هو أصلُها كما في find?، والثاني لا يغيّره. السجلّ: mawsua/sijill_ikhtibar.tsv
+isdar	shahid-tikrar
+asl	taht:zA:j1	تقدير	aaaaaaaaaaaa@s1
+asl	taht:zA:j1	تقدير	bbbbbbbbbbbb@s9
+asl	fi:j1:j2	تقدير	bbbbbbbbbbbb@s2
+asl	fi:j1:j2	تقدير	aaaaaaaaaaaa@s3
+iddia	taht:zA:j1	تقدير	a=taht:zA:j1	awwal-musajjal
+iddia	fi:j1:j2	تقدير	a=fi:j1:j2	awwal-ghayr-musajjal
