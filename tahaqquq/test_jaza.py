@@ -1,20 +1,20 @@
-"""ضابطُ «هذا باب الجزاء» المجمَّد (hawkama/منهج_الضوابط.md §٤).
+"""ضابطُ «هذا باب الجزاء» المجمَّد (hawkama/منهج_الضوابط.md §٤، في طلبه).
 
 يفحص، بلا مودَع:
 ١. التجميد: بصماتُ wasf.md وcases.json وfahs_cases.py وtaalif.md هي المسجَّلة في tajmid.json.
 ٢. المولَّد: Jisr/BabJazaDawabit.lean مخرجُ scripts/bina_dawabit_jaza.py على cases.json بايتًا.
-٣. السجلّات: natija_1.json … natija_N.json متتالية، كلٌّ للحالات المجمَّدة، وكلٌّ من الثاني يحمل بصمةَ ما قبله (فلا يُعدَّل سجلٌّ
-   قديم). وآخرُها لبصمة Jisr/BabJaza.lean الحاليّة، وأعدادُه (ihsa، halat، huqul_masula، bil_fia، akhta) هي أعدادُ مبرهنات
-   Jisr/BabJazaQiyas.lean (natija، majal، natija_fia، akhta_sifr).
-٤. المجال: أعدادُ الحالات والحقول المسؤولة والمتوقَّعات محسوبةٌ من cases.json هنا، لا من Lean، وهي أعدادُ `majal`. فحصٌ مكرَّر:
-   ما يغيّره يُسقطه ١ أو ٢ أو البناءُ قبله، فلا طفرةَ تخصّه.
+٣. السجلّات: natija_1.json … natija_N.json متتالية، كلٌّ للحالات المجمَّدة. وبصمةُ natija_1.json ثابتةٌ هنا (NATIJA_1)، وكلُّ سجلٍّ
+   بعده يحمل بصمةَ ما قبله، فتعديلُ سجلٍّ قديمٍ يُكشف. وآخرُها لبصمة Jisr/BabJaza.lean الحاليّة، وأعدادُه (ihsa، bil_fia، akhta)
+   هي أعدادُ مبرهنات Jisr/BabJazaQiyas.lean (natija، natija_fia، akhta_sifr)، وكلُّ اسمٍ في حقل lean مبرهنةٌ فيه.
+٤. المجال: أعدادُ الحالات والحقول المسؤولة والمتوقَّعات محسوبةٌ من cases.json هنا، لا من Lean، وهي أعدادُ `majal`، وhalat
+   وhuqul_masula في آخر سجلّ.
 ويفحص، إن حضر المودَع (MUDAA_DIR/sibawayhi.txt ببصمته)، ولا طفرةَ له لأنّ CI بلا مودَع:
 ٥. الأسانيد: كلُّ قطعةٍ في `asanid` (Jisr/BabJaza.lean) في أسطرها، على النصّ موصولَ الأسطر بحذف البادئة («~~» أو «# ») وعلامات
    الصفحات (PageV..P..) والمخطوط (ms..) وتوحيد البياض؛ وكلُّ `sanad.nass` في الحالات في سطره بحذف البادئة وحدها، كما تشترط
    المواصفة؛ ثمّ فاحصُ المؤلّف نفسُه (fahs_cases.py) يخرج 0.
 
-الطفرات: P492 (بصمة الحالات في tajmid.json)، P493 (بصمة الشفرة في آخر سجلّ)، P494 (حالةٌ في المولَّد)،
-P495 (عدُّ الصواب في آخر سجلّ)، P497 (بصمةُ ما قبله في natija_2.json).
+الطفرات: P492 (بصمة الحالات في tajmid.json، ١)، P493 (بصمة الشفرة في آخر سجلّ، ٣)، P494 (حالةٌ في المولَّد، ٢)،
+P495 (عدُّ الصواب في آخر سجلّ، ٣)، P497 (بصمةُ ما قبله في آخر سجلّ، ٣)، P498 (عدٌّ في natija_1.json، ٣)، P499 (halat في آخر سجلّ، ٤).
 التشغيل: python3 -I tahaqquq/test_jaza.py
 """
 import hashlib
@@ -30,6 +30,7 @@ D = JADHR / "tahaqquq" / "dawabit" / "jaza"
 SHIFRA = JADHR / "Jisr" / "BabJaza.lean"
 QIYAS = JADHR / "Jisr" / "BabJazaQiyas.lean"
 BASMAT_KITAB = "a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625"
+NATIJA_1 = "4417cf9f9c1860d4173720d446e0ffd6acbc13ad3e9db023fec46d1b25f02fa1"  # natija_1.json كما أُودع في 68911d9
 
 fashal = []
 najah = 0
@@ -64,6 +65,8 @@ natayij = sorted(D.glob("natija_*.json"), key=lambda p: int(re.search(r"natija_(
 arqam = [int(re.search(r"natija_(\d+)\.json$", p.name).group(1)) for p in natayij]
 tahaqqaq(bool(arqam) and arqam == list(range(1, len(arqam) + 1)), f"أرقامُ السجلّات غيرُ متتالية من 1: {arqam}")
 qiyas = QIYAS.read_text(encoding="utf-8")
+if natayij:
+    tahaqqaq(sha(natayij[0]) == NATIJA_1, "natija_1.json غيرُ ما أُودع في 68911d9")
 for k, p in enumerate(natayij):
     n = json.loads(p.read_text(encoding="utf-8"))
     tahaqqaq(n["tashghil"] == k + 1, f"{p.name}: رقمُ التشغيل فيه {n['tashghil']}")
@@ -88,6 +91,10 @@ if akhir:
              f"{natayij[-1].name}: bil_fia غيرُ مبرهنة natija_fia")
     tahaqqaq(akhir["akhta"] == [] and "theorem akhta_sifr : akhta = []" in qiyas,
              f"{natayij[-1].name}: akhta غيرُ مبرهنة akhta_sifr")
+    for ism in akhir["lean"]:
+        qasir = ism.rsplit(".", 1)[-1]
+        tahaqqaq(ism.startswith("Jisr.BabJaza.Qiyas.") and re.search(r"^theorem %s\b" % re.escape(qasir), qiyas, re.M) is not None,
+                 f"{natayij[-1].name}: «{ism}» ليست مبرهنةً في Jisr/BabJazaQiyas.lean")
 
 # ٤. المجال من cases.json وحده
 halat = json.loads((D / "cases.json").read_text(encoding="utf-8"))

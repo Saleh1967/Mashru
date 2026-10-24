@@ -1274,7 +1274,7 @@ import Nizam.Qiyas
 #print axioms Jisr.BabJaza.adawat_qatr
 #print axioms Jisr.BabJaza.adawat_jadwal
 #print axioms Jisr.BabJaza.qarn_qatr_tawafuq
--- ضابطُ باب الجزاء المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/BabJazaQiyas.lean؛ hawkama/منهج_الضوابط.md)
+-- ضابطُ باب الجزاء المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/BabJazaQiyas.lean؛ hawkama/منهج_الضوابط.md في طلبه)
 #print axioms Jisr.BabJaza.Qiyas.qarin_jadwal
 #print axioms Jisr.BabJaza.Qiyas.majal
 #print axioms Jisr.BabJaza.Qiyas.natija

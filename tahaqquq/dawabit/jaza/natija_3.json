@@ -1,0 +1,36 @@
+{
+ "tashghil": 3,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد الجولة الثانية من مراجعة murajii (رأسُ Jisr/BabJaza.lean وتعليقاتُ مبرهناته)، بلا تغييرٍ في hukm",
+ "qablaha": {
+  "natija_2.json": "1d9d18c3421fb561d2f57e076543cf9c50b6b122de7364e67a78cae0b30b960a"
+ },
+ "cases_sha256": "999ce1fd3019f211c4641b9a0e19a3df15e255764279d22bc1748c62320a22f7",
+ "shifra": {
+  "milaf": "Jisr/BabJaza.lean",
+  "sha256": "7ccb48b607184896ebaffa42ab547c6a9011a7e25665a64047464758f452cde6"
+ },
+ "lean": [
+  "Jisr.BabJaza.Qiyas.majal",
+  "Jisr.BabJaza.Qiyas.natija",
+  "Jisr.BabJaza.Qiyas.natija_fia",
+  "Jisr.BabJaza.Qiyas.akhta_sifr"
+ ],
+ "halat": 39,
+ "huqul_masula": 55,
+ "ihsa": {
+  "sawab": 55,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0
+ },
+ "bil_fia": {
+  "موجب": 17,
+  "حد": 18,
+  "خارج": 12,
+  "عموم": 8
+ },
+ "akhta": [],
+ "tarikh": "2026-10-24"
+}
