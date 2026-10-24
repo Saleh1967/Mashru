@@ -1,0 +1,17 @@
+ℹ [2/43] Replayed Dal.Khaliya
+info: Dal/Khaliya.lean:52:0: 'Dal.fakk_n' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dal/Khaliya.lean:53:0: 'Dal.n_fakk' depends on axioms: [propext, Quot.sound]
+info: Dal/Khaliya.lean:54:0: 'Dal.n_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Dal/Khaliya.lean:55:0: 'Dal.n_surjective' depends on axioms: [propext, Quot.sound]
+ℹ [7/43] Replayed Madlul.Dalala
+info: Madlul/Dalala.lean:123:0: 'Dalala.tadammun_needs_mutabaqa' does not depend on any axioms
+info: Madlul/Dalala.lean:124:0: 'Dalala.iltizam_needs_mutabaqa' does not depend on any axioms
+info: Madlul/Dalala.lean:125:0: 'Dalala.mutabaqa_not_tadammun' does not depend on any axioms
+info: Madlul/Dalala.lean:126:0: 'Dalala.mutabaqa_not_iltizam' does not depend on any axioms
+info: Madlul/Dalala.lean:127:0: 'Dalala.tadammun_not_iltizam' does not depend on any axioms
+info: Madlul/Dalala.lean:128:0: 'Dalala.dakhil_mutabaqa_or_tadammun' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Madlul/Dalala.lean:129:0: 'Dalala.kharij_only_iltizam' does not depend on any axioms
+info: Madlul/Dalala.lean:130:0: 'Dalala.no_witness_no_dalala' does not depend on any axioms
+info: Madlul/Dalala.lean:131:0: 'Dalala.iltizam_needs_luzum_table' does not depend on any axioms
+info: Madlul/Dalala.lean:132:0: 'Dalala.mutabaqa_without_tadammun' depends on axioms: [propext]
+Build completed successfully (43 jobs).

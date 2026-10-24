@@ -145,6 +145,25 @@ theorem udkhul_marfud {q : Qaida.Qaida P} {aslB : P → Bool} (s : Makhzan q asl
     (h : maqbul q aslB m.iddia = false) : (s.udkhul m).madakhil = s.madakhil := by
   simp [Makhzan.udkhul, h]
 
+/-- الإدخالُ بالفاحص على مصفوفة القوانين (`Qaida.maqbulA`)، والمصفوفةُ قائمةُ القاعدة (`hq`). -/
+def Makhzan.udkhulA {q : Qaida.Qaida P} {aslB : P → Bool} (s : Makhzan q aslB) (qs : Array (Qaida.Qanun P))
+    (hq : q.qawanin = qs.toList) (m : Madkhal P) : Makhzan q aslB :=
+  if h : maqbulA qs aslB m.iddia = true then
+    have h' : maqbul q aslB m.iddia = true := (maqbulA_eq q qs hq aslB m.iddia) ▸ h
+    ⟨m :: s.madakhil, by simp [List.all_cons, h', s.kulluha]⟩
+  else s
+
+/-- وهو `udkhul` بعينه: المخزنُ بعد الإدخال واحدٌ بالفاحصين (س1). -/
+theorem udkhulA_eq {q : Qaida.Qaida P} {aslB : P → Bool} (s : Makhzan q aslB) (qs : Array (Qaida.Qanun P))
+    (hq : q.qawanin = qs.toList) (m : Madkhal P) : s.udkhulA qs hq m = s.udkhul m := by
+  have hA := maqbulA_eq q qs hq aslB m.iddia
+  unfold Makhzan.udkhulA Makhzan.udkhul
+  split <;> split
+  · rfl
+  · rename_i h1 h2; exact absurd (hA ▸ h1) h2
+  · rename_i h1 h2; exact absurd (hA.symm ▸ h2) h1
+  · rfl
+
 /-- الاسترجاع بشرطٍ على القول: يعطي جوابًا بالقاعدة نفسها. -/
 def Makhzan.istirja {q : Qaida.Qaida P} {aslB : P → Bool} (s : Makhzan q aslB) (f : P → Bool) :
     Jawab q aslB where

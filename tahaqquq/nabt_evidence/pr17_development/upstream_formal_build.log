@@ -1,0 +1,9 @@
+cd formal && /tmp/nabt-classical-tools/lean-4.34.1-linux/bin/lake build
+✔ [64/100] Built Nabt.ArabicCoverage (783ms)
+✔ [94/100] Built Nabt.ConstructionEvidence (2.8s)
+✔ [95/100] Built Nabt (454ms)
+✔ [97/100] Built Nabt.ConstructionEvidence:c.o (1.0s)
+✔ [98/100] Built ExportConstructionEvidence (1.8s)
+✔ [99/100] Built ExportConstructionEvidence:c.o (902ms)
+✔ [100/100] Built exportConstructionEvidence:exe (2.2s)
+Build completed successfully (100 jobs).

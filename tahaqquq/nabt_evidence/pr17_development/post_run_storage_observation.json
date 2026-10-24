@@ -1,0 +1,20 @@
+{
+  "schema": "mashru.nabt.post-run-storage-observation.v1",
+  "run_manifest_sha256": "972cc193517675f6fbce741b6c01999066aa84e88a1aebe8da2ec297b52f41d2",
+  "observed_at": "2026-10-24T15:36:29.301449+00:00",
+  "runner_reported_internal_removed": true,
+  "post_run_internal_work_observed": true,
+  "observed_in_default_and_escalated_views": true,
+  "internal_files": 81,
+  "internal_directories": 5,
+  "internal_bytes": 32241203,
+  "both_full_inventories_match_original_manifest": true,
+  "source_root": "/workspace/scratch/8408df0fc25f/Mashru/integrations/nabt/artifacts/local/mashru-check-x5s5c4ac/evidence",
+  "cause": "NOT_ESTABLISHED; no upstream result, retained evidence, or original manifest was rewritten",
+  "action": "Remove only this verified duplicate generated work directory after matching both complete copies",
+  "cleanup_status": "ABSENT_IMMEDIATELY_AFTER_REMOVAL",
+  "cleanup_at": "2026-10-24T15:36:29.304269+00:00",
+  "work_exists_immediately_after_removal": false,
+  "followup_at": "2026-10-24T15:36:45.850102+00:00",
+  "work_exists_at_followup": true
+}

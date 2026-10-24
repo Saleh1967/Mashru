@@ -212,7 +212,7 @@
  {
   "ism": "P9_sual_bila_udkhul",
   "milaf": "Faahis/Lib.lean",
-  "min": "    s.udkhul ⟨⟨p, ks⟩, sn⟩) (Makhzan.faregh b.q b.aslB)",
+  "min": "    s.udkhulA b.qs b.hq ⟨⟨p, ks⟩, sn⟩) (Makhzan.faregh b.q b.aslB)",
   "ila": "    s) (Makhzan.faregh b.q b.aslB)"
  },
  {
@@ -3160,6 +3160,78 @@
   "milaf": "scripts/check_nabt.py",
   "min": "if step[\"skipped\"]:",
   "ila": "if False and step[\"skipped\"]:"
+ },
+ {
+  "ism": "P460_nabt_partial_evidence_lost",
+  "milaf": "scripts/check_nabt.py",
+  "min": "        retain_evidence(work, output, report)",
+  "ila": "        if report[\"steps\"][-1][\"status\"] != \"FAILED\":\n            retain_evidence(work, output, report)"
+ },
+ {
+  "ism": "P461_nabt_corrupt_copy_accepted",
+  "milaf": "scripts/check_nabt.py",
+  "min": "        if evidence_inventory(destination) != before or evidence_inventory(source) != before:",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P462_nabt_linked_evidence_path",
+  "milaf": "scripts/check_nabt.py",
+  "min": "    if not stat.S_ISDIR(path.lstat().st_mode) or path.resolve(strict=True) != path:",
+  "ila": "    if False:"
+ },
+ {
+  "ism": "P463_jadwal_akhir_yafuz",
+  "milaf": "Faahis/Lib.lean",
+  "min": "usul.foldl (fun m a => m.insertIfNew a.qadiyya a) ∅",
+  "ila": "usul.foldl (fun m a => m.insert a.qadiyya a) ∅"
+ },
+ {
+  "ism": "P464_qanun_mawdi_akhar",
+  "milaf": "Aql/Qaida.lean",
+  "min": "    match qs[i]? with",
+  "ila": "    match qs[i+1]? with"
+ },
+ {
+  "ism": "P465_udkhulA_shart_maqlub",
+  "milaf": "Aql/Mawsua.lean",
+  "min": "  if h : maqbulA qs aslB m.iddia = true then",
+  "ila": "  if h : maqbulA qs aslB m.iddia = false then"
+ },
+ {
+  "ism": "P466_faahis_qaima_khattiyya",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    if !(maqbulA b.qs b.aslB ⟨p, ks⟩) then",
+  "ila": "    if !(maqbul b.q b.aslB ⟨p, ks⟩) then"
+ },
+ {
+  "ism": "P467_sual_qaima_khattiyya",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    s.udkhulA b.qs b.hq ⟨⟨p, ks⟩, sn⟩) (Makhzan.faregh b.q b.aslB)",
+  "ila": "    s.udkhul ⟨⟨p, ks⟩, sn⟩) (Makhzan.faregh b.q b.aslB)"
+ },
+ {
+  "ism": "P468_tatbiqA_bila_muqaddimat",
+  "milaf": "Aql/Qaida.lean",
+  "min": "if r.muqaddimat.all (fun x => decide (x ∈ thabit)) then",
+  "ila": "if true then"
+ },
+ {
+  "ism": "P469_tatbiqA_asl_mutlaq",
+  "milaf": "Aql/Qaida.lean",
+  "min": "  | .asl a => if aslB a then some (thabit ++ [a]) else none",
+  "ila": "  | .asl a => some (thabit ++ [a])"
+ },
+ {
+  "ism": "P470_tahmil_akhir_asl",
+  "milaf": "Faahis/Lib.lean",
+  "min": "usul.push ⟨q, w, t, s⟩",
+  "ila": "(usul.filter (·.qadiyya != q)).push ⟨q, w, t, s⟩"
+ },
+ {
+  "ism": "P471_maqbulA_bila_fahs",
+  "milaf": "Aql/Qaida.lean",
+  "min": "match fahsA qs aslB [] c.silsila with\n  | none => false",
+  "ila": "match fahsA qs aslB [] c.silsila with\n  | none => true"
  },
  {
   "ism": "P472_shart_yashmal_istifham",
