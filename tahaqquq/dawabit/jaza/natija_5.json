@@ -1,0 +1,36 @@
+{
+ "tashghil": 5,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد الجولة الرابعة من مراجعة murajii (رأسُ Jisr/BabJaza.lean: نسبةُ س9293 ومدى س9223)، بلا تغييرٍ في hukm",
+ "qablaha": {
+  "natija_4.json": "cb879654923f9505d9acb289f3533beb75703b40f8b8bf532fe228e290f79dc4"
+ },
+ "cases_sha256": "999ce1fd3019f211c4641b9a0e19a3df15e255764279d22bc1748c62320a22f7",
+ "shifra": {
+  "milaf": "Jisr/BabJaza.lean",
+  "sha256": "a97d492c6a8fa9359ac00aa7af2270d381dd3a29bb9fa1ba62450c701690e9a0"
+ },
+ "lean": [
+  "Jisr.BabJaza.Qiyas.majal",
+  "Jisr.BabJaza.Qiyas.natija",
+  "Jisr.BabJaza.Qiyas.natija_fia",
+  "Jisr.BabJaza.Qiyas.akhta_sifr"
+ ],
+ "halat": 39,
+ "huqul_masula": 55,
+ "ihsa": {
+  "sawab": 55,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0
+ },
+ "bil_fia": {
+  "موجب": 17,
+  "حد": 18,
+  "خارج": 12,
+  "عموم": 8
+ },
+ "akhta": [],
+ "tarikh": "2026-10-24"
+}

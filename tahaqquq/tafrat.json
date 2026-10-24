@@ -3361,9 +3361,9 @@
  },
  {
   "ism": "P493_natija_basma_shifra",
-  "milaf": "tahaqquq/dawabit/jaza/natija_4.json",
-  "min": "\"sha256\": \"7c504ca838ccb34458a05abaac150d7270b4f3b5697d0c16fa746e06749cf527\"",
-  "ila": "\"sha256\": \"7c504ca838ccb34458a05abaac150d7270b4f3b5697d0c16fa746e06749cf520\""
+  "milaf": "tahaqquq/dawabit/jaza/natija_5.json",
+  "min": "\"sha256\": \"a97d492c6a8fa9359ac00aa7af2270d381dd3a29bb9fa1ba62450c701690e9a0\"",
+  "ila": "\"sha256\": \"a97d492c6a8fa9359ac00aa7af2270d381dd3a29bb9fa1ba62450c701690e9a1\""
  },
  {
   "ism": "P494_hala_mawlud_mughayyara",
@@ -3373,7 +3373,7 @@
  },
  {
   "ism": "P495_natija_sawab_naqis",
-  "milaf": "tahaqquq/dawabit/jaza/natija_4.json",
+  "milaf": "tahaqquq/dawabit/jaza/natija_5.json",
   "min": "\"sawab\": 55",
   "ila": "\"sawab\": 54"
  },
@@ -3385,9 +3385,9 @@
  },
  {
   "ism": "P497_sijill_qadim_mughayyar",
-  "milaf": "tahaqquq/dawabit/jaza/natija_4.json",
-  "min": "\"natija_3.json\": \"558c24180ffc0ddf27f5046271bd7464fbfe34ee0ee289cc82d2907536b28afc\"",
-  "ila": "\"natija_3.json\": \"558c24180ffc0ddf27f5046271bd7464fbfe34ee0ee289cc82d2907536b28af0\""
+  "milaf": "tahaqquq/dawabit/jaza/natija_5.json",
+  "min": "\"natija_4.json\": \"cb879654923f9505d9acb289f3533beb75703b40f8b8bf532fe228e290f79dc4\"",
+  "ila": "\"natija_4.json\": \"cb879654923f9505d9acb289f3533beb75703b40f8b8bf532fe228e290f79dc0\""
  },
  {
   "ism": "P498_natija_1_mughayyar",
@@ -3397,7 +3397,7 @@
  },
  {
   "ism": "P499_halat_naqisa",
-  "milaf": "tahaqquq/dawabit/jaza/natija_4.json",
+  "milaf": "tahaqquq/dawabit/jaza/natija_5.json",
   "min": "\"halat\": 39",
   "ila": "\"halat\": 38"
  },
@@ -3406,5 +3406,11 @@
   "milaf": "tahaqquq/test_jaza.py",
   "min": "NATIJA_1 = \"4417cf9f9c1860d4173720d446e0ffd6acbc13ad3e9db023fec46d1b25f02fa1\"",
   "ila": "NATIJA_1 = \"4417cf9f9c1860d4173720d446e0ffd6acbc13ad3e9db023fec46d1b25f02fa0\""
+ },
+ {
+  "ism": "P501_lean_naqis",
+  "milaf": "tahaqquq/dawabit/jaza/natija_5.json",
+  "min": "\"Jisr.BabJaza.Qiyas.majal\",",
+  "ila": "\"Jisr.BabJaza.Qiyas.natija_fia\","
  }
 ]
