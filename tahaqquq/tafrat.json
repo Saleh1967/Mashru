@@ -3160,5 +3160,47 @@
   "milaf": "scripts/check_nabt.py",
   "min": "if step[\"skipped\"]:",
   "ila": "if False and step[\"skipped\"]:"
+ },
+ {
+  "ism": "P469_shart_yashmal_istifham",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "    if sinf == 10 || sinf == 11 then some .shart",
+  "ila": "    if sinf == 10 || sinf == 11 || sinf == 12 then some .shart"
+ },
+ {
+  "ism": "P470_ghaya_bila_hatta",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "    else if ism == \"إلى\" || ism.startsWith \"حتى\" then some .ghaya",
+  "ila": "    else if ism == \"إلى\" then some .ghaya"
+ },
+ {
+  "ism": "P471_qayd_bila_shahada",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "    qayd := fun m => (D.qayd m).filter (mashud (b m))",
+  "ila": "    qayd := fun m => D.qayd m"
+ },
+ {
+  "ism": "P472_innama_muhmala",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "    innama := fun m => D.innama m || (b m).contains .innama }",
+  "ila": "    innama := fun m => D.innama m }"
+ },
+ {
+  "ism": "P473_wasf_la_yashhad",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "  | .wasf _ => some .sifa",
+  "ila": "  | .wasf _ => none"
+ },
+ {
+  "ism": "P474_adad_la_yashhad",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "  | .adad => some .adad",
+  "ila": "  | .adad => none"
+ },
+ {
+  "ism": "P475_muthanna_la_yashhad",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "  | .bab .muthanna => some .adad",
+  "ila": "  | .bab .muthanna => none"
  }
 ]

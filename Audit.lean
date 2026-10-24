@@ -70,6 +70,7 @@ import Madlul.Ishtirak
 import Madlul.Tarjih
 import Jisr.Iqtiran
 import Jisr.MantuqMafhum
+import Jisr.QaydMafhum
 import Madlul.TashfirHawass
 import Madlul.TashfirShabaka
 import Madlul.Fard116Shawahid
@@ -1241,6 +1242,22 @@ import Nizam.Qiyas
 #print axioms Jisr.MantuqMafhum.shahid_la_haml
 #print axioms Jisr.MantuqMafhum.muwafaqa_tabia
 #print axioms Jisr.MantuqMafhum.shahid_tabia
+-- شهادةُ القيد من البنية تحت bilBunya: قيدُ المنطوق من جدول العوامل وجرد القطر في Lean (Jisr/QaydMafhum.lean؛ قولُ المالك 2026-10-24، 19:14)
+#print axioms Jisr.QaydMafhum.qayd_bilBunya
+#print axioms Jisr.QaydMafhum.bilBunya_sawa
+#print axioms Jisr.QaydMafhum.mukhalafa_mashuda
+#print axioms Jisr.QaydMafhum.la_mukhalafa_bila_shahid
+#print axioms Jisr.QaydMafhum.innama_bunya_yamna
+#print axioms Jisr.QaydMafhum.ghayr_mukhalafa_baqi
+#print axioms Jisr.QaydMafhum.ghayr_mukhalafa_yabqa
+#print axioms Jisr.QaydMafhum.adawat_shart
+#print axioms Jisr.QaydMafhum.adawat_ghaya
+#print axioms Jisr.QaydMafhum.shahid_istifham
+#print axioms Jisr.QaydMafhum.ghaib_la_yashhad
+#print axioms Jisr.QaydMafhum.wasf_fi_bab_amal
+#print axioms Jisr.QaydMafhum.shawahid_mashuda
+#print axioms Jisr.QaydMafhum.shawahid_sawa
+#print axioms Jisr.QaydMafhum.shahid_bila_bunya_wa_innama
 -- جسرُ المعلومة المعمَّم (السابع): طيُّ وفكُّ Madlul.Hawass (Hassa/Hukm/Shidda/Thubut/Bud/Tasmiya/Khibra)
 -- وMaratib.ShahidWaqi (Madlul/TashfirHawass.lean؛ نفس تفويض 2026-10-17 22:55). أداةٌ جديدةٌ: splitAtSep
 -- (الفصلُ بقيمةٍ محجوزة لا بحدٍّ مختار) تفتح الحقول المتعدّدة من String معًا بلا Sahih/Subtype إلّا على
