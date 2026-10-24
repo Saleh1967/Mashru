@@ -72,6 +72,7 @@ import Jisr.Iqtiran
 import Jisr.MantuqMafhum
 import Jisr.QaydMafhum
 import Jisr.BabJaza
+import Jisr.BabJazaQiyas
 import Madlul.TashfirHawass
 import Madlul.TashfirShabaka
 import Madlul.Fard116Shawahid
@@ -1273,6 +1274,12 @@ import Nizam.Qiyas
 #print axioms Jisr.BabJaza.adawat_qatr
 #print axioms Jisr.BabJaza.adawat_jadwal
 #print axioms Jisr.BabJaza.qarn_qatr_tawafuq
+-- ضابطُ باب الجزاء المجمَّد، التشغيلُ الأوّل (Jisr/BabJazaQiyas.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.BabJaza.Qiyas.qarin_jadwal
+#print axioms Jisr.BabJaza.Qiyas.majal_1
+#print axioms Jisr.BabJaza.Qiyas.natija_1
+#print axioms Jisr.BabJaza.Qiyas.natija_1_fia
+#print axioms Jisr.BabJaza.Qiyas.akhta_1
 -- جسرُ المعلومة المعمَّم (السابع): طيُّ وفكُّ Madlul.Hawass (Hassa/Hukm/Shidda/Thubut/Bud/Tasmiya/Khibra)
 -- وMaratib.ShahidWaqi (Madlul/TashfirHawass.lean؛ نفس تفويض 2026-10-17 22:55). أداةٌ جديدةٌ: splitAtSep
 -- (الفصلُ بقيمةٍ محجوزة لا بحدٍّ مختار) تفتح الحقول المتعدّدة من String معًا بلا Sahih/Subtype إلّا على

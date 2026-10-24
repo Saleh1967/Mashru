@@ -3352,5 +3352,35 @@
   "milaf": "Jisr/BabJaza.lean",
   "min": "  | .idhaIsmiyya => maqbul",
   "ila": "  | .idhaIsmiyya => laHukm"
+ },
+ {
+  "ism": "P492_tajmid_basma_halat",
+  "milaf": "tahaqquq/dawabit/jaza/tajmid.json",
+  "min": "\"cases_sha256\": \"999ce1fd3019f211c4641b9a0e19a3df15e255764279d22bc1748c62320a22f7\"",
+  "ila": "\"cases_sha256\": \"999ce1fd3019f211c4641b9a0e19a3df15e255764279d22bc1748c62320a22f8\""
+ },
+ {
+  "ism": "P493_natija_basma_shifra",
+  "milaf": "tahaqquq/dawabit/jaza/natija_1.json",
+  "min": "\"sha256\": \"16af675d0a2e2050b0d0f4e434bb1f4bcdcff09682b684136185b519b5a4743d\"",
+  "ila": "\"sha256\": \"16af675d0a2e2050b0d0f4e434bb1f4bcdcff09682b684136185b519b5a4743e\""
+ },
+ {
+  "ism": "P494_hala_mawlud_mughayyara",
+  "milaf": "Jisr/BabJazaDawabit.lean",
+  "min": "⟨\"J01\", .mujib,",
+  "ila": "⟨\"J00\", .mujib,"
+ },
+ {
+  "ism": "P495_natija_sawab_naqis",
+  "milaf": "tahaqquq/dawabit/jaza/natija_1.json",
+  "min": "\"sawab\": 55",
+  "ila": "\"sawab\": 54"
+ },
+ {
+  "ism": "P496_qarin_dawman_sawab",
+  "milaf": "Jisr/BabJazaQiyas.lean",
+  "min": "  if mutawaqqa = bani then .sawab",
+  "ila": "  if true then .sawab"
  }
 ]
