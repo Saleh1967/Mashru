@@ -1,0 +1,56 @@
+{
+ "tashghil": 5,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد المراجعة الثالثة: رأسُ الشفرة (الهاءُ في تاء الجمع والتاء الملحقة في غير المنوَّن نصبًا) ووصفُ mumkin_shawahid، بلا تغييرٍ في الأحكام",
+ "qablaha": {
+  "natija_4.json": "649f0e1e01681e4f04df066271a9374f763311b5fd4982546d7052cbb38c6672"
+ },
+ "cases_sha256": "9b6e35e2983fdef2893c3e9d72dbf473d7414bc9127eb1e5eb341d4a4a259853",
+ "shifra": {
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "sha256": "bae3da98723a54665d53c5e56f08bd41d058c726a42c0f84b62df83f8b55a4c0"
+ },
+ "lean": [
+  "Dal.WaqfSibawayhi.Qiyas.majal",
+  "Dal.WaqfSibawayhi.Qiyas.natija",
+  "Dal.WaqfSibawayhi.Qiyas.natija_fia",
+  "Dal.WaqfSibawayhi.Qiyas.akhta_2"
+ ],
+ "halat": 40,
+ "huqul_masula": 52,
+ "ihsa": {
+  "sawab": 49,
+  "naqsTaghtiya": 3,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 26,
+  "حد": 8,
+  "خارج": 4,
+  "عموم": 11,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "W26",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W27",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W29",
+   "kalam",
+   "naqsTaghtiya"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى. والأعدادُ هنا منقولةٌ من natija_4.json، وصدّقها lake build لـ Dal.WaqfSibawayhiQiyas على الشفرة ببصمتها هنا (مبرهناتُ حقل lean)."
+}
