@@ -83,6 +83,7 @@ import Nizam.Baqi
 import Aql.Waqi
 import Aql.WaqiShawahid
 import Nizam.Qiyas
+import Jisr.MajariKalim
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1819,3 +1820,10 @@ import Nizam.Qiyas
 #print axioms Jisr.NabtBridge.same_ids_different_source_is_invalid
 #print axioms Jisr.NabtBridge.insufficient_budget_stays_exhausted
 #print axioms Jisr.NabtBridge.supplied_numeric_rank_does_not_override_mashru
+-- مجاري أواخر الكلم عند سيبويه (الكتاب س111–233؛ Jisr/MajariKalim.lean): علامةُ الآخر بالصنف والموضع، إعرابًا أو بناءً
+#print axioms Jisr.MajariKalim.la_jazm_fi_asma
+#print axioms Jisr.MajariKalim.la_jarr_fi_mudari
+#print axioms Jisr.MajariKalim.mabni_la_yataghayyar
+#print axioms Jisr.MajariKalim.irab_bil_harf
+#print axioms Jisr.MajariKalim.la_yansarif
+#print axioms Jisr.MajariKalim.haythu_wa_ghayruha

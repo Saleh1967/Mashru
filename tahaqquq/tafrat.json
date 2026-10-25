@@ -3412,5 +3412,41 @@
   "milaf": "tahaqquq/dawabit/jaza/natija_5.json",
   "min": "\"Jisr.BabJaza.Qiyas.majal\",",
   "ila": "\"Jisr.BabJaza.Qiyas.natija_fia\","
+ },
+ {
+  "ism": "P540_jazm_fi_ism",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "  | .jazm => .laYakun",
+  "ila": "  | .jazm => .laHukm"
+ },
+ {
+  "ism": "P541_jarr_fi_fil",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "  | .jarr => .laYakun",
+  "ila": "  | .jarr => .laHukm"
+ },
+ {
+  "ism": "P542_mamnu_yunjarr",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "  | .ismLaYansarif => ism .damma .fatha .fatha k.mawdi",
+  "ila": "  | .ismLaYansarif => ism .damma .fatha .kasra k.mawdi"
+ },
+ {
+  "ism": "P543_muthanna_nasb_alif",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "  | .muthanna => ism .alif .ya .ya k.mawdi",
+  "ila": "  | .muthanna => ism .alif .alif .ya k.mawdi"
+ },
+ {
+  "ism": "P544_haythu_wahida",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "  (\"حيث\", [.fatha, .damma]),",
+  "ila": "  (\"حيث\", [.fatha]),"
+ },
+ {
+  "ism": "P545_ithnayn_nasb_fatha",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "fil (murab .thubutNun) (murab .hadhfNun) (murab .hadhfNun) k.mawdi",
+  "ila": "fil (murab .thubutNun) (murab .fatha) (murab .hadhfNun) k.mawdi"
  }
 ]
