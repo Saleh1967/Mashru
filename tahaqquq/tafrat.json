@@ -3544,5 +3544,53 @@
   "milaf": "tahaqquq/dawabit/majari/natija_4.json",
   "min": "\"cases_sha256\": \"0d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20\"",
   "ila": "\"cases_sha256\": \"7d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20\""
+ },
+ {
+  "ism": "P731_majari_fahs_masdar",
+  "milaf": "tahaqquq/dawabit/majari/tajmid.json",
+  "min": "\"sha256\": \"a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\"",
+  "ila": "\"sha256\": \"7160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\""
+ },
+ {
+  "ism": "P732_majari_fahs_tatali",
+  "milaf": "tahaqquq/test_majari.py",
+  "min": "arqam == list(range(1, len(arqam) + 1))",
+  "ila": "arqam == list(range(0, len(arqam)))"
+ },
+ {
+  "ism": "P733_majari_fahs_hadd_natija",
+  "milaf": "tahaqquq/test_majari.py",
+  "min": "    m = re.search(r\"theorem natija : ihsa natayij = ⟨([\\d, ]+)⟩\", qiyas)",
+  "ila": "    m = re.search(r\"theorem natija : ihsa natayijX = ⟨([\\d, ]+)⟩\", qiyas)"
+ },
+ {
+  "ism": "P734_majari_fahs_hadd_akhta",
+  "milaf": "tahaqquq/test_majari.py",
+  "min": "    m = re.search(r\"theorem (akhta\\w*) :\\s*akhta = \\[(.*?)\\] := by\", qiyas, re.S)",
+  "ila": "    m = re.search(r\"theorem (akhtaX\\w*) :\\s*akhta = \\[(.*?)\\] := by\", qiyas, re.S)"
+ },
+ {
+  "ism": "P735_majari_fahs_akhta_fi_lean",
+  "milaf": "tahaqquq/test_majari.py",
+  "min": "tahaqqaq(NS + m.group(1) in akhir[\"lean\"]",
+  "ila": "tahaqqaq(NS + m.group(1) + \"_\" in akhir[\"lean\"]"
+ },
+ {
+  "ism": "P736_majari_fahs_lean_mubarhana",
+  "milaf": "tahaqquq/test_majari.py",
+  "min": "re.search(r\"^theorem %s\\b\" % re.escape(qasir)",
+  "ila": "re.search(r\"^theorem %s_\\b\" % re.escape(qasir)"
+ },
+ {
+  "ism": "P737_majari_fahs_huqul_masula",
+  "milaf": "tahaqquq/dawabit/majari/natija_4.json",
+  "min": "\"huqul_masula\": 39,",
+  "ila": "\"huqul_masula\": 40,"
+ },
+ {
+  "ism": "P738_majari_fahs_hadd_majal",
+  "milaf": "tahaqquq/test_majari.py",
+  "min": "m = re.search(r\"theorem majal : majalAadad = \\[([\\d, ]+)\\]\", qiyas)",
+  "ila": "m = re.search(r\"theorem majal : majalAadadX = \\[([\\d, ]+)\\]\", qiyas)"
  }
 ]

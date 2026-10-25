@@ -102,7 +102,7 @@ def majalAadad : List Nat :=
    (halat.filter (fun h => match h.mutawaqqa with | .alamat _ b => b | _ => false)).length,
    (halat.filter (fun h => match h.mutawaqqa with | .alamat _ b => !b | _ => false)).length]
 
-/-- **المجالُ غيرُ فارغ ولا مائل:** 39 حالةً؛ متوقَّعُها علامةٌ واحدة 26، وعلامتان 3، و«لا يكون» 5، و«لا حكم» 5؛ والبناءُ في 11 والإعرابُ
+/-- **المجالُ غيرُ فارغ ولا مائلٍ إلى «لا حكم»:** 39 حالةً؛ متوقَّعُها علامةٌ واحدة 26، وعلامتان 3، و«لا يكون» 5، و«لا حكم» 5؛ والبناءُ في 11 والإعرابُ
     في 18. -/
 theorem majal : majalAadad = [39, 26, 3, 5, 5, 11, 18] := by
   decide +kernel
