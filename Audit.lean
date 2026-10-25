@@ -1198,10 +1198,13 @@ import Jisr.NassItarQiyas
 #print axioms JadwalLuzum.daraja_jisr
 #print axioms JadwalLuzum.yasluh_iff
 #print axioms JadwalLuzum.naw_hadd
+#print axioms JadwalLuzum.naw_ithnan
+#print axioms JadwalLuzum.iltizam_saff
 #print axioms JadwalLuzum.shahid_luzum_maqayis
-#print axioms JadwalLuzum.iltizam_jadwal_yasluh
+#print axioms JadwalLuzum.iltizam_jadwal
+#print axioms JadwalLuzum.shahid_hadd
 #print axioms JadwalLuzum.shahid_daraja
-#print axioms JadwalLuzum.shahid_qiraatan
+#print axioms JadwalLuzum.shahid_qiraat
 #print axioms JadwalLuzum.shahid_fahm_juz_lisan
 #print axioms Naht.aakhidha_bihazz
 #print axioms Naht.farid_nodup

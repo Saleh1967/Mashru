@@ -4844,13 +4844,25 @@
  {
   "ism": "P832_naql_hadd_bila_khuruj",
   "milaf": "Madlul/JadwalLuzumNaql.lean",
-  "min": "else if s > 400 then some false else none",
-  "ila": "else none"
+  "min": "some (decide (wafat m ≤ b))",
+  "ila": "some true"
  },
  {
   "ism": "P833_naql_naw_dun_hadd",
   "milaf": "Madlul/JadwalLuzumNaql.lean",
   "min": "if haddOf q m = some false then .mustahdathBadAlHadd else .wadLughawi",
   "ila": ".wadLughawi"
+ },
+ {
+  "ism": "P834_naql_naw_majaz",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "then .mustahdathBadAlHadd else .wadLughawi",
+  "ila": "then .mustahdathBadAlHadd else .majaz"
+ },
+ {
+  "ism": "P835_iltizam_ghayr_lazim",
+  "milaf": "Madlul/JadwalLuzum.lean",
+  "min": "  | .luzum => [qMutabaqa l m, qIltizam l m b]",
+  "ila": "  | .luzum => [qMutabaqa l m, qIltizam l m m]"
  }
 ]
