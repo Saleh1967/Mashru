@@ -1,7 +1,7 @@
 """ضابطُ «هذا باب الجزاء» المجمَّد (hawkama/منهج_الضوابط.md §٤، في طلبه).
 
 يفحص، بلا مودَع:
-١. التجميد: بصماتُ wasf.md وcases.json وfahs_cases.py وtaalif.md هي المسجَّلة في tajmid.json.
+١. التجميد: بصماتُ wasf.md وcases.json وfahs_cases.py وtaalif.md هي المسجَّلة في tajmid.json، وبصمةُ المصدر فيه بصمةُ الكتاب.
 ٢. المولَّد: Jisr/BabJazaDawabit.lean مخرجُ scripts/bina_dawabit_jaza.py على cases.json بايتًا.
 ٣. السجلّات: natija_1.json … natija_N.json متتالية، كلٌّ للحالات المجمَّدة. وبصمةُ natija_1.json ثابتةٌ هنا (NATIJA_1)، وكلُّ سجلٍّ
    بعده يحمل بصمةَ ما قبله، فتعديلُ سجلٍّ قديمٍ يُكشف. وآخرُها لبصمة Jisr/BabJaza.lean الحاليّة، وأعدادُه (ihsa، bil_fia، akhta)
@@ -17,7 +17,7 @@
 P495 (عدُّ الصواب في آخر سجلّ، ٣)، P497 (بصمةُ ما قبله في آخر سجلّ، ٣)، P498 (عدٌّ في natija_1.json، ٣)، P499 (halat في آخر سجلّ، ٤)،
 P500 (المرساة NATIJA_1 نفسُها، ٣)، P501 (حقلُ lean في آخر سجلّ، ٣)،
 P763–P770 (فحوصٌ كانت بلا طفرة: بصمةُ المصدر في tajmid.json ١، وتتالي أرقام السجلّات، وصيغُ natija وnatija_fia، وakhta_sifr،
-وكونُ أسماء lean مبرهنات، وhuqul_masula ٣، وصيغةُ majal ٤).
+وكونُ أسماء lean مبرهنات، وhuqul_masula ٤، وصيغةُ majal ٤).
 التشغيل: python3 -I tahaqquq/test_jaza.py
 """
 import hashlib
