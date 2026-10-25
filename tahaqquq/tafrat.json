@@ -3646,5 +3646,65 @@
   "milaf": "Jisr/BabJazaQiyas.lean",
   "min": "theorem majal :\n    halat.length = 39 ∧ natayij.length = 55 ∧\n    [Daraja.maqbul, .qabih, .khata, .laHukm].map (fun d => (halat.filter (·.kalam == d)).length) = [16, 8, 9, 6] ∧\n    [some Daraja.maqbul, some .qabih, some .khata, some .laHukm, none].map\n      (fun d => (halat.filter (·.shir == d)).length) = [10, 0, 0, 6, 23] := by",
   "ila": "theorem majal : halat.length = halat.length := by"
+ },
+ {
+  "ism": "P781_jarr_bila_fi",
+  "milaf": "Jisr/NassItar.lean",
+  "min": "def hurufJarr : List (List Nat) := [[27, 14], [0, 13, 2], [3, 14], [3, 13, 2], [25, 11]]",
+  "ila": "def hurufJarr : List (List Nat) := [[27, 14], [0, 13, 2], [3, 14], [3, 13, 2]]"
+ },
+ {
+  "ism": "P782_tanwin_ghayr_nun",
+  "milaf": "Jisr/NassItar.lean",
+  "min": "  | 59 :: a :: _ => a < 116 && a % 4 < 3",
+  "ila": "  | 58 :: a :: _ => a < 116 && a % 4 < 3"
+ },
+ {
+  "ism": "P783_yudaf_maa_al",
+  "milaf": "Jisr/NassItar.lean",
+  "min": "def yudaf (w : Kalima) : Bool := !w.al && !munawwan w",
+  "ila": "def yudaf (w : Kalima) : Bool := !munawwan w"
+ },
+ {
+  "ism": "P784_ism_awwal_fil",
+  "milaf": "Jisr/NassItar.lean",
+  "min": "    else if ismi w then []",
+  "ila": "    else if false then []"
+ },
+ {
+  "ism": "P785_jamaa_ayy_mumtani",
+  "milaf": "Jisr/NassItar.lean",
+  "min": "  else if hs ≠ [] ∧ hs.all (· == .mumtani) = true then .mumtani else .laHukm",
+  "ila": "  else if hs ≠ [] ∧ hs.any (· == .mumtani) = true then .mumtani else .laHukm"
+ },
+ {
+  "ism": "P786_marsa_maful",
+  "milaf": "Jisr/NassItar.lean",
+  "min": "{ jisr := { ud := ud, ml := [mudafIlayhi 2] }, kalimat := [v, s, o, m]",
+  "ila": "{ jisr := { ud := ud, ml := [mudafIlayhi 1] }, kalimat := [v, s, o, m]"
+ },
+ {
+  "ism": "P787_alaqa_jarr",
+  "milaf": "Jisr/NassItar.lean",
+  "min": "kalimat := [p, n], maani := [fi, dar],\n                                      isnad := ⟨walad, .alaqa 1 30, .idafiyya⟩ })",
+  "ila": "kalimat := [p, n], maani := [fi, dar],\n                                      isnad := ⟨walad, .alaqa 1 31, .idafiyya⟩ })"
+ },
+ {
+  "ism": "P788_ghumud_la_hukm_naqs",
+  "milaf": "Jisr/NassItarDabit.lean",
+  "min": "  | _ => if b = .laHukm then .sawab else if m.contains b then .ikhtiyar else .khata",
+  "ila": "  | _ => if b = .laHukm then .naqsTaghtiya else if m.contains b then .ikhtiyar else .khata"
+ },
+ {
+  "ism": "P789_rafd_yuadd",
+  "milaf": "Jisr/NassItarDabit.lean",
+  "min": "    if h.kalimat.isNone then [(h.ism, h.fia, Haql.hukm, Natija.rafdQari)]",
+  "ila": "    if false then [(h.ism, h.fia, Haql.hukm, Natija.rafdQari)]"
+ },
+ {
+  "ism": "P790_masul_itar_bila_hukm",
+  "milaf": "Jisr/NassItarDabit.lean",
+  "min": "def masulItar (h : Hala) : Bool := h.hukm == [.murakhkhas] && hukmMuharrik h == .murakhkhas",
+  "ila": "def masulItar (h : Hala) : Bool := h.hukm == [.murakhkhas]"
  }
 ]

@@ -85,6 +85,8 @@ import Aql.WaqiShawahid
 import Nizam.Qiyas
 import Jisr.NafyFil
 import Jisr.NafyFilQiyas
+import Jisr.NassItar
+import Jisr.NassItarDabit
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1840,3 +1842,20 @@ import Jisr.NafyFilQiyas
 #print axioms Jisr.NafyFil.Qiyas.natija
 #print axioms Jisr.NafyFil.Qiyas.natija_fia
 #print axioms Jisr.NafyFil.Qiyas.akhta_sifr
+#print axioms Jisr.NassItar.hurufJarr_wad
+#print axioms Jisr.NassItar.itarat_mem
+#print axioms Jisr.NassItar.itarat_kalimat
+#print axioms Jisr.NassItar.jamaa_murakhkhas
+#print axioms Jisr.NassItar.jamaa_mumtani
+#print axioms Jisr.NassItar.hukmNass_murakhkhas
+#print axioms Jisr.NassItar.hukmNass_mumtani
+#print axioms Jisr.NassItar.la_itar_la_hukm
+#print axioms Jisr.NassItar.maqbula_iff
+#print axioms Jisr.NassItar.fard_madlul
+#print axioms Jisr.NassItar.yuid_shawahid
+#print axioms Jisr.NassItar.haraka_tughayyir
+#print axioms Jisr.NassItar.itar_min_hukm
+#print axioms Jisr.NassItar.Dabit.qarin_hukm
+#print axioms Jisr.NassItar.Dabit.qarin_itar
+#print axioms Jisr.NassItar.Dabit.rafd_ikhfaq
+#print axioms Jisr.NassItar.Dabit.itar_tabi_hukm
