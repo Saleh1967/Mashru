@@ -3550,5 +3550,101 @@
   "milaf": "tahaqquq/dawabit/nafy/natija_3.json",
   "min": "\"cases_sha256\": \"30271f86d033784c08d02bce3721c6e4697b6c3163017d3542dafaba4df099a5\"",
   "ila": "\"cases_sha256\": \"70271f86d033784c08d02bce3721c6e4697b6c3163017d3542dafaba4df099a5\""
+ },
+ {
+  "ism": "P723_nafy_fahs_masdar",
+  "milaf": "tahaqquq/dawabit/nafy/tajmid.json",
+  "min": "\"sha256\": \"a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\"",
+  "ila": "\"sha256\": \"7160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\""
+ },
+ {
+  "ism": "P724_nafy_fahs_tatali",
+  "milaf": "tahaqquq/test_nafy.py",
+  "min": "arqam == list(range(1, len(arqam) + 1))",
+  "ila": "arqam == list(range(0, len(arqam)))"
+ },
+ {
+  "ism": "P725_nafy_fahs_hadd_natija",
+  "milaf": "tahaqquq/test_nafy.py",
+  "min": "    m = re.search(r\"theorem natija : ihsa natayij = ⟨([\\d, ]+)⟩\", qiyas)",
+  "ila": "    m = re.search(r\"theorem natija : ihsa natayijX = ⟨([\\d, ]+)⟩\", qiyas)"
+ },
+ {
+  "ism": "P726_nafy_fahs_hadd_akhta",
+  "milaf": "tahaqquq/test_nafy.py",
+  "min": "    m = re.search(r\"theorem (akhta\\w*) :\\s*akhta = \\[(.*?)\\] := by\", qiyas, re.S)",
+  "ila": "    m = re.search(r\"theorem (akhtaX\\w*) :\\s*akhta = \\[(.*?)\\] := by\", qiyas, re.S)"
+ },
+ {
+  "ism": "P727_nafy_fahs_akhta_fi_lean",
+  "milaf": "tahaqquq/test_nafy.py",
+  "min": "tahaqqaq(NS + m.group(1) in akhir[\"lean\"]",
+  "ila": "tahaqqaq(NS + m.group(1) + \"_\" in akhir[\"lean\"]"
+ },
+ {
+  "ism": "P728_nafy_fahs_lean_mubarhana",
+  "milaf": "tahaqquq/test_nafy.py",
+  "min": "re.search(r\"^theorem %s\\b\" % re.escape(qasir)",
+  "ila": "re.search(r\"^theorem %s_\\b\" % re.escape(qasir)"
+ },
+ {
+  "ism": "P729_nafy_fahs_huqul_masula",
+  "milaf": "tahaqquq/dawabit/nafy/natija_3.json",
+  "min": "\"huqul_masula\": 33,",
+  "ila": "\"huqul_masula\": 34,"
+ },
+ {
+  "ism": "P730_nafy_fahs_hadd_majal",
+  "milaf": "tahaqquq/test_nafy.py",
+  "min": "m = re.search(r\"theorem majal : majalAadad = \\[([\\d, ]+)\\]\", qiyas)",
+  "ila": "m = re.search(r\"theorem majal : majalAadadX = \\[([\\d, ]+)\\]\", qiyas)"
+ },
+ {
+  "ism": "P763_jaza_fahs_masdar",
+  "milaf": "tahaqquq/dawabit/jaza/tajmid.json",
+  "min": "\"sha256\": \"a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\"",
+  "ila": "\"sha256\": \"7160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\""
+ },
+ {
+  "ism": "P764_jaza_fahs_tatali",
+  "milaf": "tahaqquq/test_jaza.py",
+  "min": "arqam == list(range(1, len(arqam) + 1))",
+  "ila": "arqam == list(range(0, len(arqam)))"
+ },
+ {
+  "ism": "P765_jaza_fahs_hadd_natija",
+  "milaf": "tahaqquq/test_jaza.py",
+  "min": "    m = re.search(r\"theorem natija : ihsa natayij = ⟨(\\d+), (\\d+), (\\d+), (\\d+), (\\d+), (\\d+)⟩\", qiyas)",
+  "ila": "    m = re.search(r\"theorem natija : ihsa natayijX = ⟨(\\d+), (\\d+), (\\d+), (\\d+), (\\d+), (\\d+)⟩\", qiyas)"
+ },
+ {
+  "ism": "P766_jaza_fahs_hadd_natija_fia",
+  "milaf": "tahaqquq/test_jaza.py",
+  "min": "    m = re.search(r\"theorem natija_fia :.*?=\\s*\\[⟨(\\d+), 0, 0, 0, 0, 0⟩, ⟨(\\d+), 0, 0, 0, 0, 0⟩, ⟨(\\d+), 0, 0, 0, 0, 0⟩, ⟨(\\d+), 0, 0, 0, 0, 0⟩\\]\",",
+  "ila": "    m = re.search(r\"theorem natija_fiaX :.*?=\\s*\\[⟨(\\d+), 0, 0, 0, 0, 0⟩, ⟨(\\d+), 0, 0, 0, 0, 0⟩, ⟨(\\d+), 0, 0, 0, 0, 0⟩, ⟨(\\d+), 0, 0, 0, 0, 0⟩\\]\","
+ },
+ {
+  "ism": "P767_jaza_fahs_akhta_sifr",
+  "milaf": "tahaqquq/test_jaza.py",
+  "min": "\"theorem akhta_sifr : akhta = []\" in qiyas",
+  "ila": "\"theorem akhta_sifr : akhta = [X]\" in qiyas"
+ },
+ {
+  "ism": "P768_jaza_fahs_lean_mubarhana",
+  "milaf": "tahaqquq/test_jaza.py",
+  "min": "re.search(r\"^theorem %s\\b\" % re.escape(qasir)",
+  "ila": "re.search(r\"^theorem %s_\\b\" % re.escape(qasir)"
+ },
+ {
+  "ism": "P769_jaza_fahs_huqul_masula",
+  "milaf": "tahaqquq/dawabit/jaza/natija_5.json",
+  "min": "\"huqul_masula\": 55,",
+  "ila": "\"huqul_masula\": 56,"
+ },
+ {
+  "ism": "P770_jaza_fahs_hadd_majal",
+  "milaf": "tahaqquq/test_jaza.py",
+  "min": "m = re.search(r\"theorem majal :\\s*halat\\.length = (\\d+) ∧ natayij\\.length = (\\d+) ∧.*?= \\[(\\d+), (\\d+), (\\d+), (\\d+)\\] ∧.*?= \\[(\\d+), (\\d+), (\\d+), (\\d+), (\\d+)\\]\",",
+  "ila": "m = re.search(r\"theorem majalX :\\s*halat\\.length = (\\d+) ∧ natayij\\.length = (\\d+) ∧.*?= \\[(\\d+), (\\d+), (\\d+), (\\d+)\\] ∧.*?= \\[(\\d+), (\\d+), (\\d+), (\\d+), (\\d+)\\]\","
  }
 ]
