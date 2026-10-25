@@ -83,6 +83,7 @@ import Nizam.Baqi
 import Aql.Waqi
 import Aql.WaqiShawahid
 import Nizam.Qiyas
+import Dal.WaqfSibawayhi
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1819,3 +1820,8 @@ import Nizam.Qiyas
 #print axioms Jisr.NabtBridge.same_ids_different_source_is_invalid
 #print axioms Jisr.NabtBridge.insufficient_budget_stays_exhausted
 #print axioms Jisr.NabtBridge.supplied_numeric_rank_does_not_override_mashru
+-- الوقفُ على أواخر الكلم المتحرّكة في الوصل عند سيبويه (الكتاب س17782–17859؛ Dal/WaqfSibawayhi.lean): وجهُ الوقف بالآخر والتنوين وما قبله والحركة
+#print axioms Dal.WaqfSibawayhi.la_ishmam
+#print axioms Dal.WaqfSibawayhi.tadif_baad_sakin
+#print axioms Dal.WaqfSibawayhi.maqbul_kalam_maqbul_shir
+#print axioms Dal.WaqfSibawayhi.shawahid

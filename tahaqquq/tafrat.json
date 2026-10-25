@@ -3412,5 +3412,41 @@
   "milaf": "tahaqquq/dawabit/jaza/natija_5.json",
   "min": "\"Jisr.BabJaza.Qiyas.majal\",",
   "ila": "\"Jisr.BabJaza.Qiyas.natija_fia\","
+ },
+ {
+  "ism": "P560_ishmam_fi_nasb",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  | .ishmam => if k.haraka == .raf then .maqbul else .khata",
+  "ila": "  | .ishmam => if k.haraka == .raf then .maqbul else .laHukm"
+ },
+ {
+  "ism": "P561_tadif_baad_sakin",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  | .tadif => if k.qablMutaharrik then .maqbul else .khata",
+  "ila": "  | .tadif => if k.qablMutaharrik then .maqbul else .maqbul"
+ },
+ {
+  "ism": "P562_tadif_la_shir",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  else if k.akhir == .sahih && laZiyada k && k.wajh == .tadif then .maqbul",
+  "ila": "  else if k.akhir == .sahih && laZiyada k && k.wajh == .tadif then .laHukm"
+ },
+ {
+  "ism": "P563_azd_khata",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "    else if k.munawwan && k.wajh == .wawAwYa then .lugha",
+  "ila": "    else if k.munawwan && k.wajh == .wawAwYa then .khata"
+ },
+ {
+  "ism": "P564_talhat_maqbul",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "    | .ta => .lugha",
+  "ila": "    | .ta => .maqbul"
+ },
+ {
+  "ism": "P565_alif_lugha",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "      (if k.wajh == .alif then .maqbul else .laHukm)",
+  "ila": "      (if k.wajh == .alif then .lugha else .laHukm)"
  }
 ]
