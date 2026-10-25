@@ -1,0 +1,94 @@
+{
+ "tashghil": 1,
+ "naw": "التشغيلُ الأوّل على الحالات المجمَّدة، بعد دفع الشفرة وقبل أيّ تعديلٍ لها",
+ "cases_sha256": "9b6e35e2983fdef2893c3e9d72dbf473d7414bc9127eb1e5eb341d4a4a259853",
+ "shifra": {
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "sha256": "c9861d0237e54dd724af163c90569e6ef24a6f27771a59c981b7e5a951a8712d",
+  "iydaa": "ed25842e7d9c97751f5012735bfed7bdcaf07dd2"
+ },
+ "lean": [
+  "Dal.WaqfSibawayhi.Qiyas.majal",
+  "Dal.WaqfSibawayhi.Qiyas.natija",
+  "Dal.WaqfSibawayhi.Qiyas.natija_fia",
+  "Dal.WaqfSibawayhi.Qiyas.akhta_1"
+ ],
+ "halat": 40,
+ "huqul_masula": 52,
+ "ihsa": {
+  "sawab": 41,
+  "naqsTaghtiya": 11,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 24,
+  "حد": 4,
+  "خارج": 4,
+  "عموم": 9,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "W13",
+   "shir",
+   "naqsTaghtiya"
+  ],
+  [
+   "W14",
+   "shir",
+   "naqsTaghtiya"
+  ],
+  [
+   "W23",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W23",
+   "shir",
+   "naqsTaghtiya"
+  ],
+  [
+   "W26",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W27",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W28",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W29",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W29",
+   "shir",
+   "naqsTaghtiya"
+  ],
+  [
+   "W35",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W35",
+   "shir",
+   "naqsTaghtiya"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "الأعدادُ من #eval على Dal/WaqfSibawayhiQiyas.lean ثمّ مبرهناتٍ بـ decide +kernel؛ وbil_fia عددُ الحقول المسؤولة الصائبة في كلّ فئة."
+}
