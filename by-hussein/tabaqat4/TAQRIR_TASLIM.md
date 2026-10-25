@@ -112,8 +112,8 @@ D-A المحفوظ من المحادثة: نسخة الوكيل الأولى (م
 **الأعلام:**
 ```
 TABAQAT4_SCOPE_TESTS_PASS = YES (18/18 ran ؛ 0 NOT_RUN) — على Mashru@ed7c5d3248a1
-CORE_SANITY_PASS          = نعم (bawwaba_local المحلّيّة: byhussein يُبنى بلا إعادة الأمّ ، 46 مبرهنة ، 7/7 طفرات)
-FULL_TREE_BASELINE        = ثابت 1522/515/44 (لا تغيير في شجرة بناء Mashru ؛ لم يُعَد تشغيل بوّابة الأمّ لهذه الجولة)
+CORE_SANITY_PASS          = نعم على مقياس هذه الجولة = T1–T18 + T8 (Mashru لم تُمَسّ git قبل/بعد) + T18 (Hokom لم تُمَسّ). ملاحظة: bawwaba_local (byhussein) على فرع by-hussein/wasla لا على هذا الفرع ، فلم يُشغَّل هنا — لم أدّعِه.
+FULL_TREE_BASELINE        = لم يُعَد تشغيل بوّابة الأمّ لهذه الجولة (تغييري بايثونٌ محض تحت tabaqat4/ خارج شجرة بناء Mashru) ؛ خطّ الأساس 1522/515/44 بآخر تشغيلٍ مؤكِّد سابق
 MASHRU_HEAD               = ed7c5d3248a1
 HOKOM_PIN                 = 8a23298076b4
 MASHRU_TOUCHED            = NO (T8 git قبل/بعد) ؛ HOKOM_TOUCHED = NO (T18 git قبل/بعد ؛ تعديلاتُ cl16_root_wazn/* في Hokom سابقةٌ لجلستي ، لم أمسّها)
