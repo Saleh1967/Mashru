@@ -3,7 +3,7 @@
 
 مولَّدٌ من `tahaqquq/dawabit/majari/cases.json` بـ `python3 -I scripts/bina_dawabit_majari.py`؛ لا يُحرَّر يدويًّا.
 بصمةُ الحالات: `0d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20`.
-كتبها مؤلّفٌ مستقلّ من الباب وحده قبل الشفرة (`tahaqquq/dawabit/majari/tajmid.json`). والمثالُ والسندُ في الملفّ المصدر.
+كتبها مؤلّفٌ مستقلٌّ إجرائيًّا من المواصفة والباب قبل الشفرة، وفي سياقه ما حُقن آليًّا (`tahaqquq/dawabit/majari/taalif.md`)؛ وجُمّدت ببصمتها في `tahaqquq/dawabit/majari/tajmid.json`. والمثالُ والسندُ في الملفّ المصدر.
 -/
 import Jisr.MajariKalim
 

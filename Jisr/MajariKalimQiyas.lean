@@ -19,6 +19,7 @@
 ويفحصه `tahaqquq/test_majari.py`:
 - `natija_1.json`: التشغيلُ الأوّل على الشفرة المجمَّدة في `7ce1cfb`: 33 صوابًا من 39. وأسماءُ مبرهناته أسماؤها في `9629153`.
 - `natija_2.json`: بعد تعديل `Jisr/MajariKalim.lean` بما وُسم فيه «وكان في الشفرة المجمَّدة»، على مادّةٍ مكشوفة: 39 من 39.
+- `natija_3.json`: بعد مراجعة `murajii` (الرأسُ والتعليقات، وحذفُ لفظ «ل»، ومدُّ سندين)، على مادّةٍ مكشوفة: 39 من 39.
 -/
 import Jisr.MajariKalim
 import Jisr.MajariKalimDawabit

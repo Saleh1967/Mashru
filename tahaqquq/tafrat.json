@@ -3459,25 +3459,25 @@
   "ism": "P547_majari_muwallad",
   "milaf": "Jisr/MajariKalimDawabit.lean",
   "min": "⟨\"M01\", .mujib,",
-  "ila": "⟨\"M01\", .hadd,"
+  "ila": "⟨\"M01x\", .mujib,"
  },
  {
   "ism": "P548_majari_basmat_shifra",
-  "milaf": "tahaqquq/dawabit/majari/natija_2.json",
-  "min": "\"sha256\": \"f409757d82ecd14830e1cc6326195adb06510e382da15fb2814d6ed20c5131ed\"",
-  "ila": "\"sha256\": \"7409757d82ecd14830e1cc6326195adb06510e382da15fb2814d6ed20c5131ed\""
+  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
+  "min": "\"sha256\": \"5871ea01de787fdc4eb2372a3257a518465da96dc39daf98567f9586c3dcf350\"",
+  "ila": "\"sha256\": \"7871ea01de787fdc4eb2372a3257a518465da96dc39daf98567f9586c3dcf350\""
  },
  {
   "ism": "P549_majari_sawab",
-  "milaf": "tahaqquq/dawabit/majari/natija_2.json",
+  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
   "min": "  \"sawab\": 39,",
   "ila": "  \"sawab\": 38,"
  },
  {
   "ism": "P550_majari_qablaha",
-  "milaf": "tahaqquq/dawabit/majari/natija_2.json",
-  "min": "\"natija_1.json\": \"0f53cee20d2ac93fe355124e713469a242b60217d27c99d525693e911348e02d\"",
-  "ila": "\"natija_1.json\": \"1f53cee20d2ac93fe355124e713469a242b60217d27c99d525693e911348e02d\""
+  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
+  "min": "\"natija_2.json\": \"16c86bd70a649752a389fa9afb31a108c6427422d453c9b8bd07443b32d5d517\"",
+  "ila": "\"natija_2.json\": \"76c86bd70a649752a389fa9afb31a108c6427422d453c9b8bd07443b32d5d517\""
  },
  {
   "ism": "P551_majari_natija_1",
@@ -3493,13 +3493,13 @@
  },
  {
   "ism": "P553_majari_lean",
-  "milaf": "tahaqquq/dawabit/majari/natija_2.json",
+  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
   "min": "\"Jisr.MajariKalim.Qiyas.natija_fia\",",
   "ila": "\"Jisr.MajariKalim.Qiyas.majal\","
  },
  {
   "ism": "P554_majari_akhta",
-  "milaf": "tahaqquq/dawabit/majari/natija_2.json",
+  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
   "min": "\"akhta\": [],",
   "ila": "\"akhta\": [[\"M18\", \"naqsTaghtiya\"]],"
  },
@@ -3511,7 +3511,7 @@
  },
  {
   "ism": "P556_majari_halat",
-  "milaf": "tahaqquq/dawabit/majari/natija_2.json",
+  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
   "min": "\"halat\": 39,",
   "ila": "\"halat\": 40,"
  },
