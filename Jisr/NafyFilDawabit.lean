@@ -3,7 +3,7 @@
 
 مولَّدٌ من `tahaqquq/dawabit/nafy/cases.json` بـ `python3 -I scripts/bina_dawabit_nafy.py`؛ لا يُحرَّر يدويًّا.
 بصمةُ الحالات: `30271f86d033784c08d02bce3721c6e4697b6c3163017d3542dafaba4df099a5`.
-كتبها مؤلّفٌ مستقلّ من النطاق وحده قبل الشفرة (`tahaqquq/dawabit/nafy/tajmid.json`). والمثالُ والسندُ في الملفّ المصدر.
+كتبها مؤلّفٌ مستقلٌّ إجرائيًّا من المواصفة والنطاق قبل الشفرة، وفي سياقه ما حُقن آليًّا (`tahaqquq/dawabit/nafy/taalif.md`)؛ وجُمّدت ببصمتها في `tahaqquq/dawabit/nafy/tajmid.json`. والمثالُ والسندُ في الملفّ المصدر.
 -/
 import Jisr.NafyFil
 
