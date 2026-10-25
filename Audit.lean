@@ -1827,6 +1827,7 @@ import Dal.WaqfSibawayhiQiyas
 #print axioms Dal.WaqfSibawayhi.maqbul_kalam_maqbul_shir
 #print axioms Dal.WaqfSibawayhi.munawwan_nasb_kull
 #print axioms Dal.WaqfSibawayhi.hadhf_wa_qawafi
+#print axioms Dal.WaqfSibawayhi.mumkin_shawahid
 #print axioms Dal.WaqfSibawayhi.shawahid
 -- ضابطُ الوقف عند سيبويه المجمَّد، النتيجةُ على الشفرة الحاليّة (Dal/WaqfSibawayhiQiyas.lean؛ hawkama/منهج_الضوابط.md)، وشواهدُ ما أُضيف بعد قراءة الحالات
 #print axioms Dal.WaqfSibawayhi.munawwan_nasb_shawahid
