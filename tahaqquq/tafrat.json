@@ -3579,7 +3579,7 @@
   "ism": "P727_nafy_fahs_akhta_fi_lean",
   "milaf": "Jisr/NafyFilQiyas.lean",
   "min": "theorem akhta_sifr :",
-  "ila": "theorem akhta_sifrx :"
+  "ila": "theorem akhta_alt : akhta = [] := by\n  decide +kernel\n\ntheorem akhta_sifr :"
  },
  {
   "ism": "P728_nafy_fahs_lean_mubarhana",
