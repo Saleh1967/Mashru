@@ -1,0 +1,40 @@
+{
+ "tashghil": 3,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد مراجعة murajii — صُحّح رأسُ Jisr/NafyFil.lean (أثرُ الحال في صورتي القسم، وستّةُ مدًى في الأسطر، وما هو قراءةُ البنّاء) وأُضيف شاهدا hal_tusaffi_qasam وhuruf_jadwal، بلا تغييرٍ في jawab ولا hukmWali",
+ "qablaha": {
+  "natija_2.json": "915bcc814dac91e575aa951f7a6f7a3a95a9909e4ef3592f987a078acbb5b088"
+ },
+ "cases_sha256": "30271f86d033784c08d02bce3721c6e4697b6c3163017d3542dafaba4df099a5",
+ "shifra": {
+  "milaf": "Jisr/NafyFil.lean",
+  "sha256": "c7fe7060cbc1a25178069046abaee493b022d3f06f3d782293f729ec5cbfc047"
+ },
+ "lean": [
+  "Jisr.NafyFil.Qiyas.majal",
+  "Jisr.NafyFil.Qiyas.natija",
+  "Jisr.NafyFil.Qiyas.natija_fia",
+  "Jisr.NafyFil.Qiyas.akhta_sifr"
+ ],
+ "halat": 30,
+ "huqul_masula": 33,
+ "ihsa": {
+  "sawab": 33,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "ikhtiyar": 0,
+  "khata": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0
+ },
+ "bil_fia": {
+  "موجب": 15,
+  "حد": 8,
+  "خارج": 5,
+  "عموم": 3,
+  "غموض": 2
+ },
+ "akhta": [],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى."
+}

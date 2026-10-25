@@ -1,0 +1,44 @@
+{
+ "tashghil": 1,
+ "naw": "التشغيلُ الأوّل على الحالات المجمَّدة، بعد دفع الشفرة وقبل أيّ تعديلٍ لها",
+ "cases_sha256": "30271f86d033784c08d02bce3721c6e4697b6c3163017d3542dafaba4df099a5",
+ "shifra": {
+  "milaf": "Jisr/NafyFil.lean",
+  "sha256": "f646b03b0b4288116d4eeab0178b2abcd78e58913d2164804987bea624fd7a84",
+  "iydaa": "e7ac6757da56d850bc80d407bfdfa8bb0a73321d"
+ },
+ "lean": [
+  "Jisr.NafyFil.Qiyas.majal",
+  "Jisr.NafyFil.Qiyas.natija",
+  "Jisr.NafyFil.Qiyas.natija_fia",
+  "Jisr.NafyFil.Qiyas.akhta_1"
+ ],
+ "halat": 30,
+ "huqul_masula": 33,
+ "ihsa": {
+  "sawab": 32,
+  "naqsTaghtiya": 1,
+  "tajawuz": 0,
+  "ikhtiyar": 0,
+  "khata": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0
+ },
+ "bil_fia": {
+  "موجب": 15,
+  "حد": 7,
+  "خارج": 5,
+  "عموم": 3,
+  "غموض": 2
+ },
+ "akhta": [
+  [
+   "N20",
+   "kalam",
+   "naqsTaghtiya"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "الأعدادُ من #eval على Jisr/NafyFilQiyas.lean ثمّ مبرهناتٍ بـ decide +kernel؛ وbil_fia عددُ الحقول المسؤولة الصائبة في كلّ فئة. والإخفاقُ N20 («رب يقول»): الشفرةُ لم تقرأ «لم يكن لهم سبيل إلى رب يقول ولا إلى قل يقول» (س9764) فلم تحكم في «رب» و«قل» وحدهما."
+}

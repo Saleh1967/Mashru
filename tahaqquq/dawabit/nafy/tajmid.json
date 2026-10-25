@@ -1,0 +1,32 @@
+{
+ "naw": "ضابط مجمَّد",
+ "minhaj": "hawkama/منهج_الضوابط.md، الإصدار ١ (بفئة غموض)",
+ "qita": "نفي الفعل وحروف الفعل (كتاب سيبويه، س9755–9787)",
+ "masdar": {
+  "milaf": "sibawayhi.txt",
+  "sha256": "a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625"
+ },
+ "wasf_sha256": "fbd1f64579528597aadc24488005e690025b7a5219ac2898b98138f0650392fd",
+ "cases_sha256": "30271f86d033784c08d02bce3721c6e4697b6c3163017d3542dafaba4df099a5",
+ "fahs_cases_sha256": "c1de61bb752bebcb69f633b2503b6977ebd898272fe190b3dcf047d9b1a3bba5",
+ "taalif_sha256": "dff80d53f2544aec9fc694ab520301c032f848f1b591b937251da239c9d90169",
+ "muallif": "وكيلٌ جديد (general-purpose) بالمواصفة والمصدر وحدهما، بتوجيهٍ محفوظٍ بنصّه في tawjih_muallif.md؛ وحقنت البيئةُ في سياقه آليًّا CLAUDE.md ولقطةً من ذاكرة المستخدم (أفصح بذلك في taalif.md)؛ أجاب البنّاءَ بالبصمات والأعداد وحدها",
+ "aadad_muallif": {
+  "jumla": 30,
+  "naw_nafy": 16,
+  "naw_wali": 14,
+  "موجب": 14,
+  "حد": 6,
+  "خارج": 5,
+  "عموم": 3,
+  "غموض": 2,
+  "harfi": 17
+ },
+ "tawjih": {
+  "milaf": "tawjih_muallif.md",
+  "arsil": "2026-10-25T04:23:41Z"
+ },
+ "fahs_sijill": "sijill_muallif.json: أدواتُ المؤلّف ومساراتُه من سجلّه، بلا محتوى ما كتب؛ لا مسارَ خارج مجلّده والمصدر",
+ "tajmid": "2026-10-25T07:40+03:00",
+ "qabl_shifra": "جُمّد قبل إيداع الشفرة؛ والبنّاء لم يقرأ cases.json ولا taalif.md عند التجميد"
+}

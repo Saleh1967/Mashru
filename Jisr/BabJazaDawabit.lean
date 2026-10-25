@@ -3,7 +3,7 @@
 
 مولَّدٌ من `tahaqquq/dawabit/jaza/cases.json` بـ `python3 -I scripts/bina_dawabit_jaza.py`؛ لا يُحرَّر يدويًّا.
 بصمةُ الحالات: `999ce1fd3019f211c4641b9a0e19a3df15e255764279d22bc1748c62320a22f7`.
-كتبها مؤلّفٌ مستقلّ من الباب وحده قبل الشفرة (`tahaqquq/dawabit/jaza/tajmid.json`). والمثالُ والسندُ في الملفّ المصدر.
+كتبها مؤلّفٌ مستقلٌّ إجرائيًّا من المواصفة والباب قبل الشفرة، وفي سياقه ما حُقن آليًّا (`tahaqquq/dawabit/jaza/taalif.md`)؛ وجُمّدت ببصمتها في `tahaqquq/dawabit/jaza/tajmid.json`. والمثالُ والسندُ في الملفّ المصدر.
 -/
 import Jisr.BabJaza
 
