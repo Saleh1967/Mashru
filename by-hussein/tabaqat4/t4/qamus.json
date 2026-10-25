@@ -1,0 +1,139 @@
+{
+  "_schema": "Tabaqat4Qamus:v1",
+  "_qaida": "لا تدخل هنا كلمةٌ إلّا ولها مدلولٌ معرَّفٌ في مصدر Mashru باسمه وملفّه وسطره ، كما عرّفه د. صالح. المودَع المعجمي يُسجَّل حيث أعلنه Mashru أو الشاهد ، وإلّا بقي null مع بقيّة MADLUL_SOURCE_UNDECLARED_IN_MASHRU. الأداة لا تضيف مدلولًا من عندها.",
+  "_rutba_qusa": "مطابَق — مطابقة اسم المدلول في Mashru بسطح الكلمة ؛ ليست معنًى مبرهنًا",
+  "madlulat": {
+    "dhahab": {
+      "ref": "Jisr/Utur.lean:327",
+      "haqiqa": 10,
+      "tim": true,
+      "qism": "fiil",
+      "wasf": "ذهب — عَرَضٌ فعليّ (tim=true) ، لازم بنيويًّا (إطار بلا خانة مفعول)",
+      "mudaa": {
+        "ism": "المخصص",
+        "sha256": "936c68e0c2c62ddbfb881c573487c7b37650ef69117bca364c219b6d1bf8e76c",
+        "mawdi": "PageV01P309–310",
+        "masdar": "Shahid_Ahmad.lean ت1"
+      }
+    },
+    "walad": {
+      "ref": "Jisr/Utur.lean:326",
+      "haqiqa": 20,
+      "tim": false,
+      "qism": "ism",
+      "wasf": "ولد — ذاتٌ ، خاصّة 21 ، علاقة (1,30) ، قابليّات [10,11]",
+      "mudaa": null
+    },
+    "tara": {
+      "ref": "Jisr/Utur.lean:328",
+      "haqiqa": 12,
+      "tim": true,
+      "qism": "fiil",
+      "wasf": "طار — عَرَضٌ فعليّ",
+      "mudaa": null
+    },
+    "dar": {
+      "ref": "Jisr/Utur.lean:329",
+      "haqiqa": 30,
+      "tim": false,
+      "qism": "ism",
+      "wasf": "دار — ذات",
+      "mudaa": null
+    },
+    "fi": {
+      "ref": "Jisr/Utur.lean:330",
+      "haqiqa": 40,
+      "tim": false,
+      "qism": "harf",
+      "wasf": "في — حرف (ind=false)",
+      "mudaa": null
+    },
+    "kawn": {
+      "ref": "Jisr/Utur.lean:937",
+      "haqiqa": 60,
+      "tim": true,
+      "qism": "fiil",
+      "wasf": "كان — كون",
+      "mudaa": null
+    },
+    "dhahib": {
+      "ref": "Jisr/Utur.lean:938",
+      "haqiqa": 10,
+      "tim": false,
+      "qism": "ism",
+      "wasf": "ذاهب — وصف",
+      "mudaa": null
+    },
+    "dhahabM": {
+      "ref": "Jisr/Utur.lean:933",
+      "haqiqa": 10,
+      "tim": false,
+      "qism": "ism",
+      "wasf": "الذهاب مصدرًا",
+      "mudaa": null
+    }
+  },
+  "kalimat": {
+    "ذَهَبَ": {
+      "madlul": "dhahab",
+      "shahid": "Jisr/Utur.lean:908 dhahaba"
+    },
+    "الْوَلَدُ": {
+      "madlul": "walad",
+      "shahid": "Jisr/Utur.lean:909 alWalad"
+    },
+    "وَلَدٌ": {
+      "madlul": "walad",
+      "shahid": "Jisr/Utur.lean:910 waladun"
+    },
+    "طَارَ": {
+      "madlul": "tara",
+      "shahid": "Jisr/Utur.lean taraK"
+    },
+    "فِي": {
+      "madlul": "fi",
+      "shahid": "Jisr/Utur.lean:911 fiK"
+    },
+    "الدَّارِ": {
+      "madlul": "dar",
+      "shahid": "Jisr/Utur.lean:912 adDar"
+    },
+    "كَانَ": {
+      "madlul": "kawn",
+      "shahid": "Jisr/Utur.lean kana"
+    },
+    "ذَاهِبًا": {
+      "madlul": "dhahib",
+      "shahid": "Jisr/Utur.lean dhahiban"
+    },
+    "ذَهَابًا": {
+      "madlul": "dhahabM",
+      "shahid": "Jisr/Utur.lean:930 dhahaban"
+    },
+    "الْوَلَدَ": {
+      "madlul": "walad",
+      "shahid": "Utur.lean:958 (ممتنع بعد ذَهَبَ)"
+    },
+    "الْوَلَدِ": {
+      "madlul": "walad",
+      "shahid": "صورة جرّ"
+    },
+    "وَلَدًا": {
+      "madlul": "walad",
+      "shahid": "صورة نصب منوَّن"
+    },
+    "وَلَدٍ": {
+      "madlul": "walad",
+      "shahid": "صورة جرّ منوَّن"
+    },
+    "الدَّارُ": {
+      "madlul": "dar",
+      "shahid": "صورة رفع"
+    },
+    "الدَّارَ": {
+      "madlul": "dar",
+      "shahid": "صورة نصب"
+    }
+  },
+  "_qaida_irab": "صور الإعراب تُدرَج قائمةً حاصرةً صريحة لكل اسم (رفع/نصب/جر ، معرفة ومنوَّن) ، لا بقاعدة حذف الحركة الأخيرة — كي لا يختلط ذَهَبَ (فعل) بـ ذَهَبٌ (اسم). الحكم على صحة الحالة الإعرابية يبقى لـ hukm3 في Mashru (شاهد Utur.lean:958: الْوَلَدَ بعد ذَهَبَ ممتنع)."
+}

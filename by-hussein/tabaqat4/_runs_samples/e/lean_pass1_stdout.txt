@@ -1,0 +1,9 @@
+Jisr.Utur.Hukm.mumtani
+true
+[92, 4, 104, 55, 112, 52, 68]
+[Aql.Isnad.Rutba.mahkum, Aql.Isnad.Rutba.hakim]
+true
+some (Aql.Azmina.Zaman3.madi)
+{ amudi := 0, ufuqi := 0, tuli := 0 }
+
+--- stderr ---

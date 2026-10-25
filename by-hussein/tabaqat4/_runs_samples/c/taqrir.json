@@ -1,0 +1,271 @@
+{
+ "schema": "Tabaqat4Record:v1",
+ "timestamp_utc": "2026-10-24T10:57:35.092900+00:00",
+ "input": {
+  "nass_kama_wasal": "الْعِلْمُ نُورٌ",
+  "nfc": "الْعِلْمُ نُورٌ",
+  "nfc_eq_input": true,
+  "sha256": "6999132cfbd2e7d7745e7790e4c801476193038931b74e704a238830bdb213b1",
+  "codepoints": 15,
+  "tahwil": []
+ },
+ "tokens": [
+  {
+   "idx": 0,
+   "anchor": "W-6999132c-000",
+   "surface": "الْعِلْمُ"
+  },
+  {
+   "idx": 1,
+   "anchor": "W-6999132c-001",
+   "surface": "نُورٌ"
+  }
+ ],
+ "dal": [
+  {
+   "surface": "الْعِلْمُ",
+   "khalaya": [
+    55,
+    14,
+    55,
+    109
+   ],
+   "wasl": true,
+   "al": true,
+   "tanwin": false,
+   "transforms": [
+    "AL_FLAG:همزة_الوصل_لا_تُرمَّز(Dal.Kalima.al=true,wasl=true)",
+    "AL_QAMARIYYA:لام_ساكنة"
+   ],
+   "residuals": [],
+   "cells_human": [
+    "لْ=55",
+    "عِ=14",
+    "لْ=55",
+    "مُ=109"
+   ]
+  },
+  {
+   "surface": "نُورٌ",
+   "khalaya": [
+    57,
+    115,
+    61,
+    59
+   ],
+   "wasl": false,
+   "al": false,
+   "tanwin": true,
+   "transforms": [
+    "MADD_UNMARKED_AS_SUKUN:و_بلا_حركة=ساكنة(حرف_مدّ)",
+    "TANWIN:نون_ساكنة(59)_بعد_الحركة"
+   ],
+   "residuals": [],
+   "cells_human": [
+    "نُ=57",
+    "وْ=115",
+    "ر◌ُ=61",
+    "نْ(تنوين)=59"
+   ]
+  }
+ ],
+ "maani": [
+  null,
+  null
+ ],
+ "plan": null,
+ "lean": null,
+ "stages": [
+  {
+   "stage": "S0_HAWIYYA",
+   "started": true,
+   "completed": true,
+   "found": true,
+   "produced": true,
+   "accepted": true,
+   "stored": true,
+   "consumed_by_next": null,
+   "reason": null,
+   "residuals": []
+  },
+  {
+   "stage": "S1_TAQTI",
+   "started": true,
+   "completed": true,
+   "found": true,
+   "produced": true,
+   "accepted": true,
+   "stored": true,
+   "consumed_by_next": true,
+   "reason": null,
+   "residuals": []
+  },
+  {
+   "stage": "S2_DAL",
+   "started": true,
+   "completed": true,
+   "found": true,
+   "produced": true,
+   "accepted": true,
+   "stored": true,
+   "consumed_by_next": true,
+   "reason": null,
+   "residuals": [],
+   "hawamil_source": "Dal/Makharij.lean:def hawamil (قُرئ وقت التشغيل ، 29 حاملًا)"
+  },
+  {
+   "stage": "S3_HOKOM_TAQDIR",
+   "started": false,
+   "completed": null,
+   "found": null,
+   "produced": null,
+   "accepted": null,
+   "stored": null,
+   "consumed_by_next": null,
+   "reason": "NOT_REQUESTED (--hokom غير مطلوب)",
+   "residuals": []
+  },
+  {
+   "stage": "S4_MADLUL",
+   "started": true,
+   "completed": true,
+   "found": false,
+   "produced": true,
+   "accepted": false,
+   "stored": true,
+   "consumed_by_next": false,
+   "reason": "كلمة أو أكثر بلا مدلول ← S5 لا يُبنى",
+   "residuals": [
+    "W-6999132c-000:NO_SEALED_MADLUL",
+    "W-6999132c-001:NO_SEALED_MADLUL"
+   ]
+  },
+  {
+   "stage": "S5_MAAN_ITAR",
+   "started": true,
+   "completed": true,
+   "found": false,
+   "produced": false,
+   "accepted": null,
+   "stored": null,
+   "consumed_by_next": null,
+   "reason": "OUT_OF_EXECUTED_PATH:جملة اسمية (تقديرًا من السطح: أوّلها اسمٌ بأل أو تنوين) + PREREQ_MISSING: مدلولٌ أو خلايا ناقصة",
+   "residuals": [
+    "OUT_OF_EXECUTED_PATH"
+   ]
+  },
+  {
+   "stage": "S6_AQL",
+   "started": false,
+   "completed": null,
+   "found": null,
+   "produced": null,
+   "accepted": null,
+   "stored": null,
+   "consumed_by_next": null,
+   "reason": "PREREQ_MISSING (S5 لم يُنتج إطارًا)",
+   "residuals": []
+  },
+  {
+   "stage": "S7_BURHAN",
+   "started": false,
+   "completed": null,
+   "found": null,
+   "produced": null,
+   "accepted": null,
+   "stored": null,
+   "consumed_by_next": null,
+   "reason": "PREREQ_MISSING (S5 لم يُنتج إطارًا)",
+   "residuals": []
+  }
+ ],
+ "claims": [
+  {
+   "tabaqa": 1,
+   "ism": "dal_W-6999132c-000",
+   "qima": [
+    55,
+    14,
+    55,
+    109
+   ],
+   "tarjama": "«الْعِلْمُ»: 4 خلية [لْ=55, عِ=14, لْ=55, مُ=109] ، بأل التعريف (همزة وصل)",
+   "rutba": "مطابَق",
+   "burhan": "ترميز بجدول Dal/Makharij.lean (n=4·حامل+حالة) ؛ يُبرهَن على مستوى الجملة في S7",
+   "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 1,
+   "ism": "dal_W-6999132c-001",
+   "qima": [
+    57,
+    115,
+    61,
+    59
+   ],
+   "tarjama": "«نُورٌ»: 4 خلية [نُ=57, وْ=115, ر◌ُ=61, نْ(تنوين)=59]",
+   "rutba": "مطابَق",
+   "burhan": "ترميز بجدول Dal/Makharij.lean (n=4·حامل+حالة) ؛ يُبرهَن على مستوى الجملة في S7",
+   "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 2,
+   "ism": "madlul_W-6999132c-000",
+   "qima": null,
+   "tarjama": "«الْعِلْمُ»: لا مدلولَ معرَّفًا لها في Mashru (ولا يُولَّد)",
+   "rutba": null,
+   "burhan": null,
+   "sabab_ghiyab": "NO_SEALED_MADLUL: الكلمة ليست في qamus.json المقيَّد بتعريفات Mashru"
+  },
+  {
+   "tabaqa": 2,
+   "ism": "madlul_W-6999132c-001",
+   "qima": null,
+   "tarjama": "«نُورٌ»: لا مدلولَ معرَّفًا لها في Mashru (ولا يُولَّد)",
+   "rutba": null,
+   "burhan": null,
+   "sabab_ghiyab": "NO_SEALED_MADLUL: الكلمة ليست في qamus.json المقيَّد بتعريفات Mashru"
+  }
+ ],
+ "wasm_summary": {
+  "مبرهن": 0,
+  "مبرهن على الشاهد": 0,
+  "مطابَق": 2,
+  "مفحوص": 0,
+  "مقيس": 0,
+  "تقدير": 0,
+  "رأي": 0,
+  "بلا رتبة": 2
+ },
+ "tabaqat_state": {
+  "1": "مطابَق",
+  "2": "PARTIAL_OR_BLOCKED",
+  "3": "NOT_REACHED",
+  "4": "NOT_REACHED"
+ },
+ "la_yuddaa": [
+  "لا صحّة لغوية خارجية: ما يمرّ هنا مرّ على بنى Mashru كما عرّفها د. صالح ، لا على العربية كلّها.",
+  "المدلول لا يُولَّد: كلمة بلا مدلول معرَّف في Mashru تتوقّف عند الطبقة الثانية بالاسم NO_SEALED_MADLUL.",
+  "أنواع الجمل المنفَّذة في هذه الأداة: [فعل ماضٍ + فاعل معرَّف بأل] و [فعل ماضٍ + فاعل منوَّن] فقط ؛ ما عداها OUT_OF_EXECUTED_PATH.",
+  "المرساة (الآن=0 ، هنا=⟨0,0,0⟩) وإزاحة الحدث (−1 ساعة) موروثتان من Shahid_Ahmad.lean ت3/ت4 ، افتراضٌ معلَن قابل للتغيير بوسيطَي --an/--izaha.",
+  "الإسناد الدلالي ⟨مدلول_الفاعل ، qabiliyya(حقيقة_الفعل) ، isnadiyya⟩ قاعدةٌ بنيوية موروثة من الشاهد ، ليست استنتاجًا من النصّ.",
+  "رتبة «مبرهن على الشاهد» تعني: نظرية by decide مرّت على هذه الجملة بعينها في Lean ، بمسلّمات ⊆ {propext, Classical.choice, Quot.sound}. ليست «مبرهن» عامًّا."
+ ],
+ "identity": {
+  "mashru_root": "/tmp/claude-0/-home-claude/df1a9f35-ff1b-5bad-8e6d-f9f037af0cec/scratchpad/m",
+  "mashru_head": "e4c801ffe9171dadedcc3aae23051ea0953ae361",
+  "mashru_tree_clean": false,
+  "mashru_status_porcelain": "?? Shahid_Ahmad.lean\n?? Shahid_Ahmad_T4.lean\n?? jumla_kamila.json",
+  "lean_toolchain": "leanprover/lean4:v4.34.1",
+  "qamus_sha256": "964538402a4e2f52c5834a4fabc21637f71616df1709cf4ecff99732165a6c0e",
+  "tool_files": {
+   "run.py": "3f9e1575e875ee5f40eb1f88b94e8a7d2558500b9d28b1a2d9a829e6779bfd7d",
+   "t4/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "t4/core.py": "8df5d9665aab77ca47857a0b67f79ac7dc04ebcfffd79a7b1b080e91998859a0",
+   "t4/dal.py": "1c3a62d0977528ec841e2a8bed446adff01b26fde7c7a829dd2395f85f33fcfa",
+   "t4/qamus.json": "964538402a4e2f52c5834a4fabc21637f71616df1709cf4ecff99732165a6c0e",
+   "t4/report.py": "f72f898d7419c5d7a1662d17e41c06888b34c2a027453d682f7582ae47bde384"
+  }
+ },
+ "run_dir": "/tmp/claude-0/-home-claude/df1a9f35-ff1b-5bad-8e6d-f9f037af0cec/scratchpad/t4out/c"
+}
