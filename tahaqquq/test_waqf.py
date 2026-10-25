@@ -13,7 +13,7 @@
    الصفحات (PageV..P..) والمخطوط (ms..) وتوحيد البياض، وبأدنى مدًى (لا سطرَ زائدًا في طرفيه)؛ وكلُّ `sanad.nass` في الحالات في سطره
    بحذف البادئة وحدها، كما تشترط المواصفة؛ ثمّ فاحصُ المؤلّف نفسُه (fahs_cases.py) يخرج 0.
 
-الطفرات: P566 (بصمة الحالات في tajmid.json، ١)، P567 (حالةٌ في المولَّد، ٢)، P568 (بصمة الشفرة في آخر سجلّ، ٣)، P569 (عدُّ الصواب في آخر سجلّ، ٣)، P570 (بصمةُ ما قبله في آخر سجلّ، ٣)، P571 (عدٌّ في natija_1.json، ٣)، P572 (المرساة NATIJA_1 نفسُها، ٣)، P573 (حقلُ lean في آخر سجلّ، ٣)، P574 (akhta في آخر سجلّ، ٣)، P575 (عددُ المجال في majal_json، ٤)، P576 (halat في آخر سجلّ، ٤)، P577 (المقارنة في Dal/WaqfSibawayhiQiyas.lean).
+الطفرات: P566 (بصمة الحالات في tajmid.json، ١)، P567 (معرّفُ حالةٍ في المولَّد، ٢)، P568 (بصمة الشفرة في آخر سجلّ، ٣)، P569 (عدُّ الصواب في آخر سجلّ، ٣)، P570 (بصمةُ ما قبله في آخر سجلّ، ٣)، P571 (عدٌّ في natija_1.json، ٣)، P572 (المرساة NATIJA_1 نفسُها، ٣)، P573 (حقلُ lean في آخر سجلّ، ٣)، P574 (akhta في آخر سجلّ، ٣)، P575 (عددُ المجال في majal_json، ٤)، P576 (halat في آخر سجلّ، ٤)، P701 (bil_fia في آخر سجلّ، ٣)، P702 (عدُّ الفئات في majal_json، ٣)، P703 (tashghil في آخر سجلّ، ٣)، P704 (cases_sha256 في آخر سجلّ، ٣). وطفراتُ الشفرة P560–P565 وP578–P579 وP705–P707 وطفرةُ المقارنة P577 يقتلها lake build.
 التشغيل: python3 -I tahaqquq/test_waqf.py
 """
 import hashlib
@@ -123,8 +123,7 @@ if akhir:
                       for t in re.findall(r"\(([^()]*)\)", m.group(2))]
         tahaqqaq(lean_akhta == akhir["akhta"], f"{natayij[-1].name}: akhta {akhir['akhta']} غيرُ مبرهنة {m.group(1)} {lean_akhta}")
         tahaqqaq(NS + m.group(1) in akhir["lean"], f"{natayij[-1].name}: حقلُ lean لا يسمّي {m.group(1)}")
-    tahaqqaq(akhir["lean"][:3] == LEAN_NATIJA[:3] and len(akhir["lean"]) == 4 and akhir["lean"][3].startswith(NS + "akhta"),
-             f"{natayij[-1].name}: حقلُ lean غيرُ القائمة المتوقَّعة")
+    tahaqqaq(akhir["lean"] == LEAN_NATIJA, f"{natayij[-1].name}: حقلُ lean غيرُ القائمة المتوقَّعة LEAN_NATIJA")
     for ism in akhir["lean"]:
         qasir = ism.rsplit(".", 1)[-1]
         tahaqqaq(ism.startswith(NS) and re.search(r"^theorem %s\b" % re.escape(qasir), qiyas, re.M) is not None,

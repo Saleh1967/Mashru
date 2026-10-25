@@ -3,7 +3,7 @@
 
 مولَّدٌ من `tahaqquq/dawabit/waqf/cases.json` بـ `python3 -I scripts/bina_dawabit_waqf.py`؛ لا يُحرَّر يدويًّا.
 بصمةُ الحالات: `9b6e35e2983fdef2893c3e9d72dbf473d7414bc9127eb1e5eb341d4a4a259853`.
-كتبها مؤلّفٌ مستقلّ من البابين وحدهما قبل الشفرة (`tahaqquq/dawabit/waqf/tajmid.json`). والمثالُ والسندُ في الملفّ المصدر.
+كتبها مؤلّفٌ مستقلٌّ إجرائيًّا من المواصفة والبابين قبل الشفرة، وفي سياقه ما حُقن آليًّا (`tahaqquq/dawabit/waqf/taalif.md`)؛ وجُمّدت ببصمتها في `tahaqquq/dawabit/waqf/tajmid.json`. والمثالُ والسندُ في الملفّ المصدر.
 -/
 import Dal.WaqfSibawayhi
 
