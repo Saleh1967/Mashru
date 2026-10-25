@@ -1,0 +1,65 @@
+{
+ "_note": "fixture اختبار — ليست إمضاء مالك. haqiqa 1001..1003 (≥1000). قابليّة الطالب تضمّ حقيقة كتب (1001) كي يرخّص hukm3.",
+ "sijill": {
+  "كتب": {
+   "surface": "كَتَبَ",
+   "ism_lean": "kataba_m",
+   "status": "RATIFIED",
+   "haqiqa": 1001,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": true,
+   "ind": true,
+   "imda": {
+    "man": "FIXTURE_TEST",
+    "tarikh": "2026-10-25"
+   }
+  },
+  "طالب": {
+   "surface": "الطَّالِبُ",
+   "ism_lean": "talib_m",
+   "status": "PENDING",
+   "haqiqa": 1002,
+   "khawass": [
+    1042
+   ],
+   "alaqat": [
+    [
+     1,
+     1001
+    ]
+   ],
+   "qabiliyyat": [
+    1001
+   ],
+   "afrad": [
+    1,
+    1
+   ],
+   "tim": false,
+   "ind": true,
+   "imda": {
+    "man": "FIXTURE_TEST",
+    "tarikh": "2026-10-25"
+   }
+  },
+  "درس": {
+   "surface": "الدَّرْسَ",
+   "ism_lean": "dars_m",
+   "status": "RATIFIED",
+   "haqiqa": 1003,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": false,
+   "ind": true,
+   "imda": {
+    "man": "FIXTURE_TEST",
+    "tarikh": "2026-10-25"
+   }
+  }
+ }
+}

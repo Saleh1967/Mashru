@@ -39,7 +39,9 @@ RESULTS = {}
 
 class T(unittest.TestCase):
     def rec(self, text, lean=True, **kw):
-        t = Tabaqat4(ROOT, out_dir=TMP / sha256_text(text)[:8], run_lean=lean and not LEAN_REASON, **kw)
+        # مجلّدٌ فريدٌ بالنصّ والوسائط كي لا تتشارك اختباراتٌ على الجملة نفسها (بمودَع/بلا) مجلّدًا واحدًا
+        key = text + '|lean=' + str(lean) + '|' + json.dumps({k: str(v) for k, v in sorted(kw.items())}, ensure_ascii=False)
+        t = Tabaqat4(ROOT, out_dir=TMP / sha256_text(key)[:10], run_lean=lean and not LEAN_REASON, **kw)
         return t.run(text)
 
     def test_T1_shahid_four_layers(self):
@@ -225,6 +227,79 @@ class T(unittest.TestCase):
         self.assertEqual(b_h, a_h, 'HOKOM_TREE_CHANGED')
         # لا بايتكود في شجرة Hokom
         self.assertEqual(_glob.glob(hk + '/**/__pycache__/*tabaqat*', recursive=True), [])
+
+
+    # ───────────────── الإصدار 5: مودَعات المالك + اختيار الإطار ─────────────────
+    FX = HERE / 'fixtures'
+
+    def test_T20_mudaat_ratified_daraba_proven(self):
+        """T20 كَتَبَ الطَّالِبُ الدَّرْسَ بمودَعات RATIFIED → إطار daraba مختار ، hukm3 مبرهَن ، الطبقة ٤ مبرهَنة ، axioms⊆المسموح ؛ وبلا مودَعات NO_SEALED"""
+        if LEAN_REASON: self.skipTest('NOT_RUN: ' + LEAN_REASON)
+        r = self.rec('كَتَبَ الطَّالِبُ الدَّرْسَ', mudaat_path=self.FX / 'mudaat_test.json')
+        self.assertEqual(r['plan']['ud'], 'Jisr.Mulhaqat.daraba'); self.assertTrue(r['plan']['maful'])
+        self.assertIn('CONDITIONAL_ON_SELECTED_ITAR', json.dumps(r['la_yuddaa'], ensure_ascii=False))
+        th = r['lean']['theorems']; self.assertTrue(all(v['passed'] for v in th.values()), th)
+        for v in th.values(): self.assertTrue(set(v['axioms']) <= AXIOMS_OK)
+        self.assertEqual(r['lean']['observed']['hukm3'], '.murakhkhas')
+        for k in (1, 2, 3, 4): self.assertEqual(r['tabaqat_state'][k], 'مبرهن على الشاهد', (k, r['tabaqat_state']))
+        self.assertIsNone(self.rec('كَتَبَ الطَّالِبُ الدَّرْسَ', lean=False)['plan'])   # بلا مودَعات: كما اليوم
+
+    def test_T21_mudaa_without_qabiliyya_laHukm(self):
+        """T21 الطالب مودَع بلا قابليّة «كتب» → hukm3 = laHukm (قاعدة Mashru لا الأداة)"""
+        if LEAN_REASON: self.skipTest('NOT_RUN: ' + LEAN_REASON)
+        r = self.rec('كَتَبَ الطَّالِبُ الدَّرْسَ', mudaat_path=self.FX / 'mudaat_t21.json')
+        self.assertEqual(r['lean']['observed']['hukm3'], '.laHukm')
+
+    def test_T22_hokom_tree_sha_before_eq_after(self):
+        """T22 شرط المالك: بصمة كلّ ملفّ في HOKOM_ROOT (مسار+حجم+mtime) قبل=بعد ؛ Mashru نظيف ؛ لا كتابة خارج by-hussein"""
+        import hashlib as _h
+        hk = Path('/Users/husseinhiyassat/hokom')
+        def tree_sha():
+            g = _h.sha256()
+            for p in sorted(hk.rglob('*')):
+                if p.is_file() and '/.git/' not in str(p):
+                    s = p.stat(); g.update(f'{p}|{s.st_size}|{s.st_mtime_ns}\n'.encode())
+            return g.hexdigest()
+        before = tree_sha()
+        self.rec('ذَهَبَ الْوَلَدُ', lean=False, use_hokom=not self._hokom_ok())
+        after = tree_sha()
+        self.assertEqual(before, after, 'HOKOM_TREE_CHANGED')
+        m = subprocess.run(['git', '-C', str(ROOT), 'status', '--porcelain', '--untracked-files=all'], capture_output=True, text=True).stdout
+        outside = [l for l in m.splitlines() if not (l[3:].startswith('by-hussein/') or l[3:] in ('audit.txt', 'build.log', 'jumla_kamila.json'))]
+        self.assertEqual(outside, [], outside)
+
+    def test_T23_pending_not_in_lean(self):
+        """T23 مودَع PENDING لا يدخل ، والكلمة تبقى NO_SEALED_MADLUL"""
+        r = self.rec('كَتَبَ الطَّالِبُ الدَّرْسَ', lean=False, mudaat_path=self.FX / 'mudaat_pending.json')
+        self.assertIsNone(r['maani'][1]); self.assertIsNone(r['plan'])   # الطالب PENDING ⇒ لا إطار
+
+    def test_T24_haqiqa_collision_rejected(self):
+        """T24 haqiqa مصادِمة → MUDAA_HAQIQA_COLLISION ورفض الإدخال"""
+        t = Tabaqat4(ROOT, out_dir=TMP / 't24', mudaat_path=self.FX / 'mudaat_collision.json')
+        self.assertTrue(any('MUDAA_HAQIQA_COLLISION' in x for x in t.mudaat_residuals), t.mudaat_residuals)
+
+    def test_T25_itar_unmapped(self):
+        """T25 نمطٌ لا في itar_map (اسمان مرفوعان) → ITAR_UNMAPPED باسم النمط المقروء"""
+        r = self.rec('الطَّالِبُ الدَّرْسُ', lean=False, mudaat_path=self.FX / 'mudaat_2noun.json')
+        s5 = [s for s in r['stages'] if s['stage'] == 'S5_MAAN_ITAR'][0]
+        self.assertIn('ITAR_UNMAPPED', s5['reason']); self.assertIsNone(r['plan'])
+
+    def test_T26_taaqol_source_and_conflict(self):
+        """T26 --taaqol: المصدر TAAQOL_P8 معلَن ؛ ومع Hokom متعارض → ITAR_SOURCE_CONFLICT والمُعتمَد Hokom"""
+        r = self.rec('كَتَبَ الطَّالِبُ الدَّرْسَ', lean=False, mudaat_path=self.FX / 'mudaat_test.json', taaqol_path=self.FX / 'taaqol_c02.json')
+        self.assertIn('TAAQOL_P8', r['plan']['itar_source'])
+        if not self._hokom_ok():
+            c = self.rec('كَتَبَ الطَّالِبُ الدَّرْسَ', lean=False, use_hokom=True,
+                         mudaat_path=self.FX / 'mudaat_test.json', taaqol_path=self.FX / 'taaqol_conflict.json')
+            self.assertIsNotNone(c['plan']['itar_conflict']); self.assertIn('ITAR_SOURCE_CONFLICT', c['plan']['itar_conflict'])
+            self.assertEqual(c['plan']['ud'], 'Jisr.Mulhaqat.daraba')   # Hokom (fiil) غلب
+
+    def test_T27_determinism_with_mudaat(self):
+        """T27 تشغيلان لنفس الجملة والمودَعات → JSON متطابق خارج الطابع الزمني والمجلّد"""
+        a = self.rec('كَتَبَ الطَّالِبُ الدَّرْسَ', lean=False, mudaat_path=self.FX / 'mudaat_test.json')
+        b = self.rec('كَتَبَ الطَّالِبُ الدَّرْسَ', lean=False, mudaat_path=self.FX / 'mudaat_test.json')
+        for r in (a, b): r.pop('timestamp_utc'); r.pop('run_dir'); r['identity'].pop('mashru_status_porcelain', None)
+        self.assertEqual(json.dumps(a, ensure_ascii=False, sort_keys=True), json.dumps(b, ensure_ascii=False, sort_keys=True))
 
 
 class Reporter(unittest.TextTestResult):
