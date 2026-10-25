@@ -107,7 +107,7 @@ structure Khana where
   deriving DecidableEq, Repr
 
 /-- مكوّناتُ الخانة `i` بنصّ `waslBase` (`none` إن غابت كلمتُها أو مدلولُها). وشرطُ الحال يُحسب من القيمتين `h` و`q` اللتين يُملأ بهما
-    حقلا `hala` و`matlub`، ويربطهما به `khana_hala` حين يسقط. -/
+    حقلا `hala` و`matlub`، ومعهما سمةُ البناء (`t.2.2.2`) والتقدير (`muqaddar`)؛ ويربطه بالحقلين `khana_hala` حين يسقط. -/
 def khana (u : Itar3) (i : Nat) : Option Khana :=
   let r := Mulhaqat.roleOf u.jisr.ud.f i
   let t := attrAt u.jisr.ud.ats i
