@@ -14,18 +14,23 @@
 تُسمّى باسم الحركة، والفرقُ بين الإعراب والبناء في `bina` وحده.
 
 **ما هو تعيينُ البنّاء** (لا نصُّ الباب):
-- **الاسمُ الذي لا ينصرف** رفعُه ضمّةٌ ونصبُه فتحة كالمتمكّن، بعموم «وحروف الإعراب للأسماء المتمكنة» (س119)؛ والبابُ لا ينصّ إلّا على
-  جرّه مفتوحًا (س209) وانجراره بالألف واللام والإضافة (س226–227).
-- **جمعُ المؤنّث** رفعُه ضمّة، بالعموم نفسه؛ والبابُ ينصّ على كسرة الجرّ والنصب (س169).
+- **الاسمُ الذي لا ينصرف** «لا حكم» رفعًا ونصبًا: البابُ لا ينصّ إلّا على جرّه مفتوحًا (س209) وانجراره بالألف واللام والإضافة (س226–227).
+  **وكان في الشفرة المجمَّدة** رفعُه ضمّةً ونصبُه فتحةً بعموم «وحروف الإعراب للأسماء المتمكنة» (س119).
+- **جمعُ المؤنّث** «لا حكم» رفعًا: البابُ ينصّ على كسرة الجرّ والنصب وحدهما (س169). **وكان في الشفرة المجمَّدة** ضمّةً بالعموم نفسه.
 - **المضارعُ الساكنُ الآخر** نصبُه «لا حكم»: البابُ يذكر رفعَه ساكنًا وجزمَه بالحذف (س230–233) ولا يذكر نصبَه.
-- **ما يُبنى** (الماضي والأمر ونونُ النسوة وغيرُ المتمكّن) علامتُه واحدةٌ في كلّ موضع، والموضعُ لا يغيّرها؛ إلّا الجرَّ في الفعل: «ليس في
-  الأفعال المضارعة جر» (س125) يُطبَّق على المضارع كلّه ومنه نونُ النسوة. والماضي يقع موقعَ الاسم صفةً (س142–143)، فلا يُنفى عنه موضع.
+- **ما يُبنى** (الماضي والأمر ونونُ النسوة وغيرُ المتمكّن) علامتُه لا يغيّرها الموضع؛ و«ليس في الأفعال المضارعة جر» (س125) يُطبَّق على
+  المضارع كلّه ومنه نونُ النسوة.
+- **الماضي** فتحةٌ وسكون (`ghamid`): «ضرب» (س140–141)، و«فعلت وفعلن» بالسكون (س194)، ولا يحمل الحقلُ اللاحقة؛ و«ليس للفعل في الجر نصيب»
+  (س184) فلا يقع جرًّا. **والأمرُ** لا يقع موقعَ المضارعة («ولا تقع موقع المضارعة»، س149–150): بلا عاملٍ سكون، وفي كلّ موضعٍ «لا يكون».
+  **وكان في الشفرة المجمَّدة** الماضي فتحةً وحدها والأمرُ سكونًا في كلّ موضع، و«الماضي يقع موقعَ الاسم صفةً (س142–143) فلا يُنفى عنه موضع».
 - **غيرُ المتمكّن بلفظه** من أمثلة الباب وحدها (س138–140، س151–154)، و«حيث» ضمّةٌ وفتحة (`ghamid`: البابُ يذكرها في الضربين). وما سواها
   «لا حكم».
 - **المعربُ بلا عامل** «لا حكم».
 
 **المنهج.** شفرةُ هذا الملفّ كُتبت قبل أن يقرأ البنّاءُ حالاتِ الضابط، وجُمّدت الحالاتُ قبلها (`tahaqquq/dawabit/majari/tajmid.json`؛
-`hawkama/منهج_الضوابط.md`). ونتيجتُها على الضابط في `Jisr/MajariKalimQiyas.lean`، لا هنا.
+`hawkama/منهج_الضوابط.md`)، ودُفعت في `7ce1cfb`، والتشغيلُ الأوّل عليها في `natija_1.json` (33/39). **وبعد قراءة الحالات** غُيّر ما وُسم
+«وكان في الشفرة المجمَّدة» أعلاه، وأُضيف «ب» و«ل» لفظين لحرفَي الإضافة (س152) وثلاثةُ أسانيد وشاهدٌ (`la_jarr_fi_fil`)؛ فالتشغيلُ الثاني
+(`natija_2.json`) على مادّةٍ مكشوفة. ونتيجتُها على الضابط في `Jisr/MajariKalimQiyas.lean`، لا هنا.
 -/
 
 namespace Jisr
@@ -63,9 +68,9 @@ inductive Jawab
 def murab (a : Alama) : Jawab := .alamat [a] false
 
 /-- الأسماءُ: «ليس في الأسماء جزم» (س123). -/
-def ism (r n j : Alama) : Mawdi → Jawab
-  | .raf => murab r
-  | .nasb => murab n
+def ism (r n : Option Alama) (j : Alama) : Mawdi → Jawab
+  | .raf => (r.map murab).getD .laHukm
+  | .nasb => (n.map murab).getD .laHukm
   | .jarr => murab j
   | .jazm => .laYakun
   | .bilaAmil => .laHukm
@@ -88,6 +93,7 @@ def mabni : List (String × List Alama) := [
   ("من", [.sukun]), ("كم", [.sukun]), ("قط", [.sukun]), ("إذ", [.sukun]),
   ("سوف", [.fatha]), ("ثم", [.fatha]),
   ("الباء", [.kasra]), ("باء الإضافة", [.kasra]), ("اللام", [.kasra]), ("لام الإضافة", [.kasra]),
+  ("ب", [.kasra]), ("ل", [.kasra]),
   ("منذ", [.damma]), ("هل", [.sukun]), ("بل", [.sukun]), ("قد", [.sukun])]
 
 def mabniOf (lafz : String) : Jawab :=
@@ -99,18 +105,18 @@ def mabniOf (lafz : String) : Jawab :=
 
 def jawab (k : Kalima) : Jawab :=
   match k.sinf with
-  | .ismMutamakkin => ism .damma .fatha .kasra k.mawdi
-  | .ismLaYansarif => ism .damma .fatha .fatha k.mawdi
-  | .ismLaYansarifMuarraf => ism .damma .fatha .kasra k.mawdi
-  | .muthanna => ism .alif .ya .ya k.mawdi
-  | .jamMudhakkar => ism .waw .ya .ya k.mawdi
-  | .jamMuannath => ism .damma .kasra .kasra k.mawdi
+  | .ismMutamakkin => ism (some .damma) (some .fatha) .kasra k.mawdi
+  | .ismLaYansarif => ism none none .fatha k.mawdi
+  | .ismLaYansarifMuarraf => ism none none .kasra k.mawdi
+  | .muthanna => ism (some .alif) (some .ya) .ya k.mawdi
+  | .jamMudhakkar => ism (some .waw) (some .ya) .ya k.mawdi
+  | .jamMuannath => ism none (some .kasra) .kasra k.mawdi
   | .mudari => fil (murab .damma) (murab .fatha) (murab .sukun) k.mawdi
   | .mudariSakin => fil (murab .sukun) .laHukm (murab .hadhfAkhir) k.mawdi
   | .mudariIthnayn | .mudariJam | .mudariMukhataba => fil (murab .thubutNun) (murab .hadhfNun) (murab .hadhfNun) k.mawdi
   | .mudariNiswa => fil (.alamat [.sukun] true) (.alamat [.sukun] true) (.alamat [.sukun] true) k.mawdi
-  | .madi => .alamat [.fatha] true
-  | .amr => .alamat [.sukun] true
+  | .madi => if k.mawdi = .jarr then .laYakun else .alamat [.fatha, .sukun] true
+  | .amr => if k.mawdi = .bilaAmil then .alamat [.sukun] true else .laYakun
   | .ghayrMutamakkin => mabniOf k.lafz
 
 /-- بديلان في العلامة. -/
@@ -152,25 +158,34 @@ def asanid : List (String × Nat × Nat × String) := [
   ("laYansarifJarr", 209, 209, "فيكون في موضع الجر مفتوحا"),
   ("injarra", 226, 227, "وجميع ما لا ينصرف إذا أدخلت عليه الألف واللام أو أضيف انجر"),
   ("hadhfAkhir", 230, 231, "وأعلم أن الآخر إذا كان يسكن في الرفع حذف في الجزم"),
-  ("lamYarmi", 232, 233, "وذلك قولك لم يرم ولم يغز ولم يخش وهو في الرفع ساكن الآخر")]
+  ("lamYarmi", 232, 233, "وذلك قولك لم يرم ولم يغز ولم يخش وهو في الرفع ساكن الآخر"),
+  ("laJarrFil", 184, 184, "كما أنه ليس للفعل في الجر نصيب"),
+  ("faltu", 194, 194, "كما فعلت ذلك في فعل حين قلت فعلت وفعلن"),
+  ("amrMawqi", 149, 150, "لأنها لا يوصف بها ولا تقع موقع المضارعة")]
 
 /-! ## مبرهنات (خواصُّ التعيين على مجاله؛ والضابطُ يشهد أنّه غيرُ فارغ: `Jisr/MajariKalimQiyas.lean`) -/
 
-/-- **لا جزمَ في الأسماء** (بالاستنفاد): لكلّ صنفٍ من الأسماء الستّة المعربة، الجزمُ `laYakun`. -/
+/-- **لا جزمَ في الأسماء** (تعريفيّة، `rfl`): لكلّ صنفٍ من الأسماء الستّة المعربة، الجزمُ `laYakun`. -/
 theorem la_jazm_fi_asma (l : String) :
     [Sinf.ismMutamakkin, .ismLaYansarif, .ismLaYansarifMuarraf, .muthanna, .jamMudhakkar, .jamMuannath].all
       (fun s => jawab ⟨s, l, .jazm⟩ == .laYakun) = true := by
   rfl
 
-/-- **ولا جرَّ في المضارع** (بالاستنفاد): لكلّ صنفٍ من المضارع، الجرُّ `laYakun`. -/
+/-- **ولا جرَّ في المضارع** (تعريفيّة، `rfl`): لكلّ صنفٍ من المضارع، الجرُّ `laYakun`. -/
 theorem la_jarr_fi_mudari (l : String) :
     [Sinf.mudari, .mudariSakin, .mudariIthnayn, .mudariJam, .mudariMukhataba, .mudariNiswa].all
       (fun s => jawab ⟨s, l, .jarr⟩ == .laYakun) = true := by
   rfl
 
-/-- **ما يُبنى لا يغيّره الموضع** (تعريفيّة): الماضي والأمر علامتُهما واحدةٌ في كلّ موضع. -/
-theorem mabni_la_yataghayyar (l l' : String) (m m' : Mawdi) :
-    jawab ⟨.madi, l, m⟩ = jawab ⟨.madi, l', m'⟩ ∧ jawab ⟨.amr, l, m⟩ = jawab ⟨.amr, l', m'⟩ := by
+/-- **ما يُبنى لا يغيّره الموضع** (تعريفيّة): الماضي في غير الجرّ، والأمرُ بلا عامل، علامتُهما لا يغيّرها اللفظ ولا الموضع. -/
+theorem mabni_la_yataghayyar (l l' : String) (m m' : Mawdi) (hm : m ≠ .jarr) (hm' : m' ≠ .jarr) :
+    jawab ⟨.madi, l, m⟩ = jawab ⟨.madi, l', m'⟩ ∧ jawab ⟨.amr, l, .bilaAmil⟩ = jawab ⟨.amr, l', .bilaAmil⟩ := by
+  simp [jawab, hm, hm']
+
+/-- **«ليس للفعل في الجر نصيب»** (تعريفيّة؛ أُضيف بعد قراءة الحالات): والأمرُ لا يقع موقعَ المضارعة. -/
+theorem la_jarr_fi_fil (l : String) :
+    jawab ⟨.madi, l, .jarr⟩ = .laYakun ∧
+    [Mawdi.raf, .nasb, .jarr, .jazm].all (fun m => jawab ⟨.amr, l, m⟩ == .laYakun) = true := by
   simp [jawab]
 
 /-- **الإعرابُ بالحرف** (على الشاهد): المثنّى والجمعُ على حدّه وما لحقته علامةُ الفاعلين. -/
@@ -183,7 +198,8 @@ theorem irab_bil_harf :
 
 /-- **ما لا ينصرف** (على الشاهد): جرُّه فتحة، ومعرَّفًا كسرة. -/
 theorem la_yansarif :
-    jawab ⟨.ismLaYansarif, "", .jarr⟩ = murab .fatha ∧ jawab ⟨.ismLaYansarifMuarraf, "", .jarr⟩ = murab .kasra := by
+    jawab ⟨.ismLaYansarif, "", .jarr⟩ = murab .fatha ∧ jawab ⟨.ismLaYansarifMuarraf, "", .jarr⟩ = murab .kasra ∧
+    jawab ⟨.ismLaYansarif, "", .raf⟩ = .laHukm := by
   decide
 
 /-- **«حيث» علامتان** (على الشاهد)، وغيرُ أمثلة الباب «لا حكم». -/

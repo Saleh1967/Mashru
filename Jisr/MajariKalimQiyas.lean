@@ -16,7 +16,9 @@
 الحالاتُ مؤلَّفة لا عيّنةٌ من استعمال.
 
 **التشغيلات.** المبرهناتُ هنا على الشفرة الحاليّة دائمًا. وسجلُّ كلّ تشغيلٍ ملفٌّ في `tahaqquq/dawabit/majari/` (`natija_1.json` …)،
-ويفحصه `tahaqquq/test_majari.py`.
+ويفحصه `tahaqquq/test_majari.py`:
+- `natija_1.json`: التشغيلُ الأوّل على الشفرة المجمَّدة في `7ce1cfb`: 33 صوابًا من 39. وأسماءُ مبرهناته أسماؤها في `9629153`.
+- `natija_2.json`: بعد تعديل `Jisr/MajariKalim.lean` بما وُسم فيه «وكان في الشفرة المجمَّدة»، على مادّةٍ مكشوفة: 39 من 39.
 -/
 import Jisr.MajariKalim
 import Jisr.MajariKalimDawabit
@@ -87,33 +89,35 @@ theorem qarin_jadwal :
 
 /-! ## النتيجةُ على الشفرة الحاليّة (على الشاهد) -/
 
+/-- أعدادُ المجال بترتيبٍ ثابت (يحسبها `tahaqquq/test_majari.py` من `cases.json` بالترتيب نفسه): الحالات؛ ثمّ متوقَّعُها: علامةٌ واحدة،
+    وعلامتان فأكثر، و«لا يكون»، و«لا حكم»؛ ثمّ البناءُ والإعراب. -/
+def majalAadad : List Nat :=
+  [halat.length,
+   (halat.filter (fun h => match h.mutawaqqa with | .alamat l _ => l.length == 1 | _ => false)).length,
+   (halat.filter (fun h => match h.mutawaqqa with | .alamat l _ => decide (2 ≤ l.length) | _ => false)).length,
+   (halat.filter (·.mutawaqqa = .laYakun)).length,
+   (halat.filter (·.mutawaqqa = .laHukm)).length,
+   (halat.filter (fun h => match h.mutawaqqa with | .alamat _ b => b | _ => false)).length,
+   (halat.filter (fun h => match h.mutawaqqa with | .alamat _ b => !b | _ => false)).length]
+
 /-- **المجالُ غيرُ فارغ ولا مائل:** 39 حالةً؛ متوقَّعُها علامةٌ واحدة 26، وعلامتان 3، و«لا يكون» 5، و«لا حكم» 5؛ والبناءُ في 11 والإعرابُ
     في 18. -/
-theorem majal :
-    halat.length = 39 ∧
-    [(halat.filter (fun h => match h.mutawaqqa with | .alamat l _ => l.length == 1 | _ => false)).length,
-     (halat.filter (fun h => match h.mutawaqqa with | .alamat l _ => decide (2 ≤ l.length) | _ => false)).length,
-     (halat.filter (·.mutawaqqa = .laYakun)).length,
-     (halat.filter (·.mutawaqqa = .laHukm)).length] = [26, 3, 5, 5] ∧
-    [(halat.filter (fun h => match h.mutawaqqa with | .alamat _ b => b | _ => false)).length,
-     (halat.filter (fun h => match h.mutawaqqa with | .alamat _ b => !b | _ => false)).length] = [11, 18] := by
+theorem majal : majalAadad = [39, 26, 3, 5, 5, 11, 18] := by
   decide +kernel
 
-/-- **النتيجة:** 33 صوابًا من 39: نقصُ تغطيةٍ واحد، وتجاوزٌ واحد، وقبولان خاطئان، واختياران بلا مرجّح. -/
-theorem natija : ihsa natayij = ⟨33, 1, 1, 2, 0, 0, 2, 0⟩ := by
+/-- **النتيجة:** 39 صوابًا من 39 (التشغيلُ الثاني، على مادّةٍ مكشوفة؛ والأوّلُ 33/39 في `natija_1.json`). -/
+theorem natija : ihsa natayij = ⟨39, 0, 0, 0, 0, 0, 0, 0⟩ := by
   decide +kernel
 
-/-- **بالفئات:** موجب 19 ونقصٌ واحد، حدّ 3 وقبولان خاطئان، خارج 4 وتجاوزٌ واحد، عموم 6، غموض 1 واختياران. -/
+/-- **بالفئات:** موجب 20، حدّ 5، خارج 5، عموم 6، غموض 3 — كلُّها صواب. -/
 theorem natija_fia :
     [Fia.mujib, .hadd, .kharij, .umum, .ghumud].map ihsaFia =
-      [⟨19, 1, 0, 0, 0, 0, 0, 0⟩, ⟨3, 0, 0, 2, 0, 0, 0, 0⟩, ⟨4, 0, 1, 0, 0, 0, 0, 0⟩, ⟨6, 0, 0, 0, 0, 0, 0, 0⟩,
-       ⟨1, 0, 0, 0, 0, 0, 2, 0⟩] := by
+      [⟨20, 0, 0, 0, 0, 0, 0, 0⟩, ⟨5, 0, 0, 0, 0, 0, 0, 0⟩, ⟨5, 0, 0, 0, 0, 0, 0, 0⟩, ⟨6, 0, 0, 0, 0, 0, 0, 0⟩,
+       ⟨3, 0, 0, 0, 0, 0, 0, 0⟩] := by
   decide +kernel
 
-/-- **والإخفاقاتُ بأسمائها.** -/
-theorem akhta_1 :
-    akhta = [("M18", .naqsTaghtiya), ("M24", .qabulKhati), ("M25", .qabulKhati), ("M26", .tajawuz),
-             ("M38", .ikhtiyar), ("M39", .ikhtiyar)] := by
+/-- **ولا إخفاق.** وفي التشغيل الأوّل ستّةٌ بأسمائها في `natija_1.json`. -/
+theorem akhta_sifr : akhta = [] := by
   decide +kernel
 
 end Qiyas
