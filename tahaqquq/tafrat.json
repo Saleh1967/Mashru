@@ -3506,8 +3506,8 @@
  {
   "ism": "P771_jaza2_waw_hal",
   "milaf": "Jisr/BaqiJaza.lean",
-  "min": "  | .waw, .marfu => if d.mana = .hal then mutlaq [.maqbul, .khata] else mutlaq [.khata]",
-  "ila": "  | .waw, .marfu => if d.mana = .hal then maqbul else mutlaq [.khata]"
+  "min": "  | .waw, .marfu => if d.mana = .hal || d.mana = .ghayrMuallan then mutlaq [.maqbul, .khata] else mutlaq [.khata]",
+  "ila": "  | .waw, .marfu => if d.mana = .hal || d.mana = .ghayrMuallan then maqbul else mutlaq [.khata]"
  },
  {
   "ism": "P595_jaza2_basmat_halat",
