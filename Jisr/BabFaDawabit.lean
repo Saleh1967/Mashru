@@ -3,7 +3,7 @@
 
 مولَّدٌ من `tahaqquq/dawabit/fa/cases.json` بـ `python3 -I scripts/bina_dawabit_fa.py`؛ لا يُحرَّر يدويًّا.
 بصمةُ الحالات: `7eda15eb08e723e7e02caf1f05e9639debce0a781ed00d2c742c898495d8a4c8`.
-كتبها مؤلّفٌ مستقلّ من الباب وحده قبل الشفرة (`tahaqquq/dawabit/fa/tajmid.json`). والمثالُ والسندُ في الملفّ المصدر.
+كتبها مؤلّفٌ مستقلٌّ إجرائيًّا من المواصفة والباب قبل الشفرة، وفي سياقه ما حُقن آليًّا (`tahaqquq/dawabit/fa/taalif.md`)؛ وجُمّدت ببصمتها في `tahaqquq/dawabit/fa/tajmid.json`. والمثالُ والسندُ في الملفّ المصدر.
 -/
 import Jisr.BabFa
 

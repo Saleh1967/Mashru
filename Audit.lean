@@ -84,6 +84,7 @@ import Aql.Waqi
 import Aql.WaqiShawahid
 import Nizam.Qiyas
 import Jisr.BabFa
+import Jisr.BabFaQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1828,3 +1829,11 @@ import Jisr.BabFa
 #print axioms Jisr.BabFa.maqbul_kalam_maqbul_shir
 #print axioms Jisr.BabFa.ijab_yufarriq
 #print axioms Jisr.BabFa.ghamid_shawahid
+-- ضابطُ باب الفاء المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/BabFaQiyas.lean؛ hawkama/منهج_الضوابط.md)، وشاهدُ ما غُيّر بعد قراءة الحالات
+#print axioms Jisr.BabFa.baad_qiraa
+#print axioms Jisr.BabFa.Qiyas.qarin_jadwal
+#print axioms Jisr.BabFa.Qiyas.qarin_badil
+#print axioms Jisr.BabFa.Qiyas.majal
+#print axioms Jisr.BabFa.Qiyas.natija
+#print axioms Jisr.BabFa.Qiyas.natija_fia
+#print axioms Jisr.BabFa.Qiyas.akhta_2

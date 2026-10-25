@@ -3422,8 +3422,8 @@
  {
   "ism": "P521_amr_jazm_la_hukm",
   "milaf": "Jisr/BabFa.lean",
-  "min": "  | .amr => .khata",
-  "ila": "  | .amr => .laHukm"
+  "min": "  | .amr | .tamanni | .wajib => .khata",
+  "ila": "  | .tamanni | .wajib => .khata"
  },
  {
   "ism": "P522_nafyLa_shirka_wahid",
@@ -3434,8 +3434,8 @@
  {
   "ism": "P523_zann_bila_badil",
   "milaf": "Jisr/BabFa.lean",
-  "min": "  | .ghayrMuallan, .nasb => if j.sadr = .zann then [.maqbul, .khata] else kalamMuallan j.sadr .sabab .nasb",
-  "ila": "  | .ghayrMuallan, .nasb => kalamMuallan j.sadr .sabab .nasb"
+  "min": "  | .sabab, .nasb => if s = .zann then [.maqbul, .khata] else [nasbSabab s]",
+  "ila": "  | .sabab, .nasb => [nasbSabab s]"
  },
  {
   "ism": "P524_wajib_shir_la_hukm",
@@ -3448,5 +3448,89 @@
   "milaf": "Jisr/BabFa.lean",
   "min": "  | .wajib => true",
   "ila": "  | .wajib => false"
+ },
+ {
+  "ism": "P526_nahy_la_qat",
+  "milaf": "Jisr/BabFa.lean",
+  "min": "  | .nafyMaMudari | .nafyMaMadi | .nafyLam | .nafyIsmi | .amr | .istifham | .wajib | .nahy => .maqbul",
+  "ila": "  | .nafyMaMudari | .nafyMaMadi | .nafyLam | .nafyIsmi | .amr | .istifham | .wajib => .maqbul"
+ },
+ {
+  "ism": "P527_tanbih_la_raf",
+  "milaf": "Jisr/BabFa.lean",
+  "min": "  | .sabab, .raf => if s = .istifham then [.maqbul] else [.laHukm]",
+  "ila": "  | .sabab, .raf => [.laHukm]"
+ },
+ {
+  "ism": "P528_fa_basmat_halat",
+  "milaf": "tahaqquq/dawabit/fa/tajmid.json",
+  "min": "\"cases_sha256\": \"7eda15eb08e723e7e02caf1f05e9639debce0a781ed00d2c742c898495d8a4c8\"",
+  "ila": "\"cases_sha256\": \"8eda15eb08e723e7e02caf1f05e9639debce0a781ed00d2c742c898495d8a4c8\""
+ },
+ {
+  "ism": "P529_fa_muwallad",
+  "milaf": "Jisr/BabFaDawabit.lean",
+  "min": "⟨\"F01\", .mujib,",
+  "ila": "⟨\"F01x\", .mujib,"
+ },
+ {
+  "ism": "P530_fa_basmat_shifra",
+  "milaf": "tahaqquq/dawabit/fa/natija_2.json",
+  "min": "\"sha256\": \"277cd5320bdae72eea05cf06a52bd519878006741d808af106694ed25fe22d3f\"",
+  "ila": "\"sha256\": \"777cd5320bdae72eea05cf06a52bd519878006741d808af106694ed25fe22d3f\""
+ },
+ {
+  "ism": "P531_fa_sawab",
+  "milaf": "tahaqquq/dawabit/fa/natija_2.json",
+  "min": "  \"sawab\": 46,",
+  "ila": "  \"sawab\": 47,"
+ },
+ {
+  "ism": "P532_fa_qablaha",
+  "milaf": "tahaqquq/dawabit/fa/natija_2.json",
+  "min": "\"natija_1.json\": \"328fdc60287567edd63b6a7357aad0230683e2d98a82004d057c7a77affb7798\"",
+  "ila": "\"natija_1.json\": \"428fdc60287567edd63b6a7357aad0230683e2d98a82004d057c7a77affb7798\""
+ },
+ {
+  "ism": "P533_fa_natija_1",
+  "milaf": "tahaqquq/dawabit/fa/natija_1.json",
+  "min": "  \"sawab\": 38,",
+  "ila": "  \"sawab\": 39,"
+ },
+ {
+  "ism": "P534_fa_marsa",
+  "milaf": "tahaqquq/test_fa.py",
+  "min": "NATIJA_1 = \"328fdc60287567edd63b6a7357aad0230683e2d98a82004d057c7a77affb7798\"",
+  "ila": "NATIJA_1 = \"328fdc60287567edd63b6a7357aad0230683e2d98a82004d057c7a77affb7799\""
+ },
+ {
+  "ism": "P535_fa_lean",
+  "milaf": "tahaqquq/dawabit/fa/natija_2.json",
+  "min": "\"Jisr.BabFa.Qiyas.natija_fia\",",
+  "ila": "\"Jisr.BabFa.Qiyas.majal\","
+ },
+ {
+  "ism": "P536_fa_akhta",
+  "milaf": "tahaqquq/dawabit/fa/natija_2.json",
+  "min": "  [\n   \"F30\",",
+  "ila": "  [\n   \"F29\","
+ },
+ {
+  "ism": "P537_fa_majal_json",
+  "milaf": "tahaqquq/test_fa.py",
+  "min": "    mj += [sum(1 for x in shir if isinstance(x, list)), shir.count(\"غير_مسؤول\")]",
+  "ila": "    mj += [sum(1 for x in shir if isinstance(x, list)), shir.count(\"غير_مسؤول\") + 1]"
+ },
+ {
+  "ism": "P538_fa_halat",
+  "milaf": "tahaqquq/dawabit/fa/natija_2.json",
+  "min": "\"halat\": 39,",
+  "ila": "\"halat\": 40,"
+ },
+ {
+  "ism": "P539_fa_tawaqquf",
+  "milaf": "Jisr/BabFaQiyas.lean",
+  "min": "    | [x], _ => if b.contains x then .tawaqquf else .khata",
+  "ila": "    | [x], _ => if b.contains x then .sawab else .khata"
  }
 ]

@@ -17,7 +17,9 @@
 الحالاتُ مؤلَّفة لا عيّنةٌ من استعمال.
 
 **التشغيلات.** المبرهناتُ هنا على الشفرة الحاليّة دائمًا. وسجلُّ كلّ تشغيلٍ ملفٌّ في `tahaqquq/dawabit/fa/` (`natija_1.json` …)، ويفحصه
-`tahaqquq/test_fa.py`.
+`tahaqquq/test_fa.py`:
+- `natija_1.json`: التشغيلُ الأوّل على الشفرة المجمَّدة في `355c449`: 38 صوابًا من 48. وأسماءُ مبرهناته أسماؤها في `2c4fb89`.
+- `natija_2.json`: بعد تعديل `Jisr/BabFa.lean` بما وُسم فيه «ما غُيّر بعد قراءة الحالات»، على مادّةٍ مكشوفة: 46 من 48.
 -/
 import Jisr.BabFa
 import Jisr.BabFaDawabit
@@ -124,23 +126,19 @@ def majalAadad : List Nat :=
 theorem majal : majalAadad = [39, 48, 20, 2, 0, 6, 6, 5, 9, 0, 0, 0, 0, 0, 30] := by
   decide +kernel
 
-/-- **النتيجة:** 38 صوابًا من 48: أربعةُ نقوص تغطية، وتجاوزان، وأربعةُ اختياراتٍ بلا مرجّح. -/
-theorem natija : ihsa natayij = ⟨38, 4, 2, 0, 0, 0, 4, 0, 0⟩ := by
+/-- **النتيجة:** 46 صوابًا من 48: تجاوزٌ واحد واختيارٌ واحد (التشغيلُ الثاني، على مادّةٍ مكشوفة؛ والأوّلُ 38/48 في `natija_1.json`). -/
+theorem natija : ihsa natayij = ⟨46, 0, 1, 0, 0, 0, 1, 0, 0⟩ := by
   decide +kernel
 
-/-- **بالفئات.** -/
+/-- **بالفئات:** موجب 24، حدّ 7، خارج 4 وتجاوزٌ واحد، عموم 6، غموض 5 واختيارٌ واحد. -/
 theorem natija_fia :
     [Fia.mujib, .hadd, .kharij, .umum, .ghumud].map ihsaFia =
-      [⟨21, 2, 1, 0, 0, 0, 0, 0, 0⟩, ⟨6, 1, 0, 0, 0, 0, 0, 0, 0⟩, ⟨4, 0, 1, 0, 0, 0, 0, 0, 0⟩, ⟨5, 1, 0, 0, 0, 0, 0, 0, 0⟩,
-       ⟨2, 0, 0, 0, 0, 0, 4, 0, 0⟩] := by
+      [⟨24, 0, 0, 0, 0, 0, 0, 0, 0⟩, ⟨7, 0, 0, 0, 0, 0, 0, 0, 0⟩, ⟨4, 0, 1, 0, 0, 0, 0, 0, 0⟩, ⟨6, 0, 0, 0, 0, 0, 0, 0, 0⟩,
+       ⟨5, 0, 0, 0, 0, 0, 1, 0, 0⟩] := by
   decide +kernel
 
-/-- **والإخفاقاتُ بأسمائها.** -/
-theorem akhta_1 :
-    akhta = [("F12", .kalam, .naqsTaghtiya), ("F15", .kalam, .naqsTaghtiya), ("F16", .kalam, .tajawuz),
-             ("F24", .kalam, .naqsTaghtiya), ("F26", .kalam, .ikhtiyar), ("F28", .kalam, .ikhtiyar),
-             ("F29", .kalam, .ikhtiyar), ("F30", .kalam, .ikhtiyar), ("F32", .kalam, .naqsTaghtiya),
-             ("F38", .kalam, .tajawuz)] := by
+/-- **والإخفاقان بأسمائهما:** قراءتان للمؤلّف لم تأخذهما الشفرة (`mulhaq_1.md`). -/
+theorem akhta_2 : akhta = [("F30", .kalam, .ikhtiyar), ("F38", .kalam, .tajawuz)] := by
   decide +kernel
 
 end Qiyas
