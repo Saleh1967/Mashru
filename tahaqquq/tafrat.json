@@ -4876,5 +4876,11 @@
   "milaf": "Madlul/JadwalLuzumNaql.lean",
   "min": "⟨some (qailOf r.mujam), Naql.binaDaraja",
   "ila": "⟨some (qailOf r.mujam ++ r.w), Naql.binaDaraja"
+ },
+ {
+  "ism": "P838_mubarhana_bila_tadqiq",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "theorem la_mutawatir (T : List Saff) (a b : String) : darajaSila T a b ≠ some .mutawatir := by",
+  "ila": "theorem zz_bila_tadqiq : True := trivial\n\ntheorem la_mutawatir (T : List Saff) (a b : String) : darajaSila T a b ≠ some .mutawatir := by"
  }
 ]

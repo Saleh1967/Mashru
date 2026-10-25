@@ -85,7 +85,8 @@
 5. الجواب للمالك ثلاثة أقسام: ما فحصته الآلة / ما استنتجته / ما بقي باسمه.
 
 ## البناء
-- Lean 4.34.1 (`lean-toolchain`). `lake build`، ثم `lake env lean Audit.lean`. مجلّد `SLGE/` ملفّات المالك (السبعة من
+- Lean 4.34.1 (`lean-toolchain`). `lake build`، ثم `lake env lean Audit.lean`. وكلُّ مبرهنةٍ عامّةٍ في وحدات المشروع (SLGE وDal وMadlul وJisr
+  وAql وNizam وFaahis وQari) لها سطرٌ في Audit.lean، يفحصه `tahaqquq/test_tadqiq_tamm.py` من ملفّات `.ilean` (البوّابة ٥خ، 2026-10-26). مجلّد `SLGE/` ملفّات المالك (السبعة من
   slge-closed، وسبعة عشر من slge-closed-v13: المدلول والأقسام والضرورة والجسر والتركيب والعوامل والمقام والسمات والإطار
   الموحَّد والجملة الكلّيّة — انظر `SLGE/README.md`) بنصّها؛ لا تُعدَّل هنا، والجسر إليها في `Dal/Qanun.lean`، والبناء عليها في
   `Jisr/Awamil.lean` و`Jisr/Tarkib.lean` و`Jisr/Nisab.lean`.
