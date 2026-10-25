@@ -3565,27 +3565,27 @@
  },
  {
   "ism": "P725_nafy_fahs_hadd_natija",
-  "milaf": "tahaqquq/test_nafy.py",
-  "min": "    m = re.search(r\"theorem natija : ihsa natayij = ⟨([\\d, ]+)⟩\", qiyas)",
-  "ila": "    m = re.search(r\"theorem natija : ihsa natayijX = ⟨([\\d, ]+)⟩\", qiyas)"
+  "milaf": "Jisr/NafyFilQiyas.lean",
+  "min": "theorem natija : ihsa natayij = ⟨33, 0, 0, 0, 0, 0, 0, 0⟩ := by",
+  "ila": "theorem natija : ihsa natayij = ihsa natayij := by"
  },
  {
   "ism": "P726_nafy_fahs_hadd_akhta",
-  "milaf": "tahaqquq/test_nafy.py",
-  "min": "    m = re.search(r\"theorem (akhta\\w*) :\\s*akhta = \\[(.*?)\\] := by\", qiyas, re.S)",
-  "ila": "    m = re.search(r\"theorem (akhtaX\\w*) :\\s*akhta = \\[(.*?)\\] := by\", qiyas, re.S)"
+  "milaf": "Jisr/NafyFilQiyas.lean",
+  "min": "theorem akhta_sifr : akhta = [] := by",
+  "ila": "theorem akhta_sifr : akhta = akhta := by"
  },
  {
   "ism": "P727_nafy_fahs_akhta_fi_lean",
-  "milaf": "tahaqquq/test_nafy.py",
-  "min": "tahaqqaq(NS + m.group(1) in akhir[\"lean\"]",
-  "ila": "tahaqqaq(NS + m.group(1) + \"_\" in akhir[\"lean\"]"
+  "milaf": "Jisr/NafyFilQiyas.lean",
+  "min": "theorem akhta_sifr :",
+  "ila": "theorem akhta_sifrx :"
  },
  {
   "ism": "P728_nafy_fahs_lean_mubarhana",
-  "milaf": "tahaqquq/test_nafy.py",
-  "min": "re.search(r\"^theorem %s\\b\" % re.escape(qasir)",
-  "ila": "re.search(r\"^theorem %s_\\b\" % re.escape(qasir)"
+  "milaf": "Jisr/NafyFilQiyas.lean",
+  "min": "theorem natija_fia :",
+  "ila": "private theorem natija_fia :"
  },
  {
   "ism": "P729_nafy_fahs_huqul_masula",
@@ -3595,9 +3595,9 @@
  },
  {
   "ism": "P730_nafy_fahs_hadd_majal",
-  "milaf": "tahaqquq/test_nafy.py",
-  "min": "m = re.search(r\"theorem majal : majalAadad = \\[([\\d, ]+)\\]\", qiyas)",
-  "ila": "m = re.search(r\"theorem majal : majalAadadX = \\[([\\d, ]+)\\]\", qiyas)"
+  "milaf": "Jisr/NafyFilQiyas.lean",
+  "min": "theorem majal : majalAadad = [16, 14, 33, 2, 11, 3, 3, 1, 0, 7, 3, 0, 3, 0, 0, 0, 0, 11] := by",
+  "ila": "theorem majal : majalAadad = majalAadad := by"
  },
  {
   "ism": "P763_jaza_fahs_masdar",
@@ -3613,27 +3613,27 @@
  },
  {
   "ism": "P765_jaza_fahs_hadd_natija",
-  "milaf": "tahaqquq/test_jaza.py",
-  "min": "    m = re.search(r\"theorem natija : ihsa natayij = ⟨(\\d+), (\\d+), (\\d+), (\\d+), (\\d+), (\\d+)⟩\", qiyas)",
-  "ila": "    m = re.search(r\"theorem natija : ihsa natayijX = ⟨(\\d+), (\\d+), (\\d+), (\\d+), (\\d+), (\\d+)⟩\", qiyas)"
+  "milaf": "Jisr/BabJazaQiyas.lean",
+  "min": "theorem natija : ihsa natayij = ⟨55, 0, 0, 0, 0, 0⟩ := by",
+  "ila": "theorem natija : ihsa natayij = ihsa natayij := by"
  },
  {
   "ism": "P766_jaza_fahs_hadd_natija_fia",
-  "milaf": "tahaqquq/test_jaza.py",
-  "min": "    m = re.search(r\"theorem natija_fia :.*?=\\s*\\[⟨(\\d+), 0, 0, 0, 0, 0⟩, ⟨(\\d+), 0, 0, 0, 0, 0⟩, ⟨(\\d+), 0, 0, 0, 0, 0⟩, ⟨(\\d+), 0, 0, 0, 0, 0⟩\\]\",",
-  "ila": "    m = re.search(r\"theorem natija_fiaX :.*?=\\s*\\[⟨(\\d+), 0, 0, 0, 0, 0⟩, ⟨(\\d+), 0, 0, 0, 0, 0⟩, ⟨(\\d+), 0, 0, 0, 0, 0⟩, ⟨(\\d+), 0, 0, 0, 0, 0⟩\\]\","
+  "milaf": "Jisr/BabJazaQiyas.lean",
+  "min": "theorem natija_fia :\n    [Fia.mujib, .hadd, .kharij, .umum].map ihsaFia =\n      [⟨17, 0, 0, 0, 0, 0⟩, ⟨18, 0, 0, 0, 0, 0⟩, ⟨12, 0, 0, 0, 0, 0⟩, ⟨8, 0, 0, 0, 0, 0⟩] := by",
+  "ila": "theorem natija_fia :\n    [Fia.mujib, .hadd, .kharij, .umum].map ihsaFia = [Fia.mujib, .hadd, .kharij, .umum].map ihsaFia := by"
  },
  {
   "ism": "P767_jaza_fahs_akhta_sifr",
-  "milaf": "tahaqquq/test_jaza.py",
-  "min": "\"theorem akhta_sifr : akhta = []\" in qiyas",
-  "ila": "\"theorem akhta_sifr : akhta = [X]\" in qiyas"
+  "milaf": "Jisr/BabJazaQiyas.lean",
+  "min": "theorem akhta_sifr : akhta = [] := by",
+  "ila": "theorem akhta_sifr : akhta = akhta := by"
  },
  {
   "ism": "P768_jaza_fahs_lean_mubarhana",
-  "milaf": "tahaqquq/test_jaza.py",
-  "min": "re.search(r\"^theorem %s\\b\" % re.escape(qasir)",
-  "ila": "re.search(r\"^theorem %s_\\b\" % re.escape(qasir)"
+  "milaf": "Jisr/BabJazaQiyas.lean",
+  "min": "theorem natija_fia :",
+  "ila": "private theorem natija_fia :"
  },
  {
   "ism": "P769_jaza_fahs_huqul_masula",
@@ -3643,8 +3643,8 @@
  },
  {
   "ism": "P770_jaza_fahs_hadd_majal",
-  "milaf": "tahaqquq/test_jaza.py",
-  "min": "m = re.search(r\"theorem majal :\\s*halat\\.length = (\\d+) ∧ natayij\\.length = (\\d+) ∧.*?= \\[(\\d+), (\\d+), (\\d+), (\\d+)\\] ∧.*?= \\[(\\d+), (\\d+), (\\d+), (\\d+), (\\d+)\\]\",",
-  "ila": "m = re.search(r\"theorem majalX :\\s*halat\\.length = (\\d+) ∧ natayij\\.length = (\\d+) ∧.*?= \\[(\\d+), (\\d+), (\\d+), (\\d+)\\] ∧.*?= \\[(\\d+), (\\d+), (\\d+), (\\d+), (\\d+)\\]\","
+  "milaf": "Jisr/BabJazaQiyas.lean",
+  "min": "theorem majal :\n    halat.length = 39 ∧ natayij.length = 55 ∧\n    [Daraja.maqbul, .qabih, .khata, .laHukm].map (fun d => (halat.filter (·.kalam == d)).length) = [16, 8, 9, 6] ∧\n    [some Daraja.maqbul, some .qabih, some .khata, some .laHukm, none].map\n      (fun d => (halat.filter (·.shir == d)).length) = [10, 0, 0, 6, 23] := by",
+  "ila": "theorem majal : halat.length = halat.length := by"
  }
 ]
