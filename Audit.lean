@@ -1826,7 +1826,6 @@ import Jisr.BaqiJazaQiyas
 #print axioms Jisr.BaqiJaza.hukmSila_salim
 #print axioms Jisr.BaqiJaza.hukmRafMudari_salim
 #print axioms Jisr.BaqiJaza.hukmAsl_salim
-#print axioms Jisr.BaqiJaza.salim_khata
 #print axioms Jisr.BaqiJaza.hukmJaza_salim
 #print axioms Jisr.BaqiJaza.maqbul_kalam_maqbul_shir
 #print axioms Jisr.BaqiJaza.tamm

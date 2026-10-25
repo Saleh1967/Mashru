@@ -23,10 +23,11 @@
   و«كل» و«أن» و«أما» لا يُجازى بها جزمًا، ولكلٍّ حكمُه. وصدورُ الطلب السبعة صنفٌ رابع.
 - **ما قبل الأداة.** أربعةٌ تذهب بالجزاء: الناسخُ غيرُ المشغول (س9324–9328)، وحرفُ الابتداء (س9356–9358)، و«إذا» بلا إضمار (س9370–9371)،
   والقسمُ في أوّل الكلام (س9446–9448). وما سواها لا يغيّر الكلامَ عن حاله: الهمزةُ «بمنزلة الواو والفاء ولا» (س9430–9431)، و«لا» لغو
-  (س9372)، و«لكن» يُضمر بعدها (س9385) ولا يُضمر: «وإن لم تضمر تركت الجزاء كما فعلت ذلك في إذا» (س9386–9387)، والحقلُ لا يحمل الإضمار، فالجزمُ
-  بعدها في الشرط والجواب بديلان: حكمُه بالإضمار، وخطأُ «إذا» (`hukmLakin`، `lakin_badilan`؛ بعد المراجعة الثانية، وكان الحكمُ الآخرُ متروكًا)،
-  والمفصولُ والمشغولُ (س9367، س9328–9329)، و«إذا» والمضمرُ بعدها (س9368–9369)، والقسمُ بعد مبتدأ
-  لغو (س9452)، وحرفُ الجرّ والمضافُ (س9400، س9418).
+  (س9372)، والمفصولُ والمشغولُ (س9367، س9328–9329)، و«إذا» والمضمرُ بعدها (س9368–9369)، والقسمُ بعد مبتدأ لغو (س9452)، وحرفُ الجرّ
+  والمضافُ (س9400، س9418).
+- **«لكن»** يُضمر بعدها (س9385) ولا يُضمر: «وإن لم تضمر تركت الجزاء كما فعلت ذلك في إذا» (س9386–9387)، والحقلُ لا يحمل الإضمار. فالجزمُ بعدها
+  في الشرط والجواب بلا رابطٍ بديلان: حكمُه بالإضمار، وخطأُ «إذا» في الكلام، والشعرُ مقبولٌ بقراءة «إذا» في الشعر (البندُ أدناه) — `hukmLakin`،
+  `lakin_badilan`؛ بعد المراجعة الثانية والثالثة، وكان الحكمُ الآخرُ متروكًا ثمّ متروكًا في الشعر.
 - **الماضي بعد حرف الابتداء** مقبولٌ في فعل الشرط، بعلّة «وحسنت إن كان لأنه لم يجزم بها» (س9395–9396). والمثالُ لـ«إن» بعد «أما»،
   وعمّمتُه على الأدوات وحروف الابتداء.
 - **«إن أتيتني آتيك على القلب كان حسنا»** (س9443–9444) جاءت بعد «أتذكر إذ إن تأتني آتيك»، فقرأتُها في حرف الابتداء وفي غيره. فالماضي شرطًا
@@ -364,11 +365,12 @@ def hukmQasam (d : Dakhil) : Hukm :=
   | _ => laHukm
 
 /-- بعد «لكن»: «جاز هذا وحسن» بالإضمار (س9385)، و«وإن لم تضمر تركت الجزاء كما فعلت ذلك في إذا» (س9386–9387)؛ والحقلُ لا يحمل
-    الإضمار، فالجزمُ في الشرط والجواب بلا رابطٍ قبله يُزاد عليه خطأُ «إذا» بديلًا (بعد المراجعة الثانية: كان `hukmAsl` وحده). -/
+    الإضمار، فالجزمُ في الشرط والجواب بلا رابطٍ قبله يُزاد عليه خطأُ «إذا» بديلًا في الكلام، وفي الشعر قبولُ «إذا» بلا إضمار (بعد المراجعة
+    الثانية: كان `hukmAsl` وحده؛ وبعد الثالثة: كان الشعرُ شعرَ `hukmAsl`). -/
 def hukmLakin (s : Sinf) (d : Dakhil) : Hukm :=
   let h := hukmAsl s d
   if shartAwJawab d.fil && d.rabit == .bila && jazmi d.sura && jazaAw d.mana && !h.kalam.contains .khata &&
-      !h.kalam.contains .laHukm then ⟨h.kalam ++ [.khata], h.shir⟩
+      !h.kalam.contains .laHukm then ⟨h.kalam ++ [.khata], [.maqbul]⟩
   else h
 
 /-- ما يُجازى به. -/
@@ -489,11 +491,6 @@ theorem hukmAsl_salim (s : Sinf) (d : Dakhil) : salim (hukmAsl s d) = true := by
   salim_tac
 
 /-- (لكلّ) -/
-theorem salim_khata (h : Hukm) (hs : salim h = true) : salim ⟨h.kalam ++ [.khata], h.shir⟩ = true := by
-  unfold salim at *
-  simpa [List.contains_append] using hs
-
-/-- (لكلّ) -/
 theorem hukmJaza_salim (s : Sinf) (d : Dakhil) : salim (hukmJaza s d) = true := by
   unfold hukmJaza
   split
@@ -505,7 +502,7 @@ theorem hukmJaza_salim (s : Sinf) (d : Dakhil) : salim (hukmJaza s d) = true := 
     have h := hukmAsl_salim s d
     dsimp only
     split
-    · exact salim_khata _ h
+    · unfold salim; simp
     · exact h
   · exact hukmAsl_salim _ _
 
@@ -583,21 +580,21 @@ theorem nazir :
       [[.maqbul], [.maqbul], [.maqbul], [.maqbul], [.daif], [.daif], [.qabih], [.qabih]] := by
   decide
 
-/-- **لا رفعَ بين المجزومين بحرفٍ** (تعريفيّة): «ولا يجوز في ذا الفعل الرفع» (س9487)، «لم يكن إلا جزما» (س9508)؛ في غير الحال (الواوُ حالًا
-    بديلان: `waw_hal_badilan`؛ والفاءُ وثمّ وأو حالًا «لا حكم») وغيرِ المعلن (الواوُ بلا معنًى معلن بديلان). -/
+/-- **لا رفعَ بين المجزومين بحرفٍ** (تعريفيّة): «ولا يجوز في ذا الفعل الرفع» (س9487)، «لم يكن إلا جزما» (س9508)؛ بعد العشرة الباقية ومنها
+    «لكن»، في غير الحال (الواوُ حالًا بديلان: `waw_hal_badilan`؛ والفاءُ وثمّ وأو حالًا «لا حكم»)، وفي غير الواو بلا معنًى معلن (بديلان). -/
 theorem bayn_la_raf (d : Dakhil) (hs : sinfOf d.adat = .mawsul ∨ sinfOf d.adat = .harf)
-    (hq : d.qabl ≠ .nasikh ∧ d.qabl ≠ .harfIbtida ∧ d.qabl ≠ .idhaFujaiyya ∧ d.qabl ≠ .qasam ∧ d.qabl ≠ .lakin)
+    (hq : d.qabl ≠ .nasikh ∧ d.qabl ≠ .harfIbtida ∧ d.qabl ≠ .idhaFujaiyya ∧ d.qabl ≠ .qasam)
     (hsh : d.shart ≠ .laYantabiq) (hf : d.fil = .baynMajzumayn) (hu : d.sura = .marfu) (hr : d.rabit ≠ .bila)
-    (hm : d.mana ≠ .hal) (hg : d.mana ≠ .ghayrMuallan) : (hukm d).kalam = [.khata] := by
+    (hm : d.mana ≠ .hal) (hg : d.rabit = .waw → d.mana ≠ .ghayrMuallan) : (hukm d).kalam = [.khata] := by
   obtain ⟨q, a, s, f, r, u, m⟩ := d
   simp only at hs hq hsh hf hu hr hm hg
   subst hf hu
-  obtain ⟨h1, h2, h3, h4, h5⟩ := hq
+  obtain ⟨h1, h2, h3, h4⟩ := hq
   have hh : hukm ⟨q, a, s, .baynMajzumayn, r, .marfu, m⟩ =
       hukmJaza (sinfOf a) ⟨q, a, s, .baynMajzumayn, r, .marfu, m⟩ := by
     rcases hs with h | h <;> simp [hukm, h]
   rw [hh]
-  cases q <;> cases r <;> simp_all [hukmJaza, hukmAsl, hukmBayn, mutlaq]
+  cases q <;> cases r <;> simp_all [hukmJaza, hukmAsl, hukmBayn, hukmLakin, shartAwJawab, mutlaq]
 
 /-- **«ثم» لا يُنصب بها** (تعريفيّة): «واعلم أن ثم لا ينصب بها» (س9505)، بين المجزومين وبعد الجواب. -/
 theorem thumma_la_nasb (d : Dakhil) (hs : sinfOf d.adat = .mawsul ∨ sinfOf d.adat = .harf)
@@ -658,10 +655,10 @@ theorem waw_hal_badilan :
   decide
 
 /-- **«لكن» بالإضمار وبدونه** (على الشاهد؛ بعد المراجعة الثانية): فعلُ الشرط مجزومًا بديلان («جاز هذا وحسن»، س9385؛ «تركت الجزاء كما
-    فعلت ذلك في إذا»، س9387)، والجوابُ المجزومُ بعد ماضٍ ضعيفٌ أو خطأ، والمرفوعُ صلةً لا يتغيّر. -/
+    فعلت ذلك في إذا»، س9387)، والجوابُ المجزومُ بعد ماضٍ ضعيفٌ أو خطأ وفي الشعر مقبول، والمرفوعُ صلةً لا يتغيّر. -/
 theorem lakin_badilan :
     hukm ⟨.lakin, .inn, .mudari, .shart, .bila, .majzum, .jaza⟩ = ⟨[.maqbul, .khata], [.maqbul]⟩ ∧
-    (hukm ⟨.lakin, .inn, .madi, .jawab, .bila, .majzum, .jaza⟩).kalam = [.daif, .khata] ∧
+    hukm ⟨.lakin, .inn, .madi, .jawab, .bila, .majzum, .jaza⟩ = ⟨[.daif, .khata], [.maqbul]⟩ ∧
     hukm ⟨.lakin, .man, .mudari, .shart, .bila, .marfu, .sila⟩ = maqbul := by
   decide
 

@@ -1,6 +1,6 @@
 """يَسِم حالاتِ ضابط بقيّة أبواب الجزاء ببنود «ما هو تعيينُ البنّاء» في رأس Jisr/BaqiJaza.lean، بشرط كلّ بندٍ على حقول الحالة.
 
-الشروطُ نقلٌ يدويٌّ لنصّ البنود (لا تقرأ الشفرة)، والإخفاقاتُ من حقل akhta في آخر سجلّ (natija_N.json). ويطبع جدولَ الملحق
+الشروطُ نقلٌ يدويٌّ لنصّ البنود (لا تقرأ الشفرة، ولا تزيد على نصّ البند شرطًا منها؛ وحيث يسكت البندُ عن حقلٍ لم يُشترط)، والإخفاقاتُ من حقل akhta في آخر سجلّ (natija_N.json). ويطبع جدولَ الملحق
 (tahaqquq/dawabit/jaza2/mulhaq_1.md §٣): لكلّ بندٍ الحالاتُ التي تمسّه، وما أخفق منها بنوعه.
 وحدُّه: الوسمُ بالحقول وحدها؛ والبندُ الذي لا حقلَ له لا يُوسم («الترتيبُ ليس في الحقول»، و«الشعرُ لا حكم ما لم يُذكر»: ذكرُ النطاق
 الشعرَ ليس حقلًا). والوسمُ لا يقول إنّ الإخفاق من البند: الحالةُ تمسّ بنودًا، وسببُ إخفاقها في الملحق §٢.
@@ -40,9 +40,10 @@ def kalam(h):
 BUNUD = [
     ("الترتيبُ ليس في الحقول", "لا يُوسم (لا حقلَ له)"),
     ("الجوابُ المرفوعُ مع «من» و«ما» و«أي» مرادًا به الجزاء",
-     lambda d, h: d["adat"] in MAWSUL and d["fil"] == "الجواب" and d["rabit"] == "بلا" and d["sura"] == "مرفوع"
-     and d["shart"] == "مضارع" and d["mana"] in JAZA),
-    ("الأصناف: ما لا يُجازى به جزمًا، وصدورُ الطلب", lambda d, h: d["adat"] in GHAYR | TALAB),
+     lambda d, h: d["adat"] in MAWSUL and d["fil"] == "الجواب" and d["sura"] == "مرفوع" and d["shart"] == "مضارع"
+     and d["mana"] in JAZA),
+    ("الأصناف: «من وما وأي» موصولة، والحروفُ الستّة، وما لا يُجازى به جزمًا، وصدورُ الطلب",
+     lambda d, h: d["adat"] in MAWSUL | HURUF | GHAYR | TALAB),
     ("أربعةٌ تذهب بالجزاء", lambda d, h: d["qabl"] in ARBAA and d["adat"] in MAWSUL | HURUF),
     ("ما قبل الأداة غيرُ الأربعة و«لكن» لا يغيّر الكلام",
      lambda d, h: d["qabl"] not in ARBAA | {"لا_شيء", "لكن"} and d["adat"] in MAWSUL | HURUF),
@@ -50,15 +51,14 @@ BUNUD = [
     ("الماضي بعد حرف الابتداء مقبولٌ شرطًا",
      lambda d, h: d["qabl"] == "حرف_ابتداء" and d["fil"] == "فعل_الشرط" and d["sura"] == "ماض"),
     ("الماضي شرطًا والجوابُ مرفوعًا (على القلب)",
-     lambda d, h: d["shart"] == "ماض" and d["fil"] == "الجواب" and d["sura"] == "مرفوع" and d["rabit"] == "بلا"
-     and d["mana"] in JAZA and d["qabl"] != "قسم" and d["adat"] in MAWSUL | HURUF),
+     lambda d, h: d["shart"] == "ماض" and d["fil"] == "الجواب" and d["sura"] == "مرفوع" and d["qabl"] != "قسم"
+     and d["adat"] in MAWSUL | HURUF),
     ("الجوابُ بحرف الجرّ بديلان", lambda d, h: d["qabl"] == "حرف_جر" and d["fil"] == "الجواب" and d["sura"] in JAZMI),
     ("الحالُ بعد الأمر مرفوعًا بديلان",
-     lambda d, h: d["adat"] == "طلب_أمر" and d["fil"] == "جواب_الطلب" and d["sura"] == "مرفوع" and d["mana"] in {"حال", "غير_معلن"}),
+     lambda d, h: d["adat"] == "طلب_أمر" and d["fil"] == "جواب_الطلب" and d["sura"] == "مرفوع" and d["mana"] == "حال"),
     ("القسمُ ثمّ الماضي شرطًا والجوابُ مرفوعًا بديلان",
      lambda d, h: d["qabl"] == "قسم" and d["shart"] == "ماض" and d["fil"] == "الجواب" and d["sura"] == "مرفوع"),
-    ("النهيُ مجزومًا جوابُه", lambda d, h: d["adat"] == "طلب_نهي" and d["fil"] == "جواب_الطلب" and d["rabit"] == "بلا"
-     and d["sura"] in JAZMI),
+    ("النهيُ مجزومًا جوابُه", lambda d, h: d["adat"] == "طلب_نهي" and d["fil"] == "جواب_الطلب" and d["sura"] in JAZMI),
     ("الخبرُ الواجبُ مجزومًا جوابُه خطأ", lambda d, h: d["adat"] == "خبر_واجب" and d["fil"] == "جواب_الطلب" and d["sura"] in JAZMI),
     ("«إذا» بلا إضمار في الشعر", lambda d, h: d["qabl"] == "إذا_فجائية" and d["sura"] in JAZMI and shir_masul(h)),
     ("«كلما» مجزومًا خطأ", lambda d, h: d["adat"] == "كلما" and d["sura"] in JAZMI),
@@ -71,8 +71,8 @@ BUNUD = [
      lambda d, h: d["fil"] == "بين_المجزومين" and d["rabit"] == "واو" and d["sura"] == "مرفوع" and d["mana"] in {"حال", "غير_معلن"}),
     ("الاستفهامُ مرفوعًا جوابُه", lambda d, h: d["adat"] == "طلب_استفهام" and d["fil"] == "جواب_الطلب" and d["sura"] == "مرفوع"),
     ("«لا ينبغي» محمولةً على خطأ",
-     lambda d, h: d["qabl"] == "ناسخ" and d["adat"] in MAWSUL and d["fil"] in {"فعل_الشرط", "الجواب"} and d["sura"] in JAZMI
-     and d["mana"] in JAZA),
+     lambda d, h: d["qabl"] == "ناسخ" and d["adat"] in MAWSUL and d["sura"] in JAZMI),
+    ("الشعر: ما قُبل في الكلام قُبل في الشعر", lambda d, h: shir_masul(h) and "مقبول" in kalam(h)),
     ("الشعرُ «لا حكم» ما لم يُذكر وهو غيرُ مقبولٍ في الكلام",
      "لا يُوسم (ذكرُ النطاق الشعرَ ليس حقلًا)؛ والمسؤولُ عنه في الشعر " +
      str(sum(1 for h in HALAT if shir_masul(h))) + " حالات، متوقَّعُها كلُّها: " +
