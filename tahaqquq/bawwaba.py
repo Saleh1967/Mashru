@@ -790,6 +790,7 @@ def main():
         fails.append("اختبار ضابط نفي الفعل فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_waqf.py"])
     report.append(f"٥ص٥ {out.strip().splitlines()[-1] if out.strip() else 'ضابط الوقف: ?'}")
+    if code != 0:
         fails.append("اختبار ضابط الوقف فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_sura.py"])
     report.append(f"٥غ سرعة الفاحص (نموٌّ غير تربيعيّ): {' · '.join(out.strip().splitlines()) if out.strip() else '?'}")
