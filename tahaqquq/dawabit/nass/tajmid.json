@@ -1,0 +1,37 @@
+{
+ "naw": "ضابط مجمَّد",
+ "minhaj": "hawkama/منهج_الضوابط.md، الإصدار ١ (بفئة غموض)",
+ "qita": "من النصّ إلى الإطار في ل1: الأسماءُ الستّة في الجملة (الحزمة P4)",
+ "masadir": [
+  {
+   "milaf": "qatr.txt",
+   "sha256": "2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d"
+  },
+  {
+   "milaf": "alfiyya.txt",
+   "sha256": "13b351a0a02d9060fdedbb5db568544718eb4e89bef323f5572b8a26c0921ca0"
+  }
+ ],
+ "wasf_sha256": "34f250e72699c8f2850b82cb98a61b78e47e46f27054d35cb3ae5219f20dd0ee",
+ "cases_sha256": "a2e37d38a9be0ce4fe69c252daba8ba247726eb1eeaed43b1a1f615955ffe2ff",
+ "fahs_cases_sha256": "451074f8df1befc3cf5acfafc46577785ecf889e1165a51f68cc2845031995b1",
+ "taalif_sha256": "21929b519897eef0df3ba680b79910b3f1de33cfd872869a28f6b8c9400a596d",
+ "muallif": "وكيلٌ جديد (general-purpose) بالمواصفة والمصدرين وحدهما، بتوجيهٍ محفوظٍ بنصّه في tawjih_muallif.md؛ وحقنت البيئةُ في سياقه آليًّا CLAUDE.md ولقطةً من ذاكرة المستخدم (أفصح بذلك في taalif.md)؛ أجاب البنّاءَ بالبصمات والأعداد وحدها",
+ "aadad_muallif": {
+  "jumla": 50,
+  "موجب": 19,
+  "حد": 20,
+  "خارج": 5,
+  "عموم": 6,
+  "غموض": 0,
+  "harfi": 1,
+  "azwaj": 17
+ },
+ "tawjih": {
+  "milaf": "tawjih_muallif.md",
+  "arsil": "2026-10-25T13:08:27Z"
+ },
+ "fahs_sijill": "sijill_muallif.json: أدواتُ المؤلّف ومساراتُه من سجلّه، بلا محتوى ما كتب؛ وما خارج مجلّده والمصدرين ثلاثةُ رموزٍ ليست قراءةً، مفسَّرةٌ في tafsir_kharij",
+ "tajmid": "2026-10-25T16:32+03:00",
+ "qabl_shifra": "جُمّد قبل إيداع الشفرة؛ ولم يقرأ البنّاءُ cases.json عند التجميد إلّا أعدادَها التي أجاب بها المؤلّف، ولا من taalif.md إلّا أسطرَه 1–25 (ما قرأه المؤلّف وما لم يقرأه وما حُقن)"
+}

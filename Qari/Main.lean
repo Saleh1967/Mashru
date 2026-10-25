@@ -33,6 +33,7 @@
 import Dal.Jumla
 import Faahis.Lib
 import Nizam.Aqd
+import Jisr.NassItar
 
 open Dal SLGE SLGE.Law QawaninDalala Qaida Mawsua
 
@@ -333,9 +334,63 @@ def qiyas (path : String) : IO UInt32 := do
     | _ => IO.println s!"{line}\tKHALAL\tسطرٌ ليس «مفتاح⇥كلمة»"
   return 0
 
+/-! ## من النصّ إلى الإطار (الحزمة P4، `Jisr/NassItar.lean`) -/
+
+/-- كلماتُ الجملة خلايا في الوصل كلُّها (`tahlil w false`: الجملةُ تُقرأ في الوصل)، أو رفضُ أوّل كلمةٍ لا تُقرأ باسمه. -/
+def kalimatJumla (s : String) : Except String (List Kalima) := do
+  let ws := (s.splitOn " ").filter (· != "")
+  if ws.isEmpty then throw "جملةٌ فارغة"
+  let mut out : List Kalima := []
+  for w in ws do
+    match tahlil w false with
+    | .error e => throw s!"«{w}»: {e}"
+    | .ok q => out := out ++ [kalima q]
+  return out
+
+def bitIsm (x : Bool) : String := if x then "1" else "0"
+
+/-- **وضعُ الخلايا:** لكلّ سطرٍ «مفتاح⇥جملة» سطرٌ واحد: `مفتاح⇥QABUL⇥كلمة|كلمة…` وكلُّ كلمةٍ «خلايا مفصولةٌ بفاصلة;وصل;أل»، أو
+    `مفتاح⇥RAFD⇥السبب`. يقرؤه مولِّدُ حالات الضابط (`scripts/bina_dawabit_nass.py`). -/
+def khalayaWad (path : String) : IO UInt32 := do
+  for line in ← IO.FS.lines path do
+    match line.splitOn "\t" with
+    | [k, s] =>
+      match kalimatJumla s with
+      | .error e => IO.println s!"{k}\tRAFD\t{e}"
+      | .ok ws =>
+        let f (w : Kalima) : String := ",".intercalate (w.khalaya.map toString) ++ ";" ++ bitIsm w.wasl ++ ";" ++ bitIsm w.al
+        IO.println s!"{k}\tQABUL\t{"|".intercalate (ws.map f)}"
+    | _ => IO.println s!"{line}\tKHALAL\tسطرٌ ليس «مفتاح⇥جملة»"
+  return 0
+
+def dawrIsm : Jisr.NassItar.Dawr → String
+  | .fil => "فعل" | .fail => "فاعل" | .maful => "مفعول_به" | .harfJarr => "حرف_جر" | .majrur => "مجرور"
+  | .mudafIlayh => "مضاف_إليه"
+
+def hukmNassIsm : Jisr.Utur.Hukm → String
+  | .murakhkhas => "مقبول" | .mumtani => "خطأ" | .laHukm => "لا_حكم"
+
+/-- **وضعُ الإطار:** لكلّ سطرٍ «مفتاح⇥جملة»: حكمُ الجملة (`hukmNass`)، ثمّ كلُّ إطارٍ تُخرجه القراءة (`itarat`) بأدواره وحكمه بصفّ
+    الأسماء الستّة (`QawaidSitta.hukmSitta`)؛ أو `RAFD` وسببُه. -/
+def itarWad (path : String) : IO UInt32 := do
+  for line in ← IO.FS.lines path do
+    match line.splitOn "\t" with
+    | [k, s] =>
+      match kalimatJumla s with
+      | .error e => IO.println s!"{k}\tRAFD\t{e}"
+      | .ok ws =>
+        let itarat := (Jisr.NassItar.itarat ws).map fun x =>
+          " ".intercalate (x.1.map dawrIsm) ++ ": " ++ hukmNassIsm (Jisr.QawaidSitta.hukmSitta x.2)
+        let itarat := if itarat.isEmpty then "لا إطار في المجال" else " | ".intercalate itarat
+        IO.println s!"{k}\t{hukmNassIsm (Jisr.NassItar.hukmNass ws)}\t{itarat}"
+    | _ => IO.println s!"{line}\tKHALAL\tسطرٌ ليس «مفتاح⇥جملة»"
+  return 0
+
 def main (args : List String) : IO UInt32 := do
   match args with
   | ["--qiyas", path] => qiyas path
+  | ["--khalaya", path] => khalayaWad path
+  | ["--itar", path] => itarWad path
   | sijill :: makhzan :: nass =>
     if nass.isEmpty then IO.eprintln "لا نصّ"; return 2
     -- التحميل المحقَّق نفسُه الذي يستعمله الفاحص (Faahis/Lib.lean: `tahmil`، `muhaqqaq`): السجلّ سلطةٌ وحده،

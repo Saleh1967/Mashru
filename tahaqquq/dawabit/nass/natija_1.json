@@ -1,0 +1,110 @@
+{
+ "tashghil": 1,
+ "naw": "التشغيلُ الأوّل على الحالات المجمَّدة، بعد دفع الشفرة وقبل أيّ تعديلٍ لها وقبل أن يقرأ البنّاءُ الحالات",
+ "cases_sha256": "a2e37d38a9be0ce4fe69c252daba8ba247726eb1eeaed43b1a1f615955ffe2ff",
+ "shifra": {
+  "Jisr/NassItar.lean": {
+   "sha256": "f0042e68ee7ef566d909721cdd66b564c347a0d9bf2b0c64c225d7bce6d739ed",
+   "iydaa": "ecf92e263d41ef724907de2f1cf2f0c7c2f57f22"
+  },
+  "Jisr/NassItarDabit.lean": {
+   "sha256": "3e47202d08a6d048abd5bde9b8d460ad2036e989d31986b8a9c6a6764b0f3468",
+   "iydaa": "ecf92e263d41ef724907de2f1cf2f0c7c2f57f22"
+  },
+  "Qari/Main.lean": {
+   "sha256": "e7a3eb6726f49d43083dfddceb6c2ba0e5402840085a405c14a30f4d83de0322",
+   "iydaa": "ecf92e263d41ef724907de2f1cf2f0c7c2f57f22"
+  }
+ },
+ "lean": [
+  "Jisr.NassItar.Qiyas.majal",
+  "Jisr.NassItar.Qiyas.natija",
+  "Jisr.NassItar.Qiyas.natija_fia",
+  "Jisr.NassItar.Qiyas.akhta_1"
+ ],
+ "halat": 50,
+ "huqul_masula": 71,
+ "ihsa": {
+  "sawab": 61,
+  "naqsTaghtiya": 8,
+  "tajawuz": 1,
+  "qabulKhati": 0,
+  "raddKhati": 1,
+  "ikhtiyar": 0,
+  "khataItar": 0,
+  "rafdQari": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 30,
+  "حد": 15,
+  "خارج": 4,
+  "عموم": 12,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "N04",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N21",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N24",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N28",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N34",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N35",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N36",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N38",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N45",
+   "hukm",
+   "raddKhati"
+  ],
+  [
+   "N46",
+   "hukm",
+   "tajawuz"
+  ]
+ ],
+ "azwaj": {
+  "jumla": 17,
+  "taghayyar": 16,
+  "lam_yataghayyar": [
+   [
+    "N34",
+    "N35"
+   ]
+  ]
+ },
+ "rafd_qari": [],
+ "tarikh": "2026-10-25",
+ "malahiz": "على الشفرة كما دُفعت في ecf92e2 (والحالاتُ مجمَّدةٌ في a25584e قبلها)، قبل أن يقرأ البنّاءُ الحالات؛ والخلايا من qari --khalaya المبنيّ من الإيداع نفسِه. والأعدادُ أعدادُ مبرهنات Jisr/NassItarQiyas.lean في الإيداع الذي يحمل هذا الملفّ."
+}
