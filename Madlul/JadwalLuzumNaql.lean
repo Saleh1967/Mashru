@@ -3,7 +3,7 @@
 
   قولُ المالك في الجلسة (2026-10-25، 23:07 بتوقيت عمّان من بيانات الرسالة):
   «موافق على إضافة المبرهنات الثلاث وفقlean واربط مع النقل وبعدها اكمل الربط وفق افضل الممارسات ليكون كل المشروع مترابط ومتناسق ومتكامل وفق افضل الممارسات»
-  وصدرُ رسالته بالإنجليزيّة سؤالُ البنّاء ألصقه بتعديلٍ منه: حذف «Should I» من أوّله، وجعل «Or should I» «Then you should I»:
+  وصدرُ رسالته بالإنجليزيّة سؤالُ البنّاء ألصقه بتعديلٍ منه: حذف «Should I» من أوّله، وجعل «Or should I» «Then you should I»، وحذف علامة الاستفهام من آخره:
   "build the two gaps as a separate PR: adding the three theorems to Audit.lean, and linking Naql to the dependency-table rows? Then you should I carry on with the items on your list"
   والثلاثُ سمّاها جوابُ البنّاء في الجلسة قبل السؤال (ليس في المستودع). والفجوةُ معلنةٌ في رأس `Aql/Naql.lean`: أعمدةُ القائل والدرجة
   ونوع الحقيقة أُجِّلت.
@@ -30,19 +30,19 @@
       301–400 بالعدّ المعتاد، فنهايةُ س868 سنة 300 (`hadd868`)، ونهايةُ س729 إن شملت «حتى» القرنَ سنة 400 (`hadd729Shamil`) وإلّا 300.
     - أو لعصر المنقول عنه: بقراءة البنّاء لس729 («لا بد أن يروى عن العرب»)، والمعجمُ ناقلٌ. ولا تاريخَ للمنقول عنه في الصفّ، فلا حكم.
   * نوعُ الحقيقة: `mustahdathBadAlHadd` حيث أثبت الحدُّ الخروج، وإلّا `wadLughawi`. وس892 لا ينفي إلّا الشرعيّة والعرفيّة؛ ونفيُ المجاز
-    والمعرَّب والصياغة تعيينٌ بلا سند. وفي المشروع حكمٌ يخالفه في صفَّي درس ← كتب (اللسان س115080، س115082): `Madlul/Tarjih.lean`
-    (`dars_laysa_mushtarak`) يجعل معنى الدراسة في «درس» مأخوذًا بالمشابهة، فهو مجازٌ أو منقول؛ و`nawOf` تعطيهما قاعدةَ الأصل حيث لم يثبت
-    الحدُّ الخروج. ولا يغيّر هذا «يصلح»، لأنّ `Naql.yasluhuAslanLughawiyyan` لا يقرأ النوع. والمستخرِجُ لا يُخرج علامةَ النقل عمودًا؛ وأقربُ
+    والمعرَّب والصياغة تعيينٌ بلا سند. وفي المشروع حكمٌ يخالفه في صفَّي درس ← كتب (اللسان س115080، س115082): تعليقُ §٣ في `Madlul/Tarjih.lean`
+    يجعل معنى الدراسة في «درس» مأخوذًا بالمشابهة، و`dars_laysa_mushtarak` تنفي الاشتراك بفرض أنّ سببه غيرُ الوضع الأوّل، ووصفُها أنّه مجازٌ إن
+    لم يشتهر ومنقولٌ إن اشتهر؛ وعدُّ الصفّين من معنى الدراسة قراءةُ البنّاء. و`nawOf` تعطيهما قاعدةَ الأصل حيث لم يثبت الحدُّ الخروج. ولا يغيّر هذا «يصلح»، لأنّ `Naql.yasluhuAslanLughawiyyan` لا يقرأ النوع. والمستخرِجُ لا يُخرج علامةَ النقل عمودًا؛ وأقربُ
     الموجود في `shabaka/jadwal_luzum.py`: لا يُقرأ أصلٌ لابن فارس من مادّةٍ تطابق أوّلَ جملتها `ASL_NAFY` (ومن نمطه «فارسي» و«معرب»)،
-    ما لم يطابقها النمطُ `YADULL`؛ ونمطا `HAML` و`ALAQA` في `shabaka/tarjih.py` أقربُ إلى علامة المجاز.
-  * والقطعةُ تُسند إلى كلّ صفٍّ حقولًا بقاعدةٍ ثابتة من معجمه وجذريه وعلى الجدول، لا من لفظه ولا نوعِ قضيّته ولا سطره (`la_yaqra_lafz`)؛
+    ما لم يطابقها النمطُ `YADULL`؛ ونمطا `HAML` و`ALAQA` في `shabaka/tarjih.py`، وهي أداةُ استكشاف، يعلّمان المأخوذَ بعلاقة (مجازًا أو منقولًا).
+  * والقطعةُ تُسند إلى كلّ صفٍّ حقولًا بقاعدةٍ ثابتة من معجمه وجذريه وعلى الجدول، لا من حقل `w` (اللفظ المفسَّر أو المسمّى) ولا نوعِ قضيّته ولا سطره (`la_yaqra_lafz`)؛
     فعددتُها قطعةَ بنيةٍ خارج الضابط المجمَّد
     (البند 2أ في CLAUDE.md). وهذه قراءةُ البنّاء تنتظر إمضاء المالك: المنهجُ يسمّي من قطع البنية «الفاحص، والمخزن، والأدوات» وحدها،
     ومخرجُ القطعة حكمٌ على كلّ صفٍّ أيصلح نقلُه.
 
   المبرهنات (تكميمًا لا تصنيفًا؛ وتصنيفُها بالمعيار الموحَّد في CLAUDE.md):
   * لكلّ جدول: `la_mutawatir`، و`yashhad_saff`، و`mutadhafir_iff` (متعاضدٌ إذا وفقط إذا شهد المعجمان)، و`la_daraja_bila_saff`،
-    و`daraja_jisr` (لصفٍّ في الجدول: درجةُ `naqlOf` درجةُ زوجه)، و`bila_saff` (ولصفٍّ لا صفَّ لزوجه: آحادٌ ولا شيء)، و`la_yaqra_lafz`، و`yasluh_iff` (يصلح أصلًا لغويًّا إذا وفقط إذا لم يثبت الحدُّ خروجَه)،
+    و`daraja_jisr` (لصفٍّ لزوجه صفٌّ في الجدول: درجةُ `naqlOf` درجةُ زوجه)، و`bila_saff` (ولصفٍّ لا صفَّ لزوجه: آحادٌ ولا شيء)، و`la_yaqra_lafz`، و`yasluh_iff` (يصلح أصلًا لغويًّا إذا وفقط إذا لم يثبت الحدُّ خروجَه)،
     و`naw_hadd`، و`naw_ithnan`، و`iltizam_saff` (كلُّ التزامٍ مرخَّصٍ بلفظيه وراءه صفُّ تعليلٍ بهما).
   * لهذا الجدول: `iltizam_jadwal` (كلُّ التزامٍ مرخَّصٍ فيه صفُّه المقاييسُ س26425، ونقلُه يصلح إذا وفقط إذا لم يُخرج الحدُّ المقاييس).
   * على الشاهد: `shahid_hadd`، `shahid_daraja`، `shahid_qiraat`، `shahid_luzum_maqayis`، `shahid_fahm_juz_lisan`.
@@ -146,11 +146,13 @@ theorem la_daraja_bila_saff (T : List Saff) (a b : String) :
       exact h ⟨r, hr, hc.1.2, hc.2⟩
     simp [darajaSila, mujamat, kullMujam, List.filter, h1, h2]
 
-/-- لصفٍّ في الجدول: درجةُ `naqlOf` هي درجةُ زوجه. -/
-theorem daraja_jisr (q : QiraaHadd) (T : List Saff) (r : Saff) (hr : r ∈ T) :
+/-- لصفٍّ لزوجه صفٌّ في الجدول (ومنه كلُّ صفٍّ في الجدول): درجةُ `naqlOf` هي درجةُ زوجه. -/
+theorem daraja_jisr (q : QiraaHadd) (T : List Saff) (r : Saff) (h : ∃ r' ∈ T, r'.a = r.a ∧ r'.b = r.b) :
     darajaSila T r.a r.b = some (naqlOf q T r).daraja := by
-  have hy := yashhad_saff T r hr
-  cases hm : r.mujam <;> rw [hm] at hy <;>
+  obtain ⟨r', hr', ha, hb⟩ := h
+  have hy := yashhad_saff T r' hr'
+  rw [ha, hb] at hy
+  cases hm : r'.mujam <;> rw [hm] at hy <;>
     cases h2 : yashhad T r.a r.b .lisan <;> cases h3 : yashhad T r.a r.b .maqayis <;>
     simp_all [darajaSila, naqlOf, mujamat, kullMujam, List.filter]
 
@@ -166,7 +168,7 @@ theorem bila_saff (q : QiraaHadd) (T : List Saff) (r : Saff) (h : ¬ ∃ r' ∈ 
     · simp at hn
   simp [naqlOf, h0, Naql.binaDaraja]
 
-/-- النقلُ لا يقرأ لفظَ الصفّ ولا نوعَ قضيّته ولا سطرَه: صفّان بمعجمٍ وجذرين واحدةٍ نقلُهما واحد. -/
+/-- النقلُ لا يقرأ حقلَ `w` من الصفّ ولا نوعَ قضيّته ولا سطرَه: صفّان بمعجمٍ وجذرين واحدةٍ نقلُهما واحد. -/
 theorem la_yaqra_lafz (q : QiraaHadd) (T : List Saff) (r r' : Saff)
     (hm : r.mujam = r'.mujam) (ha : r.a = r'.a) (hb : r.b = r'.b) : naqlOf q T r = naqlOf q T r' := by
   simp [naqlOf, hm, ha, hb]
@@ -252,7 +254,7 @@ theorem shahid_daraja :
       (fun p => darajaSila jadwal p.1 p.2 == some .ahad) = true ∧
     darajaSila jadwal "علم" "فهم" = none := by decide
 
-/-- الصفوفُ التي يصلح نقلُها في القراءات الثلاث: بنهاية س868 لا صفّ، وبنهاية س729 الشاملة صفوفُ المقاييس الثلاثةَ عشرَ وحدها،
+/-- الصفوفُ التي يصلح نقلُها في القراءتين، والأولى بنهايتيها: بنهاية س868 لا صفّ، وبنهاية س729 الشاملة صفوفُ المقاييس الثلاثةَ عشرَ وحدها،
     وفي عصر المنقول عنه الثلاثون. -/
 theorem shahid_qiraat :
     (jadwal.filter fun r => Naql.yasluhuAslanLughawiyyan (naqlOf (.asrQail hadd868) jadwal r)).length = 0 ∧

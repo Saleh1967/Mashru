@@ -4870,5 +4870,11 @@
   "milaf": "Madlul/JadwalLuzumNaql.lean",
   "min": "Naql.binaDaraja (mujamat T r.a r.b).length, haddOf",
   "ila": "Naql.binaDaraja (mujamat T r.w r.b).length, haddOf"
+ },
+ {
+  "ism": "P837_naql_qail_min_lafz",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "⟨some (qailOf r.mujam), Naql.binaDaraja",
+  "ila": "⟨some (qailOf r.mujam ++ r.w), Naql.binaDaraja"
  }
 ]
