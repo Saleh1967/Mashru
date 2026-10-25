@@ -12,7 +12,9 @@
 الحالاتُ مؤلَّفة لا عيّنةٌ من استعمال.
 
 **التشغيلات.** المبرهناتُ هنا على الشفرة الحاليّة دائمًا. وسجلُّ كلّ تشغيلٍ ملفٌّ في `tahaqquq/dawabit/waqf/` (`natija_1.json` …)،
-ويفحصه `tahaqquq/test_waqf.py`.
+ويفحصه `tahaqquq/test_waqf.py`:
+- `natija_1.json`: التشغيلُ الأوّل على الشفرة المجمَّدة في `ed25842`: 41 صوابًا من 52. وأسماءُ مبرهناته أسماؤها في `961bb5d`.
+- `natija_2.json`: بعد تعديل `Dal/WaqfSibawayhi.lean` بما وُسم فيه «بعد قراءة الحالات»، على مادّةٍ مكشوفة: 49 من 52.
 -/
 import Dal.WaqfSibawayhi
 import Dal.WaqfSibawayhiDawabit
@@ -92,33 +94,36 @@ theorem qarin_jadwal :
 
 /-! ## النتيجةُ على الشفرة الحاليّة (على الشاهد) -/
 
+/-- أعدادُ المجال بترتيبٍ ثابت (يحسبها `tahaqquq/test_waqf.py` من `cases.json` بالترتيب نفسه): الحالاتُ والحقولُ المسؤولة؛ ثمّ متوقَّعُ
+    الكلام: مقبول، لغة، خطأ، «لا حكم»، بديلان؛ ثمّ متوقَّعُ الشعر: مقبول، لغة، خطأ، «لا حكم»، بديلان، غيرُ مسؤول. -/
+def majalAadad : List Nat :=
+  [halat.length, natayij.length] ++
+  [Daraja.maqbul, .lugha, .khata, .laHukm].map (fun d => (halat.filter (·.kalam = [d])).length) ++
+  [(halat.filter (fun h => decide (2 ≤ h.kalam.length))).length] ++
+  [Daraja.maqbul, .lugha, .khata, .laHukm].map (fun d => (halat.filter (·.shir = some [d])).length) ++
+  [(halat.filter (fun h => decide (2 ≤ (h.shir.map List.length).getD 0))).length,
+   (halat.filter (·.shir = none)).length]
+
 /-- **المجالُ غيرُ فارغ ولا مائل:** 40 حالةً و52 حقلًا مسؤولًا. ومتوقَّعُ الكلام: مقبول 22، ولغة 4، وخطأ 10، و«لا حكم» 4، وبديلان 0.
     ومتوقَّعُ الشعر: مقبول 12، وغيرُ مسؤول 28. -/
-theorem majal :
-    halat.length = 40 ∧ natayij.length = 52 ∧
-    [Daraja.maqbul, .lugha, .khata, .laHukm].map (fun d => (halat.filter (·.kalam = [d])).length) = [22, 4, 10, 4] ∧
-    (halat.filter (fun h => decide (2 ≤ h.kalam.length))).length = 0 ∧
-    [some [Daraja.maqbul], some [.lugha], some [.khata], some [.laHukm], none].map
-      (fun d => (halat.filter (·.shir = d)).length) = [12, 0, 0, 0, 28] := by
+theorem majal : majalAadad = [40, 52, 22, 4, 10, 4, 0, 12, 0, 0, 0, 0, 28] := by
   decide +kernel
 
-/-- **النتيجة:** 41 صوابًا من 52، و11 نقصَ تغطية، بلا تجاوزٍ ولا قبولٍ خاطئٍ ولا ردٍّ خاطئ. -/
-theorem natija : ihsa natayij = ⟨41, 11, 0, 0, 0, 0, 0, 0⟩ := by
+/-- **النتيجة:** 49 صوابًا من 52، وثلاثةُ نقوص تغطية (التشغيلُ الثاني، على مادّةٍ مكشوفة؛ والأوّلُ 41/52 في `natija_1.json`). -/
+theorem natija : ihsa natayij = ⟨49, 3, 0, 0, 0, 0, 0, 0⟩ := by
   decide +kernel
 
-/-- **بالفئات:** موجب 24 ونقصان، حدّ 4 وسبعةُ نقوص، خارج 4، عموم 9 ونقصان، غموض 0. -/
+/-- **بالفئات:** موجب 26، حدّ 8 وثلاثةُ نقوص، خارج 4، عموم 11، غموض 0. -/
 theorem natija_fia :
     [Fia.mujib, .hadd, .kharij, .umum, .ghumud].map ihsaFia =
-      [⟨24, 2, 0, 0, 0, 0, 0, 0⟩, ⟨4, 7, 0, 0, 0, 0, 0, 0⟩, ⟨4, 0, 0, 0, 0, 0, 0, 0⟩, ⟨9, 2, 0, 0, 0, 0, 0, 0⟩,
+      [⟨26, 0, 0, 0, 0, 0, 0, 0⟩, ⟨8, 3, 0, 0, 0, 0, 0, 0⟩, ⟨4, 0, 0, 0, 0, 0, 0, 0⟩, ⟨11, 0, 0, 0, 0, 0, 0, 0⟩,
        ⟨0, 0, 0, 0, 0, 0, 0, 0⟩] := by
   decide +kernel
 
-/-- **والإخفاقاتُ بأسمائها:** (الحالة، الحقل، النتيجة). -/
-theorem akhta_1 :
-    akhta = [("W13", .shir, .naqsTaghtiya), ("W14", .shir, .naqsTaghtiya), ("W23", .kalam, .naqsTaghtiya),
-             ("W23", .shir, .naqsTaghtiya), ("W26", .kalam, .naqsTaghtiya), ("W27", .kalam, .naqsTaghtiya),
-             ("W28", .kalam, .naqsTaghtiya), ("W29", .kalam, .naqsTaghtiya), ("W29", .shir, .naqsTaghtiya),
-             ("W35", .kalam, .naqsTaghtiya), ("W35", .shir, .naqsTaghtiya)] := by
+/-- **والإخفاقاتُ بأسمائها:** الهاءُ على تاء الجمع والتاء الملحقة، والألفُ بعد غير المنوَّن — قراءتان للمؤلّف لم تأخذهما الشفرة
+    (`mulhaq_1.md`). -/
+theorem akhta_2 :
+    akhta = [("W26", .kalam, .naqsTaghtiya), ("W27", .kalam, .naqsTaghtiya), ("W29", .kalam, .naqsTaghtiya)] := by
   decide +kernel
 
 end Qiyas

@@ -3428,8 +3428,8 @@
  {
   "ism": "P562_tadif_la_shir",
   "milaf": "Dal/WaqfSibawayhi.lean",
-  "min": "  else if k.akhir == .sahih && laZiyada k && k.wajh == .tadif then .maqbul",
-  "ila": "  else if k.akhir == .sahih && laZiyada k && k.wajh == .tadif then .laHukm"
+  "min": "  else if k.akhir == .sahih && k.wajh == .tadif then .maqbul",
+  "ila": "  else if k.akhir == .sahih && k.wajh == .tadif then .laHukm"
  },
  {
   "ism": "P563_azd_khata",
@@ -3446,7 +3446,91 @@
  {
   "ism": "P565_alif_lugha",
   "milaf": "Dal/WaqfSibawayhi.lean",
-  "min": "      (if k.wajh == .alif then .maqbul else .laHukm)",
-  "ila": "      (if k.wajh == .alif then .lugha else .laHukm)"
+  "min": "  | .alif => .maqbul",
+  "ila": "  | .alif => .lugha"
+ },
+ {
+  "ism": "P566_waqf_basmat_halat",
+  "milaf": "tahaqquq/dawabit/waqf/tajmid.json",
+  "min": "\"cases_sha256\": \"9b6e35e2983fdef2893c3e9d72dbf473d7414bc9127eb1e5eb341d4a4a259853\"",
+  "ila": "\"cases_sha256\": \"8b6e35e2983fdef2893c3e9d72dbf473d7414bc9127eb1e5eb341d4a4a259853\""
+ },
+ {
+  "ism": "P567_waqf_muwallad",
+  "milaf": "Dal/WaqfSibawayhiDawabit.lean",
+  "min": "⟨\"W01\", .mujib,",
+  "ila": "⟨\"W01\", .hadd,"
+ },
+ {
+  "ism": "P568_waqf_basmat_shifra",
+  "milaf": "tahaqquq/dawabit/waqf/natija_2.json",
+  "min": "\"sha256\": \"4b4e03c6c0d946c51e23d6e961edbf5b66ddcb39bd9c79392e4a20049715b81c\"",
+  "ila": "\"sha256\": \"5b4e03c6c0d946c51e23d6e961edbf5b66ddcb39bd9c79392e4a20049715b81c\""
+ },
+ {
+  "ism": "P569_waqf_sawab",
+  "milaf": "tahaqquq/dawabit/waqf/natija_2.json",
+  "min": "  \"sawab\": 49,",
+  "ila": "  \"sawab\": 50,"
+ },
+ {
+  "ism": "P570_waqf_qablaha",
+  "milaf": "tahaqquq/dawabit/waqf/natija_2.json",
+  "min": "\"natija_1.json\": \"cdb5b5f0a32ccf7d88a11d6e48d19ad6a600c7486b97b47957c23e662101cb6a\"",
+  "ila": "\"natija_1.json\": \"ddb5b5f0a32ccf7d88a11d6e48d19ad6a600c7486b97b47957c23e662101cb6a\""
+ },
+ {
+  "ism": "P571_waqf_natija_1",
+  "milaf": "tahaqquq/dawabit/waqf/natija_1.json",
+  "min": "  \"sawab\": 41,",
+  "ila": "  \"sawab\": 42,"
+ },
+ {
+  "ism": "P572_waqf_marsa",
+  "milaf": "tahaqquq/test_waqf.py",
+  "min": "NATIJA_1 = \"cdb5b5f0a32ccf7d88a11d6e48d19ad6a600c7486b97b47957c23e662101cb6a\"",
+  "ila": "NATIJA_1 = \"cdb5b5f0a32ccf7d88a11d6e48d19ad6a600c7486b97b47957c23e662101cb6b\""
+ },
+ {
+  "ism": "P573_waqf_lean",
+  "milaf": "tahaqquq/dawabit/waqf/natija_2.json",
+  "min": "\"Dal.WaqfSibawayhi.Qiyas.natija_fia\",",
+  "ila": "\"Dal.WaqfSibawayhi.Qiyas.majal\","
+ },
+ {
+  "ism": "P574_waqf_akhta",
+  "milaf": "tahaqquq/dawabit/waqf/natija_2.json",
+  "min": "  [\n   \"W29\",",
+  "ila": "  [\n   \"W28\","
+ },
+ {
+  "ism": "P575_waqf_majal_json",
+  "milaf": "tahaqquq/test_waqf.py",
+  "min": "    mj += [sum(1 for x in shir if isinstance(x, list)), shir.count(\"غير_مسؤول\")]",
+  "ila": "    mj += [sum(1 for x in shir if isinstance(x, list)), shir.count(\"غير_مسؤول\") + 1]"
+ },
+ {
+  "ism": "P576_waqf_halat",
+  "milaf": "tahaqquq/dawabit/waqf/natija_2.json",
+  "min": "\"halat\": 40,",
+  "ila": "\"halat\": 41,"
+ },
+ {
+  "ism": "P577_waqf_lugha_maqbul",
+  "milaf": "Dal/WaqfSibawayhiQiyas.lean",
+  "min": "  | .maqbul | .lugha => true",
+  "ila": "  | .maqbul => true"
+ },
+ {
+  "ism": "P578_munawwan_iskan",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  | .iskan => .khata",
+  "ila": "  | .iskan => .laHukm"
+ },
+ {
+  "ism": "P579_qawafi_waw",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  else if k.akhir == .sahih && k.wajh == .wawAwYa then .maqbul",
+  "ila": "  else if k.akhir == .sahih && k.wajh == .wawAwYa then .laHukm"
  }
 ]

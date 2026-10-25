@@ -84,6 +84,7 @@ import Aql.Waqi
 import Aql.WaqiShawahid
 import Nizam.Qiyas
 import Dal.WaqfSibawayhi
+import Dal.WaqfSibawayhiQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1825,3 +1826,10 @@ import Dal.WaqfSibawayhi
 #print axioms Dal.WaqfSibawayhi.tadif_baad_sakin
 #print axioms Dal.WaqfSibawayhi.maqbul_kalam_maqbul_shir
 #print axioms Dal.WaqfSibawayhi.shawahid
+-- ضابطُ الوقف عند سيبويه المجمَّد، النتيجةُ على الشفرة الحاليّة (Dal/WaqfSibawayhiQiyas.lean؛ hawkama/منهج_الضوابط.md)، وشواهدُ ما أُضيف بعد قراءة الحالات
+#print axioms Dal.WaqfSibawayhi.munawwan_nasb_shawahid
+#print axioms Dal.WaqfSibawayhi.Qiyas.qarin_jadwal
+#print axioms Dal.WaqfSibawayhi.Qiyas.majal
+#print axioms Dal.WaqfSibawayhi.Qiyas.natija
+#print axioms Dal.WaqfSibawayhi.Qiyas.natija_fia
+#print axioms Dal.WaqfSibawayhi.Qiyas.akhta_2

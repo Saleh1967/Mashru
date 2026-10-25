@@ -24,9 +24,14 @@
 - **الياءُ بعد الكسرة** («القاضي») تُحذف «وقد يحذفون» (س17797–17798)، وإثباتُها مقبول — والإثباتُ قراءتي من «قد».
 - **الهاءُ بعد الحرف الصحيح منصوبًا** «لغة»: «سمع عربيا يقول أعطني أبيضه» (س17857–17858).
 - وما سوى ذلك «لا حكم». **والشعر:** ما قُبل في الكلام قُبل في الشعر، والتضعيفُ كلُّه، وما سواهما «لا حكم».
+- **بعد قراءة الحالات** (`natija_2.json`، على مادّةٍ مكشوفة): المنوَّنُ نصبًا بالإسكان خطأ («يلحقه» س17783 و«لا يحذفونها في وقف»
+  س17802–17803)، وبالتضعيف مع سكون ما قبله خطأٌ في الكلام (س17838) — وكان «لا حكم»؛ والتاءُ الملحقة منوَّنةً نصبًا بالألف («كل اسم منون»)؛ وفي
+  الشعر الواوُ والياءُ (س17829–17830) والألفُ بعد غير المنوَّن («ويمد بها في غير موضع التنوين»، س17830–17831)، والتضعيفُ بلا قيد الزيادة —
+  وكانت «لا حكم».
 
 **المنهج.** شفرةُ هذا الملفّ كُتبت قبل أن يقرأ البنّاءُ حالاتِ الضابط، وجُمّدت الحالاتُ قبلها (`tahaqquq/dawabit/waqf/tajmid.json`؛
-`hawkama/منهج_الضوابط.md`). ونتيجتُها على الضابط في `Dal/WaqfSibawayhiQiyas.lean`، لا هنا.
+`hawkama/منهج_الضوابط.md`)، ودُفعت في `ed25842`، والتشغيلُ الأوّل عليها في `natija_1.json` (41/52). ونتيجتُها على الضابط في
+`Dal/WaqfSibawayhiQiyas.lean`، لا هنا.
 -/
 
 namespace Dal
@@ -66,9 +71,6 @@ structure Hukm where
 
 /-! ## الحكم -/
 
-/-- البابُ الثاني: الحرفُ الصحيح لا تلحقه زيادة — غيرُ المنصوب المنوَّن. -/
-def laZiyada (k : Kalima) : Bool := !(k.munawwan && k.haraka == .nasb)
-
 /-- أوجهُ البابِ الثاني. -/
 def thani (k : Kalima) : Daraja :=
   match k.wajh with
@@ -77,11 +79,18 @@ def thani (k : Kalima) : Daraja :=
   | .tadif => if k.qablMutaharrik then .maqbul else .khata
   | _ => .laHukm
 
+/-- المنوَّنُ نصبًا: «يلحقه … الألف» (س17783)، و«لا يحذفونها في وقف» (س17802–17803)، و«لم يضعفوا» إن سكن ما قبله (س17838). -/
+def munawwanNasb (k : Kalima) : Daraja :=
+  match k.wajh with
+  | .alif => .maqbul
+  | .iskan => .khata
+  | .tadif => if k.qablMutaharrik then .laHukm else .khata
+  | _ => .laHukm
+
 def kalam (k : Kalima) : Daraja :=
   match k.akhir with
   | .sahih =>
-    if k.munawwan && k.haraka == .nasb then
-      (if k.wajh == .alif then .maqbul else .laHukm)
+    if k.munawwan && k.haraka == .nasb then munawwanNasb k
     else if k.munawwan && k.wajh == .wawAwYa then .lugha
     else if k.haraka == .nasb && k.wajh == .ha then .lugha
     else thani k
@@ -89,14 +98,21 @@ def kalam (k : Kalima) : Daraja :=
     | .ha => .maqbul
     | .ta => .lugha
     | _ => .laHukm
-  | .taJam | .taMulhaqa => if k.wajh == .ta then .maqbul else .laHukm
+  | .taJam => if k.wajh == .ta then .maqbul else .laHukm
+  | .taMulhaqa =>
+    if k.munawwan && k.haraka == .nasb && k.wajh == .alif then .maqbul
+    else if k.wajh == .ta then .maqbul else .laHukm
   | .yaBaadKasra => match k.wajh with
     | .hadhfYa | .ithbatYa => .maqbul
     | _ => .laHukm
 
+/-- الشعر: ما قُبل في الكلام، والتضعيفُ في القوافي (س17827–17828، «جدبا» س17835)، والواوُ والياءُ فيها «فيما لا يدخله ياء ولا واو في
+    الكلام» (س17829–17830)، والألفُ «في غير موضع التنوين» (س17830–17831). -/
 def shir (k : Kalima) : Daraja :=
   if kalam k == .maqbul then .maqbul
-  else if k.akhir == .sahih && laZiyada k && k.wajh == .tadif then .maqbul
+  else if k.akhir == .sahih && k.wajh == .tadif then .maqbul
+  else if k.akhir == .sahih && k.wajh == .wawAwYa then .maqbul
+  else if k.akhir == .sahih && k.wajh == .alif && !k.munawwan then .maqbul
   else .laHukm
 
 def hukm (k : Kalima) : Hukm := ⟨kalam k, shir k⟩
@@ -113,6 +129,9 @@ def asanid : List (String × Nat × Nat × String) := [
   ("arbaa", 17810, 17811, "فأما المرفوع والمضموم فإنه يوقف عنده على أربعة أوجه بالإشمام وبغير الإشمام كما تقف عند المجزوم والساكن وبأن تروم التحريك وبالتضعيف"),
   ("qawafi", 17827, 17828, "ومن ثم قالت العرب في الشعر في القوافي سبسبا يريد السبسب"),
   ("jadba", 17835, 17835, "لقد خشيت أن أرى جدبا"),
+  ("layahdhifunaha", 17802, 17803, "ولا يحذفونها في وقف"),
+  ("qawafiWaw", 17829, 17830, "كما يلحقون الواو والياء في القوافي فيما لا يدخله ياء ولا واو في الكلام"),
+  ("ghayrTanwin", 17830, 17831, "وأجروا الألف مجراهما لأنها شريكتهما في القوافي ويمد بها في غير موضع التنوين"),
   ("lamYudiffu", 17838, 17838, "فإن كان الحرف الذي قبل آخر حرف ساكنا لم يضعفوا نحو عمرو وزيد"),
   ("yadauna", 17843, 17844, "وقد يدعون الإشمام وروم الحركة أيضا"),
   ("nasbJarr", 17844, 17845, "وأما ما كان في موضع نصب أوجر فإنك تروم فيه الحركة وتضاعف وتفعل فيه ما تفعل بالمجزوم على كل حال"),
@@ -126,10 +145,19 @@ theorem la_ishmam (m q : Bool) (h : Haraka) (hh : h ≠ .raf) (hn : ¬ (m = true
     kalam ⟨.sahih, m, q, h, .ishmam⟩ = .khata := by
   cases m <;> cases h <;> simp_all [kalam, thani]
 
-/-- **لا تضعيفَ في الكلام إن سكن ما قبل الآخر، ويكون في الشعر** (تعريفيّة). -/
-theorem tadif_baad_sakin (m : Bool) (h : Haraka) (hn : ¬ (m = true ∧ h = .nasb)) :
+/-- **لا تضعيفَ في الكلام إن سكن ما قبل الآخر، ويكون في الشعر** (تعريفيّة؛ وكان قبل قراءة الحالات بفرض «غيرِ المنوَّن نصبًا»). -/
+theorem tadif_baad_sakin (m : Bool) (h : Haraka) :
     hukm ⟨.sahih, m, false, h, .tadif⟩ = ⟨.khata, .maqbul⟩ := by
-  cases m <;> cases h <;> simp_all [hukm, kalam, shir, thani, laZiyada]
+  cases m <;> cases h <;> simp_all [hukm, kalam, shir, thani, munawwanNasb]
+
+/-- **المنوَّنُ نصبًا وما أُضيف بعد قراءة الحالات** (على الشاهد): الإسكانُ خطأ، والتاءُ الملحقة بالألف، والواوُ في الشعر، والألفُ بعد غير
+    المنوَّن في الشعر. -/
+theorem munawwan_nasb_shawahid :
+    kalam ⟨.sahih, true, false, .nasb, .iskan⟩ = .khata ∧
+    kalam ⟨.taMulhaqa, true, false, .nasb, .alif⟩ = .maqbul ∧
+    hukm ⟨.sahih, true, false, .raf, .wawAwYa⟩ = ⟨.lugha, .maqbul⟩ ∧
+    hukm ⟨.sahih, false, true, .nasb, .alif⟩ = ⟨.laHukm, .maqbul⟩ := by
+  decide
 
 /-- **ما قُبل في الكلام قُبل في الشعر** (تعريفيّة). -/
 theorem maqbul_kalam_maqbul_shir (k : Kalima) (h : kalam k = .maqbul) : shir k = .maqbul := by
