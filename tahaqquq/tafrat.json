@@ -3585,7 +3585,7 @@
   "ism": "P751_fa_fahs_akhta_fi_lean",
   "milaf": "Jisr/BabFaQiyas.lean",
   "min": "theorem akhta_2 :",
-  "ila": "theorem akhta_2x :"
+  "ila": "theorem akhta_alt : akhta = [(\"F30\", .kalam, .ikhtiyar), (\"F38\", .kalam, .tajawuz)] := by\n  decide +kernel\n\ntheorem akhta_2 :"
  },
  {
   "ism": "P752_fa_fahs_lean_mubarhana",
