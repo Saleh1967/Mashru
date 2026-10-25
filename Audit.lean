@@ -1191,15 +1191,18 @@ import Jisr.NassItarQiyas
 #print axioms JadwalLuzum.silat_sitt
 #print axioms JadwalLuzum.talab_la_mubashir
 -- النقلُ لصفوف جدول اللزوم (Madlul/JadwalLuzumNaql.lean)
-#print axioms JadwalLuzum.naql_yasluh
 #print axioms JadwalLuzum.la_mutawatir
 #print axioms JadwalLuzum.mutadhafir_iff
+#print axioms JadwalLuzum.yashhad_saff
 #print axioms JadwalLuzum.la_daraja_bila_saff
-#print axioms JadwalLuzum.asl_min_naql
-#print axioms JadwalLuzum.iltizam_min_naql
-#print axioms JadwalLuzum.tadammun_min_naql
+#print axioms JadwalLuzum.daraja_jisr
+#print axioms JadwalLuzum.yasluh_iff
+#print axioms JadwalLuzum.naw_hadd
+#print axioms JadwalLuzum.shahid_luzum_maqayis
+#print axioms JadwalLuzum.iltizam_jadwal_yasluh
 #print axioms JadwalLuzum.shahid_daraja
-#print axioms JadwalLuzum.shahid_mutadhafir
+#print axioms JadwalLuzum.shahid_qiraatan
+#print axioms JadwalLuzum.shahid_fahm_juz_lisan
 #print axioms Naht.aakhidha_bihazz
 #print axioms Naht.farid_nodup
 #print axioms Naht.manhut_ithnan

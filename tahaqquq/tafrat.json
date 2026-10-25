@@ -4806,10 +4806,10 @@
   "ila": "⟨none, Naql.binaDaraja"
  },
  {
-  "ism": "P826_naql_saff_kharij_hadd",
+  "ism": "P826_naql_manqul_kharij_hadd",
   "milaf": "Madlul/JadwalLuzumNaql.lean",
-  "min": "(mujamat T r.a r.b).length, none, nawAsl⟩",
-  "ila": "(mujamat T r.a r.b).length, some false, nawAsl⟩"
+  "min": "  | .asrManqul, _ => none",
+  "ila": "  | .asrManqul, _ => some false"
  },
  {
   "ism": "P827_naql_yashhad_bila_mujam",
@@ -4834,5 +4834,23 @@
   "milaf": "Madlul/JadwalLuzumNaql.lean",
   "min": "  | .maqayis => \"مقاييس اللغة\"",
   "ila": "  | .maqayis => \"معجم مقاييس اللغة\""
+ },
+ {
+  "ism": "P831_naql_wafat_lisan",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "  | .lisan => 711",
+  "ila": "  | .lisan => 300"
+ },
+ {
+  "ism": "P832_naql_hadd_bila_khuruj",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "else if s > 400 then some false else none",
+  "ila": "else none"
+ },
+ {
+  "ism": "P833_naql_naw_dun_hadd",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "if haddOf q m = some false then .mustahdathBadAlHadd else .wadLughawi",
+  "ila": ".wadLughawi"
  }
 ]
