@@ -1,0 +1,36 @@
+{
+ "adawat": {
+  "Read": 1,
+  "Bash": 9,
+  "Write": 3,
+  "Edit": 1
+ },
+ "masarat_mutlaqa": [
+  "/.last",
+  "/L",
+  "/home/claude/mudaa_dir/alfiyya.txt",
+  "/home/claude/mudaa_dir/qatr.txt",
+  "/tmp",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/nass/mujallad",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/nass/mujallad/cases.json",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/nass/mujallad/fahs_cases.py",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/nass/mujallad/taalif.md",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/nass/mujallad/tafrat_fahs/.last",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/nass/mujallad/wasf.md"
+ ],
+ "kharij_al_masmuh": [
+  "/.last",
+  "/L",
+  "/tmp"
+ ],
+ "mamnu": [],
+ "qaraa_al_masadir": {
+  "/home/claude/mudaa_dir/alfiyya.txt": true,
+  "/home/claude/mudaa_dir/qatr.txt": true
+ },
+ "tafsir_kharij": {
+  "/tmp": "هدفُ «cd /tmp» قبل قراءة qatr.txt بـ sed؛ لم يُقرأ منه ملفّ",
+  "/L": "من نمط sed «s/^/L+69 /» على مخرج qatr.txt، لا مسار",
+  "/.last": "من «tafrat_fahs/.last» داخل المجلّد المسموح، نسبيًّا"
+ }
+}
