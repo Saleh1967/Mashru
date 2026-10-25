@@ -56,6 +56,8 @@ class Tabaqat4:
         self.mirsat_an = mirsat_an
         self.arad_izaha = arad_izaha
         self.qamus = json.loads((HERE / 'qamus.json').read_text(encoding='utf-8'))
+        self.forms_map = json.loads((HERE / 'forms_map.json').read_text(encoding='utf-8')).get('map', {})
+        self.hokom = None                 # مخرج S3 (تقدير) ؛ يُعرَض ولا يُستهلك إلّا لاشتقاق صورة باب الجزاء بوسمها «تقدير»
         self.stages: List[Dict[str, Any]] = []
         self.claims: List[Claim] = []
         self.la_yuddaa: List[str] = [
@@ -205,7 +207,10 @@ class Tabaqat4:
             for r in res: st['residuals'].append(f"{t['anchor']}:{r}")
         st.update(completed=True, found=any(found), produced=True, accepted=all(found), stored=True,
                   consumed_by_next=all(found))
-        if not all(found): st['reason'] = 'كلمة أو أكثر بلا مدلول ← S5 لا يُبنى'
+        if not all(found):
+            is_jaza = bool(toks) and self._strip(toks[0]['surface']) in self.ADAWAT_JAZA
+            st['reason'] = ('لا مدلول بنيويّ لكلمة أو أكثر ؛ لا يمنع باب الجزاء (S5-ج يحكم على صورة الجملة لا على المدلول)'
+                            if is_jaza else 'كلمة أو أكثر بلا مدلول ← المسار الإسناديّ (S5) لا يُبنى')
         self.stages.append(st); return found
 
     # ---------------------------------------------------------------- S5 معًا (النوع والإطار)
@@ -269,19 +274,57 @@ class Tabaqat4:
             st['completed'] = True; st['found'] = True; st['produced'] = False
             st['reason'] = f'OUT_OF_EXECUTED_PATH:جملة شرطية من {n} كلمات (المغلَّف: أداة + فعل الشرط + الجواب = 3) — الأداة «{adat}» معروفة لـ BabJaza'
             st['residuals'].append('OUT_OF_EXECUTED_PATH'); return {'blocked': True, **base}
-        sh, jw, lam = self.forms.get('shart'), self.forms.get('jawab'), self.forms.get('lam', 'false')
+        own_sh, own_jw = self.forms.get('shart'), self.forms.get('jawab')
+        lam = self.forms.get('lam', 'false')
+        hok_sh, hok_jw, hok_res = self._forms_from_hokom(toks)
+        # المالك يغلب عند الحضور ؛ وإلّا تقدير Hokom ؛ وإلّا لا شيء
+        sh = own_sh or hok_sh
+        jw = own_jw or hok_jw
+        src, rank = [], 'رأي'
+        if own_sh or own_jw: src.append('OWNER_DECLARED_FORMS (--forms)')
+        used_hokom = (not own_sh and hok_sh) or (not own_jw and hok_jw)
+        if used_hokom: src.append('HOKOM_TAQDIR'); rank = 'تقدير' if not (own_sh or own_jw) else 'رأي+تقدير'
+        conflict = None
+        if own_sh and hok_sh and own_sh != hok_sh or own_jw and hok_jw and own_jw != hok_jw:
+            conflict = (f"FORMS_CONFLICT_OWNER_VS_HOKOM: المالك (شرط={own_sh} ، جواب={own_jw}) ≠ "
+                        f"Hokom (شرط={hok_sh} ، جواب={hok_jw}) ؛ المعتمَد: صيغة المالك")
+        unmapped = [r for r in hok_res if r.startswith('FORMS_UNMAPPED')]
+        if (sh is None or jw is None) and unmapped and not (own_sh and own_jw):
+            st['completed'] = True; st['found'] = True; st['produced'] = False
+            st['reason'] = 'FORMS_UNMAPPED من تقدير Hokom: ' + ' ؛ '.join(unmapped) + ' — أضِفه إلى forms_map.json أو أعلِن --forms'
+            st['residuals'].append('FORMS_UNMAPPED'); return {'blocked': True, **base}
         if sh not in self.SHART_FORMS or jw not in self.JAWAB_FORMS or lam not in ('true', 'false'):
             st['completed'] = True; st['found'] = True; st['produced'] = False
-            st['reason'] = ('JAZA_FORMS_UNDECLARED: BabJaza.Jumla يحتاج صورةَ فعل الشرط والجواب «كما كُتبت» وهي مُعطاةٌ لا مستنتَجة ؛ '
-                            'أعلنها: --forms shart=<' + '|'.join(self.SHART_FORMS) + '> jawab=<' + '|'.join(self.JAWAB_FORMS) + '> [lam=true]')
+            st['reason'] = ('JAZA_FORMS_UNDECLARED: BabJaza.Jumla يحتاج صورةَ فعل الشرط والجواب «كما كُتبت» ؛ أعلِنها '
+                            '--forms shart=<' + '|'.join(self.SHART_FORMS) + '> jawab=<' + '|'.join(self.JAWAB_FORMS) + '> [lam=true]'
+                            + (' أو شغّل --hokom لتقديرها' if not self.use_hokom else ''))
             st['residuals'].append('JAZA_FORMS_UNDECLARED'); return {'blocked': True, **base}
         plan = {**base, 'shart': '.' + sh, 'jawab': '.' + jw, 'lamQasam': lam, 'kind': 'jaza',
-                'premise_rank': 'رأي', 'premise_source': 'OWNER_DECLARED_FORMS (--forms)'}
+                'premise_rank': rank, 'premise_source': ' + '.join(src) or 'OWNER_DECLARED_FORMS (--forms)',
+                'forms_conflict': conflict}
         st.update(completed=True, found=True, produced=True, accepted=True, stored=True, consumed_by_next=True)
-        st['residuals'].append('FORMS_SUPPLIED_NOT_READ: صور الفعلَين معطاة من المالك لا مقروءة من السطح')
-        self.claims.append(Claim(3, 'naw_jumla', plan['naw'], f"نوع الجملة: شرطية ، الأداة «{adat}» ، الشرط أوّلًا ؛ الصيغتان المعطاتان: شرط={sh} ، جواب={jw} ، لام القسم={lam}",
-                                 'مقيس', burhan='الأداة من قائمة BabJaza الحاصرة (مقيس) ؛ الصيغتان معطاتان (رأي) ؛ الحكم يُبرهَن في S7 مشروطًا بهما'))
+        st['residuals'].append('FORMS_SOURCE:' + (' + '.join(src) or 'OWNER'))
+        if used_hokom: st['residuals'].append('FORMS_FROM_HOKOM_TAQDIR: صورتا الفعلَين تقديرٌ من Hokom (لا يُستهلَك إلّا هنا مقعدًا معلَنًا) ؛ la_yuddaa')
+        if conflict: st['residuals'].append(conflict)
+        self.claims.append(Claim(3, 'naw_jumla', plan['naw'],
+                                 f"نوع الجملة: شرطية ، الأداة «{adat}» ، الشرط أوّلًا ؛ الصيغتان: شرط={sh} ، جواب={jw} ، لام القسم={lam}"
+                                 + (f" ({conflict})" if conflict else ''),
+                                 'مقيس', burhan=f"الأداة من قائمة BabJaza الحاصرة (مقيس) ؛ مصدر الصيغتين: {' + '.join(src) or 'OWNER'} (رتبتها {rank}) ؛ الحكم يُبرهَن في S7 مشروطًا بهما"))
         return plan
+
+    def _forms_from_hokom(self, toks):
+        """صورتا الشرط (توكن 1) والجواب (توكن 2) من تقدير Hokom عبر forms_map.json ؛ أو (None, None, [أسباب])."""
+        if not (self.use_hokom and self.hokom and len(self.hokom) >= 3):
+            return None, None, ['HOKOM_NOT_AVAILABLE_FOR_FORMS']
+        def form_of(idx):
+            r = self.hokom[idx] if idx < len(self.hokom) else {}
+            sub = r.get('word_class_subclass') or ''; mood = r.get('mood')
+            keys = ([f"{sub}+{mood}"] if mood and mood != 'NOT_APPLICABLE' else []) + [sub]
+            for k in keys:
+                if k in self.forms_map: return self.forms_map[k], None
+            return None, f"FORMS_UNMAPPED:{sub}+{mood}"
+        sh, e1 = form_of(1); jw, e2 = form_of(2)
+        return sh, jw, [x for x in (e1, e2) if x]
 
     # ---------------------------------------------------------------- S6/S7 Lean
     def _lean_file(self, toks, dal, maani, plan, pass_no: int, observed: Optional[Dict[str, str]] = None) -> str:
@@ -480,7 +523,7 @@ class Tabaqat4:
         if self.stages[-1]['accepted']:
             toks = self._s1(s0['nfc'])
             dal = self._s2(toks)
-            self._s3(toks)
+            self.hokom = self._s3(toks)
             maani = self._s4(toks)
             plan = self._s5(toks, dal, maani)
             lean = self._s6_s7(toks, dal, maani, plan, run_dir)

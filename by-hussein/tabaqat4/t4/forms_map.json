@@ -1,0 +1,11 @@
+{
+  "_note": "جدولٌ حاصرٌ صريح: (word_class_subclass[+mood]) من تقدير Hokom → صورةُ الفعل في باب الجزاء (BabJaza.ShartForm/JawabForm). المفتاحُ يُجرَّب بالمود أوّلًا ثمّ بدونه. ما ليس هنا → FORMS_UNMAPPED:<القيمة> وتوقّف. رتبةُ الصيغة حين تأتي من Hokom «تقدير» لا «رأي».",
+  "map": {
+    "VERBAL_IMPERFECT+JUSSIVE": "mudariMajzum",
+    "VERBAL_IMPERFECT+INDICATIVE": "mudariMarfu",
+    "VERBAL_IMPERFECT+SUBJUNCTIVE": "mudariMarfu",
+    "VERBAL_PAST": "madi",
+    "VERBAL_PAST+NOT_APPLICABLE": "madi",
+    "VERBAL_IMPERATIVE": "madi"
+  }
+}
