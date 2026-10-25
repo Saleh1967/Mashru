@@ -37,10 +37,12 @@ def main(argv=None):
     ap.add_argument('--an', type=int, default=0, help='الآن على المرساة (افتراض الشاهد 0)')
     ap.add_argument('--izaha', type=int, default=-1, help='إزاحة الحدث بالساعات (افتراض الشاهد −1)')
     ap.add_argument('--mashru', help='جذر Mashru (افتراضًا يُكتشف من موضع الأداة)')
+    ap.add_argument('--forms', nargs='*', default=[], help='باب الجزاء: shart=<صورة> jawab=<صورة> [lam=true] — صيغٌ معلَنة من المالك ، رتبتها رأي')
     a = ap.parse_args(argv)
     root = Path(a.mashru) if a.mashru else find_mashru_root()
+    forms = dict(kv.split('=', 1) for kv in a.forms if '=' in kv)
     t = Tabaqat4(root, out_dir=Path(a.out) if a.out else None, use_hokom=a.hokom, run_lean=not a.no_lean,
-                 mirsat_an=a.an, arad_izaha=a.izaha)
+                 mirsat_an=a.an, arad_izaha=a.izaha, forms=forms)
     rec = t.run(a.jumla)
     out = Path(rec['run_dir'])
     shas = write_all(rec, out)

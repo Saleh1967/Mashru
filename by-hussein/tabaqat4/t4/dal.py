@@ -38,7 +38,7 @@ class KalimaDal:
         return not self.residuals
 
     def to_dict(self):
-        return asdict(self)
+        x = asdict(self); x['qari'] = getattr(self, 'qari', None); return x
 
 
 def load_hawamil(mashru_root: Path) -> List[str]:

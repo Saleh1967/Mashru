@@ -50,6 +50,8 @@ def to_md(rec: Dict[str, Any]) -> str:
         for i, t in enumerate(rec['tokens']):
             d = dal[i] if i < len(dal) else None; m = maani[i] if i < len(maani) else None
             dcell = (' '.join(d['cells_human']) + (' ؛ ' + '؛'.join(d['residuals']) if d['residuals'] else '')) if d else '—'
+            if d and d.get('qari') and d['qari'].get('reconcile'):
+                rc_ = d['qari']['reconcile']; dcell += f" ؛ قارئ Mashru: {rc_['state']}" + (f" ({rc_.get('reason')})" if rc_['state'] != 'AGREE' and rc_.get('reason') else '')
             mcell = (f"`{m['ism']}` {m['ref']}" + (f" ؛ مودَع {m['mudaa']['ism']} {m['mudaa']['sha256'][:8]}" if m.get('mudaa') else ' ؛ بلا مودَع معلَن')) if m else 'NO_SEALED_MADLUL'
             L.append(f"| {t['anchor']} | {t['surface']} | {dcell} | {mcell} | {st3} | {st4} |")
     L.append('\n## ٣. المراحل — الأسئلة السبعة\n')

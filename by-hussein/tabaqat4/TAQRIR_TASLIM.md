@@ -60,14 +60,30 @@ b  كَتَبَ الطَّالِبُ الدَّرْسَ   ط1 مطابَق ؛ ط
 c  الْعِلْمُ نُورٌ        ط1 مطابَق ؛ OUT_OF_EXECUTED_PATH:جملة اسمية
 ```
 
-## بصمات الملفات (عند التغليف — الإصدار 2: core.py يجد lake في ~/.elan/bin ، HUKM3=None عند غياب الإطار)
-  00f8605e4007470e  ./README.md
-  49c2220a6e9a6435  ./TAQRIR_TASLIM.md
+## الإصدار 3 (2026-10-25 ، على Mashru@d2533c3)
+
+```
++ S5-ج  باب الجزاء (Jisr/BabJaza.lean ، PR #80): [أداة + فعل الشرط + الجواب] → hukm ⟨كلام ، شعر⟩ مبرهنًا by decide ، مشروطًا بصيغتَين يعلنهما المالك (--forms ، رتبة رأي)
+        T9  إِنْ تَجْتَهِدْ تَنْجَحْ   → ⟨maqbul, maqbul⟩ ؛ T10 إِنْ تَجْتَهِدْ تَنْجَحُ → ⟨qabih, maqbul⟩ (= J16 في الضابط المجمَّد) ؛ T11 بلا --forms → JAZA_FORMS_UNDECLARED
+        الطبقة الرابعة NOT_APPLICABLE (الباب يحكم على الصورة لا يبني Aql.Jumla)
++ S2-ب  قارئ Mashru (qari) شاهدًا ثانيًا على الخلايا: AGREE/DISAGREE/QARI_ONLY ، كلّ اختلاف باسمه ولا يُحسَم
+        T12: ذَهَبَ الْوَلَدُ AGREE بعد إسقاط همزة الابتداء (0) ؛ ذَهَبَ وَلَدٌ DISAGREE WAQF_VS_WASL ([112,52,71] وقفًا ↔ [112,52,69,59] وصلًا) ؛ ساكنةً QARI_ONLY (ة→هاء ساكنة بقرار مودَع)
++ S4-أ  المخزن عبر qari: الأقوال بسندها (المخصّص@offset/Page) برتبة «تقدير» كما يسمّيها Mashru ، ومرشَّح الجذر «مقيس» ؛ الغائب MAKHZAN_NO_ENTRY
+TABAQAT4_SCOPE_TESTS_PASS = YES (12/12 ran ؛ 0 NOT_RUN) — على Mashru@d2533c3 هنا
+D-A المحفوظ من المحادثة: نسخة الوكيل الأولى (محذوفة) كانت تبرهن على dhahabaAlWalad لا على المدخل — EVIDENCE_IN_CHAT_ONLY
+```
+
+ما لم يُفعَل في الإصدار 3: hokom_adapter.py ما زال غير مكتوب (الصيغ في باب الجزاء تُعطى يدًا بدل أن تأتي تقديرًا من Hokom) ؛ bikam/kanaUD غير مغلَّفَين ؛ qari يُقرأ من نصّه لا من JSON (يُسقط S2-ب بـ QARI_UNPARSED عند تغيّر صياغته ، لا بقيمة خاطئة).
+
+## بصمات الملفات (الإصدار 3)
+  d79658ffd610b631  ./README.md
+  7630a7d8c0ae717b  ./TAQRIR_TASLIM.md
   f2960748511e6b92  ./hokom_adapter.example.py
-  c77f8f185ab0d7e0  ./run.py
+  db220690335d14ef  ./run.py
   e3b0c44298fc1c14  ./t4/__init__.py
-  765af12993a272a6  ./t4/core.py
-  1c3a62d0977528ec  ./t4/dal.py
+  54143f4dc3a3022e  ./t4/core.py
+  52e44fb0ea84e9d2  ./t4/dal.py
   e8662a21d29bfe8b  ./t4/qamus.json
-  2593ad5e16f6c048  ./t4/report.py
-  27052856c95f7e63  ./tests/test_tabaqat4.py
+  841d73f7a5f34fa7  ./t4/qari.py
+  58b9972beedfc9dd  ./t4/report.py
+  c8824b550b68564f  ./tests/test_tabaqat4.py

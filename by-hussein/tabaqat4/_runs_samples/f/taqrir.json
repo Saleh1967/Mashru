@@ -1,6 +1,6 @@
 {
  "schema": "Tabaqat4Record:v1",
- "timestamp_utc": "2026-10-24T11:09:01.772450+00:00",
+ "timestamp_utc": "2026-10-25T04:48:26.551201+00:00",
  "input": {
   "nass_kama_wasal": "ذَهَبَ وَلَدٌ",
   "nfc": "ذَهَبَ وَلَدٌ",
@@ -32,13 +32,28 @@
    "wasl": false,
    "al": false,
    "tanwin": false,
-   "transforms": [],
+   "transforms": [
+    "QARI_WITNESS:AGREE"
+   ],
    "residuals": [],
    "cells_human": [
     "ذَ=92",
     "هَ=4",
     "بَ=104"
-   ]
+   ],
+   "qari": {
+    "khalaya": [
+     92,
+     4,
+     104
+    ],
+    "notes": [],
+    "rejected": null,
+    "reconcile": {
+     "state": "AGREE",
+     "transforms": []
+    }
+   }
   },
   {
    "surface": "وَلَدٌ",
@@ -52,7 +67,8 @@
    "al": false,
    "tanwin": true,
    "transforms": [
-    "TANWIN:نون_ساكنة(59)_بعد_الحركة"
+    "TANWIN:نون_ساكنة(59)_بعد_الحركة",
+    "QARI_WITNESS:DISAGREE"
    ],
    "residuals": [],
    "cells_human": [
@@ -60,7 +76,34 @@
     "لَ=52",
     "د◌ُ=69",
     "نْ(تنوين)=59"
-   ]
+   ],
+   "qari": {
+    "khalaya": [
+     112,
+     52,
+     71
+    ],
+    "notes": [
+     "الوقف على التنوين بحذفه وتسكين الحرف (الألفية L1131، L1136)"
+    ],
+    "rejected": null,
+    "reconcile": {
+     "state": "DISAGREE",
+     "transforms": [],
+     "qari": [
+      112,
+      52,
+      71
+     ],
+     "jadwal": [
+      112,
+      52,
+      69,
+      59
+     ],
+     "reason": "WAQF_VS_WASL: القارئ يوقف على آخر النصّ (حذف التنوين وتسكين) والجدول يُخرج صورة الوصل (تنوين = نون ساكنة)"
+    }
+   }
   }
  ],
  "maani": [
@@ -103,13 +146,13 @@
  },
  "lean": {
   "pass1": {
-   "cmd": "lake env lean /tmp/claude-0/-home-claude/df1a9f35-ff1b-5bad-8e6d-f9f037af0cec/scratchpad/t4out/f/Jumla_pass1.lean",
+   "cmd": "/root/.elan/bin/lake env lean /tmp/claude-0/-home-claude/df1a9f35-ff1b-5bad-8e6d-f9f037af0cec/scratchpad/t4out/f/Jumla_pass1.lean",
    "rc": 0,
    "stdout": "Jisr.Utur.Hukm.murakhkhas\ntrue\n[92, 4, 104, 116, 112, 52, 69, 59]\n[Aql.Isnad.Rutba.mahkum, Aql.Isnad.Rutba.hakim]\ntrue\nsome (Aql.Azmina.Zaman3.madi)\n{ amudi := 0, ufuqi := 0, tuli := 0 }\n",
    "stderr": ""
   },
   "pass2": {
-   "cmd": "lake env lean /tmp/claude-0/-home-claude/df1a9f35-ff1b-5bad-8e6d-f9f037af0cec/scratchpad/t4out/f/Jumla.lean",
+   "cmd": "/root/.elan/bin/lake env lean /tmp/claude-0/-home-claude/df1a9f35-ff1b-5bad-8e6d-f9f037af0cec/scratchpad/t4out/f/Jumla.lean",
    "rc": 0,
    "stdout": "'Tabaqat4.tabaqa1_kalimat' does not depend on any axioms\n'Tabaqat4.tabaqa2_maani' does not depend on any axioms\n'Tabaqat4.tabaqa3_hukm' depends on axioms: [propext]\n'Tabaqat4.tabaqa3_isnad' does not depend on any axioms\n'Tabaqat4.tabaqa4_ajza' depends on axioms: [propext]\n'Tabaqat4.tabaqa4_kalam' depends on axioms: [propext]\n'Tabaqat4.tabaqa4_zaman' does not depend on any axioms\n'Tabaqat4.tabaqa4_mawdi' does not depend on any axioms\n'Tabaqat4.tabaqa4_thabat' depends on axioms: [propext, Quot.sound]\n",
    "stderr": ""
@@ -210,8 +253,14 @@
    "stored": true,
    "consumed_by_next": true,
    "reason": null,
-   "residuals": [],
-   "hawamil_source": "Dal/Makharij.lean:def hawamil (قُرئ وقت التشغيل ، 29 حاملًا)"
+   "residuals": [
+    "W-1b4b30ab-001:QARI_DISAGREE:WAQF_VS_WASL: القارئ يوقف على آخر النصّ (حذف التنوين وتسكين) والجدول يُخرج صورة الوصل (تنوين = نون ساكنة)"
+   ],
+   "hawamil_source": "Dal/Makharij.lean:def hawamil (قُرئ وقت التشغيل ، 29 حاملًا)",
+   "qari": {
+    "cmd": "/tmp/claude-0/-home-claude/df1a9f35-ff1b-5bad-8e6d-f9f037af0cec/scratchpad/m/.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv …",
+    "rc": 0
+   }
   },
   {
    "stage": "S3_HOKOM_TAQDIR",
@@ -309,6 +358,57 @@
    "sabab_ghiyab": null
   },
   {
+   "tabaqa": 1,
+   "ism": "qari_W-1b4b30ab-001",
+   "qima": [
+    112,
+    52,
+    71
+   ],
+   "tarjama": "قارئ Mashru يقرأ «وَلَدٌ» = [112, 52, 71] ≠ الجدول [112, 52, 69, 59] — WAQF_VS_WASL: القارئ يوقف على آخر النصّ (حذف التنوين وتسكين) والجدول يُخرج صورة الوصل (تنوين = نون ساكنة)",
+   "rutba": "مفحوص",
+   "burhan": "مخرج qari (تنفيذ Mashru) ؛ الاختلاف يُعرَض ولا يُحسَم",
+   "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 1,
+   "ism": "qari_jumla",
+   "qima": [
+    92,
+    4,
+    104,
+    116,
+    112,
+    52,
+    71
+   ],
+   "tarjama": "الجملة في الوصل عند قارئ Mashru: مرخَّصة موقوفًا على آخرها — لها تقطيع (jumla_murakhkhasa) ؛ السلسلة [92, 4, 104, 116, 112, 52, 71]",
+   "rutba": "مفحوص",
+   "burhan": "آلة الجملة Msent في qari (تنفيذ Mashru ، لا نظرية في ملفنا)",
+   "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 2,
+   "ism": "makhzan_W-1b4b30ab-000",
+   "qima": [
+    "mutabaqa:ذهب:الذهاب في الأرض،",
+    "mutabaqa:ذهب:الذهاب"
+   ],
+   "tarjama": "المخزن (Mashru) باللفظ «ذهب»: 2 قول ؛ الأوّل: mutabaqa:ذهب:الذهاب في الأرض، — سند 936c68e0c2c6@655167/PageV01P309/ذهب/قائل:أبو عبيد",
+   "rutba": "تقدير",
+   "burhan": "وسم Mashru المحسوب نفسه (qari: «وسمه المحسوب: تقدير») ؛ معنى معجمي لا مدلول بنيوي",
+   "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 2,
+   "ism": "jidhr_W-1b4b30ab-000",
+   "qima": "ذهب",
+   "tarjama": "مرشَّح الجذر عند قارئ Mashru: «ذهب» (مرشَّح لا هويّة ؛ المزيد والأدوات لا تُميَّز بعد)",
+   "rutba": "مقيس",
+   "burhan": "qari: fakk_ramz على ثلاث خانات حواملها سالمة — نطاق معلَن",
+   "sabab_ghiyab": null
+  },
+  {
    "tabaqa": 2,
    "ism": "madlul_W-1b4b30ab-000",
    "qima": "dhahab",
@@ -316,6 +416,15 @@
    "rutba": "مطابَق",
    "burhan": "مطابقة اسمية بين السطح وتعريف Mashru ؛ حقوله تُبرهَن في S7",
    "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 2,
+   "ism": "makhzan_W-1b4b30ab-001",
+   "qima": null,
+   "tarjama": "المخزن باللفظ «ولد»: لا مدخل — لا حكم (الغياب ليس امتناعًا)",
+   "rutba": null,
+   "burhan": null,
+   "sabab_ghiyab": "MAKHZAN_NO_ENTRY"
   },
   {
    "tabaqa": 2,
@@ -441,11 +550,11 @@
   "مبرهن": 1,
   "مبرهن على الشاهد": 8,
   "مطابَق": 4,
-  "مفحوص": 0,
-  "مقيس": 1,
-  "تقدير": 0,
+  "مفحوص": 2,
+  "مقيس": 2,
+  "تقدير": 1,
   "رأي": 0,
-  "بلا رتبة": 0
+  "بلا رتبة": 1
  },
  "tabaqat_state": {
   "1": "مبرهن على الشاهد",
@@ -464,20 +573,31 @@
  ],
  "identity": {
   "mashru_root": "/tmp/claude-0/-home-claude/df1a9f35-ff1b-5bad-8e6d-f9f037af0cec/scratchpad/m",
-  "mashru_head": "e4c801ffe9171dadedcc3aae23051ea0953ae361",
+  "mashru_head": "d2533c39bb42b710248beebb0129f178fc7cbd76",
   "mashru_tree_clean": false,
   "mashru_status_porcelain": "?? Shahid_Ahmad.lean\n?? Shahid_Ahmad_T4.lean\n?? jumla_kamila.json",
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "qamus_sha256": "e8662a21d29bfe8b0a1fe38d5b9a724bb6f43e60ef3d57770e721d8f8a5b6b20",
   "tool_files": {
    "README.md": "00f8605e4007470ebd1cf4d888c67e51a69917cefd440d73c6e12ef84468c1c2",
-   "TAQRIR_TASLIM.md": "8165d525439b431f07597a4cc0aa47ea0ff19c67c934406d3625843eeaff7d12",
+   "TAQRIR_TASLIM.md": "46a83fc6aab1969ba0f8cfd24493ee0ffbdb3f593faa4b8c203896c60b038496",
+   "_runs_samples/a/taqrir.json": "7c80bdec79ce67a9a12e8e8831f489adce4e36ed8b576a867be6f0be8c2d229f",
+   "_runs_samples/a/taqrir.md": "77dbb464e8b92d3322c5c6960e32f296101453cc180f7156ba851b0307723ace",
+   "_runs_samples/b/taqrir.json": "b48cae0c87c2d50f4c1da6af2f029ba1b040c906fadeb6b927e5cdc9b693189a",
+   "_runs_samples/b/taqrir.md": "ccd354ab3c877df90968b04a61828fd64f4122bb54b1ef4b35e7a78dc47acd45",
+   "_runs_samples/c/taqrir.json": "f9ead96b162ef318e22cf77b03dd25a0dc4f82cca9a7ea6207cc005d97e3e708",
+   "_runs_samples/c/taqrir.md": "17a3d7efc2b5e99241a4c6da6628a78dbb274de5590bb9e2634eeece64bcf982",
+   "_runs_samples/e/taqrir.json": "004b78e048c32207cc01317a75c8972650a3b976b1770b2302a0c401cd7fcb81",
+   "_runs_samples/e/taqrir.md": "d426e555157e12876b62470336963d22fb6d7bf77e95a732d1db929b298f7adc",
+   "_runs_samples/f/taqrir.json": "b07e7812be3909a4faaf54f01c95be338537bb0287cb5540c372ec077d9bced2",
+   "_runs_samples/f/taqrir.md": "7ee9a3f8c8eacd1e473d80428e0e003d1c126ec9b232a7c769d7313746f3cee5",
    "hokom_adapter.example.py": "f2960748511e6b921874fb0a7cd2062904692f8b422a561de5398a3b77576f06",
-   "run.py": "c77f8f185ab0d7e07b1d3f37030c428d4a5d6f0d93e3af1415745c904faa3f50",
+   "run.py": "db220690335d14ef2c8cdaa5b5d71a71b86dc82c5dbe6a39183ebc482e283870",
    "t4/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-   "t4/core.py": "a397346591e5332da6430075074117b89f34996f318f8e5858ce1c3c6333574c",
-   "t4/dal.py": "1c3a62d0977528ec841e2a8bed446adff01b26fde7c7a829dd2395f85f33fcfa",
+   "t4/core.py": "54143f4dc3a3022e667ce26d517de29abf20db8fd4642f5cea7f9811fa1e6492",
+   "t4/dal.py": "52e44fb0ea84e9d2a490ce947f2276291ff6cea13ce5b5d34d7c7056c1d01e47",
    "t4/qamus.json": "e8662a21d29bfe8b0a1fe38d5b9a724bb6f43e60ef3d57770e721d8f8a5b6b20",
+   "t4/qari.py": "841d73f7a5f34fa7cda3ed17ab1efd82224059d6562009b248c0a7c62b593da7",
    "t4/report.py": "2593ad5e16f6c0482de6a6c91d68d4e41df3b6befeb2762624d0135210745178",
    "tests/test_tabaqat4.py": "27052856c95f7e639462e9c537de18b155e84a28aa3f63fb2685410fa4070510"
   }

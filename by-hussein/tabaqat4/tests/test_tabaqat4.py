@@ -103,6 +103,40 @@ class T(unittest.TestCase):
         self.assertEqual(before, after, 'MASHRU_TREE_CHANGED')
 
 
+    def test_T9_jaza_maqbul_proven(self):
+        """T9 إِنْ تَجْتَهِدْ تَنْجَحْ + --forms shart=mudariMajzum jawab=mudariMajzum → hukm=⟨maqbul,maqbul⟩ مبرهنًا (مشروطًا بالصيغ) ؛ ط4 NOT_APPLICABLE"""
+        if LEAN_REASON: self.skipTest('NOT_RUN: ' + LEAN_REASON)
+        r = self.rec('إِنْ تَجْتَهِدْ تَنْجَحْ', forms={'shart': 'mudariMajzum', 'jawab': 'mudariMajzum'})
+        self.assertEqual(r['plan']['kind'], 'jaza'); self.assertEqual(r['lean']['observed'], {'kalam': '.maqbul', 'shir': '.maqbul', 'sinf': '.jaza'})
+        self.assertTrue(all(v['passed'] for v in r['lean']['theorems'].values()))
+        self.assertEqual(r['tabaqat_state'][3], 'مبرهن على الشاهد'); self.assertEqual(r['tabaqat_state'][4], 'NOT_APPLICABLE')
+        self.assertTrue(any('CONDITIONAL_ON_SUPPLIED_FORMS' in x for s in r['stages'] for x in s['residuals']))
+
+    def test_T10_jaza_qabih_J16(self):
+        """T10 إِنْ تَجْتَهِدْ تَنْجَحُ (جواب مرفوع بعد مجزوم) → J16: الكلام قبيح ، الشعر مقبول — مبرهنًا"""
+        if LEAN_REASON: self.skipTest('NOT_RUN: ' + LEAN_REASON)
+        r = self.rec('إِنْ تَجْتَهِدْ تَنْجَحُ', forms={'shart': 'mudariMajzum', 'jawab': 'mudariMarfu'})
+        self.assertEqual(r['lean']['observed']['kalam'], '.qabih'); self.assertEqual(r['lean']['observed']['shir'], '.maqbul')
+        self.assertTrue(r['lean']['theorems']['jaza_hukm']['passed'])
+
+    def test_T11_jaza_forms_undeclared(self):
+        """T11 جملة شرطية بلا --forms → JAZA_FORMS_UNDECLARED ، لا Lean ، لا حكم"""
+        r = self.rec('إِنْ تَجْتَهِدْ تَنْجَحْ')
+        s5 = [s for s in r['stages'] if s['stage'] == 'S5_MAAN_ITAR'][0]
+        self.assertIn('JAZA_FORMS_UNDECLARED', s5['reason']); self.assertIsNone(r['lean']); self.assertIsNone(r['hukm3'])
+
+    def test_T12_qari_witness(self):
+        """T12 قارئ Mashru شاهدًا ثانيًا: AGREE على ذَهَبَ الْوَلَدُ (بعد إسقاط همزة الابتداء) ؛ DISAGREE مسمًّى WAQF_VS_WASL على وَلَدٌ الأخيرة"""
+        from t4.qari import qari_exe
+        if not qari_exe(ROOT): self.skipTest('NOT_RUN: QARI_EXE_ABSENT (lake build qari)')
+        a = self.rec('ذَهَبَ الْوَلَدُ', lean=False)
+        self.assertEqual([d['qari']['reconcile']['state'] for d in a['dal']], ['AGREE', 'AGREE'])
+        self.assertEqual(a['dal'][1]['qari']['khalaya'], [0, 55, 112, 52, 69])
+        f = self.rec('ذَهَبَ وَلَدٌ', lean=False)
+        rc = f['dal'][1]['qari']['reconcile']; self.assertEqual(rc['state'], 'DISAGREE'); self.assertIn('WAQF_VS_WASL', rc['reason'])
+        self.assertTrue(any(c['ism'].startswith('makhzan_') and c['rutba'] == 'تقدير' for c in a['claims']))
+
+
 class Reporter(unittest.TextTestResult):
     def addSuccess(self, t): super().addSuccess(t); RESULTS[t._testMethodName] = 'PASS'
     def addFailure(self, t, e): super().addFailure(t, e); RESULTS[t._testMethodName] = 'FAIL'

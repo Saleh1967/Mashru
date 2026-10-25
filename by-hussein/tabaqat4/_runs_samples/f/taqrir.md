@@ -4,12 +4,12 @@
 SCHEMA            = Tabaqat4Record:v1
 TEXT_SHA256       = 1b4b30ab00a8a0d8c1ba54506de268d74d111043c1a061dad79e349ace632c10
 CODEPOINTS        = 13 ؛ NFC_EQ_INPUT=True
-MASHRU_HEAD       = e4c801ffe9171dadedcc3aae23051ea0953ae361 ؛ TREE_CLEAN=False
+MASHRU_HEAD       = d2533c39bb42b710248beebb0129f178fc7cbd76 ؛ TREE_CLEAN=False
 LEAN_TOOLCHAIN    = leanprover/lean4:v4.34.1
 QAMUS_SHA256      = e8662a21d29bfe8b…
 TABAQAT_STATE     = ط1:مبرهن على الشاهد | ط2:مبرهن على الشاهد | ط3:مبرهن على الشاهد | ط4:مبرهن على الشاهد
 HUKM3             = .murakhkhas
-WASM_SUMMARY      = مبرهن=1 ، مبرهن على الشاهد=8 ، مطابَق=4 ، مقيس=1
+WASM_SUMMARY      = مبرهن=1 ، مبرهن على الشاهد=8 ، مطابَق=4 ، مفحوص=2 ، مقيس=2 ، تقدير=1 ، بلا رتبة=1
 ```
 
 ## ١. ما الذي عرفه Mashru — طبقةً طبقة
@@ -18,8 +18,13 @@ WASM_SUMMARY      = مبرهن=1 ، مبرهن على الشاهد=8 ، مطاب
 |---|---|---|---|---|
 | ١ — الدالّ وحده | `dal_W-1b4b30ab-000` | «ذَهَبَ»: 3 خلية [ذَ=92, هَ=4, بَ=104] | مطابَق | ترميز بجدول Dal/Makharij.lean (n=4·حامل+حالة) ؛ يُبرهَن على مستوى الجملة في S7  |
 | ١ — الدالّ وحده | `dal_W-1b4b30ab-001` | «وَلَدٌ»: 4 خلية [وَ=112, لَ=52, د◌ُ=69, نْ(تنوين)=59] | مطابَق | ترميز بجدول Dal/Makharij.lean (n=4·حامل+حالة) ؛ يُبرهَن على مستوى الجملة في S7  |
+| ١ — الدالّ وحده | `qari_W-1b4b30ab-001` | قارئ Mashru يقرأ «وَلَدٌ» = [112, 52, 71] ≠ الجدول [112, 52, 69, 59] — WAQF_VS_WASL: القارئ يوقف على آخر النصّ (حذف التنوين وتسكين) والجدول يُخرج صورة الوصل (تنوين = نون ساكنة) | مفحوص | مخرج qari (تنفيذ Mashru) ؛ الاختلاف يُعرَض ولا يُحسَم  |
+| ١ — الدالّ وحده | `qari_jumla` | الجملة في الوصل عند قارئ Mashru: مرخَّصة موقوفًا على آخرها — لها تقطيع (jumla_murakhkhasa) ؛ السلسلة [92, 4, 104, 116, 112, 52, 71] | مفحوص | آلة الجملة Msent في qari (تنفيذ Mashru ، لا نظرية في ملفنا)  |
 | ١ — الدالّ وحده | `tabaqa1_kalimat` | خلايا الكلمتَين كما بناها Mashru في الإطار الثلاثي (مطابقة البناء) | مبرهن على الشاهد | lean rc=0 ؛ axioms=[]  |
+| ٢ — المدلول وحده | `makhzan_W-1b4b30ab-000` | المخزن (Mashru) باللفظ «ذهب»: 2 قول ؛ الأوّل: mutabaqa:ذهب:الذهاب في الأرض، — سند 936c68e0c2c6@655167/PageV01P309/ذهب/قائل:أبو عبيد | تقدير | وسم Mashru المحسوب نفسه (qari: «وسمه المحسوب: تقدير») ؛ معنى معجمي لا مدلول بنيوي  |
+| ٢ — المدلول وحده | `jidhr_W-1b4b30ab-000` | مرشَّح الجذر عند قارئ Mashru: «ذهب» (مرشَّح لا هويّة ؛ المزيد والأدوات لا تُميَّز بعد) | مقيس | qari: fakk_ramz على ثلاث خانات حواملها سالمة — نطاق معلَن  |
 | ٢ — المدلول وحده | `madlul_W-1b4b30ab-000` | «ذَهَبَ» ↔ مدلول Mashru `dhahab` (ذهب — عَرَضٌ فعليّ (tim=true) ، لازم بنيويًّا (إطار بلا خانة مفعول)) — Jisr/Utur.lean:327 ؛ مودَع: المخصص 936c68e0c2c6… PageV01P309–310 | مطابَق | مطابقة اسمية بين السطح وتعريف Mashru ؛ حقوله تُبرهَن في S7  |
+| ٢ — المدلول وحده | `makhzan_W-1b4b30ab-001` | المخزن باللفظ «ولد»: لا مدخل — لا حكم (الغياب ليس امتناعًا) | **بلا رتبة** |  — MAKHZAN_NO_ENTRY |
 | ٢ — المدلول وحده | `madlul_W-1b4b30ab-001` | «وَلَدٌ» ↔ مدلول Mashru `walad` (ولد — ذاتٌ ، خاصّة 21 ، علاقة (1,30) ، قابليّات [10,11]) — Jisr/Utur.lean:326 ؛ بلا مودَع معجمي معلَن | مطابَق | مطابقة اسمية بين السطح وتعريف Mashru ؛ حقوله تُبرهَن في S7  |
 | ٢ — المدلول وحده | `tabaqa2_maani` | المدلولان في الإطار ، و`dhahab.tim = true` (عَرَضٌ له زمان) | مبرهن على الشاهد | lean rc=0 ؛ axioms=[]  |
 | ٣ — معًا (الإطار والحكم) | `naw_jumla` | نوع الجملة: فعل ماضٍ + فاعل منوَّن ← إطار Jisr.Mulhaqat.jaaRajul (شاهد Mashru: dhahabaWaladun (Jisr/Utur.lean:918)) | مقيس | اختيار الإطار بشروط سطحية (قسم المدلول الأوّل ، أل/تنوين الثاني) — حكمه يُبرهَن في S7  |
@@ -44,7 +49,7 @@ WASM_SUMMARY      = مبرهن=1 ، مبرهن على الشاهد=8 ، مطاب
 |---|---|---|---|---|---|---|---|---|---|
 | S0_HAWIYYA | نعم | نعم | نعم | نعم | نعم | نعم | —(لم يُقَس) |  |  |
 | S1_TAQTI | نعم | نعم | نعم | نعم | نعم | نعم | نعم |  |  |
-| S2_DAL | نعم | نعم | نعم | نعم | نعم | نعم | نعم |  |  |
+| S2_DAL | نعم | نعم | نعم | نعم | نعم | نعم | نعم |  | W-1b4b30ab-001:QARI_DISAGREE:WAQF_VS_WASL: القارئ يوقف على آخر النصّ (حذف التنوين وتسكين) والجدول يُخرج صورة الوصل (تنوين = نون ساكنة) |
 | S3_HOKOM_TAQDIR | لا | —(لم يُقَس) | —(لم يُقَس) | —(لم يُقَس) | —(لم يُقَس) | —(لم يُقَس) | —(لم يُقَس) | NOT_REQUESTED (--hokom غير مطلوب) |  |
 | S4_MADLUL | نعم | نعم | نعم | نعم | نعم | نعم | نعم |  | W-1b4b30ab-001:MADLUL_SOURCE_UNDECLARED_IN_MASHRU |
 | S5_MAAN_ITAR | نعم | نعم | نعم | نعم | نعم | نعم | نعم |  |  |
@@ -80,7 +85,7 @@ FILES = {"pass1": "828df36fe916bd7a73434cacc562f652251e03d6372fb4d3c2646374ff937
 ## ٦. هوية التشغيل
 ```
 mashru_root = /tmp/claude-0/-home-claude/df1a9f35-ff1b-5bad-8e6d-f9f037af0cec/scratchpad/m
-mashru_head = e4c801ffe9171dadedcc3aae23051ea0953ae361
+mashru_head = d2533c39bb42b710248beebb0129f178fc7cbd76
 mashru_tree_clean = False
 mashru_status_porcelain = ?? Shahid_Ahmad.lean
 ?? Shahid_Ahmad_T4.lean
@@ -88,14 +93,25 @@ mashru_status_porcelain = ?? Shahid_Ahmad.lean
 lean_toolchain = leanprover/lean4:v4.34.1
 qamus_sha256 = e8662a21d29bfe8b0a1fe38d5b9a724bb6f43e60ef3d57770e721d8f8a5b6b20
   00f8605e4007470e  README.md
-  8165d525439b431f  TAQRIR_TASLIM.md
+  46a83fc6aab1969b  TAQRIR_TASLIM.md
+  7c80bdec79ce67a9  _runs_samples/a/taqrir.json
+  77dbb464e8b92d33  _runs_samples/a/taqrir.md
+  b48cae0c87c2d50f  _runs_samples/b/taqrir.json
+  ccd354ab3c877df9  _runs_samples/b/taqrir.md
+  f9ead96b162ef318  _runs_samples/c/taqrir.json
+  17a3d7efc2b5e992  _runs_samples/c/taqrir.md
+  004b78e048c32207  _runs_samples/e/taqrir.json
+  d426e555157e1287  _runs_samples/e/taqrir.md
+  b07e7812be3909a4  _runs_samples/f/taqrir.json
+  7ee9a3f8c8eacd1e  _runs_samples/f/taqrir.md
   f2960748511e6b92  hokom_adapter.example.py
-  c77f8f185ab0d7e0  run.py
+  db220690335d14ef  run.py
   e3b0c44298fc1c14  t4/__init__.py
-  a397346591e5332d  t4/core.py
-  1c3a62d0977528ec  t4/dal.py
+  54143f4dc3a3022e  t4/core.py
+  52e44fb0ea84e9d2  t4/dal.py
   e8662a21d29bfe8b  t4/qamus.json
+  841d73f7a5f34fa7  t4/qari.py
   2593ad5e16f6c048  t4/report.py
   27052856c95f7e63  tests/test_tabaqat4.py
-timestamp_utc = 2026-10-24T11:09:01.772450+00:00
+timestamp_utc = 2026-10-25T04:48:26.551201+00:00
 ```

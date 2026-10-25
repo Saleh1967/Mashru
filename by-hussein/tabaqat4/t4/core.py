@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from .dal import load_hawamil, tokenize, encode_word, KalimaDal
+from .qari import run_qari, parse_qari, reconcile
 
 HERE = Path(__file__).resolve().parent
 TOOL_ROOT = HERE.parent
@@ -46,8 +47,9 @@ class Claim:
 
 class Tabaqat4:
     def __init__(self, mashru_root: Path, out_dir: Optional[Path] = None, use_hokom: bool = False,
-                 run_lean: bool = True, mirsat_an: int = 0, arad_izaha: int = -1):
+                 run_lean: bool = True, mirsat_an: int = 0, arad_izaha: int = -1, forms: Optional[Dict[str, str]] = None):
         self.mashru_root = Path(mashru_root).resolve()
+        self.forms = forms or {}          # صيغ باب الجزاء المعلَنة من المالك: shart=, jawab=, lam=
         self.out_dir = out_dir
         self.use_hokom = use_hokom
         self.run_lean = run_lean
@@ -110,6 +112,34 @@ class Tabaqat4:
         st.update(completed=True, found=True, produced=True, accepted=all(k.ok for k in out), stored=True,
                   consumed_by_next=all(k.ok for k in out))
         st['hawamil_source'] = 'Dal/Makharij.lean:def hawamil (قُرئ وقت التشغيل ، 29 حاملًا)'
+        # الشاهد الثاني: قارئ Mashru نفسه (Qari/Main.lean) على الجملة كلّها
+        self.qari = None
+        q = run_qari(self.mashru_root, [t['surface'] for t in toks])
+        st['qari'] = {'cmd': q['cmd'], 'rc': q['rc']}
+        if q['rc'] != 0:
+            st['qari']['reason'] = (q['stderr'] or q['stdout'])[:300] or 'QARI_FAILED'
+            st['residuals'].append('QARI_WITNESS_ABSENT: ' + st['qari']['reason'].splitlines()[0][:120])
+        else:
+            self.qari = parse_qari(q['stdout'], [t['surface'] for t in toks])
+            for u in self.qari['unparsed']: st['residuals'].append('QARI_UNPARSED: ' + u)
+            for i, (t, k) in enumerate(zip(toks, out)):
+                qw = self.qari['words'][i] if i < len(self.qari['words']) else {}
+                if not k.ok:
+                    rec = {'state': 'QARI_ONLY' if qw.get('khalaya') else 'BOTH_REJECTED', 'qari': qw.get('khalaya'), 'reason': ' ؛ '.join(qw.get('notes', [])) or qw.get('rejected')}
+                else:
+                    rec = reconcile(k.khalaya, k.al, k.wasl, qw, i == len(toks) - 1)
+                k.transforms.append('QARI_WITNESS:' + rec['state'])
+                setattr(k, 'qari', {'khalaya': qw.get('khalaya'), 'notes': qw.get('notes', []), 'rejected': qw.get('rejected'), 'reconcile': rec})
+                if rec['state'] == 'DISAGREE':
+                    st['residuals'].append(f"{t['anchor']}:QARI_DISAGREE:{rec.get('reason')}")
+                    self.claims.append(Claim(1, f"qari_{t['anchor']}", qw.get('khalaya'), f"قارئ Mashru يقرأ «{t['surface']}» = {qw.get('khalaya')} ≠ الجدول {k.khalaya} — {rec.get('reason')}", 'مفحوص',
+                                             burhan='مخرج qari (تنفيذ Mashru) ؛ الاختلاف يُعرَض ولا يُحسَم'))
+                elif rec['state'] == 'QARI_ONLY':
+                    self.claims.append(Claim(1, f"qari_{t['anchor']}", qw.get('khalaya'), f"قارئ Mashru يقرأ «{t['surface']}» = {qw.get('khalaya')} حيث رفضها الجدول ({';'.join(k.residuals)}) — {rec.get('reason')}", 'مفحوص',
+                                             burhan='مخرج qari بقراراته المودَعة (قطر الندى/الألفية كما يذكرها)'))
+            if self.qari.get('jumla') and self.qari['jumla'].get('qanun'):
+                self.claims.append(Claim(1, 'qari_jumla', self.qari['jumla']['silsila'], f"الجملة في الوصل عند قارئ Mashru: {self.qari['jumla']['qanun']} ؛ السلسلة {self.qari['jumla']['silsila']}", 'مفحوص',
+                                         burhan='آلة الجملة Msent في qari (تنفيذ Mashru ، لا نظرية في ملفنا)'))
         self.stages.append(st); return out
 
     # ---------------------------------------------------------------- S3 Hokom (تقدير)
@@ -142,14 +172,27 @@ class Tabaqat4:
     def _s4(self, toks):
         st = stage('S4_MADLUL'); st['started'] = True
         found = []
-        for t in toks:
+        for i, t in enumerate(toks):
+            qw = (self.qari['words'][i] if getattr(self, 'qari', None) and i < len(self.qari['words']) else {}) or {}
+            if qw:
+                ents = qw.get('makhzan_entries') or []
+                if ents:
+                    self.claims.append(Claim(2, f"makhzan_{t['anchor']}", [e_['qawl'] for e_ in ents],
+                                             f"المخزن (Mashru) باللفظ «{qw.get('makhzan_lookup')}»: {len(ents)} قول ؛ الأوّل: {ents[0]['qawl']} — سند {ents[0].get('sanad')}",
+                                             'تقدير', burhan='وسم Mashru المحسوب نفسه (qari: «وسمه المحسوب: تقدير») ؛ معنى معجمي لا مدلول بنيوي'))
+                elif qw.get('makhzan_lookup'):
+                    self.claims.append(Claim(2, f"makhzan_{t['anchor']}", None, f"المخزن باللفظ «{qw.get('makhzan_lookup')}»: لا مدخل — لا حكم (الغياب ليس امتناعًا)", None,
+                                             sabab_ghiyab='MAKHZAN_NO_ENTRY'))
+                if qw.get('root'):
+                    self.claims.append(Claim(2, f"jidhr_{t['anchor']}", qw['root'], f"مرشَّح الجذر عند قارئ Mashru: «{qw['root']}» (مرشَّح لا هويّة ؛ المزيد والأدوات لا تُميَّز بعد)", 'مقيس',
+                                             burhan='qari: fakk_ramz على ثلاث خانات حواملها سالمة — نطاق معلَن'))
             e = self.qamus['kalimat'].get(t['surface'])
             if not e:
                 found.append(None)
                 st['residuals'].append(f"{t['anchor']}:NO_SEALED_MADLUL")
                 self.claims.append(Claim(2, f"madlul_{t['anchor']}", None,
-                                         f"«{t['surface']}»: لا مدلولَ معرَّفًا لها في Mashru (ولا يُولَّد)", None,
-                                         sabab_ghiyab='NO_SEALED_MADLUL: الكلمة ليست في qamus.json المقيَّد بتعريفات Mashru'))
+                                         f"«{t['surface']}»: لا مدلولَ بنيويًّا (SLGE.Madlul) معرَّفًا لها في Mashru (ولا يُولَّد)", None,
+                                         sabab_ghiyab='NO_SEALED_MADLUL: لا تعريف SLGE.Madlul لها في مصدر Mashru (qamus.json المقيَّد به)'))
                 continue
             m = dict(self.qamus['madlulat'][e['madlul']]); m['ism'] = e['madlul']; m['shahid'] = e.get('shahid')
             found.append(m)
@@ -170,6 +213,9 @@ class Tabaqat4:
         st = stage('S5_MAAN_ITAR'); st['started'] = True
         plan = None
         n = len(toks)
+        jaza = self._s5_jaza(toks, dal, st)
+        if jaza is not None:
+            self.stages.append(st); return jaza
         if not maani or not all(maani) or not all(k.ok for k in dal):
             st['completed'] = True; st['found'] = False; st['produced'] = False
             # تقدير النوع من السطح وحده (لا من مدلول) كي يُعلَن الخروج عن المسار باسمه
@@ -198,6 +244,44 @@ class Tabaqat4:
         self.claims.append(Claim(3, 'naw_jumla', plan['naw'], f"نوع الجملة: {plan['naw']} ← إطار {plan['ud']} (شاهد Mashru: {plan['shahid_mashru']})",
                                  'مقيس', burhan='اختيار الإطار بشروط سطحية (قسم المدلول الأوّل ، أل/تنوين الثاني) — حكمه يُبرهَن في S7'))
         self.stages.append(st); return plan
+
+
+    # ---------------------------------------------------------------- S5-ج باب الجزاء (Jisr/BabJaza.lean ، PR #80)
+    ADAWAT_JAZA = ["من", "ما", "أيهم", "أي", "متى", "أين", "أنى", "حيثما", "إن", "إذما", "مهما", "إما", "أينما", "أياما",
+                   "حيث", "إذ", "كيف", "إذا", "لو", "كلما", "أيان", "كيفما", "حينما"]   # = adawatJaza + ما يحكم فيه sinfOf بـ«لا حكم» ؛ قائمة حاصرة
+    SHART_FORMS = ("mudariMajzum", "mudariMarfu", "madi")
+    JAWAB_FORMS = ("mudariMajzum", "mudariMarfu", "madi", "faIsmiyya", "faMudariMarfu", "faMudariMajzum", "faGhayr",
+                   "idhaIsmiyya", "faIdha", "ismiyya", "waw", "thumma", "lamQasam")
+
+    @staticmethod
+    def _strip(w: str) -> str:
+        return re.sub(r'[\u064b-\u0652\u0670]', '', w)
+
+    def _s5_jaza(self, toks, dal, st):
+        """يعود بخطّة باب الجزاء إن كانت الكلمة الأولى أداةَ جزاء ؛ وإلّا None (لا يمسّ st)."""
+        if not toks: return None
+        adat = self._strip(toks[0]['surface'])
+        if adat not in self.ADAWAT_JAZA: return None
+        n = len(toks)
+        base = {'naw': 'جملة شرطية (باب الجزاء)', 'adat': adat, 'tartib': '.shartAwwalan',
+                'shahid_mashru': 'Jisr/BabJaza.lean hukm ؛ الضابط المجمَّد BabJazaDawabit (39 حالة)'}
+        if n != 3:
+            st['completed'] = True; st['found'] = True; st['produced'] = False
+            st['reason'] = f'OUT_OF_EXECUTED_PATH:جملة شرطية من {n} كلمات (المغلَّف: أداة + فعل الشرط + الجواب = 3) — الأداة «{adat}» معروفة لـ BabJaza'
+            st['residuals'].append('OUT_OF_EXECUTED_PATH'); return {'blocked': True, **base}
+        sh, jw, lam = self.forms.get('shart'), self.forms.get('jawab'), self.forms.get('lam', 'false')
+        if sh not in self.SHART_FORMS or jw not in self.JAWAB_FORMS or lam not in ('true', 'false'):
+            st['completed'] = True; st['found'] = True; st['produced'] = False
+            st['reason'] = ('JAZA_FORMS_UNDECLARED: BabJaza.Jumla يحتاج صورةَ فعل الشرط والجواب «كما كُتبت» وهي مُعطاةٌ لا مستنتَجة ؛ '
+                            'أعلنها: --forms shart=<' + '|'.join(self.SHART_FORMS) + '> jawab=<' + '|'.join(self.JAWAB_FORMS) + '> [lam=true]')
+            st['residuals'].append('JAZA_FORMS_UNDECLARED'); return {'blocked': True, **base}
+        plan = {**base, 'shart': '.' + sh, 'jawab': '.' + jw, 'lamQasam': lam, 'kind': 'jaza',
+                'premise_rank': 'رأي', 'premise_source': 'OWNER_DECLARED_FORMS (--forms)'}
+        st.update(completed=True, found=True, produced=True, accepted=True, stored=True, consumed_by_next=True)
+        st['residuals'].append('FORMS_SUPPLIED_NOT_READ: صور الفعلَين معطاة من المالك لا مقروءة من السطح')
+        self.claims.append(Claim(3, 'naw_jumla', plan['naw'], f"نوع الجملة: شرطية ، الأداة «{adat}» ، الشرط أوّلًا ؛ الصيغتان المعطاتان: شرط={sh} ، جواب={jw} ، لام القسم={lam}",
+                                 'مقيس', burhan='الأداة من قائمة BabJaza الحاصرة (مقيس) ؛ الصيغتان معطاتان (رأي) ؛ الحكم يُبرهَن في S7 مشروطًا بهما'))
+        return plan
 
     # ---------------------------------------------------------------- S6/S7 Lean
     def _lean_file(self, toks, dal, maani, plan, pass_no: int, observed: Optional[Dict[str, str]] = None) -> str:
@@ -268,8 +352,65 @@ class Tabaqat4:
         return {'hukm3': hukm, 'ibtida3': lines[1], 'silsila': lines[2], 'ajza': ajza, 'yastaghni': lines[4],
                 'zaman': zaman, 'mawdi': f"⟨{', '.join(nums[:3])}⟩" if len(nums) >= 3 else lines[6]}
 
+    def _lean_jaza(self, plan, pass_no: int, observed=None) -> str:
+        L = [f"/- Tabaqat4 — باب الجزاء ؛ مولَّد آليًّا ؛ pass {pass_no}. Mashru يُستورَد ولا يُعدَّل. -/",
+             "import Jisr.BabJaza\n\nnamespace Tabaqat4\nopen Jisr.BabJaza\n",
+             f"def j : Jumla := ⟨\"{plan['adat']}\", {plan['tartib']}, {plan['lamQasam']}, {plan['shart']}, {plan['jawab']}⟩\n"]
+        if pass_no == 1:
+            L.append('#eval (hukm j).kalam'); L.append('#eval (hukm j).shir'); L.append('#eval sinfOf j.adat')
+        else:
+            L.append(f"theorem jaza_hukm : hukm j = ⟨{observed['kalam']}, {observed['shir']}⟩ := by decide")
+            L.append(f"theorem jaza_sinf : sinfOf j.adat = {observed['sinf']} := by decide")
+            L.append('#print axioms Tabaqat4.jaza_hukm'); L.append('#print axioms Tabaqat4.jaza_sinf')
+        L.append('\nend Tabaqat4'); return '\n'.join(L) + '\n'
+
+    def _s7_jaza(self, plan, run_dir: Path):
+        st6 = stage('S6_AQL'); st7 = stage('S7_BURHAN')
+        st6['reason'] = 'NOT_APPLICABLE: باب الجزاء يحكم على صورة الجملة (كلام/شعر) ولا يبني Itar3 ولا Aql.Jumla ؛ لا طبقة رابعة له في Mashru'
+        st6['residuals'].append('AQL_NOT_DEFINED_FOR_JAZA'); self.stages.append(st6)
+        st7['started'] = self.run_lean
+        if not self.run_lean:
+            st7['reason'] = 'NOT_RUN (--no-lean)'; self.stages.append(st7); return None
+        run_dir.mkdir(parents=True, exist_ok=True)
+        p1 = run_dir / 'Jumla_pass1.lean'; p1.write_text(self._lean_jaza(plan, 1), encoding='utf-8')
+        r1 = self._run_lean(p1); (run_dir / 'lean_pass1_stdout.txt').write_text(r1['stdout'] + '\n--- stderr ---\n' + r1['stderr'], encoding='utf-8')
+        res = {'pass1': r1, 'pass2': None, 'observed': None, 'theorems': {}, 'files': {'pass1': sha256_file(p1)}, 'kind': 'jaza'}
+        if r1['rc'] != 0:
+            st7['completed'] = False; st7['reason'] = 'LEAN_PASS1_FAILED: ' + (r1['stderr'] or r1['stdout'])[:400]; self.stages.append(st7); return res
+        lines = [l.strip() for l in r1['stdout'].splitlines() if l.strip()]
+        def dar(x):
+            m = re.search(r'(maqbul|qabih|khata|laHukm)', x); return '.' + m.group(1) if m else None
+        def sinf(x):
+            m = re.search(r'(jaza|haythuIdh|kayfa|idha|ghayr)', x); return '.' + m.group(1) if m else None
+        if len(lines) < 3 or not dar(lines[0]) or not dar(lines[1]) or not sinf(lines[2]):
+            st7['completed'] = False; st7['reason'] = 'LEAN_PASS1_UNPARSED'; self.stages.append(st7); return res
+        obs = {'kalam': dar(lines[0]), 'shir': dar(lines[1]), 'sinf': sinf(lines[2])}; res['observed'] = obs
+        p2 = run_dir / 'Jumla.lean'; p2.write_text(self._lean_jaza(plan, 2, obs), encoding='utf-8')
+        r2 = self._run_lean(p2); (run_dir / 'lean_stdout.txt').write_text(r2['stdout'] + '\n--- stderr ---\n' + r2['stderr'], encoding='utf-8')
+        res['pass2'] = r2; res['files']['pass2'] = sha256_file(p2)
+        ax = {m.group(1): [a.strip() for a in m.group(2).split(',') if a.strip()] for m in re.finditer(r"'Tabaqat4\.(\w+)' depends on axioms: \[(.*?)\]", r2['stdout'])}
+        for m in re.finditer(r"'Tabaqat4\.(\w+)' does not depend on any axioms", r2['stdout']): ax[m.group(1)] = []
+        ok2 = r2['rc'] == 0
+        for nme in ('jaza_hukm', 'jaza_sinf'):
+            a = ax.get(nme); res['theorems'][nme] = {'passed': ok2 and a is not None and set(a) <= AXIOMS_OK, 'axioms': a}
+        st7.update(completed=True, found=ok2, produced=True, accepted=all(t['passed'] for t in res['theorems'].values()), stored=True)
+        if not ok2: st7['reason'] = 'LEAN_PASS2_FAILED: ' + (r2['stderr'] or r2['stdout'])[-600:]
+        st7['residuals'].append('CONDITIONAL_ON_SUPPLIED_FORMS: البرهان على الحكم مشروطٌ بصيغتَي الشرط والجواب المعطاتَين')
+        self.stages.append(st7)
+        DAR = {'.maqbul': 'مقبول', '.qabih': 'قبيح', '.khata': 'خطأ', '.laHukm': 'لا حكم'}
+        rk = lambda n: 'مبرهن على الشاهد' if res['theorems'][n]['passed'] else 'مفحوص'
+        br = lambda n: f"lean rc={r2['rc']} ؛ axioms={res['theorems'][n]['axioms']} ؛ مشروط بالصيغ المعطاة"
+        self.claims.append(Claim(3, 'jaza_sinf', obs['sinf'], f"صنف الأداة «{plan['adat']}» عند سيبويه (sinfOf): {obs['sinf']}", rk('jaza_sinf'), br('jaza_sinf')))
+        self.claims.append(Claim(3, 'jaza_hukm', obs, f"حكم باب الجزاء: في الكلام {DAR[obs['kalam']]} ، في الشعر {DAR[obs['shir']]} — على الصيغتَين المعطاتَين", rk('jaza_hukm'), br('jaza_hukm')))
+        self.la_yuddaa.append('في باب الجزاء: صورتا فعل الشرط والجواب مُعطاتان من المالك (--forms) لا مقروءتان من السطح ؛ البرهان مشروط بهما ، وقراءة الصورة من السطح تنتظر مُنتِجًا (Hokom) برتبة تقدير.')
+        return res
+
     def _s6_s7(self, toks, dal, maani, plan, run_dir: Path):
         st6 = stage('S6_AQL'); st7 = stage('S7_BURHAN')
+        if plan is not None and plan.get('blocked'):
+            st6['reason'] = st7['reason'] = 'PREREQ_MISSING (S5 أعلن توقّفًا)'; self.stages += [st6, st7]; return None
+        if plan is not None and plan.get('kind') == 'jaza':
+            return self._s7_jaza(plan, run_dir)
         if plan is None:
             st6['reason'] = st7['reason'] = 'PREREQ_MISSING (S5 لم يُنتج إطارًا)'; self.stages += [st6, st7]; return None
         st6['started'] = True
@@ -349,15 +490,16 @@ class Tabaqat4:
         tabaqat_state = {}
         for tb in (1, 2, 3, 4):
             cs = [c for c in self.claims if c.tabaqa == tb]
+            if tb == 4 and plan and plan.get('kind') == 'jaza': tabaqat_state[tb] = 'NOT_APPLICABLE'; continue
             if not cs: tabaqat_state[tb] = 'NOT_REACHED'
-            elif all(c.rutba in ('مبرهن', 'مبرهن على الشاهد') for c in cs if c.ism.startswith('tabaqa')) and any(c.ism.startswith('tabaqa') for c in cs): tabaqat_state[tb] = 'مبرهن على الشاهد'
+            elif all(c.rutba in ('مبرهن', 'مبرهن على الشاهد') for c in cs if c.ism.startswith(('tabaqa', 'jaza_'))) and any(c.ism.startswith(('tabaqa', 'jaza_')) for c in cs): tabaqat_state[tb] = 'مبرهن على الشاهد'
             elif any(c.rutba is None for c in cs): tabaqat_state[tb] = 'PARTIAL_OR_BLOCKED'
             else: tabaqat_state[tb] = max((c.rutba for c in cs if c.rutba), key=lambda r: -WASM.index(r))
         ident = self._identity()
         rec = {'schema': 'Tabaqat4Record:v1', 'timestamp_utc': t0, 'input': s0, 'tokens': toks,
                'dal': [k.to_dict() for k in dal] if dal else None, 'maani': maani, 'plan': plan,
                'lean': lean, 'stages': self.stages, 'claims': [c.to_dict() for c in self.claims],
-               'wasm_summary': wasm_summary, 'tabaqat_state': tabaqat_state, 'hukm3': (lean.get('observed') or {}).get('hukm3') if lean else None, 'la_yuddaa': self.la_yuddaa, 'identity': ident,
+               'wasm_summary': wasm_summary, 'tabaqat_state': tabaqat_state, 'hukm3': ((lean.get('observed') or {}).get('hukm3') or (lean.get('observed') or {}).get('kalam')) if lean else None, 'la_yuddaa': self.la_yuddaa, 'identity': ident,
                'run_dir': str(run_dir)}
         return rec
 
