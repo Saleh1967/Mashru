@@ -37,10 +37,14 @@
   - حروفُ الاستفهام هل وكيف ومن (س9769–9770): الفعلُ «أولى» فهو مقبول، والاسمُ قبله `marjuh`. ولا حكمَ للاسم وحده: العبارةُ فيما اجتمع
     بعدها اسمٌ وفعل.
   - لكن وإنما وكأنما وإذ (س9774): «يجوز أن يليها … الأسماء … الأفعال»، فكلُّها مقبولة.
+  - «رب» و«قل» بلا «ما» (`bilaMa`): الفعلُ بعدهما خطأ («لم يكن لهم سبيل إلى رب يقول ولا إلى قل يقول»، س9764)، ولا حكمَ لغيره.
+    **أُضيف بعد قراءة الحالات** (N20)، فالتشغيلُ الثاني على مادّةٍ مكشوفة.
   - وغيرُها «لا حكم».
 
 **المنهج.** شفرةُ هذا الملفّ كُتبت قبل أن يقرأ البنّاءُ حالاتِ الضابط، وجُمّدت الحالاتُ قبلها
-(`tahaqquq/dawabit/nafy/tajmid.json`؛ `hawkama/منهج_الضوابط.md`). ونتيجتُها على الضابط في `Jisr/NafyFilQiyas.lean`، لا هنا.
+(`tahaqquq/dawabit/nafy/tajmid.json`؛ `hawkama/منهج_الضوابط.md`)، ودُفعت في `e7ac675`، والتشغيلُ الأوّل عليها في `natija_1.json`
+(32/33). **وبعد قراءة الحالات** أُضيف `bilaMa` وسندُه وشاهدُه، فالتشغيلُ الثاني (`natija_2.json`) على مادّةٍ مكشوفة. ونتيجتُها على الضابط
+في `Jisr/NafyFilQiyas.lean`، لا هنا.
 -/
 import Aql.Awwaliyyat
 
@@ -128,6 +132,8 @@ def laYufsal : List String := ["قد", "لما", "سوف", "لن"]
 def mukhlasa : List String := ["ربما", "قلما", "هلا", "لولا", "ألا"]
 def istifham : List String := ["هل", "كيف", "من"]
 def yajuz : List String := ["لكن", "إنما", "كأنما", "إذ"]
+/-- «رب» و«قل» بلا «ما» (س9764؛ أُضيف بعد قراءة الحالات، `natija_2.json`). -/
+def bilaMa : List String := ["رب", "قل"]
 
 def hukmWali (harf : String) (y : Yali) : Hukm :=
   if harf ∈ laYufsal then
@@ -149,6 +155,10 @@ def hukmWali (harf : String) (y : Yali) : Hukm :=
     | .ismThummaFil => ⟨.marjuh, .marjuh⟩
     | .ism => ⟨.laHukm, .laHukm⟩
   else if harf ∈ yajuz then ⟨.maqbul, .maqbul⟩
+  else if harf ∈ bilaMa then
+    match y with
+    | .fil => ⟨.khata, .laHukm⟩
+    | _ => ⟨.laHukm, .laHukm⟩
   else ⟨.laHukm, .laHukm⟩
 
 /-! ## الأسانيد (قطعٌ حرفيّة؛ يفحصها `tahaqquq/test_nafy.py` موصولةَ الأسطر) -/
@@ -167,6 +177,7 @@ def asanid : List (String × Nat × Nat × String) := [
   ("sawfaSin", 9760, 9761, "ومن تلك الحروف أيضا سوف يفعل لأنها بمنزلة السين التي في قولك سيفعل"),
   ("sawfaLan", 9761, 9762, "وإنما هي إثبات لقوله لن يفعل فأشبهتها في أن لا يفصل بينها وبين الفعل"),
   ("rubbama", 9762, 9763, "ومن تلك الحروف ربما وقلما وأشباههما جعلوا رب مع ما بمنزلة كلمة واحدة وهيئوها ليذكر بعدها الفعل"),
+  ("rubbaYaqul", 9764, 9764, "لأنهم لم يكن لهم سبيل إلى رب يقول ولا إلى قل يقول"),
   ("akhlasuhuma", 9764, 9765, "فألحقوهما ما وأخلصوهما للفعل"),
   ("halla", 9765, 9766, "ومثل ذلك هلا ولولا وألا ألزموهن لا وجعلوا كل واحدة مع لا بمنزلة حرف واحد وأخلصوهن للفعل"),
   ("shir", 9766, 9767, "وقد يجوز في الشعر تقديم الاسم"),
@@ -225,9 +236,15 @@ theorem la_yufsal_khata (h : String) (y : Yali) (hh : h ∈ laYufsal) (hy : y �
   unfold hukmWali
   cases y <;> simp_all
 
+/-- **«رب» و«قل» بلا «ما»** (على الشاهد؛ أُضيف بعد قراءة الحالات). -/
+theorem rubba_bila_ma :
+    hukmWali "رب" .fil = ⟨.khata, .laHukm⟩ ∧ hukmWali "قل" .fil = ⟨.khata, .laHukm⟩ ∧
+    hukmWali "ربما" .fil = ⟨.maqbul, .maqbul⟩ := by
+  decide
+
 /-- **ما قُبل في الكلام قُبل في الشعر** (تعريفيّة). -/
 theorem maqbul_kalam_maqbul_shir (h : String) (y : Yali) (hk : (hukmWali h y).kalam = .maqbul) :
     (hukmWali h y).shir = .maqbul := by
   unfold hukmWali at *
   by_cases h1 : h ∈ laYufsal <;> by_cases h2 : h ∈ mukhlasa <;> by_cases h3 : h = "كما" <;>
-    by_cases h4 : h ∈ istifham <;> by_cases h5 : h ∈ yajuz <;> cases y <;> simp_all
+    by_cases h4 : h ∈ istifham <;> by_cases h5 : h ∈ yajuz <;> by_cases h6 : h ∈ bilaMa <;> cases y <;> simp_all

@@ -84,6 +84,7 @@ import Aql.Waqi
 import Aql.WaqiShawahid
 import Nizam.Qiyas
 import Jisr.NafyFil
+import Jisr.NafyFilQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1829,3 +1830,11 @@ import Jisr.NafyFil
 #print axioms Jisr.NafyFil.la_hukm_shawahid
 #print axioms Jisr.NafyFil.la_yufsal_khata
 #print axioms Jisr.NafyFil.maqbul_kalam_maqbul_shir
+-- ضابطُ نفي الفعل المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/NafyFilQiyas.lean؛ hawkama/منهج_الضوابط.md)، ومبرهنةُ «رب» و«قل» بعد قراءة الحالات
+#print axioms Jisr.NafyFil.rubba_bila_ma
+#print axioms Jisr.NafyFil.Qiyas.qarin_jadwal
+#print axioms Jisr.NafyFil.Qiyas.qarin_suwar
+#print axioms Jisr.NafyFil.Qiyas.majal
+#print axioms Jisr.NafyFil.Qiyas.natija
+#print axioms Jisr.NafyFil.Qiyas.natija_fia
+#print axioms Jisr.NafyFil.Qiyas.akhta_sifr

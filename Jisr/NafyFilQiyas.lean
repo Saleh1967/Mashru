@@ -15,6 +15,9 @@
 **التشغيلات.** المبرهناتُ هنا على الشفرة الحاليّة دائمًا. وسجلُّ كلّ تشغيلٍ ملفٌّ في `tahaqquq/dawabit/nafy/` (`natija_1.json` …)، ويفحص
 `tahaqquq/test_nafy.py` أنّ بصمةَ الأوّل ثابتةٌ فيه، وأنّ كلّ سجلٍّ بعده يحمل بصمةَ ما قبله، وأنّ آخرَها لبصمة الشفرة الحاليّة وأعدادُه هي
 أعدادُ هذه المبرهنات.
+- `natija_1.json`: التشغيلُ الأوّل على الشفرة المجمَّدة في `e7ac675`: 32 صوابًا من 33، ونقصُ تغطيةٍ في N20 («رب يقول»). وأسماءُ مبرهناته
+  أسماؤها في `5cb531f`.
+- `natija_2.json`: بعد إضافة `bilaMa` (س9764) إلى `Jisr/NafyFil.lean`، على مادّةٍ مكشوفة: 33 من 33.
 -/
 import Jisr.NafyFil
 import Jisr.NafyFilDawabit
@@ -125,33 +128,38 @@ theorem qarin_suwar :
 
 /-! ## النتيجةُ على الشفرة الحاليّة (على الشاهد) -/
 
+/-- أعدادُ المجال بترتيبٍ ثابت (يحسبها `tahaqquq/test_nafy.py` من `cases.json` بالترتيب نفسه): حالاتُ النوعين والحقولُ المسؤولة؛ ثمّ
+    متوقَّعُ الصور: «لا حكم»، وصورةٌ واحدة، وصورتان فأكثر؛ ثمّ متوقَّعُ الكلام في الثاني: مقبول، مرجوح، قبيح، خطأ، «لا حكم»، بديلان؛ ثمّ
+    متوقَّعُ الشعر: مقبول، مرجوح، قبيح، خطأ، «لا حكم»، غيرُ مسؤول. -/
+def majalAadad : List Nat :=
+  [halatNafy.length, halatWali.length, natayij.length,
+   (halatNafy.filter (·.suwar = none)).length,
+   (halatNafy.filter (fun h => h.suwar.map List.length = some 1)).length,
+   (halatNafy.filter (fun h => decide (2 ≤ (h.suwar.map List.length).getD 0))).length] ++
+  [Daraja.maqbul, .marjuh, .qabih, .khata, .laHukm].map (fun d => (halatWali.filter (·.kalam = [d])).length) ++
+  [(halatWali.filter (fun h => decide (2 ≤ h.kalam.length))).length] ++
+  [some [Daraja.maqbul], some [.marjuh], some [.qabih], some [.khata], some [.laHukm], none].map
+    (fun d => (halatWali.filter (·.shir = d)).length)
+
 /-- **المجالُ غيرُ فارغ ولا مائل:** 16 حالةً من النوع الأوّل و14 من الثاني، و33 حقلًا مسؤولًا. ومتوقَّعُ الصور: «لا حكم» 2، وصورةٌ واحدة
     11، وصورتان فأكثر 3. ومتوقَّعُ الكلام في الثاني: مقبول 3، ومرجوح 1، وقبيح 0، وخطأ 7، و«لا حكم» 3، وبديلان 0. ومتوقَّعُ الشعر: مقبول 3،
     وغيرُ مسؤول 11. -/
-theorem majal :
-    halatNafy.length = 16 ∧ halatWali.length = 14 ∧ natayij.length = 33 ∧
-    [(halatNafy.filter (·.suwar = none)).length,
-     (halatNafy.filter (fun h => h.suwar.map List.length = some 1)).length,
-     (halatNafy.filter (fun h => decide (2 ≤ (h.suwar.map List.length).getD 0))).length] = [2, 11, 3] ∧
-    [Daraja.maqbul, .marjuh, .qabih, .khata, .laHukm].map (fun d => (halatWali.filter (·.kalam = [d])).length) = [3, 1, 0, 7, 3] ∧
-    (halatWali.filter (fun h => decide (2 ≤ h.kalam.length))).length = 0 ∧
-    [some [Daraja.maqbul], some [.marjuh], some [.qabih], some [.khata], some [.laHukm], none].map
-      (fun d => (halatWali.filter (·.shir = d)).length) = [3, 0, 0, 0, 0, 11] := by
+theorem majal : majalAadad = [16, 14, 33, 2, 11, 3, 3, 1, 0, 7, 3, 0, 3, 0, 0, 0, 0, 11] := by
   decide +kernel
 
-/-- **النتيجة:** 32 صوابًا من 33، ونقصُ تغطيةٍ واحد، بلا تجاوزٍ ولا اختيارٍ ولا خطأ. -/
-theorem natija : ihsa natayij = ⟨32, 1, 0, 0, 0, 0, 0, 0⟩ := by
+/-- **النتيجة:** 33 صوابًا من 33 (التشغيلُ الثاني، على مادّةٍ مكشوفة؛ والأوّلُ 32/33 في `natija_1.json`). -/
+theorem natija : ihsa natayij = ⟨33, 0, 0, 0, 0, 0, 0, 0⟩ := by
   decide +kernel
 
-/-- **بالفئات:** موجب 15، حدّ 7 ونقصُ تغطيةٍ واحد، خارج 5، عموم 3، غموض 2. -/
+/-- **بالفئات:** موجب 15، حدّ 8، خارج 5، عموم 3، غموض 2 — كلُّها صواب. -/
 theorem natija_fia :
     [Fia.mujib, .hadd, .kharij, .umum, .ghumud].map ihsaFia =
-      [⟨15, 0, 0, 0, 0, 0, 0, 0⟩, ⟨7, 1, 0, 0, 0, 0, 0, 0⟩, ⟨5, 0, 0, 0, 0, 0, 0, 0⟩, ⟨3, 0, 0, 0, 0, 0, 0, 0⟩,
+      [⟨15, 0, 0, 0, 0, 0, 0, 0⟩, ⟨8, 0, 0, 0, 0, 0, 0, 0⟩, ⟨5, 0, 0, 0, 0, 0, 0, 0⟩, ⟨3, 0, 0, 0, 0, 0, 0, 0⟩,
        ⟨2, 0, 0, 0, 0, 0, 0, 0⟩] := by
   decide +kernel
 
-/-- **والإخفاقُ باسمه:** N20 («رب يقول»)، الكلام، نقصُ تغطية. -/
-theorem akhta_1 : akhta = [("N20", .kalam, .naqsTaghtiya)] := by
+/-- **ولا إخفاق.** وفي التشغيل الأوّل N20 («رب يقول»)، الكلام، نقصُ تغطية (`natija_1.json`). -/
+theorem akhta_sifr : akhta = [] := by
   decide +kernel
 
 end Qiyas
