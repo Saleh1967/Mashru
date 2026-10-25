@@ -1,0 +1,56 @@
+{
+ "tashghil": 3,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد مراجعة murajii: قاعدةُ المنوَّن نصبًا معمَّمةً على الحرف الصحيح والتاء الملحقة والياء بعد الكسرة (بلا ألفٍ خطأ، والإشمامُ خطأ)، وحذفُ الياء مقصورًا على الرفع والجرّ، والشعرُ مقصورًا على الحركة، وتصحيحُ الرأس وبياناتِ شاهدين؛ ولم تتغيّر نتيجةُ حالة",
+ "qablaha": {
+  "natija_2.json": "4649762ae7294e6cc86144063330b96c38853a56aee5bb5dce5abcb22b883f1a"
+ },
+ "cases_sha256": "9b6e35e2983fdef2893c3e9d72dbf473d7414bc9127eb1e5eb341d4a4a259853",
+ "shifra": {
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "sha256": "c7f1a5d976ac25f0f916ce55b574e025ac79624ea68ea0129c9abd1a5bb3398e"
+ },
+ "lean": [
+  "Dal.WaqfSibawayhi.Qiyas.majal",
+  "Dal.WaqfSibawayhi.Qiyas.natija",
+  "Dal.WaqfSibawayhi.Qiyas.natija_fia",
+  "Dal.WaqfSibawayhi.Qiyas.akhta_2"
+ ],
+ "halat": 40,
+ "huqul_masula": 52,
+ "ihsa": {
+  "sawab": 49,
+  "naqsTaghtiya": 3,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 26,
+  "حد": 8,
+  "خارج": 4,
+  "عموم": 11,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "W26",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W27",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W29",
+   "kalam",
+   "naqsTaghtiya"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى."
+}

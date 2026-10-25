@@ -85,6 +85,12 @@ import Aql.WaqiShawahid
 import Nizam.Qiyas
 import Jisr.NafyFil
 import Jisr.NafyFilQiyas
+import Jisr.BabFa
+import Jisr.BabFaQiyas
+import Jisr.MajariKalim
+import Jisr.MajariKalimQiyas
+import Dal.WaqfSibawayhi
+import Dal.WaqfSibawayhiQiyas
 import Jisr.BaqiJaza
 import Jisr.BaqiJazaQiyas
 
@@ -1842,6 +1848,51 @@ import Jisr.BaqiJazaQiyas
 #print axioms Jisr.NafyFil.Qiyas.natija
 #print axioms Jisr.NafyFil.Qiyas.natija_fia
 #print axioms Jisr.NafyFil.Qiyas.akhta_sifr
+-- «هذا باب الفاء» عند سيبويه (الكتاب س8914–9049؛ Jisr/BabFa.lean): الفعلُ بعد الفاء في الواجب وغير الواجب، بالمعنى والإعراب
+#print axioms Jisr.BabFa.kalam_ghayr_farigh
+#print axioms Jisr.BabFa.wajib_la_nasb
+#print axioms Jisr.BabFa.amr_la_jazm
+#print axioms Jisr.BabFa.nasb_ghayr_wajib
+#print axioms Jisr.BabFa.maqbul_kalam_maqbul_shir
+#print axioms Jisr.BabFa.ijab_yufarriq
+#print axioms Jisr.BabFa.ghamid_shawahid
+-- ضابطُ باب الفاء المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/BabFaQiyas.lean؛ hawkama/منهج_الضوابط.md)، وشاهدُ ما غُيّر بعد قراءة الحالات
+#print axioms Jisr.BabFa.baad_qiraa
+#print axioms Jisr.BabFa.Qiyas.qarin_jadwal
+#print axioms Jisr.BabFa.Qiyas.qarin_badil
+#print axioms Jisr.BabFa.Qiyas.majal
+#print axioms Jisr.BabFa.Qiyas.natija
+#print axioms Jisr.BabFa.Qiyas.natija_fia
+#print axioms Jisr.BabFa.Qiyas.akhta_2
+-- مجاري أواخر الكلم عند سيبويه (الكتاب س111–233؛ Jisr/MajariKalim.lean): علامةُ الآخر بالصنف والموضع، إعرابًا أو بناءً
+#print axioms Jisr.MajariKalim.la_jazm_fi_asma
+#print axioms Jisr.MajariKalim.la_jarr_fi_mudari
+#print axioms Jisr.MajariKalim.mabni_la_yataghayyar
+#print axioms Jisr.MajariKalim.irab_bil_harf
+#print axioms Jisr.MajariKalim.la_yansarif
+#print axioms Jisr.MajariKalim.haythu_wa_ghayruha
+-- ضابطُ مجاري أواخر الكلم المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/MajariKalimQiyas.lean؛ hawkama/منهج_الضوابط.md)، و«ليس للفعل في الجر نصيب» بعد قراءة الحالات
+#print axioms Jisr.MajariKalim.la_jarr_fi_fil
+#print axioms Jisr.MajariKalim.Qiyas.qarin_jadwal
+#print axioms Jisr.MajariKalim.Qiyas.majal
+#print axioms Jisr.MajariKalim.Qiyas.natija
+#print axioms Jisr.MajariKalim.Qiyas.natija_fia
+#print axioms Jisr.MajariKalim.Qiyas.akhta_sifr
+-- الوقفُ على أواخر الكلم المتحرّكة في الوصل عند سيبويه (الكتاب س17782–17859؛ Dal/WaqfSibawayhi.lean): وجهُ الوقف بالآخر والتنوين وما قبله والحركة
+#print axioms Dal.WaqfSibawayhi.la_ishmam
+#print axioms Dal.WaqfSibawayhi.tadif_baad_sakin
+#print axioms Dal.WaqfSibawayhi.maqbul_kalam_maqbul_shir
+#print axioms Dal.WaqfSibawayhi.munawwan_nasb_kull
+#print axioms Dal.WaqfSibawayhi.hadhf_wa_qawafi
+#print axioms Dal.WaqfSibawayhi.mumkin_shawahid
+#print axioms Dal.WaqfSibawayhi.shawahid
+-- ضابطُ الوقف عند سيبويه المجمَّد، النتيجةُ على الشفرة الحاليّة (Dal/WaqfSibawayhiQiyas.lean؛ hawkama/منهج_الضوابط.md)، وشواهدُ ما أُضيف بعد قراءة الحالات
+#print axioms Dal.WaqfSibawayhi.munawwan_nasb_shawahid
+#print axioms Dal.WaqfSibawayhi.Qiyas.qarin_jadwal
+#print axioms Dal.WaqfSibawayhi.Qiyas.majal
+#print axioms Dal.WaqfSibawayhi.Qiyas.natija
+#print axioms Dal.WaqfSibawayhi.Qiyas.natija_fia
+#print axioms Dal.WaqfSibawayhi.Qiyas.akhta_2
 -- بقيّةُ أبواب الجزاء عند سيبويه (الكتاب س9305–9652؛ Jisr/BaqiJaza.lean) وضابطُها المجمَّد (Jisr/BaqiJazaQiyas.lean؛ hawkama/منهج_الضوابط.md)
 #print axioms Jisr.BaqiJaza.mutlaq_salim
 #print axioms Jisr.BaqiJaza.hukmSila_salim

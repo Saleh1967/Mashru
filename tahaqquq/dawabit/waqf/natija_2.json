@@ -1,0 +1,56 @@
+{
+ "tashghil": 2,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد تعديل Dal/WaqfSibawayhi.lean بعد قراءة الحالات — المنوَّنُ نصبًا بالإسكان خطأ (س17783، س17802–17803) وبالتضعيف مع سكون ما قبله خطأ (س17838)، والتاءُ الملحقة منوَّنةً نصبًا بالألف، وفي الشعر الواوُ والياءُ (س17829–17830) والألفُ بعد غير المنوَّن (س17830–17831) والتضعيفُ بلا قيد الزيادة",
+ "qablaha": {
+  "natija_1.json": "cdb5b5f0a32ccf7d88a11d6e48d19ad6a600c7486b97b47957c23e662101cb6a"
+ },
+ "cases_sha256": "9b6e35e2983fdef2893c3e9d72dbf473d7414bc9127eb1e5eb341d4a4a259853",
+ "shifra": {
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "sha256": "4b4e03c6c0d946c51e23d6e961edbf5b66ddcb39bd9c79392e4a20049715b81c"
+ },
+ "lean": [
+  "Dal.WaqfSibawayhi.Qiyas.majal",
+  "Dal.WaqfSibawayhi.Qiyas.natija",
+  "Dal.WaqfSibawayhi.Qiyas.natija_fia",
+  "Dal.WaqfSibawayhi.Qiyas.akhta_2"
+ ],
+ "halat": 40,
+ "huqul_masula": 52,
+ "ihsa": {
+  "sawab": 49,
+  "naqsTaghtiya": 3,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 26,
+  "حد": 8,
+  "خارج": 4,
+  "عموم": 11,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "W26",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W27",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W29",
+   "kalam",
+   "naqsTaghtiya"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى."
+}

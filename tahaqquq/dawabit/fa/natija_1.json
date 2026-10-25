@@ -1,0 +1,90 @@
+{
+ "tashghil": 1,
+ "naw": "التشغيلُ الأوّل على الحالات المجمَّدة، بعد دفع الشفرة وقبل أيّ تعديلٍ لها",
+ "cases_sha256": "7eda15eb08e723e7e02caf1f05e9639debce0a781ed00d2c742c898495d8a4c8",
+ "shifra": {
+  "milaf": "Jisr/BabFa.lean",
+  "sha256": "83aa36acb8f3fb7c5efdfce37fe011f9ffee60b74cbc6907cae819ab5d1ad339",
+  "iydaa": "355c44985696509dcb24f0e1f97f901adbc9b1bd"
+ },
+ "lean": [
+  "Jisr.BabFa.Qiyas.majal",
+  "Jisr.BabFa.Qiyas.natija",
+  "Jisr.BabFa.Qiyas.natija_fia",
+  "Jisr.BabFa.Qiyas.akhta_1"
+ ],
+ "halat": 39,
+ "huqul_masula": 48,
+ "ihsa": {
+  "sawab": 38,
+  "naqsTaghtiya": 4,
+  "tajawuz": 2,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 4,
+  "tawaqquf": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 21,
+  "حد": 6,
+  "خارج": 4,
+  "عموم": 5,
+  "غموض": 2
+ },
+ "akhta": [
+  [
+   "F12",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "F15",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "F16",
+   "kalam",
+   "tajawuz"
+  ],
+  [
+   "F24",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "F26",
+   "kalam",
+   "ikhtiyar"
+  ],
+  [
+   "F28",
+   "kalam",
+   "ikhtiyar"
+  ],
+  [
+   "F29",
+   "kalam",
+   "ikhtiyar"
+  ],
+  [
+   "F30",
+   "kalam",
+   "ikhtiyar"
+  ],
+  [
+   "F32",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "F38",
+   "kalam",
+   "tajawuz"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "الأعدادُ من #eval على Jisr/BabFaQiyas.lean ثمّ مبرهناتٍ بـ decide +kernel؛ وbil_fia عددُ الحقول المسؤولة الصائبة في كلّ فئة."
+}
