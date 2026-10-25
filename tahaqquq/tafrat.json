@@ -3463,21 +3463,21 @@
  },
  {
   "ism": "P568_waqf_basmat_shifra",
-  "milaf": "tahaqquq/dawabit/waqf/natija_5.json",
-  "min": "\"sha256\": \"bae3da98723a54665d53c5e56f08bd41d058c726a42c0f84b62df83f8b55a4c0\"",
-  "ila": "\"sha256\": \"7ae3da98723a54665d53c5e56f08bd41d058c726a42c0f84b62df83f8b55a4c0\""
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "\"sha256\": \"45c1cb4bbabdd1bf66220ee6ad6b618014b41206f16c3f99391fd9b740a271f7\"",
+  "ila": "\"sha256\": \"75c1cb4bbabdd1bf66220ee6ad6b618014b41206f16c3f99391fd9b740a271f7\""
  },
  {
   "ism": "P569_waqf_sawab",
-  "milaf": "tahaqquq/dawabit/waqf/natija_5.json",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
   "min": "  \"sawab\": 49,",
   "ila": "  \"sawab\": 50,"
  },
  {
   "ism": "P570_waqf_qablaha",
-  "milaf": "tahaqquq/dawabit/waqf/natija_5.json",
-  "min": "\"natija_4.json\": \"649f0e1e01681e4f04df066271a9374f763311b5fd4982546d7052cbb38c6672\"",
-  "ila": "\"natija_4.json\": \"749f0e1e01681e4f04df066271a9374f763311b5fd4982546d7052cbb38c6672\""
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "\"natija_5.json\": \"6f2d9a6357484f3708b4680d4a5c4825b36675ca5272865d580d9c498fa7635f\"",
+  "ila": "\"natija_5.json\": \"7f2d9a6357484f3708b4680d4a5c4825b36675ca5272865d580d9c498fa7635f\""
  },
  {
   "ism": "P571_waqf_natija_1",
@@ -3493,13 +3493,13 @@
  },
  {
   "ism": "P573_waqf_lean",
-  "milaf": "tahaqquq/dawabit/waqf/natija_5.json",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
   "min": "\"Dal.WaqfSibawayhi.Qiyas.natija_fia\",",
   "ila": "\"Dal.WaqfSibawayhi.Qiyas.majal\","
  },
  {
   "ism": "P574_waqf_akhta",
-  "milaf": "tahaqquq/dawabit/waqf/natija_5.json",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
   "min": "  [\n   \"W29\",",
   "ila": "  [\n   \"W28\","
  },
@@ -3511,7 +3511,7 @@
  },
  {
   "ism": "P576_waqf_halat",
-  "milaf": "tahaqquq/dawabit/waqf/natija_5.json",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
   "min": "\"halat\": 40,",
   "ila": "\"halat\": 41,"
  },
@@ -3535,7 +3535,7 @@
  },
  {
   "ism": "P701_waqf_bil_fia",
-  "milaf": "tahaqquq/dawabit/waqf/natija_5.json",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
   "min": "\"حد\": 8",
   "ila": "\"حد\": 7"
  },
@@ -3547,13 +3547,13 @@
  },
  {
   "ism": "P703_waqf_tashghil",
-  "milaf": "tahaqquq/dawabit/waqf/natija_5.json",
-  "min": "\"tashghil\": 5",
-  "ila": "\"tashghil\": 6"
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "\"tashghil\": 6",
+  "ila": "\"tashghil\": 7"
  },
  {
   "ism": "P704_waqf_cases_natija",
-  "milaf": "tahaqquq/dawabit/waqf/natija_5.json",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
   "min": "\"cases_sha256\": \"9b6e35e2",
   "ila": "\"cases_sha256\": \"8b6e35e2"
  },
@@ -3621,7 +3621,7 @@
   "ism": "P743_waqf_fahs_akhta_fi_lean",
   "milaf": "Dal/WaqfSibawayhiQiyas.lean",
   "min": "theorem akhta_2 :",
-  "ila": "theorem akhta_2x :"
+  "ila": "theorem akhta_alt :\n    akhta = [(\"W26\", .kalam, .naqsTaghtiya), (\"W27\", .kalam, .naqsTaghtiya), (\"W29\", .kalam, .naqsTaghtiya)] := by\n  decide +kernel\n\ntheorem akhta_2 :"
  },
  {
   "ism": "P744_waqf_fahs_lean_mubarhana",
@@ -3631,7 +3631,7 @@
  },
  {
   "ism": "P745_waqf_fahs_huqul_masula",
-  "milaf": "tahaqquq/dawabit/waqf/natija_5.json",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
   "min": "\"huqul_masula\": 52,",
   "ila": "\"huqul_masula\": 53,"
  },
