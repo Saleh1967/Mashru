@@ -1,0 +1,113 @@
+{
+ "tashghil": 2,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد أن قرأ البنّاءُ الحالات، وبعد تصحيح رأس Jisr/NassItar.lean (توثيقٌ وحده) في 8ddf814",
+ "qablaha": {
+  "natija_1.json": "09613ffd9005cb1511033e421440303a12ba4600f7e4647a07c75fa98c03ff6e"
+ },
+ "cases_sha256": "a2e37d38a9be0ce4fe69c252daba8ba247726eb1eeaed43b1a1f615955ffe2ff",
+ "shifra": {
+  "Jisr/NassItar.lean": {
+   "sha256": "11aae637aa47bf726f56d727d8a8701b08de1eb75e0d77286587894011777d8e",
+   "iydaa": "8ddf814234d4875bf8eb81ecca05650b53c6d2b2"
+  },
+  "Jisr/NassItarDabit.lean": {
+   "sha256": "3e47202d08a6d048abd5bde9b8d460ad2036e989d31986b8a9c6a6764b0f3468",
+   "iydaa": "8ddf814234d4875bf8eb81ecca05650b53c6d2b2"
+  },
+  "Qari/Main.lean": {
+   "sha256": "e7a3eb6726f49d43083dfddceb6c2ba0e5402840085a405c14a30f4d83de0322",
+   "iydaa": "8ddf814234d4875bf8eb81ecca05650b53c6d2b2"
+  }
+ },
+ "lean": [
+  "Jisr.NassItar.Qiyas.majal",
+  "Jisr.NassItar.Qiyas.natija",
+  "Jisr.NassItar.Qiyas.natija_fia",
+  "Jisr.NassItar.Qiyas.akhta_1"
+ ],
+ "halat": 50,
+ "huqul_masula": 71,
+ "ihsa": {
+  "sawab": 61,
+  "naqsTaghtiya": 8,
+  "tajawuz": 1,
+  "qabulKhati": 0,
+  "raddKhati": 1,
+  "ikhtiyar": 0,
+  "khataItar": 0,
+  "rafdQari": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 30,
+  "حد": 15,
+  "خارج": 4,
+  "عموم": 12,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "N04",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N21",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N24",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N28",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N34",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N35",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N36",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N38",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N45",
+   "hukm",
+   "raddKhati"
+  ],
+  [
+   "N46",
+   "hukm",
+   "tajawuz"
+  ]
+ ],
+ "azwaj": {
+  "jumla": 17,
+  "taghayyar": 16,
+  "lam_yataghayyar": [
+   [
+    "N34",
+    "N35"
+   ]
+  ]
+ },
+ "rafd_qari": [],
+ "tarikh": "2026-10-25",
+ "malahiz": "الأعدادُ أعدادُ التشغيل الأوّل بعينها: لم تتغيّر الشفرةُ الحاكمة، وتغيّر رأسُ Jisr/NassItar.lean وحده (اقتباسُ القطر L343 مُدَّ إلى مستثناه L344–345، والإحالةُ إلى مبرهنةٍ لا وجودَ لها صُحّحت، وسندُ L92–94 صار L92–93، وعدُّ المبرهنات). والأعدادُ أعدادُ مبرهنات Jisr/NassItarQiyas.lean في الإيداع الذي يحمل هذا الملفّ."
+}

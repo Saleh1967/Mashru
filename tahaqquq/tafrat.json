@@ -3706,5 +3706,155 @@
   "milaf": "Jisr/NassItarDabit.lean",
   "min": "def masulItar (h : Hala) : Bool := h.hukm == [.murakhkhas] && hukmMuharrik h == .murakhkhas",
   "ila": "def masulItar (h : Hala) : Bool := h.hukm == [.murakhkhas]"
+ },
+ {
+  "ism": "P791_nass_tajmid_wasf",
+  "milaf": "tahaqquq/dawabit/nass/tajmid.json",
+  "min": "\"wasf_sha256\": \"34f250e72699c8f2850b82cb98a61b78e47e46f27054d35cb3ae5219f20dd0ee\"",
+  "ila": "\"wasf_sha256\": \"44f250e72699c8f2850b82cb98a61b78e47e46f27054d35cb3ae5219f20dd0ee\""
+ },
+ {
+  "ism": "P792_nass_mawlud_ism",
+  "milaf": "Jisr/NassItarDawabit.lean",
+  "min": "⟨\"N05\", .mujib,",
+  "ila": "⟨\"N95\", .mujib,"
+ },
+ {
+  "ism": "P793_nass_natija1_sawab",
+  "milaf": "tahaqquq/dawabit/nass/natija_1.json",
+  "min": "  \"sawab\": 61,",
+  "ila": "  \"sawab\": 60,"
+ },
+ {
+  "ism": "P794_nass_ihsa_json",
+  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "min": "  \"sawab\": 61,\n  \"naqsTaghtiya\": 8,",
+  "ila": "  \"sawab\": 60,\n  \"naqsTaghtiya\": 9,"
+ },
+ {
+  "ism": "P795_nass_khalaya_waqf",
+  "milaf": "Qari/Main.lean",
+  "min": "    match tahlil w false with",
+  "ila": "    match tahlil w true with"
+ },
+ {
+  "ism": "P796_nass_akhta_ghayr_musamma",
+  "milaf": "Jisr/NassItarQiyas.lean",
+  "min": "theorem akhta_1 :",
+  "ila": "theorem akhta_alt :\n    akhta (natayij halat) = [(\"N04\", .hukm, .naqsTaghtiya), (\"N21\", .hukm, .naqsTaghtiya), (\"N24\", .hukm, .naqsTaghtiya),\n      (\"N28\", .hukm, .naqsTaghtiya), (\"N34\", .hukm, .naqsTaghtiya), (\"N35\", .hukm, .naqsTaghtiya),\n      (\"N36\", .hukm, .naqsTaghtiya), (\"N38\", .hukm, .naqsTaghtiya), (\"N45\", .hukm, .raddKhati), (\"N46\", .hukm, .tajawuz)] := by\n  decide +kernel\n\ntheorem akhta_1 :"
+ },
+ {
+  "ism": "P797_nass_qablaha",
+  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "min": "\"natija_1.json\": \"09613ffd9005cb1511033e421440303a12ba4600f7e4647a07c75fa98c03ff6e\"",
+  "ila": "\"natija_1.json\": \"19613ffd9005cb1511033e421440303a12ba4600f7e4647a07c75fa98c03ff6e\""
+ },
+ {
+  "ism": "P798_nass_majal_sigha",
+  "milaf": "Jisr/NassItarQiyas.lean",
+  "min": "theorem majal : majalAadad = [50, 25, 20, 5, 0, 0, 34, 19, 20, 5, 6, 0] := by",
+  "ila": "theorem majal : halat.length = halat.length := by"
+ },
+ {
+  "ism": "P799_nass_itar_maqlub",
+  "milaf": "Qari/Main.lean",
+  "min": "hukmNassIsm (Jisr.NassItar.hukmNass ws)",
+  "ila": "hukmNassIsm (Jisr.NassItar.hukmNass ws.reverse)"
+ },
+ {
+  "ism": "P800_nass_tajmid_masdar",
+  "milaf": "tahaqquq/dawabit/nass/tajmid.json",
+  "min": "\"sha256\": \"2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d\"",
+  "ila": "\"sha256\": \"3d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d\""
+ },
+ {
+  "ism": "P801_nass_tashghil",
+  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "min": "\"tashghil\": 2,",
+  "ila": "\"tashghil\": 3,"
+ },
+ {
+  "ism": "P802_nass_natija_cases",
+  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "min": "\"cases_sha256\": \"a2e37d38a9be0ce4fe69c252daba8ba247726eb1eeaed43b1a1f615955ffe2ff\"",
+  "ila": "\"cases_sha256\": \"b2e37d38a9be0ce4fe69c252daba8ba247726eb1eeaed43b1a1f615955ffe2ff\""
+ },
+ {
+  "ism": "P803_nass_shifra",
+  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "min": "\"sha256\": \"3e47202d08a6d048abd5bde9b8d460ad2036e989d31986b8a9c6a6764b0f3468\"",
+  "ila": "\"sha256\": \"4e47202d08a6d048abd5bde9b8d460ad2036e989d31986b8a9c6a6764b0f3468\""
+ },
+ {
+  "ism": "P804_nass_natija_sigha",
+  "milaf": "Jisr/NassItarQiyas.lean",
+  "min": "theorem natija : ihsa (natayij halat) = ⟨61, 8, 1, 0, 1, 0, 0, 0, 0⟩ := by",
+  "ila": "theorem natija : ihsa (natayij halat) = ihsa (natayij halat) := by"
+ },
+ {
+  "ism": "P805_nass_bil_fia",
+  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "min": "\"موجب\": 30,",
+  "ila": "\"موجب\": 29,"
+ },
+ {
+  "ism": "P806_nass_akhta_sigha",
+  "milaf": "Jisr/NassItarQiyas.lean",
+  "min": "    akhta (natayij halat) = [(\"N04\"",
+  "ila": "    Dabit.akhta (natayij halat) = [(\"N04\""
+ },
+ {
+  "ism": "P807_nass_akhta_json",
+  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "min": "\"N46\",\n   \"hukm\",\n   \"tajawuz\"",
+  "ila": "\"N46\",\n   \"hukm\",\n   \"naqsTaghtiya\""
+ },
+ {
+  "ism": "P808_nass_lean_qaima",
+  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "min": "\"Jisr.NassItar.Qiyas.natija_fia\",",
+  "ila": "\"Jisr.NassItar.Qiyas.azwaj_1\","
+ },
+ {
+  "ism": "P809_nass_lean_mubarhana",
+  "milaf": "Jisr/NassItarQiyas.lean",
+  "min": "theorem natija_fia :",
+  "ila": "private theorem natija_fia :"
+ },
+ {
+  "ism": "P810_nass_halat",
+  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "min": "\"halat\": 50,",
+  "ila": "\"halat\": 51,"
+ },
+ {
+  "ism": "P811_nass_huqul",
+  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "min": "\"huqul_masula\": 71,",
+  "ila": "\"huqul_masula\": 72,"
+ },
+ {
+  "ism": "P812_nass_fia_hadd",
+  "milaf": "tahaqquq/test_nass.py",
+  "min": "all(a <= sum(t) <= 2 * a",
+  "ila": "all(a < sum(t) <= 2 * a"
+ },
+ {
+  "ism": "P813_nass_majal_json",
+  "milaf": "tahaqquq/test_nass.py",
+  "min": "    mj = [len(halat)] + [hukm.count(d)",
+  "ila": "    mj = [len(halat) + 1] + [hukm.count(d)"
+ },
+ {
+  "ism": "P814_nass_tatali",
+  "milaf": "tahaqquq/test_nass.py",
+  "min": "arqam == list(range(1, len(arqam) + 1))",
+  "ila": "arqam == list(range(0, len(arqam)))"
+ },
+ {
+  "ism": "P815_nass_marsa",
+  "milaf": "tahaqquq/test_nass.py",
+  "min": "NATIJA_1 = \"09613ffd9005cb1511033e421440303a12ba4600f7e4647a07c75fa98c03ff6e\"",
+  "ila": "NATIJA_1 = \"09613ffd9005cb1511033e421440303a12ba4600f7e4647a07c75fa98c03ff6f\""
  }
 ]

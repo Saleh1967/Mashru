@@ -87,6 +87,7 @@ import Jisr.NafyFil
 import Jisr.NafyFilQiyas
 import Jisr.NassItar
 import Jisr.NassItarDabit
+import Jisr.NassItarQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1859,3 +1860,8 @@ import Jisr.NassItarDabit
 #print axioms Jisr.NassItar.Dabit.qarin_itar
 #print axioms Jisr.NassItar.Dabit.rafd_ikhfaq
 #print axioms Jisr.NassItar.Dabit.itar_tabi_hukm
+#print axioms Jisr.NassItar.Qiyas.majal
+#print axioms Jisr.NassItar.Qiyas.natija
+#print axioms Jisr.NassItar.Qiyas.natija_fia
+#print axioms Jisr.NassItar.Qiyas.akhta_1
+#print axioms Jisr.NassItar.Qiyas.azwaj_1
