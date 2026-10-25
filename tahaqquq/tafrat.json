@@ -3650,8 +3650,8 @@
  {
   "ism": "P776_alam_mawdi",
   "milaf": "Jisr/QaydMafhum.lean",
-  "min": "  | .marifa i => if SLGE.Wad.maarif[i]? == some \"العلم\" then some .ism else none",
-  "ila": "  | .marifa i => if SLGE.Wad.maarif[i]? == some \"الضمير\" then some .ism else none"
+  "min": "if SLGE.Wad.maarif[i]? == some \"العلم\" ||",
+  "ila": "if SLGE.Wad.maarif[i]? == some \"الضمير\" ||"
  },
  {
   "ism": "P777_innama_ukhtuha",
@@ -3668,7 +3668,13 @@
  {
   "ism": "P779_kull_marifa_tashhad",
   "milaf": "Jisr/QaydMafhum.lean",
-  "min": "  | .marifa i => if SLGE.Wad.maarif[i]? == some \"العلم\" then some .ism else none",
+  "min": "  | .marifa i => if SLGE.Wad.maarif[i]? == some \"العلم\" || SLGE.Wad.maarif[i]? == some \"ذو الأداة\" then some .ism else none",
   "ila": "  | .marifa _ => some .ism"
+ },
+ {
+  "ism": "P780_dhu_adat_la_yashhad",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "|| SLGE.Wad.maarif[i]? == some \"ذو الأداة\" then",
+  "ila": "|| false then"
  }
 ]
