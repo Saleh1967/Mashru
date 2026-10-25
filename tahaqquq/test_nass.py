@@ -3,7 +3,8 @@
 يفحص، بلا مودَع:
 ١. التجميد: بصماتُ wasf.md وcases.json وfahs_cases.py وtaalif.md هي المسجَّلة في tajmid.json، وبصمتا المصدرين فيه بصمتا القطر والألفية.
 ٢. المولَّد: Jisr/NassItarDawabit.lean مخرجُ scripts/bina_dawabit_nass.py على cases.json بايتًا (والكلماتُ خلايا من `qari --khalaya`).
-   ووضعُ الإطار في القارئ (`qari --itar`) على أربع جملٍ بتوقّعٍ يدويّ لحكم الجملة.
+   ووضعُ الإطار في القارئ (`qari --itar`) على أربع جملٍ بتوقّعٍ يدويّ لحكم الجملة (٢ب). وخلايا شاهد الحدّ `haykal_fil_la_itar` في
+   Jisr/NassItar.lean (منقولةٌ باليد) مخرجُ `qari --khalaya` لجمله الثلاث (٢ج؛ فحصُ نصٍّ يقرأ قوائمَ المبرهنة وأسماءَها من Lean).
 ٣. السجلّات: natija_1.json … natija_N.json متتالية، كلٌّ للحالات المجمَّدة. وبصمةُ natija_1.json ثابتةٌ هنا (NATIJA_1)، وكلُّ سجلٍّ
    بعده يحمل بصمةَ ما قبله. وآخرُها لبصمات الشفرة الحاليّة (SHIFRA: القراءةُ والمقارنةُ والقارئ)، وأعدادُه (ihsa، bil_fia، akhta، azwaj، rafd_qari)
    هي أعدادُ مبرهنات Jisr/NassItarQiyas.lean، وحقلُ lean هو LEAN_NATIJA وكلُّ اسمٍ فيه مبرهنةٌ هناك.
@@ -18,8 +19,8 @@
 المرساةُ والسلسلةُ معًا، ٣)، P797 (qablaha في آخر سجلّ، ٣)، P801 (tashghil، ٣)، P802 (cases_sha256، ٣)، P803 (بصمةُ الشفرة، ٣)، P794 (ihsa بمجموعه، ٣)،
 P805 (bil_fia، ٣)، P807 (akhta، ٣)، P808 (حقلُ lean، ٣)، P816 (azwaj، ٣)، P817 (rafd_qari، ٣)، P810 (halat، ٤)، P811 (huqul_masula، ٤)؛ وعلى Jisr/NassItarQiyas.lean وتُبنى: P804 (`natija` بلا
 أعدادها، ٣)، P806 (`akhta` بغير صيغتها، ٣)، P796 (مبرهنةُ `akhta` ثانيةً باسمٍ لا يسمّيه السجلّ، ٣)، P809 (`natija_fia` خاصّة، ٣)، P818 (`azwaj_1` بغير صيغتها، ٣)، P798 (`majal` بلا أعدادها، ٤).
-**ما لا يُعزل:** P799 وP795 على Qari/Main.lean، وهو من الشفرة المسجَّلة بصمتُها (SHIFRA)، فيقتلهما فحصُ البصمة في ٣ مع فحصهما — ولا طفرةَ على
-القارئ لا يقتلها فحصُ البصمة. وP812 وP813 وP814 وP815 تطفّر الفحصَ نفسَه (حدَّ الفئات، والحسابَ من cases.json، وتتاليَ الأرقام، والمرساة):
+**ما لا يُعزل:** P799 وP795 على Qari/Main.lean، وP819 (خليّةٌ في شاهد الحدّ، ٢ج) على Jisr/NassItar.lean، وكلاهما من الشفرة المسجَّلة
+بصمتُها (SHIFRA)، فيقتلها فحصُ البصمة في ٣ مع فحصها — ولا طفرةَ عليهما لا يقتلها فحصُ البصمة. وP812 وP813 وP814 وP815 تطفّر الفحصَ نفسَه (حدَّ الفئات، والحسابَ من cases.json، وتتاليَ الأرقام، والمرساة):
 قتلُها لا يدلّ أنّ الفحص يلتقط عيبًا في المفحوص؛ ونظيرُها على المفحوص لا يُبنى في موضعٍ واحد: cases.json مجمَّدٌ ببصمته، وأعدادُ `majal`
 و`natija_fia` تقتلها Lean، وأسماءُ السجلّات لا تطفّرها الأداة، وnatija_1.json تقتله المرساةُ والسلسلةُ معًا (P793).
 التشغيل: python3 -I tahaqquq/test_nass.py
@@ -31,6 +32,7 @@ import pathlib
 import re
 import subprocess
 import sys
+import tempfile
 
 JADHR = pathlib.Path(__file__).resolve().parent.parent
 D = JADHR / "tahaqquq" / "dawabit" / "nass"
@@ -92,7 +94,6 @@ tahaqqaq(r.returncode == 0, "Jisr/NassItarDawabit.lean ليس مخرجَ الم�
 QARI = JADHR / ".lake" / "build" / "bin" / "qari"
 ITAR_YADAWI = [("ذَهَبَ الْوَلَدُ", "مقبول"), ("ذَهَبَ الْوَلَدَ", "خطأ"), ("فِي الدَّارِ", "مقبول"), ("الْوَلَدُ ذَهَبَ", "لا_حكم")]
 if QARI.exists():
-    import tempfile
     with tempfile.TemporaryDirectory() as d:
         p = pathlib.Path(d) / "j.tsv"
         p.write_text("".join(f"{i}\t{s}\n" for i, (s, _) in enumerate(ITAR_YADAWI)), encoding="utf-8")
@@ -102,6 +103,73 @@ if QARI.exists():
              f"qari --itar: {[s[:2] for s in sutur]} غيرُ المتوقَّع اليدويّ")
 else:
     tahaqqaq(False, "القارئ غيرُ مبنيّ (lake build qari)")
+
+
+# ٢ج. خلايا شاهد الحدّ `haykal_fil_la_itar` في Jisr/NassItar.lean منقولةٌ باليد: هي مخرجُ `qari --khalaya` للجمل الثلاث في توثيقه، بترتيبها.
+#     فحصُ نصٍّ: تُقرأ الكلماتُ من قوائم `itarat [...] = []` في المبرهنة، والأسماءُ من `let` فيها ومن `def … : Kalima` في QawaidSitta وUtur.
+HAYKAL = ["حَمَى الرَّجُلُ أَبَا الْوَلَدِ", "أَبَى الرَّجُلُ الطَّعَامَ", "حَمِيَ الْمَاءُ"]
+
+
+def kalima_lean(t):
+    """كلمةٌ بلغة Lean `⟨[خلايا], b, b⟩` (والخليةُ عددٌ أو جمعٌ وضربٌ لأعداد) إلى (خلايا، b، b)."""
+    m = re.fullmatch(r"⟨\[([\d\s,*+]*)\],\s*(true|false),\s*(true|false)⟩", t.strip())
+    if not m:
+        return None
+    khalaya = []
+    for c in m.group(1).split(","):
+        jam = 0
+        for juz in c.split("+"):
+            darb = 1
+            for x in juz.split("*"):
+                darb *= int(x)
+            jam += darb
+        khalaya.append(jam)
+    return (tuple(khalaya), m.group(2) == "true", m.group(3) == "true")
+
+
+def qawaim_itarat(nass):
+    """قوائمُ الكلمات في كلّ `itarat [...]` بالترتيب (عناصرُ القائمة على عمق الأقواس الأوّل)."""
+    natija = []
+    for m in re.finditer(r"itarat \[", nass):
+        i, umq, unsur, anasir = m.end(), 0, "", []
+        while not (nass[i] == "]" and umq == 0):
+            ch = nass[i]
+            umq += ch in "⟨[(" and 1 or 0
+            umq -= ch in "⟩])" and 1 or 0
+            if ch == "," and umq == 0:
+                anasir.append(unsur.strip())
+                unsur = ""
+            else:
+                unsur += ch
+            i += 1
+        anasir.append(unsur.strip())
+        natija.append(anasir)
+    return natija
+
+
+nass_itar = (JADHR / "Jisr/NassItar.lean").read_text(encoding="utf-8")
+m = re.search(r"theorem haykal_fil_la_itar :(.*?)decide \+kernel", nass_itar, re.S)
+asma = {}
+for milaf in ("Jisr/QawaidSitta.lean", "Jisr/Utur.lean"):
+    for d in re.finditer(r"^def (\w+) : Kalima := (⟨[^⟩]*⟩)", (JADHR / milaf).read_text(encoding="utf-8"), re.M):
+        asma[d.group(1)] = kalima_lean(d.group(2))
+if m and QARI.exists():
+    for d in re.finditer(r"let (\w+) : Kalima := (⟨[^⟩]*⟩)", m.group(1)):
+        asma[d.group(1)] = kalima_lean(d.group(2))
+    lean_jumal = [[asma.get(k) if k in asma else kalima_lean(k) for k in q] for q in qawaim_itarat(m.group(1))]
+    with tempfile.TemporaryDirectory() as d:
+        p = pathlib.Path(d) / "h.tsv"
+        p.write_text("".join(f"{i}\t{s}\n" for i, s in enumerate(HAYKAL)), encoding="utf-8")
+        r = subprocess.run([str(QARI), "--khalaya", str(p)], capture_output=True, text=True)
+    qari_jumal = []
+    for satr in r.stdout.splitlines():
+        ajza = satr.split("\t")
+        qari_jumal.append([(tuple(int(x) for x in w.split(";")[0].split(",")), w.split(";")[1] == "1", w.split(";")[2] == "1")
+                           for w in ajza[2].split("|")] if len(ajza) == 3 and ajza[1] == "QABUL" else None)
+    tahaqqaq(r.returncode == 0 and lean_jumal == qari_jumal,
+             f"خلايا `haykal_fil_la_itar` غيرُ مخرج qari --khalaya: {lean_jumal} مقابل {qari_jumal}")
+else:
+    tahaqqaq(False, "لا مبرهنةَ `haykal_fil_la_itar` في Jisr/NassItar.lean أو القارئ غيرُ مبنيّ")
 
 # ٣. السجلّات
 natayij = sorted(D.glob("natija_*.json"), key=lambda p: int(re.search(r"natija_(\d+)\.json$", p.name).group(1)))

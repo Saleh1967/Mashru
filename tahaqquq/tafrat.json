@@ -4762,5 +4762,23 @@
   "milaf": "Jisr/NassItarQiyas.lean",
   "min": "    (azwaj halat).length = 17 ∧",
   "ila": "    (azwaj halat).length = (azwaj halat).length ∧"
+ },
+ {
+  "ism": "P819_nass_haykal_khalaya",
+  "milaf": "Jisr/NassItar.lean",
+  "min": "⟨[55, 108, 11, 1], true, true⟩",
+  "ila": "⟨[55, 108, 11, 2], true, true⟩"
+ },
+ {
+  "ism": "P820_nass_khalal_hala",
+  "milaf": "Jisr/NassItarQiyas.lean",
+  "min": "(if k.halaSaliha then [] else [.hala k.hala k.matlub])",
+  "ila": "[]"
+ },
+ {
+  "ism": "P821_nass_khana_hala",
+  "milaf": "Jisr/NassItarQiyas.lean",
+  "min": "some ⟨complete' (ibtida w), halaIrab (isNom r) w.khalaya,",
+  "ila": "some ⟨complete' (ibtida w), 0,"
  }
 ]

@@ -1950,3 +1950,6 @@ import Jisr.NassItarQiyas
 #print axioms Jisr.NassItar.Qiyas.akhta_1
 #print axioms Jisr.NassItar.Qiyas.azwaj_1
 #print axioms Jisr.NassItar.Qiyas.asbab_akhta
+#print axioms Jisr.NassItar.Qiyas.waslBase_khanat
+#print axioms Jisr.NassItar.Qiyas.khalalKhana_nil
+#print axioms Jisr.NassItar.Qiyas.waslBase_khalal
