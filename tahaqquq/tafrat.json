@@ -3459,25 +3459,25 @@
   "ism": "P509_nafy_muwallad",
   "milaf": "Jisr/NafyFilDawabit.lean",
   "min": "⟨\"N01\", .mujib,",
-  "ila": "⟨\"N01\", .hadd,"
+  "ila": "⟨\"N01x\", .mujib,"
  },
  {
   "ism": "P510_nafy_basmat_shifra",
-  "milaf": "tahaqquq/dawabit/nafy/natija_2.json",
-  "min": "\"sha256\": \"21e5f12b98bb9b5e5c4755a8323396f36220b5e4ed83a59e51e0920cb5a76651\"",
-  "ila": "\"sha256\": \"31e5f12b98bb9b5e5c4755a8323396f36220b5e4ed83a59e51e0920cb5a76651\""
+  "milaf": "tahaqquq/dawabit/nafy/natija_3.json",
+  "min": "\"sha256\": \"c7fe7060cbc1a25178069046abaee493b022d3f06f3d782293f729ec5cbfc047\"",
+  "ila": "\"sha256\": \"07fe7060cbc1a25178069046abaee493b022d3f06f3d782293f729ec5cbfc047\""
  },
  {
   "ism": "P511_nafy_sawab",
-  "milaf": "tahaqquq/dawabit/nafy/natija_2.json",
+  "milaf": "tahaqquq/dawabit/nafy/natija_3.json",
   "min": "  \"sawab\": 33,",
   "ila": "  \"sawab\": 32,"
  },
  {
   "ism": "P512_nafy_qablaha",
-  "milaf": "tahaqquq/dawabit/nafy/natija_2.json",
-  "min": "\"natija_1.json\": \"01d9b02399def4ac160030e75fbb74e2453e68eff869dde2c7e7c25f6d207129\"",
-  "ila": "\"natija_1.json\": \"11d9b02399def4ac160030e75fbb74e2453e68eff869dde2c7e7c25f6d207129\""
+  "milaf": "tahaqquq/dawabit/nafy/natija_3.json",
+  "min": "\"natija_2.json\": \"915bcc814dac91e575aa951f7a6f7a3a95a9909e4ef3592f987a078acbb5b088\"",
+  "ila": "\"natija_2.json\": \"015bcc814dac91e575aa951f7a6f7a3a95a9909e4ef3592f987a078acbb5b088\""
  },
  {
   "ism": "P513_nafy_natija_1",
@@ -3493,13 +3493,13 @@
  },
  {
   "ism": "P515_nafy_lean",
-  "milaf": "tahaqquq/dawabit/nafy/natija_2.json",
+  "milaf": "tahaqquq/dawabit/nafy/natija_3.json",
   "min": "\"Jisr.NafyFil.Qiyas.natija_fia\",",
   "ila": "\"Jisr.NafyFil.Qiyas.majal\","
  },
  {
   "ism": "P516_nafy_akhta",
-  "milaf": "tahaqquq/dawabit/nafy/natija_2.json",
+  "milaf": "tahaqquq/dawabit/nafy/natija_3.json",
   "min": "\"akhta\": [],",
   "ila": "\"akhta\": [[\"N20\", \"kalam\", \"naqsTaghtiya\"]],"
  },
@@ -3511,7 +3511,7 @@
  },
  {
   "ism": "P518_nafy_halat",
-  "milaf": "tahaqquq/dawabit/nafy/natija_2.json",
+  "milaf": "tahaqquq/dawabit/nafy/natija_3.json",
   "min": "\"halat\": 30,",
   "ila": "\"halat\": 31,"
  },
@@ -3520,5 +3520,11 @@
   "milaf": "Jisr/NafyFilQiyas.lean",
   "min": "    else if f = .ghumud && y.all (x.contains ·) then .ikhtiyar",
   "ila": "    else if y.all (x.contains ·) then .ikhtiyar"
+ },
+ {
+  "ism": "P700_nafy_qasam_bila_hal",
+  "milaf": "Jisr/NafyFil.lean",
+  "min": "    if ithbatQasam z == some s && q.siyaq != .jawabHal && halYuwafiq q.hal z then nafyQasam z else none)",
+  "ila": "    if ithbatQasam z == some s && q.siyaq != .jawabHal then nafyQasam z else none)"
  }
 ]

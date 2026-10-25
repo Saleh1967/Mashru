@@ -123,15 +123,14 @@ if akhir:
              f"{natayij[-1].name}: bil_fia غيرُ مبرهنة natija_fia")
     tahaqqaq(len(tt) == 5 and [sum(t) for t in tt] == [masul_fia[f] for f in FIAT],
              f"مجموعُ الفئات في natija_fia {[sum(t) for t in tt]} غيرُ الحقول المسؤولة في cases.json {[masul_fia[f] for f in FIAT]}")
-    m = re.search(r"theorem (akhta\w*) : akhta = \[(.*?)\] := by", qiyas, re.S)
+    m = re.search(r"theorem (akhta\w*) :\s*akhta = \[(.*?)\] := by", qiyas, re.S)
     tahaqqaq(m is not None, "لا مبرهنةَ akhta بصيغتها")
     if m:
         lean_akhta = [[x for x in re.findall(r'"(\w+)"|\.(\w+)', t) for x in x if x]
                       for t in re.findall(r"\(([^()]*)\)", m.group(2))]
         tahaqqaq(lean_akhta == akhir["akhta"], f"{natayij[-1].name}: akhta {akhir['akhta']} غيرُ مبرهنة {m.group(1)} {lean_akhta}")
         tahaqqaq(NS + m.group(1) in akhir["lean"], f"{natayij[-1].name}: حقلُ lean لا يسمّي {m.group(1)}")
-    tahaqqaq(akhir["lean"][:3] == LEAN_NATIJA[:3] and len(akhir["lean"]) == 4 and akhir["lean"][3].startswith(NS + "akhta"),
-             f"{natayij[-1].name}: حقلُ lean غيرُ القائمة المتوقَّعة")
+    tahaqqaq(akhir["lean"] == LEAN_NATIJA, f"{natayij[-1].name}: حقلُ lean غيرُ القائمة المتوقَّعة LEAN_NATIJA")
     for ism in akhir["lean"]:
         qasir = ism.rsplit(".", 1)[-1]
         tahaqqaq(ism.startswith(NS) and re.search(r"^theorem %s\b" % re.escape(qasir), qiyas, re.M) is not None,
