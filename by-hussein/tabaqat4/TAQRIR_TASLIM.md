@@ -87,3 +87,44 @@ D-A المحفوظ من المحادثة: نسخة الوكيل الأولى (م
   841d73f7a5f34fa7  ./t4/qari.py
   58b9972beedfc9dd  ./t4/report.py
   c8824b550b68564f  ./tests/test_tabaqat4.py
+
+## الإصدار 4 (2026-10-25 ، على Mashru@ed7c5d3248a1)
+
+**ما تغيّر سلوكيًّا:** صور الأفعال في باب الجزاء صارت تأتي **تقديرًا من Hokom** (مقعدًا معلَنًا واحدًا) بدل كتابتها يدًا:
+`--hokom` بلا `--forms` على جملةٍ شرطية ⇒ تُشتَقّ صورتا الشرط والجواب من `word_class_subclass+mood` عبر `t4/forms_map.json`
+برتبة «تقدير» ومصدرٍ `HOKOM_TAQDIR` ، ولا تصير مدلولًا ولا حكمًا. و`--forms` اليدوي يغلب عند التعارض (`FORMS_CONFLICT_OWNER_VS_HOKOM`).
+
+- **B1 (hokom_adapter.py — الأهمّ):** كُتب على موصل Hokom (venv بالـpin 8a23298076b4، قراءةٌ فقط، `PYTHONDONTWRITEBYTECODE=1`)؛
+  `taqdir(surfaces)` يعيد {pin, word_class, word_class_subclass, final_root, final_wazn, mood, directive, active_residuals}؛
+  الغائب `None` بسببه في residuals، لا تخمين. اشتقاق الصيغ في S5-ج بجدول `forms_map.json` الحاصر؛ غير المُعرَّف `FORMS_UNMAPPED:<القيمة>` وتوقّف.
+  **اختباره:** T13 (الصيغتان من Hokom، hukm ⟨maqbul,maqbul⟩ مبرهنًا)، T14 (تعارض ⇒ المالك يغلب)، T15 (تُعرَض ولا تُستهلك: طبقتا 3/4 كتشغيلٍ بلا --hokom)، T16 (Hokom غير قابل للقراءة ⇒ HOKOM_ADAPTER_FAILED باسمه وبقيّة المراحل تكتمل).
+- **B2 (التيرمنال):** `--open` (يفتح taqrir.html)، `--json` (يطبع taqrir.json)، سطرا `HOKOM=PRESENT:<pin>|ADAPTER_ABSENT|...` و`QARI=AGREE n/m|...`؛
+  وأُصلحت صياغة S4 في مسار الجزاء («لا مدلول بنيويّ ؛ لا يمنع باب الجزاء»)؛ و`--split-punct` يقطع عند [.؟!] فقط بخيارٍ معلَن `SPLIT_ON_PUNCT_OWNER_OPTION`، وبدونه السلوك كما كان. **اختباره:** T17.
+- **B3 (HTML):** كتلةُ «٢ج. تقدير Hokom مقابل قارئ Mashru» لكلّ كلمة (الصنف/الجذر/الوزن/البقايا + مرشَّح جذر القارئ + خانة AGREE/DISAGREE/ONE_SIDED تُعرَض ولا تُحسَم)، مع لوحة «تقدير». الرموز مترجَمة مع الأصل بين قوسين (قائم من v3).
+- **B4:** T1–T18 تمرّ ملفًا ملفًا: **18/18 ran ، 0 NOT_RUN** (≈42 ث ، مع Lean وHokom).
+- **B5:** إيداعٌ لكلّ بند على الفرع `by-hussein/tabaqat4`، بلا push.
+
+**ما بقي وسببه (معلَنٌ):**
+- **مطابقة الضابط J01–J39 الدقيقة** (BabJazaDawabit.lean) في التقرير **لم تُحسب**: حسابُها يعني تكرار منطق Mashru في بايثون (محظور) أو استعلامًا من Lean لم يُضَف؛ فالتقرير يذكر الحكم المبرهن ويحيل إلى الضابط بالاسم دون تعيين رقم الحالة. (اسم J16 في وثيقة T10 تعليقٌ لا حساب.)
+- **bikam/kanaUD** (شبه الجملة والناسخ) غير مغلَّفَين في المسار الإسناديّ بعد.
+- **قارئ Hokom** يُقرأ عبر venv subprocess؛ تغيّر واجهة `hokom_pipeline.hokom` يُسقط التقدير بـ `HOKOM_ADAPTER_FAILED` باسمه لا بقيمةٍ خاطئة.
+
+**الأعلام:**
+```
+TABAQAT4_SCOPE_TESTS_PASS = YES (18/18 ran ؛ 0 NOT_RUN) — على Mashru@ed7c5d3248a1
+CORE_SANITY_PASS          = نعم (bawwaba_local المحلّيّة: byhussein يُبنى بلا إعادة الأمّ ، 46 مبرهنة ، 7/7 طفرات)
+FULL_TREE_BASELINE        = ثابت 1522/515/44 (لا تغيير في شجرة بناء Mashru ؛ لم يُعَد تشغيل بوّابة الأمّ لهذه الجولة)
+MASHRU_HEAD               = ed7c5d3248a1
+HOKOM_PIN                 = 8a23298076b4
+MASHRU_TOUCHED            = NO (T8 git قبل/بعد) ؛ HOKOM_TOUCHED = NO (T18 git قبل/بعد ؛ تعديلاتُ cl16_root_wazn/* في Hokom سابقةٌ لجلستي ، لم أمسّها)
+```
+
+**بصمات ملفّات الإصدار 4:**
+```
+ce0ef76c15a6f38f  hokom_adapter.py
+562584d2506ede05  t4/forms_map.json
+dd173d0217a4c2b9  t4/core.py
+8b4438a1eacdc7f2  run.py
+628ad9744fe6080e  t4/report.py
+2222d7c33950f7f7  tests/test_tabaqat4.py
+```

@@ -1,3 +1,7 @@
 _runs/
 __pycache__/
 *.pyc
+tabaqat4/.probe*
+tabaqat4/.tmp/
+tabaqat4/tests/_t_out/
+.tmp/
