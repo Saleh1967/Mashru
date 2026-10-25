@@ -1,0 +1,23 @@
+{
+ "adawat": {
+  "Read": 2,
+  "Bash": 7,
+  "Write": 3
+ },
+ "masarat_mutlaqa": [
+  "/home/claude/mudaa_dir/sibawayhi.txt",
+  "/tmp",
+  "majari/mujallad",
+  "majari/mujallad/",
+  "majari/mujallad/cases.json",
+  "majari/mujallad/fahs_cases.py",
+  "majari/mujallad/taalif.md",
+  "majari/mujallad/tafrat_fahs/out.txt",
+  "majari/mujallad/wasf.md"
+ ],
+ "kharij_al_masmuh": [
+  "/tmp"
+ ],
+ "mamnu": [],
+ "qaraa_al_masdar": true
+}

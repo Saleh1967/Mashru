@@ -1,0 +1,40 @@
+{
+ "tashghil": 4,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد المراجعة الثانية: حذفُ لفظ «اللام» وحدها (البابُ يسمّي بها غيرَ لام الإضافة، س128–130)، ومدُّ سند ghayrMutamakkina إلى قيده (س136–137)، وعدُّ ما تغيّر ولم تمسّه حالة؛ ولا حالةَ تمسّ ذلك",
+ "qablaha": {
+  "natija_3.json": "1322d38e7e9569a39ceb0f89146e72603a45a42786a84639219da6bfce024404"
+ },
+ "cases_sha256": "0d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20",
+ "shifra": {
+  "milaf": "Jisr/MajariKalim.lean",
+  "sha256": "d55fce301ee282b957b356fbb0676628cb7b284389299e8801e214fa4c34169f"
+ },
+ "lean": [
+  "Jisr.MajariKalim.Qiyas.majal",
+  "Jisr.MajariKalim.Qiyas.natija",
+  "Jisr.MajariKalim.Qiyas.natija_fia",
+  "Jisr.MajariKalim.Qiyas.akhta_sifr"
+ ],
+ "halat": 39,
+ "huqul_masula": 39,
+ "ihsa": {
+  "sawab": 39,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "khataBina": 0,
+  "ikhtiyar": 0,
+  "khataAlama": 0
+ },
+ "bil_fia": {
+  "موجب": 20,
+  "حد": 5,
+  "خارج": 5,
+  "عموم": 6,
+  "غموض": 3
+ },
+ "akhta": [],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى."
+}

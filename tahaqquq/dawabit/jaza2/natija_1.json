@@ -1,0 +1,70 @@
+{
+ "tashghil": 1,
+ "naw": "التشغيلُ الأوّل على الحالات المجمَّدة، بعد دفع الشفرة وقبل أيّ تعديلٍ لها",
+ "cases_sha256": "2f8c85a66c3151c6a20450733b80716e32504d63a99523424318a79a78f9079c",
+ "shifra": {
+  "milaf": "Jisr/BaqiJaza.lean",
+  "sha256": "adcf6a404c5269c9f2e79e3841eb959d0794ace8f69107fc892dbfa7520b1c29",
+  "iydaa": "97b392b11950d91f4200188bedf676d1f7b0b937"
+ },
+ "lean": [
+  "Jisr.BaqiJaza.Qiyas.majal",
+  "Jisr.BaqiJaza.Qiyas.natija",
+  "Jisr.BaqiJaza.Qiyas.natija_fia",
+  "Jisr.BaqiJaza.Qiyas.akhta_1"
+ ],
+ "halat": 44,
+ "huqul_masula": 52,
+ "ihsa": {
+  "sawab": 46,
+  "naqsTaghtiya": 0,
+  "tajawuz": 1,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 2,
+  "tawaqquf": 2,
+  "khata": 1
+ },
+ "bil_fia": {
+  "موجب": 12,
+  "حد": 17,
+  "خارج": 4,
+  "عموم": 7,
+  "غموض": 6
+ },
+ "akhta": [
+  [
+   "B06",
+   "kalam",
+   "ikhtiyar"
+  ],
+  [
+   "B17",
+   "kalam",
+   "tawaqquf"
+  ],
+  [
+   "B33",
+   "kalam",
+   "khata"
+  ],
+  [
+   "B34",
+   "kalam",
+   "ikhtiyar"
+  ],
+  [
+   "B40",
+   "kalam",
+   "tawaqquf"
+  ],
+  [
+   "B43",
+   "kalam",
+   "tajawuz"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "على الشفرة كما دُفعت في 97b392b، قبل أن يقرأ البنّاءُ الحالات. والأعدادُ أعدادُ مبرهنات Jisr/BaqiJazaQiyas.lean في الإيداع الذي يحمل هذا الملفّ."
+}

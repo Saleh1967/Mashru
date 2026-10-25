@@ -1,0 +1,52 @@
+{
+ "tashghil": 6,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد مراجعةٍ رابعة: رأسُ الشفرة (وصفُ ما غُيّر في نصّ البنود: مدًى وُسّع)، بلا تغييرٍ في الأحكام",
+ "qablaha": {
+  "natija_5.json": "53d91e3f8571161ea6e4d710043f5788e33e80f9af20bc006f073f88d793081d"
+ },
+ "cases_sha256": "7eda15eb08e723e7e02caf1f05e9639debce0a781ed00d2c742c898495d8a4c8",
+ "shifra": {
+  "milaf": "Jisr/BabFa.lean",
+  "sha256": "bd725a0c9db1cd3a79fc748f20471e08e7f421c8a2f12dc68b795864613c7775"
+ },
+ "lean": [
+  "Jisr.BabFa.Qiyas.majal",
+  "Jisr.BabFa.Qiyas.natija",
+  "Jisr.BabFa.Qiyas.natija_fia",
+  "Jisr.BabFa.Qiyas.akhta_2"
+ ],
+ "halat": 39,
+ "huqul_masula": 48,
+ "ihsa": {
+  "sawab": 46,
+  "naqsTaghtiya": 0,
+  "tajawuz": 1,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 1,
+  "tawaqquf": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 24,
+  "حد": 7,
+  "خارج": 4,
+  "عموم": 6,
+  "غموض": 5
+ },
+ "akhta": [
+  [
+   "F30",
+   "kalam",
+   "ikhtiyar"
+  ],
+  [
+   "F38",
+   "kalam",
+   "tajawuz"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى. والأعدادُ هنا منقولةٌ من natija_5.json، وصدّقها lake build لـ Jisr.BabFaQiyas على الشفرة ببصمتها هنا (مبرهناتُ حقل lean)."
+}
