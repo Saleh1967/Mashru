@@ -85,6 +85,8 @@ import Aql.WaqiShawahid
 import Nizam.Qiyas
 import Jisr.NafyFil
 import Jisr.NafyFilQiyas
+import Jisr.MajariKalim
+import Jisr.MajariKalimQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1840,3 +1842,17 @@ import Jisr.NafyFilQiyas
 #print axioms Jisr.NafyFil.Qiyas.natija
 #print axioms Jisr.NafyFil.Qiyas.natija_fia
 #print axioms Jisr.NafyFil.Qiyas.akhta_sifr
+-- مجاري أواخر الكلم عند سيبويه (الكتاب س111–233؛ Jisr/MajariKalim.lean): علامةُ الآخر بالصنف والموضع، إعرابًا أو بناءً
+#print axioms Jisr.MajariKalim.la_jazm_fi_asma
+#print axioms Jisr.MajariKalim.la_jarr_fi_mudari
+#print axioms Jisr.MajariKalim.mabni_la_yataghayyar
+#print axioms Jisr.MajariKalim.irab_bil_harf
+#print axioms Jisr.MajariKalim.la_yansarif
+#print axioms Jisr.MajariKalim.haythu_wa_ghayruha
+-- ضابطُ مجاري أواخر الكلم المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/MajariKalimQiyas.lean؛ hawkama/منهج_الضوابط.md)، و«ليس للفعل في الجر نصيب» بعد قراءة الحالات
+#print axioms Jisr.MajariKalim.la_jarr_fi_fil
+#print axioms Jisr.MajariKalim.Qiyas.qarin_jadwal
+#print axioms Jisr.MajariKalim.Qiyas.majal
+#print axioms Jisr.MajariKalim.Qiyas.natija
+#print axioms Jisr.MajariKalim.Qiyas.natija_fia
+#print axioms Jisr.MajariKalim.Qiyas.akhta_sifr

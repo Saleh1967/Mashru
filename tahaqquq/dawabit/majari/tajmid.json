@@ -1,0 +1,30 @@
+{
+ "naw": "ضابط مجمَّد",
+ "minhaj": "hawkama/منهج_الضوابط.md، الإصدار ١ (بفئة غموض)",
+ "qita": "باب مجارى أواخر الكلم من العربية (كتاب سيبويه، س111–233)",
+ "masdar": {
+  "milaf": "sibawayhi.txt",
+  "sha256": "a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625"
+ },
+ "wasf_sha256": "5139c6099c5bee3ecad00b32f7ab1395cdfe60e9b07a4268e664bbd312abe559",
+ "cases_sha256": "0d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20",
+ "fahs_cases_sha256": "d8df4eed4a323d1a189ab323b5374fa845f1f6cfedde2630a01e7e03457f1dce",
+ "taalif_sha256": "ffa1c3aae03efc6813ccac27ae048db0da32ab687baebbe274febb28f4e1bfba",
+ "muallif": "وكيلٌ جديد (general-purpose) بالمواصفة والمصدر وحدهما، بتوجيهٍ محفوظٍ بنصّه في tawjih_muallif.md؛ وحقنت البيئةُ في سياقه آليًّا CLAUDE.md ولقطةً من ذاكرة المستخدم (أفصح بذلك في taalif.md)؛ أجاب البنّاءَ بالبصمات والأعداد وحدها",
+ "aadad_muallif": {
+  "jumla": 39,
+  "موجب": 20,
+  "حد": 5,
+  "خارج": 5,
+  "عموم": 6,
+  "غموض": 3,
+  "harfi": 28
+ },
+ "tawjih": {
+  "milaf": "tawjih_muallif.md",
+  "arsil": "2026-10-25T04:24:08.140Z"
+ },
+ "fahs_sijill": "sijill_muallif.json: أدواتُ المؤلّف ومساراتُه من سجلّه، بلا محتوى ما كتب؛ لا مسارَ خارج مجلّده والمصدر",
+ "tajmid": "2026-10-25T07:41+03:00",
+ "qabl_shifra": "جُمّد قبل إيداع الشفرة؛ والبنّاء لم يقرأ cases.json ولا taalif.md عند التجميد"
+}

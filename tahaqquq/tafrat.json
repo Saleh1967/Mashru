@@ -3646,5 +3646,191 @@
   "milaf": "Jisr/BabJazaQiyas.lean",
   "min": "theorem majal :\n    halat.length = 39 ∧ natayij.length = 55 ∧\n    [Daraja.maqbul, .qabih, .khata, .laHukm].map (fun d => (halat.filter (·.kalam == d)).length) = [16, 8, 9, 6] ∧\n    [some Daraja.maqbul, some .qabih, some .khata, some .laHukm, none].map\n      (fun d => (halat.filter (·.shir == d)).length) = [10, 0, 0, 6, 23] := by",
   "ila": "theorem majal : halat.length = halat.length := by"
+ },
+ {
+  "ism": "P540_jazm_fi_ism",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "  | .jazm => .laYakun",
+  "ila": "  | .jazm => .laHukm"
+ },
+ {
+  "ism": "P541_jarr_fi_fil",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "  | .jarr => .laYakun",
+  "ila": "  | .jarr => .laHukm"
+ },
+ {
+  "ism": "P542_mamnu_yunjarr",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "  | .ismLaYansarif => ism none none .fatha k.mawdi",
+  "ila": "  | .ismLaYansarif => ism none none .kasra k.mawdi"
+ },
+ {
+  "ism": "P543_muthanna_nasb_alif",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "  | .muthanna => ism (some .alif) (some .ya) .ya k.mawdi",
+  "ila": "  | .muthanna => ism (some .alif) (some .alif) .ya k.mawdi"
+ },
+ {
+  "ism": "P544_haythu_wahida",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "  (\"حيث\", [.fatha, .damma]),",
+  "ila": "  (\"حيث\", [.fatha]),"
+ },
+ {
+  "ism": "P545_ithnayn_nasb_fatha",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "fil (murab .thubutNun) (murab .hadhfNun) (murab .hadhfNun) k.mawdi",
+  "ila": "fil (murab .thubutNun) (murab .fatha) (murab .hadhfNun) k.mawdi"
+ },
+ {
+  "ism": "P546_majari_basmat_halat",
+  "milaf": "tahaqquq/dawabit/majari/tajmid.json",
+  "min": "\"cases_sha256\": \"0d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20\"",
+  "ila": "\"cases_sha256\": \"1d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20\""
+ },
+ {
+  "ism": "P547_majari_muwallad",
+  "milaf": "Jisr/MajariKalimDawabit.lean",
+  "min": "⟨\"M01\", .mujib,",
+  "ila": "⟨\"M01x\", .mujib,"
+ },
+ {
+  "ism": "P548_majari_basmat_shifra",
+  "milaf": "tahaqquq/dawabit/majari/natija_5.json",
+  "min": "\"sha256\": \"f30a74637d87539cdc3b22b447718fb5f3c50a41c7bc23cacd05b102578cb235\"",
+  "ila": "\"sha256\": \"730a74637d87539cdc3b22b447718fb5f3c50a41c7bc23cacd05b102578cb235\""
+ },
+ {
+  "ism": "P549_majari_sawab",
+  "milaf": "tahaqquq/dawabit/majari/natija_5.json",
+  "min": "  \"sawab\": 39,",
+  "ila": "  \"sawab\": 38,"
+ },
+ {
+  "ism": "P550_majari_qablaha",
+  "milaf": "tahaqquq/dawabit/majari/natija_5.json",
+  "min": "\"natija_4.json\": \"90610b1e3b4098aadd63c7416c284dae90639c39b8d066c71e158ae104f040dc\"",
+  "ila": "\"natija_4.json\": \"70610b1e3b4098aadd63c7416c284dae90639c39b8d066c71e158ae104f040dc\""
+ },
+ {
+  "ism": "P551_majari_natija_1",
+  "milaf": "tahaqquq/dawabit/majari/natija_1.json",
+  "min": "  \"sawab\": 33,",
+  "ila": "  \"sawab\": 34,"
+ },
+ {
+  "ism": "P552_majari_marsa",
+  "milaf": "tahaqquq/test_majari.py",
+  "min": "NATIJA_1 = \"0f53cee20d2ac93fe355124e713469a242b60217d27c99d525693e911348e02d\"",
+  "ila": "NATIJA_1 = \"0f53cee20d2ac93fe355124e713469a242b60217d27c99d525693e911348e02e\""
+ },
+ {
+  "ism": "P553_majari_lean",
+  "milaf": "tahaqquq/dawabit/majari/natija_5.json",
+  "min": "\"Jisr.MajariKalim.Qiyas.natija_fia\",",
+  "ila": "\"Jisr.MajariKalim.Qiyas.majal\","
+ },
+ {
+  "ism": "P554_majari_akhta",
+  "milaf": "tahaqquq/dawabit/majari/natija_5.json",
+  "min": "\"akhta\": [],",
+  "ila": "\"akhta\": [[\"M18\", \"naqsTaghtiya\"]],"
+ },
+ {
+  "ism": "P555_majari_majal_json",
+  "milaf": "tahaqquq/test_majari.py",
+  "min": "a.count(\"لا_يكون\"), a.count(\"لا_حكم\"),",
+  "ila": "a.count(\"لا_يكون\") + 1, a.count(\"لا_حكم\"),"
+ },
+ {
+  "ism": "P556_majari_halat",
+  "milaf": "tahaqquq/dawabit/majari/natija_5.json",
+  "min": "\"halat\": 39,",
+  "ila": "\"halat\": 40,"
+ },
+ {
+  "ism": "P557_majari_bina_la_yufarriq",
+  "milaf": "Jisr/MajariKalimQiyas.lean",
+  "min": "    if sawa x y then (if bx = bn then .sawab else .khataBina)",
+  "ila": "    if sawa x y then .sawab"
+ },
+ {
+  "ism": "P708_majari_bil_fia",
+  "milaf": "tahaqquq/dawabit/majari/natija_5.json",
+  "min": "\"موجب\": 20",
+  "ila": "\"موجب\": 19"
+ },
+ {
+  "ism": "P709_majari_fia_json",
+  "milaf": "tahaqquq/test_majari.py",
+  "min": "        fia[h[\"fia\"]] += 1",
+  "ila": "        fia[h[\"fia\"]] += 2"
+ },
+ {
+  "ism": "P710_majari_tashghil",
+  "milaf": "tahaqquq/dawabit/majari/natija_5.json",
+  "min": "\"tashghil\": 5",
+  "ila": "\"tashghil\": 6"
+ },
+ {
+  "ism": "P711_majari_cases_natija",
+  "milaf": "tahaqquq/dawabit/majari/natija_5.json",
+  "min": "\"cases_sha256\": \"0d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20\"",
+  "ila": "\"cases_sha256\": \"7d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20\""
+ },
+ {
+  "ism": "P731_majari_fahs_masdar",
+  "milaf": "tahaqquq/dawabit/majari/tajmid.json",
+  "min": "\"sha256\": \"a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\"",
+  "ila": "\"sha256\": \"7160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\""
+ },
+ {
+  "ism": "P732_majari_fahs_tatali",
+  "milaf": "tahaqquq/test_majari.py",
+  "min": "arqam == list(range(1, len(arqam) + 1))",
+  "ila": "arqam == list(range(0, len(arqam)))"
+ },
+ {
+  "ism": "P733_majari_fahs_hadd_natija",
+  "milaf": "Jisr/MajariKalimQiyas.lean",
+  "min": "theorem natija : ihsa natayij = ⟨39, 0, 0, 0, 0, 0, 0, 0⟩ := by",
+  "ila": "theorem natija : ihsa natayij = ihsa natayij := by"
+ },
+ {
+  "ism": "P734_majari_fahs_hadd_akhta",
+  "milaf": "Jisr/MajariKalimQiyas.lean",
+  "min": "theorem akhta_sifr : akhta = [] := by",
+  "ila": "theorem akhta_sifr : akhta = akhta := by"
+ },
+ {
+  "ism": "P735_majari_fahs_akhta_fi_lean",
+  "milaf": "Jisr/MajariKalimQiyas.lean",
+  "min": "theorem akhta_sifr :",
+  "ila": "theorem akhta_alt : akhta = [] := by\n  decide +kernel\n\ntheorem akhta_sifr :"
+ },
+ {
+  "ism": "P736_majari_fahs_lean_mubarhana",
+  "milaf": "Jisr/MajariKalimQiyas.lean",
+  "min": "theorem natija_fia :",
+  "ila": "private theorem natija_fia :"
+ },
+ {
+  "ism": "P737_majari_fahs_huqul_masula",
+  "milaf": "tahaqquq/dawabit/majari/natija_5.json",
+  "min": "\"huqul_masula\": 39,",
+  "ila": "\"huqul_masula\": 40,"
+ },
+ {
+  "ism": "P738_majari_fahs_hadd_majal",
+  "milaf": "Jisr/MajariKalimQiyas.lean",
+  "min": "theorem majal : majalAadad = [39, 26, 3, 5, 5, 11, 18] := by",
+  "ila": "theorem majal : majalAadad = majalAadad := by"
+ },
+ {
+  "ism": "P772_majari_lam_mahdhufa",
+  "milaf": "Jisr/MajariKalim.lean",
+  "min": "(\"لام الإضافة\", [.kasra]),",
+  "ila": "(\"لام الإضافة\", [.kasra]), (\"اللام\", [.kasra]),"
  }
 ]

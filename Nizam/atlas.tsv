@@ -123,3 +123,6 @@ Jisr.NabtExport	ADAT	لا	منفذ nabtBridge المستقل: جدول النق�
 Jisr.NafyFil	T7	لا	نفيُ الفعل وحروفُ الفعل عند سيبويه (الكتاب س9755–9787): النفيُ والإثباتُ على Awwaliyyat.Zaman5، وما يلي الحرف
 Jisr.NafyFilDawabit	T7	لا	حالاتُ ضابط نفي الفعل المجمَّدة (مولَّد من tahaqquq/dawabit/nafy/cases.json)
 Jisr.NafyFilQiyas	T7	لا	نفيُ الفعل على ضابطه المجمَّد: النتيجةُ على الشفرة الحاليّة
+Jisr.MajariKalim	T7	لا	مجاري أواخر الكلم عند سيبويه (الكتاب س111–233): علامةُ الآخر بالصنف والموضع، إعرابًا أو بناءً
+Jisr.MajariKalimDawabit	T7	لا	حالاتُ ضابط مجاري أواخر الكلم المجمَّدة (مولَّد من tahaqquq/dawabit/majari/cases.json)
+Jisr.MajariKalimQiyas	T7	لا	مجاري أواخر الكلم على ضابطه المجمَّد: النتيجةُ على الشفرة الحاليّة
