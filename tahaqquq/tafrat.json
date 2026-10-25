@@ -3520,5 +3520,29 @@
   "milaf": "Jisr/MajariKalimQiyas.lean",
   "min": "    if sawa x y then (if bx = bn then .sawab else .khataBina)",
   "ila": "    if sawa x y then .sawab"
+ },
+ {
+  "ism": "P708_majari_bil_fia",
+  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
+  "min": "\"موجب\": 20",
+  "ila": "\"موجب\": 19"
+ },
+ {
+  "ism": "P709_majari_fia_json",
+  "milaf": "tahaqquq/test_majari.py",
+  "min": "        fia[h[\"fia\"]] += 1",
+  "ila": "        fia[h[\"fia\"]] += 2"
+ },
+ {
+  "ism": "P710_majari_tashghil",
+  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
+  "min": "\"tashghil\": 3",
+  "ila": "\"tashghil\": 4"
+ },
+ {
+  "ism": "P711_majari_cases_natija",
+  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
+  "min": "\"cases_sha256\": \"0d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20\"",
+  "ila": "\"cases_sha256\": \"7d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20\""
  }
 ]
