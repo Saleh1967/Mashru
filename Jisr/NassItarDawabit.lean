@@ -3,7 +3,7 @@
 
 مولَّدٌ من `tahaqquq/dawabit/nass/cases.json` بـ `python3 -I scripts/bina_dawabit_nass.py`؛ لا يُحرَّر يدويًّا.
 بصمةُ الحالات: `a2e37d38a9be0ce4fe69c252daba8ba247726eb1eeaed43b1a1f615955ffe2ff`.
-كتبها مؤلّفٌ مستقلٌّ من المواصفة والنطاق قبل الشفرة، وفي سياقه ما حُقن آليًّا (`tahaqquq/dawabit/nass/taalif.md`)؛ وجُمّدت ببصمتها في `tahaqquq/dawabit/nass/tajmid.json`. والكلماتُ خلايا كما قرأها القارئ (`qari --khalaya`)، و`none` ما رفضه؛ والسندُ في الملفّ المصدر.
+كتبها مؤلّفٌ مستقلٌّ إجرائيًّا من المواصفة والنطاق قبل الشفرة، وفي سياقه ما حُقن آليًّا (`tahaqquq/dawabit/nass/taalif.md`)؛ وجُمّدت ببصمتها في `tahaqquq/dawabit/nass/tajmid.json`. والكلماتُ خلايا كما قرأها القارئ (`qari --khalaya`)، و`none` ما رفضه؛ والسندُ في الملفّ المصدر.
 -/
 import Jisr.NassItarDabit
 

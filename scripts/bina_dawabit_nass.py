@@ -99,7 +99,7 @@ def wallid(bayt):
         "# حالاتُ ضابط «من النصّ إلى الإطار» المجمَّدة — مولَّد\n\n"
         "مولَّدٌ من `tahaqquq/dawabit/nass/cases.json` بـ `python3 -I scripts/bina_dawabit_nass.py`؛ لا يُحرَّر يدويًّا.\n"
         f"بصمةُ الحالات: `{basma}`.\n"
-        "كتبها مؤلّفٌ مستقلٌّ من المواصفة والنطاق قبل الشفرة، وفي سياقه ما حُقن آليًّا (`tahaqquq/dawabit/nass/taalif.md`)؛ "
+        "كتبها مؤلّفٌ مستقلٌّ إجرائيًّا من المواصفة والنطاق قبل الشفرة، وفي سياقه ما حُقن آليًّا (`tahaqquq/dawabit/nass/taalif.md`)؛ "
         "وجُمّدت ببصمتها في `tahaqquq/dawabit/nass/tajmid.json`. والكلماتُ خلايا كما قرأها القارئ (`qari --khalaya`)، "
         "و`none` ما رفضه؛ والسندُ في الملفّ المصدر.\n"
         "-/\n"
