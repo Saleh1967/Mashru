@@ -85,6 +85,8 @@ import Aql.WaqiShawahid
 import Nizam.Qiyas
 import Jisr.NafyFil
 import Jisr.NafyFilQiyas
+import Jisr.BabFa
+import Jisr.BabFaQiyas
 import Jisr.MajariKalim
 import Jisr.MajariKalimQiyas
 
@@ -1842,6 +1844,22 @@ import Jisr.MajariKalimQiyas
 #print axioms Jisr.NafyFil.Qiyas.natija
 #print axioms Jisr.NafyFil.Qiyas.natija_fia
 #print axioms Jisr.NafyFil.Qiyas.akhta_sifr
+-- «هذا باب الفاء» عند سيبويه (الكتاب س8914–9049؛ Jisr/BabFa.lean): الفعلُ بعد الفاء في الواجب وغير الواجب، بالمعنى والإعراب
+#print axioms Jisr.BabFa.kalam_ghayr_farigh
+#print axioms Jisr.BabFa.wajib_la_nasb
+#print axioms Jisr.BabFa.amr_la_jazm
+#print axioms Jisr.BabFa.nasb_ghayr_wajib
+#print axioms Jisr.BabFa.maqbul_kalam_maqbul_shir
+#print axioms Jisr.BabFa.ijab_yufarriq
+#print axioms Jisr.BabFa.ghamid_shawahid
+-- ضابطُ باب الفاء المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/BabFaQiyas.lean؛ hawkama/منهج_الضوابط.md)، وشاهدُ ما غُيّر بعد قراءة الحالات
+#print axioms Jisr.BabFa.baad_qiraa
+#print axioms Jisr.BabFa.Qiyas.qarin_jadwal
+#print axioms Jisr.BabFa.Qiyas.qarin_badil
+#print axioms Jisr.BabFa.Qiyas.majal
+#print axioms Jisr.BabFa.Qiyas.natija
+#print axioms Jisr.BabFa.Qiyas.natija_fia
+#print axioms Jisr.BabFa.Qiyas.akhta_2
 -- مجاري أواخر الكلم عند سيبويه (الكتاب س111–233؛ Jisr/MajariKalim.lean): علامةُ الآخر بالصنف والموضع، إعرابًا أو بناءً
 #print axioms Jisr.MajariKalim.la_jazm_fi_asma
 #print axioms Jisr.MajariKalim.la_jarr_fi_mudari
