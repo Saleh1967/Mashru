@@ -83,6 +83,7 @@ import Nizam.Baqi
 import Aql.Waqi
 import Aql.WaqiShawahid
 import Nizam.Qiyas
+import Jisr.BabFa
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1819,3 +1820,11 @@ import Nizam.Qiyas
 #print axioms Jisr.NabtBridge.same_ids_different_source_is_invalid
 #print axioms Jisr.NabtBridge.insufficient_budget_stays_exhausted
 #print axioms Jisr.NabtBridge.supplied_numeric_rank_does_not_override_mashru
+-- «هذا باب الفاء» عند سيبويه (الكتاب س8914–9049؛ Jisr/BabFa.lean): الفعلُ بعد الفاء في الواجب وغير الواجب، بالمعنى والإعراب
+#print axioms Jisr.BabFa.kalam_ghayr_farigh
+#print axioms Jisr.BabFa.wajib_la_nasb
+#print axioms Jisr.BabFa.amr_la_jazm
+#print axioms Jisr.BabFa.nasb_ghayr_wajib
+#print axioms Jisr.BabFa.maqbul_kalam_maqbul_shir
+#print axioms Jisr.BabFa.ijab_yufarriq
+#print axioms Jisr.BabFa.ghamid_shawahid

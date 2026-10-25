@@ -3412,5 +3412,41 @@
   "milaf": "tahaqquq/dawabit/jaza/natija_5.json",
   "min": "\"Jisr.BabJaza.Qiyas.majal\",",
   "ila": "\"Jisr.BabJaza.Qiyas.natija_fia\","
+ },
+ {
+  "ism": "P520_wajib_nasb_maqbul",
+  "milaf": "Jisr/BabFa.lean",
+  "min": "  | .wajib => .daif",
+  "ila": "  | .wajib => .maqbul"
+ },
+ {
+  "ism": "P521_amr_jazm_la_hukm",
+  "milaf": "Jisr/BabFa.lean",
+  "min": "  | .amr => .khata",
+  "ila": "  | .amr => .laHukm"
+ },
+ {
+  "ism": "P522_nafyLa_shirka_wahid",
+  "milaf": "Jisr/BabFa.lean",
+  "min": "  | .nafyLa => [.maqbul, .qabih]",
+  "ila": "  | .nafyLa => [.maqbul]"
+ },
+ {
+  "ism": "P523_zann_bila_badil",
+  "milaf": "Jisr/BabFa.lean",
+  "min": "  | .ghayrMuallan, .nasb => if j.sadr = .zann then [.maqbul, .khata] else kalamMuallan j.sadr .sabab .nasb",
+  "ila": "  | .ghayrMuallan, .nasb => kalamMuallan j.sadr .sabab .nasb"
+ },
+ {
+  "ism": "P524_wajib_shir_la_hukm",
+  "milaf": "Jisr/BabFa.lean",
+  "min": "  else if j.sadr = .wajib && j.irab = .nasb && j.mana != .shirka && j.mana != .qat then [.maqbul]",
+  "ila": "  else if j.sadr = .wajib && j.irab = .nasb && j.mana != .shirka && j.mana != .qat then [.laHukm]"
+ },
+ {
+  "ism": "P525_wajib_la_yuqra",
+  "milaf": "Jisr/BabFa.lean",
+  "min": "  | .wajib => true",
+  "ila": "  | .wajib => false"
  }
 ]
