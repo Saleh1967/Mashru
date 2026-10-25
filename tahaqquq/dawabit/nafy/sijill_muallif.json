@@ -1,0 +1,18 @@
+{
+ "adawat": {
+  "Bash": 10,
+  "Read": 1,
+  "Write": 3
+ },
+ "masarat_mutlaqa": [
+  "nafy/mujallad",
+  "nafy/mujallad/",
+  "nafy/mujallad/cases.json",
+  "nafy/mujallad/fahs_cases.py",
+  "nafy/mujallad/taalif.md",
+  "nafy/mujallad/wasf.md"
+ ],
+ "kharij_al_masmuh": [],
+ "mamnu": [],
+ "qaraa_al_masdar": true
+}
