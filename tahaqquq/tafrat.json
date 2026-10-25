@@ -3532,5 +3532,29 @@
   "milaf": "Jisr/BabFaQiyas.lean",
   "min": "    | [x], _ => if b.contains x then .tawaqquf else .khata",
   "ila": "    | [x], _ => if b.contains x then .sawab else .khata"
+ },
+ {
+  "ism": "P712_fa_bil_fia",
+  "milaf": "tahaqquq/dawabit/fa/natija_2.json",
+  "min": "\"موجب\": 24",
+  "ila": "\"موجب\": 23"
+ },
+ {
+  "ism": "P713_fa_fia_json",
+  "milaf": "tahaqquq/test_fa.py",
+  "min": "        fia[h[\"fia\"]] += 1 + (h[\"kharij\"][\"shir\"] != \"غير_مسؤول\")",
+  "ila": "        fia[h[\"fia\"]] += 2 + (h[\"kharij\"][\"shir\"] != \"غير_مسؤول\")"
+ },
+ {
+  "ism": "P714_fa_tashghil",
+  "milaf": "tahaqquq/dawabit/fa/natija_2.json",
+  "min": "\"tashghil\": 2",
+  "ila": "\"tashghil\": 3"
+ },
+ {
+  "ism": "P715_fa_cases_natija",
+  "milaf": "tahaqquq/dawabit/fa/natija_2.json",
+  "min": "\"cases_sha256\": \"7eda15eb08e723e7e02caf1f05e9639debce0a781ed00d2c742c898495d8a4c8\"",
+  "ila": "\"cases_sha256\": \"8eda15eb08e723e7e02caf1f05e9639debce0a781ed00d2c742c898495d8a4c8\""
  }
 ]
