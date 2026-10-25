@@ -6,9 +6,9 @@
 الشفرة): حقلُ الحكم دائمًا (`hukmNass` على خلايا الجملة كما قرأها القارئ)، وحقلُ الإطار حيث المتوقَّعُ «مقبول» وحكمُ المحرّك «مقبول»
 (`maqbula`).
 
-**الوسم.** تسعُ مبرهناتٍ بالمعيار الموحَّد (`Nizam/Asas.lean`): ستٌّ على الشاهد (`majal`، `natija`، `natija_fia`، `akhta_1`، `azwaj_1`،
-`asbab_akhta`)، والعدُّ بها «مبرهن على الشاهد» (`decide` على الحالات المجمَّدة)؛ وثلاثٌ لكلّ (`waslBase_khanat`، `khalalKhana_nil`،
-`waslBase_khalal`): `Utur.waslBase` مكوّناتُ خاناتها، ولا تمتنع إلّا بخللٍ مسمًّى.
+**الوسم.** عشرُ مبرهناتٍ بالمعيار الموحَّد (`Nizam/Asas.lean`): ستٌّ على الشاهد (`majal`، `natija`، `natija_fia`، `akhta_1`، `azwaj_1`،
+`asbab_akhta`)، والعدُّ بها «مبرهن على الشاهد» (`decide` على الحالات المجمَّدة)؛ وثلاثٌ لكلّ (`waslBase_khanat`، `khana_hala`، `waslBase_khalal`)
+وواحدةٌ تعريفيّة (`khalalKhana_nil`): `Utur.waslBase` مكوّناتُ خاناتها، وخللُ الحال حالان مختلفان، ولا تمتنع إلّا بخللٍ مسمًّى.
 ومعنى العدّ موافقةُ الشفرة لقراءةٍ مستقلّةٍ للنطاق، لا تغطيةُ اللغة: الحالاتُ مؤلَّفة لا عيّنةٌ من استعمال.
 
 **انحرافٌ عن المنهج §٤-ج** (`hawkama/منهج_الضوابط.md`: «والبنّاءُ لا يقرأ الحالات ولا وصفَ التأليف حتى تُدفع الشفرة»): قرأ البنّاءُ من
@@ -18,7 +18,8 @@
 **التشغيلات.** المبرهناتُ هنا على الشفرة الحاليّة دائمًا. وسجلُّ كلّ تشغيلٍ ملفٌّ في `tahaqquq/dawabit/nass/` (`natija_1.json` …).
 - `natija_1.json`: التشغيلُ الأوّل على الشفرة المجمَّدة في `ecf92e2`، قبل أن يقرأ البنّاءُ الحالات: 61 صوابًا من 71.
 - `natija_2.json`: على مادّةٍ مكشوفة، بعد تصحيح توثيق `Jisr/NassItar.lean` في `8ddf814` — الرأس وتوثيقا `yudaf` و`haraka_tughayyir`، بلا
-  تغييرٍ في الشفرة: اقتباسُ القطر L343 مُدَّ إلى مستثناه، وإحالةٌ إلى مبرهنةٍ لا وجودَ لها صُحّحت، وسندُ L92–94 صار L92–93، وعدُّ المبرهنات.
+  تغييرٍ في الشفرة: اقتباسُ القطر L343 مُدَّ إلى مستثناه، وأُعلن في الرأس وفي `yudaf` أنّ المستثنى لم يُبنَ (وكتب الرأسُ «ضُبط بالحالة N45»:
+  إعلانٌ كُتب بعد قراءة الحالات)، وإحالةٌ إلى مبرهنةٍ لا وجودَ لها صُحّحت، وسندُ L92–94 صار L92–93، وعدُّ المبرهنات وتصنيفُ المساعدات الخاصّة.
   الأعدادُ نفسُها.
 - `natija_3.json`: على مادّةٍ مكشوفة، بعد مراجعة `murajii` الأولى (توثيقٌ في `Jisr/NassItar.lean` و`Jisr/NassItarDabit.lean`، وشاهدُ حدٍّ
   `haykal_fil_la_itar`؛ والشفرةُ الحاكمة كما هي): الأعدادُ نفسُها، ومعها عدُّ الأزواج التي يصيب طرفاها (10).
@@ -105,17 +106,36 @@ structure Khana where
   qism : Bool
   deriving DecidableEq, Repr
 
-/-- مكوّناتُ الخانة `i` بنصّ `waslBase` (`none` إن غابت كلمتُها أو مدلولُها). -/
+/-- مكوّناتُ الخانة `i` بنصّ `waslBase` (`none` إن غابت كلمتُها أو مدلولُها). وشرطُ الحال يُحسب من حقلَي `hala` و`matlub` أنفسهما. -/
 def khana (u : Itar3) (i : Nat) : Option Khana :=
   let r := Mulhaqat.roleOf u.jisr.ud.f i
   let t := attrAt u.jisr.ud.ats i
   match u.kalimat[overtIdx u i]?, u.maani[overtIdx u i]? with
   | some w, some m =>
-    some ⟨complete' (ibtida w), halaIrab (isNom r) w.khalaya, reqState u.jisr.ud.f.1 u.jisr.ud.f.2.1 r,
-      t.2.2.2 || (match reqState u.jisr.ud.f.1 u.jisr.ud.f.2.1 r with
-                  | some h => halaIrab (isNom r) w.khalaya == h || muqaddar (isNom r) [h] w (mudafAlayh u i) | none => true),
+    let h := halaIrab (isNom r) w.khalaya
+    let q := reqState u.jisr.ud.f.1 u.jisr.ud.f.2.1 r
+    some ⟨complete' (ibtida w), h, q,
+      t.2.2.2 || (match q with
+                  | some x => h == x || muqaddar (isNom r) [x] w (mudafAlayh u i) | none => true),
       SLGE.Cat.kindOfMadlul m == qismDawr u.jisr.ud.f.2.1 r⟩
   | _, _ => none
+
+/-- **خللُ الحال حالان مختلفان:** إن سقط شرطُ الحال في خانةٍ فلها حالٌ مطلوبة غيرُ حالها المقروءة. -/
+theorem khana_hala (u : Itar3) (i : Nat) (k : Khana) (hk : khana u i = some k) (hs : k.halaSaliha = false) :
+    ∃ x, k.matlub = some x ∧ k.hala ≠ x := by
+  unfold khana at hk
+  split at hk
+  · simp only [Option.some.injEq] at hk
+    subst hk
+    simp only [Bool.or_eq_false_iff] at hs
+    obtain ⟨_, hs⟩ := hs
+    split at hs
+    · rename_i x hx
+      refine ⟨x, hx, fun he => ?_⟩
+      simp only [Bool.or_eq_false_iff, beq_eq_false_iff_ne] at hs
+      exact hs.1 he
+    · simp at hs
+  · simp at hk
 
 /-- خاناتُ الإطار الأصليّة بالترتيب: أهي مملوءةٌ ضمنًا (`fillAt ≠ 0`)، ومكوّناتُها. -/
 def khanat (u : Itar3) : List (Bool × Option Khana) :=
@@ -131,8 +151,8 @@ theorem waslBase_khanat (u : Itar3) :
   simp only [Function.comp]
   split <;> simp_all <;> rfl
 
-/-- خللُ خانةٍ ظاهرة في `waslBase`: غيابُ كلمتها أو مدلولها، أو نقصُ كلمتها، أو حالٌ مقروءةٌ (`hala`) غيرُ المطلوبة (`matlub`) بلا تقدير،
-    أو قسمُ مدلولٍ غيرُ قسم دورها. -/
+/-- خللُ خانةٍ ظاهرة في `waslBase`: غيابُ كلمتها أو مدلولها (`ghaib`)، أو نقصُ كلمتها، أو — والكلمةُ معربة — حالٌ مقروءةٌ (`hala`) غيرُ
+    المطلوبة (`matlub`) بلا تقدير، أو قسمُ مدلولٍ غيرُ قسم دورها. -/
 inductive Khalal where
   | ghaib
   | naqis
@@ -191,14 +211,15 @@ def sababIkhfaq (i : String) : List SababItar :=
   | none => []
 
 /-- **أسبابُ الإخفاقات العشرة على إطاراتها** (شاهدُ ما في الرأس). والحالاتُ أرقامٌ: الفتحة 0، والضمّة 1، والكسرة 2، والسكون 3؛ والمطلوبةُ من
-    `reqState`: الرفع 1، والنصب 0.
+    `reqState`: الرفع 1، والنصب 0. والخانةُ برقمها من الصفر (الفعل 0، الفاعل 1، المفعول 2).
     * N04 N21 N24 N28 N35: إطارُ المضاف إليه «لا حكم» بسببه `illaAkhir` وقراءةُ الستّة فيه «لا حكم»؛ وإطارُ المفعول ممتنعٌ من `waslBase`
-      بخللٍ واحد: كسرةُ المضاف إليه في خانة المفعول (2) والمطلوبُ النصب.
-    * N34: «لا حكم» بسببه `irabBilHarf`؛ وإطارُ المفعول ممتنعٌ بخللين: سكونُ «ذُو» في خانة الفاعل (1) والمطلوبُ الرفع، وكسرةُ المضاف إليه في خانة
-      المفعول (2). N36 N38: «لا حكم» بسببه `illaAkhir`.
-    * N45: إطارٌ واحدٌ ممتنعٌ بخللٍ واحد: كسرةُ «الرَّجُلِ» في خانة المفعول (2) والمطلوبُ النصب. N46: إطارٌ واحدٌ ممتنعٌ بخللٍ واحد: فتحةُ «أَبًا»
-      في خانة الفاعل (1) والمطلوبُ الرفع. وقراءةُ الستّة فيهما مرخَّصة.
-    ولا خللَ في نقص كلمةٍ ولا في قسم مدلول؛ وأنّ الخللَ وحده سببُ الامتناع من `waslBase` هو `waslBase_khalal`. -/
+      بخللٍ واحد: كسرةُ الكلمة الثالثة (المضافِ إليه في الإطار الأوّل) في خانة المفعول (الخانة 2) والمطلوبُ النصب.
+    * N34: «لا حكم» بسببه `irabBilHarf`؛ وإطارُ المفعول ممتنعٌ بخللين: سكونُ «ذُو» في خانة الفاعل (الخانة 1) والمطلوبُ الرفع، وكسرةُ «الْمَالِ»
+      في خانة المفعول (الخانة 2). N36 N38: «لا حكم» بسببه `illaAkhir`.
+    * N45: إطارٌ واحدٌ ممتنعٌ بخللٍ واحد: كسرةُ «الرَّجُلِ» في خانة المفعول (الخانة 2) والمطلوبُ النصب. N46: إطارٌ واحدٌ ممتنعٌ بخللٍ واحد: فتحةُ «أَبًا»
+      في خانة الفاعل (الخانة 1) والمطلوبُ الرفع. وقراءةُ الستّة فيهما مرخَّصة.
+    ولا خللَ في نقص كلمةٍ ولا في قسم مدلول؛ وأنّ الخللَ وحده سببُ الامتناع من `waslBase` هو `waslBase_khalal`، وأنّ خللَ الحال حالان مختلفان
+    هو `khana_hala`. -/
 theorem asbab_akhta :
     ["N04", "N21", "N24", "N28", "N35", "N34", "N36", "N38", "N45", "N46"].map sababIkhfaq =
       [[⟨[.fil, .fail, .mudafIlayh], .laHukm, [.illaAkhir], .laHukm, true, []⟩,

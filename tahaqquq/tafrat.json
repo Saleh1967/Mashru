@@ -4778,7 +4778,13 @@
  {
   "ism": "P821_nass_khana_hala",
   "milaf": "Jisr/NassItarQiyas.lean",
-  "min": "some ⟨complete' (ibtida w), halaIrab (isNom r) w.khalaya,",
-  "ila": "some ⟨complete' (ibtida w), 0,"
+  "min": "some ⟨complete' (ibtida w), h, q,",
+  "ila": "some ⟨complete' (ibtida w), 0, q,"
+ },
+ {
+  "ism": "P822_nass_khana_matlub",
+  "milaf": "Jisr/NassItarQiyas.lean",
+  "min": "some ⟨complete' (ibtida w), h, q,",
+  "ila": "some ⟨complete' (ibtida w), h, q.map (· + 1),"
  }
 ]
