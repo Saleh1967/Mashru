@@ -3412,5 +3412,41 @@
   "milaf": "tahaqquq/dawabit/jaza/natija_5.json",
   "min": "\"Jisr.BabJaza.Qiyas.majal\",",
   "ila": "\"Jisr.BabJaza.Qiyas.natija_fia\","
+ },
+ {
+  "ism": "P502_hal_tuwafiq_mustaqbal",
+  "milaf": "Jisr/NafyFil.lean",
+  "min": "  | .hal, .mustaqbal => false",
+  "ila": "  | .hal, .mustaqbal => true"
+ },
+ {
+  "ism": "P503_sin_la_tunqal",
+  "milaf": "Jisr/NafyFil.lean",
+  "min": "def sin (s : String) : String := if s = \"سيفعل\" then \"سوف يفعل\" else s",
+  "ila": "def sin (s : String) : String := s"
+ },
+ {
+  "ism": "P504_jawab_hal_lam",
+  "milaf": "Jisr/NafyFil.lean",
+  "min": "    | .jawabHal => if z = .madiMunqati then some \"ما فعل\" else none",
+  "ila": "    | .jawabHal => if z = .madiMunqati then some \"لم يفعل\" else none"
+ },
+ {
+  "ism": "P505_ithbat_bila_sin",
+  "milaf": "Jisr/NafyFil.lean",
+  "min": "  if r.contains \"سوف يفعل\" then r ++ [\"سيفعل\"] else r",
+  "ila": "  r"
+ },
+ {
+  "ism": "P506_mukhlasa_kalam_maqbul",
+  "milaf": "Jisr/NafyFil.lean",
+  "min": "    | .ismThummaFil => ⟨.khata, .maqbul⟩",
+  "ila": "    | .ismThummaFil => ⟨.maqbul, .laHukm⟩"
+ },
+ {
+  "ism": "P507_mutlaq_fi_qasam",
+  "milaf": "Jisr/NafyFil.lean",
+  "min": "    | .qasam => none)",
+  "ila": "    | .qasam => some (nafy z))"
  }
 ]

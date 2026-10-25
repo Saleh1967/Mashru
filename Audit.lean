@@ -83,6 +83,7 @@ import Nizam.Baqi
 import Aql.Waqi
 import Aql.WaqiShawahid
 import Nizam.Qiyas
+import Jisr.NafyFil
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1819,3 +1820,12 @@ import Nizam.Qiyas
 #print axioms Jisr.NabtBridge.same_ids_different_source_is_invalid
 #print axioms Jisr.NabtBridge.insufficient_budget_stays_exhausted
 #print axioms Jisr.NabtBridge.supplied_numeric_rank_does_not_override_mashru
+-- نفيُ الفعل وحروفُ الفعل عند سيبويه (الكتاب س9755–9787؛ Jisr/NafyFil.lean): النفيُ والإثباتُ على Awwaliyyat.Zaman5، وما يلي الحرف
+#print axioms Jisr.NafyFil.jawab_ghayr_farigh
+#print axioms Jisr.NafyFil.nafy_khamsa
+#print axioms Jisr.NafyFil.yafal_bila_hal
+#print axioms Jisr.NafyFil.qasam_shawahid
+#print axioms Jisr.NafyFil.sin_wa_hal
+#print axioms Jisr.NafyFil.la_hukm_shawahid
+#print axioms Jisr.NafyFil.la_yufsal_khata
+#print axioms Jisr.NafyFil.maqbul_kalam_maqbul_shir
