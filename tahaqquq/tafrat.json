@@ -3254,7 +3254,7 @@
  {
   "ism": "P475_innama_muhmala",
   "milaf": "Jisr/QaydMafhum.lean",
-  "min": "    innama := fun m => D.innama m || (b m).contains .innama }",
+  "min": "    innama := fun m => D.innama m || innamaFi (b m) }",
   "ila": "    innama := fun m => D.innama m }"
  },
  {
@@ -3646,5 +3646,29 @@
   "milaf": "Jisr/BabJazaQiyas.lean",
   "min": "theorem majal :\n    halat.length = 39 ∧ natayij.length = 55 ∧\n    [Daraja.maqbul, .qabih, .khata, .laHukm].map (fun d => (halat.filter (·.kalam == d)).length) = [16, 8, 9, 6] ∧\n    [some Daraja.maqbul, some .qabih, some .khata, some .laHukm, none].map\n      (fun d => (halat.filter (·.shir == d)).length) = [10, 0, 0, 6, 23] := by",
   "ila": "theorem majal : halat.length = halat.length := by"
+ },
+ {
+  "ism": "P776_alam_mawdi",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "  | .marifa i => if SLGE.Wad.maarif[i]? == some \"العلم\" then some .ism else none",
+  "ila": "  | .marifa i => if SLGE.Wad.maarif[i]? == some \"الضمير\" then some .ism else none"
+ },
+ {
+  "ism": "P777_innama_ukhtuha",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "  | .maHarfiyya i => (SLGE.Wad.innaF[i]?).map (·.name) == some \"إن\"",
+  "ila": "  | .maHarfiyya i => (SLGE.Wad.innaF[i]?).map (·.name) == some \"أن\""
+ },
+ {
+  "ism": "P778_ism_jins_la_yashhad",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "  | .ismJins => some .ism",
+  "ila": "  | .ismJins => none"
+ },
+ {
+  "ism": "P779_kull_marifa_tashhad",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "  | .marifa i => if SLGE.Wad.maarif[i]? == some \"العلم\" then some .ism else none",
+  "ila": "  | .marifa _ => some .ism"
  }
 ]
