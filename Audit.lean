@@ -83,6 +83,8 @@ import Nizam.Baqi
 import Aql.Waqi
 import Aql.WaqiShawahid
 import Nizam.Qiyas
+import Jisr.BaqiJaza
+import Jisr.BaqiJazaQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1819,3 +1821,28 @@ import Nizam.Qiyas
 #print axioms Jisr.NabtBridge.same_ids_different_source_is_invalid
 #print axioms Jisr.NabtBridge.insufficient_budget_stays_exhausted
 #print axioms Jisr.NabtBridge.supplied_numeric_rank_does_not_override_mashru
+-- بقيّةُ أبواب الجزاء عند سيبويه (الكتاب س9305–9652؛ Jisr/BaqiJaza.lean) وضابطُها المجمَّد (Jisr/BaqiJazaQiyas.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.BaqiJaza.mutlaq_salim
+#print axioms Jisr.BaqiJaza.hukmSila_salim
+#print axioms Jisr.BaqiJaza.hukmRafMudari_salim
+#print axioms Jisr.BaqiJaza.hukmAsl_salim
+#print axioms Jisr.BaqiJaza.hukmJaza_salim
+#print axioms Jisr.BaqiJaza.maqbul_kalam_maqbul_shir
+#print axioms Jisr.BaqiJaza.tamm
+#print axioms Jisr.BaqiJaza.harf_la_sila
+#print axioms Jisr.BaqiJaza.jazm_yadhhab
+#print axioms Jisr.BaqiJaza.jazm_yabqa
+#print axioms Jisr.BaqiJaza.nazir
+#print axioms Jisr.BaqiJaza.bayn_la_raf
+#print axioms Jisr.BaqiJaza.thumma_la_nasb
+#print axioms Jisr.BaqiJaza.awail_kulluha
+#print axioms Jisr.BaqiJaza.wajib_la_jaza
+#print axioms Jisr.BaqiJaza.la_jazm_bighayr
+#print axioms Jisr.BaqiJaza.badal_wa_ghalat
+#print axioms Jisr.BaqiJaza.rabit_la_hukm
+#print axioms Jisr.BaqiJaza.Qiyas.qarin_jadwal
+#print axioms Jisr.BaqiJaza.Qiyas.qarin_badil
+#print axioms Jisr.BaqiJaza.Qiyas.majal
+#print axioms Jisr.BaqiJaza.Qiyas.natija
+#print axioms Jisr.BaqiJaza.Qiyas.natija_fia
+#print axioms Jisr.BaqiJaza.Qiyas.akhta_2

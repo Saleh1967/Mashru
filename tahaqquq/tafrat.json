@@ -3412,5 +3412,185 @@
   "milaf": "tahaqquq/dawabit/jaza/natija_5.json",
   "min": "\"Jisr.BabJaza.Qiyas.majal\",",
   "ila": "\"Jisr.BabJaza.Qiyas.natija_fia\","
+ },
+ {
+  "ism": "P580_jaza2_nasikh_jazm",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "    if s = .mawsul then illaFiShir .khata\n",
+  "ila": "    if s = .mawsul then maqbul\n"
+ },
+ {
+  "ism": "P581_jaza2_ibtida_jazm",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "  else if jazmi d.sura && jazaAw d.mana then illaFiShir .qabih\n",
+  "ila": "  else if jazmi d.sura && jazaAw d.mana then maqbul\n"
+ },
+ {
+  "ism": "P582_jaza2_idha_jazm",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "  else if jazmi d.sura && jazaAw d.mana then illaFiShir .khata\n",
+  "ila": "  else if jazmi d.sura && jazaAw d.mana then maqbul\n"
+ },
+ {
+  "ism": "P583_jaza2_qasam_jazm",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "    if jazmi d.sura then mutlaq [.khata]\n    else if d.sura = .marfu && d.rabit = .bila",
+  "ila": "    if jazmi d.sura then mutlaq [.maqbul]\n    else if d.sura = .marfu && d.rabit = .bila"
+ },
+ {
+  "ism": "P584_jaza2_harf_sila",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "  if s = .mawsul then maqbul else mutlaq [.khata]\n",
+  "ila": "  if s = .mawsul then maqbul else maqbul\n"
+ },
+ {
+  "ism": "P585_jaza2_shir_tabi",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "def mutlaq (k : List Daraja) : Hukm := ⟨k, if k.contains .maqbul then [.maqbul] else [.laHukm]⟩",
+  "ila": "def mutlaq (k : List Daraja) : Hukm := ⟨k, [.laHukm]⟩"
+ },
+ {
+  "ism": "P586_jaza2_nazir",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "    | .mudari, .madi => if jazaAw d.mana then mutlaq [.daif] else laHukm",
+  "ila": "    | .mudari, .madi => if jazaAw d.mana then mutlaq [.maqbul] else laHukm"
+ },
+ {
+  "ism": "P587_jaza2_bayn_raf",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "  | .fa, .marfu | .thumma, .marfu | .aw, .marfu => if d.mana = .hal then laHukm else mutlaq [.khata]",
+  "ila": "  | .fa, .marfu | .thumma, .marfu | .aw, .marfu => if d.mana = .hal then laHukm else maqbul"
+ },
+ {
+  "ism": "P588_jaza2_thumma_nasb",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "  -- «واعلم أن ثم لا ينصب بها» (س9505)\n  | .thumma, .mansub => mutlaq [.khata]",
+  "ila": "  -- «واعلم أن ثم لا ينصب بها» (س9505)\n  | .thumma, .mansub => maqbul"
+ },
+ {
+  "ism": "P589_jaza2_awail",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "      else maqbul\n    else if d.sura = .marfu then",
+  "ila": "      else laHukm\n    else if d.sura = .marfu then"
+ },
+ {
+  "ism": "P590_jaza2_wajib",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "      else if d.adat = .khabarWajib then illaFiShir .khata",
+  "ila": "      else if d.adat = .khabarWajib then maqbul"
+ },
+ {
+  "ism": "P591_jaza2_rabit_ghayr",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "  if d.rabit != .bila then laHukm else\n  match d.adat with",
+  "ila": "  if false then laHukm else\n  match d.adat with"
+ },
+ {
+  "ism": "P592_jaza2_ghalat",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "    else if d.mana = .ghayrMuallan then mutlaq [.maqbul, .khata, .daif]",
+  "ila": "    else if d.mana = .ghayrMuallan then mutlaq [.maqbul, .khata]"
+ },
+ {
+  "ism": "P593_jaza2_an_jazm",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "    else if d.fil = .jawab && jazmi d.sura then ⟨[.khata], [.khata]⟩",
+  "ila": "    else if d.fil = .jawab && jazmi d.sura then maqbul"
+ },
+ {
+  "ism": "P594_jaza2_qarin",
+  "milaf": "Jisr/BaqiJazaQiyas.lean",
+  "min": "    | .maqbul, _ => .raddKhati",
+  "ila": "    | .maqbul, _ => .qabulKhati"
+ },
+ {
+  "ism": "P595_jaza2_basmat_halat",
+  "milaf": "tahaqquq/dawabit/jaza2/tajmid.json",
+  "min": "\"cases_sha256\": \"2f8c85a66c3151c6a20450733b80716e32504d63a99523424318a79a78f9079c\"",
+  "ila": "\"cases_sha256\": \"3f8c85a66c3151c6a20450733b80716e32504d63a99523424318a79a78f9079c\""
+ },
+ {
+  "ism": "P596_jaza2_muwallad",
+  "milaf": "Jisr/BaqiJazaDawabit.lean",
+  "min": "⟨\"B01\", .mujib,",
+  "ila": "⟨\"B01x\", .mujib,"
+ },
+ {
+  "ism": "P597_jaza2_basmat_shifra",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "min": "\"sha256\": \"dd795728f00302fd3730c458d9905bfc3422f6fcee7f5c44c92c8de87349aa06\"",
+  "ila": "\"sha256\": \"ed795728f00302fd3730c458d9905bfc3422f6fcee7f5c44c92c8de87349aa06\""
+ },
+ {
+  "ism": "P598_jaza2_sawab",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "min": "\"sawab\": 48",
+  "ila": "\"sawab\": 47"
+ },
+ {
+  "ism": "P599_jaza2_qablaha",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "min": "\"natija_1.json\": \"c2a660de34d795a18a47afdb39c1ae0521bf58c64f138d07a0af6fa8413abbcf\"",
+  "ila": "\"natija_1.json\": \"d2a660de34d795a18a47afdb39c1ae0521bf58c64f138d07a0af6fa8413abbcf\""
+ },
+ {
+  "ism": "P600_jaza2_natija_1",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_1.json",
+  "min": "\"sawab\": 46",
+  "ila": "\"sawab\": 45"
+ },
+ {
+  "ism": "P601_jaza2_marsa",
+  "milaf": "tahaqquq/test_jaza2.py",
+  "min": "NATIJA_1 = \"c2a660de34d795a18a47afdb39c1ae0521bf58c64f138d07a0af6fa8413abbcf\"",
+  "ila": "NATIJA_1 = \"d2a660de34d795a18a47afdb39c1ae0521bf58c64f138d07a0af6fa8413abbcf\""
+ },
+ {
+  "ism": "P602_jaza2_lean",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "min": "\"Jisr.BaqiJaza.Qiyas.akhta_2\"",
+  "ila": "\"Jisr.BaqiJaza.Qiyas.akhta_1\""
+ },
+ {
+  "ism": "P603_jaza2_akhta",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "min": "\"B34\"",
+  "ila": "\"B35\""
+ },
+ {
+  "ism": "P604_jaza2_majal_json",
+  "milaf": "tahaqquq/test_jaza2.py",
+  "min": "    mj += [sum(1 for x in shir if isinstance(x, list)), shir.count(\"غير_مسؤول\")]",
+  "ila": "    mj += [sum(1 for x in shir if isinstance(x, list)), shir.count(\"غير_مسؤول\") + 1]"
+ },
+ {
+  "ism": "P605_jaza2_halat",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "min": "\"halat\": 44",
+  "ila": "\"halat\": 45"
+ },
+ {
+  "ism": "P606_jaza2_bil_fia",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "min": "\"حد\": 18",
+  "ila": "\"حد\": 17"
+ },
+ {
+  "ism": "P607_jaza2_fia_json",
+  "milaf": "tahaqquq/test_jaza2.py",
+  "min": "        fia[h[\"fia\"]] += 1 + (h[\"kharij\"][\"shir\"] != \"غير_مسؤول\")",
+  "ila": "        fia[h[\"fia\"]] += 2 + (h[\"kharij\"][\"shir\"] != \"غير_مسؤول\")"
+ },
+ {
+  "ism": "P608_jaza2_tashghil",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "min": "\"tashghil\": 2",
+  "ila": "\"tashghil\": 3"
+ },
+ {
+  "ism": "P609_jaza2_cases_natija",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "min": "\"cases_sha256\": \"2f8c85a66c3151c6a20450733b80716e32504d63a99523424318a79a78f9079c\"",
+  "ila": "\"cases_sha256\": \"3f8c85a66c3151c6a20450733b80716e32504d63a99523424318a79a78f9079c\""
  }
 ]

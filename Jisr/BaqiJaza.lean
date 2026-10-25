@@ -37,8 +37,9 @@
   وغيرُ جائزٍ بغيره (س9455–9456). والحقولُ لا تحمل النفيَ في المرفوع، فالمخرجُ البديلان.
 - **النهيُ مجزومًا جوابُه بلا معنًى معلن.** «لا تدن منه يكن خيرا لك» (س9578) مقبول، و«لا تدن من الأسديا كلك فهو قبيح إن جزمت» (س9578–9579، بكتابة المودَع)، والفارقُ
   أن يكون الأوّلُ سببًا. فإن قالت الحالةُ `جزاء` فمقبول، وإلّا فالبديلان.
-- **الخبرُ الواجبُ مجزومًا جوابُه** بديلان: «أتيتنا أمس نعطك اليوم» على معنى «إن كنت أتيتنا» (س9560)، و«فإن الجزاء لا يكون» إن قرّره
-  (س9561)، و«أتي الأمير لا يقطع اللص» خطأ (س9622). وفي الشعر مقبولٌ بـ«إلا أن يضطر شاعر» (س9623)، بمفتاح المواصفة.
+- **الخبرُ الواجبُ مجزومًا جوابُه** خطأ: «لا يكون الجزاء أبدا حتى يكون الكلام الأول غير واجب» (س9622–9623)، و«فإن الجزاء لا يكون» إن
+  قرّره (س9561). وفي الشعر مقبولٌ بـ«إلا أن يضطر شاعر» (س9623)، بمفتاح المواصفة. و«أتيتنا أمس نعطك اليوم» على معنى «إن كنت أتيتنا»
+  (س9560) ليس واجبًا، فليس `خبر_واجب`. (وكان في الشفرة المجمَّدة بديلين؛ انظر ما غُيّر بعد قراءة الحالات.)
 - **«إذا» بلا إضمار في الشعر** مقبولٌ بـ«فهي بمنزلة إذ» (س9371)، و«إذ» يجوز بعدها الجزمُ في الشعر (س9359–9360). قرأتُ «بمنزلة» تسويةً
   في الشعر أيضًا.
 - **«كلما» مجزومًا** خطأ، بـ«ومثل ذلك كلما» (س9629) بعد «ليس في هذا جزاء» (س9626) و«الجزاء لا يكون هاهنا» (س9628–9629).
@@ -48,8 +49,16 @@
 - **الشعر.** ما قُبل في الكلام قُبل في الشعر (`maqbul_kalam_maqbul_shir`). وما لم يذكر النطاقُ الشعرَ فيه وهو غيرُ مقبولٍ في الكلام
   فحكمُه في الشعر `laHukm`.
 
-**المنهج.** كُتبت هذه الشفرة بعد تجميد الضابط (`1a72090`) وقبل أن يقرأ البنّاءُ حالاتِه، من المواصفة والنطاق وحدهما. ونتيجتُها على
-الضابط في `Jisr/BaqiJazaQiyas.lean`، لا هنا.
+**المنهج.** كُتبت هذه الشفرة بعد تجميد الضابط (`1a72090`) وقبل أن يقرأ البنّاءُ حالاتِه، من المواصفة والنطاق وحدهما، ودُفعت في
+`97b392b`. ونتيجتُها على الضابط في `Jisr/BaqiJazaQiyas.lean`، لا هنا: التشغيلُ الأوّل 46/52 (`natija_1.json`).
+
+**ما غُيّر بعد قراءة الحالات** (فالتشغيلُ الثاني وما بعده على مادّةٍ مكشوفة):
+- **الرابطُ قبل الفعل.** كانت الشفرةُ لا تنظر في `rabit` في فعل الشرط، ولا بعد الناسخ وحرف الابتداء و«إذا» والقسم، ولا مع «كلما» و«الذي»
+  و«كل» و«أن» و«أما». فقبلت «أما أنت منطلقا فأنطلق معك» (B43) والنطاقُ لا يذكر الفاء فيه. فصار ما فيه رابطٌ في هذه المواضع «لا حكم»
+  (`rabit_la_hukm`). وزيد فرضُ الرابط في `jazm_yabqa` و`la_jazm_bighayr`.
+- **الخبرُ الواجب.** كان مجزومُ جوابه بديلين (مقبول، خطأ)، فصار خطأً بلفظ الحقل «واجب» (B40؛ البندُ أعلاه؛ `wajib_la_jaza`).
+- **البدلُ بعد الجواب بلا معنًى معلن.** كان بديلين (مقبول، خطأ)، فزيد «ضعيف» من «إلا أن تجيزه على ما جاز عليه تسألنا» (س9483–9484)،
+  وكنتُ قرأتُه ولم أُدخله (B33؛ `badal_wa_ghalat`).
 -/
 
 
@@ -261,9 +270,10 @@ def hukmBaad (d : Dakhil) : Hukm :=
   -- «واعلم أن ثم لا ينصب بها» (س9505)
   | .thumma, .mansub => mutlaq [.khata]
   -- «إن تأتنا نحسن إليك نعطك ونحملك» (س9481–9482)؛ «إن تأتني آتك أقل ذاك كان غير جائز» (س9483)
+  -- «إلا أن تجيزه على ما جاز عليه تسألنا» (س9483–9484)، و«يجوز على الغلط والنسيان» (س9478)؛ بعد قراءة الحالات: أُضيف `daif` (B33)
   | .bila, .majzum =>
     if d.mana = .badal then maqbul
-    else if d.mana = .ghayrMuallan then mutlaq [.maqbul, .khata]
+    else if d.mana = .ghayrMuallan then mutlaq [.maqbul, .khata, .daif]
     else laHukm
   | _, _ => laHukm
 
@@ -271,7 +281,8 @@ def hukmBaad (d : Dakhil) : Hukm :=
 def hukmAsl (s : Sinf) (d : Dakhil) : Hukm :=
   if d.shart = .laYantabiq then laHukm
   else match d.fil with
-    | .shart => hukmShart s d
+    -- بعد قراءة الحالات: فعلُ الشرط لا رابطَ قبله (B43)
+    | .shart => if d.rabit = .bila then hukmShart s d else laHukm
     | .jawab => hukmJawab s d
     | .baynMajzumayn => hukmBayn d
     | .baadJawab => hukmBaad d
@@ -282,7 +293,8 @@ def shartAwJawab (f : Fil) : Bool := f = .shart || f = .jawab
 
 /-- بعد ناسخٍ غير مشغول. -/
 def hukmNasikh (s : Sinf) (d : Dakhil) : Hukm :=
-  if !shartAwJawab d.fil then laHukm
+  -- بعد قراءة الحالات: والفعلُ بلا رابطٍ قبله (B43)
+  if !shartAwJawab d.fil || d.rabit != .bila then laHukm
   else if jazmi d.sura && jazaAw d.mana then
     -- «فهذا دليل على أن الجزاء لا ينبغي له أن يكون هاهنا بمن وما وأي» (س9327–9328)، «وقد جاء في الشعر إن من يأتني آته» (س9332–9333)
     if s = .mawsul then illaFiShir .khata
@@ -294,7 +306,8 @@ def hukmNasikh (s : Sinf) (d : Dakhil) : Hukm :=
 
 /-- بعد حرف ابتداء. -/
 def hukmIbtida (s : Sinf) (d : Dakhil) : Hukm :=
-  if !shartAwJawab d.fil then laHukm
+  -- بعد قراءة الحالات: والفعلُ بلا رابطٍ قبله (B43)
+  if !shartAwJawab d.fil || d.rabit != .bila then laHukm
   -- «وإنما كرهوا الجزاء هاهنا» (س9357)، «وقد يجوز في الشعر أن يجازي بعد هذه الحروف» (س9359–9360)
   else if jazmi d.sura && jazaAw d.mana then illaFiShir .qabih
   else if d.sura = .marfu && silaAw d.mana && s = .mawsul then maqbul
@@ -311,7 +324,8 @@ def hukmIbtida (s : Sinf) (d : Dakhil) : Hukm :=
 
 /-- بعد «إذا» بلا إضمار. -/
 def hukmIdha (s : Sinf) (d : Dakhil) : Hukm :=
-  if !shartAwJawab d.fil then laHukm
+  -- بعد قراءة الحالات: والفعلُ بلا رابطٍ قبله (B43)
+  if !shartAwJawab d.fil || d.rabit != .bila then laHukm
   -- «فهي بمنزلة إذ لا يجوز فيها الجزم» (س9371)
   else if jazmi d.sura && jazaAw d.mana then illaFiShir .khata
   -- «مررت به فإذا من يأتيه يعطيه» (س9368)
@@ -332,7 +346,8 @@ def hukmQasam (d : Dakhil) : Hukm :=
       else if d.shart = .mudari then mutlaq [.qabih]
       else laHukm
     else laHukm
-  | .shart => if d.sura = .madi && jazaAw d.mana then maqbul else laHukm
+  -- بعد قراءة الحالات: والفعلُ بلا رابطٍ قبله (B43)
+  | .shart => if d.sura = .madi && jazaAw d.mana && d.rabit = .bila then maqbul else laHukm
   | _ => laHukm
 
 /-- ما يُجازى به. -/
@@ -346,6 +361,8 @@ def hukmJaza (s : Sinf) (d : Dakhil) : Hukm :=
 
 /-- ما لا يُجازى به جزمًا. -/
 def hukmGhayr (d : Dakhil) : Hukm :=
+  -- بعد قراءة الحالات: النطاقُ لا يذكر لها رابطًا قبل الفعل المسؤول عنه (B43: «أما» بالفاء)
+  if d.rabit != .bila then laHukm else
   match d.adat with
   | .kullama =>
     if !shartAwJawab d.fil then laHukm
@@ -384,8 +401,9 @@ def hukmTalab (d : Dakhil) : Hukm :=
   | .jawabTalab, .bila =>
     if jazmi d.sura then
       if !jazaAw d.mana then laHukm
-      -- «فإن كنت تريد أن تقرره بأنه قد فعل فإن الجزاء لا يكون» (س9561)، «إلا أن يضطر شاعر» (س9623)
-      else if d.adat = .khabarWajib then ⟨[.maqbul, .khata], [.maqbul]⟩
+      -- «لا يكون الجزاء أبدا حتى يكون الكلام الأول غير واجب إلا أن يضطر شاعر» (س9622–9623)
+      -- و«أتيتنا أمس نعطك اليوم» (س9560) ليس واجبًا فليس `خبر_واجب`؛ بعد قراءة الحالات: كان البديلين (B40)
+      else if d.adat = .khabarWajib then illaFiShir .khata
       -- «فإن قلت لا تدن من الأسديا كلك فهو قبيح إن جزمت» (س9578–9579)
       else if d.adat = .talabNahy && d.mana = .ghayrMuallan then mutlaq [.maqbul, .qabih]
       -- «وزعم الخليل أن هذه الأوائل كلها فيها معنى إن فلذلك انجزم الجواب» (س9551–9552)
@@ -489,7 +507,7 @@ def madakhil (as : List Adat) (m : Mana) : List Dakhil :=
   kullQabl.flatMap fun q => as.flatMap fun a => kullShart.flatMap fun s => kullFil.flatMap fun f =>
     kullRabit.flatMap fun r => kullSura.map fun u => ⟨q, a, s, f, r, u, m⟩
 
-/-- **لا صلةَ لحروف الجزاء** (لكلّ بالاستنفاد: 37800 مدخلًا، والقوائمُ تامّةٌ بـ`tamm`): «فهذه الحروف بمنزلة إن لا يكون الفعل صلة
+/-- **لا صلةَ لحروف الجزاء** (على الشاهد، والشاهدُ المداخلُ كلُّها بمعنى الصلة: 37800، وتمامُ القوائم بـ`tamm`): «فهذه الحروف بمنزلة إن لا يكون الفعل صلة
     لها» (س9321–9322). ما أُريد به الصلةُ مع «مهما» و«متى» و«حيثما» و«أين» و«أنى» و«إن» لا يُقبل في الكلام بأيّ سابقٍ ولا موضع. -/
 theorem harf_la_sila : (madakhil huruf .sila).all (fun d => !(hukm d).kalam.contains .maqbul) = true := by
   decide +kernel
@@ -506,19 +524,19 @@ theorem jazm_yadhhab (d : Dakhil) (hs : sinfOf d.adat = .mawsul ∨ sinfOf d.ada
     rcases hs with h | h <;> simp [hukm, h]
   rw [hh]
   rcases hq with rfl | rfl | rfl | rfl <;> rcases hf with rfl | rfl <;>
-    cases u <;> simp_all [hukmJaza, hukmNasikh, hukmIbtida, hukmIdha, hukmQasam, jazmi, shartAwJawab, illaFiShir,
-      mutlaq, laHukm] <;> split <;> simp
+    cases u <;> cases r <;> simp_all [hukmJaza, hukmNasikh, hukmIbtida, hukmIdha, hukmQasam, jazmi, shartAwJawab, illaFiShir,
+      mutlaq, laHukm] <;> (try split) <;> (try simp)
 
 /-- **وما سواها لا يذهب به** (تعريفيّة): فعلُ الشرط مجزومًا، مرادًا به الجزاءُ أو غيرَ معلن، مقبولٌ بعد العشرة الباقية. -/
 theorem jazm_yabqa (d : Dakhil) (hs : sinfOf d.adat = .mawsul ∨ sinfOf d.adat = .harf)
     (hq : d.qabl ≠ .nasikh ∧ d.qabl ≠ .harfIbtida ∧ d.qabl ≠ .idhaFujaiyya ∧ d.qabl ≠ .qasam)
-    (hsh : d.shart ≠ .laYantabiq) (hf : d.fil = .shart) (hu : d.sura = .majzum) (hm : jazaAw d.mana = true) :
-    hukm d = maqbul := by
+    (hsh : d.shart ≠ .laYantabiq) (hf : d.fil = .shart) (hr : d.rabit = .bila) (hu : d.sura = .majzum)
+    (hm : jazaAw d.mana = true) : hukm d = maqbul := by
   obtain ⟨q, a, s, f, r, u, m⟩ := d
-  simp only at hs hq hsh hf hu hm
-  subst hf hu
+  simp only at hs hq hsh hf hr hu hm
+  subst hf hr hu
   obtain ⟨h1, h2, h3, h4⟩ := hq
-  have hh : hukm ⟨q, a, s, .shart, r, .majzum, m⟩ = hukmJaza (sinfOf a) ⟨q, a, s, .shart, r, .majzum, m⟩ := by
+  have hh : hukm ⟨q, a, s, .shart, .bila, .majzum, m⟩ = hukmJaza (sinfOf a) ⟨q, a, s, .shart, .bila, .majzum, m⟩ := by
     rcases hs with h | h <;> simp [hukm, h]
   rw [hh]
   cases q <;> simp_all [hukmJaza, hukmAsl, hukmShart]
@@ -570,14 +588,41 @@ theorem awail_kulluha (d : Dakhil) (hs : sinfOf d.adat = .talab) (ha : d.adat �
   subst hq hf hr hm
   cases a <;> simp_all [hukm, sinfOf, hukmTalab, jazaAw]
 
+/-- **«حتى يكون الكلام الأول غير واجب»** (تعريفيّة؛ س9622–9623؛ بعد قراءة الحالات): الخبرُ الواجبُ مجزومًا جوابُه، مرادًا به الجزاءُ
+    أو غيرَ معلن، خطأٌ في الكلام، مقبولٌ في الشعر بـ«إلا أن يضطر شاعر». -/
+theorem wajib_la_jaza (d : Dakhil) (ha : d.adat = .khabarWajib) (hq : d.qabl = .laShay) (hf : d.fil = .jawabTalab)
+    (hr : d.rabit = .bila) (hj : jazmi d.sura = true) (hm : jazaAw d.mana = true) : hukm d = illaFiShir .khata := by
+  obtain ⟨q, a, s, f, r, u, m⟩ := d
+  simp only at ha hq hf hr hj hm
+  subst ha hq hf hr
+  simp [hukm, sinfOf, hukmTalab, hj, hm]
+
 /-- **ما لا يُجازى به جزمًا** (تعريفيّة): «أن» (س9459) و«أما» (س9625) و«كلما» (س9629) لا يُجزم جوابُها في الكلام. -/
 theorem la_jazm_bighayr (d : Dakhil) (ha : d.adat = .an ∨ d.adat = .amma ∨ d.adat = .kullama)
-    (hf : d.fil = .jawab) (hj : jazmi d.sura = true) : (hukm d).kalam = [.khata] := by
+    (hf : d.fil = .jawab) (hr : d.rabit = .bila) (hj : jazmi d.sura = true) : (hukm d).kalam = [.khata] := by
   obtain ⟨q, a, s, f, r, u, m⟩ := d
-  simp only at ha hf hj
-  subst hf
+  simp only at ha hf hr hj
+  subst hf hr
   rcases ha with rfl | rfl | rfl <;> cases u <;> simp_all [hukm, sinfOf, hukmGhayr, jazmi, shartAwJawab, mutlaq] <;>
     cases m <;> simp
+
+/-- **البدلُ والغلط بلا معنًى معلن** (على الشاهد؛ بعد قراءة الحالات): بين المجزومين بديلان («تلمم بدل من الفعل الأول»، س9471؛ «يجوز
+    على الغلط والنسيان»، س9478)، وبعد الجواب ثلاثة («إن تأتنا نحسن إليك نعطك ونحملك»، س9481–9482؛ «كان غير جائز»، س9483؛ «إلا أن
+    تجيزه على ما جاز عليه تسألنا»، س9483–9484). -/
+theorem badal_wa_ghalat :
+    (hukm ⟨.laShay, .inn, .mudari, .baynMajzumayn, .bila, .majzum, .ghayrMuallan⟩).kalam = [.maqbul, .daif] ∧
+    (hukm ⟨.laShay, .inn, .mudari, .baadJawab, .bila, .majzum, .ghayrMuallan⟩).kalam = [.maqbul, .khata, .daif] := by
+  decide
+
+/-- **الرابطُ قبل فعلٍ لا يذكر النطاقُ الرابطَ قبله «لا حكم»** (على الشاهد؛ بعد قراءة الحالات): فعلُ الشرط بفاء، والجوابُ برابطٍ بعد
+    الناسخ وحرف الابتداء و«إذا» بلا إضمار، والماضي شرطًا بفاءٍ بعد القسم، و«أما» بالفاء (B43). -/
+theorem rabit_la_hukm :
+    [Dakhil.mk .laShay .man .mudari .shart .fa .majzum .jaza, ⟨.nasikh, .man, .mudari, .jawab, .fa, .marfu, .sila⟩,
+     ⟨.harfIbtida, .man, .mudari, .jawab, .waw, .majzum, .jaza⟩,
+     ⟨.idhaFujaiyya, .man, .mudari, .jawab, .thumma, .majzum, .jaza⟩, ⟨.qasam, .inn, .madi, .shart, .fa, .madi, .jaza⟩,
+     ⟨.laShay, .amma, .laYantabiq, .jawab, .fa, .marfu, .ibtida⟩].map hukm =
+      [laHukm, laHukm, laHukm, laHukm, laHukm, laHukm] := by
+  decide
 
 /-! ## الأسانيد
 
