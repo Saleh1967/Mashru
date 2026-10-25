@@ -1856,6 +1856,7 @@ import Jisr.NassItarQiyas
 #print axioms Jisr.NassItar.yuid_shawahid
 #print axioms Jisr.NassItar.haraka_tughayyir
 #print axioms Jisr.NassItar.itar_min_hukm
+#print axioms Jisr.NassItar.haykal_fil_la_itar
 #print axioms Jisr.NassItar.Dabit.qarin_hukm
 #print axioms Jisr.NassItar.Dabit.qarin_itar
 #print axioms Jisr.NassItar.Dabit.rafd_ikhfaq
@@ -1865,3 +1866,4 @@ import Jisr.NassItarQiyas
 #print axioms Jisr.NassItar.Qiyas.natija_fia
 #print axioms Jisr.NassItar.Qiyas.akhta_1
 #print axioms Jisr.NassItar.Qiyas.azwaj_1
+#print axioms Jisr.NassItar.Qiyas.asbab_akhta

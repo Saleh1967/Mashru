@@ -1,0 +1,115 @@
+{
+ "tashghil": 3,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد مراجعة murajii الأولى (توثيقٌ وشاهدُ حدٍّ في Jisr/NassItar.lean وتوثيقٌ في Jisr/NassItarDabit.lean) في da940ac",
+ "qablaha": {
+  "natija_2.json": "68648f6df38c308f99eca9cf32a1fad4d8c6ae4ea2254f9101781b684da39ea0"
+ },
+ "cases_sha256": "a2e37d38a9be0ce4fe69c252daba8ba247726eb1eeaed43b1a1f615955ffe2ff",
+ "shifra": {
+  "Jisr/NassItar.lean": {
+   "sha256": "07023a1e450a214b964ddbf5e9f15527978ca95a7f1cdbad69f6ad7d5e5441e0",
+   "iydaa": "da940ac5d86d6640cf431602cb76d7a391e95b3f"
+  },
+  "Jisr/NassItarDabit.lean": {
+   "sha256": "449d349bf5340f0ad296722c0559ce6bfe5d6c12a98055f10e776a9a723eb939",
+   "iydaa": "da940ac5d86d6640cf431602cb76d7a391e95b3f"
+  },
+  "Qari/Main.lean": {
+   "sha256": "e7a3eb6726f49d43083dfddceb6c2ba0e5402840085a405c14a30f4d83de0322",
+   "iydaa": "da940ac5d86d6640cf431602cb76d7a391e95b3f"
+  }
+ },
+ "lean": [
+  "Jisr.NassItar.Qiyas.majal",
+  "Jisr.NassItar.Qiyas.natija",
+  "Jisr.NassItar.Qiyas.natija_fia",
+  "Jisr.NassItar.Qiyas.akhta_1",
+  "Jisr.NassItar.Qiyas.azwaj_1"
+ ],
+ "halat": 50,
+ "huqul_masula": 71,
+ "ihsa": {
+  "sawab": 61,
+  "naqsTaghtiya": 8,
+  "tajawuz": 1,
+  "qabulKhati": 0,
+  "raddKhati": 1,
+  "ikhtiyar": 0,
+  "khataItar": 0,
+  "rafdQari": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 30,
+  "حد": 15,
+  "خارج": 4,
+  "عموم": 12,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "N04",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N21",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N24",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N28",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N34",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N35",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N36",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N38",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N45",
+   "hukm",
+   "raddKhati"
+  ],
+  [
+   "N46",
+   "hukm",
+   "tajawuz"
+  ]
+ ],
+ "azwaj": {
+  "jumla": 17,
+  "taghayyar": 16,
+  "lam_yataghayyar": [
+   [
+    "N34",
+    "N35"
+   ]
+  ],
+  "asaba_tarafan": 10
+ },
+ "rafd_qari": [],
+ "tarikh": "2026-10-25",
+ "malahiz": "الأعدادُ أعدادُ التشغيلين قبله بعينها: الشفرةُ الحاكمة كما هي، وما تغيّر توثيقٌ وشاهدُ حدٍّ (haykal_fil_la_itar) وزيادتان موسومتان. وزيد في azwaj عددُ الأزواج التي يصيب طرفاها معًا (asaba_tarafan، مبرهنة azwaj_1)، وفي lean اسمُ azwaj_1. والأعدادُ أعدادُ مبرهنات Jisr/NassItarQiyas.lean في الإيداع الذي يحمل هذا الملفّ."
+}

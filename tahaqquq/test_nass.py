@@ -5,7 +5,7 @@
 ٢. المولَّد: Jisr/NassItarDawabit.lean مخرجُ scripts/bina_dawabit_nass.py على cases.json بايتًا (والكلماتُ خلايا من `qari --khalaya`).
    ووضعُ الإطار في القارئ (`qari --itar`) على أربع جملٍ بتوقّعٍ يدويّ لحكم الجملة.
 ٣. السجلّات: natija_1.json … natija_N.json متتالية، كلٌّ للحالات المجمَّدة. وبصمةُ natija_1.json ثابتةٌ هنا (NATIJA_1)، وكلُّ سجلٍّ
-   بعده يحمل بصمةَ ما قبله. وآخرُها لبصمات الشفرة الحاليّة (SHIFRA: القراءةُ والمقارنةُ والقارئ)، وأعدادُه (ihsa، bil_fia، akhta، rafd)
+   بعده يحمل بصمةَ ما قبله. وآخرُها لبصمات الشفرة الحاليّة (SHIFRA: القراءةُ والمقارنةُ والقارئ)، وأعدادُه (ihsa، bil_fia، akhta، azwaj، rafd_qari)
    هي أعدادُ مبرهنات Jisr/NassItarQiyas.lean، وحقلُ lean هو LEAN_NATIJA وكلُّ اسمٍ فيه مبرهنةٌ هناك.
 ٤. المجال: أعدادُ المجال محسوبةٌ من cases.json هنا (majal_json)، لا من Lean، وهي قائمةُ مبرهنة `majal`؛ وhalat في آخر سجلّ، وعددُ حقول
    كلّ فئةٍ في natija_fia لا يقلّ عن حالاتها ولا يزيد على ضعفها.
@@ -16,8 +16,8 @@
 الطفرات (وقاتلُ كلٍّ منها الفحصُ المسمّى وحده، إلّا ما يُذكر): P791 (بصمةُ المواصفة في tajmid.json، ١)، P800 (بصمةُ القطر فيه، ١)، P792 (حالةٌ في المولَّد
 باسمٍ لا يقرؤه زوجٌ ولا إخفاق، فيُبنى، ٢)، P799 (القارئُ يحكم على الجملة مقلوبةً، ٢ب)، P795 (القارئُ يقرأ في الوقف، ٢)، P793 (عدٌّ في natija_1.json:
 المرساةُ والسلسلةُ معًا، ٣)، P797 (qablaha في آخر سجلّ، ٣)، P801 (tashghil، ٣)، P802 (cases_sha256، ٣)، P803 (بصمةُ الشفرة، ٣)، P794 (ihsa بمجموعه، ٣)،
-P805 (bil_fia، ٣)، P807 (akhta، ٣)، P808 (حقلُ lean، ٣)، P810 (halat، ٤)، P811 (huqul_masula، ٤)؛ وعلى Jisr/NassItarQiyas.lean وتُبنى: P804 (`natija` بلا
-أعدادها، ٣)، P806 (`akhta` بغير صيغتها، ٣)، P796 (مبرهنةُ `akhta` ثانيةً باسمٍ لا يسمّيه السجلّ، ٣)، P809 (`natija_fia` خاصّة، ٣)، P798 (`majal` بلا أعدادها، ٤).
+P805 (bil_fia، ٣)، P807 (akhta، ٣)، P808 (حقلُ lean، ٣)، P816 (azwaj، ٣)، P817 (rafd_qari، ٣)، P810 (halat، ٤)، P811 (huqul_masula، ٤)؛ وعلى Jisr/NassItarQiyas.lean وتُبنى: P804 (`natija` بلا
+أعدادها، ٣)، P806 (`akhta` بغير صيغتها، ٣)، P796 (مبرهنةُ `akhta` ثانيةً باسمٍ لا يسمّيه السجلّ، ٣)، P809 (`natija_fia` خاصّة، ٣)، P818 (`azwaj_1` بغير صيغتها، ٣)، P798 (`majal` بلا أعدادها، ٤).
 **ما لا يُعزل:** P799 وP795 على Qari/Main.lean، وهو من الشفرة المسجَّلة بصمتُها (SHIFRA)، فيقتلهما فحصُ البصمة في ٣ مع فحصهما — ولا طفرةَ على
 القارئ لا يقتلها فحصُ البصمة. وP812 وP813 وP814 وP815 تطفّر الفحصَ نفسَه (حدَّ الفئات، والحسابَ من cases.json، وتتاليَ الأرقام، والمرساة):
 قتلُها لا يدلّ أنّ الفحص يلتقط عيبًا في المفحوص؛ ونظيرُها على المفحوص لا يُبنى في موضعٍ واحد: cases.json مجمَّدٌ ببصمته، وأعدادُ `majal`
@@ -42,7 +42,7 @@ BASMAT = {"قطر": ("qatr.txt", "2d9241beca1b138187ace8f6782d5eed68f3864f402ec1
 NITAQ = {"قطر": [(75, 80), (219, 220), (267, 268), (337, 345)], "ألفية": [(75, 79)]}
 NATIJA_1 = "09613ffd9005cb1511033e421440303a12ba4600f7e4647a07c75fa98c03ff6e"  # natija_1.json كما أُودع أوّلًا
 NS = "Jisr.NassItar.Qiyas."
-LEAN_NATIJA = [NS + x for x in ["majal", "natija", "natija_fia", "akhta_1"]]
+LEAN_NATIJA = [NS + x for x in ["majal", "natija", "natija_fia", "akhta_1", "azwaj_1"]]
 HUQUL_IHSA = ["sawab", "naqsTaghtiya", "tajawuz", "qabulKhati", "raddKhati", "ikhtiyar", "khataItar", "rafdQari", "khata"]
 FIAT = ["موجب", "حد", "خارج", "عموم", "غموض"]
 
@@ -148,6 +148,19 @@ if akhir:
                       for t in re.findall(r"\(([^()]*)\)", m.group(2))]
         tahaqqaq(lean_akhta == akhir["akhta"], f"{natayij[-1].name}: akhta {akhir['akhta']} غيرُ مبرهنة {m.group(1)} {lean_akhta}")
         tahaqqaq(NS + m.group(1) in akhir["lean"], f"{natayij[-1].name}: حقلُ lean لا يسمّي {m.group(1)}")
+    m = re.search(r"theorem azwaj_1 :\s*\(azwaj halat\)\.length = (\d+) ∧ \(\(azwaj halat\)\.filter \(·\.2\.2\)\)\.length = (\d+) ∧\s*"
+                  r"\(azwaj halat\)\.filter \(!·\.2\.2\) = \[(.*?)\] ∧\s*"
+                  r"\(\(azwaj halat\)\.filter fun p => sawabHukm p\.1 && sawabHukm p\.2\.1\)\.length = (\d+) ∧ rafd halat = \[(.*?)\] := by",
+                  qiyas, re.S)
+    tahaqqaq(m is not None, "لا مبرهنةَ azwaj_1 بصيغتها في Jisr/NassItarQiyas.lean")
+    if m:
+        lam = [list(t) for t in re.findall(r'\("(\w+)", "(\w+)", false\)', m.group(3))]
+        az = akhir.get("azwaj", {})
+        tahaqqaq([int(m.group(1)), int(m.group(2)), lam, int(m.group(4))] ==
+                 [az.get("jumla"), az.get("taghayyar"), az.get("lam_yataghayyar"), az.get("asaba_tarafan")],
+                 f"{natayij[-1].name}: azwaj {az} غيرُ مبرهنة azwaj_1")
+        tahaqqaq(re.findall(r'"(\w+)"', m.group(5)) == akhir.get("rafd_qari"),
+                 f"{natayij[-1].name}: rafd_qari {akhir.get('rafd_qari')} غيرُ مبرهنة azwaj_1")
     tahaqqaq(akhir["lean"] == LEAN_NATIJA, f"{natayij[-1].name}: حقلُ lean غيرُ القائمة المتوقَّعة LEAN_NATIJA")
     for ism in akhir["lean"]:
         qasir = ism.rsplit(".", 1)[-1]

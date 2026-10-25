@@ -3727,7 +3727,7 @@
  },
  {
   "ism": "P794_nass_ihsa_json",
-  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "milaf": "tahaqquq/dawabit/nass/natija_3.json",
   "min": "  \"sawab\": 61,\n  \"naqsTaghtiya\": 8,",
   "ila": "  \"sawab\": 60,\n  \"naqsTaghtiya\": 9,"
  },
@@ -3745,9 +3745,9 @@
  },
  {
   "ism": "P797_nass_qablaha",
-  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
-  "min": "\"natija_1.json\": \"09613ffd9005cb1511033e421440303a12ba4600f7e4647a07c75fa98c03ff6e\"",
-  "ila": "\"natija_1.json\": \"19613ffd9005cb1511033e421440303a12ba4600f7e4647a07c75fa98c03ff6e\""
+  "milaf": "tahaqquq/dawabit/nass/natija_3.json",
+  "min": "\"natija_2.json\": \"68648f6df38c308f99eca9cf32a1fad4d8c6ae4ea2254f9101781b684da39ea0\"",
+  "ila": "\"natija_2.json\": \"08648f6df38c308f99eca9cf32a1fad4d8c6ae4ea2254f9101781b684da39ea0\""
  },
  {
   "ism": "P798_nass_majal_sigha",
@@ -3769,21 +3769,21 @@
  },
  {
   "ism": "P801_nass_tashghil",
-  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
-  "min": "\"tashghil\": 2,",
-  "ila": "\"tashghil\": 3,"
+  "milaf": "tahaqquq/dawabit/nass/natija_3.json",
+  "min": "\"tashghil\": 3,",
+  "ila": "\"tashghil\": 4,"
  },
  {
   "ism": "P802_nass_natija_cases",
-  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "milaf": "tahaqquq/dawabit/nass/natija_3.json",
   "min": "\"cases_sha256\": \"a2e37d38a9be0ce4fe69c252daba8ba247726eb1eeaed43b1a1f615955ffe2ff\"",
   "ila": "\"cases_sha256\": \"b2e37d38a9be0ce4fe69c252daba8ba247726eb1eeaed43b1a1f615955ffe2ff\""
  },
  {
   "ism": "P803_nass_shifra",
-  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
-  "min": "\"sha256\": \"3e47202d08a6d048abd5bde9b8d460ad2036e989d31986b8a9c6a6764b0f3468\"",
-  "ila": "\"sha256\": \"4e47202d08a6d048abd5bde9b8d460ad2036e989d31986b8a9c6a6764b0f3468\""
+  "milaf": "tahaqquq/dawabit/nass/natija_3.json",
+  "min": "\"sha256\": \"449d349bf5340f0ad296722c0559ce6bfe5d6c12a98055f10e776a9a723eb939\"",
+  "ila": "\"sha256\": \"049d349bf5340f0ad296722c0559ce6bfe5d6c12a98055f10e776a9a723eb939\""
  },
  {
   "ism": "P804_nass_natija_sigha",
@@ -3793,7 +3793,7 @@
  },
  {
   "ism": "P805_nass_bil_fia",
-  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "milaf": "tahaqquq/dawabit/nass/natija_3.json",
   "min": "\"موجب\": 30,",
   "ila": "\"موجب\": 29,"
  },
@@ -3805,13 +3805,13 @@
  },
  {
   "ism": "P807_nass_akhta_json",
-  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "milaf": "tahaqquq/dawabit/nass/natija_3.json",
   "min": "\"N46\",\n   \"hukm\",\n   \"tajawuz\"",
   "ila": "\"N46\",\n   \"hukm\",\n   \"naqsTaghtiya\""
  },
  {
   "ism": "P808_nass_lean_qaima",
-  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "milaf": "tahaqquq/dawabit/nass/natija_3.json",
   "min": "\"Jisr.NassItar.Qiyas.natija_fia\",",
   "ila": "\"Jisr.NassItar.Qiyas.azwaj_1\","
  },
@@ -3823,13 +3823,13 @@
  },
  {
   "ism": "P810_nass_halat",
-  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "milaf": "tahaqquq/dawabit/nass/natija_3.json",
   "min": "\"halat\": 50,",
   "ila": "\"halat\": 51,"
  },
  {
   "ism": "P811_nass_huqul",
-  "milaf": "tahaqquq/dawabit/nass/natija_2.json",
+  "milaf": "tahaqquq/dawabit/nass/natija_3.json",
   "min": "\"huqul_masula\": 71,",
   "ila": "\"huqul_masula\": 72,"
  },
@@ -3856,5 +3856,23 @@
   "milaf": "tahaqquq/test_nass.py",
   "min": "NATIJA_1 = \"09613ffd9005cb1511033e421440303a12ba4600f7e4647a07c75fa98c03ff6e\"",
   "ila": "NATIJA_1 = \"09613ffd9005cb1511033e421440303a12ba4600f7e4647a07c75fa98c03ff6f\""
+ },
+ {
+  "ism": "P816_nass_azwaj_json",
+  "milaf": "tahaqquq/dawabit/nass/natija_3.json",
+  "min": "\"asaba_tarafan\": 10",
+  "ila": "\"asaba_tarafan\": 11"
+ },
+ {
+  "ism": "P817_nass_rafd_json",
+  "milaf": "tahaqquq/dawabit/nass/natija_3.json",
+  "min": "\"rafd_qari\": [],",
+  "ila": "\"rafd_qari\": [\"N01\"],"
+ },
+ {
+  "ism": "P818_nass_azwaj_sigha",
+  "milaf": "Jisr/NassItarQiyas.lean",
+  "min": "    (azwaj halat).length = 17 ∧",
+  "ila": "    (azwaj halat).length = (azwaj halat).length ∧"
  }
 ]
