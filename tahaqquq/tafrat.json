@@ -3592,5 +3592,53 @@
   "milaf": "Dal/WaqfSibawayhi.lean",
   "min": "  else if mumkin k.akhir k.haraka k.wajh then .khata",
   "ila": "  else if k.wajh == .iskan then .khata"
+ },
+ {
+  "ism": "P739_waqf_fahs_masdar",
+  "milaf": "tahaqquq/dawabit/waqf/tajmid.json",
+  "min": "\"sha256\": \"a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\"",
+  "ila": "\"sha256\": \"7160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\""
+ },
+ {
+  "ism": "P740_waqf_fahs_tatali",
+  "milaf": "tahaqquq/test_waqf.py",
+  "min": "arqam == list(range(1, len(arqam) + 1))",
+  "ila": "arqam == list(range(0, len(arqam)))"
+ },
+ {
+  "ism": "P741_waqf_fahs_hadd_natija",
+  "milaf": "tahaqquq/test_waqf.py",
+  "min": "    m = re.search(r\"theorem natija : ihsa natayij = ⟨([\\d, ]+)⟩\", qiyas)",
+  "ila": "    m = re.search(r\"theorem natija : ihsa natayijX = ⟨([\\d, ]+)⟩\", qiyas)"
+ },
+ {
+  "ism": "P742_waqf_fahs_hadd_akhta",
+  "milaf": "tahaqquq/test_waqf.py",
+  "min": "    m = re.search(r\"theorem (akhta\\w*) :\\s*akhta = \\[(.*?)\\] := by\", qiyas, re.S)",
+  "ila": "    m = re.search(r\"theorem (akhtaX\\w*) :\\s*akhta = \\[(.*?)\\] := by\", qiyas, re.S)"
+ },
+ {
+  "ism": "P743_waqf_fahs_akhta_fi_lean",
+  "milaf": "tahaqquq/test_waqf.py",
+  "min": "tahaqqaq(NS + m.group(1) in akhir[\"lean\"]",
+  "ila": "tahaqqaq(NS + m.group(1) + \"_\" in akhir[\"lean\"]"
+ },
+ {
+  "ism": "P744_waqf_fahs_lean_mubarhana",
+  "milaf": "tahaqquq/test_waqf.py",
+  "min": "re.search(r\"^theorem %s\\b\" % re.escape(qasir)",
+  "ila": "re.search(r\"^theorem %s_\\b\" % re.escape(qasir)"
+ },
+ {
+  "ism": "P745_waqf_fahs_huqul_masula",
+  "milaf": "tahaqquq/dawabit/waqf/natija_4.json",
+  "min": "\"huqul_masula\": 52,",
+  "ila": "\"huqul_masula\": 53,"
+ },
+ {
+  "ism": "P746_waqf_fahs_hadd_majal",
+  "milaf": "tahaqquq/test_waqf.py",
+  "min": "m = re.search(r\"theorem majal : majalAadad = \\[([\\d, ]+)\\]\", qiyas)",
+  "ila": "m = re.search(r\"theorem majal : majalAadadX = \\[([\\d, ]+)\\]\", qiyas)"
  }
 ]
