@@ -47,7 +47,8 @@ class Claim:
 
 class Tabaqat4:
     def __init__(self, mashru_root: Path, out_dir: Optional[Path] = None, use_hokom: bool = False,
-                 run_lean: bool = True, mirsat_an: int = 0, arad_izaha: int = -1, forms: Optional[Dict[str, str]] = None):
+                 run_lean: bool = True, mirsat_an: int = 0, arad_izaha: int = -1, forms: Optional[Dict[str, str]] = None,
+                 mudaat_path: Optional[Path] = None, taaqol_path: Optional[Path] = None):
         self.mashru_root = Path(mashru_root).resolve()
         self.forms = forms or {}          # صيغ باب الجزاء المعلَنة من المالك: shart=, jawab=, lam=
         self.out_dir = out_dir
@@ -57,8 +58,35 @@ class Tabaqat4:
         self.arad_izaha = arad_izaha
         self.qamus = json.loads((HERE / 'qamus.json').read_text(encoding='utf-8'))
         self.forms_map = json.loads((HERE / 'forms_map.json').read_text(encoding='utf-8')).get('map', {})
-        self.hokom = None                 # مخرج S3 (تقدير) ؛ يُعرَض ولا يُستهلك إلّا لاشتقاق صورة باب الجزاء بوسمها «تقدير»
+        self.itar_map = json.loads((HERE / 'itar_map.json').read_text(encoding='utf-8'))
+        self.taaqol, self._itar_conflict, self._itar_src = None, None, None
+        if taaqol_path and Path(taaqol_path).exists():
+            try:
+                td = json.loads(Path(taaqol_path).read_text(encoding='utf-8'))
+                self.taaqol = td.get('p8')     # قائمة قسمٍ لكلّ توكن من عائلات P8 (مصدر نمطٍ ، رتبة تقدير)
+            except Exception: self.taaqol = None
+        self.hokom = None                 # مخرج S3 (تقدير) ؛ يُعرَض ولا يُستهلك إلّا لمقعدَي: صورة الجزاء واختيار الإطار
+        # معجم المودَعات (B7/D5): RATIFIED فقط ؛ المصدر الافتراضيّ by-hussein/mudaat/mudaat.json ثمّ --mudaat (fixture/آخر)
+        self.mudaat, self.mudaat_residuals = {}, []
+        default_mud = TOOL_ROOT.parent / 'mudaat' / 'mudaat.json'
+        for src in [default_mud, Path(mudaat_path) if mudaat_path else None]:
+            if src and src.exists():
+                try: self._load_mudaat(json.loads(src.read_text(encoding='utf-8')), str(src))
+                except Exception as e: self.mudaat_residuals.append(f'MUDAA_LOAD_FAILED:{src}:{e}')
         self.stages: List[Dict[str, Any]] = []
+
+    def _load_mudaat(self, data: Dict[str, Any], src: str):
+        """يحمّل RATIFIED فقط ؛ يرفض haqiqa<1000 أو المحجوزة (10..60) أو المصادِمة (MUDAA_HAQIQA_COLLISION)."""
+        seen = {m.get('haqiqa') for m in self.mudaat.values()}
+        for key, e in (data.get('sijill') or {}).items():
+            if e.get('status') != 'RATIFIED':
+                self.mudaat_residuals.append(f'MUDAA_PENDING_SKIPPED:{key}'); continue
+            h = e.get('haqiqa')
+            if not isinstance(h, int) or h < 1000:
+                self.mudaat_residuals.append(f'MUDAA_HAQIQA_OUT_OF_RANGE:{key}:{h} (النطاق ≥1000)'); continue
+            if h in seen or (10 <= h <= 60):
+                self.mudaat_residuals.append(f'MUDAA_HAQIQA_COLLISION:{key}:{h}'); continue
+            seen.add(h); self.mudaat[key] = {**e, '_src': src}
         self.claims: List[Claim] = []
         self.la_yuddaa: List[str] = [
             'لا صحّة لغوية خارجية: ما يمرّ هنا مرّ على بنى Mashru كما عرّفها د. صالح ، لا على العربية كلّها.',
@@ -188,23 +216,36 @@ class Tabaqat4:
                 if qw.get('root'):
                     self.claims.append(Claim(2, f"jidhr_{t['anchor']}", qw['root'], f"مرشَّح الجذر عند قارئ Mashru: «{qw['root']}» (مرشَّح لا هويّة ؛ المزيد والأدوات لا تُميَّز بعد)", 'مقيس',
                                              burhan='qari: fakk_ramz على ثلاث خانات حواملها سالمة — نطاق معلَن'))
+            # المصدر الأوّل: qamus (شواهد Mashru التسعة) ؛ ثمّ المصدر الثاني: مودَعات RATIFIED (B7/D5)
+            m = source = None
             e = self.qamus['kalimat'].get(t['surface'])
-            if not e:
+            if e:
+                m = dict(self.qamus['madlulat'][e['madlul']]); m['ism'] = e['madlul']; m['shahid'] = e.get('shahid')
+                m['source'] = source = 'MASHRU_WITNESS'
+            else:
+                mk = self._strip(t['surface'])
+                me = self.mudaat.get(mk) or (self.mudaat.get(mk[2:]) if mk.startswith('ال') else None)
+                if me:
+                    m = {'ism': me['ism_lean'], 'haqiqa': me['haqiqa'], 'khawass': me.get('khawass', []),
+                         'alaqat': me.get('alaqat', []), 'qabiliyyat': me.get('qabiliyyat', []), 'afrad': me.get('afrad', []),
+                         'tim': bool(me.get('tim')), 'ind': me.get('ind', True), 'qism': 'fiil' if me.get('tim') else 'ism',
+                         'wasf': 'مودَع مالك RATIFIED', 'ref': f"by-hussein/mudaat (imda={me.get('imda')})",
+                         'source': 'OWNER_MUDAA', '_inline': True, '_entry': me}
+                    source = 'OWNER_MUDAA'
+            if m is None:
                 found.append(None)
                 st['residuals'].append(f"{t['anchor']}:NO_SEALED_MADLUL")
                 self.claims.append(Claim(2, f"madlul_{t['anchor']}", None,
-                                         f"«{t['surface']}»: لا مدلولَ بنيويًّا (SLGE.Madlul) معرَّفًا لها في Mashru (ولا يُولَّد)", None,
-                                         sabab_ghiyab='NO_SEALED_MADLUL: لا تعريف SLGE.Madlul لها في مصدر Mashru (qamus.json المقيَّد به)'))
+                                         f"«{t['surface']}»: لا مدلولَ بنيويًّا (SLGE.Madlul) — لا في qamus (شواهد Mashru) ولا في مودَعات RATIFIED", None,
+                                         sabab_ghiyab='NO_SEALED_MADLUL: لا يُولَّد ؛ يدخل بمودَعٍ أمضاه المالك (D5) أو شاهد Mashru'))
                 continue
-            m = dict(self.qamus['madlulat'][e['madlul']]); m['ism'] = e['madlul']; m['shahid'] = e.get('shahid')
             found.append(m)
-            res = [] if m.get('mudaa') else ['MADLUL_SOURCE_UNDECLARED_IN_MASHRU']
+            st['residuals'].append(f"{t['anchor']}:MADLUL_SOURCE={source}")
             self.claims.append(Claim(2, f"madlul_{t['anchor']}", m['ism'],
-                                     f"«{t['surface']}» ↔ مدلول Mashru `{m['ism']}` ({m['wasf']}) — {m['ref']}"
-                                     + (f" ؛ مودَع: {m['mudaa']['ism']} {m['mudaa']['sha256'][:12]}… {m['mudaa'].get('mawdi','')}" if m.get('mudaa') else ' ؛ بلا مودَع معجمي معلَن'),
-                                     'مطابَق', burhan='مطابقة اسمية بين السطح وتعريف Mashru ؛ حقوله تُبرهَن في S7',
+                                     f"«{t['surface']}» ↔ مدلول `{m['ism']}` (haqiqa={m['haqiqa']}) — المصدر {source} ({m.get('ref','')})"
+                                     + (f" ؛ مودَع {m['mudaa']['sha256'][:12]}…" if m.get('mudaa') else ''),
+                                     'مطابَق', burhan=f'MADLUL_SOURCE={source} ؛ حقول المدلول تُبرهَن في S7 (مضمَّنةً نصًّا إن كان مودَع مالك)',
                                      sabab_ghiyab=None))
-            for r in res: st['residuals'].append(f"{t['anchor']}:{r}")
         st.update(completed=True, found=any(found), produced=True, accepted=all(found), stored=True,
                   consumed_by_next=all(found))
         if not all(found):
@@ -233,22 +274,59 @@ class Tabaqat4:
             else:
                 st['reason'] = 'PREREQ_MISSING: مدلولٌ أو خلايا ناقصة ؛ نوع الجملة لم يُقدَّر'
             self.stages.append(st); return None
-        q0 = maani[0]['qism']
-        if n == 2 and q0 == 'fiil' and maani[1]['qism'] == 'ism' and dal[1].al:
-            plan = {'naw': 'فعل ماضٍ + فاعل معرَّف بأل', 'ud': 'Jisr.Mulhaqat.darabaZayd', 'shahid_mashru': 'dhahabaAlWalad (Jisr/Utur.lean:914)'}
-        elif n == 2 and q0 == 'fiil' and maani[1]['qism'] == 'ism' and dal[1].tanwin:
-            plan = {'naw': 'فعل ماضٍ + فاعل منوَّن', 'ud': 'Jisr.Mulhaqat.jaaRajul', 'shahid_mashru': 'dhahabaWaladun (Jisr/Utur.lean:918)'}
-        else:
-            guess = 'جملة اسمية' if q0 == 'ism' else ('شبه جملة' if q0 == 'harf' else f'فعلية من {n} كلمات')
+        pat, amb = self._itar_pattern(toks, dal, maani)
+        if amb:
             st['completed'] = True; st['found'] = False; st['produced'] = False
-            st['reason'] = f'OUT_OF_EXECUTED_PATH:{guess} — ليس من النوعَين المغلَّفَين ؛ إطار Mashru له (إن وُجد) لم يُغلَّف'
+            st['reason'] = f'ITAR_AMBIGUOUS: النمط غيرُ محسوم ({amb}) ؛ لا يُرجَّح ولا يُبرهَن'
+            st['residuals'].append('ITAR_AMBIGUOUS'); self.stages.append(st); return None
+        hit = self.itar_map['map'].get(pat)
+        if not hit:
+            uw = self.itar_map.get('ud_without_itar3_witness', {}).get(pat)
+            note = f' (UD_WITHOUT_ITAR3_WITNESS: {uw["ud"]} — بلا شاهد Itar3 في المستودع)' if uw else ''
+            st['completed'] = True; st['found'] = False; st['produced'] = False
+            st['reason'] = f'ITAR_UNMAPPED:{pat}{note} — لا إطارَ ذا شاهدٍ مبنيّ لهذا النمط ؛ OUT_OF_EXECUTED_PATH'
             st['residuals'].append('OUT_OF_EXECUTED_PATH'); self.stages.append(st); return None
+        plan = {'naw': hit['naw'], 'ud': hit['ud'], 'shahid_mashru': hit['shahid'], 'pattern': pat,
+                'maful': hit.get('maful', False), 'itar_source': self._itar_src or 'MADLUL_QISM+SURFACE',
+                'itar_conflict': self._itar_conflict}
         plan['isnad'] = {'mawdu': maani[1]['ism'], 'mahmul': f".qabiliyya {maani[0]['haqiqa']}", 'nisba': '.isnadiyya',
-                         'qaida': 'ISNAD_RULE_FIIL_FAIL (موروثة من الشاهد): الفاعل موضوعٌ ، والفعل قابليّةٌ بحقيقته'}
+                         'qaida': 'ISNAD_RULE_FIIL_FAIL (من الشاهد): الفاعل موضوعٌ ، والفعل قابليّةٌ بحقيقته'}
         st.update(completed=True, found=True, produced=True, accepted=True, stored=True, consumed_by_next=True)
-        self.claims.append(Claim(3, 'naw_jumla', plan['naw'], f"نوع الجملة: {plan['naw']} ← إطار {plan['ud']} (شاهد Mashru: {plan['shahid_mashru']})",
-                                 'مقيس', burhan='اختيار الإطار بشروط سطحية (قسم المدلول الأوّل ، أل/تنوين الثاني) — حكمه يُبرهَن في S7'))
+        st['residuals'].append(f'ITAR_SELECTED:{plan["ud"]} ؛ المصدر {plan["itar_source"]} ؛ CONDITIONAL_ON_SELECTED_ITAR')
+        if self._itar_conflict: st['residuals'].append(self._itar_conflict)
+        self.claims.append(Claim(3, 'naw_jumla', plan['naw'],
+                                 f"نوع الجملة: {plan['naw']} ← إطار {plan['ud']} مُختارٌ **تقديرًا** من النمط «{pat}» (شاهد {plan['shahid_mashru']})",
+                                 'مقيس', burhan=f'اختيار الإطار من النمط (قسم + حركة الآخر ؛ المصدر {plan["itar_source"]}) — تقدير ؛ الحكم يُبرهَن في S7 شرطًا عليه (CONDITIONAL_ON_SELECTED_ITAR)'))
+        self.la_yuddaa.append('اختيار الإطار (CONDITIONAL_ON_SELECTED_ITAR): الإطار مُختارٌ تقديرًا من النمط لا محسومًا من Mashru ؛ الحكم مشروطٌ به ؛ تعدّد الأنماط يُعرَض ولا يُرجَّح.')
         self.stages.append(st); return plan
+
+    @staticmethod
+    def _vowel_tag(k) -> str:
+        if not k.khalaya: return '?'
+        v = (k.khalaya[-2] if k.tanwin else k.khalaya[-1]) % 4
+        return {1: 'raf', 0: 'nasb', 2: 'jarr', 3: 'jazm'}[v]
+
+    def _itar_pattern(self, toks, dal, maani):
+        """نمطٌ حاصر: لكلّ كلمة قسمٌ (من Hokom إن حضر وإلّا من المدلول) + al/تنوين + حركة الآخر. ← مفتاح itar_map."""
+        parts = []; srcs = set()
+        for i, (k, m) in enumerate(zip(dal, maani)):
+            hq = ({'FI3L': 'fiil', 'ISM': 'ism', 'HARF': 'harf'}.get(self.hokom[i].get('word_class'))
+                  if (self.use_hokom and self.hokom and i < len(self.hokom)) else None)
+            tq = self.taaqol[i] if (self.taaqol and i < len(self.taaqol)) else None
+            if hq and tq and hq != tq:
+                self._itar_conflict = f'ITAR_SOURCE_CONFLICT@{i}: Hokom={hq} ≠ TAAQOL_P8={tq} ؛ المعتمَد Hokom'
+            qism = hq or tq or (m or {}).get('qism')
+            srcs.add('HOKOM' if hq else ('TAAQOL_P8' if tq else 'MADLUL_QISM'))
+            self._itar_src = '+'.join(sorted(srcs)) + '+SURFACE'
+            # الاختيارُ بنيويّ (قسم + al/تنوين)، لا بحركة الآخر ؛ الحركةُ يحكمها hukm3 (فقلبُ الإعراب يُمسَك ممتنعًا لا يُسقِط الإطار)
+            if qism == 'fiil': parts.append('fiil')
+            elif qism == 'harf': parts.append('harf')
+            elif not k.khalaya: parts.append('ism(?)')
+            else:
+                tags = (['al'] if k.al else []) + (['tanwin'] if k.tanwin else [])
+                parts.append('ism(' + ','.join(tags) + ')' if tags else 'ism')
+        amb = 'خلايا كلمةٍ غيرُ مقروءة' if any('?' in p for p in parts) else None
+        return '|'.join(parts), amb
 
 
     # ---------------------------------------------------------------- S5-ج باب الجزاء (Jisr/BabJaza.lean ، PR #80)
@@ -327,17 +405,35 @@ class Tabaqat4:
         return sh, jw, [x for x in (e1, e2) if x]
 
     # ---------------------------------------------------------------- S6/S7 Lean
+    @staticmethod
+    def _madlul_literal(m) -> str:
+        al = ', '.join(f'({a}, {b})' for a, b in (m.get('alaqat') or []))
+        return ('{ haqiqa := %d, khawass := [%s], alaqat := [%s], qabiliyyat := [%s], afrad := [%s], tim := %s, ind := %s }'
+                % (m['haqiqa'], ', '.join(map(str, m.get('khawass') or [])), al,
+                   ', '.join(map(str, m.get('qabiliyyat') or [])), ', '.join(map(str, m.get('afrad') or [])),
+                   str(bool(m.get('tim'))).lower(), str(bool(m.get('ind', True))).lower()))
+
     def _lean_file(self, toks, dal, maani, plan, pass_no: int, observed: Optional[Dict[str, str]] = None) -> str:
         v, s = maani[0], maani[1]
+        names = [m['ism'] for m in maani]
+        maani_list = ', '.join(names)
         kal = ', '.join(f"⟨{k.khalaya}, {str(k.wasl).lower()}, {str(k.al).lower()}⟩" for k in dal)
         an, iz = self.mirsat_an, self.arad_izaha
+        maful = f"(some ⟨{maani[2]['haqiqa']}, none⟩)" if plan.get('maful') and len(maani) >= 3 else 'none'
         L = []
         L.append(f"/- Tabaqat4 — مولَّد آليًّا لـ «{' '.join(t['surface'] for t in toks)}» ؛ قالب Shahid_Ahmad.lean ؛ pass {pass_no}. Mashru يُستورَد ولا يُعدَّل. -/")
-        L.append("import Jisr.Utur\nimport Aql.Isnad\n\nnamespace Tabaqat4\nopen Jisr.Utur Aql.Isnad Aql.Mirsat Aql.Azmina Aql.Makan\n")
-        L.append(f"def jumla3 : Itar3 :=\n  {{ jisr := {{ ud := {plan['ud']} }}, kalimat := [{kal}], maani := [{v['ism']}, {s['ism']}],\n    isnad := ⟨{s['ism']}, .qabiliyya {v['haqiqa']}, .isnadiyya⟩ }}\n")
+        L.append("import Jisr.Utur\nimport Aql.Isnad\n\nnamespace Tabaqat4\nopen Jisr.Utur Aql.Isnad SLGE.Awwalan Dal Aql.Mirsat Aql.Azmina Aql.Makan\n")
+        # مودَعات المالك RATIFIED تُضمَّن نصًّا (D5/B7): لا استيرادَ وحدةٍ خارج مكتبة Mashru
+        seen = set()
+        for m in maani:
+            if m.get('_inline') and m['ism'] not in seen:
+                seen.add(m['ism'])
+                L.append(f"def {m['ism']} : Madlul := {self._madlul_literal(m)}   -- مودَع مالك مضمَّن (OWNER_MUDAA)")
+        if seen: L.append('')
+        L.append(f"def jumla3 : Itar3 :=\n  {{ jisr := {{ ud := {plan['ud']} }}, kalimat := [{kal}], maani := [{maani_list}],\n    isnad := ⟨{s['ism']}, .qabiliyya {v['haqiqa']}, .isnadiyya⟩ }}\n")
         L.append(f"def mirsat : Mirsat := ⟨{an}, ⟨0, 0, 0⟩⟩")
         L.append(f"def dhat : Dhat := ⟨{s['haqiqa']}, none⟩")
-        L.append(f"def arad : Arad := .fiil {v['haqiqa']} ({iz}) .saa none")
+        L.append(f"def arad : Arad := .fiil {v['haqiqa']} ({iz}) .saa {maful}")
         L.append("def jumla4 : Jumla := .sughra dhat arad\n")
         if pass_no == 1:
             L.append('#eval hukm3 jumla3')
@@ -350,7 +446,7 @@ class Tabaqat4:
         else:
             o = observed
             L.append(f"theorem tabaqa1_kalimat : jumla3.kalimat = [{kal}] := by decide")
-            L.append(f"theorem tabaqa2_maani : jumla3.maani = [{v['ism']}, {s['ism']}] ∧ {v['ism']}.tim = true := by decide")
+            L.append(f"theorem tabaqa2_maani : jumla3.maani = [{maani_list}] ∧ {v['ism']}.tim = true := by decide")
             L.append(f"theorem tabaqa3_hukm : hukm3 jumla3 = {o['hukm3']} := by decide +kernel")
             L.append(f"theorem tabaqa3_isnad : jumla3.isnad = ⟨{s['ism']}, .qabiliyya {v['haqiqa']}, .isnadiyya⟩ := by decide")
             L.append(f"theorem tabaqa4_ajza : (ajza jumla4).map rutba = {o['ajza']} := by decide")

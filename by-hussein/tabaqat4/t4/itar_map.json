@@ -1,0 +1,11 @@
+{
+  "_note": "نمطٌ بنيويّ (قسمُ كلّ كلمة + al/تنوين ؛ لا حركةَ الآخر — الحركةُ يحكمها hukm3) → إطار Mashru ذو شاهد Itar3 في Jisr/Utur.lean.",
+  "map": {
+    "fiil|ism(al)":            {"ud": "Jisr.Mulhaqat.darabaZayd", "shahid": "dhahabaAlWalad (Jisr/Utur.lean:914)", "naw": "فعل ماضٍ + فاعل معرَّف بأل"},
+    "fiil|ism(tanwin)":        {"ud": "Jisr.Mulhaqat.jaaRajul",   "shahid": "dhahabaWaladun (Jisr/Utur.lean:918)", "naw": "فعل ماضٍ + فاعل منوَّن"},
+    "fiil|ism(al)|ism(al)":    {"ud": "Jisr.Mulhaqat.daraba",     "shahid": "bimafulayn (Jisr/Utur.lean:1032)", "naw": "فعل ماضٍ + فاعل + مفعول (كلاهما بأل)", "maful": true}
+  },
+  "ud_without_itar3_witness": {
+    "ism(al)|ism(al)": {"ud": "Jisr.Mulhaqat.zaydQaim", "note": "مبتدأ وخبر — UD في Mulhaqat.lean:539 بلا شاهد Itar3 ؛ لا يُستعمل"}
+  }
+}

@@ -41,13 +41,17 @@ def main(argv=None):
     ap.add_argument('--open', action='store_true', dest='do_open', help='افتح taqrir.html بعد التشغيل (macOS: open)')
     ap.add_argument('--json', action='store_true', dest='do_json', help='اطبع taqrir.json على stdout')
     ap.add_argument('--split-punct', action='store_true', help='قطّع النصّ عند [.؟!] فقط (خيار المالك) ؛ كلّ جملة بمرساتها وتقريرها')
+    ap.add_argument('--mudaat', help='مسار معجم مودَعات إضافيّ (RATIFIED) ؛ الافتراض by-hussein/mudaat/mudaat.json')
+    ap.add_argument('--taaqol', help='مسار سجلّ/تقرير تعقّل (taqrir.json) مصدرًا للنمط (عائلات P8) برتبة تقدير')
     a = ap.parse_args(argv)
     root = Path(a.mashru) if a.mashru else find_mashru_root()
     forms = dict(kv.split('=', 1) for kv in a.forms if '=' in kv)
 
     def one(jumla, out_dir):
         t = Tabaqat4(root, out_dir=out_dir, use_hokom=a.hokom, run_lean=not a.no_lean,
-                     mirsat_an=a.an, arad_izaha=a.izaha, forms=forms)
+                     mirsat_an=a.an, arad_izaha=a.izaha, forms=forms,
+                     mudaat_path=Path(a.mudaat) if a.mudaat else None,
+                     taaqol_path=Path(a.taaqol) if a.taaqol else None)
         rec = t.run(jumla)
         out = Path(rec['run_dir']); shas = write_all(rec, out)
         print(f"TEXT_SHA256   = {rec['input']['sha256']}")
