@@ -63,6 +63,10 @@
   ٥ص. ضابطُ باب الجزاء المجمَّد (tahaqquq/test_jaza.py؛ hawkama/منهج_الضوابط.md في طلبه): بصماتُ التجميد، والمولَّدُ بايتًا، وآخرُ نتيجةٍ
       لبصمة الشفرة الحاليّة بأعداد مبرهنتها، وأعدادُ المجال من الحالات نفسها، دائمًا؛ والأسانيدُ في أسطرها إن حضر الكتاب.
   ٥ص٢. ضابطُ نفي الفعل وحروفِ الفعل المجمَّد (tahaqquq/test_nafy.py؛ الكتاب س9755–9787): مثلُ ٥ص على Jisr/NafyFil.lean.
+  ٥ص٣. ضابطُ باب الفاء المجمَّد (tahaqquq/test_fa.py؛ الكتاب س8914–9049): مثلُ ٥ص على Jisr/BabFa.lean.
+  ٥ص٤. ضابطُ مجاري أواخر الكلم المجمَّد (tahaqquq/test_majari.py؛ الكتاب س111–233): مثلُ ٥ص على Jisr/MajariKalim.lean.
+  ٥ص٥. ضابطُ الوقف على أواخر الكلم المتحرّكة المجمَّد (tahaqquq/test_waqf.py؛ الكتاب س17782–17859): مثلُ ٥ص على Dal/WaqfSibawayhi.lean.
+  ٥ص٦. ضابطُ بقيّة أبواب الجزاء المجمَّد (tahaqquq/test_jaza2.py؛ الكتاب س9305–9652): مثلُ ٥ص على Jisr/BaqiJaza.lean.
   ٥غ. سرعة الفاحص (tahaqquq/test_sura.py؛ س1، 2026-10-24): مضاعفةُ مخزنٍ مولَّد لا تزيد زمنَ المعالج على ثلاثة أضعاف، للفحص وللسؤال —
       يمنع البحثَ الخطّيّ في الأصول أو القوانين (التربيعيّ)، ولا يثبت الخطّيّة. وهو آخرُ IKHTIBARAT_TAFRAT.
   ٦. كلّ طفرة في tafrat.json تُقتل: تُفشل البناء بخطأ Lean في ملفٍّ وسطر (`KHATA_BINA`) أو تُفشل اختبارًا برمزٍ موجب. طفرة تعيش = اختبارٌ مرآة.
@@ -133,6 +137,10 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_nabt_runner.py",
     "tahaqquq/test_jaza.py",
     "tahaqquq/test_nafy.py",
+    "tahaqquq/test_fa.py",
+    "tahaqquq/test_majari.py",
+    "tahaqquq/test_waqf.py",
+    "tahaqquq/test_jaza2.py",
     # آخرُها عمدًا: نموُّ الزمن (س1) لا يقتل إلّا طفرةً لا تغيّر الدلالة (P466، P467)، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_sura.py",
 )
@@ -786,6 +794,22 @@ def main():
     report.append(f"٥ص٢ {out.strip().splitlines()[-1] if out.strip() else 'ضابط نفي الفعل: ?'}")
     if code != 0:
         fails.append("اختبار ضابط نفي الفعل فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_fa.py"])
+    report.append(f"٥ص٣ {out.strip().splitlines()[-1] if out.strip() else 'ضابط باب الفاء: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط باب الفاء فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_majari.py"])
+    report.append(f"٥ص٤ {out.strip().splitlines()[-1] if out.strip() else 'ضابط مجاري أواخر الكلم: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط مجاري أواخر الكلم فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_waqf.py"])
+    report.append(f"٥ص٥ {out.strip().splitlines()[-1] if out.strip() else 'ضابط الوقف: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط الوقف فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_jaza2.py"])
+    report.append(f"٥ص٦ {out.strip().splitlines()[-1] if out.strip() else 'ضابط بقيّة أبواب الجزاء: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط بقيّة أبواب الجزاء فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_sura.py"])
     report.append(f"٥غ سرعة الفاحص (نموٌّ غير تربيعيّ): {' · '.join(out.strip().splitlines()) if out.strip() else '?'}")
     if code != 0:

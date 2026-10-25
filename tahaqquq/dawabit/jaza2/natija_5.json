@@ -1,0 +1,62 @@
+{
+ "tashghil": 5,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد المراجعة الثالثة: شعرُ «لكن» بلا إضمارٍ مقبول (hukmLakin)، وbayn_la_raf بتغطيته السابقة، والرأس؛ ولا حالةَ فيها «لكن»",
+ "qablaha": {
+  "natija_4.json": "5587c31b6ff5a2fddea057240db0d10e3ae0f8346755564dd4206bdc748cc6ec"
+ },
+ "cases_sha256": "2f8c85a66c3151c6a20450733b80716e32504d63a99523424318a79a78f9079c",
+ "shifra": {
+  "milaf": "Jisr/BaqiJaza.lean",
+  "sha256": "ba9566f1f7ed9bb835aa2974b3acad9c17a3796208c3e67c8e9275ed55067568"
+ },
+ "lean": [
+  "Jisr.BaqiJaza.Qiyas.majal",
+  "Jisr.BaqiJaza.Qiyas.natija",
+  "Jisr.BaqiJaza.Qiyas.natija_fia",
+  "Jisr.BaqiJaza.Qiyas.akhta_2"
+ ],
+ "halat": 44,
+ "huqul_masula": 52,
+ "ihsa": {
+  "sawab": 48,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 2,
+  "tawaqquf": 1,
+  "khata": 1
+ },
+ "bil_fia": {
+  "موجب": 12,
+  "حد": 18,
+  "خارج": 5,
+  "عموم": 7,
+  "غموض": 6
+ },
+ "akhta": [
+  [
+   "B06",
+   "kalam",
+   "ikhtiyar"
+  ],
+  [
+   "B17",
+   "kalam",
+   "tawaqquf"
+  ],
+  [
+   "B33",
+   "kalam",
+   "khata"
+  ],
+  [
+   "B34",
+   "kalam",
+   "ikhtiyar"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى. والأعدادُ هنا منقولةٌ من natija_4.json، وصدّقها lake build لـ Jisr.BaqiJazaQiyas على الشفرة ببصمتها هنا (مبرهناتُ حقل lean). والتغييرُ في hukmLakin وحده، ولا حالةَ في cases.json قبلها «لكن»؛ وأمّا قولُ natija_4.json «فالتغييران لا يمسّان حالة» فسندُه هذا الفحصُ للحقول لا تساوي الأعداد."
+}

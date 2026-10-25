@@ -1,0 +1,62 @@
+{
+ "tashghil": 2,
+ "naw": "التشغيلُ الثاني، على مادّةٍ مكشوفة: بعد تعديل الشفرة بما وُسم فيها «ما غُيّر بعد قراءة الحالات»",
+ "qablaha": {
+  "natija_1.json": "c2a660de34d795a18a47afdb39c1ae0521bf58c64f138d07a0af6fa8413abbcf"
+ },
+ "cases_sha256": "2f8c85a66c3151c6a20450733b80716e32504d63a99523424318a79a78f9079c",
+ "shifra": {
+  "milaf": "Jisr/BaqiJaza.lean",
+  "sha256": "dd795728f00302fd3730c458d9905bfc3422f6fcee7f5c44c92c8de87349aa06"
+ },
+ "lean": [
+  "Jisr.BaqiJaza.Qiyas.majal",
+  "Jisr.BaqiJaza.Qiyas.natija",
+  "Jisr.BaqiJaza.Qiyas.natija_fia",
+  "Jisr.BaqiJaza.Qiyas.akhta_2"
+ ],
+ "halat": 44,
+ "huqul_masula": 52,
+ "ihsa": {
+  "sawab": 48,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 2,
+  "tawaqquf": 1,
+  "khata": 1
+ },
+ "bil_fia": {
+  "موجب": 12,
+  "حد": 18,
+  "خارج": 5,
+  "عموم": 7,
+  "غموض": 6
+ },
+ "akhta": [
+  [
+   "B06",
+   "kalam",
+   "ikhtiyar"
+  ],
+  [
+   "B17",
+   "kalam",
+   "tawaqquf"
+  ],
+  [
+   "B33",
+   "kalam",
+   "khata"
+  ],
+  [
+   "B34",
+   "kalam",
+   "ikhtiyar"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة. صار صوابًا B40 (الخبر الواجب) وB43 (الرابط مع «أما»)، ولم يتغيّر صوابٌ إلى غيره. والأربعةُ الباقية قراءاتٌ للمؤلّف لم تأخذها الشفرة، وأسبابُها في mulhaq_1.md."
+}

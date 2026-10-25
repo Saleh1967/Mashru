@@ -1,0 +1,62 @@
+{
+ "tashghil": 6,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد المراجعة الرابعة: رأسُ الشفرة (قيدُ المعنى في بند «لكن»)، بلا تغييرٍ في الأحكام",
+ "qablaha": {
+  "natija_5.json": "6e645276be0a0fcf7ae3c630a05123ac9b02adf48b636a047c63d66f04695bac"
+ },
+ "cases_sha256": "2f8c85a66c3151c6a20450733b80716e32504d63a99523424318a79a78f9079c",
+ "shifra": {
+  "milaf": "Jisr/BaqiJaza.lean",
+  "sha256": "e81e61d52f7edb8e4a261ab307a85b844ad3b0e98ecbf3b20df28185395bbd45"
+ },
+ "lean": [
+  "Jisr.BaqiJaza.Qiyas.majal",
+  "Jisr.BaqiJaza.Qiyas.natija",
+  "Jisr.BaqiJaza.Qiyas.natija_fia",
+  "Jisr.BaqiJaza.Qiyas.akhta_2"
+ ],
+ "halat": 44,
+ "huqul_masula": 52,
+ "ihsa": {
+  "sawab": 48,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 2,
+  "tawaqquf": 1,
+  "khata": 1
+ },
+ "bil_fia": {
+  "موجب": 12,
+  "حد": 18,
+  "خارج": 5,
+  "عموم": 7,
+  "غموض": 6
+ },
+ "akhta": [
+  [
+   "B06",
+   "kalam",
+   "ikhtiyar"
+  ],
+  [
+   "B17",
+   "kalam",
+   "tawaqquf"
+  ],
+  [
+   "B33",
+   "kalam",
+   "khata"
+  ],
+  [
+   "B34",
+   "kalam",
+   "ikhtiyar"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى. والأعدادُ هنا منقولةٌ من natija_5.json، وصدّقها lake build لـ Jisr.BaqiJazaQiyas على الشفرة ببصمتها هنا (مبرهناتُ حقل lean)."
+}

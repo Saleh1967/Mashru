@@ -1,0 +1,40 @@
+{
+ "tashghil": 2,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد تعديل Jisr/MajariKalim.lean بعد قراءة الحالات — «ب» و«ل» لفظين لحرفي الإضافة (س152)، والماضي فتحةً وسكونًا (س194) ولا يقع جرًّا (س184)، والأمرُ لا يقع موقع المضارعة (س149–150)، وما لا ينصرف رفعًا ونصبًا وجمعُ المؤنّث رفعًا «لا حكم» (لا نصّ)",
+ "qablaha": {
+  "natija_1.json": "0f53cee20d2ac93fe355124e713469a242b60217d27c99d525693e911348e02d"
+ },
+ "cases_sha256": "0d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20",
+ "shifra": {
+  "milaf": "Jisr/MajariKalim.lean",
+  "sha256": "f409757d82ecd14830e1cc6326195adb06510e382da15fb2814d6ed20c5131ed"
+ },
+ "lean": [
+  "Jisr.MajariKalim.Qiyas.majal",
+  "Jisr.MajariKalim.Qiyas.natija",
+  "Jisr.MajariKalim.Qiyas.natija_fia",
+  "Jisr.MajariKalim.Qiyas.akhta_sifr"
+ ],
+ "halat": 39,
+ "huqul_masula": 39,
+ "ihsa": {
+  "sawab": 39,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "khataBina": 0,
+  "ikhtiyar": 0,
+  "khataAlama": 0
+ },
+ "bil_fia": {
+  "موجب": 20,
+  "حد": 5,
+  "خارج": 5,
+  "عموم": 6,
+  "غموض": 3
+ },
+ "akhta": [],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى."
+}

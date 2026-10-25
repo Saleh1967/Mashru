@@ -1,0 +1,40 @@
+{
+ "tashghil": 3,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد مراجعة murajii: الرأسُ وتعليقاتُ المبرهنات، وحذفُ لفظ «ل» (لامُ الابتداء في الباب، س128–129، والحقلُ بلا تشكيل)، ومدُّ سندين إلى قيدهما؛ ولا حالةَ تمسّ ذلك",
+ "qablaha": {
+  "natija_2.json": "16c86bd70a649752a389fa9afb31a108c6427422d453c9b8bd07443b32d5d517"
+ },
+ "cases_sha256": "0d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20",
+ "shifra": {
+  "milaf": "Jisr/MajariKalim.lean",
+  "sha256": "5871ea01de787fdc4eb2372a3257a518465da96dc39daf98567f9586c3dcf350"
+ },
+ "lean": [
+  "Jisr.MajariKalim.Qiyas.majal",
+  "Jisr.MajariKalim.Qiyas.natija",
+  "Jisr.MajariKalim.Qiyas.natija_fia",
+  "Jisr.MajariKalim.Qiyas.akhta_sifr"
+ ],
+ "halat": 39,
+ "huqul_masula": 39,
+ "ihsa": {
+  "sawab": 39,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "khataBina": 0,
+  "ikhtiyar": 0,
+  "khataAlama": 0
+ },
+ "bil_fia": {
+  "موجب": 20,
+  "حد": 5,
+  "خارج": 5,
+  "عموم": 6,
+  "غموض": 3
+ },
+ "akhta": [],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى."
+}

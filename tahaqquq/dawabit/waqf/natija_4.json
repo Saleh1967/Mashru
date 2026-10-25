@@ -1,0 +1,56 @@
+{
+ "tashghil": 4,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد المراجعة الثانية: كلُّ وجهٍ ممكنٍ بلا ألفٍ في المنوَّن نصبًا خطأ، وما لا يمكن في الآخر «لا حكم» (mumkin)؛ وشاهدُ mumkin_shawahid؛ ولا حالةَ تمسّ ذلك",
+ "qablaha": {
+  "natija_3.json": "65e13b0ef84313ae3d7b5c9663baa0371d26e9f0b1f57293243929bad7b3ab53"
+ },
+ "cases_sha256": "9b6e35e2983fdef2893c3e9d72dbf473d7414bc9127eb1e5eb341d4a4a259853",
+ "shifra": {
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "sha256": "01d162ed1260aedc05b713f829bf2f6e9ee25ea16ec6cba3d6a5c2e5fcd20eb9"
+ },
+ "lean": [
+  "Dal.WaqfSibawayhi.Qiyas.majal",
+  "Dal.WaqfSibawayhi.Qiyas.natija",
+  "Dal.WaqfSibawayhi.Qiyas.natija_fia",
+  "Dal.WaqfSibawayhi.Qiyas.akhta_2"
+ ],
+ "halat": 40,
+ "huqul_masula": 52,
+ "ihsa": {
+  "sawab": 49,
+  "naqsTaghtiya": 3,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 26,
+  "حد": 8,
+  "خارج": 4,
+  "عموم": 11,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "W26",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W27",
+   "kalam",
+   "naqsTaghtiya"
+  ],
+  [
+   "W29",
+   "kalam",
+   "naqsTaghtiya"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى."
+}
