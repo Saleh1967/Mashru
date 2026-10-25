@@ -137,6 +137,96 @@ class T(unittest.TestCase):
         self.assertTrue(any(c['ism'].startswith('makhzan_') and c['rutba'] == 'تقدير' for c in a['claims']))
 
 
+    # ───────────────── الإصدار 4: Hokom تقديرًا + صورة الجزاء + split-punct ─────────────────
+    def _hokom_ok(self):
+        import os as _os
+        if not (TOOL / 'hokom_adapter.py').exists(): return 'HOKOM_ADAPTER_ABSENT'
+        if not _os.path.exists('/Users/husseinhiyassat/hokom/.venv-taaqol/bin/python'): return 'HOKOM_VENV_ABSENT'
+        return None
+
+    def test_T13_jaza_forms_from_hokom(self):
+        """T13 --hokom بلا --forms على «إِنْ تَجْتَهِدْ تَنْجَحْ» → الصيغتان من Hokom (HOKOM_TAQDIR، رتبة تقدير) ، hukm=⟨maqbul,maqbul⟩ مبرهنًا"""
+        if LEAN_REASON: self.skipTest('NOT_RUN: ' + LEAN_REASON)
+        hr = self._hokom_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        r = self.rec('إِنْ تَجْتَهِدْ تَنْجَحْ', use_hokom=True)
+        self.assertEqual(r['plan']['kind'], 'jaza')
+        self.assertEqual(r['plan']['shart'], '.mudariMajzum'); self.assertEqual(r['plan']['jawab'], '.mudariMajzum')
+        self.assertIn('HOKOM_TAQDIR', r['plan']['premise_source']); self.assertEqual(r['plan']['premise_rank'], 'تقدير')
+        self.assertEqual(r['lean']['observed'], {'kalam': '.maqbul', 'shir': '.maqbul', 'sinf': '.jaza'})
+        self.assertTrue(all(v['passed'] for v in r['lean']['theorems'].values()))
+
+    def test_T14_forms_conflict_owner_wins(self):
+        """T14 --hokom مع --forms متعارضَين → FORMS_CONFLICT_OWNER_VS_HOKOM مُعلَن ، والمعتمَد صيغة المالك"""
+        hr = self._hokom_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        r = self.rec('إِنْ تَجْتَهِدْ تَنْجَحْ', lean=False, use_hokom=True,
+                     forms={'shart': 'mudariMarfu', 'jawab': 'mudariMajzum'})
+        self.assertIsNotNone(r['plan']['forms_conflict'])
+        self.assertIn('FORMS_CONFLICT_OWNER_VS_HOKOM', r['plan']['forms_conflict'])
+        self.assertEqual(r['plan']['shart'], '.mudariMarfu')   # المالك يغلب
+
+    def test_T15_hokom_shown_not_consumed(self):
+        """T15 --hokom على «ذَهَبَ الْوَلَدُ» → كتلة Hokom حاضرة ، ولا أثر على hukm3/النظريات (طبقتا 3/4 كتشغيلٍ بلا --hokom)"""
+        if LEAN_REASON: self.skipTest('NOT_RUN: ' + LEAN_REASON)
+        hr = self._hokom_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        base = self.rec('ذَهَبَ الْوَلَدُ'); withh = self.rec('ذَهَبَ الْوَلَدُ', use_hokom=True)
+        hc = [c for c in withh['claims'] if c['ism'].startswith('hokom_')]
+        self.assertEqual(len(hc), 2); self.assertTrue(all(c['rutba'] == 'تقدير' for c in hc))
+        self.assertEqual(hc[0]['qima']['final_root'], ['ذ', 'ه', 'ب'])   # ذهب كما يُخرجه Hokom
+        # لا أثر على الحكم ولا النظريات
+        self.assertEqual(base['lean']['observed'], withh['lean']['observed'])
+        self.assertEqual({k: v['passed'] for k, v in base['lean']['theorems'].items()},
+                         {k: v['passed'] for k, v in withh['lean']['theorems'].items()})
+
+    def test_T16_hokom_unreadable_named(self):
+        """T16 Hokom غير قابل للقراءة (مسار خاطئ) → HOKOM_ADAPTER_FAILED باسمه ، وبقية المراحل تكتمل"""
+        import os as _os
+        old = _os.environ.get('HOKOM_ROOT')
+        _os.environ['HOKOM_ROOT'] = '/nonexistent/hokom_path_xyz'
+        try:
+            r = self.rec('ذَهَبَ الْوَلَدُ', lean=False, use_hokom=True)
+        finally:
+            if old is None: _os.environ.pop('HOKOM_ROOT', None)
+            else: _os.environ['HOKOM_ROOT'] = old
+        s3 = [s for s in r['stages'] if s['stage'].startswith('S3')][0]
+        self.assertFalse(s3.get('completed')); self.assertIn('FAILED', s3['reason'])
+        # بقية المراحل اكتملت (S4 وصل ، والدالّ تمّ)
+        self.assertTrue(any(s['stage'] == 'S4_MADLUL' and s['completed'] for s in r['stages']))
+        self.assertEqual(r['dal'][0]['khalaya'], [92, 4, 104])
+
+    def test_T17_split_punct(self):
+        """T17 --split-punct على نصّ من جملتَين → تقريران مستقلّان ؛ وبلا الخيار → OUT_OF_EXECUTED_PATH"""
+        import os as _os
+        run_py = str(TOOL / 'run.py')
+        env = dict(_os.environ, PYTHONDONTWRITEBYTECODE='1')
+        o = TMP / 'split'
+        p = subprocess.run([sys.executable, '-I', run_py, 'ذَهَبَ الْوَلَدُ. ذَهَبَ وَلَدٌ', '--split-punct', '--no-lean', '--out', str(o)],
+                           capture_output=True, text=True, env=env, timeout=600)
+        self.assertIn('SPLIT_ON_PUNCT_OWNER_OPTION = 2', p.stdout)
+        self.assertTrue((o / 's1' / 'taqrir.json').exists() and (o / 's2' / 'taqrir.json').exists())
+        s1 = json.loads((o / 's1' / 'taqrir.json').read_text(encoding='utf-8'))
+        s2 = json.loads((o / 's2' / 'taqrir.json').read_text(encoding='utf-8'))
+        self.assertNotEqual(s1['input']['sha256'], s2['input']['sha256'])
+        # بلا الخيار: جملتان في مدخلٍ واحد → OUT_OF_EXECUTED_PATH
+        r = self.rec('ذَهَبَ الْوَلَدُ ذَهَبَ وَلَدٌ', lean=False)
+        self.assertIsNone(r['plan'])
+
+    def test_T18_both_trees_untouched(self):
+        """T18 شجرتا Mashru وHokom لم تُمَسّا (git status قبل/بعد) ولا بايتكود كُتب خارج TOOL_ROOT"""
+        import os as _os, glob as _glob
+        def st(root): return subprocess.run(['git', '-C', root, 'status', '--porcelain', '--untracked-files=all'], capture_output=True, text=True).stdout
+        hk = '/Users/husseinhiyassat/hokom'
+        b_m, b_h = st(str(ROOT)), st(hk)
+        self.rec('إِنْ تَجْتَهِدْ تَنْجَحْ', lean=False, use_hokom=True) if not self._hokom_ok() else self.rec('ذَهَبَ الْوَلَدُ', lean=False)
+        a_m, a_h = st(str(ROOT)), st(hk)
+        self.assertEqual(b_m, a_m, 'MASHRU_TREE_CHANGED')
+        self.assertEqual(b_h, a_h, 'HOKOM_TREE_CHANGED')
+        # لا بايتكود في شجرة Hokom
+        self.assertEqual(_glob.glob(hk + '/**/__pycache__/*tabaqat*', recursive=True), [])
+
+
 class Reporter(unittest.TextTestResult):
     def addSuccess(self, t): super().addSuccess(t); RESULTS[t._testMethodName] = 'PASS'
     def addFailure(self, t, e): super().addFailure(t, e); RESULTS[t._testMethodName] = 'FAIL'
