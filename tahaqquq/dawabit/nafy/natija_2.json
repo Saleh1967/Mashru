@@ -1,0 +1,40 @@
+{
+ "tashghil": 2,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد إضافة bilaMa («رب» و«قل» بلا «ما»، س9764) إلى hukmWali وسندِها وشاهدِها rubba_bila_ma، بعد قراءة الحالات (N20)",
+ "qablaha": {
+  "natija_1.json": "01d9b02399def4ac160030e75fbb74e2453e68eff869dde2c7e7c25f6d207129"
+ },
+ "cases_sha256": "30271f86d033784c08d02bce3721c6e4697b6c3163017d3542dafaba4df099a5",
+ "shifra": {
+  "milaf": "Jisr/NafyFil.lean",
+  "sha256": "21e5f12b98bb9b5e5c4755a8323396f36220b5e4ed83a59e51e0920cb5a76651"
+ },
+ "lean": [
+  "Jisr.NafyFil.Qiyas.majal",
+  "Jisr.NafyFil.Qiyas.natija",
+  "Jisr.NafyFil.Qiyas.natija_fia",
+  "Jisr.NafyFil.Qiyas.akhta_sifr"
+ ],
+ "halat": 30,
+ "huqul_masula": 33,
+ "ihsa": {
+  "sawab": 33,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "ikhtiyar": 0,
+  "khata": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0
+ },
+ "bil_fia": {
+  "موجب": 15,
+  "حد": 8,
+  "خارج": 5,
+  "عموم": 3,
+  "غموض": 2
+ },
+ "akhta": [],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى."
+}
