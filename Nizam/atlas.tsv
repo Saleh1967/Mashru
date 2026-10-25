@@ -129,3 +129,6 @@ Jisr.BabFaQiyas	T7	لا	باب الفاء على ضابطه المجمَّد: ا
 Jisr.MajariKalim	T7	لا	مجاري أواخر الكلم عند سيبويه (الكتاب س111–233): علامةُ الآخر بالصنف والموضع، إعرابًا أو بناءً
 Jisr.MajariKalimDawabit	T7	لا	حالاتُ ضابط مجاري أواخر الكلم المجمَّدة (مولَّد من tahaqquq/dawabit/majari/cases.json)
 Jisr.MajariKalimQiyas	T7	لا	مجاري أواخر الكلم على ضابطه المجمَّد: النتيجةُ على الشفرة الحاليّة
+Dal.WaqfSibawayhi	T2	لا	الوقفُ على أواخر الكلم المتحرّكة في الوصل عند سيبويه (الكتاب س17782–17859): وجهُ الوقف بالآخر والتنوين وما قبله والحركة
+Dal.WaqfSibawayhiDawabit	T2	لا	حالاتُ ضابط الوقف المجمَّدة (مولَّد من tahaqquq/dawabit/waqf/cases.json)
+Dal.WaqfSibawayhiQiyas	T2	لا	الوقفُ عند سيبويه على ضابطه المجمَّد: النتيجةُ على الشفرة الحاليّة

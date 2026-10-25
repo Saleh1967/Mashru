@@ -89,6 +89,8 @@ import Jisr.BabFa
 import Jisr.BabFaQiyas
 import Jisr.MajariKalim
 import Jisr.MajariKalimQiyas
+import Dal.WaqfSibawayhi
+import Dal.WaqfSibawayhiQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1874,3 +1876,18 @@ import Jisr.MajariKalimQiyas
 #print axioms Jisr.MajariKalim.Qiyas.natija
 #print axioms Jisr.MajariKalim.Qiyas.natija_fia
 #print axioms Jisr.MajariKalim.Qiyas.akhta_sifr
+-- الوقفُ على أواخر الكلم المتحرّكة في الوصل عند سيبويه (الكتاب س17782–17859؛ Dal/WaqfSibawayhi.lean): وجهُ الوقف بالآخر والتنوين وما قبله والحركة
+#print axioms Dal.WaqfSibawayhi.la_ishmam
+#print axioms Dal.WaqfSibawayhi.tadif_baad_sakin
+#print axioms Dal.WaqfSibawayhi.maqbul_kalam_maqbul_shir
+#print axioms Dal.WaqfSibawayhi.munawwan_nasb_kull
+#print axioms Dal.WaqfSibawayhi.hadhf_wa_qawafi
+#print axioms Dal.WaqfSibawayhi.mumkin_shawahid
+#print axioms Dal.WaqfSibawayhi.shawahid
+-- ضابطُ الوقف عند سيبويه المجمَّد، النتيجةُ على الشفرة الحاليّة (Dal/WaqfSibawayhiQiyas.lean؛ hawkama/منهج_الضوابط.md)، وشواهدُ ما أُضيف بعد قراءة الحالات
+#print axioms Dal.WaqfSibawayhi.munawwan_nasb_shawahid
+#print axioms Dal.WaqfSibawayhi.Qiyas.qarin_jadwal
+#print axioms Dal.WaqfSibawayhi.Qiyas.majal
+#print axioms Dal.WaqfSibawayhi.Qiyas.natija
+#print axioms Dal.WaqfSibawayhi.Qiyas.natija_fia
+#print axioms Dal.WaqfSibawayhi.Qiyas.akhta_2

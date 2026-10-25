@@ -4024,5 +4024,233 @@
   "milaf": "Jisr/BabFaQiyas.lean",
   "min": "theorem majal : majalAadad = [39, 48, 20, 2, 0, 6, 6, 5, 9, 0, 0, 0, 0, 0, 30] := by",
   "ila": "theorem majal : majalAadad = majalAadad := by"
+ },
+ {
+  "ism": "P560_ishmam_fi_nasb",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  | .ishmam => if k.haraka == .raf then .maqbul else .khata",
+  "ila": "  | .ishmam => if k.haraka == .raf then .maqbul else .laHukm"
+ },
+ {
+  "ism": "P561_tadif_baad_sakin",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  | .tadif => if k.qablMutaharrik then .maqbul else .khata",
+  "ila": "  | .tadif => if k.qablMutaharrik then .maqbul else .maqbul"
+ },
+ {
+  "ism": "P562_tadif_la_shir",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  else if k.akhir == .sahih && k.wajh == .tadif then .maqbul",
+  "ila": "  else if k.akhir == .sahih && k.wajh == .tadif then .laHukm"
+ },
+ {
+  "ism": "P563_azd_khata",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "    else if k.munawwan && k.wajh == .wawAwYa then .lugha",
+  "ila": "    else if k.munawwan && k.wajh == .wawAwYa then .khata"
+ },
+ {
+  "ism": "P564_talhat_maqbul",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "    | .ta => .lugha",
+  "ila": "    | .ta => .maqbul"
+ },
+ {
+  "ism": "P565_alif_lugha",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "if k.wajh == .alif then .maqbul",
+  "ila": "if k.wajh == .alif then .lugha"
+ },
+ {
+  "ism": "P566_waqf_basmat_halat",
+  "milaf": "tahaqquq/dawabit/waqf/tajmid.json",
+  "min": "\"cases_sha256\": \"9b6e35e2983fdef2893c3e9d72dbf473d7414bc9127eb1e5eb341d4a4a259853\"",
+  "ila": "\"cases_sha256\": \"8b6e35e2983fdef2893c3e9d72dbf473d7414bc9127eb1e5eb341d4a4a259853\""
+ },
+ {
+  "ism": "P567_waqf_muwallad",
+  "milaf": "Dal/WaqfSibawayhiDawabit.lean",
+  "min": "⟨\"W01\", .mujib,",
+  "ila": "⟨\"W01x\", .mujib,"
+ },
+ {
+  "ism": "P568_waqf_basmat_shifra",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "\"sha256\": \"45c1cb4bbabdd1bf66220ee6ad6b618014b41206f16c3f99391fd9b740a271f7\"",
+  "ila": "\"sha256\": \"75c1cb4bbabdd1bf66220ee6ad6b618014b41206f16c3f99391fd9b740a271f7\""
+ },
+ {
+  "ism": "P569_waqf_sawab",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "  \"sawab\": 49,",
+  "ila": "  \"sawab\": 50,"
+ },
+ {
+  "ism": "P570_waqf_qablaha",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "\"natija_5.json\": \"6f2d9a6357484f3708b4680d4a5c4825b36675ca5272865d580d9c498fa7635f\"",
+  "ila": "\"natija_5.json\": \"7f2d9a6357484f3708b4680d4a5c4825b36675ca5272865d580d9c498fa7635f\""
+ },
+ {
+  "ism": "P571_waqf_natija_1",
+  "milaf": "tahaqquq/dawabit/waqf/natija_1.json",
+  "min": "  \"sawab\": 41,",
+  "ila": "  \"sawab\": 42,"
+ },
+ {
+  "ism": "P572_waqf_marsa",
+  "milaf": "tahaqquq/test_waqf.py",
+  "min": "NATIJA_1 = \"cdb5b5f0a32ccf7d88a11d6e48d19ad6a600c7486b97b47957c23e662101cb6a\"",
+  "ila": "NATIJA_1 = \"cdb5b5f0a32ccf7d88a11d6e48d19ad6a600c7486b97b47957c23e662101cb6b\""
+ },
+ {
+  "ism": "P573_waqf_lean",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "\"Dal.WaqfSibawayhi.Qiyas.natija_fia\",",
+  "ila": "\"Dal.WaqfSibawayhi.Qiyas.majal\","
+ },
+ {
+  "ism": "P574_waqf_akhta",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "  [\n   \"W29\",",
+  "ila": "  [\n   \"W28\","
+ },
+ {
+  "ism": "P575_waqf_majal_json",
+  "milaf": "tahaqquq/test_waqf.py",
+  "min": "    mj += [sum(1 for x in shir if isinstance(x, list)), shir.count(\"غير_مسؤول\")]",
+  "ila": "    mj += [sum(1 for x in shir if isinstance(x, list)), shir.count(\"غير_مسؤول\") + 1]"
+ },
+ {
+  "ism": "P576_waqf_halat",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "\"halat\": 40,",
+  "ila": "\"halat\": 41,"
+ },
+ {
+  "ism": "P577_waqf_lugha_maqbul",
+  "milaf": "Dal/WaqfSibawayhiQiyas.lean",
+  "min": "  | .maqbul | .lugha => true",
+  "ila": "  | .maqbul => true"
+ },
+ {
+  "ism": "P578_munawwan_iskan",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  | .wawAwYa => h != .nasb",
+  "ila": "  | .wawAwYa => h != .nasb\n  | .iskan => false"
+ },
+ {
+  "ism": "P579_qawafi_waw",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  else if k.akhir == .sahih && k.wajh == .wawAwYa && k.haraka != .nasb then .maqbul",
+  "ila": "  else if k.akhir == .sahih && k.wajh == .wawAwYa && k.haraka != .nasb then .laHukm"
+ },
+ {
+  "ism": "P701_waqf_bil_fia",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "\"حد\": 8",
+  "ila": "\"حد\": 7"
+ },
+ {
+  "ism": "P702_waqf_fia_json",
+  "milaf": "tahaqquq/test_waqf.py",
+  "min": "        fia[h[\"fia\"]] += 1 + (h[\"kharij\"][\"shir\"] != \"غير_مسؤول\")",
+  "ila": "        fia[h[\"fia\"]] += 2 + (h[\"kharij\"][\"shir\"] != \"غير_مسؤول\")"
+ },
+ {
+  "ism": "P703_waqf_tashghil",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "\"tashghil\": 6",
+  "ila": "\"tashghil\": 7"
+ },
+ {
+  "ism": "P704_waqf_cases_natija",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "\"cases_sha256\": \"9b6e35e2",
+  "ila": "\"cases_sha256\": \"8b6e35e2"
+ },
+ {
+  "ism": "P705_waqf_qadi_nasb",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  | .yaBaadKasra =>\n    if k.munawwan && k.haraka == .nasb then munawwanNasb k\n",
+  "ila": "  | .yaBaadKasra =>\n    if false then munawwanNasb k\n"
+ },
+ {
+  "ism": "P706_waqf_hadhf_nasb",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "    | .hadhfYa => if k.haraka == .nasb then .laHukm else .maqbul",
+  "ila": "    | .hadhfYa => .maqbul"
+ },
+ {
+  "ism": "P707_waqf_alif_haraka",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  else if k.akhir == .sahih && k.wajh == .alif && !k.munawwan && k.haraka == .nasb then .maqbul",
+  "ila": "  else if k.akhir == .sahih && k.wajh == .alif && !k.munawwan then .maqbul"
+ },
+ {
+  "ism": "P720_waqf_mumkin_ta",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  | .ta => a == .haTaanith || a == .taJam || a == .taMulhaqa",
+  "ila": "  | .ta => a == .haTaanith || a == .taJam"
+ },
+ {
+  "ism": "P721_waqf_mumkin_ya",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  | .hadhfYa | .ithbatYa => a == .yaBaadKasra",
+  "ila": "  | .hadhfYa | .ithbatYa => true"
+ },
+ {
+  "ism": "P722_waqf_bila_alif_juzi",
+  "milaf": "Dal/WaqfSibawayhi.lean",
+  "min": "  else if mumkin k.akhir k.haraka k.wajh then .khata",
+  "ila": "  else if k.wajh == .iskan then .khata"
+ },
+ {
+  "ism": "P739_waqf_fahs_masdar",
+  "milaf": "tahaqquq/dawabit/waqf/tajmid.json",
+  "min": "\"sha256\": \"a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\"",
+  "ila": "\"sha256\": \"7160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\""
+ },
+ {
+  "ism": "P740_waqf_fahs_tatali",
+  "milaf": "tahaqquq/test_waqf.py",
+  "min": "arqam == list(range(1, len(arqam) + 1))",
+  "ila": "arqam == list(range(0, len(arqam)))"
+ },
+ {
+  "ism": "P741_waqf_fahs_hadd_natija",
+  "milaf": "Dal/WaqfSibawayhiQiyas.lean",
+  "min": "theorem natija : ihsa natayij = ⟨49, 3, 0, 0, 0, 0, 0, 0⟩ := by",
+  "ila": "theorem natija : ihsa natayij = ihsa natayij := by"
+ },
+ {
+  "ism": "P742_waqf_fahs_hadd_akhta",
+  "milaf": "Dal/WaqfSibawayhiQiyas.lean",
+  "min": "theorem akhta_2 :\n    akhta = [(\"W26\", .kalam, .naqsTaghtiya), (\"W27\", .kalam, .naqsTaghtiya), (\"W29\", .kalam, .naqsTaghtiya)] := by",
+  "ila": "theorem akhta_2 : akhta = akhta := by"
+ },
+ {
+  "ism": "P743_waqf_fahs_akhta_fi_lean",
+  "milaf": "Dal/WaqfSibawayhiQiyas.lean",
+  "min": "theorem akhta_2 :",
+  "ila": "theorem akhta_alt :\n    akhta = [(\"W26\", .kalam, .naqsTaghtiya), (\"W27\", .kalam, .naqsTaghtiya), (\"W29\", .kalam, .naqsTaghtiya)] := by\n  decide +kernel\n\ntheorem akhta_2 :"
+ },
+ {
+  "ism": "P744_waqf_fahs_lean_mubarhana",
+  "milaf": "Dal/WaqfSibawayhiQiyas.lean",
+  "min": "theorem natija_fia :",
+  "ila": "private theorem natija_fia :"
+ },
+ {
+  "ism": "P745_waqf_fahs_huqul_masula",
+  "milaf": "tahaqquq/dawabit/waqf/natija_6.json",
+  "min": "\"huqul_masula\": 52,",
+  "ila": "\"huqul_masula\": 53,"
+ },
+ {
+  "ism": "P746_waqf_fahs_hadd_majal",
+  "milaf": "Dal/WaqfSibawayhiQiyas.lean",
+  "min": "theorem majal : majalAadad = [40, 52, 22, 4, 10, 4, 0, 12, 0, 0, 0, 0, 28] := by",
+  "ila": "theorem majal : majalAadad = majalAadad := by"
  }
 ]
