@@ -1270,6 +1270,9 @@ import Jisr.BaqiJazaQiyas
 #print axioms Jisr.QaydMafhum.shawahid_mashuda
 #print axioms Jisr.QaydMafhum.shawahid_sawa
 #print axioms Jisr.QaydMafhum.shahid_bila_bunya_wa_innama
+#print axioms Jisr.QaydMafhum.ism_iff
+#print axioms Jisr.QaydMafhum.innamaFi_iff
+#print axioms Jisr.QaydMafhum.jard_qatr
 -- «هذا باب الجزاء» عند سيبويه (الكتاب س9190–9304؛ Jisr/BabJaza.lean): الحكمُ على تركيب الجزاء في الكلام والشعر، والجسرُ إلى القطر وجدول العوامل
 #print axioms Jisr.BabJaza.maqbul_kalam_maqbul_shir
 #print axioms Jisr.BabJaza.ghayr_la_hukm
