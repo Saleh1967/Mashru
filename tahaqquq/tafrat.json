@@ -3504,6 +3504,12 @@
   "ila": "    | .maqbul, _ => .qabulKhati"
  },
  {
+  "ism": "P771_jaza2_waw_hal",
+  "milaf": "Jisr/BaqiJaza.lean",
+  "min": "  | .waw, .marfu => if d.mana = .hal then mutlaq [.maqbul, .khata] else mutlaq [.khata]",
+  "ila": "  | .waw, .marfu => if d.mana = .hal then maqbul else mutlaq [.khata]"
+ },
+ {
   "ism": "P595_jaza2_basmat_halat",
   "milaf": "tahaqquq/dawabit/jaza2/tajmid.json",
   "min": "\"cases_sha256\": \"2f8c85a66c3151c6a20450733b80716e32504d63a99523424318a79a78f9079c\"",
@@ -3517,21 +3523,21 @@
  },
  {
   "ism": "P597_jaza2_basmat_shifra",
-  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
-  "min": "\"sha256\": \"dd795728f00302fd3730c458d9905bfc3422f6fcee7f5c44c92c8de87349aa06\"",
-  "ila": "\"sha256\": \"ed795728f00302fd3730c458d9905bfc3422f6fcee7f5c44c92c8de87349aa06\""
+  "milaf": "tahaqquq/dawabit/jaza2/natija_3.json",
+  "min": "\"sha256\": \"7de65547b9f75e6ad78a33cbc68505730fc5918adf9a4fabe517a13c8b34b51e\"",
+  "ila": "\"sha256\": \"8de65547b9f75e6ad78a33cbc68505730fc5918adf9a4fabe517a13c8b34b51e\""
  },
  {
   "ism": "P598_jaza2_sawab",
-  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_3.json",
   "min": "\"sawab\": 48",
   "ila": "\"sawab\": 47"
  },
  {
   "ism": "P599_jaza2_qablaha",
-  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
-  "min": "\"natija_1.json\": \"c2a660de34d795a18a47afdb39c1ae0521bf58c64f138d07a0af6fa8413abbcf\"",
-  "ila": "\"natija_1.json\": \"d2a660de34d795a18a47afdb39c1ae0521bf58c64f138d07a0af6fa8413abbcf\""
+  "milaf": "tahaqquq/dawabit/jaza2/natija_3.json",
+  "min": "\"natija_2.json\": \"2643f3d526322477957f6f693710c51de82c7d342f7244d2ac91649142102f78\"",
+  "ila": "\"natija_2.json\": \"7643f3d526322477957f6f693710c51de82c7d342f7244d2ac91649142102f78\""
  },
  {
   "ism": "P600_jaza2_natija_1",
@@ -3547,13 +3553,13 @@
  },
  {
   "ism": "P602_jaza2_lean",
-  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_3.json",
   "min": "\"Jisr.BaqiJaza.Qiyas.akhta_2\"",
   "ila": "\"Jisr.BaqiJaza.Qiyas.akhta_1\""
  },
  {
   "ism": "P603_jaza2_akhta",
-  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_3.json",
   "min": "\"B34\"",
   "ila": "\"B35\""
  },
@@ -3565,13 +3571,13 @@
  },
  {
   "ism": "P605_jaza2_halat",
-  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_3.json",
   "min": "\"halat\": 44",
   "ila": "\"halat\": 45"
  },
  {
   "ism": "P606_jaza2_bil_fia",
-  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_3.json",
   "min": "\"حد\": 18",
   "ila": "\"حد\": 17"
  },
@@ -3583,14 +3589,62 @@
  },
  {
   "ism": "P608_jaza2_tashghil",
-  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
-  "min": "\"tashghil\": 2",
-  "ila": "\"tashghil\": 3"
+  "milaf": "tahaqquq/dawabit/jaza2/natija_3.json",
+  "min": "\"tashghil\": 3",
+  "ila": "\"tashghil\": 4"
  },
  {
   "ism": "P609_jaza2_cases_natija",
-  "milaf": "tahaqquq/dawabit/jaza2/natija_2.json",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_3.json",
   "min": "\"cases_sha256\": \"2f8c85a66c3151c6a20450733b80716e32504d63a99523424318a79a78f9079c\"",
   "ila": "\"cases_sha256\": \"3f8c85a66c3151c6a20450733b80716e32504d63a99523424318a79a78f9079c\""
+ },
+ {
+  "ism": "P755_jaza2_fahs_masdar",
+  "milaf": "tahaqquq/dawabit/jaza2/tajmid.json",
+  "min": "\"sha256\": \"a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\"",
+  "ila": "\"sha256\": \"7160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\""
+ },
+ {
+  "ism": "P756_jaza2_fahs_tatali",
+  "milaf": "tahaqquq/test_jaza2.py",
+  "min": "arqam == list(range(1, len(arqam) + 1))",
+  "ila": "arqam == list(range(0, len(arqam)))"
+ },
+ {
+  "ism": "P757_jaza2_fahs_hadd_natija",
+  "milaf": "tahaqquq/test_jaza2.py",
+  "min": "    m = re.search(r\"theorem natija : ihsa natayij = ⟨([\\d, ]+)⟩\", qiyas)",
+  "ila": "    m = re.search(r\"theorem natija : ihsa natayijX = ⟨([\\d, ]+)⟩\", qiyas)"
+ },
+ {
+  "ism": "P758_jaza2_fahs_hadd_akhta",
+  "milaf": "tahaqquq/test_jaza2.py",
+  "min": "    m = re.search(r\"theorem (akhta\\w*) :\\s*akhta = \\[(.*?)\\] := by\", qiyas, re.S)",
+  "ila": "    m = re.search(r\"theorem (akhtaX\\w*) :\\s*akhta = \\[(.*?)\\] := by\", qiyas, re.S)"
+ },
+ {
+  "ism": "P759_jaza2_fahs_akhta_fi_lean",
+  "milaf": "tahaqquq/test_jaza2.py",
+  "min": "tahaqqaq(NS + m.group(1) in akhir[\"lean\"]",
+  "ila": "tahaqqaq(NS + m.group(1) + \"_\" in akhir[\"lean\"]"
+ },
+ {
+  "ism": "P760_jaza2_fahs_lean_mubarhana",
+  "milaf": "tahaqquq/test_jaza2.py",
+  "min": "re.search(r\"^theorem %s\\b\" % re.escape(qasir)",
+  "ila": "re.search(r\"^theorem %s_\\b\" % re.escape(qasir)"
+ },
+ {
+  "ism": "P761_jaza2_fahs_huqul_masula",
+  "milaf": "tahaqquq/dawabit/jaza2/natija_3.json",
+  "min": "\"huqul_masula\": 52,",
+  "ila": "\"huqul_masula\": 53,"
+ },
+ {
+  "ism": "P762_jaza2_fahs_hadd_majal",
+  "milaf": "tahaqquq/test_jaza2.py",
+  "min": "m = re.search(r\"theorem majal : majalAadad = \\[([\\d, ]+)\\]\", qiyas)",
+  "ila": "m = re.search(r\"theorem majal : majalAadadX = \\[([\\d, ]+)\\]\", qiyas)"
  }
 ]

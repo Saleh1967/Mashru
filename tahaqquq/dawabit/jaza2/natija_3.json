@@ -1,0 +1,62 @@
+{
+ "tashghil": 3,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد مراجعة murajii: الرأسُ والتعليقات، والواوُ مرفوعًا حالًا بين المجزومين بديلين (س9466–9467، س9488–9489)؛ ولا حالةَ تمسّ ذلك",
+ "qablaha": {
+  "natija_2.json": "2643f3d526322477957f6f693710c51de82c7d342f7244d2ac91649142102f78"
+ },
+ "cases_sha256": "2f8c85a66c3151c6a20450733b80716e32504d63a99523424318a79a78f9079c",
+ "shifra": {
+  "milaf": "Jisr/BaqiJaza.lean",
+  "sha256": "7de65547b9f75e6ad78a33cbc68505730fc5918adf9a4fabe517a13c8b34b51e"
+ },
+ "lean": [
+  "Jisr.BaqiJaza.Qiyas.majal",
+  "Jisr.BaqiJaza.Qiyas.natija",
+  "Jisr.BaqiJaza.Qiyas.natija_fia",
+  "Jisr.BaqiJaza.Qiyas.akhta_2"
+ ],
+ "halat": 44,
+ "huqul_masula": 52,
+ "ihsa": {
+  "sawab": 48,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 2,
+  "tawaqquf": 1,
+  "khata": 1
+ },
+ "bil_fia": {
+  "موجب": 12,
+  "حد": 18,
+  "خارج": 5,
+  "عموم": 7,
+  "غموض": 6
+ },
+ "akhta": [
+  [
+   "B06",
+   "kalam",
+   "ikhtiyar"
+  ],
+  [
+   "B17",
+   "kalam",
+   "tawaqquf"
+  ],
+  [
+   "B33",
+   "kalam",
+   "khata"
+  ],
+  [
+   "B34",
+   "kalam",
+   "ikhtiyar"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى. وفي B33 زادت الشفرةُ في التشغيل الثاني «ضعيف» باتّجاه المؤلّف ولم تبلغه."
+}
