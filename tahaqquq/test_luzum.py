@@ -1,7 +1,7 @@
 """اختبارُ جدول اللزوم من شبكة المعاجم: `shabaka/jadwal_luzum.py` و`Madlul/JadwalLuzumData.lean` و`Madlul/JadwalLuzum.lean`.
 
 ١. نصُّ Lean (دائمًا): منشئاتُ `Naw` الخمسة؛ عددُ الصفوف في الترويسة = عددُها؛ مبرهناتُ الملفّ السبعَ عشرةَ بأسمائها في Audit.lean؛
-   وقائلا `Madlul/JadwalLuzumNaql.lean` اسما `lisan.txt` و`maqayis.txt` المختومين في `mudaat/sijill.json` (طفرتُه P830)، ومبرهناتُه الخمسَ عشرةَ مدقّقة؛
+   وقائلا `Madlul/JadwalLuzumNaql.lean` اسما `lisan.txt` و`maqayis.txt` المختومين في `mudaat/sijill.json` (طفرتُه P830)، ومبرهناتُه السبعَ عشرةَ مدقّقة؛
    وبالمودَع: سنةُ وفاة صاحب كلّ معجمٍ في `wafat` هي `011.AuthorDIED` في رأس مودَعه (فحصٌ بالمودَع بلا طفرةٍ تخصّه: P831 يقتلها البناء).
 ٢. عيّنةٌ مضمَّنة (دائمًا، بلا مودَع): أسطرٌ حقيقيّةٌ منقولةٌ من اللسان والمقاييس بصيغة OpenITI، والمتوقَّعُ مكتوبٌ يدويًّا من قراءتها
    لا من المخرج: «الفهم: معرفتك الشيء بالقلب» جزءان (عرف، قلب)؛ «فهمت الشيء: عقلته وعرفته» مترادفان لا جزءان (R3-ب)؛
@@ -68,8 +68,8 @@ for mujam, milaf in (("lisan", "lisan.txt"), ("maqayis", "maqayis.txt")):
     mq = re.search(r'^  \| \.' + mujam + r' => "([^"]+)"$', naql_src, flags=re.M)
     check(mq and mq.group(1) == SIJILL[milaf]["ism"] and SIJILL[milaf]["hala"] == "مختوم",
           f"قائلُ {mujam} في JadwalLuzumNaql.lean ليس اسمَ {milaf} المختوم في mudaat/sijill.json")
-for t in ("la_mutawatir mutadhafir_iff yashhad_saff la_daraja_bila_saff daraja_jisr yasluh_iff naw_hadd naw_ithnan iltizam_saff "
-          "shahid_luzum_maqayis iltizam_jadwal shahid_hadd shahid_daraja shahid_qiraat shahid_fahm_juz_lisan").split():
+for t in ("la_mutawatir mutadhafir_iff yashhad_saff la_daraja_bila_saff daraja_jisr bila_saff la_yaqra_lafz yasluh_iff naw_hadd "
+          "naw_ithnan iltizam_saff shahid_luzum_maqayis iltizam_jadwal shahid_hadd shahid_daraja shahid_qiraat shahid_fahm_juz_lisan").split():
     check(f"theorem {t}" in naql_src, f"المبرهنة {t} غائبة عن JadwalLuzumNaql.lean")
     check(f"#print axioms JadwalLuzum.{t}\n" in audit, f"المبرهنة JadwalLuzum.{t} غير مدقّقة في Audit.lean")
 

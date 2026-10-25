@@ -4864,5 +4864,11 @@
   "milaf": "Madlul/JadwalLuzum.lean",
   "min": "  | .luzum => [qMutabaqa l m, qIltizam l m b]",
   "ila": "  | .luzum => [qMutabaqa l m, qIltizam l m m]"
+ },
+ {
+  "ism": "P836_naql_daraja_min_lafz",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "Naql.binaDaraja (mujamat T r.a r.b).length, haddOf",
+  "ila": "Naql.binaDaraja (mujamat T r.w r.b).length, haddOf"
  }
 ]

@@ -1196,6 +1196,8 @@ import Jisr.NassItarQiyas
 #print axioms JadwalLuzum.yashhad_saff
 #print axioms JadwalLuzum.la_daraja_bila_saff
 #print axioms JadwalLuzum.daraja_jisr
+#print axioms JadwalLuzum.bila_saff
+#print axioms JadwalLuzum.la_yaqra_lafz
 #print axioms JadwalLuzum.yasluh_iff
 #print axioms JadwalLuzum.naw_hadd
 #print axioms JadwalLuzum.naw_ithnan
