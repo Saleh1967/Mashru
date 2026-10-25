@@ -4786,5 +4786,53 @@
   "milaf": "Jisr/NassItarQiyas.lean",
   "min": "some ⟨complete' (ibtida w), h, q,",
   "ila": "some ⟨complete' (ibtida w), h, q.map (· + 1),"
+ },
+ {
+  "ism": "P823_dalala_iltizam_bila_luzum",
+  "milaf": "Madlul/Dalala.lean",
+  "min": "W.shuhud l ≠ [] ∧ Kharij q (W.maana l) ∧ Z (W.maana l) q",
+  "ila": "W.shuhud l ≠ [] ∧ Kharij q (W.maana l)"
+ },
+ {
+  "ism": "P824_dalala_iltizam_bila_shahid_wad",
+  "milaf": "Madlul/Dalala.lean",
+  "min": "W.shuhud l ≠ [] ∧ Kharij q (W.maana l) ∧ Z (W.maana l) q",
+  "ila": "Kharij q (W.maana l) ∧ Z (W.maana l) q"
+ },
+ {
+  "ism": "P825_naql_saff_bila_qail",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "⟨some (qailOf r.mujam), Naql.binaDaraja",
+  "ila": "⟨none, Naql.binaDaraja"
+ },
+ {
+  "ism": "P826_naql_saff_kharij_hadd",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "(mujamat T r.a r.b).length, none, nawAsl⟩",
+  "ila": "(mujamat T r.a r.b).length, some false, nawAsl⟩"
+ },
+ {
+  "ism": "P827_naql_yashhad_bila_mujam",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "r.mujam == m && r.a == a && r.b == b",
+  "ila": "r.a == a && r.b == b"
+ },
+ {
+  "ism": "P828_naql_daraja_bila_saff_ahad",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "  | 0 => none\n",
+  "ila": "  | 0 => some .ahad\n"
+ },
+ {
+  "ism": "P829_naql_zawj_bila_tartib",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "r.mujam == m && r.a == a && r.b == b",
+  "ila": "r.mujam == m && ((r.a == a && r.b == b) || (r.a == b && r.b == a))"
+ },
+ {
+  "ism": "P830_naql_qail_ghayr_sijill",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "  | .maqayis => \"مقاييس اللغة\"",
+  "ila": "  | .maqayis => \"معجم مقاييس اللغة\""
  }
 ]

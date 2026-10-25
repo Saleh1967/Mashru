@@ -1,6 +1,7 @@
 """اختبارُ جدول اللزوم من شبكة المعاجم: `shabaka/jadwal_luzum.py` و`Madlul/JadwalLuzumData.lean` و`Madlul/JadwalLuzum.lean`.
 
-١. نصُّ Lean (دائمًا): منشئاتُ `Naw` الخمسة؛ عددُ الصفوف في الترويسة = عددُها؛ مبرهناتُ الملفّ السبعَ عشرةَ بأسمائها في Audit.lean.
+١. نصُّ Lean (دائمًا): منشئاتُ `Naw` الخمسة؛ عددُ الصفوف في الترويسة = عددُها؛ مبرهناتُ الملفّ السبعَ عشرةَ بأسمائها في Audit.lean؛
+   وقائلا `Madlul/JadwalLuzumNaql.lean` اسما `lisan.txt` و`maqayis.txt` المختومين في `mudaat/sijill.json` (طفرتُه P830)، ومبرهناتُه التسعُ مدقّقة.
 ٢. عيّنةٌ مضمَّنة (دائمًا، بلا مودَع): أسطرٌ حقيقيّةٌ منقولةٌ من اللسان والمقاييس بصيغة OpenITI، والمتوقَّعُ مكتوبٌ يدويًّا من قراءتها
    لا من المخرج: «الفهم: معرفتك الشيء بالقلب» جزءان (عرف، قلب)؛ «فهمت الشيء: عقلته وعرفته» مترادفان لا جزءان (R3-ب)؛
    «وبنو كتب: بطن، والله أعلم» بلا «علم» (FORMULA؛ و«أعلم» صيغةٌ لـ«علم» بسطر اللسان س235062 في العيّنة)؛ «لأن كتاب الله أمر…» بلا لزوم (TASMIYA؛ و«أمر» جذرٌ بأوّل مادّته س72211 في العيّنة)؛ «وسميت عقالا لأنها تعقل عن صاحبها الطلب»
@@ -59,6 +60,17 @@ for ns, src, ts in (("Naht", naht_src, "aakhidha_bihazz farid_nodup manhut_ithna
     for t in ts.split():
         check(f"theorem {t}" in src, f"المبرهنة {t} غائبة عن {ns}.lean")
         check(f"#print axioms {ns}.{t}\n" in audit, f"المبرهنة {ns}.{t} غير مدقّقة في Audit.lean")
+# النقلُ لصفوف الجدول (Madlul/JadwalLuzumNaql.lean): القائلُ اسمُ المعجم في سجلّ المودَعات بعينه، والمبرهناتُ مدقّقة.
+naql_src = open(os.path.join(ROOT, "Madlul", "JadwalLuzumNaql.lean"), encoding="utf-8").read()
+SIJILL = {x["milaf"]: x for x in json.load(open(os.path.join(ROOT, "mudaat", "sijill.json"), encoding="utf-8"))["sijill"]}
+for mujam, milaf in (("lisan", "lisan.txt"), ("maqayis", "maqayis.txt")):
+    mq = re.search(r'^  \| \.' + mujam + r' => "([^"]+)"$', naql_src, flags=re.M)
+    check(mq and mq.group(1) == SIJILL[milaf]["ism"] and SIJILL[milaf]["hala"] == "مختوم",
+          f"قائلُ {mujam} في JadwalLuzumNaql.lean ليس اسمَ {milaf} المختوم في mudaat/sijill.json")
+for t in ("naql_yasluh la_mutawatir mutadhafir_iff la_daraja_bila_saff asl_min_naql iltizam_min_naql tadammun_min_naql "
+          "shahid_daraja shahid_mutadhafir").split():
+    check(f"theorem {t}" in naql_src, f"المبرهنة {t} غائبة عن JadwalLuzumNaql.lean")
+    check(f"#print axioms JadwalLuzum.{t}\n" in audit, f"المبرهنة JadwalLuzum.{t} غير مدقّقة في Audit.lean")
 
 # ---------- ٢. العيّنة المضمَّنة ----------
 LISAN_AYYINA = """### $ فهم: الفهم: معرفتك الشيء بالقلب. فهمه فهما وفهما وفهامة: علمه؛ الأخيرة
