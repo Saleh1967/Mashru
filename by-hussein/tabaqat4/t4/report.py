@@ -20,6 +20,43 @@ def _claims_by_tabaqa(rec) -> Dict[int, List[dict]]:
     return out
 
 
+def _hokom_rows(rec) -> List[dict]:
+    """صفوفُ المقارنة: تقدير Hokom (رتبة تقدير) بجوار مرشَّح جذر قارئ Mashru ، وخانة AGREE/DISAGREE/ONE_SIDED — تُعرَض ولا تُحسَم."""
+    hok = {c['ism'][len('hokom_'):]: c['qima'] for c in rec['claims'] if c['ism'].startswith('hokom_') and isinstance(c['qima'], dict)}
+    qroots = {c['ism'][len('jidhr_'):]: c['qima'] for c in rec['claims'] if c['ism'].startswith('jidhr_')}
+    rows = []
+    for i, t in enumerate(rec.get('tokens') or []):
+        anchor = t['anchor']
+        h = hok.get(anchor)
+        qari_root = qroots.get(anchor)   # مرشَّح جذر قارئ Mashru إن وُجد (من ادّعاء jidhr_)
+        hroot = h.get('final_root') if h else None
+        if hroot and qari_root:
+            cmp = 'AGREE' if list(hroot) == list(qari_root) else 'DISAGREE'
+        elif hroot or qari_root:
+            cmp = 'ONE_SIDED'
+        else:
+            cmp = '—'
+        rows.append({'surface': t['surface'], 'hokom': h, 'qari_root': qari_root, 'cmp': cmp})
+    return rows
+
+
+def _hokom_block_html(rec, e) -> str:
+    rows = _hokom_rows(rec)
+    if not any(r['hokom'] for r in rows): return ''
+    trs = []
+    for r in rows:
+        h = r['hokom'] or {}
+        col = {'AGREE': '#1b7f3b', 'DISAGREE': '#b3261e', 'ONE_SIDED': '#8a6d00'}.get(r['cmp'], '#777')
+        trs.append(f"<tr><td>{e(r['surface'])}</td><td>{e(str(h.get('word_class')))}/{e(str(h.get('word_class_subclass')))}</td>"
+                   f"<td>{e(str(h.get('final_root')))}</td><td>{e(str(h.get('final_wazn')))}</td>"
+                   f"<td><small>{e('؛ '.join(h.get('active_residuals') or []) or '—')}</small></td>"
+                   f"<td>{e(str(r['qari_root'] or '—'))}</td><td><span style='color:{col}'>{e(r['cmp'])}</span></td></tr>")
+    return ('<h2>٢ج. تقدير Hokom مقابل قارئ Mashru</h2>'
+            '<p><small>رتبة Hokom «تقدير» ؛ يُعرَض ولا يُستهلك في الحكم ؛ المقارنة تُعرَض ولا تُحسَم.</small></p>'
+            '<table><tr><th>الكلمة</th><th>صنف Hokom</th><th>جذر Hokom</th><th>وزن Hokom</th><th>بقايا</th>'
+            '<th>مرشَّح جذر القارئ</th><th>المقارنة</th></tr>' + ''.join(trs) + '</table>')
+
+
 def to_md(rec: Dict[str, Any]) -> str:
     L = []
     inp = rec['input']
@@ -54,6 +91,15 @@ def to_md(rec: Dict[str, Any]) -> str:
                 rc_ = d['qari']['reconcile']; dcell += f" ؛ قارئ Mashru: {rc_['state']}" + (f" ({rc_.get('reason')})" if rc_['state'] != 'AGREE' and rc_.get('reason') else '')
             mcell = (f"`{m['ism']}` {m['ref']}" + (f" ؛ مودَع {m['mudaa']['ism']} {m['mudaa']['sha256'][:8]}" if m.get('mudaa') else ' ؛ بلا مودَع معلَن')) if m else 'NO_SEALED_MADLUL'
             L.append(f"| {t['anchor']} | {t['surface']} | {dcell} | {mcell} | {st3} | {st4} |")
+    hrows = _hokom_rows(rec)
+    if any(r['hokom'] for r in hrows):
+        L.append('\n## ٢ج. تقدير Hokom مقابل قارئ Mashru (تُعرَض ولا تُحسَم ؛ رتبة Hokom «تقدير» ، لا مدلولَ ولا حكم)\n')
+        L.append('| الكلمة | صنف Hokom | جذر Hokom | وزن Hokom | بقايا Hokom | مرشَّح جذر القارئ | المقارنة |')
+        L.append('|---|---|---|---|---|---|---|')
+        for r in hrows:
+            h = r['hokom'] or {}
+            L.append(f"| {r['surface']} | {h.get('word_class')}/{h.get('word_class_subclass')} | {h.get('final_root')} | "
+                     f"{h.get('final_wazn')} | {'؛ '.join(h.get('active_residuals') or []) or '—'} | {r['qari_root'] or '—'} | {r['cmp']} |")
     L.append('\n## ٣. المراحل — الأسئلة السبعة\n')
     L.append('| المرحلة | ' + ' | '.join(q for _, q in Q7) + ' | السبب | البقايا |')
     L.append('|---|' + '---|' * len(Q7) + '---|---|')
@@ -111,6 +157,7 @@ code,pre{{font-family:Menlo,monospace;font-size:12px}}pre{{background:#f0f0f0;pa
 <table><tr><th>الطبقة</th><th>القيمة مترجمة</th><th>الرتبة (سلّم Mashru)</th><th>البرهان / سبب الغياب</th></tr>{''.join(rows)}</table>
 <h2>٢. ما الذي بقي غير محسوم — وسببه</h2>
 {'<ul>' + ''.join(f'<li>{e(u)}</li>' for u in unresolved) + '</ul>' if unresolved else '<p>لا شيء مفتوح في هذا التشغيل داخل نطاق الأداة.</p>'}
+{_hokom_block_html(rec, e)}
 <h2>٣. حدود النتيجة — ما لا يُدَّعى</h2><ul>{''.join(f'<li>{e(x)}</li>' for x in rec['la_yuddaa'])}</ul>
 <details><summary>المراحل — الأسئلة السبعة</summary><table><tr><th>المرحلة</th>{''.join(f'<th>{q}</th>' for _, q in Q7)}<th>السبب</th><th>البقايا</th></tr>{''.join(stg)}</table></details>
 <details><summary>التفاصيل الفنية الكاملة (MD)</summary><pre>{e(md_text)}</pre></details>
