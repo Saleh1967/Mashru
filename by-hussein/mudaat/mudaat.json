@@ -1,0 +1,91 @@
+{
+ "_law": "D5 (أمضاه المالك 2026-10-25): تُقبَل كلمةٌ بجذر ACCEPT من Hokom + قولٍ من المخصّص بسنده + (haqiqa/خواصّ/علاقات/قابليّات) بإمضاء المالك. PENDING لا تدخل Lean. haqiqa≥1000 ؛ 10..60 محجوزة لـMashru.",
+ "sijill": {
+  "كتب": {
+   "surface": "كَتَبَ",
+   "ism_lean": "كتب_m",
+   "status": "PENDING",
+   "haqiqa": null,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": true,
+   "ind": true,
+   "jidhr": {
+    "root": [
+     "ك",
+     "ت",
+     "ب"
+    ],
+    "wazn": "FA_A_LA",
+    "pin": "8a23298076b4",
+    "directive": "ACCEPT"
+   },
+   "makhzan": {
+    "qawl": null,
+    "sanad_claim": null
+   },
+   "imda": {
+    "man": null,
+    "tarikh": null
+   }
+  },
+  "طالب": {
+   "surface": "الطَّالِبُ",
+   "ism_lean": "طالب_m",
+   "status": "PENDING",
+   "haqiqa": null,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": false,
+   "ind": true,
+   "jidhr": {
+    "root": [
+     "ط",
+     "ل",
+     "ب"
+    ],
+    "wazn": "FA3ALA",
+    "pin": "8a23298076b4",
+    "directive": "DEFER"
+   },
+   "makhzan": {
+    "qawl": null,
+    "sanad_claim": null
+   },
+   "imda": {
+    "man": null,
+    "tarikh": null
+   }
+  },
+  "درس": {
+   "surface": "الدَّرْسَ",
+   "ism_lean": "درس_m",
+   "status": "PENDING",
+   "haqiqa": null,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": false,
+   "ind": true,
+   "jidhr": {
+    "root": null,
+    "wazn": null,
+    "pin": "8a23298076b4",
+    "directive": "DEFER"
+   },
+   "makhzan": {
+    "qawl": "mutabaqa:الدرس:أثر",
+    "sanad_claim": "المخزن (Mashru) باللفظ «الدرس»: 1 قول ؛ الأوّل: mutabaqa:الدرس:أثر — سند 936c68e0c2c6@2896932/PageV03P300/الدرس/قائل:صاحب العين"
+   },
+   "imda": {
+    "man": null,
+    "tarikh": null
+   }
+  }
+ }
+}
