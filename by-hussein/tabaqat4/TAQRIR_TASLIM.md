@@ -128,3 +128,35 @@ dd173d0217a4c2b9  t4/core.py
 628ad9744fe6080e  t4/report.py
 2222d7c33950f7f7  tests/test_tabaqat4.py
 ```
+
+## الإصدار 5 (2026-10-25 ، على Mashru@7a902672a330 ، Hokom@8a23298076b4)
+
+**ما تغيّر سلوكيًّا:** فُكَّ السببان اللذان أسكتا جمل تعقّل الستّ: (أ) **اختيار الإطار** صار من النمط (قسمُ الكلمة + al/تنوين)
+عبر `t4/itar_map.json` → إطار Mashru ذي شاهد Itar3 ، ثمّ `hukm3` (الحركةُ يحكمها hukm3 لا الاختيار ، فقلبُ الإعراب يُمسَك ممتنعًا)؛
+(ب) **المعنى** صار يدخل من `by-hussein/mudaat` بإمضاء المالك (D5) مصدرًا ثانيًا بعد qamus ، يُضمَّن نصًّا في Jumla.lean. تقديرُ
+Hokom/تعقّل **يختار** الإطار/النمط ولا **يحكم** (رتبة «تقدير» ، `CONDITIONAL_ON_SELECTED_ITAR`). Hokom وMashru لم يُمَسّا.
+
+- **B6 (itar_map + S5):** `t4/itar_map.json` حاصر: `fiil|ism(al)`→darabaZayd ، `fiil|ism(tanwin)`→jaaRajul ، `fiil|ism(al)|ism(al)`→daraba
+  (شواهدُها في Utur) ؛ `zaydQaim` مُعلَنٌ `UD_WITHOUT_ITAR3_WITNESS` ولا يُستعمل. النمطُ من قسم Hokom (إن حضر) وإلّا قسم المدلول + al/تنوين من السطح ؛
+  `--taaqol` مصدرٌ بديل (عائلات P8) برتبة تقدير ، وتعارضُه مع Hokom `ITAR_SOURCE_CONFLICT` (Hokom يغلب). نمطٌ غير مُخرَّط → `ITAR_UNMAPPED`.
+  **قبوله:** T20 (daraba مختار ، hukm3 مبرهَن ، 4 طبقات ، axioms⊆) ، T25 (ITAR_UNMAPPED) ، T26 (TAAQOL_P8 + ITAR_SOURCE_CONFLICT) — خضراء.
+- **B7 (المودَعات D5):** `by-hussein/mudaat/` (mudaat.json ، Mudaat.lean يمرّ قائمًا بذاته ، MUDAAT_IMDA.md) ؛ `mudaat_prep.py` يجهّز PENDING من تشغيلٍ
+  (الجذر من Hokom ، القول بسنده ، tim من القسم ؛ haqiqa/قابليّة للمالك ، لا تُقترَح)؛ S4 يحمّل RATIFIED فقط ، haqiqa≥1000 والمحجوزة/المصادِمة مرفوضة ،
+  والمودَعات تُضمَّن نصًّا في Jumla.lean (لا استيرادَ وحدةٍ خارج مكتبة Mashru). **قبوله:** T21 (laHukm بقاعدة Mashru) ، T23 (PENDING لا يدخل) ، T24 (MUDAA_HAQIQA_COLLISION) — خضراء.
+- **B8:** T1–T18 + T20–T27 ملفًا ملفًا: **26/26 ran ، 0 NOT_RUN** (≈57 ث). (ملفّات «T19» المذكورة في الأمر غير موجودة على هذا الفرع — أُعلِن.)
+- **B9:** إيداعٌ لكلّ بند ؛ عيّنتا C02 (بمودَعات الاختبار → EXECUTED ؛ وبدونها → OUT كما كان) ؛ ورقة الإمضاء.
+
+**ما بقي وسببه (معلَنٌ):**
+- **مودَعات RATIFIED = صفر**: mudaat.json فيه PENDING فقط (كتب/طالب/درس ، جُهّزت من تشغيل فعليّ)؛ لا تدخل Lean حتى يُمضي المالك الخانات الثلاث (D5). عيّنة C02 التنفيذيّة استعملت **fixture اختبار** مُعلَنةً أنّها ليست إمضاءً.
+- **ITAR_AMBIGUOUS غيرُ مُستثار**: بمفاتيح النمط القاطعة (قسم+al/تنوين) لا ينشأ تعدّدٌ ؛ الحارس باقٍ للخلايا غير المقروءة (يسبقه توقّفُ الدالّ عادةً) ؛ لم يُشغَّل اختبارٌ له — أُعلِن.
+- **الأطر المغلَّفة** = darabaZayd/jaaRajul/daraba + باب الجزاء ؛ bikam/kanaUD/lamYafalUD/lanYafalUD لها شواهد في Utur ولم تُدرَج في itar_map بعد (أنماطها تحتاج قراءةَ أدواتٍ/حروفِ جرّ من السطح) — تبقى OUT_OF_EXECUTED_PATH باسمها.
+
+**الأعلام:**
+```
+TABAQAT4_SCOPE_TESTS_PASS = YES (26/26 ran ؛ 0 NOT_RUN) — Mashru@7a902672a330
+CORE_SANITY_PASS          = نعم (T22: بصمة شجرة Hokom قبل=بعد ؛ T8/T22: Mashru نظيف ، لا كتابة خارج by-hussein)
+FULL_TREE_BASELINE        = لم يُعَد تشغيل بوّابة الأمّ (تغييري بايثونٌ محض خارج شجرة البناء) ؛ 1522/515/44 بآخر تشغيلٍ سابق
+HOKOM_TREE_SHA_BEFORE     = 5ddc0c35a9324c6f6fcee36f6229751f
+HOKOM_TREE_SHA_AFTER      = 5ddc0c35a9324c6f6fcee36f6229751f   (متطابقتان ؛ Hokom لم يُمَسّ)
+MASHRU_HEAD               = 7a902672a330 ؛ HOKOM_PIN = 8a23298076b4
+```
