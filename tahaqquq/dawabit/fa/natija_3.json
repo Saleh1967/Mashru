@@ -1,0 +1,52 @@
+{
+ "tashghil": 3,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد مراجعة murajii: الرأسُ والتعليقاتُ والأوسام (ومنها الإفصاحُ عن تشغيلٍ على الحالات لم يُسجَّل قبل natija_2)، بلا تغييرٍ في الأحكام",
+ "qablaha": {
+  "natija_2.json": "bd9eac42f8738ec760cec9d401e6a7c949a21b51d705c04392d20e8fd3339dc8"
+ },
+ "cases_sha256": "7eda15eb08e723e7e02caf1f05e9639debce0a781ed00d2c742c898495d8a4c8",
+ "shifra": {
+  "milaf": "Jisr/BabFa.lean",
+  "sha256": "88460f2aaea9315d1133624e2d51deadce68526c36340628b6e3ba357baa48ca"
+ },
+ "lean": [
+  "Jisr.BabFa.Qiyas.majal",
+  "Jisr.BabFa.Qiyas.natija",
+  "Jisr.BabFa.Qiyas.natija_fia",
+  "Jisr.BabFa.Qiyas.akhta_2"
+ ],
+ "halat": 39,
+ "huqul_masula": 48,
+ "ihsa": {
+  "sawab": 46,
+  "naqsTaghtiya": 0,
+  "tajawuz": 1,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtilafDaraja": 0,
+  "ikhtiyar": 1,
+  "tawaqquf": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 24,
+  "حد": 7,
+  "خارج": 4,
+  "عموم": 6,
+  "غموض": 5
+ },
+ "akhta": [
+  [
+   "F30",
+   "kalam",
+   "ikhtiyar"
+  ],
+  [
+   "F38",
+   "kalam",
+   "tajawuz"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى. وصُحّحت أرقامُ أسطرٍ في رأس الشفرة بعد هذا التشغيل وقبل إيداع هذا السجلّ، فبصمةُ الشفرة هنا بصمتُها بعد التصحيح، والأحكامُ لم تتغيّر."
+}

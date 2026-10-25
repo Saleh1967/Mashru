@@ -1,0 +1,30 @@
+{
+ "naw": "ضابط مجمَّد",
+ "minhaj": "hawkama/منهج_الضوابط.md، الإصدار ١ (بفئة غموض)",
+ "qita": "هذا باب الفاء (كتاب سيبويه، س8914–9049): الفعلُ بعد الفاء في الواجب وغير الواجب",
+ "masdar": {
+  "milaf": "sibawayhi.txt",
+  "sha256": "a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625"
+ },
+ "wasf_sha256": "99acaf4e5eaab4fa53528d9d50ffb9de7f25fb0c3a0a782a242047fe4aa350aa",
+ "cases_sha256": "7eda15eb08e723e7e02caf1f05e9639debce0a781ed00d2c742c898495d8a4c8",
+ "fahs_cases_sha256": "9a970047ce2dc33c285e671a3810914fd9087674fe079753e5127edef9e8b00b",
+ "taalif_sha256": "3e5400e76d906ab6b4c1f422b876de3132cc94c10e281266d09ee7555d1fb7a9",
+ "muallif": "وكيلٌ جديد (general-purpose) بالمواصفة والمصدر وحدهما، بتوجيهٍ محفوظٍ بنصّه في tawjih_muallif.md؛ وحقنت البيئةُ في سياقه آليًّا CLAUDE.md ولقطةً من ذاكرة المستخدم (أفصح بذلك في taalif.md)؛ أجاب البنّاءَ بالبصمات والأعداد وحدها",
+ "aadad_muallif": {
+  "jumla": 39,
+  "موجب": 19,
+  "حد": 6,
+  "خارج": 5,
+  "عموم": 4,
+  "غموض": 5,
+  "harfi": 26
+ },
+ "tawjih": {
+  "milaf": "tawjih_muallif.md",
+  "arsil": "2026-10-25T04:23:54.544Z"
+ },
+ "fahs_sijill": "sijill_muallif.json: أدواتُ المؤلّف ومساراتُه من سجلّه، بلا محتوى ما كتب؛ لا مسارَ خارج مجلّده والمصدر",
+ "tajmid": "2026-10-25T08:02+03:00",
+ "qabl_shifra": "جُمّد قبل إيداع الشفرة؛ والبنّاء لم يقرأ cases.json ولا taalif.md عند التجميد"
+}
