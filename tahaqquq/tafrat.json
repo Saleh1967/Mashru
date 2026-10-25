@@ -3526,5 +3526,29 @@
   "milaf": "Jisr/NafyFil.lean",
   "min": "    if ithbatQasam z == some s && q.siyaq != .jawabHal && halYuwafiq q.hal z then nafyQasam z else none)",
   "ila": "    if ithbatQasam z == some s && q.siyaq != .jawabHal then nafyQasam z else none)"
+ },
+ {
+  "ism": "P716_nafy_bil_fia",
+  "milaf": "tahaqquq/dawabit/nafy/natija_3.json",
+  "min": "\"موجب\": 15",
+  "ila": "\"موجب\": 14"
+ },
+ {
+  "ism": "P717_nafy_fia_json",
+  "milaf": "tahaqquq/test_nafy.py",
+  "min": "        fia[h[\"fia\"]] += 1 + (h[\"kharij\"][\"shir\"] != \"غير_مسؤول\")",
+  "ila": "        fia[h[\"fia\"]] += 2 + (h[\"kharij\"][\"shir\"] != \"غير_مسؤول\")"
+ },
+ {
+  "ism": "P718_nafy_tashghil",
+  "milaf": "tahaqquq/dawabit/nafy/natija_3.json",
+  "min": "\"tashghil\": 3",
+  "ila": "\"tashghil\": 4"
+ },
+ {
+  "ism": "P719_nafy_cases_natija",
+  "milaf": "tahaqquq/dawabit/nafy/natija_3.json",
+  "min": "\"cases_sha256\": \"30271f86d033784c08d02bce3721c6e4697b6c3163017d3542dafaba4df099a5\"",
+  "ila": "\"cases_sha256\": \"70271f86d033784c08d02bce3721c6e4697b6c3163017d3542dafaba4df099a5\""
  }
 ]
