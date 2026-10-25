@@ -3463,21 +3463,21 @@
  },
  {
   "ism": "P548_majari_basmat_shifra",
-  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
-  "min": "\"sha256\": \"5871ea01de787fdc4eb2372a3257a518465da96dc39daf98567f9586c3dcf350\"",
-  "ila": "\"sha256\": \"7871ea01de787fdc4eb2372a3257a518465da96dc39daf98567f9586c3dcf350\""
+  "milaf": "tahaqquq/dawabit/majari/natija_4.json",
+  "min": "\"sha256\": \"d55fce301ee282b957b356fbb0676628cb7b284389299e8801e214fa4c34169f\"",
+  "ila": "\"sha256\": \"755fce301ee282b957b356fbb0676628cb7b284389299e8801e214fa4c34169f\""
  },
  {
   "ism": "P549_majari_sawab",
-  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
+  "milaf": "tahaqquq/dawabit/majari/natija_4.json",
   "min": "  \"sawab\": 39,",
   "ila": "  \"sawab\": 38,"
  },
  {
   "ism": "P550_majari_qablaha",
-  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
-  "min": "\"natija_2.json\": \"16c86bd70a649752a389fa9afb31a108c6427422d453c9b8bd07443b32d5d517\"",
-  "ila": "\"natija_2.json\": \"76c86bd70a649752a389fa9afb31a108c6427422d453c9b8bd07443b32d5d517\""
+  "milaf": "tahaqquq/dawabit/majari/natija_4.json",
+  "min": "\"natija_3.json\": \"1322d38e7e9569a39ceb0f89146e72603a45a42786a84639219da6bfce024404\"",
+  "ila": "\"natija_3.json\": \"7322d38e7e9569a39ceb0f89146e72603a45a42786a84639219da6bfce024404\""
  },
  {
   "ism": "P551_majari_natija_1",
@@ -3493,13 +3493,13 @@
  },
  {
   "ism": "P553_majari_lean",
-  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
+  "milaf": "tahaqquq/dawabit/majari/natija_4.json",
   "min": "\"Jisr.MajariKalim.Qiyas.natija_fia\",",
   "ila": "\"Jisr.MajariKalim.Qiyas.majal\","
  },
  {
   "ism": "P554_majari_akhta",
-  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
+  "milaf": "tahaqquq/dawabit/majari/natija_4.json",
   "min": "\"akhta\": [],",
   "ila": "\"akhta\": [[\"M18\", \"naqsTaghtiya\"]],"
  },
@@ -3511,7 +3511,7 @@
  },
  {
   "ism": "P556_majari_halat",
-  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
+  "milaf": "tahaqquq/dawabit/majari/natija_4.json",
   "min": "\"halat\": 39,",
   "ila": "\"halat\": 40,"
  },
@@ -3523,7 +3523,7 @@
  },
  {
   "ism": "P708_majari_bil_fia",
-  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
+  "milaf": "tahaqquq/dawabit/majari/natija_4.json",
   "min": "\"موجب\": 20",
   "ila": "\"موجب\": 19"
  },
@@ -3535,13 +3535,13 @@
  },
  {
   "ism": "P710_majari_tashghil",
-  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
-  "min": "\"tashghil\": 3",
-  "ila": "\"tashghil\": 4"
+  "milaf": "tahaqquq/dawabit/majari/natija_4.json",
+  "min": "\"tashghil\": 4",
+  "ila": "\"tashghil\": 5"
  },
  {
   "ism": "P711_majari_cases_natija",
-  "milaf": "tahaqquq/dawabit/majari/natija_3.json",
+  "milaf": "tahaqquq/dawabit/majari/natija_4.json",
   "min": "\"cases_sha256\": \"0d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20\"",
   "ila": "\"cases_sha256\": \"7d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20\""
  }
