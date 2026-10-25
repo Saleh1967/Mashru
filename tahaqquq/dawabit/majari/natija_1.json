@@ -1,0 +1,63 @@
+{
+ "tashghil": 1,
+ "naw": "التشغيلُ الأوّل على الحالات المجمَّدة، بعد دفع الشفرة وقبل أيّ تعديلٍ لها",
+ "cases_sha256": "0d53e2c218d12c8ea1780ef573255576907d09a08fc4166e415d06a67a822c20",
+ "shifra": {
+  "milaf": "Jisr/MajariKalim.lean",
+  "sha256": "82bde1c7f16789d11c537f470e6a917cf6289667de434e1bb5ab1518a689d226",
+  "iydaa": "7ce1cfbccc2ea79f740c707f7601c3f6cd3355c3"
+ },
+ "lean": [
+  "Jisr.MajariKalim.Qiyas.majal",
+  "Jisr.MajariKalim.Qiyas.natija",
+  "Jisr.MajariKalim.Qiyas.natija_fia",
+  "Jisr.MajariKalim.Qiyas.akhta_1"
+ ],
+ "halat": 39,
+ "huqul_masula": 39,
+ "ihsa": {
+  "sawab": 33,
+  "naqsTaghtiya": 1,
+  "tajawuz": 1,
+  "qabulKhati": 2,
+  "raddKhati": 0,
+  "khataBina": 0,
+  "ikhtiyar": 2,
+  "khataAlama": 0
+ },
+ "bil_fia": {
+  "موجب": 19,
+  "حد": 3,
+  "خارج": 4,
+  "عموم": 6,
+  "غموض": 1
+ },
+ "akhta": [
+  [
+   "M18",
+   "naqsTaghtiya"
+  ],
+  [
+   "M24",
+   "qabulKhati"
+  ],
+  [
+   "M25",
+   "qabulKhati"
+  ],
+  [
+   "M26",
+   "tajawuz"
+  ],
+  [
+   "M38",
+   "ikhtiyar"
+  ],
+  [
+   "M39",
+   "ikhtiyar"
+  ]
+ ],
+ "tarikh": "2026-10-25",
+ "malahiz": "الأعدادُ من #eval على Jisr/MajariKalimQiyas.lean ثمّ مبرهناتٍ بـ decide +kernel؛ وbil_fia عددُ الحالات الصائبة في كلّ فئة."
+}
