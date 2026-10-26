@@ -307,6 +307,108 @@ class T(unittest.TestCase):
         self.assertEqual(json.dumps(a, ensure_ascii=False, sort_keys=True), json.dumps(b, ensure_ascii=False, sort_keys=True))
 
 
+    # ======================= D6 (v6) : T28..T34 =======================
+    def _sources_ok(self):
+        from t4 import hfn_d6 as D
+        if not Path(D.HFN_V18).exists(): return 'HFN_V18_ABSENT'
+        if not Path(D.MAQAYIS).exists(): return 'MAQAYIS_DB_ABSENT'
+        return None
+
+    def test_T28_sources_frozen(self):
+        """T28 تجميد المصادر: sha256 المحتوى لـHFN release_v18 و maqayis.db و Hokom قبل تصنيف D6 وبعده = متطابق."""
+        hr = self._hokom_ok() or self._sources_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        import hashlib as _h
+        from t4 import hfn_d6 as D
+        import hokom_adapter as HK
+        def tree(root):
+            root = Path(root); lines = []
+            for p in sorted(root.rglob('*')):
+                if p.is_file() and '/.git/' not in str(p):
+                    lines.append(f'{p.relative_to(root)}\t{_h.sha256(p.read_bytes()).hexdigest()}\n')
+            return _h.sha256(''.join(sorted(lines)).encode()).hexdigest()
+        filesha = lambda p: _h.sha256(Path(p).read_bytes()).hexdigest()
+        before = (tree(D.HFN_V18), filesha(D.MAQAYIS), tree('/Users/husseinhiyassat/hokom'))
+        hfn = D.HFN(); D.d6_classify('ذَهَبَ', HK.taqdir(['ذَهَبَ'])[0], hfn)   # يقرأ المصادر
+        after = (tree(D.HFN_V18), filesha(D.MAQAYIS), tree('/Users/husseinhiyassat/hokom'))
+        self.assertEqual(before, after, 'SOURCE_TREE_CHANGED (HFN/maqayis/Hokom)')
+
+    def test_T29_d6_full_one_word(self):
+        """T29 D6 كامل على «ذَهَبَ» → RATIFIED_BY_RULE ، الوحدة موجودة في lexical_units بمعرّفها ، haqiqa=دالّتها ، imda.qanun=D6.
+        (إطار الجملة لا يُبرهَن هنا: فاعلُ «ذَهَبَ الْوَلَدُ» PENDING ⇒ NO_SEALED_MADLUL — معلَن في D6_COVERAGE)."""
+        hr = self._hokom_ok() or self._sources_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        from t4 import hfn_d6 as D
+        import hokom_adapter as HK, csv
+        r = D.d6_classify('ذَهَبَ', HK.taqdir(['ذَهَبَ'])[0], D.HFN())
+        self.assertEqual(r['status'], 'RATIFIED_BY_RULE', r)
+        self.assertTrue(r['tim'])
+        self.assertEqual(r['haqiqa'], D.haqiqa_of({'pos': r['pos'], 'lu_id': r['unit']}))   # دالّة ثابتة
+        self.assertGreaterEqual(r['haqiqa'], 100000)
+        # الوحدة بمعرّفها فعلًا في lexical_units.csv بنفس اللِّيمة
+        found = [x for x in csv.DictReader(open(Path(D.HFN_V18) / 'lexical_units.csv', encoding='utf-8'))
+                 if x['lu_id'] == r['unit']]
+        self.assertEqual(len(found), 1, r['unit']); self.assertEqual(found[0]['lemma'], r['unit_lemma'])
+
+    def test_T30_root_mismatch_no_number(self):
+        """T30 جذر Hokom ≠ جذر HFN (fixture) → PENDING:D6_ROOT_MISMATCH ، لا رقم يُولَّد"""
+        from t4 import hfn_d6 as D
+        hfn = D.HFN.from_records([{'lu_id': 'X#V', 'lemma': 'كَتَبَ', 'pos': 'فعل', 'event_id': 'X', 'root_K': 'خبر'}])
+        hok = {'final_root': ['ك', 'ت', 'ب'], 'word_class': 'FI3L', 'directive': 'ACCEPT'}
+        r = D.d6_classify('كَتَبَ', hok, hfn)
+        self.assertEqual(r['status'], 'PENDING'); self.assertEqual(r['reason'], 'D6_ROOT_MISMATCH')
+        self.assertNotIn('haqiqa', r)
+
+    def test_T31_ambiguous_no_tiebreak(self):
+        """T31 وحدتان في HFN للِّيمة+الجذر+القسم نفسها (fixture) → PENDING:D6_AMBIGUOUS_UNIT:2 ، لا ترجيح"""
+        from t4 import hfn_d6 as D
+        hfn = D.HFN.from_records([
+            {'lu_id': 'A#V', 'lemma': 'دَرَسَ', 'pos': 'فعل', 'event_id': 'A', 'root_K': 'درس'},
+            {'lu_id': 'B#V', 'lemma': 'دَرَسَ', 'pos': 'فعل', 'event_id': 'B', 'root_K': 'درس'}])
+        hok = {'final_root': ['د', 'ر', 'س'], 'word_class': 'FI3L', 'directive': 'ACCEPT'}
+        r = D.d6_classify('دَرَسَ', hok, hfn)
+        self.assertEqual(r['reason'], 'D6_AMBIGUOUS_UNIT:2'); self.assertNotIn('haqiqa', r)
+        self.assertEqual(sorted(r['units']), ['A#V', 'B#V'])
+
+    def test_T32_haqiqa_stable_no_collision(self):
+        """T32 ثبات haqiqa: دالّة نقية تُعيد نفس الرقم ؛ والنطاق ≥100000 (لا يصادم اليدويّ 1001–9999 ولا Mashru 10..60)"""
+        from t4 import hfn_d6 as D
+        u = {'pos': 'فعل', 'lu_id': 'HFN-E-b40eb66aa6#V'}
+        h1 = D.haqiqa_of(u); h2 = D.haqiqa_of(dict(u))
+        self.assertEqual(h1, h2); self.assertGreaterEqual(h1, 100000); self.assertFalse(10 <= h1 <= 60)
+
+    def test_T33_manual_shadows_d6(self):
+        """T33 مودَع يدويّ RATIFIED + D6 للكلمة نفسها → اليدويّ يبقى ، وD6_SHADOWED_BY_MANUAL معلَن ، لا يُضاف مودَع D6"""
+        hr = self._hokom_ok() or self._sources_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        import mudaat_prep as MP
+        from t4 import hfn_d6 as D
+        existing = {'كتب': {'surface': 'كَتَبَ', 'ism_lean': 'kataba_m', 'status': 'RATIFIED', 'haqiqa': 1001}}
+        d6e, pend, shadowed, cov = MP.prep_d6(['كَتَبَ'], existing, D.HFN(), 'sha', '2026-10-27')
+        self.assertIn('كتب', shadowed); self.assertNotIn('كتب', d6e)
+
+    def test_T34_awn_not_read(self):
+        """T34 AWN لم يُقرأ: لا مسار يحوي 'wordnet' في أيّ open() أثناء تصنيف D6 (تغليف builtins.open)"""
+        hr = self._hokom_ok() or self._sources_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        import builtins
+        from t4 import hfn_d6 as D
+        import hokom_adapter as HK
+        opened = []
+        real_open = builtins.open
+        def spy(path, *a, **k):
+            try: opened.append(str(path))
+            except Exception: pass
+            return real_open(path, *a, **k)
+        builtins.open = spy
+        try:
+            D.d6_classify('ذَهَبَ', HK.taqdir(['ذَهَبَ'])[0], D.HFN())
+        finally:
+            builtins.open = real_open
+        bad = [p for p in opened if 'wordnet' in p.lower() or 'awn' in p.lower().split('/')]
+        self.assertEqual(bad, [], bad)
+
+
 class Reporter(unittest.TextTestResult):
     def addSuccess(self, t): super().addSuccess(t); RESULTS[t._testMethodName] = 'PASS'
     def addFailure(self, t, e): super().addFailure(t, e); RESULTS[t._testMethodName] = 'FAIL'
