@@ -53,6 +53,7 @@ Madlul.JadwalLuzum	T6	لا	جدول اللزوم من شبكة المعاجم
 Madlul.JadwalLuzumData	T6	نعم	بيانات جدول اللزوم (مولَّدة)
 Madlul.JadwalLuzumNaw	T6	نعم	أنواع صفّ جدول اللزوم
 Madlul.JadwalLuzumNaql	T6	لا	النقلُ لصفوف جدول اللزوم: قائلُ كلّ صفٍّ معجمُه، ودرجتُه بعدد المعجمين للزوج (Aql.Naql)
+Madlul.TasisDalala	T6	لا	شبكةُ الدلالة: الدورُ والتأسيس — المعرَّفُ من أساسٍ ومجموعاتُه الموقوفة، والإغلاقُ المحسوب، وشاهدُه على جدول اللزوم
 Jisr.JadwalLuzum	T6	لا	جدول اللزوم من المقاييس واللسان: سبعة جذوعٍ ثلاثيّة (حوامل بلا حركة، لا 116) ومركزيّة «علم»، مغروسٌ في Madlul.Dalala وAql.QawaninDalala
 Madlul.Ishtirak	T6	لا	اتّفاق اللفظين واختلاف المعنيين
 Madlul.IshtirakData	T6	لا	بيانات الاشتراك (مولَّدة)
