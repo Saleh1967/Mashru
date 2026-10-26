@@ -1,0 +1,58 @@
+{
+ "tashghil": 5,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد ردّ S14 وS24 وS25 إلى الشفرة المجمَّدة (المراجعة الخامسة)",
+ "cases_sha256": "f23fee33de9b5a37f78cc848603823d4b5dce0664695e48aedd9b06ca68ce446",
+ "qablaha": {
+  "natija_4.json": "8384cbdf82b3ebd00b0d7b0bd03cb498ed4cd447943d3e923dcb871351979185"
+ },
+ "shifra": {
+  "milaf": "Jisr/SakkJumla.lean",
+  "sha256": "ac5dff15bc8af2c49060c42a78b20af0ae7f1f2fb510d8854817d559f2f82a53"
+ },
+ "lean": [
+  "Jisr.SakkJumla.Qiyas.majal",
+  "Jisr.SakkJumla.Qiyas.natija",
+  "Jisr.SakkJumla.Qiyas.natija_fia",
+  "Jisr.SakkJumla.Qiyas.akhta_5"
+ ],
+ "halat": 42,
+ "huqul_masula": 54,
+ "ihsa": {
+  "sawab": 50,
+  "naqsTaghtiya": 2,
+  "tajawuz": 0,
+  "ikhtiyar": 1,
+  "khata": 1
+ },
+ "bil_fia": {
+  "موجب": 21,
+  "حد": 8,
+  "خارج": 4,
+  "عموم": 11,
+  "غموض": 6
+ },
+ "akhta": [
+  [
+   "S01",
+   "awwal",
+   "ikhtiyar"
+  ],
+  [
+   "S14",
+   "sabab",
+   "naqsTaghtiya"
+  ],
+  [
+   "S24",
+   "sabab",
+   "naqsTaghtiya"
+  ],
+  [
+   "S25",
+   "sabab",
+   "khata"
+  ]
+ ],
+ "tarikh": "2026-10-26",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json، 48 من 54) هو القياسُ الأعمى. رُدّت S14 وS24 وS25 إلى الشفرة المجمَّدة: عُدّلت بعد خيار المالك «عدّلها بسندٍ من النطاق» (من سؤالٍ متعدّد الخيارات، ونصُّ الخيار من البنّاء)، وما في النطاق لا يسند التعديلَ وحده: S14 تعميمٌ من شاهدَي المغني في النطاق (س12997، س13003)، وS24 إخراجُ «غير مذكور» لمُدخَلٍ يقول مصدرُه «فلا يجوز» (المغني س2836)، وS25 تركُ أحد وجهي الكتاب («فالنصب على وجهين من المعاني» س8945). والردُّ قرارُ البنّاء على شرط الخيار، وينتظر قرارَ المالك. وما قاله natija_3.json إنّه سندُ التعديلات لا يصدق، وفي natija_4.json «شاهدَي المغني» تحت العنوان والشاهدُ الثالث تحته خارج النطاق (س13008). وفي هذا التشغيل أيضًا: حُذفت masdar_wa_fa وأسانيدُ التعديلات (rakdan، yurikumKhawfan، jaaRaghba، ibnMalikHajib، hattaLaYakunSabab)، وبقي من أسانيد المراجعات السابقة hattaMusabbab وhattaRafIllaSabab وhattaLaYatasabbab سندًا لـ«لا حكم» في «حتى» المرفوعة، وfaJawab. S38 وS42: الإشارةُ إلى اثنين «لا حكم» باختيار المالك. والإخفاقاتُ الأربعةُ إخفاقاتُ natija_1.json بلا S38 وS42."
+}

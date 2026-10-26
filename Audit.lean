@@ -1996,7 +1996,6 @@ import Madlul.TasisDalala
 #print axioms Jisr.SakkJumla.zarf_laysa_sabab
 #print axioms Jisr.SakkJumla.lamma_wajhan
 #print axioms Jisr.SakkJumla.hatta_wa_fa
-#print axioms Jisr.SakkJumla.masdar_wa_fa
 #print axioms Jisr.SakkJumla.muayyan_iff
 #print axioms Jisr.SakkJumla.ithnan_la_yataayyan
 #print axioms Jisr.SakkJumla.ishara_ithnan_la_hukm
@@ -2019,7 +2018,7 @@ import Madlul.TasisDalala
 #print axioms Jisr.SakkJumla.Qiyas.majal
 #print axioms Jisr.SakkJumla.Qiyas.natija
 #print axioms Jisr.SakkJumla.Qiyas.natija_fia
-#print axioms Jisr.SakkJumla.Qiyas.akhta_3
+#print axioms Jisr.SakkJumla.Qiyas.akhta_5
 
 -- تمامُ التدقيق (tahaqquq/test_tadqiq_tamm.py، 2026-10-26): مبرهناتٌ عامّةٌ مبنيّةٌ لم تكن هنا، بترتيبها في ملفّاتها.
 -- SLGE.Core

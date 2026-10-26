@@ -70,7 +70,7 @@ NITAQ = {
 }
 NATIJA_1 = "64bb617f91fd1d1f04c1883df3dbffa5d1b52c70855e1c8c67ec49c7cb43c246"  # natija_1.json كما أُودع أوّلًا
 NS = "Jisr.SakkJumla.Qiyas."
-LEAN_NATIJA = [NS + x for x in ["majal", "natija", "natija_fia", "akhta_3"]]
+LEAN_NATIJA = [NS + x for x in ["majal", "natija", "natija_fia", "akhta_5"]]
 HUQUL_IHSA = ["sawab", "naqsTaghtiya", "tajawuz", "ikhtiyar", "khata"]
 FIAT = ["موجب", "حد", "خارج", "عموم", "غموض"]
 NABT_REF = "evidence/semantic_axes_v1/revision_2/reference.json"
