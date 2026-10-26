@@ -1,0 +1,58 @@
+{
+ "tashghil": 8,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد المراجعة الثامنة، بلا تغييرٍ في دوالّ الحكم",
+ "cases_sha256": "f23fee33de9b5a37f78cc848603823d4b5dce0664695e48aedd9b06ca68ce446",
+ "qablaha": {
+  "natija_7.json": "19dc0d75cf15d3eaf81bf70a9196cc8959f9208046a4c4d831ad0853aa32f6fa"
+ },
+ "shifra": {
+  "milaf": "Jisr/SakkJumla.lean",
+  "sha256": "47ee37d29a00e32ae3c10c52d8bafc574c1a71e17075b2b4bfef268bfb41a969"
+ },
+ "lean": [
+  "Jisr.SakkJumla.Qiyas.majal",
+  "Jisr.SakkJumla.Qiyas.natija",
+  "Jisr.SakkJumla.Qiyas.natija_fia",
+  "Jisr.SakkJumla.Qiyas.akhta_5"
+ ],
+ "halat": 42,
+ "huqul_masula": 54,
+ "ihsa": {
+  "sawab": 50,
+  "naqsTaghtiya": 2,
+  "tajawuz": 0,
+  "ikhtiyar": 1,
+  "khata": 1
+ },
+ "bil_fia": {
+  "موجب": 21,
+  "حد": 8,
+  "خارج": 4,
+  "عموم": 11,
+  "غموض": 6
+ },
+ "akhta": [
+  [
+   "S01",
+   "awwal",
+   "ikhtiyar"
+  ],
+  [
+   "S14",
+   "sabab",
+   "naqsTaghtiya"
+  ],
+  [
+   "S24",
+   "sabab",
+   "naqsTaghtiya"
+  ],
+  [
+   "S25",
+   "sabab",
+   "khata"
+  ]
+ ],
+ "tarikh": "2026-10-26",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json، 48 من 54) هو القياسُ الأعمى. تصحيحٌ لما قبله: مدى المصدر المنصوب في النطاق منه المغني س12981–13006 والقطر س293–296 (وفي natija_7.json س12964–13006 وس293–298، وفيهما ما ليس منه)؛ وشاهدُ «يريكم البرق خوفا وطمعا» س12997–12998 (وفي natija_5.json س12997)؛ وnatija_6.json نقل «تعميمٌ من شاهدَي المغني» بلا «في النطاق» الذي في natija_5.json. وفي هذا التشغيل: المدى في رأس الشفرة، ولا تغييرَ في دوالّ الحكم. والقرارُ في S14 وS24 وS25 ينتظر المالك. S38 وS42: الإشارةُ إلى اثنين «لا حكم» باختيار المالك."
+}
