@@ -220,3 +220,70 @@ C02_REAL_DEPOSIT          = EXECUTED ؛ 4 طبقات «مبرهن على الش�
 HOKOM_TREE_SHA256         = 478fd4dd27d30a61ead730de2a2df1206c19cb98475a4f339c960fd7342ac8c3  (15949 ملفًّا ؛ قبل=بعد ؛ لم يُمَسّ)
 ISOLATION                 = كلّ التغييرات تحت by-hussein/ (mudaat.json ، Mudaat.lean ، t4/core.py ، tests ، _runs_samples/c02_*) — لا شيء خارجها
 ```
+
+## الإصدار 6 (2026-10-27) — قانون الإيداع بالجملة D6 (HFN + المقاييس)
+
+**ما تغيّر سلوكيًّا:** مصدرٌ ثالثٌ للمعنى — بعد qamus (شاهد Mashru) والمودَع اليدويّ (D5) — هو **D6**: مودَعٌ يُعدّ
+`RATIFIED_BY_RULE` إذا اجتمعت شروطه الستّة من HFN release_v18 + المقاييس + Hokom. المصادر الثلاثة READ_ONLY ولم تُمَسّ.
+AWN لم يُقرأ (T34). لا كاش ولا بايتكود تحت HFN. القانون D6 بنصّه في `OWNER_QUESTIONS_v6` و`t4/hfn_map.json`.
+
+**B10 — قياس التغطية (ungarnished):**
+```
+SURFACES_MEASURED = 14   (من سبع جملٍ مستردَّة فعلًا من _runs_samples ؛ «C01–C07» والنصّ الطويل غير موجودَين نصًّا — OWNER_QUESTIONS_v6 س1)
+D6_FULL           = 3    (ذَهَبَ 745695 ، كَتَبَ 1050082 ، مَالِكٌ 891697)
+D6_PENDING        = 11   : D6_HOKOM_ROOT_NULL=5 ، D6_HOKOM_NOT_ACCEPT(DEFER)=2 ، D6_NO_HFN_UNIT=4 (منها حرف)
+                          ROOT_MISMATCH=0 ، AMBIGUOUS=0 ، NO_SANAD=0
+```
+القرار الذي يحسمه القياس: **أكبر مصدر تأجيل هو Hokom لا HFN** (7/11). و«كَتَبَ الطَّالِبُ الدَّرْسَ» لا يُمضيها D6 كاملةً —
+الفعلُ وحده ؛ الاسمان DEFER (وهما اللذان أُمضيا يدًا في v5.2). التفصيل في `mudaat/D6_COVERAGE.md`.
+
+**B11 — hfn_map.json ودالّة haqiqa:** `t4/hfn_map.json` جدول حاصر (حقل ← ملف/عمود/قاعدة). **haqiqa:** الفرع الثاني
+(SHA256_DERIVED) مُعلَنًا، لأنّ release_v18 لا معرّفَ عدديًّا ثابتًا فيه (المعرّفات `HFN-E-<hex>`): `100000 + int(sha256("release_v18:"+pos+":"+lu_id),16)%10^6`.
+الذواتُ بلا مفهوم في HFN: تُطابَق عبر وحدتها المعجمية (اسم فاعل/مصدر) — سؤال B11 في `OWNER_QUESTIONS_v6` س3.
+
+**B12 — mudaat_prep.py --d6:** مطبَّق ومشغَّل. أضاف `ذهب`/`مالك` (RATIFIED_BY_RULE) ، وأعلن `كتب` → D6_SHADOWED_BY_MANUAL
+(اليدويّ غلب) ، ولم يمسّ المودَعات اليدوية الثلاث (كتب/طالب/درس بقيت RATIFIED/DR_HUSSEIN/2026-10-26). `Mudaat.lean` أُعيد توليده
+من RATIFIED+RATIFIED_BY_RULE ويمرّ `lake env lean` قائمًا بذاته (EXIT=0). كلّ حقل من عمودٍ مسمّى ؛ `qabiliyyat=[]` (س2).
+
+**B13 — الاختبارات: 33/33 ran ، 0 NOT_RUN** (26 سابقة + T28–T34) ، و`test_conformance.py` 2/2.
+```
+T28 تجميد المصادر (HFN+maqayis+Hokom) قبل=بعد = PASS
+T29 D6 كامل على «ذَهَبَ» (الوحدة بمعرّفها في lexical_units ، haqiqa دالّة ثابتة) = PASS
+T30 ROOT_MISMATCH (fixture) بلا رقم = PASS
+T31 AMBIGUOUS_UNIT:2 (fixture) بلا ترجيح = PASS
+T32 ثبات haqiqa ونطاقها ≥100000 = PASS
+T33 اليدويّ يُظلِّل D6 (SHADOWED_BY_MANUAL) = PASS
+T34 AWN لم يُقرأ (تغليف open) = PASS
+```
+
+**B14 — العيّنات:** `_runs_samples/d6_c01..d6_c07` للجمل السبع بـ`--hokom`:
+```
+d6_c01 ذَهَبَ الْوَلَدُ        ط1..4 مبرهن على الشاهد ؛ hukm3=.murakhkhas
+d6_c02 كَتَبَ الطَّالِبُ الدَّرْسَ  ط1..4 مبرهن على الشاهد ؛ hukm3=.murakhkhas  (المودَعات اليدوية)
+d6_c03 الْعِلْمُ نُورٌ         ط1 مطابَق ؛ ط2 PARTIAL (لا مدلول) ؛ hukm3=None
+d6_c04 ذَهَبَ وَلَدٌ           ط1..4 مبرهن على الشاهد ؛ hukm3=.murakhkhas
+d6_c05 ذَهَبَ الْوَلَدَ         ط1..4 مبرهن على الشاهد ؛ hukm3=.mumtani (مفعولٌ في موضع الفاعل)
+d6_c06 إِنْ تَجْتَهِدْ تَنْجَحْ   ط3 مبرهن على الشاهد ؛ hukm3=.maqbul (جزاء)
+d6_c07 مَاتَ مَالِكٌ           ط1 مطابَق ؛ ط2 PARTIAL ؛ hukm3=None (مَاتَ جذرُه None عند Hokom)
+```
+العيّناتُ تجري عبر qamus/المودَعات اليدوية ؛ وحدةُ D6 الجديدة الوحيدة ذاتُ معنًى مستقلّ (`مَالِكٌ`) لا إطارَ جملةٍ لها في هذا
+الكوربوس ، فلا تظهر مدلولُ D6 في برهان جملةٍ هنا — معلَن.
+
+**البصمات (قبل=بعد) و MASHRU_HEAD:**
+```
+HOKOM_TREE_SHA256    = 478fd4dd27d30a61ead730de2a2df1206c19cb98475a4f339c960fd7342ac8c3  (15949 ملفًّا ؛ قبل=بعد)
+HFN_V18_TREE_SHA256  = 7d4caf662c1c8a8069a91fcb8a8c59d880e0670198bdb72f20dc7c525205b069  (46 ملفًّا ؛ قبل=بعد)
+HFN_MANIFEST_SHA256  = 975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3
+MAQAYIS_DB_SHA256    = 35c7062dd5edf40304670d18e1c6527dad04c7f13d2b2212b95519e19997897f   (قبل=بعد)
+MASHRU_HEAD          = 8599238 ؛ HOKOM_PIN = 8a23298076b4 ؛ HFN_RELEASE = release_v18
+ISOLATION            = لا شيء خارج by-hussein/ (git status --untracked-files=all)
+```
+
+**لم يُنفَّذ (بأسمائه وسببه):**
+- **كوربوس C01–C07 والنصّ الطويل**: غير موجودَين نصًّا في المستودع ؛ قِستُ على المستردّ فعلًا (14 سطحًا لا ~50). OWNER_QUESTIONS_v6 س1.
+- **qabiliyyat من valence.csv**: `valence.csv` يربط الحدثَ بالمفهوم لا الذاتَ بالحدث ؛ لا عمودَ يعطي قابليّةَ الذات ⇒ `qabiliyyat=[]`
+  في كلّ مودَع D6. OWNER_QUESTIONS_v6 س2 (أكبر فجوة).
+- **khawass / alaqat في D6**: لا عمودَ HFN يعطيهما ⇒ `[]` معلَن.
+- **سند المخصّص عبر qari في D6**: استعملتُ سند المقاييس فقط في القياس ؛ مسار المخصّص (makhzan) لم يُدمَج في D6.
+- **مدلول D6 في برهان جملة**: لا عيّنة تُظهره (انظر B14).
+- **fixtures/hfn_*.json على القرص**: اختبارا T30/T31 يبنيان HFN بمقتطفاتٍ في الذاكرة (`HFN.from_records`) لا بملفّات fixture.
