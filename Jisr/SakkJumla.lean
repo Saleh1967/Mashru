@@ -26,10 +26,13 @@
 - و«التفكير» لا يقوم عليه حكمٌ هنا: قطعتُه الوحيدة (`sifaLaAthar`) في توثيق `dafiNabt`، قراءةً.
 
 **الربطُ بقطع Lean القائمة** (§٧):
-- «إن» يُجازى بها في باب الجزاء المبنيّ (`Jisr/BabJaza.lean`)، والتعليقُ في `awwal` لا يكون إلّا بأداةٍ كذلك (`taliq_iff_jaza`).
-- «لم» صدرُ نفي الماضي المنقطع في `Aql/Awwaliyyat.lean` (`lam_nafy_madi`).
-- والمفعولُ له أسلوبٌ في جرد القطر بسطره (`Jisr/Ikhbar.lean`)، وسندُه هنا السطرُ نفسُه (`mafulLahu_qatr`).
-- وما سوى ذلك لم يُربط: صورُ نفي الأزمنة الأخرى، وأحكامُ الجواب في باب الجزاء، والضمائرُ في `Jisr/QiraaSimat.lean`.
+- **ربطُ حكم:** «إن» يُجازى بها في باب الجزاء المبنيّ (`Jisr/BabJaza.lean`)، والتعليقُ في `awwal` لا يكون إلّا بأداةٍ كذلك (`taliq_iff_jaza`).
+- **مطابقةُ لفظٍ ورقمِ سطر، لا مبرهنتا توافق:**
+  - «لم» لفظُ الأداة، و«لم يفعل» نفيُ الماضي المنقطع في `Aql/Awwaliyyat.lean` (`lam_nafy_madi`). ولا شيء فيها يصل `.nafy` في `awwal` بمخرج
+    `Aql.Awwaliyyat`.
+  - والمفعولُ له أسلوبٌ في جرد القطر بسطره (`Jisr/Ikhbar.lean`)، وسندُه هنا السطرُ نفسُه (`mafulLahu_qatr`).
+- **وما سوى ذلك لم يُربط:** `Jisr/NafyFil.lean` وفيه سندُ «لم» نفسُه (`nafyFaala`، الكتاب س9783)، وصورُ نفي الأزمنة الأخرى، وأحكامُ الجواب في باب
+  الجزاء، والضمائرُ في `Jisr/QiraaSimat.lean`.
 
 **ما هو تعيينُ البنّاء** (لا نصُّ المصادر):
 - **ترتيبُ `awwal`:** «إن» أوّلًا، ثمّ الاستفهامُ بـ«تقول»، ثمّ «لم» (`nafyLam`، `lamJazm`)، وإلّا خبرٌ مثبت. وجملةُ القول نفسُها خبر.
@@ -45,7 +48,8 @@
   - منصوبٌ أو «أنّ»: ظنّ (`yunus`).
   - مرفوعٌ: حكاية (`taqulRaf`). و«إنّ»: حكاية (`yunusHikaya`). والجملةُ الفعليّةُ حكايةٌ تعيينًا.
   - بلا صورةٍ معلنة: الوجهان (`ihtimalQawl`).
-- **المصدرُ المنصوب:** علّةٌ إن استوفى الشروط (`mafulLahu`، `udhr`). وبفقد شرطٍ لا حكم، فهو «جر بحرف التعليل» (`faqdShart`) لا منصوب.
+- **المصدرُ المنصوب:** علّةٌ إن استوفى الشروط (`mafulLahu`، `udhr`). وبغير ذلك لا حكم: بفقد شرطٍ، فهو «جر بحرف التعليل» (`faqdShart`) لا
+  منصوب؛ وبشروطٍ غيرِ معلنة كذلك، تعيينًا.
 - **اللامُ الجارّة:** علّةٌ أو غيرُها. التعليلُ معنًى من معانيها (`lamMaani`، `lamTalil`).
 - **اللامُ الناصبة وكي و«أنّ» بلا لام:** علّة (`kay`، `kayLam`، `liAnna`، `anLamMuqaddara`).
   - وعدُّ اللام الناصبة علّةً وحدها تعيين.
@@ -80,7 +84,7 @@
 - **تعريفيّة (13):** `taliq_la_yukhbar`، `thani_la_ikhbar`، `awwal_khabar_iff`، `qala_amma_la_zann`، `illa_bi_dall`، `zarf_laysa_sabab`،
   `lamma_wajhan`، `hatta_wa_fa`، `muayyan_iff`، `ithnan_la_yataayyan`، `la_marji_bila_siyaq`، `la_waqi_bila_ikhbar`، `waqiNabt_iff`.
   برهانُها فكُّ التعريفات وتفكيكُ الحالات، فهي تعيد قولَ التعيين أعلاه.
-- **على الشاهد (5):** `nabt_quwwa`، `nabt_marji`، `nabt_la_tarqiya`، `lam_nafy_madi`، `mafulLahu_qatr`.
+- **على الشاهد (5):** `nabt_quwwa`، `nabt_marji`، `nabt_la_tarqiya`، `lam_nafy_madi`، `mafulLahu_qatr`. برهانُها `decide`.
 
 **حدُّه:**
 - مبرهناتُ «لكلّ» خواصُّ للتعيين على مجاله، لا مطابقتُه للمصادر. ومطابقتُه تُقاس بالضابط المجمَّد (`Jisr/SakkJumlaQiyas.lean`).
@@ -339,7 +343,12 @@ theorem la_waqi_bila_mushahada (sijill : List (String × Idaa.Naw)) (basmaOf : N
   هويّتُه: مدخلُ C01 وC02 هنا واحد، وذهبُهما في `target_ids` مختلف.
 - **الدافعُ والواقع** (`nabt_la_tarqiya`): «لا ترقية»، أي سلامةٌ لا نجاحُ تفسير، بنصّ NABT «absence of an unsafe promotion may be
   separately reported as safety, never full interpretation success». والدافعُ في عشرين حالةً مدخلُه `none` فهو غيرُ متعيّنٍ بالتعريف،
-  وفي الخمس الباقية «بعد» أو «قبل»: ففرعُ `madhkur` لا يُختبر هنا. والواقعُ ممرَّرٌ ثابتًا `.laHukm`، ولم تُبنَ قضيّةٌ (m s v) لجمل NABT. -/
+  وفي الخمس الباقية «بعد» أو «قبل»: ففرعُ `madhkur` لا يُختبر هنا. والواقعُ ممرَّرٌ ثابتًا `.laHukm`، ولم تُبنَ قضيّةٌ (m s v) لجمل NABT.
+
+**والموافقةُ تمرّ بمدخلين عدّهما الضابطُ المجمَّد إخفاقًا:**
+- مدخلُ `khabar` هو مدخلُ S01 بعينه، ومتوقَّعُه هناك الخبرُ والإنشاءُ معًا (`Jisr/SakkJumlaQiyas.lean`: اختيارٌ بلا مرجّح). وعليه تقوم موافقةُ
+  القوّة الأولى في عشرين حالة (N وV وT وC).
+- ومدخلُ C05 (`hadha` مع `musharIthnan`) هو مدخلُ S38 بعينه، ومتوقَّعُه هناك «لا حكم» (تجاوز). وموافقةُ `nabt_marji` على C05 هذا المخرجُ نفسُه. -/
 
 inductive QuwwaNabt | assertPos | assertNeg | hypothetical | quoted | ghayr
   deriving DecidableEq, Repr
@@ -361,7 +370,7 @@ def dafiNabt : Option DakhilS → DafiNabt
   | none => .underdetermined
   | some d => if sabab d = [.illa] ∨ sabab d = [.sababiyya] then .madhkur else .underdetermined
 
-/-- **لا دافعَ من الظرف ولا من «لمّا» ولا من غير رابط.** و«بعد» و«قبل» وحدهما ما يمنعه NABT باسم `causality_from_temporal_order`.
+/-- **لا دافعَ من الظرف ولا من «لمّا» ولا من «غير ذلك» ولا بلا رابط.** و«بعد» و«قبل» وحدهما ما يمنعه NABT باسم `causality_from_temporal_order`.
     وخروجُ «لمّا» من تعيين الوجهين ومن اشتراط قيمةٍ واحدة في `dafiNabt`، لا من نصّ. -/
 theorem la_dafi_bila_dall (o : Option DakhilS)
     (h : o = none ∨ ∃ d : DakhilS, o = some d ∧ d.dall ∈ [Dall.baad, .qabl, .lamma, .ghayrDhalik]) :
@@ -570,12 +579,12 @@ theorem taliq_iff_jaza (d : DakhilQ) :
   obtain ⟨a, q, m, l⟩ := d
   cases a <;> cases q <;> simp [awwal, adatLafz] <;> decide
 
-/-- **«لم» صدرُ نفي الماضي المنقطع** في `Aql.Awwaliyyat` (الكتاب س9783: `nafyLam`). -/
+/-- **«لم» صدرُ نفي الماضي المنقطع** في `Aql.Awwaliyyat` (الكتاب س9783: `nafyLam`): مطابقةُ لفظ، لا توافقُ حكم. -/
 theorem lam_nafy_madi :
-    adatLafz .lam = some "لم" ∧ Aql.Awwaliyyat.nafy .madiMunqati = "لم يفعل" ∧ Aql.Awwaliyyat.ithbat .madiMunqati = "فعل" :=
-  ⟨rfl, rfl, rfl⟩
+    adatLafz .lam = some "لم" ∧ Aql.Awwaliyyat.nafy .madiMunqati = "لم يفعل" ∧ Aql.Awwaliyyat.ithbat .madiMunqati = "فعل" := by
+  decide
 
-/-- **المفعولُ له أسلوبٌ في جرد القطر بسطره** (`Jisr.Ikhbar.satr`)، وسندُ `masdarMansub` هنا السطرُ نفسُه (`mafulLahu`). -/
+/-- **المفعولُ له أسلوبٌ في جرد القطر بسطره** (`Jisr.Ikhbar.satr`)، وسندُ `masdarMansub` هنا السطرُ نفسُه (`mafulLahu`): مطابقةُ رقم سطر. -/
 theorem mafulLahu_qatr :
     Jisr.Ikhbar.satr .mafulLahu = 293 ∧
     asanid.any (fun x => x.1 == "mafulLahu" && x.2.1 == "qatr.txt" && x.2.2.1 == Jisr.Ikhbar.satr .mafulLahu) = true := by

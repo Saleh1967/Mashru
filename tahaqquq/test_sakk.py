@@ -6,11 +6,11 @@
 ٣. السجلّات: natija_1.json … natija_N.json متتالية، كلٌّ للحالات المجمَّدة. وبصمةُ natija_1.json ثابتةٌ هنا (NATIJA_1)، وكلُّ سجلٍّ
    بعده يحمل بصمةَ ما قبله. وآخرُها لبصمة Jisr/SakkJumla.lean الحاليّة، وأعدادُه (ihsa، bil_fia، akhta) هي أعدادُ مبرهنات
    Jisr/SakkJumlaQiyas.lean (natija، natija_fia، akhta…)، وحقلُ lean هو LEAN_NATIJA بعينها وكلُّ اسمٍ فيه مبرهنةٌ هناك.
-٤. المجال: أعدادُ المجال محسوبةٌ من cases.json هنا (majal_json)، لا من Lean، وهي قائمةُ مبرهنة `majal`؛ وhalat وhuqul_masula في آخر سجلّ،
+٤. المجال: أعدادُ المجال بالقيم محسوبةٌ من cases.json هنا (majal_json)، لا من Lean، وهي قائمةُ مبرهنة `majal`؛ وhalat وhuqul_masula في آخر سجلّ،
    ومجموعُ كلّ فئةٍ في natija_fia عددُ حقولها المسؤولة.
 ٥. NABT: ذهبُ الحالات الخمس والعشرين منقولٌ هنا يدويًّا (DHAHAB) من reference.json في sonaiso/nabt (`b64401f`)، ويُقارَن بـ`dhahab25` في
-   Jisr/SakkJumla.lean سطرًا سطرًا؛ ومبرهنةُ `nabt25_tawafuq` تربط الشفرةَ بـ`dhahab25`. وإن حضر مستودعُ NABT (NABT_DIR، أو
-   /home/claude/sonaiso/nabt) قورن DHAHAB بالملفّ نفسِه ببصمته.
+   Jisr/SakkJumla.lean سطرًا سطرًا؛ ويُفحص أنّ `mukhraj25` مخرجُ الشفرة على `nabt25`، وأنّ المبرهنات `nabt_quwwa` و`nabt_marji` و`nabt_la_tarqiya`
+   بصيغتها تقارنه بـ`dhahab25`. وإن حضر مستودعُ NABT (NABT_DIR، أو /home/claude/sonaiso/nabt) قورن DHAHAB بالملفّ نفسِه ببصمته.
 ويفحص، إن حضرت المودَعات (MUDAA_DIR) ببصماتها، ولا طفرةَ له لأنّ CI بلا مودَع:
 ٦. الأسانيد: كلُّ قطعةٍ في `asanid` (Jisr/SakkJumla.lean) في أسطرها من ملفّها، على النصّ موصولَ الأسطر بحذف البادئة («~~» أو «# » أو
    «### | ») وعلامات الصفحات (PageV..P..) والمخطوط (ms..) وتوحيد البياض، وبأدنى مدًى؛ وكلُّ `sanad.nass` في الحالات في سطره بحذف البادئة
@@ -18,11 +18,13 @@
 
 الطفرات: P869 (بصمةُ الحالات في tajmid.json، ١)، P870 (اسمُ حالةٍ في المولَّد، ٢)، P874 (جدولُ «adaa» في المولِّد، ٢)، P871 (عدُّ الصواب في
 natija_1.json، ٣)، P875 (اسمُ مبرهنة akhta، ٣)، P872 (صيغةُ مبرهنة majal، ٤)، P873 (مرجعُ N01 في dhahab25، ٥).
-**على أيّ شيءٍ تقع:** كلُّها على المفحوص لا على نصّ الفحص. P870 وP872 وP873 وP875 تُبنى، فيقتلها الفحصُ المسمّى. ولها قاتلٌ ثانٍ:
-- P873 على Jisr/SakkJumla.lean، فتقتلها أيضًا بصمةُ الشفرة في آخر سجلّ (٣).
-- P871 على natija_1.json وهو السجلُّ الوحيد، فتقتلها المرساةُ NATIJA_1 أيضًا.
-ومرجعُ الحالات غيرِ C في dhahab25 لا تقارنه مبرهنةٌ (`nabt_marji` على C01–C05 وحدها)، فالفحصُ ٥ وحده يحرسه. ولا طفرةَ للبند ٦ (CI بلا
-مودَع)، ولا لمقارنة DHAHAB بملفّ NABT (المستودعُ خارجيّ).
+**على أيّ شيءٍ تقع:** كلُّها على المفحوص لا على نصّ الفحص. وأربعٌ منها تُبنى (P870 وP872 وP873 وP875)، فلا يقتلها البناء بل الاختبار.
+**وثلاثٌ يقتلها فحصان:**
+- P873 على Jisr/SakkJumla.lean: الفحصُ ٥ وبصمةُ الشفرة في آخر سجلّ (٣).
+- P871 على natija_1.json: المرساةُ NATIJA_1 وبصمتُه في qablaha في natija_2.json (٣)، وعددُ ihsa.
+- P869 على tajmid.json: بصمةُ cases.json (١) ومطابقةُ cases_sha256 في السجلّات (٣).
+ومرجعُ الحالات غيرِ C في dhahab25 لا تقارنه مبرهنةٌ (`nabt_marji` على C01–C05 وحدها)، فلا يحرسه في Lean شيءٌ، ويحرسه الفحصُ ٥. ولا طفرةَ
+للبند ٦ (CI بلا مودَع)، ولا لمقارنة DHAHAB بملفّ NABT (المستودعُ خارجيّ).
 التشغيل: python3 -I tahaqquq/test_sakk.py
 """
 import hashlib
@@ -113,15 +115,16 @@ def majal_json(halat):
     s = [h for h in halat if h["naw"] == "سبب"]
     m = [h for h in halat if h["naw"] == "مرجع"]
 
-    def tawzi(l):
+    def bil_qiyam(qiyam, l):
         l = [qaima(x) for x in l]
-        return [sum(1 for x in l if x == ["لا_حكم"]), sum(1 for x in l if len(x) == 1 and x != ["لا_حكم"]),
-                sum(1 for x in l if len(x) >= 2)]
+        return [sum(1 for x in l if x == [v]) for v in qiyam] + [sum(1 for x in l if len(x) >= 2)]
 
     masul = 2 * len(q) + len(s) + len(m)
     mj = [len(q), len(s), len(m), masul]
-    mj += tawzi([h["kharij"]["awwal"] for h in q]) + tawzi([h["kharij"]["thani"] for h in q])
-    mj += tawzi([h["kharij"]["sabab"] for h in s]) + tawzi([h["kharij"]["marji"] for h in m])
+    mj += bil_qiyam(["إثبات", "نفي", "تعليق", "إنشاء", "لا_حكم"], [h["kharij"]["awwal"] for h in q])
+    mj += bil_qiyam(["إثبات", "نفي", "تعليق", "حكاية", "ظن", "لا_ثاني", "لا_حكم"], [h["kharij"]["thani"] for h in q])
+    mj += bil_qiyam(["علة", "سببية", "غير_مذكور", "لا_حكم"], [h["kharij"]["sabab"] for h in s])
+    mj += bil_qiyam(["معين", "محتمل", "لا_حكم"], [h["kharij"]["marji"] for h in m])
     fia = {f: 0 for f in FIAT}
     for h in halat:
         fia[h["fia"]] += 2 if h["naw"] == "قوة" else 1

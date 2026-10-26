@@ -25,6 +25,8 @@
   - S14 (غموض) وS24 (حدّ)، السبب: نقصُ تغطية.
   - S25 (موجب)، السبب: خطأ؛ الشفرةُ تُخرج الوجهين حيث المتوقَّعُ السببيّة.
   - S38 وS42 (خارج)، المرجع: تجاوز؛ الشفرةُ تحكم بالاحتمال في الإشارة إلى اثنين، والنطاقُ لا يحكم فيها.
+- `natija_2.json`: بعد مراجعة `murajii` الثانية (رأسُ `Jisr/SakkJumla.lean` وتوثيقُه، وبرهانُ `lam_nafy_madi` بـ `decide`، وعدُّ المجال بالقيم)،
+  على مادّةٍ مكشوفة، بلا تغييرٍ في دوالّ الحكم: 48 من 54، والإخفاقاتُ الستّةُ نفسُها.
 -/
 import Jisr.SakkJumla
 import Jisr.SakkJumlaDawabit
@@ -93,21 +95,26 @@ theorem qarin_shawahid :
 
 /-! ## النتيجةُ على الشفرة الحاليّة (على الشاهد) -/
 
-/-- عددُ المتوقَّع في حقلٍ: «لا حكم»، وقيمةٌ واحدةٌ غيرُه، وبديلان فأكثر. -/
-def tawzi {α : Type} [DecidableEq α] (la : α) (l : List (List α)) : List Nat :=
-  [(l.filter (· = [la])).length, (l.filter (fun x => x.length = 1 && x ≠ [la])).length,
-   (l.filter (fun x => decide (2 ≤ x.length))).length]
+/-- عددُ المتوقَّع في حقلٍ بقيمه: لكلّ قيمةٍ عددُ ما متوقَّعُه هي وحدها، ثمّ عددُ ما متوقَّعُه بديلان فأكثر. -/
+def aadadQiyam {α : Type} [DecidableEq α] (qiyam : List α) (l : List (List α)) : List Nat :=
+  qiyam.map (fun v => (l.filter (· = [v])).length) ++ [(l.filter (fun x => decide (2 ≤ x.length))).length]
 
 /-- أعدادُ المجال بترتيبٍ ثابت (يحسبها `tahaqquq/test_sakk.py` من `cases.json` بالترتيب نفسه): حالاتُ الأنواع الثلاثة، والحقولُ المسؤولة؛
-    ثمّ لكلّ حقلٍ (`awwal`، `thani`، `sabab`، `marji`) متوقَّعُه: «لا حكم»، وقيمةٌ واحدةٌ غيرُه، وبديلان فأكثر. -/
+    ثمّ لكلّ حقلٍ متوقَّعُه بقيمه، ثمّ بديلان فأكثر: `awwal` (إثبات، نفي، تعليق، إنشاء، لا حكم)، و`thani` (إثبات، نفي، تعليق، حكاية، ظنّ،
+    لا ثاني، لا حكم)، و`sabab` (علّة، سببيّة، غيرُ مذكور، لا حكم)، و`marji` (معيَّن، محتمَل، لا حكم). -/
 def majalAadad : List Nat :=
   [halatQ.length, halatS.length, halatM.length, natayij.length] ++
-  tawzi Quwwa.laHukm (halatQ.map (·.awwal)) ++ tawzi Quwwa.laHukm (halatQ.map (·.thani)) ++
-  tawzi Sabab.laHukm (halatS.map (·.sabab)) ++ tawzi Marji.laHukm (halatM.map (·.marji))
+  aadadQiyam [Quwwa.ithbat, .nafy, .taliq, .insha, .laHukm] (halatQ.map (·.awwal)) ++
+  aadadQiyam [Quwwa.ithbat, .nafy, .taliq, .hikaya, .zann, .laThani, .laHukm] (halatQ.map (·.thani)) ++
+  aadadQiyam [Sabab.illa, .sababiyya, .ghayrMadhkur, .laHukm] (halatS.map (·.sabab)) ++
+  aadadQiyam [Marji.muayyan, .muhtamal, .laHukm] (halatM.map (·.marji))
 
-/-- **المجالُ غيرُ فارغ ولا مائلٍ إلى «لا حكم»:** 12 حالةَ قوّة، و18 سببًا، و12 مرجعًا، و54 حقلًا مسؤولًا. ومتوقَّعُ القوّة الأولى:
-    «لا حكم» 0، وقيمةٌ واحدة 11، وبديلان 1؛ والثانية: 0، و11، و1؛ والسبب: 1، و13، و4؛ والمرجع: 6، و6، و0. -/
-theorem majal : majalAadad = [12, 18, 12, 54, 0, 11, 1, 0, 11, 1, 1, 13, 4, 6, 6, 0] := by
+/-- **المجالُ غيرُ فارغ ولا مائلٍ إلى «لا حكم»:** 12 حالةَ قوّة، و18 سببًا، و12 مرجعًا، و54 حقلًا مسؤولًا.
+    - القوّةُ الأولى: إثبات 3، نفي 2، تعليق 1، إنشاء 5، لا حكم 0، وبديلان 1.
+    - والثانية: إثبات 0، نفي 0، تعليق 1، حكاية 5، ظنّ 3، لا ثاني 2، لا حكم 0، وبديلان 1.
+    - والسبب: علّة 4، سببيّة 4، غيرُ مذكور 5، لا حكم 1، وبديلان 4.
+    - والمرجع: معيَّن 5، محتمَل 1، لا حكم 6، وبديلان 0. -/
+theorem majal : majalAadad = [12, 18, 12, 54, 3, 2, 1, 5, 0, 1, 0, 0, 1, 5, 3, 2, 0, 1, 4, 4, 5, 1, 4, 5, 1, 6, 0] := by
   decide +kernel
 
 /-- **النتيجة:** 48 صوابًا من 54، ونقصُ تغطيةٍ 2، وتجاوزٌ 2، واختيارٌ بلا مرجّح 1، وخطأٌ 1 (على الشفرة المجمَّدة؛ `natija_1.json`). -/

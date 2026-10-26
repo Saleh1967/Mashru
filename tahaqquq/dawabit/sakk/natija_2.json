@@ -1,0 +1,68 @@
+{
+ "tashghil": 2,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد مراجعة murajii الثانية: رأسُ Jisr/SakkJumla.lean وتوثيقُه، وبرهانُ lam_nafy_madi بـ decide، وعدُّ المجال بالقيم؛ بلا تغييرٍ في دوالّ الحكم",
+ "cases_sha256": "f23fee33de9b5a37f78cc848603823d4b5dce0664695e48aedd9b06ca68ce446",
+ "qablaha": {
+  "natija_1.json": "64bb617f91fd1d1f04c1883df3dbffa5d1b52c70855e1c8c67ec49c7cb43c246"
+ },
+ "shifra": {
+  "milaf": "Jisr/SakkJumla.lean",
+  "sha256": "600191e35d370956ca1183c1bf3564bf9d8db43bd1bbc3f06307b36bf9f2a461"
+ },
+ "lean": [
+  "Jisr.SakkJumla.Qiyas.majal",
+  "Jisr.SakkJumla.Qiyas.natija",
+  "Jisr.SakkJumla.Qiyas.natija_fia",
+  "Jisr.SakkJumla.Qiyas.akhta_1"
+ ],
+ "halat": 42,
+ "huqul_masula": 54,
+ "ihsa": {
+  "sawab": 48,
+  "naqsTaghtiya": 2,
+  "tajawuz": 2,
+  "ikhtiyar": 1,
+  "khata": 1
+ },
+ "bil_fia": {
+  "موجب": 21,
+  "حد": 8,
+  "خارج": 2,
+  "عموم": 11,
+  "غموض": 6
+ },
+ "akhta": [
+  [
+   "S01",
+   "awwal",
+   "ikhtiyar"
+  ],
+  [
+   "S14",
+   "sabab",
+   "naqsTaghtiya"
+  ],
+  [
+   "S24",
+   "sabab",
+   "naqsTaghtiya"
+  ],
+  [
+   "S25",
+   "sabab",
+   "khata"
+  ],
+  [
+   "S38",
+   "marji",
+   "tajawuz"
+  ],
+  [
+   "S42",
+   "marji",
+   "tajawuz"
+  ]
+ ],
+ "tarikh": "2026-10-26",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json) هو القياسُ الأعمى."
+}

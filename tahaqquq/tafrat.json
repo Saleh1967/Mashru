@@ -4994,7 +4994,7 @@
  {
   "ism": "P872_sakk_majal_sigha",
   "milaf": "Jisr/SakkJumlaQiyas.lean",
-  "min": "theorem majal : majalAadad = [12, 18, 12, 54, 0, 11, 1, 0, 11, 1, 1, 13, 4, 6, 6, 0] := by",
+  "min": "theorem majal : majalAadad = [12, 18, 12, 54, 3, 2, 1, 5, 0, 1, 0, 0, 1, 5, 3, 2, 0, 1, 4, 4, 5, 1, 4, 5, 1, 6, 0] := by",
   "ila": "theorem majal : majalAadad = majalAadad := by"
  },
  {
