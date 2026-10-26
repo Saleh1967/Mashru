@@ -91,7 +91,7 @@ class Tabaqat4:
         self.la_yuddaa: List[str] = [
             'لا صحّة لغوية خارجية: ما يمرّ هنا مرّ على بنى Mashru كما عرّفها د. صالح ، لا على العربية كلّها.',
             'المدلول لا يُولَّد: كلمة بلا مدلول معرَّف في Mashru تتوقّف عند الطبقة الثانية بالاسم NO_SEALED_MADLUL.',
-            'أنواع الجمل المنفَّذة في هذه الأداة: [فعل ماضٍ + فاعل معرَّف بأل] و [فعل ماضٍ + فاعل منوَّن] فقط ؛ ما عداها OUT_OF_EXECUTED_PATH.',
+            'الأطر المنفَّذة في هذه الأداة (itar_map): [فعل+فاعل بأل]→darabaZayd ، [فعل+فاعل منوَّن]→jaaRajul ، [فعل+فاعل+مفعول بأل]→daraba ، وباب الجزاء ؛ ما عداها OUT_OF_EXECUTED_PATH باسم نمطه (ITAR_UNMAPPED).',
             'المرساة (الآن=0 ، هنا=⟨0,0,0⟩) وإزاحة الحدث (−1 ساعة) موروثتان من Shahid_Ahmad.lean ت3/ت4 ، افتراضٌ معلَن قابل للتغيير بوسيطَي --an/--izaha.',
             'الإسناد الدلالي ⟨مدلول_الفاعل ، qabiliyya(حقيقة_الفعل) ، isnadiyya⟩ قاعدةٌ بنيوية موروثة من الشاهد ، ليست استنتاجًا من النصّ.',
             'رتبة «مبرهن على الشاهد» تعني: نظرية by decide مرّت على هذه الجملة بعينها في Lean ، بمسلّمات ⊆ {propext, Classical.choice, Quot.sound}. ليست «مبرهن» عامًّا.',
@@ -597,8 +597,8 @@ class Tabaqat4:
         def rk(nme): return 'مبرهن على الشاهد' if res['theorems'][nme]['passed'] else ('مفحوص' if r1['rc'] == 0 else None)
         def br(nme):
             t = res['theorems'][nme]; return f"lean rc={r2['rc']} ؛ axioms={t['axioms']}" if t['axioms'] is not None else f"lean rc={r2['rc']} ؛ axioms غير ملتقطة"
-        self.claims.append(Claim(1, 'tabaqa1_kalimat', [k.khalaya for k in dal], 'خلايا الكلمتَين كما بناها Mashru في الإطار الثلاثي (مطابقة البناء)', rk('tabaqa1_kalimat'), br('tabaqa1_kalimat')))
-        self.claims.append(Claim(2, 'tabaqa2_maani', [maani[0]['ism'], maani[1]['ism']], f"المدلولان في الإطار ، و`{maani[0]['ism']}.tim = true` (عَرَضٌ له زمان)", rk('tabaqa2_maani'), br('tabaqa2_maani')))
+        self.claims.append(Claim(1, 'tabaqa1_kalimat', [k.khalaya for k in dal], f'خلايا الكلمات الـ{len(dal)} كما بناها Mashru في الإطار (مطابقة البناء)', rk('tabaqa1_kalimat'), br('tabaqa1_kalimat')))
+        self.claims.append(Claim(2, 'tabaqa2_maani', [m['ism'] for m in maani], f"المدلولات الـ{len(maani)} في الإطار (جميعُها مفحوصةٌ في مطابقة maani ، ومنها المفعول إن وُجد) ، و`{maani[0]['ism']}.tim = true` (عَرَضٌ له زمان)", rk('tabaqa2_maani'), br('tabaqa2_maani')))
         self.claims.append(Claim(3, 'tabaqa3_hukm', obs['hukm3'], f"حكم الإطار الثلاثي hukm3 = {hukm_ar} ({obs['hukm3']}) ؛ ibtida3={obs['ibtida3']} ؛ سلسلة الوصل {obs['silsila']}", rk('tabaqa3_hukm'), br('tabaqa3_hukm')))
         self.claims.append(Claim(3, 'tabaqa3_isnad', plan['isnad'], f"الإسناد الدلالي: {maani[1]['ism']} موضوعٌ ، قابليّة {maani[0]['haqiqa']} محمولٌ ، نسبة إسنادية", rk('tabaqa3_isnad'), br('tabaqa3_isnad')))
         self.claims.append(Claim(4, 'tabaqa4_ajza', obs['ajza'], f"أجزاء الجملة الصغرى بالرتبة: {obs['ajza']} (محكوم ثمّ حاكم)", rk('tabaqa4_ajza'), br('tabaqa4_ajza')))

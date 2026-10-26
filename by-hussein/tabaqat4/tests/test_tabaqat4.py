@@ -237,6 +237,7 @@ class T(unittest.TestCase):
         if LEAN_REASON: self.skipTest('NOT_RUN: ' + LEAN_REASON)
         r = self.rec('كَتَبَ الطَّالِبُ الدَّرْسَ', mudaat_path=self.FX / 'mudaat_test.json')
         self.assertEqual(r['plan']['ud'], 'Jisr.Mulhaqat.daraba'); self.assertTrue(r['plan']['maful'])
+        self.assertIn('darabaFata', r['plan']['shahid_mashru'])   # G4: شاهد daraba الصحيح (لا bimafulayn)
         self.assertIn('CONDITIONAL_ON_SELECTED_ITAR', json.dumps(r['la_yuddaa'], ensure_ascii=False))
         th = r['lean']['theorems']; self.assertTrue(all(v['passed'] for v in th.values()), th)
         for v in th.values(): self.assertTrue(set(v['axioms']) <= AXIOMS_OK)

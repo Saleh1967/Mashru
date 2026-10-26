@@ -160,3 +160,13 @@ HOKOM_TREE_SHA_BEFORE     = 5ddc0c35a9324c6f6fcee36f6229751f
 HOKOM_TREE_SHA_AFTER      = 5ddc0c35a9324c6f6fcee36f6229751f   (متطابقتان ؛ Hokom لم يُمَسّ)
 MASHRU_HEAD               = 7a902672a330 ؛ HOKOM_PIN = 8a23298076b4
 ```
+
+## الإصدار 5.1 (2026-10-26) — تصحيحات لا تغيّر حكمًا
+
+- **G4 (استشهاد خاطئ)**: شاهد إطار `Mulhaqat.daraba` كان `bimafulayn (Utur.lean:1032)` وهو خطأ (bimafulayn إطاره mafulaynUD ، أربع خانات).
+  الصحيح `darabaFata (Utur.lean:1102–1103)` («ضَرَبَ الْفَتَى الْوَلَدَ» ، `ud := Mulhaqat.daraba` ، ثلاث كلمات ، إسناده ⟨الفاعل ، qabiliyya حقيقة الفعل ، isnadiyya⟩)
+  — يوافق قاعدة الإسناد المطبَّقة ، فالحكم كان سليمًا والاستشهادُ وحده خطأً. صُحِّح في `itar_map.json` ، وأُضيف توكيدُه في T20 (`darabaFata` في shahid_mashru).
+- **نصوص بالية في التقرير** (لا تغيّر حكمًا): `tabaqa1_kalimat` صار «خلايا الكلمات الـN» (كانت «الكلمتَين»)؛ `tabaqa2_maani` صار «المدلولات الـN ... جميعُها مفحوصةٌ ومنها المفعول»
+  (كان «المدلولان»)؛ و«ما لا يُدَّعى» صار يسرد أطر itar_map الثلاثة + باب الجزاء (كان «نوعان فقط»).
+- `_runs_samples/c02_*` أُعيد توليدها على الرأس المودَع بشجرةٍ نظيفة (identity.mashru_tree_clean=true).
+- المجموعة: **26/26 ran ، 0 NOT_RUN** بعد التصحيح. (الإمضاء الحقيقيّ يبقى الفرقَ الوحيد: `imda.man=DR_HUSSEIN` بدل `FIXTURE_TEST` ، ينتظر إمضاءك في MUDAAT_IMDA.)
