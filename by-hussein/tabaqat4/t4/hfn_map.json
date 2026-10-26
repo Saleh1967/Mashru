@@ -1,0 +1,41 @@
+{
+  "_law": "D6 (أمضاه المالك 2026-10-26). جدول حاصر: كل حقل في المودَع ← (ملف HFN release_v18 أو مصدر، عمود، قاعدة التحويل). يُراجَع في TAQRIR.",
+  "_release": "release_v18",
+  "_manifest_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
+  "_counts_from_manifest": {"concepts": 71, "roots": 5315, "events": 13027, "lexical_units": 27674, "is_fact": false, "rank_ceiling": "CANDIDATE"},
+  "match": {
+    "root": {"source": "hokom.final_root (قائمة حروف) ⟷ events.csv:root_K عبر lexical_units.csv:event_id",
+             "transform": "تطبيع الهمزات أإؤئ→ء (كـ t4/dal.py) على الطرفين ؛ المطابقة حرفًا بحرف"},
+    "lemma": {"source": "السطح ⟷ lexical_units.csv:lemma",
+              "transform": "lemma_of(السطح): إسقاط أل (مع فكّ إدغام لام الشمسية) والتنوين والحركة الأخيرة ؛ تبقى الحركات الداخلية والشدّة ؛ ثم تطبيع الهمزات وحذف التطويل/الخنجرية/المدّة. وHFN: إسقاط الحركة الأخيرة فقط + التطبيع نفسه."},
+    "pos_class": {"source": "hokom.word_class ⟷ lexical_units.csv:pos_ar",
+                  "rule": {"FI3L": ["فعل"], "ISM": ["مصدر", "اسم فاعل", "اسم مفعول"], "HARF": []}}
+  },
+  "fields": {
+    "haqiqa": {"source": "lexical_units.csv:lu_id + pos_ar",
+               "rule": "100000 + (int(sha256('release_v18:'+pos_ar+':'+lu_id),16) % 1000000). الفرع الثاني: لا معرّف عدديّ ثابت في release_v18 (المعرّفات HFN-E-<hex>). التصادم داخل النطاق يُرفَض.",
+               "chosen_branch": "SHA256_DERIVED", "reason": "لا id عدديّ ثابت في release_v18"},
+    "tim": {"source": "lexical_units.csv:pos_ar", "rule": {"فعل": true, "مصدر": false, "اسم فاعل": false, "اسم مفعول": false}},
+    "ind": {"source": "hokom.word_class", "rule": "false إذا HARF ، غير ذلك true"},
+    "khawass": {"source": "—", "rule": "[] (لا عمود HFN يعطيها بعد) — UNDECLARED، سؤال للمالك"},
+    "alaqat": {"source": "—", "rule": "[] (event_relations.csv علاقاتُ أحداثٍ لا علاقاتُ ذاتٍ) — UNDECLARED"},
+    "qabiliyyat": {"source": "valence.csv:(event_id, concept_id, role_type, realization)",
+                   "rule": "للذات الفاعلة: الأحداث التي تقع فيها في خانة الفاعل (concept_id=C02). لكن HFN يربط الحدثَ بالمفهوم لا الذاتَ بالحدث، فلا عمودٌ يعطي «قابليّةَ ذاتٍ لأن تكون فاعلَ حدثٍ» مباشرةً.",
+                   "status": "D6_VALENCE_COLUMN_UNDECLARED_FOR_ENTITY_AGENCY — سؤال للمالك ؛ qabiliyyat=[] حتى يُحسَم"},
+    "masdar_block": {"source": "lexical_units.csv + events.csv + maqayis.db", "rule": "{hfn_file, hfn_row_id (lu_id), hfn_sha256 (MANIFEST), sanad:{masdar, mawdi}}"}
+  },
+  "sanad": {
+    "maqayis": {"db": "maqayis.db", "table": "entries", "match": "root_display = root_K ، is_lexical_entry=1 ، أقلّ entry_num",
+                "fields": ["id", "entry_num", "root_display", "page_refs"]},
+    "mukhassas": {"source": "qari عبر المخزن (makhzan) — مسار v5 ، خارج قياس B10"}
+  },
+  "imda": {"man": "DR_HUSSEIN", "qanun": "D6", "hfn_release": "release_v18",
+           "hfn_sha256": "<MANIFEST.json sha256 وقت التوليد>", "tarikh": "<يوم التوليد>"},
+  "columns_verbatim": {
+    "roots.csv": ["root_K", "hfn_root_id", "n_events", "event_ids"],
+    "lexical_units.csv": ["lu_id", "event_id", "lemma", "pos_ar", "pattern", "basis", "status"],
+    "events.csv": ["event_id", "root_K", "hfn_root_id", "layer", "form", "verb", "transitivity", "masdar", "source", "sibawayh_rules", "n_lex", "tier", "residual", "rank", "is_fact"],
+    "concepts.csv": ["concept_id", "label", "kind", "...(71 مفهومًا نحويًّا/دلاليًّا، لا ذوات)"],
+    "valence.csv": ["event_id", "concept_id", "role_type", "realization", "basis"]
+  }
+}
