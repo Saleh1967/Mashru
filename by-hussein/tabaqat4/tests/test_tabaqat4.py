@@ -252,19 +252,22 @@ class T(unittest.TestCase):
         self.assertEqual(r['lean']['observed']['hukm3'], '.laHukm')
 
     def test_T22_hokom_tree_sha_before_eq_after(self):
-        """T22 شرط المالك: بصمة كلّ ملفّ في HOKOM_ROOT (مسار+حجم+mtime) قبل=بعد ؛ Mashru نظيف ؛ لا كتابة خارج by-hussein"""
+        """T22 شرط المالك: sha256 **المحتوى** لكلّ ملفّ في HOKOM_ROOT (لا الميتاداتا) قبل=بعد ؛ Mashru نظيف ؛ لا كتابة خارج by-hussein.
+        الخوارزم: HOKOM_TREE_SHA = sha256 لنصّ القائمة المرتّبة «<مسار نسبي>\\t<sha256 المحتوى>\\n» ؛ باستثناء .git/ (مُعلَن)."""
         import hashlib as _h
         hk = Path('/Users/husseinhiyassat/hokom')
         def tree_sha():
-            g = _h.sha256()
+            lines = []
             for p in sorted(hk.rglob('*')):
                 if p.is_file() and '/.git/' not in str(p):
-                    s = p.stat(); g.update(f'{p}|{s.st_size}|{s.st_mtime_ns}\n'.encode())
-            return g.hexdigest()
+                    try: hh = _h.sha256(p.read_bytes()).hexdigest()
+                    except Exception as e: self.fail(f'HOKOM_FILE_UNREADABLE:{p}:{e}')  # يفشل باسم الملف ، لا يتجاوزه
+                    lines.append(f'{p.relative_to(hk)}\t{hh}\n')
+            return _h.sha256(''.join(sorted(lines)).encode()).hexdigest()
         before = tree_sha()
         self.rec('ذَهَبَ الْوَلَدُ', lean=False, use_hokom=not self._hokom_ok())
         after = tree_sha()
-        self.assertEqual(before, after, 'HOKOM_TREE_CHANGED')
+        self.assertEqual(before, after, 'HOKOM_TREE_CHANGED (sha256 المحتوى)')
         m = subprocess.run(['git', '-C', str(ROOT), 'status', '--porcelain', '--untracked-files=all'], capture_output=True, text=True).stdout
         outside = [l for l in m.splitlines() if not (l[3:].startswith('by-hussein/') or l[3:] in ('audit.txt', 'build.log', 'jumla_kamila.json'))]
         self.assertEqual(outside, [], outside)
