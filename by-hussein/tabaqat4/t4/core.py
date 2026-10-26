@@ -48,7 +48,8 @@ class Claim:
 class Tabaqat4:
     def __init__(self, mashru_root: Path, out_dir: Optional[Path] = None, use_hokom: bool = False,
                  run_lean: bool = True, mirsat_an: int = 0, arad_izaha: int = -1, forms: Optional[Dict[str, str]] = None,
-                 mudaat_path: Optional[Path] = None, taaqol_path: Optional[Path] = None):
+                 mudaat_path: Optional[Path] = None, taaqol_path: Optional[Path] = None,
+                 load_default_mudaat: bool = True):
         self.mashru_root = Path(mashru_root).resolve()
         self.forms = forms or {}          # صيغ باب الجزاء المعلَنة من المالك: shart=, jawab=, lam=
         self.out_dir = out_dir
@@ -68,11 +69,20 @@ class Tabaqat4:
         self.hokom = None                 # مخرج S3 (تقدير) ؛ يُعرَض ولا يُستهلك إلّا لمقعدَي: صورة الجزاء واختيار الإطار
         # معجم المودَعات (B7/D5): RATIFIED فقط ؛ المصدر الافتراضيّ by-hussein/mudaat/mudaat.json ثمّ --mudaat (fixture/آخر)
         self.mudaat, self.mudaat_residuals = {}, []
-        default_mud = TOOL_ROOT.parent / 'mudaat' / 'mudaat.json'
+        default_mud = (TOOL_ROOT.parent / 'mudaat' / 'mudaat.json') if load_default_mudaat else None
         for src in [default_mud, Path(mudaat_path) if mudaat_path else None]:
             if src and src.exists():
                 try: self._load_mudaat(json.loads(src.read_text(encoding='utf-8')), str(src))
                 except Exception as e: self.mudaat_residuals.append(f'MUDAA_LOAD_FAILED:{src}:{e}')
+        self.claims: List[Claim] = []
+        self.la_yuddaa: List[str] = [
+            'لا صحّة لغوية خارجية: ما يمرّ هنا مرّ على بنى Mashru كما عرّفها د. صالح ، لا على العربية كلّها.',
+            'المدلول لا يُولَّد: كلمة بلا مدلول معرَّف في Mashru تتوقّف عند الطبقة الثانية بالاسم NO_SEALED_MADLUL.',
+            'الأطر المنفَّذة في هذه الأداة (itar_map): [فعل+فاعل بأل]→darabaZayd ، [فعل+فاعل منوَّن]→jaaRajul ، [فعل+فاعل+مفعول بأل]→daraba ، وباب الجزاء ؛ ما عداها OUT_OF_EXECUTED_PATH باسم نمطه (ITAR_UNMAPPED).',
+            'المرساة (الآن=0 ، هنا=⟨0,0,0⟩) وإزاحة الحدث (−1 ساعة) موروثتان من Shahid_Ahmad.lean ت3/ت4 ، افتراضٌ معلَن قابل للتغيير بوسيطَي --an/--izaha.',
+            'الإسناد الدلالي ⟨مدلول_الفاعل ، qabiliyya(حقيقة_الفعل) ، isnadiyya⟩ قاعدةٌ بنيوية موروثة من الشاهد ، ليست استنتاجًا من النصّ.',
+            'رتبة «مبرهن على الشاهد» تعني: نظرية by decide مرّت على هذه الجملة بعينها في Lean ، بمسلّمات ⊆ {propext, Classical.choice, Quot.sound}. ليست «مبرهن» عامًّا.',
+        ]
         self.stages: List[Dict[str, Any]] = []
 
     def _load_mudaat(self, data: Dict[str, Any], src: str):
@@ -87,15 +97,6 @@ class Tabaqat4:
             if h in seen or (10 <= h <= 60):
                 self.mudaat_residuals.append(f'MUDAA_HAQIQA_COLLISION:{key}:{h}'); continue
             seen.add(h); self.mudaat[key] = {**e, '_src': src}
-        self.claims: List[Claim] = []
-        self.la_yuddaa: List[str] = [
-            'لا صحّة لغوية خارجية: ما يمرّ هنا مرّ على بنى Mashru كما عرّفها د. صالح ، لا على العربية كلّها.',
-            'المدلول لا يُولَّد: كلمة بلا مدلول معرَّف في Mashru تتوقّف عند الطبقة الثانية بالاسم NO_SEALED_MADLUL.',
-            'الأطر المنفَّذة في هذه الأداة (itar_map): [فعل+فاعل بأل]→darabaZayd ، [فعل+فاعل منوَّن]→jaaRajul ، [فعل+فاعل+مفعول بأل]→daraba ، وباب الجزاء ؛ ما عداها OUT_OF_EXECUTED_PATH باسم نمطه (ITAR_UNMAPPED).',
-            'المرساة (الآن=0 ، هنا=⟨0,0,0⟩) وإزاحة الحدث (−1 ساعة) موروثتان من Shahid_Ahmad.lean ت3/ت4 ، افتراضٌ معلَن قابل للتغيير بوسيطَي --an/--izaha.',
-            'الإسناد الدلالي ⟨مدلول_الفاعل ، qabiliyya(حقيقة_الفعل) ، isnadiyya⟩ قاعدةٌ بنيوية موروثة من الشاهد ، ليست استنتاجًا من النصّ.',
-            'رتبة «مبرهن على الشاهد» تعني: نظرية by decide مرّت على هذه الجملة بعينها في Lean ، بمسلّمات ⊆ {propext, Classical.choice, Quot.sound}. ليست «مبرهن» عامًّا.',
-        ]
 
     # ---------------------------------------------------------------- S0..S2
     def _s0(self, text: str) -> Dict[str, Any]:

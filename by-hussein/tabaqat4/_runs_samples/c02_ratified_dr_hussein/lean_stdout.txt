@@ -1,0 +1,11 @@
+'Tabaqat4.tabaqa1_kalimat' does not depend on any axioms
+'Tabaqat4.tabaqa2_maani' does not depend on any axioms
+'Tabaqat4.tabaqa3_hukm' depends on axioms: [propext]
+'Tabaqat4.tabaqa3_isnad' does not depend on any axioms
+'Tabaqat4.tabaqa4_ajza' depends on axioms: [propext]
+'Tabaqat4.tabaqa4_kalam' depends on axioms: [propext]
+'Tabaqat4.tabaqa4_zaman' does not depend on any axioms
+'Tabaqat4.tabaqa4_mawdi' does not depend on any axioms
+'Tabaqat4.tabaqa4_thabat' depends on axioms: [propext, Quot.sound]
+
+--- stderr ---

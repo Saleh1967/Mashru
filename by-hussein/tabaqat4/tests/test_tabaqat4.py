@@ -40,6 +40,7 @@ RESULTS = {}
 class T(unittest.TestCase):
     def rec(self, text, lean=True, **kw):
         # مجلّدٌ فريدٌ بالنصّ والوسائط كي لا تتشارك اختباراتٌ على الجملة نفسها (بمودَع/بلا) مجلّدًا واحدًا
+        kw.setdefault('load_default_mudaat', False)   # الاختبارات محصّنةٌ عن المعجم الحيّ (المودَعات RATIFIED) ؛ كلٌّ يعلن مودَعه
         key = text + '|lean=' + str(lean) + '|' + json.dumps({k: str(v) for k, v in sorted(kw.items())}, ensure_ascii=False)
         t = Tabaqat4(ROOT, out_dir=TMP / sha256_text(key)[:10], run_lean=lean and not LEAN_REASON, **kw)
         return t.run(text)

@@ -3,9 +3,9 @@
  "sijill": {
   "كتب": {
    "surface": "كَتَبَ",
-   "ism_lean": "كتب_m",
-   "status": "PENDING",
-   "haqiqa": null,
+   "ism_lean": "kataba_m",
+   "status": "RATIFIED",
+   "haqiqa": 1001,
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
@@ -27,18 +27,20 @@
     "sanad_claim": null
    },
    "imda": {
-    "man": null,
-    "tarikh": null
+    "man": "DR_HUSSEIN",
+    "tarikh": "2026-10-26"
    }
   },
   "طالب": {
    "surface": "الطَّالِبُ",
-   "ism_lean": "طالب_m",
-   "status": "PENDING",
-   "haqiqa": null,
+   "ism_lean": "talib_m",
+   "status": "RATIFIED",
+   "haqiqa": 1002,
    "khawass": [],
    "alaqat": [],
-   "qabiliyyat": [],
+   "qabiliyyat": [
+    1001
+   ],
    "afrad": [],
    "tim": false,
    "ind": true,
@@ -57,15 +59,15 @@
     "sanad_claim": null
    },
    "imda": {
-    "man": null,
-    "tarikh": null
+    "man": "DR_HUSSEIN",
+    "tarikh": "2026-10-26"
    }
   },
   "درس": {
    "surface": "الدَّرْسَ",
-   "ism_lean": "درس_m",
-   "status": "PENDING",
-   "haqiqa": null,
+   "ism_lean": "dars_m",
+   "status": "RATIFIED",
+   "haqiqa": 1003,
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
@@ -83,8 +85,8 @@
     "sanad_claim": "المخزن (Mashru) باللفظ «الدرس»: 1 قول ؛ الأوّل: mutabaqa:الدرس:أثر — سند 936c68e0c2c6@2896932/PageV03P300/الدرس/قائل:صاحب العين"
    },
    "imda": {
-    "man": null,
-    "tarikh": null
+    "man": "DR_HUSSEIN",
+    "tarikh": "2026-10-26"
    }
   }
  }

@@ -191,3 +191,32 @@ lamYafalUD / lanYafalUD (:1052 ، :1107)          لم أصل إليه ؛ «لم
 الحال (darabaZayd + ml hal ، شاهد dhahabaAlWaladMusrian :980)   لم أصل إليه ؛ الملحق (jisr.ml = حال) يحتاج بناء حقل ml في الإطار (لا يبنيه _lean_file الحاليّ) ، ونمط [فعل+فاعل+حال منصوب] لم يُدرَج.
 zaydQaim (مبتدأ+خبر)                             مُعلَن UD_WITHOUT_ITAR3_WITNESS في itar_map (لا شاهد Itar3 في المستودع) — يبقى كما هو ، لا يُستعمل.
 ```
+
+## الإصدار 5.2 (2026-10-26) — إمضاء المالك الحقيقيّ للمودَعات الثلاثة (D5)
+
+أمضى المالك (DR_HUSSEIN) الخانات الثلاث لكلمات «كتب/طالب/درس» ، فحوّلتُها من PENDING إلى RATIFIED في
+`by-hussein/mudaat/mudaat.json`:
+
+```
+كَتَبَ   → ism_lean=kataba_m ، haqiqa=1001 ، tim=true  ، قابليّات=[]      ، imda={DR_HUSSEIN, 2026-10-26}
+الطَّالِبُ → ism_lean=talib_m  ، haqiqa=1002 ، tim=false ، قابليّات=[1001] ، imda={DR_HUSSEIN, 2026-10-26}
+الدَّرْسَ  → ism_lean=dars_m   ، haqiqa=1003 ، tim=false ، قابليّات=[]      ، imda={DR_HUSSEIN, 2026-10-26}
+```
+
+**أثرُه (يُبطل صراحةً سطرَي «ما بقي» أعلاه: «مودَعات RATIFIED = صفر» و«الإمضاء الحقيقيّ يبقى الفرقَ الوحيد»):**
+- `by-hussein/mudaat/Mudaat.lean` أُعيد توليدُه من الثلاثة ويمرّ قائمًا بذاته (`lake env lean` ، exit 0).
+- عيّنة `_runs_samples/c02_ratified_dr_hussein/` على المودَع الحقيقيّ (لا fixture): **EXECUTED** ، الطبقات الأربع «مبرهن على الشاهد» ،
+  `hukm3=.murakhkhas` ، `MADLUL_SOURCE=OWNER_MUDAA` ، شاهد `darabaFata (Jisr/Utur.lean:1102–1103)` ، المسلّمات كلّها ⊆ {propext, Classical.choice, Quot.sound} ، `imda.man=DR_HUSSEIN`.
+  فلم يَعُد بين هذا التقرير والتقرير المعتدّ به فرقٌ في مصدر المعنى.
+
+**بنيةٌ أُصلحت (regression من إضافة `load_default_mudaat`):** كانت تهيئةُ `self.claims`/`self.la_yuddaa` واقعةً داخل `_load_mudaat` ،
+فإن لم يُستدعَ (المسار الخالي) بقيا غير مهيَّأين → `AttributeError` في `_s2`. نُقلت التهيئةُ إلى `__init__` قبل `self.stages`.
+والقارئُ الافتراضيّ `by-hussein/mudaat/mudaat.json` يُحمَّل في `run.py` (CLI) بـ`load_default_mudaat=True` ، والاختباراتُ تمرّر `False` لتبقى محكومةً بـfixtureها.
+
+**الأعلام (5.2):**
+```
+TABAQAT4_SCOPE_TESTS_PASS = YES (26/26 ran ؛ 0 NOT_RUN)
+C02_REAL_DEPOSIT          = EXECUTED ؛ 4 طبقات «مبرهن على الشاهد» ؛ hukm3=.murakhkhas ؛ OWNER_MUDAA ؛ DR_HUSSEIN ؛ axioms⊆المسموح
+HOKOM_TREE_SHA256         = 478fd4dd27d30a61ead730de2a2df1206c19cb98475a4f339c960fd7342ac8c3  (15949 ملفًّا ؛ قبل=بعد ؛ لم يُمَسّ)
+ISOLATION                 = كلّ التغييرات تحت by-hussein/ (mudaat.json ، Mudaat.lean ، t4/core.py ، tests ، _runs_samples/c02_*) — لا شيء خارجها
+```
