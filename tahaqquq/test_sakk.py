@@ -9,8 +9,8 @@
 ٤. المجال: أعدادُ المجال بالقيم محسوبةٌ من cases.json هنا (majal_json)، لا من Lean، وهي قائمةُ مبرهنة `majal`؛ وhalat وhuqul_masula في آخر سجلّ،
    ومجموعُ كلّ فئةٍ في natija_fia عددُ حقولها المسؤولة.
 ٥. NABT: ذهبُ الحالات الخمس والعشرين منقولٌ هنا يدويًّا (DHAHAB) من reference.json في sonaiso/nabt (`b64401f`)، ويُقارَن بـ`dhahab25` في
-   Jisr/SakkJumla.lean سطرًا سطرًا؛ ويُفحص أنّ `mukhraj25` مخرجُ الشفرة على `nabt25`، وأنّ المبرهنات `nabt_quwwa` و`nabt_marji` و`nabt_la_tarqiya`
-   بصيغتها تقارنه بـ`dhahab25`. وإن حضر مستودعُ NABT (NABT_DIR، أو /home/claude/sonaiso/nabt) قورن DHAHAB بالملفّ نفسِه ببصمته.
+   Jisr/SakkJumla.lean سطرًا سطرًا؛ ويُفحص أنّ `mukhraj25` مخرجُ الشفرة على `nabt25`، وأنّ المبرهنات `nabt_quwwa` و`nabt_marji` و`nabt_marji_C05`
+   و`nabt_la_tarqiya` بصيغتها تقارنه بـ`dhahab25`. وإن حضر مستودعُ NABT (NABT_DIR، أو /home/claude/sonaiso/nabt) قورن DHAHAB بالملفّ نفسِه ببصمته.
 ويفحص، إن حضرت المودَعات (MUDAA_DIR) ببصماتها، ولا طفرةَ له لأنّ CI بلا مودَع:
 ٦. الأسانيد: كلُّ قطعةٍ في `asanid` (Jisr/SakkJumla.lean) في أسطرها من ملفّها، على النصّ موصولَ الأسطر بحذف البادئة («~~» أو «# » أو
    «### | ») وعلامات الصفحات (PageV..P..) والمخطوط (ms..) وتوحيد البياض، وبأدنى مدًى؛ وكلُّ `sanad.nass` في الحالات في سطره بحذف البادئة
@@ -69,7 +69,7 @@ NITAQ = {
 }
 NATIJA_1 = "64bb617f91fd1d1f04c1883df3dbffa5d1b52c70855e1c8c67ec49c7cb43c246"  # natija_1.json كما أُودع أوّلًا
 NS = "Jisr.SakkJumla.Qiyas."
-LEAN_NATIJA = [NS + x for x in ["majal", "natija", "natija_fia", "akhta_1"]]
+LEAN_NATIJA = [NS + x for x in ["majal", "natija", "natija_fia", "akhta_3"]]
 HUQUL_IHSA = ["sawab", "naqsTaghtiya", "tajawuz", "ikhtiyar", "khata"]
 FIAT = ["موجب", "حد", "خارج", "عموم", "غموض"]
 NABT_REF = "evidence/semantic_axes_v1/revision_2/reference.json"
@@ -214,7 +214,7 @@ if m:
         tahaqqaq(lean_dh.get(i) == DHAHAB[i], f"dhahab25 في {i}: {lean_dh.get(i)} غيرُ المنقول {DHAHAB[i]}")
 tahaqqaq(re.search(r"^def mukhraj25 : List \(String × MukhrajNabt\) := nabt25\.map \(fun p => \(p\.1, sakkNabt \.laHukm p\.2\)\)$",
                    shifra, re.M) is not None, "لا mukhraj25 بصيغتها")
-for ism in ("nabt_quwwa", "nabt_marji", "nabt_la_tarqiya"):
+for ism in ("nabt_quwwa", "nabt_marji", "nabt_marji_C05", "nabt_la_tarqiya"):
     m = re.search(r"^theorem %s :(.*?):= by\n  decide$" % ism, shifra, re.M | re.S)
     tahaqqaq(m is not None and "mukhraj25" in m.group(1) and "dhahab25" in m.group(1),
              f"لا مبرهنةَ {ism} بصيغتها (mukhraj25 مقابل dhahab25)")

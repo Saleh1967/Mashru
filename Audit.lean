@@ -1996,8 +1996,10 @@ import Madlul.TasisDalala
 #print axioms Jisr.SakkJumla.zarf_laysa_sabab
 #print axioms Jisr.SakkJumla.lamma_wajhan
 #print axioms Jisr.SakkJumla.hatta_wa_fa
+#print axioms Jisr.SakkJumla.masdar_wa_fa
 #print axioms Jisr.SakkJumla.muayyan_iff
 #print axioms Jisr.SakkJumla.ithnan_la_yataayyan
+#print axioms Jisr.SakkJumla.ishara_ithnan_la_hukm
 #print axioms Jisr.SakkJumla.la_marji_bila_siyaq
 #print axioms Jisr.SakkJumla.la_waqi_bila_ikhbar
 #print axioms Jisr.SakkJumla.thani_la_mafhum
@@ -2006,6 +2008,7 @@ import Madlul.TasisDalala
 #print axioms Jisr.SakkJumla.waqiNabt_iff
 #print axioms Jisr.SakkJumla.nabt_quwwa
 #print axioms Jisr.SakkJumla.nabt_marji
+#print axioms Jisr.SakkJumla.nabt_marji_C05
 #print axioms Jisr.SakkJumla.nabt_la_tarqiya
 #print axioms Jisr.SakkJumla.taliq_iff_jaza
 #print axioms Jisr.SakkJumla.lam_nafy_madi
@@ -2015,7 +2018,7 @@ import Madlul.TasisDalala
 #print axioms Jisr.SakkJumla.Qiyas.majal
 #print axioms Jisr.SakkJumla.Qiyas.natija
 #print axioms Jisr.SakkJumla.Qiyas.natija_fia
-#print axioms Jisr.SakkJumla.Qiyas.akhta_1
+#print axioms Jisr.SakkJumla.Qiyas.akhta_3
 
 -- تمامُ التدقيق (tahaqquq/test_tadqiq_tamm.py، 2026-10-26): مبرهناتٌ عامّةٌ مبنيّةٌ لم تكن هنا، بترتيبها في ملفّاتها.
 -- SLGE.Core

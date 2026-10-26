@@ -48,8 +48,8 @@
   - منصوبٌ أو «أنّ»: ظنّ (`yunus`).
   - مرفوعٌ: حكاية (`taqulRaf`). و«إنّ»: حكاية (`yunusHikaya`). والجملةُ الفعليّةُ حكايةٌ تعيينًا.
   - بلا صورةٍ معلنة: الوجهان (`ihtimalQawl`).
-- **المصدرُ المنصوب:** علّةٌ إن استوفى الشروط (`mafulLahu`، `udhr`). وبغير ذلك لا حكم: بفقد شرطٍ، فهو «جر بحرف التعليل» (`faqdShart`) لا
-  منصوب؛ وبشروطٍ غيرِ معلنة كذلك، تعيينًا.
+- **المصدرُ المنصوب:** علّةٌ إن استوفى الشروط (`mafulLahu`، `udhr`). وبفقد شرطٍ لا حكم، فهو «جر بحرف التعليل» (`faqdShart`) لا منصوب.
+  وبشروطٍ غيرِ معلنة الوجهان: علّةٌ أو غيرُ مذكور (`jaaRaghba`: «يرغب رغبة أو مجيء رغبة أو راغبا أو للرغبة»).
 - **اللامُ الجارّة:** علّةٌ أو غيرُها. التعليلُ معنًى من معانيها (`lamMaani`، `lamTalil`).
 - **اللامُ الناصبة وكي و«أنّ» بلا لام:** علّة (`kay`، `kayLam`، `liAnna`، `anLamMuqaddara`).
   - وعدُّ اللام الناصبة علّةً وحدها تعيين.
@@ -57,13 +57,15 @@
 - **«حتى» منصوبًا:** غايةٌ أو بمعنى «كي» (`hattaWajhan`، `hattaKay`). فإن قال المثالُ إنّ الأوّل لم يؤدِّ إلى الثاني فغايةٌ
   وحدها (`hattaLamYuaddih`).
 - **«حتى» مرفوعًا:** يُرفع الفعلُ بعدها على وجهين (`hattaRafWajhan`): دخولٌ متّصلٌ بالسير كاتّصاله بالفاء (`hattaRaf`)، ودخولٌ «الآن»
-  بعد سيرٍ كان (`hattaAlan`). والرفعُ إذا كان الأوّلُ سببَ الثاني (`hattaLarafata`، `hattaMinSabab`): فسببيّة. وإن قال المثالُ إنّ
-  الأوّل لم يؤدِّ فلا حكم.
+  بعد سيرٍ كان (`hattaAlan`). والرفعُ إذا كان الأوّلُ سببَ الثاني (`hattaLarafata`، `hattaMinSabab`)، وشرطُه «أن يكون مسببا عما قبلها»
+  (`hattaMusabbab`): فسببيّة. وإن قال المثالُ إنّ الأوّل لم يؤدِّ فالرفعُ «لا يجوز» (`hattaLaYatasabbab`)، ولا سببَ مذكور («لا يكون سببا»:
+  `hattaLamYuaddih`).
 - **الفاء** (`faSababiyya`):
   - وجهان: السببيّةُ «لو أتيتني لحدثتني»، والآخرُ «ما تأتيني أبدا إلا لم تحدثني» (`faWajhan`، `faLaw`، `faAbadan`).
   - والسببيّةُ «غالب في العاطفة»، وقد تجيء «لمجرد الترتيب» (`faGhalib`، `faTartib`).
-  - فإن قال المثالُ إنّ الأوّل أدّى إلى الثاني فسببيّة، أو لم يؤدِّ فلا سببَ مذكور، وإلّا فالوجهان.
-  - وحملُ المرفوعة على المنصوبة في ذلك تعيين.
+  - **المنصوبة** بعد نفيٍ أو طلب «فاء السببية» (`faSababiyya`، `faJawab`): سببيّة، إلّا أن يقول المثالُ إنّ الأوّل لم يؤدِّ فلا سببَ مذكور
+    (`faAbadan`).
+  - **المرفوعة:** إن قال المثالُ إنّ الأوّل أدّى إلى الثاني فسببيّة، أو لم يؤدِّ فلا سببَ مذكور، وإلّا فالوجهان (`faGhalib`، `faTartib`).
 - **«لمّا»: الوجهان.**
   - سببٌ عند سيبويه: «فالأول سبب ما وقع وما لم يقع» (`lammaSabab`؛ وقبله `lammaSibawayhi`).
   - وظرفٌ بمعنى حين عند ابن السراج ومن تبعه (`lammaZarf`).
@@ -74,17 +76,19 @@
 - **المرجع:**
   - معيَّنٌ إذا أعطى السياقُ واحدًا من جنس ما يدلّ عليه اللفظ: المتكلّمُ لـ«أنا»، والمخاطَبُ لـ«أنت»، والمشارُ إليه لـ«هذا» و«ذاك»
     (`damir`، `ishara`). ولـ«هو» المفسِّرُ في الكلام أو المعروفُ في الموقف: «قد عرف من تعنى» (`idmar`)، وعدُّ الموقف منه قراءتي.
-  - ومحتمَلٌ إذا صلح اثنان (`taraddud`: التردّد في عود الضمير). وقولُ ج3 «فلا يحمل على أحدهما ما لم توجد قرينة» (`qarina`) في
-    الإضمار بمعنى التقدير مقابلَ المجاز، لا في مرجع الضمير: فالاستشهادُ به قياسي.
+  - ومحتمَلٌ إذا صلح اثنان لـ«هو» (`taraddud`: التردّد في عود الضمير). وقولُ ج3 «فلا يحمل على أحدهما ما لم توجد قرينة» (`qarina`) في
+    الإضمار بمعنى التقدير مقابلَ المجاز، لا في مرجع الضمير: فالاستشهادُ به قياسي. وصلوحُ اثنين في الموقف لـ«هو» قياسٌ كذلك.
+  - **والإشارةُ إلى اثنين لا حكم** حتى يُودَع لها سند: اختيارُ المالك (2026-10-26) من سؤالٍ متعدّد الخيارات، ونصُّ الخيار من البنّاء
+    («لا حكم» حتى يُودَع سند). وكانت في الشفرة المجمَّدة «محتمَلًا» قياسًا (`natija_1.json`: تجاوزان).
   - ولا حكمَ إذا لم يُعطِ السياقُ شيئًا من جنسه (`mufassir`)، ومنه «هذا» مع مفسِّرٍ في الكلام وحده.
 - **الواقع:** الجملةُ الثانية لا يُخبر بها المتكلّم، فلا يُسأل عن واقعها.
 
-**المبرهنات (22).**
+**المبرهنات (25).**
 - **لكلّ (4):** `thani_la_mafhum`، `la_waqi_bila_mushahada`، `la_dafi_bila_dall`، `taliq_iff_jaza`. تستدعي مبرهناتٍ مسمّاةً أو `decide`.
-- **تعريفيّة (13):** `taliq_la_yukhbar`، `thani_la_ikhbar`، `awwal_khabar_iff`، `qala_amma_la_zann`، `illa_bi_dall`، `zarf_laysa_sabab`،
-  `lamma_wajhan`، `hatta_wa_fa`، `muayyan_iff`، `ithnan_la_yataayyan`، `la_marji_bila_siyaq`، `la_waqi_bila_ikhbar`، `waqiNabt_iff`.
-  برهانُها فكُّ التعريفات وتفكيكُ الحالات، فهي تعيد قولَ التعيين أعلاه.
-- **على الشاهد (5):** `nabt_quwwa`، `nabt_marji`، `nabt_la_tarqiya`، `lam_nafy_madi`، `mafulLahu_qatr`. برهانُها `decide`.
+- **تعريفيّة (15):** `taliq_la_yukhbar`، `thani_la_ikhbar`، `awwal_khabar_iff`، `qala_amma_la_zann`، `illa_bi_dall`، `zarf_laysa_sabab`،
+  `lamma_wajhan`، `hatta_wa_fa`، `masdar_wa_fa`، `muayyan_iff`، `ithnan_la_yataayyan`، `ishara_ithnan_la_hukm`، `la_marji_bila_siyaq`،
+  `la_waqi_bila_ikhbar`، `waqiNabt_iff`. برهانُها فكُّ التعريفات وتفكيكُ الحالات، فهي تعيد قولَ التعيين أعلاه.
+- **على الشاهد (6):** `nabt_quwwa`، `nabt_marji`، `nabt_marji_C05`، `nabt_la_tarqiya`، `lam_nafy_madi`، `mafulLahu_qatr`. برهانُها `decide`.
 
 **حدُّه:**
 - مبرهناتُ «لكلّ» خواصُّ للتعيين على مجاله، لا مطابقتُه للمصادر. ومطابقتُه تُقاس بالضابط المجمَّد (`Jisr/SakkJumlaQiyas.lean`).
@@ -216,12 +220,17 @@ inductive Sabab | illa | sababiyya | ghayrMadhkur | laHukm
 /-- الحكمُ في السبب (قائمةُ البدائل). -/
 def sabab (d : DakhilS) : List Sabab :=
   match d.dall with
-  | .masdarMansub => if d.shurut = .mustawfat then [.illa] else [.laHukm]
+  | .masdarMansub =>
+      match d.shurut with
+      | .mustawfat => [.illa]
+      | .ghayrMuallan => [.illa, .ghayrMadhkur]
+      | _ => [.laHukm]
   | .lamJarra => [.illa, .ghayrMadhkur]
   | .lamNasiba | .kay | .anBilaLam => [.illa]
   | .hattaMansub => if d.adaa = .laysaSabab then [.ghayrMadhkur] else [.illa, .ghayrMadhkur]
-  | .hattaMarfu => if d.adaa = .laysaSabab then [.laHukm] else [.sababiyya]
-  | .faMansub | .faMarfu =>
+  | .hattaMarfu => if d.adaa = .laysaSabab then [.ghayrMadhkur] else [.sababiyya]
+  | .faMansub => if d.adaa = .laysaSabab then [.ghayrMadhkur] else [.sababiyya]
+  | .faMarfu =>
       match d.adaa with
       | .sabab => [.sababiyya]
       | .laysaSabab => [.ghayrMadhkur]
@@ -248,12 +257,18 @@ theorem zarf_laysa_sabab (d : DakhilS) (h : d.dall = .baad ∨ d.dall = .qabl) :
 /-- **«لمّا» على الوجهين** (`lammaSabab`، `lammaZarf`)، أيًّا كانت بقيّةُ الحقول. -/
 theorem lamma_wajhan (s : Shurut) (a : Adaa) : sabab ⟨.lamma, s, a⟩ = [.sababiyya, .ghayrMadhkur] := rfl
 
-/-- **«حتى» والفاء إذا لم يؤدِّ الأوّلُ إلى الثاني:** لا سببيّة. المنصوبةُ بعد «حتى» غاية (`hattaLamYuaddih`)، والمرفوعةُ لا حكم
-    (`hattaLarafata`، `hattaMinSabab`: الرفعُ بالسبب)، وبعد الفاء لا سببَ مذكور (`faAbadan`). -/
+/-- **«حتى» والفاء إذا لم يؤدِّ الأوّلُ إلى الثاني:** لا سببَ مذكور، فـ«لا يكون سببا» (`hattaLamYuaddih`). والمرفوعةُ بعد «حتى» حينئذٍ
+    لا يجوز رفعُها (`hattaMusabbab`، `hattaLaYatasabbab`)، وبعد الفاء «ما تأتيني أبدا إلا لم تحدثني» (`faAbadan`). -/
 theorem hatta_wa_fa (s : Shurut) :
-    sabab ⟨.hattaMansub, s, .laysaSabab⟩ = [.ghayrMadhkur] ∧ sabab ⟨.hattaMarfu, s, .laysaSabab⟩ = [.laHukm] ∧
+    sabab ⟨.hattaMansub, s, .laysaSabab⟩ = [.ghayrMadhkur] ∧ sabab ⟨.hattaMarfu, s, .laysaSabab⟩ = [.ghayrMadhkur] ∧
     sabab ⟨.faMansub, s, .laysaSabab⟩ = [.ghayrMadhkur] ∧ sabab ⟨.faMarfu, s, .laysaSabab⟩ = [.ghayrMadhkur] :=
   ⟨rfl, rfl, rfl, rfl⟩
+
+/-- **المصدرُ بشروطٍ غيرِ معلنة على الوجهين** (`jaaRaghba`: «جاء زيد رغبة»)، **والفاءُ المنصوبةُ بلا أداءٍ معلن سببيّة** («فاء السببية»:
+    `faSababiyya`، `faJawab`)، أيًّا كانت بقيّةُ الحقول. -/
+theorem masdar_wa_fa (a : Adaa) (s : Shurut) (ha : a ≠ .laysaSabab) :
+    sabab ⟨.masdarMansub, .ghayrMuallan, a⟩ = [.illa, .ghayrMadhkur] ∧ sabab ⟨.faMansub, s, a⟩ = [.sababiyya] := by
+  simp [sabab, ha]
 
 /-! ## ٣. المرجع -/
 
@@ -280,7 +295,6 @@ def marji (d : DakhilM) : Marji :=
   | .huwa, .mufassirWahid | .huwa, .musharWahid => .muayyan
   | .huwa, .mufassiran | .huwa, .musharIthnan => .muhtamal
   | .hadha, .musharWahid | .dhaka, .musharWahid => .muayyan
-  | .hadha, .musharIthnan | .dhaka, .musharIthnan => .muhtamal
   | _, _ => .laHukm
 
 /-- **لا يتعيّن المرجعُ إلّا بما يعطيه الموقفُ أو الكلامُ واحدًا من جنس اللفظ.** -/
@@ -298,6 +312,10 @@ theorem ithnan_la_yataayyan (d : DakhilM) (h : d.siyaq = .mufassiran ∨ d.siyaq
   obtain ⟨l, s⟩ := d
   simp only at h
   rcases h with rfl | rfl <;> cases l <;> simp [marji]
+
+/-- **والإشارةُ إلى اثنين لا حكمَ فيها** حتى يُودَع لها سند (اختيارُ المالك 2026-10-26). -/
+theorem ishara_ithnan_la_hukm (l : Lafz) (h : l = .hadha ∨ l = .dhaka) : marji ⟨l, .musharIthnan⟩ = .laHukm := by
+  rcases h with rfl | rfl <;> rfl
 
 /-- **ولا مرجعَ بلا موقفٍ ولا كلام** (`mufassir`). -/
 theorem la_marji_bila_siyaq (l : Lafz) : marji ⟨l, .laShay⟩ = .laHukm := by
@@ -339,8 +357,9 @@ theorem la_waqi_bila_mushahada (sijill : List (String × Idaa.Naw)) (basmaOf : N
 
 **الموافقةُ ثلاثُ مبرهناتٍ، لا واحدة:**
 - **القوّة** على الخمس والعشرين (`nabt_quwwa`).
-- **حالةُ المرجع** على C01–C05 وحدها (`nabt_marji`)، فالمرجعُ عند NABT «Only C01–C05; not_applicable is excluded». وهي حالتُه لا
-  هويّتُه: مدخلُ C01 وC02 هنا واحد، وذهبُهما في `target_ids` مختلف.
+- **حالةُ المرجع** على C01–C05 وحدها، فالمرجعُ عند NABT «Only C01–C05; not_applicable is excluded». وهي حالتُه لا هويّتُه: مدخلُ C01
+  وC02 هنا واحد، وذهبُهما في `target_ids` مختلف. توافقه في C01–C04 (`nabt_marji`)، وتخالفه في C05 (`nabt_marji_C05`): الإشارةُ إلى اثنين
+  «لا حكم» هنا باختيار المالك، وذهبُه «ambiguous».
 - **الدافعُ والواقع** (`nabt_la_tarqiya`): «لا ترقية»، أي سلامةٌ لا نجاحُ تفسير، بنصّ NABT «absence of an unsafe promotion may be
   separately reported as safety, never full interpretation success». والدافعُ في عشرين حالةً مدخلُه `none` فهو غيرُ متعيّنٍ بالتعريف،
   وفي الخمس الباقية «بعد» أو «قبل»: ففرعُ `madhkur` لا يُختبر هنا. والواقعُ ممرَّرٌ ثابتًا `.laHukm`، ولم تُبنَ قضيّةٌ (m s v) لجمل NABT.
@@ -348,7 +367,8 @@ theorem la_waqi_bila_mushahada (sijill : List (String × Idaa.Naw)) (basmaOf : N
 **والموافقةُ تمرّ بمدخلين عدّهما الضابطُ المجمَّد إخفاقًا:**
 - مدخلُ `khabar` هو مدخلُ S01 بعينه، ومتوقَّعُه هناك الخبرُ والإنشاءُ معًا (`Jisr/SakkJumlaQiyas.lean`: اختيارٌ بلا مرجّح). وعليه تقوم موافقةُ
   القوّة الأولى في عشرين حالة (N وV وT وC).
-- ومدخلُ C05 (`hadha` مع `musharIthnan`) هو مدخلُ S38 بعينه، ومتوقَّعُه هناك «لا حكم» (تجاوز). وموافقةُ `nabt_marji` على C05 هذا المخرجُ نفسُه. -/
+- ومدخلُ C05 (`hadha` مع `musharIthnan`) هو مدخلُ S38 بعينه، ومتوقَّعُه هناك «لا حكم». وكانت الشفرةُ المجمَّدة تُخرج فيه «محتمَلًا» فتوافق
+  NABT وتتجاوز في الضابط؛ وبعد اختيار المالك «لا حكم» صار العكس (`nabt_marji_C05`). -/
 
 inductive QuwwaNabt | assertPos | assertNeg | hypothetical | quoted | ghayr
   deriving DecidableEq, Repr
@@ -490,10 +510,16 @@ theorem nabt_quwwa :
     mukhraj25.map (fun p => (p.1, p.2.awwal, p.2.thani)) = dhahab25.map (fun p => (p.1, p.2.awwal, p.2.thani)) := by
   decide
 
-/-- **حالةُ المرجع على C01–C05 وحدها** (لا هويّتُه). -/
+/-- **حالةُ المرجع على C01–C04** كذهب NABT (لا هويّتُه). -/
 theorem nabt_marji :
-    (mukhraj25.filter (fun p => halatMarji.contains p.1)).map (fun p => (p.1, p.2.marji)) =
-      (dhahab25.filter (fun p => halatMarji.contains p.1)).map (fun p => (p.1, p.2.marji)) := by
+    (mukhraj25.filter (fun p => (halatMarji.take 4).contains p.1)).map (fun p => (p.1, p.2.marji)) =
+      (dhahab25.filter (fun p => (halatMarji.take 4).contains p.1)).map (fun p => (p.1, p.2.marji)) := by
+  decide
+
+/-- **وفي C05 يخالفه:** الإشارةُ إلى اثنين «لا حكم» هنا (`ishara_ithnan_la_hukm`)، وذهبُه «ambiguous». -/
+theorem nabt_marji_C05 :
+    (mukhraj25.filter (fun p => p.1 == "C05")).map (fun p => p.2.marji) = [.unresolved] ∧
+    (dhahab25.filter (fun p => p.1 == "C05")).map (fun p => p.2.marji) = [.ambiguous] := by
   decide
 
 /-- **لا ترقية في الدافع ولا في الواقع على الخمس والعشرين:** سلامةٌ لا نجاحُ تفسير. -/
@@ -527,6 +553,7 @@ def asanid : List (String × String × Nat × Nat × String) := [
   ("ihtimalQawl", "mughni.txt", 9629, 9629, "قد يقع بعد القول ما يحتمل الحكاية وغيرها"),
   ("mafulLahu", "qatr.txt", 293, 293, "والمفعول له، وهو المصدر المعلل لحدث شاركه وقتا وفاعلا"),
   ("udhr", "sibawayhi.txt", 3659, 3659, "هذا باب ما ينتصب من المصادر لأنه عذر لوقوع الأمر"),
+  ("jaaRaghba", "mughni.txt", 13003, 13003, "وتقول جاء زيد رغبة أي يرغب رغبة أو مجيء رغبة أو راغبا أو للرغبة"),
   ("faqdShart", "qatr.txt", 294, 294, "فإن فقد المعلل شرطا جر بحرف التعليل"),
   ("lamMaani", "alfiyya.txt", 491, 491, "واللام للملك وشبهه وفي"),
   ("lamTalil", "mughni.txt", 4802, 4802, "السادس التعليل"),
@@ -540,7 +567,10 @@ def asanid : List (String × String × Nat × Nat × String) := [
   ("hattaLamYuaddih", "sibawayhi.txt", 8889, 8890, "إذا كان دخول زيد لم يؤده سيرك ولم يكن سببه"),
   ("hattaLarafata", "sibawayhi.txt", 8892, 8892, "لرفعت لأنك جعلت دخول ثقلك يؤديه سيرك"),
   ("hattaMinSabab", "sibawayhi.txt", 8895, 8895, "إذا جعلت دخول زيد من سبب سيرك وهو الذي أداه"),
+  ("hattaMusabbab", "mughni.txt", 2836, 2836, "والثاني أن يكون مسببا عما قبلها فلا يجوز سرت"),
+  ("hattaLaYatasabbab", "mughni.txt", 2838, 2839, "أما الأول فلأن طلوع الشمس لا يتسبب عن السير"),
   ("faSababiyya", "qatr.txt", 108, 108, "وبعد فاء السببية"),
+  ("faJawab", "alfiyya.txt", 895, 895, "وبعد فا جواب نفي أو طلب"),
   ("faWajhan", "sibawayhi.txt", 8945, 8945, "فالنصب على وجهين من المعاني"),
   ("faLaw", "sibawayhi.txt", 8946, 8946, "أي لو أتيتني لحدثتني"),
   ("faAbadan", "sibawayhi.txt", 8946, 8947, "وأما الآخر فما تأتيني أبدا إلا لم تحدثني"),

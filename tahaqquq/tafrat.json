@@ -5012,7 +5012,7 @@
  {
   "ism": "P860_sakk_hatta_raf_sabab",
   "milaf": "Jisr/SakkJumla.lean",
-  "min": "  | .hattaMarfu => if d.adaa = .laysaSabab then [.laHukm] else [.sababiyya]",
+  "min": "  | .hattaMarfu => if d.adaa = .laysaSabab then [.ghayrMadhkur] else [.sababiyya]",
   "ila": "  | .hattaMarfu => if d.adaa = .laysaSabab then [.sababiyya] else [.sababiyya]"
  },
  {
@@ -5054,8 +5054,8 @@
  {
   "ism": "P867_sakk_muhtamal_unresolved",
   "milaf": "Jisr/SakkJumla.lean",
-  "min": "    | .muhtamal => .ambiguous",
-  "ila": "    | .muhtamal => .unresolved"
+  "min": "    | .muayyan => .resolved",
+  "ila": "    | .muayyan => .ambiguous"
  },
  {
   "ism": "P868_sakk_taliq_ghayr",
@@ -5102,7 +5102,25 @@
  {
   "ism": "P875_sakk_akhta_ism",
   "milaf": "Jisr/SakkJumlaQiyas.lean",
-  "min": "theorem akhta_1 :",
-  "ila": "theorem akhta_2 :"
+  "min": "theorem akhta_3 :",
+  "ila": "theorem akhta_4 :"
+ },
+ {
+  "ism": "P876_sakk_masdar_ghayr_muallan",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "      | .ghayrMuallan => [.illa, .ghayrMadhkur]",
+  "ila": "      | .ghayrMuallan => [.laHukm]"
+ },
+ {
+  "ism": "P877_sakk_ishara_ithnan_muhtamal",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .hadha, .musharWahid | .dhaka, .musharWahid => .muayyan",
+  "ila": "  | .hadha, .musharWahid | .dhaka, .musharWahid => .muayyan\n  | .hadha, .musharIthnan | .dhaka, .musharIthnan => .muhtamal"
+ },
+ {
+  "ism": "P878_sakk_fa_mansub_wajhan",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .faMansub => if d.adaa = .laysaSabab then [.ghayrMadhkur] else [.sababiyya]",
+  "ila": "  | .faMansub => if d.adaa = .laysaSabab then [.ghayrMadhkur] else [.sababiyya, .ghayrMadhkur]"
  }
 ]
