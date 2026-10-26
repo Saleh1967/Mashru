@@ -4876,5 +4876,23 @@
   "milaf": "Madlul/JadwalLuzumNaql.lean",
   "min": "⟨some (qailOf r.mujam), Naql.binaDaraja",
   "ila": "⟨some (qailOf r.mujam ++ r.w), Naql.binaDaraja"
+ },
+ {
+  "ism": "P838_mubarhana_bila_tadqiq",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "theorem la_mutawatir (T : List Saff) (a b : String) : darajaSila T a b ≠ some .mutawatir := by",
+  "ila": "theorem zz_bila_tadqiq : True := trivial\n\ntheorem la_mutawatir (T : List Saff) (a b : String) : darajaSila T a b ≠ some .mutawatir := by"
+ },
+ {
+  "ism": "P839_tadqiq_fi_taaliq",
+  "milaf": "Audit.lean",
+  "min": "#print axioms Dal.fakk_n\n",
+  "ila": "/-\n#print axioms Dal.fakk_n\n-/\n"
+ },
+ {
+  "ism": "P840_khassa_sarat_amma",
+  "milaf": "Jisr/QaydMafhum.lean",
+  "min": "private theorem adatQayd_ne_ism (i : Nat) : adatQayd i ≠ some .ism := by",
+  "ila": "theorem adatQayd_ne_ism (i : Nat) : adatQayd i ≠ some .ism := by"
  }
 ]

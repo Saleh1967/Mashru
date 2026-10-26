@@ -97,6 +97,13 @@ import Jisr.BaqiJazaQiyas
 import Jisr.NassItar
 import Jisr.NassItarDabit
 import Jisr.NassItarQiyas
+import SLGE.Core
+import SLGE.Count
+import SLGE.Hamza
+import SLGE.Ladder
+import SLGE.Law
+import SLGE.Root
+import SLGE.Syllable
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -1977,3 +1984,266 @@ import Jisr.NassItarQiyas
 #print axioms Jisr.NassItar.Qiyas.khana_hala
 #print axioms Jisr.NassItar.Qiyas.khalalKhana_nil
 #print axioms Jisr.NassItar.Qiyas.waslBase_khalal
+
+-- تمامُ التدقيق (tahaqquq/test_tadqiq_tamm.py، 2026-10-26): مبرهناتٌ عامّةٌ مبنيّةٌ لم تكن هنا، بترتيبها في ملفّاتها.
+-- SLGE.Core
+#print axioms SLGE.blockDec_enc
+#print axioms SLGE.blockEnc_dec
+#print axioms SLGE.blockEnc_lt
+#print axioms SLGE.mixDec_enc
+#print axioms SLGE.mixEnc_dec
+#print axioms SLGE.mixDec_lt
+#print axioms SLGE.decAux_enc
+#print axioms SLGE.decL_encL
+#print axioms SLGE.encL_decAux
+#print axioms SLGE.encL_decL
+#print axioms SLGE.decAux_lt
+#print axioms SLGE.geo_succ_sub
+#print axioms SLGE.encL_range
+#print axioms SLGE.decL_length_iff
+#print axioms SLGE.tri_zero
+#print axioms SLGE.tri_succ
+#print axioms SLGE.pair_unpair
+#print axioms SLGE.tri_mono
+#print axioms SLGE.pair_injective
+#print axioms SLGE.unpair_pair
+#print axioms SLGE.unpair_le
+#print axioms SLGE.decSAux_enc
+#print axioms SLGE.decS_encS
+#print axioms SLGE.encS_decSAux
+#print axioms SLGE.encS_decS
+-- SLGE.Count
+#print axioms SLGE.Machine.runL_append
+#print axioms SLGE.Machine.wtL_append
+#print axioms SLGE.Machine.C_succ
+#print axioms SLGE.Machine.sizes_length
+#print axioms SLGE.Machine.sizes_getD
+#print axioms SLGE.Machine.base_le_C
+#print axioms SLGE.Machine.base_eq_one
+#print axioms SLGE.Machine.base_lt_iff
+#print axioms SLGE.Machine.acc_nil
+#print axioms SLGE.Machine.acc_iff
+#print axioms SLGE.Machine.rank_lt
+#print axioms SLGE.Machine.unrank_rank
+#print axioms SLGE.Machine.unrank_spec
+#print axioms SLGE.Machine.tab_eq
+#print axioms SLGE.Machine.blockEnc_levels
+#print axioms SLGE.Machine.levels_length
+#print axioms SLGE.Machine.levels_getD
+#print axioms SLGE.Machine.levels_sum
+#print axioms SLGE.Machine.offFrom_snoc
+#print axioms SLGE.Machine.offFrom_ge
+#print axioms SLGE.Machine.offFrom_ge0
+#print axioms SLGE.Machine.graded
+#print axioms SLGE.Machine.level_count
+#print axioms SLGE.Machine.gradedFin
+#print axioms SLGE.Machine.mix2_lt
+#print axioms SLGE.Machine.bsizes_getD
+#print axioms SLGE.Machine.getD_eq
+#print axioms SLGE.Machine.bNum
+-- SLGE.Hamza
+#print axioms SLGE.Law.fin_start_mover
+#print axioms SLGE.Law.fin_free_suk_mov'
+#print axioms SLGE.Law.fin_free_suk_mov
+#print axioms SLGE.Law.hamza_least
+#print axioms SLGE.Law.waslHaraka_lt
+#print axioms SLGE.Law.fin_junction4
+#print axioms SLGE.Law.fin_junction5
+#print axioms SLGE.Law.fin_madd_edit
+#print axioms SLGE.Law.fin_closed_edit'
+#print axioms SLGE.Law.fin_closed_edit
+#print axioms SLGE.Law.wasl_after_mover
+#print axioms SLGE.Law.wasl_after_madd
+#print axioms SLGE.Law.wasl_after_closed
+#print axioms SLGE.Law.seat_range
+-- SLGE.Ladder
+#print axioms SLGE.cell_range
+#print axioms SLGE.radix_pos
+#print axioms SLGE.sylSizes_getD
+#print axioms SLGE.mix_lt
+#print axioms SLGE.skip_ne
+#print axioms SLGE.unskip_skip
+#print axioms SLGE.skip_lt
+#print axioms SLGE.onset
+#print axioms SLGE.syl_of_cells
+#print axioms SLGE.sylEnc_lt
+#print axioms SLGE.word_dec_enc
+#print axioms SLGE.word_enc_dec
+#print axioms SLGE.sent_dec_enc
+#print axioms SLGE.sent_enc_dec
+#print axioms SLGE.cellsOf_shape
+#print axioms SLGE.take_drop
+#print axioms SLGE.wordCells_head
+#print axioms SLGE.grp_wordCells
+#print axioms SLGE.foldr_syls
+#print axioms SLGE.word_of_cells
+#print axioms SLGE.ladder
+-- SLGE.Law
+#print axioms SLGE.Law.mk_run
+#print axioms SLGE.Law.mk_wt
+#print axioms SLGE.Law.run_append
+#print axioms SLGE.Law.wt_append
+#print axioms SLGE.Law.δ_big
+#print axioms SLGE.Law.run_dead
+#print axioms SLGE.Law.dead_not
+#print axioms SLGE.Law.fin_mover
+#print axioms SLGE.Law.mover_step
+#print axioms SLGE.Law.mover_wt
+#print axioms SLGE.Law.fin_nuc
+#print axioms SLGE.Law.fin_afterK
+#print axioms SLGE.Law.fin_afterC
+#print axioms SLGE.Law.fin_afterJ
+#print axioms SLGE.Law.fin_after
+#print axioms SLGE.Law.fin_alif
+#print axioms SLGE.Law.alif_mover_dead
+#print axioms SLGE.Law.madd_ok
+#print axioms SLGE.Law.fin_term
+#print axioms SLGE.Law.terminal
+#print axioms SLGE.Law.fin_hash
+#print axioms SLGE.Law.fin_hashF
+#print axioms SLGE.Law.fin_start
+#print axioms SLGE.Law.fin_close
+#print axioms SLGE.Law.fin_pot
+#print axioms SLGE.Law.δ_le
+#print axioms SLGE.Law.sym_eq_cellEnc
+#print axioms SLGE.Law.chain0
+#print axioms SLGE.Law.chain1
+#print axioms SLGE.Law.chain2
+#print axioms SLGE.Law.chain3
+#print axioms SLGE.Law.chain4
+#print axioms SLGE.Law.chain5
+#print axioms SLGE.Law.maddOf_lt
+#print axioms SLGE.Law.syl_run
+#print axioms SLGE.Law.blockEnc_take
+#print axioms SLGE.Law.syl_bounds
+#print axioms SLGE.Law.syl_graded
+#print axioms SLGE.Law.unskip_lt
+#print axioms SLGE.Law.skip_unskip
+#print axioms SLGE.Law.kill
+#print axioms SLGE.Law.split
+#print axioms SLGE.Law.chainOf_ne
+#print axioms SLGE.Law.sentChain_cons
+#print axioms SLGE.Law.run_lt68
+#print axioms SLGE.Law.structure_aux
+#print axioms SLGE.Law.mem_sentChain_116
+#print axioms SLGE.Law.cellsOf_bounds
+#print axioms SLGE.Law.chainCells_append
+#print axioms SLGE.Law.chainCells_syl
+#print axioms SLGE.Law.chainCells_word
+#print axioms SLGE.Law.wordChain_lt
+#print axioms SLGE.Law.splitH_word
+#print axioms SLGE.Law.splitH_join
+#print axioms SLGE.Law.splitH_sent
+#print axioms SLGE.Law.map_inj_valid
+#print axioms SLGE.Law.bound_aux
+#print axioms SLGE.Law.bound
+#print axioms SLGE.Law.live_of_F
+#print axioms SLGE.Law.hK
+#print axioms SLGE.Law.chain_ba
+#print axioms SLGE.Law.hpos
+#print axioms SLGE.Law.closure68
+#print axioms SLGE.Law.sent_levels
+#print axioms SLGE.Law.word_graded
+#print axioms SLGE.Law.sent_graded
+#print axioms SLGE.Law.word_count
+#print axioms SLGE.Law.sent_count
+-- SLGE.Root
+#print axioms SLGE.Law.wazn_char
+#print axioms SLGE.Law.root_wt
+#print axioms SLGE.Law.root_hK
+#print axioms SLGE.Law.root_close
+#print axioms SLGE.Law.root_lev_tab
+#print axioms SLGE.Law.tajawur_root
+#print axioms SLGE.Law.fin_shape
+#print axioms SLGE.Law.fin_shapeF
+#print axioms SLGE.Law.Rs_lt
+#print axioms SLGE.Law.shape_run
+#print axioms SLGE.Law.wazn_from
+#print axioms SLGE.Law.mizan_ok
+#print axioms SLGE.Law.wazn_any_root
+#print axioms SLGE.Law.idx_ok
+#print axioms SLGE.Law.W_pos
+#print axioms SLGE.Law.root_acc
+#print axioms SLGE.Law.muj_size3
+#print axioms SLGE.Law.aug_close
+#print axioms SLGE.Law.aug_lev_tab
+#print axioms SLGE.Law.unitList1_ok
+#print axioms SLGE.Law.δa_dead
+#print axioms SLGE.Law.aug_dead
+#print axioms SLGE.Law.aug_live
+#print axioms SLGE.Law.fin_pot2
+#print axioms SLGE.Law.len_bound2
+#print axioms SLGE.Law.units1_small
+#print axioms SLGE.Law.units1_complete
+#print axioms SLGE.Law.mazidU1_count
+#print axioms SLGE.Law.unit_end_all
+#print axioms SLGE.Law.unit_end
+#print axioms SLGE.Law.fin_madd_mover
+#print axioms SLGE.Law.fin_mc_mover
+#print axioms SLGE.Law.from_madd
+#print axioms SLGE.Law.mazid_any_root
+-- SLGE.Syllable
+#print axioms SLGE.Law.δ1_dead
+#print axioms SLGE.Law.run1_dead
+#print axioms SLGE.Law.δ1_eq
+#print axioms SLGE.Law.run1_live
+#print axioms SLGE.Law.live_of
+#print axioms SLGE.Law.fin_maxw
+#print axioms SLGE.Law.fin_close1
+#print axioms SLGE.Law.δ1_le
+#print axioms SLGE.Law.wt_bound1
+#print axioms SLGE.Law.hK1
+#print axioms SLGE.Law.hW1
+#print axioms SLGE.Law.hFwaqf
+#print axioms SLGE.Law.hFwasl
+#print axioms SLGE.Law.lev_tab
+#print axioms SLGE.Law.sl0
+#print axioms SLGE.Law.sl1
+#print axioms SLGE.Law.sl2
+#print axioms SLGE.Law.sl3
+#print axioms SLGE.Law.slw1
+#print axioms SLGE.Law.slw2
+#print axioms SLGE.Law.slw3
+#print axioms SLGE.Law.offFrom_four
+#print axioms SLGE.Law.eoff
+#print axioms SLGE.Law.syl_structure
+-- Dal.AqsamAllafz
+#print axioms Dal.NawDalala.kull_length
+#print axioms Dal.QismMufrad.kull_nodup
+#print axioms Dal.QismMurakkab.kull_nodup
+#print axioms Dal.QismMurakkab.kull_length
+-- Dal.Khaliya
+#print axioms Dal.fakk_n
+#print axioms Dal.n_fakk
+#print axioms Dal.card_116
+-- Madlul.AqsamAlmadlul
+#print axioms Madlul.QismMadlul.hadhayan_ghayr_mawdu
+-- Madlul.Dalala
+#print axioms Dalala.tadammun_needs_mutabaqa
+#print axioms Dalala.mutabaqa_not_tadammun
+#print axioms Dalala.mutabaqa_not_iltizam
+#print axioms Dalala.tadammun_not_iltizam
+#print axioms Dalala.kharij_only_iltizam
+#print axioms Dalala.basit_no_juz
+-- Jisr.AqsamDalMadlul
+#print axioms Jisr.QismDalMadlul.kull_nodup
+#print axioms Jisr.QismDalMadlul.kull_length
+-- Jisr.JisrDal
+#print axioms Jisr.JisrDal.harf_kh
+#print axioms Jisr.JisrDal.hala_kh
+#print axioms Jisr.JisrDal.akhir_append
+#print axioms Jisr.JisrDal.akhir_append2
+#print axioms Jisr.JisrDal.qablAkhir_append
+#print axioms Jisr.JisrDal.kh_lt
+#print axioms Jisr.JisrDal.hukm_append
+#print axioms Jisr.JisrDal.hukm_append2
+#print axioms Jisr.JisrDal.badilHala_harf
+#print axioms Jisr.JisrDal.badilHala_lt
+#print axioms Jisr.JisrDal.badilInda_harf
+#print axioms Jisr.JisrDal.badilInda_tul
+#print axioms Jisr.JisrDal.badilInda_lt
+#print axioms Jisr.JisrDal.musharik_harf
+#print axioms Jisr.JisrDal.musharik_tul
+#print axioms Jisr.JisrDal.musharik_lt
+-- Aql.Aqliyya
+#print axioms Aql.mafhum_bishahid
