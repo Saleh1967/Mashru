@@ -1,0 +1,58 @@
+{
+ "tashghil": 6,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد المراجعة السادسة، بلا تغييرٍ في دوالّ الحكم",
+ "cases_sha256": "f23fee33de9b5a37f78cc848603823d4b5dce0664695e48aedd9b06ca68ce446",
+ "qablaha": {
+  "natija_5.json": "8b51762833f2063f87ec75ea084c68d8068b9b64251a44e5d6a64d012fba8aab"
+ },
+ "shifra": {
+  "milaf": "Jisr/SakkJumla.lean",
+  "sha256": "d0ced94e6c6a422bc0bcc36a78cbe0cc9d231896ddbca515b5f2f1bbf203961a"
+ },
+ "lean": [
+  "Jisr.SakkJumla.Qiyas.majal",
+  "Jisr.SakkJumla.Qiyas.natija",
+  "Jisr.SakkJumla.Qiyas.natija_fia",
+  "Jisr.SakkJumla.Qiyas.akhta_5"
+ ],
+ "halat": 42,
+ "huqul_masula": 54,
+ "ihsa": {
+  "sawab": 50,
+  "naqsTaghtiya": 2,
+  "tajawuz": 0,
+  "ikhtiyar": 1,
+  "khata": 1
+ },
+ "bil_fia": {
+  "موجب": 21,
+  "حد": 8,
+  "خارج": 4,
+  "عموم": 11,
+  "غموض": 6
+ },
+ "akhta": [
+  [
+   "S01",
+   "awwal",
+   "ikhtiyar"
+  ],
+  [
+   "S14",
+   "sabab",
+   "naqsTaghtiya"
+  ],
+  [
+   "S24",
+   "sabab",
+   "naqsTaghtiya"
+  ],
+  [
+   "S25",
+   "sabab",
+   "khata"
+  ]
+ ],
+ "tarikh": "2026-10-26",
+ "malahiz": "على مادّةٍ مكشوفة؛ ولا يُعدّ قياسًا أعمى. والأوّلُ (natija_1.json، 48 من 54) هو القياسُ الأعمى. تصحيحٌ لملاحظة natija_5.json: من الأسانيد المحذوفة دخل jaaRaghba في d08a99b، وhattaLaYakunSabab في 47c9915، وrakdan وyurikumKhawfan وibnMalikHajib في b6b1dca؛ ومن الباقية دخل hattaMusabbab وhattaLaYatasabbab وfaJawab في d08a99b (إيداعِ التعديل)، وhattaRafIllaSabab في b6b1dca. وسببُ ردّ S14 هناك («تعميمٌ من شاهدَي المغني») كُتب دون وزن نصوص النطاق: شرطُ اتّحاد الفاعل في المغني (س12999–13002)، والكتاب في الحال (س3681–3682) والمفعول له (س3684–3685). وفي هذا التشغيل: رأسُ الشفرة في سبب الردّ، ولا تغييرَ في دوالّ الحكم. والقرارُ في S14 وS24 وS25 ينتظر المالك. S38 وS42: الإشارةُ إلى اثنين «لا حكم» باختيار المالك."
+}
