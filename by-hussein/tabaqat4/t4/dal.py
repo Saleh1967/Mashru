@@ -111,8 +111,11 @@ def encode_word(word: str, hawamil: List[str]) -> KalimaDal:
             k.transforms.append('ALIF_MADDA:آ→ءَ+اْ')
             out += [4 * idx['ء'] + FATHA, 4 * idx['ا'] + SUKUN]
             human += ['ءَ', 'اْ']; continue
+        if ch == 'ى':
+            # قرار المستودع: الألف المقصورة ألفٌ ساكنة (Jisr/Utur.lean alFata:1021 ، yakhshaAlif:1120 ؛ Qari/Main.lean L444–445 قطر الندى)
+            letter = 'ا'; k.transforms.append('ALIF_MAQSURA_AS_ALIF:ى→ا(شاهد_الْفَتَى_Utur.lean:1021)')
         if letter not in idx:
-            k.residuals.append(f'DAL_CELL_UNMAPPED:{ch}')   # ة ى … ليست في جدول المخارج (Dal.kh? يرفضها)
+            k.residuals.append(f'DAL_CELL_UNMAPPED:{ch}')   # ة … ليست في جدول المخارج (Dal.kh? يرفضها ؛ Qari يقرأها هاءً وقفًا)
             continue
         c = idx[letter]
         if letter == 'ا' and h is None and i == len(units) - 1 and i > 0 and units[i - 1][3] == FATHA:
