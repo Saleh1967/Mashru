@@ -152,6 +152,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_nass.py",
     "tahaqquq/test_sakk.py",
     "tahaqquq/test_tadqiq_tamm.py",
+    "tahaqquq/test_tasis.py",
     # آخرُها عمدًا: نموُّ الزمن (س1) لا يقتل إلّا طفرةً لا تغيّر الدلالة (P466، P467)، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_sura.py",
 )
@@ -829,6 +830,10 @@ def main():
     report.append(f"٥ص٨ {out.strip().splitlines()[-1] if out.strip() else 'ضابط صكّ الجملة: ?'}")
     if code != 0:
         fails.append("اختبار ضابط صكّ الجملة فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_tasis.py"])
+    report.append(f"٥ر٢ {out.strip().splitlines()[-1] if out.strip() else 'شبكة الدلالة: ?'}")
+    if code != 0:
+        fails.append("اختبار شبكة الدلالة فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_tadqiq_tamm.py"])
     report.append(f"٥خ {out.strip().splitlines()[-1] if out.strip() else 'تمامُ التدقيق: ?'}")
     if code != 0:

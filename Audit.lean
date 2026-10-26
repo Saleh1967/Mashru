@@ -106,6 +106,7 @@ import SLGE.Ladder
 import SLGE.Law
 import SLGE.Root
 import SLGE.Syllable
+import Madlul.TasisDalala
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2278,3 +2279,31 @@ import SLGE.Syllable
 #print axioms Jisr.JisrDal.musharik_lt
 -- Aql.Aqliyya
 #print axioms Aql.mafhum_bishahid
+
+-- شبكةُ الدلالة: الدورُ والتأسيس (Madlul/TasisDalala.lean)
+#print axioms TasisDalala.dawr_mawqufa
+#print axioms TasisDalala.mawqufa_la_yuarraf
+#print axioms TasisDalala.dawr_la_yuarraf
+#print axioms TasisDalala.ghayr_muarraf_mawqufa
+#print axioms TasisDalala.muarraf_iff
+#print axioms TasisDalala.la_tarif_bila_asl
+#print axioms TasisDalala.bila_madkhal
+#print axioms TasisDalala.asl_kafin_iff
+#print axioms TasisDalala.iqfal_sahih
+#print axioms TasisDalala.asl_fi_iqfal
+#print axioms TasisDalala.thabit_tamm
+#print axioms TasisDalala.iqfal_iff
+#print axioms TasisDalala.dawrB_sahih
+#print axioms TasisDalala.kharij_thabit
+#print axioms TasisDalala.Jadwal.defJ_madakhil
+#print axioms TasisDalala.Jadwal.defJ_ghayr_farigh
+#print axioms TasisDalala.Jadwal.la_tarif_bila_asl_defJ
+#print axioms TasisDalala.Jadwal.dawr_fahm_aql
+#print axioms TasisDalala.Jadwal.fahm_aql_la_yuarraf
+#print axioms TasisDalala.Jadwal.min_kataba
+#print axioms TasisDalala.Jadwal.asasAdna_kafin
+#print axioms TasisDalala.Jadwal.kafin_yahwi
+#print axioms TasisDalala.Jadwal.asasAdna_asghar
+#print axioms TasisDalala.Jadwal.asasAdna_adna
+#print axioms TasisDalala.Jadwal.maqal_aql_kafin
+#print axioms TasisDalala.Jadwal.maqal_dawr
