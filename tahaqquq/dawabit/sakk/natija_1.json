@@ -1,0 +1,66 @@
+{
+ "tashghil": 1,
+ "naw": "التشغيلُ الأوّل على الحالات المجمَّدة، بعد دفع الشفرة وقبل أيّ تعديلٍ لها",
+ "cases_sha256": "f23fee33de9b5a37f78cc848603823d4b5dce0664695e48aedd9b06ca68ce446",
+ "shifra": {
+  "milaf": "Jisr/SakkJumla.lean",
+  "sha256": "49c3b157571e23f3bfbfdf28a22b5d73b24dab1d1d0badb9f5c1a390eee9b127",
+  "iydaa": "11127325f53de70347ad923f562e718ffd704288"
+ },
+ "lean": [
+  "Jisr.SakkJumla.Qiyas.majal",
+  "Jisr.SakkJumla.Qiyas.natija",
+  "Jisr.SakkJumla.Qiyas.natija_fia",
+  "Jisr.SakkJumla.Qiyas.akhta_1"
+ ],
+ "halat": 42,
+ "huqul_masula": 54,
+ "ihsa": {
+  "sawab": 48,
+  "naqsTaghtiya": 2,
+  "tajawuz": 2,
+  "ikhtiyar": 1,
+  "khata": 1
+ },
+ "bil_fia": {
+  "موجب": 21,
+  "حد": 8,
+  "خارج": 2,
+  "عموم": 11,
+  "غموض": 6
+ },
+ "akhta": [
+  [
+   "S01",
+   "awwal",
+   "ikhtiyar"
+  ],
+  [
+   "S14",
+   "sabab",
+   "naqsTaghtiya"
+  ],
+  [
+   "S24",
+   "sabab",
+   "naqsTaghtiya"
+  ],
+  [
+   "S25",
+   "sabab",
+   "khata"
+  ],
+  [
+   "S38",
+   "marji",
+   "tajawuz"
+  ],
+  [
+   "S42",
+   "marji",
+   "tajawuz"
+  ]
+ ],
+ "tarikh": "2026-10-26",
+ "malahiz": "الأعدادُ من #eval على Jisr/SakkJumlaQiyas.lean ثمّ مبرهناتٍ بـ decide +kernel؛ وbil_fia عددُ الحقول المسؤولة الصائبة في كلّ فئة. S01: القوّةُ الأولى بلا أداةٍ ولا قول خبرٌ وحده في الشفرة، والمتوقَّعُ الخبرُ والإنشاءُ معًا. S14: المصدرُ المنصوبُ بشروطٍ غيرِ معلنة «لا حكم» في الشفرة، والمتوقَّعُ العلّةُ وغيرُ المذكور. S24: «حتى» المرفوعةُ والأوّلُ ليس سببًا «لا حكم» في الشفرة، والمتوقَّعُ غيرُ المذكور. S25: الفاءُ المنصوبةُ بأداءٍ غيرِ معلن الوجهان في الشفرة، والمتوقَّعُ السببيّة. S38 وS42: الإشارةُ إلى اثنين محتمَلٌ في الشفرة قياسًا على التردّد في عود الضمير، والنطاقُ لا يحكم فيها."
+}

@@ -98,6 +98,7 @@ import Jisr.NassItar
 import Jisr.NassItarDabit
 import Jisr.NassItarQiyas
 import Jisr.SakkJumla
+import Jisr.SakkJumlaQiyas
 import SLGE.Core
 import SLGE.Count
 import SLGE.Hamza
@@ -2008,6 +2009,12 @@ import SLGE.Syllable
 #print axioms Jisr.SakkJumla.taliq_iff_jaza
 #print axioms Jisr.SakkJumla.lam_nafy_madi
 #print axioms Jisr.SakkJumla.mafulLahu_qatr
+-- ضابطُ صكّ الجملة المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/SakkJumlaQiyas.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.SakkJumla.Qiyas.qarin_shawahid
+#print axioms Jisr.SakkJumla.Qiyas.majal
+#print axioms Jisr.SakkJumla.Qiyas.natija
+#print axioms Jisr.SakkJumla.Qiyas.natija_fia
+#print axioms Jisr.SakkJumla.Qiyas.akhta_1
 
 -- تمامُ التدقيق (tahaqquq/test_tadqiq_tamm.py، 2026-10-26): مبرهناتٌ عامّةٌ مبنيّةٌ لم تكن هنا، بترتيبها في ملفّاتها.
 -- SLGE.Core
