@@ -23,7 +23,7 @@ natija_1.json، ٣)، P875 (اسمُ مبرهنة akhta، ٣)، P872 (صيغةُ
 - P873 على Jisr/SakkJumla.lean: الفحصُ ٥ وبصمةُ الشفرة في آخر سجلّ (٣).
 - P871 على natija_1.json: المرساةُ NATIJA_1 وبصمتُه في qablaha في natija_2.json (٣)، وعددُ ihsa.
 - P869 على tajmid.json: بصمةُ cases.json (١) ومطابقةُ cases_sha256 في السجلّات (٣).
-ومرجعُ الحالات غيرِ C في dhahab25 لا تقارنه مبرهنةٌ (`nabt_marji` على C01–C05 وحدها)، فلا يحرسه في Lean شيءٌ، ويحرسه الفحصُ ٥. ولا طفرةَ
+ومرجعُ الحالات غيرِ C في dhahab25 لا تقارنه مبرهنةٌ (`nabt_marji` على C01–C04 و`nabt_marji_C05` على C05 وحدها)، فلا يحرسه في Lean شيءٌ، ويحرسه الفحصُ ٥. ولا طفرةَ
 للبند ٦ (CI بلا مودَع)، ولا لمقارنة DHAHAB بملفّ NABT (المستودعُ خارجيّ).
 التشغيل: python3 -I tahaqquq/test_sakk.py
 """
@@ -255,7 +255,8 @@ if hadir:
         return re.sub(r"\s+", " ", s).strip()
 
     def mawsul(f, a, b):
-        return " ".join(nazzif(sutur_milaf(f)[i - 1]) for i in range(a, b + 1))
+        # سطرُ علامة الصفحة وحدها يصير فارغًا فلا يُدخل بياضًا ثانيًا (توحيدُ البياض)
+        return " ".join(x for x in (nazzif(sutur_milaf(f)[i - 1]) for i in range(a, b + 1)) if x)
 
     asanid = re.findall(r'\("(\w+)", "([\w.]+)", (\d+), (\d+), "([^"]+)"\)', shifra)
     tahaqqaq(len(asanid) >= 40, f"asanid قليلة: {len(asanid)}")

@@ -5052,7 +5052,7 @@
   "ila": "  | .in_ => some \"إذا\""
  },
  {
-  "ism": "P867_sakk_muhtamal_unresolved",
+  "ism": "P867_sakk_muayyan_ambiguous",
   "milaf": "Jisr/SakkJumla.lean",
   "min": "    | .muayyan => .resolved",
   "ila": "    | .muayyan => .ambiguous"
@@ -5122,5 +5122,11 @@
   "milaf": "Jisr/SakkJumla.lean",
   "min": "  | .faMansub => if d.adaa = .laysaSabab then [.ghayrMadhkur] else [.sababiyya]",
   "ila": "  | .faMansub => if d.adaa = .laysaSabab then [.ghayrMadhkur] else [.sababiyya, .ghayrMadhkur]"
+ },
+ {
+  "ism": "P879_sakk_muhtamal_unresolved",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "    | .muhtamal => .ambiguous",
+  "ila": "    | .muhtamal => .unresolved"
  }
 ]

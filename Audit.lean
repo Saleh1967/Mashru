@@ -2009,6 +2009,7 @@ import Madlul.TasisDalala
 #print axioms Jisr.SakkJumla.nabt_quwwa
 #print axioms Jisr.SakkJumla.nabt_marji
 #print axioms Jisr.SakkJumla.nabt_marji_C05
+#print axioms Jisr.SakkJumla.marjiNabt_huwa_mufassiran
 #print axioms Jisr.SakkJumla.nabt_la_tarqiya
 #print axioms Jisr.SakkJumla.taliq_iff_jaza
 #print axioms Jisr.SakkJumla.lam_nafy_madi
