@@ -4786,5 +4786,95 @@
   "milaf": "Jisr/NassItarQiyas.lean",
   "min": "some ⟨complete' (ibtida w), h, q,",
   "ila": "some ⟨complete' (ibtida w), h, q.map (· + 1),"
+ },
+ {
+  "ism": "P823_dalala_iltizam_bila_luzum",
+  "milaf": "Madlul/Dalala.lean",
+  "min": "W.shuhud l ≠ [] ∧ Kharij q (W.maana l) ∧ Z (W.maana l) q",
+  "ila": "W.shuhud l ≠ [] ∧ Kharij q (W.maana l)"
+ },
+ {
+  "ism": "P824_dalala_iltizam_bila_shahid_wad",
+  "milaf": "Madlul/Dalala.lean",
+  "min": "W.shuhud l ≠ [] ∧ Kharij q (W.maana l) ∧ Z (W.maana l) q",
+  "ila": "Kharij q (W.maana l) ∧ Z (W.maana l) q"
+ },
+ {
+  "ism": "P825_naql_saff_bila_qail",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "⟨some (qailOf r.mujam), Naql.binaDaraja",
+  "ila": "⟨none, Naql.binaDaraja"
+ },
+ {
+  "ism": "P826_naql_manqul_kharij_hadd",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "  | .asrManqul, _ => none",
+  "ila": "  | .asrManqul, _ => some false"
+ },
+ {
+  "ism": "P827_naql_yashhad_bila_mujam",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "r.mujam == m && r.a == a && r.b == b",
+  "ila": "r.a == a && r.b == b"
+ },
+ {
+  "ism": "P828_naql_daraja_bila_saff_ahad",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "  | 0 => none\n",
+  "ila": "  | 0 => some .ahad\n"
+ },
+ {
+  "ism": "P829_naql_zawj_bila_tartib",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "r.mujam == m && r.a == a && r.b == b",
+  "ila": "r.mujam == m && ((r.a == a && r.b == b) || (r.a == b && r.b == a))"
+ },
+ {
+  "ism": "P830_naql_qail_ghayr_sijill",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "  | .maqayis => \"مقاييس اللغة\"",
+  "ila": "  | .maqayis => \"معجم مقاييس اللغة\""
+ },
+ {
+  "ism": "P831_naql_wafat_lisan",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "  | .lisan => 711",
+  "ila": "  | .lisan => 300"
+ },
+ {
+  "ism": "P832_naql_hadd_bila_khuruj",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "some (decide (wafat m ≤ b))",
+  "ila": "some true"
+ },
+ {
+  "ism": "P833_naql_naw_dun_hadd",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "if haddOf q m = some false then .mustahdathBadAlHadd else .wadLughawi",
+  "ila": ".wadLughawi"
+ },
+ {
+  "ism": "P834_naql_naw_majaz",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "then .mustahdathBadAlHadd else .wadLughawi",
+  "ila": "then .mustahdathBadAlHadd else .majaz"
+ },
+ {
+  "ism": "P835_iltizam_ghayr_lazim",
+  "milaf": "Madlul/JadwalLuzum.lean",
+  "min": "  | .luzum => [qMutabaqa l m, qIltizam l m b]",
+  "ila": "  | .luzum => [qMutabaqa l m, qIltizam l m m]"
+ },
+ {
+  "ism": "P836_naql_daraja_min_lafz",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "Naql.binaDaraja (mujamat T r.a r.b).length, haddOf",
+  "ila": "Naql.binaDaraja (mujamat T r.w r.b).length, haddOf"
+ },
+ {
+  "ism": "P837_naql_qail_min_lafz",
+  "milaf": "Madlul/JadwalLuzumNaql.lean",
+  "min": "⟨some (qailOf r.mujam), Naql.binaDaraja",
+  "ila": "⟨some (qailOf r.mujam ++ r.w), Naql.binaDaraja"
  }
 ]

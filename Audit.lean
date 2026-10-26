@@ -59,6 +59,7 @@ import Jisr.Mulhaqat
 import Jisr.Utur
 import Jisr.JadwalLuzum
 import Madlul.JadwalLuzum
+import Madlul.JadwalLuzumNaql
 import Madlul.Naht
 import Nizam.Asas
 import Nizam.Talab
@@ -110,6 +111,10 @@ import Jisr.NassItarQiyas
 #print axioms Madlul.QismMadlul.khamsa
 #print axioms Dalala.dakhil_mutabaqa_or_tadammun
 #print axioms Dalala.no_witness_no_dalala
+-- الثلاث المأذونة في الجلسة 2026-10-25 (23:07): مبنيّةٌ ومسلّماتُها تُطبع في ملفّها، ولم تكن هنا
+#print axioms Dalala.iltizam_needs_mutabaqa
+#print axioms Dalala.iltizam_needs_luzum_table
+#print axioms Dalala.mutabaqa_without_tadammun
 -- المرحلة ٣: الدال والمدلول معًا
 #print axioms Jisr.tasnif_fi_kull
 #print axioms Jisr.tasnif_mustawfa
@@ -1185,6 +1190,24 @@ import Jisr.NassItarQiyas
 #print axioms JadwalLuzum.fahm_la_iltizam
 #print axioms JadwalLuzum.silat_sitt
 #print axioms JadwalLuzum.talab_la_mubashir
+-- النقلُ لصفوف جدول اللزوم (Madlul/JadwalLuzumNaql.lean)
+#print axioms JadwalLuzum.la_mutawatir
+#print axioms JadwalLuzum.mutadhafir_iff
+#print axioms JadwalLuzum.yashhad_saff
+#print axioms JadwalLuzum.la_daraja_bila_saff
+#print axioms JadwalLuzum.daraja_jisr
+#print axioms JadwalLuzum.bila_saff
+#print axioms JadwalLuzum.la_yaqra_lafz
+#print axioms JadwalLuzum.yasluh_iff
+#print axioms JadwalLuzum.naw_hadd
+#print axioms JadwalLuzum.naw_ithnan
+#print axioms JadwalLuzum.iltizam_saff
+#print axioms JadwalLuzum.shahid_luzum_maqayis
+#print axioms JadwalLuzum.iltizam_jadwal
+#print axioms JadwalLuzum.shahid_hadd
+#print axioms JadwalLuzum.shahid_daraja
+#print axioms JadwalLuzum.shahid_qiraat
+#print axioms JadwalLuzum.shahid_fahm_juz_lisan
 #print axioms Naht.aakhidha_bihazz
 #print axioms Naht.farid_nodup
 #print axioms Naht.manhut_ithnan

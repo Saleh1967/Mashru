@@ -1,6 +1,8 @@
 """اختبارُ جدول اللزوم من شبكة المعاجم: `shabaka/jadwal_luzum.py` و`Madlul/JadwalLuzumData.lean` و`Madlul/JadwalLuzum.lean`.
 
-١. نصُّ Lean (دائمًا): منشئاتُ `Naw` الخمسة؛ عددُ الصفوف في الترويسة = عددُها؛ مبرهناتُ الملفّ السبعَ عشرةَ بأسمائها في Audit.lean.
+١. نصُّ Lean (دائمًا): منشئاتُ `Naw` الخمسة؛ عددُ الصفوف في الترويسة = عددُها؛ مبرهناتُ الملفّ السبعَ عشرةَ بأسمائها في Audit.lean؛
+   وقائلا `Madlul/JadwalLuzumNaql.lean` اسما `lisan.txt` و`maqayis.txt` المختومين في `mudaat/sijill.json` (طفرتُه P830)، ومبرهناتُه السبعَ عشرةَ مدقّقة؛
+   وبالمودَع: سنةُ وفاة صاحب كلّ معجمٍ في `wafat` هي `011.AuthorDIED` في رأس مودَعه (فحصٌ بالمودَع بلا طفرةٍ تخصّه: P831 يقتلها البناء).
 ٢. عيّنةٌ مضمَّنة (دائمًا، بلا مودَع): أسطرٌ حقيقيّةٌ منقولةٌ من اللسان والمقاييس بصيغة OpenITI، والمتوقَّعُ مكتوبٌ يدويًّا من قراءتها
    لا من المخرج: «الفهم: معرفتك الشيء بالقلب» جزءان (عرف، قلب)؛ «فهمت الشيء: عقلته وعرفته» مترادفان لا جزءان (R3-ب)؛
    «وبنو كتب: بطن، والله أعلم» بلا «علم» (FORMULA؛ و«أعلم» صيغةٌ لـ«علم» بسطر اللسان س235062 في العيّنة)؛ «لأن كتاب الله أمر…» بلا لزوم (TASMIYA؛ و«أمر» جذرٌ بأوّل مادّته س72211 في العيّنة)؛ «وسميت عقالا لأنها تعقل عن صاحبها الطلب»
@@ -59,6 +61,17 @@ for ns, src, ts in (("Naht", naht_src, "aakhidha_bihazz farid_nodup manhut_ithna
     for t in ts.split():
         check(f"theorem {t}" in src, f"المبرهنة {t} غائبة عن {ns}.lean")
         check(f"#print axioms {ns}.{t}\n" in audit, f"المبرهنة {ns}.{t} غير مدقّقة في Audit.lean")
+# النقلُ لصفوف الجدول (Madlul/JadwalLuzumNaql.lean): القائلُ اسمُ المعجم في سجلّ المودَعات بعينه، والمبرهناتُ مدقّقة.
+naql_src = open(os.path.join(ROOT, "Madlul", "JadwalLuzumNaql.lean"), encoding="utf-8").read()
+SIJILL = {x["milaf"]: x for x in json.load(open(os.path.join(ROOT, "mudaat", "sijill.json"), encoding="utf-8"))["sijill"]}
+for mujam, milaf in (("lisan", "lisan.txt"), ("maqayis", "maqayis.txt")):
+    mq = re.search(r'^  \| \.' + mujam + r' => "([^"]+)"$', naql_src, flags=re.M)
+    check(mq and mq.group(1) == SIJILL[milaf]["ism"] and SIJILL[milaf]["hala"] == "مختوم",
+          f"قائلُ {mujam} في JadwalLuzumNaql.lean ليس اسمَ {milaf} المختوم في mudaat/sijill.json")
+for t in ("la_mutawatir mutadhafir_iff yashhad_saff la_daraja_bila_saff daraja_jisr bila_saff la_yaqra_lafz yasluh_iff naw_hadd "
+          "naw_ithnan iltizam_saff shahid_luzum_maqayis iltizam_jadwal shahid_hadd shahid_daraja shahid_qiraat shahid_fahm_juz_lisan").split():
+    check(f"theorem {t}" in naql_src, f"المبرهنة {t} غائبة عن JadwalLuzumNaql.lean")
+    check(f"#print axioms JadwalLuzum.{t}\n" in audit, f"المبرهنة JadwalLuzum.{t} غير مدقّقة في Audit.lean")
 
 # ---------- ٢. العيّنة المضمَّنة ----------
 LISAN_AYYINA = """### $ فهم: الفهم: معرفتك الشيء بالقلب. فهمه فهما وفهما وفهامة: علمه؛ الأخيرة
@@ -135,6 +148,11 @@ if D and all(os.path.exists(os.path.join(D, f)) for f in ("lisan.txt", "maqayis.
 if hadir:
     L = open(os.path.join(D, "lisan.txt"), encoding="utf-8").read().split("\n")
     M = open(os.path.join(D, "maqayis.txt"), encoding="utf-8").read().split("\n")
+    for mujam, src in (("lisan", L), ("maqayis", M)):
+        mw = re.search(r'^  \| \.' + mujam + r' => (\d+)$', naql_src, flags=re.M)
+        md = [x for x in src[:40] if x.startswith("#META# 011.AuthorDIED")]
+        check(mw and len(md) == 1 and md[0].split("::")[1].strip() == mw.group(1),
+              f"wafat {mujam} في JadwalLuzumNaql.lean ليست 011.AuthorDIED في رأس مودَعه")
     mlf = J.mawadd_lisan(L)
     mqf, _ = J.mawadd_maqayis(M)
     Jf = J.Jadhr(mlf)
