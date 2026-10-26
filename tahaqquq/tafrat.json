@@ -4896,6 +4896,96 @@
   "ila": "theorem adatQayd_ne_ism (i : Nat) : adatQayd i ≠ some .ism := by"
  },
  {
+  "ism": "P841_khatwa_ayy_muarrif",
+  "milaf": "Madlul/TasisDalala.lean",
+  "min": "ds.all (K.contains ·)",
+  "ila": "ds.any (K.contains ·)"
+ },
+ {
+  "ism": "P842_khatwa_bila_madkhal",
+  "milaf": "Madlul/TasisDalala.lean",
+  "min": "| none => false)",
+  "ila": "| none => true)"
+ },
+ {
+  "ism": "P843_dawrB_kull",
+  "milaf": "Madlul/TasisDalala.lean",
+  "min": "ds.any (C.contains ·)",
+  "ila": "ds.all (C.contains ·)"
+ },
+ {
+  "ism": "P844_asas_bila_jama",
+  "milaf": "Madlul/TasisDalala.lean",
+  "min": "\"صلح\", \"جمع\"]",
+  "ila": "\"صلح\"]"
+ },
+ {
+  "ism": "P845_madakhil_b",
+  "milaf": "Madlul/TasisDalala.lean",
+  "min": "def madakhil (T : List Saff) : List String := T.map (·.a)",
+  "ila": "def madakhil (T : List Saff) : List String := T.map (·.b)"
+ },
+ {
+  "ism": "P846_mirat_ayy_muarrif",
+  "milaf": "shabaka/tasis_dalala.py",
+  "min": "ds <= K}",
+  "ila": "ds & K}"
+ },
+ {
+  "ism": "P847_maruf_bila_fasila",
+  "milaf": "shabaka/tasis_dalala.py",
+  "min": "re.split(\"[.؛،]\", CLEAN.sub(\" \", txt), maxsplit=1)",
+  "ila": "re.split(\"[.؛]\", CLEAN.sub(\" \", txt), maxsplit=1)"
+ },
+ {
+  "ism": "P848_mirat_maa_luzum",
+  "milaf": "shabaka/tasis_dalala.py",
+  "min": "if naw != LUZUM:",
+  "ila": "if True:"
+ },
+ {
+  "ism": "P849_uqad_bila_mawadd",
+  "milaf": "shabaka/tasis_dalala.py",
+  "min": "return {a for a, _, _ in rows} | {b for _, naw, b in rows if naw != LUZUM}",
+  "ila": "return {b for _, naw, b in rows if naw != LUZUM}"
+ },
+ {
+  "ism": "P850_bulugh_maaks",
+  "milaf": "shabaka/tasis_dalala.py",
+  "min": "radd[d].add(v)",
+  "ila": "radd[v].add(d)"
+ },
+ {
+  "ism": "P851_nawat_min_kull",
+  "milaf": "shabaka/tasis_dalala.py",
+  "min": "used = {d for v in alive for d in D.get(v, ()) if d in alive}",
+  "ila": "used = {d for v in D for d in D.get(v, ()) if d in alive}"
+ },
+ {
+  "ism": "P852_jashi_bila_idafa",
+  "milaf": "shabaka/tasis_dalala.py",
+  "min": "while not N <= K:",
+  "ila": "while False:"
+ },
+ {
+  "ism": "P853_defJ_madkhal_farigh",
+  "milaf": "Madlul/TasisDalala.lean",
+  "min": "| [] => none",
+  "ila": "| [] => some []"
+ },
+ {
+  "ism": "P854_maqal_bila_farigh",
+  "milaf": "Madlul/TasisDalala.lean",
+  "min": "some ((defJ T a).getD [])",
+  "ila": "defJ T a"
+ },
+ {
+  "ism": "P855_maqal_bila_awraq",
+  "milaf": "shabaka/tasis_dalala.py",
+  "min": "return iqfal(D, set(G) | (N - set(D))) & N",
+  "ila": "return iqfal(D, set(G)) & N"
+ },
+ {
   "ism": "P856_sakk_lam_ithbat",
   "milaf": "Jisr/SakkJumla.lean",
   "min": "  | .lam, _ => .nafy",
