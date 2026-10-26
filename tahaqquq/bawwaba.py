@@ -72,6 +72,8 @@
   ٥ر٢. شبكةُ الدلالة (tahaqquq/test_tasis.py): الإغلاقُ بالتعريف على صفوف Madlul/JadwalLuzumData.lean بتنفيذٍ مستقلّ (الدورُ فهم–عقل،
       والإغلاقُ من «كتب»، والأساسُ الأدنى)، ومبرهناتُ Madlul/TasisDalala.lean مدقّقة، ومرآةُ الجدول الكامل shabaka/tasis_dalala.py بتوقّعاتٍ
       يدويّة على الصفوف الثلاثين، دائمًا؛ والاقتباساتُ في أسطرها إن حضر المودَع.
+  ٥ص٨. ضابطُ «صكّ الجملة» المجمَّد (tahaqquq/test_sakk.py؛ الكتاب والمغني والقطر والألفية والشخصيّة ج1 وج3): مثلُ ٥ص على
+      Jisr/SakkJumla.lean، وذهبُ NABT الخمسُ والعشرون منقولًا يدويًّا يطابق dhahab25، وبملفّ NABT نفسِه إن حضر.
   ٥خ. تمامُ التدقيق (tahaqquq/test_tadqiq_tamm.py؛ 2026-10-26؛ مقترحُ البنّاء بأمر المالك العامّ، يسري بعد دمج طلبه): كلُّ مبرهنةٍ عامّةٍ
       في وحدات المشروع (SLGE وDal وMadlul وJisr وAql وNizam وFaahis وQari؛ تصريحٌ تسبق اسمَه في سطره theorem أو lemma) لها `#print axioms`
       في Audit.lean خارج التعليقات — من ملفّات `.ilean` التي يكتبها lake build؛ فالبند ٣ يعدّ ما في Audit.lean، وهذا يمنع أن تُبنى مبرهنةٌ
@@ -151,6 +153,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_waqf.py",
     "tahaqquq/test_jaza2.py",
     "tahaqquq/test_nass.py",
+    "tahaqquq/test_sakk.py",
     "tahaqquq/test_tadqiq_tamm.py",
     "tahaqquq/test_tasis.py",
     # آخرُها عمدًا: نموُّ الزمن (س1) لا يقتل إلّا طفرةً لا تغيّر الدلالة (P466، P467)، فلا يجري إلّا على ما نجا ممّا قبله.
@@ -826,6 +829,10 @@ def main():
     report.append(f"٥ص٧ {out.strip().splitlines()[-1] if out.strip() else 'ضابط من النصّ إلى الإطار: ?'}")
     if code != 0:
         fails.append("اختبار ضابط من النصّ إلى الإطار فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_sakk.py"])
+    report.append(f"٥ص٨ {out.strip().splitlines()[-1] if out.strip() else 'ضابط صكّ الجملة: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط صكّ الجملة فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_tasis.py"])
     report.append(f"٥ر٢ {out.strip().splitlines()[-1] if out.strip() else 'شبكة الدلالة: ?'}")
     if code != 0:

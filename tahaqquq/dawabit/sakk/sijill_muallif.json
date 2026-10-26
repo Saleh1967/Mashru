@@ -1,0 +1,42 @@
+{
+ "adawat": {
+  "Bash": 15,
+  "Read": 35,
+  "Write": 3,
+  "Edit": 1
+ },
+ "masarat_mutlaqa": [
+  "/dev/null",
+  "/home/claude/mudaa_dir",
+  "/home/claude/mudaa_dir/$f",
+  "/home/claude/mudaa_dir/alfiyya.txt",
+  "/home/claude/mudaa_dir/mughni.txt",
+  "/home/claude/mudaa_dir/qatr.txt",
+  "/home/claude/mudaa_dir/sibawayhi.txt",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/sakk/mujallad",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/sakk/mujallad/",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/sakk/mujallad/cases.json",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/sakk/mujallad/fahs_cases.py",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/sakk/mujallad/taalif.md",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/sakk/mujallad/wasf.md"
+ ],
+ "kharij_al_masmuh": [
+  "/dev/null",
+  "/home/claude/mudaa_dir",
+  "/home/claude/mudaa_dir/$f"
+ ],
+ "mamnu": [],
+ "qaraa_al_masadir": {
+  "/home/claude/mudaa_dir/qatr.txt": true,
+  "/home/claude/mudaa_dir/alfiyya.txt": true,
+  "/home/claude/mudaa_dir/mughni.txt": true,
+  "/home/claude/mudaa_dir/sibawayhi.txt": true,
+  "/home/claude/mudaa_dir/a1.txt": true,
+  "/home/claude/mudaa_dir/a2.txt": true
+ },
+ "tafsir_kharij": {
+  "/dev/null": "هدفُ إعادة توجيه مخرج fahs_cases.py، لا قراءة",
+  "/home/claude/mudaa_dir": "هدفُ «cd» قبل sha256sum وwc وsed على المصادر الستّة بأسمائها النسبيّة",
+  "/home/claude/mudaa_dir/$f": "متغيّرُ حلقةٍ في «ln -sf» يربط المصادر الخمسة غيرَ qatr.txt في tafrat_fahs/src_mughayyar لاختبار رفض بصمةٍ مغيَّرة، لا ملفّ"
+ }
+}

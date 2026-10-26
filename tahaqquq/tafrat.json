@@ -4984,5 +4984,137 @@
   "milaf": "shabaka/tasis_dalala.py",
   "min": "return iqfal(D, set(G) | (N - set(D))) & N",
   "ila": "return iqfal(D, set(G)) & N"
+ },
+ {
+  "ism": "P856_sakk_lam_ithbat",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .lam, _ => .nafy",
+  "ila": "  | .lam, _ => .ithbat"
+ },
+ {
+  "ism": "P857_sakk_qala_amma_zann",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .mansub, .amma | .annaMaftuha, .amma => [.laHukm]",
+  "ila": "  | .mansub, .amma | .annaMaftuha, .amma => [.zann]"
+ },
+ {
+  "ism": "P858_sakk_in_bila_taliq",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .in_, .laQawl => [.taliq]",
+  "ila": "  | .in_, .laQawl => [.laThani]"
+ },
+ {
+  "ism": "P859_sakk_lamma_wajh",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .lamma => [.sababiyya, .ghayrMadhkur]",
+  "ila": "  | .lamma => [.ghayrMadhkur]"
+ },
+ {
+  "ism": "P860_sakk_hatta_raf_sabab",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .hattaMarfu => if d.adaa = .laysaSabab then [.laHukm] else [.sababiyya]",
+  "ila": "  | .hattaMarfu => if d.adaa = .laysaSabab then [.sababiyya] else [.sababiyya]"
+ },
+ {
+  "ism": "P861_sakk_dawall_bila_an",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "def dawallIlla : List Dall := [.masdarMansub, .lamJarra, .lamNasiba, .kay, .hattaMansub, .anBilaLam]",
+  "ila": "def dawallIlla : List Dall := [.masdarMansub, .lamJarra, .lamNasiba, .kay, .hattaMansub]"
+ },
+ {
+  "ism": "P862_sakk_ithnan_muayyan",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .huwa, .mufassiran | .huwa, .musharIthnan => .muhtamal",
+  "ila": "  | .huwa, .mufassiran | .huwa, .musharIthnan => .muayyan"
+ },
+ {
+  "ism": "P863_sakk_waqi_hikaya",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .ithbat | .nafy => w",
+  "ila": "  | .ithbat | .nafy | .hikaya => w"
+ },
+ {
+  "ism": "P864_sakk_dafi_bada",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "if sabab d = [.illa] ∨ sabab d = [.sababiyya] then .madhkur",
+  "ila": "if Sabab.illa ∈ sabab d ∨ Sabab.sababiyya ∈ sabab d then .madhkur"
+ },
+ {
+  "ism": "P865_sakk_ana_bila_siyaq",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .ana, .mutakallimMuayyan => .muayyan",
+  "ila": "  | .ana, _ => .muayyan"
+ },
+ {
+  "ism": "P866_sakk_in_idha",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .in_ => some \"إن\"",
+  "ila": "  | .in_ => some \"إذا\""
+ },
+ {
+  "ism": "P867_sakk_muayyan_ambiguous",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "    | .muayyan => .resolved",
+  "ila": "    | .muayyan => .ambiguous"
+ },
+ {
+  "ism": "P868_sakk_taliq_ghayr",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .taliq => .hypothetical",
+  "ila": "  | .taliq => .ghayr"
+ },
+ {
+  "ism": "P869_sakk_tajmid_basma",
+  "milaf": "tahaqquq/dawabit/sakk/tajmid.json",
+  "min": "\"cases_sha256\": \"f23fee33de9b5a37f78cc848603823d4b5dce0664695e48aedd9b06ca68ce446\"",
+  "ila": "\"cases_sha256\": \"f23fee33de9b5a37f78cc848603823d4b5dce0664695e48aedd9b06ca68ce447\""
+ },
+ {
+  "ism": "P870_sakk_mawallad_ism",
+  "milaf": "Jisr/SakkJumlaDawabit.lean",
+  "min": "⟨\"S02\", ",
+  "ila": "⟨\"S99\", "
+ },
+ {
+  "ism": "P871_sakk_natija_sawab",
+  "milaf": "tahaqquq/dawabit/sakk/natija_1.json",
+  "min": "\"sawab\": 48",
+  "ila": "\"sawab\": 47"
+ },
+ {
+  "ism": "P872_sakk_majal_sigha",
+  "milaf": "Jisr/SakkJumlaQiyas.lean",
+  "min": "theorem majal : majalAadad = [12, 18, 12, 54, 3, 2, 1, 5, 0, 1, 0, 0, 1, 5, 3, 2, 0, 1, 4, 4, 5, 1, 4, 5, 1, 6, 0] := by",
+  "ila": "theorem majal : majalAadad = majalAadad := by"
+ },
+ {
+  "ism": "P873_sakk_dhahab_N01",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  (\"N01\", ⟨.assertPos, [], .underdetermined, .notApplicable, .notEstablished⟩),",
+  "ila": "  (\"N01\", ⟨.assertPos, [], .underdetermined, .unresolved, .notEstablished⟩),"
+ },
+ {
+  "ism": "P874_sakk_muwallid_adaa",
+  "milaf": "scripts/bina_dawabit_sakk.py",
+  "min": "ADAA = {\"الأول_سبب_الثاني\": \".sabab\",",
+  "ila": "ADAA = {\"الأول_سبب_الثاني\": \".ghayrMuallan\","
+ },
+ {
+  "ism": "P875_sakk_akhta_ism",
+  "milaf": "Jisr/SakkJumlaQiyas.lean",
+  "min": "theorem akhta_5 :",
+  "ila": "theorem akhta_6 :"
+ },
+ {
+  "ism": "P877_sakk_ishara_ithnan_muhtamal",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "  | .hadha, .musharWahid | .dhaka, .musharWahid => .muayyan",
+  "ila": "  | .hadha, .musharWahid | .dhaka, .musharWahid => .muayyan\n  | .hadha, .musharIthnan | .dhaka, .musharIthnan => .muhtamal"
+ },
+ {
+  "ism": "P879_sakk_muhtamal_unresolved",
+  "milaf": "Jisr/SakkJumla.lean",
+  "min": "    | .muhtamal => .ambiguous",
+  "ila": "    | .muhtamal => .unresolved"
  }
 ]

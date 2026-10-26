@@ -97,6 +97,8 @@ import Jisr.BaqiJazaQiyas
 import Jisr.NassItar
 import Jisr.NassItarDabit
 import Jisr.NassItarQiyas
+import Jisr.SakkJumla
+import Jisr.SakkJumlaQiyas
 import SLGE.Core
 import SLGE.Count
 import SLGE.Hamza
@@ -1985,6 +1987,38 @@ import Madlul.TasisDalala
 #print axioms Jisr.NassItar.Qiyas.khana_hala
 #print axioms Jisr.NassItar.Qiyas.khalalKhana_nil
 #print axioms Jisr.NassItar.Qiyas.waslBase_khalal
+-- صكُّ الجملة (Jisr/SakkJumla.lean): القوّةُ والسببُ المذكورُ والمرجعُ من صورة التركيب، والواقعُ بعد القوّة؛ وتشخيصٌ على مرجع NABT
+#print axioms Jisr.SakkJumla.taliq_la_yukhbar
+#print axioms Jisr.SakkJumla.thani_la_ikhbar
+#print axioms Jisr.SakkJumla.awwal_khabar_iff
+#print axioms Jisr.SakkJumla.qala_amma_la_zann
+#print axioms Jisr.SakkJumla.illa_bi_dall
+#print axioms Jisr.SakkJumla.zarf_laysa_sabab
+#print axioms Jisr.SakkJumla.lamma_wajhan
+#print axioms Jisr.SakkJumla.hatta_wa_fa
+#print axioms Jisr.SakkJumla.muayyan_iff
+#print axioms Jisr.SakkJumla.ithnan_la_yataayyan
+#print axioms Jisr.SakkJumla.ishara_ithnan_la_hukm
+#print axioms Jisr.SakkJumla.la_marji_bila_siyaq
+#print axioms Jisr.SakkJumla.la_waqi_bila_ikhbar
+#print axioms Jisr.SakkJumla.thani_la_mafhum
+#print axioms Jisr.SakkJumla.la_waqi_bila_mushahada
+#print axioms Jisr.SakkJumla.la_dafi_bila_dall
+#print axioms Jisr.SakkJumla.waqiNabt_iff
+#print axioms Jisr.SakkJumla.nabt_quwwa
+#print axioms Jisr.SakkJumla.nabt_marji
+#print axioms Jisr.SakkJumla.nabt_marji_C05
+#print axioms Jisr.SakkJumla.marjiNabt_huwa_mufassiran
+#print axioms Jisr.SakkJumla.nabt_la_tarqiya
+#print axioms Jisr.SakkJumla.taliq_iff_jaza
+#print axioms Jisr.SakkJumla.lam_nafy_madi
+#print axioms Jisr.SakkJumla.mafulLahu_qatr
+-- ضابطُ صكّ الجملة المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/SakkJumlaQiyas.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.SakkJumla.Qiyas.qarin_shawahid
+#print axioms Jisr.SakkJumla.Qiyas.majal
+#print axioms Jisr.SakkJumla.Qiyas.natija
+#print axioms Jisr.SakkJumla.Qiyas.natija_fia
+#print axioms Jisr.SakkJumla.Qiyas.akhta_5
 
 -- تمامُ التدقيق (tahaqquq/test_tadqiq_tamm.py، 2026-10-26): مبرهناتٌ عامّةٌ مبنيّةٌ لم تكن هنا، بترتيبها في ملفّاتها.
 -- SLGE.Core

@@ -1,0 +1,56 @@
+{
+ "naw": "ضابط مجمَّد",
+ "minhaj": "hawkama/منهج_الضوابط.md، الإصدار ١ (بفئة غموض)",
+ "qita": "صكّ الجملة: القوّة والسبب المذكور والمرجع (الكتاب والمغني والقطر والألفية، والشخصيّة ج1 وج3)",
+ "masadir": [
+  {
+   "milaf": "qatr.txt",
+   "sha256": "2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d"
+  },
+  {
+   "milaf": "alfiyya.txt",
+   "sha256": "13b351a0a02d9060fdedbb5db568544718eb4e89bef323f5572b8a26c0921ca0"
+  },
+  {
+   "milaf": "mughni.txt",
+   "sha256": "f37ac2bb4b273f59169053dd0ac2abf50a52846a7e87ddf689ee5c0b87f77e7d"
+  },
+  {
+   "milaf": "sibawayhi.txt",
+   "sha256": "a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625"
+  },
+  {
+   "milaf": "a1.txt",
+   "sha256": "25a91560a646adb6ce0eb2a1bd9d6f2d1f8fd129c535a86fd5a3da34f12162c9"
+  },
+  {
+   "milaf": "a2.txt",
+   "sha256": "8252ca521c91c285b0344b74ab5fc956f088447c8c7811fd5c95c6c2717b8401"
+  }
+ ],
+ "wasf_sha256": "0c064d5edbc43d1367e7f4368664dccf6b2cc214267e510063fc6296da8b71ea",
+ "cases_sha256": "f23fee33de9b5a37f78cc848603823d4b5dce0664695e48aedd9b06ca68ce446",
+ "fahs_cases_sha256": "e85813ae99223cff0b2c0a3aefc2eafa59e5d04ccf0f10a7253b922f8bebb843",
+ "taalif_sha256": "e5619db7133ac0dbcf51a2bfbe952a306d1845850e56d909a102fd825876fa4a",
+ "muallif": "وكيلٌ جديد (general-purpose) بالمواصفة والمصادر الستّة وحدها، بتوجيهٍ محفوظٍ بنصّه في tawjih_muallif.md؛ وحقنت البيئةُ في سياقه آليًّا CLAUDE.md ولقطةً من ذاكرة المستخدم (قال في جوابه إنّه أفصح بذلك في taalif.md)؛ أجاب البنّاءَ بالبصمات والأعداد وحدها",
+ "aadad_muallif": {
+  "jumla": 42,
+  "naw_quwwa": 12,
+  "naw_sabab": 18,
+  "naw_marji": 12,
+  "موجب": 16,
+  "حد": 7,
+  "خارج": 4,
+  "عموم": 9,
+  "غموض": 6,
+  "harfi": 26,
+  "tafrat_fahs_marfuda": 14
+ },
+ "tawjih": {
+  "milaf": "tawjih_muallif.md",
+  "arsil": "2026-10-26T07:09:50Z"
+ },
+ "fahs_sijill": "sijill_muallif.json: أدواتُ المؤلّف ومساراتُه المطلقة في سبعة حقولٍ من مدخلات أدواته (file_path، path، command، pattern، glob، notebook_path، url)، بلا محتوى ما كتب؛ وما خارج مجلّده والمصادر ثلاثةُ رموزٍ ليست قراءةً، مفسَّرةٌ في tafsir_kharij؛ وقرأ a1.txt وa2.txt بأسمائهما النسبيّة بعد cd",
+ "tajmid": "2026-10-26T10:40+03:00",
+ "qabl_shifra": "جُمّد قبل إيداع الشفرة؛ ولم يقرأ البنّاءُ cases.json ولا taalif.md ولا fahs_cases.py ولا tafrat_fahs. وما رآه من سجلّ المؤلّف لاستخراج sijill_muallif.json: أسماءُ الأدوات، ومواضعُ القراءة (الملفّ والإزاحة والعدد)، والسطرُ الأوّل من أوامره التي تذكر المصادر أو cd — وفيه أرقامُ أسطرٍ طبعها المؤلّف من الكتاب والألفية والقطر والشخصيّة (أسطرُ سندٍ محتملة، بلا نصّها ولا قيمٍ متوقَّعة)؛ وكانت الشفرةُ (Jisr/SakkJumla.lean) قد كُتبت وبُنيت قبل ذلك."
+}
