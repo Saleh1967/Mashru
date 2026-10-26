@@ -88,6 +88,265 @@
     "man": "DR_HUSSEIN",
     "tarikh": "2026-10-26"
    }
+  },
+  "ذهب": {
+   "surface": "ذَهَبَ",
+   "ism_lean": "d6_HFN_E_b40eb66aa6_V",
+   "status": "RATIFIED_BY_RULE",
+   "haqiqa": 745695,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": true,
+   "ind": true,
+   "jidhr": {
+    "root": [
+     "ذ",
+     "ه",
+     "ب"
+    ],
+    "wazn": "FA_A_LA",
+    "pin": "8a23298076b4",
+    "directive": "ACCEPT"
+   },
+   "masdar": {
+    "hfn_file": "lexical_units.csv",
+    "hfn_row_id": "HFN-E-b40eb66aa6#V",
+    "hfn_event_id": "HFN-E-b40eb66aa6",
+    "hfn_pos": "فعل",
+    "hfn_lemma": "ذَهَبَ",
+    "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
+    "sanad": {
+     "masdar": "مقاييس",
+     "root_display": "ذهب",
+     "entry_num": 1309,
+     "page_refs": "[]"
+    }
+   },
+   "imda": {
+    "man": "DR_HUSSEIN",
+    "qanun": "D6",
+    "hfn_release": "release_v18",
+    "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
+    "tarikh": "2026-10-27"
+   }
+  },
+  "مالك": {
+   "surface": "مَالِكٌ",
+   "ism_lean": "d6_HFN_E_e532ba0350_AG",
+   "status": "RATIFIED_BY_RULE",
+   "haqiqa": 891697,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": false,
+   "ind": true,
+   "jidhr": {
+    "root": [
+     "م",
+     "ل",
+     "ك"
+    ],
+    "wazn": "FA3IL",
+    "pin": "8a23298076b4",
+    "directive": "ACCEPT"
+   },
+   "masdar": {
+    "hfn_file": "lexical_units.csv",
+    "hfn_row_id": "HFN-E-e532ba0350#AG",
+    "hfn_event_id": "HFN-E-e532ba0350",
+    "hfn_pos": "اسم فاعل",
+    "hfn_lemma": "مَالِك",
+    "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
+    "sanad": {
+     "masdar": "مقاييس",
+     "root_display": "ملك",
+     "entry_num": 3809,
+     "page_refs": "[]"
+    }
+   },
+   "imda": {
+    "man": "DR_HUSSEIN",
+    "qanun": "D6",
+    "hfn_release": "release_v18",
+    "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
+    "tarikh": "2026-10-27"
+   }
+  },
+  "ولد": {
+   "surface": "الْوَلَدَ",
+   "ism_lean": "ولد_m",
+   "status": "PENDING",
+   "haqiqa": null,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": false,
+   "ind": true,
+   "jidhr": {
+    "root": null,
+    "wazn": null,
+    "pin": "8a23298076b4",
+    "directive": "ACCEPT"
+   },
+   "sabab_d6": "D6_HOKOM_ROOT_NULL",
+   "imda": {
+    "man": null,
+    "tarikh": null
+   }
+  },
+  "علم": {
+   "surface": "الْعِلْمُ",
+   "ism_lean": "علم_m",
+   "status": "PENDING",
+   "haqiqa": null,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": false,
+   "ind": true,
+   "jidhr": {
+    "root": [
+     "ع",
+     "ل",
+     "م"
+    ],
+    "wazn": "FI3L",
+    "pin": "8a23298076b4",
+    "directive": "ACCEPT"
+   },
+   "sabab_d6": "D6_NO_HFN_UNIT",
+   "imda": {
+    "man": null,
+    "tarikh": null
+   }
+  },
+  "نور": {
+   "surface": "نُورٌ",
+   "ism_lean": "نور_m",
+   "status": "PENDING",
+   "haqiqa": null,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": false,
+   "ind": true,
+   "jidhr": {
+    "root": null,
+    "wazn": null,
+    "pin": "8a23298076b4",
+    "directive": "ACCEPT"
+   },
+   "sabab_d6": "D6_HOKOM_ROOT_NULL",
+   "imda": {
+    "man": null,
+    "tarikh": null
+   }
+  },
+  "إن": {
+   "surface": "إِنْ",
+   "ism_lean": "إن_m",
+   "status": "PENDING",
+   "haqiqa": null,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": false,
+   "ind": false,
+   "jidhr": {
+    "root": null,
+    "wazn": null,
+    "pin": "8a23298076b4",
+    "directive": "ACCEPT"
+   },
+   "sabab_d6": "D6_NO_HFN_UNIT:حرف",
+   "imda": {
+    "man": null,
+    "tarikh": null
+   }
+  },
+  "تجتهد": {
+   "surface": "تَجْتَهِدْ",
+   "ism_lean": "تجتهد_m",
+   "status": "PENDING",
+   "haqiqa": null,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": true,
+   "ind": true,
+   "jidhr": {
+    "root": [
+     "ج",
+     "ه",
+     "د"
+    ],
+    "wazn": "IFTA3ALA",
+    "pin": "8a23298076b4",
+    "directive": "ACCEPT"
+   },
+   "sabab_d6": "D6_NO_HFN_UNIT",
+   "imda": {
+    "man": null,
+    "tarikh": null
+   }
+  },
+  "تنجح": {
+   "surface": "تَنْجَحْ",
+   "ism_lean": "تنجح_m",
+   "status": "PENDING",
+   "haqiqa": null,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": true,
+   "ind": true,
+   "jidhr": {
+    "root": [
+     "ن",
+     "ج",
+     "ح"
+    ],
+    "wazn": null,
+    "pin": "8a23298076b4",
+    "directive": "ACCEPT"
+   },
+   "sabab_d6": "D6_NO_HFN_UNIT",
+   "imda": {
+    "man": null,
+    "tarikh": null
+   }
+  },
+  "مات": {
+   "surface": "مَاتَ",
+   "ism_lean": "مات_m",
+   "status": "PENDING",
+   "haqiqa": null,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "afrad": [],
+   "tim": false,
+   "ind": true,
+   "jidhr": {
+    "root": null,
+    "wazn": null,
+    "pin": "8a23298076b4",
+    "directive": "ACCEPT"
+   },
+   "sabab_d6": "D6_HOKOM_ROOT_NULL",
+   "imda": {
+    "man": null,
+    "tarikh": null
+   }
   }
  }
 }
