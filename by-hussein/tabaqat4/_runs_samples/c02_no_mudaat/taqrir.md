@@ -4,7 +4,7 @@
 SCHEMA            = Tabaqat4Record:v1
 TEXT_SHA256       = f91733a1e61dfedbe1b8a6a6916a8e06c261a8ba0e212fd9c64cd760a08d4367
 CODEPOINTS        = 27 ؛ NFC_EQ_INPUT=True
-MASHRU_HEAD       = 7a902672a330c61ff1bade2de1414bec9934eaaa ؛ TREE_CLEAN=False
+MASHRU_HEAD       = 438821d2e8dc0f850e2a00319505af572575278a ؛ TREE_CLEAN=False
 LEAN_TOOLCHAIN    = leanprover/lean4:v4.34.1
 QAMUS_SHA256      = e8662a21d29bfe8b…
 TABAQAT_STATE     = ط1:مطابَق | ط2:PARTIAL_OR_BLOCKED | ط3:NOT_REACHED | ط4:NOT_REACHED
@@ -53,7 +53,7 @@ WASM_SUMMARY      = مطابَق=3 ، مفحوص=1 ، مقيس=1 ، تقدير=1
 
 - لا صحّة لغوية خارجية: ما يمرّ هنا مرّ على بنى Mashru كما عرّفها د. صالح ، لا على العربية كلّها.
 - المدلول لا يُولَّد: كلمة بلا مدلول معرَّف في Mashru تتوقّف عند الطبقة الثانية بالاسم NO_SEALED_MADLUL.
-- أنواع الجمل المنفَّذة في هذه الأداة: [فعل ماضٍ + فاعل معرَّف بأل] و [فعل ماضٍ + فاعل منوَّن] فقط ؛ ما عداها OUT_OF_EXECUTED_PATH.
+- الأطر المنفَّذة في هذه الأداة (itar_map): [فعل+فاعل بأل]→darabaZayd ، [فعل+فاعل منوَّن]→jaaRajul ، [فعل+فاعل+مفعول بأل]→daraba ، وباب الجزاء ؛ ما عداها OUT_OF_EXECUTED_PATH باسم نمطه (ITAR_UNMAPPED).
 - المرساة (الآن=0 ، هنا=⟨0,0,0⟩) وإزاحة الحدث (−1 ساعة) موروثتان من Shahid_Ahmad.lean ت3/ت4 ، افتراضٌ معلَن قابل للتغيير بوسيطَي --an/--izaha.
 - الإسناد الدلالي ⟨مدلول_الفاعل ، qabiliyya(حقيقة_الفعل) ، isnadiyya⟩ قاعدةٌ بنيوية موروثة من الشاهد ، ليست استنتاجًا من النصّ.
 - رتبة «مبرهن على الشاهد» تعني: نظرية by decide مرّت على هذه الجملة بعينها في Lean ، بمسلّمات ⊆ {propext, Classical.choice, Quot.sound}. ليست «مبرهن» عامًّا.
@@ -61,16 +61,11 @@ WASM_SUMMARY      = مطابَق=3 ، مفحوص=1 ، مقيس=1 ، تقدير=1
 ## ٦. هوية التشغيل
 ```
 mashru_root = /Users/husseinhiyassat/mashru
-mashru_head = 7a902672a330c61ff1bade2de1414bec9934eaaa
+mashru_head = 438821d2e8dc0f850e2a00319505af572575278a
 mashru_tree_clean = False
-mashru_status_porcelain = M by-hussein/tabaqat4/run.py
- M by-hussein/tabaqat4/t4/core.py
- M by-hussein/tabaqat4/tests/test_tabaqat4.py
-?? by-hussein/mudaat/
-?? by-hussein/tabaqat4/_runs_samples/c02_mudaat_fixture/
-?? by-hussein/tabaqat4/mudaat_prep.py
-?? by-hussein/tabaqat4/t4/itar_map.json
-?? by-hussein/tabaqat4/tests/fixtures/
+mashru_status_porcelain = M by-hussein/tabaqat4/_runs_samples/c02_mudaat_fixture/taqrir.html
+ M by-hussein/tabaqat4/_runs_samples/c02_mudaat_fixture/taqrir.json
+ M by-hussein/tabaqat4/_runs_samples/c02_mudaat_fixture/taqrir.md
 lean_toolchain = leanprover/lean4:v4.34.1
 qamus_sha256 = e8662a21d29bfe8b0a1fe38d5b9a724bb6f43e60ef3d57770e721d8f8a5b6b20
   de985e5dc22af7d6  .probe/taqrir.json
@@ -82,15 +77,18 @@ qamus_sha256 = e8662a21d29bfe8b0a1fe38d5b9a724bb6f43e60ef3d57770e721d8f8a5b6b20
   f5f95c91bae45479  .probe3/s2/taqrir.json
   d78a04bbf927c397  .probe3/s2/taqrir.md
   d79658ffd610b631  README.md
-  7bc9b2c5fb95ed87  TAQRIR_TASLIM.md
+  1c67ca32f3db8cde  T19_TARQIA.md
+  44c388c0d7c3547a  TAQRIR_TASLIM.md
   9bfe0fd7fbeb82d3  _runs_samples/a/taqrir.json
   3b09a7123fe28090  _runs_samples/a/taqrir.md
   b48cae0c87c2d50f  _runs_samples/b/taqrir.json
   ccd354ab3c877df9  _runs_samples/b/taqrir.md
   f9ead96b162ef318  _runs_samples/c/taqrir.json
   17a3d7efc2b5e992  _runs_samples/c/taqrir.md
-  60f0c921c26acc0f  _runs_samples/c02_mudaat_fixture/taqrir.json
-  5bb8babd8113fe52  _runs_samples/c02_mudaat_fixture/taqrir.md
+  0319a20e37379bdb  _runs_samples/c02_mudaat_fixture/taqrir.json
+  bcb2f60441aafb6b  _runs_samples/c02_mudaat_fixture/taqrir.md
+  0ad97145d92c4c91  _runs_samples/c02_no_mudaat/taqrir.json
+  ce67cadbedcde945  _runs_samples/c02_no_mudaat/taqrir.md
   004b78e048c32207  _runs_samples/e/taqrir.json
   d426e555157e1287  _runs_samples/e/taqrir.md
   18fdbbe78ce6d566  _runs_samples/f/taqrir.json
@@ -114,10 +112,10 @@ qamus_sha256 = e8662a21d29bfe8b0a1fe38d5b9a724bb6f43e60ef3d57770e721d8f8a5b6b20
   ad1e0638ae88b80a  mudaat_prep.py
   4c9d37d924c460d1  run.py
   e3b0c44298fc1c14  t4/__init__.py
-  a938082db362c6d4  t4/core.py
-  52e44fb0ea84e9d2  t4/dal.py
+  79049e37a7cdec29  t4/core.py
+  9779a99c83029d71  t4/dal.py
   562584d2506ede05  t4/forms_map.json
-  ad73696a12c57518  t4/itar_map.json
+  055a7405e75fe226  t4/itar_map.json
   e8662a21d29bfe8b  t4/qamus.json
   841d73f7a5f34fa7  t4/qari.py
   628ad9744fe6080e  t4/report.py
@@ -128,6 +126,7 @@ qamus_sha256 = e8662a21d29bfe8b0a1fe38d5b9a724bb6f43e60ef3d57770e721d8f8a5b6b20
   a39b69174c820217  tests/fixtures/mudaat_test.json
   fc6a3eb0caf583fb  tests/fixtures/taaqol_c02.json
   e21d48f1acc0977c  tests/fixtures/taaqol_conflict.json
-  a593628c9fa63428  tests/test_tabaqat4.py
-timestamp_utc = 2026-10-25T20:48:40.690192+00:00
+  225125ed35cfec82  tests/test_conformance.py
+  3dc926056cea6870  tests/test_tabaqat4.py
+timestamp_utc = 2026-10-26T06:09:55.029670+00:00
 ```
