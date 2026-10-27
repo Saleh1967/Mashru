@@ -1,12 +1,15 @@
 """فروقُ القارئ بعد وصله بالتحصيل (Dal/QiraaTahsil.lean) عن القارئ قبله (main ‏09f7b27)، بأسبابها. عدُّ أداةٍ لا اختبار.
 
-الكلماتُ ثلاثُ مجموعات:
+الكلماتُ ثلاثُ مجموعات، وأسبابُ الفروق بعدها:
 - المستودع: كلُّ كلمةٍ مشكولةٍ متمايزة في ملفّات المستودع النصّيّة عند 09f7b27 (git ls-tree؛ .lean .py .json .md .tsv .txt .toml).
 - العشوائيّة بالبذرة 20261029: رؤوسٌ من الحوامل ومقاعد الهمزة والخاصّة وحروفٍ خارج الجدول، بعد كلٍّ منها من صفرٍ إلى علامتين، وصدورٌ بألفٍ
   ولام. وتُعدّ في عمودين: بلا تطويلٍ، وفيها تطويل.
 - الموجَّهة، لأنّ المولِّد العشوائيّ قلّما يولّد ما يفترق فيه القارئان: (أ) تطويلٌ مجرّد يُدرج قبل كلّ مقطعٍ وبعده في 1500 كلمةٍ من
   كلمات المستودع بالبذرة 20261030؛ (ب) كلُّ كلمةٍ من المستودع آخرُها واوٌ ثمّ ألف، تُبدَّل علاماتُ الواو (لا شيء، سكون، شدّة، شدّة
   وسكون، ضمّة) وآخرُها (ا، ى، ثمّ تطويل).
+وسببُ رفض «حرف بلا حركة في غير آخر الكلمة» من مقاطع التحصيل (أداةُ `tahsil`): المقطعُ الفاسدُ أوّلَ الكلمة، أو قبل تطويل، أو غيرُ ذلك،
+أو لا مقطعَ فاسدًا فالرفضُ من وسيط الشدّة بلا حركة. وسببُ اختلاف الخلايا فيما يقبلانه من نصّ الكلمة: ألفٌ آخرَها بعد واوٍ مشدَّدة، أو تطويلٌ مجرّد،
+أو غيرُهما.
 يُقرأ كلٌّ منها بالقارئين في الوصل (`--khalaya`) وفي الوقف (`--qiyas`: الخلايا وحدها إن قبلاها)، ثمّ ما قبله أحدُهما في الوضع البشريّ
 (الكلمةُ وحدها للوقف، وقبل «كَتَبَ» للوصل) لمقارنة الخلايا والملاحظات. ويُصنَّف كلُّ فرقٍ: يرفضانه (ونصُّ الرفض قد يختلف)، أو يرفضه
 الجديد وحده بسببه، أو يقبله الجديد وحده بسبب رفض القديم، أو يقبلانه بخلايا أو ملاحظاتٍ مختلفة.
@@ -147,9 +150,50 @@ def masdarOf(i):
     if i < len(repo) + len(ashwai):
         return AMDA[2] if TATWIL in w else AMDA[1]
     return AMDA[3] if i < len(repo) + len(ashwai) + len(muwajjaha_t) else AMDA[4]
+
+
+TAHSIL = str(JADHR / ".lake/build/bin/tahsil")
+BILA = "حرف بلا حركة في غير آخر الكلمة"
+
+
+def maqati(ws):
+    """مقاطعُ كلّ كلمةٍ في التحصيل (أداةُ `tahsil`): (موضعُ البدء، الحكم L|P|F، الاسم، نصُّ المقطع)."""
+    with tempfile.TemporaryDirectory() as td:
+        p = pathlib.Path(td) / "t.tsv"
+        p.write_text("".join(f"{i}\t{' '.join(str(ord(c)) for c in w)}\n" for i, w in enumerate(ws)), encoding="utf-8")
+        r = subprocess.run([TAHSIL, str(p)], capture_output=True, text=True, check=True)
+    out = collections.defaultdict(list)
+    for line in r.stdout.split("\n"):
+        f = line.split("\t")
+        if len(f) > 7 and f[1] == "M":
+            k, a, b = int(f[0]), int(f[3]), int(f[4])
+            out[k].append((a, f[5], f[7], ws[k][a:b]))
+    return out
+
+
+def sabab_bila(ms):
+    """سببُ «حرف بلا حركة في غير آخر الكلمة» في التحصيل: موضعُ المقطع الفاسد من كلمته وما يليه."""
+    for j, (a, hk, ism, nass) in enumerate(ms):
+        if hk == "F" and ism == BILA:
+            if j == 0:
+                return "أوّلَ الكلمة"
+            if j + 1 < len(ms) and ms[j + 1][3].startswith(TATWIL):
+                return "قبل تطويل"
+            return "غير ذلك"
+    return "شدّةٌ بلا حركة في غير آخر الكلمة (وسيط)"
+
+
+def sabab_khalaya(w):
+    """سببُ اختلاف الخلايا فيما يقبله القارئان: ألفٌ آخرَ الكلمة بعد واوٍ مشدَّدة، أو تطويلٌ مجرّد، أو غيرُهما."""
+    if re.search("و[\u0651\u0652]*\u0651[\u0651\u0652]*[اى]" + TATWIL + "*$", w):
+        return "ألفٌ آخرَ الكلمة بعد واوٍ مشدَّدة"
+    return "تطويلٌ مجرّد في الكلمة" if TATWIL in w else "غير ذلك"
+
+
 asnaf = collections.Counter()
 amthila = collections.defaultdict(list)
 maqbul = {}
+bila = []
 for wad, ism in [("--khalaya", "الوصل"), ("--qiyas", "الوقف")]:
     o, n = shaghghil(OLD, wad, words), shaghghil(NEW, wad, words)
     maqbul[ism] = [i for i in range(len(words)) if o[i].startswith("QABUL") or n[i].startswith("QABUL")]
@@ -161,6 +205,8 @@ for wad, ism in [("--khalaya", "الوصل"), ("--qiyas", "الوقف")]:
             sinf = "يرفضانه" + ("" if sabab(a) == sabab(b) else "، ونصُّ الرفض مختلف")
         elif ka == "QABUL" and kb == "RAFD":
             sinf = "يرفضه الجديد وحده: " + sabab(b)
+            if sabab(b) == BILA:
+                bila.append((ism, i))
         elif ka == "RAFD" and kb == "QABUL":
             sinf = "يقبله الجديد وحده، والقديمُ رفضه: " + sabab(a)
         else:
@@ -168,12 +214,26 @@ for wad, ism in [("--khalaya", "الوصل"), ("--qiyas", "الوقف")]:
             xb = b.split("\t")[1] if wad == "--qiyas" else b
             if xa == xb:
                 continue
-            sinf = "يقبلانه بخلايا مختلفة"
+            sinf = "يقبلانه بخلايا مختلفة: " + sabab_khalaya(w)
         if sinf.startswith("يرفضانه"):
             continue
         asnaf[(ism, sinf, masdar)] += 1
         if len(amthila[(ism, sinf, masdar)]) < 2:
             amthila[(ism, sinf, masdar)].append((w, a[:90], b[:90]))
+
+mq = maqati([words[i] for _, i in bila])
+for j, (ism, i) in enumerate(bila):
+    masdar = masdarOf(i)
+    k = (ism, "يرفضه الجديد وحده: " + BILA, masdar)
+    asnaf[k] -= 1
+    k2 = (ism, f"يرفضه الجديد وحده: {BILA} ({sabab_bila(mq[j])})", masdar)
+    asnaf[k2] += 1
+    if len(amthila[k2]) < 2:
+        amthila[k2].append((words[i], "", ""))
+for k in [k for k in list(asnaf) if asnaf[k] == 0]:
+    del asnaf[k]
+for k in [k for k in list(amthila) if BILA in k[1] and "(" not in k[1]]:
+    del amthila[k]
 
 
 def bashari_farq(arg):
@@ -193,10 +253,11 @@ with cf.ThreadPoolExecutor(4) as ex:
     for r in ex.map(bashari_farq, [(i, ism) for ism in ("الوقف", "الوصل") for i in maqbul[ism]]):
         if r:
             ism, w, qadim, jadid, masdar = r
-            k = (ism, masdar, " | ".join(re.sub(r"\(\d+\)", "", x).strip() for x in qadim) + " ⟶ " + " | ".join(x.strip() for x in jadid))
+            k = (ism, masdar, sabab_khalaya(w))
             mulahazat[k] += 1
             if len(amthila_m[k]) < 3:
-                amthila_m[k].append(w)
+                amthila_m[k].append((w, " | ".join(re.sub(r"\(\d+\)", "", x).strip() for x in qadim) + " ⟶ " +
+                                     " | ".join(x.strip() for x in jadid)))
 
 adad = collections.Counter(masdarOf(i) for i in range(len(words)))
 sutur = [f"# فروقُ القارئ بعد وصله بالتحصيل عن القارئ في {ASAS}", "",
@@ -210,12 +271,14 @@ sutur += ["", "### أمثلة (الكلمة، القديم، الجديد)", ""]
 for (ism, sinf, masdar), v in sorted(amthila.items()):
     sutur.append(f"- {ism} — {sinf} — {masdar}:")
     for w, a, b in v:
-        sutur.append(f"  - `{w}` — القديم `{a}` — الجديد `{b}`")
+        sutur.append(f"  - `{w}`" + (f" — القديم `{a}` — الجديد `{b}`" if a else ""))
 sutur += ["", "## الخلايا والملاحظات في الوضع البشريّ (ما قبلاه كلاهما)", "",
           f"على {len(maqbul['الوقف'])} كلمةً في الوقف و{len(maqbul['الوصل'])} في الوصل قبلها أحدُهما.", ""]
 if not mulahazat:
     sutur.append("لا فرق.")
-for (ism, masdar, k), v in sorted(mulahazat.items(), key=lambda x: (x[0][0], x[0][1], -x[1])):
-    sutur.append(f"- {ism}، {masdar}، {v}: {k} — مثل: {'، '.join('`' + w + '`' for w in amthila_m[(ism, masdar, k)])}")
+for (ism, masdar, k), v in sorted(mulahazat.items()):
+    sutur.append(f"- {ism}، {masdar}، {k}: {v}")
+    for w, farq in amthila_m[(ism, masdar, k)]:
+        sutur.append(f"  - `{w}`: {farq}")
 MAKHRAJ.write_text("\n".join(sutur) + "\n", encoding="utf-8")
 print(f"{len(words)} كلمةً؛ الأصناف: {sum(asnaf.values())}؛ فروقُ الوضع البشريّ: {sum(mulahazat.values())}")
