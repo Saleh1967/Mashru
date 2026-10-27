@@ -5242,5 +5242,95 @@
   "milaf": "Nizam/Shahada.lean",
   "min": "  else [madkhalGhaib]",
   "ila": "  else []"
+ },
+ {
+  "ism": "P960_damir_ibtida_muttasil",
+  "milaf": "Jisr/Damir.lean",
+  "min": "  | .muttasil => khataJ\n  | .munfasil => maqbulJ [.bila]\n\n/-- بعد",
+  "ila": "  | .muttasil => maqbulJ [.bila]\n  | .munfasil => maqbulJ [.bila]\n\n/-- بعد"
+ },
+ {
+  "ism": "P961_damir_illa_darura",
+  "milaf": "Jisr/Damir.lean",
+  "min": "  | .muttasil => if darura then laHukmJ else khataJ",
+  "ila": "  | .muttasil => khataJ"
+ },
+ {
+  "ism": "P962_damir_fasl_maa_imkan",
+  "milaf": "Jisr/Damir.lean",
+  "min": "  | .munfasil => if darura then laHukmJ else khataJ",
+  "ila": "  | .munfasil => maqbulJ [.bila]"
+ },
+ {
+  "ism": "P963_damir_salnihi_daraja",
+  "milaf": "Jisr/Damir.lean",
+  "min": "    | .filIthnayn, .muttasil => maqbulJ [.rajih, .sawa]",
+  "ila": "    | .filIthnayn, .muttasil => maqbulJ [.rajih]"
+ },
+ {
+  "ism": "P964_damir_kuntuhu_daraja",
+  "milaf": "Jisr/Damir.lean",
+  "min": "    | _, _ => maqbulJ [.rajih, .marjuh]",
+  "ila": "    | _, _ => maqbulJ [.marjuh]"
+ },
+ {
+  "ism": "P965_damir_ghaib_wasl",
+  "milaf": "Jisr/Damir.lean",
+  "min": "    | .muttasil => if decide (r = .ghaib) then maqbulJ [.marjuh] else khataJ",
+  "ila": "    | .muttasil => khataJ"
+ },
+ {
+  "ism": "P966_damir_akhass",
+  "milaf": "Jisr/Damir.lean",
+  "min": "def akhass (a b : Rutba) : Bool := decide (a.shakhs < b.shakhs)",
+  "ila": "def akhass (a b : Rutba) : Bool := decide (a.shakhs ≤ b.shakhs)"
+ },
+ {
+  "ism": "P967_damir_tartib_bila_qabl",
+  "milaf": "Jisr/Damir.lean",
+  "min": "    | none => if a.tartib then laHukmJ else asliJ d.shakl d.darura",
+  "ila": "    | none => asliJ d.shakl d.darura"
+ },
+ {
+  "ism": "P968_damir_ittihad_ghayr_tartib",
+  "milaf": "Jisr/Damir.lean",
+  "min": "      else if decide (q = d.rutba) then laHukmJ",
+  "ila": "      else if false then laHukmJ"
+ },
+ {
+  "ism": "P969_damir_ibtida_ittisaq",
+  "milaf": "Jisr/Damir.lean",
+  "min": "  | .ibtida, _ => laHukmJ",
+  "ila": "  | .ibtida, _ => ibtidaJ d.shakl"
+ },
+ {
+  "ism": "P970_damir_rutba_shakhs",
+  "milaf": "Jisr/Damir.lean",
+  "min": "  | 1 => some .mutakallim",
+  "ila": "  | 1 => some .mukhatab"
+ },
+ {
+  "ism": "P971_damir_qarin_daraja_ikhtiyar",
+  "milaf": "Jisr/DamirDabit.lean",
+  "min": "else if 2 ≤ m.length && j.daraja.length == 1 && j.daraja.all m.contains then .ikhtiyar",
+  "ila": "else if 2 ≤ m.length && j.daraja.length == 1 && j.daraja.all m.contains then .sawab"
+ },
+ {
+  "ism": "P972_damir_qarin_daraja_hukm",
+  "milaf": "Jisr/DamirDabit.lean",
+  "min": "  | .khata => .raddKhati",
+  "ila": "  | .khata => .khataDaraja"
+ },
+ {
+  "ism": "P973_damir_sawaa",
+  "milaf": "Jisr/DamirDabit.lean",
+  "min": "def sawaa (a b : List Daraja) : Bool := a.all b.contains && b.all a.contains",
+  "ila": "def sawaa (a b : List Daraja) : Bool := a.all b.contains"
+ },
+ {
+  "ism": "P974_damir_natayij_daraja",
+  "milaf": "Jisr/DamirDabit.lean",
+  "min": "(if h.hukm == [.maqbul] then",
+  "ila": "(if false then"
  }
 ]
