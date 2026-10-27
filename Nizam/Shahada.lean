@@ -148,8 +148,8 @@ def naqisaMadkhal (n : Naqla α β) : List String :=
   if fihiMadkhal n then (n.muqaddimat.filter (fun m => m.naw == .madkhal && m.halFiil == .ghayrMafhus)).map (·.ism)
   else [madkhalGhaib]
 
-/-- الحكمُ بعد الربط: المدخلُ المنقوض فاسد، والمدخلُ الذي لم تُفحص كلُّ مقدّماته معلَّقٌ بأسمائها قبل أيّ حكمٍ آخر؛ ثمّ المانعُ المشهود،
-    ثمّ الشرطُ المنفيّ، ثمّ ما لم يُفحص؛ وإلّا ترخيص. -/
+/-- الحكمُ بعد الربط: المدخلُ المنقوض فاسد؛ ثمّ مقدّمةُ مدخلٍ واحدةٌ لم تُفحص، أو لا مقدّمةَ للمدخل، تعلِّق قبل أيّ حكمٍ آخر (`dq`)؛ ثمّ
+    المانعُ المشهود، ثمّ الشرطُ المنفيّ، ثمّ ما لم يُفحص؛ وإلّا ترخيص. -/
 def hukmMarbut (d : Option String) (dq : List String) (m s : Option String) (q : List String) : Natija :=
   match d with
   | some x => .madkhalFasid x
