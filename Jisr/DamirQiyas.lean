@@ -10,7 +10,10 @@
 
 **التشغيلات.** المبرهناتُ هنا على الشفرة الحاليّة دائمًا. وسجلُّ كلّ تشغيلٍ ملفٌّ في `tahaqquq/dawabit/damir/` (`natija_1.json` …)،
 ويفحصه `tahaqquq/test_damir.py`:
-- `natija_1.json`: التشغيلُ الأوّل على الشفرة المجمَّدة في `af3356c`، قبل أن يقرأ البنّاءُ الحالات.
+- `natija_1.json`: التشغيلُ الأوّل على الشفرة المجمَّدة في `af3356c`، قبل أن يقرأ البنّاءُ الحالات: 55 صوابًا من 69 حقلًا مسؤولًا (46 حكمًا و23
+  درجة): نقصُ تغطيةٍ 5 (D08، D10، D45 حكمًا ودرجةً، D46)، وتجاوزٌ 5 (D12، D14، D17، D32، D34)، وخطأٌ في الدرجة 4 (D23، D25، D31، D33). وأسماءُ
+  مبرهناته أسماؤها في `6b378d8`.
+- `natija_2.json`: بعد تعديل `Jisr/Damir.lean` بقراءة المؤلّف في المواضع كلِّها (فيه «ما غُيّر بعد قراءة الحالات»)، على مادّةٍ مكشوفة: 69 من 69.
 -/
 import Jisr.DamirDawabit
 
@@ -39,34 +42,30 @@ def majalAadad : List Nat :=
 theorem majal : majalAadad = [46, 23, 16, 7, 0, 2, 3, 2, 7, 9, 34, 13, 10, 7, 7, 9] := by
   decide +kernel
 
-/-- **النتيجة:** 55 صوابًا من 69 حقلًا مسؤولًا (46 حكمًا و23 درجة): نقصُ تغطيةٍ 5، وتجاوزٌ 5، وخطأٌ في الدرجة 4. -/
-theorem natija : ihsa (natayij halat) = ⟨55, 5, 5, 0, 0, 0, 0, 4⟩ := by
+/-- **النتيجة:** 69 صوابًا من 69 حقلًا مسؤولًا (على الشفرة الحاليّة ومادّةٍ مكشوفة؛ والأوّلُ 55/69 في `natija_1.json`). -/
+theorem natija : ihsa (natayij halat) = ⟨69, 0, 0, 0, 0, 0, 0, 0⟩ := by
   decide +kernel
 
-/-- **بالفئات:** موجب 22 صوابًا و4 أخطاءٍ في الدرجة؛ وحدّ 8 ونقصا تغطية؛ وخارج 2 وخمسةُ تجاوزات؛ وعموم 5 وثلاثةُ نقوص؛ وغموض 18 صوابًا. -/
+/-- **بالفئات** (حقولًا): موجب 26، وحدّ 10، وخارج 7، وعموم 8، وغموض 18 — كلُّها صواب. -/
 theorem natija_fia :
     [Fia.mujib, .hadd, .kharij, .umum, .ghumud].map (fun f => ihsa ((natayij halat).filter (·.2.1 == f))) =
-      [⟨22, 0, 0, 0, 0, 0, 0, 4⟩, ⟨8, 2, 0, 0, 0, 0, 0, 0⟩, ⟨2, 0, 5, 0, 0, 0, 0, 0⟩, ⟨5, 3, 0, 0, 0, 0, 0, 0⟩,
+      [⟨26, 0, 0, 0, 0, 0, 0, 0⟩, ⟨10, 0, 0, 0, 0, 0, 0, 0⟩, ⟨7, 0, 0, 0, 0, 0, 0, 0⟩, ⟨8, 0, 0, 0, 0, 0, 0, 0⟩,
        ⟨18, 0, 0, 0, 0, 0, 0, 0⟩] := by
   decide +kernel
 
-/-- **الإخفاقاتُ بأسمائها** (الحقلُ ونتيجتُه؛ و«/daraja» حقلُ الدرجة). -/
-theorem akhta_1 :
-    akhta (natayij halat) =
-      [("D08", .naqsTaghtiya), ("D10", .naqsTaghtiya), ("D12", .tajawuz), ("D14", .tajawuz), ("D17", .tajawuz),
-       ("D23/daraja", .khataDaraja), ("D25/daraja", .khataDaraja), ("D31/daraja", .khataDaraja), ("D32", .tajawuz),
-       ("D33/daraja", .khataDaraja), ("D34", .tajawuz), ("D45", .naqsTaghtiya), ("D45/daraja", .naqsTaghtiya),
-       ("D46", .naqsTaghtiya)] := by
+/-- **ولا إخفاق.** وفي التشغيل الأوّل أربعةَ عشرَ حقلًا بأسمائها في `natija_1.json`. -/
+theorem akhta_sifr : akhta (natayij halat) = [] := by
   decide +kernel
 
 /-- الحقلان في الحالة صوابٌ كلاهما. -/
 def sawab (i : String) : Bool :=
   (natayij halat).all fun x => !(x.1 == i || x.1 == i ++ "/daraja") || x.2.2 == Natija.sawab
 
-/-- **الأزواج** (مدخلان يختلفان في حقلٍ واحد): سبعةَ عشرَ زوجًا، يتغيّر جوابُ المحرّك فيها كلِّها، ويصيب الطرفان معًا في تسعة. -/
+/-- **الأزواج** (مدخلان يختلفان في حقلٍ واحد): سبعةَ عشرَ زوجًا، يتغيّر جوابُ المحرّك فيها كلِّها، ويصيب الطرفان معًا فيها كلِّها. وفي
+    التشغيل الأوّل أصاب الطرفان معًا في تسعة (`natija_1.json`). -/
 theorem azwaj_1 :
     (azwaj halat).length = 17 ∧ ((azwaj halat).filter (·.2.2)).length = 17 ∧
-    ((azwaj halat).filter fun p => sawab p.1 && sawab p.2.1).length = 9 := by
+    ((azwaj halat).filter fun p => sawab p.1 && sawab p.2.1).length = 17 := by
   decide +kernel
 
 end Qiyas
