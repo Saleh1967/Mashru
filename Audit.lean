@@ -111,6 +111,7 @@ import Nizam.Shahada
 import Dal.Tahsil
 import Jisr.Ishara
 import Jisr.IsharaDabit
+import Jisr.IsharaQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2388,3 +2389,9 @@ import Jisr.IsharaDabit
 #print axioms Jisr.Ishara.shahid_qasr
 -- مقارنةُ ضابط أسماء الإشارة قبل الحالات (Jisr/IsharaDabit.lean؛ hawkama/منهج_الضوابط.md)
 #print axioms Jisr.Ishara.Dabit.qarin_hukm
+-- ضابطُ أسماء الإشارة المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/IsharaQiyas.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Ishara.Qiyas.majal
+#print axioms Jisr.Ishara.Qiyas.natija
+#print axioms Jisr.Ishara.Qiyas.natija_fia
+#print axioms Jisr.Ishara.Qiyas.akhta_1
+#print axioms Jisr.Ishara.Qiyas.azwaj_1

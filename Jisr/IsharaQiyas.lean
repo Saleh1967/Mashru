@@ -1,0 +1,65 @@
+/-
+# أسماءُ الإشارة على ضابطها المجمَّد — النتيجةُ على الشفرة الحاليّة
+
+**ما يُقارَن.** لكلّ حالةٍ من `Dawabit.halat` (كتبها مؤلّفٌ مستقلٌّ إجرائيًّا من المواصفة والمصدرين، وفي سياقه ما حُقن آليًّا — `taalif.md` —،
+وجُمّدت ببصمتها في `tahaqquq/dawabit/ishara/tajmid.json` قبل الشفرة): الحكمُ المتوقَّع وحكمُ `Jisr.Ishara.hukm`، بتصنيف `Dabit.qarinHukm`.
+
+**الوسم.** العدُّ «مبرهن على الشاهد» (`decide` على الحالات المجمَّدة). ومعناه موافقةُ الشفرة لقراءةٍ مستقلّةٍ للنطاق، لا تغطيةُ اللغة:
+الحالاتُ مؤلَّفة لا عيّنةٌ من استعمال.
+
+**التشغيلات.** المبرهناتُ هنا على الشفرة الحاليّة دائمًا. وسجلُّ كلّ تشغيلٍ ملفٌّ في `tahaqquq/dawabit/ishara/` (`natija_1.json` …)،
+ويفحصه `tahaqquq/test_ishara.py`:
+- `natija_1.json`: التشغيلُ الأوّل على الشفرة المجمَّدة في `0446d1e`، قبل أن يقرأ البنّاءُ الحالات: 42 صوابًا من 49.
+-/
+import Jisr.IsharaDawabit
+
+namespace Jisr
+namespace Ishara
+namespace Qiyas
+
+open Dabit Dawabit
+
+/-- أعدادُ المجال بترتيبٍ ثابت (يحسبها `tahaqquq/test_ishara.py` من `cases.json` بالترتيب نفسه): الحالات؛ ثمّ الحكمُ المتوقَّع: مقبول،
+    خطأ، «لا حكم»، بديلان؛ ثمّ ذواتُ الزوج؛ ثمّ الفئاتُ: موجب، حدّ، خارج، عموم، غموض. -/
+def majalAadad : List Nat :=
+  [halat.length] ++
+  [Hukm.maqbul, .khata, .laHukm].map (fun d => (halat.filter (·.hukm == [d])).length) ++
+  [(halat.filter (fun h => decide (2 ≤ h.hukm.length))).length,
+   (halat.filter (·.zawj.isSome)).length] ++
+  [Fia.mujib, .hadd, .kharij, .umum, .ghumud].map (fun f => (halat.filter (·.fia == f)).length)
+
+/-- **المجالُ غيرُ فارغ ولا مائلٍ إلى «لا حكم»:** 49 حالة. والمتوقَّع: مقبول 27، وخطأ 15، و«لا حكم» 5، وبديلان في 2؛ و30 حالةً لها زوج.
+    والفئات: موجب 19، وحدّ 12، وخارج 5، وعموم 11، وغموض 2. -/
+theorem majal : majalAadad = [49, 27, 15, 5, 2, 30, 19, 12, 5, 11, 2] := by
+  decide +kernel
+
+/-- **النتيجة:** 42 صوابًا من 49: خمسةُ تجاوزات، واختياران بلا مرجّح؛ ولا نقصَ تغطية، ولا قبولَ خاطئ، ولا ردَّ خاطئ. -/
+theorem natija : ihsa (natayij halat) = ⟨42, 0, 5, 0, 0, 2, 0⟩ := by
+  decide +kernel
+
+/-- **بالفئات:** موجب 19، وحدّ 12، وعموم 11 — كلُّها صواب؛ وخارج: خمسةُ تجاوزات؛ وغموض: اختياران. -/
+theorem natija_fia :
+    [Fia.mujib, .hadd, .kharij, .umum, .ghumud].map (fun f => ihsa ((natayij halat).filter (·.2.1 == f))) =
+      [⟨19, 0, 0, 0, 0, 0, 0⟩, ⟨12, 0, 0, 0, 0, 0, 0⟩, ⟨0, 0, 5, 0, 0, 0, 0⟩, ⟨11, 0, 0, 0, 0, 0, 0⟩, ⟨0, 0, 0, 0, 0, 2, 0⟩] := by
+  decide +kernel
+
+/-- **والإخفاقاتُ السبعة بأسمائها.** -/
+theorem akhta_1 :
+    akhta (natayij halat) = [("I08", .tajawuz), ("I12", .tajawuz), ("I22", .tajawuz), ("I27", .tajawuz), ("I36", .tajawuz),
+      ("I48", .ikhtiyar), ("I49", .ikhtiyar)] := by
+  decide +kernel
+
+/-- الحكمُ في الحالة صواب. -/
+def sawab (i : String) : Bool := (natayij halat).any fun x => x.1 == i && x.2.2 == Natija.sawab
+
+/-- **الأزواج** (مدخلان يختلفان في حقلٍ واحد): خمسةَ عشرَ زوجًا، يتغيّر حكمُ المحرّك في ثلاثةَ عشرَ منها، ولا يتغيّر في I01/I08 وI25/I27؛
+    ويصيب الطرفان معًا في اثني عشر (لا يصيبان في I01/I08 وI22/I28 وI25/I27، وفي كلٍّ منها تجاوزٌ في طرف). -/
+theorem azwaj_1 :
+    (azwaj halat).length = 15 ∧ ((azwaj halat).filter (·.2.2)).length = 13 ∧
+    (azwaj halat).filter (!·.2.2) = [("I01", "I08", false), ("I25", "I27", false)] ∧
+    ((azwaj halat).filter fun p => sawab p.1 && sawab p.2.1).length = 12 := by
+  decide +kernel
+
+end Qiyas
+end Ishara
+end Jisr
