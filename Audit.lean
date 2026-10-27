@@ -107,6 +107,8 @@ import SLGE.Law
 import SLGE.Root
 import SLGE.Syllable
 import Madlul.TasisDalala
+import Nizam.Shahada
+import Dal.Tahsil
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2310,3 +2312,59 @@ import Madlul.TasisDalala
 #print axioms TasisDalala.Jadwal.asasAdna_adna
 #print axioms TasisDalala.Jadwal.maqal_aql_kafin
 #print axioms TasisDalala.Jadwal.maqal_dawr
+
+-- عقدُ الشهادة على الانتقال (Nizam/Shahada.lean): الفاحصُ ونتائجُه المنفصلة، والقاعدةُ بمعناها، وسلامةُ الشهادة
+#print axioms Nizam.Shahada.hal_thalath
+#print axioms Nizam.Shahada.awwalNaqid_none
+#print axioms Nizam.Shahada.naqisa_nil
+#print axioms Nizam.Shahada.naqisaMadkhal_nil
+#print axioms Nizam.Shahada.hukmMarbut_murakhkhas
+#print axioms Nizam.Shahada.hukmMarbut_muallaq
+#print axioms Nizam.Shahada.hukmMarbut_mumtani
+#print axioms Nizam.Shahada.hukmMarbut_laTantabiq
+#print axioms Nizam.Shahada.ghayrMarbut_awwalan
+#print axioms Nizam.Shahada.madkhal_mashhud
+#print axioms Nizam.Shahada.murakhkhas_iff
+#print axioms Nizam.Shahada.ghayrMafhus_la_yurakhkhis
+#print axioms Nizam.Shahada.hukm_bi_madkhal_mashhud
+#print axioms Nizam.Shahada.madkhal_ghayrMafhus_yuallaq
+#print axioms Nizam.Shahada.bila_madkhal_yuallaq
+#print axioms Nizam.Shahada.la_shahada_bila_sanad
+#print axioms Nizam.Shahada.madkhal_awwalan
+#print axioms Nizam.Shahada.mani_mashhud_yamna
+#print axioms Nizam.Shahada.muallaq_asma
+#print axioms Nizam.Shahada.shahada_salima
+#print axioms Nizam.Shahada.shahid_mani
+
+-- تحصيلُ النصّ ومحاذاتُه بشهادةٍ على كلّ مقطع (Dal/Tahsil.lean): القطعُ بلا فقد، والمواضعُ بنقاط الرمز، والتصنيفُ وسلامتُه، والعقدُ مطبَّقًا
+#print axioms Dal.Tahsil.harf_sifr
+#print axioms Dal.Tahsil.hamilOf_harf
+#print axioms Dal.Tahsil.qatta_flatten
+#print axioms Dal.Tahsil.qatta_ghayr_farigh
+#print axioms Dal.Tahsil.qatta_alamat
+#print axioms Dal.Tahsil.qatta_ras
+#print axioms Dal.Tahsil.filterMap_hala_le
+#print axioms Dal.Tahsil.fakk_khaliyaMin
+#print axioms Dal.Tahsil.harfMaddOf_salim
+#print axioms Dal.Tahsil.harfHarakaOf_salim
+#print axioms Dal.Tahsil.tasnif_salim
+#print axioms Dal.Tahsil.binaMin_nass
+#print axioms Dal.Tahsil.tahsil_nass
+#print axioms Dal.Tahsil.tahsil_flatten
+#print axioms Dal.Tahsil.mem_tahsil_qatta
+#print axioms Dal.Tahsil.binaMin_hukm
+#print axioms Dal.Tahsil.tahsil_hukm
+#print axioms Dal.Tahsil.binaMin_tughatti
+#print axioms Dal.Tahsil.tahsil_tughatti
+#print axioms Dal.Tahsil.binaMin_muhadha
+#print axioms Dal.Tahsil.tahsil_muhadha
+#print axioms Dal.Tahsil.tughatti_mem
+#print axioms Dal.Tahsil.mawdi_sahih
+#print axioms Dal.Tahsil.tahsil_salim
+#print axioms Dal.Tahsil.ismSinf_ne
+#print axioms Dal.Tahsil.shahada_hukm
+#print axioms Dal.Tahsil.shahada_tahsil_salima
+#print axioms Dal.Tahsil.khalaya_muhadhat
+#print axioms Dal.Tahsil.shahid_kataba
+#print axioms Dal.Tahsil.shahid_shams
+#print axioms Dal.Tahsil.shahid_muallaq

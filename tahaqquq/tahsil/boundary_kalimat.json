@@ -1,0 +1,123 @@
+[
+ {
+  "label": "empty",
+  "nass": "",
+  "tawaqqu": []
+ },
+ {
+  "label": "spaces only: no words",
+  "nass": "  ",
+  "tawaqqu": []
+ },
+ {
+  "label": "two words",
+  "nass": "\u0628\u064e \u0628\u064f",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 2,
+    "murakhkhasa": true,
+    "khalaya": [
+     104
+    ]
+   },
+   {
+    "a": 3,
+    "b": 5,
+    "murakhkhasa": true,
+    "khalaya": [
+     105
+    ]
+   }
+  ]
+ },
+ {
+  "label": "tatweel alone: all L but no cell",
+  "nass": "\u0640",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 1,
+    "murakhkhasa": false,
+    "khalaya": []
+   }
+  ]
+ },
+ {
+  "label": "al-shams: P segments -> not licensed; cells still concatenated",
+  "nass": "\u0627\u0644\u0634\u0651\u064e\u0645\u0652\u0633\u064f",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 9,
+    "murakhkhasa": false,
+    "khalaya": [
+     43,
+     40,
+     111,
+     81
+    ]
+   }
+  ]
+ },
+ {
+  "label": "tatweel inside a licensed word",
+  "nass": "\u0628\u064e\u0640\u0628\u064e",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 5,
+    "murakhkhasa": true,
+    "khalaya": [
+     104,
+     104
+    ]
+   }
+  ]
+ },
+ {
+  "label": "tab does not split",
+  "nass": "\u0628\u064e\t\u0628\u064e",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 5,
+    "murakhkhasa": false,
+    "khalaya": [
+     104,
+     104
+    ]
+   }
+  ]
+ },
+ {
+  "label": "kataba",
+  "nass": "\u0643\u064e\u062a\u064e\u0628\u064e",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 6,
+    "murakhkhasa": true,
+    "khalaya": [
+     32,
+     72,
+     104
+    ]
+   }
+  ]
+ },
+ {
+  "label": "leading/trailing spaces",
+  "nass": " \u0628\u064e ",
+  "tawaqqu": [
+   {
+    "a": 1,
+    "b": 3,
+    "murakhkhasa": true,
+    "khalaya": [
+     104
+    ]
+   }
+  ]
+ }
+]

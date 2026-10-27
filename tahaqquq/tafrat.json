@@ -5116,5 +5116,131 @@
   "milaf": "Jisr/SakkJumla.lean",
   "min": "    | .muhtamal => .ambiguous",
   "ila": "    | .muhtamal => .unresolved"
+ },
+ {
+  "ism": "P880_tahsil_alif_jamaa_ghayr_akhir",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "  r == 'ا' && ms.isEmpty && c.lahiq.isNone && (c.sabiq == some ['و'] || c.sabiq == some ['و', '\\u0652'])",
+  "ila": "  r == 'ا' && ms.isEmpty && (c.sabiq == some ['و'] || c.sabiq == some ['و', '\\u0652'])"
+ },
+ {
+  "ism": "P881_tahsil_sabiq_awwal_daiman",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "      binaMin (i + 1) (k + s.length) (if fasil s then none else some s) (if fasil s then false else p.isNone) rest",
+  "ila": "      binaMin (i + 1) (k + s.length) (if fasil s then none else some s) (if fasil s then false else true) rest"
+ },
+ {
+  "ism": "P882_tahsil_lahiq_abr_alfasil",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "  | n :: _ => if fasil n then none else some n",
+  "ila": "  | n :: _ => some n"
+ },
+ {
+  "ism": "P883_tahsil_shahada_ism_muallaq",
+  "milaf": "Qari/Tahsil.lean",
+  "min": "  | .muallaq l => s!\"muallaq:{\"|\".intercalate l}\"",
+  "ila": "  | .muallaq l => s!\"muallaq:{l.length}\""
+ },
+ {
+  "ism": "P884_tahsil_kull_kalima_murakhkhasa",
+  "milaf": "Qari/Tahsil.lean",
+  "min": "\\t{if w.murakhkhasa then 1 else 0}\\t",
+  "ila": "\\t{if w.murakhkhasa then 1 else 1}\\t"
+ },
+ {
+  "ism": "P885_tahsil_kalima_bila_khalaya",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "    some ⟨f.a, l.b, ms.all (fun m => mL m.hukm) && !ks.isEmpty, ks⟩",
+  "ila": "    some ⟨f.a, l.b, ms.all (fun m => mL m.hukm), ks⟩"
+ },
+ {
+  "ism": "P886_tahsil_arraf_tanwin",
+  "milaf": "tahaqquq/tahsil/oracle.py",
+  "min": "    if has_tanwin:\n        return _P(ISM_11)",
+  "ila": "    if has_tanwin and False:\n        return _P(ISM_11)"
+ },
+ {
+  "ism": "P887_qari_shadda_maqluba",
+  "milaf": "Qari/Main.lean",
+  "min": "            let cells := if sh then [kh h 3, kh h s] else [kh h s]",
+  "ila": "            let cells := if sh then [kh h s, kh h 3] else [kh h s]"
+ },
+ {
+  "ism": "P888_tahsil_ism_kharij_alwasf",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "  | none => .F \"خلل داخلي\"",
+  "ila": "  | none => .F \"خلل\""
+ },
+ {
+  "ism": "P889_shahada_sanad_la_yuthir",
+  "milaf": "Nizam/Shahada.lean",
+  "min": "  if m.sanad.isEmpty then .ghayrMafhus else m.hal",
+  "ila": "  m.hal"
+ },
+ {
+  "ism": "P890_shahada_mani_mashhud_matlub",
+  "milaf": "Nizam/Shahada.lean",
+  "min": "  | .mani => .manfi",
+  "ila": "  | .mani => .mashhud"
+ },
+ {
+  "ism": "P891_shahada_madkhal_mumtani",
+  "milaf": "Nizam/Shahada.lean",
+  "min": "  | some x => .madkhalFasid x",
+  "ila": "  | some x => .mumtani x"
+ },
+ {
+  "ism": "P892_tahsil_maqad_ha",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "  if r ∈ maqaid then some 0 else (List.finRange 29).find? (fun h => harf h == r)",
+  "ila": "  if r ∈ maqaid then some 1 else (List.finRange 29).find? (fun h => harf h == r)"
+ },
+ {
+  "ism": "P893_tahsil_shadda_maqluba",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "    .L .harfHaraka (if ms.contains shadda then [khaliyaMin h .sukun, khaliyaMin h s] else [khaliyaMin h s])",
+  "ila": "    .L .harfHaraka (if ms.contains shadda then [khaliyaMin h s, khaliyaMin h .sukun] else [khaliyaMin h s])"
+ },
+ {
+  "ism": "P894_tahsil_shadda_la_tudamm",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "    | s :: ss => if s.head?.any alama then (c :: s) :: ss else [c] :: s :: ss",
+  "ila": "    | s :: ss => if s.head?.any harakaB then (c :: s) :: ss else [c] :: s :: ss"
+ },
+ {
+  "ism": "P895_tahsil_muallaq_manfi",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "⟨ism, .shart, .ghayrMafhus, \"\"⟩]",
+  "ila": "⟨ism, .shart, .manfi, \"x\"⟩]"
+ },
+ {
+  "ism": "P896_tahsil_mawdi_zaid",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "  ⟨src.sourceId, src.revision, src.scopeId, src.atomizationId, m.a, m.b⟩",
+  "ila": "  ⟨src.sourceId, src.revision, src.scopeId, src.atomizationId, m.a, m.b + 1⟩"
+ },
+ {
+  "ism": "P897_tahsil_sukun_fatha",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "  else if c == '\\u0652' then some .sukun",
+  "ila": "  else if c == '\\u0652' then some .fatha"
+ },
+ {
+  "ism": "P898_shahada_sidq_bila_manfi",
+  "milaf": "Nizam/Shahada.lean",
+  "min": "    (m.halFiil = .manfi → ¬ q.sadiq m.ism n.madkhal)",
+  "ila": "    True"
+ },
+ {
+  "ism": "P899_shahada_madkhal_ghayrMafhus_la_yuallaq",
+  "milaf": "Nizam/Shahada.lean",
+  "min": "    if dq = [] then\n      match m, s with",
+  "ila": "    if True then\n      match m, s with"
+ },
+ {
+  "ism": "P900_shahada_bila_madkhal_yurakhkhis",
+  "milaf": "Nizam/Shahada.lean",
+  "min": "  else [madkhalGhaib]",
+  "ila": "  else []"
  }
 ]
