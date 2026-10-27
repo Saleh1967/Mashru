@@ -109,6 +109,8 @@ import SLGE.Syllable
 import Madlul.TasisDalala
 import Nizam.Shahada
 import Dal.Tahsil
+import Jisr.Ishara
+import Jisr.IsharaDabit
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2368,3 +2370,21 @@ import Dal.Tahsil
 #print axioms Dal.Tahsil.shahid_kataba
 #print axioms Dal.Tahsil.shahid_shams
 #print axioms Dal.Tahsil.shahid_muallaq
+-- أسماءُ الإشارة في القطر (س132–135) والألفية (س137–144) (Jisr/Ishara.lean): حكمُ الاستعمال بالأصل والمشار إليه والموضع والمسافة و«ها» واللام والكاف
+#print axioms Jisr.Ishara.ghayr_muwafiq_khata
+#print axioms Jisr.Ishara.lam_bila_kaf_khata
+#print axioms Jisr.Ishara.hukmBud_ne_laHukm
+#print axioms Jisr.Ishara.la_hukm_iff
+#print axioms Jisr.Ishara.ha_lam_khata
+#print axioms Jisr.Ishara.muthanna_lam_khata
+#print axioms Jisr.Ishara.madd_lam_khata
+#print axioms Jisr.Ishara.kaf_lil_baid
+#print axioms Jisr.Ishara.ha_la_yughayyir
+#print axioms Jisr.Ishara.mawdi_la_yughayyir
+#print axioms Jisr.Ishara.muthanna_bila_jins
+#print axioms Jisr.Ishara.asma_qatr
+#print axioms Jisr.Ishara.mirsat_maqbul
+#print axioms Jisr.Ishara.shawahid
+#print axioms Jisr.Ishara.shahid_qasr
+-- مقارنةُ ضابط أسماء الإشارة قبل الحالات (Jisr/IsharaDabit.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Ishara.Dabit.qarin_hukm

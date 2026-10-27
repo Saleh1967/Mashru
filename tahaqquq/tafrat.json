@@ -5242,5 +5242,107 @@
   "milaf": "Nizam/Shahada.lean",
   "min": "  else [madkhalGhaib]",
   "ila": "  else []"
+ },
+ {
+  "ism": "P912_ishara_dha_muannath",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "  | .dha => m == .mufradMudhakkar",
+  "ila": "  | .dha => m == .mufradMuannath"
+ },
+ {
+  "ism": "P913_ishara_dhayn_raf",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "  | .dhayn | .tayn => (m == .muthannaMudhakkar || m == .muthannaMuannath) && w != .raf",
+  "ila": "  | .dhayn | .tayn => (m == .muthannaMudhakkar || m == .muthannaMuannath) && w == .raf"
+ },
+ {
+  "ism": "P914_ishara_muthanna_lam",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "    else if a.muthanna || a == .ulaa || d.ha then .khata",
+  "ila": "    else if a == .ulaa || d.ha then .khata"
+ },
+ {
+  "ism": "P915_ishara_ha_lam",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "    else if a.muthanna || a == .ulaa || d.ha then .khata",
+  "ila": "    else if a.muthanna || a == .ulaa then .khata"
+ },
+ {
+  "ism": "P916_ishara_kaf_qarib",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "  | _, .qarib => if d.kaf then .khata else .maqbul",
+  "ila": "  | _, .qarib => .maqbul"
+ },
+ {
+  "ism": "P917_ishara_lam_bila_kaf",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "  else if d.lam && !d.kaf then .khata",
+  "ila": "  else if false then .khata"
+ },
+ {
+  "ism": "P918_ishara_ha_thamma",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "  else if d.ha && d.asl == .thamma then .laHukm",
+  "ila": "  else if d.ha && d.asl == .thamma then .khata"
+ },
+ {
+  "ism": "P919_ishara_madd_qasr",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "    else if a.muthanna || a == .ulaa || d.ha then .khata",
+  "ila": "    else if a.muthanna || a == .ula || d.ha then .khata"
+ },
+ {
+  "ism": "P920_ishara_thamma_baid",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "  | .thamma, .baid => if d.kaf then .khata else .maqbul",
+  "ila": "  | .thamma, .baid => .khata"
+ },
+ {
+  "ism": "P921_ishara_mubham_bila_kaf",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "  | .dhaka => ⟨.dha, .mufradMudhakkar, .raf, .baid, false, false, true⟩",
+  "ila": "  | .dhaka => ⟨.dha, .mufradMudhakkar, .raf, .baid, false, false, false⟩"
+ },
+ {
+  "ism": "P922_ishara_huna_baid_bila_kaf",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "  | .huna, .baid => if d.kaf && d.lam && d.ha then .khata else .maqbul",
+  "ila": "  | .huna, .baid => if !d.kaf || (d.lam && d.ha) then .khata else .maqbul"
+ },
+ {
+  "ism": "P923_ishara_lafz_tih",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "| .tih => \"ته\"",
+  "ila": "| .tih => \"تة\""
+ },
+ {
+  "ism": "P924_ishara_dhan_kull_mawdi",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "  | .dhan | .tan => (m == .muthannaMudhakkar || m == .muthannaMuannath) && w == .raf",
+  "ila": "  | .dhan | .tan => m == .muthannaMudhakkar || m == .muthannaMuannath"
+ },
+ {
+  "ism": "P925_ishara_jam_mudhakkar",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "  | .ulaa | .ula => m == .jamMudhakkar || m == .jamMuannath",
+  "ila": "  | .ulaa | .ula => m == .jamMudhakkar"
+ },
+ {
+  "ism": "P926_ishara_muthanna_jins",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "  | .dhan | .tan => (m == .muthannaMudhakkar || m == .muthannaMuannath) && w == .raf",
+  "ila": "  | .dhan | .tan => m == .muthannaMudhakkar && w == .raf"
+ },
+ {
+  "ism": "P927_ishara_qarin_ghumud",
+  "milaf": "Jisr/IsharaDabit.lean",
+  "min": "  | _ => if b = .laHukm then .sawab else if m.contains b then .ikhtiyar else .khata",
+  "ila": "  | _ => if b = .laHukm then .ikhtiyar else if m.contains b then .ikhtiyar else .khata"
+ },
+ {
+  "ism": "P928_ishara_qarin_tajawuz",
+  "milaf": "Jisr/IsharaDabit.lean",
+  "min": "      | .laHukm, _ => .tajawuz",
+  "ila": "      | .laHukm, _ => .naqsTaghtiya"
  }
 ]

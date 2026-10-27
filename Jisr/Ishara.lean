@@ -1,0 +1,306 @@
+import SLGE.Wad
+import Aql.Mirsat
+
+/-!
+# أسماءُ الإشارة في قطر الندى (س132–135) والألفية (س137–144)
+
+**الطلب.** قولُ المالك 2026-10-28 (لفظُه ووقتُه، 00:33 بتوقيت عمّان، من ملخّص الجلسة بعد ضغطها): «يجب الاستفادة من ما لم نغطه وموجود في المراجع سواء
+استنتجته انت او موجود في المرفق وعمل lean له شرط ان يكون متناسق ومتكامل ومترابط مع البرهان واالحساب وفق الدستور وأفضل الممارسات …
+نفذ انت والوكلاء». و«ما لم نغطه» من تحليل البنّاء قبله في الجلسة لمرفقٍ رفعه المالك (تفكيكٌ في خمس طبقات)، ومنه أنّ أسماء الإشارة في
+`SLGE.Wad.ishara` قائمةُ ألفاظٍ بلا حكم. واختيارُ هذه القطعة أوّلًا، ونطاقُها، قرارُ البنّاء.
+
+**المصدر.** `qatr.txt` المختوم (`2d9241be…`) الأسطر 132–135، و`alfiyya.txt` المختوم (`13b351a0…`) الأسطر 137–144 (والسطرُ 141 علامةُ صفحة).
+والاقتباساتُ في `asanid` قطعٌ حرفيّة، يفحصها `tahaqquq/test_ishara.py` على المودَعين موصولةَ الأسطر.
+
+**المدخل** (حقولُ مواصفة الضابط المجمَّد `tahaqquq/dawabit/ishara/wasf.md` بأعيانها): الأصلُ `Asl` بلا «ها» ولا لامٍ ولا كاف، والمشارُ إليه
+`Mushar`، والموضعُ `Mawdi`، والمسافةُ المقصودة `Bud`، و«ها» التنبيه واللامُ والكاف. **والمدخلُ تحليلٌ يُعطى، لا مُخرَجُ قارئٍ من النصّ**:
+فكُّ «هذا» و«ذلك» و«أولئك» إلى أصلٍ ولواحق يحتاج قاعدةَ رسمٍ ليست في النطاق.
+
+**المخرج** `Hukm`: `maqbul` أو `khata` أو `laHukm`.
+
+**الحكم** (`hukm`)، بالترتيب:
+1. الأصلُ لا يوافق المشارَ إليه أو الموضع (`yuwafiq`): خطأ. «ذا للمذكر، وذي وذه وتي وته وتا للمؤنث، وذان وتان للمثنى بالألف رفعا وبالياء
+   جرا ونصبا، وأولاء لجمعهما» (قطر س132–133)، و«بذا لمفرد مذكر أشر … وذان تان للمثنى المرتفع … وفي سواه ذين تين اذكر … وبأولى أشر لجمع
+   مطلقا» (ألفيّة س138–140)، و«وبهنا أو ههنا أشر إلى … داني المكان … أو بثم فه» (س143–144). والخطأُ لما لم يُذكر بمفتاح الصورة في المواصفة
+   («الصورةُ في استعمالٍ يذكر النطاقُ له صورةً غيرها ولا يذكرها»).
+2. اللامُ بلا كاف: خطأ. اللامُ في النطاق مقرونةٌ بالكاف وحدها («مجردة من اللام … أو مقرونة بها»، «بالكاف حرفا دون لام أو معه»).
+3. «ها» مع «ثمّ»: لا حكم. لا يذكر النطاقُ «ها» معها ولا يمنعها.
+4. المسافة (`hukmBud`):
+   - **غيرُ المكان:** القريبُ بلا كاف، والبعيدُ بالكاف («والبعيد بالكاف»، قطر س133؛ «ولدى البعد انطقا بالكاف»، ألفيّة س140–142)، بلا لامٍ
+     مطلقًا، وباللام إلّا في المثنّى، والممدودةِ «أولاء»، وما تقدّمته «ها» («إلا في المثنى مطلقا وفي الجمع في لغة من مده وفيما تقدمته ها
+     التنبيه»، قطر س134–135؛ «واللام إن قدمت هاممتنعة»، ألفيّة س142).
+   - **«هنا»:** للقريب بلا كاف (س143)، وللبعيد بالكاف («وبه الكاف صلا في البعد»، س143–144) وباللام والكاف («أو بهنالك انطقن»، س144) إلّا بعد
+     «ها»، وبلا كاف («أو هنا»، س144).
+   - **«ثمّ»:** للبعيد بلا كاف («أو بثم فه»، س144)، وما سوى ذلك خطأ.
+
+**ما هو تعيينُ البنّاء** (لا نصُّ النطاق):
+- «للمثنى» بلا جنس: الأصولُ الأربعة للمثنّى المذكّر والمؤنّث سواء (`muthanna_bila_jins`). ولا ينصّ النطاقُ على أنّ «ذان» للمذكّر و«تان» للمؤنّث.
+- الموضعُ لا أثرَ له في غير المثنّى (`mawdi_la_yughayyir`). والنطاقُ يذكر الموضعَ للمثنّى وحده.
+- الكافُ للقريب خطأ، والبعيدُ بلا كافٍ في غير المكان خطأ (`kaf_lil_baid`): بالمقابلة بين «والبعيد بالكاف» وما قبله، وبمفتاح الصورة.
+- «ها» لا أثرَ لها إلّا مع اللام، في غير «ثمّ» (`ha_la_yughayyir`): النطاقُ يذكرها متقدّمةً («وفيما تقدمته ها التنبيه»، «إن قدمت ها»، «ههنا») ولا يمنعها إلّا
+  مع اللام.
+- «إلا في المثنى مطلقا» (القطر) خاصٌّ يُقدَّم على عموم الألفيّة «بالكاف حرفا دون لام أو معه» (`muthanna_lam_khata`).
+- «ته» من القطر وحده، وتُقبل للمؤنّث. والألفيّةُ لا تذكرها ولا تمنعها؛ وقراءةُ «على الأنثى اقتصر» قصرًا لما ذكرته على المؤنّث، لا حصرًا للمؤنّث فيه،
+  قراءةُ البنّاء.
+- «أولى» المقصورة باللام مقبولة: القطرُ يستثني من اللام الجمعَ «في لغة من مده» وحدها (`madd_lam_khata`، `shahid_qasr`).
+- «هنا» في س144 مكتوبةٌ بلا ضبط («أو هنا … أو هنا»)، فتُقبل «هنا» بلا كافٍ للبعيد أيضًا. والضبطُ الذي يفرّقها عن «هنا» القريب لا يظهر في حروف
+  النطاق.
+- ما لا يذكره النطاقُ للمكان («ثمّ» للقريب، و«ثمّ» بالكاف، وأصلٌ غيرُ مكانيٍّ للمكان، ومكانيٌّ لغيره) خطأٌ بمفتاح الصورة.
+
+**الصلة بقطع Lean القائمة:**
+- `asma_qatr`: أصولُ القطر التسعة بألفاظها هي `SLGE.Wad.ishara` بعينها (قائمةُ المالك، وتعليقُها «L132–134»)، وثالثةُ `SLGE.Wad.maarif`
+  «الإشارة».
+- `mirsat_maqbul`: المبهمُ في `Aql/Mirsat.lean` («هذا» تقريبًا، «ذاك» تبعيدًا بالمسافة من هنا) يُقرأ هنا «ها»+«ذا» قريبًا و«ذا»+كاف بعيدًا،
+  فحكمُه مقبولٌ عند كلّ مرساةٍ وحدٍّ وموضع، ومسافتُه مسافةُ `mubhamOf`. وهذه القراءةُ (`mubhamDakhil`) تعيينُ البنّاء.
+
+**المنهج.** شفرةُ هذا الملفّ كُتبت قبل أن يقرأ البنّاءُ حالاتِ الضابط، وجُمّدت الحالاتُ قبلها (`tahaqquq/dawabit/ishara/tajmid.json`؛
+`hawkama/منهج_الضوابط.md`). ونتيجتُها على الضابط في `Jisr/IsharaQiyas.lean`، لا هنا.
+
+**المبرهنات** (بالمعيار الموحَّد في `Nizam/Asas.lean`)، وهي خواصُّ هذا التعيين على مجاله، لا قوانينُ في اللغة:
+- لكلّ (1): `la_hukm_iff` (تستدعي `hukmBud_ne_laHukm`).
+- تعريفيّة (11): `ghayr_muwafiq_khata`، `lam_bila_kaf_khata`، `hukmBud_ne_laHukm`، `ha_lam_khata`، `muthanna_lam_khata`، `madd_lam_khata`،
+  `kaf_lil_baid`، `ha_la_yughayyir`، `mawdi_la_yughayyir`، `muthanna_bila_jins`، `mirsat_maqbul`. وكلُّها مكمَّمةٌ على كلّ مدخل، وبرهانُها تفكيكُ
+  الحالات على مجالٍ منتهٍ.
+- على الشاهد (3): `asma_qatr`، `shawahid`، `shahid_qasr`.
+
+**حدُّه.** المدخلُ تحليلٌ يُعطى؛ والكافُ لمخاطَبٍ واحدٍ مذكّر؛ ولا حكمَ في التنوّع (أشهرُ اللغتين، والتفضيلُ «والمد أولى» لا يُقاس)؛ ولا وصلَ
+بالقارئ ولا بالمحرّك.
+-/
+
+namespace Jisr
+namespace Ishara
+
+/-! ## المدخل والمخرج -/
+
+/-- أصلُ اسم الإشارة بلا «ها» ولا لامٍ ولا كاف، كما يكتبه النطاق. -/
+inductive Asl
+  | dha | dhi | dhih | ti | tih | ta | dhan | tan | dhayn | tayn | ulaa | ula | huna | thamma
+  deriving DecidableEq, Repr
+
+/-- لفظُ الأصل كما في المواصفة. -/
+def Asl.lafz : Asl → String
+  | .dha => "ذا" | .dhi => "ذي" | .dhih => "ذه" | .ti => "تي" | .tih => "ته" | .ta => "تا"
+  | .dhan => "ذان" | .tan => "تان" | .dhayn => "ذين" | .tayn => "تين" | .ulaa => "أولاء" | .ula => "أولى"
+  | .huna => "هنا" | .thamma => "ثم"
+
+/-- أصولُ المثنّى الأربعة. -/
+def Asl.muthanna : Asl → Bool
+  | .dhan | .tan | .dhayn | .tayn => true
+  | _ => false
+
+/-- أصلا المكان. -/
+def Asl.makan : Asl → Bool
+  | .huna | .thamma => true
+  | _ => false
+
+inductive Mushar
+  | mufradMudhakkar | mufradMuannath | muthannaMudhakkar | muthannaMuannath | jamMudhakkar | jamMuannath | makan
+  deriving DecidableEq, Repr
+
+inductive Mawdi
+  | raf | nasb | jarr
+  deriving DecidableEq, Repr
+
+inductive Bud
+  | qarib | baid
+  deriving DecidableEq, Repr
+
+structure Dakhil where
+  asl : Asl
+  mushar : Mushar
+  mawdi : Mawdi
+  bud : Bud
+  ha : Bool
+  lam : Bool
+  kaf : Bool
+  deriving DecidableEq, Repr
+
+inductive Hukm
+  | maqbul | khata | laHukm
+  deriving DecidableEq, Repr
+
+/-! ## الحكم -/
+
+/-- الأصلُ يوافق المشارَ إليه والموضع (قطر س132–133؛ ألفيّة س138–140، س143–144). -/
+def yuwafiq (a : Asl) (m : Mushar) (w : Mawdi) : Bool :=
+  match a with
+  | .dha => m == .mufradMudhakkar
+  | .dhi | .dhih | .ti | .tih | .ta => m == .mufradMuannath
+  | .dhan | .tan => (m == .muthannaMudhakkar || m == .muthannaMuannath) && w == .raf
+  | .dhayn | .tayn => (m == .muthannaMudhakkar || m == .muthannaMuannath) && w != .raf
+  | .ulaa | .ula => m == .jamMudhakkar || m == .jamMuannath
+  | .huna | .thamma => m == .makan
+
+/-- حكمُ المسافة واللواحق، بعد الموافقة. -/
+def hukmBud (d : Dakhil) : Hukm :=
+  match d.asl, d.bud with
+  | .thamma, .qarib => .khata
+  | .thamma, .baid => if d.kaf then .khata else .maqbul
+  | .huna, .qarib => if d.kaf then .khata else .maqbul
+  | .huna, .baid => if d.kaf && d.lam && d.ha then .khata else .maqbul
+  | _, .qarib => if d.kaf then .khata else .maqbul
+  | a, .baid =>
+    if !d.kaf then .khata
+    else if !d.lam then .maqbul
+    else if a.muthanna || a == .ulaa || d.ha then .khata
+    else .maqbul
+
+/-- حكمُ النطاق في استعمال اسم الإشارة. -/
+def hukm (d : Dakhil) : Hukm :=
+  if !yuwafiq d.asl d.mushar d.mawdi then .khata
+  else if d.lam && !d.kaf then .khata
+  else if d.ha && d.asl == .thamma then .laHukm
+  else hukmBud d
+
+/-! ## الأسانيد (قطعٌ حرفيّة؛ يفحصها `tahaqquq/test_ishara.py` موصولةَ الأسطر) -/
+
+/-- (المفتاح، المصدر، أوّلُ سطر، آخرُ سطر، النصّ). -/
+def asanid : List (String × String × Nat × Nat × String) := [
+  ("dhaMudhakkar", "قطر", 132, 132, "ذا للمذكر"),
+  ("muannath", "قطر", 132, 132, "وذي وذه وتي وته وتا للمؤنث"),
+  ("muthanna", "قطر", 132, 133, "وذان وتان للمثنى بالألف رفعا وبالياء جرا ونصبا"),
+  ("jam", "قطر", 133, 133, "وأولاء لجمعهما"),
+  ("baid", "قطر", 133, 134, "والبعيد بالكاف مجردة من اللام مطلقا أو مقرونة بها"),
+  ("illa", "قطر", 134, 135, "إلا في المثنى مطلقا وفي الجمع في لغة من مده وفيما تقدمته ها التنبيه"),
+  ("mufradA", "ألفية", 138, 138, "بذا لمفرد مذكر أشر ... بذي وذه تي تا على الأنثى اقتصر"),
+  ("muthannaA", "ألفية", 139, 139, "وذان تان للمثنى المرتفع ... وفي سواه ذين تين اذكر تطع"),
+  ("jamA", "ألفية", 140, 140, "وبأولى أشر لجمع مطلقا ... والمد أولى"),
+  ("baidA", "ألفية", 140, 142, "ولدى البعد انطقا بالكاف حرفا دون لام أو معه"),
+  ("haA", "ألفية", 142, 142, "واللام إن قدمت هاممتنعة"),
+  ("hunaQarib", "ألفية", 143, 143, "وبهنا أو ههنا أشر إلى ... داني المكان"),
+  ("hunaBaid", "ألفية", 143, 144, "وبه الكاف صلا في البعد أو بثم فه أو هنا ... أو بهنالك انطقن أو هنا")]
+
+/-! ## مبرهنات (خواصُّ التعيين على مجاله؛ والضابطُ يشهد أنّه غيرُ فارغ: `Jisr/IsharaQiyas.lean`) -/
+
+/-- **ما لا يوافق خطأ** (تعريفيّة). -/
+theorem ghayr_muwafiq_khata (d : Dakhil) (h : yuwafiq d.asl d.mushar d.mawdi = false) : hukm d = .khata := by
+  unfold hukm
+  simp [h]
+
+/-- **اللامُ بلا كافٍ خطأ** (تعريفيّة). -/
+theorem lam_bila_kaf_khata (d : Dakhil) (hl : d.lam = true) (hk : d.kaf = false) : hukm d = .khata := by
+  unfold hukm
+  cases h : yuwafiq d.asl d.mushar d.mawdi <;> simp [hl, hk]
+
+/-- **حكمُ المسافة لا يكون «لا حكم»** (تعريفيّة). -/
+theorem hukmBud_ne_laHukm (d : Dakhil) : hukmBud d ≠ .laHukm := by
+  rcases d with ⟨a, m, w, b, ha, l, k⟩
+  cases a <;> cases b <;> cases ha <;> cases l <;> cases k <;> simp [hukmBud, Asl.muthanna]
+
+/-- **«لا حكم» في موضعٍ واحد** (لكلّ): الأصلُ موافق، ولا لامَ بلا كاف، و«ها» مع «ثمّ». -/
+theorem la_hukm_iff (d : Dakhil) :
+    hukm d = .laHukm ↔
+      (yuwafiq d.asl d.mushar d.mawdi = true ∧ ¬(d.lam = true ∧ d.kaf = false) ∧ d.ha = true ∧ d.asl = .thamma) := by
+  have hb := hukmBud_ne_laHukm d
+  unfold hukm
+  cases hy : yuwafiq d.asl d.mushar d.mawdi <;> cases hl : d.lam <;> cases hk : d.kaf <;> cases hh : d.ha <;>
+    by_cases ht : d.asl = .thamma <;> simp_all
+
+/-- **«ها» مع اللام خطأ** (تعريفيّة؛ قطر س135، ألفيّة س142)، في غير «ثمّ». -/
+theorem ha_lam_khata (d : Dakhil) (hh : d.ha = true) (hl : d.lam = true) (ht : d.asl ≠ .thamma) : hukm d = .khata := by
+  rcases d with ⟨a, m, w, b, ha, l, k⟩
+  simp only at hh hl ht
+  subst hh hl
+  cases a <;> cases b <;> cases k <;> simp_all [hukm, hukmBud, yuwafiq, Asl.muthanna]
+
+/-- **المثنّى باللام خطأ** (تعريفيّة؛ «إلا في المثنى مطلقا»، قطر س134). -/
+theorem muthanna_lam_khata (d : Dakhil) (hm : d.asl.muthanna = true) (hl : d.lam = true) : hukm d = .khata := by
+  rcases d with ⟨a, m, w, b, ha, l, k⟩
+  simp only at hm hl
+  subst hl
+  cases a <;> simp [Asl.muthanna] at hm <;> cases b <;> cases k <;> cases ha <;> simp_all [hukm, hukmBud, Asl.muthanna]
+
+/-- **الممدودةُ باللام خطأ** (تعريفيّة؛ «وفي الجمع في لغة من مده»، قطر س134). -/
+theorem madd_lam_khata (m : Mushar) (w : Mawdi) (b : Bud) (ha k : Bool) :
+    hukm ⟨.ulaa, m, w, b, ha, true, k⟩ = .khata := by
+  cases m <;> cases b <;> cases ha <;> cases k <;> simp [hukm, hukmBud, yuwafiq, Asl.muthanna]
+
+/-- **الكافُ للبعيد** (تعريفيّة): في غير المكان، ما قُبل فكافُه للبعيد وحده. -/
+theorem kaf_lil_baid (d : Dakhil) (hm : d.asl.makan = false) (hq : hukm d = .maqbul) : d.kaf = true ↔ d.bud = .baid := by
+  rcases d with ⟨a, m, w, b, ha, l, k⟩
+  simp only at hm hq ⊢
+  cases a <;> simp [Asl.makan] at hm <;> cases b <;> cases k <;> cases l <;> cases ha <;>
+    simp_all [hukm, hukmBud, Asl.muthanna]
+
+/-- **«ها» لا أثرَ لها بلا لام** (تعريفيّة)، في غير «ثمّ». -/
+theorem ha_la_yughayyir (d : Dakhil) (hl : d.lam = false) (ht : d.asl ≠ .thamma) :
+    hukm { d with ha := true } = hukm { d with ha := false } := by
+  rcases d with ⟨a, m, w, b, ha, l, k⟩
+  simp only at hl ht
+  subst hl
+  cases a <;> cases b <;> cases k <;> simp_all [hukm, hukmBud]
+
+/-- **الموضعُ لا أثرَ له في غير المثنّى** (تعريفيّة). -/
+theorem mawdi_la_yughayyir (d : Dakhil) (w : Mawdi) (hm : d.asl.muthanna = false) :
+    hukm { d with mawdi := w } = hukm d := by
+  rcases d with ⟨a, m, w', b, ha, l, k⟩
+  simp only at hm ⊢
+  cases a <;> simp [Asl.muthanna] at hm <;> simp [hukm, yuwafiq, hukmBud]
+
+/-- **المثنّى بلا جنس** (تعريفيّة): الحكمُ في المثنّى المؤنّث هو حكمُه في المذكّر. -/
+theorem muthanna_bila_jins (d : Dakhil) :
+    hukm { d with mushar := .muthannaMuannath } = hukm { d with mushar := .muthannaMudhakkar } := by
+  rcases d with ⟨a, m, w, b, ha, l, k⟩
+  cases a <;> simp [hukm, yuwafiq, hukmBud]
+
+/-! ## الصلة بقطع Lean القائمة -/
+
+/-- أصولُ القطر بترتيب س132–133. -/
+def asulQatr : List Asl := [.dha, .dhi, .dhih, .ti, .tih, .ta, .dhan, .tan, .ulaa]
+
+/-- **أصولُ القطر هي `SLGE.Wad.ishara`** (على الشاهد)، و«الإشارة» ثالثةُ المعارف في `SLGE.Wad.maarif`. -/
+theorem asma_qatr : asulQatr.map Asl.lafz = SLGE.Wad.ishara ∧ SLGE.Wad.maarif[2]? = some "الإشارة" := by
+  decide
+
+/-- المبهمُ في `Aql/Mirsat.lean` مدخلًا هنا (تعيين): «هذا» «ها»+«ذا» قريبًا، و«ذاك» «ذا»+كاف بعيدًا، لمفردٍ مذكّرٍ رفعًا. -/
+def mubhamDakhil : Aql.Mirsat.Mubham → Dakhil
+  | .hadha => ⟨.dha, .mufradMudhakkar, .raf, .qarib, true, false, false⟩
+  | .dhaka => ⟨.dha, .mufradMudhakkar, .raf, .baid, false, false, true⟩
+
+/-- **المبهمُ عند كلّ مرساةٍ مقبولٌ هنا، ومسافتُه مسافةُ `mubhamOf`** (تعريفيّة؛ لكلّ حدٍّ ومرساةٍ وموضع). -/
+theorem mirsat_maqbul (hadd : Nat) (r : Aql.Mirsat.Mirsat) (x : Aql.Makan.Izaha3) :
+    hukm (mubhamDakhil (Aql.Mirsat.mubhamOf hadd r x)) = .maqbul ∧
+    (mubhamDakhil (Aql.Mirsat.mubhamOf hadd r x)).bud =
+      (if Aql.Mirsat.masafa (Aql.Makan.nisba r.huna x) ≤ hadd then .qarib else .baid) := by
+  unfold Aql.Mirsat.mubhamOf
+  by_cases h : Aql.Mirsat.masafa (Aql.Makan.nisba r.huna x) ≤ hadd <;> simp [h, mubhamDakhil, hukm, hukmBud, yuwafiq]
+
+/-! ## شواهدُ النطاق (على الشاهد) -/
+
+/-- **شواهدُ الأسطر**: «ذا للمذكر» قريبًا؛ «ذان … بالألف رفعا وبالياء جرا ونصبا»؛ «والبعيد بالكاف مجردة من اللام مطلقا أو مقرونة بها»؛
+    «إلا في المثنى … وفيما تقدمته ها التنبيه»؛ «بهنا أو ههنا … داني المكان»؛ «وبه الكاف صلا في البعد أو بثم فه أو هنا … أو بهنالك»؛ و«ها»
+    مع «ثمّ» «لا حكم». -/
+theorem shawahid :
+    hukm ⟨.dha, .mufradMudhakkar, .raf, .qarib, false, false, false⟩ = .maqbul ∧
+    hukm ⟨.dha, .mufradMuannath, .raf, .qarib, false, false, false⟩ = .khata ∧
+    hukm ⟨.dhan, .muthannaMudhakkar, .raf, .qarib, false, false, false⟩ = .maqbul ∧
+    hukm ⟨.dhan, .muthannaMudhakkar, .jarr, .qarib, false, false, false⟩ = .khata ∧
+    hukm ⟨.dhayn, .muthannaMudhakkar, .nasb, .qarib, false, false, false⟩ = .maqbul ∧
+    hukm ⟨.dhayn, .muthannaMudhakkar, .raf, .qarib, false, false, false⟩ = .khata ∧
+    hukm ⟨.dha, .mufradMudhakkar, .raf, .baid, false, false, true⟩ = .maqbul ∧
+    hukm ⟨.dha, .mufradMudhakkar, .raf, .baid, false, true, true⟩ = .maqbul ∧
+    hukm ⟨.dha, .mufradMudhakkar, .raf, .baid, false, false, false⟩ = .khata ∧
+    hukm ⟨.dhan, .muthannaMudhakkar, .raf, .baid, false, false, true⟩ = .maqbul ∧
+    hukm ⟨.dhan, .muthannaMudhakkar, .raf, .baid, false, true, true⟩ = .khata ∧
+    hukm ⟨.dha, .mufradMudhakkar, .raf, .baid, true, false, true⟩ = .maqbul ∧
+    hukm ⟨.dha, .mufradMudhakkar, .raf, .baid, true, true, true⟩ = .khata ∧
+    hukm ⟨.huna, .makan, .nasb, .qarib, false, false, false⟩ = .maqbul ∧
+    hukm ⟨.huna, .makan, .nasb, .qarib, true, false, false⟩ = .maqbul ∧
+    hukm ⟨.huna, .makan, .nasb, .baid, false, false, true⟩ = .maqbul ∧
+    hukm ⟨.huna, .makan, .nasb, .baid, false, true, true⟩ = .maqbul ∧
+    hukm ⟨.huna, .makan, .nasb, .baid, false, false, false⟩ = .maqbul ∧
+    hukm ⟨.thamma, .makan, .nasb, .baid, false, false, false⟩ = .maqbul ∧
+    hukm ⟨.thamma, .makan, .nasb, .qarib, false, false, false⟩ = .khata ∧
+    hukm ⟨.thamma, .makan, .nasb, .baid, true, false, false⟩ = .laHukm := by
+  decide
+
+/-- **الجمعُ باللام: المقصورةُ مقبولة والممدودةُ خطأ** («وفي الجمع في لغة من مده»، قطر س134؛ «وبأولى أشر لجمع مطلقا … والمد أولى»، ألفيّة
+    س140). -/
+theorem shahid_qasr :
+    hukm ⟨.ula, .jamMudhakkar, .raf, .baid, false, true, true⟩ = .maqbul ∧
+    hukm ⟨.ulaa, .jamMudhakkar, .raf, .baid, false, true, true⟩ = .khata ∧
+    hukm ⟨.ulaa, .jamMuannath, .raf, .baid, false, false, true⟩ = .maqbul := by
+  decide
+
+end Ishara
+end Jisr
