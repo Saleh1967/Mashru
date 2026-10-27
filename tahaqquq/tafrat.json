@@ -5308,5 +5308,11 @@
   "milaf": "Dal/QiraaTahsil.lean",
   "min": "  | n :: rest => rest.all tatwilB && (tatwilB n || (m.nass.tail.contains fathatan && (n.nass == ['ا'] || n.nass == ['ى'])))",
   "ila": "  | n :: rest => (n :: rest).all tatwilB || (m.nass.tail.contains fathatan && ((n :: rest).filter (fun x => !tatwilB x)).map (·.nass) == [['ا']])"
+ },
+ {
+  "ism": "P929_qiraa_jamaa_tatwil",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "      else if ms.isEmpty && m.siyaq.lahiq.isNone && (m.siyaq.sabiq == some ['و'] || m.siyaq.sabiq == some ['و', 'ْ']) then",
+  "ila": "      else if ms.isEmpty && (m.siyaq.sabiq == some ['و'] || m.siyaq.sabiq == some ['و', 'ْ']) then"
  }
 ]
