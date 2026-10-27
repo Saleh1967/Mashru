@@ -5246,20 +5246,20 @@
  {
   "ism": "P997_mawsul_ittisaq_tashdid",
   "milaf": "Jisr/Mawsul.lean",
-  "min": "  (!d.tashdid || d.lafz.nun) && (!d.mulgha",
-  "ila": "  true && (!d.mulgha"
+  "min": "  (!d.tashdid || d.lafz.nun) && (decide (d.aid = .laAid) == d.aidSima.isNone)",
+  "ila": "  (decide (d.aid = .laAid) == d.aidSima.isNone)"
  },
  {
-  "ism": "P998_mawsul_ittisaq_ilgha",
+  "ism": "P998_mawsul_muthanna",
   "milaf": "Jisr/Mawsul.lean",
-  "min": "(!d.mulgha || decide (d.lafz = .dha)) &&",
-  "ila": "true &&"
+  "min": "  | .alladhani | .allatani | .alladhayni | .allatayni | .alladhiyani | .allatiyani => true\n  | _ => false\n\ndef muthannaM",
+  "ila": "  | .alladhani | .allatani | .alladhayni | .alladhiyani | .allatiyani => true\n  | _ => false\n\ndef muthannaM"
  },
  {
   "ism": "P999_mawsul_ittisaq_aid",
   "milaf": "Jisr/Mawsul.lean",
-  "min": "  (decide (d.aid = .laAid) == d.aidSima.isNone)",
-  "ila": "  true"
+  "min": "  (!d.tashdid || d.lafz.nun) && (decide (d.aid = .laAid) == d.aidSima.isNone)",
+  "ila": "  (!d.tashdid || d.lafz.nun)"
  },
  {
   "ism": "P1000_mawsul_allati",
@@ -5300,44 +5300,44 @@
  {
   "ism": "P1006_mawsul_dhu_tayyi",
   "milaf": "Jisr/Mawsul.lean",
-  "min": "  | .dhu => if decide (d.lugha = .tayyi) then maqbulJ [.bila] else laHukmJ",
-  "ila": "  | .dhu => maqbulJ [.bila]"
+  "min": "  | .dhu => yes (decide (d.lugha = .tayyi))",
+  "ila": "  | .dhu => yes true"
  },
  {
   "ism": "P1007_mawsul_dhat_marji",
   "milaf": "Jisr/Mawsul.lean",
-  "min": "then yes (decide (d.marji = .mufradMuannath)) else laHukmJ",
-  "ila": "then yes true else laHukmJ"
+  "min": "yes (decide (d.lugha = .tayyi) && decide (d.marji = .mufradMuannath))",
+  "ila": "yes (decide (d.lugha = .tayyi))"
  },
  {
-  "ism": "P1008_mawsul_dha_ilgha",
+  "ism": "P1008_mawsul_ilgha_la_hukm",
   "milaf": "Jisr/Mawsul.lean",
-  "min": "if decide (d.qabl ≠ .ghayruhuma) && !d.mulgha then",
-  "ila": "if decide (d.qabl ≠ .ghayruhuma) then"
+  "min": "  if !muttasiq d || d.mulgha then laHukmJ",
+  "ila": "  if !muttasiq d then laHukmJ"
  },
  {
   "ism": "P1009_mawsul_dha_qabl",
   "milaf": "Jisr/Mawsul.lean",
-  "min": "if decide (d.qabl ≠ .ghayruhuma) && !d.mulgha then",
-  "ila": "if !d.mulgha then"
+  "min": "  | .dha => yes (decide (d.qabl ≠ .ghayruhuma))",
+  "ila": "  | .dha => yes true"
  },
  {
   "ism": "P1010_mawsul_al_fil_qalil",
   "milaf": "Jisr/Mawsul.lean",
-  "min": "    | .filMurab => maqbulJ [.qalil]",
-  "ila": "    | .filMurab => maqbulJ [.bila]"
+  "min": "  | .al, .filMurab => maqbulJ [.qalil]",
+  "ila": "  | .al, .filMurab => maqbulJ [.bila]"
  },
  {
   "ism": "P1011_mawsul_al_tafdil",
   "milaf": "Jisr/Mawsul.lean",
-  "min": "    | _ => khataJ\n  | _ =>",
-  "ila": "    | _ => maqbulJ [.bila]\n  | _ =>"
+  "min": "  | .al, _ => khataJ\n  | _, .jumlaKhabariyya | _, .zarfTamm | _, .jarrTamm => maqbulJ [.bila]",
+  "ila": "  | .al, _ => maqbulJ [.bila]\n  | _, .jumlaKhabariyya | _, .zarfTamm | _, .jarrTamm => maqbulJ [.bila]"
  },
  {
   "ism": "P1012_mawsul_sila_inshaiyya",
   "milaf": "Jisr/Mawsul.lean",
-  "min": "    | .jumlaKhabariyya | .zarfTamm | .jarrTamm => maqbulJ [.bila]",
-  "ila": "    | .jumlaKhabariyya | .jumlaInshaiyya | .zarfTamm | .jarrTamm => maqbulJ [.bila]"
+  "min": "  | _, .jumlaKhabariyya | _, .jumlaInshaiyya | _, .zarfTamm | _, .jarrTamm => maqbulJ [.bila]",
+  "ila": "  | _, .jumlaKhabariyya | _, .zarfTamm | _, .jarrTamm => maqbulJ [.bila]"
  },
  {
   "ism": "P1013_mawsul_la_aid",
@@ -5364,10 +5364,10 @@
   "ila": "    else if true then maqbulJ [.bila]"
  },
  {
-  "ism": "P1017_mawsul_tartib",
+  "ism": "P1017_mawsul_khata_yakfi",
   "milaf": "Jisr/Mawsul.lean",
-  "min": "  else damm (lafzJ d) (damm (silaJ d.lafz d.sila) (aidJ d))",
-  "ila": "  else damm (aidJ d) (damm (silaJ d.lafz d.sila) (lafzJ d))"
+  "min": "  if decide (a.hukm = .khata) || decide (b.hukm = .khata) then khataJ",
+  "ila": "  if decide (a.hukm = .khata) then khataJ"
  },
  {
   "ism": "P1018_mawsul_damm_daraja",
@@ -5398,5 +5398,17 @@
   "milaf": "Jisr/MawsulDabit.lean",
   "min": "      (if h.hukm == [.maqbul] then [(h.ism",
   "ila": "      (if false then [(h.ism"
+ },
+ {
+  "ism": "P1023_mawsul_ikhtilaf_la_hukm",
+  "milaf": "Jisr/Mawsul.lean",
+  "min": "  if silaQatr l s = silaAlfiyya l s then silaQatr l s else laHukmJ",
+  "ila": "  silaAlfiyya l s"
+ },
+ {
+  "ism": "P1024_mawsul_tashdid_muthanna",
+  "milaf": "Jisr/Mawsul.lean",
+  "min": "  if d.tashdid && !d.lafz.muthanna then laHukmJ else maqbulJ [.bila]",
+  "ila": "  maqbulJ [.bila]"
  }
 ]

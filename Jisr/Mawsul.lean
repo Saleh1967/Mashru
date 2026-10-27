@@ -1,5 +1,6 @@
 import SLGE.Wad
 import SLGE.Maqam
+import Nizam.Phi
 
 /-!
 # الموصولُ وصلتُه في قطر الندى (س137–143) والألفية (س146–157)
@@ -16,57 +17,80 @@ import SLGE.Maqam
 واللغة، وما قبله، والإلغاء، ونوعُ الصلة `Sila`، والعائد `Aid` وسمتُه. **والمدخلُ تحليلٌ يُعطى، لا مُخرَجُ قارئٍ من النصّ.**
 
 **المخرج** `Jawab`: الحكم (`maqbul` أو `khata` أو `laHukm`)، والدرجةُ قائمةً (`qalil`، `nazr`، `lugha`، `bila`)؛ وحين لا يكون الحكمُ «مقبولًا»
-فالدرجةُ `[bila]`.
+فالدرجةُ `[bila]` (`ghayr_maqbul_bila`).
 
-**الحكم** (`jawab`)، بالترتيب، وأوّلُ ما يُخرج غيرَ «مقبول» هو الجواب:
-1. **اتّساقُ الحقول** (`muttasiq`): التشديدُ في لفظٍ آخرُه نون، والإلغاءُ في «ذا»، و«لا عائد» في العائد وسمتِه معًا؛ وما خالف ذلك «لا حكم».
-2. **اللفظ** (`lafzJ`):
+**الحكم** (`jawab`):
+1. **البوّابة:** الحقولُ غيرُ المتّسقة (`muttasiq`: التشديدُ في لفظٍ آخرُه نون، و«لا عائد» في العائد وسمتِه معًا) و«ذا» الملغاةُ «لا حكم»
+   (`bawwaba_la_hukm`): «إذا لم تلغ» قيد، والملغاةُ ليست موصولًا.
+2. **وإلّا فربطُ أربعة أحكام** بـ`wa`، وهو ربطُ `Nizam.Phi.K3.wa` على الأحكام (`wa_k3`، `jawab_k3`): يكفي خطأٌ في أحدها ليكون الجوابُ خطأً
+   (`khata_yakfi`)، ولا قبولَ إلّا بقبولها كلِّها بدرجاتها المذكورة، وما سواهما «لا حكم».
+3. **اللفظ** (`lafzJ`):
    - «الذي» للمفرد المذكّر و«التي» للمفرد المؤنّث («وهو الذي والتي»، قطر س137؛ «موصول الأسماء الذي الأنثى التي»، ألفيّة س147).
-   - «اللذان» و«اللتان» رفعًا، و«اللذين» و«اللتين» جرًّا ونصبًا («واللذان واللتان بالألف رفعا وبالياء جرا ونصبا»، س137–138)، والنونُ مشدّدةً
-     مقبولة («والنون إن تشدد فلا ملامه»، ألفيّة س148). و«اللذيان» و«اللتيان» خطأ («واليا إذا ما ثنيا لا تثبت»، س147).
+   - «اللذان» و«اللتان» رفعًا، و«اللذين» و«اللتين» جرًّا ونصبًا («واللذان واللتان بالألف رفعا وبالياء جرا ms03 ونصبا»، س137–138). و«اللذيان» و«اللتيان»
+     خطأ («واليا إذا ما ثنيا لا تثبت»، س147).
    - «الذين» لجمع المذكّر في المواضع كلّها («الذين بالياء مطلقا»، قطر س138؛ «الذين مطلقا»، ألفيّة س150)، و«اللذون» رفعًا لغة («وبعضهم بالواو رفعا
      نطقا»، س150)؛ و«الألى» لجمع المذكّر (س138، س150).
    - «اللائي» و«اللاتي» لجمع المؤنّث (قطر س138–139)، و«اللات» و«اللاء» كذلك (ألفيّة س151)، و«اللاء» لجمع المذكّر نزر («واللاء كالذين نزرا
      وقعا»، س151).
-   - «من» و«ما» و«أي» و«أل» لكلّ معنى («وبمعنى الجميع من وما وأي، وأل»، قطر س139؛ «ومن وما وأل تساوي ما ذكر»، ألفيّة س152).
+   - «من» و«ما» و«أي» و«أل» لكلّ معنى («وبمعنى الجميع من وما وأي، وأل»، قطر س139؛ «ومن وما وأل تساوي ما ذكره»، ألفيّة س152).
    - «ذو» لكلّ معنى في لغة طيئ («وذو في لغة طي»، قطر س140؛ «وهكذا ذو عند طيئ شهر»، س152)، و«ذات» للمفرد المؤنّث و«ذوات» لجمع المؤنّث عندهم
-     («وكالتي أيضا لديهم ذات وموضع اللاتي أتى ذوات»، س153)؛ وفي غير لغتهم «لا حكم».
-   - «ذا» لكلّ معنى بعد «ما» أو «من» الاستفهاميّتين غيرَ ملغاة («وذا بعد ما أو من الاستفهاميتين»، قطر س140؛ «ومثل ماذا بعدما استفهام أومن إذا لم تلغ
-     في الكلام»، س154)، وفي غير ذلك «لا حكم».
-   - وما سوى ذلك من لفظٍ لمعنًى أو موضعٍ جعل النطاقُ له غيرَه خطأ (مفتاحُ الصورة في المواصفة).
-3. **الصلة** (`silaJ`):
-   - لـ«أل» الوصفُ الصريح («وأل في وصف صريح لغير تفضيل»، قطر س139؛ «وصلة أل الوصف»، س140؛ «وصفة صريحة صلة أل»، ألفيّة س157)، والفعلُ المعرب قليل
-     («وكونها بمعرب الأفعال قل»، س157)؛ وما سواهما خطأ، ومنه اسمُ التفضيل.
-   - لغيرها الجملةُ الخبريّة والظرفُ والجارُّ والمجرورُ التامّان («وصلة غيرها إما جملة خبرية … أو ظرف أو جار ومجرور تامان»، قطر س141–143؛ «وجملة أو شبهها
-     الذي وصل به»، ألفيّة س156)؛ وما سواها خطأ.
-   - ولا موصولَ بلا صلة («وكلها يلزم بعده صله»، س155).
-4. **العائد** (`aidJ`):
-   - لا صلةَ بلا ضميرٍ يعود («ذات ضمير طبق للموصول يسمى عائدا»، قطر س141؛ «على ضمير لائق مشتمله»، ألفيّة س155)، والمحذوفُ في الجملة مقبول («وقد
-     يحذف»، س141)، وفي غيرها «لا حكم».
+     («وكالتي أيضا لديهم ذات ... وموضع اللاتي أتى ذوات»، س153).
+   - «ذا» لكلّ معنى بعد «ما» أو «من» الاستفهاميّتين («وذا بعد ما أو من الاستفهاميتين»، قطر س140؛ «ومثل ماذا بعدما استفهام ... أومن»، س154).
+   - وما سوى ذلك خطأ: لفظٌ لمعنًى أو موضعٍ جعل النطاقُ له غيرَه، ومنه «ذو» و«ذات» و«ذوات» في غير طيئ، و«ذا» في غير ما بعد الاستفهاميّتين
+     (`qayd_khata`): القيدُ يُخرج ما خرج عنه إلى ألفاظٍ أخرى من النطاق (مفتاحُ الصورة في المواصفة).
+4. **التشديد** (`tashdidJ`): «والنون إن تشدد فلا ملامه» (ألفيّة س148) في نون المثنّى، وسياقُها تثنيةُ الذي والتي (س147)؛ فهو لا يغيّر الجوابَ في المثنّى
+   (`tashdid_la_yughayyir`)، وفي غيره «لا حكم» (`tashdid_ghayr_muthanna`: لا يُقبل).
+5. **الصلة** (`silaJ`)، بقراءة كلّ مصدرٍ وحده: ما اتّفقا عليه حكمُه، وما اختلفا فيه «لا حكم» (`ikhtilaf_masdarayn`):
+   - القطر (`silaQatr`): لـ«أل» الوصف («وأل في وصف صريح لغير تفضيل»، س139؛ «وصلة أل الوصف»، س140)، ولغيرها الجملةُ الخبريّة والظرفُ والجارُّ
+     والمجرورُ التامّان («وصلة غيرها إما جملة خبرية … أو ظرف أو جار ومجرور تامان»، س141–143)؛ وما سواها خطأ.
+   - الألفية (`silaAlfiyya`): لـ«أل» الصفةُ الصريحة والفعلُ المعرب قليل («وصفة صريحة صلة أل ... وكونها بمعرب الأفعال قل»، س157)، ولغيرها الجملةُ وشبهُها
+     («وجملة أو شبهها الذي وصل»، س156)؛ وما سواها خطأ.
+   - فالفعلُ المعرب صلةً لـ«أل» والجملةُ الإنشائيّة صلةً لغيرها «لا حكم» (`silat_al`، `silat_ghayriha`)؛ ولا موصولَ بلا صلة («وكلها يلزم ms03 بعده صله»،
+     س155؛ `bila_sila`).
+6. **العائد** (`aidJ`):
+   - لا صلةَ بلا ضميرٍ يعود («ذات ضمير طبق للموصول يسمى عائدا»، قطر س141؛ «على ضمير لائق مشتمله»، ألفيّة س155؛ `la_aid_khata`)، والمحذوفُ في الجملة
+     مقبول («وقد يحذف»، س141)، وفي غيرها «لا حكم».
    - والعائدُ على سمة المعنى: في اللفظ الخاصّ خطأٌ إن خالفها؛ وفي المشترك («من» وأخواتها) خطأٌ إن خالف المعنى واللفظَ (المفردَ المذكّر) معًا، و«لا حكم»
      إن وافق اللفظَ دون المعنى: «طبق للموصول» لا يقول أيُّهما.
 
 **ما هو تعيينُ البنّاء** (لا نصُّ النطاق):
-- اللغةُ قيدٌ على «ذو» و«ذات» و«ذوات» وحدها؛ وغيرُها يُحكم فيه بلا نظرٍ إلى اللغة. وما قبله والموضعُ لا أثرَ لهما إلّا في «ذا» والمثنّى و«اللذون».
-- «ذو» عند طيئ لكلّ معنى (من «تساوي ما ذكر» و«وهكذا»)، و«ذات» و«ذوات» لما ذُكرتا له وحده.
+- اللغةُ قيدٌ على «ذو» و«ذات» و«ذوات» وحدها (`lugha_la_tughayyir`)؛ وما قبله والموضعُ لا أثرَ لهما إلّا في «ذا» والمثنّى و«اللذون».
+- «ذو» عند طيئ لكلّ معنى (من «تساوي ما ذكره» و«وهكذا»)، و«ذات» و«ذوات» لما ذُكرتا له وحده.
+- «شبهُها» في الألفية الظرفُ والجارُّ التامّان، لا الناقصان.
 - «طبق للموصول» في المشترك: الموافقُ للمعنى مقبول، والموافقُ للّفظ وحده «لا حكم».
 - المحذوفُ في غير الجملة «لا حكم»: «وقد يحذف» في سياق الجملة الخبريّة.
-- ترتيبُ الأحكام: الاتّساقُ فاللفظُ فالصلةُ فالعائد، وأوّلُ ما يُخرج غيرَ «مقبول» هو الجواب، وإلّا فالمقبولُ بدرجة اللفظ ثمّ الصلة.
+- البوّابةُ والربطُ بـ`K3.wa`، والدرجاتُ في القبول درجاتُ الأحكام الأربعة المذكورة.
+
+**ما غُيّر بعد قراءة الحالات** (على مادّةٍ مكشوفة؛ الشفرةُ المجمَّدة في `e13b5a0`). أخذًا بقراءة المؤلّف في المواضع التسعة التي أخفقت فيها الشفرةُ
+المجمَّدة كلِّها (`tahaqquq/dawabit/mawsul/mulhaq_1.md`)، وتطبيقًا لكلّ قاعدةٍ على ما تشمله عبارتُها:
+- «ذو» و«ذات» و«ذوات» في غير طيئ، و«ذا» في غير ما بعد الاستفهاميّتين: كانت «لا حكم»، وصارت خطأ (M29، M31، M36).
+- التشديدُ في غير المثنّى («الذين»، «اللذون»): كان لا يغيّر الجواب، وصار «لا حكم» (M13، M47).
+- الجملةُ الإنشائيّةُ صلةً لغير «أل»: كانت خطأً (بالقطر)، وصارت «لا حكم» (M56، M57)؛ والفعلُ المعربُ صلةً لـ«أل»: كان مقبولًا قليلًا (بالألفية)، وصار
+  «لا حكم» (M58، M59): المصدران يختلفان، والمواصفةُ تجعل ذلك غموضًا.
+- الضمُّ: كان أوّلُ ما ليس مقبولًا هو الجواب، وصار ربطَ `K3.wa` (الخطأُ يغلب «لا حكم»). و«ذا» الملغاةُ: كانت «لا حكم» من اللفظ، وصارت «لا حكم» في البوّابة.
+- على المجال كلّه (2,782,080 مدخلًا، عدُّ أداةٍ في الجلسة بمقابلة `jawab` بنسخة الشفرة المجمَّدة) تغيّر جوابُ 44,610، وكلُّ مدخلٍ في أوّل صنفٍ يصدق
+  عليه بهذا الترتيب: التشديدُ في الجمع 360 (168 من مقبول و192 من خطأ إلى «لا حكم»)، و«ذو» وأختاها في غير طيئ 30,780 (من «لا حكم» إلى خطأ)، و«ذا» في
+  غير ما بعد الاستفهاميّتين 6,840 (كذلك)، والإنشائيّةُ 6,414 (من خطأ إلى «لا حكم»)، والفعلُ المعرب لـ«أل» 216 (من مقبول إلى «لا حكم»)؛ ولا مدخلَ تغيّر
+  خارج هذه الأصناف (فلم يتغيّر بالضمّ ولا بالبوّابة وحدهما شيء)، ولا مدخلَ تغيّرت درجتُه وحدها. تمسّ الحالاتُ منها تسعةً (الإخفاقات)، ولا حالةَ تمسّ
+  الباقي، فـ«88 من 88» لا تشهد له.
 
 **الصلة بقطع Lean القائمة:**
+- `Nizam.Phi.K3.wa`: ربطُ الأحكام (`wa_k3`).
 - `asma_qatr`: ألفاظُ `SLGE.Wad.mawsul` الأربعةَ عشرَ ألفاظٌ هنا، و«الموصول» رابعةُ `SLGE.Wad.maarif`.
 - `maqam_khass`: كلُّ لفظٍ في `SLGE.Maqam.mawsulKhass` مقبولٌ هنا لمعنًى من سمته، بصلةٍ خبريّةٍ وعائدٍ مستترٍ موافق.
 
-**المنهج.** شفرةُ هذا الملفّ كُتبت قبل أن يقرأ البنّاءُ حالاتِ الضابط، وجُمّدت الحالاتُ قبلها (`tahaqquq/dawabit/mawsul/tajmid.json`؛
-`hawkama/منهج_الضوابط.md`). ونتيجتُها على الضابط في `Jisr/MawsulQiyas.lean`، لا هنا.
+**المنهج.** شفرةُ هذا الملفّ كُتبت أوّلًا قبل أن يقرأ البنّاءُ حالاتِ الضابط، وجُمّدت الحالاتُ قبلها (`tahaqquq/dawabit/mawsul/tajmid.json`؛
+`hawkama/منهج_الضوابط.md`)، ثمّ غُيّرت بعد قراءتها كما أعلاه. ونتيجتُها على الضابط في `Jisr/MawsulQiyas.lean`، لا هنا.
 
 **المبرهنات** (بالمعيار الموحَّد في `Nizam/Asas.lean`)، وهي خواصُّ هذا التعيين على مجاله، لا قوانينُ في اللغة:
-- تعريفيّة (9): `ghayr_muttasiq_la_hukm`، `lafz_khata`، `sila_khata`، `bila_sila`، `silat_al`، `silat_ghayriha`، `la_aid_khata`،
-  `tashdid_la_yughayyir`، `lugha_la_tughayyir`. وبرهانُها فكُّ التعريفات وتفكيكُ الحالات.
-- لكلّ (1): `ghayr_maqbul_bila` (تستدعي مساعداتٍ خاصّةً في الملفّ: سلامةُ كلّ حكمٍ جزئيّ وسلامةُ الضمّ).
+- تعريفيّة (10): `bawwaba_la_hukm`، `wa_k3`، `bila_sila`، `silat_al`، `silat_ghayriha`، `ikhtilaf_masdarayn`، `la_aid_khata`، `tashdid_la_yughayyir`،
+  `lugha_la_tughayyir`، `qayd_khata`. وبرهانُها فكُّ التعريفات وتفكيكُ الحالات.
+- لكلّ (4): `jawab_k3` (تستدعي `wa_k3`)، `khata_yakfi` (تستدعي `jawab_k3` و`Nizam.Phi.wa_N`)، `tashdid_ghayr_muthanna` (تستدعي `jawab_k3`)،
+  `ghayr_maqbul_bila` (تستدعي مساعدًا خاصًّا: سلامةُ الربط).
 - على الشاهد (3): `asma_qatr`، `maqam_khass`، `shawahid`.
 
-**حدُّه.** المدخلُ تحليلٌ يُعطى؛ ولا إعرابَ لـ«أي» ولا شروطَ لحذف العائد (س159–165)؛ ولا تفريقَ بين العاقل وغيره؛ ولا وصلَ بالقارئ ولا بالمحرّك.
+**حدُّه.** المدخلُ تحليلٌ يُعطى؛ ولا إعرابَ لـ«أي» ولا شروطَ لحذف العائد (س159–165)؛ ولا تفريقَ بين العاقل وغيره؛ و«لا حكم» في الاختلاف لا يحمل
+البديلين (هما في `silaQatr` و`silaAlfiyya`)؛ ولا وصلَ بالقارئ ولا بالمحرّك.
 -/
 
 namespace Jisr
@@ -142,10 +166,14 @@ def maqbulJ (ds : List Daraja) : Jawab := ⟨.maqbul, ds⟩
 def khataJ : Jawab := ⟨.khata, [.bila]⟩
 def laHukmJ : Jawab := ⟨.laHukm, [.bila]⟩
 
-/-- اتّساقُ الحقول. -/
+/-- اتّساقُ الحقول: التشديدُ في لفظٍ آخرُه نون، و«لا عائد» في العائد وسمتِه معًا. (والإلغاءُ يُردّ «لا حكم» في `jawab` في كلّ لفظ.) -/
 def muttasiq (d : Dakhil) : Bool :=
-  (!d.tashdid || d.lafz.nun) && (!d.mulgha || decide (d.lafz = .dha)) &&
-  (decide (d.aid = .laAid) == d.aidSima.isNone)
+  (!d.tashdid || d.lafz.nun) && (decide (d.aid = .laAid) == d.aidSima.isNone)
+
+/-- المثنّى. -/
+def Lafz.muthanna : Lafz → Bool
+  | .alladhani | .allatani | .alladhayni | .allatayni | .alladhiyani | .allatiyani => true
+  | _ => false
 
 def muthannaM (m : Sima) : Bool := decide (m = .muthannaMudhakkar)
 def muthannaF (m : Sima) : Bool := decide (m = .muthannaMuannath)
@@ -169,24 +197,35 @@ def lafzJ (d : Dakhil) : Jawab :=
     else if decide (d.marji = .jamMudhakkar) then maqbulJ [.nazr]
     else khataJ
   | .man | .ma | .ayy | .al => maqbulJ [.bila]
-  | .dhu => if decide (d.lugha = .tayyi) then maqbulJ [.bila] else laHukmJ
-  | .dhat => if decide (d.lugha = .tayyi) then yes (decide (d.marji = .mufradMuannath)) else laHukmJ
-  | .dhawat => if decide (d.lugha = .tayyi) then yes (decide (d.marji = .jamMuannath)) else laHukmJ
-  | .dha =>
-    if decide (d.qabl ≠ .ghayruhuma) && !d.mulgha then maqbulJ [.bila] else laHukmJ
+  | .dhu => yes (decide (d.lugha = .tayyi))
+  | .dhat => yes (decide (d.lugha = .tayyi) && decide (d.marji = .mufradMuannath))
+  | .dhawat => yes (decide (d.lugha = .tayyi) && decide (d.marji = .jamMuannath))
+  | .dha => yes (decide (d.qabl ≠ .ghayruhuma))
 
-/-- حكمُ الصلة. -/
+/-- حكمُ التشديد: «فلا ملامه» في نون المثنّى وحدها، وفي غيرها «لا حكم». -/
+def tashdidJ (d : Dakhil) : Jawab :=
+  if d.tashdid && !d.lafz.muthanna then laHukmJ else maqbulJ [.bila]
+
+/-- الصلةُ في قطر الندى: لـ«أل» الوصف، ولغيرها الجملةُ الخبريّة والظرفُ والجارُّ التامّان (س139–143). -/
+def silaQatr (l : Lafz) (s : Sila) : Jawab :=
+  match l, s with
+  | .al, .wasfSarih => maqbulJ [.bila]
+  | .al, _ => khataJ
+  | _, .jumlaKhabariyya | _, .zarfTamm | _, .jarrTamm => maqbulJ [.bila]
+  | _, _ => khataJ
+
+/-- الصلةُ في الألفية: لـ«أل» الصفةُ الصريحة، والفعلُ المعرب قليل؛ ولغيرها الجملةُ وشبهُها (س155–157)، و«شبهُها» التامّ. -/
+def silaAlfiyya (l : Lafz) (s : Sila) : Jawab :=
+  match l, s with
+  | .al, .wasfSarih => maqbulJ [.bila]
+  | .al, .filMurab => maqbulJ [.qalil]
+  | .al, _ => khataJ
+  | _, .jumlaKhabariyya | _, .jumlaInshaiyya | _, .zarfTamm | _, .jarrTamm => maqbulJ [.bila]
+  | _, _ => khataJ
+
+/-- حكمُ الصلة: ما اتّفق عليه المصدران، وما اختلفا فيه «لا حكم». -/
 def silaJ (l : Lafz) (s : Sila) : Jawab :=
-  match l with
-  | .al =>
-    match s with
-    | .wasfSarih => maqbulJ [.bila]
-    | .filMurab => maqbulJ [.qalil]
-    | _ => khataJ
-  | _ =>
-    match s with
-    | .jumlaKhabariyya | .zarfTamm | .jarrTamm => maqbulJ [.bila]
-    | _ => khataJ
+  if silaQatr l s = silaAlfiyya l s then silaQatr l s else laHukmJ
 
 /-- حكمُ العائد. -/
 def aidJ (d : Dakhil) : Jawab :=
@@ -199,18 +238,19 @@ def aidJ (d : Dakhil) : Jawab :=
     else if d.lafz.mushtarak && decide (s = .mufradMudhakkar) then laHukmJ
     else khataJ
 
-/-- ضمُّ جوابين: أوّلُ غير المقبول، وإلّا المقبولُ بدرجاتهما المذكورة. -/
-def damm (a b : Jawab) : Jawab :=
-  if a.hukm ≠ .maqbul then a
-  else if b.hukm ≠ .maqbul then b
-  else
+/-- **ربطُ جوابين** على ربط `Nizam.Phi.K3.wa`: يكفي خطأٌ ليكون الجوابُ خطأً، ولا قبولَ إلّا بقبول الطرفين بدرجاتهما المذكورة، وما سواهما
+    «لا حكم». -/
+def wa (a b : Jawab) : Jawab :=
+  if decide (a.hukm = .khata) || decide (b.hukm = .khata) then khataJ
+  else if decide (a.hukm = .maqbul) && decide (b.hukm = .maqbul) then
     let ds := (a.daraja ++ b.daraja).filter (· ≠ .bila)
     maqbulJ (if ds.isEmpty then [.bila] else ds)
+  else laHukmJ
 
-/-- **الحكم.** -/
+/-- **الحكم.** الحقولُ غيرُ المتّسقة و«ذا» الملغاةُ «لا حكم»؛ وإلّا فربطُ أحكام اللفظ والتشديد والصلة والعائد. -/
 def jawab (d : Dakhil) : Jawab :=
-  if !muttasiq d then laHukmJ
-  else damm (lafzJ d) (damm (silaJ d.lafz d.sila) (aidJ d))
+  if !muttasiq d || d.mulgha then laHukmJ
+  else wa (lafzJ d) (wa (tashdidJ d) (wa (silaJ d.lafz d.sila) (aidJ d)))
 
 /-! ## الأسانيد -/
 
@@ -231,7 +271,7 @@ def asanid : List (String × String × Nat × Nat × String) :=
    ("tashdid", "alfiyya", 148, 148, "والنون إن تشدد فلا ملامه"),
    ("jam_A", "alfiyya", 150, 150, "جمع الذى الألى الذين مطلقا ... وبعضهم بالواو رفعا نطقا"),
    ("jam_muannath_A", "alfiyya", 151, 151, "باللات واللاء التي قد جمعا ... واللاء كالذين نزرا وقعا"),
-   ("mushtarak_A", "alfiyya", 152, 152, "ومن وما وأل تساوي ما ذكر ... وهكذا ذو عند طيئ شهر"),
+   ("mushtarak_A", "alfiyya", 152, 152, "ومن وما وأل تساوي ما ذكره ... وهكذا ذو عند طيئ شهر"),
    ("dhat", "alfiyya", 153, 153, "وكالتي أيضا لديهم ذات ... وموضع اللاتي أتى ذوات"),
    ("dha_A", "alfiyya", 154, 154, "ومثل ماذا بعدما استفهام ... أومن إذا لم تلغ في الكلام"),
    ("sila_lazima", "alfiyya", 155, 155, "وكلها يلزم ms03 بعده صله ... على ضمير لائق مشتمله"),
@@ -240,66 +280,105 @@ def asanid : List (String × String × Nat × Nat × String) :=
 
 /-! ## المبرهنات -/
 
-/-- **الحقولُ غيرُ المتّسقة «لا حكم».** -/
-theorem ghayr_muttasiq_la_hukm (d : Dakhil) (h : muttasiq d = false) : jawab d = laHukmJ := by
-  simp [jawab, h]
+/-- **الحقولُ غيرُ المتّسقة و«ذا» الملغاةُ «لا حكم».** -/
+theorem bawwaba_la_hukm (d : Dakhil) (h : muttasiq d = false ∨ d.mulgha = true) : jawab d = laHukmJ := by
+  rcases h with h | h <;> simp [jawab, h]
 
-/-- **اللفظُ لا يوافق معناه أو موضعه: خطأ**، أيًّا كانت الصلةُ والعائد. -/
-theorem lafz_khata (d : Dakhil) (hm : muttasiq d = true) (h : lafzJ d = khataJ) : jawab d = khataJ := by
-  simp [jawab, hm, h, damm, khataJ]
+/-- مقابلةُ الحكم بقيم `Nizam.Phi.K3`: المقبولُ مرخَّص، والخطأُ ممتنع، و«لا حكم» لا حكم. -/
+def Hukm.k3 : Hukm → Nizam.Phi.K3
+  | .maqbul => .P
+  | .khata => .N
+  | .laHukm => .U
 
-/-- **الصلةُ مقدَّمةٌ على العائد:** إن قُبل اللفظُ وكانت الصلةُ خطأً فالجوابُ خطأ. -/
-theorem sila_khata (d : Dakhil) (hm : muttasiq d = true) (hl : (lafzJ d).hukm = .maqbul)
-    (hs : silaJ d.lafz d.sila = khataJ) : jawab d = khataJ := by
-  simp [jawab, hm, hl, hs, damm, khataJ]
+/-- **الربطُ هو `Nizam.Phi.K3.wa`** على الأحكام. -/
+theorem wa_k3 (a b : Jawab) : (wa a b).hukm.k3 = Nizam.Phi.K3.wa a.hukm.k3 b.hukm.k3 := by
+  obtain ⟨x, _⟩ := a; obtain ⟨y, _⟩ := b
+  cases x <;> cases y <;> simp [wa, Hukm.k3, Nizam.Phi.K3.wa, khataJ, laHukmJ, maqbulJ] <;> split <;> rfl
 
-/-- **لا موصولَ بلا صلة.** -/
+/-- **الجوابُ ربطُ الأحكام الأربعة** على `Nizam.Phi.K3.wa`، في الحقول المتّسقة بلا إلغاء. -/
+theorem jawab_k3 (d : Dakhil) (hm : muttasiq d = true) (hg : d.mulgha = false) :
+    (jawab d).hukm.k3 = Nizam.Phi.K3.wa (lafzJ d).hukm.k3
+      (Nizam.Phi.K3.wa (tashdidJ d).hukm.k3 (Nizam.Phi.K3.wa (silaJ d.lafz d.sila).hukm.k3 (aidJ d).hukm.k3)) := by
+  simp [jawab, hm, hg, wa_k3]
+
+/-- **يكفي خطأٌ في أحد الأربعة ليكون الجوابُ خطأً**، في الحقول المتّسقة بلا إلغاء. -/
+theorem khata_yakfi (d : Dakhil) (hm : muttasiq d = true) (hg : d.mulgha = false)
+    (h : (lafzJ d).hukm = .khata ∨ (tashdidJ d).hukm = .khata ∨ (silaJ d.lafz d.sila).hukm = .khata ∨ (aidJ d).hukm = .khata) :
+    (jawab d).hukm = .khata := by
+  have hk := jawab_k3 d hm hg
+  have e : ∀ x : Hukm, x.k3 = .N ↔ x = .khata := by intro x; cases x <;> simp [Hukm.k3]
+  rw [← e, hk]
+  simpa [Nizam.Phi.wa_N, e] using h
+
+/-- **لا موصولَ بلا صلة** في المصدرين. -/
 theorem bila_sila (l : Lafz) : silaJ l .laSila = khataJ := by
   cases l <;> rfl
 
-/-- **صلةُ «أل» الوصفُ الصريح، والفعلُ المعرب قليل، وما سواهما خطأ.** -/
+/-- **صلةُ «أل»:** الوصفُ الصريح، والفعلُ المعرب «لا حكم» (القطر يردّه والألفية تقبله قليلًا)، وما سواهما خطأ. -/
 theorem silat_al (s : Sila) :
-    silaJ .al s = (if s = .wasfSarih then maqbulJ [.bila] else if s = .filMurab then maqbulJ [.qalil] else khataJ) := by
+    silaJ .al s = (if s = .wasfSarih then maqbulJ [.bila] else if s = .filMurab then laHukmJ else khataJ) := by
   cases s <;> rfl
 
-/-- **وصلةُ غيرها الجملةُ الخبريّةُ والظرفُ والجارُّ التامّان، وما سواها خطأ.** -/
+/-- **وصلةُ غيرها** الجملةُ الخبريّةُ والظرفُ والجارُّ التامّان، والإنشائيّةُ «لا حكم» (القطر يردّها والألفية تطلق «جملة»)، وما سواها خطأ. -/
 theorem silat_ghayriha (l : Lafz) (s : Sila) (hl : l ≠ .al) :
-    silaJ l s = (if s = .jumlaKhabariyya ∨ s = .zarfTamm ∨ s = .jarrTamm then maqbulJ [.bila] else khataJ) := by
-  cases l <;> cases s <;> simp_all [silaJ]
+    silaJ l s = (if s = .jumlaKhabariyya ∨ s = .zarfTamm ∨ s = .jarrTamm then maqbulJ [.bila]
+      else if s = .jumlaInshaiyya then laHukmJ else khataJ) := by
+  cases l <;> cases s <;> simp_all [silaJ, silaQatr, silaAlfiyya, khataJ, maqbulJ, laHukmJ]
+
+/-- **ما اختلف فيه المصدران** في الصلة، بقراءة كلٍّ منهما. -/
+theorem ikhtilaf_masdarayn (l : Lafz) (hl : l ≠ .al) :
+    silaQatr .al .filMurab = khataJ ∧ silaAlfiyya .al .filMurab = maqbulJ [.qalil] ∧
+    silaQatr l .jumlaInshaiyya = khataJ ∧ silaAlfiyya l .jumlaInshaiyya = maqbulJ [.bila] := by
+  cases l <;> simp_all [silaQatr, silaAlfiyya]
 
 /-- **لا صلةَ بلا عائد.** -/
 theorem la_aid_khata (d : Dakhil) (h : d.aid = .laAid) : aidJ d = khataJ := by
   simp [aidJ, h]
 
-/-- **التشديدُ لا يغيّر الجواب** في لفظٍ آخرُه نون («فلا ملامه»). -/
-theorem tashdid_la_yughayyir (d : Dakhil) (h : d.lafz.nun = true) :
+/-- **التشديدُ لا يغيّر الجواب في المثنّى** («فلا ملامه»). -/
+theorem tashdid_la_yughayyir (d : Dakhil) (h : d.lafz.muthanna = true) :
     jawab { d with tashdid := true } = jawab { d with tashdid := false } := by
-  simp [jawab, muttasiq, h, lafzJ, aidJ, silaJ]
+  have hn : d.lafz.nun = true := by
+    obtain ⟨lf, _⟩ := d; cases lf <;> simp_all [Lafz.muthanna, Lafz.nun]
+  simp [jawab, muttasiq, h, hn, lafzJ, aidJ, silaJ, tashdidJ]
+
+/-- **وتشديدُ غير المثنّى لا يُقبل:** خطأٌ أو «لا حكم». -/
+theorem tashdid_ghayr_muthanna (d : Dakhil) (ht : d.tashdid = true) (h : d.lafz.muthanna = false) :
+    (jawab d).hukm ≠ .maqbul := by
+  intro hq
+  by_cases hg : (!muttasiq d || d.mulgha) = true
+  · simp [jawab, hg, laHukmJ] at hq
+  · have hm : muttasiq d = true := by cases h1 : muttasiq d <;> simp_all
+    have hl : d.mulgha = false := by cases h1 : d.mulgha <;> simp_all
+    have hk := jawab_k3 d hm hl
+    have ht' : (tashdidJ d).hukm = .laHukm := by simp [tashdidJ, ht, h, laHukmJ]
+    rw [hq, ht'] at hk
+    have hU : ∀ x y : Nizam.Phi.K3, Nizam.Phi.K3.wa x (Nizam.Phi.K3.wa .U y) ≠ .P := by
+      intro x y; cases x <;> cases y <;> decide
+    exact hU _ _ hk.symm
 
 /-- **اللغةُ لا تغيّر إلّا «ذو» و«ذات» و«ذوات».** -/
 theorem lugha_la_tughayyir (d : Dakhil) (l : Lugha) (h : d.lafz ≠ .dhu ∧ d.lafz ≠ .dhat ∧ d.lafz ≠ .dhawat) :
     jawab { d with lugha := l } = jawab d := by
   obtain ⟨lf, m, w, t, lg, q, ml, s, a, as⟩ := d
   simp only at h
-  cases lf <;> simp_all [jawab, muttasiq, lafzJ, aidJ, silaJ]
+  cases lf <;> simp_all [jawab, muttasiq, lafzJ, aidJ, silaJ, tashdidJ]
+
+/-- **القيدُ وما خرج عنه:** «ذو» و«ذات» و«ذوات» في غير طيئ، و«ذا» في غير ما بعد «ما» و«من» الاستفهاميّتين، خطأ. -/
+theorem qayd_khata (d : Dakhil) :
+    ((d.lafz = .dhu ∨ d.lafz = .dhat ∨ d.lafz = .dhawat) → d.lugha ≠ .tayyi → lafzJ d = khataJ) ∧
+    (d.lafz = .dha → d.qabl = .ghayruhuma → lafzJ d = khataJ) := by
+  obtain ⟨lf, m, w, t, lg, q, ml, s, a, as⟩ := d
+  constructor
+  · rintro (h | h | h) hl <;> subst h <;> simp_all [lafzJ]
+  · rintro h hq; subst h; subst hq; simp [lafzJ]
 
 /-- جوابٌ سليم: ما ليس مقبولًا فدرجتُه `[bila]`. -/
 def Jawab.salim (j : Jawab) : Prop := j.hukm ≠ .maqbul → j.daraja = [.bila]
 
-private theorem lafzJ_salim (d : Dakhil) : (lafzJ d).salim := by
-  obtain ⟨lf, m, w, t, lg, q, ml, s, a, as⟩ := d
-  cases lf <;> simp only [lafzJ, Jawab.salim] <;> (repeat' split) <;> simp [maqbulJ, khataJ, laHukmJ]
-
-private theorem silaJ_salim (l : Lafz) (s : Sila) : (silaJ l s).salim := by
-  cases l <;> cases s <;> simp [silaJ, Jawab.salim, maqbulJ, khataJ]
-
-private theorem aidJ_salim (d : Dakhil) : (aidJ d).salim := by
-  obtain ⟨lf, m, w, t, lg, q, ml, s, a, as⟩ := d
-  simp only [aidJ, Jawab.salim]; (repeat' split) <;> simp [maqbulJ, khataJ, laHukmJ]
-
-private theorem damm_salim (a b : Jawab) (ha : a.salim) (hb : b.salim) : (damm a b).salim := by
-  unfold damm Jawab.salim at *
-  by_cases h1 : a.hukm = .maqbul <;> by_cases h2 : b.hukm = .maqbul <;> simp_all [maqbulJ]
+private theorem wa_salim (a b : Jawab) : (wa a b).salim := by
+  unfold wa Jawab.salim
+  repeat' split <;> simp_all [khataJ, laHukmJ, maqbulJ]
 
 /-- **ما ليس مقبولًا فدرجتُه `[bila]`.** -/
 theorem ghayr_maqbul_bila (d : Dakhil) (h : (jawab d).hukm ≠ .maqbul) : (jawab d).daraja = [.bila] := by
@@ -307,7 +386,7 @@ theorem ghayr_maqbul_bila (d : Dakhil) (h : (jawab d).hukm ≠ .maqbul) : (jawab
     unfold jawab
     split
     · simp [Jawab.salim, laHukmJ]
-    · exact damm_salim _ _ (lafzJ_salim d) (damm_salim _ _ (silaJ_salim _ _) (aidJ_salim d))
+    · exact wa_salim _ _
   exact hs h
 
 /-! ## الصلة بـ SLGE -/
@@ -358,19 +437,29 @@ theorem shawahid :
     jawab (d .man .jamMuannath .raf .jumlaKhabariyya) = maqbulJ [.bila] ∧
     jawab (d .al .mufradMudhakkar .raf .wasfSarih) = maqbulJ [.bila] ∧
     jawab (d .al .mufradMudhakkar .raf .ismTafdil) = khataJ ∧
-    jawab (d .al .mufradMudhakkar .raf .filMurab) = maqbulJ [.qalil] ∧
+    jawab (d .al .mufradMudhakkar .raf .filMurab) = laHukmJ ∧
     jawab (d .al .mufradMudhakkar .raf .jumlaKhabariyya) = khataJ ∧
-    jawab (d .dhu .mufradMudhakkar .raf .jumlaKhabariyya) = laHukmJ ∧
+    jawab (d .dhu .mufradMudhakkar .raf .jumlaKhabariyya) = khataJ ∧
     jawab { d .dhu .mufradMudhakkar .raf .jumlaKhabariyya with lugha := .tayyi } = maqbulJ [.bila] ∧
     jawab { d .dhat .mufradMuannath .raf .jumlaKhabariyya with lugha := .tayyi } = maqbulJ [.bila] ∧
     jawab { d .dha .mufradMudhakkar .raf .jumlaKhabariyya with qabl := .maIstifham } = maqbulJ [.bila] ∧
     jawab { d .dha .mufradMudhakkar .raf .jumlaKhabariyya with qabl := .maIstifham, mulgha := true } = laHukmJ ∧
-    jawab (d .alladhi .mufradMudhakkar .raf .jumlaInshaiyya) = khataJ ∧
+    jawab (d .dha .mufradMudhakkar .raf .jumlaKhabariyya) = khataJ ∧
+    jawab { d .alladhi .mufradMudhakkar .raf .jumlaKhabariyya with mulgha := true } = laHukmJ ∧
+    jawab { d .dhat .mufradMudhakkar .raf .jumlaKhabariyya with lugha := .tayyi } = khataJ ∧
+    jawab { d .alladhina .jamMudhakkar .nasb .jumlaKhabariyya with tashdid := true } = laHukmJ ∧
+    jawab { d .alladhi .mufradMudhakkar .raf .jumlaKhabariyya with tashdid := true } = laHukmJ ∧
+    jawab { d .alladhi .mufradMudhakkar .raf .jumlaKhabariyya with tashdid := true, aidSima := some .mufradMuannath } = laHukmJ ∧
+    jawab { d .allatayni .muthannaMuannath .jarr .jumlaKhabariyya with tashdid := true } = maqbulJ [.bila] ∧
+    jawab (d .alladhi .mufradMudhakkar .raf .jumlaInshaiyya) = laHukmJ ∧
+    jawab { d .alladhi .mufradMudhakkar .raf .jumlaInshaiyya with aidSima := some .mufradMuannath } = khataJ ∧
     jawab (d .alladhi .mufradMudhakkar .raf .zarfTamm) = maqbulJ [.bila] ∧
     jawab (d .alladhi .mufradMudhakkar .raf .zarfNaqis) = khataJ ∧
     jawab (d .alladhi .mufradMudhakkar .raf .laSila) = khataJ ∧
     jawab { d .alladhi .mufradMudhakkar .raf .jumlaKhabariyya with aid := .laAid, aidSima := none } = khataJ ∧
     jawab { d .alladhi .mufradMudhakkar .raf .jumlaKhabariyya with aid := .mahdhuf } = maqbulJ [.bila] ∧
+    jawab { d .alladhi .mufradMudhakkar .raf .zarfTamm with aid := .mahdhuf } = laHukmJ ∧
+    jawab { d .alladhi .mufradMudhakkar .raf .jumlaKhabariyya with aid := .laAid } = laHukmJ ∧
     jawab { d .alladhi .mufradMudhakkar .raf .jumlaKhabariyya with aidSima := some .mufradMuannath } = khataJ ∧
     jawab { d .man .jamMuannath .raf .jumlaKhabariyya with aidSima := some .mufradMudhakkar } = laHukmJ := by
   decide
