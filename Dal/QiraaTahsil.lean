@@ -1,0 +1,434 @@
+import Dal.Tahsil
+import Dal.Jumla
+
+/-!
+# القارئ على التحصيل: كلُّ خليّةٍ من مقطعٍ مشهود
+
+**الطلب.** الأولويّة ١ من رسالة المالك 2026-10-27 (ما حُفظ منها في رأس `Nizam/Shahada.lean`)، وبندُها الأوّل بعد التحصيل في
+`hawkama/عقد_الشهادة.md` §٣ مقترحُ البنّاء. واختاره المالك بعد دمج #92 من سؤالٍ متعدّد الخيارات نصُّ خياراته من البنّاء: «وصلُ القارئ
+بالتحصيل (موصى به)» (لفظُه من ملخّص الجلسة بعد ضغطها). والتصميمُ قرارُ البنّاء.
+
+**ما كان.** `tahlil` في `Qari/Main.lean` حلقةٌ أمريّة على الحروف بعد حذف التطويل: لا موضعَ لخليّة ولا شهادة، ووسائطُ ما لم تُبنَ قاعدتُه
+مخلوطةٌ بقراءة الحرف المحرّك. والتحصيلُ (`Dal/Tahsil.lean`، #92) كان خارج المحرّك.
+
+**ما صار.** القارئُ يقرأ الكلمةَ على تحصيلها (`qiraa`)، مقطعًا مقطعًا بترتيبها (`juzOf`، `ajza`):
+- المقطعُ المرخَّص خلاياه بعينها (`khalayaTahsil`).
+- المقطعُ الفاسد رفضٌ للكلمة باسم سببه وبنصّ المقطع.
+- المقطعُ المعلَّقُ باسم قاعدته وسيطُ القارئ لها (`wasitOf`)، وهو ما كان `tahlil` يفعله بذلك المقطع مقصورًا عليه؛ وما لا وسيطَ له في
+  موضعه رفضٌ باسم قاعدته (`bilaWasit`).
+- كلُّ خليّةٍ بموضع مقطعها بنقاط الرمز وأصلِها (`KhaliyaQ`، `Asl`). وبعد المقاطع: الكلمةُ بلا خليّةٍ مرفوضة، وهمزةُ الوصل قبل متحرّكٍ
+  مرفوضة، وهمزةُ «أل» من لام التعريف المدغمة أو من لامٍ ساكنةٍ أوّلَ الخلايا (`tamm`)، كما كان.
+
+**المبرهن** (على كلّ كلمة):
+- `qiraa_tahsil`: ما أصلُه التحصيلُ من خلايا القراءة هو خلايا المقاطع المرخَّصة بعينها وبترتيبها، في الوقف والوصل: لا يُسقَط منها شيءٌ
+  ولا يُبدَّل ولا يُزاد.
+- `qiraa_asl` و`qiraa_shahada`: لكلّ خليّةٍ مقطعٌ في التحصيل موضعُه موضعُها، صالحٌ في مصدر NABT وذرّاتُه المقطع، وحكمُ الفاحص
+  (`Nizam.Shahada.hukm`) على شهادته ترخيصٌ إن كان أصلُها التحصيل، وتعليقٌ باسم القاعدة إن كان أصلُها وسيطَها.
+- `qiraa_la_fasid`: لا تُقرأ كلمةٌ في تحصيلها مقطعٌ فاسد.
+- `qiraa_murakhkhasa`: الكلمةُ المرخَّصةُ مقاطعُها كلُّها، ولها خليّة، قراءتُها خلايا التحصيل بلا همزة وصلٍ ولا ملاحظة.
+
+**الوسائط** (`wasitOf`؛ قراءةُ البنّاء لـ`tahlil` كما كان في main ‏09f7b27، وسندُ ما فيها من القطر والألفية في رأس `Qari/Main.lean`):
+- همزةُ الوصل: ألفٌ أو ألفُ وصلٍ مجرّدةٌ أوّلَ الكلمة لا خليّةَ لها، والكلمةُ بهمزة وصل. وفي غير الأوّل، أو بعلامة: لا وسيط.
+- الممدودة: مجرّدةً همزةٌ مفتوحةٌ ثمّ ألفٌ ساكنة؛ وبعلامة: لا وسيط.
+- التاءُ المربوطة: في غير آخر الكلمة رفض؛ وفي الوقف هاءٌ ساكنة؛ وفي الوصل تاءٌ بعلاماتها (`harfAam`).
+- المقصورة: بعد تنوين الفتح ألفُ التنوين بلا خليّة؛ وأوّلَ الكلمة لا وسيط؛ وبعد واوٍ مجرّدةٍ أو ساكنةٍ آخرَ الكلمة ألفُ الجماعة بلا خليّة؛
+  وإلّا ألفٌ (`harfAam` بحامل الألف).
+- التنوين، والشدّةُ بلا حركة، والحرفُ الأخير بلا حركة: `harfAam` بحامل الرأس.
+- ألفُ التنوين وألفُ الجماعة: لا خليّة. ولامُ التعريف المدغمة: لا خليّة، وهمزتُها همزةُ «أل».
+- التطويلُ بعلامة: لا وسيط.
+- آخرُ الكلمة (`akhirFi`) كما كان يعدّه القارئ: التطويلُ المجرّد بعده لا يُعدّ، وألفُ التنوين بعد الفتحتين آخرَها لا تُعدّ.
+
+**ما تغيّر في القارئ:** في `tahaqquq/qari_tahsil/` (الفروقُ مقابل القارئ قبل هذا الطلب بأسبابها، وسكربتُها).
+
+**حدُّه.** الوسائطُ قراءةٌ للقارئ كما كان لا قواعدُ من مصدر، وكلٌّ منها ينتظر قاعدتَه على ضابطٍ مجمَّد (`hawkama/عقد_الشهادة.md` §٣).
+ورسائلُ الرفض صارت بأسماء التحصيل وبنصّ المقطع، فتغيّر لفظُ بعضها. ولا وصلَ ولا وقفَ بين الكلمات هنا: ذلك في `Dal/Jumla.lean` كما كان.
+
+**المبرهنات** (18، بالمعيار الموحَّد في `Nizam/Asas.lean`):
+- لكلّ (12): `mem_khalayaTahsil`، `juzOf_khalaya`، `ajza_tahsil`، `ajza_asl`، `ajza_la_fasid`، `qiraa_ajza`، `qiraa_tahsil`، `qiraa_la_fasid`،
+  `qiraa_asl`، `qiraa_shahada`، `ajza_L`، `qiraa_murakhkhasa`.
+- تعريفيّة (3): `juzOf_fasid`، `ajza_cons`، `tamm_khalaya`.
+- على الشاهد (3): `shahid_fata`، `shahid_shams`، `shahid_rafd_tatwil`.
+-/
+
+namespace Dal.QiraaTahsil
+
+open Nabt.UnitDiscovery
+open Dal.Tahsil
+
+/-! ## ١. أصلُ الخليّة -/
+
+/-- أصلُ الخليّة في القارئ: مقطعٌ مرخَّصٌ في التحصيل (خلاياه بعينها)، أو مقطعٌ معلَّقٌ باسم قاعدته (وسيطُ القارئ المعلَن لها). -/
+inductive Asl
+  | tahsil
+  | wasit (qaida : String)
+  deriving DecidableEq, Repr
+
+/-- خليّةُ القارئ: رقمُها (4·حامل + حالة)، وموضعُ مقطعها بنقاط الرمز، وأصلُها. -/
+structure KhaliyaQ where
+  raqm : Nat
+  a : Nat
+  b : Nat
+  asl : Asl
+  deriving DecidableEq, Repr
+
+/-- ما يُخرجه الوسيطُ لمقطعٍ معلَّق: خلاياه، وملاحظاتُه، وهل هو همزةُ وصلٍ أو لامُ تعريفٍ مدغمة. -/
+structure Wasit where
+  khalaya : List Nat
+  mulahazat : List String
+  wasl : Bool
+  al : Bool
+  deriving DecidableEq, Repr
+
+def kh (c s : Nat) : Nat := 4 * c + s
+
+def fathatan : Char := 'ً'
+
+/-- حالةُ التنوين: فتحتان 0، ضمّتان 1، كسرتان 2. -/
+def tanwinHala (c : Char) : Option Nat :=
+  if c == 'ً' then some 0 else if c == 'ٌ' then some 1 else if c == 'ٍ' then some 2 else none
+
+/-! ## ٢. وسائطُ القارئ للمعلَّق -/
+
+def mulahazaNun : String := "التنوين في الوصل نون ساكنة (وسيط معلَن)"
+def mulahazaWaqfAlif : String := "الوقف على التنوين بعد الفتح بالألف (قطر الندى L442–443، الألفية L1131)"
+def mulahazaWaqfHadhf : String := "الوقف على التنوين بحذفه وتسكين الحرف (الألفية L1131، L1136)"
+def mulahazaAkhir : String := "الحرف الأخير بلا حركة: عُدّ ساكنًا للوقف"
+def mulahazaTa : String := "الوقف على التاء المربوطة بالهاء (قطر الندى L441، الألفية L1142) ساكنةً (الألفية L1136)"
+def mulahazaMaqsura : String := "الألف المقصورة ألفٌ رُسمت ياءً (قطر الندى L444–445)"
+def mulahazaJamaa : String := "الألف بعد واو الجماعة تُكتب (قطر الندى L443–444) ولا تُنطق (وسيط معلَن)"
+def mulahazaLam : String := "لام التعريف مدغمة في المشدّد بعدها، لا خلية لها (وسيط معلَن)"
+
+/-- **الحرفُ في القارئ** بعد معرفة حامله `h` (فرعُه العامّ في `Qari/Main.lean` قبل هذا الطلب): الحركةُ خليّتُها، والشدّةُ ساكنٌ قبلها؛
+    والتنوينُ في الوقف آخرَ الكلمة ألفٌ بعد الفتح وحذفٌ في غيره، وفي غير ذلك نونٌ ساكنة؛ وبلا علامة حركة: حرفُ المدّ ساكن، والأخيرُ
+    في الوقف ساكن، وما سواه مرفوض. `akhir`: الحرفُ آخرُ الكلمة؛ `aj`: الكلمةُ آخرُ الجملة (الوقف). -/
+def harfAam (h : Nat) (r : Char) (ms : List Char) (akhir aj : Bool) : Except String Wasit :=
+  let sh := ms.contains shadda
+  match (ms.filterMap halaAlama).head?, (ms.filterMap tanwinHala).head? with
+  | some s, _ => .ok ⟨if sh then [kh h 3, kh h s.ila.val] else [kh h s.ila.val], [], false, false⟩
+  | none, some s =>
+    if akhir && aj then
+      .ok ⟨(if sh then [kh h 3] else []) ++ (if s == 0 then [kh h 0, kh 2 3] else [kh h 3]),
+        [if s == 0 then mulahazaWaqfAlif else mulahazaWaqfHadhf], false, false⟩
+    else .ok ⟨(if sh then [kh h 3] else []) ++ [kh h s, kh 14 3], [mulahazaNun], false, false⟩
+  | none, none =>
+    if h == 2 || h == 28 || h == 11 then .ok ⟨[kh h 3], [], false, false⟩
+    else if akhir then
+      (if aj then .ok ⟨if sh then [kh h 3, kh h 3] else [kh h 3], [mulahazaAkhir], false, false⟩
+       else .error s!"الحرف الأخير بلا حركة في غير آخر الجملة: «{r}» — الوصل يحتاج حركته")
+    else .error s!"حرف بلا حركة في غير آخر الكلمة: «{r}» — النصّ غير مشكول"
+
+/-- رفضُ المعلَّق الذي لا وسيطَ له في القارئ في موضعه، باسم قاعدته. -/
+def bilaWasit (q : String) (s : List Char) : Except String Wasit :=
+  .error s!"معلَّقٌ بلا وسيطٍ في القارئ: {q} «{String.ofList s}»"
+
+/-- **وسيطُ القارئ لمقطعٍ معلَّقٍ باسم قاعدته `q`**: ما كان القارئ يفعله به قبل هذا الطلب، مقصورًا على المقطع. -/
+def wasitOf (aj akhir : Bool) (m : Maqta) (q : String) : Except String Wasit :=
+  match m.nass with
+  | [] => bilaWasit q []
+  | r :: ms =>
+    if q == "قاعدة همزة الوصل" then
+      (if m.siyaq.sabiq.isNone && ms.isEmpty then .ok ⟨[], [], true, false⟩ else bilaWasit q m.nass)
+    else if q == "قاعدة الألف الممدودة" then
+      (if ms.isEmpty then .ok ⟨[kh 0 0, kh 2 3], [], false, false⟩ else bilaWasit q m.nass)
+    else if q == "قاعدة التاء المربوطة" then
+      (if !akhir then .error "تاء مربوطة في غير آخر الكلمة"
+       else if aj then .ok ⟨[kh 1 3], [mulahazaTa], false, false⟩
+       else harfAam 18 r ms akhir aj)
+    else if q == "قاعدة الألف المقصورة" then
+      (if m.siyaq.sabiq.any (fun p => p.tail.contains fathatan) then
+        (if ms.isEmpty then .ok ⟨[], [], false, false⟩ else bilaWasit q m.nass)
+      else if m.siyaq.sabiq.isNone then bilaWasit q m.nass
+      else if ms.isEmpty && m.siyaq.lahiq.isNone && (m.siyaq.sabiq == some ['و'] || m.siyaq.sabiq == some ['و', 'ْ']) then
+        .ok ⟨[], [mulahazaMaqsura, mulahazaJamaa], false, false⟩
+      else match harfAam 2 r ms akhir aj with
+        | .ok w => .ok { w with mulahazat := mulahazaMaqsura :: w.mulahazat }
+        | .error e => .error e)
+    else if q == "قاعدة التنوين" || q == "قاعدة الشدّة بلا حركة" || q == "قاعدة الحرف الأخير بلا حركة" then
+      (match hamilOf r with
+       | some h => harfAam h.val r ms akhir aj
+       | none => bilaWasit q m.nass)
+    else if q == "قاعدة ألف التنوين" then .ok ⟨[], [], false, false⟩
+    else if q == "قاعدة ألف الجماعة" then .ok ⟨[], [mulahazaJamaa], false, false⟩
+    else if q == "قاعدة لام التعريف المدغمة" then .ok ⟨[], [mulahazaLam], false, true⟩
+    else bilaWasit q m.nass
+
+/-! ## ٣. الكلمة على مقاطعها -/
+
+/-- مقطعُ تطويلٍ مجرّد: لا خليّةَ له، وكان القارئ يحذفه قبل القراءة. -/
+def tatwilB (n : Maqta) : Bool := n.nass == ['ـ']
+
+/-- آخرُ الكلمة للمقطع (كما كان القارئ يعدّه، والتطويلُ المجرّد لا يُعدّ): لا مقطعَ بعده، أو عليه فتحتان وبعده مقطعٌ واحدٌ هو ألفٌ أو ألفٌ
+    مقصورةٌ مجرّدة. -/
+def akhirMin (m : Maqta) : List Maqta → Bool
+  | [] => true
+  | [n] => m.nass.tail.contains fathatan && (n.nass == ['ا'] || n.nass == ['ى'])
+  | _ :: _ :: _ => false
+
+def akhirFi (m : Maqta) (baad : List Maqta) : Bool := akhirMin m (baad.filter (fun n => !tatwilB n))
+
+/-- جزءُ الكلمة من مقطعٍ واحد. -/
+structure Juz where
+  khalaya : List KhaliyaQ
+  mulahazat : List String
+  wasl : Bool
+  al : Bool
+  deriving DecidableEq, Repr
+
+/-- **المقطعُ في القارئ:** المرخَّصُ خلاياه بعينها، والفاسدُ رفضٌ باسم سببه، والمعلَّقُ وسيطُه باسم قاعدته؛ وكلُّ خليّةٍ بموضع مقطعها. -/
+def juzOf (aj : Bool) (m : Maqta) (baad : List Maqta) : Except String Juz :=
+  match m.hukm with
+  | .L _ ks => .ok ⟨ks.map (fun k => ⟨(Dal.n k).val, m.a, m.b, .tahsil⟩), [], false, false⟩
+  | .F e => .error s!"{e}: «{String.ofList m.nass}»"
+  | .P q =>
+    match wasitOf aj (akhirFi m baad) m q with
+    | .ok w => .ok ⟨w.khalaya.map (fun c => ⟨c, m.a, m.b, .wasit q⟩), w.mulahazat, w.wasl, w.al⟩
+    | .error e => .error e
+
+/-- أجزاءُ الكلمة بترتيب مقاطعها، أو أوّلُ رفض. -/
+def ajza (aj : Bool) : List Maqta → Except String (List Juz)
+  | [] => .ok []
+  | m :: rest =>
+    match juzOf aj m rest, ajza aj rest with
+    | .ok j, .ok js => .ok (j :: js)
+    | .error e, _ => .error e
+    | .ok _, .error e => .error e
+
+/-- قراءةُ الكلمة: خلاياها بأصولها ومواضعها، وهمزةُ الوصل وهمزةُ «أل»، والملاحظات. -/
+structure Qiraa where
+  khalaya : List KhaliyaQ
+  wasl : Bool
+  al : Bool
+  mulahazat : List String
+  deriving DecidableEq, Repr
+
+def tamm (js : List Juz) : Except String Qiraa :=
+  let ks := js.flatMap (·.khalaya)
+  let wasl := js.any (·.wasl)
+  if ks.isEmpty then .error "كلمة فارغة"
+  else if wasl && !sakinAwwal (ks.map (·.raqm)) then
+    .error "ألف مجرّدة قبل متحرّك: ليست همزة وصل (همزة الوصل لا تكون إلّا قبل ساكن — Hamza.lean)؛ اكتب همزة القطع بمقعدها (أ/إ)"
+  else .ok ⟨ks, wasl, js.any (·.al) || (wasl && isAl (ks.map (·.raqm))), js.flatMap (·.mulahazat)⟩
+
+/-- **قراءةُ الكلمة على تحصيلها.** `aj`: الكلمةُ آخرُ الجملة. -/
+def qiraa (w : List Char) (aj : Bool) : Except String Qiraa :=
+  match ajza aj (tahsil w) with
+  | .ok js => tamm js
+  | .error e => .error e
+
+/-- خلايا المقطع المرخَّص كما يحملها القارئ. -/
+def khalayaTahsil (m : Maqta) : List KhaliyaQ := (khalayaOf m.hukm).map (fun k => ⟨(Dal.n k).val, m.a, m.b, .tahsil⟩)
+
+/-! ## ٤. البراهين: كلُّ خليّةٍ من مقطعٍ مشهود -/
+
+theorem mem_khalayaTahsil {m : Maqta} {x : KhaliyaQ} (hx : x ∈ khalayaTahsil m) :
+    x.asl = .tahsil ∧ x.a = m.a ∧ x.b = m.b ∧ ∃ s ks, m.hukm = .L s ks := by
+  unfold khalayaTahsil at hx
+  rw [List.mem_map] at hx
+  obtain ⟨k, hk, rfl⟩ := hx
+  refine ⟨rfl, rfl, rfl, ?_⟩
+  cases hh : m.hukm with
+  | L s ks => exact ⟨s, ks, rfl⟩
+  | P _ => rw [hh] at hk; cases hk
+  | F _ => rw [hh] at hk; cases hk
+
+/-- المقطعُ في القارئ: المرخَّصُ خلاياه هي خلايا التحصيل بعينها، والمعلَّقُ كلُّ خليّةٍ منه بموضعه وأصلُها وسيطُ قاعدته. -/
+theorem juzOf_khalaya (aj : Bool) (m : Maqta) (baad : List Maqta) (j : Juz) (h : juzOf aj m baad = .ok j) :
+    (∃ s ks, m.hukm = .L s ks ∧ j.khalaya = khalayaTahsil m) ∨
+    (∃ q, m.hukm = .P q ∧ ∀ x ∈ j.khalaya, x.a = m.a ∧ x.b = m.b ∧ x.asl = .wasit q) := by
+  unfold juzOf at h
+  cases hh : m.hukm with
+  | L s ks =>
+    simp only [hh] at h
+    cases h
+    exact Or.inl ⟨s, ks, rfl, by simp [khalayaTahsil, hh, khalayaOf]⟩
+  | F e => simp only [hh] at h; cases h
+  | P q =>
+    refine Or.inr ⟨q, rfl, ?_⟩
+    cases hw : wasitOf aj (akhirFi m baad) m q with
+    | error e => simp only [hh, hw] at h; cases h
+    | ok w =>
+      simp only [hh, hw] at h
+      cases h
+      intro x hx
+      rw [List.mem_map] at hx
+      obtain ⟨c, _, rfl⟩ := hx
+      exact ⟨rfl, rfl, rfl⟩
+
+theorem juzOf_fasid (aj : Bool) (m : Maqta) (baad : List Maqta) (j : Juz) (h : juzOf aj m baad = .ok j) :
+    ∀ e, m.hukm ≠ .F e := by
+  intro e he
+  unfold juzOf at h
+  rw [he] at h
+  cases h
+
+theorem ajza_cons {aj : Bool} {m : Maqta} {rest : List Maqta} {js : List Juz} (h : ajza aj (m :: rest) = .ok js) :
+    ∃ j js', juzOf aj m rest = .ok j ∧ ajza aj rest = .ok js' ∧ js = j :: js' := by
+  simp only [ajza] at h
+  split at h
+  · rename_i j js' h1 h2
+    cases h
+    exact ⟨j, js', h1, h2, rfl⟩
+  · cases h
+  · cases h
+
+/-- **لا تُسقَط خليّةٌ مرخَّصة ولا تُبدَّل ولا يُغيَّر ترتيبُها ولا تُزاد:** خلايا الأجزاء التي أصلُها التحصيل هي خلايا المقاطع المرخَّصة
+    بعينها وبترتيبها. -/
+theorem ajza_tahsil (aj : Bool) : ∀ (ms : List Maqta) (js : List Juz), ajza aj ms = .ok js →
+    (js.flatMap (·.khalaya)).filter (·.asl == .tahsil) = ms.flatMap khalayaTahsil
+  | [], js, h => by simp only [ajza] at h; cases h; rfl
+  | m :: rest, js, h => by
+    obtain ⟨j, js', h1, h2, rfl⟩ := ajza_cons h
+    rw [List.flatMap_cons, List.flatMap_cons, List.filter_append, ajza_tahsil aj rest js' h2]
+    congr 1
+    rcases juzOf_khalaya aj m rest j h1 with ⟨s, ks, _, hk⟩ | ⟨q, hq, hx⟩
+    · rw [hk, List.filter_eq_self]
+      intro x hx
+      rw [(mem_khalayaTahsil hx).1]
+      rfl
+    · have : khalayaTahsil m = [] := by simp [khalayaTahsil, hq, khalayaOf]
+      rw [this, List.filter_eq_nil_iff]
+      intro x hm
+      rw [(hx x hm).2.2]
+      simp
+
+/-- **أصلُ كلّ خليّة:** لكلّ خليّةٍ في الأجزاء مقطعٌ في الكلمة بموضعها، وهي من خلاياه المرخَّصة أو من وسيطِ قاعدته المعلَّقة. -/
+theorem ajza_asl (aj : Bool) : ∀ (ms : List Maqta) (js : List Juz), ajza aj ms = .ok js →
+    ∀ x ∈ js.flatMap (·.khalaya), ∃ m ∈ ms, x.a = m.a ∧ x.b = m.b ∧
+      (x ∈ khalayaTahsil m ∨ ∃ q, m.hukm = .P q ∧ x.asl = .wasit q)
+  | [], js, h => by simp only [ajza] at h; cases h; simp
+  | m :: rest, js, h => by
+    obtain ⟨j, js', h1, h2, rfl⟩ := ajza_cons h
+    intro x hx
+    rw [List.flatMap_cons, List.mem_append] at hx
+    rcases hx with hx | hx
+    · refine ⟨m, List.mem_cons_self, ?_⟩
+      rcases juzOf_khalaya aj m rest j h1 with ⟨s, ks, _, hk⟩ | ⟨q, hq, hall⟩
+      · rw [hk] at hx
+        have := mem_khalayaTahsil hx
+        exact ⟨this.2.1, this.2.2.1, Or.inl hx⟩
+      · have := hall x hx
+        exact ⟨this.1, this.2.1, Or.inr ⟨q, hq, this.2.2⟩⟩
+    · obtain ⟨m', hm', hrest⟩ := ajza_asl aj rest js' h2 x hx
+      exact ⟨m', List.mem_cons_of_mem _ hm', hrest⟩
+
+/-- **لا يُقرأ ما فيه مقطعٌ فاسد.** -/
+theorem ajza_la_fasid (aj : Bool) : ∀ (ms : List Maqta) (js : List Juz), ajza aj ms = .ok js →
+    ∀ m ∈ ms, ∀ e, m.hukm ≠ .F e
+  | [], _, _ => by simp
+  | m :: rest, js, h => by
+    obtain ⟨j, js', h1, h2, rfl⟩ := ajza_cons h
+    intro m' hm'
+    rcases List.mem_cons.1 hm' with rfl | hm'
+    · exact juzOf_fasid aj m' rest j h1
+    · exact ajza_la_fasid aj rest js' h2 m' hm'
+
+theorem tamm_khalaya {js : List Juz} {q : Qiraa} (h : tamm js = .ok q) : q.khalaya = js.flatMap (·.khalaya) := by
+  dsimp only [tamm] at h
+  split at h
+  · cases h
+  · split at h
+    · cases h
+    · cases h; rfl
+
+theorem qiraa_ajza {w : List Char} {aj : Bool} {q : Qiraa} (h : qiraa w aj = .ok q) :
+    ∃ js, ajza aj (tahsil w) = .ok js ∧ q.khalaya = js.flatMap (·.khalaya) := by
+  unfold qiraa at h
+  split at h
+  · rename_i js hj
+    exact ⟨js, hj, tamm_khalaya h⟩
+  · cases h
+
+/-- **خلايا التحصيل في القارئ هي هي:** ما أصلُه التحصيلُ من خلايا القراءة هو خلايا المقاطع المرخَّصة في التحصيل بعينها وبترتيبها،
+    في الوقف والوصل سواءً. -/
+theorem qiraa_tahsil (w : List Char) (aj : Bool) (q : Qiraa) (h : qiraa w aj = .ok q) :
+    q.khalaya.filter (·.asl == .tahsil) = (tahsil w).flatMap khalayaTahsil := by
+  obtain ⟨js, hj, hk⟩ := qiraa_ajza h
+  rw [hk]
+  exact ajza_tahsil aj _ js hj
+
+/-- **لا يُقرأ ما في تحصيله مقطعٌ فاسد.** -/
+theorem qiraa_la_fasid (w : List Char) (aj : Bool) (q : Qiraa) (h : qiraa w aj = .ok q) :
+    ∀ m ∈ tahsil w, ∀ e, m.hukm ≠ .F e := by
+  obtain ⟨js, hj, _⟩ := qiraa_ajza h
+  exact ajza_la_fasid aj _ js hj
+
+/-- **كلُّ خليّةٍ من مقطعٍ في النصّ:** موضعُها موضعُ مقطعٍ في التحصيل ذرّاتُه المقطع، وهي من خلاياه المرخَّصة أو من وسيطِ قاعدته المعلَّقة
+    باسمها. -/
+theorem qiraa_asl (w : List Char) (aj : Bool) (q : Qiraa) (h : qiraa w aj = .ok q) :
+    ∀ x ∈ q.khalaya, ∃ m ∈ tahsil w, x.a = m.a ∧ x.b = m.b ∧ (w.drop m.a).take (m.b - m.a) = m.nass ∧
+      (x ∈ khalayaTahsil m ∨ ∃ qd, m.hukm = .P qd ∧ x.asl = .wasit qd) := by
+  obtain ⟨js, hj, hk⟩ := qiraa_ajza h
+  intro x hx
+  rw [hk] at hx
+  obtain ⟨m, hm, ha, hb, hr⟩ := ajza_asl aj _ js hj x hx
+  exact ⟨m, hm, ha, hb, (tahsil_muhadha w m hm).1, hr⟩
+
+/-- **كلُّ خليّةٍ من مقطعٍ مشهود:** لكلّ خليّةٍ في القراءة مقطعٌ موضعُه في مصدر NABT صالحٌ وذرّاتُه المقطع، وحكمُ الفاحص على شهادته
+    ترخيصٌ إن كان أصلُها التحصيل، وتعليقٌ باسم القاعدة التي وسيطُها أصلُها إن كان أصلُها وسيطًا. -/
+theorem qiraa_shahada (src : Source Char) (aj : Bool) (q : Qiraa) (h : qiraa src.atoms aj = .ok q) :
+    ∀ x ∈ q.khalaya, ∃ m ∈ tahsil src.atoms, (mawdi src m).start = x.a ∧ (mawdi src m).stop = x.b ∧
+      validSpan src (mawdi src m) = true ∧ spanAtoms src (mawdi src m) = m.nass ∧
+      Nizam.Shahada.hukm (shahada src m) = (match x.asl with | .tahsil => .murakhkhas | .wasit n => .muallaq [n]) := by
+  intro x hx
+  obtain ⟨m, hm, ha, hb, _, hr⟩ := qiraa_asl src.atoms aj q h x hx
+  refine ⟨m, hm, ha.symm, hb.symm, (mawdi_sahih src m hm).1, (mawdi_sahih src m hm).2, ?_⟩
+  rw [shahada_hukm src m hm]
+  rcases hr with hr | ⟨qd, hq, hx'⟩
+  · obtain ⟨hasl, _, _, s, ks, hh⟩ := mem_khalayaTahsil hr
+    rw [hasl, hh]
+    rfl
+  · rw [hx', hq]
+    rfl
+
+theorem ajza_L (aj : Bool) : ∀ ms : List Maqta, (∀ m ∈ ms, mL m.hukm = true) →
+    ajza aj ms = .ok (ms.map fun m => ⟨khalayaTahsil m, [], false, false⟩)
+  | [], _ => rfl
+  | m :: rest, hL => by
+    have hm := hL m List.mem_cons_self
+    have hr := ajza_L aj rest (fun x hx => hL x (List.mem_cons_of_mem _ hx))
+    have hj : juzOf aj m rest = .ok ⟨khalayaTahsil m, [], false, false⟩ := by
+      unfold juzOf khalayaTahsil
+      cases hh : m.hukm with
+      | L s ks => rfl
+      | P _ => rw [hh] at hm; cases hm
+      | F _ => rw [hh] at hm; cases hm
+    simp only [ajza, hj, hr, List.map_cons]
+
+/-- **الكلمةُ المرخَّصةُ مقاطعُها كلُّها:** قراءتُها خلايا التحصيل بعينها وبترتيبها، بلا همزة وصلٍ ولا ملاحظة، في الوقف والوصل سواءً. -/
+theorem qiraa_murakhkhasa (w : List Char) (aj : Bool) (hL : ∀ m ∈ tahsil w, mL m.hukm = true)
+    (hne : (tahsil w).flatMap khalayaTahsil ≠ []) :
+    qiraa w aj = .ok ⟨(tahsil w).flatMap khalayaTahsil, false, false, []⟩ := by
+  unfold qiraa
+  rw [ajza_L aj _ hL]
+  unfold tamm
+  have h1 : ((tahsil w).map fun m => (⟨khalayaTahsil m, [], false, false⟩ : Juz)).flatMap (·.khalaya) =
+      (tahsil w).flatMap khalayaTahsil := by
+    simp [List.flatMap_map]
+  have h2 : ((tahsil w).map fun m => (⟨khalayaTahsil m, [], false, false⟩ : Juz)).any (·.wasl) = false := by simp
+  have h3 : ((tahsil w).map fun m => (⟨khalayaTahsil m, [], false, false⟩ : Juz)).any (·.al) = false := by simp
+  have h4 : ((tahsil w).map fun m => (⟨khalayaTahsil m, [], false, false⟩ : Juz)).flatMap (·.mulahazat) = [] := by simp
+  simp only [h1, h2, h3, h4, List.isEmpty_iff, hne, ite_false, Bool.false_and, Bool.false_or, Bool.false_eq_true]
+
+/-! ## ٥. شواهد -/
+
+/-- «فَتًى»: الفاءُ مرخَّصة، وخليّتا التنوين من وسيط قاعدته بموضع مقطعه: ألفٌ في الوقف ونونٌ ساكنةٌ في الوصل؛ والألفُ المقصورة بعده بلا خليّة. -/
+theorem shahid_fata :
+    (qiraa "فَتًى".toList true).toOption.map (·.khalaya) =
+      some [⟨100, 0, 2, .tahsil⟩, ⟨72, 2, 4, .wasit "قاعدة التنوين"⟩, ⟨11, 2, 4, .wasit "قاعدة التنوين"⟩] ∧
+    (qiraa "فَتًى".toList false).toOption.map (·.khalaya) =
+      some [⟨100, 0, 2, .tahsil⟩, ⟨72, 2, 4, .wasit "قاعدة التنوين"⟩, ⟨59, 2, 4, .wasit "قاعدة التنوين"⟩] := by
+  decide
+
+/-- «ٱلشَّمْسُ»: همزةُ الوصل ولامُ التعريف المدغمة بلا خليّة، وخلاياها كلُّها من مقاطع مرخَّصة بمواضعها. -/
+theorem shahid_shams :
+    (qiraa "ٱلشَّمْسُ".toList true).toOption.map (fun q => (q.khalaya, q.wasl, q.al)) =
+      some ([⟨43, 2, 5, .tahsil⟩, ⟨40, 2, 5, .tahsil⟩, ⟨111, 5, 7, .tahsil⟩, ⟨81, 7, 9, .tahsil⟩], true, true) := by
+  decide
+
+/-- علامتان على حرفٍ واحد: كان القارئ يأخذ الأخيرة، وصارت الكلمةُ ترفض باسم المقطع الفاسد. والتطويلُ المجرّدُ آخرَ الكلمة لا يمنع الوقف. -/
+theorem shahid_rafd_tatwil :
+    (match qiraa "كَُتَبَ".toList true with | .error e => e | .ok _ => "") = "علامتان متعارضتان: «كَُ»" ∧
+    (qiraa "حٍـ".toList true).toOption.map (fun q => q.khalaya.map (·.raqm)) = some [19] := by
+  decide
+
+end Dal.QiraaTahsil

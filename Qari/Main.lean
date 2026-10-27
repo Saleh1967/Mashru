@@ -7,6 +7,10 @@
   ما يُخمَّن: لا شيء. ما ليس في جدول المخارج أو لم يُودَع قرارُه يُرفض باسمه (الدستور م5):
   الحرف بلا حركة في غير آخر الكلمة، الألف المحرّكة في أوّل الكلمة، والحرف الأخير بلا حركة في غير آخر الجملة
   (الوصل يحتاج حركته).
+  والكلمةُ تُقرأ على تحصيلها (`Dal/QiraaTahsil.lean` على `Dal/Tahsil.lean`): تُقطع مقاطعَ بمواضعها بنقاط الرمز، فالمقطعُ المرخَّص
+  خلاياه بعينها، والفاسدُ رفضٌ للكلمة باسم سببه (ومنه علامتان على حرفٍ واحد)، والمعلَّقُ باسم قاعدته وسيطُه من الوسائط أدناه
+  (`wasitOf`)، أو رفضٌ باسمها إن لم يكن له وسيطٌ في موضعه (التطويلُ بعلامة، وهمزةُ الوصل في غير أوّل الكلمة أو بعلامة، والممدودةُ
+  بعلامة، والمقصورةُ أوّلَ الكلمة). ولكلّ خليّةٍ موضعُ مقطعها وأصلُها في المخرج (`qiraa_shahada`).
   قرارات الوقف والرسم من المودَعين «متن قطر الندى» (باب الوقف في الأفصح L440–447، وفصل همزة الوصل L449–453) و«ألفية ابن
   مالك» (باب الوقف L1131، L1136، L1142) — شاهدان مستقلّان. قرارا الوقف (ة، التنوين) على الموقوف عليه، وهو هنا آخرُ النصّ
   المعطى (وسيط معلَن: الوقف حيث ينتهي النصّ)؛ وقرارات الرسم (ى، ألف الجماعة) وهمزة الوصل في كلّ موضع:
@@ -19,142 +23,43 @@
   * حركة همزة الوصل وسيطُ المالك `waslHaraka` (ضمٌّ إن ضُمّ الثالث، وفتحٌ مع أل، وكسرٌ في الباقي)؛ شاهدُه في القطر أمثلةُ
     الأمر و«ال» («اقتل واغز واغزي بضمهن، واضرب وامشوا واذهب بكسر كالبواقي … والغلام وايمن الله في القسم بفتحهما» L449–453)؛
     وأسماءُ الفصل (اسم، است، ابن، امرئ، امرأة…) «بكسر» (L449) لا يشملها الوسيط: «امْرُؤٌ» يُخرجها بالضمّ — فجوةٌ معلَنة.
-  الوسائط المعلنة (مقرّرة هنا، مذكورة في المخرج):
+  الوسائط المعلنة، مذكورة في المخرج (ومنها ما صار قاعدةَ ترخيصٍ في `Dal/Tahsil.lean`: مقعدُ الهمزة، والشدّةُ مع الحركة، وحرفُ المدّ؛
+  والباقي وسائطُ لمقاطع التحصيل المعلَّقة بأسماء قواعدها في `Dal/QiraaTahsil.lean`):
   * مقاعد الهمزة (أ إ ؤ ئ) همزةُ قطع (ء = 0)؛ آ = همزة مفتوحة ثمّ ألف مدّ.
   * الألف المجرّدة في أوّل الكلمة (أو ٱ) همزةُ وصل: تُحذف من الخلايا، وفي الابتداء تُصلح بـ `SLGE.Law.ibtidaForm`
     (فتحة مع «ال»، وإلّا بحسب حركة الثالث — وسيط المالك `waslHaraka`)؛ وفي الوصل تسقط بإصلاح المالك (Hamza.lean).
     ولا تكون إلّا قبل ساكن (Hamza.lean)؛ فألفٌ مجرّدة قبل متحرّك تُرفض باسمها.
   * لام التعريف بلا علامة قبل حرفٍ مشدّد: مدغمةٌ فيه، لا خلية لها (الشدّة في النصّ شاهدُ الإدغام).
   * الشدّة: ساكنٌ ثمّ متحرّكٌ من الحامل نفسه. التنوين في الوصل: حركةٌ ثمّ نون ساكنة (وألفُ التنوين بعد الفتحتين لا تُنطق).
-  * الحرف الأخير بلا حركة في آخر الجملة: ساكنٌ للوقف. ا/و/ي بلا حركة في غير الأوّل: ساكنة (مدًّا أو غيرَه، والقانون يحكم).
+  * الحرف الأخير بلا حركة في آخر الجملة: ساكنٌ للوقف. ا/و/ي بلا حركة في غير الأوّل: ساكنة (مدًّا أو غيرَه، والقانون يحكم)؛
+    وهي في التحصيل حرفُ مدٍّ مرخَّص، والوسيطُ يُسكّنها كذلك في كلمةٍ هي واوٌ أو ياءٌ وحدها، وتحت شدّةٍ بلا حركة.
   * البحث في المخزن باللفظ مجرَّدًا من الحركات كما يكتبه المعجم.
   التشغيل: qari <سجلّ المودَعات> <المخزن> <نصّ مشكول…>
 -/
 import Dal.Jumla
+import Dal.QiraaTahsil
 import Faahis.Lib
 import Nizam.Aqd
 import Jisr.NassItar
 
 open Dal SLGE SLGE.Law QawaninDalala Qaida Mawsua
 
-/-! ## ١. من الحروف إلى الخلايا -/
-
-def harf? (c : Char) : Option Nat := hawamil.idxOf? c
-
-def maqadAlhamza : List Char := ['أ', 'إ', 'ؤ', 'ئ']
+/-! ## ١. من الحروف إلى الخلايا: على التحصيل (`Dal/QiraaTahsil.lean`) -/
 
 structure Qiraa where
   khalaya   : List Nat := []       -- الرموز 4c+s بلا همزة الوصل
   wasl      : Bool := false        -- بدأت بهمزة وصل
   al        : Bool := false        -- همزتها همزة «أل» (لامٌ ساكنة أو مدغمة)
   mulahazat : List String := []
+  /-- كلُّ خليّةٍ بموضع مقطعها في الكلمة وأصلِها: مقطعٌ مرخَّص، أو وسيطٌ لمقطعٍ معلَّقٍ باسم قاعدته (`qiraa_shahada`). -/
+  mawadi    : List Dal.QiraaTahsil.KhaliyaQ := []
 
-/-- خلية: حامل وحالة. -/
-def kh (c s : Nat) : Nat := 4 * c + s
-
-def harakaOf (c : Char) : Option Nat :=
-  if c == 'َ' then some 0 else if c == 'ُ' then some 1 else if c == 'ِ' then some 2 else if c == 'ْ' then some 3 else none
-
-def tanwinOf (c : Char) : Option Nat :=
-  if c == 'ً' then some 0 else if c == 'ٌ' then some 1 else if c == 'ٍ' then some 2 else none
-
-def alama (c : Char) : Bool := c == 'ّ' || (harakaOf c).isSome || (tanwinOf c).isSome
-
-/-- هل الحرف الذي يبدأ في الموضع `i` تليه شدّة بين علاماته؟ -/
-def mushaddad (cs : List Char) (i : Nat) : Bool :=
-  (cs.drop (i + 1)).takeWhile alama |>.contains 'ّ'
-
-/-- تحليل كلمة مشكولة إلى خلايا؛ الرفض باسمه. `akhirJumla`: الكلمة آخر الجملة (فيجوز الوقف على ساكن). -/
-def tahlil (w : String) (akhirJumla : Bool := true) : Except String Qiraa := do
-  let cs := w.toList.filter (· != 'ـ')
-  let n := cs.length
-  let mut q : Qiraa := {}
-  let mut i := 0
-  while i < n do
-    let c0 := cs[i]!
-    let nxt := cs[i+1]?
-    -- الألف المقصورة ألفٌ (قطر الندى L444–445)
-    let c := if c0 == 'ى' then 'ا' else c0
-    if c0 == 'ى' then
-      q := { q with mulahazat := q.mulahazat ++ ["الألف المقصورة ألفٌ رُسمت ياءً (قطر الندى L444–445)"] }
-    if i == 0 && (c == 'ا' || c == 'ٱ') then
-      -- همزة وصل: إن كان للألف حركة فهي همزة قطع رُسمت بلا مقعد — تُرفض
-      match nxt.bind harakaOf with
-      | some _ => throw "ألف محرّكة في أوّل الكلمة: اكتب همزة القطع بمقعدها (أ/إ)، أو همزة الوصل بلا حركة"
-      | none => q := { q with wasl := true }; i := i + 1
-    else if c == 'آ' then
-      q := { q with khalaya := q.khalaya ++ [kh 0 0, kh 2 3] }; i := i + 1
-    else
-      -- التاء المربوطة: تاءٌ في الوصل، وهاءٌ ساكنة في الوقف (قطر الندى L441، الألفية L1142)
-      let hamil? : Option Nat :=
-        if c == 'ة' then some (if akhirJumla then 1 else 18)
-        else if maqadAlhamza.contains c then some 0 else harf? c
-      match hamil? with
-      | none => throw s!"حرف ليس في جدول المخارج: «{c}»"
-      | some h =>
-        -- اقرأ العلامات التالية
-        let mut j := i + 1
-        let mut haraka : Option Nat := none
-        let mut sh := false
-        let mut tanwin : Option Nat := none
-        while j < n do
-          let m := cs[j]!
-          if m == 'ّ' then sh := true; j := j + 1
-          else match harakaOf m with
-            | some s => haraka := some s; j := j + 1
-            | none => match tanwinOf m with
-              | some s => tanwin := some s; j := j + 1
-              | none => break
-        -- آخر الكلمة: لا حرف بعد العلامات، أو ألفُ التنوين وحدها بعد الفتحتين (ألفًا أو ألفًا مقصورة: «الفتى» L445)
-        let akhir := j ≥ n || (tanwin == some 0 && (cs[j]? == some 'ا' || cs[j]? == some 'ى') && j + 1 ≥ n)
-        let bilaAlama := haraka.isNone && !sh && tanwin.isNone
-        if c == 'ة' && !akhir then
-          throw "تاء مربوطة في غير آخر الكلمة"
-        else if c == 'ة' && akhirJumla then
-          -- الوقف على التاء المربوطة بالهاء الساكنة؛ وما عليها من حركة أو تنوين يسقط في الوقف
-          q := { q with khalaya := q.khalaya ++ [kh 1 3],
-                        mulahazat := q.mulahazat ++ ["الوقف على التاء المربوطة بالهاء (قطر الندى L441، الألفية L1142) ساكنةً (الألفية L1136)"] }
-        else if tanwin.isSome && akhir && akhirJumla then
-          -- الوقف على التنوين: بعد الفتح ألفٌ، وفي غيره حذفٌ فيسكن الحرف
-          let s := tanwin.getD 0
-          let cells := (if sh then [kh h 3] else []) ++ (if s == 0 then [kh h 0, kh 2 3] else [kh h 3])
-          q := { q with khalaya := q.khalaya ++ cells,
-                        mulahazat := q.mulahazat ++ [if s == 0
-                          then "الوقف على التنوين بعد الفتح بالألف (قطر الندى L442–443، الألفية L1131)"
-                          else "الوقف على التنوين بحذفه وتسكين الحرف (الألفية L1131، L1136)"] }
-          if s == 0 && (cs[j]? == some 'ا' || cs[j]? == some 'ى') then j := j + 1
-        else if q.wasl && q.khalaya.isEmpty && c == 'ل' && bilaAlama && !akhir && mushaddad cs j then
-          -- لام التعريف المدغمة في المشدّد بعدها
-          q := { q with al := true,
-                        mulahazat := q.mulahazat ++ ["لام التعريف مدغمة في المشدّد بعدها، لا خلية لها (وسيط معلَن)"] }
-        else if c == 'ا' && bilaAlama && akhir && q.khalaya.getLast? == some (kh 28 3) then
-          q := { q with mulahazat := q.mulahazat ++ ["الألف بعد واو الجماعة تُكتب (قطر الندى L443–444) ولا تُنطق (وسيط معلَن)"] }
-        else
-          match haraka, tanwin with
-          | some s, _ =>
-            let cells := if sh then [kh h 3, kh h s] else [kh h s]
-            q := { q with khalaya := q.khalaya ++ cells }
-          | none, some s =>
-            let cells := (if sh then [kh h 3] else []) ++ [kh h s, kh 14 3]
-            q := { q with khalaya := q.khalaya ++ cells,
-                          mulahazat := q.mulahazat ++ ["التنوين في الوصل نون ساكنة (وسيط معلَن)"] }
-            -- ألف التنوين بعد الفتحتين (ألفًا أو ألفًا مقصورة) لا تُنطق في الوصل
-            if s == 0 && (cs[j]? == some 'ا' || cs[j]? == some 'ى') then j := j + 1
-          | none, none =>
-            if h == 2 || h == 28 || h == 11 then
-              q := { q with khalaya := q.khalaya ++ [kh h 3] }
-            else if akhir then
-              if akhirJumla then
-                q := { q with khalaya := q.khalaya ++ (if sh then [kh h 3, kh h 3] else [kh h 3]),
-                              mulahazat := q.mulahazat ++ ["الحرف الأخير بلا حركة: عُدّ ساكنًا للوقف"] }
-              else throw s!"الحرف الأخير بلا حركة في غير آخر الجملة: «{c}» — الوصل يحتاج حركته"
-            else throw s!"حرف بلا حركة في غير آخر الكلمة: «{c}» — النصّ غير مشكول"
-        i := j
-  if q.khalaya.isEmpty then throw "كلمة فارغة"
-  if q.wasl && !sakinAwwal q.khalaya then
-    throw "ألف مجرّدة قبل متحرّك: ليست همزة وصل (همزة الوصل لا تكون إلّا قبل ساكن — Hamza.lean)؛ اكتب همزة القطع بمقعدها (أ/إ)"
-  if q.wasl && isAl q.khalaya then q := { q with al := true }
-  return q
+/-- تحليل كلمة مشكولة إلى خلايا على تحصيلها (`Dal.QiraaTahsil.qiraa`)؛ الرفض باسمه. `akhirJumla`: الكلمة آخر الجملة (فيجوز الوقف
+    على ساكن). -/
+def tahlil (w : String) (akhirJumla : Bool := true) : Except String Qiraa :=
+  match Dal.QiraaTahsil.qiraa w.toList akhirJumla with
+  | .ok r => .ok { khalaya := r.khalaya.map (·.raqm), wasl := r.wasl, al := r.al, mulahazat := r.mulahazat, mawadi := r.khalaya }
+  | .error e => .error e
 
 /-- الكلمة كما يسلّمها القارئ إلى التركيب (Dal/Jumla.lean). -/
 def kalima (q : Qiraa) : Kalima := ⟨q.khalaya, q.wasl, q.al⟩
@@ -172,6 +77,12 @@ def nawIsm : NawMaqta → String
   | .CV => "CV" | .CVV => "CVV" | .CVC => "CVC" | .CVVC => "CVVC" | .CVCC => "CVCC" | .CVVCC => "CVVCC"
 
 def silsilaIsm (l : List Nat) : String := " ".intercalate (l.map khaliyaIsm)
+
+/-- الخليّةُ بموضع مقطعها وأصلِها: مقطعٌ مرخَّص في التحصيل، أو وسيطُ القارئ لمقطعٍ معلَّقٍ باسم قاعدته. -/
+def aslIsm (x : Dal.QiraaTahsil.KhaliyaQ) : String :=
+  s!"{khaliyaIsm x.raqm} [{x.a},{x.b}) " ++ match x.asl with
+    | .tahsil => "مقطعٌ مرخَّص"
+    | .wasit q => s!"وسيطٌ لـ«{q}»"
 
 /-! ## ٢أ. العقدُ الواحد (Nizam/Aqd.lean): الحكمُ بالمنفّذ البتّيّ `hukmB`، و`kull_ma_kull` تجعله حكمَ المواصفة -/
 
@@ -246,6 +157,7 @@ def iqraAqd (l : List Nat) (wasl : Bool) : IO Unit := do
 def iqraKalima (h : Hal) (b : Bina) (w : String) (q : Qiraa) : IO Unit := do
   let l := ibtida (kalima q)
   IO.println s!"  الخلايا: {silsilaIsm l}"
+  IO.println s!"  أصلُ الخلايا بمواضعها في الكلمة بنقاط الرمز (Dal.QiraaTahsil، qiraa_shahada{if q.wasl then "؛ بلا همزة الوصل" else ""}): {" · ".intercalate (q.mawadi.map aslIsm)}"
   for m in q.mulahazat do IO.println s!"  ملاحظة: {m}"
   if q.wasl then IO.println s!"  ملاحظة: همزة الوصل أُصلحت بـ ibtidaForm (isAl={q.al}) — حركتها وسيط المالك waslHaraka (شاهده قطر الندى L449–453)"
   let waqf := Fwaqf (run 0 l)

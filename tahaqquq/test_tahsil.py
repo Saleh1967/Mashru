@@ -10,8 +10,9 @@
    مخرجُ `tahsil` للمقاطع والكلمات هو مخرجُ oracle.py. ويُطبع عددُ أسماء الأحكام التي بلغها، ولا يُشترط.
 ٤. الشهادة: حكمُ الفاحص على شهادة كلّ مقطع (`Nizam.Shahada.hukm`، العمودُ الأخير) صورةُ حكم التصنيف: L ← murakhkhas، P ← muallaq:الاسم،
    F ← madkhalFasid:الاسم؛ على مقاطع ٢ و٣ كلّها.
-٥. القارئ: على كلماتٍ عشوائيّة (البذرة 20261028) يرخّصها التحصيلُ كلَّها، وهي ألفٌ على الأقلّ، خلايا `qari --khalaya` هي خلايا التحصيل. وعلى
-   كلماتٍ فيها علامتا حركة على حرفٍ واحد، يقرؤها القارئُ (يأخذ الأخيرة) ويردّها التحصيلُ «علامتان متعارضتان»: يُطبع عددُها، فرقٌ معلَنٌ لا خطأ.
+٥. القارئ: على كلماتٍ عشوائيّة (البذرة 20261028) يرخّصها التحصيلُ كلَّها، وهي ألفٌ على الأقلّ، خلايا `qari --khalaya` هي خلايا التحصيل
+   (والمبرهنةُ `Dal.QiraaTahsil.qiraa_murakhkhasa`؛ وهذا فحصُ المنفَّذ). وعلى خمسين كلمةً فيها علامتا حركة على حرفٍ واحد يردّها التحصيلُ
+   «علامتان متعارضتان»: يردّها القارئُ كلَّها باسمه (وكان قبل وصله بالتحصيل يقرؤها ويأخذ الأخيرة).
 ٦. الأسماء: كلُّ اسمٍ لحكمٍ P أو F في Dal/Tahsil.lean في wasf.md بين «» بنصّه (فحصُ نصّ)، إلّا «مقطع فارغ» و«خلل داخلي» اللذين لا يصل
    إليهما مقطعٌ، ولا يظهران في مخرجٍ من ٢ و٣.
 
@@ -219,7 +220,7 @@ if out5 is not None:
                      "".join(f"h{i}\t{w}\n" for i, w in enumerate(harakatan)), encoding="utf-8")
         r = subprocess.run([str(QARI), "--khalaya", str(p)], capture_output=True, text=True)
     sawa = 0
-    qabil_harakatan = 0
+    radd_harakatan = 0
     for line in r.stdout.split("\n"):
         if not line:
             continue
@@ -227,8 +228,8 @@ if out5 is not None:
         if k.startswith("h"):
             i = int(k[1:])
             mardud = out5b is not None and out5b[i][0][0]["ism"] == "علامتان متعارضتان"
-            if hal == "QABUL" and mardud:
-                qabil_harakatan += 1
+            if mardud and hal == "RAFD" and "علامتان متعارضتان: «" in baqi:
+                radd_harakatan += 1
             continue
         w, ks = murakhkhasa[int(k)]
         cells = [int(x) for x in baqi.split(";")[0].split(",") if x] if hal == "QABUL" else None
@@ -238,8 +239,10 @@ if out5 is not None:
             fails.append(f"٥: {w!r}: القارئ {hal} {baqi[:60]}، والتحصيل {ks}")
     if sawa != len(murakhkhasa) or len(murakhkhasa) < 1000:
         fails.append(f"٥: سواءٌ {sawa} من {len(murakhkhasa)} كلمةً مرخَّصة")
+    if radd_harakatan != len(harakatan):
+        fails.append(f"٥: علامتا حركةٍ على حرف: يردّها القارئ «علامتان متعارضتان» في {radd_harakatan} من {len(harakatan)}")
     print(f"٥ القارئ: {sawa} من {len(murakhkhasa)} كلمةً يرخّصها التحصيل خلاياها في القارئ هي هي؛ "
-          f"وعلامتا حركةٍ على حرف: يقبلها القارئ ويردّها التحصيل في {qabil_harakatan} من {len(harakatan)}")
+          f"وعلامتا حركةٍ على حرف: يردّها القارئ والتحصيلُ باسمها في {radd_harakatan} من {len(harakatan)}")
 
 # ٦. الأسماء
 lean = LEAN.read_text(encoding="utf-8")
