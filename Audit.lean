@@ -2387,3 +2387,5 @@ import Dal.QiraaTahsil
 #print axioms Dal.QiraaTahsil.shahid_fata
 #print axioms Dal.QiraaTahsil.shahid_shams
 #print axioms Dal.QiraaTahsil.shahid_rafd_tatwil
+#print axioms Dal.QiraaTahsil.shahid_tatwil_maqta
+#print axioms Dal.QiraaTahsil.shahid_jamaa

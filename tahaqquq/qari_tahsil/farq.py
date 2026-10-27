@@ -1,7 +1,12 @@
 """فروقُ القارئ بعد وصله بالتحصيل (Dal/QiraaTahsil.lean) عن القارئ قبله (main ‏09f7b27)، بأسبابها. عدُّ أداةٍ لا اختبار.
 
-الكلماتُ: كلُّ كلمةٍ مشكولةٍ متمايزة في ملفّات المستودع النصّيّة عند 09f7b27 (git ls-tree؛ .lean .py .json .md .tsv .txt .toml)، وكلماتٌ
-عشوائيّة بالبذرة 20261029 (رؤوسٌ من الحوامل ومقاعد الهمزة والخاصّة وحروفٍ خارج الجدول، بعد كلٍّ منها من صفرٍ إلى علامتين، وصدورٌ بألفٍ ولام).
+الكلماتُ ثلاثُ مجموعات:
+- المستودع: كلُّ كلمةٍ مشكولةٍ متمايزة في ملفّات المستودع النصّيّة عند 09f7b27 (git ls-tree؛ .lean .py .json .md .tsv .txt .toml).
+- العشوائيّة بالبذرة 20261029: رؤوسٌ من الحوامل ومقاعد الهمزة والخاصّة وحروفٍ خارج الجدول، بعد كلٍّ منها من صفرٍ إلى علامتين، وصدورٌ بألفٍ
+  ولام. وتُعدّ في عمودين: بلا تطويلٍ، وفيها تطويل.
+- الموجَّهة، لأنّ المولِّد العشوائيّ قلّما يولّد ما يفترق فيه القارئان: (أ) تطويلٌ مجرّد يُدرج قبل كلّ مقطعٍ وبعده في 1500 كلمةٍ من
+  كلمات المستودع بالبذرة 20261030؛ (ب) كلُّ كلمةٍ من المستودع آخرُها واوٌ ثمّ ألف، تُبدَّل علاماتُ الواو (لا شيء، سكون، شدّة، شدّة
+  وسكون، ضمّة) وآخرُها (ا، ى، ثمّ تطويل).
 يُقرأ كلٌّ منها بالقارئين في الوصل (`--khalaya`) وفي الوقف (`--qiyas`: الخلايا وحدها إن قبلاها)، ثمّ ما قبله أحدُهما في الوضع البشريّ
 (الكلمةُ وحدها للوقف، وقبل «كَتَبَ» للوصل) لمقارنة الخلايا والملاحظات. ويُصنَّف كلُّ فرقٍ: يرفضانه (ونصُّ الرفض قد يختلف)، أو يرفضه
 الجديد وحده بسببه، أو يقبله الجديد وحده بسبب رفض القديم، أو يقبلانه بخلايا أو ملاحظاتٍ مختلفة.
@@ -29,6 +34,8 @@ KHASSA = ["ة", "ى", "آ", "ٱ", "ـ"]
 ALAMAT = ["َ", "ُ", "ِ", "ْ", "ً", "ٌ", "ٍ", "ّ"]
 KHARIJ = ["ٰ", "ٓ", "ک"]
 rng = random.Random(20261029)
+TATWIL = "ـ"
+MAQTA = re.compile(r"[^\u064b-\u0652][\u064b-\u0652]*")
 
 
 def wahda():
@@ -101,10 +108,45 @@ def bashari(exe, args):
     return out
 
 
+def tatwil_mudraj(ws):
+    """(أ) تطويلٌ مجرّدٌ قبل كلّ مقطعٍ وبعده."""
+    out = set()
+    for w in random.Random(20261030).sample(ws, min(1500, len(ws))):
+        ms = MAQTA.findall(w)
+        for k in range(len(ms) + 1):
+            out.add("".join(ms[:k]) + TATWIL + "".join(ms[k:]))
+    return out
+
+
+def waw_alif(ws):
+    """(ب) واوٌ ثمّ ألفٌ آخرَ الكلمة بعلامات الواو وأواخرَ مختلفة."""
+    out = set()
+    for w in ws:
+        m = re.match(r"^(.+)و[\u064b-\u0652]*ا$", w)
+        if m:
+            for alamat in ["", "\u0652", "\u0651", "\u0651\u0652", "\u064f"]:
+                for akhir in ["ا", "ى", "ا" + TATWIL]:
+                    out.add(m.group(1) + "و" + alamat + akhir)
+    return out
+
+
 repo = kalimat_mustawda()
 s_repo = set(repo)
 ashwai = sorted({kalima() for _ in range(20000)} | {al_kalima() for _ in range(4000)})
-words = repo + [w for w in ashwai if w not in s_repo]
+ashwai = [w for w in ashwai if w not in s_repo]
+muwajjaha_t = sorted(tatwil_mudraj(repo) - s_repo - set(ashwai))
+muwajjaha_w = sorted(waw_alif(repo) - s_repo - set(ashwai) - set(muwajjaha_t))
+words = repo + ashwai + muwajjaha_t + muwajjaha_w
+AMDA = ["المستودع", "عشوائيّة بلا تطويل", "عشوائيّة فيها تطويل", "موجَّهة: تطويل", "موجَّهة: واو وألف"]
+
+
+def masdarOf(i):
+    w = words[i]
+    if i < len(repo):
+        return AMDA[0]
+    if i < len(repo) + len(ashwai):
+        return AMDA[2] if TATWIL in w else AMDA[1]
+    return AMDA[3] if i < len(repo) + len(ashwai) + len(muwajjaha_t) else AMDA[4]
 asnaf = collections.Counter()
 amthila = collections.defaultdict(list)
 maqbul = {}
@@ -114,7 +156,7 @@ for wad, ism in [("--khalaya", "الوصل"), ("--qiyas", "الوقف")]:
     for i, w in enumerate(words):
         a, b = o[i], n[i]
         ka, kb = a.split("\t", 1)[0], b.split("\t", 1)[0]
-        masdar = "المستودع" if i < len(repo) else "عشوائيّة"
+        masdar = masdarOf(i)
         if ka == "RAFD" and kb == "RAFD":
             sinf = "يرفضانه" + ("" if sabab(a) == sabab(b) else "، ونصُّ الرفض مختلف")
         elif ka == "QABUL" and kb == "RAFD":
@@ -130,8 +172,8 @@ for wad, ism in [("--khalaya", "الوصل"), ("--qiyas", "الوقف")]:
         if sinf.startswith("يرفضانه"):
             continue
         asnaf[(ism, sinf, masdar)] += 1
-        if len(amthila[(ism, sinf)]) < 4:
-            amthila[(ism, sinf)].append((w, a[:90], b[:90]))
+        if len(amthila[(ism, sinf, masdar)]) < 2:
+            amthila[(ism, sinf, masdar)].append((w, a[:90], b[:90]))
 
 
 def bashari_farq(arg):
@@ -142,7 +184,7 @@ def bashari_farq(arg):
     ra, rb = any(x.startswith("  مرفوضة") for x in a), any(x.startswith("  مرفوضة") for x in b)
     if ra or rb or a == b:
         return None
-    return (ism, w, [x for x in a if x not in b], [x for x in b if x not in a])
+    return (ism, w, [x for x in a if x not in b], [x for x in b if x not in a], masdarOf(i))
 
 
 mulahazat = collections.Counter()
@@ -150,28 +192,30 @@ amthila_m = collections.defaultdict(list)
 with cf.ThreadPoolExecutor(4) as ex:
     for r in ex.map(bashari_farq, [(i, ism) for ism in ("الوقف", "الوصل") for i in maqbul[ism]]):
         if r:
-            ism, w, qadim, jadid = r
-            k = (ism, " | ".join(re.sub(r"\(\d+\)", "", x).strip() for x in qadim) + " ⟶ " + " | ".join(x.strip() for x in jadid))
+            ism, w, qadim, jadid, masdar = r
+            k = (ism, masdar, " | ".join(re.sub(r"\(\d+\)", "", x).strip() for x in qadim) + " ⟶ " + " | ".join(x.strip() for x in jadid))
             mulahazat[k] += 1
             if len(amthila_m[k]) < 3:
                 amthila_m[k].append(w)
 
+adad = collections.Counter(masdarOf(i) for i in range(len(words)))
 sutur = [f"# فروقُ القارئ بعد وصله بالتحصيل عن القارئ في {ASAS}", "",
-         f"عدُّ أداةٍ (`tahaqquq/qari_tahsil/farq.py`) بلا وسم: {len(words)} كلمةً — {len(repo)} مشكولةٌ متمايزة من ملفّات المستودع عند {ASAS}، "
-         f"و{len(words) - len(repo)} عشوائيّة (البذرة 20261029). ما يرفضانه كلاهما لا يُعدّ هنا (ونصُّ الرفض صار بأسماء التحصيل).", "",
-         "## الخلايا: القبولُ والرفض", "", "| الوضع | الصنف | المستودع | عشوائيّة |", "|---|---|---|---|"]
+         f"عدُّ أداةٍ (`tahaqquq/qari_tahsil/farq.py`) بلا وسم: {len(words)} كلمةً — "
+         + "، ".join(f"{m} {adad[m]}" for m in AMDA)
+         + ". ما يرفضانه كلاهما لا يُعدّ هنا (ونصُّ الرفض صار بأسماء التحصيل أو الوسائط).", "",
+         "## الخلايا: القبولُ والرفض", "", "| الوضع | الصنف | " + " | ".join(AMDA) + " |", "|---|---|" + "---|" * len(AMDA)]
 for (ism, sinf) in sorted({(k[0], k[1]) for k in asnaf}):
-    sutur.append(f"| {ism} | {sinf} | {asnaf[(ism, sinf, 'المستودع')]} | {asnaf[(ism, sinf, 'عشوائيّة')]} |")
+    sutur.append(f"| {ism} | {sinf} | " + " | ".join(str(asnaf[(ism, sinf, m)]) for m in AMDA) + " |")
 sutur += ["", "### أمثلة (الكلمة، القديم، الجديد)", ""]
-for (ism, sinf), v in sorted(amthila.items()):
-    sutur.append(f"- {ism} — {sinf}:")
+for (ism, sinf, masdar), v in sorted(amthila.items()):
+    sutur.append(f"- {ism} — {sinf} — {masdar}:")
     for w, a, b in v:
         sutur.append(f"  - `{w}` — القديم `{a}` — الجديد `{b}`")
 sutur += ["", "## الخلايا والملاحظات في الوضع البشريّ (ما قبلاه كلاهما)", "",
           f"على {len(maqbul['الوقف'])} كلمةً في الوقف و{len(maqbul['الوصل'])} في الوصل قبلها أحدُهما.", ""]
 if not mulahazat:
     sutur.append("لا فرق.")
-for (ism, k), v in sorted(mulahazat.items(), key=lambda x: -x[1]):
-    sutur.append(f"- {ism}، {v}: {k} — مثل: {'، '.join('`' + w + '`' for w in amthila_m[(ism, k)])}")
+for (ism, masdar, k), v in sorted(mulahazat.items(), key=lambda x: (x[0][0], x[0][1], -x[1])):
+    sutur.append(f"- {ism}، {masdar}، {v}: {k} — مثل: {'، '.join('`' + w + '`' for w in amthila_m[(ism, masdar, k)])}")
 MAKHRAJ.write_text("\n".join(sutur) + "\n", encoding="utf-8")
 print(f"{len(words)} كلمةً؛ الأصناف: {sum(asnaf.values())}؛ فروقُ الوضع البشريّ: {sum(mulahazat.values())}")

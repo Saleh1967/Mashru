@@ -351,12 +351,12 @@
   "ism": "P23_lam_tarif_tuntaq",
   "milaf": "Dal/QiraaTahsil.lean",
   "min": "    else if q == \"قاعدة لام التعريف المدغمة\" then .ok ⟨[], [mulahazaLam], false, true⟩",
-  "ila": "    else if q == \"قاعدة لام التعريف المدغمة\" then .ok ⟨[kh 13 3], [mulahazaLam], false, true⟩"
+  "ila": "    else if q == \"قاعدة لام التعريف المدغمة\" then bilaWasit q m.nass"
  },
  {
   "ism": "P24_akhir_bila_haraka_fi_wasl",
   "milaf": "Dal/QiraaTahsil.lean",
-  "min": "       else .error s!\"الحرف الأخير بلا حركة في غير آخر الجملة: «{r}» — الوصل يحتاج حركته\")",
+  "min": "       else .error s!\"الحرف الأخير بلا حركة في غير آخر الجملة: «{String.ofList (r :: ms)}» — الوصل يحتاج حركته\")",
   "ila": "       else .ok ⟨[kh h 3], [], false, false⟩)"
  },
  {
@@ -434,8 +434,8 @@
  {
   "ism": "P37_maqsura_marfuda",
   "milaf": "Dal/QiraaTahsil.lean",
-  "min": "    else if q == \"قاعدة الألف المقصورة\" then",
-  "ila": "    else if false then"
+  "min": "      else match harfAam 2 r ms akhir aj with",
+  "ila": "      else match bilaWasit q m.nass with"
  },
  {
   "ism": "P38_tanwin_fath_bila_alif",
@@ -465,13 +465,13 @@
   "ism": "P42_maqsura_bada_tanwin",
   "milaf": "Dal/QiraaTahsil.lean",
   "min": "      (if m.siyaq.sabiq.any (fun p => p.tail.contains fathatan) then",
-  "ila": "      (if false then"
+  "ila": "      (if !aj && m.siyaq.sabiq.any (fun p => p.tail.contains fathatan) then"
  },
  {
   "ism": "P43_ta_marbuta_wasat",
   "milaf": "Dal/QiraaTahsil.lean",
-  "min": "      (if !akhir then .error \"تاء مربوطة في غير آخر الكلمة\"",
-  "ila": "      (if false then .error \"تاء مربوطة في غير آخر الكلمة\""
+  "min": "      (if !akhir then .error s!\"تاء مربوطة في غير آخر الكلمة: «{String.ofList m.nass}»\"",
+  "ila": "      (if false then .error s!\"تاء مربوطة في غير آخر الكلمة: «{String.ofList m.nass}»\""
  },
  {
   "ism": "P44_mafuliyya_isnad",
@@ -5161,9 +5161,9 @@
  },
  {
   "ism": "P887_qari_shadda_maqluba",
-  "milaf": "Dal/Tahsil.lean",
-  "min": "    .L .harfHaraka (if ms.contains shadda then [khaliyaMin h .sukun, khaliyaMin h s] else [khaliyaMin h s])",
-  "ila": "    .L .harfHaraka (if ms.contains shadda then [khaliyaMin h s, khaliyaMin h .sukun] else [khaliyaMin h s])"
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "(if sh then [kh h 3] else []) ++ [kh h s, kh 14 3]",
+  "ila": "[kh h s, kh 14 3] ++ (if sh then [kh h 3] else [])"
  },
  {
   "ism": "P888_tahsil_ism_kharij_alwasf",
@@ -5264,8 +5264,8 @@
  {
   "ism": "P904_qiraa_tatwil_yamna_waqf",
   "milaf": "Dal/QiraaTahsil.lean",
-  "min": "def akhirFi (m : Maqta) (baad : List Maqta) : Bool := akhirMin m (baad.filter (fun n => !tatwilB n))",
-  "ila": "def akhirFi (m : Maqta) (baad : List Maqta) : Bool := akhirMin m baad"
+  "min": "  | n :: rest => rest.all tatwilB && (tatwilB n || (m.nass.tail.contains fathatan && (n.nass == ['ا'] || n.nass == ['ى'])))",
+  "ila": "  | n :: rest => rest.isEmpty && (m.nass.tail.contains fathatan && (n.nass == ['ا'] || n.nass == ['ى']))"
  },
  {
   "ism": "P905_qari_asl_bila_ism",
@@ -5296,5 +5296,17 @@
   "milaf": "Qari/Main.lean",
   "min": "mulahazat := r.mulahazat, mawadi := r.khalaya }",
   "ila": "mulahazat := r.mulahazat, mawadi := [] }"
+ },
+ {
+  "ism": "P910_qiraa_jamaa_maqsura_khaliya",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "        .ok ⟨[], [mulahazaMaqsura, mulahazaJamaa], false, false⟩",
+  "ila": "        .ok ⟨[kh 2 3], [mulahazaMaqsura, mulahazaJamaa], false, false⟩"
+ },
+ {
+  "ism": "P911_qiraa_tatwil_bayn_tanwin_alif",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "  | n :: rest => rest.all tatwilB && (tatwilB n || (m.nass.tail.contains fathatan && (n.nass == ['ا'] || n.nass == ['ى'])))",
+  "ila": "  | n :: rest => (n :: rest).all tatwilB || (m.nass.tail.contains fathatan && ((n :: rest).filter (fun x => !tatwilB x)).map (·.nass) == [['ا']])"
  }
 ]
