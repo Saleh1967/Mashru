@@ -5410,5 +5410,119 @@
   "milaf": "Jisr/Mawsul.lean",
   "min": "  if d.tashdid && !d.lafz.muthanna then laHukmJ else maqbulJ [.bila]",
   "ila": "  maqbulJ [.bila]"
+ },
+ {
+  "ism": "P1025_mawsul_tajmid_wasf",
+  "milaf": "tahaqquq/dawabit/mawsul/tajmid.json",
+  "min": "\"wasf_sha256\": \"81eb9eadcaa43a0fd1dbb84cd460ce55d62dab32db63b7c2962677ef0dd648f3\"",
+  "ila": "\"wasf_sha256\": \"81eb9eadcaa43a0fd1dbb84cd460ce55d62dab32db63b7c2962677ef0dd648f0\""
+ },
+ {
+  "ism": "P1026_mawsul_tajmid_qatr",
+  "milaf": "tahaqquq/dawabit/mawsul/tajmid.json",
+  "min": "\"sha256\": \"2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d\"",
+  "ila": "\"sha256\": \"2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb90\""
+ },
+ {
+  "ism": "P1027_mawsul_tajmid_bina_cases",
+  "milaf": "tahaqquq/dawabit/mawsul/tajmid.json",
+  "min": "\"bina_cases_sha256\": \"8bed8945ea850c10430f7c0282cdadffad2d2a8eea4c810e1dcca2c4d8cfb728\"",
+  "ila": "\"bina_cases_sha256\": \"8bed8945ea850c10430f7c0282cdadffad2d2a8eea4c810e1dcca2c4d8cfb720\""
+ },
+ {
+  "ism": "P1028_mawsul_tajmid_bayanat",
+  "milaf": "tahaqquq/dawabit/mawsul/tajmid.json",
+  "min": "\"bayanat_1.txt\": \"377b9e8316e14db287ee81d200611c70e58cba19990409a235f816efc253bdb3\"",
+  "ila": "\"bayanat_1.txt\": \"377b9e8316e14db287ee81d200611c70e58cba19990409a235f816efc253bdb0\""
+ },
+ {
+  "ism": "P1029_mawsul_mawallad_ism",
+  "milaf": "Jisr/MawsulDawabit.lean",
+  "min": "⟨\"M05\", ",
+  "ila": "⟨\"M05x\", "
+ },
+ {
+  "ism": "P1030_mawsul_sijill_shifra",
+  "milaf": "tahaqquq/dawabit/mawsul/natija_2.json",
+  "min": "\"sha256\": \"188144c776ebe4569844116c7e45703c537e4a9346b2158062ca50cd86e5fdff\"",
+  "ila": "\"sha256\": \"188144c776ebe4569844116c7e45703c537e4a9346b2158062ca50cd86e5fdf0\""
+ },
+ {
+  "ism": "P1031_mawsul_sijill_sawab",
+  "milaf": "tahaqquq/dawabit/mawsul/natija_2.json",
+  "min": "\"sawab\": 88,\n  \"naqsTaghtiya\": 0,",
+  "ila": "\"sawab\": 87,\n  \"naqsTaghtiya\": 1,"
+ },
+ {
+  "ism": "P1032_mawsul_sijill_qablaha",
+  "milaf": "tahaqquq/dawabit/mawsul/natija_2.json",
+  "min": "\"natija_1.json\": \"9c942edd64ca8c39f7f375a555b856f9f74ce2e064d1344ba5238e115829a229\"",
+  "ila": "\"natija_1.json\": \"9c942edd64ca8c39f7f375a555b856f9f74ce2e064d1344ba5238e115829a220\""
+ },
+ {
+  "ism": "P1033_mawsul_natija1_adad",
+  "milaf": "tahaqquq/dawabit/mawsul/natija_1.json",
+  "min": "\"sawab\": 79,",
+  "ila": "\"sawab\": 78,"
+ },
+ {
+  "ism": "P1034_mawsul_fahs_akhta_fi_lean",
+  "milaf": "Jisr/MawsulQiyas.lean",
+  "min": "theorem akhta_sifr :",
+  "ila": "theorem akhta_alt : akhta (natayij halat) = [] := by\n  decide +kernel\n\ntheorem akhta_sifr :"
+ },
+ {
+  "ism": "P1035_mawsul_sijill_lean",
+  "milaf": "tahaqquq/dawabit/mawsul/natija_2.json",
+  "min": "\"Jisr.Mawsul.Qiyas.akhta_sifr\",\n  \"Jisr.Mawsul.Qiyas.azwaj_1\"",
+  "ila": "\"Jisr.Mawsul.Qiyas.akhta_sifr\""
+ },
+ {
+  "ism": "P1036_mawsul_sijill_akhta",
+  "milaf": "tahaqquq/dawabit/mawsul/natija_2.json",
+  "min": "\"akhta\": [],",
+  "ila": "\"akhta\": [[\"M01\", \"tajawuz\"]],"
+ },
+ {
+  "ism": "P1037_mawsul_sijill_bil_fia",
+  "milaf": "tahaqquq/dawabit/mawsul/natija_2.json",
+  "min": "\"موجب\": 48,",
+  "ila": "\"موجب\": 47,"
+ },
+ {
+  "ism": "P1038_mawsul_sijill_tashghil",
+  "milaf": "tahaqquq/dawabit/mawsul/natija_2.json",
+  "min": "\"tashghil\": 2,",
+  "ila": "\"tashghil\": 3,"
+ },
+ {
+  "ism": "P1039_mawsul_sijill_cases",
+  "milaf": "tahaqquq/dawabit/mawsul/natija_2.json",
+  "min": "\"cases_sha256\": \"8f92e0f553336d92badf2e5437e355e7a08104174cf802f546cc81ca707154b3\"",
+  "ila": "\"cases_sha256\": \"8f92e0f553336d92badf2e5437e355e7a08104174cf802f546cc81ca707154b0\""
+ },
+ {
+  "ism": "P1040_mawsul_sijill_halat",
+  "milaf": "tahaqquq/dawabit/mawsul/natija_2.json",
+  "min": "\"halat\": 59,",
+  "ila": "\"halat\": 58,"
+ },
+ {
+  "ism": "P1041_mawsul_sijill_azwaj",
+  "milaf": "tahaqquq/dawabit/mawsul/natija_2.json",
+  "min": "\"sawab_maan\": 16",
+  "ila": "\"sawab_maan\": 15"
+ },
+ {
+  "ism": "P1042_mawsul_majal_bila_adad",
+  "milaf": "Jisr/MawsulQiyas.lean",
+  "min": "theorem majal : majalAadad = [59, 29, 21, 5, 4, 0, 1, 1, 27, 0, 32, 24, 19, 5, 7, 4] := by",
+  "ila": "theorem majal : majalAadad = majalAadad ∨ majalAadad = [59, 29, 21, 5, 4, 0, 1, 1, 27, 0, 32, 24, 19, 5, 7, 4] := by"
+ },
+ {
+  "ism": "P1043_mawsul_natija_bila_adad",
+  "milaf": "Jisr/MawsulQiyas.lean",
+  "min": "theorem natija : ihsa (natayij halat) = ⟨88, 0, 0, 0, 0, 0, 0, 0⟩ := by",
+  "ila": "theorem natija : ihsa (natayij halat) = ihsa (natayij halat) ∨ ihsa (natayij halat) = ⟨88, 0, 0, 0, 0, 0, 0, 0⟩ := by"
  }
 ]
