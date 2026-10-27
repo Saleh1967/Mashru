@@ -18,11 +18,13 @@ import Nabt.UnitDiscovery
   لا جردَ للمصادر هنا، فالفاحصُ يقبل أيَّ مصدرٍ تحمله الشهادة؛ وأنّ ذرّاتِ المدخل هي ذرّاتُ الموضع لا يفحصه الفاحص العامّ، بل يُفرض في
   `sahihMadkhal` ويُبرهن في التحصيل (`Dal/Tahsil.lean`، `mawdi_sahih`).
 - المانعُ المشهود يمنع ولا يخفيه شاهدٌ موجب (`mani_mashhud_yamna`؛ نظيرُ `known_negative_blocks_source_only`)، بشرطٍ ليس في نظيره: أن
-  تكون مقدّماتُ المدخل كلُّها مشهودة.
+  تكون للمدخل مقدّمةٌ واحدةٌ على الأقلّ، ومقدّماتُه كلُّها مشهودة.
 - لا ترخيصَ بلا شاهدٍ لكلّ مقدّمة (`murakhkhas_iff`؛ نظيرُ `licensed_all_nodes_have_premises`).
-- والنتائجُ منفصلة: ربطٌ فاسد، مدخلٌ فاسد، امتناعٌ لغويّ، قاعدةٌ لا تنطبق، تعليقٌ باسم الناقص، ترخيص. فالمدخلُ الفاسد ليس حكمًا لغويًّا
-  (`madkhal_awwalan`)، والمدخلُ الذي لم تُفحص مقدّماتُه يعلِّق قبل أيّ حكم (`madkhal_ghayrMafhus_yuallaq`)، ولا يصدر ترخيصٌ ولا امتناعٌ ولا
-  عدمُ انطباقٍ إلّا ومقدّماتُ المدخل كلُّها مشهودة (`hukm_bi_madkhal_mashhud`).
+- والنتائجُ منفصلة: ربطٌ فاسد، مدخلٌ فاسد، امتناعٌ لغويّ، قاعدةٌ لا تنطبق، تعليقٌ باسم الناقص، ترخيص:
+  - المدخلُ الفاسد ليس حكمًا لغويًّا (`madkhal_awwalan`).
+  - في انتقالٍ مربوطٍ لا مقدّمةَ مدخلٍ فيه منقوضة، مقدّمةُ مدخلٍ واحدةٌ لم تُفحص تعلِّق قبل أيّ حكم (`madkhal_ghayrMafhus_yuallaq`)؛ وانتقالٌ
+    لا مقدّمةَ فيه للمدخل أصلًا يعلِّق باسم `madkhalGhaib` (`bila_madkhal_yuallaq`).
+  - لا يصدر ترخيصٌ ولا امتناعٌ ولا عدمُ انطباقٍ إلّا عن انتقالٍ له مقدّمةُ مدخلٍ ومقدّماتُ مدخله كلُّها مشهودة (`hukm_bi_madkhal_mashhud`).
 
 **العقد.** `Naqla` تحمل الحقولَ الستّة التي في الطلب، و`hukm` فاحصُها التنفيذيّ. و`Qaida` قاعدةٌ بمعناها وعقدِها: صحّةُ المدخل (ومنها مطابقةُ
 المصدر والموضع) ∧ مقدّماتُها ⇒ صحّةُ المخرج بمعنى القاعدة. و`shahada_salima` بثلاثة فروض: أمانةُ الشهادة لقاعدتها (`Amin`)، وصدقُ الشواهد
@@ -32,12 +34,13 @@ import Nabt.UnitDiscovery
 - `Sidq` و`sahihMadkhal` فرضان في العقد العامّ لا يفحصهما الفاحص (نظيرُ `interpreted` في NABT و`hA` في `QawaninDalala.salama`)؛ وفي التحصيل
   يُبرهنان لأنّ الشواهدَ دوالُّ فحصٍ فيه.
 - السندُ أيُّ نصٍّ غيرِ فارغ: لا يُفحص أنّه اسمُ مبرهنةٍ أو صفٍّ أو دالّة (كما لم يُفحص في البصمة غيرُ عدمِ الفراغ).
-- إذا منع مانعٌ مشهود، لم يُسمَّ ما لم يُفحص من الشروط والموانع: الامتناعُ يسمّي المانعَ وحده.
+- الحكمُ الحاسم يسمّي سببَه وحده، فلا يُسمّى معه ما لم يُفحص: المدخلُ الفاسد يسمّي مقدّمتَه المنفيّة، والامتناعُ مانعَه المشهود، وعدمُ
+  الانطباق شرطَه المنفيّ.
 - البدائلُ الباقية حقلٌ لا يحكم فيه الفاحص. وصحّةُ المخرج معنى القاعدة نفسِها، لا صحّةُ اللغة.
 
-**المبرهنات** (20، بالمعيار الموحَّد في `Nizam/Asas.lean`):
-- لكلّ (11): `awwalNaqid_none`، `naqisa_nil`، `naqisaMadkhal_nil`، `madkhal_mashhud`، `murakhkhas_iff`، `ghayrMafhus_la_yurakhkhis`،
-  `hukm_bi_madkhal_mashhud`، `madkhal_ghayrMafhus_yuallaq`، `mani_mashhud_yamna`، `muallaq_asma`، `shahada_salima`.
+**المبرهنات** (21، بالمعيار الموحَّد في `Nizam/Asas.lean`):
+- لكلّ (12): `awwalNaqid_none`، `naqisa_nil`، `naqisaMadkhal_nil`، `madkhal_mashhud`، `murakhkhas_iff`، `ghayrMafhus_la_yurakhkhis`،
+  `hukm_bi_madkhal_mashhud`، `madkhal_ghayrMafhus_yuallaq`، `bila_madkhal_yuallaq`، `mani_mashhud_yamna`، `muallaq_asma`، `shahada_salima`.
 - تعريفيّة (8): `hal_thalath`، `hukmMarbut_murakhkhas`، `hukmMarbut_muallaq`، `hukmMarbut_mumtani`، `hukmMarbut_laTantabiq`، `ghayrMarbut_awwalan`،
   `la_shahada_bila_sanad`، `madkhal_awwalan`.
 - على الشاهد (1): `shahid_mani`.
@@ -135,9 +138,15 @@ def awwalNaqid (n : Naqla α β) (k : Naw) : Option String :=
 def naqisa (n : Naqla α β) : List String :=
   (n.muqaddimat.filter (fun m => m.halFiil == .ghayrMafhus)).map (·.ism)
 
-/-- مقدّماتُ صحّة المدخل التي لم تُفحص، بأسمائها. -/
+/-- اسمُ التعليق حين لا مقدّمةَ لصحّة المدخل أصلًا. -/
+def madkhalGhaib : String := "صحة المدخل"
+
+def fihiMadkhal (n : Naqla α β) : Bool := n.muqaddimat.any (fun m => m.naw == .madkhal)
+
+/-- مقدّماتُ صحّة المدخل التي لم تُفحص، بأسمائها؛ وإن لم تكن للمدخل مقدّمةٌ أصلًا فـ`madkhalGhaib`. -/
 def naqisaMadkhal (n : Naqla α β) : List String :=
-  (n.muqaddimat.filter (fun m => m.naw == .madkhal && m.halFiil == .ghayrMafhus)).map (·.ism)
+  if fihiMadkhal n then (n.muqaddimat.filter (fun m => m.naw == .madkhal && m.halFiil == .ghayrMafhus)).map (·.ism)
+  else [madkhalGhaib]
 
 /-- الحكمُ بعد الربط: المدخلُ المنقوض فاسد، والمدخلُ الذي لم تُفحص كلُّ مقدّماته معلَّقٌ بأسمائها قبل أيّ حكمٍ آخر؛ ثمّ المانعُ المشهود،
     ثمّ الشرطُ المنفيّ، ثمّ ما لم يُفحص؛ وإلّا ترخيص. -/
@@ -179,8 +188,16 @@ theorem naqisa_nil (n : Naqla α β) :
   simp [naqisa, List.filter_eq_nil_iff]
 
 theorem naqisaMadkhal_nil (n : Naqla α β) :
-    naqisaMadkhal n = [] ↔ ∀ m ∈ n.muqaddimat, m.naw = .madkhal → m.halFiil ≠ .ghayrMafhus := by
-  simp [naqisaMadkhal, List.filter_eq_nil_iff]
+    naqisaMadkhal n = [] ↔ (∃ m ∈ n.muqaddimat, m.naw = .madkhal) ∧
+      ∀ m ∈ n.muqaddimat, m.naw = .madkhal → m.halFiil ≠ .ghayrMafhus := by
+  unfold naqisaMadkhal
+  by_cases h : fihiMadkhal n = true
+  · have hex : ∃ m ∈ n.muqaddimat, m.naw = .madkhal := by
+      simpa [fihiMadkhal, List.any_eq_true] using h
+    simp [h, hex, List.filter_eq_nil_iff]
+  · have hex : ¬ ∃ m ∈ n.muqaddimat, m.naw = .madkhal := by
+      simpa [fihiMadkhal, List.any_eq_true] using h
+    simp [h, hex]
 
 theorem hukmMarbut_murakhkhas (d : Option String) (dq : List String) (m s : Option String) (q : List String) :
     hukmMarbut d dq m s q = .murakhkhas ↔ d = none ∧ dq = [] ∧ m = none ∧ s = none ∧ q = [] := by
@@ -203,25 +220,28 @@ theorem hukmMarbut_laTantabiq (d : Option String) (dq : List String) (m s : Opti
 theorem ghayrMarbut_awwalan (n : Naqla α β) (h : n.marbut = false) : hukm n = .ghayrMarbut := by
   simp [hukm, h]
 
-/-- مدخلٌ لا مقدّمةَ منه منقوضةٌ ولا غيرُ مفحوصة: مقدّماتُه كلُّها مشهودة. -/
+/-- مدخلٌ له مقدّمة، ولا مقدّمةَ منه منقوضةٌ ولا غيرُ مفحوصة: مقدّماتُه كلُّها مشهودة. -/
 theorem madkhal_mashhud (n : Naqla α β) (hd : awwalNaqid n .madkhal = none) (hdq : naqisaMadkhal n = []) :
-    ∀ m ∈ n.muqaddimat, m.naw = .madkhal → m.halFiil = .mashhud := by
+    (∃ m ∈ n.muqaddimat, m.naw = .madkhal) ∧ ∀ m ∈ n.muqaddimat, m.naw = .madkhal → m.halFiil = .mashhud := by
+  refine ⟨((naqisaMadkhal_nil n).1 hdq).1, ?_⟩
   intro m hm hk
   rcases hal_thalath m with e | e | e
   · rw [e, hk]; rfl
   · exact absurd (by rw [e, hk]) ((awwalNaqid_none n .madkhal).1 hd m hm hk)
-  · exact absurd e ((naqisaMadkhal_nil n).1 hdq m hm hk)
+  · exact absurd e (((naqisaMadkhal_nil n).1 hdq).2 m hm hk)
 
-/-- **الترخيصُ بكلّ المقدّمات:** يُرخِّص الفاحصُ إذا وفقط إذا كان الانتقالُ مربوطًا وكلُّ مقدّمةٍ على مطلوبها بشاهدٍ ذي سند. -/
+/-- **الترخيصُ بكلّ المقدّمات:** يُرخِّص الفاحصُ إذا وفقط إذا كان الانتقالُ مربوطًا، وله مقدّمةُ مدخلٍ واحدةٌ على الأقلّ، وكلُّ مقدّمةٍ على
+    مطلوبها بشاهدٍ ذي سند. -/
 theorem murakhkhas_iff (n : Naqla α β) :
-    hukm n = .murakhkhas ↔ n.marbut = true ∧ ∀ m ∈ n.muqaddimat, m.halFiil = matlub m.naw := by
+    hukm n = .murakhkhas ↔ n.marbut = true ∧ (∃ m ∈ n.muqaddimat, m.naw = .madkhal) ∧
+      ∀ m ∈ n.muqaddimat, m.halFiil = matlub m.naw := by
   have hk : hukm n = .murakhkhas ↔ n.marbut = true ∧ awwalNaqid n .madkhal = none ∧ naqisaMadkhal n = [] ∧
       awwalNaqid n .mani = none ∧ awwalNaqid n .shart = none ∧ naqisa n = [] := by
     cases hb : n.marbut <;> simp [hukm, hb, hukmMarbut_murakhkhas]
   rw [hk]
   constructor
-  · rintro ⟨hb, hd, _, hm, hs, hq⟩
-    refine ⟨hb, ?_⟩
+  · rintro ⟨hb, hd, hdq, hm, hs, hq⟩
+    refine ⟨hb, ((naqisaMadkhal_nil n).1 hdq).1, ?_⟩
     intro m hmem
     have nq := (naqisa_nil n).1 hq m hmem
     rcases hal_thalath m with e | e | e
@@ -232,7 +252,7 @@ theorem murakhkhas_iff (n : Naqla α β) :
       · exact (awwalNaqid_none n .shart).1 hs m hmem hk (by rw [e, hk])
       · exact (awwalNaqid_none n .mani).1 hm m hmem hk (by rw [e, hk])
     · exact absurd e nq
-  · rintro ⟨hb, hall⟩
+  · rintro ⟨hb, hex, hall⟩
     have nonaqid : ∀ k, awwalNaqid n k = none := by
       intro k
       refine (awwalNaqid_none n k).2 ?_
@@ -247,7 +267,7 @@ theorem murakhkhas_iff (n : Naqla α β) :
       rw [he] at this
       cases hk : m.naw <;> simp [hk, matlub] at this
     have hdq : naqisaMadkhal n = [] := by
-      refine (naqisaMadkhal_nil n).2 ?_
+      refine (naqisaMadkhal_nil n).2 ⟨hex, ?_⟩
       intro m hmem _
       exact (naqisa_nil n).1 hq m hmem
     exact ⟨hb, nonaqid _, hdq, nonaqid _, nonaqid _, hq⟩
@@ -257,14 +277,16 @@ theorem murakhkhas_iff (n : Naqla α β) :
 theorem ghayrMafhus_la_yurakhkhis (n : Naqla α β) (m : Muqaddima) (hm : m ∈ n.muqaddimat)
     (hg : m.halFiil = .ghayrMafhus) : hukm n ≠ .murakhkhas := by
   intro h
-  have := ((murakhkhas_iff n).1 h).2 m hm
+  have := ((murakhkhas_iff n).1 h).2.2 m hm
   rw [hg] at this
   cases hk : m.naw <;> simp [hk, matlub] at this
 
-/-- **لا حكمَ بلا مدخلٍ مشهود:** الترخيصُ والامتناعُ وعدمُ الانطباق لا تصدر إلّا عن انتقالٍ مربوطٍ مقدّماتُ مدخله كلُّها مشهودة. -/
+/-- **لا حكمَ بلا مدخلٍ مشهود:** الترخيصُ والامتناعُ وعدمُ الانطباق لا تصدر إلّا عن انتقالٍ مربوطٍ له مقدّمةُ مدخلٍ واحدةٌ على الأقلّ،
+    ومقدّماتُ مدخله كلُّها مشهودة. -/
 theorem hukm_bi_madkhal_mashhud (n : Naqla α β)
     (h : hukm n = .murakhkhas ∨ (∃ x, hukm n = .mumtani x) ∨ (∃ x, hukm n = .laTantabiq x)) :
-    n.marbut = true ∧ ∀ m ∈ n.muqaddimat, m.naw = .madkhal → m.halFiil = .mashhud := by
+    n.marbut = true ∧ (∃ m ∈ n.muqaddimat, m.naw = .madkhal) ∧
+      ∀ m ∈ n.muqaddimat, m.naw = .madkhal → m.halFiil = .mashhud := by
   cases hb : n.marbut
   · simp [hukm, hb] at h
   · refine ⟨rfl, madkhal_mashhud n ?_ ?_⟩ <;>
@@ -274,13 +296,21 @@ theorem hukm_bi_madkhal_mashhud (n : Naqla α β)
       · first | exact h.1 | exact h.2.1
       · first | exact h.1 | exact h.2.1
 
-/-- **المدخلُ الذي لم يُفحص يعلِّق قبل كلّ حكم:** في انتقالٍ مربوطٍ مدخلُه غيرُ منقوض، مقدّمةُ مدخلٍ لم تُفحص تُخرج التعليقَ بأسماء ما لم
-    يُفحص من المدخل، أيًّا كانت الموانعُ والشروط. -/
+/-- **المدخلُ الذي لم يُفحص يعلِّق قبل كلّ حكم:** في انتقالٍ مربوطٍ لا مقدّمةَ مدخلٍ فيه منقوضة، مقدّمةُ مدخلٍ واحدةٌ لم تُفحص تُخرج
+    التعليقَ بأسماء ما لم يُفحص من المدخل، أيًّا كانت الموانعُ والشروط. -/
 theorem madkhal_ghayrMafhus_yuallaq (n : Naqla α β) (hb : n.marbut = true) (hd : awwalNaqid n .madkhal = none)
     (m : Muqaddima) (hm : m ∈ n.muqaddimat) (hk : m.naw = .madkhal) (hg : m.halFiil = .ghayrMafhus) :
     hukm n = .muallaq (naqisaMadkhal n) := by
-  have hne : naqisaMadkhal n ≠ [] := fun e => (naqisaMadkhal_nil n).1 e m hm hk hg
+  have hne : naqisaMadkhal n ≠ [] := fun e => ((naqisaMadkhal_nil n).1 e).2 m hm hk hg
   simp [hukm, hb, hd, hukmMarbut, hne]
+
+/-- **لا مدخلَ بلا مقدّمة:** انتقالٌ مربوطٌ لا مقدّمةَ فيه لصحّة المدخل يعلِّق باسم `madkhalGhaib`، أيًّا كانت الموانعُ والشروط. -/
+theorem bila_madkhal_yuallaq (n : Naqla α β) (hb : n.marbut = true) (h : ∀ m ∈ n.muqaddimat, m.naw ≠ .madkhal) :
+    hukm n = .muallaq [madkhalGhaib] := by
+  have hd : awwalNaqid n .madkhal = none := (awwalNaqid_none n .madkhal).2 (fun m hm hk _ => h m hm hk)
+  have hf : fihiMadkhal n = false := by
+    simpa [fihiMadkhal, List.any_eq_true] using h
+  simp [hukm, hb, hd, hukmMarbut, naqisaMadkhal, hf]
 
 /-- **لا شهادةَ بلا سند.** -/
 theorem la_shahada_bila_sanad (m : Muqaddima) (h : m.sanad = "") : m.halFiil = .ghayrMafhus := by
@@ -291,8 +321,8 @@ theorem madkhal_awwalan (n : Naqla α β) (hb : n.marbut = true) (s : String) (h
     hukm n = .madkhalFasid s := by
   simp [hukm, hb, hd, hukmMarbut]
 
-/-- **المانعُ المعروف يمنع:** في انتقالٍ مربوطٍ مقدّماتُ مدخله كلُّها مشهودة، مانعٌ مشهودٌ يُخرج الامتناعَ، ولا يُخفيه شاهدٌ آخر. -/
-theorem mani_mashhud_yamna (n : Naqla α β) (hb : n.marbut = true)
+/-- **المانعُ المعروف يمنع:** في انتقالٍ مربوطٍ له مقدّمةُ مدخلٍ ومقدّماتُ مدخله كلُّها مشهودة، مانعٌ مشهودٌ يُخرج الامتناعَ، ولا يُخفيه شاهدٌ آخر. -/
+theorem mani_mashhud_yamna (n : Naqla α β) (hb : n.marbut = true) (hex : ∃ m ∈ n.muqaddimat, m.naw = .madkhal)
     (hmad : ∀ m ∈ n.muqaddimat, m.naw = .madkhal → m.halFiil = .mashhud)
     (m : Muqaddima) (hm : m ∈ n.muqaddimat) (hk : m.naw = .mani) (hh : m.halFiil = .mashhud) :
     ∃ s, hukm n = .mumtani s := by
@@ -301,7 +331,7 @@ theorem mani_mashhud_yamna (n : Naqla α β) (hb : n.marbut = true)
     intro m' hm' hk' e
     rw [hmad m' hm' hk'] at e; cases e
   have hdq : naqisaMadkhal n = [] := by
-    refine (naqisaMadkhal_nil n).2 ?_
+    refine (naqisaMadkhal_nil n).2 ⟨hex, ?_⟩
     intro m' hm' hk' e
     rw [hmad m' hm' hk'] at e; cases e
   cases hmn : awwalNaqid n .mani with
@@ -309,25 +339,32 @@ theorem mani_mashhud_yamna (n : Naqla α β) (hb : n.marbut = true)
       exact absurd hh ((awwalNaqid_none n .mani).1 hmn m hm hk)
   | some s => exact ⟨s, by simp [hukm, hb, hd, hdq, hmn, hukmMarbut]⟩
 
-/-- **التعليقُ يسمّي ما لم يُفحص:** غيرُ فارغ، وكلُّ اسمٍ فيه مقدّمةٌ لم تُفحص؛ وهو ما لم يُفحص من المدخل إن كان فيه ذلك، وإلّا ما لم
-    يُفحص كلُّه. -/
+/-- **التعليقُ يسمّي ما لم يُفحص:** غيرُ فارغ، وكلُّ اسمٍ فيه مقدّمةٌ لم تُفحص، أو `madkhalGhaib` حين لا مقدّمةَ للمدخل؛ وهو ما لم يُفحص من
+    المدخل إن كان فيه ذلك، وإلّا ما لم يُفحص كلُّه. -/
 theorem muallaq_asma (n : Naqla α β) (l : List String) (h : hukm n = .muallaq l) :
     (l = naqisaMadkhal n ∨ l = naqisa n) ∧ l ≠ [] ∧
-      ∀ s ∈ l, ∃ m ∈ n.muqaddimat, m.ism = s ∧ m.halFiil = .ghayrMafhus := by
+      ∀ s ∈ l, (∃ m ∈ n.muqaddimat, m.ism = s ∧ m.halFiil = .ghayrMafhus) ∨
+        (s = madkhalGhaib ∧ ∀ m ∈ n.muqaddimat, m.naw ≠ .madkhal) := by
   cases hb : n.marbut <;> simp only [hukm, hb] at h
   · simp at h
   · simp only [ite_true, hukmMarbut_muallaq] at h
     rcases h.2 with ⟨hne, rfl⟩ | ⟨_, _, _, hne, rfl⟩
     · refine ⟨Or.inl rfl, hne, ?_⟩
       intro s hs'
-      simp only [naqisaMadkhal, List.mem_map, List.mem_filter, Bool.and_eq_true, beq_iff_eq] at hs'
-      obtain ⟨m, ⟨hmem, _, hg⟩, rfl⟩ := hs'
-      exact ⟨m, hmem, rfl, hg⟩
+      unfold naqisaMadkhal at hs'
+      by_cases hf : fihiMadkhal n = true
+      · simp only [hf, ite_true, List.mem_map, List.mem_filter, Bool.and_eq_true, beq_iff_eq] at hs'
+        obtain ⟨m, ⟨hmem, _, hg⟩, rfl⟩ := hs'
+        exact Or.inl ⟨m, hmem, rfl, hg⟩
+      · simp only [hf, Bool.false_eq_true, ite_false, List.mem_singleton] at hs'
+        refine Or.inr ⟨hs', ?_⟩
+        intro m hm hk
+        exact hf (List.any_eq_true.2 ⟨m, hm, by simp [hk]⟩)
     · refine ⟨Or.inr rfl, hne, ?_⟩
       intro s hs'
       simp only [naqisa, List.mem_map, List.mem_filter, beq_iff_eq] at hs'
       obtain ⟨m, ⟨hmem, hg⟩, rfl⟩ := hs'
-      exact ⟨m, hmem, rfl, hg⟩
+      exact Or.inl ⟨m, hmem, rfl, hg⟩
 
 /-! ## القاعدةُ بمعناها، وسلامةُ الشهادة -/
 
@@ -359,7 +396,7 @@ theorem shahada_salima (q : Qaida α β) (n : Naqla α β) (amin : Amin q n) (si
     (madkhal : q.sahihMadkhal n.masdar n.mawdi n.madkhal) (h : hukm n = .murakhkhas) :
     q.sahihMakhraj n.masdar n.mawdi n.madkhal n.makhraj := by
   obtain ⟨_, hout, hasma⟩ := amin
-  have hall := ((murakhkhas_iff n).1 h).2
+  have hall := ((murakhkhas_iff n).1 h).2.2
   rw [hout]
   apply q.aqd _ _ _ madkhal
   · intro p hp hk
@@ -389,16 +426,19 @@ def mawdiShahid : Span := ⟨1, 1, 1, 1, 0, 1⟩
 /-- انتقالٌ مثالٌ مانعُه بحالٍ معطاة. -/
 def naqlaShahid (h : Hal) : Naqla (List Char) (List Nat) :=
   ⟨masdarShahid, mawdiShahid, ['ك'], [32], ⟨"mithal", 1⟩,
-   [⟨"شرط", .shart, .mashhud, "s"⟩, ⟨"مانع", .mani, h, "s"⟩], [], "مثال"⟩
+   [⟨"مدخل", .madkhal, .mashhud, "s"⟩, ⟨"شرط", .shart, .mashhud, "s"⟩, ⟨"مانع", .mani, h, "s"⟩], [], "مثال"⟩
 
-/-- المانعُ نفسُه: منفيًّا يُرخِّص، وغيرَ مفحوصٍ يعلِّق باسمه، ومشهودًا يمنع؛ وبسندٍ فارغ لا يُعدّ منفيًّا. ومدخلٌ لم يُفحص يعلِّق
-    باسمه ولو شُهد المانع. -/
+/-- المانعُ نفسُه: منفيًّا يُرخِّص، وغيرَ مفحوصٍ يعلِّق باسمه، ومشهودًا يمنع؛ وبسندٍ فارغ لا يُعدّ منفيًّا. وبلا مقدّمةٍ للمدخل يعلِّق
+    باسم `madkhalGhaib` ولو نُفي المانع؛ ومدخلٌ لم يُفحص يعلِّق باسمه ولو شُهد المانع. -/
 theorem shahid_mani :
     hukm (naqlaShahid .manfi) = .murakhkhas ∧
     hukm (naqlaShahid .ghayrMafhus) = .muallaq ["مانع"] ∧
     hukm (naqlaShahid .mashhud) = .mumtani "مانع" ∧
-    hukm { naqlaShahid .manfi with muqaddimat := [⟨"شرط", .shart, .mashhud, "s"⟩, ⟨"مانع", .mani, .manfi, ""⟩] } =
+    hukm { naqlaShahid .manfi with
+      muqaddimat := [⟨"مدخل", .madkhal, .mashhud, "s"⟩, ⟨"شرط", .shart, .mashhud, "s"⟩, ⟨"مانع", .mani, .manfi, ""⟩] } =
       .muallaq ["مانع"] ∧
+    hukm { naqlaShahid .manfi with muqaddimat := [⟨"شرط", .shart, .mashhud, "s"⟩, ⟨"مانع", .mani, .manfi, "s"⟩] } =
+      .muallaq ["صحة المدخل"] ∧
     hukm { naqlaShahid .mashhud with
       muqaddimat := [⟨"مدخل", .madkhal, .ghayrMafhus, ""⟩, ⟨"شرط", .shart, .mashhud, "s"⟩, ⟨"مانع", .mani, .mashhud, "s"⟩] } =
       .muallaq ["مدخل"] := by

@@ -2328,6 +2328,7 @@ import Dal.Tahsil
 #print axioms Nizam.Shahada.ghayrMafhus_la_yurakhkhis
 #print axioms Nizam.Shahada.hukm_bi_madkhal_mashhud
 #print axioms Nizam.Shahada.madkhal_ghayrMafhus_yuallaq
+#print axioms Nizam.Shahada.bila_madkhal_yuallaq
 #print axioms Nizam.Shahada.la_shahada_bila_sanad
 #print axioms Nizam.Shahada.madkhal_awwalan
 #print axioms Nizam.Shahada.mani_mashhud_yamna

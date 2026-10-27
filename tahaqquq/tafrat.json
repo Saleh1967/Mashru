@@ -5236,5 +5236,11 @@
   "milaf": "Nizam/Shahada.lean",
   "min": "    if dq = [] then\n      match m, s with",
   "ila": "    if True then\n      match m, s with"
+ },
+ {
+  "ism": "P900_shahada_bila_madkhal_yurakhkhis",
+  "milaf": "Nizam/Shahada.lean",
+  "min": "  else [madkhalGhaib]",
+  "ila": "  else []"
  }
 ]

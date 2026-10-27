@@ -639,7 +639,7 @@ theorem shahada_hukm (src : Source Char) (m : Maqta) (hm : m ∈ tahsil src.atom
   | L s ks =>
     show Nizam.Shahada.hukm (shahada src m) = .murakhkhas
     rw [Nizam.Shahada.murakhkhas_iff]
-    refine ⟨?_, ?_⟩
+    refine ⟨?_, ⟨⟨madkhalSalim, .madkhal, .mashhud, "Dal.Tahsil.tasnif"⟩, by simp [shahada, hh, muqaddimatOf], rfl⟩, ?_⟩
     · simp only [Nizam.Shahada.Naqla.marbut, shahada, hv, hh, qaidaOf, Bool.true_and, Bool.not_eq_true']
       simpa using (ismSinf_ne s).2
     · intro q hq
@@ -650,8 +650,8 @@ theorem shahada_hukm (src : Source Char) (m : Maqta) (hm : m ∈ tahsil src.atom
       simp only [Nizam.Shahada.Naqla.marbut, shahada, hv, hh, qaidaOf, Bool.true_and, Bool.not_eq_true']
       decide
     simp only [Nizam.Shahada.hukm, hb, ite_true, natijaOf]
-    simp [Nizam.Shahada.hukmMarbut, Nizam.Shahada.awwalNaqid, Nizam.Shahada.naqisa, Nizam.Shahada.naqisaMadkhal, shahada,
-      hh, muqaddimatOf, Muqaddima.halFiil, Nizam.Shahada.naqid, madkhalSalim]
+    simp [Nizam.Shahada.hukmMarbut, Nizam.Shahada.awwalNaqid, Nizam.Shahada.naqisa, Nizam.Shahada.naqisaMadkhal,
+      Nizam.Shahada.fihiMadkhal, shahada, hh, muqaddimatOf, Muqaddima.halFiil, Nizam.Shahada.naqid, madkhalSalim]
   | F ism =>
     have hb : (shahada src m).marbut = true := by
       simp only [Nizam.Shahada.Naqla.marbut, shahada, hv, hh, qaidaOf, Bool.true_and, Bool.not_eq_true']
