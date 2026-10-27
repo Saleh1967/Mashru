@@ -1,0 +1,1438 @@
+[
+  {
+    "id": "I01",
+    "fia": "موجب",
+    "mithal": "ذا",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "ذا",
+      "mushar": "مفرد_مذكر",
+      "mawdi": "رفع",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": "I08",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 132,
+        "nass": "ذا للمذكر"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 138,
+        "nass": "بذا لمفرد مذكر أشر"
+      }
+    ],
+    "taliq": "ذا للمذكر المفرد في المصدرين، ولا يقيّده النطاق بموضع."
+  },
+  {
+    "id": "I02",
+    "fia": "حد",
+    "mithal": "ذا",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "ذا",
+      "mushar": "مفرد_مذكر",
+      "mawdi": "رفع",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "خطأ",
+    "zawj": "I03",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 132,
+        "nass": "ذا للمذكر"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "والبعيد بالكاف"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 140,
+        "nass": "ولدى البعد انطقا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 142,
+        "nass": "بالكاف حرفا"
+      }
+    ],
+    "taliq": "البعيد بالكاف في المصدرين، ولا يذكران للبعيد الصورة المجرّدة."
+  },
+  {
+    "id": "I03",
+    "fia": "موجب",
+    "mithal": "ذاك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ذا",
+      "mushar": "مفرد_مذكر",
+      "mawdi": "رفع",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": false,
+      "kaf": true
+    },
+    "hukm": "مقبول",
+    "zawj": "I02",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "والبعيد بالكاف مجردة من"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 134,
+        "nass": "اللام مطلقا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 140,
+        "nass": "ولدى البعد انطقا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 142,
+        "nass": "بالكاف حرفا دون لام"
+      }
+    ],
+    "taliq": "البعيد بالكاف مجرّدةً من اللام."
+  },
+  {
+    "id": "I04",
+    "fia": "حد",
+    "mithal": "ذاك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ذا",
+      "mushar": "مفرد_مذكر",
+      "mawdi": "رفع",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": true
+    },
+    "hukm": "خطأ",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "والبعيد بالكاف"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 140,
+        "nass": "ولدى البعد انطقا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 142,
+        "nass": "بالكاف حرفا"
+      }
+    ],
+    "taliq": "الكاف للبعيد، ولا يذكرها النطاق للقريب."
+  },
+  {
+    "id": "I05",
+    "fia": "موجب",
+    "mithal": "ذلك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ذا",
+      "mushar": "مفرد_مذكر",
+      "mawdi": "رفع",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": true,
+      "kaf": true
+    },
+    "hukm": "مقبول",
+    "zawj": "I06",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 134,
+        "nass": "اللام مطلقا أو مقرونة بها"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 142,
+        "nass": "بالكاف حرفا دون لام أو معه"
+      }
+    ],
+    "taliq": "الكاف مقرونةً باللام للبعيد، وليس هنا ما يستثنيه."
+  },
+  {
+    "id": "I06",
+    "fia": "عموم",
+    "mithal": "هذالك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ذا",
+      "mushar": "مفرد_مذكر",
+      "mawdi": "رفع",
+      "bud": "بعيد",
+      "ha": true,
+      "lam": true,
+      "kaf": true
+    },
+    "hukm": "خطأ",
+    "zawj": "I05",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 134,
+        "nass": "أو مقرونة بها، إلا في"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 135,
+        "nass": "وفيما تقدمته ها التنبيه."
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 142,
+        "nass": "واللام إن قدمت هاممتنعة"
+      }
+    ],
+    "taliq": "منعُ اللام بعد ها التنبيه قاعدةٌ بلا مثالٍ في المصدرين، تشمل ذا."
+  },
+  {
+    "id": "I07",
+    "fia": "عموم",
+    "mithal": "هذاك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ذا",
+      "mushar": "مفرد_مذكر",
+      "mawdi": "نصب",
+      "bud": "بعيد",
+      "ha": true,
+      "lam": false,
+      "kaf": true
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "والبعيد بالكاف مجردة من"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 134,
+        "nass": "اللام مطلقا"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 135,
+        "nass": "وفيما تقدمته ها التنبيه."
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 142,
+        "nass": "بالكاف حرفا دون لام"
+      }
+    ],
+    "taliq": "«مجردة من اللام مطلقا» يشمل ما تقدمته ها، والاستثناءُ بها للّام وحدها."
+  },
+  {
+    "id": "I08",
+    "fia": "خارج",
+    "mithal": "هذا",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ذا",
+      "mushar": "مفرد_مذكر",
+      "mawdi": "رفع",
+      "bud": "قريب",
+      "ha": true,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "لا_حكم",
+    "zawj": "I01",
+    "sanad": [],
+    "taliq": "لا يذكر النطاقُ ها مع القريب إلا في ههنا، ولا يحكم فيها إلا بمنع اللام؛ وشيوعُ هذا من خارجه."
+  },
+  {
+    "id": "I09",
+    "fia": "حد",
+    "mithal": "ذا",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "ذا",
+      "mushar": "مفرد_مؤنث",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "خطأ",
+    "zawj": "I10",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 132,
+        "nass": "ذا للمذكر، وذي وذه وتي وته وتا للمؤنث"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 138,
+        "nass": "بذي وذه تي تا على الأنثى اقتصر"
+      }
+    ],
+    "taliq": "للمؤنث صورٌ أخرى في المصدرين، وذا للمذكر."
+  },
+  {
+    "id": "I10",
+    "fia": "موجب",
+    "mithal": "ذي",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "ذي",
+      "mushar": "مفرد_مؤنث",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": "I09",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 132,
+        "nass": "وذي وذه وتي وته وتا للمؤنث"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 138,
+        "nass": "بذي وذه تي تا على الأنثى اقتصر"
+      }
+    ],
+    "taliq": "ذي للمؤنث في المصدرين."
+  },
+  {
+    "id": "I11",
+    "fia": "موجب",
+    "mithal": "ذه",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "ذه",
+      "mushar": "مفرد_مؤنث",
+      "mawdi": "جر",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 132,
+        "nass": "وذي وذه وتي وته وتا للمؤنث"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 138,
+        "nass": "بذي وذه تي تا على الأنثى اقتصر"
+      }
+    ],
+    "taliq": "ذه للمؤنث في المصدرين، ولا يقيّده النطاق بموضع."
+  },
+  {
+    "id": "I12",
+    "fia": "خارج",
+    "mithal": "هاتي",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "تي",
+      "mushar": "مفرد_مؤنث",
+      "mawdi": "جر",
+      "bud": "قريب",
+      "ha": true,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "لا_حكم",
+    "zawj": null,
+    "sanad": [],
+    "taliq": "ها مع القريب في غير هنا لا يحكم فيها النطاق بقبولٍ ولا منع."
+  },
+  {
+    "id": "I13",
+    "fia": "موجب",
+    "mithal": "ته",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "ته",
+      "mushar": "مفرد_مؤنث",
+      "mawdi": "رفع",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 132,
+        "nass": "وذي وذه وتي وته وتا للمؤنث"
+      }
+    ],
+    "taliq": "ته في القطر وحده؛ والألفية لا تذكرها في الأربعة ولا تمنعها."
+  },
+  {
+    "id": "I14",
+    "fia": "عموم",
+    "mithal": "تهلك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ته",
+      "mushar": "مفرد_مؤنث",
+      "mawdi": "رفع",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": true,
+      "kaf": true
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "والبعيد بالكاف مجردة من"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 134,
+        "nass": "اللام مطلقا أو مقرونة بها"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 142,
+        "nass": "بالكاف حرفا دون لام أو معه"
+      }
+    ],
+    "taliq": "إجازةُ اللام مع الكاف عامّةٌ إلا ما استُثني، وته ليست منه؛ والنحوُ من خارج النطاق قد يخالف."
+  },
+  {
+    "id": "I15",
+    "fia": "موجب",
+    "mithal": "تا",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "تا",
+      "mushar": "مفرد_مؤنث",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": "I16",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 132,
+        "nass": "وذي وذه وتي وته وتا للمؤنث"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 138,
+        "nass": "بذي وذه تي تا على الأنثى اقتصر"
+      }
+    ],
+    "taliq": "تا للمؤنث في المصدرين."
+  },
+  {
+    "id": "I16",
+    "fia": "حد",
+    "mithal": "تا",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "تا",
+      "mushar": "جمع_مؤنث",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "خطأ",
+    "zawj": "I15",
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 138,
+        "nass": "بذي وذه تي تا على الأنثى اقتصر"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "وأولاء لجمعهما"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 140,
+        "nass": "وبأولى أشر لجمع"
+      }
+    ],
+    "taliq": "للجمع أولاء وأولى، وتا للأنثى في التقسيم."
+  },
+  {
+    "id": "I17",
+    "fia": "موجب",
+    "mithal": "ذان",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "ذان",
+      "mushar": "مثنى_مذكر",
+      "mawdi": "رفع",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": "I18",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 132,
+        "nass": "وذان وتان للمثنى"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "بالألف رفعا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 139,
+        "nass": "وذان تان للمثنى المرتفع"
+      }
+    ],
+    "taliq": "ذان للمثنى بالألف رفعًا."
+  },
+  {
+    "id": "I18",
+    "fia": "حد",
+    "mithal": "ذان",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "ذان",
+      "mushar": "مثنى_مذكر",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "خطأ",
+    "zawj": "I17",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "بالألف رفعا وبالياء جرا ونصبا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 139,
+        "nass": "وذان تان للمثنى المرتفع ... وفي سواه ذين تين اذكر تطع"
+      }
+    ],
+    "taliq": "ذان للمثنى المرتفع، وفي النصب ذين."
+  },
+  {
+    "id": "I19",
+    "fia": "عموم",
+    "mithal": "ذان",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "ذان",
+      "mushar": "مثنى_مؤنث",
+      "mawdi": "رفع",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 132,
+        "nass": "وذان وتان للمثنى"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 139,
+        "nass": "وذان تان للمثنى المرتفع"
+      }
+    ],
+    "taliq": "«للمثنى» في المصدرين بلا تفريقٍ بين مذكّره ومؤنّثه؛ وتخصيصُ ذان بالمذكر من خارج النطاق."
+  },
+  {
+    "id": "I20",
+    "fia": "عموم",
+    "mithal": "ذانك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ذان",
+      "mushar": "مثنى_مذكر",
+      "mawdi": "رفع",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": false,
+      "kaf": true
+    },
+    "hukm": "مقبول",
+    "zawj": "I21",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "والبعيد بالكاف مجردة من"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 134,
+        "nass": "اللام مطلقا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 142,
+        "nass": "بالكاف حرفا دون لام"
+      }
+    ],
+    "taliq": "«مجردة من اللام مطلقا» يشمل المثنى."
+  },
+  {
+    "id": "I21",
+    "fia": "حد",
+    "mithal": "ذانلك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ذان",
+      "mushar": "مثنى_مذكر",
+      "mawdi": "رفع",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": true,
+      "kaf": true
+    },
+    "hukm": "خطأ",
+    "zawj": "I20",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 134,
+        "nass": "أو مقرونة بها، إلا في المثنى مطلقا"
+      }
+    ],
+    "taliq": "القطر يستثني المثنى من اللام؛ وعبارةُ الألفية «دون لام أو معه» عامّة لا تستثنيه، فقُدِّم الاستثناءُ الصريح."
+  },
+  {
+    "id": "I22",
+    "fia": "خارج",
+    "mithal": "هذان",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ذان",
+      "mushar": "مثنى_مذكر",
+      "mawdi": "رفع",
+      "bud": "قريب",
+      "ha": true,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "لا_حكم",
+    "zawj": "I28",
+    "sanad": [],
+    "taliq": "ها مع القريب في غير هنا لا يحكم فيها النطاق؛ والموضعُ على ما يقبله."
+  },
+  {
+    "id": "I23",
+    "fia": "موجب",
+    "mithal": "تان",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "تان",
+      "mushar": "مثنى_مؤنث",
+      "mawdi": "رفع",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": "I24",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 132,
+        "nass": "وذان وتان للمثنى"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "بالألف رفعا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 139,
+        "nass": "وذان تان للمثنى المرتفع"
+      }
+    ],
+    "taliq": "تان للمثنى بالألف رفعًا."
+  },
+  {
+    "id": "I24",
+    "fia": "حد",
+    "mithal": "تان",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "تان",
+      "mushar": "مثنى_مؤنث",
+      "mawdi": "جر",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "خطأ",
+    "zawj": "I23",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "بالألف رفعا وبالياء جرا ونصبا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 139,
+        "nass": "وذان تان للمثنى المرتفع ... وفي سواه ذين تين اذكر تطع"
+      }
+    ],
+    "taliq": "تان للمثنى المرتفع، وفي الجرّ تين."
+  },
+  {
+    "id": "I25",
+    "fia": "موجب",
+    "mithal": "ذين",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "ذين",
+      "mushar": "مثنى_مذكر",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": "I27",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "وبالياء جرا ونصبا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 139,
+        "nass": "وفي سواه ذين تين اذكر تطع"
+      }
+    ],
+    "taliq": "بالياء جرًّا ونصبًا: ذين في غير الرفع."
+  },
+  {
+    "id": "I26",
+    "fia": "عموم",
+    "mithal": "ذينك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ذين",
+      "mushar": "مثنى_مذكر",
+      "mawdi": "جر",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": false,
+      "kaf": true
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "والبعيد بالكاف مجردة من"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 134,
+        "nass": "اللام مطلقا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 139,
+        "nass": "وفي سواه ذين تين اذكر تطع"
+      }
+    ],
+    "taliq": "التجريدُ من اللام مطلقا يشمل المثنى في الجرّ."
+  },
+  {
+    "id": "I27",
+    "fia": "خارج",
+    "mithal": "هذين",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ذين",
+      "mushar": "مثنى_مذكر",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": true,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "لا_حكم",
+    "zawj": "I25",
+    "sanad": [],
+    "taliq": "ها مع القريب في غير هنا لا يحكم فيها النطاق؛ والموضعُ على ما يقبله."
+  },
+  {
+    "id": "I28",
+    "fia": "حد",
+    "mithal": "هذين",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "ذين",
+      "mushar": "مثنى_مذكر",
+      "mawdi": "رفع",
+      "bud": "قريب",
+      "ha": true,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "خطأ",
+    "zawj": "I22",
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 139,
+        "nass": "وذان تان للمثنى المرتفع ... وفي سواه ذين تين اذكر تطع"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "بالألف رفعا وبالياء جرا ونصبا"
+      }
+    ],
+    "taliq": "ذين لغير الرفع، وتقدُّمُ ها لا يغيّر حكمَ الموضع."
+  },
+  {
+    "id": "I29",
+    "fia": "موجب",
+    "mithal": "تين",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "تين",
+      "mushar": "مثنى_مؤنث",
+      "mawdi": "جر",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "وبالياء جرا ونصبا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 139,
+        "nass": "وفي سواه ذين تين اذكر تطع"
+      }
+    ],
+    "taliq": "تين في غير الرفع."
+  },
+  {
+    "id": "I30",
+    "fia": "عموم",
+    "mithal": "تينلك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "تين",
+      "mushar": "مثنى_مؤنث",
+      "mawdi": "نصب",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": true,
+      "kaf": true
+    },
+    "hukm": "خطأ",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 134,
+        "nass": "إلا في المثنى مطلقا"
+      }
+    ],
+    "taliq": "«إلا في المثنى مطلقا» يشمل النصب والمؤنث."
+  },
+  {
+    "id": "I31",
+    "fia": "موجب",
+    "mithal": "أولاء",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "أولاء",
+      "mushar": "جمع_مذكر",
+      "mawdi": "رفع",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "وأولاء لجمعهما"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 140,
+        "nass": "والمد أولى"
+      }
+    ],
+    "taliq": "أولاء لجمع المذكر والمؤنث، والمدّ أولى (للصورتين)."
+  },
+  {
+    "id": "I32",
+    "fia": "موجب",
+    "mithal": "أولاء",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "أولاء",
+      "mushar": "جمع_مؤنث",
+      "mawdi": "جر",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "وأولاء لجمعهما"
+      }
+    ],
+    "taliq": "«لجمعهما» يشمل جمع المؤنث نصًّا، ولا يقيّده النطاق بموضع."
+  },
+  {
+    "id": "I33",
+    "fia": "حد",
+    "mithal": "أولاءلك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "أولاء",
+      "mushar": "جمع_مذكر",
+      "mawdi": "رفع",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": true,
+      "kaf": true
+    },
+    "hukm": "خطأ",
+    "zawj": "I34",
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 134,
+        "nass": "إلا في المثنى مطلقا وفي الجمع في لغة من مده"
+      }
+    ],
+    "taliq": "القطر يمنع اللام في الجمع لمن مدّه؛ والألفية تطلق «دون لام أو معه»، فقُدِّم الاستثناءُ الصريح."
+  },
+  {
+    "id": "I34",
+    "fia": "عموم",
+    "mithal": "أولالك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "أولى",
+      "mushar": "جمع_مذكر",
+      "mawdi": "رفع",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": true,
+      "kaf": true
+    },
+    "hukm": "مقبول",
+    "zawj": "I33",
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 140,
+        "nass": "ولدى البعد انطقا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 142,
+        "nass": "بالكاف حرفا دون لام أو معه"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 134,
+        "nass": "وفي الجمع في لغة من مده"
+      }
+    ],
+    "taliq": "الألفية تجيز اللام عامّةً، واستثناءُ القطر في الجمع خاصٌّ بمن مدّه."
+  },
+  {
+    "id": "I35",
+    "fia": "عموم",
+    "mithal": "أولئك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "أولاء",
+      "mushar": "جمع_مؤنث",
+      "mawdi": "نصب",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": false,
+      "kaf": true
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "قطر",
+        "satr": 133,
+        "nass": "والبعيد بالكاف مجردة من"
+      },
+      {
+        "masdar": "قطر",
+        "satr": 134,
+        "nass": "اللام مطلقا"
+      }
+    ],
+    "taliq": "التجريدُ من اللام مطلقا يشمل الجمعَ الممدود."
+  },
+  {
+    "id": "I36",
+    "fia": "خارج",
+    "mithal": "هؤلاء",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "أولاء",
+      "mushar": "جمع_مذكر",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": true,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "لا_حكم",
+    "zawj": null,
+    "sanad": [],
+    "taliq": "ها مع القريب في غير هنا لا يحكم فيها النطاق بقبولٍ ولا منع."
+  },
+  {
+    "id": "I37",
+    "fia": "موجب",
+    "mithal": "أولى",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "أولى",
+      "mushar": "جمع_مذكر",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": "I38",
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 140,
+        "nass": "وبأولى أشر لجمع مطلقا ... والمد أولى"
+      }
+    ],
+    "taliq": "أولى للجمع في الألفية، و«المد أولى» تفضيلٌ يقبل الصورتين."
+  },
+  {
+    "id": "I38",
+    "fia": "حد",
+    "mithal": "أولى",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "أولى",
+      "mushar": "مثنى_مذكر",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "خطأ",
+    "zawj": "I37",
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 140,
+        "nass": "وبأولى أشر لجمع"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 139,
+        "nass": "وفي سواه ذين تين اذكر تطع"
+      }
+    ],
+    "taliq": "أولى للجمع، وللمثنى في غير الرفع ذين وتين."
+  },
+  {
+    "id": "I39",
+    "fia": "عموم",
+    "mithal": "أولى",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "أولى",
+      "mushar": "جمع_مؤنث",
+      "mawdi": "جر",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 140,
+        "nass": "وبأولى أشر لجمع مطلقا"
+      }
+    ],
+    "taliq": "«لجمع مطلقا» يشمل جمع المؤنث."
+  },
+  {
+    "id": "I40",
+    "fia": "موجب",
+    "mithal": "هنا",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "هنا",
+      "mushar": "مكان",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 143,
+        "nass": "وبهنا أو ههنا أشر إلى ... داني المكان"
+      }
+    ],
+    "taliq": "هنا لداني المكان بحروفها."
+  },
+  {
+    "id": "I41",
+    "fia": "موجب",
+    "mithal": "ههنا",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "هنا",
+      "mushar": "مكان",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": true,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 143,
+        "nass": "وبهنا أو ههنا أشر إلى ... داني المكان"
+      }
+    ],
+    "taliq": "ههنا لداني المكان نصًّا."
+  },
+  {
+    "id": "I42",
+    "fia": "موجب",
+    "mithal": "هناك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "هنا",
+      "mushar": "مكان",
+      "mawdi": "نصب",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": false,
+      "kaf": true
+    },
+    "hukm": "مقبول",
+    "zawj": "I43",
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 143,
+        "nass": "وبه الكاف صلا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 144,
+        "nass": "في البعد"
+      }
+    ],
+    "taliq": "الكاف تُوصل بهنا في البعد."
+  },
+  {
+    "id": "I43",
+    "fia": "حد",
+    "mithal": "هناك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "هنا",
+      "mushar": "مكان",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": true
+    },
+    "hukm": "خطأ",
+    "zawj": "I42",
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 143,
+        "nass": "وبهنا أو ههنا أشر إلى ... داني المكان وبه الكاف صلا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 144,
+        "nass": "في البعد"
+      }
+    ],
+    "taliq": "القريب هنا وههنا، والكاف للبعد."
+  },
+  {
+    "id": "I44",
+    "fia": "موجب",
+    "mithal": "هنالك",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "هنا",
+      "mushar": "مكان",
+      "mawdi": "نصب",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": true,
+      "kaf": true
+    },
+    "hukm": "مقبول",
+    "zawj": "I45",
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 144,
+        "nass": "في البعد أو بثم فه أو هنا ... أو بهنالك انطقن"
+      }
+    ],
+    "taliq": "هنالك في عِداد صور البعد."
+  },
+  {
+    "id": "I45",
+    "fia": "عموم",
+    "mithal": "ههنالك",
+    "mithal_harfi": false,
+    "dakhil": {
+      "asl": "هنا",
+      "mushar": "مكان",
+      "mawdi": "نصب",
+      "bud": "بعيد",
+      "ha": true,
+      "lam": true,
+      "kaf": true
+    },
+    "hukm": "خطأ",
+    "zawj": "I44",
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 142,
+        "nass": "واللام إن قدمت هاممتنعة"
+      }
+    ],
+    "taliq": "منعُ اللام بعد ها في الألفية عامٌّ بلا مثال، يشمل هنا."
+  },
+  {
+    "id": "I46",
+    "fia": "موجب",
+    "mithal": "ثم",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "ثم",
+      "mushar": "مكان",
+      "mawdi": "نصب",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "مقبول",
+    "zawj": "I47",
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 144,
+        "nass": "في البعد أو بثم فه"
+      }
+    ],
+    "taliq": "ثم للمكان البعيد."
+  },
+  {
+    "id": "I47",
+    "fia": "حد",
+    "mithal": "ثم",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "ثم",
+      "mushar": "مكان",
+      "mawdi": "نصب",
+      "bud": "قريب",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": "خطأ",
+    "zawj": "I46",
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 143,
+        "nass": "وبهنا أو ههنا أشر إلى ... داني المكان"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 144,
+        "nass": "في البعد أو بثم فه"
+      }
+    ],
+    "taliq": "القريب هنا وههنا، وثم في البعد."
+  },
+  {
+    "id": "I48",
+    "fia": "غموض",
+    "mithal": "هنا",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "هنا",
+      "mushar": "مكان",
+      "mawdi": "نصب",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": [
+      "مقبول",
+      "خطأ"
+    ],
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 143,
+        "nass": "وبهنا أو ههنا أشر إلى ... داني المكان وبه الكاف صلا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 144,
+        "nass": "في البعد أو بثم فه أو هنا ... أو بهنالك انطقن أو هنا"
+      }
+    ],
+    "taliq": "143 تجعل هنا للقريب وتصل بها الكاف في البعد، و144 تعدّ «هنا» مجرّدةً في البعد مرّتين؛ يفرّق بينهما ضبطٌ لا تكتبه الحروف."
+  },
+  {
+    "id": "I49",
+    "fia": "غموض",
+    "mithal": "هنا",
+    "mithal_harfi": true,
+    "dakhil": {
+      "asl": "هنا",
+      "mushar": "مكان",
+      "mawdi": "جر",
+      "bud": "بعيد",
+      "ha": false,
+      "lam": false,
+      "kaf": false
+    },
+    "hukm": [
+      "مقبول",
+      "خطأ"
+    ],
+    "zawj": null,
+    "sanad": [
+      {
+        "masdar": "ألفية",
+        "satr": 143,
+        "nass": "وبهنا أو ههنا أشر إلى ... داني المكان وبه الكاف صلا"
+      },
+      {
+        "masdar": "ألفية",
+        "satr": 144,
+        "nass": "في البعد أو بثم فه أو هنا ... أو بهنالك انطقن أو هنا"
+      }
+    ],
+    "taliq": "كالسابقة في الجرّ: «هنا» المجرّدة في البعد مقبولةٌ إن كانت لفظَ 144، وخطأٌ إن كانت هنا القريبة؛ والضبطُ لا يظهر في الحروف."
+  }
+]
