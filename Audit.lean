@@ -2383,6 +2383,7 @@ import Jisr.IsharaQiyas
 #print axioms Jisr.Ishara.mawdi_la_yughayyir
 #print axioms Jisr.Ishara.muthanna_bila_jins
 #print axioms Jisr.Ishara.asma_qatr
+#print axioms Jisr.Ishara.maqam_ishara
 #print axioms Jisr.Ishara.mirsat_maqbul
 #print axioms Jisr.Ishara.shawahid
 #print axioms Jisr.Ishara.shahid_qasr

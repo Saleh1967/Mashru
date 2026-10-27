@@ -5282,8 +5282,8 @@
  {
   "ism": "P918_ishara_ha_thamma",
   "milaf": "Jisr/Ishara.lean",
-  "min": "  else if d.ha && d.asl == .thamma then .laHukm",
-  "ila": "  else if d.ha && d.asl == .thamma then .khata"
+  "min": "  else if d.ha && d.asl == .thamma && d.bud == .baid && !d.kaf then .laHukm",
+  "ila": "  else if d.ha && d.asl == .thamma && d.bud == .baid && !d.kaf then .khata"
  },
  {
   "ism": "P919_ishara_madd_qasr",
@@ -5352,10 +5352,10 @@
   "ila": "  | _, .qarib => if d.kaf then .khata else .maqbul"
  },
  {
-  "ism": "P931_ishara_tajmid_cases",
+  "ism": "P931_ishara_tajmid_wasf",
   "milaf": "tahaqquq/dawabit/ishara/tajmid.json",
-  "min": "\"cases_sha256\": \"5725a39dbc5783835202f7b4876665c6403a07628bee3c0986670de3df9be664\"",
-  "ila": "\"cases_sha256\": \"5725a39dbc5783835202f7b4876665c6403a07628bee3c0986670de3df9be660\""
+  "min": "\"wasf_sha256\": \"5cc2372854e68d50774467e075b8ff683aa9b86fa6f022a0eeb21c22cb7d509f\"",
+  "ila": "\"wasf_sha256\": \"5cc2372854e68d50774467e075b8ff683aa9b86fa6f022a0eeb21c22cb7d5090\""
  },
  {
   "ism": "P932_ishara_tajmid_qatr",
@@ -5371,21 +5371,21 @@
  },
  {
   "ism": "P934_ishara_sijill_shifra",
-  "milaf": "tahaqquq/dawabit/ishara/natija_2.json",
-  "min": "\"sha256\": \"fd928eedbe0f9419b591910f565642011335e4b53f76ba4954d905aa1ebdd9f1\"",
-  "ila": "\"sha256\": \"fd928eedbe0f9419b591910f565642011335e4b53f76ba4954d905aa1ebdd9f0\""
+  "milaf": "tahaqquq/dawabit/ishara/natija_3.json",
+  "min": "\"sha256\": \"33c04472c761523570196b4325270db396398f8401fbc65a9e550bf6ed48aaf2\"",
+  "ila": "\"sha256\": \"33c04472c761523570196b4325270db396398f8401fbc65a9e550bf6ed48aaf0\""
  },
  {
   "ism": "P935_ishara_sijill_sawab",
-  "milaf": "tahaqquq/dawabit/ishara/natija_2.json",
-  "min": "\"sawab\": 49,",
-  "ila": "\"sawab\": 48,"
+  "milaf": "tahaqquq/dawabit/ishara/natija_3.json",
+  "min": "\"sawab\": 49,\n  \"naqsTaghtiya\": 0,",
+  "ila": "\"sawab\": 48,\n  \"naqsTaghtiya\": 1,"
  },
  {
   "ism": "P936_ishara_sijill_qablaha",
-  "milaf": "tahaqquq/dawabit/ishara/natija_2.json",
-  "min": "\"natija_1.json\": \"e1fe145569aa982a8d8f0851f12e05d9e20672bc9828cfbaa3ca3a0096a1163d\"",
-  "ila": "\"natija_1.json\": \"e1fe145569aa982a8d8f0851f12e05d9e20672bc9828cfbaa3ca3a0096a11630\""
+  "milaf": "tahaqquq/dawabit/ishara/natija_3.json",
+  "min": "\"natija_2.json\": \"37d1b2580c01fd076020e72186e38b5f6283346c0ddd7663fc0ab6ba1438e7c9\"",
+  "ila": "\"natija_2.json\": \"37d1b2580c01fd076020e72186e38b5f6283346c0ddd7663fc0ab6ba1438e7c0\""
  },
  {
   "ism": "P937_ishara_natija1_adad",
@@ -5394,44 +5394,44 @@
   "ila": "\"sawab\": 41,"
  },
  {
-  "ism": "P938_ishara_sijill_lean",
-  "milaf": "tahaqquq/dawabit/ishara/natija_2.json",
-  "min": "\"Jisr.Ishara.Qiyas.akhta_sifr\",",
-  "ila": "\"Jisr.Ishara.Qiyas.akhta_1\","
+  "ism": "P938_ishara_fahs_akhta_fi_lean",
+  "milaf": "Jisr/IsharaQiyas.lean",
+  "min": "theorem akhta_sifr :",
+  "ila": "theorem akhta_alt : akhta (natayij halat) = [] := by\n  decide +kernel\n\ntheorem akhta_sifr :"
  },
  {
   "ism": "P939_ishara_sijill_akhta",
-  "milaf": "tahaqquq/dawabit/ishara/natija_2.json",
+  "milaf": "tahaqquq/dawabit/ishara/natija_3.json",
   "min": "\"akhta\": [],",
   "ila": "\"akhta\": [[\"I08\", \"tajawuz\"]],"
  },
  {
   "ism": "P940_ishara_sijill_bil_fia",
-  "milaf": "tahaqquq/dawabit/ishara/natija_2.json",
+  "milaf": "tahaqquq/dawabit/ishara/natija_3.json",
   "min": "\"خارج\": 5,",
   "ila": "\"خارج\": 4,"
  },
  {
   "ism": "P941_ishara_sijill_tashghil",
-  "milaf": "tahaqquq/dawabit/ishara/natija_2.json",
-  "min": "\"tashghil\": 2,",
-  "ila": "\"tashghil\": 3,"
+  "milaf": "tahaqquq/dawabit/ishara/natija_3.json",
+  "min": "\"tashghil\": 3,",
+  "ila": "\"tashghil\": 4,"
  },
  {
   "ism": "P942_ishara_sijill_cases",
-  "milaf": "tahaqquq/dawabit/ishara/natija_2.json",
+  "milaf": "tahaqquq/dawabit/ishara/natija_3.json",
   "min": "\"cases_sha256\": \"5725a39dbc5783835202f7b4876665c6403a07628bee3c0986670de3df9be664\"",
   "ila": "\"cases_sha256\": \"5725a39dbc5783835202f7b4876665c6403a07628bee3c0986670de3df9be660\""
  },
  {
   "ism": "P943_ishara_sijill_halat",
-  "milaf": "tahaqquq/dawabit/ishara/natija_2.json",
+  "milaf": "tahaqquq/dawabit/ishara/natija_3.json",
   "min": "\"halat\": 49,",
   "ila": "\"halat\": 48,"
  },
  {
   "ism": "P944_ishara_sijill_azwaj",
-  "milaf": "tahaqquq/dawabit/ishara/natija_2.json",
+  "milaf": "tahaqquq/dawabit/ishara/natija_3.json",
   "min": "\"sawab_maan\": 15",
   "ila": "\"sawab_maan\": 14"
  },
@@ -5446,5 +5446,11 @@
   "milaf": "Jisr/IsharaQiyas.lean",
   "min": "theorem natija : ihsa (natayij halat) = ⟨49, 0, 0, 0, 0, 0, 0⟩ := by",
   "ila": "theorem natija : ihsa (natayij halat) = ihsa (natayij halat) ∨ ihsa (natayij halat) = ⟨49, 0, 0, 0, 0, 0, 0⟩ := by"
+ },
+ {
+  "ism": "P947_ishara_sijill_lean",
+  "milaf": "tahaqquq/dawabit/ishara/natija_3.json",
+  "min": "\"Jisr.Ishara.Qiyas.akhta_sifr\",\n  \"Jisr.Ishara.Qiyas.azwaj_1\"",
+  "ila": "\"Jisr.Ishara.Qiyas.akhta_sifr\""
  }
 ]
