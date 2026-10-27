@@ -5270,8 +5270,8 @@
  {
   "ism": "P916_ishara_kaf_qarib",
   "milaf": "Jisr/Ishara.lean",
-  "min": "  | _, .qarib => if d.kaf then .khata else .maqbul",
-  "ila": "  | _, .qarib => .maqbul"
+  "min": "  | _, .qarib => if d.kaf then .khata else if d.ha then .laHukm else .maqbul",
+  "ila": "  | _, .qarib => if d.ha then .laHukm else .maqbul"
  },
  {
   "ism": "P917_ishara_lam_bila_kaf",
@@ -5306,8 +5306,8 @@
  {
   "ism": "P922_ishara_huna_baid_bila_kaf",
   "milaf": "Jisr/Ishara.lean",
-  "min": "  | .huna, .baid => if d.kaf && d.lam && d.ha then .khata else .maqbul",
-  "ila": "  | .huna, .baid => if !d.kaf || (d.lam && d.ha) then .khata else .maqbul"
+  "min": "  | .huna, .baid => if !d.kaf then .laHukm else if d.lam && d.ha then .khata else .maqbul",
+  "ila": "  | .huna, .baid => if !d.kaf then .maqbul else if d.lam && d.ha then .khata else .maqbul"
  },
  {
   "ism": "P923_ishara_lafz_tih",
@@ -5344,5 +5344,11 @@
   "milaf": "Jisr/IsharaDabit.lean",
   "min": "      | .laHukm, _ => .tajawuz",
   "ila": "      | .laHukm, _ => .naqsTaghtiya"
+ },
+ {
+  "ism": "P930_ishara_ha_qarib",
+  "milaf": "Jisr/Ishara.lean",
+  "min": "  | _, .qarib => if d.kaf then .khata else if d.ha then .laHukm else .maqbul",
+  "ila": "  | _, .qarib => if d.kaf then .khata else .maqbul"
  }
 ]

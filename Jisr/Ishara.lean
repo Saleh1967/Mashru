@@ -26,41 +26,52 @@ import Aql.Mirsat
 2. اللامُ بلا كاف: خطأ. اللامُ في النطاق مقرونةٌ بالكاف وحدها («مجردة من اللام … أو مقرونة بها»، «بالكاف حرفا دون لام أو معه»).
 3. «ها» مع «ثمّ»: لا حكم. لا يذكر النطاقُ «ها» معها ولا يمنعها.
 4. المسافة (`hukmBud`):
-   - **غيرُ المكان:** القريبُ بلا كاف، والبعيدُ بالكاف («والبعيد بالكاف»، قطر س133؛ «ولدى البعد انطقا بالكاف»، ألفيّة س140–142)، بلا لامٍ
-     مطلقًا، وباللام إلّا في المثنّى، والممدودةِ «أولاء»، وما تقدّمته «ها» («إلا في المثنى مطلقا وفي الجمع في لغة من مده وفيما تقدمته ها
-     التنبيه»، قطر س134–135؛ «واللام إن قدمت هاممتنعة»، ألفيّة س142).
-   - **«هنا»:** للقريب بلا كاف (س143)، وللبعيد بالكاف («وبه الكاف صلا في البعد»، س143–144) وباللام والكاف («أو بهنالك انطقن»، س144) إلّا بعد
-     «ها»، وبلا كاف («أو هنا»، س144).
+   - **غيرُ المكان:** القريبُ بلا كاف، وبـ«ها» لا حكم؛ والبعيدُ بالكاف («والبعيد بالكاف»، قطر س133؛ «ولدى البعد انطقا بالكاف»، ألفيّة
+     س140–142)، بلا لامٍ مطلقًا ولو تقدّمته «ها»، وباللام إلّا في المثنّى، والممدودةِ «أولاء»، وما تقدّمته «ها» («إلا في المثنى مطلقا وفي
+     الجمع في لغة من مده وفيما تقدمته ها التنبيه»، قطر س134–135؛ «واللام إن قدمت هاممتنعة»، ألفيّة س142).
+   - **«هنا»:** للقريب بلا كاف، وبـ«ها» («وبهنا أو ههنا أشر إلى … داني المكان»، س143)؛ وللبعيد بالكاف («وبه الكاف صلا في البعد»، س143–144) وباللام
+     والكاف («أو بهنالك انطقن»، س144) إلّا بعد «ها»؛ وبلا كافٍ للبعيد لا حكم («أو هنا»، س144، بلا ضبط).
    - **«ثمّ»:** للبعيد بلا كاف («أو بثم فه»، س144)، وما سوى ذلك خطأ.
 
 **ما هو تعيينُ البنّاء** (لا نصُّ النطاق):
 - «للمثنى» بلا جنس: الأصولُ الأربعة للمثنّى المذكّر والمؤنّث سواء (`muthanna_bila_jins`). ولا ينصّ النطاقُ على أنّ «ذان» للمذكّر و«تان» للمؤنّث.
 - الموضعُ لا أثرَ له في غير المثنّى (`mawdi_la_yughayyir`). والنطاقُ يذكر الموضعَ للمثنّى وحده.
 - الكافُ للقريب خطأ، والبعيدُ بلا كافٍ في غير المكان خطأ (`kaf_lil_baid`): بالمقابلة بين «والبعيد بالكاف» وما قبله، وبمفتاح الصورة.
-- «ها» لا أثرَ لها إلّا مع اللام، في غير «ثمّ» (`ha_la_yughayyir`): النطاقُ يذكرها متقدّمةً («وفيما تقدمته ها التنبيه»، «إن قدمت ها»، «ههنا») ولا يمنعها إلّا
-  مع اللام.
+- «ها» مع البعيد لا أثرَ لها إلّا مع اللام، في غير «ثمّ» (`ha_baid_la_yughayyir`): «مجردة من اللام مطلقا» يشمل ما تقدّمته «ها»، والاستثناءُ
+  منه اللامُ وحدها («وفيما تقدمته ها التنبيه»، «إن قدمت ها»).
 - «إلا في المثنى مطلقا» (القطر) خاصٌّ يُقدَّم على عموم الألفيّة «بالكاف حرفا دون لام أو معه» (`muthanna_lam_khata`).
 - «ته» من القطر وحده، وتُقبل للمؤنّث. والألفيّةُ لا تذكرها ولا تمنعها؛ وقراءةُ «على الأنثى اقتصر» قصرًا لما ذكرته على المؤنّث، لا حصرًا للمؤنّث فيه،
   قراءةُ البنّاء.
 - «أولى» المقصورة باللام مقبولة: القطرُ يستثني من اللام الجمعَ «في لغة من مده» وحدها (`madd_lam_khata`، `shahid_qasr`).
-- «هنا» في س144 مكتوبةٌ بلا ضبط («أو هنا … أو هنا»)، فتُقبل «هنا» بلا كافٍ للبعيد أيضًا. والضبطُ الذي يفرّقها عن «هنا» القريب لا يظهر في حروف
-  النطاق.
 - ما لا يذكره النطاقُ للمكان («ثمّ» للقريب، و«ثمّ» بالكاف، وأصلٌ غيرُ مكانيٍّ للمكان، ومكانيٌّ لغيره) خطأٌ بمفتاح الصورة.
 
 **الصلة بقطع Lean القائمة:**
 - `asma_qatr`: أصولُ القطر التسعة بألفاظها هي `SLGE.Wad.ishara` بعينها (قائمةُ المالك، وتعليقُها «L132–134»)، وثالثةُ `SLGE.Wad.maarif`
   «الإشارة».
-- `mirsat_maqbul`: المبهمُ في `Aql/Mirsat.lean` («هذا» تقريبًا، «ذاك» تبعيدًا بالمسافة من هنا) يُقرأ هنا «ها»+«ذا» قريبًا و«ذا»+كاف بعيدًا،
-  فحكمُه مقبولٌ عند كلّ مرساةٍ وحدٍّ وموضع، ومسافتُه مسافةُ `mubhamOf`. وهذه القراءةُ (`mubhamDakhil`) تعيينُ البنّاء.
+- `mirsat_maqbul`: المبهمُ في `Aql/Mirsat.lean` («هذا» تقريبًا، «ذاك» تبعيدًا بالمسافة من هنا) يُقرأ هنا «ذا» قريبًا و«ذا»+كاف بعيدًا،
+  فحكمُه مقبولٌ عند كلّ مرساةٍ وحدٍّ وموضع، ومسافتُه مسافةُ `mubhamOf`. وهذه القراءةُ (`mubhamDakhil`) تعيينُ البنّاء. و«ها» في «هذا» لا يحكم فيها
+  هذا النطاق مع القريب (`la_hukm_iff`).
 
 **المنهج.** شفرةُ هذا الملفّ كُتبت قبل أن يقرأ البنّاءُ حالاتِ الضابط، وجُمّدت الحالاتُ قبلها (`tahaqquq/dawabit/ishara/tajmid.json`؛
-`hawkama/منهج_الضوابط.md`). ونتيجتُها على الضابط في `Jisr/IsharaQiyas.lean`، لا هنا.
+`hawkama/منهج_الضوابط.md`)، ودُفعت في `0446d1e`، والتشغيلُ الأوّل عليها في `natija_1.json` (42/49). ونتيجتُها على الضابط في
+`Jisr/IsharaQiyas.lean`، لا هنا.
+
+**ما غُيّر بعد قراءة الحالات** (فالتشغيلُ الثاني وما بعده على مادّةٍ مكشوفة)، أخذًا بقراءة المؤلّف في الموضعين:
+- **«ها» مع القريب بلا كافٍ في غير المكان «لا حكم»** (كان مقبولًا): النطاقُ لا يذكر «ها» مع القريب إلّا في «ههنا» (س143)، ويذكرها مع البعيد
+  مستثنيًا اللام؛ فما لم يتعرّض له «لا حكم» بآخر صفٍّ في مفتاح المواصفة. **وكان في الشفرة المجمَّدة** «ها» لا أثرَ لها إلّا مع اللام
+  (`ha_la_yughayyir`، حُذفت). الحالاتُ: I08 وI12 وI22 وI27 وI36.
+- **«هنا» بلا كافٍ للبعيد «لا حكم»** (كان مقبولًا): «أو هنا … أو هنا» في س144 بلا ضبط، ويفرّقها عن «هنا» القريب ضبطٌ لا يظهر في حروف
+  النطاق، وهذا تعريفُ `غموض` في المواصفة نفسِها، والمحرّكُ لا يختار. الحالتان: I48 وI49.
+- `mubhamDakhil` «هذا» صار «ذا» بلا «ها»، وحُذفت `hukmBud_ne_laHukm` (صار حكمُ المسافة يُخرج «لا حكم»)، وتغيّرت `la_hukm_iff`.
+- **وما تغيّر في المجال كلّه** (قارن البنّاءُ بـ`#eval` في الجلسة، ولا يحفظه المستودع، حكمَ الشفرة المجمَّدة بحكم هذه على كلّ مدخلٍ من
+  4704): 48 مدخلًا من «مقبول» إلى «لا حكم»: 42 «ها» مع القريب، و6 «هنا» بلا كافٍ للبعيد (بـ«ها» وبلا «ها»، في المواضع الثلاثة)؛
+  تمسّ الحالاتُ سبعةً منها، فـ49/49 لا تشهد للأحد والأربعين الباقية. وصار المجالُ: مقبول 168، وخطأ 4470، و«لا حكم» 66 (وكان 216، و4470،
+  و18).
 
 **المبرهنات** (بالمعيار الموحَّد في `Nizam/Asas.lean`)، وهي خواصُّ هذا التعيين على مجاله، لا قوانينُ في اللغة:
-- لكلّ (1): `la_hukm_iff` (تستدعي `hukmBud_ne_laHukm`).
-- تعريفيّة (11): `ghayr_muwafiq_khata`، `lam_bila_kaf_khata`، `hukmBud_ne_laHukm`، `ha_lam_khata`، `muthanna_lam_khata`، `madd_lam_khata`،
-  `kaf_lil_baid`، `ha_la_yughayyir`، `mawdi_la_yughayyir`، `muthanna_bila_jins`، `mirsat_maqbul`. وكلُّها مكمَّمةٌ على كلّ مدخل، وبرهانُها تفكيكُ
-  الحالات على مجالٍ منتهٍ.
+- تعريفيّة (11): `ghayr_muwafiq_khata`، `lam_bila_kaf_khata`، `la_hukm_iff`، `ha_lam_khata`، `muthanna_lam_khata`، `madd_lam_khata`،
+  `kaf_lil_baid`، `ha_baid_la_yughayyir`، `mawdi_la_yughayyir`، `muthanna_bila_jins`، `mirsat_maqbul`. وكلُّها مكمَّمةٌ على كلّ مدخل، وبرهانُها
+  تفكيكُ الحالات على مجالٍ منتهٍ، فلا «لكلّ» بحرف المعيار.
 - على الشاهد (3): `asma_qatr`، `shawahid`، `shahid_qasr`.
 
 **حدُّه.** المدخلُ تحليلٌ يُعطى؛ والكافُ لمخاطَبٍ واحدٍ مذكّر؛ ولا حكمَ في التنوّع (أشهرُ اللغتين، والتفضيلُ «والمد أولى» لا يُقاس)؛ ولا وصلَ
@@ -137,8 +148,8 @@ def hukmBud (d : Dakhil) : Hukm :=
   | .thamma, .qarib => .khata
   | .thamma, .baid => if d.kaf then .khata else .maqbul
   | .huna, .qarib => if d.kaf then .khata else .maqbul
-  | .huna, .baid => if d.kaf && d.lam && d.ha then .khata else .maqbul
-  | _, .qarib => if d.kaf then .khata else .maqbul
+  | .huna, .baid => if !d.kaf then .laHukm else if d.lam && d.ha then .khata else .maqbul
+  | _, .qarib => if d.kaf then .khata else if d.ha then .laHukm else .maqbul
   | a, .baid =>
     if !d.kaf then .khata
     else if !d.lam then .maqbul
@@ -182,19 +193,16 @@ theorem lam_bila_kaf_khata (d : Dakhil) (hl : d.lam = true) (hk : d.kaf = false)
   unfold hukm
   cases h : yuwafiq d.asl d.mushar d.mawdi <;> simp [hl, hk]
 
-/-- **حكمُ المسافة لا يكون «لا حكم»** (تعريفيّة). -/
-theorem hukmBud_ne_laHukm (d : Dakhil) : hukmBud d ≠ .laHukm := by
-  rcases d with ⟨a, m, w, b, ha, l, k⟩
-  cases a <;> cases b <;> cases ha <;> cases l <;> cases k <;> simp [hukmBud, Asl.muthanna]
-
-/-- **«لا حكم» في موضعٍ واحد** (لكلّ): الأصلُ موافق، ولا لامَ بلا كاف، و«ها» مع «ثمّ». -/
+/-- **«لا حكم» في ثلاثة مواضع** (تعريفيّة): الأصلُ موافق، ولا لامَ بلا كاف، ثمّ «ها» مع «ثمّ»، أو «هنا» بلا كافٍ للبعيد، أو «ها» مع القريب
+    بلا كافٍ في غير المكان. -/
 theorem la_hukm_iff (d : Dakhil) :
     hukm d = .laHukm ↔
-      (yuwafiq d.asl d.mushar d.mawdi = true ∧ ¬(d.lam = true ∧ d.kaf = false) ∧ d.ha = true ∧ d.asl = .thamma) := by
-  have hb := hukmBud_ne_laHukm d
-  unfold hukm
-  cases hy : yuwafiq d.asl d.mushar d.mawdi <;> cases hl : d.lam <;> cases hk : d.kaf <;> cases hh : d.ha <;>
-    by_cases ht : d.asl = .thamma <;> simp_all
+      (yuwafiq d.asl d.mushar d.mawdi = true ∧ ¬(d.lam = true ∧ d.kaf = false) ∧
+        ((d.ha = true ∧ d.asl = .thamma) ∨ (d.asl = .huna ∧ d.bud = .baid ∧ d.kaf = false) ∨
+         (d.asl.makan = false ∧ d.bud = .qarib ∧ d.kaf = false ∧ d.ha = true))) := by
+  rcases d with ⟨a, m, w, b, ha, l, k⟩
+  cases a <;> cases b <;> cases ha <;> cases l <;> cases k <;>
+    simp [hukm, hukmBud, Asl.muthanna, Asl.makan] <;> cases m <;> cases w <;> simp [yuwafiq]
 
 /-- **«ها» مع اللام خطأ** (تعريفيّة؛ قطر س135، ألفيّة س142)، في غير «ثمّ». -/
 theorem ha_lam_khata (d : Dakhil) (hh : d.ha = true) (hl : d.lam = true) (ht : d.asl ≠ .thamma) : hukm d = .khata := by
@@ -222,13 +230,13 @@ theorem kaf_lil_baid (d : Dakhil) (hm : d.asl.makan = false) (hq : hukm d = .maq
   cases a <;> simp [Asl.makan] at hm <;> cases b <;> cases k <;> cases l <;> cases ha <;>
     simp_all [hukm, hukmBud, Asl.muthanna]
 
-/-- **«ها» لا أثرَ لها بلا لام** (تعريفيّة)، في غير «ثمّ». -/
-theorem ha_la_yughayyir (d : Dakhil) (hl : d.lam = false) (ht : d.asl ≠ .thamma) :
+/-- **«ها» لا أثرَ لها في البعيد بلا لام** (تعريفيّة)، في غير «ثمّ». -/
+theorem ha_baid_la_yughayyir (d : Dakhil) (hb : d.bud = .baid) (hl : d.lam = false) (ht : d.asl ≠ .thamma) :
     hukm { d with ha := true } = hukm { d with ha := false } := by
   rcases d with ⟨a, m, w, b, ha, l, k⟩
-  simp only at hl ht
-  subst hl
-  cases a <;> cases b <;> cases k <;> simp_all [hukm, hukmBud]
+  simp only at hb hl ht
+  subst hb hl
+  cases a <;> cases k <;> simp_all [hukm, hukmBud]
 
 /-- **الموضعُ لا أثرَ له في غير المثنّى** (تعريفيّة). -/
 theorem mawdi_la_yughayyir (d : Dakhil) (w : Mawdi) (hm : d.asl.muthanna = false) :
@@ -252,9 +260,10 @@ def asulQatr : List Asl := [.dha, .dhi, .dhih, .ti, .tih, .ta, .dhan, .tan, .ula
 theorem asma_qatr : asulQatr.map Asl.lafz = SLGE.Wad.ishara ∧ SLGE.Wad.maarif[2]? = some "الإشارة" := by
   decide
 
-/-- المبهمُ في `Aql/Mirsat.lean` مدخلًا هنا (تعيين): «هذا» «ها»+«ذا» قريبًا، و«ذاك» «ذا»+كاف بعيدًا، لمفردٍ مذكّرٍ رفعًا. -/
+/-- المبهمُ في `Aql/Mirsat.lean` مدخلًا هنا (تعيين): «هذا» «ذا» قريبًا بلا «ها» (و«ها» مع القريب لا يحكم فيها هذا النطاق: `la_hukm_iff`)،
+    و«ذاك» «ذا»+كاف بعيدًا، لمفردٍ مذكّرٍ رفعًا. -/
 def mubhamDakhil : Aql.Mirsat.Mubham → Dakhil
-  | .hadha => ⟨.dha, .mufradMudhakkar, .raf, .qarib, true, false, false⟩
+  | .hadha => ⟨.dha, .mufradMudhakkar, .raf, .qarib, false, false, false⟩
   | .dhaka => ⟨.dha, .mufradMudhakkar, .raf, .baid, false, false, true⟩
 
 /-- **المبهمُ عند كلّ مرساةٍ مقبولٌ هنا، ومسافتُه مسافةُ `mubhamOf`** (تعريفيّة؛ لكلّ حدٍّ ومرساةٍ وموضع). -/
@@ -268,8 +277,8 @@ theorem mirsat_maqbul (hadd : Nat) (r : Aql.Mirsat.Mirsat) (x : Aql.Makan.Izaha3
 /-! ## شواهدُ النطاق (على الشاهد) -/
 
 /-- **شواهدُ الأسطر**: «ذا للمذكر» قريبًا؛ «ذان … بالألف رفعا وبالياء جرا ونصبا»؛ «والبعيد بالكاف مجردة من اللام مطلقا أو مقرونة بها»؛
-    «إلا في المثنى … وفيما تقدمته ها التنبيه»؛ «بهنا أو ههنا … داني المكان»؛ «وبه الكاف صلا في البعد أو بثم فه أو هنا … أو بهنالك»؛ و«ها»
-    مع «ثمّ» «لا حكم». -/
+    «إلا في المثنى … وفيما تقدمته ها التنبيه»؛ «بهنا أو ههنا … داني المكان»؛ «وبه الكاف صلا في البعد أو بثم فه … أو بهنالك»؛ و«لا حكم»:
+    «هنا» بلا كافٍ للبعيد («أو هنا» بلا ضبط)، و«ها» مع القريب في غير المكان، و«ها» مع «ثمّ». -/
 theorem shawahid :
     hukm ⟨.dha, .mufradMudhakkar, .raf, .qarib, false, false, false⟩ = .maqbul ∧
     hukm ⟨.dha, .mufradMuannath, .raf, .qarib, false, false, false⟩ = .khata ∧
@@ -288,7 +297,8 @@ theorem shawahid :
     hukm ⟨.huna, .makan, .nasb, .qarib, true, false, false⟩ = .maqbul ∧
     hukm ⟨.huna, .makan, .nasb, .baid, false, false, true⟩ = .maqbul ∧
     hukm ⟨.huna, .makan, .nasb, .baid, false, true, true⟩ = .maqbul ∧
-    hukm ⟨.huna, .makan, .nasb, .baid, false, false, false⟩ = .maqbul ∧
+    hukm ⟨.huna, .makan, .nasb, .baid, false, false, false⟩ = .laHukm ∧
+    hukm ⟨.dha, .mufradMudhakkar, .raf, .qarib, true, false, false⟩ = .laHukm ∧
     hukm ⟨.thamma, .makan, .nasb, .baid, false, false, false⟩ = .maqbul ∧
     hukm ⟨.thamma, .makan, .nasb, .qarib, false, false, false⟩ = .khata ∧
     hukm ⟨.thamma, .makan, .nasb, .baid, true, false, false⟩ = .laHukm := by

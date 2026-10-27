@@ -2374,13 +2374,12 @@ import Jisr.IsharaQiyas
 -- أسماءُ الإشارة في القطر (س132–135) والألفية (س137–144) (Jisr/Ishara.lean): حكمُ الاستعمال بالأصل والمشار إليه والموضع والمسافة و«ها» واللام والكاف
 #print axioms Jisr.Ishara.ghayr_muwafiq_khata
 #print axioms Jisr.Ishara.lam_bila_kaf_khata
-#print axioms Jisr.Ishara.hukmBud_ne_laHukm
 #print axioms Jisr.Ishara.la_hukm_iff
 #print axioms Jisr.Ishara.ha_lam_khata
 #print axioms Jisr.Ishara.muthanna_lam_khata
 #print axioms Jisr.Ishara.madd_lam_khata
 #print axioms Jisr.Ishara.kaf_lil_baid
-#print axioms Jisr.Ishara.ha_la_yughayyir
+#print axioms Jisr.Ishara.ha_baid_la_yughayyir
 #print axioms Jisr.Ishara.mawdi_la_yughayyir
 #print axioms Jisr.Ishara.muthanna_bila_jins
 #print axioms Jisr.Ishara.asma_qatr
@@ -2393,5 +2392,5 @@ import Jisr.IsharaQiyas
 #print axioms Jisr.Ishara.Qiyas.majal
 #print axioms Jisr.Ishara.Qiyas.natija
 #print axioms Jisr.Ishara.Qiyas.natija_fia
-#print axioms Jisr.Ishara.Qiyas.akhta_1
+#print axioms Jisr.Ishara.Qiyas.akhta_sifr
 #print axioms Jisr.Ishara.Qiyas.azwaj_1
