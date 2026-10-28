@@ -573,12 +573,19 @@ class DamjSaqitTests(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         self.r = self.tmp.name
 
+    ENV = dict(GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t", GIT_COMMITTER_NAME="t", GIT_COMMITTER_EMAIL="t@t",
+               GIT_AUTHOR_DATE="2026-10-28T00:00:00", GIT_COMMITTER_DATE="2026-10-28T00:00:00", GIT_CONFIG_NOSYSTEM="1",
+               GIT_CONFIG_GLOBAL=os.devnull)    # لا إعدادَ عامٌّ لـgit (كما على CI): الهويّةُ من البيئة
+
     def g(self, *a):
-        env = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t", GIT_COMMITTER_NAME="t",
-                   GIT_COMMITTER_EMAIL="t@t", GIT_AUTHOR_DATE="2026-10-28T00:00:00", GIT_COMMITTER_DATE="2026-10-28T00:00:00")
-        p = subprocess.run(["git", *a], cwd=self.r, capture_output=True, text=True, env=env)
-        self.assertEqual(p.returncode, 0, p.stderr)
+        p = subprocess.run(["git", *a], cwd=self.r, capture_output=True, text=True, env=dict(os.environ, **self.ENV))
+        self.assertEqual(p.returncode, 0, p.stderr + p.stdout)
         return p.stdout.strip()
+
+    def damj_mutaarid(self, far="main"):
+        """دمجٌ يتعارض (رمزُه 1) فيُترك لحلٍّ يدويّ."""
+        p = subprocess.run(["git", "merge", "-q", far], cwd=self.r, capture_output=True, text=True, env=dict(os.environ, **self.ENV))
+        self.assertEqual(p.returncode, 1, p.stderr + p.stdout)
 
     def write(self, path, text):
         os.makedirs(os.path.dirname(os.path.join(self.r, path)) or self.r, exist_ok=True)
@@ -602,7 +609,7 @@ class DamjSaqitTests(unittest.TestCase):
         self.g("commit", "-q", "-am", "main")
         main = self.g("rev-parse", "HEAD")
         self.g("checkout", "-q", "far")
-        subprocess.run(["git", "merge", "-q", "main"], cwd=self.r, capture_output=True)
+        self.damj_mutaarid()
         self.write("CLAUDE.md", hall)
         self.g("add", "-A")
         self.g("commit", "-q", "--no-edit", "-m", "دمج")
@@ -720,7 +727,7 @@ class DamjSaqitTests(unittest.TestCase):
         self.write("tahaqquq/tafrat.json", json.dumps([q("P2_b")]))
         self.g("commit", "-q", "-am", "main")
         self.g("checkout", "-q", "far")
-        subprocess.run(["git", "merge", "-q", "main"], cwd=self.r, capture_output=True)
+        self.damj_mutaarid()
         self.write("tahaqquq/tafrat.json", json.dumps([q("P1_a")]))
         self.g("add", "-A")
         self.g("commit", "-q", "--no-edit", "-m", "دمج")
