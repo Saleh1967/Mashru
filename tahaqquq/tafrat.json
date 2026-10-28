@@ -5242,5 +5242,101 @@
   "milaf": "Nizam/Shahada.lean",
   "min": "  else [madkhalGhaib]",
   "ila": "  else []"
+ },
+ {
+  "ism": "P1044_abniya_fataha_faail",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "  | .fataha, .faail => maqbulJ .qiyas",
+  "ila": "  | .fataha, .faail => maqbulJ .qalil"
+ },
+ {
+  "ism": "P1045_abniya_fataha_sifa",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "  | .fataha, s => if s.sifa then laHukmJ else khataJ",
+  "ila": "  | .fataha, s => khataJ"
+ },
+ {
+  "ism": "P1046_abniya_kasra_faail_taaddi",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "if t = .mutaaddi then maqbulJ .qiyas else maqbulJ .qalil",
+  "ila": "maqbulJ .qalil"
+ },
+ {
+  "ism": "P1047_abniya_kasra_lazim",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "if t = .lazim then maqbulJ .qiyas else khataJ",
+  "ila": "maqbulJ .qiyas"
+ },
+ {
+  "ism": "P1048_abniya_damma_faail",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "  | .damma, .faail => maqbulJ .qalil",
+  "ila": "  | .damma, .faail => maqbulJ .qiyas"
+ },
+ {
+  "ism": "P1049_abniya_damma_awla",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "  | .damma, .fal_s | .damma, .faiil => maqbulJ .awla",
+  "ila": "  | .damma, .fal_s | .damma, .faiil => maqbulJ .qiyas"
+ },
+ {
+  "ism": "P1050_abniya_damma_qalil",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "  | .damma, .afal | .damma, .faal_f => maqbulJ .qalil",
+  "ila": "  | .damma, .afal | .damma, .faal_f => khataJ"
+ },
+ {
+  "ism": "P1051_abniya_ghayr_fail",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "if d.sigha = .mudariMaksur then maqbulJ .qiyas else khataJ",
+  "ila": "if d.sigha = .mudariMaftuh then maqbulJ .qiyas else khataJ"
+ },
+ {
+  "ism": "P1052_abniya_ghayr_mafool",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "if d.sigha = .mudariMaftuh then maqbulJ .qiyas else khataJ",
+  "ila": "if d.sigha = .mudariMaksur then maqbulJ .qiyas else khataJ"
+ },
+ {
+  "ism": "P1053_abniya_mafuul_qiyas",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "    | .mafuul => maqbulJ .qiyas",
+  "ila": "    | .mafuul => maqbulJ .bila"
+ },
+ {
+  "ism": "P1054_abniya_faiil_naql",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "    | .faiil => maqbulJ .naql",
+  "ila": "    | .faiil => maqbulJ .qiyas"
+ },
+ {
+  "ism": "P1055_abniya_sifa",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "  | .faiil_k | .afal | .falan | .fal_s | .faiil | .faal_f => true",
+  "ila": "  | .faiil_k | .afal | .falan | .fal_s | .faiil => true"
+ },
+ {
+  "ism": "P1056_abniya_qarin_hukm",
+  "milaf": "Jisr/AbniyaDabit.lean",
+  "min": "      | .maqbul, _ => .raddKhati",
+  "ila": "      | .maqbul, _ => .qabulKhati"
+ },
+ {
+  "ism": "P1057_abniya_qarin_daraja_sawab",
+  "milaf": "Jisr/AbniyaDabit.lean",
+  "min": "    if m == [j.daraja] then .sawab",
+  "ila": "    if m.contains j.daraja then .sawab"
+ },
+ {
+  "ism": "P1058_abniya_natayij_daraja",
+  "milaf": "Jisr/AbniyaDabit.lean",
+  "min": "      (if h.hukm == [.maqbul] then [(h.ism",
+  "ila": "      (if false then [(h.ism"
+ },
+ {
+  "ism": "P1059_abniya_qarin_daraja_khata",
+  "milaf": "Jisr/AbniyaDabit.lean",
+  "min": "  | .khata => .raddKhati",
+  "ila": "  | .khata => .naqsTaghtiya"
  }
 ]
