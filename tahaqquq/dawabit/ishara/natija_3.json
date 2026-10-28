@@ -1,0 +1,52 @@
+{
+ "tashghil": 3,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد تصحيحات مراجعة murajii (441f02d)",
+ "qablaha": {
+  "natija_2.json": "37d1b2580c01fd076020e72186e38b5f6283346c0ddd7663fc0ab6ba1438e7c9"
+ },
+ "cases_sha256": "5725a39dbc5783835202f7b4876665c6403a07628bee3c0986670de3df9be664",
+ "shifra": {
+  "Jisr/Ishara.lean": {
+   "sha256": "33c04472c761523570196b4325270db396398f8401fbc65a9e550bf6ed48aaf2",
+   "iydaa": "441f02d82cb2f5ac58391f3177ecf62be53bb0dd"
+  },
+  "Jisr/IsharaDabit.lean": {
+   "sha256": "d48cc620a1fee73360d7fde11c7dac2e49818b90233aaef0c74a4fd1d33943ca",
+   "iydaa": "441f02d82cb2f5ac58391f3177ecf62be53bb0dd"
+  }
+ },
+ "lean": [
+  "Jisr.Ishara.Qiyas.majal",
+  "Jisr.Ishara.Qiyas.natija",
+  "Jisr.Ishara.Qiyas.natija_fia",
+  "Jisr.Ishara.Qiyas.akhta_sifr",
+  "Jisr.Ishara.Qiyas.azwaj_1"
+ ],
+ "halat": 49,
+ "huqul_masula": 49,
+ "ihsa": {
+  "sawab": 49,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtiyar": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 19,
+  "حد": 12,
+  "خارج": 5,
+  "عموم": 11,
+  "غموض": 2
+ },
+ "akhta": [],
+ "azwaj": {
+  "jumla": 15,
+  "taghayyar": 15,
+  "la_yataghayyar": [],
+  "sawab_maan": 15
+ },
+ "tarikh": "2026-10-28",
+ "malahiz": "على مادّةٍ مكشوفة، بعد مراجعة murajii: «ها» مع «ثم» صارت خطأً إلّا للبعيد بلا كاف (15 مدخلًا من «لا حكم» إلى «خطأ»، لا تمسّها حالة)، وزيدت maqam_ishara، وتغيّر التوثيق؛ فالأعدادُ أعدادُ التشغيل الثاني. وتصحيحٌ على natija_2.json (والسجلُّ لا يُعاد): قال «بعد قراءة الحالات الفاشلة»، وطبع البنّاءُ في 22:02:39Z معها I01 وI25 وI28 (أزواجٌ ناجحة)؛ وما قرأه بين 22:02:39Z و22:17:59Z لا يحفظه سجلُّ الجلسة المتاح."
+}
