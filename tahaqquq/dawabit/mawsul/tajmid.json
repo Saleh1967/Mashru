@@ -1,0 +1,37 @@
+{
+ "naw": "ضابط مجمَّد",
+ "minhaj": "hawkama/منهج_الضوابط.md، الإصدار ١ (بفئة غموض)",
+ "qita": "الموصولُ وصلتُه في قطر الندى (س137–143) والألفية (س146–157): حكمُ الاستعمال بلفظ الموصول وما يقع عليه وموضعه وتشديد نونه واللغة وما قبله ونوع الصلة والعائد وسمته",
+ "masadir": [
+  {
+   "milaf": "qatr.txt",
+   "sha256": "2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d"
+  },
+  {
+   "milaf": "alfiyya.txt",
+   "sha256": "13b351a0a02d9060fdedbb5db568544718eb4e89bef323f5572b8a26c0921ca0"
+  }
+ ],
+ "wasf_sha256": "81eb9eadcaa43a0fd1dbb84cd460ce55d62dab32db63b7c2962677ef0dd648f3",
+ "cases_sha256": "8f92e0f553336d92badf2e5437e355e7a08104174cf802f546cc81ca707154b3",
+ "fahs_cases_sha256": "5853c56dc65c22d7f602da2c9e25ec97087d535b2816720a342fd17c5b67e364",
+ "taalif_sha256": "b727a449c2f6c24e71237a01846a996d9d7cb842136ef005b4d414eabe726fbf",
+ "bina_cases_sha256": "8bed8945ea850c10430f7c0282cdadffad2d2a8eea4c810e1dcca2c4d8cfb728",
+ "bayanat_sha256": {
+  "bayanat_1.txt": "377b9e8316e14db287ee81d200611c70e58cba19990409a235f816efc253bdb3",
+  "bayanat_2.txt": "e4eb859932a47da91084cd27bd9846ccc14aa3bbecfc705d782e44211675dcbf"
+ },
+ "muallif": "وكيلٌ جديد (general-purpose) بالمواصفة والمصدرين وحدهما، بتوجيهٍ محفوظٍ بنصّه في tawjih_muallif.md؛ وسياقُه يحقنه النظامُ آليًّا (§٥ من المنهج)، وإفصاحُه عنه في taalif.md الذي لم يقرأه البنّاءُ قبل دفع الشفرة؛ أجاب البنّاءَ بالبصمات والأعداد وحدها، وسمّى ملفّاتٍ مساعدةً فيها محتوى الحالات (bayanat_1.txt، bayanat_2.txt، bina_cases.py، tafrat_fahs/). فأُودعت الثلاثةُ الأولى معه ببصماتها بلا قراءة؛ ولم يُودَع tafrat_fahs/ لأنّ فيه نسختين مغيَّرتين من المصدرين المودَعين (src_mughayyar/)، والمودَعاتُ لا تُرفع إلى المستودع",
+ "aadad_muallif": {
+  "jumla": 59,
+  "mujib": 24,
+  "hadd": 19,
+  "kharij": 5,
+  "umum": 7,
+  "ghumud": 4,
+  "mithal_harfi": 6,
+  "fahs": "0 على cases.json، ورفض 16 من 16: خمسَ عشرةَ نسخةً مكسورة من cases.json، ومجلّدَ مصدرين بايتاتُه مغيَّرة"
+ },
+ "waqt_tajmid": "2026-10-27T23:03:48Z (آخرُ طابعٍ في سجلّ المؤلّف)",
+ "qabl_shifra": "شفرةُ Jisr/Mawsul.lean وJisr/MawsulDabit.lean وscripts/bina_dawabit_mawsul.py كُتبت قبل أن يقرأ البنّاءُ الحالات أو وصفَ التأليف (آخرُ تعديلٍ لها بأوقات الملفّات 23:02:37Z–23:03:11Z، قبل آخر طابعٍ في سجلّ المؤلّف 23:03:48Z)، وتُودَع بعد هذا الإيداع بلا تغيير. وما رآه البنّاءُ من سجلّ المؤلّف في tawjih_muallif.md"
+}
