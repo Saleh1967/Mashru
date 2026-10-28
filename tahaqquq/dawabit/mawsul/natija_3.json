@@ -1,0 +1,53 @@
+{
+ "tashghil": 3,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد مراجعة murajii الأولى: مبرهناتٌ أربعٌ ورأسُ الشفرة وتوثيقُها (8cf5170)، بلا تغييرٍ في jawab ولا دوالّه",
+ "qablaha": {
+  "natija_2.json": "6603fc15b12aecf01f0d5d37e6a20e2b8ac175587468baadb01cf0604ad65aa0"
+ },
+ "cases_sha256": "8f92e0f553336d92badf2e5437e355e7a08104174cf802f546cc81ca707154b3",
+ "shifra": {
+  "Jisr/Mawsul.lean": {
+   "sha256": "b49380ba6c58f3c37e5c0fd2fa47340e029e8f81c299f9e4b58ff3aa8853c6fc",
+   "iydaa": "8cf51703a56f829a8d854819f703c42fca377318"
+  },
+  "Jisr/MawsulDabit.lean": {
+   "sha256": "ae508f3486610a54b522c198987362d57241d79cefd11b66e0cb3d110381e138",
+   "iydaa": "8cf51703a56f829a8d854819f703c42fca377318"
+  }
+ },
+ "lean": [
+  "Jisr.Mawsul.Qiyas.majal",
+  "Jisr.Mawsul.Qiyas.natija",
+  "Jisr.Mawsul.Qiyas.natija_fia",
+  "Jisr.Mawsul.Qiyas.akhta_sifr",
+  "Jisr.Mawsul.Qiyas.azwaj_1"
+ ],
+ "halat": 59,
+ "huqul_masula": 88,
+ "ihsa": {
+  "sawab": 88,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtiyar": 0,
+  "khata": 0,
+  "khataDaraja": 0
+ },
+ "bil_fia": {
+  "موجب": 48,
+  "حد": 19,
+  "خارج": 5,
+  "عموم": 12,
+  "غموض": 4
+ },
+ "akhta": [],
+ "azwaj": {
+  "jumla": 16,
+  "taghayyar": 16,
+  "la_yataghayyar": [],
+  "sawab_maan": 16
+ },
+ "tarikh": "2026-10-28",
+ "malahiz": "على مادّةٍ مكشوفة، كالثاني؛ ولا يُعدّ قياسًا أعمى، والأوّلُ (natija_1.json) هو القياسُ الأعمى. والأعدادُ أعدادُ مبرهنات Jisr/MawsulQiyas.lean، بناها lake build Jisr.MawsulQiyas قبل إيداع 8cf5170 على بايتات الشفرة نفسِها (البصمتان هنا)، فهي هي أعدادُ natija_2.json. والإيداعُ 8cf5170 وحده لا يمرّ اختبارَ الضابط (آخرُ سجلٍّ فيه لغير الشفرة)، وهذا السجلُّ في الإيداع الذي يليه."
+}
