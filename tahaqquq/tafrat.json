@@ -5242,5 +5242,137 @@
   "milaf": "Nizam/Shahada.lean",
   "min": "  else [madkhalGhaib]",
   "ila": "  else []"
+ },
+ {
+  "ism": "P1080_khabar_qatr_rabit",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "=> some (if d.rabit = .laRabit then khataJ else maqbulJ [.bila])",
+  "ila": "=> some (maqbulJ [.bila])"
+ },
+ {
+  "ism": "P1081_khabar_alfiyya_rabit",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "=> some (if d.rabit ≠ .laRabit then maqbulJ [.bila] else khataJ)",
+  "ila": "=> some (maqbulJ [.bila])"
+ },
+ {
+  "ism": "P1082_khabar_jamid_farigh",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "| .mufradJamid => some (if d.marfu = .laShay then maqbulJ [.bila] else khataJ)",
+  "ila": "| .mufradJamid => some (maqbulJ [.bila])"
+ },
+ {
+  "ism": "P1083_khabar_ibraz",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "| .lighayrihi, .bariz => some (maqbulJ [.bila])",
+  "ila": "| .lighayrihi, .mustakin => some (maqbulJ [.bila])"
+ },
+ {
+  "ism": "P1084_khabar_zahir_sukut",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "| _, .zahir => none",
+  "ila": "| _, .zahir => some khataJ"
+ },
+ {
+  "ism": "P1085_khabar_qatr_tawil",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "| .dhat, .mufid => some (maqbulJ [.bitawil])",
+  "ila": "| .dhat, .mufid => some (maqbulJ [.bila])"
+ },
+ {
+  "ism": "P1086_khabar_alfiyya_ifada",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "| .zarfZaman => some (if d.ifada = .mufid then maqbulJ [.bila] else khataJ)",
+  "ila": "| .zarfZaman => some (maqbulJ [.bila])"
+ },
+ {
+  "ism": "P1087_khabar_qatr_zaman_maana",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "      | _, _ => some (maqbulJ [.bila])",
+  "ila": "      | _, _ => none"
+ },
+ {
+  "ism": "P1088_khabar_qatr_wasf_mufrad",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "if d.wasfAdad = .mufrad then some (if d.itimad = .laItimad then khataJ else maqbulJ [.bila]) else none",
+  "ila": "some (if d.itimad = .laItimad then khataJ else maqbulJ [.bila])"
+ },
+ {
+  "ism": "P1089_khabar_qatr_itimad",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "some (if d.itimad = .laItimad then khataJ else",
+  "ila": "some (if d.itimad = .laItimad then maqbulJ [.qalil] else"
+ },
+ {
+  "ism": "P1090_khabar_alfiyya_tabaq_fail",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "some (if tabaq d then khataJ else if",
+  "ila": "some (if"
+ },
+ {
+  "ism": "P1091_khabar_alfiyya_muqaddam",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "| .khabarMuqaddam => some (if tabaq d then maqbulJ [.bila] else khataJ)",
+  "ila": "| .khabarMuqaddam => some (maqbulJ [.bila])"
+ },
+ {
+  "ism": "P1092_khabar_tabaq_ifrad",
+  "milaf": "Jisr/Khabar.lean",
+  "min": " && d.wasfAdad != .mufrad",
+  "ila": " && true"
+ },
+ {
+  "ism": "P1093_khabar_jamaa_ikhtilaf",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "(if a.hukm = .maqbul then maqbulJ (damm a.daraja b.daraja) else a) else laHukmJ",
+  "ila": "(if a.hukm = .maqbul then maqbulJ (damm a.daraja b.daraja) else a) else a"
+ },
+ {
+  "ism": "P1094_khabar_damm",
+  "milaf": "Jisr/Khabar.lean",
+  "min": ":= a ++ b.filter (fun x => !a.contains x)",
+  "ila": ":= a"
+ },
+ {
+  "ism": "P1095_khabar_muttasiq_ifada",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "(d.ifada != .la) == (d.khabar == .zarfZaman) &&",
+  "ila": "true &&"
+ },
+ {
+  "ism": "P1096_khabar_jamaa_sukut",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "  | some a, none => a",
+  "ila": "  | some a, none => laHukmJ"
+ },
+ {
+  "ism": "P1097_khabar_alfiyya_zarf",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "| .jarMajrur | .zarfMakan => some (maqbulJ [.bila])",
+  "ila": "| .jarMajrur | .zarfMakan => some khataJ"
+ },
+ {
+  "ism": "P1098_khabar_dabit_ikhtiyar",
+  "milaf": "Jisr/KhabarDabit.lean",
+  "min": "  | _ => if b = .laHukm then .sawab else if m.contains b then .ikhtiyar else .khata",
+  "ila": "  | _ => if b = .laHukm then .sawab else .ikhtiyar"
+ },
+ {
+  "ism": "P1099_khabar_dabit_sawaa",
+  "milaf": "Jisr/KhabarDabit.lean",
+  "min": "def sawaa (a b : List Daraja) : Bool := a.all b.contains && b.all a.contains",
+  "ila": "def sawaa (a b : List Daraja) : Bool := a.all b.contains"
+ },
+ {
+  "ism": "P1100_khabar_alfiyya_qalil",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "then maqbulJ [.qalil] else maqbulJ [.bila])",
+  "ila": "then maqbulJ [.bila] else maqbulJ [.bila])"
+ },
+ {
+  "ism": "P1101_khabar_mushtaq_khata",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "      | _, _ => some khataJ",
+  "ila": "      | _, _ => none"
  }
 ]
