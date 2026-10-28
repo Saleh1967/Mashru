@@ -115,6 +115,7 @@ import Jisr.AbniyaDabit
 import Jisr.AbniyaQiyas
 import Jisr.IntrubiyaShahada
 import Jisr.TabaqatQawaid
+import Jisr.IbdalAlfiyyaQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2479,3 +2480,48 @@ import Jisr.TabaqatQawaid
 #print axioms Jisr.TabaqatQawaid.hadd_adna_amm
 #print axioms Jisr.TabaqatQawaid.qanun_qaida_le
 #print axioms Jisr.TabaqatQawaid.qanun_qaida_eq_iff
+
+-- الإبدالُ في الواو والياء من الألفيّة على آلة القانون (Jisr/IbdalAlfiyya.lean، Jisr/IbdalAlfiyyaDabit.lean).
+#print axioms Jisr.IbdalAlfiyya.ghayrMamnu_iff
+#print axioms Jisr.IbdalAlfiyya.mamnu_iff
+#print axioms Jisr.IbdalAlfiyya.run_sawa
+#print axioms Jisr.IbdalAlfiyya.run_lt
+#print axioms Jisr.IbdalAlfiyya.qanun_sawa
+#print axioms Jisr.IbdalAlfiyya.ghayrMamnu_maan
+#print axioms Jisr.IbdalAlfiyya.la_wahid_baad_haraka
+#print axioms Jisr.IbdalAlfiyya.alif_mayyit
+#print axioms Jisr.IbdalAlfiyya.run_le
+#print axioms Jisr.IbdalAlfiyya.alif_baad_ghayr_fatha
+#print axioms Jisr.IbdalAlfiyya.sira_snoc
+#print axioms Jisr.IbdalAlfiyya.tasmah_mamnu_hukm
+#print axioms Jisr.IbdalAlfiyya.tasmahBaad_khatima
+#print axioms Jisr.IbdalAlfiyya.sinf_muqin_damma
+#print axioms Jisr.IbdalAlfiyya.yaBadDamma_yamna
+#print axioms Jisr.IbdalAlfiyya.yaBadDamma_akhir
+#print axioms Jisr.IbdalAlfiyya.sinf_wawYa_haraka
+#print axioms Jisr.IbdalAlfiyya.wawYa_yamna
+#print axioms Jisr.IbdalAlfiyya.sinf_wawYa_fatha_damma
+#print axioms Jisr.IbdalAlfiyya.yaWaw_yamna
+#print axioms Jisr.IbdalAlfiyya.akhir_mamnu
+#print axioms Jisr.IbdalAlfiyya.akhir_sinf_haraka
+#print axioms Jisr.IbdalAlfiyya.akhir_sinf_khatima
+#print axioms Jisr.IbdalAlfiyya.tasmahBaad_akhir
+#print axioms Jisr.IbdalAlfiyya.tasmah_akhir
+#print axioms Jisr.IbdalAlfiyya.akhir_yamna
+#print axioms Jisr.IbdalAlfiyya.haraka_sinfIshtibah
+#print axioms Jisr.IbdalAlfiyya.madd_la_ghayrMamnu
+#print axioms Jisr.IbdalAlfiyya.shawahid_hukm
+#print axioms Jisr.IbdalAlfiyya.fakkN_mem
+#print axioms Jisr.IbdalAlfiyya.yahdhif
+#print axioms Jisr.IbdalAlfiyya.muqin_yahdhif
+#print axioms Jisr.IbdalAlfiyya.wawYa_yahdhif
+#print axioms Jisr.IbdalAlfiyya.akhirWaw_yahdhif
+#print axioms Jisr.IbdalAlfiyya.akhirYa_yahdhif
+#print axioms Jisr.IbdalAlfiyya.Dabit.qarin_jadwal
+#print axioms Jisr.IbdalAlfiyya.Dabit.rafd_ikhfaq
+#print axioms Jisr.IbdalAlfiyya.Dabit.muharrik_kalima
+#print axioms Jisr.IbdalAlfiyya.Qiyas.majal
+#print axioms Jisr.IbdalAlfiyya.Qiyas.natija
+#print axioms Jisr.IbdalAlfiyya.Qiyas.natija_fia
+#print axioms Jisr.IbdalAlfiyya.Qiyas.akhta_1
+#print axioms Jisr.IbdalAlfiyya.Qiyas.azwaj_1

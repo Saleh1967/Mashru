@@ -1,0 +1,35 @@
+{
+ "adawat": {
+  "Bash": 24,
+  "Write": 3,
+  "Edit": 4
+ },
+ "masarat_mutlaqa": [
+  "/dev/null",
+  "/home/claude/mudaa_dir",
+  "/home/claude/mudaa_dir/",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ibdal/mujallad",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ibdal/mujallad/",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ibdal/mujallad/cases.json",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ibdal/mujallad/fahs_cases.py",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ibdal/mujallad/taalif.md",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ibdal/mujallad/tafrat_fahs",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ibdal/mujallad/wasf.md"
+ ],
+ "kharij_al_masmuh": [
+  "/dev/null",
+  "/home/claude/mudaa_dir",
+  "/home/claude/mudaa_dir/"
+ ],
+ "mamnu": [],
+ "qaraa_al_masadir": {
+  "/home/claude/mudaa_dir/alfiyya.txt": true,
+  "/home/claude/mudaa_dir/sibawayhi.txt": true
+ },
+ "tafsir_kharij": {
+  "/dev/null": "هدفُ إعادة توجيه مخرج fahs_cases.py، لا قراءة",
+  "/home/claude/mudaa_dir": "هدفُ «cd» قبل sha256sum وwc وsed وgrep على المصدرين بأسمائهما النسبيّة (alfiyya.txt، sibawayhi.txt)",
+  "/home/claude/mudaa_dir/": "بادئةُ مسارٍ في نسخ المصدرين إلى tafrat_fahs/src_bad لاختبار رفض بصمةٍ متغيّرة"
+ },
+ "hadd": "مستخرَجٌ آليًّا من سجلّ الوكيل: عددُ الأدوات، والمساراتُ المطلقة في الحقول file_path وpath وnotebook_path وcommand وpattern وglob من مدخلات الأدوات (نمطُها «/» ثمّ home أو tmp أو root أو etc أو dev أو usr). ولا يقرأ ما يكتبه المؤلّف بأداة الكتابة، ولا ما يُقرأ بأسماءٍ نسبيّة إلّا بعدٍّ منفصلٍ لأسماء الملفّات فيها: alfiyya.txt وsibawayhi.txt وwasf.md وcases.json وfahs_cases.py وtaalif.md ونسخُ tafrat_fahs، ولا غيرَها. ولم يستعمل المؤلّف Read ولا Glob ولا Grep؛ قرأ بـsed وgrep في Bash."
+}
