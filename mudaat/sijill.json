@@ -371,8 +371,8 @@
    "sha256": "37633090743d403886b334d12dd911d1994e49767faa9f2be0f01fd48b466c5a",
    "milaf": "quran-simple-enhanced.txt",
    "masdar": "Quran text (quran-simple-enhanced.txt) from the Tanzil project, https://tanzil.net, licensed CC BY-ND 3.0. Verbatim copy, unmodified; SHA-256 37633090743d403886b334d12dd911d1994e49767faa9f2be0f01fd48b466c5a, 1,319,901 bytes. البايتات من مستودع المالك Saleh1967/Alghanem (corpora/quran-simple-enhanced.txt، إيداع main الذي استُنسخ في جلسة 2026-10-28)، وفي corpora/README.md هناك وسمُ إذنه وإسنادُه ودورُه «مدوّنةُ القياس». لا يُرفع إلى المستودع؛ مكانُه MUDAA_DIR. يقرؤه scripts/intrubiya.py وحده (الطبقة ٢ من هيكل الإنتروبيا)، ولا يقرؤه بناءٌ في المحرّك.",
-   "hala": "مرشح",
-   "idhn": "",
+   "hala": "مختوم",
+   "idhn": "قول المالك 2026-10-28 21:38 بتوقيت عمّان: «انت تملك تفويض شامل لةجد حلا ونفذ وفق افضل الممارسات»، جوابًا عن قائمة «ما بقي باسمه» وأوّلُ بنودها: «ختم المودَع: quran-simple-enhanced.txt سجّلتُه مرشّحًا فقط، وختمُه ينتظر إذنك.» — وعدُّ «التفويض الشامل» إذنًا بالختم قراءةُ البنّاء، معلنةٌ في الطلب",
    "tarikh": "2026-10-28"
   }
  ]
