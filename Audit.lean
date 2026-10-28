@@ -2389,6 +2389,10 @@ import Jisr.MawsulQiyas
 #print axioms Jisr.Mawsul.asma_qatr
 #print axioms Jisr.Mawsul.maqam_khass
 #print axioms Jisr.Mawsul.shawahid
+#print axioms Jisr.Mawsul.khilaf_mawsulOK_amm
+#print axioms Jisr.Mawsul.khilaf_mawsulOK
+#print axioms Jisr.Mawsul.khilaf_silaOK
+#print axioms Jisr.Mawsul.la_qalil
 -- مقارنةُ ضابط الموصول قبل الحالات (Jisr/MawsulDabit.lean؛ hawkama/منهج_الضوابط.md)
 #print axioms Jisr.Mawsul.Dabit.qarin_hukm
 #print axioms Jisr.Mawsul.Dabit.qarin_daraja

@@ -1,14 +1,17 @@
 import SLGE.Wad
 import SLGE.Maqam
 import Nizam.Phi
+import SLGE.TarkibExt
 
 /-!
 # الموصولُ وصلتُه في قطر الندى (س137–143) والألفية (س146–157)
 
 **الطلب.** قولُ المالك 2026-10-28 (لفظُه ووقتُه، 00:33 بتوقيت عمّان، من ملخّص الجلسة بعد ضغطها): «يجب الاستفادة من ما لم نغطه وموجود في المراجع سواء
 استنتجته انت او موجود في المرفق وعمل lean له شرط ان يكون متناسق ومتكامل ومترابط مع البرهان واالحساب وفق الدستور وأفضل الممارسات …
-نفذ انت والوكلاء». والموصولُ في Lean القائمة قائمةُ ألفاظٍ (`SLGE.Wad.mawsul`)، وسماتُ الخاصّ منه وشرطُ العائد (`SLGE.Maqam.mawsulKhass`،
-`SLGE.Maqam.silaOK`)، بلا حكمٍ على صورة اللفظ بموضعه ولا على نوع الصلة. واختيارُ هذه القطعة بعد الضمير، ونطاقُها، قرارُ البنّاء.
+نفذ انت والوكلاء  و». والموصولُ في Lean القائمة (ملفّاتُ المالك في `SLGE/`) قائمةُ ألفاظٍ (`SLGE.Wad.mawsul`)، وسماتُ الخاصّ منه وشرطُ العائد
+(`SLGE.Maqam.mawsulKhass`، `SLGE.Maqam.silaOK`)، وترخيصُ الموصول بصلته إطارًا في التركيب (`SLGE.TarkibExt.mawsulOK`، ويستعمله `SLGE.Kull`)، والعائدُ
+مؤشّرًا في الكلام (`SLGE.Simat2.discOK2`)؛ بلا حكمٍ على صورة اللفظ بموضعه. وفي موضعين خلافٌ بينها وبين هذا الملفّ، معلَنٌ بمبرهنتين («الصلة بقطع
+Lean القائمة» أدناه). واختيارُ هذه القطعة بعد الضمير، ونطاقُها، قرارُ البنّاء.
 
 **المصدر.** `qatr.txt` المختوم (`2d9241be…`) الأسطر 137–143، و`alfiyya.txt` المختوم (`13b351a0…`) الأسطر 146–157. وما بعدها من الباب (س159–165:
 إعرابُ «أي» وشروطُ حذف العائد) خارجَ النطاق. والاقتباساتُ في `asanid` قطعٌ حرفيّة، يفحصها `tahaqquq/test_mawsul.py` على المودَعين موصولةَ الأسطر.
@@ -17,11 +20,12 @@ import Nizam.Phi
 واللغة، وما قبله، والإلغاء، ونوعُ الصلة `Sila`، والعائد `Aid` وسمتُه. **والمدخلُ تحليلٌ يُعطى، لا مُخرَجُ قارئٍ من النصّ.**
 
 **المخرج** `Jawab`: الحكم (`maqbul` أو `khata` أو `laHukm`)، والدرجةُ قائمةً (`qalil`، `nazr`، `lugha`، `bila`)؛ وحين لا يكون الحكمُ «مقبولًا»
-فالدرجةُ `[bila]` (`ghayr_maqbul_bila`).
+فالدرجةُ `[bila]` (`ghayr_maqbul_bila`). و`qalil` لا يُخرجه `jawab` بعد تعديله (`la_qalil`): موضعُه الوحيد صلةُ «أل» فعلًا معربًا في الألفية، وهو
+«لا حكم» لاختلاف المصدرين.
 
 **الحكم** (`jawab`):
-1. **البوّابة:** الحقولُ غيرُ المتّسقة (`muttasiq`: التشديدُ في لفظٍ آخرُه نون، و«لا عائد» في العائد وسمتِه معًا) و«ذا» الملغاةُ «لا حكم»
-   (`bawwaba_la_hukm`): «إذا لم تلغ» قيد، والملغاةُ ليست موصولًا.
+1. **البوّابة:** الحقولُ غيرُ المتّسقة (`muttasiq`: التشديدُ في لفظٍ آخرُه نون، و«لا عائد» في العائد وسمتِه معًا) والإلغاءُ في أيّ لفظٍ «لا حكم»
+   (`bawwaba_la_hukm`): «إذا لم تلغ» قيدٌ في «ذا»، والملغاةُ ليست موصولًا؛ والإلغاءُ في غيرها حقولٌ تخالف المواصفة.
 2. **وإلّا فربطُ أربعة أحكام** بـ`wa`، وهو ربطُ `Nizam.Phi.K3.wa` على الأحكام (`wa_k3`، `jawab_k3`): يكفي خطأٌ في أحدها ليكون الجوابُ خطأً
    (`khata_yakfi`)، ولا قبولَ إلّا بقبولها كلِّها بدرجاتها المذكورة، وما سواهما «لا حكم».
 3. **اللفظ** (`lafzJ`):
@@ -33,7 +37,7 @@ import Nizam.Phi
    - «اللائي» و«اللاتي» لجمع المؤنّث (قطر س138–139)، و«اللات» و«اللاء» كذلك (ألفيّة س151)، و«اللاء» لجمع المذكّر نزر («واللاء كالذين نزرا
      وقعا»، س151).
    - «من» و«ما» و«أي» و«أل» لكلّ معنى («وبمعنى الجميع من وما وأي، وأل»، قطر س139؛ «ومن وما وأل تساوي ما ذكره»، ألفيّة س152).
-   - «ذو» لكلّ معنى في لغة طيئ («وذو في لغة طي»، قطر س140؛ «وهكذا ذو عند طيئ شهر»، س152)، و«ذات» للمفرد المؤنّث و«ذوات» لجمع المؤنّث عندهم
+   - «ذو» لكلّ معنى في لغة طيئ (في القطر تحت «وبمعنى الجميع»: «وذو في لغة طي»، س139–140؛ «وهكذا ذو عند طيئ شهر»، س152)، و«ذات» للمفرد المؤنّث و«ذوات» لجمع المؤنّث عندهم
      («وكالتي أيضا لديهم ذات ... وموضع اللاتي أتى ذوات»، س153).
    - «ذا» لكلّ معنى بعد «ما» أو «من» الاستفهاميّتين («وذا بعد ما أو من الاستفهاميتين»، قطر س140؛ «ومثل ماذا بعدما استفهام ... أومن»، س154).
    - وما سوى ذلك خطأ: لفظٌ لمعنًى أو موضعٍ جعل النطاقُ له غيرَه، ومنه «ذو» و«ذات» و«ذوات» في غير طيئ، و«ذا» في غير ما بعد الاستفهاميّتين
@@ -55,7 +59,9 @@ import Nizam.Phi
 
 **ما هو تعيينُ البنّاء** (لا نصُّ النطاق):
 - اللغةُ قيدٌ على «ذو» و«ذات» و«ذوات» وحدها (`lugha_la_tughayyir`)؛ وما قبله والموضعُ لا أثرَ لهما إلّا في «ذا» والمثنّى و«اللذون».
-- «ذو» عند طيئ لكلّ معنى (من «تساوي ما ذكره» و«وهكذا»)، و«ذات» و«ذوات» لما ذُكرتا له وحده.
+- «ذات» و«ذوات» لما ذُكرتا له وحده (و«ذو» عند طيئ لكلّ معنى نصًّا: هي في القطر تحت «وبمعنى الجميع»، س139–140).
+- في اللفظ يُؤخذ ما في أحد المصدرين إذا سكت الآخر عنه أو أطلق بلفظٍ لا ينفيه، ولا يُعدّ ذلك اختلافًا («لا حكم» للاختلاف في الصلة وحدها): «اللذون»
+  رفعًا لغةٌ والقطرُ يقول «الذين بالياء مطلقا»، و«اللاء» لجمع المذكّر نزرٌ والقطرُ لا يذكرها (وهي قراءةُ المؤلّف في M14 وM16).
 - «شبهُها» في الألفية الظرفُ والجارُّ التامّان، لا الناقصان.
 - «طبق للموصول» في المشترك: الموافقُ للمعنى مقبول، والموافقُ للّفظ وحده «لا حكم».
 - المحذوفُ في غير الجملة «لا حكم»: «وقد يحذف» في سياق الجملة الخبريّة.
@@ -76,6 +82,10 @@ import Nizam.Phi
 
 **الصلة بقطع Lean القائمة:**
 - `Nizam.Phi.K3.wa`: ربطُ الأحكام (`wa_k3`).
+- **خلافٌ معلَن مع `SLGE.TarkibExt.mawsulOK`** (ملفُّ المالك، لا يُعدَّل هنا): لا يرخّص صلةً إطارُها شبهُ جملة (`sila.1 != 2`)، فيردّ الظرفَ والجارَّ صلةً؛
+  والقطر س143 «أو ظرف أو جار ومجرور تامان» يقبلهما، وكذلك `jawab` (`khilaf_mawsulOK`). والقرارُ للمالك.
+- **خلافٌ معلَن مع `SLGE.Maqam.silaOK`** (ملفُّ المالك): يقبل لـ«من» المشتركة أيَّ عائدٍ غائب (سمةُ الموصول فيه لا تحمل معناه)؛ و`jawab` يردّ
+  العائدَ المخالفَ لمعنى «من» وللفظها معًا («ذات ضمير طبق للموصول»، القطر س141) (`khilaf_silaOK`). والقرارُ للمالك.
 - `asma_qatr`: ألفاظُ `SLGE.Wad.mawsul` الأربعةَ عشرَ ألفاظٌ هنا، و«الموصول» رابعةُ `SLGE.Wad.maarif`.
 - `maqam_khass`: كلُّ لفظٍ في `SLGE.Maqam.mawsulKhass` مقبولٌ هنا لمعنًى من سمته، بصلةٍ خبريّةٍ وعائدٍ مستترٍ موافق.
 
@@ -83,11 +93,12 @@ import Nizam.Phi
 `hawkama/منهج_الضوابط.md`)، ثمّ غُيّرت بعد قراءتها كما أعلاه. ونتيجتُها على الضابط في `Jisr/MawsulQiyas.lean`، لا هنا.
 
 **المبرهنات** (بالمعيار الموحَّد في `Nizam/Asas.lean`)، وهي خواصُّ هذا التعيين على مجاله، لا قوانينُ في اللغة:
-- تعريفيّة (10): `bawwaba_la_hukm`، `wa_k3`، `bila_sila`، `silat_al`، `silat_ghayriha`، `ikhtilaf_masdarayn`، `la_aid_khata`، `tashdid_la_yughayyir`،
-  `lugha_la_tughayyir`، `qayd_khata`. وبرهانُها فكُّ التعريفات وتفكيكُ الحالات.
-- لكلّ (4): `jawab_k3` (تستدعي `wa_k3`)، `khata_yakfi` (تستدعي `jawab_k3` و`Nizam.Phi.wa_N`)، `tashdid_ghayr_muthanna` (تستدعي `jawab_k3`)،
-  `ghayr_maqbul_bila` (تستدعي مساعدًا خاصًّا: سلامةُ الربط).
-- على الشاهد (3): `asma_qatr`، `maqam_khass`، `shawahid`.
+- تعريفيّة (11): `bawwaba_la_hukm`، `wa_k3`، `bila_sila`، `silat_al`، `silat_ghayriha`، `ikhtilaf_masdarayn`، `la_aid_khata`، `tashdid_la_yughayyir`،
+  `lugha_la_tughayyir`، `qayd_khata`، `khilaf_mawsulOK_amm`. وبرهانُها فكُّ التعريفات وتفكيكُ الحالات.
+- لكلّ (5): `jawab_k3` (تستدعي `wa_k3`)، `khata_yakfi` (تستدعي `jawab_k3` و`Nizam.Phi.wa_N`)، `tashdid_ghayr_muthanna` (تستدعي `jawab_k3`)،
+  `ghayr_maqbul_bila` (تستدعي مساعدًا خاصًّا: سلامةُ الربط)، `la_qalil` (تستدعي مساعداتٍ خاصّة و`List.mem_filter`).
+- على الشاهد (5): `asma_qatr`، `maqam_khass`، `khilaf_mawsulOK`، `khilaf_silaOK`، `shawahid`.
+- والأربعُ `khilaf_mawsulOK_amm` و`khilaf_mawsulOK` و`khilaf_silaOK` و`la_qalil` زيدت بعد مراجعة `murajii` الأولى، بلا تغييرٍ في `jawab`.
 
 **حدُّه.** المدخلُ تحليلٌ يُعطى؛ ولا إعرابَ لـ«أي» ولا شروطَ لحذف العائد (س159–165)؛ ولا تفريقَ بين العاقل وغيره؛ و«لا حكم» في الاختلاف لا يحمل
 البديلين (هما في `silaQatr` و`silaAlfiyya`)؛ ولا وصلَ بالقارئ ولا بالمحرّك.
@@ -373,6 +384,43 @@ theorem qayd_khata (d : Dakhil) :
   · rintro (h | h | h) hl <;> subst h <;> simp_all [lafzJ]
   · rintro h hq; subst h; subst hq; simp [lafzJ]
 
+private theorem lafzJ_la_qalil (d : Dakhil) : Daraja.qalil ∉ (lafzJ d).daraja := by
+  obtain ⟨lf, m, w, t, lg, q, ml, s, a, as⟩ := d
+  cases lf <;> simp only [lafzJ] <;> (repeat' split) <;> simp [maqbulJ, khataJ]
+
+private theorem silaJ_la_qalil (l : Lafz) (s : Sila) : Daraja.qalil ∉ (silaJ l s).daraja := by
+  cases l <;> cases s <;> simp [silaJ, silaQatr, silaAlfiyya, maqbulJ, khataJ, laHukmJ]
+
+private theorem aidJ_la_qalil (d : Dakhil) : Daraja.qalil ∉ (aidJ d).daraja := by
+  obtain ⟨lf, m, w, t, lg, q, ml, s, a, as⟩ := d
+  simp only [aidJ]; (repeat' split) <;> simp [maqbulJ, khataJ, laHukmJ]
+
+private theorem tashdidJ_la_qalil (d : Dakhil) : Daraja.qalil ∉ (tashdidJ d).daraja := by
+  simp only [tashdidJ]; split <;> simp [maqbulJ, laHukmJ]
+
+private theorem wa_la_qalil (a b : Jawab) (ha : Daraja.qalil ∉ a.daraja) (hb : Daraja.qalil ∉ b.daraja) :
+    Daraja.qalil ∉ (wa a b).daraja := by
+  unfold wa
+  split
+  · simp [khataJ]
+  · split
+    · simp only [maqbulJ]
+      split
+      · simp
+      · intro hm
+        rcases List.mem_append.mp (List.mem_filter.mp hm).1 with h | h
+        · exact ha h
+        · exact hb h
+    · simp [laHukmJ]
+
+/-- **`jawab` لا يُخرج «قليل»:** «قليل» في الألفية لصلة «أل» فعلًا معربًا وحدها، وهي «لا حكم» لاختلاف المصدرين. -/
+theorem la_qalil (d : Dakhil) : Daraja.qalil ∉ (jawab d).daraja := by
+  unfold jawab
+  split
+  · simp [laHukmJ]
+  · exact wa_la_qalil _ _ (lafzJ_la_qalil d) (wa_la_qalil _ _ (tashdidJ_la_qalil d)
+      (wa_la_qalil _ _ (silaJ_la_qalil _ _) (aidJ_la_qalil d)))
+
 /-- جوابٌ سليم: ما ليس مقبولًا فدرجتُه `[bila]`. -/
 def Jawab.salim (j : Jawab) : Prop := j.hukm ≠ .maqbul → j.daraja = [.bila]
 
@@ -421,7 +469,30 @@ theorem maqam_khass :
       | _, _ => false) = true := by
   decide
 
-/-- **الشواهد** (تحليلُ البنّاء لأمثلة النطاق). -/
+/-- **خلافٌ مع `SLGE.TarkibExt.mawsulOK`:** لا يرخّص صلةً إطارُها شبهُ جملة، في أيّ سمةٍ وعائد؛ وفي إطارات المالك إطاران من شبه الجملة. -/
+theorem khilaf_mawsulOK_amm (mf : SLGE.Maqam.Feat) (sila : SLGE.Tarkib.Frame) (k : Nat) (af : SLGE.Maqam.Feat) (h : sila.1 = 2) :
+    SLGE.TarkibExt.mawsulOK mf sila k af = false := by
+  simp [SLGE.TarkibExt.mawsulOK, h]
+
+/-- **والقطر يقبل الظرفَ والجارَّ التامّين صلةً، وكذلك `jawab`.** -/
+theorem khilaf_mawsulOK :
+    (SLGE.Tarkib.framesL.filter (·.1 == 2)).length = 2 ∧
+    jawab ⟨.alladhi, .mufradMudhakkar, .raf, false, .ghayrMadhkura, .ghayruhuma, false, .jarrTamm, .mustatir,
+      some .mufradMudhakkar⟩ = maqbulJ [.bila] ∧
+    jawab ⟨.alladhi, .mufradMudhakkar, .raf, false, .ghayrMadhkura, .ghayruhuma, false, .zarfTamm, .mustatir,
+      some .mufradMudhakkar⟩ = maqbulJ [.bila] := by
+  decide +kernel
+
+/-- **خلافٌ مع `SLGE.Maqam.silaOK`:** «من» المشتركة (سمتُها عند المالك (3، 2، 0)) تقبل عائدًا مفردًا مؤنّثًا؛ و`jawab` يردّه لـ«من» بمعنى جمع
+    المؤنّث، لأنّه يخالف معناها ولفظَها معًا. -/
+theorem khilaf_silaOK :
+    SLGE.Maqam.silaOK (3, 2, 0) (3, 1, 0) 0 = true ∧
+    jawab ⟨.man, .jamMuannath, .raf, false, .ghayrMadhkura, .ghayruhuma, false, .jumlaKhabariyya, .mustatir,
+      some .mufradMuannath⟩ = khataJ := by
+  decide
+
+/-- **الشواهد:** مدخلاتٌ مبنيّة، منها مثالُ القطر س139–140 («كالضارب والمضروب»: «أل» بوصفٍ صريح)؛ وبعضُها زيد بعد قراءة الحالات لقتل طفراتٍ
+    حيّة (`5b34f6d`). -/
 theorem shawahid :
     let d (l : Lafz) (m : Sima) (w : Mawdi) (s : Sila) : Dakhil := ⟨l, m, w, false, .ghayrMadhkura, .ghayruhuma, false, s, .mustatir, some m⟩
     jawab (d .alladhi .mufradMudhakkar .raf .jumlaKhabariyya) = maqbulJ [.bila] ∧
