@@ -2378,6 +2378,7 @@ import Jisr.DamirQiyas
 #print axioms Jisr.Damir.illa_muttasil
 #print axioms Jisr.Damir.illa_munfasil_la_hukm
 #print axioms Jisr.Damir.fasl_maa_imkan
+#print axioms Jisr.Damir.fasl_jadwal
 #print axioms Jisr.Damir.tartib_munfasil_maqbul
 #print axioms Jisr.Damir.tartib_muttasil_iff
 #print axioms Jisr.Damir.darura_la_tughayyir_illa_ikhtiyar
