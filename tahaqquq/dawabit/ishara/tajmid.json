@@ -1,0 +1,33 @@
+{
+ "naw": "ضابط مجمَّد",
+ "minhaj": "hawkama/منهج_الضوابط.md، الإصدار ١ (بفئة غموض)",
+ "qita": "أسماءُ الإشارة في قطر الندى (س132–135) والألفية (س137–144): حكمُ الاستعمال بالأصل والمشار إليه والموضع والمسافة و«ها» واللام والكاف",
+ "masadir": [
+  {
+   "milaf": "qatr.txt",
+   "sha256": "2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d"
+  },
+  {
+   "milaf": "alfiyya.txt",
+   "sha256": "13b351a0a02d9060fdedbb5db568544718eb4e89bef323f5572b8a26c0921ca0"
+  }
+ ],
+ "wasf_sha256": "5cc2372854e68d50774467e075b8ff683aa9b86fa6f022a0eeb21c22cb7d509f",
+ "cases_sha256": "5725a39dbc5783835202f7b4876665c6403a07628bee3c0986670de3df9be664",
+ "fahs_cases_sha256": "abdcda8fbc78b2667b7ab850e0dab0a9689b9ef40bb19690388d05e99f4ca094",
+ "taalif_sha256": "7e5e5c9202a12a47fc3b352d7b4d19dd1dac91d484db0176bcfdc4842f840040",
+ "bina_cases_sha256": "0b146d0a0e7a6d8421016ad3cf09620b79d5af899804ac6ae595fa250ec3025c",
+ "muallif": "وكيلٌ جديد (general-purpose) بالمواصفة والمصدرين وحدهما، بتوجيهٍ محفوظٍ بنصّه في tawjih_muallif.md؛ وسياقُه يحقنه النظامُ آليًّا (§٥ من المنهج)، وإفصاحُه عنه في taalif.md الذي لم يقرأه البنّاءُ قبل دفع الشفرة؛ أجاب البنّاءَ بالبصمات والأعداد وحدها. وكتب bina_cases.py فولّد به cases.json، فأُودع معه ببصمته ولم يقرأه البنّاء",
+ "aadad_muallif": {
+  "jumla": 49,
+  "mujib": 19,
+  "hadd": 12,
+  "kharij": 5,
+  "umum": 11,
+  "ghumud": 2,
+  "mithal_harfi": 27,
+  "fahs": "0 على cases.json، ورفض 20 نسخةً مكسورة من 20، ورفض مجلّدَ مصدرٍ بقطرٍ مغيَّر"
+ },
+ "waqt_tajmid": "2026-10-27T21:59:30Z (آخرُ طابعٍ في سجلّ المؤلّف)",
+ "qabl_shifra": "شفرةُ Jisr/Ishara.lean وJisr/IsharaDabit.lean وscripts/bina_dawabit_ishara.py وطفراتُها كُتبت قبل أن يقرأ البنّاءُ الحالات أو وصفَ التأليف، وتُودَع بعد هذا الإيداع"
+}

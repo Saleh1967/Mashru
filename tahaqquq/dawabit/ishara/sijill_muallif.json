@@ -1,0 +1,40 @@
+{
+ "adawat": {
+  "Read": 1,
+  "Bash": 10,
+  "Write": 3
+ },
+ "masarat_mutlaqa": [
+  "/.out",
+  "/home/claude/mudaa_dir/alfiyya.txt",
+  "/home/claude/mudaa_dir/qatr.txt",
+  "/mudaa_mughayyar",
+  "/mudaa_mughayyar/",
+  "/mudaa_mughayyar/qatr.txt",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ishara/mujallad",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ishara/mujallad/",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ishara/mujallad/bina_cases.py",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ishara/mujallad/fahs_cases.py",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ishara/mujallad/taalif.md",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ishara/mujallad/tafrat_fahs/.out",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/ishara/mujallad/wasf.md"
+ ],
+ "kharij_al_masmuh": [
+  "/.out",
+  "/mudaa_mughayyar",
+  "/mudaa_mughayyar/",
+  "/mudaa_mughayyar/qatr.txt"
+ ],
+ "mamnu": [],
+ "qaraa_al_masadir": {
+  "/home/claude/mudaa_dir/qatr.txt": true,
+  "/home/claude/mudaa_dir/alfiyya.txt": true
+ },
+ "tafsir_kharij": {
+  "/.out": "من «tafrat_fahs/.out» داخل المجلّد المسموح، نسبيًّا: مخرجُ الفاحص على النسخ المكسورة، حُذف",
+  "/mudaa_mughayyar": "من «tafrat_fahs/mudaa_mughayyar» داخل المجلّد المسموح، نسبيًّا: نسخةٌ من المصدرين بقطرٍ زيدت في آخره مسافة، لتجربة فحص البصمة، حُذفت",
+  "/mudaa_mughayyar/": "كالذي قبله",
+  "/mudaa_mughayyar/qatr.txt": "كالذي قبله"
+ },
+ "hadd_al_mustakhrij": "المستخرِجُ يقرأ من سجلّ الوكيل حقولَ file_path وpath وnotebook_path في كلّ أداة، ونصَّ أمر Bash بنمط «/» يليه حرفٌ من [A-Za-z_.]؛ ولا يقرأ محتوى ما يكتبه الوكيل بأداة الكتابة؛ وتفسيرُ ما خرج عن المسموح كتبه البنّاءُ باليد من نصّ الأوامر، بعد حذف كلّ حرفٍ عربيٍّ منه"
+}

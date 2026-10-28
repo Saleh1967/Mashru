@@ -119,6 +119,9 @@ import Jisr.IbdalAlfiyyaQiyas
 import Jisr.Mawsul
 import Jisr.MawsulDabit
 import Jisr.MawsulQiyas
+import Jisr.Ishara
+import Jisr.IsharaDabit
+import Jisr.IsharaQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2559,3 +2562,27 @@ import Jisr.MawsulQiyas
 #print axioms Jisr.Mawsul.Qiyas.natija_fia
 #print axioms Jisr.Mawsul.Qiyas.akhta_sifr
 #print axioms Jisr.Mawsul.Qiyas.azwaj_1
+-- أسماءُ الإشارة في القطر (س132–135) والألفية (س137–144) (Jisr/Ishara.lean): حكمُ الاستعمال بالأصل والمشار إليه والموضع والمسافة و«ها» واللام والكاف
+#print axioms Jisr.Ishara.ghayr_muwafiq_khata
+#print axioms Jisr.Ishara.lam_bila_kaf_khata
+#print axioms Jisr.Ishara.la_hukm_iff
+#print axioms Jisr.Ishara.ha_lam_khata
+#print axioms Jisr.Ishara.muthanna_lam_khata
+#print axioms Jisr.Ishara.madd_lam_khata
+#print axioms Jisr.Ishara.kaf_lil_baid
+#print axioms Jisr.Ishara.ha_baid_la_yughayyir
+#print axioms Jisr.Ishara.mawdi_la_yughayyir
+#print axioms Jisr.Ishara.muthanna_bila_jins
+#print axioms Jisr.Ishara.asma_qatr
+#print axioms Jisr.Ishara.maqam_ishara
+#print axioms Jisr.Ishara.mirsat_maqbul
+#print axioms Jisr.Ishara.shawahid
+#print axioms Jisr.Ishara.shahid_qasr
+-- مقارنةُ ضابط أسماء الإشارة قبل الحالات (Jisr/IsharaDabit.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Ishara.Dabit.qarin_hukm
+-- ضابطُ أسماء الإشارة المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/IsharaQiyas.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Ishara.Qiyas.majal
+#print axioms Jisr.Ishara.Qiyas.natija
+#print axioms Jisr.Ishara.Qiyas.natija_fia
+#print axioms Jisr.Ishara.Qiyas.akhta_sifr
+#print axioms Jisr.Ishara.Qiyas.azwaj_1
