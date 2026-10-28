@@ -125,6 +125,9 @@ import Jisr.IsharaQiyas
 import Jisr.Khabar
 import Jisr.KhabarDabit
 import Jisr.KhabarQiyas
+import Jisr.Damir
+import Jisr.DamirDabit
+import Jisr.DamirQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2619,3 +2622,29 @@ import Jisr.KhabarQiyas
 #print axioms Jisr.Khabar.Qiyas.natija_fia
 #print axioms Jisr.Khabar.Qiyas.akhta_sifr
 #print axioms Jisr.Khabar.Qiyas.azwaj_1
+-- الضميرُ البارز في القطر (س124–128) والألفية (س105–119) (Jisr/Damir.lean): الاتّصالُ والانفصال والترتيب ودرجتُها
+#print axioms Jisr.Damir.muttasiq_iff
+#print axioms Jisr.Damir.ibtida_muttasil
+#print axioms Jisr.Damir.ibtida_munfasil_la_hukm
+#print axioms Jisr.Damir.illa_muttasil
+#print axioms Jisr.Damir.illa_munfasil_la_hukm
+#print axioms Jisr.Damir.fasl_maa_imkan
+#print axioms Jisr.Damir.fasl_jadwal
+#print axioms Jisr.Damir.tartib_munfasil_maqbul
+#print axioms Jisr.Damir.tartib_muttasil_iff
+#print axioms Jisr.Damir.darura_la_tughayyir_illa_ikhtiyar
+#print axioms Jisr.Damir.ghayr_maqbul_bila_daraja
+#print axioms Jisr.Damir.la_hukm_iff
+#print axioms Jisr.Damir.akhass_shakhs
+#print axioms Jisr.Damir.awwal_maarif
+#print axioms Jisr.Damir.damair_rutab
+#print axioms Jisr.Damir.shawahid
+-- مقارنةُ ضابط الضمير قبل الحالات (Jisr/DamirDabit.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Damir.Dabit.qarin_hukm
+#print axioms Jisr.Damir.Dabit.qarin_daraja
+-- ضابطُ الضمير المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/DamirQiyas.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Damir.Qiyas.majal
+#print axioms Jisr.Damir.Qiyas.natija
+#print axioms Jisr.Damir.Qiyas.natija_fia
+#print axioms Jisr.Damir.Qiyas.akhta_sifr
+#print axioms Jisr.Damir.Qiyas.azwaj_1
