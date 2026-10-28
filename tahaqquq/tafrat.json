@@ -5246,14 +5246,14 @@
  {
   "ism": "P960_damir_ibtida_muttasil",
   "milaf": "Jisr/Damir.lean",
-  "min": "  | .muttasil => khataJ\n  | .munfasil => laHukmJ\n\n/-- بعد",
+  "min": "  | .muttasil => if darura then laHukmJ else khataJ\n  | .munfasil => laHukmJ\n\n/-- بعد",
   "ila": "  | .muttasil => laHukmJ\n  | .munfasil => laHukmJ\n\n/-- بعد"
  },
  {
   "ism": "P961_damir_illa_darura",
   "milaf": "Jisr/Damir.lean",
-  "min": "  | .muttasil => if darura then laHukmJ else khataJ",
-  "ila": "  | .muttasil => khataJ"
+  "min": "  | .muttasil => if darura then laHukmJ else khataJ\n  | .munfasil => laHukmJ\n\n/-- الأصل",
+  "ila": "  | .muttasil => khataJ\n  | .munfasil => laHukmJ\n\n/-- الأصل"
  },
  {
   "ism": "P962_damir_fasl_maa_imkan",
@@ -5409,7 +5409,7 @@
   "ism": "P987_damir_fahs_akhta_fi_lean",
   "milaf": "Jisr/DamirQiyas.lean",
   "min": "theorem akhta_sifr :",
-  "ila": "theorem akhta_alt : akhta (natayij halat) = [] := by\n  decide +kernel\n\ntheorem akhta_sifr :"
+  "ila": "private theorem akhta_alt : akhta (natayij halat) = [] := by\n  decide +kernel\n\ntheorem akhta_sifr :"
  },
  {
   "ism": "P988_damir_sijill_lean",
@@ -5464,5 +5464,35 @@
   "milaf": "Jisr/DamirQiyas.lean",
   "min": "theorem natija : ihsa (natayij halat) = ⟨69, 0, 0, 0, 0, 0, 0, 0⟩ := by",
   "ila": "theorem natija : ihsa (natayij halat) = ihsa (natayij halat) ∨ ihsa (natayij halat) = ⟨69, 0, 0, 0, 0, 0, 0, 0⟩ := by"
+ },
+ {
+  "ism": "P1142_damir_ibtida_darura",
+  "milaf": "Jisr/Damir.lean",
+  "min": "  | .muttasil => if darura then laHukmJ else khataJ\n  | .munfasil => laHukmJ\n\n/-- بعد",
+  "ila": "  | .muttasil => khataJ\n  | .munfasil => laHukmJ\n\n/-- بعد"
+ },
+ {
+  "ism": "P1143_damir_ism_qablahu",
+  "milaf": "Jisr/Damir.lean",
+  "min": "    | some q => if a = .ism then laHukmJ else tartibJ a q d.rutba d.shakl d.darura",
+  "ila": "    | some q => tartibJ a q d.rutba d.shakl d.darura"
+ },
+ {
+  "ism": "P1144_damir_qarin_ghumud_bila",
+  "milaf": "Jisr/DamirDabit.lean",
+  "min": "    else if 2 ≤ m.length && j.daraja == [.bila] then .sawab\n",
+  "ila": "    else if 2 ≤ m.length && j.daraja == [.bila] then .ikhtiyar\n"
+ },
+ {
+  "ism": "P1145_damir_qarin_bila_naqs",
+  "milaf": "Jisr/DamirDabit.lean",
+  "min": "    else if j.daraja == [.bila] then .naqsTaghtiya\n",
+  "ila": "    else if j.daraja == [.bila] then .khataDaraja\n"
+ },
+ {
+  "ism": "P1146_damir_qarin_tajawuz",
+  "milaf": "Jisr/DamirDabit.lean",
+  "min": "    else if m == [.bila] then .tajawuz\n",
+  "ila": "    else if m == [.bila] then .khataDaraja\n"
  }
 ]
