@@ -109,6 +109,7 @@ import SLGE.Syllable
 import Madlul.TasisDalala
 import Nizam.Shahada
 import Dal.Tahsil
+import Dal.QiraaTahsil
 import Jisr.Damir
 import Jisr.DamirDabit
 import Jisr.DamirQiyas
@@ -2371,6 +2372,26 @@ import Jisr.DamirQiyas
 #print axioms Dal.Tahsil.shahid_kataba
 #print axioms Dal.Tahsil.shahid_shams
 #print axioms Dal.Tahsil.shahid_muallaq
+#print axioms Dal.QiraaTahsil.mem_khalayaTahsil
+#print axioms Dal.QiraaTahsil.juzOf_khalaya
+#print axioms Dal.QiraaTahsil.juzOf_fasid
+#print axioms Dal.QiraaTahsil.ajza_cons
+#print axioms Dal.QiraaTahsil.ajza_tahsil
+#print axioms Dal.QiraaTahsil.ajza_asl
+#print axioms Dal.QiraaTahsil.ajza_la_fasid
+#print axioms Dal.QiraaTahsil.tamm_khalaya
+#print axioms Dal.QiraaTahsil.qiraa_ajza
+#print axioms Dal.QiraaTahsil.qiraa_tahsil
+#print axioms Dal.QiraaTahsil.qiraa_la_fasid
+#print axioms Dal.QiraaTahsil.qiraa_asl
+#print axioms Dal.QiraaTahsil.qiraa_shahada
+#print axioms Dal.QiraaTahsil.ajza_L
+#print axioms Dal.QiraaTahsil.qiraa_murakhkhasa
+#print axioms Dal.QiraaTahsil.shahid_fata
+#print axioms Dal.QiraaTahsil.shahid_shams
+#print axioms Dal.QiraaTahsil.shahid_rafd_tatwil
+#print axioms Dal.QiraaTahsil.shahid_tatwil_maqta
+#print axioms Dal.QiraaTahsil.shahid_jamaa
 -- الضميرُ البارز في القطر (س124–128) والألفية (س105–119) (Jisr/Damir.lean): الاتّصالُ والانفصال والترتيب ودرجتُها
 #print axioms Jisr.Damir.muttasiq_iff
 #print axioms Jisr.Damir.ibtida_muttasil
@@ -2397,23 +2418,3 @@ import Jisr.DamirQiyas
 #print axioms Jisr.Damir.Qiyas.natija_fia
 #print axioms Jisr.Damir.Qiyas.akhta_sifr
 #print axioms Jisr.Damir.Qiyas.azwaj_1
-#print axioms Dal.QiraaTahsil.mem_khalayaTahsil
-#print axioms Dal.QiraaTahsil.juzOf_khalaya
-#print axioms Dal.QiraaTahsil.juzOf_fasid
-#print axioms Dal.QiraaTahsil.ajza_cons
-#print axioms Dal.QiraaTahsil.ajza_tahsil
-#print axioms Dal.QiraaTahsil.ajza_asl
-#print axioms Dal.QiraaTahsil.ajza_la_fasid
-#print axioms Dal.QiraaTahsil.tamm_khalaya
-#print axioms Dal.QiraaTahsil.qiraa_ajza
-#print axioms Dal.QiraaTahsil.qiraa_tahsil
-#print axioms Dal.QiraaTahsil.qiraa_la_fasid
-#print axioms Dal.QiraaTahsil.qiraa_asl
-#print axioms Dal.QiraaTahsil.qiraa_shahada
-#print axioms Dal.QiraaTahsil.ajza_L
-#print axioms Dal.QiraaTahsil.qiraa_murakhkhasa
-#print axioms Dal.QiraaTahsil.shahid_fata
-#print axioms Dal.QiraaTahsil.shahid_shams
-#print axioms Dal.QiraaTahsil.shahid_rafd_tatwil
-#print axioms Dal.QiraaTahsil.shahid_tatwil_maqta
-#print axioms Dal.QiraaTahsil.shahid_jamaa

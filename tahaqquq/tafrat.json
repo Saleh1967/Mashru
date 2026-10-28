@@ -5244,6 +5244,78 @@
   "ila": "  else []"
  },
  {
+  "ism": "P901_qiraa_mawdi_mazaha",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "  | .L _ ks => .ok ⟨ks.map (fun k => ⟨(Dal.n k).val, m.a, m.b, .tahsil⟩), [], false, false⟩",
+  "ila": "  | .L _ ks => .ok ⟨ks.map (fun k => ⟨(Dal.n k).val, m.a, m.a, .tahsil⟩), [], false, false⟩"
+ },
+ {
+  "ism": "P902_qiraa_wasit_ka_tahsil",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "    | .ok w => .ok ⟨w.khalaya.map (fun c => ⟨c, m.a, m.b, .wasit q⟩), w.mulahazat, w.wasl, w.al⟩",
+  "ila": "    | .ok w => .ok ⟨w.khalaya.map (fun c => ⟨c, m.a, m.b, .tahsil⟩), w.mulahazat, w.wasl, w.al⟩"
+ },
+ {
+  "ism": "P903_qiraa_fasid_maqbul",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "  | .F e => .error s!\"{e}: «{String.ofList m.nass}»\"",
+  "ila": "  | .F e => .ok ⟨[], [], false, false⟩"
+ },
+ {
+  "ism": "P904_qiraa_tatwil_yamna_waqf",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "  | n :: rest => rest.all tatwilB && (tatwilB n || (m.nass.tail.contains fathatan && (n.nass == ['ا'] || n.nass == ['ى'])))",
+  "ila": "  | n :: rest => rest.isEmpty && (m.nass.tail.contains fathatan && (n.nass == ['ا'] || n.nass == ['ى']))"
+ },
+ {
+  "ism": "P905_qari_asl_bila_ism",
+  "milaf": "Qari/Main.lean",
+  "min": "    | .tahsil => \"مقطعٌ مرخَّص\"",
+  "ila": "    | .tahsil => \"مقطع\""
+ },
+ {
+  "ism": "P906_qari_asl_bila_mawdi",
+  "milaf": "Qari/Main.lean",
+  "min": "  s!\"{khaliyaIsm x.raqm} [{x.a},{x.b}) \" ++ match x.asl with",
+  "ila": "  s!\"{khaliyaIsm x.raqm} [{x.a},{x.a}) \" ++ match x.asl with"
+ },
+ {
+  "ism": "P907_qiraa_fasid_bila_maqta",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "  | .F e => .error s!\"{e}: «{String.ofList m.nass}»\"",
+  "ila": "  | .F e => .error e"
+ },
+ {
+  "ism": "P908_qiraa_bila_wasit_bila_ism",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "  .error s!\"معلَّقٌ بلا وسيطٍ في القارئ: {q} «{String.ofList s}»\"",
+  "ila": "  .error s!\"معلَّقٌ بلا وسيطٍ في القارئ «{String.ofList s}»\""
+ },
+ {
+  "ism": "P909_qari_mawadi_farigha",
+  "milaf": "Qari/Main.lean",
+  "min": "mulahazat := r.mulahazat, mawadi := r.khalaya }",
+  "ila": "mulahazat := r.mulahazat, mawadi := [] }"
+ },
+ {
+  "ism": "P910_qiraa_jamaa_maqsura_khaliya",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "        .ok ⟨[], [mulahazaMaqsura, mulahazaJamaa], false, false⟩",
+  "ila": "        .ok ⟨[kh 2 3], [mulahazaMaqsura, mulahazaJamaa], false, false⟩"
+ },
+ {
+  "ism": "P911_qiraa_tatwil_bayn_tanwin_alif",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "  | n :: rest => rest.all tatwilB && (tatwilB n || (m.nass.tail.contains fathatan && (n.nass == ['ا'] || n.nass == ['ى'])))",
+  "ila": "  | n :: rest => (n :: rest).all tatwilB || (m.nass.tail.contains fathatan && ((n :: rest).filter (fun x => !tatwilB x)).map (·.nass) == [['ا']])"
+ },
+ {
+  "ism": "P929_qiraa_jamaa_tatwil",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "      else if ms.isEmpty && m.siyaq.lahiq.isNone && (m.siyaq.sabiq == some ['و'] || m.siyaq.sabiq == some ['و', 'ْ']) then",
+  "ila": "      else if ms.isEmpty && (m.siyaq.sabiq == some ['و'] || m.siyaq.sabiq == some ['و', 'ْ']) then"
+ },
+ {
   "ism": "P960_damir_ibtida_muttasil",
   "milaf": "Jisr/Damir.lean",
   "min": "  | .muttasil => if darura then laHukmJ else khataJ\n  | .munfasil => laHukmJ\n\n/-- بعد",
