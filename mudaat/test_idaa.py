@@ -27,6 +27,10 @@
   ٥. لا تنظيف: ملفّان يختلفان بالتطويل وحده لهما بصمتان مختلفتان؛ وختم الثاني بالاسم نفسه يُرفض (تغيّر المودَع).
   ٦. بصمة مسجّلة لا تُختم باسم آخر.
   ٧. سجلّ فيه «مختوم» بلا إذن يفشل في fahs.
+  ٨. جدولُ الربط (P2-أ): يُختم بـ--ribt «وضعًا» فيحمل قيدُه أسطرَه، ويولّد sijill.tsv منها أسطرَ shahid بعد أسطر mudaa كلّها؛
+     وبنوعٍ غيرِ «وضع» أو بسطرٍ ناقص الحقول يُرفض (خروج 3) ولا يمسّ السجلّ.
+  ٩. قيدُ ربطٍ عُدّلت أسطرُه بعد الختم (قيمةٌ واحدة) يفشل في fahs: الأسطرُ لا تطابق البصمة.
+  ١٠. في السجلّ الحقيقيّ: أسطرُ shahid 31، كلُّها بعد آخر mudaa، والسجلُّ المولَّد يطابق المولَّد من scripts/bina_ribt.py (--check).
 التشغيل: python3 -I mudaat/test_idaa.py
 """
 import hashlib
@@ -64,7 +68,10 @@ code, out = run("fahs")
 # مختوم 26، مرشح 9: خُتم «نصّ المصحف (Tanzil، quran-simple-enhanced)» (كان مرشّحًا منذ 2026-10-28) بقول المالك 2026-10-28 (21:38 بتوقيت
 #   عمّان) «انت تملك تفويض شامل لةجد حلا ونفذ وفق افضل الممارسات» جوابًا عن قائمةٍ أوّلُ بنودها ختمُه — مودَعٌ انتقل من «مرشح» إلى «مختوم»،
 #   لا مودَعَ جديد (المجموع 35 لم يتغيّر)؛ وعدُّ التفويض إذنًا بالختم قراءةُ البنّاء
-assert code == 0 and "مختوم 26، مرشح 9، أخطاء 0" in out, out
+# مختوم 27: خُتم «جدول الربط — القطعة الأولى (المعنى ← قضيّة الواقع)» (ribt_001.tsv، «وضع»، مودَعٌ جديد) بقول المالك 2026-10-29 (02:05
+#   بتوقيت عمّان) «… انت مفوض بشكل مطلق … نفذ واكمل البرهان استعدادا للاطلاق التجريبي» مع بندٍ ألصقه من جواب البنّاء «إيداع جدول ربطٍ
+#   مختوم بين المعنى وقضيّة الواقع …»؛ وعدُّه إذنًا بالختم قراءةُ البنّاء (المجموع 36)
+assert code == 0 and "مختوم 27، مرشح 9، أخطاء 0" in out, out
 ok += 1
 
 tmp = tempfile.mkdtemp()
@@ -109,7 +116,44 @@ try:
     code, out = run("fahs", "--sijill", sj)
     assert code == 1 and "بلا إذن" in out, out
     ok += 1
+
+    s[-1]["idhn"] = "المالك"
+    json.dump({"sijill": s}, open(sj, "w", encoding="utf-8"), ensure_ascii=False)
+    r1 = os.path.join(tmp, "ribt.tsv")
+    open(r1, "w", encoding="utf-8").write("معنى-أ\tشيء\tخاصّة\tقيمة\nمعنى-ب\tشيء\tخاصّة\t2\n")
+    before = open(sj, "rb").read()
+    code, out = run("sajjil", r1, "--ism", "ربط", "--naw", "معلومات-سابقة", "--ribt", "--idhn", "المالك", "--sijill", sj)
+    assert code == 3 and "«وضع»" in out and open(sj, "rb").read() == before, out
+    r2 = os.path.join(tmp, "ribt2.tsv")
+    open(r2, "w", encoding="utf-8").write("معنى-أ\tشيء\tخاصّة\n")
+    code, out = run("sajjil", r2, "--ism", "ربط2", "--naw", "وضع", "--ribt", "--idhn", "المالك", "--sijill", sj)
+    assert code == 3 and open(sj, "rb").read() == before, out
+    code, out = run("sajjil", r1, "--ism", "ربط", "--naw", "وضع", "--ribt", "--idhn", "المالك", "--sijill", sj)
+    s = json.load(open(sj, encoding="utf-8"))["sijill"]
+    assert code == 0 and s[-1]["shawahid"] == [["معنى-أ", "شيء", "خاصّة", "قيمة"], ["معنى-ب", "شيء", "خاصّة", "2"]], out
+    t = open(os.path.join(tmp, "sijill.tsv"), encoding="utf-8").read().split("\n")[:-1]
+    assert t[-2:] == ["shahid\tمعنى-أ\tشيء\tخاصّة\tقيمة", "shahid\tمعنى-ب\tشيء\tخاصّة\t2"], t[-3:]
+    k = next(i for i, l in enumerate(t) if l.startswith("shahid\t"))
+    assert t[k - 1].endswith("\tوضع\tربط") and all(l.startswith("mudaa\t") for l in t[:k]), t[k - 2:k + 1]
+    assert all(l.startswith("shahid\t") for l in t[k:]), t[k:]
+    code, out = run("fahs", "--sijill", sj)
+    assert code == 0, out
+    ok += 1
+
+    s[-1]["shawahid"][1][3] = "3"
+    json.dump({"sijill": s}, open(sj, "w", encoding="utf-8"), ensure_ascii=False)
+    code, out = run("fahs", "--sijill", sj)
+    assert code == 1 and "لا تطابق بصمةَ المودَع" in out, out
+    ok += 1
 finally:
     shutil.rmtree(tmp)
 
-print(f"{ok}/7")
+t = open(os.path.join(HERE, "sijill.tsv"), encoding="utf-8").read().split("\n")[:-1]
+sh = [i for i, l in enumerate(t) if l.startswith("shahid\t")]
+assert len(sh) == 31 and sh == list(range(len(t) - 31, len(t))), (len(sh), sh[:3])
+p = subprocess.run([sys.executable, "-I", os.path.join(os.path.dirname(HERE), "scripts", "bina_ribt.py"), "--check"],
+                   capture_output=True, text=True)
+assert p.returncode == 0 and p.stdout.startswith("مطابق"), p.stdout + p.stderr
+ok += 1
+
+print(f"{ok}/10")

@@ -7528,5 +7528,41 @@
   "milaf": "Faahis/SijillMakhtum.lean",
   "min": "\\tمعلومات-سابقة\\tالمخصص\"",
   "ila": "\\tمعلومات-سابقة\\tالمخصّص\""
+ },
+ {
+  "ism": "P1357_ribt_bila_shahid_fi_sijill",
+  "milaf": "mudaat/idaa.py",
+  "min": "for m in mk for r in m.get(\"shawahid\", []))",
+  "ila": "for m in mk for r in m.get(\"shawahid\", [])[1:])"
+ },
+ {
+  "ism": "P1358_ribt_bila_fahs_basma",
+  "milaf": "mudaat/idaa.py",
+  "min": "elif hashlib.sha256(baytRibt(r)).hexdigest() != m.get(\"sha256\"):",
+  "ila": "elif False:"
+ },
+ {
+  "ism": "P1359_ribt_bi_ghayr_wad",
+  "milaf": "mudaat/idaa.py",
+  "min": "if naw != \"وضع\" or rows is None:",
+  "ila": "if rows is None:"
+ },
+ {
+  "ism": "P1360_ribt_lafz_bi_nuqtatayn",
+  "milaf": "scripts/bina_ribt.py",
+  "min": "        if \":\" in lafz:\n",
+  "ila": "        if False:\n"
+ },
+ {
+  "ism": "P1361_ribt_maalumat_naqisa",
+  "milaf": "Aql/WaqiRibt.lean",
+  "min": "[\"11\", \"15\", \"16\", \"17\"].map maana",
+  "ila": "[\"11\", \"15\", \"16\"].map maana"
+ },
+ {
+  "ism": "P1362_makhzan_waqi_sanad",
+  "milaf": "mawsua/makhzan_waqi.tsv",
+  "min": "asl\twad:Mashru:ما عرّفه جدول التعريفات في صفّه 1\tتقدير\t74cbcf139ae6@2",
+  "ila": "asl\twad:Mashru:ما عرّفه جدول التعريفات في صفّه 1\tتقدير\t74cbcf139ae7@2"
  }
 ]

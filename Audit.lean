@@ -82,6 +82,7 @@ import Dal.Adad
 import Nizam.QawaidB
 import Nizam.Baqi
 import Aql.Waqi
+import Aql.WaqiRibt
 import Aql.WaqiShawahid
 import Nizam.Qiyas
 import Jisr.NafyFil
@@ -2660,3 +2661,11 @@ import Jisr.DamirQiyas
 #print axioms Jisr.Damir.Qiyas.natija_fia
 #print axioms Jisr.Damir.Qiyas.akhta_sifr
 #print axioms Jisr.Damir.Qiyas.azwaj_1
+-- أوّلُ «مفهوم» من واقعٍ مختوم: «جدول الربط — القطعة الأولى» (Aql/WaqiRibt.lean)
+#print axioms Waqi.Ribt.startsWith_nafsuh
+#print axioms Waqi.Ribt.makhtum_jadwal
+#print axioms Waqi.Ribt.hukm_jadwal
+#print axioms Waqi.Ribt.mafahim_ribt
+#print axioms Waqi.Ribt.maalumat_ribt
+#print axioms Waqi.Ribt.mafhum_mashru
+#print axioms Waqi.Ribt.la_mafhum_bila_khatm_ribt
