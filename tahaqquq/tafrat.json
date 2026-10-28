@@ -5360,7 +5360,7 @@
  {
   "ism": "P979_damir_wahid_fasl_akhass",
   "milaf": "Jisr/Damir.lean",
-  "min": "    | _, .munfasil => laHukmJ",
+  "min": "    | _, .munfasil => if mithalWasl a r darura then khataJ else laHukmJ",
   "ila": "    | _, .munfasil => khataJ"
  },
  {
@@ -5524,6 +5524,12 @@
   "milaf": "Jisr/Damir.lean",
   "min": "  | .filWahid, .mukhatab => true\n",
   "ila": "  | .filWahid, .mukhatab => true\n  | .filWahid, .mutakallim => !darura\n"
+ },
+ {
+  "ism": "P1154_damir_tartib_wahid_mithal",
+  "milaf": "Jisr/Damir.lean",
+  "min": "    | _, .munfasil => if mithalWasl a r darura then khataJ else laHukmJ",
+  "ila": "    | _, .munfasil => laHukmJ"
  },
  {
   "ism": "P1106_damir_akhta_bila_sigha",
