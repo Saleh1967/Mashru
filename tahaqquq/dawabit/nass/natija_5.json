@@ -1,0 +1,123 @@
+{
+ "tashghil": 5,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد قاعدتَي التحصيل 14أ و14ب (dal/tahsil-wasl، 9d852b0 و60c48ed) في Dal/Tahsil.lean ووسيطِ 14أ في Dal/QiraaTahsil.lean",
+ "qablaha": {
+  "natija_4.json": "9164d29978ff44c3a8e785317c5971f9d5b0b58aa3150c75bb73457d23df2015"
+ },
+ "cases_sha256": "a2e37d38a9be0ce4fe69c252daba8ba247726eb1eeaed43b1a1f615955ffe2ff",
+ "shifra": {
+  "Jisr/NassItar.lean": {
+   "sha256": "07023a1e450a214b964ddbf5e9f15527978ca95a7f1cdbad69f6ad7d5e5441e0",
+   "iydaa": "da940ac5d86d6640cf431602cb76d7a391e95b3f"
+  },
+  "Jisr/NassItarDabit.lean": {
+   "sha256": "449d349bf5340f0ad296722c0559ce6bfe5d6c12a98055f10e776a9a723eb939",
+   "iydaa": "da940ac5d86d6640cf431602cb76d7a391e95b3f"
+  },
+  "Qari/Main.lean": {
+   "sha256": "fbe295b35a40771459aa74970e17674692911a699d3a5868e0fe38c152f77cf6",
+   "iydaa": "690d963c090916870f1cfa3a83ad53750a7e2532"
+  },
+  "Dal/QiraaTahsil.lean": {
+   "sha256": "b02e85f13d21befffce72839b429444447af0d325f0864ce7304acb06939a827",
+   "iydaa": "9d852b02c7756c5c186228e8e5da0734da9bba7a"
+  },
+  "Dal/Tahsil.lean": {
+   "sha256": "5ca756f2c55e069a7fdfb91479ca98406f05356b61035eba15718d9bef010f02",
+   "iydaa": "60c48ed6ce3b5046cf5ff3a7cc1e93ccd8635ad0"
+  }
+ },
+ "lean": [
+  "Jisr.NassItar.Qiyas.majal",
+  "Jisr.NassItar.Qiyas.natija",
+  "Jisr.NassItar.Qiyas.natija_fia",
+  "Jisr.NassItar.Qiyas.akhta_1",
+  "Jisr.NassItar.Qiyas.azwaj_1"
+ ],
+ "halat": 50,
+ "huqul_masula": 71,
+ "ihsa": {
+  "sawab": 61,
+  "naqsTaghtiya": 8,
+  "tajawuz": 1,
+  "qabulKhati": 0,
+  "raddKhati": 1,
+  "ikhtiyar": 0,
+  "khataItar": 0,
+  "rafdQari": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 30,
+  "حد": 15,
+  "خارج": 4,
+  "عموم": 12,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "N04",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N21",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N24",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N28",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N34",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N35",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N36",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N38",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "N45",
+   "hukm",
+   "raddKhati"
+  ],
+  [
+   "N46",
+   "hukm",
+   "tajawuz"
+  ]
+ ],
+ "azwaj": {
+  "jumla": 17,
+  "taghayyar": 16,
+  "lam_yataghayyar": [
+   [
+    "N34",
+    "N35"
+   ]
+  ],
+  "asaba_tarafan": 10
+ },
+ "rafd_qari": [],
+ "tarikh": "2026-10-28",
+ "malahiz": "الأعدادُ أعدادُ التشغيلات قبله بعينها: خلايا الحالات الخمسين من القارئ بعد قاعدتَي التحصيل هي هي (scripts/bina_dawabit_nass.py --check يعيد Jisr/NassItarDawabit.lean بايتًا، «مطابق»)، والشفرةُ الحاكمة في Jisr/NassItar.lean كما هي؛ وتغيّرت في shifra بصمتا Dal/Tahsil.lean وDal/QiraaTahsil.lean."
+}
