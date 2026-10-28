@@ -2,7 +2,7 @@
 
 البنود، بترتيبها (الدستور م2–م4، م8):
   ١. lake build ينجح.
-  ٢. لا sorry ولا axiom ولا native_decide في ملفّات Lean (خارج التعليقات).
+  ٢. لا sorry ولا axiom ولا native_decide في ملفّات Lean (خارج التعليقات)، ومنها مكتبةُ Nabt.
   ٣. Audit.lean يُبنى، وكلّ مبرهنة فيه مسلّماتها من الثلاث: propext، Classical.choice، Quot.sound.
   ٤. عدد المبرهنات المدقّقة لا ينقص عن خطّ الأساس في khatt_asas.json (نقصه حذفٌ يحتاج إذنًا).
       غياب الملفّ أو تلفه أو بطلان العدد فشلٌ مسمّى، لا خطّ أساسٍ صفريّ بديل.
@@ -106,6 +106,8 @@
       توزيعاتٍ باليد، والنقلُ بالجسر قبل الآلة، وجدولُ nabtBridge، والتحصيلُ على كلماتٍ خلاياها باليد، دائمًا؛ وعلى المودَع إن حضر في MUDAA_DIR.
   ٥ت٤. القياسُ المسجَّل لهيكل الإنتروبيا (tahaqquq/test_qiyas_intrubiya.py؛ scripts/qiyas_intrubiya.py وhawkama/tasjil_qiyas_intrubiya.md): الشطرُ
       المحجوب وبصمتُه، وحقولُ البصمات في الوثيقة، والمقاديرُ على كلماتٍ باليد، وحكمُ الفروض حول حدودها؛ والنتيجةُ إن أُودعت تحمل بصماتِ التسجيل.
+  ٥ت٥. تدقيقُ مكتبة Nabt المنقولة إلى Mashru (tahaqquq/test_nabt_tadqiq.py؛ AuditNabt.lean): قائمتُها 1592 مبرهنةً مبنيّة، ومسلّماتُ كلِّ تصريحٍ
+      تحت Nabt. من الثلاث.
   ٥خ. تمامُ التدقيق (tahaqquq/test_tadqiq_tamm.py؛ 2026-10-26؛ مقترحُ البنّاء بأمر المالك العامّ، يسري بعد دمج طلبه): كلُّ مبرهنةٍ عامّةٍ
       في وحدات المشروع (SLGE وDal وMadlul وJisr وAql وNizam وFaahis وQari؛ تصريحٌ تسبق اسمَه في سطره theorem أو lemma) لها `#print axioms`
       في Audit.lean خارج التعليقات — من ملفّات `.ilean` التي يكتبها lake build؛ فالبند ٣ يعدّ ما في Audit.lean، وهذا يمنع أن تُبنى مبرهنةٌ
@@ -198,6 +200,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_tahsil.py",
     "tahaqquq/test_intrubiya.py",
     "tahaqquq/test_qiyas_intrubiya.py",
+    "tahaqquq/test_nabt_tadqiq.py",
     # آخرُها عمدًا: نموُّ الزمن (س1) لا يقتل إلّا طفرةً لا تغيّر الدلالة (P466، P467)، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_sura.py",
 )
@@ -824,7 +827,7 @@ def qism_tafrat(tafrat, i, n):
 def bunud_2_5(report, fails):
     """البنود ٢–٥د: تُكتب في report وfails. تُترك كلُّها مع --tafrat-faqat (وظائفُ الطفرات المتوازية على CI)."""
     bad = []
-    for d in ("SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari"):
+    for d in ("Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari"):
         for root, _, fs in os.walk(os.path.join(ROOT, d)):
             for f in fs:
                 if f.endswith(".lean"):
@@ -1162,6 +1165,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت٤ {out.strip().splitlines()[-1] if out.strip() else 'القياسُ المسجَّل: ?'}")
     if code != 0:
         fails.append("اختبار القياس المسجَّل فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_nabt_tadqiq.py"])
+    report.append(f"٥ت٥ {out.strip().splitlines()[-1] if out.strip() else 'تدقيق Nabt: ?'}")
+    if code != 0:
+        fails.append("اختبار تدقيق Nabt فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_tadqiq_tamm.py"])
     report.append(f"٥خ {out.strip().splitlines()[-1] if out.strip() else 'تمامُ التدقيق: ?'}")
     if code != 0:

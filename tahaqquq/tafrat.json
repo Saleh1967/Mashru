@@ -6928,5 +6928,17 @@
   "milaf": "Dal/QiraaTahsil.lean",
   "min": "        q == \"قاعدة الشدّة في أوّل الكلمة\" then",
   "ila": "        q == \"\" then"
+ },
+ {
+  "ism": "P1330_nabt_burhan_sorryAx",
+  "milaf": "Nabt/Law.lean",
+  "min": "theorem permutation_mark : ∀ a : Atom, toSlge a.val % 4 = a.val % 4 := by decide +kernel",
+  "ila": "theorem permutation_mark : ∀ a : Atom, toSlge a.val % 4 = a.val % 4 := sorryAx _ false"
+ },
+ {
+  "ism": "P1331_nabt_qaima_naqisa",
+  "milaf": "AuditNabt.lean",
+  "min": "  ``Nabt.Law.final_dead,\n",
+  "ila": ""
  }
 ]
