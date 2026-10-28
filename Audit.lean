@@ -109,6 +109,7 @@ import SLGE.Syllable
 import Madlul.TasisDalala
 import Nizam.Shahada
 import Dal.Tahsil
+import Jisr.QabiliyyaJins
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2368,3 +2369,8 @@ import Dal.Tahsil
 #print axioms Dal.Tahsil.shahid_kataba
 #print axioms Dal.Tahsil.shahid_shams
 #print axioms Dal.Tahsil.shahid_muallaq
+#print axioms Jisr.QabiliyyaJins.qabiliyyat_ilaMadlul
+#print axioms Jisr.QabiliyyaJins.tarkhis_min_jins
+#print axioms Jisr.QabiliyyaJins.laHukm_bila_qabiliyya
+#print axioms Jisr.QabiliyyaJins.idafiyya_mumtani
+#print axioms Jisr.QabiliyyaJins.shawahid_jins

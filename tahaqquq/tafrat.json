@@ -5242,5 +5242,23 @@
   "milaf": "Nizam/Shahada.lean",
   "min": "  else [madkhalGhaib]",
   "ila": "  else []"
+ },
+ {
+  "ism": "P901_qj_shahid",
+  "milaf": "Jisr/QabiliyyaJins.lean",
+  "min": ".qabiliyya 10, .isnadiyya⟩ = .laHukm",
+  "ila": ".qabiliyya 10, .isnadiyya⟩ = .murakhkhas"
+ },
+ {
+  "ism": "P902_qj_idafiyya_hw",
+  "milaf": "Jisr/QabiliyyaJins.lean",
+  "min": "(Or.inr hw)",
+  "ila": "(Or.inl hw)"
+ },
+ {
+  "ism": "P903_qj_hukm_hq",
+  "milaf": "Jisr/QabiliyyaJins.lean",
+  "min": "(Or.inl hq)",
+  "ila": "(Or.inr hq)"
  }
 ]
