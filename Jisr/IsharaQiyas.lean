@@ -15,7 +15,7 @@
 - `natija_3.json`: بعد تصحيحات مراجعة `murajii` («ها» مع «ثم»، لا تمسّه حالة؛ و`maqam_ishara`)، على مادّةٍ مكشوفة: 49 من 49.
 
 وفي توجيه البنّاء إلى المؤلّف (`tawjih_muallif.md`) عبارةٌ تدلّه على الضبط الذي لا يكتبه النطاق («vowelings the scope does not write … that is for
-the غموض category»)، وهي مادّةُ I48 وI49؛ فقراءتُه فيهما، وهي التي أُخذ بها، ليست مستقلّةً عن التوجيه.
+the غموض category or for «لا_حكم», as the spec says»)، وهي مادّةُ I48 وI49؛ فقراءتُه فيهما، وهي التي أُخذ بها، ليست مستقلّةً عن التوجيه.
 -/
 import Jisr.IsharaDawabit
 
