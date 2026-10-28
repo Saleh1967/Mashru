@@ -224,8 +224,8 @@
  {
   "ism": "P14_shuhud_bila_naw",
   "milaf": "Faahis/Lib.lean",
-  "min": "    shuhud := fun m => shuhudMutabara h.mudaat.toList ((h.shawahid.filter (·.1 == m)).map (·.2)).toList }",
-  "ila": "    shuhud := fun m => ((h.shawahid.filter (·.1 == m)).map (·.2)).toList }"
+  "min": "fun r =>\n    Waqi.shuhud h.mudaat.toList",
+  "ila": "fun r =>\n    Waqi.shuhud [(Waqi.Jadwal.basma, .waqiMakhtum)]"
  },
  {
   "ism": "M30_shakl_bila_ism",
@@ -3068,7 +3068,7 @@
  {
   "ism": "P444_sijill_yaqbal_kull",
   "milaf": "Faahis/Lib.lean",
-  "min": "      if raas line == \"mudaa\" then qira h n line",
+  "min": "      if raas line == \"mudaa\" || raas line == \"shahid\" then qira h n line",
   "ila": "      if true then qira h n line"
  },
  {
@@ -7486,5 +7486,23 @@
   "milaf": "tahaqquq/sabq_tajmid.py",
   "min": "        return 3\n",
   "ila": "        return 0\n"
+ },
+ {
+  "ism": "P1350_muhtawa_yashhad",
+  "milaf": "Faahis/Lib.lean",
+  "min": "      else if raas line == \"shahid\" then khata h n \"المحتوى لا يربط معنًى بواقع: الربطُ في سجلّ المودَعات وحده\"",
+  "ila": "      else if false then khata h n \"المحتوى لا يربط معنًى بواقع: الربطُ في سجلّ المودَعات وحده\""
+ },
+ {
+  "ism": "P1351_shuhud_bila_jadwal",
+  "milaf": "Faahis/Lib.lean",
+  "min": "    Waqi.shuhud h.mudaat.toList (fun _ => Waqi.Jadwal.basma) Waqi.Jadwal.jadwal r.2.1 r.2.2.1 r.2.2.2\n\ndef bina",
+  "ila": "    Waqi.shuhud h.mudaat.toList (fun _ => Waqi.Jadwal.basma) [] r.2.1 r.2.2.1 r.2.2.2\n\ndef bina"
+ },
+ {
+  "ism": "P1352_sijill_bila_shahid",
+  "milaf": "Faahis/Lib.lean",
+  "min": "      if raas line == \"mudaa\" || raas line == \"shahid\" then qira h n line",
+  "ila": "      if raas line == \"mudaa\" then qira h n line"
  }
 ]
