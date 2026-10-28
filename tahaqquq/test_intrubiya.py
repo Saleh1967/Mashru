@@ -99,10 +99,12 @@ def main():
     check("Qanun.adad وقفًا = Lean حتى 12", qanun.adad(False, 12) == LEAN_WAQF)
     check("Qanun.adad وصلًا = Lean حتى 12", qanun.adad(True, 12) == LEAN_WASL)
     src = SHAHADA.read_text(encoding="utf-8")
-    check("أعدادُ adad_waqf في Lean هي المنسوخة",
-          all(f"lawCount false {n} = {LEAN_WAQF[n]}" in src for n in range(5)))
-    check("أعدادُ adad_wasl في Lean هي المنسوخة",
-          all(f"lawCount true {n} = {LEAN_WASL[n]}" in src for n in range(5)))
+    # بالعدد كاملًا لا ببادئته: «= 84» لا تقبل «= 840» (الفحصُ السابق `in src` كان يقبلها)
+    def adad_lean(mode):
+        return {int(n): int(v) for n, v in re.findall(rf"lawCount {mode} (\d+) = (\d+)(?!\d)", src)}
+    check("أعدادُ adad_waqf في Lean هي المنسوخة بالضبط", adad_lean("false") == {n: LEAN_WAQF[n] for n in range(5)})
+    check("أعدادُ adad_wasl في Lean هي المنسوخة بالضبط", adad_lean("true") == {n: LEAN_WASL[n] for n in range(5)})
+    check("فحصُ العدد لا يقبل بادئة", not re.findall(r"lawCount false 1 = (\d+)(?!\d)", "lawCount false 1 = 840") == ["84"])
 
     # ٢
     g = subprocess.run([sys.executable, "-I", str(JADHR / "scripts" / "bina_intrubiya_shahada.py"), "--check"],
@@ -175,12 +177,18 @@ def main():
     check("فِي: الياءُ حرفُ مدّ ساكن", tm.get("فِي") == (m("ف", 2), m("ي", 3)))
     check("الْحَمْدُ معلَّقٌ بقاعدة همزة الوصل", "الْحَمْدُ" not in tm and "P:قاعدة همزة الوصل" in ta.get("الْحَمْدُ", []))
 
+    # ٦ب — قارئُ NABT عبر اللقطة المفحوصة لا باستيرادٍ في هذه العمليّة
+    nm, na = it.qari_nabt(["كَتَبَ", "الْحَمْدُ"])
+    check("قارئ NABT عبر run_pinned: كَتَبَ", nm.get("كَتَبَ") == (nb("ك", 0), nb("ت", 0), nb("ب", 0)))
+    check("قارئ NABT عبر run_pinned: المؤجَّل باسمه", na.get("الْحَمْدُ", "").startswith("DEFER:"))
+    check("لا استيرادَ لـnabt في عمليّة الاختبار", "nabt" not in sys.modules and "nabt.alphabet" not in sys.modules)
+
     # ٧
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf-8") as f:
         f.write("كَتَبَ\n")
         p = pathlib.Path(f.name)
     try:
-        it.tashghil(p, "0" * 64, JADHR / "integrations" / "nabt" / "src")
+        it.tashghil(p, "0" * 64)
         check("بصمةٌ خاطئة تُرفض", False)
     except SystemExit as e:
         check("بصمةٌ خاطئة تُرفض", str(e).startswith("MUDAA_SHA_MISMATCH"))
@@ -190,7 +198,7 @@ def main():
     mdir = os.environ.get("MUDAA_DIR")
     q = pathlib.Path(mdir) / "quran-simple-enhanced.txt" if mdir else None
     if q and q.exists() and it.basma(q) == QURAN_SHA:
-        r, md = it.tashghil(q, QURAN_SHA, JADHR / "integrations" / "nabt" / "src")
+        r, md = it.tashghil(q, QURAN_SHA)
         M, Tt = r["mudaa"], r["tabaqa2_tahsil"]
         check("المودَع: 18,200 صورةً بلا «<sel>» وفيها حرف", M["suwar_bila_sel_wa_bihi_harf"] == 18200)
         check("المودَع: المرخَّصُ بالتحصيل ≥ المقبولِ بالقارئ الصارم",

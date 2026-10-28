@@ -130,6 +130,79 @@ class LauncherBoundaryTests(unittest.TestCase):
             self.assertEqual(protected.stderr, "")
 
 
+    def test_sourceless_module_cannot_shadow_the_standard_library(self):
+        # A sourceless dataclasses.pyc beside the package shadowed the standard
+        # module before the import guard (2026-10-28). The fixture checker passes,
+        # so only the guard stands between the planted bytecode and execution.
+        with tempfile.TemporaryDirectory() as directory:
+            entry = self.fixture(directory, body="import dataclasses\nprint('IMPORTED')\n")
+            planted = Path(directory) / "integrations/nabt/src/dataclasses.pyc"
+            header = struct.pack("<4sIII", importlib.util.MAGIC_NUMBER, 0, 0, 0)
+            planted.write_bytes(header + marshal.dumps(compile("print('SHADOWED')", "x", "exec")))
+            result = invoke("runtime", entry=entry, cwd=directory)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertNotIn("SHADOWED", result.stdout + result.stderr)
+            self.assertIn("NABT_SOURCELESS_MODULE: dataclasses", result.stderr)
+
+    def test_module_outside_snapshot_and_stdlib_is_refused(self):
+        with tempfile.TemporaryDirectory() as directory, tempfile.TemporaryDirectory() as outside:
+            (Path(outside) / "unpinned_dependency.py").write_text("print('UNPINNED')\n", encoding="utf-8")
+            entry = self.fixture(directory, body=(
+                "import sys\nsys.path.append(sys.argv[1])\nimport unpinned_dependency\n"))
+            result = invoke("runtime", outside, entry=entry, cwd=directory)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertNotIn("UNPINNED", result.stdout)
+            self.assertIn("NABT_MODULE_ORIGIN: unpinned_dependency", result.stderr)
+
+    def test_standard_library_and_snapshot_imports_still_run(self):
+        with tempfile.TemporaryDirectory() as directory:
+            entry = self.fixture(directory, body=(
+                "import dataclasses, json, unicodedata\nimport nabt\nprint(json.dumps('OK'))\n"))
+            result = invoke("runtime", entry=entry, cwd=directory)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, '"OK"\n')
+
+
+    def runner(self, entry):
+        spec = importlib.util.spec_from_file_location("fixture_nabt_runner", entry)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module
+
+    def test_run_pinned_refuses_a_rejected_snapshot(self):
+        with tempfile.TemporaryDirectory() as directory:
+            entry = self.fixture(directory, checker="import sys\nprint('damaged', file=sys.stderr)\nraise SystemExit(3)\n")
+            with self.assertRaises(RuntimeError) as caught:
+                self.runner(entry).run_pinned("print('RAN')", [])
+            self.assertIn("NABT_SNAPSHOT_REJECTED: damaged", str(caught.exception))
+
+    def test_run_pinned_reads_checked_source_not_valid_cached_bytecode(self):
+        with tempfile.TemporaryDirectory() as directory:
+            entry = self.fixture(directory)
+            payload = Path(directory) / "integrations/nabt/src/nabt/payload.py"
+            payload.write_text("value = 'PINNED_SOURCE'\n", encoding="utf-8")
+            metadata = payload.stat()
+            cache = payload.parent / "__pycache__" / ("payload." + sys.implementation.cache_tag + ".pyc")
+            cache.parent.mkdir()
+            header = struct.pack("<4sIII", importlib.util.MAGIC_NUMBER, 0,
+                                 int(metadata.st_mtime) & 0xFFFFFFFF, metadata.st_size)
+            cache.write_bytes(header + marshal.dumps(compile("value = 'UNCHECKED_BYTECODE'\n", str(payload), "exec")))
+            result = self.runner(entry).run_pinned("from nabt.payload import value\nprint(value)", [])
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "PINNED_SOURCE\n")
+
+    def test_run_pinned_applies_the_import_guard(self):
+        with tempfile.TemporaryDirectory() as directory:
+            entry = self.fixture(directory)
+            planted = Path(directory) / "integrations/nabt/src/dataclasses.pyc"
+            header = struct.pack("<4sIII", importlib.util.MAGIC_NUMBER, 0, 0, 0)
+            planted.write_bytes(header + marshal.dumps(compile("print('SHADOWED')", "x", "exec")))
+            result = self.runner(entry).run_pinned("import dataclasses\nprint('IMPORTED')", [])
+            self.assertNotEqual(result.returncode, 0)
+            self.assertNotIn("SHADOWED", result.stdout + result.stderr)
+            self.assertIn("NABT_SOURCELESS_MODULE: dataclasses", result.stderr)
+
+
 class PinnedNabtIntegrationTests(unittest.TestCase):
     def test_runtime_uses_pinned_source_from_another_directory(self):
         with tempfile.TemporaryDirectory() as directory:

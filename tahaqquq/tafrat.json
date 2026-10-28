@@ -6808,5 +6808,47 @@
   "milaf": "tahaqquq/dawabit/ishara/natija_4.json",
   "min": "\"huqul_masula\": 49,",
   "ila": "\"huqul_masula\": 50,"
+ },
+ {
+  "ism": "P1300_nabt_pyc_mutajahal",
+  "milaf": "scripts/check_nabt_vendor.py",
+  "min": "            parts[:2] == (\"artifacts\", \"local\"))\n",
+  "ila": "            parts[:2] == (\"artifacts\", \"local\") or parts[-1].endswith(\".pyc\"))\n"
+ },
+ {
+  "ism": "P1301_nabt_hadd_bila_sourceless",
+  "milaf": "scripts/nabt.py",
+  "min": "        if isinstance(spec.loader, _m.SourcelessFileLoader):",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P1302_nabt_hadd_bila_asl",
+  "milaf": "scripts/nabt.py",
+  "min": "            if not (_under(real, self.roots) or (_under(real, _std) and not _under(real, _site))):",
+  "ila": "            if False:"
+ },
+ {
+  "ism": "P1303_nabt_run_pinned_bila_fahis",
+  "milaf": "scripts/nabt.py",
+  "min": "        if checked.returncode:\n            raise RuntimeError",
+  "ila": "        if False:\n            raise RuntimeError"
+ },
+ {
+  "ism": "P1304_nabt_run_pinned_bila_bayta",
+  "milaf": "scripts/nabt.py",
+  "min": "python = [sys.executable, \"-I\", \"-B\", \"-X\", f\"pycache_prefix={cache}\"]",
+  "ila": "python = [sys.executable, \"-I\", \"-B\"]"
+ },
+ {
+  "ism": "P1305_nabt_run_pinned_bila_hadd",
+  "milaf": "scripts/nabt.py",
+  "min": "        prelude = GUARD + \"import sys\\nsys.path[:0] = sys.argv[1:3]\\n_pin(*sys.argv[1:3])\\n\"",
+  "ila": "        prelude = GUARD + \"import sys\\nsys.path[:0] = sys.argv[1:3]\\n\""
+ },
+ {
+  "ism": "P1306_intrubiya_nabt_sabab_mafqud",
+  "milaf": "scripts/intrubiya.py",
+  "min": "        out[s] = {\"sabab\": e.status + \":\" + e.code}",
+  "ila": "        out[s] = {\"ok\": []}"
  }
 ]

@@ -5,8 +5,8 @@ The lock digest is installed policy, not an argument or a field supplied by
 the snapshot. Git blob identities bind the retained bytes to the manifest;
 the pinned commit/tree record their provenance. This is a checkout integrity
 check, not a proof of source authentication or process isolation. Generated
-Lean outputs and Python caches are outside its source inventory and are not
-certified by a successful result.
+Lean outputs and __pycache__ directories are outside its source inventory and are
+not certified by a successful result; a .pyc anywhere else is an undeclared file.
 """
 
 from __future__ import annotations
@@ -78,8 +78,16 @@ def _ignored_directory(parts: tuple[str, ...]) -> bool:
 
 
 def _ignored_file(parts: tuple[str, ...]) -> bool:
+    """Generated outputs that the inventory skips. A .pyc outside __pycache__ is
+    not one: Python imports such a file as a sourceless module (it can shadow a
+    standard module from src/), so it is an undeclared file, not a cache."""
     return (any(part in {".lake", "__pycache__"} for part in parts[:-1]) or
-            parts[:2] == ("artifacts", "local") or parts[-1].endswith(".pyc"))
+            parts[:2] == ("artifacts", "local"))
+
+
+def _generated_name(parts: tuple[str, ...]) -> bool:
+    """Names a lock may never pin as source: generated outputs and any bytecode."""
+    return _ignored_file(parts) or parts[-1].endswith(".pyc")
 
 
 def _lstat(path: Path, label: str):
@@ -179,7 +187,7 @@ def _verify_snapshot(root: Path, expected_lock_sha256: str) -> dict:
         name = _path(row["path"])
         if name in declared:
             _fail("NABT_LOCK_DUPLICATE_PATH", "Snapshot path is declared more than once", name)
-        if _ignored_file(PurePosixPath(name).parts):
+        if _generated_name(PurePosixPath(name).parts):
             _fail("NABT_LOCK_GENERATED_PATH", "Generated artifacts cannot be pinned source files", name)
         if (type(row["size"]) is not int or row["size"] < 0 or
                 not _hex(row["sha256"], 64) or not _hex(row["git_blob_sha"], 40) or
