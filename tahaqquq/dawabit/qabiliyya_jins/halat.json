@@ -1,0 +1,27 @@
+{
+ "_law": "ضابط مجمَّد (منهج_الضوابط §٤): حالاتٌ كتبها مؤلّفٌ مستقلّ (general-purpose agent a5d1880297b9915da) قرأ المواصفةَ والمصدرَ فقط ، قبل الشفرة. تُجمَّد ببصمتها.",
+ "_spec": "Madlul/قابلية_من_خاصة_الجنس.md",
+ "_rule": "hukmMadlul ⟨ilaMadlul q,.qabiliyya e,nisba⟩: e∈(fusul q).qab.map ramzQab ∧ nisba=isnadiyya ⇒ murakhkhas ؛ nisba=isnadiyya ∧ e∉ ⇒ laHukm ؛ nisba=idafiyya ⇒ mumtani.",
+ "halat": [
+  {"id":"J01","qism":"insan","code":11,"nisba":"isnadiyya","hukm":"murakhkhas"},
+  {"id":"J02","qism":"insan","code":12,"nisba":"isnadiyya","hukm":"murakhkhas"},
+  {"id":"J03","qism":"insan","code":13,"nisba":"isnadiyya","hukm":"murakhkhas"},
+  {"id":"J04","qism":"insan","code":14,"nisba":"isnadiyya","hukm":"murakhkhas"},
+  {"id":"J05","qism":"insan","code":15,"nisba":"isnadiyya","hukm":"murakhkhas"},
+  {"id":"J06","qism":"insan","code":16,"nisba":"isnadiyya","hukm":"laHukm"},
+  {"id":"J07","qism":"insan","code":10,"nisba":"isnadiyya","hukm":"laHukm"},
+  {"id":"J08","qism":"insan","code":11,"nisba":"idafiyya","hukm":"mumtani"},
+  {"id":"J09","qism":"insan","code":16,"nisba":"idafiyya","hukm":"mumtani"},
+  {"id":"J10","qism":"hayawan","code":12,"nisba":"isnadiyya","hukm":"murakhkhas"},
+  {"id":"J11","qism":"hayawan","code":11,"nisba":"isnadiyya","hukm":"murakhkhas"},
+  {"id":"J12","qism":"hayawan","code":15,"nisba":"isnadiyya","hukm":"murakhkhas"},
+  {"id":"J13","qism":"hayawan","code":16,"nisba":"isnadiyya","hukm":"laHukm"},
+  {"id":"J14","qism":"hayawan","code":11,"nisba":"idafiyya","hukm":"mumtani"},
+  {"id":"J15","qism":"jamad","code":11,"nisba":"isnadiyya","hukm":"laHukm"},
+  {"id":"J16","qism":"jamad","code":12,"nisba":"isnadiyya","hukm":"laHukm"},
+  {"id":"J17","qism":"jamad","code":11,"nisba":"idafiyya","hukm":"mumtani"},
+  {"id":"J18","qism":"nabat","code":11,"nisba":"isnadiyya","hukm":"laHukm"},
+  {"id":"J19","qism":"nabat","code":13,"nisba":"isnadiyya","hukm":"laHukm"},
+  {"id":"J20","qism":"nabat","code":13,"nisba":"idafiyya","hukm":"mumtani"}
+ ]
+}
