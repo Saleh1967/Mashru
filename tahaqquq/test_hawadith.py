@@ -1,5 +1,6 @@
 """حوادثُ الدمج على تاريخ git الحقيقيّ: كيف وقع الفقد (بإعادة الدمج بـ git merge-tree)، وأنّ البند ٤أ يكشفه بدالّة البوّابة نفسِها
-(`bawwaba.tafrat_naqisa`)؛ ثمّ دمجاتُ السجلّ (٣–١٠) يكشفها البند ٤ج (`bawwaba.dabt_naqis`).
+(`bawwaba.tafrat_naqisa`)؛ ثمّ دمجاتُ السجلّ (٣–١٠) يكشفها البند ٤ج (`bawwaba.dabt_naqis`)؛ ثمّ دمجاتٌ (١١–١٣) يكشفها البند ٤د
+(`bawwaba.saqit_fi_mada`).
 
 ١. 767e09b (دمجُ main في hawkama/brotokol): أضاف main ‏(b503857) سبعَ طفرات (P163–P169) على أساسٍ (916746e) خلا منها؛ وفي
    tafrat.json تعارضٌ نصّيّ وقعت السبعُ في كتلته، وحلُّ كلّ كتلةٍ بطرف الفرع (dfa7701) يعيد ملفَّ 767e09b حرفًا بحرف.
@@ -16,11 +17,18 @@
    - 79056cf (في jisr/utur-sabab): بندُ «المجهول» (2026-10-20)؛ واستُعيد في e44715c قبل دمج #58.
    - d3ca615 (في hawkama/khitta-jabr-v4): بندُ «تحديث فرع الطبقة الثالثة (#58)» (2026-10-21)؛ بلغ main بـ #64.
    وتُعيد البنودَ الأربعةَ التي بلغت main طلبُ #65.
+١١–١٣. ثلاثُ دمجاتٍ لـ main في فروعٍ على GitHub أسقطت ما بلغ فقدُه main ولم يعد حتّى أعاده طلبُ الاستعادة الشاملة (2026-10-28)، يكشفها
+   البند ٤د (`bawwaba.saqit_fi_mada`) على مدى الطلب من طرف main إلى الدمج:
+   - a79457e (في aql/sabab-shart-mani، #25): بندُ قطعة «النِّسَب الثلاث على أصناف العوامل المئة» في CLAUDE.md (تسعةُ أسطر) وREADME.md،
+     وطفرتاها P120–P121.
+   - 6b2ee00 (في madlul/tashfir-qism، #31): إحدى عشرةَ طفرةً لأدوات المعاني وقراءة السمات وترتيب المعمول وخلاصة الإخبار.
+   - 5ff4c99 (في aql/adawat-maani، #28): ستُّ طفراتٍ لخلاصة الإخبار (P123–P128)؛ وفي مداه دمجٌ ثانٍ (4b4db8f، الثالث أعلاه).
 التوقّعات أسماءٌ وأوائلُ بنودٍ مكتوبةٌ باليد من الحوادث، لا من مخرج الدوالّ. وأساسُ ٤أ في كلٍّ طرفُ main (قاعدةُ الطلب على CI)؛ والأساسُ من
 طرف الفرع لا يكشف شيئًا (الضابط السلبيّ) — فالكشفُ يتوقّف على اختيار الأساس.
-ما هنا مفحوصٌ للحادثتين ١ و٢: الآليّةُ (بإعادة الدمج) والكشف؛ وللدمجات ٣–١٠: الأبوان والكشفُ وحدَهما (لا الآليّة). والمنعُ (لقائمة الطفرات، ١–٢) مبرهنٌ في Nizam/Damj.lean: `la_faqd` و`la_faqd_janib`/`la_faqd_janib_b` لكلّ مدخل، و
+ما هنا مفحوصٌ للحادثتين ١ و٢: الآليّةُ (بإعادة الدمج) والكشف؛ وللدمجات ٣–١٠: الأبوان والكشفُ وحدَهما (لا الآليّة)؛ وللدمجات ١١–١٣:
+الكشفُ بعدد الدمجات في المدى، وأسماءُ الطفرات، وعددُ الأسطر الساقطة من كلّ ملفٍّ وأوّلُ بندها. والمنعُ (لقائمة الطفرات، ١–٢) مبرهنٌ في Nizam/Damj.lean: `la_faqd` و`la_faqd_janib`/`la_faqd_janib_b` لكلّ مدخل، و
 `shahid_hadith_767e09b`/`shahid_hadith_35` على نموذجهما.
-بلا تاريخٍ حاضر (استنساخٌ ضحل) لا يُشغَّل ويقول ذلك؛ وبلا `git merge-tree --write-tree` (git < 2.38) تُترك فحوصُ الآليّة ويقول ذلك.
+بلا تاريخٍ حاضر (استنساخٌ ضحل) لا يُشغَّل ويقول ذلك؛ وبلا `git merge-tree --write-tree` (git < 2.38) تُترك فحوصُ الآليّة و٤د ويقول ذلك.
 التشغيل: python3 -I tahaqquq/test_hawadith.py
 """
 import json
@@ -78,6 +86,27 @@ HAWADITH_DABT = {
         "naqis": "- 2026-10-21 — تحديثُ فرع الطبقة الثالثة (#58) من main بعد دمج #62"},
 }
 
+# دمجاتُ ٤د: (طرفُ main، الدمج) والمتوقَّع — أسماءُ الطفرات كلُّها، وأوائلُ أسطرٍ في ملفّاتٍ بعدد أسطرها الساقطة
+NISAB = "- النِّسَب الثلاث على أصناف العوامل المئة ("
+HAWADITH_DAMJ = {
+    "a79457e1f54d32df44100ad30cddb5d5e5504f20": {
+        "ra": "ed8904bfb7a9ef06f514e6ae729bc07535d7297a", "damjat": 1,
+        "tafrat": ["P120_nida_isnad", "P121_shart_taalluq"],
+        "asatir": {"CLAUDE.md": (9, NISAB + "قرار المالك 2026-10-17، 00:09"), "README.md": (1, NISAB + "`Jisr/NisabAsnaf.lean`")}},
+    "6b2ee00252226983401185e759c496ed44fb070e": {
+        "ra": "a87b86186f88ab2a95af44d15464e56978d0d049", "damjat": 1,
+        "tafrat": ["P123_anti_bil_fatha", "P123_ikhtisas_bizahir_khat", "P123_mujalasa_sirin_kilahuma_false",
+                   "P123_zayd_fail_qabl_amil", "P124_ikhtiyar_sabt_yawmAljumah_true", "P124_muayyan_yaqbal_kull",
+                   "P124_rabbuhu_aid_khati", "P125_daw_laShamsWaDawSiraj_false", "P125_muhtamal_bi_awwalih",
+                   "P125_muttasil_ziyada", "P126_hada_maful_muakhkhar"],
+        "asatir": {}},
+    "5ff4c995622ab4f0fd6e5c989703c1c4a3a42045": {
+        "ra": "d41c5f85300d089471e8b7ccd3811d578331cc8b", "damjat": 2,
+        "tafrat": ["P123_ikhtisas_bizahir_khat", "P124_ghaib_L115_naqis", "P125_jam_tashih_jawaz_khata",
+                   "P126_rutbat_laqab_khata", "P127_shahid_wujub_mukarrar", "P128_ilgha_zann_mukarrar"],
+        "asatir": {"CLAUDE.md": (14, "- 2026-10-17 — HALLUCINATED_REFERENCE وخرقٌ لمادّة السلطة (٩)")}},
+}
+
 
 def git(*args):
     p = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True, timeout=300)
@@ -106,7 +135,7 @@ def damj_nassi(p1, p2):
 
 
 def main():
-    if any(git("cat-file", "-e", f"{sha}^{{commit}}")[0] != 0 for sha in [*HAWADITH, *HAWADITH_DABT]):
+    if any(git("cat-file", "-e", f"{sha}^{{commit}}")[0] != 0 for sha in [*HAWADITH, *HAWADITH_DABT, *HAWADITH_DAMJ]):
         print("حوادث الدمج: لم يُشغَّل (التاريخ غير حاضر؛ استنسخ بلا --depth)")
         return 0
     ok, aliyya = 0, 0
@@ -147,8 +176,23 @@ def main():
         assert len(naqis) == 1 and naqis[0].startswith(h["naqis"]), (sha[:7], naqis)
         assert bawwaba.dabt_naqis(bunud(far), hali, []) == [], sha[:7]
         dabt += 1
+    damj = 0
+    muhaka = git("merge-tree", "--write-tree", *HAWADITH_DABT["43d9179200aca7bd7cfce8d5df44fea6e2935fd1"]["abawan"])[0] in (0, 1)
+    for sha, h in (HAWADITH_DAMJ.items() if muhaka else ()):
+        # الكشف: ٤د على المدى من طرف main إلى الدمج يسمّي ما أسقطه؛ وعلى المدى من الدمج نفسِه لا دمجَ ولا شيء
+        saqit, n = bawwaba.saqit_fi_mada(h["ra"], sha)
+        assert n == h["damjat"], (sha[:7], n)
+        assert sorted(x for _, p, x in saqit if p == "tahaqquq/tafrat.json") == h["tafrat"], sha[:7]
+        for path, (adad, awwal) in h["asatir"].items():
+            asatir = [x for _, p, x in saqit if p == path]
+            assert len(asatir) == adad and any(x.startswith(awwal) for x in asatir), (sha[:7], path, len(asatir))
+        assert {p for _, p, _ in saqit} == {"tahaqquq/tafrat.json", *h["asatir"]}, (sha[:7], {p for _, p, _ in saqit})
+        assert bawwaba.saqit_fi_mada(sha, sha) == ([], 0), sha[:7]
+        damj += 1
     print(f"حوادث الدمج: ٤أ {ok}/{len(HAWADITH)} (يسمّي ما أسقطه كلُّ دمج: 7 و4؛ والآليّة {aliyya}/{len(HAWADITH)})؛ "
-          f"و٤ج {dabt}/{len(HAWADITH_DABT)} (يسمّي البندَ الذي أسقطه كلُّ دمجٍ من الثمانية)")
+          f"و٤ج {dabt}/{len(HAWADITH_DABT)} (يسمّي البندَ الذي أسقطه كلُّ دمجٍ من الثمانية)؛ "
+          + (f"و٤د {damj}/{len(HAWADITH_DAMJ)} (يسمّي ما أسقطته الدمجاتُ الثلاث: 12 و11 و20)" if muhaka
+             else "و٤د لم يُشغَّل (لا git merge-tree --write-tree)"))
     return 0
 
 

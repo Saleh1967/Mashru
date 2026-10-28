@@ -8,7 +8,8 @@
       غياب الملفّ أو تلفه أو بطلان العدد فشلٌ مسمّى، لا خطّ أساسٍ صفريّ بديل.
   ٤أ. قائمة الطفرات لا تنقص عن الأساس: كلّ «ism» في tafrat.json عند نقطة التقاء HEAD بالمرجع (TAFRAT_ASAS_REF، وإلّا
       origin/main) حاضرٌ في القائمة الحاليّة، أو مسجَّلٌ في tahaqquq/tafrat_mahdhufa.json بسببٍ وإذن (قرار المالك 2026-10-19:
-      دمجان أسقطا طفرات main بلا تعارضٍ ظاهر، ولا شيء كان يكشفه). تعذُّر الأساس فشلٌ مسمّى لا تخطٍّ صامت.
+      دمجان أسقطا طفرات main بلا تعارضٍ ظاهر، ولا شيء كان يكشفه). تعذُّر الأساس فشلٌ مسمّى لا تخطٍّ صامت. وقراءةُ tafrat.json هنا
+      وفي ٤ب و٦ وtafrat_juz.py ترفض المفتاحَ المكرَّر في قيد (`json_bila_takrar`، 2026-10-28: قيدان التحما في حلٍّ يدويّ أسقطا الأوّلَ بصمت).
   ٤ب. نصُّ كلّ طفرة. القاعدتان بإذن المالك (2026-10-19 16:16، مكمّلتين لـ٤أ): «min» غيرُ فارغٍ يقع في ملفّه مرّةً واحدة
       (بعدّ المتداخل)، ولا يقع في تعليق. وتنفيذُ «في تعليق» قراءةُ البنّاء: موضعُ «min» في تعليق الأصل أو في بياضٍ بينه، أو
       أثرُ الطفرة لا يتعدّى التعليقَ والأسطرَ الفارغة وبياضَ أواخر الأسطر؛ ويُستثنى رفعُ تعليقٍ بحذف علامته متى أمكن مسحُ
@@ -23,6 +24,19 @@
       b66e004، 79056cf، d3ca615؛ بمسح الدمجات كلّها، `git rev-list --merges --all`) حلّت تعارضَ آخر الملفّ بطرف الفرع فأسقطت من الفرع
       ستّةَ بنودٍ من طرف main، وبلغ فقدُ أربعةٍ منها main. فالتصحيحُ يُضاف بندًا
       جديدًا، وتعديلُ بندٍ قائم يُعدّ غيابًا له. وغيابُ عنوان القسم في الأساس، أو تعذُّرُ الأساس أو قراءتِه، فشلٌ مسمّى.
+  ٤د. ما أسقطه حلُّ دمجٍ في الطلب (مقترحُ البنّاء بتفويض المالك في الجلسة 2026-10-28، 17:26: «المشكلة من. Pr 93 وما قبل اعمل انت
+      خبير إصلاح شامل ل mashru ولديك توكن سري بتفويض كامل»؛ يسري بعد دمج طلبه): لكلّ دمجٍ في المدى من الأساس (نقطةِ التقاء ٤أ) إلى
+      HEAD يحاكي git الدمجَ على أبويه بلا حلّ (`git merge-tree --write-tree`)، ولكلّ ملفٍّ يخالف فيه الدمجُ المودَع المحاكى: لازمُه
+      ما دمجه git بلا تعارض كما دمجه (ومنه الحذفُ ونقلُ الملفّ)، وما في كتلة تعارضٍ من طرفيها معًا (أكثرُهما من كلّ عنصر)
+      (`saqit_fi_damj`)؛ وما نقص عنه ساقط. والساقطُ الغائبُ عن الشجرة الآن فشلٌ باسم دمجه وملفّه، إلّا ما سُجّل في
+      tahaqquq/damj_maadhun.json (damj بادئةُ الدمج، وmilaf، وbasma بصمةُ العنصر، وawwal أوّلُه، وsabab، وidhn). والعناصرُ: الطفراتُ
+      بأسمائها (والمحذوفةُ بإذنٍ في tafrat_mahdhufa.json حاضرة)، وخطُّ الأساس بأزواج «ن←م» حضورًا، وما سواهما بأسطره (أقلُّ من ثلاثة
+      أحرفٍ لا يُعدّ). وتعذُّرُ المحاكاة (git < 2.38، أو تاريخٌ غيرُ متّصل) أو القراءة فشلٌ مسمّى لا تخطٍّ. سببُه: مسحُ الدمجات كلّها في
+      تاريخ main (2026-10-28) وجد حلولَ تعارضٍ في متصفّح GitHub أسقطت ثمانيَ عشرةَ طفرةً لخمس قطع، وبلغ فقدُها main بـ #25 و#28 و#29
+      و#31، وبندَ قطعة النِّسَب على الأصناف في CLAUDE.md وREADME.md (#25): الطفراتُ قبل أن يُبنى ٤أ (2026-10-19)، والبندُ خارج نطاق ٤أ
+      و٤ج أصلًا؛ وما يُسقطه حلٌّ من طرف الفرع نفسِه (كطفراتٍ للفرع) لا يراه ٤أ وأساسُه طرفُ main. وحدُّه: يرى السقوطَ في حلّ الدمج لا في
+      إيداعٍ عاديّ (الحذفُ المقصود إيداعٌ عاديّ)؛ وسطرٌ أعاد الحلُّ صياغتَه في كتلةٍ يُعدّ ساقطًا (فشلٌ نحو الإذن لا نحو المرور)؛ ودمجُ
+      الطلب الاصطناعيّ على CI يساوي محاكاتَه فلا يسقط فيه شيء.
   ٥. اختبارات بايثون (shabaka/test_shabaka.py) تمرّ، إن وُجد المودَع (MUDAA_MUKHASSAS).
   ٥أ. اختبارات خطّ الأساس والتثبيت (tahaqquq/test_bawwaba.py): رفض JSON التالف وحفظ الحدّ، وفحص بديل تثبيت Lean.
   ٥ب. اختبارات المخزن (mawsua/test_mawsua.py): الفاحص التنفيذيّ المبنيّ من Lean يقبل المخزن ويرفض الفاسد.
@@ -49,7 +63,7 @@
       Madlul/Fard116Data.lean وMadlul/Fard116Shawahid.lean له بالبايت إن حضر المودَعان.
   ٥ت. أطلس الجسور (tahaqquq/test_atlas.py): كلّ وحدة Lean مسجَّلة بطبقتها في Nizam/atlas.tsv، ووصلُها بالمحرّك مطابقٌ لرسم الاستيراد.
   ٥ث. حوادث الدمج (tahaqquq/test_hawadith.py): على تاريخ git الحقيقيّ، ٤أ يسمّي ما أسقطه 767e09b (7) وfeb12a8 (4)، و٤ج يسمّي بنودَ
-      «ما ضُبطتُ عليه» التي أسقطتها الدمجاتُ الثماني؛ بلا تاريخٍ لا يُشغَّل.
+      «ما ضُبطتُ عليه» التي أسقطتها الدمجاتُ الثماني، و٤د يسمّي ما أسقطته a79457e و6b2ee00 و5ff4c99؛ بلا تاريخٍ لا يُشغَّل.
   ٥ذ. منفّذ القياس المسجَّل (tahaqquq/test_qiyas_d.py): qiyas_d.py ووضعُ القياس في القارئ على بياناتٍ مصنوعة وكلماتٍ باليد، لا على المرجعين
       (التسجيل المسبق hawkama/tasjil_qiyas_d.md).
   ٥ض. جدول القواعد، صفُّ الأسماء الستّة (tahaqquq/test_qawaid.py): خلايا Jisr/QawaidJadwal.lean (مولَّد) والمولِّدُ نفسُه على صورٍ يدويّة،
@@ -74,6 +88,8 @@
       يدويّة على الصفوف الثلاثين، دائمًا؛ والاقتباساتُ في أسطرها إن حضر المودَع.
   ٥ص٨. ضابطُ «صكّ الجملة» المجمَّد (tahaqquq/test_sakk.py؛ الكتاب والمغني والقطر والألفية والشخصيّة ج1 وج3): مثلُ ٥ص على
       Jisr/SakkJumla.lean، وذهبُ NABT الخمسُ والعشرون منقولًا يدويًّا يطابق dhahab25، وبملفّ NABT نفسِه إن حضر.
+  ٥ص١٢. ضابطُ أبنية اسمَي الفاعل والمفعول المجمَّد (tahaqquq/test_abniya.py؛ الألفية س594–607 والقطر س358 وس365): مثلُ ٥ص على
+      Jisr/Abniya.lean وJisr/AbniyaDabit.lean، بحقلين مسؤولين؛ وإعادةُ bina_cases.py للحالات دائمًا، والأسانيدُ والحالاتُ في أسطرها إن حضر المودَعان.
   ٥ص٩. ضابطُ «الإبدال: الواوُ والياءُ في الكلمة» المجمَّد (tahaqquq/test_ibdal.py؛ الألفيّة 1216–1217 و1222 و1224 و1225–1226 و1238–1239،
       والكتابُ للفهم): مثلُ ٥ص على Jisr/IbdalAlfiyya.lean (قواعدُ Qayd على الخلايا فوق آلة القانون)، والمولَّدُ خلاياه من القارئ وعلى كلمةٍ
       بـ«أل»، وخلايا شواهد الأبيات من القارئ.
@@ -93,7 +109,9 @@
      وخروجُ البناء بغير صفرٍ بلا خطأٍ مسمّى (قتلُ المعالج لنفاد الذاكرة؛ وكذلك خطأُ استيرادٍ أو ملفٍّ مفقود بلا سطر — لا طفرةَ اليوم تمسّ
      `import` أو lakefile) أو اختبارٌ قُتل بإشارة: «غيرُ محسومة»، تفشل بها البوّابة باسمها. وحدُّه: اختبارٌ رمزُه موجبٌ قتلٌ ولو كان سببُه
      نفادَ ذاكرةٍ في عمليّةٍ تابعة له أو MemoryError (لا يُشترط سطرُ FAIL/ERROR).
-التشغيل: python3 -I tahaqquq/bawwaba.py [--bila-tafrat]
+التشغيل: python3 -I tahaqquq/bawwaba.py [--bila-tafrat | --tafrat-faqat] [--qism i/n]
+  --bila-tafrat: البنودُ ١–٥ وحدها. --tafrat-faqat: البناءُ ثمّ البند ٦ وحده. --qism i/n: البند ٦ على القسم i من n من tafrat.json
+  (ما رتبتُه k وk % n = i − 1). وعلى CI تُجري وظيفةُ «bawwaba» البنودَ ١–٥، وستُّ وظائف «tafrat» البندَ ٦ بأقسامه.
 """
 import hashlib
 import json
@@ -163,6 +181,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_jaza2.py",
     "tahaqquq/test_nass.py",
     "tahaqquq/test_sakk.py",
+    "tahaqquq/test_abniya.py",
     # قبل تمام التدقيق: طفرةٌ تزيد مبرهنةً عامّةً في ملفّ المقارنة (P1203) يقتلها فحصُها في test_ibdal.py لا غيابُ سطرها في Audit.lean.
     "tahaqquq/test_ibdal.py",
     "tahaqquq/test_tadqiq_tamm.py",
@@ -199,9 +218,22 @@ def git(*args):
     return p.returncode, p.stdout
 
 
+def json_bila_takrar(text):
+    """JSON يُرفض فيه المفتاحُ المكرَّر في كائنٍ واحد (ValueError باسمه): `json.loads` يُبقي آخرَه بصمت، فقيدان التحما في حلّ تعارضٍ
+    يدويّ (`{"ism": أ، …، "ism": ب، …}`) يُسقطان القيدَ الأوّل ولا يكسران الصيغة — كذلك سقطت P1034 وP1038 وP1111 من فرع #95."""
+    def hook(pairs):
+        mafatih = [k for k, _ in pairs]
+        mukarrar = sorted({k for k in mafatih if mafatih.count(k) > 1})
+        if mukarrar:
+            asmaa = [v for k, v in pairs if k == "ism"]
+            raise ValueError(f"مفتاحٌ مكرَّر في كائنٍ واحد ({'، '.join(mukarrar)})" + (f": {'، '.join(map(str, asmaa))}" if asmaa else ""))
+        return dict(pairs)
+    return json.loads(text, object_pairs_hook=hook)
+
+
 def asmaa_tafrat(text):
-    """أسماءُ الطفرات من نصّ tafrat.json؛ ما ليس قائمةَ قيودٍ لكلٍّ منها «ism» نصّيٌّ يُرفض باسمه."""
-    data = json.loads(text)
+    """أسماءُ الطفرات من نصّ tafrat.json؛ ما ليس قائمةَ قيودٍ لكلٍّ منها «ism» نصّيٌّ يُرفض باسمه، وكذلك المفتاحُ المكرَّر في قيد."""
+    data = json_bila_takrar(text)
     if not isinstance(data, list) or not all(isinstance(t, dict) and isinstance(t.get("ism"), str) for t in data):
         raise ValueError("tafrat.json يجب أن يكون قائمةً، لكلّ قيدٍ فيها «ism» نصّيّ")
     return [t["ism"] for t in data]
@@ -271,6 +303,168 @@ def dabt_naqis(asas, hali, maadhun):
     """بنودُ الأساس التي ليست في الحاليّ بنصّها ولا إذنَ لبصمتها — أسطرُها الأولى بترتيبها في الأساس."""
     hali, maadhun = set(hali), set(maadhun)
     return [b.split("\n")[0] for b in asas if b not in hali and basma_band(b) not in maadhun]
+
+
+# ٤د. ما أسقطه دمجٌ في مدى الطلب: العناصرُ بحسب الملفّ، وقاعدةُ العدّ، والحضورُ في الشجرة الآن، والإذن.
+MILAF_TAFRAT = "tahaqquq/tafrat.json"
+MILAF_KHATT = "tahaqquq/khatt_asas.json"
+ZAWJ_KHATT = re.compile(r"\d+←\d+")
+
+
+def anasir(path, text):
+    """عناصرُ الملفّ التي يُعدّ سقوطُها (Counter)، أو None لملفٍّ ثنائيّ: الطفراتُ بأسمائها (وإن فسد JSON فبكلّ «"ism": "…"» فيه)،
+    وخطُّ الأساس بأزواج «ن←م» في نصّه (حضورًا لا عددًا)، وما سواهما بأسطره؛ والسطرُ أقلُّ من ثلاثة أحرفٍ بعد قصّ البياض لا يُعدّ.
+    والملفُّ الغائب لا عناصرَ له."""
+    from collections import Counter
+    if text is None:
+        return Counter()
+    if "\0" in text[:8000]:
+        return None
+    if path == MILAF_TAFRAT:
+        try:
+            return Counter(asmaa_tafrat(text))
+        except ValueError:
+            return Counter(re.findall(r'"ism"\s*:\s*"([^"]+)"', text))
+    if path == MILAF_KHATT:
+        return Counter(set(ZAWJ_KHATT.findall(text)))
+    return Counter(l for l in text.splitlines() if len(l.strip()) >= 3)
+
+
+def kutal_taarud(text):
+    """يقسم نصَّ الدمج المحاكى (`git merge-tree --write-tree`) إلى ما خارج كتل التعارض وكتلها: (النصُّ خارجها، [(طرفٌ، طرف)…]).
+    الكتلةُ من سطرٍ أوّلُه «<<<<<<< » إلى سطرٍ أوّلُه «>>>>>>> »، وطرفاها قبل «=======» وبعده؛ وقسمُ نقطة الالتقاء («||||||| » إلى
+    «=======»، في أسلوب diff3) لا يدخل أحدَ الطرفين."""
+    kharij, kutal, hal, a, b = [], [], 0, [], []
+    for line in text.split("\n"):
+        if hal == 0 and line.startswith("<<<<<<< "):
+            hal, a, b = 1, [], []
+        elif hal == 1 and line.startswith("||||||| "):
+            hal = 3
+        elif hal in (1, 3) and line == "=======":
+            hal = 2
+        elif hal == 2 and line.startswith(">>>>>>> "):
+            kutal.append(("\n".join(a), "\n".join(b)))
+            hal = 0
+        elif hal == 1:
+            a.append(line)
+        elif hal == 2:
+            b.append(line)
+        elif hal == 0:
+            kharij.append(line)
+    return "\n".join(kharij), kutal
+
+
+def saqit_fi_damj(path, muhaka, damj):
+    """ما أسقطه حلُّ الدمج: muhaka نصُّ الملفّ في الدمج الذي يحاكيه git بلا حلّ (`git merge-tree --write-tree`، بكتل تعارضه)،
+    وdamj نصُّه في الدمج المودَع (None للغائب). لازمُ الدمج من كلّ عنصر: عددُه خارج كتل التعارض، ولكلّ كتلةٍ أكثرُ الطرفين منه —
+    فما دمجه git بلا تعارض لازمٌ كما دمجه (ومنه حذفُ طرفٍ ونقلُ ملفّ)، وما في كتلةٍ لازمٌ من الطرفين معًا. وخطُّ الأساس حضورًا لا
+    عددًا. يعيد ما نقص عن لازمه بترتيبٍ ثابت، و[] لملفٍّ ثنائيّ."""
+    from collections import Counter
+    if muhaka is None:
+        return []
+    kharij, kutal = kutal_taarud(muhaka)
+    lazim, hadir = anasir(path, kharij), anasir(path, damj)
+    if lazim is None or hadir is None:
+        return []
+    for a, b in kutal:
+        ca, cb = anasir(path, a) or Counter(), anasir(path, b) or Counter()
+        for x in set(ca) | set(cb):
+            lazim[x] += max(ca[x], cb[x])
+    if path == MILAF_KHATT:
+        lazim, hadir = Counter(set(lazim)), Counter(set(hadir))
+    return sorted(x for x in lazim if hadir[x] < lazim[x])
+
+
+def git_b(*args):
+    """git بمخرجٍ بايتيّ (لنصوص الملفّات)."""
+    p = subprocess.run(["git", "-c", "core.quotePath=false", *args], cwd=ROOT, capture_output=True, timeout=120)
+    return p.returncode, p.stdout
+
+
+def shajara(sha):
+    """{المسار: بصمة الكائن} لكائنات الشجرة النصّيّة والثنائيّة (blob) في الإيداع sha."""
+    code, out = git_b("ls-tree", "-r", "-z", sha)
+    if code != 0:
+        raise ValueError(f"تعذّرت قراءة شجرة {sha[:7]}")
+    d = {}
+    for rec in out.decode("utf-8", "replace").split("\0"):
+        if rec:
+            meta, path = rec.split("\t", 1)
+            _, naw, obj = meta.split()
+            if naw == "blob":
+                d[path] = obj
+    return d
+
+
+def saqit_fi_mada(asas_sha, ras="HEAD"):
+    """لكلّ دمجٍ بأبوين في المدى asas_sha..ras (`git rev-list --merges`): ما أسقطه حلُّه (`saqit_fi_damj`) من كلّ ملفٍّ يخالف فيه
+    الدمجُ المودَع الدمجَ المحاكى (`git merge-tree --write-tree` على الأبوين). يعيد (قائمةَ (الدمج، الملفّ، العنصر)، عددَ الدمجات).
+    وتعذُّرُ السرد أو القراءة أو المحاكاة خطأٌ مسمّى (ValueError)، لا تخطٍّ."""
+    code, out = git("rev-list", "--merges", f"{asas_sha}..{ras}")
+    damjat = out.split()
+    if code != 0 or not all(re.fullmatch(r"[0-9a-f]{40}", d) for d in damjat):
+        raise ValueError(f"تعذّر سردُ الدمجات في {asas_sha[:7]}..{ras}")
+    nusus = {}
+
+    def nass(obj):
+        if obj is None:
+            return None
+        if obj not in nusus:
+            c, b = git_b("cat-file", "blob", obj)
+            if c != 0:
+                raise ValueError(f"تعذّرت قراءة الكائن {obj[:7]}")
+            nusus[obj] = b.decode("utf-8", "replace")
+        return nusus[obj]
+
+    natija = []
+    for damj in damjat:
+        c, ps = git("rev-list", "--parents", "-n", "1", damj)
+        abawan = ps.split()[1:]
+        if c != 0 or not abawan:
+            raise ValueError(f"تعذّرت قراءة أبوَي {damj[:7]}")
+        if len(abawan) != 2:
+            continue
+        c, mt = git_b("-c", "merge.conflictStyle=merge", "merge-tree", "--write-tree", "--no-messages", *abawan)
+        shajara_m = mt.decode("utf-8", "replace").split("\n", 1)[0].strip()
+        if c not in (0, 1) or not re.fullmatch(r"[0-9a-f]{40}", shajara_m):
+            raise ValueError(f"تعذّرت محاكاةُ الدمج {damj[:7]} (git merge-tree --write-tree، git ≥ 2.38)")
+        tmuh, tm = shajara(shajara_m), shajara(damj)
+        for path in sorted(set(tmuh) | set(tm)):
+            if tmuh.get(path) == tm.get(path):
+                continue
+            for x in saqit_fi_damj(path, nass(tmuh.get(path)), nass(tm.get(path))):
+                natija.append((damj, path, x))
+    return natija, len(damjat)
+
+
+def damj_maadhun(text):
+    """سجلُّ الإذن (tahaqquq/damj_maadhun.json): قائمةُ {damj، milaf، basma، awwal، sabab، idhn} — damj بادئةُ الدمج (سبعُ خاناتٍ
+    فأكثر)، وbasma بصمةُ العنصر الساقط (sha256 لنصّه)، وawwal أوّلُه للقارئ — لا حقلَ فيها فارغ."""
+    data = json.loads(text)
+    if not isinstance(data, list):
+        raise ValueError("damj_maadhun.json يجب أن يكون قائمة")
+    for t in data:
+        if not isinstance(t, dict) or not all(isinstance(t.get(k), str) and t[k].strip()
+                                              for k in ("damj", "milaf", "basma", "awwal", "sabab", "idhn")):
+            raise ValueError(f"قيدُ إذنٍ بلا damj أو milaf أو basma أو awwal أو sabab أو idhn: {t}")
+        if not re.fullmatch(r"[0-9a-f]{7,40}", t["damj"]) or not re.fullmatch(r"[0-9a-f]{64}", t["basma"]):
+            raise ValueError(f"damj أو basma ليست بصمة: {t['damj']} / {t['basma']}")
+    return [(t["damj"], t["milaf"], t["basma"]) for t in data]
+
+
+def saqit_ghaib(saqit, hali, maadhun):
+    """من الساقط (`saqit_fi_mada`) ما ليس حاضرًا الآن ولا إذنَ له: hali دالّةٌ من المسار إلى عناصره الآن (Counter أو مجموعة)،
+    والإذنُ يطابق الدمجَ ببادئته والملفَّ وبصمةَ العنصر. يعيد القائمةَ بترتيبها بلا تكرار."""
+    out, seen = [], set()
+    for damj, path, x in saqit:
+        if x in hali(path) or (damj, path, x) in seen:
+            continue
+        b = hashlib.sha256(x.encode("utf-8")).hexdigest()
+        if any(damj.startswith(d) and m == path and bb == b for d, m, bb in maadhun):
+            continue
+        seen.add((damj, path, x))
+        out.append((damj, path, x))
+    return out
 
 
 # ٤ب. نصُّ الطفرة. القاعدتان بإذن المالك (2026-10-19 16:16، مكمّلتين لـ٤أ): «min» يقع في ملفّه مرّةً واحدة، ولا يقع في
@@ -573,13 +767,52 @@ def uyub_tafrat(tafrat, root):
     return uyub
 
 
-def main():
-    fails, report = [], []
-    code, out = run(["lake", "build"])
-    report.append(f"١ البناء: {'نجح' if code == 0 else 'فشل'}")
-    if code != 0:
-        fails.append("lake build فشل:\n" + out[-1500:])
+# البند ٦ على وظائف متوازية (قرار المالك 2026-10-28: اختار من سؤالٍ متعدّد الخيارات «الاثنان (موصى به)»، ونصُّ الخيار من البنّاء):
+# «--qism i/n» يأخذ من tafrat.json ما رتبتُه (من الصفر) تساوي i−1 بقياس n، فالأقسامُ n منفصلةٌ وتغطّي القائمةَ كلَّها
+# (test_shards_cover_the_list_once)؛ و«--tafrat-faqat» يبني ثمّ يُجري البند ٦ وحده (test_shard_only_runs_its_part). ووظيفةُ
+# «bawwaba» على CI تُجري الباقي بـ--bila-tafrat. والبند ٦ يحتاج تاريخَ الحوادث: test_hawadith.py يتخطّى نفسَه بخروج 0 إن غاب
+# (الاستنساخُ الضحل على CI)، وP237 لا يقتلها غيرُه؛ فيُشغَّل في المستودع قبل الطفرات، وإن تخطّى نفسَه أو فشل على الشجرة بلا طفرة
+# رُفض البند ٦ باسمه (test_missing_history_is_refused، test_failing_hawadith_is_refused). والشرطُ شرطُه هو لا «المستودعُ ضحل»:
+# المستودعُ المحلّيّ ضحلٌ وفيه تاريخُ الحوادث. وسائرُ اختبارات البند ٦ على الشجرة بلا طفرة يُجريها البند ٥ (وعلى CI وظيفةُ bawwaba،
+# وخطوةُ jam تشترط نجاحَها).
+TAKHATTI_HAWADITH = "حوادث الدمج: لم يُشغَّل"
+WASAIT = ("--bila-tafrat", "--tafrat-faqat", "--qism")
 
+
+def khiyarat(args):
+    """(faqat، qism) من وسائط البوّابة: qism زوجٌ (i، n) أو None بلا --qism. وكلُّ وسيطٍ غيرِ الثلاثة (وقيمةِ --qism)، و--qism
+    مكرَّرًا أو بلا «i/n» أو بقسمٍ خارج 1..n، و--bila-tafrat مع أحد الآخرَين: ValueError مسمّى."""
+    baqi = list(args)
+    qism = None
+    if baqi.count("--qism") > 1:
+        raise ValueError("--qism مكرَّر")
+    if "--qism" in baqi:
+        k = baqi.index("--qism")
+        qima = baqi[k + 1] if k + 1 < len(baqi) else ""
+        m = re.fullmatch(r"([0-9]+)/([0-9]+)", qima)
+        if not m:
+            raise ValueError(f"--qism يحتاج «i/n» (أعدادًا)، لا «{qima}»")
+        i, n = int(m.group(1)), int(m.group(2))
+        if not 1 <= i <= n:
+            raise ValueError(f"--qism {qima}: القسمُ بين 1 و{n}")
+        qism = (i, n)
+        del baqi[k:k + 2]
+    majhul = [a for a in baqi if a not in WASAIT]
+    if majhul:
+        raise ValueError("وسيطٌ لا يُعرف: " + "، ".join(majhul))
+    faqat = "--tafrat-faqat" in baqi
+    if "--bila-tafrat" in baqi and (faqat or qism):
+        raise ValueError("--bila-tafrat يترك البند ٦، فلا يجتمع مع --tafrat-faqat ولا --qism")
+    return faqat, qism
+
+
+def qism_tafrat(tafrat, i, n):
+    """القسمُ i من n: ما رتبتُه k في القائمة وk % n = i − 1."""
+    return [t for k, t in enumerate(tafrat) if k % n == i - 1]
+
+
+def bunud_2_5(report, fails):
+    """البنود ٢–٥د: تُكتب في report وfails. تُترك كلُّها مع --tafrat-faqat (وظائفُ الطفرات المتوازية على CI)."""
     bad = []
     for d in ("SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari"):
         for root, _, fs in os.walk(os.path.join(ROOT, d)):
@@ -648,7 +881,7 @@ def main():
     # ٤ب. نصُّ كلّ طفرة: مرّةً واحدة في ملفّها، وتغييرٌ خارج التعليق، واسمٌ غير مكرَّر (يجري مع --bila-tafrat أيضًا).
     try:
         with open(os.path.join(ROOT, "tahaqquq", "tafrat.json"), encoding="utf-8") as f:
-            tafrat_kull = json.load(f)
+            tafrat_kull = json_bila_takrar(f.read())
         if not isinstance(tafrat_kull, list):
             raise ValueError("tafrat.json ليس قائمة")
     except (OSError, ValueError) as e:
@@ -690,6 +923,47 @@ def main():
         if naqis_d:
             fails.append("بنودٌ في «ما ضُبطتُ عليه» عند الأساس غابت أو تغيّرت بلا قيدٍ ببصمتها في tahaqquq/dabt_maadhun.json: "
                          + "؛ ".join(b[:100] for b in naqis_d))
+
+    # ٤د. ما أسقطه دمجٌ في مدى الطلب (من نقطة التقاء ٤أ إلى HEAD) وغاب عن الشجرة الآن، بلا إذنٍ في tahaqquq/damj_maadhun.json.
+    try:
+        code, mb = git("merge-base", "HEAD", marja)
+        asas_m_sha = mb.strip()
+        if code != 0 or not asas_m_sha:
+            raise ValueError(f"تعذّر حساب نقطة التقاء HEAD بـ{marja} (اجلب {marja} أو عيّن TAFRAT_ASAS_REF)")
+        saqit, md = saqit_fi_mada(asas_m_sha)
+        mp = os.path.join(ROOT, "tahaqquq", "tafrat_mahdhufa.json")
+        mahdhufa_m = []
+        if os.path.exists(mp):
+            with open(mp, encoding="utf-8") as f:
+                mahdhufa_m = mahdhufa_maadhuna(f.read())
+        mp = os.path.join(ROOT, "tahaqquq", "damj_maadhun.json")
+        maadhun_m = []
+        if os.path.exists(mp):
+            with open(mp, encoding="utf-8") as f:
+                maadhun_m = damj_maadhun(f.read())
+        hadir = {}
+
+        def hali_m(path):
+            if path not in hadir:
+                p = os.path.join(ROOT, path)
+                t = None
+                if os.path.isfile(p):
+                    with open(p, encoding="utf-8", errors="replace") as f:
+                        t = f.read()
+                a = anasir(path, t) or set()
+                hadir[path] = set(a) | (set(mahdhufa_m) if path == MILAF_TAFRAT else set())
+            return hadir[path]
+        ghaib_m = saqit_ghaib(saqit, hali_m, maadhun_m)
+    except (OSError, ValueError, subprocess.SubprocessError) as e:
+        report.append("٤د ما أسقطته الدمجات: لم يُفحص")
+        fails.append(f"حراسة ما أسقطته الدمجات: {e}")
+    else:
+        report.append(f"٤د ما أسقطته الدمجات: {md} دمجًا في المدى من {asas_m_sha[:7]}؛ ساقطٌ {len(saqit)}، "
+                      f"منه غائبٌ الآن بلا إذن {len(ghaib_m)}")
+        if ghaib_m:
+            fails.append("ما أسقطه دمجٌ في الطلب وغاب بلا قيدٍ في tahaqquq/damj_maadhun.json:\n"
+                         + "\n".join(f"  {d[:7]} {p}: {x[:120]}" for d, p, x in ghaib_m[:60])
+                         + (f"\n  … و{len(ghaib_m) - 60} غيرها" if len(ghaib_m) > 60 else ""))
 
     code, out = run([sys.executable, "-I", "tahaqquq/test_bawwaba.py"])
     report.append(f"٥أ اختبارات خطّ الأساس والتثبيت: {'مرّت' if code == 0 else 'فشلت'}")
@@ -846,6 +1120,10 @@ def main():
     report.append(f"٥ص٨ {out.strip().splitlines()[-1] if out.strip() else 'ضابط صكّ الجملة: ?'}")
     if code != 0:
         fails.append("اختبار ضابط صكّ الجملة فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_abniya.py"])
+    report.append(f"٥ص١٢ {out.strip().splitlines()[-1] if out.strip() else 'ضابط الأبنية: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط الأبنية فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_tasis.py"])
     report.append(f"٥ر٢ {out.strip().splitlines()[-1] if out.strip() else 'شبكة الدلالة: ?'}")
     if code != 0:
@@ -877,8 +1155,36 @@ def main():
         if code != 0:
             fails.append("مودَع تغيّرت بصمته:\n" + out)
 
+
+def main():
+    try:
+        faqat, qism = khiyarat(sys.argv[1:])
+    except ValueError as e:
+        print(f"البوّابة: {e}", file=sys.stderr, flush=True)
+        sys.exit(2)
+    fails, report = [], []
+    code, out = run(["lake", "build"])
+    report.append(f"١ البناء: {'نجح' if code == 0 else 'فشل'}")
+    if code != 0:
+        fails.append("lake build فشل:\n" + out[-1500:])
+
+    if faqat:
+        report.append("٢–٥ تُركت بطلب (--tafrat-faqat)")
+    else:
+        bunud_2_5(report, fails)
+
     if "--bila-tafrat" not in sys.argv:
-        tafrat = json.load(open(os.path.join(ROOT, "tahaqquq", "tafrat.json"), encoding="utf-8"))
+        with open(os.path.join(ROOT, "tahaqquq", "tafrat.json"), encoding="utf-8") as f:
+            tafrat = json_bila_takrar(f.read())
+        if qism:
+            tafrat = qism_tafrat(tafrat, *qism)
+        code_h, out_h = run([sys.executable, "-I", "tahaqquq/test_hawadith.py"])
+        bila_tarikh = code_h != 0 or TAKHATTI_HAWADITH in out_h
+        if bila_tarikh:
+            report.append("٦ الطفرات: لم تُشغَّل (test_hawadith.py لم يجرِ ويمرّ على الشجرة بلا طفرة)")
+            fails.append("البند ٦ يحتاج test_hawadith.py يجري ويمرّ على الشجرة بلا طفرة (تاريخُ الحوادث، fetch-depth: 0)، وP237 لا "
+                         f"يقتلها غيرُه؛ خرج {code_h}:\n" + out_h[-400:])
+            tafrat = []
         alive, ghayr = [], []
         for t in tafrat:
             tmp = tempfile.mkdtemp()
@@ -907,8 +1213,10 @@ def main():
             elif code == 0:
                 alive.append(t["ism"])
             shutil.rmtree(tmp)
-        report.append(f"٦ الطفرات: قُتلت {len(tafrat) - len(alive) - len(ghayr)} من {len(tafrat)}"
-                      + (f"، وغيرُ محسومة {len(ghayr)}" if ghayr else ""))
+        wasf = f" (القسم {qism[0]} من {qism[1]})" if qism else ""
+        if not bila_tarikh:
+            report.append(f"٦ الطفرات{wasf}: قُتلت {len(tafrat) - len(alive) - len(ghayr)} من {len(tafrat)}"
+                          + (f"، وغيرُ محسومة {len(ghayr)}" if ghayr else ""))
         if alive:
             fails.append("طفرات عاشت: " + "، ".join(alive))
         if ghayr:
