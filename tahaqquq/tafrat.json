@@ -5539,57 +5539,69 @@
  },
  {
   "ism": "P1193_ibdal_natija_tashghil",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
-  "min": "\"tashghil\": 1,",
-  "ila": "\"tashghil\": 2,"
+  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "min": "\"tashghil\": 4,",
+  "ila": "\"tashghil\": 5,"
  },
  {
   "ism": "P1194_ibdal_natija_cases",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
   "min": "\"cases_sha256\": \"7324",
   "ila": "\"cases_sha256\": \"8324"
  },
  {
+  "ism": "P1195_ibdal_natija_huqul",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "min": "\"huqul_masula\": 49,",
+  "ila": "\"huqul_masula\": 50,"
+ },
+ {
   "ism": "P1196_ibdal_natija_ihsa",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
-  "min": "\"sawab\": 39,",
-  "ila": "\"sawab\": 38,"
+  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "min": "\"sawab\": 39,\n  \"naqsTaghtiya\": 8,",
+  "ila": "\"sawab\": 38,\n  \"naqsTaghtiya\": 9,"
  },
  {
   "ism": "P1197_ibdal_natija_fia",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
   "min": "\"عموم\": 18,",
   "ila": "\"عموم\": 17,"
  },
  {
   "ism": "P1198_ibdal_natija_akhta",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
   "min": "\"B49\",",
   "ila": "\"B48\","
  },
  {
   "ism": "P1199_ibdal_natija_lean",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
-  "min": "\"Jisr.IbdalAlfiyya.Qiyas.azwaj_1\"",
-  "ila": "\"Jisr.IbdalAlfiyya.Qiyas.azwaj_2\""
+  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "min": "  \"Jisr.IbdalAlfiyya.Qiyas.natija\",\n  \"Jisr.IbdalAlfiyya.Qiyas.natija_fia\",",
+  "ila": "  \"Jisr.IbdalAlfiyya.Qiyas.natija_fia\",\n  \"Jisr.IbdalAlfiyya.Qiyas.natija\","
  },
  {
   "ism": "P1200_ibdal_natija_azwaj",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
   "min": "\"asaba_tarafan\": 11",
   "ila": "\"asaba_tarafan\": 10"
  },
  {
   "ism": "P1201_ibdal_natija_rafd",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
   "min": "\"rafd_qari\": []",
   "ila": "\"rafd_qari\": [\"B01\"]"
  },
  {
   "ism": "P1202_ibdal_natija_halat",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
   "min": "\"halat\": 49,",
   "ila": "\"halat\": 48,"
+ },
+ {
+  "ism": "P1203_ibdal_akhta_ism",
+  "milaf": "Jisr/IbdalAlfiyyaQiyas.lean",
+  "min": "theorem akhta_1 :",
+  "ila": "theorem akhta_alt :\n    akhta (natayij halat) = [(\"B14\", .naqsTaghtiya), (\"B16\", .naqsTaghtiya), (\"B19\", .naqsTaghtiya), (\"B20\", .naqsTaghtiya),\n      (\"B26\", .naqsTaghtiya), (\"B27\", .naqsTaghtiya), (\"B28\", .naqsTaghtiya), (\"B34\", .naqsTaghtiya), (\"B43\", .ikhtiyar),\n      (\"B49\", .ikhtiyar)] := by\n  decide +kernel\n\ntheorem akhta_1 :"
  },
  {
   "ism": "P1204_ibdal_muqin_mudgham",
@@ -5644,5 +5656,71 @@
   "milaf": "Jisr/IbdalAlfiyya.lean",
   "min": "⟨m % 116, Nat.mod_lt _ (by decide)⟩",
   "ila": "⟨m % 115, by omega⟩"
+ },
+ {
+  "ism": "P1213_ibdal_sigha_natija",
+  "milaf": "Jisr/IbdalAlfiyyaQiyas.lean",
+  "min": "theorem natija : ihsa (natayij halat) = ⟨39, 8, 0, 0, 0, 2, 0, 0⟩ := by",
+  "ila": "theorem natija : ihsa (natayij halat) = ihsa (natayij halat) := by"
+ },
+ {
+  "ism": "P1214_ibdal_sigha_majal",
+  "milaf": "Jisr/IbdalAlfiyyaQiyas.lean",
+  "min": "theorem majal : majalAadad = [49, 21, 25, 1, 2, 30, 10, 10, 5, 22, 2] := by",
+  "ila": "theorem majal : majalAadad = majalAadad := by"
+ },
+ {
+  "ism": "P1215_ibdal_sigha_akhta",
+  "milaf": "Jisr/IbdalAlfiyyaQiyas.lean",
+  "min": "theorem akhta_1 :\n    akhta (natayij halat) = [",
+  "ila": "theorem akhta_1 :\n    akhta (natayij halat) = akhta (natayij halat) ∨ akhta (natayij halat) = ["
+ },
+ {
+  "ism": "P1216_ibdal_lean_mubarhana",
+  "milaf": "Jisr/IbdalAlfiyyaQiyas.lean",
+  "min": "theorem natija_fia :",
+  "ila": "private theorem natija_fia :"
+ },
+ {
+  "ism": "P1217_ibdal_natija_shifra",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "min": "\"sha256\": \"5f33f090",
+  "ila": "\"sha256\": \"6f33f090"
+ },
+ {
+  "ism": "P1218_ibdal_natija_qablaha",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "min": "\"natija_3.json\": \"fa35b435",
+  "ila": "\"natija_3.json\": \"0a35b435"
+ },
+ {
+  "ism": "P1219_ibdal_muqin_khatima",
+  "milaf": "Jisr/IbdalAlfiyya.lean",
+  "min": "  khatima := fun c => c.val == 2\n",
+  "ila": "  khatima := fun _ => false\n"
+ },
+ {
+  "ism": "P1220_ibdal_fahs_majal",
+  "milaf": "tahaqquq/test_ibdal.py",
+  "min": "for d in (\"ممنوع\", \"غير_ممنوع\", \"لا_حكم\")]",
+  "ila": "for d in (\"غير_ممنوع\", \"ممنوع\", \"لا_حكم\")]"
+ },
+ {
+  "ism": "P1221_ibdal_muwallid_ras",
+  "milaf": "scripts/bina_dawabit_ibdal.py",
+  "min": "\"و`none` ما رفضه؛ والسندُ في الملفّ المصدر.\\n\"",
+  "ila": "\"و`none` ما رفضه.\\n\""
+ },
+ {
+  "ism": "P1222_ibdal_sigha_azwaj",
+  "milaf": "Jisr/IbdalAlfiyyaQiyas.lean",
+  "min": "    (azwaj halat).length = 15 ∧",
+  "ila": "    (azwaj halat).length = (azwaj halat).length ∧"
+ },
+ {
+  "ism": "P1223_ibdal_ishtibah_madd",
+  "milaf": "Jisr/IbdalAlfiyya.lean",
+  "min": "6 ≤ c.val || (c.val == 4 && yaMutaharrika a) || (c.val == 5 && wawMutaharrika a)",
+  "ila": "6 ≤ c.val || (c.val == 4 && yaMutaharrika a)"
  }
 ]

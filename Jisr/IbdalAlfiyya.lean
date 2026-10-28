@@ -13,23 +13,28 @@ import Dal.Jumla
 
 **المصدرُ والنطاق:** `alfiyya.txt` (بصمتُه `13b351a0…`)، الأسطر 1216–1217 و1222 و1224 و1225–1226 و1238–1239 من باب الإبدال. وهي
 على ضابطٍ مجمَّد (`tahaqquq/dawabit/ibdal/wasf.md`): كُتبت هذه الشفرةُ قبل أن يقرأ البنّاءُ الحالات (`4ad7b9a`)؛ وأُعيدت بعد
-قراءتها كتابةُ براهين خمسٍ تكتب نصَّ التعريف، بلا تغيير عبارةٍ ولا تعريف (`natija_2.json`).
+قراءتها كتابةُ براهين خمسٍ تكتب نصَّ التعريف، بلا تغيير عبارةٍ ولا تعريف (`natija_2.json`)؛ ثمّ بعد مراجعة `murajii` برهانُ
+`akhir_sinf_khatima`، وزيدت أربعُ مبرهنات (`tasmahBaad_khatima`، `yaBadDamma_akhir`، `sinf_wawYa_fatha_damma`، `yaWaw_yamna`)، وصُحّح هذا
+الرأسُ وتوثيقان، بلا تغيير تعريف (`natija_3.json`)؛ ثمّ بعد المراجعتين الثانية والثالثة هذا الرأسُ، ومبرهنتان (`haraka_sinfIshtibah`،
+`madd_la_ghayrMamnu`)، بلا تغيير تعريف (`natija_4.json`). وما رآه البنّاءُ وما كُتب
+بعد القراءة في `tahaqquq/dawabit/ibdal/mulhaq_1.md`.
 
 **المدخل:** خلايا كلمةٍ واحدة كما يقرؤها القارئ في الوصل (`qari --khalaya`). ولا يُعطى المحرّكُ أصلَ الكلمة ولا وزنَها ولا معناها.
 
 **الحكم** (`hukm`): أهو `mamnu` (بسببه)، أو `ghayrMamnu`، أو `laHukm`:
 - **`mamnu .qanun`:** يردّها القانونُ (`SLGE.Law`، موقوفًا عليها، كما في القارئ). ومنه حكما الألف في النطاق، فالقانونُ يمنعهما أصلًا
   (`alif_baad_ghayr_fatha`): الألفُ بعد الكسرة وبعد ياء التصغير (1216)، والألفُ بعد الضمّة (1222). وما يردّه القانونُ لسببٍ خارج النطاق
-  يُعدّ هنا `mamnu .qanun` كذلك.
+  يُعدّ هنا `mamnu .qanun` كذلك، والمواصفةُ تجعل ما لا يمنعه النطاقُ `غير_ممنوع` (تعيينٌ أدناه).
 - **`mamnu .yaBadDamma`** (1222 «ويا كموقن»، و1224): ياءٌ ساكنةٌ بعد ضمّة، لا تليها ياءٌ متحرّكة (`qaydMuqin`).
 - **`mamnu .wawYa`** (1238–1239): واوٌ ساكنةٌ بعد فتحةٍ أو كسرةٍ تليها ياءٌ متحرّكة، أو ياءٌ ساكنةٌ بعد فتحةٍ أو ضمّةٍ تليها واوٌ متحرّكة (`qaydWawYa`).
-- **`mamnu .akhirWaw`** (1216–1217 «بواو ذا افعلا في آخر»): واوٌ متحرّكةٌ بعد كسرةٍ آخرَ الكلمة (`qaydAkhirWaw`).
-- **`mamnu .akhirYa`** (1225–1226 «لام فعل»): ياءٌ متحرّكةٌ بعد ضمّةٍ آخرَ الكلمة (`qaydAkhirYa`).
+- **`mamnu .akhirWaw`** (1216 «بواو ذا افعلا»، و1217 «في آخر»): واوٌ متحرّكةٌ بعد كسرةٍ آخرَ الكلمة (`qaydAkhirWaw`).
+- **`mamnu .akhirYa`** (1225 «لام فعل»): ياءٌ متحرّكةٌ بعد ضمّةٍ آخرَ الكلمة (`qaydAkhirYa`).
 - **`laHukm`** (`qaydIshtibah`): موضعٌ لا تفرّق فيه الخلايا بين ما يمنعه النطاقُ وما لا يمنعه:
   - الواوُ المدّ بعد الضمّة تليها ياءٌ متحرّكة، والياءُ المدّ بعد الكسرة تليها واوٌ متحرّكة: يستثني البيتُ ما سكونُه عارض («ومن عروض»،
     1238)، والمدُّ في الخلايا سواءٌ أكان عارضًا أم أصليًّا.
   - الواوُ المتحرّكة بعد كسرةٍ، والياءُ المتحرّكة بعد ضمّة، في غير آخر الخلايا: لا تفرّق الخلايا بين آخر الكلمة قبل ضميرٍ متّصل أو تاءِ
-    تأنيث أو زيادتي «فعلان»، وغيرِ الآخر.
+    تأنيث أو زيادتي «فعلان»، وغيرِ الآخر. وجعلُه في كلّ موضعٍ غيرِ آخرٍ أيًّا كانت الخليّةُ بعده تعيينٌ (أدناه): فـ«عِوَضٌ» و«مُيَسِّرٌ»
+    «لا حكم» والخليّةُ بعد الحرف ضادٌ أو سينٌ لا يبدأ بها ضميرٌ ولا تاءٌ ولا «ان».
 - **`ghayrMamnu`:** ما سوى ذلك: لا يمنعه النطاق. وليس حكمًا بصحّة الكلمة عربيّةً.
 والترتيبُ: القانونُ ثمّ القواعدُ الأربع ثمّ الاشتباه؛ فالممنوعُ بموضعٍ لا يرفعه اشتباهٌ في موضعٍ آخر.
 
@@ -38,18 +43,28 @@ import Dal.Jumla
 - السكونُ غيرُ المدّ في الخلايا أصليٌّ، فلا يُستثنى بـ«ومن عروض».
 - «في آخر» آخرُ الخلايا. والتنوينُ خليّةُ نونٍ ساكنةٍ بعد الحرف، فالحرفُ قبله ليس آخرًا (فيقع في الاشتباه).
 - الضمّةُ والكسرة قبل الحرف حركةُ الخليّة قبله أيًّا كان حاملُها.
+- ما يردّه القانونُ لسببٍ خارج النطاق `mamnu .qanun`، والمواصفةُ تجعله `غير_ممنوع`.
+- «لام فعل» (1225): كلُّ ياءٍ متحرّكةٍ بعد ضمّةٍ آخرَ الخلايا تُمنع، فعلًا كانت أو اسمًا؛ والمواصفةُ تشترط `لامَ «فَعُل»` («التَّرَامُيُ» ممنوعةٌ
+  هنا، ولا يمنعها النطاق).
+- «بواو ذا افعلا» … «في آخر» (1216–1217): الواوُ المتحرّكةُ وحدها؛ والساكنةُ بعد كسرةٍ آخرَ الخلايا غيرُ ممنوعة، والبيتُ لا يشترط الحركة.
+- الاشتباهُ في كلّ موضعٍ غيرِ آخرٍ للحرف المتحرّك بعد الحركة، أيًّا كانت الخليّةُ بعده.
 
 **ما بُرهن:**
 - **القواعدُ على آلة القانون:** كلُّ قاعدةٍ من الأربع `Qayd` من `Jisr/TabaqatQawaid.lean`. فالآلتان معًا لا توسّعان (`qanun_qaida_le`)، وكلُّ
   قاعدةٍ تحذف من كلمات القانون بطول مثالها (`muqin_yahdhif`، `wawYa_yahdhif`، `akhirWaw_yahdhif`، `akhirYa_yahdhif`).
 - **الحكمُ على كلّ كلمة:** `hukm` غيرُ ممنوعٍ إذا وفقط إذا قبلها القانونُ وسمحت بها القواعدُ الأربع ولم يقع فيها اشتباه (`ghayrMamnu_iff`)؛ وهو
   ممنوعٌ إذا وفقط إذا ردّها القانونُ أو قاعدة (`mamnu_iff`). والقانونُ هنا هو `alaMashru false` (`qanun_sawa`).
-- **الموضعُ الممنوع يردّ الكلمة حيثما وقع** (`yaBadDamma_yamna`، `wawYa_yamna`، `akhir_yamna`).
+- **الموضعُ الممنوع يردّ الكلمة حيثما وقع:** الياءُ الساكنة بعد الضمّة قبل غير ياءٍ متحرّكة (`yaBadDamma_yamna`) وآخرَ الكلمة
+  (`yaBadDamma_akhir`)؛ والواوُ الساكنة بعد فتحةٍ أو كسرةٍ تليها ياءٌ متحرّكة (`wawYa_yamna`)، والياءُ الساكنة بعد فتحةٍ أو ضمّةٍ تليها واوٌ
+  متحرّكة (`yaWaw_yamna`)؛ والواوُ المتحرّكة بعد الكسرة والياءُ المتحرّكة بعد الضمّة آخرًا (`akhir_yamna`). والمدُّ خارجها: الواوُ بعد الضمّة
+  والياءُ بعد الكسرة تليهما الأخرى متحرّكةً لا تكون الكلمةُ بهما غيرَ ممنوعة (`madd_la_ghayrMamnu`)، فهي «لا حكم» أو ممنوعةٌ بغيره (وشاهدُ
+  «لا حكم» «بُويِعَ» في `shawahid_hukm`).
 
-**المبرهنات** (29، بالمعيار الموحَّد في `Nizam/Asas.lean`):
-- لكلّ 18: `run_sawa`، `run_lt`، `run_le`، `qanun_sawa`، `ghayrMamnu_maan`، `alif_baad_ghayr_fatha`، `sira_snoc`، `tasmah_mamnu_hukm`،
-  `yaBadDamma_yamna`، `sinf_wawYa_haraka`، `wawYa_yamna`، `akhir_sinf_haraka`، `akhir_sinf_khatima`، `tasmahBaad_akhir`، `tasmah_akhir`،
-  `akhir_yamna`، `fakkN_mem`، `yahdhif`.
+**المبرهنات** (35، بالمعيار الموحَّد في `Nizam/Asas.lean`):
+- لكلّ 24: `run_sawa`، `run_lt`، `run_le`، `qanun_sawa`، `ghayrMamnu_maan`، `alif_baad_ghayr_fatha`، `sira_snoc`، `tasmah_mamnu_hukm`،
+  `tasmahBaad_khatima`، `yaBadDamma_yamna`، `yaBadDamma_akhir`، `sinf_wawYa_haraka`، `sinf_wawYa_fatha_damma`، `wawYa_yamna`، `yaWaw_yamna`،
+  `akhir_sinf_haraka`، `akhir_sinf_khatima`، `tasmahBaad_akhir`، `tasmah_akhir`، `akhir_yamna`، `haraka_sinfIshtibah`، `madd_la_ghayrMamnu`،
+  `fakkN_mem`، `yahdhif`.
 - تعريفيّة 4: `ghayrMamnu_iff`، `mamnu_iff`، `sinf_muqin_damma`، `akhir_mamnu`.
 - على الشاهد 7: `la_wahid_baad_haraka` و`alif_mayyit` (`decide` على حالات القانون الـ97 وخلاياه)، و`shawahid_hukm`؛ و`muqin_yahdhif`
   و`wawYa_yahdhif` و`akhirWaw_yahdhif` و`akhirYa_yahdhif` خارجَ حرف المعيار (`decide` على كلمة المثال ثمّ نقلٌ بـ`yahdhif`).
@@ -121,10 +136,10 @@ def qaydAkhir (h : Nat) (harf : Dal.Khaliya → Bool) : Qayd Dal.Khaliya where
   bidaya := fun _ => false
   khatima := fun c => c.val == 2 || c.val == 3
 
-/-- **الواوُ المتحرّكة بعد الكسرة آخرًا** (1216–1217 «بواو ذا افعلا في آخر»). -/
+/-- **الواوُ المتحرّكة بعد الكسرة آخرًا** (1216 «بواو ذا افعلا»، و1217 «في آخر»). والساكنةُ خارجها: تعيين. -/
 def qaydAkhirWaw : Qayd Dal.Khaliya := qaydAkhir 2 wawMutaharrika
 
-/-- **الياءُ المتحرّكة بعد الضمّة آخرًا** (1225 «وواوا اثر الضم رد اليا متى ألفي لام فعل»). -/
+/-- **الياءُ المتحرّكة بعد الضمّة آخرًا** (1225 «وواوا اثر الضم رد اليا متى ... ألفي لام فعل»)، فعلًا كانت أو اسمًا: تعيين. -/
 def qaydAkhirYa : Qayd Dal.Khaliya := qaydAkhir 1 yaMutaharrika
 
 /-- القواعدُ الأربع. -/
@@ -281,6 +296,16 @@ theorem tasmah_mamnu_hukm (xs : List Dal.Khaliya) (r : Qayd Dal.Khaliya) (hr : r
     ∃ s, hukm xs = .mamnu s :=
   (mamnu_iff xs).2 (Or.inr ⟨r, hr, h⟩)
 
+/-- القيدُ لا يسمح بكلمةٍ تنتهي على صنفٍ خاتمته `true`. -/
+theorem tasmahBaad_khatima {A : Type} (r : Qayd A) : ∀ (pre : List A) (c : Fin r.k) (x : A),
+    r.khatima (r.sinf (r.sira c pre) x) = true → r.tasmahBaad c (pre ++ [x]) = false
+  | [], c, x, h => by
+    simp [Qayd.tasmahBaad, Qayd.sira] at h ⊢
+    simp [h]
+  | y :: pre, c, x, h => by
+    simp only [List.cons_append, Qayd.tasmahBaad]
+    rw [tasmahBaad_khatima r pre (r.sinf c y) x h, Bool.and_false]
+
 /-- صنفُ «موقن» بعد خليّةٍ مضمومة: 1 أيًّا كان ما قبلها. -/
 theorem sinf_muqin_damma (c : Fin qaydMuqin.k) (a : Dal.Khaliya) (ha : a.hala.val = 1) :
     (qaydMuqin.sinf c a).val = 1 := by
@@ -310,6 +335,31 @@ theorem yaBadDamma_yamna (pre : List Dal.Khaliya) (c y d : Dal.Khaliya) (post : 
       rw [show pre ++ [c, y] = (pre ++ [c]) ++ [y] by simp, sira_snoc, sira_snoc]
       exact hm _ (sinf_muqin_damma _ _ hc))
     simpa using this
+
+/-- **الياءُ الساكنة بعد الضمّة آخرَ الكلمة تُمنع** (1222): لا ياءَ متحرّكةً بعدها. -/
+theorem yaBadDamma_akhir (pre : List Dal.Khaliya) (c y : Dal.Khaliya) (hc : c.hala.val = 1) (hy : yaSakina y = true) :
+    ∃ s, hukm (pre ++ [c, y]) = .mamnu s := by
+  apply tasmah_mamnu_hukm _ qaydMuqin (by simp [qawaid])
+  have hk : ∀ c0 : Fin qaydMuqin.k, c0.val = 1 → qaydMuqin.khatima (qaydMuqin.sinf c0 y) = true := by
+    intro c0 h0
+    have h2 : (qaydMuqin.sinf c0 y).val = 2 := by
+      simp [qaydMuqin, h0, hy]
+    generalize qaydMuqin.sinf c0 y = x at h2
+    simp [qaydMuqin, h2]
+  cases pre with
+  | nil =>
+    have hs : (qaydMuqin.awwalSinf c).val = 1 := by
+      show (sinfDamma c).val = 1
+      simp [sinfDamma, hc]
+    have := tasmahBaad_khatima qaydMuqin [] (qaydMuqin.awwalSinf c) y (hk _ hs)
+    simp only [List.nil_append] at this
+    simp [Qayd.tasmah, this]
+  | cons a pre =>
+    have := tasmahBaad_khatima qaydMuqin (pre ++ [c]) (qaydMuqin.awwalSinf a) y (by
+      rw [sira_snoc]
+      exact hk _ (sinf_muqin_damma _ _ hc))
+    simp only [List.append_assoc, List.singleton_append] at this
+    simp [Qayd.tasmah, this]
 
 /-- صنفُ قاعدة الواو والياء بعد خليّةٍ مفتوحةٍ أو مكسورة: 1 أو 3 أيًّا كان ما قبلها. -/
 theorem sinf_wawYa_haraka (c : Fin qaydWawYa.k) (a : Dal.Khaliya) (ha : a.hala.val = 0 ∨ a.hala.val = 2) :
@@ -342,6 +392,40 @@ theorem wawYa_yamna (pre : List Dal.Khaliya) (c w y : Dal.Khaliya) (post : List 
       exact hm _ (sinf_wawYa_haraka _ _ hc))
     simpa using this
 
+/-- صنفُ قاعدة الواو والياء بعد خليّةٍ مفتوحةٍ أو مضمومة: 1 أو 2 أيًّا كان ما قبلها. -/
+theorem sinf_wawYa_fatha_damma (c : Fin qaydWawYa.k) (a : Dal.Khaliya) (ha : a.hala.val = 0 ∨ a.hala.val = 1) :
+    (qaydWawYa.sinf c a).val = 1 ∨ (qaydWawYa.sinf c a).val = 2 := by
+  have hw : wawSakina a = false := by rcases ha with h | h <;> simp [wawSakina, h]
+  have hy : yaSakina a = false := by rcases ha with h | h <;> simp [yaSakina, h]
+  rcases ha with h | h <;> simp [qaydWawYa, hw, hy, sinfHaraka, h] <;> decide
+
+/-- **الياءُ الساكنة بعد فتحةٍ أو ضمّة، تليها واوٌ متحرّكة، تُمنع حيثما وقعت** (1238–1239؛ جهةُ «سَيْوِد»). -/
+theorem yaWaw_yamna (pre : List Dal.Khaliya) (c y w : Dal.Khaliya) (post : List Dal.Khaliya)
+    (hc : c.hala.val = 0 ∨ c.hala.val = 1) (hy : yaSakina y = true) (hw : wawMutaharrika w = true) :
+    ∃ s, hukm (pre ++ c :: y :: w :: post) = .mamnu s := by
+  apply tasmah_mamnu_hukm _ qaydWawYa (by simp [qawaid])
+  have hws : wawSakina y = false := by
+    simp [yaSakina] at hy
+    simp [wawSakina, hy.1]
+  have hm : ∀ c0 : Fin qaydWawYa.k, c0.val = 1 ∨ c0.val = 2 → qaydWawYa.mamnu (qaydWawYa.sinf c0 y) w = true := by
+    intro c0 h0
+    have h5 : (qaydWawYa.sinf c0 y).val = 5 := by
+      rcases h0 with h | h <;> simp [qaydWawYa, h, hy, hws] <;> decide
+    generalize qaydWawYa.sinf c0 y = x at h5
+    simp [qaydWawYa, h5, hw]
+  cases pre with
+  | nil =>
+    have hs : (qaydWawYa.awwalSinf c).val = 1 ∨ (qaydWawYa.awwalSinf c).val = 2 := by
+      show (sinfHaraka c).val = 1 ∨ (sinfHaraka c).val = 2
+      rcases hc with h | h <;> simp [sinfHaraka, h] <;> decide
+    have := tasmah_mamnu qaydWawYa c [y] w post (hm _ hs)
+    simpa using this
+  | cons a pre =>
+    have := tasmah_mamnu qaydWawYa a (pre ++ [c, y]) w post (by
+      rw [show pre ++ [c, y] = (pre ++ [c]) ++ [y] by simp, sira_snoc, sira_snoc]
+      exact hm _ (sinf_wawYa_fatha_damma _ _ hc))
+    simpa using this
+
 theorem akhir_mamnu (h : Nat) (harf : Dal.Khaliya → Bool) (c : Fin (qaydAkhir h harf).k) (a : Dal.Khaliya) :
     (qaydAkhir h harf).mamnu c a = false := rfl
 
@@ -356,9 +440,12 @@ theorem akhir_sinf_haraka (h : Nat) (harf : Dal.Khaliya → Bool) (c : Fin (qayd
 theorem akhir_sinf_khatima (h : Nat) (harf : Dal.Khaliya → Bool) (c : Fin (qaydAkhir h harf).k) (a : Dal.Khaliya)
     (hc : c.val = 1 ∨ c.val = 3) (ha : harf a = true) :
     (qaydAkhir h harf).khatima ((qaydAkhir h harf).sinf c a) = true := by
-  show ((sinfAkhir h harf c a).val == 2 || (sinfAkhir h harf c a).val == 3) = true
-  unfold sinfAkhir
-  rcases hc with hc | hc <;> by_cases hh : a.hala.val = h <;> simp [hc, ha, hh] <;> decide
+  have hs : ((qaydAkhir h harf).sinf c a).val = 2 ∨ ((qaydAkhir h harf).sinf c a).val = 3 := by
+    show (sinfAkhir h harf c a).val = 2 ∨ (sinfAkhir h harf c a).val = 3
+    unfold sinfAkhir
+    rcases hc with hc | hc <;> by_cases hh : a.hala.val = h <;> simp [hc, ha, hh] <;> decide
+  generalize (qaydAkhir h harf).sinf c a = x at hs
+  rcases hs with hs | hs <;> simp [qaydAkhir, hs]
 
 theorem tasmahBaad_akhir (h : Nat) (harf : Dal.Khaliya → Bool) :
     ∀ (pre : List Dal.Khaliya) (c0 : Fin (qaydAkhir h harf).k) (c a : Dal.Khaliya), c.hala.val = h → harf a = true →
@@ -389,6 +476,63 @@ theorem akhir_yamna (pre : List Dal.Khaliya) (c a : Dal.Khaliya) :
     (c.hala.val = 1 → yaMutaharrika a = true → ∃ s, hukm (pre ++ [c, a]) = .mamnu s) :=
   ⟨fun hc ha => tasmah_mamnu_hukm _ qaydAkhirWaw (by simp [qawaid]) (tasmah_akhir 2 wawMutaharrika pre c a hc ha),
     fun hc ha => tasmah_mamnu_hukm _ qaydAkhirYa (by simp [qawaid]) (tasmah_akhir 1 yaMutaharrika pre c a hc ha)⟩
+
+/-! ## ٧ب. المدُّ تليه الأخرى متحرّكةً ليس غيرَ ممنوع (الاشتباه) -/
+
+/-- حركةُ صنف الاشتباه بعد خليّةٍ غيرِ ساكنة هي حركتُها، أيًّا كان ما قبلها. -/
+theorem haraka_sinfIshtibah (c0 : Fin 12) (a : Dal.Khaliya) (ha : a.hala.val ≠ 3) :
+    haraktuSinf (sinfIshtibah c0 a) = a.hala.val := by
+  have hw : wawSakina a = false := by simp [wawSakina, ha]
+  have hy : yaSakina a = false := by simp [yaSakina, ha]
+  have hlt := a.hala.isLt
+  unfold sinfIshtibah
+  simp only [hw, hy, Bool.and_false, Bool.false_eq_true, ite_false]
+  repeat' split
+  all_goals simp only [haraktuSinf]
+  all_goals (repeat' split) <;> omega
+
+/-- **المدُّ تليه الأخرى متحرّكةً لا يكون غيرَ ممنوع** (`qaydIshtibah`؛ 1238 «ومن عروض»): الواوُ الساكنة بعد الضمّة تليها ياءٌ متحرّكة، والياءُ
+    الساكنة بعد الكسرة تليها واوٌ متحرّكة؛ فالحكمُ «لا حكم» أو ممنوعٌ بغيره. -/
+theorem madd_la_ghayrMamnu (pre : List Dal.Khaliya) (c m d : Dal.Khaliya) (post : List Dal.Khaliya)
+    (h : (c.hala.val = 1 ∧ wawSakina m = true ∧ yaMutaharrika d = true) ∨
+      (c.hala.val = 2 ∧ yaSakina m = true ∧ wawMutaharrika d = true)) :
+    hukm (pre ++ c :: m :: d :: post) ≠ .ghayrMamnu := by
+  intro hg
+  have hi := ((ghayrMamnu_iff _).1 hg).2.2
+  have hc3 : c.hala.val ≠ 3 := by rcases h with ⟨h1, _⟩ | ⟨h1, _⟩ <;> omega
+  have hm : ∀ c1 : Fin qaydIshtibah.k, haraktuSinf c1 = c.hala.val →
+      qaydIshtibah.mamnu (qaydIshtibah.sinf c1 m) d = true := by
+    intro c1 h1
+    rcases h with ⟨hc, hw, hy⟩ | ⟨hc, hy, hw⟩
+    · have h4 : (qaydIshtibah.sinf c1 m).val = 4 := by
+        show (sinfIshtibah c1 m).val = 4
+        simp [sinfIshtibah, h1, hc, hw] <;> decide
+      generalize qaydIshtibah.sinf c1 m = x at h4
+      simp [qaydIshtibah, h4, hy]
+    · have hws : wawSakina m = false := by
+        simp [yaSakina] at hy
+        simp [wawSakina, hy.1]
+      have h5 : (qaydIshtibah.sinf c1 m).val = 5 := by
+        show (sinfIshtibah c1 m).val = 5
+        simp [sinfIshtibah, h1, hc, hy, hws] <;> decide
+      generalize qaydIshtibah.sinf c1 m = x at h5
+      simp [qaydIshtibah, h5, hw]
+  have hf : qaydIshtibah.tasmah (pre ++ c :: m :: d :: post) = false := by
+    cases pre with
+    | nil =>
+      have hs : haraktuSinf (qaydIshtibah.awwalSinf c) = c.hala.val := by
+        show haraktuSinf ⟨c.hala.val, _⟩ = c.hala.val
+        have := c.hala.isLt
+        simp only [haraktuSinf]; split <;> omega
+      have := tasmah_mamnu qaydIshtibah c [m] d post (hm _ hs)
+      simpa using this
+    | cons a pre =>
+      have := tasmah_mamnu qaydIshtibah a (pre ++ [c, m]) d post (by
+        rw [show pre ++ [c, m] = (pre ++ [c]) ++ [m] by simp, sira_snoc, sira_snoc]
+        exact hm _ (haraka_sinfIshtibah _ _ hc3))
+      simpa using this
+  rw [hf] at hi
+  exact Bool.false_ne_true hi
 
 /-! ## ٨. شواهدُ الأبيات: خلايا الكلمات كما يُخرجها القارئ (`qari --khalaya`؛ يقابلها `tahaqquq/test_ibdal.py`) -/
 

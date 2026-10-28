@@ -3,7 +3,7 @@
 
 مولَّدٌ من `tahaqquq/dawabit/ibdal/cases.json` بـ `python3 -I scripts/bina_dawabit_ibdal.py`؛ لا يُحرَّر يدويًّا.
 بصمةُ الحالات: `732403d34c0ab79d45609d0db1be1ca2abe5ae0c8a732cb216182d080ecfad9d`.
-كتبها مؤلّفٌ مستقلٌّ إجرائيًّا من المواصفة والنطاق قبل الشفرة، وفي سياقه ما حُقن آليًّا (`tahaqquq/dawabit/ibdal/taalif.md`)؛ وجُمّدت ببصمتها في `tahaqquq/dawabit/ibdal/tajmid.json`. والكلمةُ خلايا كما قرأها القارئ (`qari --khalaya`)، و`none` ما رفضه؛ والسندُ في الملفّ المصدر.
+كتبها مؤلّفٌ مستقلٌّ إجرائيًّا من المواصفة والمصدرين (الألفيّةُ، والكتابُ للفهم)، وفي سياقه ما حُقن آليًّا، وطبع بحثُه الأوّلُ أسطرًا من الكتاب خارج أبواب الإبدال (`tahaqquq/dawabit/ibdal/taalif.md` و`mulhaq_1.md`)؛ وجُمّدت ببصمتها في `tahaqquq/dawabit/ibdal/tajmid.json` ودُفعت قبل إيداع الشفرة. والكلمةُ خلايا كما قرأها القارئ (`qari --khalaya`)، و`none` ما رفضه؛ والسندُ في الملفّ المصدر.
 -/
 import Jisr.IbdalAlfiyyaDabit
 

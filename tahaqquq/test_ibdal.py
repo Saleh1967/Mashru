@@ -3,25 +3,38 @@
 يفحص، بلا مودَع:
 ١. التجميد: بصماتُ wasf.md وcases.json وfahs_cases.py وtaalif.md هي المسجَّلة في tajmid.json، وبصمتا المصدرين فيه بصمتا الألفيّة والكتاب.
 ٢. المولَّد: Jisr/IbdalAlfiyyaDawabit.lean مخرجُ scripts/bina_dawabit_ibdal.py على cases.json بايتًا (والكلمةُ خلايا من `qari --khalaya`).
+٢ب. والمولِّدُ على كلمةٍ بـ«أل» («الْمُوقِنُ»؛ لا كلمةَ بـ«أل» في الحالات، فلا يكشف ٢ إسقاطَ علامتها): خلاياها وعلامتاها مكتوبةٌ باليد هنا.
 ٢ج. خلايا شواهد الأبيات (`shawahid` في Jisr/IbdalAlfiyya.lean، منقولةٌ باليد) مخرجُ `qari --khalaya` لكلماتها؛ فحصُ نصٍّ يقرأ القائمةَ من Lean.
 ٣. السجلّات: natija_1.json … natija_N.json متتالية، كلٌّ للحالات المجمَّدة. وبصمةُ natija_1.json ثابتةٌ هنا (NATIJA_1)، وكلُّ سجلٍّ
-   بعده يحمل بصمةَ ما قبله. وآخرُها لبصمات الشفرة الحاليّة (SHIFRA: القواعدُ والمقارنةُ وطبقةُ القواعد والكلمةُ وقارئُها)، وأعدادُه (ihsa،
-   bil_fia، akhta، azwaj، rafd_qari) هي أعدادُ مبرهنات Jisr/IbdalAlfiyyaQiyas.lean، وحقلُ lean هو LEAN_NATIJA وكلُّ اسمٍ فيه مبرهنةٌ هناك.
+   بعده يحمل بصمةَ ما قبله. وآخرُها لبصمات الشفرة الحاليّة (SHIFRA: القواعدُ والمقارنةُ وطبقةُ القواعد والكلمةُ وقارئُها والقانونُ
+   وخلاياه)، وأعدادُه (ihsa،
+   bil_fia، akhta، azwaj، rafd_qari) هي أعدادُ مبرهنات Jisr/IbdalAlfiyyaQiyas.lean، وحقلُ lean هو LEAN_NATIJA وكلُّ اسمٍ فيه مبرهنةٌ هناك،
+   ومبرهنةُ akhta مسمّاةٌ فيه.
 ٤. المجال: أعدادُ المجال محسوبةٌ من cases.json هنا (majal_json)، لا من Lean، وهي قائمةُ مبرهنة `majal`؛ وhalat في آخر سجلّ، وعددُ حقول
    كلّ فئةٍ في natija_fia يساوي حالاتها (حقلٌ واحدٌ لكلّ حالة).
 ويفحص، إن حضر المودَعان (MUDAA_DIR/alfiyya.txt وsibawayhi.txt ببصمتيهما)، ولا طفرةَ له لأنّ CI بلا مودَع:
 ٥. الأسانيد: كلُّ `sanad.nass` في سطره من الألفيّة بحذف البادئة وحدها («# »)، والسطرُ في النطاق؛ ثمّ فاحصُ المؤلّف نفسُه
    (`fahs_cases.py <MUDAA_DIR>`) يخرج 0.
 
-الطفرات وقاتلُها (كلٌّ بفحصها المسمّى، إلّا ما يُذكر): P1189 (بصمةُ المواصفة في tajmid.json، ١)، P1190 (بصمةُ الألفيّة فيه، ١)، P1191
-(المولِّد يُسقط علامة «أل»، ٢)، P1193 (tashghil، ٣)، P1194 (cases_sha256، ٣)، P1196 (ihsa، ٣)، P1197 (bil_fia، ٣)، P1198 (akhta، ٣)، P1199 (حقلُ lean، ٣)،
-P1200 (azwaj، ٣)، P1201 (rafd_qari، ٣)، P1202 (halat، ٣).
-**ما لا يُعزل:** الطفراتُ على natija_1.json (P1193–P1202) تقتلها المرساةُ (NATIJA_1) مع فحصها، لأنّ السجلَّ الأوّل لا يُغيَّر. وP1192 (خليّةٌ في شاهدٍ
-لا تغيّر حكمَه، ٢ج) على Jisr/IbdalAlfiyya.lean، وهو من الشفرة المسجَّلة بصمتُها (SHIFRA)، فيقتلها فحصُ البصمة في ٣ مع فحصها. والطفراتُ على
-قواعد Jisr/IbdalAlfiyya.lean (P1204–P1212) يقتلها البناء (`shawahid_hukm`، ومبرهناتُ Jisr/IbdalAlfiyyaQiyas.lean، و`alif_mayyit`).
+الطفرات وقاتلُها، كلٌّ بفحصها المسمّى وحده إلّا ما يُذكر (وقاتلُ كلٍّ بـtafrat_juz.py على الشجرة المودَعة في طلب الدمج):
+- ١: P1189 (بصمةُ المواصفة في tajmid.json)، P1190 (بصمةُ الألفيّة فيه). ٢: P1221 (المولِّد يغيّر رأسَ المولَّد). ٢ب: P1191 (المولِّد يُسقط
+  علامة «أل»).
+- ٣، على آخر سجلّ (natija_4.json؛ وسجلٌّ بعده يُلزم نقلَها إليه، وإلّا قتلتها السلسلةُ وحدها، إلّا P1193 وP1194 وP1218 فمعها
+  فحصُها): P1193 (tashghil)، P1194 (cases_sha256)، P1195 (huqul_masula)، P1196 (ihsa، والمجموعُ باقٍ)، P1197 (bil_fia)، P1198 (akhta)، P1199 (ترتيبُ حقل lean)، P1200 (azwaj)، P1201 (rafd_qari)، P1202 (halat)، P1217 (بصمةُ الشفرة)، P1218 (بصمةُ ما قبله).
+- ٣ و٤، على Jisr/IbdalAlfiyyaQiyas.lean وتُبنى: P1203 (مبرهنةُ akhta ثانيةً باسمٍ لا يسمّيه السجلّ)، P1213 (`natija` بلا أعدادها)، P1215
+  (`akhta_1` بلا قائمتها)، P1216 (`natija_fia` خاصّة)، P1222 (`azwaj_1` بلا عددها)، P1214 (`majal` بلا أعدادها، ٤).
+- البناء: P1204–P1210 وP1212 وP1219 وP1223 على قواعد Jisr/IbdalAlfiyya.lean (`shawahid_hukm`، ومبرهناتُ «حيثما وقع»
+  و`madd_la_ghayrMamnu`، ومبرهناتُ Jisr/IbdalAlfiyyaQiyas.lean، و`alif_mayyit`).
+**ما لا يُعزل أو يقع على الفحص نفسه:** P1192 (خليّةٌ في شاهدٍ لا تغيّر حكمَه، ٢ج) على Jisr/IbdalAlfiyya.lean، وهو من الشفرة المسجَّلة بصمتُها
+(SHIFRA)، فيقتلها فحصُ البصمة في ٣ مع فحصها. وP1211 تطفّر عبارةَ المبرهنة `alif_mayyit` لا الشفرة. وP1220 تطفّر الفحصَ نفسَه (الحسابَ من
+cases.json في majal_json، ٤): قتلُها لا يدلّ أنّ الفحص يلتقط عيبًا في المفحوص، ولا نظيرَ له على المفحوص يُبنى (cases.json مجمَّدٌ ببصمته،
+وأعدادُ `majal` تقتلها Lean). وبلا طفرة: تتالي أرقام السجلّات (أسماؤها لا تطفّرها الأداة)، والمرساةُ NATIJA_1 وسلسلةُ ما قبل الأخير (طفرةُ
+سجلٍّ قديمٍ تقتلها السلسلة، ومعها المرساةُ في natija_1.json)، ومجموعُ حقول الفئات في `natija_fia` (أعدادُها تقتلها Lean،
+وcases.json مجمَّد)، وأسماءُ الملفّات في SHIFRA وBASMAT.
 التشغيل: python3 -I tahaqquq/test_ibdal.py
 """
 import hashlib
+import importlib.util
 import json
 import os
 import pathlib
@@ -33,7 +46,7 @@ import tempfile
 JADHR = pathlib.Path(__file__).resolve().parent.parent
 D = JADHR / "tahaqquq" / "dawabit" / "ibdal"
 SHIFRA = ["Jisr/IbdalAlfiyya.lean", "Jisr/IbdalAlfiyyaDabit.lean", "Jisr/TabaqatQawaid.lean", "Dal/Jumla.lean", "Qari/Main.lean",
-          "Dal/QiraaTahsil.lean", "Dal/Tahsil.lean"]
+          "Dal/QiraaTahsil.lean", "Dal/Tahsil.lean", "SLGE/Law.lean", "Dal/Khaliya.lean"]
 QIYAS = JADHR / "Jisr/IbdalAlfiyyaQiyas.lean"
 BINA = JADHR / "scripts/bina_dawabit_ibdal.py"
 QARI = JADHR / ".lake" / "build" / "bin" / "qari"
@@ -84,6 +97,18 @@ tahaqqaq([(m["milaf"], m["sha256"]) for m in tajmid["masadir"]] == [BASMAT["أل
 # ٢. المولَّد
 r = subprocess.run([sys.executable, "-I", str(BINA), "--check"], capture_output=True, text=True)
 tahaqqaq(r.returncode == 0, "Jisr/IbdalAlfiyyaDawabit.lean ليس مخرجَ المولِّد: " + (r.stdout + r.stderr).strip()[-300:])
+
+# ٢ب. المولِّدُ على «الْمُوقِنُ»، والخلايا باليد من جدول الحوامل (Dal/Makharij.lean: ق 7، ل 13، ن 14، م 27، و 28) والخليّةُ 4×الحامل+الحالة
+#     (فتحة 0، ضمّة 1، كسرة 2، سكون 3): لْ 55، مُ 109، وْ 115، قِ 30، نُ 57؛ وهمزةُ الوصل ليست خليّة، فالعلامتان (الوصل، أل) صادقتان.
+if QARI.exists():
+    spec = importlib.util.spec_from_file_location("bina_dawabit_ibdal", BINA)
+    bina = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(bina)
+    natija_al = bina.khalaya([{"id": "T1", "kalima": "الْمُوقِنُ"}])
+    tahaqqaq(natija_al == {"T1": "some ⟨[55, 109, 115, 30, 57], true, true⟩"},
+             f"المولِّدُ على «الْمُوقِنُ»: {natija_al}")
+else:
+    tahaqqaq(False, "القارئ غيرُ مبنيّ (lake build qari)")
 
 # ٢ج. خلايا شواهد الأبيات في Jisr/IbdalAlfiyya.lean منقولةٌ باليد: هي مخرجُ `qari --khalaya` لكلماتها، بترتيبها.
 nass_qawaid = (JADHR / "Jisr/IbdalAlfiyya.lean").read_text(encoding="utf-8")
@@ -189,7 +214,7 @@ if len(masadir) == 2:
         for s in h["sanad"]:
             n = s["satr"]
             tahaqqaq(s["masdar"] == "ألفية" and any(a <= n <= b for a, b in NITAQ), f"سندُ {h['id']} خارجَ النطاق: {s['masdar']} س{n}")
-            satr = re.sub(r"^(### \| |~~|# )", "", masadir["ألفية"][n - 1])
+            satr = re.sub(r"^# ", "", masadir["ألفية"][n - 1])
             tahaqqaq(s["nass"] in satr, f"سندُ {h['id']} ليس في الألفيّة س{n} بحذف البادئة وحدها")
     r = subprocess.run([sys.executable, "-I", str(D / "fahs_cases.py"), mdir], capture_output=True, text=True, cwd=str(D))
     tahaqqaq(r.returncode == 0, "فاحصُ المؤلّف رفض الحالات: " + (r.stdout + r.stderr)[-400:])
