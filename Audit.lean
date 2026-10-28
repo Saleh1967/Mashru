@@ -109,6 +109,7 @@ import SLGE.Syllable
 import Madlul.TasisDalala
 import Nizam.Shahada
 import Dal.Tahsil
+import Dal.QiraaTahsil
 import Jisr.Ishara
 import Jisr.IsharaDabit
 import Jisr.IsharaQiyas
@@ -2371,6 +2372,26 @@ import Jisr.IsharaQiyas
 #print axioms Dal.Tahsil.shahid_kataba
 #print axioms Dal.Tahsil.shahid_shams
 #print axioms Dal.Tahsil.shahid_muallaq
+#print axioms Dal.QiraaTahsil.mem_khalayaTahsil
+#print axioms Dal.QiraaTahsil.juzOf_khalaya
+#print axioms Dal.QiraaTahsil.juzOf_fasid
+#print axioms Dal.QiraaTahsil.ajza_cons
+#print axioms Dal.QiraaTahsil.ajza_tahsil
+#print axioms Dal.QiraaTahsil.ajza_asl
+#print axioms Dal.QiraaTahsil.ajza_la_fasid
+#print axioms Dal.QiraaTahsil.tamm_khalaya
+#print axioms Dal.QiraaTahsil.qiraa_ajza
+#print axioms Dal.QiraaTahsil.qiraa_tahsil
+#print axioms Dal.QiraaTahsil.qiraa_la_fasid
+#print axioms Dal.QiraaTahsil.qiraa_asl
+#print axioms Dal.QiraaTahsil.qiraa_shahada
+#print axioms Dal.QiraaTahsil.ajza_L
+#print axioms Dal.QiraaTahsil.qiraa_murakhkhasa
+#print axioms Dal.QiraaTahsil.shahid_fata
+#print axioms Dal.QiraaTahsil.shahid_shams
+#print axioms Dal.QiraaTahsil.shahid_rafd_tatwil
+#print axioms Dal.QiraaTahsil.shahid_tatwil_maqta
+#print axioms Dal.QiraaTahsil.shahid_jamaa
 -- أسماءُ الإشارة في القطر (س132–135) والألفية (س137–144) (Jisr/Ishara.lean): حكمُ الاستعمال بالأصل والمشار إليه والموضع والمسافة و«ها» واللام والكاف
 #print axioms Jisr.Ishara.ghayr_muwafiq_khata
 #print axioms Jisr.Ishara.lam_bila_kaf_khata
