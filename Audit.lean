@@ -113,6 +113,9 @@ import Dal.QiraaTahsil
 import Jisr.Khabar
 import Jisr.KhabarDabit
 import Jisr.KhabarQiyas
+import Jisr.Abniya
+import Jisr.AbniyaDabit
+import Jisr.AbniyaQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective

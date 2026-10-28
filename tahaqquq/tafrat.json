@@ -5534,6 +5534,26 @@
  {
   "ism": "P1132_khabar_sijill_tashghil",
   "milaf": "tahaqquq/dawabit/khabar/natija_3.json",
+  "ism": "P1071_abniya_sijill_lean",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"Jisr.Abniya.Qiyas.akhta_sifr\",\n  \"Jisr.Abniya.Qiyas.azwaj_1\"",
+  "ila": "\"Jisr.Abniya.Qiyas.akhta_sifr\""
+ },
+ {
+  "ism": "P1072_abniya_sijill_akhta",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"akhta\": [],",
+  "ila": "\"akhta\": [[\"B01\", \"tajawuz\"]],"
+ },
+ {
+  "ism": "P1073_abniya_sijill_bil_fia",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"موجب\": 28,",
+  "ila": "\"موجب\": 27,"
+ },
+ {
+  "ism": "P1074_abniya_sijill_tashghil",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
   "min": "\"tashghil\": 3,",
   "ila": "\"tashghil\": 4,"
  },
@@ -5576,6 +5596,8 @@
  {
   "ism": "P1139_khabar_natija_fia_khassa",
   "milaf": "Jisr/KhabarQiyas.lean",
+  "ism": "P1115_abniya_natija_fia_khassa",
+  "milaf": "Jisr/AbniyaQiyas.lean",
   "min": "theorem natija_fia :",
   "ila": "private theorem natija_fia :"
  },
