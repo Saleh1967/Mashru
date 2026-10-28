@@ -5377,21 +5377,21 @@
  },
  {
   "ism": "P1066_abniya_sijill_shifra",
-  "milaf": "tahaqquq/dawabit/abniya/natija_2.json",
-  "min": "\"sha256\": \"87e41e8d5ef34f797f7f2e18247cd4c14c53461fe714cc0c3ba7054a8e281100\"",
-  "ila": "\"sha256\": \"87e41e8d5ef34f797f7f2e18247cd4c14c53461fe714cc0c3ba7054a8e281101\""
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"sha256\": \"e9b6a246218ade605dcbd27a3be2a2c448c0b5ecdf28fa66a14d0ca625259d93\"",
+  "ila": "\"sha256\": \"e9b6a246218ade605dcbd27a3be2a2c448c0b5ecdf28fa66a14d0ca625259d90\""
  },
  {
   "ism": "P1067_abniya_sijill_sawab",
-  "milaf": "tahaqquq/dawabit/abniya/natija_2.json",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
   "min": "\"sawab\": 73,\n  \"naqsTaghtiya\": 0,",
   "ila": "\"sawab\": 72,\n  \"naqsTaghtiya\": 1,"
  },
  {
   "ism": "P1068_abniya_sijill_qablaha",
-  "milaf": "tahaqquq/dawabit/abniya/natija_2.json",
-  "min": "\"natija_1.json\": \"4f1015dbdd6a7a748bb25ce7f4745595a3cac55be53a0dc2135073884570d883\"",
-  "ila": "\"natija_1.json\": \"4f1015dbdd6a7a748bb25ce7f4745595a3cac55be53a0dc2135073884570d880\""
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"natija_2.json\": \"8f224e30e25905795c7a6ce928a40ce270f6a312c9b99b49e63ff9f6d098d75a\"",
+  "ila": "\"natija_2.json\": \"8f224e30e25905795c7a6ce928a40ce270f6a312c9b99b49e63ff9f6d098d750\""
  },
  {
   "ism": "P1069_abniya_natija1_adad",
@@ -5407,43 +5407,43 @@
  },
  {
   "ism": "P1071_abniya_sijill_lean",
-  "milaf": "tahaqquq/dawabit/abniya/natija_2.json",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
   "min": "\"Jisr.Abniya.Qiyas.akhta_sifr\",\n  \"Jisr.Abniya.Qiyas.azwaj_1\"",
   "ila": "\"Jisr.Abniya.Qiyas.akhta_sifr\""
  },
  {
   "ism": "P1072_abniya_sijill_akhta",
-  "milaf": "tahaqquq/dawabit/abniya/natija_2.json",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
   "min": "\"akhta\": [],",
   "ila": "\"akhta\": [[\"B01\", \"tajawuz\"]],"
  },
  {
   "ism": "P1073_abniya_sijill_bil_fia",
-  "milaf": "tahaqquq/dawabit/abniya/natija_2.json",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
   "min": "\"موجب\": 28,",
   "ila": "\"موجب\": 27,"
  },
  {
   "ism": "P1074_abniya_sijill_tashghil",
-  "milaf": "tahaqquq/dawabit/abniya/natija_2.json",
-  "min": "\"tashghil\": 2,",
-  "ila": "\"tashghil\": 3,"
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"tashghil\": 3,",
+  "ila": "\"tashghil\": 4,"
  },
  {
   "ism": "P1075_abniya_sijill_cases",
-  "milaf": "tahaqquq/dawabit/abniya/natija_2.json",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
   "min": "\"cases_sha256\": \"6e16c941d8ad07256419351afe3b328b5b7dc456527fc866af1acb7eb9ab371b\"",
   "ila": "\"cases_sha256\": \"6e16c941d8ad07256419351afe3b328b5b7dc456527fc866af1acb7eb9ab3710\""
  },
  {
   "ism": "P1076_abniya_sijill_halat",
-  "milaf": "tahaqquq/dawabit/abniya/natija_2.json",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
   "min": "\"halat\": 50,",
   "ila": "\"halat\": 49,"
  },
  {
   "ism": "P1077_abniya_sijill_azwaj",
-  "milaf": "tahaqquq/dawabit/abniya/natija_2.json",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
   "min": "\"sawab_maan\": 19",
   "ila": "\"sawab_maan\": 18"
  },
