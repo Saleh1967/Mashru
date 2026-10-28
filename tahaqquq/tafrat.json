@@ -5403,7 +5403,7 @@
   "ism": "P1070_abniya_fahs_akhta_fi_lean",
   "milaf": "Jisr/AbniyaQiyas.lean",
   "min": "theorem akhta_sifr :",
-  "ila": "theorem akhta_alt : akhta (natayij halat) = [] := by\n  decide +kernel\n\ntheorem akhta_sifr :"
+  "ila": "private theorem akhta_alt : akhta (natayij halat) = [] := by\n  decide +kernel\n\ntheorem akhta_sifr :"
  },
  {
   "ism": "P1071_abniya_sijill_lean",
@@ -5458,5 +5458,29 @@
   "milaf": "Jisr/AbniyaQiyas.lean",
   "min": "theorem natija : ihsa (natayij halat) = ⟨73, 0, 0, 0, 0, 0, 0, 0⟩ := by",
   "ila": "theorem natija : ihsa (natayij halat) = ihsa (natayij halat) ∨ ihsa (natayij halat) = ⟨73, 0, 0, 0, 0, 0, 0, 0⟩ := by"
+ },
+ {
+  "ism": "P1114_abniya_akhta_bila_sigha",
+  "milaf": "Jisr/AbniyaQiyas.lean",
+  "min": "theorem akhta_sifr : akhta (natayij halat) = [] := by",
+  "ila": "theorem akhta_sifr : akhta (natayij halat) = akhta (natayij halat) := by"
+ },
+ {
+  "ism": "P1115_abniya_natija_fia_khassa",
+  "milaf": "Jisr/AbniyaQiyas.lean",
+  "min": "theorem natija_fia :",
+  "ila": "private theorem natija_fia :"
+ },
+ {
+  "ism": "P1116_abniya_azwaj_bila_sigha",
+  "milaf": "Jisr/AbniyaQiyas.lean",
+  "min": "(azwaj halat).length = 19 ∧ ((azwaj halat).filter",
+  "ila": "((azwaj halat)).length = 19 ∧ ((azwaj halat).filter"
+ },
+ {
+  "ism": "P1117_abniya_sijill_huqul",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"huqul_masula\": 73,",
+  "ila": "\"huqul_masula\": 74,"
  }
 ]
