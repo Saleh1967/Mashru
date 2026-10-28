@@ -108,6 +108,30 @@ assert SHORT_HARAKAT == (FATHA, DAMMA, KASRA)
 # Amendment 2 (2026-10-28): the seven letters of rule 14ب «و ف ب ك ل ت أ», code points copied
 # from the spec: U+0648 U+0641 U+0628 U+0643 U+0644 U+062A U+0623.
 CHAIN_LETTERS = ("و", "ف", "ب", "ك", "ل", "ت", "أ")
+# Amendment 3 (2026-10-29): new sinf names, the tanwin states, the tanwin nun cell, and the
+# fourteen letters of the assimilated lam «ن ر د ت ص ط ز س ظ ث ذ ض ش ل» (code points copied from
+# the spec: U+0646 U+0631 U+062F U+062A U+0635 U+0637 U+0632 U+0633 U+0638 U+062B U+0630 U+0636
+# U+0634 U+0644).
+SINF_WASL_AL = "hamzaWaslAl"
+SINF_MADDA = "madda"
+SINF_TA_MARBUTA = "taMarbuta"
+SINF_ALIF_MAQSURA = "alifMaqsura"
+SINF_ALIF_KHATT = "alifKhatt"
+SINF_TANWIN = "tanwin"
+SINF_TANWIN_ALIF = "tanwinAlif"
+SINF_HARAKA_MIN_TANWIN = "harakaMinTanwin"
+SINF_SHADDA_IBTIDA = "shaddaIbtida"
+SINF_LAM_MUDGHAM = "lamMudgham"
+SINF_SUKUN_MUQADDAR = "sukunMuqaddar"
+TANWIN_STATE = {"\u064b": 0, "\u064c": 1, "\u064d": 2}
+assert set(TANWIN_STATE) == set(TANWIN)
+NUN_TANWIN = 4 * 14 + 3  # 59
+LAM_LETTERS = ("\u0646", "\u0631", "\u062f", "\u062a", "\u0635", "\u0637", "\u0632",
+               "\u0633", "\u0638", "\u062b", "\u0630", "\u0636", "\u0634", "\u0644")
+assert len(set(LAM_LETTERS)) == 14 and all(c in INDEX for c in LAM_LETTERS)
+assert NUN_TANWIN == 4 * INDEX["\u0646"] + 3
+TA_INDEX = 18  # ت
+assert INDEX["\u062a"] == TA_INDEX
 ISM_15_LAM = ("قاعدة لام التعريف "
               "المدغمة")  # قاعدة لام التعريف المدغمة
 ISM_15_AKHIR = ("قاعدة الحرف "
@@ -207,6 +231,28 @@ def _is_14b(text, segs, k, ctx):
     return False
 
 
+def _lam_tarif_after(text, segs, k, ctx):
+    """Amendment 3, «لامُ التعريف بعد المقطع k»: `next` exists and its head is ل, and its marks
+    are either exactly one sukun, or nothing with the segment right after the lam in the word
+    carrying a shadda (NOTES C1)."""
+    nxt = ctx["next"]
+    if nxt is None:
+        return False
+    na, nb = segs[nxt]
+    if text[na] != LAM:
+        return False
+    nmarks = text[na + 1:nb]
+    if nmarks == SUKUN:
+        return True
+    if nmarks == "":
+        word = ctx["word"]
+        pos = word.index(nxt)
+        if pos + 1 < len(word):
+            fa, fb = segs[word[pos + 1]]
+            return SHADDA in text[fa + 1:fb]
+    return False
+
+
 def _is_14b_at(text, segs, k, word):
     """True iff segment k's verdict (first matching rule) is rule 14ب."""
     res = _classify(text, segs, k, _ctx(word, word.index(k)))
@@ -253,40 +299,91 @@ def _classify(text, segs, k, ctx):
         if not marks:
             return _L("tatwil", [])
         return _P(ISM_5)
+    word = ctx["word"]
+    is_carrier = head in INDEX or head in SEATS
+    h = 0 if head in SEATS else INDEX.get(head)
+
+    def next_is_tanwin_alif():
+        """Amendment 3, rules 14 and 15: `next` has head ا, its marks are exactly one fathatan,
+        and it is `akhir` (NOTES C10)."""
+        if nxt is None:
+            return False
+        na, nb = segs[nxt]
+        return text[na] == ALIF and text[na + 1:nb] == FATHATAN and word[-1] == nxt
+
     # 6
     if head in (ALIF, ALIF_WASLA) and awwal:
         if vowels:
             return _F(ISM_6F)
+        # amendment 3: bare, followed by «لامُ التعريف» -> hamzaWaslAl [0]
+        if not marks and _lam_tarif_after(text, segs, k, ctx):
+            return _L(SINF_WASL_AL, [0])
         return _P(ISM_WASL)
     # 7
     if head == ALIF_WASLA:
         return _P(ISM_WASL)
-    # 8
+    # 8 (amendment 3: bare -> madda [0, 11])
     if head == ALIF_MADDA:
+        if not marks:
+            return _L(SINF_MADDA, [0, 4 * INDEX[ALIF] + 3])
         return _P(ISM_8)
-    # 9
+    # 9 (amendment 3: akhir, exactly one mark: short haraka or tanwin)
     if head == TA_MARBUTA:
+        if akhir and len(marks) == 1:
+            if marks in SHORT_HARAKAT:
+                return _L(SINF_TA_MARBUTA, [4 * TA_INDEX + HARAKA_STATE[marks]])
+            if marks in TANWIN:
+                return _L(SINF_TA_MARBUTA, [4 * TA_INDEX + TANWIN_STATE[marks], NUN_TANWIN])
         return _P(ISM_9)
-    # 10
+    # 10 (amendment 3: bare, akhir, has prev; prev's marks contain fatha / fathatan)
     if head == ALIF_MAQSURA:
+        if not marks and akhir and prev is not None:
+            pm = marks_of(prev)
+            if FATHA in pm:
+                return _L(SINF_ALIF_MAQSURA, [4 * INDEX[ALIF] + 3])
+            if FATHATAN in pm:
+                return _L(SINF_ALIF_KHATT, [])
         return _P(ISM_10)
-    # 11
+    # 11 (amendment 3)
     if has_tanwin:
+        tan = [m for m in marks if m in TANWIN][0]
+        s_t = TANWIN_STATE[tan]
+        if ((head in INDEX and head not in (ALIF, WAW, YA)) or head in SEATS) \
+                and not (awwal and n_shadda >= 1):
+            after = word[word.index(k) + 1:]
+            ok = True
+            for idx in after:
+                xa, xb = segs[idx]
+                if text[xa] not in (ALIF, ALIF_MAQSURA) or xb != xa + 1:
+                    ok = False
+                    break
+            if ok:
+                if n_shadda == 1:
+                    return _L(SINF_TANWIN, [4 * h + 3, 4 * h + s_t, NUN_TANWIN])
+                return _L(SINF_TANWIN, [4 * h + s_t, NUN_TANWIN])
+        if head == ALIF and marks == FATHATAN and akhir and prev is not None:
+            return _L(SINF_TANWIN_ALIF, [NUN_TANWIN])
         return _P(ISM_11)
-    # 12
+    # 12 (amendment 3: alifKhatt)
     if head == ALIF and not marks and prev is not None and FATHATAN in marks_of(prev):
-        return _P(ISM_12)
-    # 13
+        return _L(SINF_ALIF_KHATT, [])
+    # 13 (amendment 3: alifKhatt)
     if head == ALIF and not marks and akhir and prev is not None:
         pa, _pb = segs[prev]
         pm = marks_of(prev)
         if text[pa] == WAW and (pm == "" or pm == SUKUN):
-            return _P(ISM_13)
-    # 14
+            return _L(SINF_ALIF_KHATT, [])
+    # 14 (amendment 3: before a final «اً» -> harakaMinTanwin [4h+3, 4h+0])
     if n_shadda == 1 and not vowels:
+        if is_carrier and next_is_tanwin_alif():
+            return _L(SINF_HARAKA_MIN_TANWIN, [4 * h + 3, 4 * h + 0])
         return _P(ISM_14)
     # 14أ (amendment 1): table carrier or hamza seat, awwal, shadda in marks
-    if (head in INDEX or head in SEATS) and awwal and n_shadda >= 1:
+    # amendment 3: with a short haraka s -> shaddaIbtida [4h+s]
+    if is_carrier and awwal and n_shadda >= 1:
+        shorts = [m for m in marks if m in SHORT_HARAKAT]
+        if shorts:
+            return _L(SINF_SHADDA_IBTIDA, [4 * h + HARAKA_STATE[shorts[0]]])
         return _P(ISM_14A)
     # 14ب (amendments 1, 2): wasl alif after a chain of one-letter prefixes, each with one
     # short haraka, before a "sakin"
@@ -303,7 +400,15 @@ def _classify(text, segs, k, ctx):
             # amendment 1: or prev's verdict is by rule 14ب
             if (prev_first_alif or _is_14b_at(text, segs, prev, ctx["word"])) \
                     and SHADDA in marks_of(nxt):
+                # amendment 3: next's head among the fourteen letters -> lamMudgham
+                if text[segs[nxt][0]] in LAM_LETTERS:
+                    return _L(SINF_LAM_MUDGHAM, [])
                 return _P(ISM_15_LAM)
+        # amendment 3: bare carrier/seat, not awwal
+        if is_carrier and not awwal:
+            if next_is_tanwin_alif():
+                return _L(SINF_HARAKA_MIN_TANWIN, [4 * h + 0])
+            return _L(SINF_SUKUN_MUQADDAR, [4 * h + 3])
         if akhir:
             return _P(ISM_15_AKHIR)
         return _F(ISM_15_F)

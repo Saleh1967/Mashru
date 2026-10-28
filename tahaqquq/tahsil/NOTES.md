@@ -219,3 +219,124 @@ B7. **Status of earlier notes.** «والقواعدُ سواها كما كانت
     - A5 (any prev, not only a prefix) is superseded: the rule text now names the seven letters. Its
       example `قَالْ…` is no longer `hamzaWasl`; `كَتَبَاسْ` still is (B4).
     - A4's example `بَااْ` still gives the first alif `hamzaWasl` (بَ is a chain of one).
+
+## التعديل الثالث
+
+Readings of amendment 3 (2026-10-29): rules 6, 8, 9, 10, 11, 12, 13, 14, 14أ and 15 gain L verdicts, and
+the output has eleven new `sinf` names. Numbering restarts at C1. Earlier notes stand unless an item here
+says otherwise. «حركةٌ قصيرة» is read throughout as U+064E/U+064F/U+0650. The spec's defined «الحالة
+من التنوين» gives fathatan 0, dammatan 1, kasratan 2.
+
+C1. **«لامُ التعريف بعد المقطع k» … «وإمّا لا شيء ومقطعٌ بعده في الكلمة في علاماته شدّة».**
+    - Reading 1: «بعده» is the lam, and the segment meant is the one right after it.
+    - Reading 2: any later segment in the word.
+    - Implemented: reading 1, which is the same reading as note A1 for the lam branch of 14ب.
+    - «سكونٌ وحده» means the lam's marks are exactly one U+0652; sukun+shadda does not count.
+    - Example `الكَتَّ`: under reading 1 the alif is P «قاعدة همزة الوصل»; under reading 2 it is
+      `hamzaWaslAl`.
+
+C2. **Rule 6, «بلا علامات».** An alif or ٱ that carries a shadda only, with no vowel mark, is not bare. So
+    it stays P «قاعدة همزة الوصل», even before a lam with sukun (case D9). The other reading counts only
+    vowel marks.
+
+C3. **Rule 6 ignores the lam's own verdict and anything after the lam.**
+    - `hamzaWaslAl` depends only on the shape that the definition in C1 describes.
+    - So the alif is `hamzaWaslAl` even when the lam is P «قاعدة لام التعريف المدغمة» (qaf or ba after
+      it, cases D56 and D57) and when the shadda-bearing segment is F (rule 4).
+    - The word «الْ» alone gives the alif `hamzaWaslAl`.
+
+C4. **Rule 8 does not require `awwal`.**
+    - A bare آ in the middle or at the end of a word is `madda [0, 11]` too (case D12).
+    - Any mark makes it P, including shadda alone (case D13).
+
+C5. **Rule 9, «علاماتُه علامةٌ واحدة: حركةٌ قصيرةٌ … أو تنوين».**
+    - The marks must be exactly one code point, read the same way as B1. So shadda+fatha is P (case D21).
+    - Sukun is a «علامة حركة» but not a «حركة قصيرة», so ة with sukun stays P (case A22).
+    - A bare ة, or one that is not `akhir`, stays P.
+
+C6. **Rule 10, «في علامات `prev` فتحة / فتحتان».**
+    - Read as containment, the same way as old note 8. A prev with shadda+fatha qualifies, so the result
+      is `alifMaqsura` (case D25).
+    - The prev's own verdict is ignored.
+    - If the prev's marks hold both a fatha and a fathatan (F by rule 4), the fatha branch, which is listed
+      first, gives `alifMaqsura`.
+    - A mark-headed prev has no marks, so the result is P (case D27b).
+    - «له `prev`» is within the word, so ى after a space is P.
+
+C7. **Rule 11, first branch: «وكلُّ مقطعٍ بعده في كلمته رأسُه ا أو ى بلا علامات».**
+    - «بلا علامات» applies to both ا and ى.
+    - Every later segment of the word must meet the condition, with no limit on how many. So `بًاا`
+      gives tanwin, then `alifKhatt`, then `harfMadd` (case D39).
+    - Any other segment after the head (a letter, a tab, an alif with a mark) makes it P.
+    - «غيرُ ا وو وي» excludes only U+0627, U+0648 and U+064A. The excluded heads (cases D34–D36) and ء
+      both follow the literal text: ء is a table carrier with h = 0.
+
+C8. **Rule 11, «وليس (`awwal` وفي `marks` شدّة)».**
+    - Only a word-initial carrier that has both shadda and tanwin is excluded; it stays P (cases B9 and
+      R12).
+    - A carrier that is not `awwal` and has shadda+tanwin gives three cells, `[4h+3, 4h+s, 59]`
+      (case D31).
+
+C9. **Rule 11, second branch (`tanwinAlif`).**
+    - «`marks` فتحتان وحدهما» means exactly the one code point U+064B. Shadda+fathatan is P (case D43).
+    - `awwal` is never reached here, because rule 6 takes every word-initial alif first (case D42, F).
+    - So «وله `prev`» is always true at this point.
+
+C10. **Rules 14 and 15, «`next` رأسُه ا وعلاماتُه فتحتان وحدهما وهو `akhir`».**
+     - «وهو `akhir`» is read as the next segment being the last of the word. The current segment cannot
+       be, since it has a next.
+     - Fathatan alone means exactly one code point.
+
+C11. **Rule 14 comes before 14أ.**
+     - A word-initial carrier with shadda only, followed by a final «اً», is `harakaMinTanwin` with two
+       cells `[4h+3, 4h]` (case D47). The half-shadda drop of 14أ does not apply here.
+     - The alternative would treat it as 14أ, but 14أ needs a vowel mark, so that reading would leave it
+       P.
+     - Rule 14's guard «والرأسُ هنا حاملٌ أو مقعد» never rejects anything. Every head that reaches rule
+       14 is a carrier or a seat, because ـ ة ى آ ٱ are all taken by rules 5–10. A bare word-initial ا is
+       taken by rule 6.
+
+C12. **Rule 14أ, «إن كان في `marks` حركةٌ قصيرةٌ بحالتها s».**
+     - Sukun is not short, so word-initial shadda+sukun stays P «قاعدة الشدّة في أوّل الكلمة».
+     - The order of shadda and haraka does not matter (old note 5).
+
+C13. **Rule 12 and rule 13 become L `alifKhatt` unconditionally.**
+     - The text keeps their old conditions and gives no fallback, so nothing that used to reach them
+       stays P.
+     - Rule 12 still ignores the prev's verdict. Under A32 the prev is F by rule 4 and the alif is still
+       `alifKhatt`.
+
+C14. **Rule 15, lam branch: «إن كان رأسُ `next` من حروف اللام المدغمة ← L … وإلّا ← P».**
+     - Once the lam branch's own conditions hold (prev as before, and next has a shadda), the «وإلّا»
+       here is P «قاعدة لام التعريف المدغمة» (cases D56, D57, D59). The lam does not go on to the
+       `harakaMinTanwin`/`sukunMuqaddar` bullets.
+     - When the conditions fail, the lam does go on to those bullets: `sukunMuqaddar [55]` (cases D8,
+       A9–A11, C32–C34), or `harakaMinTanwin [52]` before «اً» (case D70).
+     - The fourteen letters are the code points copied from the spec. ل counts, so ٱللَّه gives the lam
+       `lamMudgham`.
+     - The prev test still looks only at the first segment's head (ا/ٱ), as in old note 6. So `اَلشَّ`
+       gives the lam `lamMudgham` while the alif is F.
+
+C15. **Rule 15, `sukunMuqaddar` covers `akhir` too.**
+     - «وإلّا إن كان الرأسُ حاملًا … وليس `awwal`» has no `akhir` condition. So every bare carrier or seat
+       that is not word-initial is `sukunMuqaddar`, whether it is in the middle of the word or at the end
+       (cases D64–D66 and the amended R15 cases).
+     - P «قاعدة الحرف الأخير بلا حركة» remains only for a bare letter that is both `awwal` and `akhir`
+       (a one-segment word).
+     - F «حرف بلا حركة في غير آخر الكلمة» remains only for a bare word-initial letter in a longer word.
+     - Bare ا/و/ي that are not `awwal` still go to `harfMadd` first («بعد فرع حرف المدّ كما كان»), so
+       they are never `sukunMuqaddar` or `harakaMinTanwin` (case D69).
+
+C16. **The tahsil of amendment 3 only reads the verdicts that earlier notes already read.**
+     - The rule-15 lam branch reads the prev's 14ب verdict (note A7).
+     - No new rule reads another segment's verdict: rules 10, 11 and 12 look at marks and heads only.
+     - Hence rule 11 can give a carrier `tanwin` while a following ى is P. In `بًىا` the ba is
+       `tanwin` (everything after it is a bare ا or ى), the ى is P because it is not `akhir`, and the
+       final alif is `harfMadd` (its prev has no fathatan). The other reading, which would make the
+       carrier's verdict depend on the ى's verdict, would give the ba P.
+
+C17. **`kalimat`.** Licensing is unchanged.
+     - `hamzaWaslAl`, `madda`, `taMarbuta`, `alifMaqsura`, `tanwin`, `tanwinAlif`, `harakaMinTanwin`,
+       `shaddaIbtida` and `sukunMuqaddar` add their cells to the word.
+     - `alifKhatt` and `lamMudgham` are L with no cell, like `hamzaWasl`.
+     - Six old word cases changed expectation and are marked "[amended-3]".

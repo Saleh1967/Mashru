@@ -44,14 +44,15 @@
   ]
  },
  {
-  "label": "al-shams: P segments -> not licensed; cells still concatenated",
+  "label": "al-shams [amended-3: all L now, licensed; hamzaWaslAl cell 0]",
   "nass": "\u0627\u0644\u0634\u0651\u064e\u0645\u0652\u0633\u064f",
   "tawaqqu": [
    {
     "a": 0,
     "b": 9,
-    "murakhkhasa": false,
+    "murakhkhasa": true,
     "khalaya": [
+     0,
      43,
      40,
      111,
@@ -155,13 +156,13 @@
   ]
  },
  {
-  "label": "K3 wa-al-shams not licensed (lam P)",
+  "label": "K3 wa-al-shams [amended-3: lam lamMudgham, licensed]",
   "nass": "\u0648\u064e\u0627\u0644\u0634\u0651\u064e\u0645\u0652\u0633\u0650",
   "tawaqqu": [
    {
     "a": 0,
     "b": 11,
-    "murakhkhasa": false,
+    "murakhkhasa": true,
     "khalaya": [
      112,
      43,
@@ -173,21 +174,22 @@
   ]
  },
  {
-  "label": "K4 minna with word-initial shadda not licensed",
+  "label": "K4 minna with word-initial shadda [amended-3: shaddaIbtida, licensed]",
   "nass": "\u0645\u0651\u0650\u0646\u064e",
   "tawaqqu": [
    {
     "a": 0,
     "b": 5,
-    "murakhkhasa": false,
+    "murakhkhasa": true,
     "khalaya": [
+     110,
      56
     ]
    }
   ]
  },
  {
-  "label": "K5 second word with initial shadda",
+  "label": "K5 second word with initial shadda [amended-3]",
   "nass": "\u0628\u064e \u0645\u0651\u0650\u0646\u064e",
   "tawaqqu": [
    {
@@ -201,8 +203,9 @@
    {
     "a": 3,
     "b": 8,
-    "murakhkhasa": false,
+    "murakhkhasa": true,
     "khalaya": [
+     110,
      56
     ]
    }
@@ -241,13 +244,13 @@
   ]
  },
  {
-  "label": "K8 bi-allahi not licensed",
+  "label": "K8 bi-allahi [amended-3: licensed]",
   "nass": "\u0628\u0650\u0627\u0644\u0644\u0651\u064e\u0647\u0650",
   "tawaqqu": [
    {
     "a": 0,
     "b": 9,
-    "murakhkhasa": false,
+    "murakhkhasa": true,
     "khalaya": [
      106,
      55,
@@ -345,13 +348,13 @@
   ]
  },
  {
-  "label": "K14 a-fa-bi-allahi not licensed (lam P)",
+  "label": "K14 a-fa-bi-allahi [amended-3: licensed]",
   "nass": "\u0623\u064e\u0641\u064e\u0628\u0650\u0627\u0644\u0644\u0651\u064e\u0647\u0650",
   "tawaqqu": [
    {
     "a": 0,
     "b": 13,
-    "murakhkhasa": false,
+    "murakhkhasa": true,
     "khalaya": [
      0,
      100,
@@ -375,6 +378,149 @@
      112,
      11,
      83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K16 al-qamar licensed",
+  "nass": "\u0627\u0644\u0652\u0642\u064e\u0645\u064e\u0631\u064f",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 9,
+    "murakhkhasa": true,
+    "khalaya": [
+     0,
+     55,
+     28,
+     108,
+     61
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K17 ba + final ta marbuta dammatan licensed",
+  "nass": "\u0628\u064e\u0629\u064c",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 4,
+    "murakhkhasa": true,
+    "khalaya": [
+     104,
+     73,
+     59
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K18 bare ta before alif-fathatan licensed",
+  "nass": "\u0628\u064e\u062a\u0627\u064b",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 5,
+    "murakhkhasa": true,
+    "khalaya": [
+     104,
+     72,
+     59
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K19 madda word licensed",
+  "nass": "\u0622\u0645\u064e\u0646\u064e",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 5,
+    "murakhkhasa": true,
+    "khalaya": [
+     0,
+     11,
+     108,
+     56
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K20 lam before qaf-shadda: not licensed",
+  "nass": "\u0627\u0644\u0642\u0651\u064e",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 5,
+    "murakhkhasa": false,
+    "khalaya": [
+     0,
+     31,
+     28
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K21 tanwin + alifKhatt licensed",
+  "nass": "\u0628\u064b\u0627",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 3,
+    "murakhkhasa": true,
+    "khalaya": [
+     104,
+     59
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K22 dal-fathatan + alif maqsura (alifKhatt) licensed",
+  "nass": "\u0628\u064f\u062f\u064b\u0649",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 5,
+    "murakhkhasa": true,
+    "khalaya": [
+     105,
+     68,
+     59
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K23 final bare mim licensed",
+  "nass": "\u0628\u064e\u0645",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 3,
+    "murakhkhasa": true,
+    "khalaya": [
+     104,
+     111
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K24 'al' alone not licensed (alif P)",
+  "nass": "\u0627\u0644",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 2,
+    "murakhkhasa": false,
+    "khalaya": [
+     55
     ]
    }
   ]
