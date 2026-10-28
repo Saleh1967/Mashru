@@ -109,6 +109,7 @@ import SLGE.Syllable
 import Madlul.TasisDalala
 import Nizam.Shahada
 import Dal.Tahsil
+import Dal.QiraaTahsil
 import Jisr.Abniya
 import Jisr.AbniyaDabit
 import Jisr.AbniyaQiyas
@@ -2371,6 +2372,26 @@ import Jisr.AbniyaQiyas
 #print axioms Dal.Tahsil.shahid_kataba
 #print axioms Dal.Tahsil.shahid_shams
 #print axioms Dal.Tahsil.shahid_muallaq
+#print axioms Dal.QiraaTahsil.mem_khalayaTahsil
+#print axioms Dal.QiraaTahsil.juzOf_khalaya
+#print axioms Dal.QiraaTahsil.juzOf_fasid
+#print axioms Dal.QiraaTahsil.ajza_cons
+#print axioms Dal.QiraaTahsil.ajza_tahsil
+#print axioms Dal.QiraaTahsil.ajza_asl
+#print axioms Dal.QiraaTahsil.ajza_la_fasid
+#print axioms Dal.QiraaTahsil.tamm_khalaya
+#print axioms Dal.QiraaTahsil.qiraa_ajza
+#print axioms Dal.QiraaTahsil.qiraa_tahsil
+#print axioms Dal.QiraaTahsil.qiraa_la_fasid
+#print axioms Dal.QiraaTahsil.qiraa_asl
+#print axioms Dal.QiraaTahsil.qiraa_shahada
+#print axioms Dal.QiraaTahsil.ajza_L
+#print axioms Dal.QiraaTahsil.qiraa_murakhkhasa
+#print axioms Dal.QiraaTahsil.shahid_fata
+#print axioms Dal.QiraaTahsil.shahid_shams
+#print axioms Dal.QiraaTahsil.shahid_rafd_tatwil
+#print axioms Dal.QiraaTahsil.shahid_tatwil_maqta
+#print axioms Dal.QiraaTahsil.shahid_jamaa
 -- أبنيةُ اسمَي الفاعل والمفعول في الألفية (س594–607) والقطر (س358، س365) (Jisr/Abniya.lean): حكمُ صوغ الصيغة للمطلوب ودرجتُه
 #print axioms Jisr.Abniya.ghayr_thulathi_fail
 #print axioms Jisr.Abniya.ghayr_thulathi_mafool
