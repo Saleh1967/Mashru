@@ -1206,114 +1206,6 @@
   "ila": "  | .nisabWaDaynKathir => true"
  },
  {
-  "ism": "P120_nida_isnad",
-  "milaf": "Jisr/NisabAsnaf.lean",
-  "min": "  | 13 => 4\n",
-  "ila": "  | 13 => 2\n"
- },
- {
-  "ism": "P121_shart_taalluq",
-  "milaf": "Jisr/NisabAsnaf.lean",
-  "min": "  | 11 | 12 => 2\n",
-  "ila": "  | 11 | 12 => 5\n"
- },
- {
-  "ism": "P123_ikhtisas_bizahir_khat",
-  "milaf": "Jisr/KhulasaIkhbar.lean",
-  "min": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 339",
-  "ila": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 999"
- },
- {
-  "ism": "P124_ghaib_L115_naqis",
-  "milaf": "Jisr/KhulasaIkhbar.lean",
-  "min": "  [\"إن\", \"إذ\", \"إذما\", \"أي\", \"أين\", \"أنى\", \"أيان\", \"متى\", \"مهما\", \"من\", \"ما\", \"حيثما\"]",
-  "ila": "  [\"إن\", \"إذما\", \"أي\", \"أين\", \"أنى\", \"أيان\", \"متى\", \"مهما\", \"من\", \"ما\", \"حيثما\"]"
- },
- {
-  "ism": "P125_jam_tashih_jawaz_khata",
-  "milaf": "Jisr/KhulasaIkhbar.lean",
-  "min": "  | .jamTashihMudhakkar => .wajibManfi",
-  "ila": "  | .jamTashihMudhakkar => .jaizWajhan"
- },
- {
-  "ism": "P126_rutbat_laqab_khata",
-  "milaf": "Jisr/KhulasaIkhbar.lean",
-  "min": "  | .laqab => 1\n  | .kunya => 1",
-  "ila": "  | .laqab => 0\n  | .kunya => 1"
- },
- {
-  "ism": "P127_shahid_wujub_mukarrar",
-  "milaf": "Jisr/KhulasaIkhbar.lean",
-  "min": "  | .jawabQasamSarih => \"لعمرك لأفعلن\"",
-  "ila": "  | .jawabQasamSarih => \"لولا أنتم لكنا مؤمنين\""
- },
- {
-  "ism": "P128_ilgha_zann_mukarrar",
-  "milaf": "Jisr/KhulasaIkhbar.lean",
-  "min": "  | .baynaAlMafulayn => .musawin",
-  "ila": "  | .baynaAlMafulayn => .mumtani"
- },
- {
-  "ism": "P123_mujalasa_sirin_kilahuma_false",
-  "milaf": "Aql/AdawatMaani.lean",
-  "min": "  | .ibnSirinFaqat => true\n  | .kilahuma => true",
-  "ila": "  | .ibnSirinFaqat => true\n  | .kilahuma => false"
- },
- {
-  "ism": "P124_ikhtiyar_sabt_yawmAljumah_true",
-  "milaf": "Aql/AdawatMaani.lean",
-  "min": "  | .yawmAljumah => false",
-  "ila": "  | .yawmAljumah => true"
- },
- {
-  "ism": "P125_daw_laShamsWaDawSiraj_false",
-  "milaf": "Aql/AdawatMaani.lean",
-  "min": "  | .laShamsWaDawSiraj => true",
-  "ila": "  | .laShamsWaDawSiraj => false"
- },
- {
-  "ism": "P123_zayd_fail_qabl_amil",
-  "milaf": "Jisr/TartibMamul.lean",
-  "min": "def zaydFailAsl : Mawdi := 1",
-  "ila": "def zaydFailAsl : Mawdi := 0"
- },
- {
-  "ism": "P124_rabbuhu_aid_khati",
-  "milaf": "Jisr/TartibMamul.lean",
-  "min": "def rabbuhuFail : Kalima := ⟨2, 2, some 1⟩",
-  "ila": "def rabbuhuFail : Kalima := ⟨2, 2, some 99⟩"
- },
- {
-  "ism": "P125_muttasil_ziyada",
-  "milaf": "Jisr/TartibMamul.lean",
-  "min": "maful.damir = some amilRamz ∧ maful.mawdi = amilPos + 1",
-  "ila": "maful.damir = some amilRamz ∧ maful.mawdi = amilPos + 2"
- },
- {
-  "ism": "P126_hada_maful_muakhkhar",
-  "milaf": "Jisr/TartibMamul.lean",
-  "min": "def hadaMafulMuqaddam : Mawdi := 0   -- فريقا، مقدَّمٌ",
-  "ila": "def hadaMafulMuqaddam : Mawdi := 1   -- فريقا، مقدَّمٌ"
- },
- {
-  "ism": "P123_anti_bil_fatha",
-  "milaf": "Jisr/QiraaSimat.lean",
-  "min": "(\"أَنْتِ\", [kh 0 0, kh 14 3, kh 18 2]",
-  "ila": "(\"أَنْتِ\", [kh 0 0, kh 14 3, kh 18 0]"
- },
- {
-  "ism": "P124_muayyan_yaqbal_kull",
-  "milaf": "Jisr/QiraaSimat.lean",
-  "min": "  | .qad a, x => x == a",
-  "ila": "  | .qad _, _ => true"
- },
- {
-  "ism": "P125_muhtamal_bi_awwalih",
-  "milaf": "Jisr/QiraaSimat.lean",
-  "min": "  | gs => .muhtamal gs",
-  "ila": "  | g :: _ => .qad g"
- },
- {
   "ism": "P123_tashfir_fakk_jamad",
   "milaf": "Madlul/Tashfir.lean",
   "min": "| 1 => some .jamad",
@@ -5872,6 +5764,210 @@
   "milaf": "scripts/bina_intrubiya_shahada.py",
   "min": "K = 4 ",
   "ila": "K = 3 "
+ },
+ {
+  "ism": "P1173_qawaid_maan_aw",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "fun s => M.final s.1 && R.final s.2⟩",
+  "ila": "fun s => M.final s.1 || R.final s.2⟩"
+ },
+ {
+  "ism": "P1174_qawaid_bidaya_muhmala",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "| .awwal => if r.bidaya a then .mayyit else .baad (r.awwalSinf a)",
+  "ila": "| .awwal => .baad (r.awwalSinf a)"
+ },
+ {
+  "ism": "P1175_qawaid_mamnu_muhmal",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "| .baad c => if r.mamnu c a then .mayyit else .baad (r.sinf c a)",
+  "ila": "| .baad c => .baad (r.sinf c a)"
+ },
+ {
+  "ism": "P1176_qawaid_mayyit_yaqbal",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "    | .mayyit => false",
+  "ila": "    | .mayyit => true"
+ },
+ {
+  "ism": "P1177_qawaid_tasmah_bila_mamnu",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "| c, b :: ys => !r.mamnu c b && r.tasmahBaad (r.sinf c b) ys",
+  "ila": "| c, b :: ys => r.tasmahBaad (r.sinf c b) ys"
+ },
+ {
+  "ism": "P1178_qawaid_khatima_muhmala_ala",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "    | .baad c => !r.khatima c",
+  "ila": "    | .baad c => true"
+ },
+ {
+  "ism": "P1179_qawaid_khatima_muhmala_wasf",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "| c, [] => !r.khatima c",
+  "ila": "| c, [] => true"
+ },
+ {
+  "ism": "P1180_qawaid_fargh_yamna",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "fun _ _ => 0, fun _ _ => false, fun _ => false, fun _ => false⟩",
+  "ila": "fun _ _ => 0, fun _ _ => true, fun _ => false, fun _ => false⟩"
+ },
+ {
+  "ism": "P1181_qawaid_mahalli_farigh",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "∀ c a, r.sinf c a = r.awwalSinf a",
+  "ila": "∀ c a, r.sinf c a = r.sinf c a"
+ },
+ {
+  "ism": "P1182_qawaid_Tm_bila_khatwa",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "(alphabet.map fun a => f (M.step q a)).sum",
+  "ila": "(alphabet.map fun a => f q).sum"
+ },
+ {
+  "ism": "P1183_qawaid_maan_khatwa",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "fun s a => (M.step s.1 a, R.step s.2 a)",
+  "ila": "fun s a => (M.step s.1 a, s.2)"
+ },
+ {
+  "ism": "P1184_qawaid_sira_thabita",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "xs.foldl r.sinf c",
+  "ila": "c"
+ },
+ {
+  "ism": "P1185_qawaid_awwal_yarudd",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "    | .awwal => true",
+  "ila": "    | .awwal => false"
+ },
+ {
+  "ism": "P1186_qawaid_farigha_tarudd",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "  | [] => true",
+  "ila": "  | [] => false"
+ },
+ {
+  "ism": "P1187_qawaid_fargh_bidaya",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "fun _ => false, fun _ => false⟩",
+  "ila": "fun _ => true, fun _ => false⟩"
+ },
+ {
+  "ism": "P1188_qawaid_fargh_khatima",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "fun _ => false, fun _ => false⟩",
+  "ila": "fun _ => false, fun _ => true⟩"
+ },
+ {
+  "ism": "P120_nida_isnad",
+  "milaf": "Jisr/NisabAsnaf.lean",
+  "min": "  | 13 => 4\n",
+  "ila": "  | 13 => 2\n"
+ },
+ {
+  "ism": "P121_shart_taalluq",
+  "milaf": "Jisr/NisabAsnaf.lean",
+  "min": "  | 11 | 12 => 2\n",
+  "ila": "  | 11 | 12 => 5\n"
+ },
+ {
+  "ism": "P123_ikhtisas_bizahir_khat",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 339",
+  "ila": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 999"
+ },
+ {
+  "ism": "P124_ghaib_L115_naqis",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  [\"إن\", \"إذ\", \"إذما\", \"أي\", \"أين\", \"أنى\", \"أيان\", \"متى\", \"مهما\", \"من\", \"ما\", \"حيثما\"]",
+  "ila": "  [\"إن\", \"إذما\", \"أي\", \"أين\", \"أنى\", \"أيان\", \"متى\", \"مهما\", \"من\", \"ما\", \"حيثما\"]"
+ },
+ {
+  "ism": "P125_jam_tashih_jawaz_khata",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  | .jamTashihMudhakkar => .wajibManfi",
+  "ila": "  | .jamTashihMudhakkar => .jaizWajhan"
+ },
+ {
+  "ism": "P126_rutbat_laqab_khata",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  | .laqab => 1\n  | .kunya => 1",
+  "ila": "  | .laqab => 0\n  | .kunya => 1"
+ },
+ {
+  "ism": "P127_shahid_wujub_mukarrar",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  | .jawabQasamSarih => \"لعمرك لأفعلن\"",
+  "ila": "  | .jawabQasamSarih => \"لولا أنتم لكنا مؤمنين\""
+ },
+ {
+  "ism": "P128_ilgha_zann_mukarrar",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  | .baynaAlMafulayn => .musawin",
+  "ila": "  | .baynaAlMafulayn => .mumtani"
+ },
+ {
+  "ism": "P123_mujalasa_sirin_kilahuma_false",
+  "milaf": "Aql/AdawatMaani.lean",
+  "min": "  | .ibnSirinFaqat => true\n  | .kilahuma => true",
+  "ila": "  | .ibnSirinFaqat => true\n  | .kilahuma => false"
+ },
+ {
+  "ism": "P124_ikhtiyar_sabt_yawmAljumah_true",
+  "milaf": "Aql/AdawatMaani.lean",
+  "min": "  | .yawmAljumah => false",
+  "ila": "  | .yawmAljumah => true"
+ },
+ {
+  "ism": "P125_daw_laShamsWaDawSiraj_false",
+  "milaf": "Aql/AdawatMaani.lean",
+  "min": "  | .laShamsWaDawSiraj => true",
+  "ila": "  | .laShamsWaDawSiraj => false"
+ },
+ {
+  "ism": "P123_zayd_fail_qabl_amil",
+  "milaf": "Jisr/TartibMamul.lean",
+  "min": "def zaydFailAsl : Mawdi := 1",
+  "ila": "def zaydFailAsl : Mawdi := 0"
+ },
+ {
+  "ism": "P124_rabbuhu_aid_khati",
+  "milaf": "Jisr/TartibMamul.lean",
+  "min": "def rabbuhuFail : Kalima := ⟨2, 2, some 1⟩",
+  "ila": "def rabbuhuFail : Kalima := ⟨2, 2, some 99⟩"
+ },
+ {
+  "ism": "P125_muttasil_ziyada",
+  "milaf": "Jisr/TartibMamul.lean",
+  "min": "maful.damir = some amilRamz ∧ maful.mawdi = amilPos + 1",
+  "ila": "maful.damir = some amilRamz ∧ maful.mawdi = amilPos + 2"
+ },
+ {
+  "ism": "P126_hada_maful_muakhkhar",
+  "milaf": "Jisr/TartibMamul.lean",
+  "min": "def hadaMafulMuqaddam : Mawdi := 0   -- فريقا، مقدَّمٌ",
+  "ila": "def hadaMafulMuqaddam : Mawdi := 1   -- فريقا، مقدَّمٌ"
+ },
+ {
+  "ism": "P123_anti_bil_fatha",
+  "milaf": "Jisr/QiraaSimat.lean",
+  "min": "(\"أَنْتِ\", [kh 0 0, kh 14 3, kh 18 2]",
+  "ila": "(\"أَنْتِ\", [kh 0 0, kh 14 3, kh 18 0]"
+ },
+ {
+  "ism": "P124_muayyan_yaqbal_kull",
+  "milaf": "Jisr/QiraaSimat.lean",
+  "min": "  | .qad a, x => x == a",
+  "ila": "  | .qad _, _ => true"
+ },
+ {
+  "ism": "P125_muhtamal_bi_awwalih",
+  "milaf": "Jisr/QiraaSimat.lean",
+  "min": "  | gs => .muhtamal gs",
+  "ila": "  | g :: _ => .qad g"
  },
  {
   "ism": "P1230_damj_kutla_taraf",
