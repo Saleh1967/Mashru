@@ -8,7 +8,8 @@
       غياب الملفّ أو تلفه أو بطلان العدد فشلٌ مسمّى، لا خطّ أساسٍ صفريّ بديل.
   ٤أ. قائمة الطفرات لا تنقص عن الأساس: كلّ «ism» في tafrat.json عند نقطة التقاء HEAD بالمرجع (TAFRAT_ASAS_REF، وإلّا
       origin/main) حاضرٌ في القائمة الحاليّة، أو مسجَّلٌ في tahaqquq/tafrat_mahdhufa.json بسببٍ وإذن (قرار المالك 2026-10-19:
-      دمجان أسقطا طفرات main بلا تعارضٍ ظاهر، ولا شيء كان يكشفه). تعذُّر الأساس فشلٌ مسمّى لا تخطٍّ صامت.
+      دمجان أسقطا طفرات main بلا تعارضٍ ظاهر، ولا شيء كان يكشفه). تعذُّر الأساس فشلٌ مسمّى لا تخطٍّ صامت. وقراءةُ tafrat.json هنا
+      وفي ٤ب و٦ وtafrat_juz.py ترفض المفتاحَ المكرَّر في قيد (`json_bila_takrar`، 2026-10-28: قيدان التحما في حلٍّ يدويّ أسقطا الأوّلَ بصمت).
   ٤ب. نصُّ كلّ طفرة. القاعدتان بإذن المالك (2026-10-19 16:16، مكمّلتين لـ٤أ): «min» غيرُ فارغٍ يقع في ملفّه مرّةً واحدة
       (بعدّ المتداخل)، ولا يقع في تعليق. وتنفيذُ «في تعليق» قراءةُ البنّاء: موضعُ «min» في تعليق الأصل أو في بياضٍ بينه، أو
       أثرُ الطفرة لا يتعدّى التعليقَ والأسطرَ الفارغة وبياضَ أواخر الأسطر؛ ويُستثنى رفعُ تعليقٍ بحذف علامته متى أمكن مسحُ
@@ -212,9 +213,22 @@ def git(*args):
     return p.returncode, p.stdout
 
 
+def json_bila_takrar(text):
+    """JSON يُرفض فيه المفتاحُ المكرَّر في كائنٍ واحد (ValueError باسمه): `json.loads` يُبقي آخرَه بصمت، فقيدان التحما في حلّ تعارضٍ
+    يدويّ (`{"ism": أ، …، "ism": ب، …}`) يُسقطان القيدَ الأوّل ولا يكسران الصيغة — كذلك سقطت P1034 وP1038 وP1111 من فرع #95."""
+    def hook(pairs):
+        mafatih = [k for k, _ in pairs]
+        mukarrar = sorted({k for k in mafatih if mafatih.count(k) > 1})
+        if mukarrar:
+            asmaa = [v for k, v in pairs if k == "ism"]
+            raise ValueError(f"مفتاحٌ مكرَّر في كائنٍ واحد ({'، '.join(mukarrar)})" + (f": {'، '.join(map(str, asmaa))}" if asmaa else ""))
+        return dict(pairs)
+    return json.loads(text, object_pairs_hook=hook)
+
+
 def asmaa_tafrat(text):
-    """أسماءُ الطفرات من نصّ tafrat.json؛ ما ليس قائمةَ قيودٍ لكلٍّ منها «ism» نصّيٌّ يُرفض باسمه."""
-    data = json.loads(text)
+    """أسماءُ الطفرات من نصّ tafrat.json؛ ما ليس قائمةَ قيودٍ لكلٍّ منها «ism» نصّيٌّ يُرفض باسمه، وكذلك المفتاحُ المكرَّر في قيد."""
+    data = json_bila_takrar(text)
     if not isinstance(data, list) or not all(isinstance(t, dict) and isinstance(t.get("ism"), str) for t in data):
         raise ValueError("tafrat.json يجب أن يكون قائمةً، لكلّ قيدٍ فيها «ism» نصّيّ")
     return [t["ism"] for t in data]
@@ -862,7 +876,7 @@ def bunud_2_5(report, fails):
     # ٤ب. نصُّ كلّ طفرة: مرّةً واحدة في ملفّها، وتغييرٌ خارج التعليق، واسمٌ غير مكرَّر (يجري مع --bila-tafrat أيضًا).
     try:
         with open(os.path.join(ROOT, "tahaqquq", "tafrat.json"), encoding="utf-8") as f:
-            tafrat_kull = json.load(f)
+            tafrat_kull = json_bila_takrar(f.read())
         if not isinstance(tafrat_kull, list):
             raise ValueError("tafrat.json ليس قائمة")
     except (OSError, ValueError) as e:
@@ -1151,7 +1165,8 @@ def main():
         bunud_2_5(report, fails)
 
     if "--bila-tafrat" not in sys.argv:
-        tafrat = json.load(open(os.path.join(ROOT, "tahaqquq", "tafrat.json"), encoding="utf-8"))
+        with open(os.path.join(ROOT, "tahaqquq", "tafrat.json"), encoding="utf-8") as f:
+            tafrat = json_bila_takrar(f.read())
         if qism:
             tafrat = qism_tafrat(tafrat, *qism)
         code_h, out_h = run([sys.executable, "-I", "tahaqquq/test_hawadith.py"])

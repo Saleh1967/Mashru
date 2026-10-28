@@ -6052,5 +6052,11 @@
   "milaf": "tahaqquq/bawwaba.py",
   "min": "        elif hal == 1 and line.startswith(\"||||||| \"):\n            hal = 3",
   "ila": "        elif hal == 1 and line.startswith(\"||||||| \"):\n            hal = 1"
+ },
+ {
+  "ism": "P1244_tafrat_miftah_mukarrar",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        mukarrar = sorted({k for k in mafatih if mafatih.count(k) > 1})",
+  "ila": "        mukarrar = []"
  }
 ]

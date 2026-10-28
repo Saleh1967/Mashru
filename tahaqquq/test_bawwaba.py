@@ -279,6 +279,15 @@ class TafratGuardTests(unittest.TestCase):
                     bawwaba.mahdhufa_maadhuna(json.dumps([rec]))
         self.assertEqual(bawwaba.mahdhufa_maadhuna(json.dumps([{"ism": "P2_b", "sabab": "x", "idhn": "y"}])), ["P2_b"])
 
+    def test_duplicate_key_in_an_entry_is_rejected(self):
+        # قيدان التحما في حلٍّ يدويّ: json.loads يُبقي الثاني بصمت؛ والقراءةُ هنا ترفضه باسمَي القيدين
+        multahim = '[{"ism": "P1_a", "milaf": "X.lean", "ism": "P2_b", "milaf": "Y.lean"}]'
+        with self.assertRaises(ValueError) as e:
+            bawwaba.asmaa_tafrat(multahim)
+        self.assertIn("P1_a، P2_b", str(e.exception))
+        self.assertIn("ism، milaf", str(e.exception))
+        self.assertEqual(bawwaba.asmaa_tafrat('[{"ism": "P1_a"}, {"ism": "P2_b"}]'), ["P1_a", "P2_b"])
+
     def test_malformed_list_is_rejected(self):
         for text in ("{}", '[{"min": "x"}]', '[{"ism": 7}]', "[1]"):
             with self.subTest(text=text):
