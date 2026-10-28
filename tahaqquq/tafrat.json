@@ -5258,8 +5258,8 @@
  {
   "ism": "P1082_khabar_jamid_farigh",
   "milaf": "Jisr/Khabar.lean",
-  "min": "| .mufradJamid => some (if d.marfu = .laShay then maqbulJ [.bila] else khataJ)",
-  "ila": "| .mufradJamid => some (maqbulJ [.bila])"
+  "min": "      | .laShay => some (maqbulJ [.bila])",
+  "ila": "      | .laShay => some khataJ"
  },
  {
   "ism": "P1083_khabar_ibraz",
@@ -5288,8 +5288,8 @@
  {
   "ism": "P1087_khabar_qatr_zaman_maana",
   "milaf": "Jisr/Khabar.lean",
-  "min": "      | _, _ => some (maqbulJ [.bila])",
-  "ila": "      | _, _ => none"
+  "min": "      | _, _ => none",
+  "ila": "      | _, _ => some (maqbulJ [.bila])"
  },
  {
   "ism": "P1088_khabar_qatr_wasf_mufrad",
@@ -5374,5 +5374,11 @@
   "milaf": "Jisr/Khabar.lean",
   "min": "      | _, _ => some khataJ",
   "ila": "      | _, _ => none"
+ },
+ {
+  "ism": "P1118_khabar_jamid_zahir",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "      | .zahir => none",
+  "ila": "      | .zahir => some khataJ"
  }
 ]
