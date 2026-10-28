@@ -5612,6 +5612,8 @@
  {
   "ism": "P1107_damir_natija_fia_khassa",
   "milaf": "Jisr/DamirQiyas.lean",
+  "ism": "P1115_abniya_natija_fia_khassa",
+  "milaf": "Jisr/AbniyaQiyas.lean",
   "min": "theorem natija_fia :",
   "ila": "private theorem natija_fia :"
  },
@@ -5626,5 +5628,15 @@
   "milaf": "tahaqquq/dawabit/damir/natija_8.json",
   "min": "\"huqul_masula\": 69,",
   "ila": "\"huqul_masula\": 70,"
+  "ism": "P1116_abniya_azwaj_bila_sigha",
+  "milaf": "Jisr/AbniyaQiyas.lean",
+  "min": "(azwaj halat).length = 19 ∧ ((azwaj halat).filter",
+  "ila": "((azwaj halat)).length = 19 ∧ ((azwaj halat).filter"
+ },
+ {
+  "ism": "P1117_abniya_sijill_huqul",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"huqul_masula\": 73,",
+  "ila": "\"huqul_masula\": 74,"
  }
 ]

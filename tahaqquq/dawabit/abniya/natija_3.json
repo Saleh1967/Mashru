@@ -1,0 +1,53 @@
+{
+ "tashghil": 3,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد مراجعة murajii الأولى: رأسُ الشفرة وتوثيقُ مبرهنتين وشطرٌ في amal_wad ورأسُ المقارنة (2fab43e)، بلا تغييرٍ في jawab ولا في دوالّ المقارنة",
+ "qablaha": {
+  "natija_2.json": "8f224e30e25905795c7a6ce928a40ce270f6a312c9b99b49e63ff9f6d098d75a"
+ },
+ "cases_sha256": "6e16c941d8ad07256419351afe3b328b5b7dc456527fc866af1acb7eb9ab371b",
+ "shifra": {
+  "Jisr/Abniya.lean": {
+   "sha256": "e9b6a246218ade605dcbd27a3be2a2c448c0b5ecdf28fa66a14d0ca625259d93",
+   "iydaa": "2fab43ef928ed66535fc644f3ccc97896c91481b"
+  },
+  "Jisr/AbniyaDabit.lean": {
+   "sha256": "788b9e58d143451a9a2e36b9607c6b4da7585f08226f88964f5f5eb5e1a4b90a",
+   "iydaa": "2fab43ef928ed66535fc644f3ccc97896c91481b"
+  }
+ },
+ "lean": [
+  "Jisr.Abniya.Qiyas.majal",
+  "Jisr.Abniya.Qiyas.natija",
+  "Jisr.Abniya.Qiyas.natija_fia",
+  "Jisr.Abniya.Qiyas.akhta_sifr",
+  "Jisr.Abniya.Qiyas.azwaj_1"
+ ],
+ "halat": 50,
+ "huqul_masula": 73,
+ "ihsa": {
+  "sawab": 73,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtiyar": 0,
+  "khata": 0,
+  "khataDaraja": 0
+ },
+ "bil_fia": {
+  "موجب": 28,
+  "حد": 19,
+  "خارج": 6,
+  "عموم": 18,
+  "غموض": 2
+ },
+ "akhta": [],
+ "azwaj": {
+  "jumla": 19,
+  "taghayyar": 19,
+  "la_yataghayyar": [],
+  "sawab_maan": 19
+ },
+ "tarikh": "2026-10-28",
+ "malahiz": "على مادّةٍ مكشوفة، كالثاني؛ ولا يُعدّ قياسًا أعمى، والأوّلُ (natija_1.json) هو القياسُ الأعمى. والأعدادُ أعدادُ مبرهنات Jisr/AbniyaQiyas.lean، بناها lake build Jisr.AbniyaQiyas قبل إيداع 2fab43e على بايتات الشفرة نفسِها (البصمتان هنا)، فهي هي أعدادُ natija_2.json. والإيداعُ 2fab43e وحده لا يمرّ اختبارَ الضابط (آخرُ سجلٍّ فيه لغير الشفرة)، وهذا السجلُّ في الإيداع الذي يليه."
+}

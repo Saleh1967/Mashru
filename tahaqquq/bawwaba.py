@@ -845,6 +845,10 @@ def main():
     report.append(f"٥ص١٠ {out.strip().splitlines()[-1] if out.strip() else 'ضابط الضمير: ?'}")
     if code != 0:
         fails.append("اختبار ضابط الضمير فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_abniya.py"])
+    report.append(f"٥ص١٢ {out.strip().splitlines()[-1] if out.strip() else 'ضابط الأبنية: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط الأبنية فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_tasis.py"])
     report.append(f"٥ر٢ {out.strip().splitlines()[-1] if out.strip() else 'شبكة الدلالة: ?'}")
     if code != 0:
