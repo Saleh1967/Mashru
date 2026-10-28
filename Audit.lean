@@ -122,6 +122,9 @@ import Jisr.MawsulQiyas
 import Jisr.Ishara
 import Jisr.IsharaDabit
 import Jisr.IsharaQiyas
+import Jisr.Khabar
+import Jisr.KhabarDabit
+import Jisr.KhabarQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2586,3 +2589,33 @@ import Jisr.IsharaQiyas
 #print axioms Jisr.Ishara.Qiyas.natija_fia
 #print axioms Jisr.Ishara.Qiyas.akhta_sifr
 #print axioms Jisr.Ishara.Qiyas.azwaj_1
+-- الخبرُ في القطر (س157–162) والألفية (س177–188) (Jisr/Khabar.lean): حكمُ الخبر ودرجتُه، والوصفُ ومرفوعُه، بقول كلّ مصدرٍ والجمع بينهما
+#print axioms Jisr.Khabar.bawwaba_la_hukm
+#print axioms Jisr.Khabar.jumla_bila_rabit
+#print axioms Jisr.Khabar.rawabit
+#print axioms Jisr.Khabar.zarf_maqbul
+#print axioms Jisr.Khabar.zaman_dhat
+#print axioms Jisr.Khabar.zaman_maana
+#print axioms Jisr.Khabar.mushtaq_ibraz
+#print axioms Jisr.Khabar.jamid_farigh
+#print axioms Jisr.Khabar.wasf_tabaq
+#print axioms Jisr.Khabar.bila_itimad
+#print axioms Jisr.Khabar.ikhtilaf_la_hukm
+#print axioms Jisr.Khabar.hukm_min_masdar
+#print axioms Jisr.Khabar.ghayr_maqbul_bila
+#print axioms Jisr.Khabar.ibtida_wad
+#print axioms Jisr.Khabar.isnad_kubra
+#print axioms Jisr.Khabar.hadd_isnad_rabit
+#print axioms Jisr.Khabar.isnad_wasf
+#print axioms Jisr.Khabar.tarkib_rabit
+#print axioms Jisr.Khabar.simat2_jamid
+#print axioms Jisr.Khabar.shawahid
+-- مقارنةُ ضابط الخبر قبل الحالات (Jisr/KhabarDabit.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Khabar.Dabit.qarin_hukm
+#print axioms Jisr.Khabar.Dabit.qarin_daraja
+-- ضابطُ الخبر المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/KhabarQiyas.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Khabar.Qiyas.majal
+#print axioms Jisr.Khabar.Qiyas.natija
+#print axioms Jisr.Khabar.Qiyas.natija_fia
+#print axioms Jisr.Khabar.Qiyas.akhta_sifr
+#print axioms Jisr.Khabar.Qiyas.azwaj_1

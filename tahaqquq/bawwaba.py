@@ -98,6 +98,9 @@
       للحالات، إن حضر المودَعان.
   ٥ص٩. ضابطُ أسماء الإشارة المجمَّد (tahaqquq/test_ishara.py؛ القطر س132–135 والألفية س137–144): مثلُ ٥ص على Jisr/Ishara.lean
       وJisr/IsharaDabit.lean؛ والأسانيدُ والحالاتُ في أسطرها إن حضر المودَعان.
+  ٥ص١٣. ضابطُ الخبر المجمَّد (tahaqquq/test_khabar.py؛ القطر س157–162 والألفية س177–188): مثلُ ٥ص على Jisr/Khabar.lean
+      وJisr/KhabarDabit.lean، بحقلين مسؤولين (الحكمُ، والدرجةُ لما متوقَّعُه «مقبول»)؛ والأسانيدُ والحالاتُ في أسطرها، وإعادةُ bina_cases.py
+      للحالات من المصدرين، إن حضر المودَعان.
   ٥ت٢. تحصيلُ النصّ ومحاذاتُه (tahaqquq/test_tahsil.py؛ Dal/Tahsil.lean والأداة tahsil): على عرّافٍ مستقلٍّ كتبه مؤلّفٌ لم يقرأ إلّا المواصفة
       (tahaqquq/tahsil/) — بصماتُ المواصفة والعرّاف وحالاته، وحالاتُ الحدود المشتقّةُ باليد، و7000 نصٍّ عشوائيّ، وحكمُ الفاحص على شهادة كلّ
       مقطع، وخلايا القارئ (`qari --khalaya`) على الكلمات المرخَّصة، وأسماءُ الأحكام في المواصفة، دائمًا.
@@ -191,6 +194,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_ibdal.py",
     "tahaqquq/test_mawsul.py",
     "tahaqquq/test_ishara.py",
+    "tahaqquq/test_khabar.py",
     "tahaqquq/test_tadqiq_tamm.py",
     "tahaqquq/test_tasis.py",
     "tahaqquq/test_tahsil.py",
@@ -1139,6 +1143,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ص٩ {out.strip().splitlines()[-1] if out.strip() else 'ضابط أسماء الإشارة: ?'}")
     if code != 0:
         fails.append("اختبار ضابط أسماء الإشارة فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_khabar.py"])
+    report.append(f"٥ص١٣ {out.strip().splitlines()[-1] if out.strip() else 'ضابط الخبر: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط الخبر فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_tasis.py"])
     report.append(f"٥ر٢ {out.strip().splitlines()[-1] if out.strip() else 'شبكة الدلالة: ?'}")
     if code != 0:
