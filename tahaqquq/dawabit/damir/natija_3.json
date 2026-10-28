@@ -1,0 +1,53 @@
+{
+ "tashghil": 3,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد مراجعة murajii (مقارنةُ الدرجة على المواصفة، وتغييران في الحكم بلا حالة)، 76b2e83",
+ "qablaha": {
+  "natija_2.json": "ebd25dd59502c9effca4a81764f74cebebe294c8de06135b696dbe29cba99a71"
+ },
+ "cases_sha256": "0361a0902203599f60d41f0072b476398e5b611910b6c6a2ae97eb1ac336d926",
+ "shifra": {
+  "Jisr/Damir.lean": {
+   "sha256": "f782fc8d95e235fc84702a5ad80d410be91b452a4c42a33e588c7fb70e0d4936",
+   "iydaa": "76b2e838e45d45b7d6ed9d97e03a5d37e9075857"
+  },
+  "Jisr/DamirDabit.lean": {
+   "sha256": "9d706a8f482339d88326c47ff3a9c8be76ba481e9ba7c2ec3dafb0f40f6dfdfe",
+   "iydaa": "76b2e838e45d45b7d6ed9d97e03a5d37e9075857"
+  }
+ },
+ "lean": [
+  "Jisr.Damir.Qiyas.majal",
+  "Jisr.Damir.Qiyas.natija",
+  "Jisr.Damir.Qiyas.natija_fia",
+  "Jisr.Damir.Qiyas.akhta_sifr",
+  "Jisr.Damir.Qiyas.azwaj_1"
+ ],
+ "halat": 46,
+ "huqul_masula": 69,
+ "ihsa": {
+  "sawab": 69,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtiyar": 0,
+  "khata": 0,
+  "khataDaraja": 0
+ },
+ "bil_fia": {
+  "موجب": 26,
+  "حد": 10,
+  "خارج": 7,
+  "عموم": 8,
+  "غموض": 18
+ },
+ "akhta": [],
+ "azwaj": {
+  "jumla": 17,
+  "taghayyar": 17,
+  "la_yataghayyar": [],
+  "sawab_maan": 17
+ },
+ "tarikh": "2026-10-28",
+ "malahiz": "على مادّةٍ مكشوفة، بلا تغييرٍ في نتيجة حالة؛ والأعدادُ أعدادُ مبرهنات Jisr/DamirQiyas.lean، بناها lake build Jisr.DamirQiyas قبل إيداع 76b2e83 على بايتات الشفرة نفسِها."
+}
