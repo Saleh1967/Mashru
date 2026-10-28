@@ -5252,14 +5252,14 @@
  {
   "ism": "P961_damir_illa_darura",
   "milaf": "Jisr/Damir.lean",
-  "min": "  | .muttasil => if darura then laHukmJ else khataJ\n  | .munfasil => laHukmJ\n\n/-- الأصل",
-  "ila": "  | .muttasil => khataJ\n  | .munfasil => laHukmJ\n\n/-- الأصل"
+  "min": "  | .muttasil => if darura then laHukmJ else khataJ\n  | .munfasil => laHukmJ\n\n/-- **مثالُ",
+  "ila": "  | .muttasil => khataJ\n  | .munfasil => laHukmJ\n\n/-- **مثالُ"
  },
  {
   "ism": "P962_damir_fasl_maa_imkan",
   "milaf": "Jisr/Damir.lean",
-  "min": "  | .munfasil => khataJ\n\n/-- الترتيبُ",
-  "ila": "  | .munfasil => laHukmJ\n\n/-- الترتيبُ"
+  "min": "  | .munfasil => if mithalWasl a r darura then khataJ else laHukmJ",
+  "ila": "  | .munfasil => laHukmJ"
  },
  {
   "ism": "P963_damir_salnihi_daraja",
@@ -5270,8 +5270,8 @@
  {
   "ism": "P964_damir_kuntuhu_daraja",
   "milaf": "Jisr/Damir.lean",
-  "min": "    | .zann, _ => maqbulJ [.rajih, .marjuh]",
-  "ila": "    | .zann, _ => maqbulJ [.rajih]"
+  "min": "    | .kana, _ => maqbulJ [.rajih, .marjuh]",
+  "ila": "    | .kana, _ => maqbulJ [.rajih]"
  },
  {
   "ism": "P965_damir_ghaib_wasl",
@@ -5288,8 +5288,8 @@
  {
   "ism": "P967_damir_tartib_bila_qabl",
   "milaf": "Jisr/Damir.lean",
-  "min": "    | none => if a.tartib then laHukmJ else asliJ d.shakl",
-  "ila": "    | none => asliJ d.shakl"
+  "min": "  | .yali, none => if d.amil.tartib then laHukmJ else asliJ d.amil d.rutba d.shakl d.darura",
+  "ila": "  | .yali, none => asliJ d.amil d.rutba d.shakl d.darura"
  },
  {
   "ism": "P968_damir_thani_akhass_wasl",
@@ -5300,8 +5300,8 @@
  {
   "ism": "P969_damir_ibtida_ittisaq",
   "milaf": "Jisr/Damir.lean",
-  "min": "  | .ibtida, _ => laHukmJ",
-  "ila": "  | .ibtida, _ => ibtidaJ d.shakl"
+  "min": "  | .ibtida, _, _ => false",
+  "ila": "  | .ibtida, _, _ => true"
  },
  {
   "ism": "P970_damir_rutba_shakhs",
@@ -5342,8 +5342,8 @@
  {
   "ism": "P976_damir_illa_munfasil",
   "milaf": "Jisr/Damir.lean",
-  "min": "  | .munfasil => laHukmJ\n\n/-- الأصل",
-  "ila": "  | .munfasil => maqbulJ [.bila]\n\n/-- الأصل"
+  "min": "  | .munfasil => laHukmJ\n\n/-- **مثالُ",
+  "ila": "  | .munfasil => maqbulJ [.bila]\n\n/-- **مثالُ"
  },
  {
   "ism": "P977_damir_ghaib_fasl_rajih",
@@ -5474,8 +5474,8 @@
  {
   "ism": "P1143_damir_ism_qablahu",
   "milaf": "Jisr/Damir.lean",
-  "min": "    | some q => if a = .ism then laHukmJ else tartibJ a q d.rutba d.shakl d.darura",
-  "ila": "    | some q => tartibJ a q d.rutba d.shakl d.darura"
+  "min": "  | _, .ism, q => q.isNone",
+  "ila": "  | _, .ism, _ => true"
  },
  {
   "ism": "P1144_damir_qarin_ghumud_bila",
@@ -5494,6 +5494,24 @@
   "milaf": "Jisr/DamirDabit.lean",
   "min": "    else if m == [.bila] then .tajawuz\n",
   "ila": "    else if m == [.bila] then .khataDaraja\n"
+ },
+ {
+  "ism": "P1149_damir_zanantukahu_daraja",
+  "milaf": "Jisr/Damir.lean",
+  "min": "    | .zann, _ => maqbulJ [.rajih, .marjuh]",
+  "ila": "    | .zann, _ => maqbulJ [.rajih]"
+ },
+ {
+  "ism": "P1150_damir_mithal_ibni_darura",
+  "milaf": "Jisr/Damir.lean",
+  "min": "  | .ism, .mutakallim => !darura",
+  "ila": "  | .ism, .mutakallim => true"
+ },
+ {
+  "ism": "P1151_damir_mithal_kull_rutba",
+  "milaf": "Jisr/Damir.lean",
+  "min": "  | _, _ => false\n\n/-- الأصل",
+  "ila": "  | _, _ => true\n\n/-- الأصل"
  },
  {
   "ism": "P1106_damir_akhta_bila_sigha",

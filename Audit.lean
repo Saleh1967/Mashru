@@ -2372,6 +2372,7 @@ import Jisr.DamirQiyas
 #print axioms Dal.Tahsil.shahid_shams
 #print axioms Dal.Tahsil.shahid_muallaq
 -- الضميرُ البارز في القطر (س124–128) والألفية (س105–119) (Jisr/Damir.lean): الاتّصالُ والانفصال والترتيب ودرجتُها
+#print axioms Jisr.Damir.muttasiq_iff
 #print axioms Jisr.Damir.ibtida_muttasil
 #print axioms Jisr.Damir.ibtida_munfasil_la_hukm
 #print axioms Jisr.Damir.illa_muttasil

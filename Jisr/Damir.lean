@@ -20,14 +20,17 @@ import SLGE.Maqam
 على الصورة نفسِها بدرجتين من مصدرين أو قائلين، ولا تحمل الحقولُ ما يفرّق بينهما. وحين لا يكون الحكمُ «مقبولًا» فالدرجةُ `[bila]`.
 
 **الحكم** (`jawab`)، بالترتيب:
-1. **اتّساقُ الحقول.** «ابتداء» مع «لا_عامل» وحده، وبلا ضميرٍ قبله؛ و«اسم» بلا ضميرٍ قبله (`qablahu` في المواصفة المفعولُ الأوّل، أو اسمُ «كان»،
-   أو ضميرُ الرفع المتّصلُ بالفعل، ولا شيءَ منها للاسم)؛ وما خالف ذلك «لا حكم».
+1. **اتّساقُ الحقول** (`muttasiq`). «ابتداء» مع «لا_عامل» وحده، وبلا ضميرٍ قبله؛ و«اسم» بلا ضميرٍ قبله في كلّ موقع (`qablahu` في المواصفة المفعولُ
+   الأوّل، أو اسمُ «كان»، أو ضميرُ الرفع المتّصلُ بالفعل، ولا شيءَ منها للاسم)؛ وما خالف ذلك «لا حكم».
 2. **الابتداء** (`ibtidaJ`): المتّصلُ خطأٌ في الاختيار («وذو اتصال منه ما لا يبتدا»، ألفيّة س106)، و«لا حكم» في الضرورة: يحتمل الرسمُ بلا شكلٍ أن يقيّد
    «اختيارا» الشطرَ الأوّل من س106 أيضًا (أفصح به المؤلّف في `taalif.md`، القرار ٥)؛ والمنفصلُ «لا حكم»: أمثلتُه في النطاق («أو منفصل ك"أنا
    وأنت وإياي"»، قطر س126؛ «كأنت وهو»، ألفيّة س105؛ «أنا هو ... وأنت»، س113؛ «إياي»، س114) بلا موضع، والمفتاحُ يقبل الصورةَ «في الموضع الذي يذكره».
 3. **بعد «إلا»** (`illaJ`): المتّصلُ خطأ «اختيارا» («ولا يلي إلا اختيارا أبدا»، س106)، وفي الضرورة «لا حكم»؛ والمنفصلُ «لا حكم»: لا نصَّ فيه.
-4. **يلي عاملًا لواحدٍ أو اسمًا مضافًا، ولا ضميرَ قبله** (`asliJ`): المتّصلُ مقبول، والمنفصلُ خطأ ولو في الضرورة («ولا فصل مع إمكان الوصل»،
-   قطر س126–127، مطلقًا؛ وإمكانُ الوصل فيه بمثاليه «أكرمك» و«غلامه»، س126). وقيدُ الألفيّة «وفي اختيار» (س115) لا يرفع نفيَ القطر المطلق.
+4. **يلي عاملًا لواحدٍ أو اسمًا مضافًا، ولا ضميرَ قبله** (`asliJ`): المتّصلُ مقبول؛ والمنفصلُ خطأٌ حيث يثبت إمكانَ الوصل مثالٌ في المصدر الذي
+   يحكم (`mithalWasl`؛ قراءةُ المؤلّف، `taalif.md` القرار ٦)، و«لا حكم» في غيره. فالقطرُ يحكم في الاختيار والضرورة («ولا فصل مع إمكان الوصل»،
+   س126–127، مطلقًا) بمثاليه «أكرمك» (فعلٌ ومخاطَب) و«غلامه» (اسمٌ وغائب)، س126؛ والألفيّةُ في الاختيار وحده («وفي اختيار»، س115) بمثاليها «ابني»
+   (اسمٌ ومتكلّم) و«أكرمك»، س107. فالمنفصلُ خطأٌ في الاختيار في ثلاثةٍ من الستّة (الفعلُ مع المخاطَب، والاسمُ مع الغائب ومع المتكلّم)، وفي الضرورة
+   في اثنين (الفعلُ مع المخاطَب، والاسمُ مع الغائب). و«تاء قمت» (س126) فاعلُ فعلٍ لازم، لا موضعَ لها في الحقول.
 5. **يلي العامل وقبله ضميرٌ متّصل** (`tartibJ`)، لكلّ عاملٍ غيرِ الاسم: س119 أخذًا بقراءة المؤلّف («لم يقيّده النطاقُ بالمفعولين»، `taalif.md`
    القرار ٧)، وس118 بعلّتها نفسِها تعيينًا للبنّاء (أدناه)؛ و`qablahu` في المواصفة يشمل ضميرَ الرفع المتّصل بالفعل.
    - **الأوّلُ أخصّ** (المتكلّمُ أخصُّ من المخاطَب، والمخاطَبُ من الغائب): المتّصلُ مقبول («وقدم الأخص في اتصال»، س118). والمنفصل:
@@ -36,7 +39,7 @@ import SLGE.Maqam
      - «ظنّ» و«كان» («ظننتكه»، «كنته»، «خلتنيه»): المتّصلُ والمنفصلُ كلاهما [`rajih`، `marjuh`]. فالقطرُ يجعل الفصلَ فيهما «برجحان» (س127–128)،
        وابنُ مالك يختار الاتّصال وغيرُه الانفصال («واتصالا ... أختار غيري اختار الانفصالا»، س117).
      - وفي غيرها: المتّصلُ بلا درجة، والمنفصلُ خطأ «في اختيار» («وفي اختيار لا يجيء المنفصل ... إذ تأتى أن يجئ المتصل»، س115؛ وإمكانُ الوصل من
-       س118)، وفي الضرورة «لا حكم».
+       س118)، وفي الضرورة «لا حكم»: القطرُ وحده يحكم فيها، ولا مثالَ فيه لضميرين مع العامل لواحد (القرار ٦).
    - **الرتبةُ واحدة**: المتّصلُ خطأ («وفي اتحاد الرتبة الزم فصلا»، س119)، إلّا الغائبين فمقبولٌ مرجوح («وقد يبيح الغيب فيه وصلا»، س119)؛
      والمنفصلُ مقبول، راجحٌ في الغائبين (مقابلَ مرجوحيّة الوصل فيهما)، وبلا درجةٍ في غيرهما.
    - **الثاني أخصّ**: المنفصلُ مقبولٌ `sawa` («وقدمن ما شئت في اتفصال»، س118؛ و«ما شئت» في المفتاح سواء)؛ والمتّصلُ «لا حكم»: «وقدم الأخص في
@@ -47,8 +50,11 @@ import SLGE.Maqam
 - رجحانُ الاتّصال في «سلنيه» عند القطر من مرجوحيّة الفصل فيه، ورجحانُه في «ظننتكه» و«كنته» عند ابن مالك من اختياره، ورجحانُ الفصل في الغائبين
   من مرجوحيّة الوصل فيهما: الدرجةُ المتمّمة.
 - ما لا يفرّق بينه الحقلُ (القطرُ أم الألفيّة، ابنُ مالكٍ أم غيرُه) قائمةُ درجتين، لا اختيار.
-- الضرورةُ لا تغيّر إلّا ما قُيّد بـ«اختيارا» (س106) أو «في اختيار» (س115) ولا نفيَ مطلقًا له من القطر: المتّصلُ بعد «إلا» ومبتدأً، والمنفصلُ بعد ضميرٍ
-  أخصَّ في عاملٍ لواحد.
+- الضرورةُ لا تغيّر إلّا ما قُيّد بـ«اختيارا» (س106) أو «في اختيار» (س115) ولا حكمَ فيه في الضرورة من القطر بمثالٍ فيه (القراران ٥ و٦): المتّصلُ
+  بعد «إلا» ومبتدأً، والمنفصلُ بعد ضميرٍ أخصَّ في عاملٍ لواحد، والمنفصلُ بلا ضميرٍ قبله في الاسم مع المتكلّم («ابني» مثالُ الألفيّة وحدها).
+- **مثالُ الوصل بحقوله** (`mithalWasl`): «أكرمك» فعلٌ لواحدٍ ومخاطَب، و«غلامه» اسمٌ وغائب، و«ابني» اسمٌ ومتكلّم؛ و«تاء قمت» فاعلُ فعلٍ لازمٍ لا موضعَ
+  له في الحقول. وقراءةُ «إذ تأتى» (س115) شرطًا لا يُعمل إلّا بمثال قراءةُ المؤلّف (القرار ٦، وتعليقُه في D04)، أُخذ بها في الشفرة بعد المراجعة الثانية (وكان
+  نفيُ الفصل لكلّ رتبة)؛ والحالاتُ لا تمسّ من المداخل السبعة التي تغيّرت بها عن `b94a2d7` (أدناه) شيئًا.
 - الأخصّيّةُ ترتيبُ الرتب الثلاث المتكلّمُ فالمخاطَبُ فالغائب، وهي ترتيبُ الشخص في سمات `SLGE.Maqam` (`akhass_shakhs`). والنطاقُ لا ينصّ على هذا
   الترتيب، وأمثلتُه («سلنيه»، «ظننتكه»، «كنته»، «خلتنيه») حاضرٌ قبل غائب.
 - **س118 لكلّ عامل** (غيرِ الاسم) بعلّة المؤلّف في س119، لا بقراءته: لم يكتب حالةً لس118 في عاملٍ لواحد. ونتيجتُه في العامل لواحد: الأوّلُ أخصّ
@@ -59,40 +65,45 @@ import SLGE.Maqam
 
 **الصلة بقطع Lean القائمة:**
 - `awwal_maarif`: أوّلُ `SLGE.Wad.maarif` «الضمير».
-- `akhass_shakhs`: رتبةُ الضمير من سمته في `SLGE.Maqam.damair` (الشخصُ 1 و2 و3)، والأخصّيّةُ هي الأقلُّ شخصًا؛ وصورُ `damair` الأربعَ عشرةَ
+- `akhass_shakhs`: رتبةُ الضمير من سمته في `SLGE.Maqam.damair` (الشخصُ 1 و2 و3)، والأخصّيّةُ هي الأقلُّ شخصًا؛ ومداخلُ `damair` الأربعَ عشرةَ
   منفصلةٌ كلُّها، ولها رتبة، ولا يحكم النطاقُ في الابتداء بها (`damair_rutab`).
 - **وفي ملفّات المالك حكمٌ في الابتداء بها من جهةٍ أخرى:** `SLGE.Maqam.participants_free` («المتكلّمُ والمخاطبُ يُبتدأ بهما»: إحالتُهما إلى المقام)،
   و`SLGE.Maqam.ghaib_needs_ante` (الغائبُ لا يُبتدأ به بلا سابق إلّا ضميرَ الشأن)، و`SLGE/Tarkib.lean` («ولا يُبتدأ بضميرٍ يحيل إلى ما بعده»).
   والمسألتان مختلفتان: هناك إحالةُ الضمير، وهنا صورتُه؛ فـ«أنا قائم» (D12) «لا حكم» في صورته هنا، ويُبتدأ به في إحالته هناك. لا تناقض، ولا ربط.
 
 **المنهج.** الشفرةُ المجمَّدة كُتبت قبل أن يقرأ البنّاءُ حالاتِ الضابط، وجُمّدت الحالاتُ قبلها (`tahaqquq/dawabit/damir/tajmid.json`؛
-`hawkama/منهج_الضوابط.md`)، ودُفعت في `af3356c`، والتشغيلُ الأوّل عليها في `natija_1.json` (55/69). وهذا الملفُّ عُدّل بعدها (أدناه). ونتيجتُه على
+`hawkama/منهج_الضوابط.md`)، ودُفعت في `af3356c`، والتشغيلُ الأوّل عليها في `natija_1.json` (55 من 69 حقلًا عدّها السجلّ، وبنصّ المواصفة 55 من 68:
+`tahaqquq/dawabit/damir/mulhaq_1.md` §١). وهذا الملفُّ عُدّل بعدها (أدناه). ونتيجتُه على
 الضابط في `Jisr/DamirQiyas.lean`، لا هنا.
 
 **ما غُيّر بعد قراءة الحالات** (فالتشغيلُ الثاني وما بعده على مادّةٍ مكشوفة)، أخذًا بقراءة المؤلّف في المواضع الثلاثة عشر كلِّها، ومعه تعيينٌ
 للبنّاء: س118 لكلّ عاملٍ غيرِ الاسم (أعلاه؛ وامتدادُ الدرجات بالأخصّيّة في الشفرة المجمَّدة نفسِها):
-- **المنفصلُ في الضرورة بلا ضميرٍ قبله خطأ** (كان «لا حكم»): قيدُ الألفيّة «في اختيار» لا يرفع نفيَ القطر المطلق، والمفتاحُ يحكم فيما خرج عن
-  القيد «بلفظٍ آخر من النطاق». الحالتان: D08 وD10.
+- **المنفصلُ في الضرورة بلا ضميرٍ قبله خطأ حيث مثالُ الوصل في القطر** (كان «لا حكم»): قيدُ الألفيّة «في اختيار» لا يرفع نفيَ القطر المطلق،
+  والمفتاحُ يحكم فيما خرج عن القيد «بلفظٍ آخر من النطاق». الحالتان: D08 وD10.
 - **المنفصلُ مبتدأً وبعد «إلا» «لا حكم»** (كانا مقبولين): كان قبولُهما مفهومَ «لا يبتدا» و«مع إمكان الوصل»، والمفتاحُ لا يقبل الصورةَ إلّا في
   موضعٍ يذكره. الحالات: D12 وD14 وD17.
 - **قواعدُ الترتيب لكلّ عامل** (كانت للعوامل الثلاثة، و«يلي العامل» مع ضميرٍ قبله برتبته في غيرها «لا حكم»): اتّحادُ الرتبة في عاملٍ لواحد
   خطأٌ متّصلًا، ومرجوحٌ في الغائبين (قراءةُ المؤلّف، القرار ٧). الحالتان: D45 وD46. وس118 في العامل لواحد بالعلّة نفسِها (تعيين، بلا حالة).
 - **الثاني أخصّ: المتّصلُ «لا حكم»** (كان خطأ)، **والمنفصلُ `sawa`** (كان بلا درجة). الحالات: D31 وD32 وD33 وD34.
 - **الفصلُ في الغائبين راجح** (كان بلا درجة). الحالتان: D23 وD25.
-- **وبعد مراجعة `murajii`** (بلا حالةٍ تمسّه): «اسم» مع ضميرٍ قبله غيرُ متّسق («لا حكم»؛ كان يُحكم فيه بقواعد الترتيب)، والمتّصلُ مبتدأً في
-  الضرورة «لا حكم» (كان خطأ).
+- **وبعد مراجعة `murajii`** (بلا حالةٍ تمسّه): «اسم» مع ضميرٍ قبله يلي العاملَ غيرُ متّسق («لا حكم»؛ كان يُحكم فيه بقواعد الترتيب)، والمتّصلُ
+  مبتدأً في الضرورة «لا حكم» (كان خطأ).
+- **وبعد المراجعة الثانية** (بلا حالةٍ تمسّه): «اسم» مع ضميرٍ قبله غيرُ متّسقٍ بعد «إلا» أيضًا (`muttasiq`؛ كان المتّصلُ فيه خطأً في الاختيار)؛
+  ونفيُ الفصل بلا ضميرٍ قبله مقصورٌ على ما للوصل فيه مثالٌ في المصدر الذي يحكم (`mithalWasl`، القرار ٦؛ كان لكلّ رتبة): فالمنفصلُ «لا حكم» في
+  الاختيار في الفعل مع المتكلّم والغائب والاسم مع المخاطَب، وفي الضرورة فيها وفي الاسم مع المتكلّم (كانت خطأً).
 - **وما تغيّر في المجال كلّه** مسرودٌ بمدخلاته في `tahaqquq/dawabit/damir/mulhaq_1.md` §٢ (مقابلةُ جواب الشفرة المجمَّدة بجواب هذه على 864 مدخلًا،
   بسكربتٍ محفوظٍ فيه)؛ والحالاتُ تمسّ منه الثلاثةَ عشرَ الفاشلة وحدها.
 
 **المبرهنات** (بالمعيار الموحَّد في `Nizam/Asas.lean`)، وهي خواصُّ هذا التعيين على مجاله، لا قوانينُ في اللغة:
-- تعريفيّة (10): `ibtida_muttasil`، `ibtida_munfasil_la_hukm`، `illa_muttasil`، `illa_munfasil_la_hukm`، `fasl_maa_imkan`،
+- تعريفيّة (11): `muttasiq_iff`، `ibtida_muttasil`، `ibtida_munfasil_la_hukm`، `illa_muttasil`، `illa_munfasil_la_hukm`، `fasl_maa_imkan`،
   `tartib_munfasil_maqbul`، `tartib_muttasil_iff`، `darura_la_tughayyir_illa_ikhtiyar`، `ghayr_maqbul_bila_daraja`، `la_hukm_iff`. وبرهانُها فكُّ
   التعريفات وتفكيكُ الحالات على مجالٍ منتهٍ.
 - لكلّ (1): `akhass_shakhs` (على السمات، بـ`omega`).
 - على الشاهد (3): `awwal_maarif`، `damair_rutab`، `shawahid`.
 
 **حدُّه.** المدخلُ تحليلٌ يُعطى؛ ولا مستترَ ولا نونَ وقاية ولا عددَ ولا جنس؛ والدرجةُ قائمةٌ حيث يختلف المصدران، لا مرجّحَ بينهما؛ ووصلُ الغائبين
-في عاملٍ لواحد مرجوحٌ هنا بنصّ س119، وقال المؤلّف في D45: «وخارج النطاق يعد هذا الوصل أصلا لا مرجوحا»؛ ولا وصلَ بالقارئ ولا بالمحرّك.
+في عاملٍ لواحد مرجوحٌ هنا بقراءة المؤلّف لعموم س119 (القرار ٧)، وقال المؤلّف في D45: «وخارج النطاق يعد هذا الوصل أصلا لا مرجوحا»؛ ونفيُ الفصل
+لا يُعمل إلّا بمثالٍ في المصدر (القرار ٦)، فالفصلُ حيث لا مثالَ للوصل «لا حكم» هنا (ومنه الفعلُ لواحدٍ مع المتكلّم والغائب)؛ ولا وصلَ بالقارئ ولا بالمحرّك.
 -/
 
 namespace Jisr
@@ -168,13 +179,25 @@ def illaJ (s : Shakl) (darura : Bool) : Jawab :=
   | .muttasil => if darura then laHukmJ else khataJ
   | .munfasil => laHukmJ
 
-/-- الأصل، بلا ضميرٍ قبله: الوصلُ ممكنٌ فلا فصل («ولا فصل مع إمكان الوصل» مطلقًا في القطر). -/
-def asliJ (s : Shakl) : Jawab :=
+/-- **مثالُ الوصل في المصدر الذي يحكم** (قراءةُ المؤلّف، القرار ٦: لا يُعمل نفيُ الفصل إلّا حيث يثبت إمكانَ الوصل نصٌّ أو مثالٌ فيه). القطرُ
+    يحكم في الاختيار والضرورة («ولا فصل مع إمكان الوصل»، س126–127)، ومثالاه «أكرمك» (فعلٌ لواحدٍ ومخاطَب) و«غلامه» (اسمٌ وغائب)، س126؛ والألفيّةُ
+    في الاختيار وحده («وفي اختيار لا يجيء المنفصل»، س115)، ومثالاها «ابني» (اسمٌ ومتكلّم) و«أكرمك»، س107. و«تاء قمت» (س126) فاعلُ فعلٍ لازم،
+    فلا موضعَ لها في الحقول. -/
+def mithalWasl (a : Amil) (r : Rutba) (darura : Bool) : Bool :=
+  match a, r with
+  | .filWahid, .mukhatab => true
+  | .ism, .ghaib => true
+  | .ism, .mutakallim => !darura
+  | _, _ => false
+
+/-- الأصل، بلا ضميرٍ قبله: المتّصلُ مقبول؛ والمنفصلُ خطأٌ حيث للوصل مثالٌ في المصدر الذي يحكم، و«لا حكم» في غيره. -/
+def asliJ (a : Amil) (r : Rutba) (s : Shakl) (darura : Bool) : Jawab :=
   match s with
   | .muttasil => maqbulJ [.bila]
-  | .munfasil => khataJ
+  | .munfasil => if mithalWasl a r darura then khataJ else laHukmJ
 
-/-- الترتيبُ بين ضميرين: `q` رتبةُ الأوّل، و`r` رتبةُ المسؤول عنه. -/
+/-- الترتيبُ بين ضميرين: `q` رتبةُ الأوّل، و`r` رتبةُ المسؤول عنه. والعاملُ غيرُ الاسم و«لا_عامل» (يردّهما `muttasiq` قبله)، فالعاملُ في الفرع
+    `_` العاملُ لواحد: منفصلُه بعد ضميرٍ أخصَّ خطأٌ في الاختيار، و«لا حكم» في الضرورة (لا مثالَ في القطر لضميرين معه، القرار ٦). -/
 def tartibJ (a : Amil) (q r : Rutba) (s : Shakl) (darura : Bool) : Jawab :=
   if akhass q r then
     match a, s with
@@ -193,29 +216,37 @@ def tartibJ (a : Amil) (q r : Rutba) (s : Shakl) (darura : Bool) : Jawab :=
     | .munfasil => maqbulJ [.sawa]
     | .muttasil => laHukmJ
 
+/-- **اتّساقُ الحقول:** «ابتداء» مع «لا_عامل» وحده؛ ولا ضميرَ قبل المبتدأ؛ ولا ضميرَ قبل المضاف إليه («اسم»)، في كلّ موقع. -/
+def muttasiq (d : Dakhil) : Bool :=
+  match d.mawqi, d.amil, d.qablahu with
+  | .ibtida, .laAmil, q => q.isNone
+  | .ibtida, _, _ => false
+  | _, .laAmil, _ => false
+  | _, .ism, q => q.isNone
+  | _, _, _ => true
+
 /-- **الحكم.** -/
 def jawab (d : Dakhil) : Jawab :=
-  match d.mawqi, d.amil with
-  | .ibtida, .laAmil => if d.qablahu.isSome then laHukmJ else ibtidaJ d.shakl d.darura
-  | .ibtida, _ => laHukmJ
-  | _, .laAmil => laHukmJ
+  if !muttasiq d then laHukmJ else
+  match d.mawqi, d.qablahu with
+  | .ibtida, _ => ibtidaJ d.shakl d.darura
   | .badIlla, _ => illaJ d.shakl d.darura
-  | .yali, a =>
-    match d.qablahu with
-    | none => if a.tartib then laHukmJ else asliJ d.shakl
-    | some q => if a = .ism then laHukmJ else tartibJ a q d.rutba d.shakl d.darura
+  | .yali, none => if d.amil.tartib then laHukmJ else asliJ d.amil d.rutba d.shakl d.darura
+  | .yali, some q => tartibJ d.amil q d.rutba d.shakl d.darura
 
 /-! ## الأسانيد -/
 
 /-- الأسانيد: (القاعدة، المصدر، من سطر، إلى سطر، القطعةُ حرفيّةً بعد وصل الأسطر بمسافة). -/
 def asanid : List (String × String × Nat × Nat × String) :=
   [("ta3rif", "qatr", 124, 124, "الضمير وهو ما دل على متكلم أو مخاطب أو غائب."),
+   ("muttasil_amthila", "qatr", 126, 126, "ك\"تاء\" \"قمت\" وكاف \"أكرمك\" وهاء \"غلامه\""),
    ("munfasil_amthila", "qatr", 126, 126, "أو منفصل ك\"أنا وأنت وإياي\"."),
    ("la_fasl", "qatr", 126, 127, "ولا فصل مع إمكان الوصل،"),
    ("salnihi", "qatr", 127, 127, "إلا في نحو الهاء من \"سلنيه\" بمرجوحية،"),
    ("zanantukahu", "qatr", 127, 128, "و \"ظننتكه\" و \"كنته\" برجحان."),
    ("sam", "alfiyya", 105, 105, "فما لذي غيبة أو حضور ... كأنت وهو سم بالضمير"),
    ("la_yubtada", "alfiyya", 106, 106, "وذو اتصال منه ما لا يبتدا ... ولا يلي إلا اختيارا أبدا"),
+   ("muttasil_amthila_alfiyya", "alfiyya", 107, 107, "كالياء والكاف من ابني أكرمك"),
    ("raf_infisal", "alfiyya", 113, 113, "وذو إرتفاع وانفصال أنا هو"),
    ("nasb_infisal", "alfiyya", 114, 114, "وذو انتصاب في انفصال جعلا ... إياي"),
    ("ikhtiyar", "alfiyya", 115, 115, "وفي اختيار لا يجيء المنفصل ... إذ تأتى أن يجئ المتصل"),
@@ -226,6 +257,13 @@ def asanid : List (String × String × Nat × Nat × String) :=
    ("ittihad", "alfiyya", 119, 119, "وفي اتحاد الرتبة الزم فصلا ... وقد يبيح الغيب فيه وصلا")]
 
 /-! ## المبرهنات -/
+
+/-- **اتّساقُ الحقول:** «ابتداء» إذا وفقط إذا «لا_عامل»، ولا ضميرَ قبل المبتدأ، ولا ضميرَ قبل المضاف إليه. -/
+theorem muttasiq_iff (d : Dakhil) :
+    muttasiq d = true ↔ ((d.mawqi = .ibtida ↔ d.amil = .laAmil) ∧ (d.mawqi = .ibtida → d.qablahu = none) ∧
+      (d.amil = .ism → d.qablahu = none)) := by
+  obtain ⟨a, m, q, r, s, dr⟩ := d
+  cases a <;> cases m <;> rcases q with _ | (_ | _ | _) <;> simp [muttasiq]
 
 /-- **الابتداءُ بالمتّصل:** خطأٌ في الاختيار، و«لا حكم» في الضرورة. -/
 theorem ibtida_muttasil (d : Dakhil) (hm : d.mawqi = .ibtida) (ha : d.amil = .laAmil) (hq : d.qablahu = none)
@@ -238,34 +276,36 @@ theorem ibtida_munfasil_la_hukm (d : Dakhil) (hm : d.mawqi = .ibtida) (ha : d.am
     jawab d = laHukmJ := by
   obtain ⟨a, m, q, r, s, dr⟩ := d
   simp only at hm ha hs; subst hm ha hs
-  rcases q with _ | (_ | _ | _) <;> rfl
+  rcases q with _ | (_ | _ | _) <;> cases dr <;> rfl
 
-/-- **المتّصلُ بعد «إلا»:** خطأٌ في الاختيار، و«لا حكم» في الضرورة. -/
-theorem illa_muttasil (d : Dakhil) (hm : d.mawqi = .badIlla) (ha : d.amil ≠ .laAmil) (hs : d.shakl = .muttasil) :
-    jawab d = (if d.darura then laHukmJ else khataJ) := by
+/-- **المتّصلُ بعد «إلا»:** خطأٌ في الاختيار، و«لا حكم» في الضرورة (والحقولُ متّسقة: لا ضميرَ قبل الاسم). -/
+theorem illa_muttasil (d : Dakhil) (hm : d.mawqi = .badIlla) (ha : d.amil ≠ .laAmil) (hi : d.amil = .ism → d.qablahu = none)
+    (hs : d.shakl = .muttasil) : jawab d = (if d.darura then laHukmJ else khataJ) := by
   obtain ⟨a, m, q, r, s, dr⟩ := d
-  simp only at hm ha hs; subst hm hs
-  cases a <;> simp_all [jawab, illaJ]
+  simp only at hm ha hi hs; subst hm hs
+  cases a <;> rcases q with _ | (_ | _ | _) <;> cases dr <;> simp_all [jawab, muttasiq, illaJ]
 
 /-- **والمنفصلُ بعد «إلا» لا يحكم فيه النطاق.** -/
 theorem illa_munfasil_la_hukm (d : Dakhil) (hm : d.mawqi = .badIlla) (hs : d.shakl = .munfasil) : jawab d = laHukmJ := by
   obtain ⟨a, m, q, r, s, dr⟩ := d
   simp only at hm hs; subst hm hs
-  cases a <;> simp_all [jawab, illaJ]
+  cases a <;> rcases q with _ | (_ | _ | _) <;> cases dr <;> simp_all [jawab, muttasiq, illaJ]
 
-/-- **لا فصلَ مع إمكان الوصل** (مطلقًا، ولو في الضرورة): يلي عاملًا لواحدٍ أو اسمًا، بلا ضميرٍ قبله، منفصلًا: خطأ. -/
+/-- **لا فصلَ مع إمكان الوصل، بمثاله في المصدر الذي يحكم** (القرار ٦): يلي عاملًا لواحدٍ أو اسمًا، بلا ضميرٍ قبله، منفصلًا: خطأٌ إن كان للوصل
+    مثالٌ فيه (`mithalWasl`)، وإلّا «لا حكم». -/
 theorem fasl_maa_imkan (d : Dakhil) (hm : d.mawqi = .yali) (ha : d.amil.tartib = false) (hl : d.amil ≠ .laAmil)
-    (hq : d.qablahu = none) (hs : d.shakl = .munfasil) : jawab d = khataJ := by
+    (hq : d.qablahu = none) (hs : d.shakl = .munfasil) :
+    jawab d = (if mithalWasl d.amil d.rutba d.darura then khataJ else laHukmJ) := by
   obtain ⟨a, m, q, r, s, dr⟩ := d
   simp only at hm ha hl hq hs; subst hm hq hs
-  cases a <;> simp_all [jawab, asliJ, Amil.tartib]
+  cases a <;> cases r <;> cases dr <;> simp_all [jawab, muttasiq, asliJ, mithalWasl, Amil.tartib]
 
 /-- **الفصلُ بعد ضميرٍ في «ظنّ» و«كان» والمفعولين مقبولٌ دائمًا** («وقدمن ما شئت في اتفصال»، «الزم فصلا»، «سلنيه» و«ظننتكه» و«كنته»). -/
 theorem tartib_munfasil_maqbul (d : Dakhil) (q : Rutba) (hm : d.mawqi = .yali) (ha : d.amil.tartib = true)
     (hq : d.qablahu = some q) (hs : d.shakl = .munfasil) : (jawab d).hukm = .maqbul := by
   obtain ⟨a, m, q', r, s, dr⟩ := d
   simp only at hm ha hq hs; subst hm hq hs
-  cases a <;> cases q <;> cases r <;> cases dr <;> simp_all [jawab, tartibJ, akhass, Rutba.shakhs, Amil.tartib, maqbulJ]
+  cases a <;> cases q <;> cases r <;> cases dr <;> simp_all [jawab, muttasiq, tartibJ, akhass, Rutba.shakhs, Amil.tartib, maqbulJ]
 
 /-- **والوصلُ بعد ضميرٍ، لكلّ عاملٍ غيرِ الاسم، مقبولٌ إذا وفقط إذا كان الأوّلُ أخصَّ أو كانا غائبين** («وقدم الأخص في اتصال»، «وقد يبيح الغيب
     فيه وصلا»). -/
@@ -274,35 +314,37 @@ theorem tartib_muttasil_iff (d : Dakhil) (q : Rutba) (hm : d.mawqi = .yali) (hl 
     (jawab d).hukm = .maqbul ↔ (akhass q d.rutba = true ∨ (q = .ghaib ∧ d.rutba = .ghaib)) := by
   obtain ⟨a, m, q', r, s, dr⟩ := d
   simp only at hm hl hi hq hs; subst hm hq hs
-  cases a <;> cases q <;> cases r <;> cases dr <;> simp_all [jawab, tartibJ, akhass, Rutba.shakhs, Amil.tartib, maqbulJ, khataJ, laHukmJ]
+  cases a <;> cases q <;> cases r <;> cases dr <;> simp_all [jawab, muttasiq, tartibJ, akhass, Rutba.shakhs, maqbulJ, khataJ, laHukmJ]
 
 /-- **الضرورةُ لا تغيّر إلّا ما قُيّد بالاختيار:** إن اختلف الحكمُ بالضرورة وحدها فهو في الاختيار خطأ، وفي الضرورة «لا حكم». -/
 theorem darura_la_tughayyir_illa_ikhtiyar (d : Dakhil) (h : jawab { d with darura := true } ≠ jawab { d with darura := false }) :
     jawab { d with darura := false } = khataJ ∧ jawab { d with darura := true } = laHukmJ := by
   obtain ⟨a, m, q, r, s, dr⟩ := d
-  cases a <;> cases m <;> rcases q with _ | (_ | _ | _) <;> cases r <;> cases s <;> simp_all [jawab, illaJ, asliJ, ibtidaJ, tartibJ, Amil.tartib, akhass, Rutba.shakhs, maqbulJ, khataJ, laHukmJ]
+  cases a <;> cases m <;> rcases q with _ | (_ | _ | _) <;> cases r <;> cases s <;> simp_all [jawab, muttasiq, illaJ, asliJ, mithalWasl, ibtidaJ, tartibJ, Amil.tartib, akhass, Rutba.shakhs, maqbulJ, khataJ, laHukmJ]
 
 /-- **ما ليس مقبولًا فدرجتُه `[bila]`.** -/
 theorem ghayr_maqbul_bila_daraja (d : Dakhil) (h : (jawab d).hukm ≠ .maqbul) : (jawab d).daraja = [.bila] := by
   obtain ⟨a, m, q, r, s, dr⟩ := d
   cases a <;> cases m <;> rcases q with _ | (_ | _ | _) <;> cases r <;> cases s <;> cases dr <;>
-    simp_all [jawab, illaJ, asliJ, ibtidaJ, tartibJ, Amil.tartib, akhass, Rutba.shakhs, maqbulJ, khataJ, laHukmJ]
+    simp_all [jawab, muttasiq, illaJ, asliJ, mithalWasl, ibtidaJ, tartibJ, Amil.tartib, akhass, Rutba.shakhs, maqbulJ, khataJ, laHukmJ]
 
-/-- **مواضعُ «لا حكم»:** حقولٌ غيرُ متّسقة (ومنها ضميرٌ قبل المبتدأ أو قبل الاسم)؛ أو المنفصلُ مبتدأً أو بعد «إلا»؛ أو المتّصلُ مبتدأً أو بعد
-    «إلا» في الضرورة؛ أو باب الترتيب بلا ضميرٍ قبله؛ أو الوصلُ والثاني أخصّ؛ أو الفصلُ في الضرورة بعد ضميرٍ أخصَّ في العامل لواحد. -/
+/-- **مواضعُ «لا حكم»:** حقولٌ غيرُ متّسقة (`muttasiq`: «ابتداء» مع غير «لا_عامل» أو «لا_عامل» في غير الابتداء، أو ضميرٌ قبل المبتدأ، أو ضميرٌ
+    قبل المضاف إليه في كلّ موقع)؛ أو المنفصلُ مبتدأً أو بعد «إلا»؛ أو المتّصلُ مبتدأً أو بعد «إلا» في الضرورة؛ أو باب الترتيب بلا ضميرٍ قبله؛ أو
+    الفصلُ بلا ضميرٍ قبله حيث لا مثالَ للوصل في المصدر الذي يحكم (`mithalWasl`)؛ أو الوصلُ والثاني أخصّ؛ أو الفصلُ في الضرورة بعد ضميرٍ أخصَّ في
+    العامل لواحد. -/
 theorem la_hukm_iff (d : Dakhil) :
     (jawab d).hukm = .laHukm ↔
-      ((d.mawqi = .ibtida) ≠ (d.amil = .laAmil)) ∨
-      (d.mawqi = .ibtida ∧ d.amil = .laAmil ∧ (d.qablahu.isSome = true ∨ d.shakl = .munfasil ∨ d.darura = true)) ∨
-      (d.mawqi = .badIlla ∧ d.amil ≠ .laAmil ∧ (d.shakl = .munfasil ∨ d.darura = true)) ∨
-      (d.mawqi = .yali ∧ d.amil ≠ .laAmil ∧ d.amil.tartib = true ∧ d.qablahu = none) ∨
-      (d.mawqi = .yali ∧ d.amil = .ism ∧ d.qablahu.isSome = true) ∨
-      (d.mawqi = .yali ∧ d.amil ≠ .laAmil ∧ d.amil ≠ .ism ∧ ∃ q, d.qablahu = some q ∧ akhass d.rutba q = true ∧ d.shakl = .muttasil) ∨
+      muttasiq d = false ∨
+      (d.mawqi = .ibtida ∧ (d.shakl = .munfasil ∨ d.darura = true)) ∨
+      (d.mawqi = .badIlla ∧ (d.shakl = .munfasil ∨ d.darura = true)) ∨
+      (d.mawqi = .yali ∧ d.amil.tartib = true ∧ d.qablahu = none) ∨
+      (d.mawqi = .yali ∧ d.qablahu = none ∧ d.shakl = .munfasil ∧ mithalWasl d.amil d.rutba d.darura = false) ∨
+      (d.mawqi = .yali ∧ ∃ q, d.qablahu = some q ∧ akhass d.rutba q = true ∧ d.shakl = .muttasil) ∨
       (d.mawqi = .yali ∧ d.amil = .filWahid ∧ ∃ q, d.qablahu = some q ∧ akhass q d.rutba = true ∧
         d.shakl = .munfasil ∧ d.darura = true) := by
   obtain ⟨a, m, q, r, s, dr⟩ := d
   cases a <;> cases m <;> rcases q with _ | (_ | _ | _) <;> cases r <;> cases s <;> cases dr <;>
-    simp_all [jawab, illaJ, asliJ, ibtidaJ, tartibJ, Amil.tartib, akhass, Rutba.shakhs, maqbulJ, khataJ, laHukmJ]
+    simp_all [jawab, muttasiq, illaJ, asliJ, mithalWasl, ibtidaJ, tartibJ, Amil.tartib, akhass, Rutba.shakhs, maqbulJ, khataJ, laHukmJ]
 
 /-! ## الصلة بـ SLGE -/
 
@@ -335,15 +377,21 @@ theorem damair_rutab :
       | none => false) = true := by
   decide
 
-/-- **الشواهد** (تحليلُ البنّاء لأمثلة النطاق): «أكرمك» و«غلامه» متّصلين مقبولان وفصلُهما خطأ ولو في الضرورة؛ و«أنا» مبتدأً، والمنفصلُ بعد
+/-- **الشواهد** (تحليلُ البنّاء لأمثلة النطاق): «أكرمك» و«غلامه» متّصلين مقبولان وفصلُهما خطأ ولو في الضرورة؛ و«ابني» منفصلًا خطأٌ في الاختيار
+    و«لا حكم» في الضرورة (مثالُه في الألفيّة وحدها)؛ والفعلُ لواحدٍ مع الغائب منفصلًا «لا حكم» (لا مثالَ للوصل فيه)؛ و«أنا» مبتدأً، والمنفصلُ بعد
     «إلا»، «لا حكم»؛ و«سلنيه» و«ظننتكه» و«كنته» و«خلتنيه» بدرجاتها، ومعها **تعميمُ الأخصّيّة** (المتكلّمُ قبل المخاطَب في «ظنّ»، وليس من أمثلة النطاق)؛
-    واتّحادُ الرتبة لعاملين (المفعولين والعامل لواحد)؛ والثاني أخصّ؛ والعاملُ لواحدٍ بعد ضميرٍ أخصّ (تعيين)؛ و«اسم» مع ضميرٍ قبله، والمتّصلُ مبتدأً في
-    الضرورة، «لا حكم». -/
+    واتّحادُ الرتبة لعاملين (المفعولين والعامل لواحد)؛ والثاني أخصّ؛ والعاملُ لواحدٍ بعد ضميرٍ أخصّ (تعيين)؛ و«اسم» مع ضميرٍ قبله، يلي العاملَ أو بعد
+    «إلا»، و«ابتداء» مع عامل، والمتّصلُ مبتدأً في الضرورة، «لا حكم». -/
 theorem shawahid :
     jawab ⟨.filWahid, .yali, none, .mukhatab, .muttasil, false⟩ = maqbulJ [.bila] ∧
     jawab ⟨.filWahid, .yali, none, .mukhatab, .munfasil, false⟩ = khataJ ∧
     jawab ⟨.filWahid, .yali, none, .mukhatab, .munfasil, true⟩ = khataJ ∧
     jawab ⟨.ism, .yali, none, .ghaib, .muttasil, false⟩ = maqbulJ [.bila] ∧
+    jawab ⟨.ism, .yali, none, .ghaib, .munfasil, false⟩ = khataJ ∧
+    jawab ⟨.ism, .yali, none, .ghaib, .munfasil, true⟩ = khataJ ∧
+    jawab ⟨.ism, .yali, none, .mutakallim, .munfasil, false⟩ = khataJ ∧
+    jawab ⟨.ism, .yali, none, .mutakallim, .munfasil, true⟩ = laHukmJ ∧
+    jawab ⟨.filWahid, .yali, none, .ghaib, .munfasil, false⟩ = laHukmJ ∧
     jawab ⟨.laAmil, .ibtida, none, .mutakallim, .munfasil, false⟩ = laHukmJ ∧
     jawab ⟨.filWahid, .badIlla, none, .mukhatab, .munfasil, false⟩ = laHukmJ ∧
     jawab ⟨.filIthnayn, .yali, some .mutakallim, .ghaib, .muttasil, false⟩ = maqbulJ [.rajih, .sawa] ∧
@@ -363,6 +411,8 @@ theorem shawahid :
     jawab ⟨.filWahid, .yali, some .mutakallim, .ghaib, .munfasil, false⟩ = khataJ ∧
     jawab ⟨.filWahid, .yali, some .mutakallim, .ghaib, .munfasil, true⟩ = laHukmJ ∧
     jawab ⟨.ism, .yali, some .ghaib, .ghaib, .muttasil, false⟩ = laHukmJ ∧
+    jawab ⟨.ism, .badIlla, some .ghaib, .ghaib, .muttasil, false⟩ = laHukmJ ∧
+    jawab ⟨.filWahid, .ibtida, none, .mutakallim, .muttasil, false⟩ = laHukmJ ∧
     jawab ⟨.laAmil, .ibtida, none, .mutakallim, .muttasil, true⟩ = laHukmJ := by
   decide
 

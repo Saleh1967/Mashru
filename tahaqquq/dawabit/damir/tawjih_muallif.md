@@ -2,7 +2,7 @@
 
 النصُّ الذي أرسله البنّاء إلى الوكيل المؤلّف، وطابقه بالأداة نصَّ أوّل رسالةٍ في سجلّ الوكيل (أوّلُ طابعٍ فيه 2026-10-27T22:15:51Z، أي 01:15:51 بتوقيت عمّان 2026-10-28؛ وآخرُه 22:35:47Z). وليس من الملفّات المجمَّدة في `tajmid.json`.
 
-text
+```text
 You are the independent case author for a grammar test. You write the expected answers; someone else builds the code later and must not see your cases until their code is frozen. Your independence is the whole point, so follow the reading limits strictly.
 
 READ ONLY these things:
@@ -20,6 +20,7 @@ TASK
 - Also write /tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/damir/mujallad/taalif.md: what you read (files and line ranges), what you did not read, anything the environment injected into your context without you opening it (disclose it fully, e.g. project instructions, memory snapshots, the user's email, attribution instructions, skill lists), and any judgment calls on the key table and on the scope of general statements — but WITHOUT listing case contents, examples or expected values (the builder may see this file before freezing code). If you searched for غموض cases and found none, say so there.
 
 YOUR FINAL REPLY must contain ONLY: the sha256 of cases.json, the total case count, the count per category (موجب/حد/خارج/عموم/غموض), how many are verbatim (mithal_harfi=true), the checker's exit status (and how many broken copies it rejected), and the sha256 of fahs_cases.py and taalif.md. Do NOT include any case, example, list of forms, or expected value in your reply — the builder reads your reply and must stay blind to the gold.
+```
 
 
 ## ما رآه البنّاء من سجلّ المؤلّف قبل دفع الشفرة (بأوقاته من سجلّ جلسة البنّاء)
