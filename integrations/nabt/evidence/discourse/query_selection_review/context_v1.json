@@ -1,6 +1,0 @@
-{
-  "entities": [
-    {"id": "hind", "name": "هند", "gender": "feminine", "number": "singular", "kind": "person"}
-  ],
-  "addressee": "hind"
-}

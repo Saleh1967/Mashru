@@ -36,7 +36,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 JADHR = Path(__file__).resolve().parent.parent
-LAW = JADHR / "integrations" / "nabt" / "src" / "nabt" / "data" / "law.json"
+LAW = JADHR / "jadawil" / "law.json"   # مولَّدٌ من Nabt.Law في Mashru (`lake exe qanunJadwal`)
 LAW_SHA256 = "14e32ae208ac5ed2f754e83506e72133d0962756ef0c944d12370746febddcdd"
 TAHSIL = JADHR / ".lake" / "build" / "bin" / "tahsil"
 NABT_BRIDGE = JADHR / ".lake" / "build" / "bin" / "nabtBridge"
@@ -164,36 +164,19 @@ def qari_tahsil(suwar: list[str]) -> tuple[dict[str, tuple[int, ...]], dict[str,
     return murakhkhas, asbab
 
 
-NABT_RUNNER = JADHR / "scripts" / "nabt.py"
-QIRAA_NABT = """import json
-from nabt.alphabet import parse_word
-from nabt.errors import NabtError
-out = {}
-for s in json.loads(sys.stdin.read()):
-    try:
-        out[s] = {"ok": list(parse_word(s))}
-    except NabtError as e:
-        out[s] = {"sabab": e.status + ":" + e.code}
-print(json.dumps(out, ensure_ascii=False))
-"""
-
-
 def qari_nabt(suwar: list[str]):
-    """قارئُ NABT الصارم (`parse_word`) على اللقطة المفحوصة وحدها: يُشغَّل فاحصُ اللقطة أوّلًا، ثمّ ابنٌ بذاكرة bytecode جديدة وحارسِ
-    أصل الوحدات نفسِه في `scripts/nabt.py` (`run_pinned`)؛ فلا يُستورد NABT في هذه العمليّة، ولا يُقرأ من مسارٍ يعطيه المستدعي."""
+    """قارئُ NABT الصارم (`parse_word`) منقولًا إلى Mashru (`scripts/abjad_nabt.py`، من sonaiso/NABT@3dbe335 بنصّه): لا يُستورد NABT ولا
+    يُشغَّل من لقطةٍ مضمَّنة."""
     import importlib.util
-    spec = importlib.util.spec_from_file_location("mashru_nabt_runner", NABT_RUNNER)
-    runner = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(runner)
-    r = runner.run_pinned(QIRAA_NABT, [], input_text=json.dumps(suwar, ensure_ascii=False))
-    if r.returncode:
-        raise SystemExit("NABT_READER_FAILED: " + r.stderr.strip()[-600:])
+    spec = importlib.util.spec_from_file_location("abjad_nabt", JADHR / "scripts" / "abjad_nabt.py")
+    abjad_nabt = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(abjad_nabt)
     ok, asbab = {}, {}
-    for s, v in json.loads(r.stdout).items():
-        if "ok" in v:
-            ok[s] = tuple(v["ok"])
-        else:
-            asbab[s] = v["sabab"]
+    for s in suwar:
+        try:
+            ok[s] = tuple(abjad_nabt.parse_word(s))
+        except abjad_nabt.NabtError as e:
+            asbab[s] = e.status + ":" + e.code
     return ok, asbab
 
 

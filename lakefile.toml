@@ -1,10 +1,10 @@
 name = "mashru"
 version = "0.1.0"
-defaultTargets = ["SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "faahis", "qari", "tahsil", "nabtBridge"]
+defaultTargets = ["Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "faahis", "qari", "tahsil", "nabtBridge", "qanunJadwal"]
 
-[[require]]
-name = "nabt"
-path = "integrations/nabt/formal"
+[[lean_lib]]
+name = "Nabt"
+globs = ["Nabt", "Nabt.+"]
 
 [[lean_lib]]
 name = "SLGE"
@@ -49,3 +49,7 @@ root = "Qari.Tahsil"
 [[lean_exe]]
 name = "nabtBridge"
 root = "Jisr.NabtExport"
+
+[[lean_exe]]
+name = "qanunJadwal"
+root = "Qari.QanunJadwal"

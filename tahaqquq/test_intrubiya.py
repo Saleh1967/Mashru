@@ -33,7 +33,7 @@ JADHR = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(JADHR / "scripts"))
 import intrubiya as it  # noqa: E402
 
-LAW = JADHR / "integrations" / "nabt" / "src" / "nabt" / "data" / "law.json"
+LAW = JADHR / "jadawil" / "law.json"
 SHAHADA = JADHR / "Jisr" / "IntrubiyaShahada.lean"
 QURAN_SHA = "37633090743d403886b334d12dd911d1994e49767faa9f2be0f01fd48b466c5a"
 
@@ -177,11 +177,11 @@ def main():
     check("فِي: الياءُ حرفُ مدّ ساكن", tm.get("فِي") == (m("ف", 2), m("ي", 3)))
     check("الْحَمْدُ معلَّقٌ بقاعدة همزة الوصل", "الْحَمْدُ" not in tm and "P:قاعدة همزة الوصل" in ta.get("الْحَمْدُ", []))
 
-    # ٦ب — قارئُ NABT عبر اللقطة المفحوصة لا باستيرادٍ في هذه العمليّة
+    # ٦ب — قارئُ NABT الصارم منقولًا إلى Mashru (scripts/abjad_nabt.py)، لا من NABT
     nm, na = it.qari_nabt(["كَتَبَ", "الْحَمْدُ"])
-    check("قارئ NABT عبر run_pinned: كَتَبَ", nm.get("كَتَبَ") == (nb("ك", 0), nb("ت", 0), nb("ب", 0)))
-    check("قارئ NABT عبر run_pinned: المؤجَّل باسمه", na.get("الْحَمْدُ", "").startswith("DEFER:"))
-    check("لا استيرادَ لـnabt في عمليّة الاختبار", "nabt" not in sys.modules and "nabt.alphabet" not in sys.modules)
+    check("قارئ NABT الصارم: كَتَبَ", nm.get("كَتَبَ") == (nb("ك", 0), nb("ت", 0), nb("ب", 0)))
+    check("قارئ NABT الصارم: المؤجَّل باسمه", na.get("الْحَمْدُ") == "DEFER:MISSING_VOCALIZATION")
+    check("لا استيرادَ لحزمة nabt في عمليّة الاختبار", "nabt" not in sys.modules and "nabt.alphabet" not in sys.modules)
 
     # ٧
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf-8") as f:

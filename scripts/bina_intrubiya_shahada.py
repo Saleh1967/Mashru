@@ -14,7 +14,7 @@ from fractions import Fraction
 from pathlib import Path
 
 JADHR = Path(__file__).resolve().parent.parent
-LAW = JADHR / "integrations" / "nabt" / "src" / "nabt" / "data" / "law.json"
+LAW = JADHR / "jadawil" / "law.json"
 OUT = JADHR / "Jisr" / "IntrubiyaShahada.lean"
 DEAD, Q, A = 96, 97, 116
 SCALE = 10 ** 12

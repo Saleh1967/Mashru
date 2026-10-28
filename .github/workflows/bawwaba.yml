@@ -43,7 +43,6 @@ jobs:
           path: |
             ~/.elan
             .lake
-            integrations/nabt/formal/.lake
           key: lean-4.34.1-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'SLGE/**/*.lean') }}
           restore-keys: |
             lean-4.34.1-${{ runner.os }}-
@@ -128,7 +127,6 @@ jobs:
           path: |
             ~/.elan
             .lake
-            integrations/nabt/formal/.lake
           key: lean-4.34.1-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'SLGE/**/*.lean') }}
           restore-keys: |
             lean-4.34.1-${{ runner.os }}-
