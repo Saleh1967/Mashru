@@ -5416,5 +5416,101 @@
   "milaf": "scripts/bina_intrubiya_shahada.py",
   "min": "K = 4 ",
   "ila": "K = 3 "
+ },
+ {
+  "ism": "P1173_qawaid_maan_aw",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "fun s => M.final s.1 && R.final s.2⟩",
+  "ila": "fun s => M.final s.1 || R.final s.2⟩"
+ },
+ {
+  "ism": "P1174_qawaid_bidaya_muhmala",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "| .awwal => if r.bidaya a then .mayyit else .baad (r.awwalSinf a)",
+  "ila": "| .awwal => .baad (r.awwalSinf a)"
+ },
+ {
+  "ism": "P1175_qawaid_mamnu_muhmal",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "| .baad c => if r.mamnu c a then .mayyit else .baad (r.sinf c a)",
+  "ila": "| .baad c => .baad (r.sinf c a)"
+ },
+ {
+  "ism": "P1176_qawaid_mayyit_yaqbal",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "    | .mayyit => false",
+  "ila": "    | .mayyit => true"
+ },
+ {
+  "ism": "P1177_qawaid_tasmah_bila_mamnu",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "| c, b :: ys => !r.mamnu c b && r.tasmahBaad (r.sinf c b) ys",
+  "ila": "| c, b :: ys => r.tasmahBaad (r.sinf c b) ys"
+ },
+ {
+  "ism": "P1178_qawaid_khatima_muhmala_ala",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "    | .baad c => !r.khatima c",
+  "ila": "    | .baad c => true"
+ },
+ {
+  "ism": "P1179_qawaid_khatima_muhmala_wasf",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "| c, [] => !r.khatima c",
+  "ila": "| c, [] => true"
+ },
+ {
+  "ism": "P1180_qawaid_fargh_yamna",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "fun _ _ => 0, fun _ _ => false, fun _ => false, fun _ => false⟩",
+  "ila": "fun _ _ => 0, fun _ _ => true, fun _ => false, fun _ => false⟩"
+ },
+ {
+  "ism": "P1181_qawaid_mahalli_farigh",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "∀ c a, r.sinf c a = r.awwalSinf a",
+  "ila": "∀ c a, r.sinf c a = r.sinf c a"
+ },
+ {
+  "ism": "P1182_qawaid_Tm_bila_khatwa",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "(alphabet.map fun a => f (M.step q a)).sum",
+  "ila": "(alphabet.map fun a => f q).sum"
+ },
+ {
+  "ism": "P1183_qawaid_maan_khatwa",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "fun s a => (M.step s.1 a, R.step s.2 a)",
+  "ila": "fun s a => (M.step s.1 a, s.2)"
+ },
+ {
+  "ism": "P1184_qawaid_sira_thabita",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "xs.foldl r.sinf c",
+  "ila": "c"
+ },
+ {
+  "ism": "P1185_qawaid_awwal_yarudd",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "    | .awwal => true",
+  "ila": "    | .awwal => false"
+ },
+ {
+  "ism": "P1186_qawaid_farigha_tarudd",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "  | [] => true",
+  "ila": "  | [] => false"
+ },
+ {
+  "ism": "P1187_qawaid_fargh_bidaya",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "fun _ => false, fun _ => false⟩",
+  "ila": "fun _ => true, fun _ => false⟩"
+ },
+ {
+  "ism": "P1188_qawaid_fargh_khatima",
+  "milaf": "Jisr/TabaqatQawaid.lean",
+  "min": "fun _ => false, fun _ => false⟩",
+  "ila": "fun _ => false, fun _ => true⟩"
  }
 ]

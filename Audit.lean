@@ -111,6 +111,7 @@ import Nizam.Shahada
 import Dal.Tahsil
 import Dal.QiraaTahsil
 import Jisr.IntrubiyaShahada
+import Jisr.TabaqatQawaid
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2431,3 +2432,28 @@ import Jisr.IntrubiyaShahada
 #print axioms Jisr.Intrubiya.adad_waqf
 #print axioms Jisr.Intrubiya.adad_wasl
 #print axioms Jisr.Intrubiya.wasl_adyaq_3
+
+-- طبقةُ القواعد بين القانون والاستعمال (Jisr/TabaqatQawaid.lean).
+#print axioms Jisr.TabaqatQawaid.run_maan
+#print axioms Jisr.TabaqatQawaid.qabul_maan
+#print axioms Jisr.TabaqatQawaid.length_filter_and_le
+#print axioms Jisr.TabaqatQawaid.adad_maan_le
+#print axioms Jisr.TabaqatQawaid.adad_maan_eq
+#print axioms Jisr.TabaqatQawaid.length_filter_and_eq_iff
+#print axioms Jisr.TabaqatQawaid.adad_maan_eq_iff
+#print axioms Jisr.TabaqatQawaid.mayyit_yabqa
+#print axioms Jisr.TabaqatQawaid.ala_baad
+#print axioms Jisr.TabaqatQawaid.ala_iff
+#print axioms Jisr.TabaqatQawaid.tasmahBaad_mamnu
+#print axioms Jisr.TabaqatQawaid.tasmah_mamnu
+#print axioms Jisr.TabaqatQawaid.sira_mahalli
+#print axioms Jisr.TabaqatQawaid.tasmah_zawj
+#print axioms Jisr.TabaqatQawaid.maan_tasmah
+#print axioms Jisr.TabaqatQawaid.tasmah_ithnan
+#print axioms Jisr.TabaqatQawaid.tasmahBaad_fargh
+#print axioms Jisr.TabaqatQawaid.tasmah_fargh
+#print axioms Jisr.TabaqatQawaid.adad_fargh
+#print axioms Jisr.TabaqatQawaid.hadd_aala_amm
+#print axioms Jisr.TabaqatQawaid.hadd_adna_amm
+#print axioms Jisr.TabaqatQawaid.qanun_qaida_le
+#print axioms Jisr.TabaqatQawaid.qanun_qaida_eq_iff
