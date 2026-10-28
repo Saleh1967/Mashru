@@ -30,6 +30,7 @@
   ٨. جدولُ الربط (P2-أ): يُختم بـ--ribt «وضعًا» فيحمل قيدُه أسطرَه، ويولّد sijill.tsv منها أسطرَ shahid بعد أسطر mudaa كلّها؛
      وبنوعٍ غيرِ «وضع» أو بسطرٍ ناقص الحقول يُرفض (خروج 3) ولا يمسّ السجلّ.
   ٩. قيدُ ربطٍ عُدّلت أسطرُه بعد الختم (قيمةٌ واحدة) يفشل في fahs: الأسطرُ لا تطابق البصمة.
+  ١١. قيدُ ربطٍ نوعُه غيرُ «وضع» يفشل في fahs؛ وإعادةُ ختمٍ بـ--ribt لمودَعٍ مختومٍ بلا أسطر ربطٍ تُرفض (خروج 3) ولا تمسّ السجلّ.
   ١٠. في السجلّ الحقيقيّ: أسطرُ shahid 31، كلُّها بعد آخر mudaa، والسجلُّ المولَّد يطابق المولَّد من scripts/bina_ribt.py (--check).
 التشغيل: python3 -I mudaat/test_idaa.py
 """
@@ -145,6 +146,18 @@ try:
     code, out = run("fahs", "--sijill", sj)
     assert code == 1 and "لا تطابق بصمةَ المودَع" in out, out
     ok += 1
+
+    s[-1]["shawahid"][1][3] = "2"
+    s[-1]["naw"] = "معلومات-سابقة"
+    json.dump({"sijill": s}, open(sj, "w", encoding="utf-8"), ensure_ascii=False)
+    code, out = run("fahs", "--sijill", sj)
+    assert code == 1 and "جدولُ ربطٍ نوعُه غيرُ «وضع»" in out and "لا تطابق" not in out, out
+    s[-1]["naw"] = "وضع"
+    json.dump({"sijill": s}, open(sj, "w", encoding="utf-8"), ensure_ascii=False)
+    before = open(sj, "rb").read()
+    code, out = run("sajjil", f1, "--ism", "شاهد", "--naw", "وضع", "--ribt", "--idhn", "المالك", "--sijill", sj)
+    assert code == 3 and open(sj, "rb").read() == before, out
+    ok += 1
 finally:
     shutil.rmtree(tmp)
 
@@ -156,4 +169,4 @@ p = subprocess.run([sys.executable, "-I", os.path.join(os.path.dirname(HERE), "s
 assert p.returncode == 0 and p.stdout.startswith("مطابق"), p.stdout + p.stderr
 ok += 1
 
-print(f"{ok}/10")
+print(f"{ok}/11")

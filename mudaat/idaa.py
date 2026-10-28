@@ -135,6 +135,9 @@ def main():
                 print(f"مرفوض: البصمة مسجّلة باسم «{m['ism']}»")
                 sys.exit(3)
             if m["sha256"] == b and m["ism"] == ism and m["hala"] == "مختوم":
+                if ("--ribt" in sys.argv) != ("shawahid" in m):
+                    print("مرفوض: مختومٌ بلا أسطر ربط، أو بها؛ لا يُغيَّر قيدٌ مختوم")
+                    sys.exit(3)
                 print("موجود مختومًا؛ لا تغيير")
                 return
         s = [m for m in s if not (m["ism"] == ism and m["sha256"] == b)]

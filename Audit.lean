@@ -2668,4 +2668,5 @@ import Jisr.DamirQiyas
 #print axioms Waqi.Ribt.mafahim_ribt
 #print axioms Waqi.Ribt.maalumat_ribt
 #print axioms Waqi.Ribt.mafhum_mashru
-#print axioms Waqi.Ribt.la_mafhum_bila_khatm_ribt
+#print axioms Waqi.Ribt.la_mafhum_bila_khatm_dafa
+#print axioms Waqi.Ribt.hukm_satr

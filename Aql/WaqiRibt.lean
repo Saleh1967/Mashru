@@ -9,11 +9,11 @@
 
   **الصورة.** تحت أيّ سجلٍّ يختم الدفعةَ «واقعًا» (`makhtum_jadwal`) يكون الحكمُ على قضيّةٍ هو حكمُها على صفوف الدفعة بلا شرط ختم
   (`hukm_jadwal`). فعلى أسطر الربط الواحد والثلاثين: عشرةُ معانٍ «مفهوم» وأربعةٌ «معلومة» (`mafahim_ribt`، `maalumat_ribt`)، ومعنى
-  الصفّ الأوّل («Mashru») مفهومٌ بقياس «معرّف الإيداع المرصود» (`mafhum_mashru`)؛ وبلا ختمٍ لا مفهوم (`la_mafhum_bila_khatm_ribt`،
-  من `Waqi.la_mafhum_bila_khatm`).
+  الصفّ الأوّل («Mashru») مفهومٌ بقياس «معرّف الإيداع المرصود» (`mafhum_mashru`)؛ وحكمُ السطر هو `Waqi.hukm` تحت كلّ سجلٍّ يختم الدفعة
+  (`hukm_satr`)؛ وبلا ختم الدفعة لا مفهوم (`la_mafhum_bila_khatm_dafa`، من `Waqi.la_mafhum_bila_khatm`).
 
   **حدُّه.** أنّ `Faahis.shuhudBina` على `tahmil sijillMakhtum` يمرّر هذه الأسطرَ بعينها وهذا السجلّ مفحوصٌ بالتشغيل
-  (`mawsua/test_mawsua.py` §١٩) لا مبرهن: تحليلُ أسطر السجلّ في النواة لا يُحسب هنا. والربطُ (أيُّ قضيّةٍ واقعُ أيِّ معنى) تعيينٌ
+  (`mawsua/test_mawsua.py` §١٩) لا مبرهن: تحليلُ أسطر السجلّ في النواة لا يُحسب هنا؛ وكذلك أنّ حذفَ أسطر الربط يُسقط المفهوم. والربطُ (أيُّ قضيّةٍ واقعُ أيِّ معنى) تعيينٌ
   مختومٌ لا يُبرهن.
 -/
 import Aql.WaqiJadwal
@@ -47,10 +47,16 @@ theorem hukm_jadwal (sijill : List (String × Idaa.Naw)) (hs : (Jadwal.basma, Id
     simp [makhtuma, makhtum_jadwal sijill hs]
   simp only [hukm, this]
 
-/-- حكمُ الربط: حكمُ قضيّة السطر على الدفعة (تحت السجلّ الذي يختمها، بـ`hukm_jadwal`). -/
+/-- حكمُ السطر: حكمُ قضيّته على صفوف الدفعة بلا شرط ختم؛ وهو حكمُها تحت كلّ سجلٍّ يختم الدفعة (`hukm_satr`). -/
 def hukmSatr (r : String × String × String × String) : Hukm :=
   let l := mutabiq Jadwal.jadwal r.2.1 r.2.2.1 r.2.2.2
   if fiihiQiyas l || tawatur l then .mafhum else if l.isEmpty then .laHukm else .maaluma
+
+/-- **حكمُ السطر هو حكمُ `Waqi.hukm`** تحت كلّ سجلٍّ يختم الدفعة. -/
+theorem hukm_satr (sijill : List (String × Idaa.Naw)) (hs : (Jadwal.basma, Idaa.Naw.waqiMakhtum) ∈ sijill)
+    (r : String × String × String × String) :
+    hukm sijill (fun _ => Jadwal.basma) Jadwal.jadwal r.2.1 r.2.2.1 r.2.2.2 = hukmSatr r := by
+  rw [hukm_jadwal sijill hs]; rfl
 
 /-- معنى الصفّ `i` (برقمه نصًّا) من جدول التعريفات كما يسمّيه الجدول. -/
 def maana (i : String) : String := "ما عرّفه جدول التعريفات في صفّه " ++ i
@@ -59,17 +65,17 @@ def maana (i : String) : String := "ما عرّفه جدول التعريفات 
 def mafahim : List String :=
   ((ribt.filter fun r => hukmSatr r == .mafhum).map (·.1)).eraseDups
 
-/-- **المعاني المعلومة**: ما له سطرٌ وليس مفهومًا. -/
+/-- **المعاني المعلومة**: ما كلُّ سطرٍ له في الجدول حكمُه «معلومة». -/
 def maalumat : List String :=
-  ((ribt.map (·.1)).eraseDups).filter fun m => !mafahim.contains m
+  ((ribt.map (·.1)).eraseDups).filter fun m => (ribt.filter (·.1 == m)).all fun r => hukmSatr r == .maaluma
 
 set_option maxRecDepth 100000 in
-/-- **عشرةُ معانٍ مفهومة** على الجدول المختوم (على الشاهد). -/
+/-- **عشرةُ معانٍ مفهومة** بأسطر الجدول (على الشاهد؛ وتحت كلّ سجلٍّ يختم الدفعة بـ`hukm_satr`). -/
 theorem mafahim_ribt : mafahim = ["1", "8", "9", "12", "13", "14", "18", "20", "21", "22"].map maana := by
   simp [mafahim, ribt, hukmSatr, mutabiq, Jadwal.jadwal, fiihiQiyas, tawatur, maana, List.eraseDups_cons]
 
 set_option maxRecDepth 100000 in
-/-- **وأربعةٌ معلومة**: كلُّ قضاياها رواياتٌ من مصدرٍ واحد (على الشاهد). -/
+/-- **وأربعةٌ معلومة**: كلُّ أسطرها «معلومة» (على الشاهد). وأنّ قضاياها رواياتٌ من مصدرٍ واحد قراءةُ صفوف الدفعة، لا تقولها المبرهنة. -/
 theorem maalumat_ribt : maalumat = ["11", "15", "16", "17"].map maana := by
   simp [maalumat, mafahim, ribt, hukmSatr, mutabiq, Jadwal.jadwal, fiihiQiyas, tawatur, maana, List.eraseDups_cons]
 
@@ -85,8 +91,9 @@ theorem mafhum_mashru (sijill : List (String × Idaa.Naw)) (hs : (Jadwal.basma, 
       "2608833b25594379e87b580878ab7556b42c18ad", .qiyas⟩
     (by unfold Jadwal.jadwal; exact List.Mem.tail _ (List.Mem.head _)) rfl (makhtum_jadwal sijill hs)
 
-/-- **وبلا ختمٍ لا مفهوم** لأيّ سطرٍ من الجدول: الربطُ وحده لا يرفع. -/
-theorem la_mafhum_bila_khatm_ribt (sijill : List (String × Idaa.Naw)) (hs : ∀ e ∈ sijill, e.2 ≠ .waqiMakhtum)
+/-- **وبلا ختمِ الدفعة لا مفهوم** لأيّ قضيّةٍ عليها (`Waqi.la_mafhum_bila_khatm` على هذه الدفعة). وختمُ جدول الربط نفسِه لا يمثّله Lean:
+    أنّ حذفَ أسطره من السجلّ يُسقط المفهومَ مفحوصٌ (`mawsua/test_mawsua.py` §١٩). -/
+theorem la_mafhum_bila_khatm_dafa (sijill : List (String × Idaa.Naw)) (hs : ∀ e ∈ sijill, e.2 ≠ .waqiMakhtum)
     (r : String × String × String × String) :
     hukm sijill (fun _ => Jadwal.basma) Jadwal.jadwal r.2.1 r.2.2.1 r.2.2.2 ≠ .mafhum :=
   la_mafhum_bila_khatm sijill hs _ _ _ _ _

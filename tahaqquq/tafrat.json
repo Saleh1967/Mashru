@@ -7564,5 +7564,17 @@
   "milaf": "mawsua/makhzan_waqi.tsv",
   "min": "asl\twad:Mashru:ما عرّفه جدول التعريفات في صفّه 1\tتقدير\t74cbcf139ae6@2",
   "ila": "asl\twad:Mashru:ما عرّفه جدول التعريفات في صفّه 1\tتقدير\t74cbcf139ae7@2"
+ },
+ {
+  "ism": "P1363_ribt_naw_ghayr_wad_fi_fahs",
+  "milaf": "mudaat/idaa.py",
+  "min": "            if m.get(\"naw\") != \"وضع\":\n",
+  "ila": "            if False:\n"
+ },
+ {
+  "ism": "P1364_ribt_iadat_khatm_bila_ashtur",
+  "milaf": "mudaat/idaa.py",
+  "min": "if (\"--ribt\" in sys.argv) != (\"shawahid\" in m):",
+  "ila": "if False:"
  }
 ]
