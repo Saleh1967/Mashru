@@ -5242,5 +5242,107 @@
   "milaf": "Nizam/Shahada.lean",
   "min": "  else [madkhalGhaib]",
   "ila": "  else []"
+ },
+ {
+  "ism": "P930_intrubiya_off_zaid",
+  "milaf": "Jisr/Intrubiya.lean",
+  "min": "  | n + 1 => 116 * off n + 1",
+  "ila": "  | n + 1 => 116 * off n + 2"
+ },
+ {
+  "ism": "P931_intrubiya_lawVec_asas",
+  "milaf": "Jisr/Intrubiya.lean",
+  "min": "(List.range 97).map fun q => if (machine mode).final q then 1 else 0",
+  "ila": "(List.range 97).map fun q => if (machine mode).final q then 1 else 1"
+ },
+ {
+  "ism": "P932_intrubiya_lawVec_bidaya",
+  "milaf": "Jisr/Intrubiya.lean",
+  "min": "v.getD (step q a) 0",
+  "ila": "v.getD (step 0 a) 0"
+ },
+ {
+  "ism": "P933_intrubiya_lenCount_maqlub",
+  "milaf": "Jisr/Intrubiya.lean",
+  "min": "  | 0, q => if M.final q then 1 else 0",
+  "ila": "  | 0, q => if M.final q then 0 else 1"
+ },
+ {
+  "ism": "P934_intrubiya_T_bidaya",
+  "milaf": "Jisr/Intrubiya.lean",
+  "min": "def T (f : Nat → Nat) (q : Nat) : Nat := (alphabet.map fun a => f (step q a)).sum",
+  "ila": "def T (f : Nat → Nat) (q : Nat) : Nat := (alphabet.map fun a => f (step 0 a)).sum"
+ },
+ {
+  "ism": "P935_intrubiya_slge_izaha",
+  "milaf": "Jisr/Intrubiya.lean",
+  "min": "rawStep q.val a.val = SLGE.Law.δ q.val a.val",
+  "ila": "rawStep q.val a.val = SLGE.Law.δ q.val (a.val + 1)"
+ },
+ {
+  "ism": "P936_shahada_adad_3",
+  "milaf": "Jisr/IntrubiyaShahada.lean",
+  "min": "lawCount false 3 = 1052128",
+  "ila": "lawCount false 3 = 1052129"
+ },
+ {
+  "ism": "P937_shahada_P_adna",
+  "milaf": "Jisr/IntrubiyaShahada.lean",
+  "min": "10000 * T fV q.val ≤ 1057244 * fV q.val",
+  "ila": "10000 * T fV q.val ≤ 1057243 * fV q.val"
+ },
+ {
+  "ism": "P938_intrubiya_py_bila_naql",
+  "milaf": "scripts/intrubiya.py",
+  "min": "kalimat_t.extend([tuple(naql[x] for x in tahsil_m[s])] * c)",
+  "ila": "kalimat_t.extend([tuple(tahsil_m[s])] * c)"
+ },
+ {
+  "ism": "P939_intrubiya_py_mm_naqis",
+  "milaf": "scripts/intrubiya.py",
+  "min": "return H(counter) + ((k - 1)",
+  "ila": "return H(counter) - ((k - 1)"
+ },
+ {
+  "ism": "P940_intrubiya_py_wasl_waqf",
+  "milaf": "scripts/intrubiya.py",
+  "min": "v = [1 if self.final[wasl][q]",
+  "ila": "v = [1 if self.final[not wasl][q]"
+ },
+ {
+  "ism": "P941_intrubiya_py_ghiyab_imtina",
+  "milaf": "scripts/intrubiya.py",
+  "min": "\"مرخَّص_مشهود\" if seen[a] else \"مرخَّص_غير_مشهود\"",
+  "ila": "\"مرخَّص_مشهود\" if seen[a] else \"ممتنع_بالقانون\""
+ },
+ {
+  "ism": "P942_intrubiya_py_bila_taarud",
+  "milaf": "scripts/intrubiya.py",
+  "min": "cat = \"تعارض\" if taarud[(q, a)] else \"ممتنع_بالقانون\"",
+  "ila": "cat = \"ممتنع_بالقانون\""
+ },
+ {
+  "ism": "P943_intrubiya_py_I_maqlub",
+  "milaf": "scripts/intrubiya.py",
+  "min": "\"I_hamil_hala\": H(car) + H(mark) - H(joint)",
+  "ila": "\"I_hamil_hala\": H(joint) - H(car) - H(mark)"
+ },
+ {
+  "ism": "P944_intrubiya_py_bila_basma",
+  "milaf": "scripts/intrubiya.py",
+  "min": "if basma(mudaa) != basma_mutawaqqaa:",
+  "ila": "if False:"
+ },
+ {
+  "ism": "P945_intrubiya_py_kull_kalima",
+  "milaf": "scripts/intrubiya.py",
+  "min": "elif f[1] == \"K\" and f[4] == \"1\":",
+  "ila": "elif f[1] == \"K\":"
+ },
+ {
+  "ism": "P946_intrubiya_shahada_K",
+  "milaf": "scripts/bina_intrubiya_shahada.py",
+  "min": "K = 4 ",
+  "ila": "K = 3 "
  }
 ]

@@ -21,6 +21,13 @@ import SLGE.Law
 - **الحدّان المبرهنان لمعدّل النموّ:** شهادةُ متّجهٍ موجب (`hadd_aala`، `hadd_adna`): إن كان `d·Tv ≤ p·v` فـ`d^n·N_n ≤ c·p^n·v₀`، وإن
   كان `r·u ≤ s·Tu` فـ`e·r^n·u₀ ≤ s^n·N_(k+n)`. والشهادةُ المعيّنة على القانون في `Jisr/IntrubiyaShahada.lean`.
 
+- **القانونُ المعدودُ قانونُ Mashru:** انتقالُ NABT وكلفتُه ونهايتاه هي `SLGE.Law` بعينها (`qanun_nabt_huwa_slge`، `kulfa_nabt_huwa_slge`،
+  `nihaya_nabt_huwa_slge`)، وترتيبُ `Dal` ترتيبُ SLGE (`tartib_dal_huwa_slge`)؛ فالآلةُ على خلايا Mashru هي `SLGE.Law.δ` على `Dal.n`
+  (`alaMashru_step`).
+
+**المبرهنات** (30، بالمعيار الموحَّد في `Nizam/Asas.lean`): لكلّ 24؛ تعريفيّة 1 (`lenCount_succ`)؛ على الشاهد 5 (`naql_tabdil`،
+`qanun_nabt_huwa_slge`، `kulfa_nabt_huwa_slge`، `nihaya_nabt_huwa_slge`، `tartib_dal_huwa_slge`: decide على جداول منتهية).
+
 **ما لا تقوله.** أنّ المرخَّص كلمةٌ عربيّةٌ مشهودة، أو أنّ للّغة توزيعًا ما؛ ولا تصل بالمحرّك.
 -/
 
@@ -271,18 +278,18 @@ theorem hadd_aala (mode : Bool) (v : Nat → Nat) (c p d : Nat)
         c * p ^ n * v (step q a) := fun a _ => hadd_aala mode v c p d hv hf n _ (state_closed ⟨q, hq⟩ a)
     have h1 : d ^ (n + 1) * lenCount (machine mode) alphabet (n + 1) q =
         d * (alphabet.map fun a => d ^ n * lenCount (machine mode) alphabet n (step q a)).sum := by
-      rw [lenCount_succ, T, sum_map_mul, Nat.pow_succ]
-      simp only [machine]
-      ac_rfl
-    have h2 := sum_map_le alphabet _ _ ih
-    rw [sum_map_mul] at h2
+      rw [lenCount_succ, T, sum_map_mul, Nat.pow_succ, Nat.mul_comm (d ^ n) d, Nat.mul_assoc]
+    have h2 : (alphabet.map fun a => d ^ n * lenCount (machine mode) alphabet n (step q a)).sum ≤
+        c * p ^ n * T v q := by
+      rw [T, ← sum_map_mul]
+      exact sum_map_le alphabet _ _ ih
     have h3 := hv q hq
     rw [h1]
     calc d * (alphabet.map fun a => d ^ n * lenCount (machine mode) alphabet n (step q a)).sum
         ≤ d * (c * p ^ n * T v q) := Nat.mul_le_mul_left _ h2
-      _ = c * p ^ n * (d * T v q) := by ac_rfl
+      _ = c * p ^ n * (d * T v q) := Nat.mul_left_comm _ _ _
       _ ≤ c * p ^ n * (p * v q) := Nat.mul_le_mul_left _ h3
-      _ = c * p ^ (n + 1) * v q := by rw [Nat.pow_succ]; ac_rfl
+      _ = c * p ^ (n + 1) * v q := by rw [Nat.pow_succ]; simp only [Nat.mul_assoc]
 
 /-- **الحدُّ الأدنى:** إن كان `r·u ≤ s·Tu` وكان `e·u ≤ N_k`، فـ`e·r^n·u(q) ≤ s^n·N_(k+n)(q)`. -/
 theorem hadd_adna (mode : Bool) (u : Nat → Nat) (k r s e : Nat)
@@ -294,20 +301,47 @@ theorem hadd_adna (mode : Bool) (u : Nat → Nat) (k r s e : Nat)
     have ih : ∀ a ∈ alphabet, e * r ^ n * u (step q a) ≤
         s ^ n * lenCount (machine mode) alphabet (k + n) (step q a) :=
       fun a _ => hadd_adna mode u k r s e hu hb n _ (state_closed ⟨q, hq⟩ a)
-    have h2 := sum_map_le alphabet _ _ ih
-    rw [sum_map_mul, sum_map_mul] at h2
+    have h2 : e * r ^ n * T u q ≤
+        s ^ n * (alphabet.map fun a => lenCount (machine mode) alphabet (k + n) (step q a)).sum := by
+      rw [T, ← sum_map_mul, ← sum_map_mul]
+      exact sum_map_le alphabet _ _ ih
     have h3 := hu q hq
     have h1 : s ^ (n + 1) * lenCount (machine mode) alphabet (k + (n + 1)) q =
         s * (s ^ n * (alphabet.map fun a => lenCount (machine mode) alphabet (k + n) (step q a)).sum) := by
-      rw [← Nat.add_assoc, lenCount_succ, T, Nat.pow_succ]
-      simp only [machine]
-      ac_rfl
+      rw [← Nat.add_assoc, lenCount_succ, T, Nat.pow_succ, Nat.mul_comm (s ^ n) s, Nat.mul_assoc]
     rw [h1]
-    calc e * r ^ (n + 1) * u q = e * r ^ n * (r * u q) := by rw [Nat.pow_succ]; ac_rfl
+    calc e * r ^ (n + 1) * u q = e * r ^ n * (r * u q) := by
+          rw [Nat.pow_succ]; simp only [Nat.mul_assoc]
       _ ≤ e * r ^ n * (s * T u q) := Nat.mul_le_mul_left _ h3
-      _ = s * (e * r ^ n * T u q) := by ac_rfl
-      _ ≤ s * (s ^ n * (alphabet.map fun a => lenCount (machine mode) alphabet (k + n) (step q a)).sum) := by
-          apply Nat.mul_le_mul_left
-          simpa [T] using h2
+      _ = s * (e * r ^ n * T u q) := Nat.mul_left_comm _ _ _
+      _ ≤ s * (s ^ n * (alphabet.map fun a => lenCount (machine mode) alphabet (k + n) (step q a)).sum) :=
+          Nat.mul_le_mul_left _ h2
+
+/-! ## ٨. القانونُ المعدودُ هو قانونُ Mashru نفسُه (`SLGE.Law`) -/
+
+/-- انتقالُ NABT هو `SLGE.Law.δ` على كلّ حالةٍ ورمزٍ (ومنه رمزُ الحدّ 116)، على الجدول المنتهي. -/
+theorem qanun_nabt_huwa_slge : ∀ q : Fin 97, ∀ a : Fin 117, rawStep q.val a.val = SLGE.Law.δ q.val a.val := by
+  decide +kernel
+
+theorem kulfa_nabt_huwa_slge : ∀ q : Fin 97, ∀ a : Fin 117, rawCost q.val a.val = SLGE.Law.ω q.val a.val := by
+  decide +kernel
+
+theorem nihaya_nabt_huwa_slge : ∀ q : Fin 97,
+    finalWaqf q.val = SLGE.Law.Fwaqf q.val ∧ finalWasl q.val = SLGE.Law.Fwasl q.val := by
+  decide +kernel
+
+/-- ترتيبُ خلايا Mashru (`Dal.n`، جدولُ المخارج) هو ترتيبُ SLGE: الجسرُ إلى NABT ثمّ تبديلُه إلى SLGE هويّة. -/
+theorem tartib_dal_huwa_slge : ∀ m : Fin 116,
+    toSlge (Jisr.NabtBridge.cellToNabt (Dal.fakk m)).val = m.val := by
+  decide +kernel
+
+/-- **فالآلةُ المعدودة على خلايا Mashru هي `SLGE.Law.δ` على `Dal.n`:** ما تعدّه `lawCount` عددُ كلمات قانون Mashru. -/
+theorem alaMashru_step (mode : Bool) (q : Nat) (hq : q < 97) (k : Dal.Khaliya) :
+    (alaMashru mode).step q k = SLGE.Law.δ q (Dal.n k).val := by
+  have ht := tartib_dal_huwa_slge (Dal.n k)
+  rw [Dal.fakk_n] at ht
+  show rawStep q (toSlge (Jisr.NabtBridge.cellToNabt k).val) = _
+  rw [ht]
+  exact qanun_nabt_huwa_slge ⟨q, hq⟩ ⟨(Dal.n k).val, by have := (Dal.n k).isLt; omega⟩
 
 end Jisr.Intrubiya

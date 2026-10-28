@@ -109,6 +109,7 @@ import SLGE.Syllable
 import Madlul.TasisDalala
 import Nizam.Shahada
 import Dal.Tahsil
+import Jisr.IntrubiyaShahada
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2368,3 +2369,44 @@ import Dal.Tahsil
 #print axioms Dal.Tahsil.shahid_kataba
 #print axioms Dal.Tahsil.shahid_shams
 #print axioms Dal.Tahsil.shahid_muallaq
+
+-- هيكلُ الإنتروبيا على الشيفرة (Jisr/Intrubiya.lean، Jisr/IntrubiyaShahada.lean).
+#print axioms Jisr.Intrubiya.sum_replicate
+#print axioms Jisr.Intrubiya.sum_map_le
+#print axioms Jisr.Intrubiya.sum_map_mul
+#print axioms Jisr.Intrubiya.sum_perm
+#print axioms Jisr.Intrubiya.exactWords_length
+#print axioms Jisr.Intrubiya.mem_exactWords
+#print axioms Jisr.Intrubiya.lenCount_eq_spec
+#print axioms Jisr.Intrubiya.lenCount_le
+#print axioms Jisr.Intrubiya.lenCount_naql
+#print axioms Jisr.Intrubiya.lenCount_perm
+#print axioms Jisr.Intrubiya.off_succ_sub
+#print axioms Jisr.Intrubiya.little_bounds
+#print axioms Jisr.Intrubiya.encode_bounds
+#print axioms Jisr.Intrubiya.off_mono
+#print axioms Jisr.Intrubiya.decode_length
+#print axioms Jisr.Intrubiya.qanatan
+#print axioms Jisr.Intrubiya.lawVec_length
+#print axioms Jisr.Intrubiya.lawVec_eq
+#print axioms Jisr.Intrubiya.lawCount_eq
+#print axioms Jisr.Intrubiya.lawCount_le
+#print axioms Jisr.Intrubiya.naql_tabdil
+#print axioms Jisr.Intrubiya.intrubiya_la_tataghayyar_bil_tamthil
+#print axioms Jisr.Intrubiya.lenCount_succ
+#print axioms Jisr.Intrubiya.hadd_aala
+#print axioms Jisr.Intrubiya.hadd_adna
+#print axioms Jisr.Intrubiya.qanun_nabt_huwa_slge
+#print axioms Jisr.Intrubiya.kulfa_nabt_huwa_slge
+#print axioms Jisr.Intrubiya.nihaya_nabt_huwa_slge
+#print axioms Jisr.Intrubiya.tartib_dal_huwa_slge
+#print axioms Jisr.Intrubiya.alaMashru_step
+#print axioms Jisr.Intrubiya.shahadaV_T
+#print axioms Jisr.Intrubiya.shahadaV_final
+#print axioms Jisr.Intrubiya.shahadaU_T
+#print axioms Jisr.Intrubiya.shahadaU_qaida
+#print axioms Jisr.Intrubiya.lawCount_aala
+#print axioms Jisr.Intrubiya.lawCount_adna
+#print axioms Jisr.Intrubiya.adad_waqf
+#print axioms Jisr.Intrubiya.adad_wasl
+#print axioms Jisr.Intrubiya.wasl_adyaq_3
