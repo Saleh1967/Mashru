@@ -37,6 +37,7 @@ import Aql.Idaa
 import Aql.QawaninDalala
 import Aql.Maratib
 import Aql.WaqiJadwal
+import Faahis.SijillMakhtum
 
 open Qaida Mawsua QawaninDalala Maratib
 
@@ -366,6 +367,20 @@ theorem tahmil_shawahid (sijill muhtawa : List String) :
 theorem bila_sijill_la_mudaa (muhtawa : List String) : (tahmil [] muhtawa).mudaat = #[] := by
   rw [tahmil_mudaat]; rfl
 
+/-! ### السجلُّ المعتمد (الحزمة P1-ج)
+
+  كان السجلُّ هو الملفّ الذي يمرّره المستدعي أوّلًا، بلا فحصٍ أنّه `mudaat/sijill.tsv` المختوم: فسجلٌّ آخر يمنح سلطته. فصار يُطابَق بأسطر
+  `sijillMakhtum` (مولَّدٌ منه، `scripts/bina_sijill_makhtum.py --check`)، وغيرُه خطأُ تحميلٍ باسمه إلّا بـ`--ikhtibar` معلَنًا في الاستدعاء
+  (سجلّاتُ الاختبار). -/
+
+def khataSijillGhayrMutamad : String :=
+  "السجلّ ليس سجلَّ المودَعات المختوم (mudaat/sijill.tsv): السلطةُ للمعتمد وحده، أو --ikhtibar معلَنًا"
+
+/-- التحميلُ بالسجلّ المعتمد: `tahmil` بعينه، ومعه خطأٌ باسمه إن خالف السجلُّ المعتمدَ ولم يُعلَن الاختبار. -/
+def tahmilMutamad (ikhtibar : Bool) (sijill muhtawa : List String) : Hal :=
+  let h := tahmil sijill muhtawa
+  if ikhtibar || sijill == sijillMakhtum then h else { h with akhta := h.akhta.push khataSijillGhayrMutamad }
+
 /-- ما يُسلَّم إلى الواجهات: الحالُ إن خلت من أخطاء التحميل، وإلّا الأخطاءُ بأسمائها — وخطأُ التحميل غيرُ «لا حكم». -/
 def muhaqqaq (h : Hal) : Except (Array String) Hal :=
   if h.akhta.isEmpty then .ok h else .error h.akhta
@@ -376,6 +391,22 @@ theorem muhaqqaq_salim (h h' : Hal) (hk : muhaqqaq h = .ok h') : h' = h ∧ h.ak
   split at hk
   · rename_i he; cases hk; exact ⟨rfl, Array.isEmpty_iff.mp he⟩
   · cases hk
+
+/-- **لا تُسلَّم حالٌ بسجلٍّ غيرِ معتمد** إلّا بالاختبار المعلَن: إن سلّم `muhaqqaq` حالَ `tahmilMutamad false` فالسجلُّ هو المختومُ بأسطره،
+    والحالُ حالُ `tahmil` نفسِها. -/
+theorem mutamad_salim (sijill muhtawa : List String) (h : Hal) (hk : muhaqqaq (tahmilMutamad false sijill muhtawa) = .ok h) :
+    sijill = sijillMakhtum ∧ h = tahmil sijill muhtawa := by
+  unfold tahmilMutamad at hk
+  by_cases he : (sijill == sijillMakhtum) = true
+  · rw [if_pos (by simp [he])] at hk
+    exact ⟨by simpa using he, (muhaqqaq_salim _ _ hk).1⟩
+  · rw [if_neg (by simpa using he)] at hk
+    have := (muhaqqaq_salim _ _ hk).2
+    simp [Array.push] at this
+
+/-- **والاختبارُ المعلَن لا يزيد على `tahmil`**: هو هو. -/
+theorem ikhtibar_tahmil (sijill muhtawa : List String) : tahmilMutamad true sijill muhtawa = tahmil sijill muhtawa := by
+  simp [tahmilMutamad]
 
 /-! ## البناء -/
 

@@ -1640,6 +1640,9 @@ import Jisr.DamirQiyas
 #print axioms tahmil_shawahid
 #print axioms bina_shuhud
 #print axioms shuhud_saff
+-- السجلُّ المعتمد (Faahis/Lib.lean؛ خطّة الإطلاق P1-ج)
+#print axioms mutamad_salim
+#print axioms ikhtibar_tahmil
 -- س1 (قولُ المالك 2026-10-24، 18:07): التنفيذُ السريع مكافئٌ للفاحص — القوانينُ مصفوفةً والأصولُ جدولًا، والقبولُ والمخزنُ والأصلُ هي هي
 #print axioms Qaida.tatbiqA_eq
 #print axioms Qaida.fahsA_eq

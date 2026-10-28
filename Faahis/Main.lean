@@ -6,9 +6,14 @@
 import Faahis.Lib
 
 def istimal : String :=
-  "الاستعمال: faahis <سجلّ المودَعات> <ملفّ المحتوى>…  |  faahis --sual <بادئة> <سجلّ المودَعات> <ملفّ المحتوى>…"
+  "الاستعمال: faahis [--ikhtibar] <سجلّ المودَعات> <ملفّ المحتوى>…  |  faahis [--ikhtibar] --sual <بادئة> <سجلّ المودَعات> <ملفّ المحتوى>…"
 
-def main (args : List String) : IO UInt32 := do
+def main (args0 : List String) : IO UInt32 := do
+  -- السجلُّ المعتمد (P1-ج): غيرُ `mudaat/sijill.tsv` المختوم خطأُ تحميلٍ إلّا بـ`--ikhtibar` معلَنًا (`tahmilMutamad`، `mutamad_salim`).
+  let (ikhtibar, args) := match args0 with
+    | "--ikhtibar" :: r => (true, r)
+    | r => (false, r)
+  if ikhtibar then IO.eprintln "سجلُّ اختبار (--ikhtibar): السلطةُ غيرُ السجلّ المختوم"
   let (sual?, badia, paths) := match args with
     | "--sual" :: b :: ps => (true, b, ps)
     | ps => (false, "", ps)
@@ -17,7 +22,7 @@ def main (args : List String) : IO UInt32 := do
     let sijill ← IO.FS.lines sj
     let mut muhtawa : Array String := #[]
     for p in ps do muhtawa := muhtawa ++ (← IO.FS.lines p)
-    let h := tahmil sijill.toList muhtawa.toList
+    let h := tahmilMutamad ikhtibar sijill.toList muhtawa.toList
     if sual? then
       match muhaqqaq h with
       | .error e =>

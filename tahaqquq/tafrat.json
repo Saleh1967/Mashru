@@ -7504,5 +7504,29 @@
   "milaf": "Faahis/Lib.lean",
   "min": "      if raas line == \"mudaa\" || raas line == \"shahid\" then qira h n line",
   "ila": "      if raas line == \"mudaa\" then qira h n line"
+ },
+ {
+  "ism": "P1353_mutamad_kull_sijill",
+  "milaf": "Faahis/Lib.lean",
+  "min": "  if ikhtibar || sijill == sijillMakhtum then h else",
+  "ila": "  if true then h else"
+ },
+ {
+  "ism": "P1354_faahis_ikhtibar_daiman",
+  "milaf": "Faahis/Main.lean",
+  "min": "    let h := tahmilMutamad ikhtibar sijill.toList",
+  "ila": "    let h := tahmilMutamad true sijill.toList"
+ },
+ {
+  "ism": "P1355_qari_ikhtibar_daiman",
+  "milaf": "Qari/Main.lean",
+  "min": "    let h := tahmilMutamad ikhtibar (← IO.FS.lines sijill)",
+  "ila": "    let h := tahmilMutamad true (← IO.FS.lines sijill)"
+ },
+ {
+  "ism": "P1356_sijill_makhtum_mukhtalaf",
+  "milaf": "Faahis/SijillMakhtum.lean",
+  "min": "\\tمعلومات-سابقة\\tالمخصص\"",
+  "ila": "\\tمعلومات-سابقة\\tالمخصّص\""
  }
 ]
