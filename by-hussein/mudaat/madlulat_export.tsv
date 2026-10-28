@@ -1,0 +1,4 @@
+key	surface	ism_lean	status	haqiqa	tim	ind	qism	qabiliyyat	sanad_ref	imda
+كتب	كَتَبَ	kataba_m	RATIFIED	1001	True	True			{"qawl": null, "sanad_claim": null}	{"man": "DR_HUSSEIN", "tarikh": "2026-10-26"}
+طالب	الطَّالِبُ	talib_m	RATIFIED	1002	False	True		1001	{"qawl": null, "sanad_claim": null}	{"man": "DR_HUSSEIN", "tarikh": "2026-10-26"}
+درس	الدَّرْسَ	dars_m	RATIFIED	1003	False	True			{"qawl": "mutabaqa:الدرس:أثر", "sanad_claim": "المخزن (Mashru) باللفظ «الدرس»: 1 قول ؛ الأوّل: mutabaqa:الدرس:أثر — سند 936c68e0c2c6@2896932/PageV03P300/الدرس/قائل:صاحب العين"}	{"man": "DR_HUSSEIN", "tarikh": "2026-10-26"}

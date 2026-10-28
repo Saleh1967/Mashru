@@ -147,18 +147,130 @@ def gen_mudaat_lean(doc, mashru_root):
     return '\n'.join(L)
 
 
+# ================================ v7: D6-ب + D7 + قناة الإيداع ================================
+def _ajnas_rows():
+    p = HERE.parent.parent.parent / 'mawsua' / 'ajnas_mukhassas.tsv'   # mashru/mawsua/
+    if not p.exists():
+        return []
+    return [l.rstrip('\n').split('\t') for l in p.read_text(encoding='utf-8').splitlines()[1:]]
+
+
+def _mukhassas_sha():
+    sj = HERE.parent.parent.parent / 'mudaat' / 'sijill.json'          # mashru/mudaat/sijill.json
+    try:
+        for e in (json.loads(sj.read_text(encoding='utf-8')).get('sijill') or []):
+            if 'مخصص' in e.get('ism', '') or 'مخصّص' in e.get('ism', ''):
+                return e.get('sha256')
+    except Exception:
+        return None
+    return None
+
+
+def _ajnas_ref(surface_key, rows, sha):
+    """مرجع المخصّص (لا نصّ): sinf/satr حيث يرد اللفظُ في عنوان ؛ وإلّا None."""
+    hits = [(r[0], r[1]) for r in rows if len(r) >= 3 and surface_key in r[2]]
+    if not hits:
+        return None
+    sinf, satr = hits[0]
+    return {'masdar': 'مخصص', 'sha': sha, 'sinf': sinf, 'satr': satr, 'count': len(hits)}
+
+
+def prep_v7(surfaces, existing, hfn, imda_sha, imda_date, mashru_root):
+    """التصنيف السباعيّ (sealed) ثمّ كتابة mudaat.json بالمراجع فقط (B2/B3/B4). لا يمسّ RATIFIED اليدويّ.
+    يُعيد (doc_sijill, coverage_both_modes, export_rows)."""
+    import hokom_adapter as _hk
+    from t4 import hfn_d6 as _d6
+    qamus = set(json.loads((HERE / 't4' / 'qamus.json').read_text(encoding='utf-8'))['kalimat'].keys())
+    manual = {k for k, e in existing.items() if e.get('status') == 'RATIFIED'}
+    alam = set(json.loads((HERE.parent / 'mudaat' / 'alam.json').read_text(encoding='utf-8'))['alam_keys'])
+    mw = set(json.loads((HERE / 't4' / 'mushtaq_awzan.json').read_text(encoding='utf-8'))['mushtaq_hokom_wazn'])
+    rows = _ajnas_rows(); msha = _mukhassas_sha()
+    hok = _hk.taqdir(surfaces)
+    from collections import Counter, OrderedDict
+    cov = {'db_preview': Counter(), 'sealed': Counter()}
+    out = OrderedDict((k, e) for k, e in existing.items() if e.get('status') == 'RATIFIED')   # اليدويّ وحده يُحفَظ
+    export = []
+    # ما سواه (معاينات v6 PENDING/RATIFIED_BY_RULE بسند db) يُعاد بناؤه بوضع sealed — B4 يُبطل سند db
+    for mode in ('db_preview', 'sealed'):
+        for w, h in zip(surfaces, hok):
+            r = _d6.classify7(w, h, hfn, qamus, manual, alam, mw, sanad_mode=mode)
+            c = r['category']; cov[mode][c.split(':')[0] if c.startswith('D6_PENDING') else c] += 1
+    # الكتابة بوضع sealed (واقع البيئة)
+    pos_tim = _d6.POS_TIM
+    for w, h in zip(surfaces, hok):
+        k = _d6.surface_key(w)
+        if k in manual:
+            continue
+        r = _d6.classify7(w, h, hfn, qamus, manual, alam, mw, sanad_mode='sealed')
+        cat = r['category']
+        if cat in ('COVERED_BY_MASHRU_WITNESS', 'HARF') or cat.startswith('COVERED'):
+            continue
+        d6 = r.get('d6', {})
+        if cat in ('D6_EVENT', 'D6_MUSHTAQ'):          # (لن يقع في البيئة الحاليّة: نصّ مختوم غائب)
+            out[k] = {'surface': w, 'ism_lean': _ism_lean_d6(d6['unit']), 'status': 'RATIFIED_BY_RULE',
+                      'haqiqa': d6['haqiqa'], 'khawass': [], 'alaqat': [], 'qabiliyyat': [], 'afrad': [],
+                      'tim': d6['tim'], 'ind': True, 'qism': d6['qism'],
+                      'masdar': {'hfn_file': 'lexical_units.csv', 'hfn_row_id': d6['unit'],
+                                 'hfn_event_id': d6['event_id'], 'hfn_sha256': imda_sha, 'sanad': d6['sanad']},
+                      'imda': {'man': 'DR_HUSSEIN', 'qanun': 'D6', 'hfn_release': 'release_v18',
+                               'hfn_sha256': imda_sha, 'tarikh': imda_date},
+                      'flags': r['flags']}
+            export.append(out[k])
+        elif cat in ('D7_JAMID', 'D7_ALAM'):
+            out[k] = {'surface': w, 'ism_lean': re.sub(r'\W', '_', k) + '_m', 'status': 'PENDING',
+                      'sabab_d7': cat, 'kulli_juzi': ('juzi' if cat == 'D7_ALAM' else 'kulli'),
+                      'haqiqa': None, 'khawass': [], 'alaqat': [], 'qabiliyyat': [],
+                      'jidhr': {'root': h.get('final_root'), 'word_class': h.get('word_class'),
+                                'wazn': h.get('final_wazn')},
+                      'mukhassas_ref': _ajnas_ref(k, rows, msha),
+                      'imda': {'man': None, 'tarikh': None}}
+        else:   # D6_PENDING:*
+            out[k] = {'surface': w, 'ism_lean': re.sub(r'\W', '_', k) + '_m', 'status': 'PENDING',
+                      'sabab_d6': d6.get('reason'), 'haqiqa': None, 'khawass': [], 'alaqat': [], 'qabiliyyat': [],
+                      'jidhr': {'root': h.get('final_root'), 'word_class': h.get('word_class'),
+                                'wazn': h.get('final_wazn')},
+                      'imda': {'man': None, 'tarikh': None}}
+    return out, cov, export
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument('taqrir'); ap.add_argument('--out', default=str(MUDAAT)); ap.add_argument('--imda', default=str(HERE.parent / 'mudaat' / 'MUDAAT_IMDA.md'))
     ap.add_argument('--d6', action='store_true', help='يطبّق قانون D6 (HFN+المقاييس) ؛ يضيف RATIFIED_BY_RULE ولا يمسّ اليدويّ')
     ap.add_argument('--mashru', default=str(HERE.parent.parent), help='جذر Mashru (لتوليد Kalima من Dal/Makharij.lean)')
     ap.add_argument('--lean', help='مسار Mudaat.lean لإعادة توليده (افتراضًا لا يُكتب)')
-    ap.add_argument('--coverage', help='مسار D6_COVERAGE.md (مع --d6)')
+    ap.add_argument('--coverage', help='مسار D6_COVERAGE.md (مع --d6/--v7)')
     ap.add_argument('--date', default=None, help='tarikh الإمضاء (افتراضًا اليوم)')
+    ap.add_argument('--v7', action='store_true', help='D6-ب + D7 (sealed) ؛ يكتب mudaat.json بالمراجع ، وExport ، وMUDAAT_IMDA (D7)')
+    ap.add_argument('--export', help='مسار madlulat_export.tsv')
+    ap.add_argument('--imda-d7', help='مسار MUDAAT_IMDA.md (D7 فقط)')
     a = ap.parse_args(argv)
     taqrir = json.loads(Path(a.taqrir).read_text(encoding='utf-8'))
     doc = json.loads(Path(a.out).read_text(encoding='utf-8')) if Path(a.out).exists() else {'_law': 'D5/D6', 'sijill': {}}
     existing = doc.setdefault('sijill', {})
+
+    if a.v7:
+        import datetime, hashlib
+        imda_date = a.date or datetime.date.today().isoformat()
+        imda_sha = hashlib.sha256((Path(_d6.HFN_V18) / 'MANIFEST.json').read_bytes()).hexdigest()
+        hfn = _d6.HFN()
+        surfaces = _surfaces_from_taqrir(taqrir)
+        out, cov, export = prep_v7(surfaces, existing, hfn, imda_sha, imda_date, a.mashru)
+        doc['sijill'] = dict(out)
+        Path(a.out).write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding='utf-8')
+        if a.lean:
+            Path(a.lean).write_text(gen_mudaat_lean(doc, a.mashru), encoding='utf-8')
+        if a.export:
+            Path(a.export).write_text(_export_tsv(doc), encoding='utf-8')
+        if a.coverage:
+            Path(a.coverage).write_text(_coverage_v7_md(cov, doc), encoding='utf-8')
+        if a.imda_d7:
+            Path(a.imda_d7).write_text(_imda_d7_md(doc), encoding='utf-8')
+        print(f"v7 sealed → db_preview={dict(cov['db_preview'])}")
+        print(f"v7 sealed → sealed={dict(cov['sealed'])}")
+        for k, e in doc['sijill'].items():
+            print(f"  {e['status']:16} {k:10} {e.get('sabab_d6') or e.get('sabab_d7') or e.get('imda',{}).get('qanun') or ''}")
+        return 0
 
     if a.d6:
         import datetime
@@ -203,6 +315,51 @@ def _coverage_md(cov, d6e, pend, shadowed):
     for k, e in pend.items():
         L.append(f"- {e['surface']} → {e.get('sabab_d6')}")
     return '\n'.join(L) + '\n'
+
+def _export_tsv(doc):
+    """madlulat_export.tsv: RATIFIED + RATIFIED_BY_RULE بأعمدة Madlul + السند + imda (مراجع لا نصّ)."""
+    cols = ['key', 'surface', 'ism_lean', 'status', 'haqiqa', 'tim', 'ind', 'qism',
+            'qabiliyyat', 'sanad_ref', 'imda']
+    L = ['\t'.join(cols)]
+    for k, e in doc.get('sijill', {}).items():
+        if e.get('status') not in ('RATIFIED', 'RATIFIED_BY_RULE'):
+            continue
+        sanad = e.get('masdar', {}).get('sanad') or e.get('makhzan') or {}
+        L.append('\t'.join(str(x) for x in [
+            k, e['surface'], e['ism_lean'], e['status'], e.get('haqiqa'), e.get('tim'), e.get('ind'),
+            e.get('qism', ''), ','.join(str(q) for q in e.get('qabiliyyat') or []),
+            json.dumps(sanad, ensure_ascii=False), json.dumps(e.get('imda', {}), ensure_ascii=False)]))
+    return '\n'.join(L) + '\n'
+
+
+def _coverage_v7_md(cov, doc):
+    L = ['# D6_COVERAGE (v7) — التصنيف السباعيّ ، وضعان', '',
+         '**تنبيه بيئيّ حاكم:** النصّ المختوم للمقاييس (7f71af0d) وللمخصّص غيرُ حاضرٍ في هذه البيئة (MUDAA_DIR نائب).',
+         'فسندُ D6 المختوم (B4: `7f71af0d@موضع`) **يتعذّر** ⇒ لا مودَع D6 يُرسَّم هنا (D6_NO_SANAD_SEALED_ABSENT). ',
+         'الوضع `db_preview` يبيّن الأهليّة (ماذا سيُرسَّم متى حضر النصّ المختوم) ، والوضع `sealed` واقعُ البيئة.', '',
+         '## db_preview (أهليّة D6)', f"`{dict(cov['db_preview'])}`", '',
+         '## sealed (واقع البيئة — المُودَع)', f"`{dict(cov['sealed'])}`", '',
+         '## سجلّ mudaat.json (sealed)']
+    for k, e in doc.get('sijill', {}).items():
+        tag = e.get('imda', {}).get('qanun') or e.get('sabab_d6') or e.get('sabab_d7') or ''
+        L.append(f"- {e['surface']} ({k}) → {e['status']} {tag}")
+    L += ['', 'الكوربوس: السطوح المستردَّة فعلًا (كوربوس v6) ؛ «جمل v6.1 والنصّ الطويل» غير متوفّرة نصًّا — OWNER_QUESTIONS_v6 س1.']
+    return '\n'.join(L) + '\n'
+
+
+def _imda_d7_md(doc):
+    L = ['# ورقة إمضاء D7 — للمالك (الجوامد والأعلام)', '',
+         'لكلّ كلمة: جذر Hokom وصنفه ، ومرجع المخصّص (باب/كتاب بسطره — لا نصّ) إن وُجد. المطلوب منك: **haqiqa (≥1000) ، qabiliyyat ، alaqat ، khawass** ثمّ status=RATIFIED.',
+         'لا يُقترَح رقمٌ (الحقل فارغ عمدًا).', '',
+         '| الكلمة | kulli/juzi | جذر Hokom | صنف/وزن | مرجع المخصّص | haqiqa (فارغ) |', '|---|---|---|---|---|---|']
+    for k, e in doc.get('sijill', {}).items():
+        if e.get('sabab_d7') not in ('D7_JAMID', 'D7_ALAM'):
+            continue
+        j = e.get('jidhr', {}); ref = e.get('mukhassas_ref')
+        refs = f"{ref['sinf']}@{ref['satr']} (sha {str(ref['sha'])[:8]})" if ref else '—'
+        L.append(f"| {e['surface']} | {e.get('kulli_juzi')} | {j.get('root')} | {j.get('word_class')}/{j.get('wazn')} | {refs} |  |")
+    return '\n'.join(L) + '\n'
+
 
 if __name__ == '__main__':
     sys.exit(main())

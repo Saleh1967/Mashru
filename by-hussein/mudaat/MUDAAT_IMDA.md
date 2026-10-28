@@ -1,10 +1,11 @@
-# ورقة إمضاء المودَعات — للمالك (D5)
+# ورقة إمضاء D7 — للمالك (الجوامد والأعلام)
 
-لكلّ كلمة: جُهِّز (١) الجذر من Hokom و(٢) القول من المخزن ؛ والمطلوب منك (٣): **haqiqa (≥1000) ، qabiliyyat ، alaqat ، khawass** بإمضائك.
-تذكير: إن أمضيتَ «طالب» بلا حقيقة «كتب» في قابليّاته ، فسيُخرج Mashru `laHukm` لـ«كتب الطالب» — قاعدتُه لا الأداة. والأداةُ لا تقترح.
+لكلّ كلمة: جذر Hokom وصنفه ، ومرجع المخصّص (باب/كتاب بسطره — لا نصّ) إن وُجد. المطلوب منك: **haqiqa (≥1000) ، qabiliyyat ، alaqat ، khawass** ثمّ status=RATIFIED.
+لا يُقترَح رقمٌ (الحقل فارغ عمدًا).
 
-| الكلمة | الجذر (Hokom) | directive | القول (المخزن) | المطلوب منك |
-|---|---|---|---|---|
-| كَتَبَ (`كتب_m`) | ['ك', 'ت', 'ب'] | ACCEPT | — | haqiqa≥1000 ، qabiliyyat ، alaqat ، khawass ، ثمّ status=RATIFIED |
-| الطَّالِبُ (`طالب_m`) | ['ط', 'ل', 'ب'] | DEFER | — | haqiqa≥1000 ، qabiliyyat ، alaqat ، khawass ، ثمّ status=RATIFIED |
-| الدَّرْسَ (`درس_m`) | None | DEFER | mutabaqa:الدرس:أثر | haqiqa≥1000 ، qabiliyyat ، alaqat ، khawass ، ثمّ status=RATIFIED |
+| الكلمة | kulli/juzi | جذر Hokom | صنف/وزن | مرجع المخصّص | haqiqa (فارغ) |
+|---|---|---|---|---|---|
+| الْعِلْمُ | kulli | ['ع', 'ل', 'م'] | ISM/FI3L | — |  |
+| نُورٌ | kulli | None | ISM/None | — |  |
+| مَاتَ | kulli | None | ISM/None | — |  |
+| مَالِكٌ | juzi | ['م', 'ل', 'ك'] | ISM/FA3IL | — |  |

@@ -27,6 +27,24 @@ def sha256_file(p: Path) -> str:
     return hashlib.sha256(p.read_bytes()).hexdigest()
 
 
+def mudaat_sealed(mudaat_path, sijill_path=None) -> bool:
+    """بوّابة الختم (v7 B4): هل بصمةُ ملفّ المودَعات مسجَّلةٌ في mudaat/sijill.json؟
+    sijill شكلُه {"sijill":[{"sha256":...}, ...]} — مطابقةٌ تامّة للبصمة."""
+    mudaat_path = Path(mudaat_path)
+    if sijill_path is None:
+        sijill_path = TOOL_ROOT.parent.parent / 'mudaat' / 'sijill.json'   # mashru/mudaat/sijill.json
+    sijill_path = Path(sijill_path)
+    if not (mudaat_path.exists() and sijill_path.exists()):
+        return False
+    sha = sha256_file(mudaat_path)
+    try:
+        sj = json.loads(sijill_path.read_text(encoding='utf-8'))
+        basmas = {e.get('sha256') for e in (sj.get('sijill') or [])}
+        return sha in basmas
+    except Exception:
+        return False
+
+
 def stage(name: str) -> Dict[str, Any]:
     return {'stage': name, 'started': False, 'completed': None, 'found': None, 'produced': None,
             'accepted': None, 'stored': None, 'consumed_by_next': None, 'reason': None, 'residuals': []}
@@ -83,13 +101,16 @@ class Tabaqat4:
             'الإسناد الدلالي ⟨مدلول_الفاعل ، qabiliyya(حقيقة_الفعل) ، isnadiyya⟩ قاعدةٌ بنيوية موروثة من الشاهد ، ليست استنتاجًا من النصّ.',
             'رتبة «مبرهن على الشاهد» تعني: نظرية by decide مرّت على هذه الجملة بعينها في Lean ، بمسلّمات ⊆ {propext, Classical.choice, Quot.sound}. ليست «مبرهن» عامًّا.',
         ]
+        # بوّابة الختم (v7 B4): Mudaat.lean لا يُولَّد إلّا من نسخةٍ بصمتُها في mudaat/sijill.json ؛ وإلّا MUDAAT_UNSEALED
+        if default_mud and default_mud.exists() and not mudaat_sealed(default_mud):
+            self.la_yuddaa.append('MUDAAT_UNSEALED: بصمةُ mudaat.json ليست في mudaat/sijill.json — لا يُولَّد منه Mudaat.lean حتى يختمه المالك (B4)')
         self.stages: List[Dict[str, Any]] = []
 
     def _load_mudaat(self, data: Dict[str, Any], src: str):
-        """يحمّل RATIFIED فقط ؛ يرفض haqiqa<1000 أو المحجوزة (10..60) أو المصادِمة (MUDAA_HAQIQA_COLLISION)."""
+        """يحمّل RATIFIED و RATIFIED_BY_RULE ؛ يرفض haqiqa<1000 أو المحجوزة (10..60) أو المصادِمة (MUDAA_HAQIQA_COLLISION)."""
         seen = {m.get('haqiqa') for m in self.mudaat.values()}
         for key, e in (data.get('sijill') or {}).items():
-            if e.get('status') != 'RATIFIED':
+            if e.get('status') not in ('RATIFIED', 'RATIFIED_BY_RULE'):
                 self.mudaat_residuals.append(f'MUDAA_PENDING_SKIPPED:{key}'); continue
             h = e.get('haqiqa')
             if not isinstance(h, int) or h < 1000:
