@@ -340,10 +340,10 @@ class T(unittest.TestCase):
         if hr: self.skipTest('NOT_RUN: ' + hr)
         from t4 import hfn_d6 as D
         import hokom_adapter as HK, csv
-        r = D.d6_classify('ذَهَبَ', HK.taqdir(['ذَهَبَ'])[0], D.HFN())
+        r = D.d6_classify('ذَهَبَ', HK.taqdir(['ذَهَبَ'])[0], D.HFN(), sanad_mode='db_preview')
         self.assertEqual(r['status'], 'RATIFIED_BY_RULE', r)
-        self.assertTrue(r['tim'])
-        self.assertEqual(r['haqiqa'], D.haqiqa_of({'pos': r['pos'], 'lu_id': r['unit']}))   # دالّة ثابتة
+        self.assertTrue(r['tim']); self.assertEqual(r['d6_kind'], 'D6_EVENT')
+        self.assertEqual(r['haqiqa'], D.haqiqa_event(r['event_id']))   # v7: حقيقةُ الحدث (الفعلُ ومشتقّه واحد)
         self.assertGreaterEqual(r['haqiqa'], 100000)
         # الوحدة بمعرّفها فعلًا في lexical_units.csv بنفس اللِّيمة
         found = [x for x in csv.DictReader(open(Path(D.HFN_V18) / 'lexical_units.csv', encoding='utf-8'))
@@ -407,6 +407,104 @@ class T(unittest.TestCase):
             builtins.open = real_open
         bad = [p for p in opened if 'wordnet' in p.lower() or 'awn' in p.lower().split('/')]
         self.assertEqual(bad, [], bad)
+
+
+    # ======================= v7 : T35..T41 =======================
+    def _v7_sets(self):
+        import json as _j
+        qamus = set(_j.loads((TOOL / 't4' / 'qamus.json').read_text(encoding='utf-8'))['kalimat'].keys())
+        manual = {k for k, e in _j.loads((TOOL.parent / 'mudaat' / 'mudaat.json').read_text(encoding='utf-8'))['sijill'].items() if e.get('status') == 'RATIFIED'}
+        alam = set(_j.loads((TOOL.parent / 'mudaat' / 'alam.json').read_text(encoding='utf-8'))['alam_keys'])
+        mw = set(_j.loads((TOOL / 't4' / 'mushtaq_awzan.json').read_text(encoding='utf-8'))['mushtaq_hokom_wazn'])
+        return qamus, manual, alam, mw
+
+    def test_T35_mushtaq_aism_fail(self):
+        """T35 اسم فاعل (سَاكِنٌ) → RATIFIED_BY_RULE بحقيقة حدثه و tim=false و qism=ism_mushtaq (db_preview: النصّ المختوم غائب)"""
+        hr = self._hokom_ok() or self._sources_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        from t4 import hfn_d6 as D
+        import hokom_adapter as HK
+        r = D.d6_classify('سَاكِنٌ', HK.taqdir(['سَاكِنٌ'])[0], D.HFN(), sanad_mode='db_preview')
+        self.assertEqual(r['status'], 'RATIFIED_BY_RULE', r); self.assertEqual(r['d6_kind'], 'D6_MUSHTAQ')
+        self.assertFalse(r['tim']); self.assertEqual(r['qism'], 'ism_mushtaq')
+        self.assertEqual(r['haqiqa'], D.haqiqa_event(r['event_id']))
+
+    def test_T36_mudari_by_hokom_lemma(self):
+        """T36 مضارع: تَنْجَحْ بلِيمة Hokom (نَجَحَ) → D6_EVENT (db_preview) ؛ تَجْتَهِدْ بلا لِيمة → D6_LEMMA_ABSENT"""
+        hr = self._hokom_ok() or self._sources_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        from t4 import hfn_d6 as D
+        import hokom_adapter as HK
+        hfn = D.HFN()
+        a = D.d6_classify('تَنْجَحْ', HK.taqdir(['تَنْجَحْ'])[0], hfn, sanad_mode='db_preview')
+        self.assertEqual((a['status'], a['d6_kind'], a['lemma_source']), ('RATIFIED_BY_RULE', 'D6_EVENT', 'HOKOM_LEMMA'))
+        b = D.d6_classify('تَجْتَهِدْ', HK.taqdir(['تَجْتَهِدْ'])[0], hfn, sanad_mode='db_preview')
+        self.assertEqual((b['status'], b['reason']), ('PENDING', 'D6_LEMMA_ABSENT'))
+
+    def test_T37_jamid_and_alam(self):
+        """T37 جامد (الْبَيْتُ) → D7_JAMID بلا رقم ؛ عَلَم (مُحَمَّدٌ) → D7_ALAM ، juzi ، لا جذر يُفترَض"""
+        hr = self._hokom_ok() or self._sources_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        from t4 import hfn_d6 as D
+        import hokom_adapter as HK
+        qamus, manual, alam, mw = self._v7_sets()
+        hfn = D.HFN(); tq = {w: h for w, h in zip(['الْبَيْتُ', 'مُحَمَّدٌ'], HK.taqdir(['الْبَيْتُ', 'مُحَمَّدٌ']))}
+        bayt = D.classify7('الْبَيْتُ', tq['الْبَيْتُ'], hfn, qamus, manual, alam, mw, sanad_mode='sealed')
+        self.assertEqual(bayt['category'], 'D7_JAMID'); self.assertNotIn('haqiqa', bayt.get('d6', {}))
+        mhd = D.classify7('مُحَمَّدٌ', tq['مُحَمَّدٌ'], hfn, qamus, manual, alam, mw, sanad_mode='sealed')
+        self.assertEqual(mhd['category'], 'D7_ALAM')
+
+    def test_T38_no_copied_text(self):
+        """T38 لا نصّ معجميّ منقول: 20 حرفًا عربيًّا متتابعة في mudaat.json و madlulat_export.tsv = صفر"""
+        import re as _re
+        for f in (TOOL.parent / 'mudaat' / 'mudaat.json', TOOL.parent / 'mudaat' / 'madlulat_export.tsv'):
+            if not f.exists(): self.skipTest('NOT_RUN: ' + f.name + ' absent')
+            bad = _re.findall(r'[؀-ۿ]{21,}', f.read_text(encoding='utf-8'))
+            self.assertEqual(bad, [], (f.name, bad[:3]))
+
+    def test_T39_mudaat_unsealed_gate(self):
+        """T39 بوّابة الختم: mudaat.json غير المختوم → MUDAAT_UNSEALED في la_yuddaa ؛ وملفّ بصمته في sijill (fixture) → مختوم"""
+        from t4.core import mudaat_sealed
+        import hashlib as _h
+        real = TOOL.parent / 'mudaat' / 'mudaat.json'
+        self.assertFalse(mudaat_sealed(real), 'mudaat.json غير مختوم فعلًا')      # ليس في sijill
+        t = Tabaqat4(ROOT, out_dir=TMP / 't39', run_lean=False, load_default_mudaat=True)
+        self.assertTrue(any('MUDAAT_UNSEALED' in x for x in t.la_yuddaa), t.la_yuddaa)
+        # fixture مختوم: ملفّ + sijill يحوي بصمته
+        fx = TMP / 'mud_fx.json'; fx.write_text('{"sijill":{}}', encoding='utf-8')
+        sj = TMP / 'sij_fx.json'; sj.write_text(json.dumps({'sijill': [{'sha256': _h.sha256(fx.read_bytes()).hexdigest()}]}), encoding='utf-8')
+        self.assertTrue(mudaat_sealed(fx, sj))
+
+    def test_T40_malik_mushtaq_plus_alam_flag(self):
+        """T40 مَالِكٌ: D6 مشتقّ + D7_ALAM_READING_POSSIBLE معًا (db_preview) ، ولا ترجيح"""
+        hr = self._hokom_ok() or self._sources_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        from t4 import hfn_d6 as D
+        import hokom_adapter as HK
+        qamus, manual, alam, mw = self._v7_sets()
+        r = D.classify7('مَالِكٌ', HK.taqdir(['مَالِكٌ'])[0], D.HFN(), qamus, manual, alam, mw, sanad_mode='db_preview')
+        self.assertEqual(r['category'], 'D6_MUSHTAQ'); self.assertIn('D7_ALAM_READING_POSSIBLE', r['flags'])
+
+    def test_T41_quad_frozen(self):
+        """T41 رباعية التجميد: Hokom ، HFN v18 ، maqayis.db ، Mashru خارج by-hussein — قبل=بعد (MUDAA_DIR غائب: معلَن)"""
+        hr = self._hokom_ok() or self._sources_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        import hashlib as _h
+        from t4 import hfn_d6 as D
+        import hokom_adapter as HK
+        def tree(r):
+            r = Path(r); L = []
+            for p in sorted(r.rglob('*')):
+                if p.is_file() and '/.git/' not in str(p):
+                    L.append(f'{p.relative_to(r)}\t{_h.sha256(p.read_bytes()).hexdigest()}\n')
+            return _h.sha256(''.join(sorted(L)).encode()).hexdigest()
+        snap = lambda: (tree(D.HFN_V18), _h.sha256(Path(D.MAQAYIS).read_bytes()).hexdigest(), tree('/Users/husseinhiyassat/hokom'))
+        before = snap()
+        D.classify7('مَالِكٌ', HK.taqdir(['مَالِكٌ'])[0], D.HFN(), *self._v7_sets(), sanad_mode='db_preview')
+        self.assertEqual(before, snap(), 'QUAD_SOURCE_CHANGED')
+        m = subprocess.run(['git', '-C', str(ROOT), 'status', '--porcelain', '--untracked-files=all'], capture_output=True, text=True).stdout
+        outside = [l for l in m.splitlines() if not (l[3:].startswith('by-hussein/') or l[3:] in ('audit.txt', 'build.log', 'jumla_kamila.json'))]
+        self.assertEqual(outside, [], outside)
 
 
 class Reporter(unittest.TextTestResult):
