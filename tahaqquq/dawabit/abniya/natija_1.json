@@ -1,0 +1,99 @@
+{
+ "tashghil": 1,
+ "naw": "التشغيلُ الأوّل على الشفرة المجمَّدة، قبل أن يقرأ البنّاءُ الحالات",
+ "cases_sha256": "6e16c941d8ad07256419351afe3b328b5b7dc456527fc866af1acb7eb9ab371b",
+ "shifra": {
+  "Jisr/Abniya.lean": {
+   "sha256": "12498bf1984f4c5c2da875452ece0aef41fe78041f3378d1395659b46940833e",
+   "iydaa": "105aa2d9183f6914fe7a7521971c5434909d8bba"
+  },
+  "Jisr/AbniyaDabit.lean": {
+   "sha256": "1b558ba1512130d396203a52e218a6af4ea94a7a2a4725d3eca1d34ba71e1dc1",
+   "iydaa": "105aa2d9183f6914fe7a7521971c5434909d8bba"
+  }
+ },
+ "lean": [
+  "Jisr.Abniya.Qiyas.majal",
+  "Jisr.Abniya.Qiyas.natija",
+  "Jisr.Abniya.Qiyas.natija_fia",
+  "Jisr.Abniya.Qiyas.akhta_1",
+  "Jisr.Abniya.Qiyas.azwaj_1"
+ ],
+ "halat": 50,
+ "huqul_masula": 73,
+ "ihsa": {
+  "sawab": 61,
+  "naqsTaghtiya": 4,
+  "tajawuz": 6,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtiyar": 2,
+  "khata": 0,
+  "khataDaraja": 0
+ },
+ "bil_fia": {
+  "موجب": 28,
+  "حد": 19,
+  "خارج": 0,
+  "عموم": 14,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "B20",
+   "naqsTaghtiya"
+  ],
+  [
+   "B20/daraja",
+   "naqsTaghtiya"
+  ],
+  [
+   "B23",
+   "naqsTaghtiya"
+  ],
+  [
+   "B23/daraja",
+   "naqsTaghtiya"
+  ],
+  [
+   "B43",
+   "tajawuz"
+  ],
+  [
+   "B44",
+   "tajawuz"
+  ],
+  [
+   "B45",
+   "tajawuz"
+  ],
+  [
+   "B46",
+   "tajawuz"
+  ],
+  [
+   "B47",
+   "tajawuz"
+  ],
+  [
+   "B48",
+   "tajawuz"
+  ],
+  [
+   "B49",
+   "ikhtiyar"
+  ],
+  [
+   "B50",
+   "ikhtiyar"
+  ]
+ ],
+ "azwaj": {
+  "jumla": 19,
+  "taghayyar": 19,
+  "la_yataghayyar": [],
+  "sawab_maan": 12
+ },
+ "tarikh": "2026-10-28",
+ "malahiz": "على الشفرة المجمَّدة في 105aa2d قبل أن يقرأ البنّاءُ الحالات؛ والأعدادُ أعدادُ مبرهنات Jisr/AbniyaQiyas.lean في إيداع هذا السجلّ."
+}
