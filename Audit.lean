@@ -2416,3 +2416,22 @@ import Jisr.IsharaQiyas
 #print axioms Jisr.Ishara.Qiyas.natija_fia
 #print axioms Jisr.Ishara.Qiyas.akhta_sifr
 #print axioms Jisr.Ishara.Qiyas.azwaj_1
+-- أبنيةُ اسمَي الفاعل والمفعول في الألفية (س594–607) والقطر (س358، س365) (Jisr/Abniya.lean): حكمُ صوغ الصيغة للمطلوب ودرجتُه
+#print axioms Jisr.Abniya.ghayr_thulathi_fail
+#print axioms Jisr.Abniya.ghayr_thulathi_mafool
+#print axioms Jisr.Abniya.mafool_thulathi
+#print axioms Jisr.Abniya.fail_min_fataha
+#print axioms Jisr.Abniya.taaddi_la_yughayyir
+#print axioms Jisr.Abniya.fail_mafool_la_yashtarikan
+#print axioms Jisr.Abniya.ghayr_maqbul_bila
+#print axioms Jisr.Abniya.amal_wad
+#print axioms Jisr.Abniya.shawahid
+-- مقارنةُ ضابط الأبنية قبل الحالات (Jisr/AbniyaDabit.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Abniya.Dabit.qarin_hukm
+#print axioms Jisr.Abniya.Dabit.qarin_daraja
+-- ضابطُ الأبنية المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/AbniyaQiyas.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Abniya.Qiyas.majal
+#print axioms Jisr.Abniya.Qiyas.natija
+#print axioms Jisr.Abniya.Qiyas.natija_fia
+#print axioms Jisr.Abniya.Qiyas.akhta_sifr
+#print axioms Jisr.Abniya.Qiyas.azwaj_1
