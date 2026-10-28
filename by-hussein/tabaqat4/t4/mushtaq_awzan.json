@@ -1,0 +1,11 @@
+{
+  "_law": "D7 (أمر v7 B3): أوزان المشتقّات بترميز Hokom (final_wazn) — ما ليس منها من الأسماء جامدٌ (مرشَّح PENDING).",
+  "_note": "قائمة حاصرة بترميز Hokom (لا بأنماط HFN العربية). الجامد = Hokom ISM و final_wazn ∉ هذه القائمة ، أو جذره null.",
+  "mushtaq_hokom_wazn": ["FA3IL", "MAF3UL"],
+  "_mushtaq_pos_ar_in_hfn": ["اسم فاعل", "اسم مفعول"],
+  "_masdar_patterns_hfn_reference_only": {
+    "_source": "release_v18/sibawayh_masdar_rules.csv (مرجعٌ لا يُطابَق بترميز Hokom — مفرداتٌ مختلفة)",
+    "patterns": ["فَعْل", "فُعُول", "فَعَال", "فِعَال", "فَعَل", "إِفْعَال"],
+    "_limitation": "أنماط HFN عربيّة لا تساوي ترميز Hokom (FA3L/FU3UL…) ؛ وترميز Hokom FA3L يُشترَك بين الجامد (بَيْت) والمصدر (دَرْس) ، فلا يُفصَل المصدرُ عن الجامد بالوزن وحده — حدٌّ معلَن ، سؤال للمالك."
+  }
+}
