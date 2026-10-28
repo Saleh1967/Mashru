@@ -1,0 +1,54 @@
+{
+ "CE_B": 4.602569204170974,
+ "H_MM_A": 4.577165962339501,
+ "ahdath": {
+  "A": 84720,
+  "B": 86019
+ },
+ "ayat": {
+  "A": 3118,
+  "B": 3118
+ },
+ "basamat": {
+  "Dal/Tahsil.lean": "caf152af61577aec76f1bd32ca0a342b069f32b4e65e5275a197a665d2c7f0c4",
+  "Qari/Tahsil.lean": "8a931e870d6ab338a8a504751ce9cb17b991a439908dadc00dd4168bd953a258",
+  "integrations/nabt/src/nabt/data/law.json": "14e32ae208ac5ed2f754e83506e72133d0962756ef0c944d12370746febddcdd",
+  "qaimat_B": "052f3d88009bd457d61f2e01dc8ce8870905d8bcd45bf4a3b94ae593b8c1a40a",
+  "quran-simple-enhanced.txt": "37633090743d403886b334d12dd911d1994e49767faa9f2be0f01fd48b466c5a",
+  "scripts/intrubiya.py": "2423702eb29dbfe96fd68f4d8e8c532cb3a8e825df540d7344c4b2f4668b77b0",
+  "scripts/qiyas_intrubiya.py": "6e8e4aa50f52be8823d0cddf930a2416484de0e65f75dedffddd2981a1430939"
+ },
+ "cap_B": 6.7031744838248075,
+ "furud": {
+  "F1": {
+   "hukm": "صدق",
+   "nass": "CE_B − H_MM_A ≤ 0.10",
+   "qima": 0.02540324183147291
+  },
+  "F2": {
+   "hukm": "صدق",
+   "nass": "marifa_B = cap_B − CE_B ≥ 1.80",
+   "qima": 2.1006052796538333
+  },
+  "F3": {
+   "hukm": "صدق",
+   "nass": "|rej_B − rej_A| ≤ 0.01",
+   "qima": 0.0002888198714115775
+  }
+ },
+ "kalimat_murakhkhasa": {
+  "A": 22006,
+  "B": 22374
+ },
+ "rej_A": 0.07734254294283377,
+ "rej_B": 0.07705372307142219,
+ "rumuz": {
+  "A": 40982,
+  "B": 41550
+ },
+ "taarud_ahdath": {
+  "A": 1702,
+  "B": 1724
+ },
+ "tasjil_sha256": "53f45cedf267f77bbc528d520e73c2015973845bd834fe8166e60964b6c4eb70"
+}

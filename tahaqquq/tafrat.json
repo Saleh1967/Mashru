@@ -7450,5 +7450,29 @@
   "milaf": "scripts/intrubiya.py",
   "min": "        out[s] = {\"sabab\": e.status + \":\" + e.code}",
   "ila": "        out[s] = {\"ok\": []}"
+ },
+ {
+  "ism": "P1310_qiyas_badhra",
+  "milaf": "scripts/qiyas_intrubiya.py",
+  "min": "BADHRA = 20261029",
+  "ila": "BADHRA = 20261028"
+ },
+ {
+  "ism": "P1311_qiyas_alpha",
+  "milaf": "scripts/qiyas_intrubiya.py",
+  "min": "ALPHA = 0.5",
+  "ila": "ALPHA = 1.0"
+ },
+ {
+  "ism": "P1312_qiyas_hadd_F2",
+  "milaf": "scripts/qiyas_intrubiya.py",
+  "min": "\"صدق\" if f2 >= 1.80 else \"كذب\"",
+  "ila": "\"صدق\" if f2 >= 1.70 else \"كذب\""
+ },
+ {
+  "ism": "P1313_qiyas_sia",
+  "milaf": "scripts/qiyas_intrubiya.py",
+  "min": "cap += sum(c.values()) * math.log2(len(hayy))",
+  "ila": "cap += sum(c.values()) * math.log2(len(hayy) + 1)"
  }
 ]
