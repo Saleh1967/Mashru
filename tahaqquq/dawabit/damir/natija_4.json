@@ -1,0 +1,53 @@
+{
+ "tashghil": 4,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد المراجعة الثانية («اسم» مع ضميرٍ قبله غيرُ متّسقٍ في كلّ موقع، ونفيُ الفصل بمثال الوصل في المصدر الذي يحكم، بلا حالة)، 76604ab",
+ "qablaha": {
+  "natija_3.json": "8eea9749ea50c90d56b8504903853e045dd3f36635fa7ff6492a9c369f8da597"
+ },
+ "cases_sha256": "0361a0902203599f60d41f0072b476398e5b611910b6c6a2ae97eb1ac336d926",
+ "shifra": {
+  "Jisr/Damir.lean": {
+   "sha256": "c349bfb3af21cb883d8f20396ba86282e39ceb135646c387a0f7f4bcd5ab5d17",
+   "iydaa": "76604ab016e4c66d39c4a50547d1c1439b86da97"
+  },
+  "Jisr/DamirDabit.lean": {
+   "sha256": "62215b9450fdf9a878271f24478a5e12e45f87a43094889dc2fc3d55040c7bf1",
+   "iydaa": "76604ab016e4c66d39c4a50547d1c1439b86da97"
+  }
+ },
+ "lean": [
+  "Jisr.Damir.Qiyas.majal",
+  "Jisr.Damir.Qiyas.natija",
+  "Jisr.Damir.Qiyas.natija_fia",
+  "Jisr.Damir.Qiyas.akhta_sifr",
+  "Jisr.Damir.Qiyas.azwaj_1"
+ ],
+ "halat": 46,
+ "huqul_masula": 69,
+ "ihsa": {
+  "sawab": 69,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtiyar": 0,
+  "khata": 0,
+  "khataDaraja": 0
+ },
+ "bil_fia": {
+  "موجب": 26,
+  "حد": 10,
+  "خارج": 7,
+  "عموم": 8,
+  "غموض": 18
+ },
+ "akhta": [],
+ "azwaj": {
+  "jumla": 17,
+  "taghayyar": 17,
+  "la_yataghayyar": [],
+  "sawab_maan": 17
+ },
+ "tarikh": "2026-10-28",
+ "malahiz": "على مادّةٍ مكشوفة، بلا تغييرٍ في نتيجة حالة؛ والأعدادُ أعدادُ مبرهنات Jisr/DamirQiyas.lean، بناها lake build Jisr.DamirQiyas قبل إيداع 76604ab على بايتات الشفرة نفسِها. وhuqul_masula هنا وفي السجلّات قبله عددُ الحقول التي يعدّها البنّاء (حكمٌ لكلّ حالة، ودرجةٌ لما متوقَّعُه «مقبول»)، وهي في هذا التشغيل المسؤولةُ بنصّ المواصفة أيضًا (حكمُ المحرّك «مقبول» حيث المتوقَّعُ «مقبول»). ويصحّح ما قيل في الوثائق عن عدّ natija_1.json «بالمواصفة» 55/9/5/0 من 69: بنصّها 55 صوابًا من 68 حقلًا، نقصُ تغطيةٍ 8 وتجاوزٌ 5، فدرجةُ D45 ليست حقلًا مسؤولًا وحكمُ المحرّك فيها «لا حكم» (mulhaq_1.md §١)."
+}
