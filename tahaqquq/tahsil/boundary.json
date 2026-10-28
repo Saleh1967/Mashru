@@ -3976,7 +3976,7 @@
   ]
  },
  {
-  "label": "A30 prev is R14a (shadda+kasra awwal): prev verdict ignored",
+  "label": "A30 prev is R14a (shadda+kasra awwal): two marks break the chain [amended-2]",
   "nass": "\u0628\u0651\u0650\u0627\u0633\u0652",
   "tawaqqu": [
    {
@@ -3993,9 +3993,11 @@
     "a": 3,
     "b": 4,
     "hukm": "L",
-    "sinf": "hamzaWasl",
+    "sinf": "harfMadd",
     "ism": "",
-    "khalaya": []
+    "khalaya": [
+     11
+    ]
    },
    {
     "i": 2,
@@ -4011,7 +4013,7 @@
   ]
  },
  {
-  "label": "A31 prev is F (fatha+damma) but has fatha",
+  "label": "A31 prev is F (fatha+damma): two marks break the chain [amended-2]",
   "nass": "\u0628\u064e\u064f\u0627\u0633\u0652",
   "tawaqqu": [
    {
@@ -4028,9 +4030,11 @@
     "a": 3,
     "b": 4,
     "hukm": "L",
-    "sinf": "hamzaWasl",
+    "sinf": "harfMadd",
     "ism": "",
-    "khalaya": []
+    "khalaya": [
+     11
+    ]
    },
    {
     "i": 2,
@@ -4474,6 +4478,1687 @@
     "sinf": "-",
     "ism": "\u0642\u0627\u0639\u062f\u0629 \u0627\u0644\u0634\u062f\u0651\u0629 \u0641\u064a \u0623\u0648\u0651\u0644 \u0627\u0644\u0643\u0644\u0645\u0629",
     "khalaya": []
+   }
+  ]
+ },
+ {
+  "label": "C1 waw-fatha chain of one",
+  "nass": "\u0648\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C2 fa-kasra chain of one",
+  "nass": "\u0641\u0650\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     102
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C3 ba-damma chain of one",
+  "nass": "\u0628\u064f\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     105
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C4 kaf-fatha chain of one",
+  "nass": "\u0643\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     32
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C5 lam-kasra chain of one",
+  "nass": "\u0644\u0650\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     54
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C6 ta-fatha chain of one",
+  "nass": "\u062a\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     72
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C7 hamza-on-alif fatha chain of one",
+  "nass": "\u0623\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     0
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C8 chain of two a-fa",
+  "nass": "\u0623\u064e\u0641\u064e\u0627\u0633\u0652\u062a\u064e",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     0
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     100
+    ]
+   },
+   {
+    "i": 2,
+    "a": 4,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 3,
+    "a": 5,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   },
+   {
+    "i": 4,
+    "a": 7,
+    "b": 9,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     72
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C9 chain of two wa-bi",
+  "nass": "\u0648\u064e\u0628\u0650\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     106
+    ]
+   },
+   {
+    "i": 2,
+    "a": 4,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 3,
+    "a": 5,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C10 chain of three a-fa-bi",
+  "nass": "\u0623\u064e\u0641\u064e\u0628\u0650\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     0
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     100
+    ]
+   },
+   {
+    "i": 2,
+    "a": 4,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     106
+    ]
+   },
+   {
+    "i": 3,
+    "a": 6,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 4,
+    "a": 7,
+    "b": 9,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C11 chain of three wa-li-tu (any order, any short haraka)",
+  "nass": "\u0648\u064e\u0644\u0650\u062a\u064f\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     54
+    ]
+   },
+   {
+    "i": 2,
+    "a": 4,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     73
+    ]
+   },
+   {
+    "i": 3,
+    "a": 6,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 4,
+    "a": 7,
+    "b": 9,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C12 broken: letter outside the set (qaf) second",
+  "nass": "\u0648\u064e\u0642\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     28
+    ]
+   },
+   {
+    "i": 2,
+    "a": 4,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 3,
+    "a": 5,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C13 broken: letter outside the set (qaf) first",
+  "nass": "\u0642\u064e\u0648\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     28
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 2,
+    "a": 4,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 3,
+    "a": 5,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C14 broken: shadda+fatha on ba",
+  "nass": "\u0648\u064e\u0628\u0651\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     107,
+     104
+    ]
+   },
+   {
+    "i": 2,
+    "a": 5,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 3,
+    "a": 6,
+    "b": 8,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C15 broken: sukun on ba",
+  "nass": "\u0648\u064e\u0628\u0652\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     107
+    ]
+   },
+   {
+    "i": 2,
+    "a": 4,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 3,
+    "a": 5,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C16 broken: dammatan on ba",
+  "nass": "\u0648\u064e\u0628\u064c\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 4,
+    "hukm": "P",
+    "sinf": "-",
+    "ism": "\u0642\u0627\u0639\u062f\u0629 \u0627\u0644\u062a\u0646\u0648\u064a\u0646",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 4,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 3,
+    "a": 5,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C17 broken: fathatan on ba (R12 first)",
+  "nass": "\u0648\u064e\u0628\u064b\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 4,
+    "hukm": "P",
+    "sinf": "-",
+    "ism": "\u0642\u0627\u0639\u062f\u0629 \u0627\u0644\u062a\u0646\u0648\u064a\u0646",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 4,
+    "b": 5,
+    "hukm": "P",
+    "sinf": "-",
+    "ism": "\u0642\u0627\u0639\u062f\u0629 \u0623\u0644\u0641 \u0627\u0644\u062a\u0646\u0648\u064a\u0646",
+    "khalaya": []
+   },
+   {
+    "i": 3,
+    "a": 5,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C18 broken: two marks (fatha+damma) on ba",
+  "nass": "\u0648\u064e\u0628\u064e\u064f\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 5,
+    "hukm": "F",
+    "sinf": "-",
+    "ism": "\u0639\u0644\u0627\u0645\u062a\u0627\u0646 \u0645\u062a\u0639\u0627\u0631\u0636\u062a\u0627\u0646",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 5,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 3,
+    "a": 6,
+    "b": 8,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C19 broken: bare ba",
+  "nass": "\u0648\u064e\u0628\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "F",
+    "sinf": "-",
+    "ism": "\u062d\u0631\u0641 \u0628\u0644\u0627 \u062d\u0631\u0643\u0629 \u0641\u064a \u063a\u064a\u0631 \u0622\u062e\u0631 \u0627\u0644\u0643\u0644\u0645\u0629",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 3,
+    "a": 4,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C20 broken: bare waw first",
+  "nass": "\u0648\u0628\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 1,
+    "hukm": "F",
+    "sinf": "-",
+    "ism": "\u062d\u0631\u0641 \u0628\u0644\u0627 \u062d\u0631\u0643\u0629 \u0641\u064a \u063a\u064a\u0631 \u0622\u062e\u0631 \u0627\u0644\u0643\u0644\u0645\u0629",
+    "khalaya": []
+   },
+   {
+    "i": 1,
+    "a": 1,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     104
+    ]
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 3,
+    "a": 4,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C21 hamza below alif is not the set's alif-hamza",
+  "nass": "\u0625\u0650\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     2
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C22 bare hamza is not the set's alif-hamza",
+  "nass": "\u0621\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     0
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C23 broken: text-initial mark-headed segment",
+  "nass": "\u064e\u0648\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 1,
+    "hukm": "F",
+    "sinf": "-",
+    "ism": "\u0639\u0644\u0627\u0645\u0629 \u0628\u0644\u0627 \u062d\u0627\u0645\u0644",
+    "khalaya": []
+   },
+   {
+    "i": 1,
+    "a": 1,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 3,
+    "a": 4,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C24 broken: tab inside the word",
+  "nass": "\u0648\u064e\t\u0628\u0650\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "F",
+    "sinf": "-",
+    "ism": "\u062d\u0631\u0641 \u0644\u064a\u0633 \u0641\u064a \u062c\u062f\u0648\u0644 \u0627\u0644\u0645\u062e\u0627\u0631\u062c",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     106
+    ]
+   },
+   {
+    "i": 3,
+    "a": 5,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 4,
+    "a": 6,
+    "b": 8,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C25 space resets the chain: only the alif's own word counts",
+  "nass": "\u0642\u064e \u0648\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     28
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "fasil",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 3,
+    "a": 5,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 4,
+    "a": 6,
+    "b": 8,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C26 qaltu: madd alif before sukun lam is harfMadd",
+  "nass": "\u0642\u064e\u0627\u0644\u0652\u062a\u064f",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     28
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     55
+    ]
+   },
+   {
+    "i": 3,
+    "a": 5,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     73
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C27 namtu: madd alif before sukun mim is harfMadd",
+  "nass": "\u0646\u064e\u0627\u0645\u0652\u062a\u064f",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     56
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     111
+    ]
+   },
+   {
+    "i": 3,
+    "a": 5,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     73
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C28 qatalaas: long word, non-set letters",
+  "nass": "\u0642\u064e\u062a\u064e\u0644\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     28
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     72
+    ]
+   },
+   {
+    "i": 2,
+    "a": 4,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     52
+    ]
+   },
+   {
+    "i": 3,
+    "a": 6,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 4,
+    "a": 7,
+    "b": 9,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C29 baat: shape-only reading, set letter before madd alif -> hamzaWasl (NOTES B4)",
+  "nass": "\u0628\u064e\u0627\u062a\u0652",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     104
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     75
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C30 a-fa-bi-allahi: chain of three + lam branch; lam R15 lam-al",
+  "nass": "\u0623\u064e\u0641\u064e\u0628\u0650\u0627\u0644\u0644\u0651\u064e\u0647\u0650",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     0
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     100
+    ]
+   },
+   {
+    "i": 2,
+    "a": 4,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     106
+    ]
+   },
+   {
+    "i": 3,
+    "a": 6,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 4,
+    "a": 7,
+    "b": 8,
+    "hukm": "P",
+    "sinf": "-",
+    "ism": "\u0642\u0627\u0639\u062f\u0629 \u0644\u0627\u0645 \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u0645\u062f\u063a\u0645\u0629",
+    "khalaya": []
+   },
+   {
+    "i": 5,
+    "a": 8,
+    "b": 11,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     55,
+     52
+    ]
+   },
+   {
+    "i": 6,
+    "a": 11,
+    "b": 13,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     6
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C31 wa-bi-al-shams: chain of two + lam branch; lam R15 lam-al",
+  "nass": "\u0648\u064e\u0628\u0650\u0627\u0644\u0634\u0651\u064e\u0645\u0652\u0633\u0650",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 4,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     106
+    ]
+   },
+   {
+    "i": 2,
+    "a": 4,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "hamzaWasl",
+    "ism": "",
+    "khalaya": []
+   },
+   {
+    "i": 3,
+    "a": 5,
+    "b": 6,
+    "hukm": "P",
+    "sinf": "-",
+    "ism": "\u0642\u0627\u0639\u062f\u0629 \u0644\u0627\u0645 \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u0645\u062f\u063a\u0645\u0629",
+    "khalaya": []
+   },
+   {
+    "i": 4,
+    "a": 6,
+    "b": 9,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     43,
+     40
+    ]
+   },
+   {
+    "i": 5,
+    "a": 9,
+    "b": 11,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     111
+    ]
+   },
+   {
+    "i": 6,
+    "a": 11,
+    "b": 13,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     82
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C32 qa-al-sha: alif not 14b (qaf), so lam is not lam-al -> F",
+  "nass": "\u0642\u064e\u0627\u0644\u0634\u0651\u064e",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     28
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 4,
+    "hukm": "F",
+    "sinf": "-",
+    "ism": "\u062d\u0631\u0641 \u0628\u0644\u0627 \u062d\u0631\u0643\u0629 \u0641\u064a \u063a\u064a\u0631 \u0622\u062e\u0631 \u0627\u0644\u0643\u0644\u0645\u0629",
+    "khalaya": []
+   },
+   {
+    "i": 3,
+    "a": 4,
+    "b": 7,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     43,
+     40
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C33 wa-bba-al-sha: chain broken by shadda, lam not lam-al -> F",
+  "nass": "\u0648\u064e\u0628\u0651\u064e\u0627\u0644\u0634\u0651\u064e",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     112
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 5,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     107,
+     104
+    ]
+   },
+   {
+    "i": 2,
+    "a": 5,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 3,
+    "a": 6,
+    "b": 7,
+    "hukm": "F",
+    "sinf": "-",
+    "ism": "\u062d\u0631\u0641 \u0628\u0644\u0627 \u062d\u0631\u0643\u0629 \u0641\u064a \u063a\u064a\u0631 \u0622\u062e\u0631 \u0627\u0644\u0643\u0644\u0645\u0629",
+    "khalaya": []
+   },
+   {
+    "i": 4,
+    "a": 7,
+    "b": 10,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     43,
+     40
+    ]
+   }
+  ]
+ },
+ {
+  "label": "C34 ta-al-lam: alif not 14b (lam not followed by shadda), lam F",
+  "nass": "\u062a\u064e\u0627\u0644\u0643\u064e",
+  "tawaqqu": [
+   {
+    "i": 0,
+    "a": 0,
+    "b": 2,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     72
+    ]
+   },
+   {
+    "i": 1,
+    "a": 2,
+    "b": 3,
+    "hukm": "L",
+    "sinf": "harfMadd",
+    "ism": "",
+    "khalaya": [
+     11
+    ]
+   },
+   {
+    "i": 2,
+    "a": 3,
+    "b": 4,
+    "hukm": "F",
+    "sinf": "-",
+    "ism": "\u062d\u0631\u0641 \u0628\u0644\u0627 \u062d\u0631\u0643\u0629 \u0641\u064a \u063a\u064a\u0631 \u0622\u062e\u0631 \u0627\u0644\u0643\u0644\u0645\u0629",
+    "khalaya": []
+   },
+   {
+    "i": 3,
+    "a": 4,
+    "b": 6,
+    "hukm": "L",
+    "sinf": "harfHaraka",
+    "ism": "",
+    "khalaya": [
+     32
+    ]
    }
   ]
  }

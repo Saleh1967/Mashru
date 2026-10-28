@@ -291,5 +291,92 @@
     ]
    }
   ]
+ },
+ {
+  "label": "K11 qaltu licensed, madd alif keeps its cell",
+  "nass": "\u0642\u064e\u0627\u0644\u0652\u062a\u064f",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 7,
+    "murakhkhasa": true,
+    "khalaya": [
+     28,
+     11,
+     55,
+     73
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K12 a-fa-sta licensed, chain of two, no cell for the alif",
+  "nass": "\u0623\u064e\u0641\u064e\u0627\u0633\u0652\u062a\u064e",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 9,
+    "murakhkhasa": true,
+    "khalaya": [
+     0,
+     100,
+     83,
+     72
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K13 wa-bba-as licensed: chain broken by shadda, alif harfMadd",
+  "nass": "\u0648\u064e\u0628\u0651\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 8,
+    "murakhkhasa": true,
+    "khalaya": [
+     112,
+     107,
+     104,
+     11,
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K14 a-fa-bi-allahi not licensed (lam P)",
+  "nass": "\u0623\u064e\u0641\u064e\u0628\u0650\u0627\u0644\u0644\u0651\u064e\u0647\u0650",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 13,
+    "murakhkhasa": false,
+    "khalaya": [
+     0,
+     100,
+     106,
+     55,
+     52,
+     6
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K15 wa-b-dammatan-as not licensed (tanwin P)",
+  "nass": "\u0648\u064e\u0628\u064c\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 7,
+    "murakhkhasa": false,
+    "khalaya": [
+     112,
+     11,
+     83
+    ]
+   }
+  ]
  }
 ]

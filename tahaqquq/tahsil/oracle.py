@@ -105,6 +105,9 @@ SINF_WASL = "hamzaWasl"
 # the three short harakat of rule 14ب (fatha, damma, kasra)
 SHORT_HARAKAT = ("َ", "ُ", "ِ")
 assert SHORT_HARAKAT == (FATHA, DAMMA, KASRA)
+# Amendment 2 (2026-10-28): the seven letters of rule 14ب «و ف ب ك ل ت أ», code points copied
+# from the spec: U+0648 U+0641 U+0628 U+0643 U+0644 U+062A U+0623.
+CHAIN_LETTERS = ("و", "ف", "ب", "ك", "ل", "ت", "أ")
 ISM_15_LAM = ("قاعدة لام التعريف "
               "المدغمة")  # قاعدة لام التعريف المدغمة
 ISM_15_AKHIR = ("قاعدة الحرف "
@@ -180,9 +183,14 @@ def _is_14b(text, segs, k, ctx):
     prev, nxt = ctx["prev"], ctx["next"]
     if prev is None or nxt is None:
         return False
-    pa, pb = segs[prev]
-    if not any(m in SHORT_HARAKAT for m in text[pa + 1:pb]):
-        return False
+    # Amendment 2: every segment before the alif in its word has a head from
+    # «و ف ب ك ل ت أ» and its marks are exactly one mark, a fatha, damma or kasra
+    # (see NOTES B1-B5).
+    word = ctx["word"]
+    for idx in word[:word.index(k)]:
+        ca, cb = segs[idx]
+        if text[ca] not in CHAIN_LETTERS or text[ca + 1:cb] not in SHORT_HARAKAT:
+            return False
     na, nb = segs[nxt]
     nhead, nmarks = text[na], text[na + 1:nb]
     if not (nhead in INDEX or nhead in SEATS):
@@ -280,7 +288,8 @@ def _classify(text, segs, k, ctx):
     # 14أ (amendment 1): table carrier or hamza seat, awwal, shadda in marks
     if (head in INDEX or head in SEATS) and awwal and n_shadda >= 1:
         return _P(ISM_14A)
-    # 14ب (amendment 1): wasl alif after a prev with a short haraka, before a "sakin"
+    # 14ب (amendments 1, 2): wasl alif after a chain of one-letter prefixes, each with one
+    # short haraka, before a "sakin"
     if _is_14b(text, segs, k, ctx):
         return _L(SINF_WASL, [])
     # 15
