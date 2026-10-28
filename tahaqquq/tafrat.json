@@ -5380,5 +5380,143 @@
   "milaf": "Jisr/Khabar.lean",
   "min": "      | .zahir => none",
   "ila": "      | .zahir => some khataJ"
+ },
+ {
+  "ism": "P1119_khabar_tajmid_wasf",
+  "milaf": "tahaqquq/dawabit/khabar/tajmid.json",
+  "min": "\"wasf_sha256\": \"63126a32d9a86a68508692f3b7b8c099102482fac6365a986a52742362ff4372\"",
+  "ila": "\"wasf_sha256\": \"63126a32d9a86a68508692f3b7b8c099102482fac6365a986a52742362ff4370\""
+ },
+ {
+  "ism": "P1120_khabar_tajmid_qatr",
+  "milaf": "tahaqquq/dawabit/khabar/tajmid.json",
+  "min": "\"sha256\": \"2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d\"",
+  "ila": "\"sha256\": \"2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb90\""
+ },
+ {
+  "ism": "P1121_khabar_tajmid_bina_cases",
+  "milaf": "tahaqquq/dawabit/khabar/tajmid.json",
+  "min": "\"bina_cases_sha256\": \"303a2574ffb29ae60a0732c579a4263bc5e9cda2ada018bd73f3794b6c0fa068\"",
+  "ila": "\"bina_cases_sha256\": \"303a2574ffb29ae60a0732c579a4263bc5e9cda2ada018bd73f3794b6c0fa060\""
+ },
+ {
+  "ism": "P1122_khabar_tajmid_sana_tafrat",
+  "milaf": "tahaqquq/dawabit/khabar/tajmid.json",
+  "min": "\"sana_tafrat_sha256\": \"12dc7a75ac655150a425edb76d2eeab913f2c8615b70d28d5ae656954b9d0916\"",
+  "ila": "\"sana_tafrat_sha256\": \"12dc7a75ac655150a425edb76d2eeab913f2c8615b70d28d5ae656954b9d0910\""
+ },
+ {
+  "ism": "P1123_khabar_mawallad_ism",
+  "milaf": "Jisr/KhabarDawabit.lean",
+  "min": "⟨\"K05\", ",
+  "ila": "⟨\"K05x\", "
+ },
+ {
+  "ism": "P1124_khabar_sijill_shifra",
+  "milaf": "tahaqquq/dawabit/khabar/natija_2.json",
+  "min": "\"sha256\": \"8965abfcabb190618a406f84c58245e0d006b3f9e2048a894510b1d77baf3464\"",
+  "ila": "\"sha256\": \"8965abfcabb190618a406f84c58245e0d006b3f9e2048a894510b1d77baf3460\""
+ },
+ {
+  "ism": "P1125_khabar_sijill_sawab",
+  "milaf": "tahaqquq/dawabit/khabar/natija_2.json",
+  "min": "\"sawab\": 88,\n  \"naqsTaghtiya\": 0,",
+  "ila": "\"sawab\": 87,\n  \"naqsTaghtiya\": 1,"
+ },
+ {
+  "ism": "P1126_khabar_sijill_qablaha",
+  "milaf": "tahaqquq/dawabit/khabar/natija_2.json",
+  "min": "\"natija_1.json\": \"647683a041f548265228411bb4518628e0f650aa916b45013c3a20bd7df5e7c3\"",
+  "ila": "\"natija_1.json\": \"647683a041f548265228411bb4518628e0f650aa916b45013c3a20bd7df5e7c0\""
+ },
+ {
+  "ism": "P1127_khabar_natija1_adad",
+  "milaf": "tahaqquq/dawabit/khabar/natija_1.json",
+  "min": "\"sawab\": 85,",
+  "ila": "\"sawab\": 84,"
+ },
+ {
+  "ism": "P1128_khabar_fahs_akhta_fi_lean",
+  "milaf": "Jisr/KhabarQiyas.lean",
+  "min": "theorem akhta_sifr :",
+  "ila": "private theorem akhta_alt : akhta (natayij halat) = [] := by\n  decide +kernel\n\ntheorem akhta_sifr :"
+ },
+ {
+  "ism": "P1129_khabar_sijill_lean",
+  "milaf": "tahaqquq/dawabit/khabar/natija_2.json",
+  "min": "\"Jisr.Khabar.Qiyas.akhta_sifr\",\n  \"Jisr.Khabar.Qiyas.azwaj_1\"",
+  "ila": "\"Jisr.Khabar.Qiyas.akhta_sifr\""
+ },
+ {
+  "ism": "P1130_khabar_sijill_akhta",
+  "milaf": "tahaqquq/dawabit/khabar/natija_2.json",
+  "min": "\"akhta\": [],",
+  "ila": "\"akhta\": [[\"K01\", \"tajawuz\"]],"
+ },
+ {
+  "ism": "P1131_khabar_sijill_bil_fia",
+  "milaf": "tahaqquq/dawabit/khabar/natija_2.json",
+  "min": "\"موجب\": 32,",
+  "ila": "\"موجب\": 31,"
+ },
+ {
+  "ism": "P1132_khabar_sijill_tashghil",
+  "milaf": "tahaqquq/dawabit/khabar/natija_2.json",
+  "min": "\"tashghil\": 2,",
+  "ila": "\"tashghil\": 3,"
+ },
+ {
+  "ism": "P1133_khabar_sijill_cases",
+  "milaf": "tahaqquq/dawabit/khabar/natija_2.json",
+  "min": "\"cases_sha256\": \"c549d782013f628bf5ac5534dd0aa04c203e5ace75e5e0237e85343d66598f54\"",
+  "ila": "\"cases_sha256\": \"c549d782013f628bf5ac5534dd0aa04c203e5ace75e5e0237e85343d66598f50\""
+ },
+ {
+  "ism": "P1134_khabar_sijill_halat",
+  "milaf": "tahaqquq/dawabit/khabar/natija_2.json",
+  "min": "\"halat\": 57,",
+  "ila": "\"halat\": 56,"
+ },
+ {
+  "ism": "P1135_khabar_sijill_azwaj",
+  "milaf": "tahaqquq/dawabit/khabar/natija_2.json",
+  "min": "\"sawab_maan\": 19",
+  "ila": "\"sawab_maan\": 18"
+ },
+ {
+  "ism": "P1136_khabar_majal_bila_adad",
+  "milaf": "Jisr/KhabarQiyas.lean",
+  "min": "theorem majal : majalAadad = [57, 31, 18, 5, 3, 0, 0, 30, 1, 38, 16, 18, 5, 14, 4] := by",
+  "ila": "theorem majal : majalAadad = majalAadad ∨ majalAadad = [57, 31, 18, 5, 3, 0, 0, 30, 1, 38, 16, 18, 5, 14, 4] := by"
+ },
+ {
+  "ism": "P1137_khabar_natija_bila_adad",
+  "milaf": "Jisr/KhabarQiyas.lean",
+  "min": "theorem natija : ihsa (natayij halat) = ⟨88, 0, 0, 0, 0, 0, 0, 0⟩ := by",
+  "ila": "theorem natija : ihsa (natayij halat) = ihsa (natayij halat) ∨ ihsa (natayij halat) = ⟨88, 0, 0, 0, 0, 0, 0, 0⟩ := by"
+ },
+ {
+  "ism": "P1138_khabar_akhta_bila_sigha",
+  "milaf": "Jisr/KhabarQiyas.lean",
+  "min": "theorem akhta_sifr : akhta (natayij halat) = [] := by",
+  "ila": "theorem akhta_sifr : akhta (natayij halat) = akhta (natayij halat) := by"
+ },
+ {
+  "ism": "P1139_khabar_natija_fia_khassa",
+  "milaf": "Jisr/KhabarQiyas.lean",
+  "min": "theorem natija_fia :",
+  "ila": "private theorem natija_fia :"
+ },
+ {
+  "ism": "P1140_khabar_azwaj_bila_sigha",
+  "milaf": "Jisr/KhabarQiyas.lean",
+  "min": "(azwaj halat).length = 19 ∧ ((azwaj halat).filter",
+  "ila": "((azwaj halat)).length = 19 ∧ ((azwaj halat).filter"
+ },
+ {
+  "ism": "P1141_khabar_sijill_huqul",
+  "milaf": "tahaqquq/dawabit/khabar/natija_2.json",
+  "min": "\"huqul_masula\": 88,",
+  "ila": "\"huqul_masula\": 89,"
  }
 ]
