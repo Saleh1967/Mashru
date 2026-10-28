@@ -2387,7 +2387,7 @@ import Jisr.KhabarQiyas
 #print axioms Jisr.Khabar.ghayr_maqbul_bila
 #print axioms Jisr.Khabar.ibtida_wad
 #print axioms Jisr.Khabar.isnad_kubra
-#print axioms Jisr.Khabar.khilaf_isnad_rabit
+#print axioms Jisr.Khabar.hadd_isnad_rabit
 #print axioms Jisr.Khabar.isnad_wasf
 #print axioms Jisr.Khabar.tarkib_rabit
 #print axioms Jisr.Khabar.simat2_jamid

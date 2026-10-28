@@ -5306,8 +5306,8 @@
  {
   "ism": "P1090_khabar_alfiyya_tabaq_fail",
   "milaf": "Jisr/Khabar.lean",
-  "min": "some (if tabaq d then khataJ else if",
-  "ila": "some (if"
+  "min": "if tabaq d then none else some (if d.itimad",
+  "ila": "some (if d.itimad"
  },
  {
   "ism": "P1091_khabar_alfiyya_muqaddam",
@@ -5518,5 +5518,17 @@
   "milaf": "tahaqquq/dawabit/khabar/natija_2.json",
   "min": "\"huqul_masula\": 88,",
   "ila": "\"huqul_masula\": 89,"
+ },
+ {
+  "ism": "P1147_khabar_tabaq_fail_la_hukm",
+  "milaf": "Jisr/Khabar.lean",
+  "min": "if tabaq d then none else some (if d.itimad",
+  "ila": "if tabaq d then some khataJ else some (if d.itimad"
+ },
+ {
+  "ism": "P1148_khabar_dabit_ghumud_daraja",
+  "milaf": "Jisr/KhabarDabit.lean",
+  "min": "  | .laHukm => if 2 ≤ m.length then .sawab else .naqsTaghtiya",
+  "ila": "  | .laHukm => .naqsTaghtiya"
  }
 ]
