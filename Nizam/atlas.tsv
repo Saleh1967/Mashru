@@ -99,6 +99,7 @@ Aql.TashfirAzmina	ADAT	لا	طيّ الإزاحة الزمنية
 Aql.TashfirMakan	ADAT	لا	طيّ الموضع والمرجع
 Aql.TashfirMirsat	ADAT	لا	طيّ المرساة
 Faahis.Lib	ADAT	نعم	الفاحص التنفيذيّ (مكتبة)
+Faahis.SijillMakhtum	ADAT	نعم	أسطرُ سجلّ المودَعات المختوم mudaat/sijill.tsv بنصّها (مولَّد): السجلُّ المعتمد للفاحص والقارئ (P1-ج)
 Faahis.Main	ADAT	نعم	نقطة دخول الفاحص
 Qari.Main	ADAT	نعم	القارئ
 Nizam.Asas	NIZAM	نعم	نواة المنظومة: الحكم الثلاثيّ والجسر والسلامة والقاعدة الكلّيّة والقياس

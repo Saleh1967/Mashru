@@ -40,6 +40,8 @@
    البحثَ في الجدول هو `find?` مبرهن: `jadwalUsul_find`، `bina_asl`، `bina_aslB`، `bina_aslW`؛ وهذا الاختبارُ يحرس
    «أوّلُ أصلٍ» من جهة التحميل، وطفرتُه P470: أصلٌ يحذف ما قبله لقضيّته عند التحميل.)
    ونموُّ الزمن (س1) في tahaqquq/test_sura.py، آخرَ اختبارات الطفرات.
+١٨. السجلُّ المعتمد (P1-ج): سجلٌّ غيرُ `mudaat/sijill.tsv` المختوم (بأسطره في `Faahis/SijillMakhtum.lean`) خطأُ تحميلٍ باسمه في الفاحص والسؤال
+   والقارئ، إلّا بـ`--ikhtibar` معلَنًا؛ وسجلّاتُ الاختبار هنا كلُّها تُمرَّر به (`bayan`). والمولَّدُ مطابقٌ للمختوم (`--check`). ومبرهن: `mutamad_salim`.
 ١٧. fasid_shahid.tsv (P2-أ، القرار ٢-أ): محتوًى يربط معنًى بقضيّة، ومحتوًى بشاهدٍ موضعُه 999999 (التجربة ١): خطآن مسمّيان، ولا «مفهوم»؛
    والسؤالُ لا يجيب (خروج 1). والشواهدُ مبرهنةٌ هي `Waqi.shuhud` (`bina_shuhud`، `shuhud_saff`)، والمحتوى لا يغيّرها (`tahmil_shawahid`).
 التشغيل: python3 -I mawsua/test_mawsua.py
@@ -62,9 +64,14 @@ def m(name):
 IKHTIBAR = m("sijill_ikhtibar.tsv")
 
 
+def bayan(sijill):
+    """سجلُّ اختبارٍ غيرُ المختوم يُعلَن بـ--ikhtibar (P1-ج)؛ والمختومُ يُمرَّر بلا إعلان."""
+    return [] if sijill == SIJILL else ["--ikhtibar"]
+
+
 def faahis(name, sijill):
     """الملفّ الأوّل سجلّ المودَعات، والثاني المحتوى."""
-    p = subprocess.run([EXE, sijill, m(name)], capture_output=True, text=True)
+    p = subprocess.run([EXE] + bayan(sijill) + [sijill, m(name)], capture_output=True, text=True)
     rows = [l.split("\t") for l in p.stdout.splitlines()]
     return p.returncode, rows
 
@@ -74,7 +81,7 @@ def ahkam(rows):
 
 
 def sual(badia, name="makhzan.tsv", sijill=SIJILL):
-    p = subprocess.run([EXE, "--sual", badia, sijill, m(name)], capture_output=True, text=True)
+    p = subprocess.run([EXE] + bayan(sijill) + ["--sual", badia, sijill, m(name)], capture_output=True, text=True)
     return p.returncode, p.stdout.splitlines()
 
 
@@ -217,4 +224,17 @@ code, out = sual("mutabaqa:", name="maratib.tsv", sijill=m("sijill_shahid_bila_w
 assert code == 0 and "    المعنى «الكوكب-النهاري»: معلومة (لا شاهد واقعٍ مودَع)" in out, out
 ok += 1
 
-print(f"{ok}/22")
+# ١٨. السجلُّ المعتمد (P1-ج): سجلٌّ غيرُ المختوم بلا --ikhtibar خطأُ تحميلٍ باسمه في الفاحص والسؤال والقارئ؛ والمولَّدُ مطابقٌ للمختوم.
+KHATA_MUTAMAD = "السجلّ ليس سجلَّ المودَعات المختوم (mudaat/sijill.tsv): السلطةُ للمعتمد وحده، أو --ikhtibar معلَنًا"
+p = subprocess.run([EXE, IKHTIBAR, m("sahih_musawi.tsv")], capture_output=True, text=True)
+assert p.returncode == 1 and ["خطأ", KHATA_MUTAMAD] in [l.split("\t") for l in p.stdout.splitlines()], p.stdout
+p = subprocess.run([EXE, "--sual", "mutabaqa:", m("sijill_maratib.tsv"), m("maratib.tsv")], capture_output=True, text=True)
+assert p.returncode == 1 and p.stdout.splitlines()[0] == "خطأ تحميل\t" + KHATA_MUTAMAD, p.stdout
+assert not any("مفهوم (" in l for l in p.stdout.splitlines()), p.stdout
+p = subprocess.run([QARI, IKHTIBAR, m("makhzan.tsv"), "كَتَبَ"], capture_output=True, text=True)
+assert p.returncode == 1 and p.stdout.splitlines()[0] == "خطأ تحميل\t" + KHATA_MUTAMAD, p.stdout
+p = subprocess.run([sys.executable, "-I", os.path.join(ROOT, "scripts", "bina_sijill_makhtum.py"), "--check"], capture_output=True, text=True)
+assert p.returncode == 0 and p.stdout.strip() == "مطابق", p.stdout
+ok += 1
+
+print(f"{ok}/23")

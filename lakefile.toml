@@ -32,7 +32,7 @@ globs = ["Nizam.+"]
 
 [[lean_lib]]
 name = "Faahis"
-globs = ["Faahis.Lib"]
+globs = ["Faahis.Lib", "Faahis.SijillMakhtum"]
 
 [[lean_exe]]
 name = "faahis"

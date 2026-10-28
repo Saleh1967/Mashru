@@ -48,7 +48,7 @@ def muaalij():
 
 def tashghil(path, n, sual):
     """زمنُ المعالج لتشغيلٍ واحد، بعد التحقّق من مخرجه."""
-    cmd = [EXE, "--sual", "mutabaqa:w7:", IKHTIBAR, path] if sual else [EXE, IKHTIBAR, path]
+    cmd = [EXE, "--ikhtibar", "--sual", "mutabaqa:w7:", IKHTIBAR, path] if sual else [EXE, "--ikhtibar", IKHTIBAR, path]
     c0 = muaalij()
     p = subprocess.run(cmd, capture_output=True, text=True)
     t = muaalij() - c0

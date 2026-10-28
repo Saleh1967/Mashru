@@ -308,11 +308,18 @@ def main (args : List String) : IO UInt32 := do
   | ["--qiyas", path] => qiyas path
   | ["--khalaya", path] => khalayaWad path
   | ["--itar", path] => itarWad path
+  | _ =>
+  -- السجلُّ المعتمد (P1-ج): غيرُ `mudaat/sijill.tsv` المختوم خطأُ تحميلٍ إلّا بـ`--ikhtibar` معلَنًا.
+  let (ikhtibar, args) := match args with
+    | "--ikhtibar" :: r => (true, r)
+    | r => (false, r)
+  if ikhtibar then IO.eprintln "سجلُّ اختبار (--ikhtibar): السلطةُ غيرُ السجلّ المختوم"
+  match args with
   | sijill :: makhzan :: nass =>
     if nass.isEmpty then IO.eprintln "لا نصّ"; return 2
     -- التحميل المحقَّق نفسُه الذي يستعمله الفاحص (Faahis/Lib.lean: `tahmil`، `muhaqqaq`): السجلّ سلطةٌ وحده،
     -- وخطأُ التحميل يُطبع باسمه ولا يُقرأ النصّ على قاعدةٍ جزئيّة.
-    let h := tahmil (← IO.FS.lines sijill).toList (← IO.FS.lines makhzan).toList
+    let h := tahmilMutamad ikhtibar (← IO.FS.lines sijill).toList (← IO.FS.lines makhzan).toList
     let h ← match muhaqqaq h with
       | .ok h => pure h
       | .error e =>
@@ -334,4 +341,4 @@ def main (args : List String) : IO UInt32 := do
       if kull then iqraJumla words qs
       else IO.println s!"الجملة في الوصل ({words.size} كلمات): لم تُركَّب — فيها كلمة مرفوضة باسمها"
     return 0
-  | _ => IO.eprintln "الاستعمال: qari <سجلّ المودَعات> <المخزن> <نصّ مشكول…>"; return 2
+  | _ => IO.eprintln "الاستعمال: qari [--ikhtibar] <سجلّ المودَعات> <المخزن> <نصّ مشكول…>"; return 2
