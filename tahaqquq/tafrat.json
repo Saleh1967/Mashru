@@ -7462,5 +7462,29 @@
   "milaf": "scripts/abjad_nabt.py",
   "min": "HARAKAT = (\"َ\", \"ُ\", \"ِ\", \"ْ\")",
   "ila": "HARAKAT = (\"ُ\", \"َ\", \"ِ\", \"ْ\")"
+ },
+ {
+  "ism": "P1340_sabq_maan_maqbul",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "        if c == F or not salaf(jadhr, F, c):",
+  "ila": "        if not salaf(jadhr, F, c):"
+ },
+ {
+  "ism": "P1341_sabq_bila_basma_alan",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "        if b_f != natija.get(\"cases_sha256\") or b_f != b_now:",
+  "ila": "        if b_f != natija.get(\"cases_sha256\"):"
+ },
+ {
+  "ism": "P1342_sabq_natija_qabl_shifra",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "        if not salaf(jadhr, c, N):",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P1343_sabq_dahl_najah",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "        return 3\n",
+  "ila": "        return 0\n"
  }
 ]
