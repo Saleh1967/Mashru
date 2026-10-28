@@ -87,7 +87,9 @@
      وخروجُ البناء بغير صفرٍ بلا خطأٍ مسمّى (قتلُ المعالج لنفاد الذاكرة؛ وكذلك خطأُ استيرادٍ أو ملفٍّ مفقود بلا سطر — لا طفرةَ اليوم تمسّ
      `import` أو lakefile) أو اختبارٌ قُتل بإشارة: «غيرُ محسومة»، تفشل بها البوّابة باسمها. وحدُّه: اختبارٌ رمزُه موجبٌ قتلٌ ولو كان سببُه
      نفادَ ذاكرةٍ في عمليّةٍ تابعة له أو MemoryError (لا يُشترط سطرُ FAIL/ERROR).
-التشغيل: python3 -I tahaqquq/bawwaba.py [--bila-tafrat]
+التشغيل: python3 -I tahaqquq/bawwaba.py [--bila-tafrat | --tafrat-faqat] [--qism i/n]
+  --bila-tafrat: البنودُ ١–٥ وحدها. --tafrat-faqat: البناءُ ثمّ البند ٦ وحده. --qism i/n: البند ٦ على القسم i من n من tafrat.json
+  (ما رتبتُه k وk % n = i − 1). وعلى CI تُجري وظيفةُ «bawwaba» البنودَ ١–٥، وستُّ وظائف «tafrat» البندَ ٦ بأقسامه.
 """
 import hashlib
 import json
@@ -564,13 +566,52 @@ def uyub_tafrat(tafrat, root):
     return uyub
 
 
-def main():
-    fails, report = [], []
-    code, out = run(["lake", "build"])
-    report.append(f"١ البناء: {'نجح' if code == 0 else 'فشل'}")
-    if code != 0:
-        fails.append("lake build فشل:\n" + out[-1500:])
+# البند ٦ على وظائف متوازية (قرار المالك 2026-10-28: اختار من سؤالٍ متعدّد الخيارات «الاثنان (موصى به)»، ونصُّ الخيار من البنّاء):
+# «--qism i/n» يأخذ من tafrat.json ما رتبتُه (من الصفر) تساوي i−1 بقياس n، فالأقسامُ n منفصلةٌ وتغطّي القائمةَ كلَّها
+# (test_shards_cover_the_list_once)؛ و«--tafrat-faqat» يبني ثمّ يُجري البند ٦ وحده (test_shard_only_runs_its_part). ووظيفةُ
+# «bawwaba» على CI تُجري الباقي بـ--bila-tafrat. والبند ٦ يحتاج تاريخَ الحوادث: test_hawadith.py يتخطّى نفسَه بخروج 0 إن غاب
+# (الاستنساخُ الضحل على CI)، وP237 لا يقتلها غيرُه؛ فيُشغَّل في المستودع قبل الطفرات، وإن تخطّى نفسَه أو فشل على الشجرة بلا طفرة
+# رُفض البند ٦ باسمه (test_missing_history_is_refused، test_failing_hawadith_is_refused). والشرطُ شرطُه هو لا «المستودعُ ضحل»:
+# المستودعُ المحلّيّ ضحلٌ وفيه تاريخُ الحوادث. وسائرُ اختبارات البند ٦ على الشجرة بلا طفرة يُجريها البند ٥ (وعلى CI وظيفةُ bawwaba،
+# وخطوةُ jam تشترط نجاحَها).
+TAKHATTI_HAWADITH = "حوادث الدمج: لم يُشغَّل"
+WASAIT = ("--bila-tafrat", "--tafrat-faqat", "--qism")
 
+
+def khiyarat(args):
+    """(faqat، qism) من وسائط البوّابة: qism زوجٌ (i، n) أو None بلا --qism. وكلُّ وسيطٍ غيرِ الثلاثة (وقيمةِ --qism)، و--qism
+    مكرَّرًا أو بلا «i/n» أو بقسمٍ خارج 1..n، و--bila-tafrat مع أحد الآخرَين: ValueError مسمّى."""
+    baqi = list(args)
+    qism = None
+    if baqi.count("--qism") > 1:
+        raise ValueError("--qism مكرَّر")
+    if "--qism" in baqi:
+        k = baqi.index("--qism")
+        qima = baqi[k + 1] if k + 1 < len(baqi) else ""
+        m = re.fullmatch(r"([0-9]+)/([0-9]+)", qima)
+        if not m:
+            raise ValueError(f"--qism يحتاج «i/n» (أعدادًا)، لا «{qima}»")
+        i, n = int(m.group(1)), int(m.group(2))
+        if not 1 <= i <= n:
+            raise ValueError(f"--qism {qima}: القسمُ بين 1 و{n}")
+        qism = (i, n)
+        del baqi[k:k + 2]
+    majhul = [a for a in baqi if a not in WASAIT]
+    if majhul:
+        raise ValueError("وسيطٌ لا يُعرف: " + "، ".join(majhul))
+    faqat = "--tafrat-faqat" in baqi
+    if "--bila-tafrat" in baqi and (faqat or qism):
+        raise ValueError("--bila-tafrat يترك البند ٦، فلا يجتمع مع --tafrat-faqat ولا --qism")
+    return faqat, qism
+
+
+def qism_tafrat(tafrat, i, n):
+    """القسمُ i من n: ما رتبتُه k في القائمة وk % n = i − 1."""
+    return [t for k, t in enumerate(tafrat) if k % n == i - 1]
+
+
+def bunud_2_5(report, fails):
+    """البنود ٢–٥د: تُكتب في report وfails. تُترك كلُّها مع --tafrat-faqat (وظائفُ الطفرات المتوازية على CI)."""
     bad = []
     for d in ("SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari"):
         for root, _, fs in os.walk(os.path.join(ROOT, d)):
@@ -860,8 +901,35 @@ def main():
         if code != 0:
             fails.append("مودَع تغيّرت بصمته:\n" + out)
 
+
+def main():
+    try:
+        faqat, qism = khiyarat(sys.argv[1:])
+    except ValueError as e:
+        print(f"البوّابة: {e}", file=sys.stderr, flush=True)
+        sys.exit(2)
+    fails, report = [], []
+    code, out = run(["lake", "build"])
+    report.append(f"١ البناء: {'نجح' if code == 0 else 'فشل'}")
+    if code != 0:
+        fails.append("lake build فشل:\n" + out[-1500:])
+
+    if faqat:
+        report.append("٢–٥ تُركت بطلب (--tafrat-faqat)")
+    else:
+        bunud_2_5(report, fails)
+
     if "--bila-tafrat" not in sys.argv:
         tafrat = json.load(open(os.path.join(ROOT, "tahaqquq", "tafrat.json"), encoding="utf-8"))
+        if qism:
+            tafrat = qism_tafrat(tafrat, *qism)
+        code_h, out_h = run([sys.executable, "-I", "tahaqquq/test_hawadith.py"])
+        bila_tarikh = code_h != 0 or TAKHATTI_HAWADITH in out_h
+        if bila_tarikh:
+            report.append("٦ الطفرات: لم تُشغَّل (test_hawadith.py لم يجرِ ويمرّ على الشجرة بلا طفرة)")
+            fails.append("البند ٦ يحتاج test_hawadith.py يجري ويمرّ على الشجرة بلا طفرة (تاريخُ الحوادث، fetch-depth: 0)، وP237 لا "
+                         f"يقتلها غيرُه؛ خرج {code_h}:\n" + out_h[-400:])
+            tafrat = []
         alive, ghayr = [], []
         for t in tafrat:
             tmp = tempfile.mkdtemp()
@@ -890,8 +958,10 @@ def main():
             elif code == 0:
                 alive.append(t["ism"])
             shutil.rmtree(tmp)
-        report.append(f"٦ الطفرات: قُتلت {len(tafrat) - len(alive) - len(ghayr)} من {len(tafrat)}"
-                      + (f"، وغيرُ محسومة {len(ghayr)}" if ghayr else ""))
+        wasf = f" (القسم {qism[0]} من {qism[1]})" if qism else ""
+        if not bila_tarikh:
+            report.append(f"٦ الطفرات{wasf}: قُتلت {len(tafrat) - len(alive) - len(ghayr)} من {len(tafrat)}"
+                          + (f"، وغيرُ محسومة {len(ghayr)}" if ghayr else ""))
         if alive:
             fails.append("طفرات عاشت: " + "، ".join(alive))
         if ghayr:

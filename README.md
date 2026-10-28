@@ -95,5 +95,5 @@ python3 -I scripts/check_nabt.py --help
 عدد المبرهنات المدقَّقة (بلا sorry/axiom/native_decide) مرجعُه مخرج `lake env lean Audit.lean` وخطّ الأساس `tahaqquq/khatt_asas.json`؛ والطفرات في `tahaqquq/tafrat.json` كلّها مقتولة عند مرور البوّابة.
 
 ## سير العمل
-فرعٌ لكلّ مهمّة ثمّ Pull Request؛ لا دفع إلى `main` مباشرة. كلّ PR يمرّ بالبوّابة محلّيًّا وفي CI (`bawwaba`).
+فرعٌ لكلّ مهمّة ثمّ Pull Request؛ لا دفع إلى `main` مباشرة. كلّ PR يمرّ بالبوّابة محلّيًّا وفي CI (`bawwaba`، والبندُ ٦ في ستّ وظائف `tafrat` تجمعها `tafrat-jam`).
 الجلسات السحابية: الصق `.claude/cloud-setup.sh` في خانة Setup script لبيئتك على claude.ai/code (يثبّت Lean 4.34.1).
