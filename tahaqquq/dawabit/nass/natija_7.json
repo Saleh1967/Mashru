@@ -19,12 +19,12 @@
    "iydaa": "09238703c426c682f41850a2ae35edc6f8226b7e"
   },
   "Dal/QiraaTahsil.lean": {
-   "sha256": "25ae4dce070bcb63c6256ffe46f1ccd275b64a0e11813cbb7cadd1cff0b9caa7",
-   "iydaa": "d3560b98303c9b448665066439efe3019d492e44"
+   "sha256": "6d6785aac8819e4b8cd1fceaaf2fd851ab462e221862fb42b144cca906874a48",
+   "iydaa": "7769e1c1c437b65a5c27f96eec5bc3b0c999e4a8"
   },
   "Dal/Tahsil.lean": {
-   "sha256": "6a97d8efbb6c48414d6b3d08e3f052f4148ee234f1ff97771e62ebf2b7078518",
-   "iydaa": "47d164d8e7ec961f9c77b202092bfc536fcc1b03"
+   "sha256": "626d9990e814cf0b032da8a805a8df99f2a513f7c42ba6a4e50211f63fe01bef",
+   "iydaa": "7769e1c1c437b65a5c27f96eec5bc3b0c999e4a8"
   }
  },
  "lean": [
@@ -119,5 +119,5 @@
  },
  "rafd_qari": [],
  "tarikh": "2026-10-29",
- "malahiz": "الأعدادُ أعدادُ natija_6.json بعينها: مبرهنتا natija وnatija_fia في Jisr/NassItarQiyas.lean تُبنيان على الشفرة الحاليّة، ومولِّدُ الخلايا يعيدها بايتًا («مطابق»)؛ وتغيّرت بصماتُ Dal/Tahsil.lean وDal/QiraaTahsil.lean."
+ "malahiz": "الأعدادُ أعدادُ natija_6.json بعينها: المبرهناتُ في ملفّ النتيجة تُبنى على الشفرة الحاليّة، ومولِّدُ الخلايا يعيدها بايتًا («مطابق»)؛ وتغيّرت بصماتُ Dal/Tahsil.lean وDal/QiraaTahsil.lean بالتعديل الثالث للتحصيل."
 }
