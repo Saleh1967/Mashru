@@ -48,7 +48,7 @@ def main(argv):
     sys.path.insert(0, os.path.join(root, "tahaqquq"))
     import bawwaba  # عيوبُ النصّ (٤ب) وقائمةُ الاختبارات من البوّابة نفسِها
     with open(os.path.join(root, "tahaqquq", "tafrat.json"), encoding="utf-8") as f:
-        qaima = json.load(f)
+        qaima = bawwaba.json_bila_takrar(f.read())    # المفتاحُ المكرَّر في قيدٍ خطأٌ مسمّى، لا قيدٌ يسقط بصمت
     tafrat, mukarrar = {}, []
     for t in qaima:
         if isinstance(t, dict) and isinstance(t.get("ism"), str):

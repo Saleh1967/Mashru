@@ -203,6 +203,8 @@ class BaselineTests(unittest.TestCase):
             return (0, audit) if cmd[:3] == ["lake", "env", "lean"] else (0, "")
 
         def git(*args):
+            if args[0] == "rev-list":     # ٤د: لا دمجَ في المدى
+                return (0, "")
             if args[-1].endswith(":CLAUDE.md"):
                 return (0, QISM_FARIGH)
             return (0, "asas\n") if args[0] == "merge-base" else (0, "[]")
@@ -277,6 +279,15 @@ class TafratGuardTests(unittest.TestCase):
                     bawwaba.mahdhufa_maadhuna(json.dumps([rec]))
         self.assertEqual(bawwaba.mahdhufa_maadhuna(json.dumps([{"ism": "P2_b", "sabab": "x", "idhn": "y"}])), ["P2_b"])
 
+    def test_duplicate_key_in_an_entry_is_rejected(self):
+        # قيدان التحما في حلٍّ يدويّ: json.loads يُبقي الثاني بصمت؛ والقراءةُ هنا ترفضه باسمَي القيدين
+        multahim = '[{"ism": "P1_a", "milaf": "X.lean", "ism": "P2_b", "milaf": "Y.lean"}]'
+        with self.assertRaises(ValueError) as e:
+            bawwaba.asmaa_tafrat(multahim)
+        self.assertIn("P1_a، P2_b", str(e.exception))
+        self.assertIn("ism، milaf", str(e.exception))
+        self.assertEqual(bawwaba.asmaa_tafrat('[{"ism": "P1_a"}, {"ism": "P2_b"}]'), ["P1_a", "P2_b"])
+
     def test_malformed_list_is_rejected(self):
         for text in ("{}", '[{"min": "x"}]', '[{"ism": 7}]', "[1]"):
             with self.subTest(text=text):
@@ -303,6 +314,8 @@ class TafratGuardTests(unittest.TestCase):
         out, err = io.StringIO(), io.StringIO()
 
         def git(*args):
+            if args[0] == "rev-list":     # ٤د: لا دمجَ في المدى
+                return (0, "")
             if args[0] == "merge-base":
                 return (0, "abc1234def\n") if merge_base_ok else (128, "")
             if args[-1].endswith(":CLAUDE.md"):
@@ -419,6 +432,8 @@ class DabtGuardTests(unittest.TestCase):
         out, err = io.StringIO(), io.StringIO()
 
         def git(*args):
+            if args[0] == "rev-list":     # ٤د: لا دمجَ في المدى
+                return (0, "")
             if args[0] == "merge-base":
                 return (0, "abc1234def\n")
             if args[1].endswith(":CLAUDE.md"):
@@ -469,6 +484,269 @@ class DabtGuardTests(unittest.TestCase):
         self.assertIn("لم يُقارَن بالأساس", out)
         self.assertIn("حراسة سجلّ ما ضُبطتُ عليه: تعذّرت قراءة CLAUDE.md عند abc1234", err)   # سببُه باسمه، لا غيابُ العنوان
         self.assertNotIn("Traceback", err)
+
+
+class DamjSaqitTests(unittest.TestCase):
+    """٤د: ما أسقطه حلُّ دمجٍ في الطلب. التوقّعاتُ مكتوبةٌ باليد من النصوص الصغيرة أدناه؛ والدمجُ المحاكى فيها مكتوبٌ باليد بكتل
+    تعارضه، وعلى المستودعات المصنوعة يكتبه git نفسُه."""
+
+    def s(self, path, muhaka, damj):
+        return bawwaba.saqit_fi_damj(path, muhaka, damj)
+
+    @staticmethod
+    def kutla(a, b):
+        return f"<<<<<<< far\n{a}=======\n{b}>>>>>>> main\n"
+
+    def test_dropped_side_of_a_conflict_is_named(self):
+        m = "سطرٌ أوّل\n" + self.kutla("من الفرع\n", "من main\n")
+        self.assertEqual(self.s("CLAUDE.md", m, "سطرٌ أوّل\nمن الفرع\n"), ["من main"])
+        self.assertEqual(self.s("CLAUDE.md", m, "سطرٌ أوّل\nمن main\n"), ["من الفرع"])
+
+    def test_union_keeps_everything(self):
+        m = "سطرٌ أوّل\n" + self.kutla("من الفرع\n", "من main\n")
+        self.assertEqual(self.s("CLAUDE.md", m, "سطرٌ أوّل\nمن main\nمن الفرع\n"), [])
+
+    def test_what_git_merged_cleanly_is_required(self):
+        m = "يبقى\nمشترك\n" + self.kutla("أأأ\n", "بببب\n")
+        self.assertEqual(self.s("README.md", m, "يبقى\nأأأ\nبببب\n"), ["مشترك"])
+
+    def test_a_block_requires_the_larger_side_not_the_sum(self):
+        m = self.kutla("مشترك\nأأأ\n", "مشترك\nبببب\n")
+        self.assertEqual(self.s("README.md", m, "مشترك\nأأأ\nبببب\n"), [])
+
+    def test_diff3_base_section_is_not_a_side(self):
+        m = "<<<<<<< far\nأأأ\n||||||| base\nقديم\n=======\nبببب\n>>>>>>> main\n"
+        self.assertEqual(self.s("README.md", m, "أأأ\nبببب\n"), [])
+        self.assertEqual(bawwaba.kutal_taarud(m), ("", [("أأأ", "بببب")]))
+
+    def test_counts_matter(self):
+        self.assertEqual(self.s("README.md", "مكرَّر\nمكرَّر\n", "مكرَّر\n"), ["مكرَّر"])
+
+    def test_short_lines_do_not_count(self):
+        self.assertEqual(self.s("X.lean", "a\n" + self.kutla("}\n", "-/\n"), "a\n"), [])
+
+    def test_mutations_by_name(self):
+        m = "[\n" + self.kutla(' {"ism": "P1_a"},\n', ' {"ism": "P2_b"},\n') + ' {"ism": "P0_q"}\n]\n'
+        self.assertEqual(self.s("tahaqquq/tafrat.json", m, json.dumps([{"ism": "P1_a"}, {"ism": "P0_q"}])), ["P2_b"])
+        self.assertEqual(self.s("tahaqquq/tafrat.json", json.dumps([{"ism": "P1_a"}]), "[]"), ["P1_a"])
+
+    def test_baseline_reason_by_pairs(self):
+        m = self.kutla('{"sabab": "10←12 ب. وقبله: 5←10 أ"}\n', '{"sabab": "10←11 ج. وقبله: 5←10 أ"}\n')
+        self.assertEqual(self.s("tahaqquq/khatt_asas.json", m, '{"sabab": "10←12 ب. وقبله: 5←10 أ"}'), ["10←11"])
+        m2 = "5←10\n" + m                     # الزوجُ خارج الكتلة وفيها: حضورٌ لا عدد
+        self.assertEqual(self.s("tahaqquq/khatt_asas.json", m2, "10←12، 10←11، 5←10"), [])
+
+    def test_binary_is_skipped(self):
+        self.assertEqual(self.s("x.bin", "a\0bcd\n", "a\0b"), [])
+
+    def test_absent_file(self):
+        self.assertEqual(self.s("جديد.md", "سطرٌ جديد\n", None), ["سطرٌ جديد"])
+        self.assertEqual(self.s("جديد.md", None, "سطرٌ جديد\n"), [])
+
+    def test_permission_ledger_needs_all_fields(self):
+        b = "0" * 64
+        good = {"damj": "abc1234", "milaf": "CLAUDE.md", "basma": b, "awwal": "x", "sabab": "s", "idhn": "i"}
+        self.assertEqual(bawwaba.damj_maadhun(json.dumps([good])), [("abc1234", "CLAUDE.md", b)])
+        for k in good:
+            with self.subTest(k=k):
+                with self.assertRaises(ValueError):
+                    bawwaba.damj_maadhun(json.dumps([dict(good, **{k: " "})]))
+        with self.assertRaises(ValueError):
+            bawwaba.damj_maadhun(json.dumps([dict(good, damj="abc12")]))
+        with self.assertRaises(ValueError):
+            bawwaba.damj_maadhun(json.dumps([dict(good, basma="x" * 64)]))
+        with self.assertRaises(ValueError):
+            bawwaba.damj_maadhun(json.dumps(good))
+
+    def test_present_now_or_permitted_is_not_absent(self):
+        d = "abc1234" + "0" * 33
+        saqit = [(d, "CLAUDE.md", "حاضر"), (d, "CLAUDE.md", "مأذون"), (d, "README.md", "مأذون"), (d, "CLAUDE.md", "غائب"),
+                 (d, "CLAUDE.md", "غائب")]
+        b = hashlib.sha256("مأذون".encode()).hexdigest()
+        g = bawwaba.saqit_ghaib(saqit, lambda p: {"حاضر"} if p == "CLAUDE.md" else set(), [("abc1234", "CLAUDE.md", b)])
+        self.assertEqual(g, [(d, "README.md", "مأذون"), (d, "CLAUDE.md", "غائب")])
+        self.assertEqual(bawwaba.saqit_ghaib(saqit, lambda p: set(), [("abd1234", "CLAUDE.md", b)])[0][2], "حاضر")
+
+    # على مستودع git مصنوع: أساسٌ، وفرعٌ يضيف سطرًا، وmain يضيف سطرًا، ودمجٌ يحلّ بطرف الفرع (كما في المتصفّح)
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.r = self.tmp.name
+
+    ENV = dict(GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t", GIT_COMMITTER_NAME="t", GIT_COMMITTER_EMAIL="t@t",
+               GIT_AUTHOR_DATE="2026-10-28T00:00:00", GIT_COMMITTER_DATE="2026-10-28T00:00:00", GIT_CONFIG_NOSYSTEM="1",
+               GIT_CONFIG_GLOBAL=os.devnull)    # لا إعدادَ عامٌّ لـgit (كما على CI): الهويّةُ من البيئة
+
+    def g(self, *a):
+        p = subprocess.run(["git", *a], cwd=self.r, capture_output=True, text=True, env=dict(os.environ, **self.ENV))
+        self.assertEqual(p.returncode, 0, p.stderr + p.stdout)
+        return p.stdout.strip()
+
+    def damj_mutaarid(self, far="main"):
+        """دمجٌ يتعارض (رمزُه 1) فيُترك لحلٍّ يدويّ."""
+        p = subprocess.run(["git", "merge", "-q", far], cwd=self.r, capture_output=True, text=True, env=dict(os.environ, **self.ENV))
+        self.assertEqual(p.returncode, 1, p.stderr + p.stdout)
+
+    def write(self, path, text):
+        os.makedirs(os.path.dirname(os.path.join(self.r, path)) or self.r, exist_ok=True)
+        with open(os.path.join(self.r, path), "w", encoding="utf-8") as f:
+            f.write(text)
+
+    def repo(self, hall):
+        """يعيد (الأساس، الرأس): hall نصُّ CLAUDE.md في الدمج."""
+        self.g("init", "-q", "-b", "main")
+        self.write("CLAUDE.md", "# المشروع\nسطرٌ أوّل\n")
+        self.write("tahaqquq/tafrat.json", "[]")
+        self.write("tahaqquq/khatt_asas.json", '{"mubarhanat": 0}')
+        self.g("add", "-A")
+        self.g("commit", "-q", "-m", "أساس")
+        asas = self.g("rev-parse", "HEAD")
+        self.g("checkout", "-q", "-b", "far")
+        self.write("CLAUDE.md", "# المشروع\nسطرٌ أوّل\nمن الفرع\n")
+        self.g("commit", "-q", "-am", "فرع")
+        self.g("checkout", "-q", "main")
+        self.write("CLAUDE.md", "# المشروع\nسطرٌ أوّل\nمن main\n")
+        self.g("commit", "-q", "-am", "main")
+        main = self.g("rev-parse", "HEAD")
+        self.g("checkout", "-q", "far")
+        self.damj_mutaarid()
+        self.write("CLAUDE.md", hall)
+        self.g("add", "-A")
+        self.g("commit", "-q", "--no-edit", "-m", "دمج")
+        return main, asas
+
+    def test_merge_in_range_is_scanned(self):
+        main, asas = self.repo("# المشروع\nسطرٌ أوّل\nمن الفرع\n")
+        with patch.object(bawwaba, "ROOT", self.r):
+            saqit, n = bawwaba.saqit_fi_mada(asas)
+            self.assertEqual(n, 1)
+            self.assertEqual([(p, x) for _, p, x in saqit], [("CLAUDE.md", "من main")])
+            saqit_m, _ = bawwaba.saqit_fi_mada(main)       # الأساسُ طرفُ main، كما على CI
+            self.assertEqual([(p, x) for _, p, x in saqit_m], [("CLAUDE.md", "من main")])
+            saqit2, n2 = bawwaba.saqit_fi_mada(self.g("rev-parse", "HEAD"))
+            self.assertEqual((saqit2, n2), ([], 0))      # الدمجُ خارج المدى
+
+    def test_union_merge_is_clean(self):
+        _, asas = self.repo("# المشروع\nسطرٌ أوّل\nمن الفرع\nمن main\n")
+        with patch.object(bawwaba, "ROOT", self.r):
+            self.assertEqual(bawwaba.saqit_fi_mada(asas), ([], 1))
+
+    def asas_wa_far(self, files):
+        """مستودعٌ أساسُه files، وفرعُ «far» منه؛ يعيد بصمةَ الأساس."""
+        self.g("init", "-q", "-b", "main")
+        for path, text in files.items():
+            self.write(path, text)
+        self.g("add", "-A")
+        self.g("commit", "-q", "-m", "أساس")
+        asas = self.g("rev-parse", "HEAD")
+        self.g("branch", "far")
+        return asas
+
+    def test_clean_merge_dropping_both_copies_is_not_flagged(self):
+        # في الأساس نسختان، وحذف كلُّ طرفٍ نسخةً غيرَ الأخرى: يدمجه git بلا تعارض فتذهبان معًا
+        q = "أوّل\nأوّل\nأوّل\nنسخةٌ مكرَّرة\nوسطٌ\nوسطٌ\nوسطٌ\nنسخةٌ مكرَّرة\nآخر\nآخر\nآخر\n"
+        asas = self.asas_wa_far({"X.md": q})
+        self.write("X.md", q.replace("وسطٌ\nنسخةٌ مكرَّرة\n", "وسطٌ\n"))
+        self.g("commit", "-q", "-am", "main")
+        self.g("checkout", "-q", "far")
+        self.write("X.md", q.replace("أوّل\nنسخةٌ مكرَّرة\n", "أوّل\n"))
+        self.g("commit", "-q", "-am", "فرع")
+        self.g("merge", "-q", "--no-edit", "main")
+        with open(os.path.join(self.r, "X.md"), encoding="utf-8") as f:
+            self.assertNotIn("نسخةٌ مكرَّرة", f.read())          # git نفسُه أسقطهما
+        with patch.object(bawwaba, "ROOT", self.r):
+            self.assertEqual(bawwaba.saqit_fi_mada(asas), ([], 1))
+
+    def test_rename_is_followed(self):
+        asas = self.asas_wa_far({"A.md": "سطرٌ أوّل\nسطرٌ ثانٍ\nسطرٌ ثالث\n"})
+        self.write("A.md", "سطرٌ أوّل\nسطرٌ ثانٍ\nسطرٌ ثالث\nأضافه main\n")
+        self.g("commit", "-q", "-am", "main")
+        self.g("checkout", "-q", "far")
+        self.g("mv", "A.md", "B.md")
+        self.g("commit", "-q", "-m", "نقل")
+        self.g("merge", "-q", "--no-edit", "main")
+        with open(os.path.join(self.r, "B.md"), encoding="utf-8") as f:
+            self.assertIn("أضافه main", f.read())               # git حمله إلى B.md
+        with patch.object(bawwaba, "ROOT", self.r):
+            self.assertEqual(bawwaba.saqit_fi_mada(asas), ([], 1))
+
+    def gate(self, ledger=None):
+        out, err = io.StringIO(), io.StringIO()
+        if ledger is not None:
+            self.write("tahaqquq/damj_maadhun.json", json.dumps(ledger))
+        with open(os.path.join(self.r, "CLAUDE.md"), encoding="utf-8") as f:
+            hall = f.read()
+        self.write("CLAUDE.md", hall + "\n## ما ضُبطتُ عليه\n")
+
+        def git(*a):                      # git الحقيقيّ على المستودع المصنوع، إلّا CLAUDE.md الأساس (٤ج) فقسمٌ فارغ
+            if a[-1].endswith(":CLAUDE.md"):
+                return (0, QISM_FARIGH)
+            p = subprocess.run(["git", *a], cwd=self.r, capture_output=True, text=True)
+            return p.returncode, p.stdout
+
+        with patch.object(bawwaba, "ROOT", self.r), patch.dict(os.environ, {"TAFRAT_ASAS_REF": "main"}), \
+                patch.object(bawwaba, "run", return_value=(0, "")), \
+                patch.object(bawwaba, "git", side_effect=git), \
+                patch.object(sys, "argv", ["bawwaba.py", "--bila-tafrat"]), \
+                contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            with self.assertRaises(SystemExit) as e:
+                bawwaba.main()
+        return e.exception.code, out.getvalue(), err.getvalue()
+
+    def test_gate_names_the_dropped_line(self):
+        main, asas = self.repo("# المشروع\nسطرٌ أوّل\nمن الفرع\n")
+        code, out, err = self.gate()
+        self.assertEqual(code, 2)
+        self.assertIn("٤د ما أسقطته الدمجات: 1 دمجًا في المدى من", out)
+        self.assertIn("منه غائبٌ الآن بلا إذن 1", out)
+        self.assertIn("CLAUDE.md: من main", err)
+
+    def test_gate_passes_with_permission(self):
+        main, asas = self.repo("# المشروع\nسطرٌ أوّل\nمن الفرع\n")
+        damj = self.g("rev-parse", "HEAD")
+        code, out, err = self.gate([{"damj": damj[:7], "milaf": "CLAUDE.md",
+                                     "basma": hashlib.sha256("من main".encode()).hexdigest(), "awwal": "من main",
+                                     "sabab": "صيغ في سطرٍ آخر", "idhn": "المالك"}])
+        self.assertIn("منه غائبٌ الآن بلا إذن 0", out)
+        self.assertNotIn("ما أسقطه دمجٌ في الطلب", err)
+
+    def repo_tafrat(self):
+        """فرعٌ يضيف P1_a وmain يضيف P2_b، والدمجُ يحلّ بطرف الفرع."""
+        self.g("init", "-q", "-b", "main")
+        self.write("CLAUDE.md", "# المشروع\n")
+        self.write("X.lean", "def P1_a := 1\ndef P2_b := 1\n")
+        self.write("tahaqquq/tafrat.json", "[]")
+        self.write("tahaqquq/khatt_asas.json", '{"mubarhanat": 0}')
+        self.g("add", "-A")
+        self.g("commit", "-q", "-m", "أساس")
+        q = lambda n: {"ism": n, "milaf": "X.lean", "min": f"def {n} := 1", "ila": f"def {n} := 2"}
+        self.g("checkout", "-q", "-b", "far")
+        self.write("tahaqquq/tafrat.json", json.dumps([q("P1_a")]))
+        self.g("commit", "-q", "-am", "فرع")
+        self.g("checkout", "-q", "main")
+        self.write("tahaqquq/tafrat.json", json.dumps([q("P2_b")]))
+        self.g("commit", "-q", "-am", "main")
+        self.g("checkout", "-q", "far")
+        self.damj_mutaarid()
+        self.write("tahaqquq/tafrat.json", json.dumps([q("P1_a")]))
+        self.g("add", "-A")
+        self.g("commit", "-q", "--no-edit", "-m", "دمج")
+
+    def test_gate_names_dropped_mutation_unless_deleted_with_permission(self):
+        self.repo_tafrat()
+        code, out, err = self.gate()
+        self.assertIn("منه غائبٌ الآن بلا إذن 1", out)
+        self.assertIn("tahaqquq/tafrat.json: P2_b", err)
+        self.write("tahaqquq/tafrat_mahdhufa.json", json.dumps([{"ism": "P2_b", "sabab": "حُذف الكود", "idhn": "المالك"}]))
+        code, out, err = self.gate()
+        self.assertIn("منه غائبٌ الآن بلا إذن 0", out)
+
+    def test_gate_passes_when_restored_later(self):
+        main, asas = self.repo("# المشروع\nسطرٌ أوّل\nمن الفرع\n")
+        self.write("CLAUDE.md", "# المشروع\nسطرٌ أوّل\nمن الفرع\nمن main\n")
+        self.g("commit", "-q", "-am", "استعادة")
+        code, out, err = self.gate()
+        self.assertIn("ساقطٌ 1، منه غائبٌ الآن بلا إذن 0", out)
 
 
 class TafraNassTests(unittest.TestCase):
@@ -652,6 +930,8 @@ class TafraNassTests(unittest.TestCase):
         out, err = io.StringIO(), io.StringIO()
 
         def git(*args):
+            if args[0] == "rev-list":     # ٤د: لا دمجَ في المدى
+                return (0, "")
             if args[-1].endswith(":CLAUDE.md"):
                 return (0, QISM_FARIGH)
             return (0, "abc1234\n") if args[0] == "merge-base" else (0, "[]")
@@ -729,6 +1009,8 @@ class TafraNassTests(unittest.TestCase):
             return (0, "")
 
         def git(*args):
+            if args[0] == "rev-list":     # ٤د: لا دمجَ في المدى
+                return (0, "")
             if args[-1].endswith(":CLAUDE.md"):
                 return (0, QISM_FARIGH)
             return (0, "abc1234\n") if args[0] == "merge-base" else (0, json.dumps(tafrat))
@@ -938,6 +1220,8 @@ class QismTests(unittest.TestCase):
             return (1, "error: m.lean:1:9: x") if cmd[-1] == "build" and cwd not in (None, self.tmp.name) else (0, "")
 
         def git(*args):
+            if args[0] == "rev-list":     # ٤د: لا دمجَ في المدى
+                return (0, "")
             if args[-1].endswith(":CLAUDE.md"):
                 return (0, QISM_FARIGH)
             return (0, "abc1234\n") if args[0] == "merge-base" else (0, json.dumps(tafrat))
