@@ -5102,8 +5102,8 @@
  {
   "ism": "P886_tahsil_arraf_tanwin",
   "milaf": "tahaqquq/tahsil/oracle.py",
-  "min": "    if has_tanwin:\n        return _P(ISM_11)",
-  "ila": "    if has_tanwin and False:\n        return _P(ISM_11)"
+  "min": "    if has_tanwin:\n        tan = [m for m in marks if m in TANWIN][0]",
+  "ila": "    if has_tanwin and False:\n        tan = [m for m in marks if m in TANWIN][0]"
  },
  {
   "ism": "P887_qari_shadda_maqluba",
