@@ -1,5 +1,9 @@
 # بوّابة التحقّق على GitHub: تعمل على كلّ Pull Request وعلى كلّ دفعٍ إلى main.
-# تثبّت Lean 4.34.1، تبني، تدقّق المسلّمات، وتشغّل البوّابة كاملةً بطفراتها.
+# تثبّت Lean 4.34.1، تبني، تدقّق المسلّمات، وتشغّل البوّابة كاملةً بطفراتها: وظيفةُ «bawwaba» البنودَ ١–٥ (--bila-tafrat)، وستُّ
+# وظائف «tafrat» البندَ ٦ بأقسامه (--tafrat-faqat --qism i/6)، ووظيفةُ «tafrat-jam» تحكم بأنّ الأقسامَ تامّةٌ وتجمع عددها
+# (tahaqquq/jam_tafrat.py). والتقسيمُ بقرار المالك 2026-10-28: اختار من سؤالٍ متعدّد الخيارات «الاثنان (موصى به)»، ووصفُه:
+# «طلبٌ أوّل يرفع timeout-minutes إلى 360 الآن، ثمّ طلبٌ ثانٍ يقسم البند ٦ على وظائف متوازية (matrix) فينزل الزمنُ تحت الساعة.»
+# (نصُّ الخيار و«موصى به» من البنّاء؛ ونزولُ الزمن تحت الساعة توقّعٌ لم يُقس بعد).
 # اختبارات الشبكة (المودَع mukhassas.txt) لا تعمل هنا لأنّ المودَعات لا تُرفع إلى المستودع؛ البوّابة تذكر ذلك بنفسها.
 name: bawwaba
 
@@ -26,7 +30,7 @@ jobs:
     # كان 180 (قرار المالك 2026-10-21، بعد سقف الستّين على PR #58)، فبلغته وظيفتا #94 و#95 (122587726150، 122587847767):
     # «The job has exceeded the maximum execution time of 3h0m0s»؛ ومرّت #93 في 2س57د و#96 في 2س18د. والزمنُ لا يتبع عددَ
     # الطفرات وحده: #94 بـ891 طفرةً بلغت السقف، و#96 بـ913 مرّت. وكلُّ طفرةٍ تنسخ المستودع وتبنيه تدريجيًّا ثمّ تشغّل اختبارات
-    # البند ٦ إن نجح بناؤها، تباعًا.
+    # البند ٦ إن نجح بناؤها، تباعًا. ومنذ تقسيم البند ٦ (أعلى الملفّ) تُجري هذه الوظيفةُ البنودَ ١–٥ وحدها، والسقفُ نفسُه لوظائف tafrat.
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -68,7 +72,7 @@ jobs:
           wc -l audit_ci.txt
           ! grep -vE "\[(propext|Classical\.choice|Quot\.sound)(, (propext|Classical\.choice|Quot\.sound))*\]|does not depend" audit_ci.txt
 
-      - name: bawwaba (gate with mutations)
+      - name: bawwaba (gate, items 1–5; item 6 runs in the tafrat jobs)
         id: gate
         env:
           # أساس بند ٤أ: قاعدة الطلب، أو main قبل الدفع (قيمتان من GitHub تُمرَّران بيئةً لا نصًّا في الأمر)
@@ -76,7 +80,7 @@ jobs:
         run: |
           export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
           set +e
-          python3 -I tahaqquq/bawwaba.py > gate_out.txt 2> gate_err.txt
+          python3 -I tahaqquq/bawwaba.py --bila-tafrat > gate_out.txt 2> gate_err.txt
           code=$?
           cat gate_out.txt; cat gate_err.txt
           { echo "## مخرج البوّابة"; echo '```'; cat gate_out.txt; cat gate_err.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
@@ -87,7 +91,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          { echo "### البوّابة (CI) — ${{ steps.gate.outcome }} — \`$(lean --version 2>/dev/null || $HOME/.elan/bin/lean --version)\`"; echo '```'; cat gate_out.txt; cat gate_err.txt 2>/dev/null; echo '```'; echo "تشغيل: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"; } > comment.md
+          { echo "### البوّابة (CI، البنود ١–٥) — ${{ steps.gate.outcome }} — \`$(lean --version 2>/dev/null || $HOME/.elan/bin/lean --version)\`"; echo '```'; cat gate_out.txt gate_err.txt 2>/dev/null || true; echo '```'; echo "تشغيل: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"; } > comment.md
           gh api -X POST "repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" -F body=@comment.md
 
       - name: hook protocol test
@@ -103,3 +107,106 @@ jobs:
         with:
           name: audit
           path: audit_ci.txt
+
+  tafrat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360   # سقفُ وظيفة bawwaba نفسُه (قرار المالك 2026-10-28)؛ والقسمُ سُدسُ الطفرات
+    strategy:
+      fail-fast: false
+      matrix:
+        qism: [1, 2, 3, 4, 5, 6]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          # التاريخُ كاملًا: test_hawadith.py (من اختبارات البند ٦) يتخطّى نفسَه في الاستنساخ الضحل بخروج 0، وP237 لا يقتلها
+          # غيرُه؛ والبوّابةُ تشغّله قبل الطفرات وترفض البندَ ٦ باسمه إن تخطّى نفسَه.
+          fetch-depth: 0
+
+      - name: cache elan and lake build
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: |
+            ~/.elan
+            .lake
+            integrations/nabt/formal/.lake
+          key: lean-4.34.1-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'SLGE/**/*.lean') }}
+          restore-keys: |
+            lean-4.34.1-${{ runner.os }}-
+
+      - name: install Lean 4.34.1
+        run: bash scripts/tathbit_lean.sh
+
+      - name: install Python deps (numpy لفرضية الـ116)
+        run: |
+          sudo python3 -m pip install --break-system-packages numpy
+          python3 -I -c "import numpy; print('numpy', numpy.__version__)"
+
+      - name: lake build
+        run: |
+          export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
+          lake build
+
+      - name: bawwaba item 6, part ${{ matrix.qism }}
+        run: |
+          export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
+          set +e
+          python3 -I tahaqquq/bawwaba.py --tafrat-faqat --qism "${{ matrix.qism }}/${{ strategy.job-total }}" > tafrat_out.txt 2> tafrat_err.txt
+          code=$?
+          echo "رمز الخروج: $code" >> tafrat_out.txt   # يقرؤه jam_tafrat.py: لا يُقبل قسمٌ رمزُه غيرُ 0
+          cat tafrat_out.txt; cat tafrat_err.txt
+          { echo "## البند ٦، القسم ${{ matrix.qism }} من ${{ strategy.job-total }}"; echo '```'; cat tafrat_out.txt; cat tafrat_err.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          exit $code
+
+      - name: upload part output
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: tafrat-${{ matrix.qism }}
+          path: |
+            tafrat_out.txt
+            tafrat_err.txt
+          overwrite: true
+
+  tafrat-jam:
+    # يحكم بأنّ الأقسامَ تامّة (كلُّ قسمٍ حاضرٌ مرّةً بعددٍ واحد، ببناءٍ ناجحٍ ورمز خروجٍ 0 ومخرج خطأٍ فارغ، ومجموعُها عددُ
+    # tafrat.json) ويجمع عددها؛ ويفشل إن نقص قسمٌ أو عاشت طفرةٌ أو بقيت غيرَ محسومة، أو لم تنجح وظيفةُ bawwaba أو وظائفُ tafrat.
+    needs: [bawwaba, tafrat]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: download part outputs
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          pattern: tafrat-*
+          path: aqsam
+
+      - name: jam
+        id: jam
+        run: |
+          set +e
+          python3 -I tahaqquq/jam_tafrat.py aqsam > jam_out.txt 2> jam_err.txt
+          code=$?
+          # أثرٌ بقي من محاولةٍ سابقةٍ لقسمٍ لم يرفع في الجارية لا يميّزه jam_tafrat.py؛ فنتيجةُ وظائف tafrat نفسُها شرطٌ أيضًا
+          if [ "${{ needs.tafrat.result }}" != "success" ]; then
+            echo "وظائف tafrat: ${{ needs.tafrat.result }}" >> jam_err.txt
+            code=2
+          fi
+          # والبنودُ ٢–٥ (ومنها اختباراتُ البند ٦ على الشجرة بلا طفرة) في وظيفة bawwaba: بلا نجاحها لا معنى لـ«قُتلت»
+          if [ "${{ needs.bawwaba.result }}" != "success" ]; then
+            echo "وظيفة bawwaba: ${{ needs.bawwaba.result }}" >> jam_err.txt
+            code=2
+          fi
+          cat jam_out.txt; cat jam_err.txt
+          { echo "## البند ٦ مجموعًا"; echo '```'; cat jam_out.txt; cat jam_err.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          exit $code
+
+      - name: post item 6 output on the PR
+        if: always() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          { echo "### البوّابة (CI، البند ٦) — ${{ steps.jam.outcome }} — وظائف tafrat: ${{ needs.tafrat.result }}"; echo '```'; cat jam_out.txt jam_err.txt 2>/dev/null || true; echo '```'; echo "تشغيل: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"; } > comment.md
+          gh api -X POST "repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" -F body=@comment.md
