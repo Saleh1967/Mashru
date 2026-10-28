@@ -1632,6 +1632,14 @@ import Jisr.DamirQiyas
 #print axioms sijill_la_yahmil_muhtawa
 #print axioms tahmil_sijill_muhtawa
 #print axioms sijill_la_muhtawa
+-- الشاهدُ بقضيّته وفي السجلّ وحده (Faahis/Lib.lean؛ خطّة الإطلاق P2-أ، والقرار ٢-أ)
+#print axioms qira_shawahid
+#print axioms khata_shawahid
+#print axioms muhtawa_la_yashhad
+#print axioms tahmil_muhtawa_shawahid
+#print axioms tahmil_shawahid
+#print axioms bina_shuhud
+#print axioms shuhud_saff
 -- س1 (قولُ المالك 2026-10-24، 18:07): التنفيذُ السريع مكافئٌ للفاحص — القوانينُ مصفوفةً والأصولُ جدولًا، والقبولُ والمخزنُ والأصلُ هي هي
 #print axioms Qaida.tatbiqA_eq
 #print axioms Qaida.fahsA_eq

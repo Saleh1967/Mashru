@@ -15,14 +15,17 @@
     «واقع مختوم» وحده (`Maratib.shuhudMutabara`).
 
   الملفّان (TAB بين الحقول؛ والسطر الفارغ والسطر أوّلُه «#» يُتجاوزان):
-  * سجلُّ المودَعات (الملفّ الأوّل) لا يحمل إلّا أسطر `mudaa`؛ وهو السلطة وحده (`tahmil`، `tahmil_mudaat`).
-  * المحتوى (بقيّة الملفّات) يحمل ما سوى `mudaa`؛ وسطرُ `mudaa` فيه خطأٌ باسمه (`muhtawa_la_yudif_mudaa`).
+  * سجلُّ المودَعات (الملفّ الأوّل) لا يحمل إلّا أسطر `mudaa` و`shahid`؛ وهو السلطة وحده (`tahmil`، `tahmil_mudaat`، `tahmil_shawahid`).
+  * المحتوى (بقيّة الملفّات) يحمل ما سوى ذلك؛ وسطرُ `mudaa` أو `shahid` فيه خطأٌ باسمه (`muhtawa_la_yudif_mudaa`، `muhtawa_la_yashhad`).
+  * **الشاهدُ بقضيّته لا برقم صفّه** (الحزمة P2-أ، والقرار ٢-أ في `hawkama/قرارات_التفويض.md`): سطرُ `shahid` يربط معنًى بقضيّةٍ (شيء، خاصّة،
+    قيمة) في جدول «الواقع المختوم» المضمَّن (`Waqi.Jadwal`)، وشواهدُ المعنى هي `Waqi.shuhud` على تلك القضيّة بسجلّ المودَعات (`bina_shuhud`):
+    لا موضعَ يُكتب، ولا شاهدَ إلّا لقضيّةٍ حكمُها «مفهوم» في الجدول نفسِه.
     mudaa   <sha256>  <النوع: واقع-مختوم|وضع|معلومات-سابقة|مرجع-محجوب>  <الاسم>      (في السجلّ وحده)
     isdar   <الإصدار>
     qanun   <الاسم>  <مقدّمة|مقدّمة…>  <النتيجة>  <الوسم>
     asl     <القضيّة>  <الوسم>  <السند>  [<الطريقة: عقلي|علمي>]
     iddia   <القضيّة>  <الوسم المعلَن>  <خطوة|خطوة…>  <السند>
-    shahid  <المعنى>  <بصمة>@<موضع>
+    shahid  <المعنى>  <الشيء>  <الخاصّة>  <القيمة>                      (في السجلّ وحده)
   القضيّة: نوع:أ:ب حيث النوع أحد: wad juz kharij luzum mutabaqa tadammun iltizam fi taht.
   الخطوة: a=<قضيّة> أو q=<رقم القانون>. السند: <أوّل 12 من البصمة>@<الموضع>…
   التشغيل: faahis <سجلّ> <محتوى>…   |   faahis --sual <بادئة القضيّة> <سجلّ> <محتوى>…
@@ -33,6 +36,7 @@ import Aql.Mawsua
 import Aql.Idaa
 import Aql.QawaninDalala
 import Aql.Maratib
+import Aql.WaqiJadwal
 
 open Qaida Mawsua QawaninDalala Maratib
 
@@ -135,7 +139,7 @@ structure Hal where
   qawanin : Array (Qanun Qadiyya × Wasm) := #[]
   usul    : Array Asl := #[]
   iddiaat : Array (Nat × Qadiyya × Wasm × List (Khatwa Qadiyya) × String) := #[]
-  shawahid : Array (Nat × ShahidWaqi) := #[]
+  shawahid : Array (Nat × String × String × String) := #[]
   akhta   : Array String := #[]
 
 def khata (h : Hal) (n : Nat) (s : String) : Hal :=
@@ -177,13 +181,9 @@ def qira (h0 : Hal) (n : Nat) (line : String) : Hal :=
     | some q, some w, some ks => ⟨d, mudaat, isdar, qawanin, usul, iddiaat.push (n, q, w, ks, s), shawahid, akhta⟩
     | _, _, none => ⟨d, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta.push s!"سطر {n}: سلسلة لا تُقرأ"⟩
     | _, _, _ => ⟨d, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta.push s!"سطر {n}: ادّعاء لا يُقرأ"⟩
-  | ["shahid", m, s] =>
-    match s.splitOn "@" with
-    | [b, pos] =>
-      match pos.toNat? with
-      | some pos => let (d, x) := dh.raqm m; ⟨d, mudaat, isdar, qawanin, usul, iddiaat, shawahid.push (x, ⟨b, pos⟩), akhta⟩
-      | none => ⟨dh, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta.push s!"سطر {n}: موضع الشاهد ليس رقمًا"⟩
-    | _ => ⟨dh, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta.push s!"سطر {n}: شاهد لا يُقرأ"⟩
+  | ["shahid", m, mw, sf, qm] =>
+    let (d, x) := dh.raqm m; ⟨d, mudaat, isdar, qawanin, usul, iddiaat, shawahid.push (x, mw, sf, qm), akhta⟩
+  | "shahid" :: _ => ⟨dh, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta.push s!"سطر {n}: شاهد لا يُقرأ (المعنى والشيء والخاصّة والقيمة)"⟩
   | _ => ⟨dh, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta.push s!"سطر {n}: سجلّ لا يُعرف"⟩
 
 /-! ## التحميل المحقَّق: السلطة من سجلّ المودَعات وحده (خطّة الإطلاق التجريبي، الحزمة P1-أ)
@@ -205,15 +205,16 @@ def raas (line : String) : String := (line.splitOn "\t").headD ""
 /-- سطرٌ يُتجاوز: فارغٌ، أو تعليقٌ أوّلُه «#». -/
 def mutajawaz (line : String) : Bool := line.isEmpty || line.startsWith "#"
 
-/-- قراءةُ سطرٍ بحسب مصدره: السجلُّ لا يحمل إلّا `mudaa`، والمحتوى لا يحمل `mudaa`؛ وما سوى ذلك `qira` نفسُها. -/
+/-- قراءةُ سطرٍ بحسب مصدره: السجلُّ لا يحمل إلّا `mudaa` و`shahid`، والمحتوى لا يحمل أيًّا منهما؛ وما سوى ذلك `qira` نفسُها. -/
 def qiraMin (m : Masdar) (h : Hal) (n : Nat) (line : String) : Hal :=
   if mutajawaz line then h
   else match m with
     | .sijill =>
-      if raas line == "mudaa" then qira h n line
-      else khata h n "السجلّ لا يحمل إلّا مودَعات (mudaa)"
+      if raas line == "mudaa" || raas line == "shahid" then qira h n line
+      else khata h n "السجلّ لا يحمل إلّا مودَعات (mudaa) وشواهد (shahid)"
     | .muhtawa =>
       if raas line == "mudaa" then khata h n "المحتوى لا يسجّل مودَعًا: السلطة في سجلّ المودَعات وحده"
+      else if raas line == "shahid" then khata h n "المحتوى لا يربط معنًى بواقع: الربطُ في سجلّ المودَعات وحده"
       else qira h n line
 
 /-- **لا يزيد `qira` المودَعاتِ إلّا من سطر `mudaa`**: سطرٌ رأسُه غيرُه يترك المودَعات كما هي. -/
@@ -233,6 +234,21 @@ theorem qira_mudaat (h : Hal) (n : Nat) (line : String) (hr : raas line ≠ "mud
 theorem khata_mudaat (h : Hal) (n : Nat) (s : String) : (khata h n s).mudaat = h.mudaat := by
   cases h; rfl
 
+/-- **لا يزيد `qira` الشواهدَ إلّا من سطر `shahid`**. -/
+theorem qira_shawahid (h : Hal) (n : Nat) (line : String) (hr : raas line ≠ "shahid") :
+    (qira h n line).shawahid = h.shawahid := by
+  obtain ⟨dh, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta⟩ := h
+  unfold raas at hr
+  unfold qira
+  by_cases he : line.isEmpty = true
+  · simp only [he, ite_true]
+  · simp only [he, Bool.false_eq_true, ite_false]
+    generalize line.splitOn "\t" = parts at hr ⊢
+    split <;> (try simp at hr) <;> (repeat' split) <;> rfl
+
+theorem khata_shawahid (h : Hal) (n : Nat) (s : String) : (khata h n s).shawahid = h.shawahid := by
+  cases h; rfl
+
 /-- **سطرُ المحتوى لا يسجّل مودَعًا**، أيًّا كان. -/
 theorem muhtawa_la_yudif_mudaa (h : Hal) (n : Nat) (line : String) :
     (qiraMin .muhtawa h n line).mudaat = h.mudaat := by
@@ -244,16 +260,32 @@ theorem muhtawa_la_yudif_mudaa (h : Hal) (n : Nat) (line : String) :
     · simp only [hr, beq_self_eq_true, ite_true, khata_mudaat]
     · have : (raas line == "mudaa") = false := by simpa using hr
       simp only [this, Bool.false_eq_true, ite_false]
-      exact qira_mudaat h n line hr
+      split
+      · exact khata_mudaat h n _
+      · exact qira_mudaat h n line hr
 
-/-- ما يحمله المحتوى من الحال: الإصدار والقوانين والأصول والادّعاءات والشواهد (لا المودَعات ولا الأخطاء ولا جدول المعرّفات). -/
+/-- **سطرُ المحتوى لا يربط معنًى بواقع** (القرار ٢-أ)، أيًّا كان: شواهدُ الحال بعده شواهدُها قبله. -/
+theorem muhtawa_la_yashhad (h : Hal) (n : Nat) (line : String) :
+    (qiraMin .muhtawa h n line).shawahid = h.shawahid := by
+  unfold qiraMin
+  by_cases hm : mutajawaz line = true
+  · simp only [hm, ite_true]
+  · simp only [hm, Bool.false_eq_true, ite_false]
+    split
+    · exact khata_shawahid h n _
+    · split
+      · exact khata_shawahid h n _
+      · rename_i hs
+        exact qira_shawahid h n line (by simpa using hs)
+
+/-- ما يحمله المحتوى من الحال: الإصدار والقوانين والأصول والادّعاءات (لا المودَعات ولا الشواهد ولا الأخطاء ولا جدول المعرّفات). -/
 def Hal.muhtawa (h : Hal) :
     Option String × Array (Qanun Qadiyya × Wasm) × Array Asl ×
-      Array (Nat × Qadiyya × Wasm × List (Khatwa Qadiyya) × String) × Array (Nat × ShahidWaqi) :=
-  (h.isdar, h.qawanin, h.usul, h.iddiaat, h.shawahid)
+      Array (Nat × Qadiyya × Wasm × List (Khatwa Qadiyya) × String) :=
+  (h.isdar, h.qawanin, h.usul, h.iddiaat)
 
-/-- **سطرُ `mudaa` لا يحمل محتوى**: `qira` عليه لا تغيّر إصدارًا ولا قانونًا ولا أصلًا ولا ادّعاءً ولا شاهدًا. -/
-theorem qira_mudaa_muhtawa (h : Hal) (n : Nat) (line : String) (hr : raas line = "mudaa") :
+/-- **سطرا `mudaa` و`shahid` لا يحملان محتوى**: `qira` عليهما لا تغيّر إصدارًا ولا قانونًا ولا أصلًا ولا ادّعاءً. -/
+theorem qira_mudaa_muhtawa (h : Hal) (n : Nat) (line : String) (hr : raas line = "mudaa" ∨ raas line = "shahid") :
     (qira h n line).muhtawa = h.muhtawa := by
   obtain ⟨dh, mudaat, isdar, qawanin, usul, iddiaat, shawahid, akhta⟩ := h
   unfold raas at hr
@@ -262,7 +294,7 @@ theorem qira_mudaa_muhtawa (h : Hal) (n : Nat) (line : String) (hr : raas line =
   · simp only [he, ite_true]
   · simp only [he, Bool.false_eq_true, ite_false]
     generalize line.splitOn "\t" = parts at hr ⊢
-    split <;> (try simp at hr) <;> (repeat' split) <;> rfl
+    split <;> (try simp at hr) <;> (repeat' split) <;> first | rfl | (simp at hr)
 
 /-- **سطرُ السجلّ لا يحمل محتوى**، أيًّا كان. -/
 theorem sijill_la_yahmil_muhtawa (h : Hal) (n : Nat) (line : String) :
@@ -271,12 +303,10 @@ theorem sijill_la_yahmil_muhtawa (h : Hal) (n : Nat) (line : String) :
   by_cases hm : mutajawaz line = true
   · simp only [hm, ite_true]
   · simp only [hm, Bool.false_eq_true, ite_false]
-    by_cases hr : raas line = "mudaa"
-    · simp only [hr, beq_self_eq_true, ite_true]
-      exact qira_mudaa_muhtawa h n line hr
-    · have : (raas line == "mudaa") = false := by simpa using hr
-      simp only [this, Bool.false_eq_true, ite_false]
-      cases h; rfl
+    split
+    · rename_i hr
+      exact qira_mudaa_muhtawa h n line (by simpa [Bool.or_eq_true] using hr)
+    · cases h; rfl
 
 /-- التحميلُ من مصدرٍ واحد، بترقيم أسطره من 1. -/
 def tahmilMin (m : Masdar) (h : Hal) (lines : List String) : Hal :=
@@ -300,9 +330,9 @@ theorem tahmil_sijill_muhtawa (h : Hal) (lines : List String) :
   | nil => rfl
   | cons p ps ih => simp only [List.foldl_cons]; rw [ih, sijill_la_yahmil_muhtawa]
 
-/-- **السجلُّ لا يحمل إلّا `mudaa`**: تحميلُه وحده لا يُدخل إصدارًا ولا قانونًا ولا أصلًا ولا ادّعاءً ولا شاهدًا. -/
+/-- **السجلُّ لا يحمل إلّا `mudaa` و`shahid`**: تحميلُه وحده لا يُدخل إصدارًا ولا قانونًا ولا أصلًا ولا ادّعاءً. -/
 theorem sijill_la_muhtawa (lines : List String) :
-    (tahmilMin .sijill {} lines).muhtawa = (none, #[], #[], #[], #[]) := by
+    (tahmilMin .sijill {} lines).muhtawa = (none, #[], #[], #[]) := by
   rw [tahmil_sijill_muhtawa]; rfl
 
 /-- التحميل: السجلُّ أوّلًا (وأخطاؤه تُسمّى «السجلّ»)، ثمّ المحتوى؛ ولكلٍّ ترقيمُه. -/
@@ -315,6 +345,21 @@ theorem tahmil_mudaat (sijill muhtawa : List String) :
     (tahmil sijill muhtawa).mudaat = (tahmilMin .sijill {} sijill).mudaat := by
   unfold tahmil
   rw [tahmil_muhtawa_mudaat]
+
+/-- **المحتوى كلُّه لا يربط معنًى بواقع**. -/
+theorem tahmil_muhtawa_shawahid (h : Hal) (lines : List String) :
+    (tahmilMin .muhtawa h lines).shawahid = h.shawahid := by
+  unfold tahmilMin
+  generalize lines.zipIdx 1 = ps
+  induction ps generalizing h with
+  | nil => rfl
+  | cons p ps ih => simp only [List.foldl_cons]; rw [ih, muhtawa_la_yashhad]
+
+/-- **الشواهدُ شواهدُ السجلّ وحده** (القرار ٢-أ): لا يغيّرها المحتوى أيًّا كان. -/
+theorem tahmil_shawahid (sijill muhtawa : List String) :
+    (tahmil sijill muhtawa).shawahid = (tahmilMin .sijill {} sijill).shawahid := by
+  unfold tahmil
+  rw [tahmil_muhtawa_shawahid]
 
 /-- **بلا سجلّ لا مودَع**، أيًّا كان المحتوى. ومنه، استنتاجًا لا مبرهنةً على `bina`: لا أصلَ يُقبل (`Idaa.sijill_faregh`)،
     ولا شاهدَ يرفع معنًى إلى «مفهوم» (`Maratib.la_mafhum_bila_waqi`). -/
@@ -423,6 +468,12 @@ theorem nawSanad_basma_farigha :
     nawSanadMin #[("abc", .wad)] "abc@1" = .wad := by
   decide +kernel
 
+/-- **شواهدُ المعنى من قضاياه** (P2-أ): لكلّ قضيّةٍ يربطها السجلُّ بالمعنى، `Waqi.shuhud` عليها في جدول «الواقع المختوم» المضمَّن
+    (`Waqi.Jadwal`) بسجلّ المودَعات؛ فلا شاهدَ إلّا لقضيّةٍ حكمُها «مفهوم» هناك، ومواضعُ الشواهد صفوفُها بعينها. -/
+def shuhudBina (h : Hal) (m : Nat) : List ShahidWaqi :=
+  (h.shawahid.filter (·.1 == m)).toList.flatMap fun r =>
+    Waqi.shuhud h.mudaat.toList (fun _ => Waqi.Jadwal.basma) Waqi.Jadwal.jadwal r.2.1 r.2.2.1 r.2.2.2
+
 def bina (h : Hal) (isdar : String) : Bina :=
   let jadwal := jadwalUsul h.usul
   let asl? (p : Qadiyya) : Option Asl := jadwal[p]?
@@ -436,7 +487,36 @@ def bina (h : Hal) (isdar : String) : Bina :=
     aslW := fun p => ((asl? p).map fun a => qayd a.tariqa (Idaa.qaydMudaa (nawSanad a.sanad) a.wasm)).getD .ray
     qW := fun i => ((h.qawanin[i]?).map (·.2)).getD .ray
     asl? := asl?
-    shuhud := fun m => shuhudMutabara h.mudaat.toList ((h.shawahid.filter (·.1 == m)).map (·.2)).toList }
+    shuhud := shuhudBina h }
+
+/-- **شواهدُ الفاحص هي `Waqi.shuhud`** على القضايا التي يربطها السجلُّ بالمعنى (بوابة P2-أ). -/
+theorem bina_shuhud (h : Hal) (isdar : String) (m : Nat) :
+    (bina h isdar).shuhud m = (h.shawahid.filter (·.1 == m)).toList.flatMap fun r =>
+      Waqi.shuhud h.mudaat.toList (fun _ => Waqi.Jadwal.basma) Waqi.Jadwal.jadwal r.2.1 r.2.2.1 r.2.2.2 := rfl
+
+/-- **كلُّ شاهدٍ صفٌّ لقضيّته في الجدول المختوم**: لكلّ شاهدٍ لمعنًى ربطٌ في الحال لذلك المعنى بقضيّة، وصفٌّ في `Waqi.Jadwal` يطابقها
+    شيئًا وخاصّةً وقيمة، والشاهدُ بصمةُ الدفعة وموضعُ ذلك الصفّ؛ وحكمُ القضيّة في الجدول «مفهوم». فلا موضعَ مكتوب، ولا صفَّ لقضيّةٍ أخرى. -/
+theorem shuhud_saff (h : Hal) (isdar : String) (m : Nat) (w : ShahidWaqi) (hw : w ∈ (bina h isdar).shuhud m) :
+    ∃ r ∈ h.shawahid.toList, r.1 = m ∧
+      Waqi.hukm h.mudaat.toList (fun _ => Waqi.Jadwal.basma) Waqi.Jadwal.jadwal r.2.1 r.2.2.1 r.2.2.2 = .mafhum ∧
+      ∃ s ∈ Waqi.Jadwal.jadwal, s.mawdu = r.2.1 ∧ s.sifa = r.2.2.1 ∧ s.qima = r.2.2.2 ∧
+        w = ⟨Waqi.Jadwal.basma, s.raqm⟩ := by
+  rw [bina_shuhud, List.mem_flatMap] at hw
+  obtain ⟨r, hr, hw⟩ := hw
+  rw [Array.toList_filter, List.mem_filter] at hr
+  refine ⟨r, hr.1, by simpa using hr.2, ?_⟩
+  unfold Waqi.shuhud at hw
+  split at hw
+  · rename_i hh
+    refine ⟨hh, ?_⟩
+    rw [List.mem_map] at hw
+    obtain ⟨s, hs, rfl⟩ := hw
+    unfold Waqi.makhtuma Waqi.mutabiq at hs
+    rw [List.mem_filter, List.mem_filter] at hs
+    obtain ⟨⟨hs, hm⟩, _⟩ := hs
+    simp only [Bool.and_eq_true, beq_iff_eq] at hm
+    exact ⟨s, hs, hm.1.1, hm.1.2, hm.2, rfl⟩
+  · simp at hw
 
 /-- أصلُ القضيّة في البناء هو أوّلُ أصلٍ لها في الأصول، كما كان بـ `find?` (س1). -/
 theorem bina_asl (h : Hal) (isdar : String) (p : Qadiyya) :
