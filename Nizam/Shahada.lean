@@ -11,7 +11,7 @@ import Nabt.UnitDiscovery
 إغلاقُ تحصيل النصّ ومحاذاته قبل أيّ ترقيةٍ دلاليّة؛ وآخرُها أمرُه بالتنفيذ. وصيغةُ صدرها (LaTeX) صيغةُ نصٍّ مُعَدٍّ أُلصق، ومُعِدُّه غيرُ معلوم؛
 فلا يُنسب إلى المالك إلّا أنّه أرسله وأمر بتنفيذه. والتصميمُ هنا قرارُ البنّاء.
 
-**الأساس.** `Nabt.RecursiveSourceBridge.CertifiedBridge` (`integrations/nabt/formal/Nabt/RecursiveSourceBridge.lean`): عقدٌ يجمع ترخيصَ
+**الأساس.** `Nabt.RecursiveSourceBridge.CertifiedBridge` (`Nabt/RecursiveSourceBridge.lean`): عقدٌ يجمع ترخيصَ
 المصدر (`sourceLicense : Licensed`، وهو ربطُ العقدة بمصدرٍ في جرد السياق بمعرّفاته وذرّاتها الخامّة، وشواهدُ موجبةٌ كلُّها ولا سالب، وجاهزيّةٌ
 لغويّة)، وترخيصَ كلّ مضيف، وشهادةَ النحو، ومطابقةَ المنطوق. ومنه أُخذ هنا:
 - الربطُ شرطٌ أوّل (`marbut`): الموضعُ صالحٌ في المصدر (`Nabt.UnitDiscovery.validSpan` نفسُه)، والقاعدةُ مسمّاة. وهو أضيقُ من ربط NABT:

@@ -24,7 +24,7 @@ JADHR = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(JADHR / "scripts"))
 import qiyas_intrubiya as qi  # noqa: E402
 
-LAW = JADHR / "integrations" / "nabt" / "src" / "nabt" / "data" / "law.json"
+LAW = JADHR / "jadawil" / "law.json"
 NABT = "ابتثجحخدذرزسشصضطظعغفقكلمنهويء"
 FAIL = []
 

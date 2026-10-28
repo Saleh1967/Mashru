@@ -178,10 +178,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_qiyas_d.py",
     "tahaqquq/test_qawaid.py",
     "tahaqquq/test_waqi.py",
-    "tahaqquq/test_nabt_vendor.py",
-    "tahaqquq/test_nabt_cli.py",
     "tahaqquq/test_nabt_bridge.py",
-    "tahaqquq/test_nabt_runner.py",
     "tahaqquq/test_jaza.py",
     "tahaqquq/test_nafy.py",
     "tahaqquq/test_fa.py",
@@ -1085,22 +1082,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ظ الواقع المختوم والتعريفات: {out.strip().splitlines()[-1] if out.strip() else '?'}")
     if code != 0:
         fails.append("اختبار الواقع المختوم فشل:\n" + out[-800:])
-    code, out = run([sys.executable, "-I", "tahaqquq/test_nabt_vendor.py"])
-    report.append(f"٥ NABT تثبيت المصدر: {'نجح' if code == 0 else 'فشل'}")
-    if code != 0:
-        fails.append("اختبار تثبيت مصدر NABT فشل:\n" + out[-1500:])
-    code, out = run([sys.executable, "-I", "tahaqquq/test_nabt_cli.py"])
-    report.append(f"٥ NABT واجهة التشغيل: {'نجح' if code == 0 else 'فشل'}")
-    if code != 0:
-        fails.append("اختبار واجهة NABT فشل:\n" + out[-1500:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_nabt_bridge.py"])
     report.append(f"٥ NABT الجسر التنفيذي: {'نجح' if code == 0 else 'فشل'}")
     if code != 0:
         fails.append("اختبار جسر NABT فشل:\n" + out[-1500:])
-    code, out = run([sys.executable, "-I", "tahaqquq/test_nabt_runner.py"])
-    report.append(f"٥ NABT منفّذ التحقق: {'نجح' if code == 0 else 'فشل'}")
-    if code != 0:
-        fails.append("اختبار منفّذ تحقق NABT فشل:\n" + out[-1500:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_jaza.py"])
     report.append(f"٥ص {out.strip().splitlines()[-1] if out.strip() else 'ضابط باب الجزاء: ?'}")
     if code != 0:
