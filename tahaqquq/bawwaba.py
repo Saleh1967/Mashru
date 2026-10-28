@@ -114,6 +114,8 @@
       المحجوب وبصمتُه، وحقولُ البصمات في الوثيقة، والمقاديرُ على كلماتٍ باليد، وحكمُ الفروض حول حدودها؛ والنتيجةُ إن أُودعت تحمل بصماتِ التسجيل.
   ٥ت٥. تدقيقُ مكتبة Nabt المنقولة إلى Mashru (tahaqquq/test_nabt_tadqiq.py؛ AuditNabt.lean): قائمتُها 1592 مبرهنةً مبنيّة، ومسلّماتُ كلِّ تصريحٍ
       تحت Nabt. من الثلاث.
+  ٥ت٦. سبقُ التجميد مقيسًا من التاريخ (tahaqquq/test_sabq_tajmid.py؛ tahaqquq/sabq_tajmid.py): لكلّ ضابطٍ مجمَّد إيداعُ الحالات سلفٌ صارمٌ لإيداع
+      الشفرة، وهي سلفٌ للنتيجة الأولى، وبصمةُ الحالات واحدةٌ عند التجميد وفي النتيجة والآن؛ على مستودعاتٍ مصنوعة دائمًا، وعلى المستودع إن لم يكن ضحلًا.
   ٥خ. تمامُ التدقيق (tahaqquq/test_tadqiq_tamm.py؛ 2026-10-26؛ مقترحُ البنّاء بأمر المالك العامّ، يسري بعد دمج طلبه): كلُّ مبرهنةٍ عامّةٍ
       في وحدات المشروع (SLGE وDal وMadlul وJisr وAql وNizam وFaahis وQari؛ تصريحٌ تسبق اسمَه في سطره theorem أو lemma) لها `#print axioms`
       في Audit.lean خارج التعليقات — من ملفّات `.ilean` التي يكتبها lake build؛ فالبند ٣ يعدّ ما في Audit.lean، وهذا يمنع أن تُبنى مبرهنةٌ
@@ -206,6 +208,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_intrubiya.py",
     "tahaqquq/test_qiyas_intrubiya.py",
     "tahaqquq/test_nabt_tadqiq.py",
+    "tahaqquq/test_sabq_tajmid.py",
     # آخرُها عمدًا: نموُّ الزمن (س1) لا يقتل إلّا طفرةً لا تغيّر الدلالة (P466، P467)، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_sura.py",
 )
@@ -1170,6 +1173,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت٥ {out.strip().splitlines()[-1] if out.strip() else 'تدقيق Nabt: ?'}")
     if code != 0:
         fails.append("اختبار تدقيق Nabt فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_sabq_tajmid.py"])
+    report.append(f"٥ت٦ {out.strip().splitlines()[-1] if out.strip() else 'سبقُ التجميد: ?'}")
+    if code != 0:
+        fails.append("اختبار سبق التجميد فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_tadqiq_tamm.py"])
     report.append(f"٥خ {out.strip().splitlines()[-1] if out.strip() else 'تمامُ التدقيق: ?'}")
     if code != 0:
