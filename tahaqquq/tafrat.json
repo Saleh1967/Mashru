@@ -5554,5 +5554,113 @@
   "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
   "min": "\"huqul_masula\": 73,",
   "ila": "\"huqul_masula\": 74,"
+ },
+ {
+  "ism": "P1155_qism_bila_tawzi",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    return [t for k, t in enumerate(tafrat) if k % n == i - 1]",
+  "ila": "    return [t for k, t in enumerate(tafrat) if k % n == 0]"
+ },
+ {
+  "ism": "P1156_qism_bila_hadd",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        if not 1 <= i <= n:",
+  "ila": "        if not 0 <= i:"
+ },
+ {
+  "ism": "P1157_faqat_yafhas_kull",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if faqat:\n        report.append(\"٢–٥ تُركت بطلب (--tafrat-faqat)\")",
+  "ila": "    if False:\n        report.append(\"٢–٥ تُركت بطلب (--tafrat-faqat)\")"
+ },
+ {
+  "ism": "P1158_qism_bila_wasf",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        wasf = f\" (القسم {qism[0]} من {qism[1]})\" if qism else \"\"",
+  "ila": "        wasf = \"\""
+ },
+ {
+  "ism": "P1159_bila_tafrat_maa_qism",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if \"--bila-tafrat\" in baqi and (faqat or qism):",
+  "ila": "    if False:"
+ },
+ {
+  "ism": "P1160_tafrat_bila_qism",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            tafrat = qism_tafrat(tafrat, *qism)\n",
+  "ila": "            tafrat = list(tafrat)\n"
+ },
+ {
+  "ism": "P1161_jam_bila_naqis",
+  "milaf": "tahaqquq/jam_tafrat.py",
+  "min": "    elif naqis:",
+  "ila": "    elif False:"
+ },
+ {
+  "ism": "P1162_jam_bila_majmu",
+  "milaf": "tahaqquq/jam_tafrat.py",
+  "min": "    if majmu != kull:",
+  "ila": "    if False:"
+ },
+ {
+  "ism": "P1163_jam_mukarrar_yamurr",
+  "milaf": "tahaqquq/jam_tafrat.py",
+  "min": "        if (i, n) in aqsam:",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P1164_jam_ash_yamurr",
+  "milaf": "tahaqquq/jam_tafrat.py",
+  "min": "    if qutilat + ghayr != majmu:",
+  "ila": "    if False:"
+ },
+ {
+  "ism": "P1165_tafrat_bila_tarikh_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        bila_tarikh = code_h != 0 or TAKHATTI_HAWADITH in out_h",
+  "ila": "        bila_tarikh = code_h != 0"
+ },
+ {
+  "ism": "P1166_jam_bila_bina",
+  "milaf": "tahaqquq/jam_tafrat.py",
+  "min": "        if nass.splitlines().count(\"١ البناء: نجح\") != 1:",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P1167_jam_bila_ramz",
+  "milaf": "tahaqquq/jam_tafrat.py",
+  "min": "        if re.findall(r\"^رمز الخروج: (-?[0-9]+)$\", nass, re.M) != [\"0\"]:",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P1168_jam_bila_khata",
+  "milaf": "tahaqquq/jam_tafrat.py",
+  "min": "        if khata.strip():\n            uyub.append(",
+  "ila": "        if False:\n            uyub.append("
+ },
+ {
+  "ism": "P1169_wasit_majhul_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if majhul:\n        raise ValueError(\"وسيطٌ لا يُعرف: \"",
+  "ila": "    if False:\n        raise ValueError(\"وسيطٌ لا يُعرف: \""
+ },
+ {
+  "ism": "P1170_qism_mukarrar_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if baqi.count(\"--qism\") > 1:",
+  "ila": "    if False:"
+ },
+ {
+  "ism": "P1171_takhatti_nass_ghayr_nassih",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "TAKHATTI_HAWADITH = \"حوادث الدمج: لم يُشغَّل\"",
+  "ila": "TAKHATTI_HAWADITH = \"حوادث الدمج: لم تُشغَّل\""
+ },
+ {
+  "ism": "P1172_hawadith_fashil_yamurr",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        bila_tarikh = code_h != 0 or TAKHATTI_HAWADITH in out_h",
+  "ila": "        bila_tarikh = TAKHATTI_HAWADITH in out_h"
  }
 ]

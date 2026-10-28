@@ -776,7 +776,7 @@ class TafraNassTests(unittest.TestCase):
         # كلُّ اختبارٍ يشغّله البند ٥ (سوى ما يحتاج مودَعًا بوسيط) يشغّله البند ٦ أيضًا
         import re
         src = open(bawwaba.__file__, encoding="utf-8").read()
-        rais = src[src.index("def main():"):src.index('    if "--bila-tafrat" not in sys.argv:')]
+        rais = src[src.index("def bunud_2_5(report, fails):"):src.index("def main():")]
         band5 = re.findall(r'run\(\[sys\.executable, "-I", "([^"]+)"\]\)', rais)
         self.assertEqual(sorted(band5), sorted(bawwaba.IKHTIBARAT_TAFRAT))
 
@@ -878,6 +878,159 @@ class TafratJuzTests(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertIn("مكرَّرة", out)
         self.assertFalse(nudiya)
+
+
+class QismTests(unittest.TestCase):
+    """البند ٦ على وظائف متوازية: --qism i/n و--tafrat-faqat، وجمعُ الأقسام (tahaqquq/jam_tafrat.py). التوقّعاتُ مكتوبةٌ باليد."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_options(self):
+        self.assertEqual(bawwaba.khiyarat([]), (False, None))
+        self.assertEqual(bawwaba.khiyarat(["--bila-tafrat"]), (False, None))
+        self.assertEqual(bawwaba.khiyarat(["--tafrat-faqat", "--qism", "2/6"]), (True, (2, 6)))
+        self.assertEqual(bawwaba.khiyarat(["--qism", "6/6"]), (False, (6, 6)))
+
+    def test_bad_options_are_named(self):
+        for args in (["--qism", "0/6"], ["--qism", "7/6"], ["--qism", "a/6"], ["--qism"], ["--qism", "2"],
+                     ["--bila-tafrat", "--qism", "1/2"], ["--bila-tafrat", "--tafrat-faqat"],
+                     ["--tafrat-faqt", "--qism", "2/6"], ["--qism", "1/2", "--qism", "2/2"], ["2/6"]):
+            with self.subTest(args=args):
+                with self.assertRaises(ValueError):
+                    bawwaba.khiyarat(args)
+        with self.assertRaisesRegex(ValueError, "--qism مكرَّر"):
+            bawwaba.khiyarat(["--qism", "1/2", "--qism", "2/2"])
+        with self.assertRaisesRegex(ValueError, "وسيطٌ لا يُعرف: --tafrat-faqt"):
+            bawwaba.khiyarat(["--tafrat-faqt", "--qism", "2/6"])
+
+    def test_shards_cover_the_list_once(self):
+        qaima = [f"P{k}" for k in range(11)]
+        self.assertEqual(bawwaba.qism_tafrat(qaima, 2, 3), ["P1", "P4", "P7", "P10"])
+        for n in range(1, 8):
+            aqsam = [bawwaba.qism_tafrat(qaima, i, n) for i in range(1, n + 1)]
+            with self.subTest(n=n):
+                self.assertEqual(sorted(sum(aqsam, []), key=lambda x: int(x[1:])), qaima)
+                self.assertLessEqual(max(map(len, aqsam)) - min(map(len, aqsam)), 1)
+
+    def gate(self, argv, bila_tarikh=False, hawadith_ramz=0):
+        """البوّابة على خمس طفراتٍ سليمة؛ يُسجَّل ما يُشغَّل في المستودع وفي النسخ. bila_tarikh: test_hawadith.py يتخطّى نفسَه؛
+        hawadith_ramz: رمزُ خروجه على الشجرة بلا طفرة."""
+        with open(os.path.join(self.tmp.name, "m.lean"), "w", encoding="utf-8") as f:
+            f.write("".join(f"def m{k} := 1\n" for k in range(5)))
+        tafrat = [{"ism": f"P{k}_m", "milaf": "m.lean", "min": f"def m{k} := 1", "ila": f"def m{k} := 2"} for k in range(5)]
+        os.makedirs(os.path.join(self.tmp.name, "tahaqquq"), exist_ok=True)
+        with open(os.path.join(self.tmp.name, "tahaqquq", "khatt_asas.json"), "w", encoding="utf-8") as f:
+            f.write('{"mubarhanat": 0}')
+        with open(os.path.join(self.tmp.name, "tahaqquq", "tafrat.json"), "w", encoding="utf-8") as f:
+            json.dump(tafrat, f)
+        fi_mustawda, fi_nuskha = [], []
+
+        def run(cmd, cwd=None, **kw):
+            (fi_nuskha if cwd is not None and cwd != self.tmp.name else fi_mustawda).append(cmd[-1])
+            if cmd[-1] == "tahaqquq/test_hawadith.py" and cwd in (None, self.tmp.name):
+                # نصُّ تخطّيه كما في test_hawadith.py نفسِه
+                return (hawadith_ramz, "حوادث الدمج: لم يُشغَّل (التاريخ غير حاضر؛ استنسخ بلا --depth)\n" if bila_tarikh
+                        else "حوادث الدمج: ٤أ 2/2\n")
+            return (1, "error: m.lean:1:9: x") if cmd[-1] == "build" and cwd not in (None, self.tmp.name) else (0, "")
+
+        def git(*args):
+            if args[-1].endswith(":CLAUDE.md"):
+                return (0, QISM_FARIGH)
+            return (0, "abc1234\n") if args[0] == "merge-base" else (0, json.dumps(tafrat))
+
+        out, err = io.StringIO(), io.StringIO()
+        with patch.object(bawwaba, "ROOT", self.tmp.name), patch.object(bawwaba, "run", side_effect=run), \
+                patch.object(bawwaba, "git", side_effect=git), patch.object(sys, "argv", ["bawwaba.py"] + argv), \
+                contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            with self.assertRaises(SystemExit) as khuruj:
+                bawwaba.main()
+        return khuruj.exception.code, out.getvalue(), err.getvalue(), fi_mustawda, fi_nuskha
+
+    def test_shard_only_runs_its_part(self):
+        code, out, _, fi_mustawda, fi_nuskha = self.gate(["--tafrat-faqat", "--qism", "2/3"])
+        self.assertEqual(code, 0)
+        # في المستودع: البناءُ، وtest_hawadith.py حارسًا للبند ٦ (لا البند ٥ث)؛ ولا شيءَ غيرُهما من البنود ٢–٥
+        self.assertEqual(fi_mustawda, ["build", "tahaqquq/test_hawadith.py"])
+        self.assertEqual(fi_nuskha, ["build", "build"])          # P1 وP4 وحدهما
+        self.assertIn("٢–٥ تُركت بطلب (--tafrat-faqat)", out)
+        self.assertIn("٦ الطفرات (القسم 2 من 3): قُتلت 2 من 2", out)
+
+    def test_single_shard_is_labelled(self):
+        code, out, _, _, fi_nuskha = self.gate(["--tafrat-faqat", "--qism", "1/1"])
+        self.assertEqual(code, 0)
+        self.assertEqual(fi_nuskha, ["build"] * 5)
+        self.assertIn("٦ الطفرات (القسم 1 من 1): قُتلت 5 من 5", out)
+
+    def test_whole_list_without_shard(self):
+        code, out, _, _, fi_nuskha = self.gate([])
+        self.assertEqual(fi_nuskha, ["build"] * 5)
+        self.assertIn("٦ الطفرات: قُتلت 5 من 5", out)
+
+    def test_missing_history_is_refused(self):
+        # test_hawadith.py يتخطّى نفسَه بخروج 0 إن غاب تاريخُ الحوادث، وP237 لا يقتلها غيرُه
+        code, out, err, _, fi_nuskha = self.gate(["--tafrat-faqat", "--qism", "1/2"], bila_tarikh=True)
+        self.assertEqual(code, 2)
+        self.assertEqual(fi_nuskha, [])
+        self.assertIn("٦ الطفرات: لم تُشغَّل (test_hawadith.py لم يجرِ ويمرّ على الشجرة بلا طفرة)", out)
+        self.assertNotIn("قُتلت", out)
+        self.assertIn("fetch-depth: 0", err)
+
+    def test_failing_hawadith_is_refused(self):
+        # فشلُه على الشجرة بلا طفرة يجعل كلَّ طفرةٍ تبلغه «مقتولة»؛ فيُرفض البند ٦ قبلها
+        code, out, err, _, fi_nuskha = self.gate(["--tafrat-faqat", "--qism", "1/2"], hawadith_ramz=1)
+        self.assertEqual(code, 2)
+        self.assertEqual(fi_nuskha, [])
+        self.assertIn("٦ الطفرات: لم تُشغَّل (test_hawadith.py لم يجرِ ويمرّ على الشجرة بلا طفرة)", out)
+        self.assertIn("خرج 1", err)
+
+    def test_skip_text_is_hawadiths_own(self):
+        # الحارسُ يقرأ نصَّ تخطّي test_hawadith.py نفسَه؛ فإن تغيّر هناك ولم يتغيّر هنا مرّ البند ٦ بلا تاريخ
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "test_hawadith.py"), encoding="utf-8") as f:
+            self.assertIn(f'print("{bawwaba.TAKHATTI_HAWADITH} ', f.read())
+
+    def test_bad_shard_stops_before_anything(self):
+        code, _, err, fi_mustawda, fi_nuskha = self.gate(["--qism", "4/3"])
+        self.assertEqual(code, 2)
+        self.assertEqual(fi_mustawda + fi_nuskha, [])
+        self.assertIn("--qism 4/3", err)
+        self.assertNotIn("Traceback", err)
+
+    SATR = "٦ الطفرات (القسم {} من {}): قُتلت {} من {}"
+
+    def makhraj(self, satr, bina="١ البناء: نجح", ramz="0", khata=""):
+        return (f"{bina}\n٢–٥ تُركت بطلب (--tafrat-faqat)\n{satr}\nرمز الخروج: {ramz}\n", khata)
+
+    def test_jam_complete(self):
+        import jam_tafrat
+        makhrajat = [self.makhraj(self.SATR.format(i, 3, y, y)) for i, y in ((2, 4), (1, 4), (3, 3))]
+        satr, uyub = jam_tafrat.jam(makhrajat, 11)
+        self.assertEqual(uyub, [])
+        self.assertEqual(satr, "٦ الطفرات (3 قسمًا من 3): قُتلت 11 من 11")
+
+    def test_jam_names_what_is_missing(self):
+        import jam_tafrat
+        tamm = [self.makhraj(self.SATR.format(i, 3, 4, 4)) for i in (1, 2, 3)]
+        s2 = lambda i, x: self.makhraj(self.SATR.format(i, 2, x, 4))
+        for makhrajat, kull, sabab in (
+                (tamm[:2], 12, "أقسامٌ لم تجرِ من 3: 3"),
+                (tamm + [tamm[0]], 16, "القسم 1 من 3 مكرَّر"),
+                (tamm, 13, "مجموعُ الأقسام 12 طفرةً، وفي tafrat.json 13"),
+                ([s2(1, 3), s2(2, 4)], 8, "عاشت 1 طفرة"),
+                ([self.makhraj(self.SATR.format(1, 2, 3, 4) + "، وغيرُ محسومة 1"), s2(2, 4)], 8, "غيرُ محسومة 1"),
+                ([s2(1, 4), self.makhraj(self.SATR.format(2, 3, 4, 4))], 8, "الأقسامُ بأعدادٍ مختلفة: 2، 3"),
+                ([("١ البناء: فشل\n", "")], 0, "المخرج 1: 0 سطرًا للبند ٦ بقسمه (المطلوب واحد)"),
+                ([self.makhraj(self.SATR.format(1, 1, 4, 4), bina="١ البناء: فشل")], 4,
+                 "المخرج 1: ليس فيه «١ البناء: نجح» مرّةً واحدة"),
+                ([self.makhraj(self.SATR.format(1, 1, 4, 4), ramz="2")], 4, "المخرج 1: رمزُ الخروج ليس 0 مرّةً واحدة"),
+                ([self.makhraj(self.SATR.format(1, 1, 4, 4), khata="lake build فشل")], 4, "المخرج 1: مخرجُ خطئه غيرُ فارغ"),
+                ([], 0, "لا قسم")):
+            with self.subTest(sabab=sabab):
+                _, uyub = jam_tafrat.jam(makhrajat, kull)
+                self.assertIn(sabab, uyub)
 
 
 if __name__ == "__main__":
