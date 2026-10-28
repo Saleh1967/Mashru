@@ -74,6 +74,8 @@
       يدويّة على الصفوف الثلاثين، دائمًا؛ والاقتباساتُ في أسطرها إن حضر المودَع.
   ٥ص٨. ضابطُ «صكّ الجملة» المجمَّد (tahaqquq/test_sakk.py؛ الكتاب والمغني والقطر والألفية والشخصيّة ج1 وج3): مثلُ ٥ص على
       Jisr/SakkJumla.lean، وذهبُ NABT الخمسُ والعشرون منقولًا يدويًّا يطابق dhahab25، وبملفّ NABT نفسِه إن حضر.
+  ٥ص٩. ضابطُ «الإبدال: الواوُ والياءُ في الكلمة» المجمَّد (tahaqquq/test_ibdal.py؛ الألفيّة 1216–1239، والكتابُ للفهم): مثلُ ٥ص على
+      Jisr/IbdalAlfiyya.lean (قواعدُ Qayd على الخلايا فوق آلة القانون)، والمولَّدُ خلاياه من القارئ، وخلايا شواهد الأبيات من القارئ.
   ٥ت٢. تحصيلُ النصّ ومحاذاتُه (tahaqquq/test_tahsil.py؛ Dal/Tahsil.lean والأداة tahsil): على عرّافٍ مستقلٍّ كتبه مؤلّفٌ لم يقرأ إلّا المواصفة
       (tahaqquq/tahsil/) — بصماتُ المواصفة والعرّاف وحالاته، وحالاتُ الحدود المشتقّةُ باليد، و7000 نصٍّ عشوائيّ، وحكمُ الفاحص على شهادة كلّ
       مقطع، وخلايا القارئ (`qari --khalaya`) على الكلمات المرخَّصة، وأسماءُ الأحكام في المواصفة، دائمًا.
@@ -164,6 +166,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_tasis.py",
     "tahaqquq/test_tahsil.py",
     "tahaqquq/test_intrubiya.py",
+    "tahaqquq/test_ibdal.py",
     # آخرُها عمدًا: نموُّ الزمن (س1) لا يقتل إلّا طفرةً لا تغيّر الدلالة (P466، P467)، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_sura.py",
 )
@@ -853,6 +856,10 @@ def main():
     report.append(f"٥ت٣ {out.strip().splitlines()[-1] if out.strip() else 'الإنتروبيا: ?'}")
     if code != 0:
         fails.append("اختبار هيكل الإنتروبيا فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_ibdal.py"])
+    report.append(f"٥ص٩ {out.strip().splitlines()[-1] if out.strip() else 'ضابط الإبدال: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط الإبدال فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_tadqiq_tamm.py"])
     report.append(f"٥خ {out.strip().splitlines()[-1] if out.strip() else 'تمامُ التدقيق: ?'}")
     if code != 0:

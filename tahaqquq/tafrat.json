@@ -5512,5 +5512,137 @@
   "milaf": "Jisr/TabaqatQawaid.lean",
   "min": "fun _ => false, fun _ => false⟩",
   "ila": "fun _ => false, fun _ => true⟩"
+ },
+ {
+  "ism": "P1189_ibdal_tajmid_wasf",
+  "milaf": "tahaqquq/dawabit/ibdal/tajmid.json",
+  "min": "\"wasf_sha256\": \"82bb",
+  "ila": "\"wasf_sha256\": \"92bb"
+ },
+ {
+  "ism": "P1190_ibdal_tajmid_alfiyya",
+  "milaf": "tahaqquq/dawabit/ibdal/tajmid.json",
+  "min": "\"sha256\": \"13b351a0",
+  "ila": "\"sha256\": \"23b351a0"
+ },
+ {
+  "ism": "P1191_ibdal_muwallid_al",
+  "milaf": "scripts/bina_dawabit_ibdal.py",
+  "min": "f\"{'true' if al == '1' else 'false'}⟩\")",
+  "ila": "f\"false⟩\")"
+ },
+ {
+  "ism": "P1192_ibdal_shahid_khaliya",
+  "milaf": "Jisr/IbdalAlfiyya.lean",
+  "min": "(\"رَضِيَ\", [60, 50, 44], .ghayrMamnu)",
+  "ila": "(\"رَضِيَ\", [60, 50, 45], .ghayrMamnu)"
+ },
+ {
+  "ism": "P1193_ibdal_natija_tashghil",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "min": "\"tashghil\": 1,",
+  "ila": "\"tashghil\": 2,"
+ },
+ {
+  "ism": "P1194_ibdal_natija_cases",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "min": "\"cases_sha256\": \"7324",
+  "ila": "\"cases_sha256\": \"8324"
+ },
+ {
+  "ism": "P1196_ibdal_natija_ihsa",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "min": "\"sawab\": 39,",
+  "ila": "\"sawab\": 38,"
+ },
+ {
+  "ism": "P1197_ibdal_natija_fia",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "min": "\"عموم\": 18,",
+  "ila": "\"عموم\": 17,"
+ },
+ {
+  "ism": "P1198_ibdal_natija_akhta",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "min": "\"B49\",",
+  "ila": "\"B48\","
+ },
+ {
+  "ism": "P1199_ibdal_natija_lean",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "min": "\"Jisr.IbdalAlfiyya.Qiyas.azwaj_1\"",
+  "ila": "\"Jisr.IbdalAlfiyya.Qiyas.azwaj_2\""
+ },
+ {
+  "ism": "P1200_ibdal_natija_azwaj",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "min": "\"asaba_tarafan\": 11",
+  "ila": "\"asaba_tarafan\": 10"
+ },
+ {
+  "ism": "P1201_ibdal_natija_rafd",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "min": "\"rafd_qari\": []",
+  "ila": "\"rafd_qari\": [\"B01\"]"
+ },
+ {
+  "ism": "P1202_ibdal_natija_halat",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_1.json",
+  "min": "\"halat\": 49,",
+  "ila": "\"halat\": 48,"
+ },
+ {
+  "ism": "P1204_ibdal_muqin_mudgham",
+  "milaf": "Jisr/IbdalAlfiyya.lean",
+  "min": "mamnu := fun c a => c.val == 2 && !yaMutaharrika a",
+  "ila": "mamnu := fun c a => c.val == 2"
+ },
+ {
+  "ism": "P1205_ibdal_wawYa_ya_waw",
+  "milaf": "Jisr/IbdalAlfiyya.lean",
+  "min": "mamnu := fun c a => (c.val == 4 && yaMutaharrika a) || (c.val == 5 && wawMutaharrika a)",
+  "ila": "mamnu := fun c a => (c.val == 4 && yaMutaharrika a)"
+ },
+ {
+  "ism": "P1206_ibdal_wawYa_madd",
+  "milaf": "Jisr/IbdalAlfiyya.lean",
+  "min": "if (c.val == 1 || c.val == 3) && wawSakina a then 4",
+  "ila": "if (c.val == 1 || c.val == 2 || c.val == 3) && wawSakina a then 4"
+ },
+ {
+  "ism": "P1207_ibdal_akhirWaw_harf",
+  "milaf": "Jisr/IbdalAlfiyya.lean",
+  "min": "def qaydAkhirWaw : Qayd Dal.Khaliya := qaydAkhir 2 wawMutaharrika",
+  "ila": "def qaydAkhirWaw : Qayd Dal.Khaliya := qaydAkhir 1 wawMutaharrika"
+ },
+ {
+  "ism": "P1208_ibdal_akhirYa_harf",
+  "milaf": "Jisr/IbdalAlfiyya.lean",
+  "min": "def qaydAkhirYa : Qayd Dal.Khaliya := qaydAkhir 1 yaMutaharrika",
+  "ila": "def qaydAkhirYa : Qayd Dal.Khaliya := qaydAkhir 2 yaMutaharrika"
+ },
+ {
+  "ism": "P1209_ibdal_bila_qanun",
+  "milaf": "Jisr/IbdalAlfiyya.lean",
+  "min": "if !qanunYaqbal xs then .mamnu .qanun",
+  "ila": "if false then .mamnu .qanun"
+ },
+ {
+  "ism": "P1210_ibdal_ishtibah_hashw",
+  "milaf": "Jisr/IbdalAlfiyya.lean",
+  "min": "mamnu := fun c a => 6 ≤ c.val ||",
+  "ila": "mamnu := fun c a =>"
+ },
+ {
+  "ism": "P1211_ibdal_alif_mayyit",
+  "milaf": "Jisr/IbdalAlfiyya.lean",
+  "min": "theorem alif_mayyit : ∀ q < 97, q ≠ 1 →",
+  "ila": "theorem alif_mayyit : ∀ q < 97, q ≠ 2 →"
+ },
+ {
+  "ism": "P1212_ibdal_fakkN",
+  "milaf": "Jisr/IbdalAlfiyya.lean",
+  "min": "⟨m % 116, Nat.mod_lt _ (by decide)⟩",
+  "ila": "⟨m % 115, by omega⟩"
  }
 ]

@@ -112,7 +112,7 @@ import Dal.Tahsil
 import Dal.QiraaTahsil
 import Jisr.IntrubiyaShahada
 import Jisr.TabaqatQawaid
-import Jisr.IbdalAlfiyyaDabit
+import Jisr.IbdalAlfiyyaQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2492,3 +2492,8 @@ import Jisr.IbdalAlfiyyaDabit
 #print axioms Jisr.IbdalAlfiyya.Dabit.qarin_jadwal
 #print axioms Jisr.IbdalAlfiyya.Dabit.rafd_ikhfaq
 #print axioms Jisr.IbdalAlfiyya.Dabit.muharrik_kalima
+#print axioms Jisr.IbdalAlfiyya.Qiyas.majal
+#print axioms Jisr.IbdalAlfiyya.Qiyas.natija
+#print axioms Jisr.IbdalAlfiyya.Qiyas.natija_fia
+#print axioms Jisr.IbdalAlfiyya.Qiyas.akhta_1
+#print axioms Jisr.IbdalAlfiyya.Qiyas.azwaj_1

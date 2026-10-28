@@ -12,7 +12,8 @@ import Dal.Jumla
 تقريرٍ لوكيلٍ خبيرٍ بأسطر الألفيّة (غيرِ مودَع).
 
 **المصدرُ والنطاق:** `alfiyya.txt` (بصمتُه `13b351a0…`)، الأسطر 1216–1217 و1222 و1224 و1225–1226 و1238–1239 من باب الإبدال. وهي
-على ضابطٍ مجمَّد (`tahaqquq/dawabit/ibdal/wasf.md`): كُتبت هذه الشفرةُ قبل أن يقرأ البنّاءُ الحالات.
+على ضابطٍ مجمَّد (`tahaqquq/dawabit/ibdal/wasf.md`): كُتبت هذه الشفرةُ قبل أن يقرأ البنّاءُ الحالات (`4ad7b9a`)؛ وأُعيدت بعد
+قراءتها كتابةُ براهين خمسٍ تكتب نصَّ التعريف، بلا تغيير عبارةٍ ولا تعريف (`natija_2.json`).
 
 **المدخل:** خلايا كلمةٍ واحدة كما يقرؤها القارئ في الوصل (`qari --khalaya`). ولا يُعطى المحرّكُ أصلَ الكلمة ولا وزنَها ولا معناها.
 
@@ -284,8 +285,7 @@ theorem tasmah_mamnu_hukm (xs : List Dal.Khaliya) (r : Qayd Dal.Khaliya) (hr : r
 theorem sinf_muqin_damma (c : Fin qaydMuqin.k) (a : Dal.Khaliya) (ha : a.hala.val = 1) :
     (qaydMuqin.sinf c a).val = 1 := by
   have hy : yaSakina a = false := by simp [yaSakina, ha]
-  show ((if c.val == 1 && yaSakina a then 2 else sinfDamma a : Fin 3)).val = 1
-  simp [hy, sinfDamma, ha]
+  simp [qaydMuqin, hy, sinfDamma, ha]
 
 /-- **الياءُ الساكنة بعد الضمّة، لا تليها ياءٌ متحرّكة، تُمنع حيثما وقعت** (1222). -/
 theorem yaBadDamma_yamna (pre : List Dal.Khaliya) (c y d : Dal.Khaliya) (post : List Dal.Khaliya)
@@ -295,10 +295,9 @@ theorem yaBadDamma_yamna (pre : List Dal.Khaliya) (c y d : Dal.Khaliya) (post : 
   have hm : ∀ c0 : Fin qaydMuqin.k, c0.val = 1 → qaydMuqin.mamnu (qaydMuqin.sinf c0 y) d = true := by
     intro c0 h0
     have h2 : (qaydMuqin.sinf c0 y).val = 2 := by
-      show ((if c0.val == 1 && yaSakina y then 2 else sinfDamma y : Fin 3)).val = 2
-      simp [h0, hy]
-    show ((qaydMuqin.sinf c0 y).val == 2 && !yaMutaharrika d) = true
-    simp [h2, hd]
+      simp [qaydMuqin, h0, hy]
+    generalize qaydMuqin.sinf c0 y = x at h2
+    simp [qaydMuqin, h2, hd]
   cases pre with
   | nil =>
     have hs : (qaydMuqin.awwalSinf c).val = 1 := by
@@ -317,11 +316,7 @@ theorem sinf_wawYa_haraka (c : Fin qaydWawYa.k) (a : Dal.Khaliya) (ha : a.hala.v
     (qaydWawYa.sinf c a).val = 1 ∨ (qaydWawYa.sinf c a).val = 3 := by
   have hw : wawSakina a = false := by rcases ha with h | h <;> simp [wawSakina, h]
   have hy : yaSakina a = false := by rcases ha with h | h <;> simp [yaSakina, h]
-  show ((if (c.val == 1 || c.val == 3) && wawSakina a then 4
-    else if (c.val == 1 || c.val == 2) && yaSakina a then 5 else sinfHaraka a : Fin 6)).val = 1 ∨
-    ((if (c.val == 1 || c.val == 3) && wawSakina a then 4
-    else if (c.val == 1 || c.val == 2) && yaSakina a then 5 else sinfHaraka a : Fin 6)).val = 3
-  rcases ha with h | h <;> simp [hw, hy, sinfHaraka, h] <;> decide
+  rcases ha with h | h <;> simp [qaydWawYa, hw, hy, sinfHaraka, h] <;> decide
 
 /-- **الواوُ الساكنة بعد فتحةٍ أو كسرة، تليها ياءٌ متحرّكة، تُمنع حيثما وقعت** (1238–1239). -/
 theorem wawYa_yamna (pre : List Dal.Khaliya) (c w y : Dal.Khaliya) (post : List Dal.Khaliya)
@@ -331,11 +326,9 @@ theorem wawYa_yamna (pre : List Dal.Khaliya) (c w y : Dal.Khaliya) (post : List 
   have hm : ∀ c0 : Fin qaydWawYa.k, c0.val = 1 ∨ c0.val = 3 → qaydWawYa.mamnu (qaydWawYa.sinf c0 w) y = true := by
     intro c0 h0
     have h4 : (qaydWawYa.sinf c0 w).val = 4 := by
-      show ((if (c0.val == 1 || c0.val == 3) && wawSakina w then 4
-        else if (c0.val == 1 || c0.val == 2) && yaSakina w then 5 else sinfHaraka w : Fin 6)).val = 4
-      rcases h0 with h | h <;> simp [h, hw] <;> decide
-    show ((qaydWawYa.sinf c0 w).val == 4 && yaMutaharrika y || (qaydWawYa.sinf c0 w).val == 5 && wawMutaharrika y) = true
-    simp [h4, hy]
+      rcases h0 with h | h <;> simp [qaydWawYa, h, hw] <;> decide
+    generalize qaydWawYa.sinf c0 w = x at h4
+    simp [qaydWawYa, h4, hy]
   cases pre with
   | nil =>
     have hs : (qaydWawYa.awwalSinf c).val = 1 ∨ (qaydWawYa.awwalSinf c).val = 3 := by
@@ -383,8 +376,7 @@ theorem tasmah_akhir (h : Nat) (harf : Dal.Khaliya → Bool) (pre : List Dal.Kha
   cases pre with
   | nil =>
     have hs : ((qaydAkhir h harf).awwalSinf c).val = 1 ∨ ((qaydAkhir h harf).awwalSinf c).val = 3 := by
-      show ((if c.hala.val == h then (1 : Fin 4) else 0)).val = 1 ∨ ((if c.hala.val == h then (1 : Fin 4) else 0)).val = 3
-      simp [hc]
+      simp [qaydAkhir, hc]
     simp only [List.nil_append, Qayd.tasmah, Qayd.tasmahBaad, akhir_mamnu, akhir_sinf_khatima h harf _ a hs ha]
     rfl
   | cons x pre =>
