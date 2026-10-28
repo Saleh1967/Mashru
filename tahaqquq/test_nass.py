@@ -6,7 +6,7 @@
    ووضعُ الإطار في القارئ (`qari --itar`) على أربع جملٍ بتوقّعٍ يدويّ لحكم الجملة (٢ب). وخلايا شاهد الحدّ `haykal_fil_la_itar` في
    Jisr/NassItar.lean (منقولةٌ باليد) مخرجُ `qari --khalaya` لجمله الثلاث (٢ج؛ فحصُ نصٍّ يقرأ قوائمَ المبرهنة وأسماءَها من Lean).
 ٣. السجلّات: natija_1.json … natija_N.json متتالية، كلٌّ للحالات المجمَّدة. وبصمةُ natija_1.json ثابتةٌ هنا (NATIJA_1)، وكلُّ سجلٍّ
-   بعده يحمل بصمةَ ما قبله. وآخرُها لبصمات الشفرة الحاليّة (SHIFRA: القراءةُ والمقارنةُ والقارئ)، وأعدادُه (ihsa، bil_fia، akhta، azwaj، rafd_qari)
+   بعده يحمل بصمةَ ما قبله. وآخرُها لبصمات الشفرة الحاليّة (SHIFRA: القراءةُ والمقارنةُ والقارئ، ومنذ natija_4.json قراءتُه على التحصيل: Dal/QiraaTahsil.lean وDal/Tahsil.lean)، وأعدادُه (ihsa، bil_fia، akhta، azwaj، rafd_qari)
    هي أعدادُ مبرهنات Jisr/NassItarQiyas.lean، وحقلُ lean هو LEAN_NATIJA وكلُّ اسمٍ فيه مبرهنةٌ هناك.
 ٤. المجال: أعدادُ المجال محسوبةٌ من cases.json هنا (majal_json)، لا من Lean، وهي قائمةُ مبرهنة `majal`؛ وhalat في آخر سجلّ، وعددُ حقول
    كلّ فئةٍ في natija_fia لا يقلّ عن حالاتها ولا يزيد على ضعفها.
@@ -36,7 +36,7 @@ import tempfile
 
 JADHR = pathlib.Path(__file__).resolve().parent.parent
 D = JADHR / "tahaqquq" / "dawabit" / "nass"
-SHIFRA = ["Jisr/NassItar.lean", "Jisr/NassItarDabit.lean", "Qari/Main.lean"]
+SHIFRA = ["Jisr/NassItar.lean", "Jisr/NassItarDabit.lean", "Qari/Main.lean", "Dal/QiraaTahsil.lean", "Dal/Tahsil.lean"]
 QIYAS = JADHR / "Jisr/NassItarQiyas.lean"
 BINA = JADHR / "scripts/bina_dawabit_nass.py"
 BASMAT = {"قطر": ("qatr.txt", "2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d"),
