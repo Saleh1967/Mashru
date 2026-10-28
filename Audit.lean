@@ -109,6 +109,7 @@ import SLGE.Syllable
 import Madlul.TasisDalala
 import Nizam.Shahada
 import Dal.Tahsil
+import Dal.QiraaTahsil
 import Jisr.Mawsul
 import Jisr.MawsulDabit
 import Jisr.MawsulQiyas
@@ -2371,6 +2372,26 @@ import Jisr.MawsulQiyas
 #print axioms Dal.Tahsil.shahid_kataba
 #print axioms Dal.Tahsil.shahid_shams
 #print axioms Dal.Tahsil.shahid_muallaq
+#print axioms Dal.QiraaTahsil.mem_khalayaTahsil
+#print axioms Dal.QiraaTahsil.juzOf_khalaya
+#print axioms Dal.QiraaTahsil.juzOf_fasid
+#print axioms Dal.QiraaTahsil.ajza_cons
+#print axioms Dal.QiraaTahsil.ajza_tahsil
+#print axioms Dal.QiraaTahsil.ajza_asl
+#print axioms Dal.QiraaTahsil.ajza_la_fasid
+#print axioms Dal.QiraaTahsil.tamm_khalaya
+#print axioms Dal.QiraaTahsil.qiraa_ajza
+#print axioms Dal.QiraaTahsil.qiraa_tahsil
+#print axioms Dal.QiraaTahsil.qiraa_la_fasid
+#print axioms Dal.QiraaTahsil.qiraa_asl
+#print axioms Dal.QiraaTahsil.qiraa_shahada
+#print axioms Dal.QiraaTahsil.ajza_L
+#print axioms Dal.QiraaTahsil.qiraa_murakhkhasa
+#print axioms Dal.QiraaTahsil.shahid_fata
+#print axioms Dal.QiraaTahsil.shahid_shams
+#print axioms Dal.QiraaTahsil.shahid_rafd_tatwil
+#print axioms Dal.QiraaTahsil.shahid_tatwil_maqta
+#print axioms Dal.QiraaTahsil.shahid_jamaa
 -- الموصولُ وصلتُه في القطر (س137–143) والألفية (س146–157) (Jisr/Mawsul.lean): حكمُ الاستعمال ودرجتُه، والصلةُ بقراءة كلّ مصدر، والربطُ بـ Nizam.Phi.K3.wa
 #print axioms Jisr.Mawsul.bawwaba_la_hukm
 #print axioms Jisr.Mawsul.wa_k3
