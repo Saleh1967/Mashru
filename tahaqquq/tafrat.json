@@ -6874,5 +6874,59 @@
   "milaf": "scripts/qiyas_intrubiya.py",
   "min": "cap += sum(c.values()) * math.log2(len(hayy))",
   "ila": "cap += sum(c.values()) * math.log2(len(hayy) + 1)"
+ },
+ {
+  "ism": "P1320_wasl_bila_sawabiq",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "r == 'ا' && ms.isEmpty && c.sabiq.isSome && c.sawabiq &&",
+  "ila": "r == 'ا' && ms.isEmpty && c.sabiq.isSome &&"
+ },
+ {
+  "ism": "P1321_sabiqa_ayy_harf",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "s.head?.any (fun h => hurufSabiqa.contains h) &&",
+  "ila": "s.head?.isSome &&"
+ },
+ {
+  "ism": "P1322_shadda_awwal_mahdhufa",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "  else if shaddaAwwal c r ms then .P \"قاعدة الشدّة في أوّل الكلمة\"",
+  "ila": "  else if false && shaddaAwwal c r ms then .P \"قاعدة الشدّة في أوّل الكلمة\""
+ },
+ {
+  "ism": "P1323_lam_bila_wasl",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "|| c.sabiqWasl) &&",
+  "ila": "|| false) &&"
+ },
+ {
+  "ism": "P1324_sukun_maa_ghayrih",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "(n.tail == ['\\u0652'] ||",
+  "ila": "(n.tail.contains '\\u0652' ||"
+ },
+ {
+  "ism": "P1325_lahiq2_huwa_lahiq",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "  | n :: rest => if fasil n then none else lahiqMin rest",
+  "ila": "  | n :: rest => if fasil n then none else some n"
+ },
+ {
+  "ism": "P1326_sawabiq_bila_silsila",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "(fasil s || (ps && sabiqa s))",
+  "ila": "(fasil s || sabiqa s)"
+ },
+ {
+  "ism": "P1327_qasira_maa_sukun",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "x == '\\u064E' || x == '\\u064F' || x == '\\u0650'",
+  "ila": "x == '\\u064E' || x == '\\u064F' || x == '\\u0650' || x == '\\u0652'"
+ },
+ {
+  "ism": "P1328_wasit_shadda_awwal",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "        q == \"قاعدة الشدّة في أوّل الكلمة\" then",
+  "ila": "        q == \"\" then"
  }
 ]
