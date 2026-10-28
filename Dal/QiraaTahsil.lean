@@ -154,7 +154,8 @@ def wasitOf (aj akhir : Bool) (m : Maqta) (q : String) : Except String Wasit :=
       else match harfAam 2 r ms akhir aj with
         | .ok w => .ok { w with mulahazat := mulahazaMaqsura :: w.mulahazat }
         | .error e => .error e)
-    else if q == "قاعدة التنوين" || q == "قاعدة الشدّة بلا حركة" || q == "قاعدة الحرف الأخير بلا حركة" then
+    else if q == "قاعدة التنوين" || q == "قاعدة الشدّة بلا حركة" || q == "قاعدة الحرف الأخير بلا حركة" ||
+        q == "قاعدة الشدّة في أوّل الكلمة" then
       (match hamilOf r with
        | some h => harfAam h.val r ms akhir aj
        | none => bilaWasit q m.nass)

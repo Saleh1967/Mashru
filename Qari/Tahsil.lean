@@ -15,7 +15,7 @@ import Dal.Tahsil
 open Dal.Tahsil
 
 def sinfIsm : Sinf → String
-  | .fasil => "fasil" | .tatwil => "tatwil" | .harfMadd => "harfMadd" | .harfHaraka => "harfHaraka"
+  | .fasil => "fasil" | .tatwil => "tatwil" | .harfMadd => "harfMadd" | .harfHaraka => "harfHaraka" | .hamzaWasl => "hamzaWasl"
 
 def khalayaIsm (ks : List Dal.Khaliya) : String := ",".intercalate (ks.map fun k => toString (Dal.n k).val)
 

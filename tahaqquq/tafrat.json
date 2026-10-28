@@ -5126,8 +5126,8 @@
  {
   "ism": "P881_tahsil_sabiq_awwal_daiman",
   "milaf": "Dal/Tahsil.lean",
-  "min": "      binaMin (i + 1) (k + s.length) (if fasil s then none else some s) (if fasil s then false else p.isNone) rest",
-  "ila": "      binaMin (i + 1) (k + s.length) (if fasil s then none else some s) (if fasil s then false else true) rest"
+  "min": "      binaMin (i + 1) (k + s.length) (if fasil s then none else some s) (if fasil s then false else p.isNone)",
+  "ila": "      binaMin (i + 1) (k + s.length) (if fasil s then none else some s) (if fasil s then false else true)"
  },
  {
   "ism": "P882_tahsil_lahiq_abr_alfasil",
