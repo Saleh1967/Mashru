@@ -121,10 +121,30 @@ class HFN:
 
 def haqiqa_of(unit):
     """D6 (B11): لا معرّف عدديّ ثابت في release_v18 (المعرّفات سلاسل HFN-E-<hex>) ⇒ الفرع الثاني مُعلَنًا:
-    haqiqa = 100000 + (int(sha256("release_v18:"+pos+":"+lu_id),16) % 1000000). التصادم داخل النطاق يُرفَض."""
+    haqiqa = 100000 + (int(sha256("release_v18:"+pos+":"+lu_id),16) % 1000000). التصادم داخل النطاق يُرفَض.
+    (محفوظ للتوافق ؛ v7 يستعمل haqiqa_event فالفعل ومشتقّه يتشاركان حقيقة حدثهما — نسق Mashru Utur.lean:938.)"""
     key = "release_v18:" + unit['pos'] + ":" + unit['lu_id']
     h = int(hashlib.sha256(key.encode('utf-8')).hexdigest(), 16) % 1000000
     return 100000 + h
+
+
+def haqiqa_event(event_id):
+    """D6-ب (v7): حقيقةُ الوحدة = حقيقةُ حدثها ، فالفعلُ ومشتقّه واحد (dhahib=dhahab=10 ، Utur.lean:938).
+    لا معرّف عدديّ ثابت ⇒ SHA256_DERIVED على معرّف الحدث: 100000 + int(sha256("release_v18:event:"+event_id))%10^6."""
+    h = int(hashlib.sha256(("release_v18:event:" + event_id).encode('utf-8')).hexdigest(), 16) % 1000000
+    return 100000 + h
+
+
+# النصّ المختوم للمقاييس (7f71af0d) بدل maqayis.db (B4). المواضع المرشّحة ؛ غيابُها ⇒ D6_NO_SANAD (لا db).
+SEALED_MAQAYIS_SHA = '7f71af0dfe056cb84e7da24657fa13edc6e8061c'
+_SEALED_MAQAYIS_PATHS = [
+    Path(os.environ['MUDAA_DIR']) / 'maqayis.txt' if os.environ.get('MUDAA_DIR') else None,
+    Path('/Users/husseinhiyassat/mudaa_dir/maqayis.txt'),
+]
+
+
+def sealed_maqayis_present():
+    return any(p and p.exists() for p in _SEALED_MAQAYIS_PATHS)
 
 
 def maqayis_sanad(root_display):
@@ -142,19 +162,52 @@ def maqayis_sanad(root_display):
         con.close()
 
 
+import re as _re
+
+
+def surface_key(surface):
+    """مفتاح الكلمة كـ mudaat_prep._key: حذف التشكيل ثمّ إسقاط «ال» الأولى."""
+    k = _re.sub(r'[ً-ْٰ]', '', _nfc(surface))
+    return k[2:] if k.startswith('ال') else k
+
+
+def classify7(surface, hok, hfn, qamus_surfaces, manual_keys, alam_keys, mushtaq_wazn, sanad_mode='db_preview'):
+    """التصنيف السباعيّ (B2): COVERED_BY_MANUAL / COVERED_BY_MASHRU_WITNESS / HARF /
+    D6_EVENT / D6_MUSHTAQ / D6_PENDING:<سبب> / D7_ALAM / D7_JAMID. لا ترجيح.
+    يُعيد dict(category, flags, d6)."""
+    k = surface_key(surface)
+    flags = []
+    if k in manual_keys:
+        return dict(category='COVERED_BY_MANUAL', flags=flags)
+    if _nfc(surface) in qamus_surfaces:
+        return dict(category='COVERED_BY_MASHRU_WITNESS', flags=flags)
+    if hok.get('word_class') == 'HARF':
+        return dict(category='HARF', flags=flags)
+    d6 = d6_classify(surface, hok, hfn, sanad_mode=sanad_mode)
+    if d6['status'] == 'RATIFIED_BY_RULE':
+        if k in alam_keys:
+            flags.append('D7_ALAM_READING_POSSIBLE')      # مشتقّ يرد في قائمة الأعلام (مالك) — لا ترجيح
+        return dict(category=d6['d6_kind'], flags=flags, d6=d6)
+    # PENDING: علمٌ مقدَّمٌ ، ثمّ جامدٌ (اسمٌ ليس على وزن مشتقّ) ، وإلّا سبب D6
+    if k in alam_keys:
+        return dict(category='D7_ALAM', flags=flags, d6=d6)
+    if hok.get('word_class') == 'ISM' and hok.get('final_wazn') not in mushtaq_wazn:
+        return dict(category='D7_JAMID', flags=flags, d6=d6)
+    return dict(category='D6_PENDING:' + d6['reason'], flags=flags, d6=d6)
+
+
 # أصناف الوحدة → (tim, ind) : حدث(فعل) true/true ، مصدر/مشتق(ذات/مفهوم) false/true ، حرف -/false
 POS_TIM = {'فعل': True, 'مصدر': False, 'اسم فاعل': False, 'اسم مفعول': False}
 # صنف Hokom ↔ أقسام HFN المقبولة (condition 4): FI3L حدثٌ=فعل ، ISM ذاتٌ/مفهوم=مصدر/مشتق ، HARF لا وحدة
 CLASS_POS = {'FI3L': {'فعل'}, 'ISM': {'مصدر', 'اسم فاعل', 'اسم مفعول'}}
 
 
-def d6_classify(surface, hok, hfn):
+def d6_classify(surface, hok, hfn, sanad_mode='db_preview'):
     """يطبّق D6 على سطحٍ واحد بتقدير Hokom (hok) ومعجم HFN (hfn).
     يُعيد dict: status (RATIFIED_BY_RULE|PENDING) ، reason (عند PENDING) ، وحقول المودَع عند الاكتمال.
     الترتيب في فحص الغياب يحدّد «السبب الأوّل»."""
-    wc = hok.get('word_class'); dr = hok.get('directive')
-    lem_v, lem_n = lemma_of(surface)
-    res = dict(surface=surface, lemma=lem_v, word_class=wc, directive=dr, hokom_root=hok.get('final_root'))
+    wc = hok.get('word_class'); dr = hok.get('directive'); sub = hok.get('word_class_subclass')
+    res = dict(surface=surface, word_class=wc, word_class_subclass=sub, directive=dr, hokom_root=hok.get('final_root'))
     # (١-أ) directive=ACCEPT
     if dr != 'ACCEPT':
         res.update(status='PENDING', reason=f'D6_HOKOM_NOT_ACCEPT:{dr}'); return res
@@ -165,6 +218,15 @@ def d6_classify(surface, hok, hfn):
     root = hamza_root(hok.get('final_root'))
     if not root:
         res.update(status='PENDING', reason='D6_HOKOM_ROOT_NULL'); return res
+    # اللِّيمة: المضارع بلِيمة Hokom الماضية (B2) ؛ غيرُه من السطح (إسقاط أل/تنوين/الحركة الأخيرة)
+    if wc == 'FI3L' and sub == 'VERBAL_IMPERFECT':
+        ls = hok.get('lemma_surface')
+        if not ls:
+            res.update(status='PENDING', reason='D6_LEMMA_ABSENT'); return res
+        lem_v, lem_n = ls, hfn_lemma_norm(ls); res['lemma_source'] = 'HOKOM_LEMMA'
+    else:
+        lem_v, lem_n = lemma_of(surface); res['lemma_source'] = 'SURFACE'
+    res['lemma'] = lem_v
     # وحدة HFN بالجذر + اللِّيمة + قسمٌ يوافق صنف Hokom
     allowed = CLASS_POS.get(wc, set())
     cands = [u for u in hfn.match(root, lem_n) if u['pos'] in allowed]
@@ -181,14 +243,28 @@ def d6_classify(surface, hok, hfn):
         res.update(status='PENDING', reason=f'D6_AMBIGUOUS_UNIT:{len(cands)}',
                    units=[u['lu_id'] for u in cands]); return res
     unit = cands[0]
-    # (٢) سند: المقاييس بالجذر الظاهر (أو المخصّص عبر qari — خارج هذا القياس)
+    # (٢) سند: B4 يوجب الإحالة إلى النصّ المختوم (7f71af0d@موضع) لا maqayis.db.
+    #   sanad_mode='sealed' (افتراض الإيداع): النصّ المختوم غائب ⇒ D6_NO_SANAD (لا رجوع إلى db).
+    #   sanad_mode='db_preview' (القياس فقط): يُقاس بالـdb لبيان الأهليّة ، ويُوسَم «معاينة» لا يُودَع.
     root_display = unit['root_K'] or root
-    sanad = maqayis_sanad(root_display)
-    if not sanad:
-        res.update(status='PENDING', reason='D6_NO_SANAD', unit=unit['lu_id']); return res
-    # اكتمل: الحقول من أعمدة مسمّاة
-    res.update(status='RATIFIED_BY_RULE', unit=unit['lu_id'], unit_lemma=unit['lemma'], pos=unit['pos'],
+    if sanad_mode == 'sealed':
+        if not sealed_maqayis_present():
+            res.update(status='PENDING', reason='D6_NO_SANAD_SEALED_ABSENT', unit=unit['lu_id']); return res
+        sanad = maqayis_sanad(root_display)   # سيُستبدل بموضع من النصّ المختوم عند حضوره
+        if not sanad:
+            res.update(status='PENDING', reason='D6_NO_SANAD', unit=unit['lu_id']); return res
+        sanad = {**sanad, 'masdar': 'مقاييس-مختوم', 'sha': SEALED_MAQAYIS_SHA}
+    else:
+        sanad = maqayis_sanad(root_display)
+        if not sanad:
+            res.update(status='PENDING', reason='D6_NO_SANAD', unit=unit['lu_id']); return res
+        sanad = {**sanad, 'masdar': 'مقاييس-db-معاينة', 'preview': True}
+    pos = unit['pos']
+    mushtaq = pos in ('اسم فاعل', 'اسم مفعول')
+    qism = 'ism_mushtaq' if mushtaq else ('fil' if pos == 'فعل' else 'masdar')
+    # اكتمل: الحقول من أعمدة مسمّاة ؛ haqiqa = حقيقة الحدث (الفعلُ ومشتقّه واحد)
+    res.update(status='RATIFIED_BY_RULE', d6_kind=('D6_MUSHTAQ' if mushtaq else 'D6_EVENT'),
+               unit=unit['lu_id'], unit_lemma=unit['lemma'], pos=pos, qism=qism,
                event_id=unit['event_id'], root_K=unit['root_K'],
-               haqiqa=haqiqa_of(unit), tim=POS_TIM.get(unit['pos'], False), ind=(wc != 'HARF'),
-               sanad=sanad)
+               haqiqa=haqiqa_event(unit['event_id']), tim=(pos == 'فعل'), ind=True, sanad=sanad)
     return res

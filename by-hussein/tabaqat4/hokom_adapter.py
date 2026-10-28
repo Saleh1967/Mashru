@@ -23,7 +23,7 @@ def taqdir(surfaces):
     if not os.path.exists(py):
         raise RuntimeError(f"HOKOM_VENV_ABSENT: لا مفسّر في {py} ؛ Hokom غير متاح للقراءة")
     pin = _hokom_pin()
-    keep = ["final_root", "word_class", "word_class_subclass", "final_wazn", "mood", "verdict", "active_residuals"]
+    keep = ["final_root", "word_class", "word_class_subclass", "final_wazn", "mood", "verdict", "lemma_surface", "active_residuals"]
     code = ("import sys,json;sys.path.insert(0,%r)\nfrom hokom_pipeline import hokom\n"
             "S=%r;out=[]\n"
             "for w in S:\n"
@@ -41,7 +41,8 @@ def taqdir(surfaces):
     for r in raw:
         if "_error" in r:
             res.append({"pin": pin, "word_class": None, "word_class_subclass": None, "final_root": None,
-                        "final_wazn": None, "mood": None, "directive": "REFUSE", "active_residuals": [r["_error"]]})
+                        "final_wazn": None, "mood": None, "directive": "REFUSE", "lemma_surface": None,
+                        "active_residuals": [r["_error"]]})
             continue
         resid = list(r.get("active_residuals") or [])
         root = r.get("final_root")
@@ -54,6 +55,7 @@ def taqdir(surfaces):
                     "final_root": root, "final_wazn": wazn,
                     "mood": r.get("mood"),
                     "directive": r.get("verdict") or "DEFER",
+                    "lemma_surface": r.get("lemma_surface"),      # لِيمة Hokom الماضية (للمضارع) ؛ None إن غابت
                     "active_residuals": resid})
     return res
 
