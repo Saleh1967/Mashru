@@ -5252,20 +5252,20 @@
  {
   "ism": "P1045_abniya_fataha_sifa",
   "milaf": "Jisr/Abniya.lean",
-  "min": "  | .fataha, s => if s.sifa then laHukmJ else khataJ",
-  "ila": "  | .fataha, s => khataJ"
+  "min": "  | .fataha, s => if s.sifa then maqbulJ .qalil else khataJ",
+  "ila": "  | .fataha, s => if s.sifa then laHukmJ else khataJ"
  },
  {
-  "ism": "P1046_abniya_kasra_faail_taaddi",
+  "ism": "P1046_abniya_kasra_mutaaddi",
   "milaf": "Jisr/Abniya.lean",
-  "min": "if t = .mutaaddi then maqbulJ .qiyas else maqbulJ .qalil",
-  "ila": "maqbulJ .qalil"
+  "min": "  | .kasra, s => if t = .mutaaddi then laHukmJ else",
+  "ila": "  | .kasra, s => if false then laHukmJ else"
  },
  {
   "ism": "P1047_abniya_kasra_lazim",
   "milaf": "Jisr/Abniya.lean",
-  "min": "if t = .lazim then maqbulJ .qiyas else khataJ",
-  "ila": "maqbulJ .qiyas"
+  "min": "    | .faiil_k | .afal | .falan => maqbulJ .qiyas",
+  "ila": "    | .faiil_k | .afal | .falan => maqbulJ .qalil"
  },
  {
   "ism": "P1048_abniya_damma_faail",
@@ -5282,8 +5282,8 @@
  {
   "ism": "P1050_abniya_damma_qalil",
   "milaf": "Jisr/Abniya.lean",
-  "min": "  | .damma, .afal | .damma, .faal_f => maqbulJ .qalil",
-  "ila": "  | .damma, .afal | .damma, .faal_f => khataJ"
+  "min": "  | .damma, .afal => maqbulJ .qalil",
+  "ila": "  | .damma, .afal => khataJ"
  },
  {
   "ism": "P1051_abniya_ghayr_fail",
@@ -5338,5 +5338,17 @@
   "milaf": "Jisr/AbniyaDabit.lean",
   "min": "  | .khata => .raddKhati",
   "ila": "  | .khata => .naqsTaghtiya"
+ },
+ {
+  "ism": "P1060_abniya_damma_ghumud",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "  | .damma, .faal_f | .damma, .faiil_k => laHukmJ",
+  "ila": "  | .damma, .faal_f | .damma, .faiil_k => maqbulJ .qalil"
+ },
+ {
+  "ism": "P1061_abniya_kasra_faail_qalil",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "    | .faail => maqbulJ .qalil",
+  "ila": "    | .faail => maqbulJ .qiyas"
  }
 ]
