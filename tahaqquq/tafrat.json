@@ -5540,6 +5540,74 @@
  {
   "ism": "P1034_mawsul_fahs_akhta_fi_lean",
   "milaf": "Jisr/MawsulQiyas.lean",
+  "ism": "P1059_abniya_qarin_daraja_khata",
+  "milaf": "Jisr/AbniyaDabit.lean",
+  "min": "  | .khata => .raddKhati",
+  "ila": "  | .khata => .naqsTaghtiya"
+ },
+ {
+  "ism": "P1060_abniya_damma_ghumud",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "  | .damma, .faal_f | .damma, .faiil_k => laHukmJ",
+  "ila": "  | .damma, .faal_f | .damma, .faiil_k => maqbulJ .qalil"
+ },
+ {
+  "ism": "P1061_abniya_kasra_faail_qalil",
+  "milaf": "Jisr/Abniya.lean",
+  "min": "    | .faail => maqbulJ .qalil",
+  "ila": "    | .faail => maqbulJ .qiyas"
+ },
+ {
+  "ism": "P1062_abniya_tajmid_wasf",
+  "milaf": "tahaqquq/dawabit/abniya/tajmid.json",
+  "min": "\"wasf_sha256\": \"a39ef15afbc69830ade9383d154bca67493a0f27c1a922c8323880ca43b2b362\"",
+  "ila": "\"wasf_sha256\": \"a39ef15afbc69830ade9383d154bca67493a0f27c1a922c8323880ca43b2b360\""
+ },
+ {
+  "ism": "P1063_abniya_tajmid_alfiyya",
+  "milaf": "tahaqquq/dawabit/abniya/tajmid.json",
+  "min": "\"sha256\": \"13b351a0a02d9060fdedbb5db568544718eb4e89bef323f5572b8a26c0921ca0\"",
+  "ila": "\"sha256\": \"13b351a0a02d9060fdedbb5db568544718eb4e89bef323f5572b8a26c0921ca1\""
+ },
+ {
+  "ism": "P1064_abniya_tajmid_bina_cases",
+  "milaf": "tahaqquq/dawabit/abniya/tajmid.json",
+  "min": "\"bina_cases_sha256\": \"66ca701013f63687172908d92faf2fe601f81b0b05b87ff9f3a4956d97f7a07f\"",
+  "ila": "\"bina_cases_sha256\": \"66ca701013f63687172908d92faf2fe601f81b0b05b87ff9f3a4956d97f7a070\""
+ },
+ {
+  "ism": "P1065_abniya_mawallad_ism",
+  "milaf": "Jisr/AbniyaDawabit.lean",
+  "min": "⟨\"B36\", ",
+  "ila": "⟨\"B36x\", "
+ },
+ {
+  "ism": "P1066_abniya_sijill_shifra",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"sha256\": \"e9b6a246218ade605dcbd27a3be2a2c448c0b5ecdf28fa66a14d0ca625259d93\"",
+  "ila": "\"sha256\": \"e9b6a246218ade605dcbd27a3be2a2c448c0b5ecdf28fa66a14d0ca625259d90\""
+ },
+ {
+  "ism": "P1067_abniya_sijill_sawab",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"sawab\": 73,\n  \"naqsTaghtiya\": 0,",
+  "ila": "\"sawab\": 72,\n  \"naqsTaghtiya\": 1,"
+ },
+ {
+  "ism": "P1068_abniya_sijill_qablaha",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"natija_2.json\": \"8f224e30e25905795c7a6ce928a40ce270f6a312c9b99b49e63ff9f6d098d75a\"",
+  "ila": "\"natija_2.json\": \"8f224e30e25905795c7a6ce928a40ce270f6a312c9b99b49e63ff9f6d098d750\""
+ },
+ {
+  "ism": "P1069_abniya_natija1_adad",
+  "milaf": "tahaqquq/dawabit/abniya/natija_1.json",
+  "min": "\"sawab\": 61,",
+  "ila": "\"sawab\": 60,"
+ },
+ {
+  "ism": "P1070_abniya_fahs_akhta_fi_lean",
+  "milaf": "Jisr/AbniyaQiyas.lean",
   "min": "theorem akhta_sifr :",
   "ila": "private theorem akhta_alt : akhta (natayij halat) = [] := by\n  decide +kernel\n\ntheorem akhta_sifr :"
  },
@@ -5564,6 +5632,26 @@
  {
   "ism": "P1038_mawsul_sijill_tashghil",
   "milaf": "tahaqquq/dawabit/mawsul/natija_3.json",
+  "ism": "P1071_abniya_sijill_lean",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"Jisr.Abniya.Qiyas.akhta_sifr\",\n  \"Jisr.Abniya.Qiyas.azwaj_1\"",
+  "ila": "\"Jisr.Abniya.Qiyas.akhta_sifr\""
+ },
+ {
+  "ism": "P1072_abniya_sijill_akhta",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"akhta\": [],",
+  "ila": "\"akhta\": [[\"B01\", \"tajawuz\"]],"
+ },
+ {
+  "ism": "P1073_abniya_sijill_bil_fia",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
+  "min": "\"موجب\": 28,",
+  "ila": "\"موجب\": 27,"
+ },
+ {
+  "ism": "P1074_abniya_sijill_tashghil",
+  "milaf": "tahaqquq/dawabit/abniya/natija_3.json",
   "min": "\"tashghil\": 3,",
   "ila": "\"tashghil\": 4,"
  },
@@ -5606,6 +5694,8 @@
  {
   "ism": "P1111_mawsul_natija_fia_khassa",
   "milaf": "Jisr/MawsulQiyas.lean",
+  "ism": "P1115_abniya_natija_fia_khassa",
+  "milaf": "Jisr/AbniyaQiyas.lean",
   "min": "theorem natija_fia :",
   "ila": "private theorem natija_fia :"
  },
