@@ -340,8 +340,11 @@ class T(unittest.TestCase):
         if hr: self.skipTest('NOT_RUN: ' + hr)
         from t4 import hfn_d6 as D
         import hokom_adapter as HK, csv
-        r = D.d6_classify('ذَهَبَ', HK.taqdir(['ذَهَبَ'])[0], D.HFN(), sanad_mode='db_preview')
+        mk = D.build_makhzan_sanad(['ذَهَبَ'], ROOT)                      # سند المخصّص عبر qari (936c68e0)
+        self.assertIn(D.surface_key('ذَهَبَ'), mk, 'ذهب له قولٌ في المخزن')
+        r = D.d6_classify('ذَهَبَ', HK.taqdir(['ذَهَبَ'])[0], D.HFN(), makhzan_sanad=mk)
         self.assertEqual(r['status'], 'RATIFIED_BY_RULE', r)
+        self.assertEqual(r['sanad']['sha'], D.MAKHZAN_SHA)
         self.assertTrue(r['tim']); self.assertEqual(r['d6_kind'], 'D6_EVENT')
         self.assertEqual(r['haqiqa'], D.haqiqa_event(r['event_id']))   # v7: حقيقةُ الحدث (الفعلُ ومشتقّه واحد)
         self.assertGreaterEqual(r['haqiqa'], 100000)
@@ -378,14 +381,16 @@ class T(unittest.TestCase):
         self.assertEqual(h1, h2); self.assertGreaterEqual(h1, 100000); self.assertFalse(10 <= h1 <= 60)
 
     def test_T33_manual_shadows_d6(self):
-        """T33 مودَع يدويّ RATIFIED + D6 للكلمة نفسها → اليدويّ يبقى ، وD6_SHADOWED_BY_MANUAL معلَن ، لا يُضاف مودَع D6"""
+        """T33 مودَع يدويّ RATIFIED للكلمة نفسها يغلب D6 (COVERED_BY_MANUAL) ولو توفّر لها سند مخصّص — اليدويّ يبقى"""
         hr = self._hokom_ok() or self._sources_ok()
         if hr: self.skipTest('NOT_RUN: ' + hr)
-        import mudaat_prep as MP
         from t4 import hfn_d6 as D
-        existing = {'كتب': {'surface': 'كَتَبَ', 'ism_lean': 'kataba_m', 'status': 'RATIFIED', 'haqiqa': 1001}}
-        d6e, pend, shadowed, cov = MP.prep_d6(['كَتَبَ'], existing, D.HFN(), 'sha', '2026-10-27')
-        self.assertIn('كتب', shadowed); self.assertNotIn('كتب', d6e)
+        import hokom_adapter as HK
+        qamus, _m, alam, mw = self._v7_sets()
+        manual = {D.surface_key('كَتَبَ')}
+        mk = {D.surface_key('كَتَبَ'): '936c68e0c2c6@1/PageX/كتب/قائل:fixture'}   # لو جُرّب D6 لرُسِّم
+        r = D.classify7('كَتَبَ', HK.taqdir(['كَتَبَ'])[0], D.HFN(), qamus, manual, alam, mw, makhzan_sanad=mk)
+        self.assertEqual(r['category'], 'COVERED_BY_MANUAL')   # اليدويّ يغلب ، لا يُضاف مودَع D6
 
     def test_T34_awn_not_read(self):
         """T34 AWN لم يُقرأ: لا مسار يحوي 'wordnet' في أيّ open() أثناء تصنيف D6 (تغليف builtins.open)"""
@@ -419,26 +424,28 @@ class T(unittest.TestCase):
         return qamus, manual, alam, mw
 
     def test_T35_mushtaq_aism_fail(self):
-        """T35 اسم فاعل (سَاكِنٌ) → RATIFIED_BY_RULE بحقيقة حدثه و tim=false و qism=ism_mushtaq (db_preview: النصّ المختوم غائب)"""
+        """T35 اسم فاعل (سَاكِنٌ) + سند مخصّص (fixture) → RATIFIED_BY_RULE بحقيقة حدثه و tim=false و qism=ism_mushtaq"""
         hr = self._hokom_ok() or self._sources_ok()
         if hr: self.skipTest('NOT_RUN: ' + hr)
         from t4 import hfn_d6 as D
         import hokom_adapter as HK
-        r = D.d6_classify('سَاكِنٌ', HK.taqdir(['سَاكِنٌ'])[0], D.HFN(), sanad_mode='db_preview')
+        mk = {D.surface_key('سَاكِنٌ'): '936c68e0c2c6@1/PageX/ساكن/قائل:fixture'}   # سند مخصّص مُعطًى
+        r = D.d6_classify('سَاكِنٌ', HK.taqdir(['سَاكِنٌ'])[0], D.HFN(), makhzan_sanad=mk)
         self.assertEqual(r['status'], 'RATIFIED_BY_RULE', r); self.assertEqual(r['d6_kind'], 'D6_MUSHTAQ')
         self.assertFalse(r['tim']); self.assertEqual(r['qism'], 'ism_mushtaq')
         self.assertEqual(r['haqiqa'], D.haqiqa_event(r['event_id']))
 
     def test_T36_mudari_by_hokom_lemma(self):
-        """T36 مضارع: تَنْجَحْ بلِيمة Hokom (نَجَحَ) → D6_EVENT (db_preview) ؛ تَجْتَهِدْ بلا لِيمة → D6_LEMMA_ABSENT"""
+        """T36 مضارع: تَنْجَحْ بلِيمة Hokom (نَجَحَ) + سند مخصّص → D6_EVENT ؛ تَجْتَهِدْ بلا لِيمة → D6_LEMMA_ABSENT"""
         hr = self._hokom_ok() or self._sources_ok()
         if hr: self.skipTest('NOT_RUN: ' + hr)
         from t4 import hfn_d6 as D
         import hokom_adapter as HK
         hfn = D.HFN()
-        a = D.d6_classify('تَنْجَحْ', HK.taqdir(['تَنْجَحْ'])[0], hfn, sanad_mode='db_preview')
+        mk = {D.surface_key('تَنْجَحْ'): '936c68e0c2c6@1/PageX/نجح/قائل:fixture'}
+        a = D.d6_classify('تَنْجَحْ', HK.taqdir(['تَنْجَحْ'])[0], hfn, makhzan_sanad=mk)
         self.assertEqual((a['status'], a['d6_kind'], a['lemma_source']), ('RATIFIED_BY_RULE', 'D6_EVENT', 'HOKOM_LEMMA'))
-        b = D.d6_classify('تَجْتَهِدْ', HK.taqdir(['تَجْتَهِدْ'])[0], hfn, sanad_mode='db_preview')
+        b = D.d6_classify('تَجْتَهِدْ', HK.taqdir(['تَجْتَهِدْ'])[0], hfn, makhzan_sanad=mk)
         self.assertEqual((b['status'], b['reason']), ('PENDING', 'D6_LEMMA_ABSENT'))
 
     def test_T37_jamid_and_alam(self):
@@ -449,10 +456,31 @@ class T(unittest.TestCase):
         import hokom_adapter as HK
         qamus, manual, alam, mw = self._v7_sets()
         hfn = D.HFN(); tq = {w: h for w, h in zip(['الْبَيْتُ', 'مُحَمَّدٌ'], HK.taqdir(['الْبَيْتُ', 'مُحَمَّدٌ']))}
-        bayt = D.classify7('الْبَيْتُ', tq['الْبَيْتُ'], hfn, qamus, manual, alam, mw, sanad_mode='sealed')
+        bayt = D.classify7('الْبَيْتُ', tq['الْبَيْتُ'], hfn, qamus, manual, alam, mw)
         self.assertEqual(bayt['category'], 'D7_JAMID'); self.assertNotIn('haqiqa', bayt.get('d6', {}))
-        mhd = D.classify7('مُحَمَّدٌ', tq['مُحَمَّدٌ'], hfn, qamus, manual, alam, mw, sanad_mode='sealed')
+        mhd = D.classify7('مُحَمَّدٌ', tq['مُحَمَّدٌ'], hfn, qamus, manual, alam, mw)
         self.assertEqual(mhd['category'], 'D7_ALAM')
+
+    def test_T42_makhzan_sanad_ratifies_maqayis_pending(self):
+        """T42 (v7.1 ١): سند المخصّص عبر qari يُرسَّم به D6 ؛ وبلا سند (المقاييس نصّها غائب) → D6_NO_SANAD"""
+        hr = self._hokom_ok() or self._sources_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        from t4 import hfn_d6 as D
+        import hokom_adapter as HK
+        hfn = D.HFN(); h = HK.taqdir(['ذَهَبَ'])[0]
+        with_sanad = D.d6_classify('ذَهَبَ', h, hfn, makhzan_sanad=D.build_makhzan_sanad(['ذَهَبَ'], ROOT))
+        self.assertEqual(with_sanad['status'], 'RATIFIED_BY_RULE'); self.assertEqual(with_sanad['sanad']['sha'], D.MAKHZAN_SHA)
+        without = D.d6_classify('ذَهَبَ', h, hfn, makhzan_sanad={})      # لا سند مخصّص ، ولا نصّ مقاييس
+        self.assertEqual((without['status'], without['reason']), ('PENDING', 'D6_NO_SANAD'))
+
+    def test_T43_hokom_class_suspect_declared(self):
+        """T43 (v7.1 ٣): مَاتَ يصنّفه Hokom اسمًا بجذر null ⇒ يبقى D7_JAMID كما خرج ، ويُعلَن HOKOM_CLASS_SUSPECT لا يُصلَح"""
+        hr = self._hokom_ok() or self._sources_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        from t4 import hfn_d6 as D
+        import hokom_adapter as HK
+        r = D.classify7('مَاتَ', HK.taqdir(['مَاتَ'])[0], D.HFN(), *self._v7_sets())
+        self.assertEqual(r['category'], 'D7_JAMID'); self.assertIn('HOKOM_CLASS_SUSPECT', r['flags'])
 
     def test_T38_no_copied_text(self):
         """T38 لا نصّ معجميّ منقول: 20 حرفًا عربيًّا متتابعة في mudaat.json و madlulat_export.tsv = صفر"""
@@ -482,7 +510,8 @@ class T(unittest.TestCase):
         from t4 import hfn_d6 as D
         import hokom_adapter as HK
         qamus, manual, alam, mw = self._v7_sets()
-        r = D.classify7('مَالِكٌ', HK.taqdir(['مَالِكٌ'])[0], D.HFN(), qamus, manual, alam, mw, sanad_mode='db_preview')
+        mk = {D.surface_key('مَالِكٌ'): '936c68e0c2c6@1/PageX/مالك/قائل:fixture'}   # سند مخصّص مُعطًى
+        r = D.classify7('مَالِكٌ', HK.taqdir(['مَالِكٌ'])[0], D.HFN(), qamus, manual, alam, mw, makhzan_sanad=mk)
         self.assertEqual(r['category'], 'D6_MUSHTAQ'); self.assertIn('D7_ALAM_READING_POSSIBLE', r['flags'])
 
     def test_T41_quad_frozen(self):
@@ -500,7 +529,7 @@ class T(unittest.TestCase):
             return _h.sha256(''.join(sorted(L)).encode()).hexdigest()
         snap = lambda: (tree(D.HFN_V18), _h.sha256(Path(D.MAQAYIS).read_bytes()).hexdigest(), tree('/Users/husseinhiyassat/hokom'))
         before = snap()
-        D.classify7('مَالِكٌ', HK.taqdir(['مَالِكٌ'])[0], D.HFN(), *self._v7_sets(), sanad_mode='db_preview')
+        D.classify7('مَالِكٌ', HK.taqdir(['مَالِكٌ'])[0], D.HFN(), *self._v7_sets())
         self.assertEqual(before, snap(), 'QUAD_SOURCE_CHANGED')
         m = subprocess.run(['git', '-C', str(ROOT), 'status', '--porcelain', '--untracked-files=all'], capture_output=True, text=True).stdout
         outside = [l for l in m.splitlines() if not (l[3:].startswith('by-hussein/') or l[3:] in ('audit.txt', 'build.log', 'jumla_kamila.json'))]

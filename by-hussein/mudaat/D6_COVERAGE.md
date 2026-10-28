@@ -1,24 +1,20 @@
-# D6_COVERAGE (v7) — التصنيف السباعيّ ، وضعان
+# D6_COVERAGE (v7.1) — التصنيف السباعيّ ، سند المخصّص عبر qari
 
-**تنبيه بيئيّ حاكم:** النصّ المختوم للمقاييس (7f71af0d) وللمخصّص غيرُ حاضرٍ في هذه البيئة (MUDAA_DIR نائب).
-فسندُ D6 المختوم (B4: `7f71af0d@موضع`) **يتعذّر** ⇒ لا مودَع D6 يُرسَّم هنا (D6_NO_SANAD_SEALED_ABSENT). 
-الوضع `db_preview` يبيّن الأهليّة (ماذا سيُرسَّم متى حضر النصّ المختوم) ، والوضع `sealed` واقعُ البيئة.
+**v7.1 (١):** سندُ المخصّص عبر qari على `mawsua/makhzan_kamil.tsv` (يبدأ ببصمة 936c68e0) سندٌ مختوم يُرسَّم به D6 ويُجهَّز به D7.
+المقاييس تبقى `D6_NO_SANAD` حتى يحضُر نصّها المختوم (7f71af0d). maqayis.db لا يُرسَّم به.
 
-## db_preview (أهليّة D6)
-`{'COVERED_BY_MASHRU_WITNESS': 4, 'COVERED_BY_MANUAL': 3, 'D7_JAMID': 3, 'HARF': 1, 'D6_PENDING': 1, 'D6_EVENT': 1, 'D6_MUSHTAQ': 1}`
+**الكوربوس:** /tmp/c7_recovered.txt (14 سطحًا متمايزًا)
 
-## sealed (واقع البيئة — المُودَع)
+## الأعداد (التصنيف السباعيّ)
 `{'COVERED_BY_MASHRU_WITNESS': 4, 'COVERED_BY_MANUAL': 3, 'D7_JAMID': 3, 'HARF': 1, 'D6_PENDING': 2, 'D7_ALAM': 1}`
 
-## سجلّ mudaat.json (sealed)
+## سجلّ mudaat.json
 - كَتَبَ (كتب) → RATIFIED 
 - الطَّالِبُ (طالب) → RATIFIED 
 - الدَّرْسَ (درس) → RATIFIED 
-- الْعِلْمُ (علم) → PENDING D7_JAMID
-- نُورٌ (نور) → PENDING D7_JAMID
+- الْعِلْمُ (علم) → PENDING D7_JAMID [سند مخصّص]
+- نُورٌ (نور) → PENDING D7_JAMID ⚑HOKOM_CLASS_SUSPECT
 - تَجْتَهِدْ (تجتهد) → PENDING D6_LEMMA_ABSENT
-- تَنْجَحْ (تنجح) → PENDING D6_NO_SANAD_SEALED_ABSENT
-- مَاتَ (مات) → PENDING D7_JAMID
+- تَنْجَحْ (تنجح) → PENDING D6_NO_SANAD
+- مَاتَ (مات) → PENDING D7_JAMID ⚑HOKOM_CLASS_SUSPECT
 - مَالِكٌ (مالك) → PENDING D7_ALAM
-
-الكوربوس: السطوح المستردَّة فعلًا (كوربوس v6) ؛ «جمل v6.1 والنصّ الطويل» غير متوفّرة نصًّا — OWNER_QUESTIONS_v6 س1.

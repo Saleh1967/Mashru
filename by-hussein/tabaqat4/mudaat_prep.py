@@ -61,6 +61,17 @@ def _ism_lean_d6(lu_id):
     return 'd6_' + re.sub(r'\W', '_', lu_id)
 
 
+def _surfaces_from_text(path):
+    """سطوحٌ متمايزةٌ من ملفّ نصّ (سطرٌ لكلّ جملة) ؛ تقطيعٌ على الفراغ وإسقاطُ الترقيم ، بترتيب الورود."""
+    out = []
+    for line in Path(path).read_text(encoding='utf-8').splitlines():
+        for w in line.split():
+            w = w.strip('.،؟!:؛""«»')
+            if w and w not in out:
+                out.append(w)
+    return out
+
+
 def _surfaces_from_taqrir(taqrir):
     """سطوح الكلمات من tokens التقرير (بلا تكرار ، بترتيب الورود)."""
     out = []
@@ -186,27 +197,21 @@ def prep_v7(surfaces, existing, hfn, imda_sha, imda_date, mashru_root):
     mw = set(json.loads((HERE / 't4' / 'mushtaq_awzan.json').read_text(encoding='utf-8'))['mushtaq_hokom_wazn'])
     rows = _ajnas_rows(); msha = _mukhassas_sha()
     hok = _hk.taqdir(surfaces)
+    makhzan = _d6.build_makhzan_sanad(surfaces, mashru_root)   # سند المخصّص عبر qari (936c68e0) — v7.1 B1
     from collections import Counter, OrderedDict
-    cov = {'db_preview': Counter(), 'sealed': Counter()}
+    cov = Counter()
     out = OrderedDict((k, e) for k, e in existing.items() if e.get('status') == 'RATIFIED')   # اليدويّ وحده يُحفَظ
     export = []
-    # ما سواه (معاينات v6 PENDING/RATIFIED_BY_RULE بسند db) يُعاد بناؤه بوضع sealed — B4 يُبطل سند db
-    for mode in ('db_preview', 'sealed'):
-        for w, h in zip(surfaces, hok):
-            r = _d6.classify7(w, h, hfn, qamus, manual, alam, mw, sanad_mode=mode)
-            c = r['category']; cov[mode][c.split(':')[0] if c.startswith('D6_PENDING') else c] += 1
-    # الكتابة بوضع sealed (واقع البيئة)
-    pos_tim = _d6.POS_TIM
     for w, h in zip(surfaces, hok):
         k = _d6.surface_key(w)
-        if k in manual:
-            continue
-        r = _d6.classify7(w, h, hfn, qamus, manual, alam, mw, sanad_mode='sealed')
+        r = _d6.classify7(w, h, hfn, qamus, manual, alam, mw, makhzan_sanad=makhzan)
         cat = r['category']
-        if cat in ('COVERED_BY_MASHRU_WITNESS', 'HARF') or cat.startswith('COVERED'):
+        cov[cat.split(':')[0] if cat.startswith('D6_PENDING') else cat] += 1
+        if k in manual or cat in ('COVERED_BY_MASHRU_WITNESS', 'HARF') or cat.startswith('COVERED'):
             continue
         d6 = r.get('d6', {})
-        if cat in ('D6_EVENT', 'D6_MUSHTAQ'):          # (لن يقع في البيئة الحاليّة: نصّ مختوم غائب)
+        mref = makhzan.get(k)          # سند المخصّص للكلمة إن وُجد (D7 يُجهَّز به أيضًا)
+        if cat in ('D6_EVENT', 'D6_MUSHTAQ'):
             out[k] = {'surface': w, 'ism_lean': _ism_lean_d6(d6['unit']), 'status': 'RATIFIED_BY_RULE',
                       'haqiqa': d6['haqiqa'], 'khawass': [], 'alaqat': [], 'qabiliyyat': [], 'afrad': [],
                       'tim': d6['tim'], 'ind': True, 'qism': d6['qism'],
@@ -219,14 +224,16 @@ def prep_v7(surfaces, existing, hfn, imda_sha, imda_date, mashru_root):
         elif cat in ('D7_JAMID', 'D7_ALAM'):
             out[k] = {'surface': w, 'ism_lean': re.sub(r'\W', '_', k) + '_m', 'status': 'PENDING',
                       'sabab_d7': cat, 'kulli_juzi': ('juzi' if cat == 'D7_ALAM' else 'kulli'),
-                      'haqiqa': None, 'khawass': [], 'alaqat': [], 'qabiliyyat': [],
+                      'haqiqa': None, 'khawass': [], 'alaqat': [], 'qabiliyyat': [], 'flags': r['flags'],
                       'jidhr': {'root': h.get('final_root'), 'word_class': h.get('word_class'),
                                 'wazn': h.get('final_wazn')},
+                      'sanad_makhzan': ({'sha': _d6.MAKHZAN_SHA, 'ref': mref} if mref else None),
                       'mukhassas_ref': _ajnas_ref(k, rows, msha),
                       'imda': {'man': None, 'tarikh': None}}
         else:   # D6_PENDING:*
             out[k] = {'surface': w, 'ism_lean': re.sub(r'\W', '_', k) + '_m', 'status': 'PENDING',
                       'sabab_d6': d6.get('reason'), 'haqiqa': None, 'khawass': [], 'alaqat': [], 'qabiliyyat': [],
+                      'flags': r['flags'],
                       'jidhr': {'root': h.get('final_root'), 'word_class': h.get('word_class'),
                                 'wazn': h.get('final_wazn')},
                       'imda': {'man': None, 'tarikh': None}}
@@ -245,7 +252,8 @@ def main(argv=None):
     ap.add_argument('--export', help='مسار madlulat_export.tsv')
     ap.add_argument('--imda-d7', help='مسار MUDAAT_IMDA.md (D7 فقط)')
     a = ap.parse_args(argv)
-    taqrir = json.loads(Path(a.taqrir).read_text(encoding='utf-8'))
+    is_txt = str(a.taqrir).endswith('.txt')
+    taqrir = {} if is_txt else json.loads(Path(a.taqrir).read_text(encoding='utf-8'))
     doc = json.loads(Path(a.out).read_text(encoding='utf-8')) if Path(a.out).exists() else {'_law': 'D5/D6', 'sijill': {}}
     existing = doc.setdefault('sijill', {})
 
@@ -254,7 +262,10 @@ def main(argv=None):
         imda_date = a.date or datetime.date.today().isoformat()
         imda_sha = hashlib.sha256((Path(_d6.HFN_V18) / 'MANIFEST.json').read_bytes()).hexdigest()
         hfn = _d6.HFN()
-        surfaces = _surfaces_from_taqrir(taqrir)
+        if is_txt:
+            surfaces = _surfaces_from_text(Path(a.taqrir)); note = f"{a.taqrir} ({len(surfaces)} سطحًا متمايزًا)"
+        else:
+            surfaces = _surfaces_from_taqrir(taqrir); note = f"taqrir ({len(surfaces)} سطحًا)"
         out, cov, export = prep_v7(surfaces, existing, hfn, imda_sha, imda_date, a.mashru)
         doc['sijill'] = dict(out)
         Path(a.out).write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding='utf-8')
@@ -263,13 +274,13 @@ def main(argv=None):
         if a.export:
             Path(a.export).write_text(_export_tsv(doc), encoding='utf-8')
         if a.coverage:
-            Path(a.coverage).write_text(_coverage_v7_md(cov, doc), encoding='utf-8')
+            Path(a.coverage).write_text(_coverage_v7_md(cov, doc, note), encoding='utf-8')
         if a.imda_d7:
             Path(a.imda_d7).write_text(_imda_d7_md(doc), encoding='utf-8')
-        print(f"v7 sealed → db_preview={dict(cov['db_preview'])}")
-        print(f"v7 sealed → sealed={dict(cov['sealed'])}")
+        print(f"v7.1 (سند المخصّص عبر qari) → {dict(cov)}")
         for k, e in doc['sijill'].items():
-            print(f"  {e['status']:16} {k:10} {e.get('sabab_d6') or e.get('sabab_d7') or e.get('imda',{}).get('qanun') or ''}")
+            fl = ' '.join(e.get('flags') or [])
+            print(f"  {e['status']:16} {k:10} {e.get('sabab_d6') or e.get('sabab_d7') or e.get('imda',{}).get('qanun') or ''} {fl}")
         return 0
 
     if a.d6:
@@ -332,18 +343,18 @@ def _export_tsv(doc):
     return '\n'.join(L) + '\n'
 
 
-def _coverage_v7_md(cov, doc):
-    L = ['# D6_COVERAGE (v7) — التصنيف السباعيّ ، وضعان', '',
-         '**تنبيه بيئيّ حاكم:** النصّ المختوم للمقاييس (7f71af0d) وللمخصّص غيرُ حاضرٍ في هذه البيئة (MUDAA_DIR نائب).',
-         'فسندُ D6 المختوم (B4: `7f71af0d@موضع`) **يتعذّر** ⇒ لا مودَع D6 يُرسَّم هنا (D6_NO_SANAD_SEALED_ABSENT). ',
-         'الوضع `db_preview` يبيّن الأهليّة (ماذا سيُرسَّم متى حضر النصّ المختوم) ، والوضع `sealed` واقعُ البيئة.', '',
-         '## db_preview (أهليّة D6)', f"`{dict(cov['db_preview'])}`", '',
-         '## sealed (واقع البيئة — المُودَع)', f"`{dict(cov['sealed'])}`", '',
-         '## سجلّ mudaat.json (sealed)']
+def _coverage_v7_md(cov, doc, corpus_note=''):
+    L = ['# D6_COVERAGE (v7.1) — التصنيف السباعيّ ، سند المخصّص عبر qari', '',
+         '**v7.1 (١):** سندُ المخصّص عبر qari على `mawsua/makhzan_kamil.tsv` (يبدأ ببصمة 936c68e0) سندٌ مختوم يُرسَّم به D6 ويُجهَّز به D7.',
+         'المقاييس تبقى `D6_NO_SANAD` حتى يحضُر نصّها المختوم (7f71af0d). maqayis.db لا يُرسَّم به.', '',
+         f'**الكوربوس:** {corpus_note}', '',
+         '## الأعداد (التصنيف السباعيّ)', f"`{dict(cov)}`", '',
+         '## سجلّ mudaat.json']
     for k, e in doc.get('sijill', {}).items():
         tag = e.get('imda', {}).get('qanun') or e.get('sabab_d6') or e.get('sabab_d7') or ''
-        L.append(f"- {e['surface']} ({k}) → {e['status']} {tag}")
-    L += ['', 'الكوربوس: السطوح المستردَّة فعلًا (كوربوس v6) ؛ «جمل v6.1 والنصّ الطويل» غير متوفّرة نصًّا — OWNER_QUESTIONS_v6 س1.']
+        fl = (' ⚑' + ' '.join(e.get('flags'))) if e.get('flags') else ''
+        sn = ' [سند مخصّص]' if e.get('sanad_makhzan') else ''
+        L.append(f"- {e['surface']} ({k}) → {e['status']} {tag}{sn}{fl}")
     return '\n'.join(L) + '\n'
 
 

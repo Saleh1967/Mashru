@@ -119,6 +119,35 @@ class HFN:
         return self.by_lemma_pos.get((lemma_norm, pos), set())
 
 
+MAKHZAN_SHA = '936c68e0c2c6'   # بصمةُ المخصّص المختوم في makhzan_kamil.tsv (v7.1 B1): سندٌ مختوم يُرسَّم به D6
+
+
+def build_makhzan_sanad(surfaces, mashru_root):
+    """يشغّل qari على السطوح ويُعيد {surface_key: sanad} لكلّ سطحٍ له قولٌ بسندٍ يبدأ ببصمة المخصّص (936c68e0).
+    سندٌ مختوم عبر قناة Mashru (qari على mawsua/makhzan_kamil.tsv) — لا يُخترَع ولا يُنسَخ نصّه."""
+    from t4 import qari as _q
+    from pathlib import Path as _P
+    res = _q.run_qari(_P(mashru_root), list(surfaces))
+    if res.get('rc') is None:
+        return {}
+    out = {}
+    for w in _q.parse_qari(res['stdout'], list(surfaces)).get('words', []):
+        sn = next((e['sanad'] for e in w.get('makhzan_entries', []) if (e.get('sanad') or '').startswith(MAKHZAN_SHA)), None)
+        if sn:
+            out[surface_key(w['surface'])] = sn
+    return out
+
+
+def _lookup_makhzan(makhzan_sanad, surface, lem_n, root):
+    """سندُ المخصّص للكلمة من القاموس المبنيّ (بالسطح ثمّ اللِّيمة ثمّ الجذر). None إن غاب."""
+    if not makhzan_sanad:
+        return None
+    for key in (surface_key(surface), lem_n, root):
+        if key in makhzan_sanad:
+            return {'masdar': 'مخصص-makhzan', 'sha': MAKHZAN_SHA, 'ref': makhzan_sanad[key]}
+    return None
+
+
 def haqiqa_of(unit):
     """D6 (B11): لا معرّف عدديّ ثابت في release_v18 (المعرّفات سلاسل HFN-E-<hex>) ⇒ الفرع الثاني مُعلَنًا:
     haqiqa = 100000 + (int(sha256("release_v18:"+pos+":"+lu_id),16) % 1000000). التصادم داخل النطاق يُرفَض.
@@ -171,7 +200,7 @@ def surface_key(surface):
     return k[2:] if k.startswith('ال') else k
 
 
-def classify7(surface, hok, hfn, qamus_surfaces, manual_keys, alam_keys, mushtaq_wazn, sanad_mode='db_preview'):
+def classify7(surface, hok, hfn, qamus_surfaces, manual_keys, alam_keys, mushtaq_wazn, makhzan_sanad=None):
     """التصنيف السباعيّ (B2): COVERED_BY_MANUAL / COVERED_BY_MASHRU_WITNESS / HARF /
     D6_EVENT / D6_MUSHTAQ / D6_PENDING:<سبب> / D7_ALAM / D7_JAMID. لا ترجيح.
     يُعيد dict(category, flags, d6)."""
@@ -183,11 +212,14 @@ def classify7(surface, hok, hfn, qamus_surfaces, manual_keys, alam_keys, mushtaq
         return dict(category='COVERED_BY_MASHRU_WITNESS', flags=flags)
     if hok.get('word_class') == 'HARF':
         return dict(category='HARF', flags=flags)
-    d6 = d6_classify(surface, hok, hfn, sanad_mode=sanad_mode)
+    d6 = d6_classify(surface, hok, hfn, makhzan_sanad=makhzan_sanad)
     if d6['status'] == 'RATIFIED_BY_RULE':
         if k in alam_keys:
             flags.append('D7_ALAM_READING_POSSIBLE')      # مشتقّ يرد في قائمة الأعلام (مالك) — لا ترجيح
         return dict(category=d6['d6_kind'], flags=flags, d6=d6)
+    # (٣) Hokom صنّف اسمًا جذرُه null (كـ«مَاتَ» الأجوف) ⇒ يُبقى كما خرج ويُعلَن HOKOM_CLASS_SUSPECT لا يُصلَح
+    if hok.get('word_class') == 'ISM' and hok.get('final_root') is None:
+        flags.append('HOKOM_CLASS_SUSPECT')
     # PENDING: علمٌ مقدَّمٌ ، ثمّ جامدٌ (اسمٌ ليس على وزن مشتقّ) ، وإلّا سبب D6
     if k in alam_keys:
         return dict(category='D7_ALAM', flags=flags, d6=d6)
@@ -202,7 +234,7 @@ POS_TIM = {'فعل': True, 'مصدر': False, 'اسم فاعل': False, 'اسم 
 CLASS_POS = {'FI3L': {'فعل'}, 'ISM': {'مصدر', 'اسم فاعل', 'اسم مفعول'}}
 
 
-def d6_classify(surface, hok, hfn, sanad_mode='db_preview'):
+def d6_classify(surface, hok, hfn, makhzan_sanad=None):
     """يطبّق D6 على سطحٍ واحد بتقدير Hokom (hok) ومعجم HFN (hfn).
     يُعيد dict: status (RATIFIED_BY_RULE|PENDING) ، reason (عند PENDING) ، وحقول المودَع عند الاكتمال.
     الترتيب في فحص الغياب يحدّد «السبب الأوّل»."""
@@ -243,22 +275,11 @@ def d6_classify(surface, hok, hfn, sanad_mode='db_preview'):
         res.update(status='PENDING', reason=f'D6_AMBIGUOUS_UNIT:{len(cands)}',
                    units=[u['lu_id'] for u in cands]); return res
     unit = cands[0]
-    # (٢) سند: B4 يوجب الإحالة إلى النصّ المختوم (7f71af0d@موضع) لا maqayis.db.
-    #   sanad_mode='sealed' (افتراض الإيداع): النصّ المختوم غائب ⇒ D6_NO_SANAD (لا رجوع إلى db).
-    #   sanad_mode='db_preview' (القياس فقط): يُقاس بالـdb لبيان الأهليّة ، ويُوسَم «معاينة» لا يُودَع.
-    root_display = unit['root_K'] or root
-    if sanad_mode == 'sealed':
-        if not sealed_maqayis_present():
-            res.update(status='PENDING', reason='D6_NO_SANAD_SEALED_ABSENT', unit=unit['lu_id']); return res
-        sanad = maqayis_sanad(root_display)   # سيُستبدل بموضع من النصّ المختوم عند حضوره
-        if not sanad:
-            res.update(status='PENDING', reason='D6_NO_SANAD', unit=unit['lu_id']); return res
-        sanad = {**sanad, 'masdar': 'مقاييس-مختوم', 'sha': SEALED_MAQAYIS_SHA}
-    else:
-        sanad = maqayis_sanad(root_display)
-        if not sanad:
-            res.update(status='PENDING', reason='D6_NO_SANAD', unit=unit['lu_id']); return res
-        sanad = {**sanad, 'masdar': 'مقاييس-db-معاينة', 'preview': True}
+    # (٢) سند (v7.1): سندُ المخصّص عبر qari على mawsua/makhzan_kamil.tsv (يبدأ ببصمة 936c68e0) سندٌ مختوم يُرسَّم به D6.
+    #   المقاييس تبقى D6_NO_SANAD حتى يحضر نصّها (7f71af0d) — maqayis.db لا يُرسَّم به.
+    sanad = _lookup_makhzan(makhzan_sanad, surface, lem_n, root)
+    if not sanad:
+        res.update(status='PENDING', reason='D6_NO_SANAD', unit=unit['lu_id']); return res
     pos = unit['pos']
     mushtaq = pos in ('اسم فاعل', 'اسم مفعول')
     qism = 'ism_mushtaq' if mushtaq else ('fil' if pos == 'فعل' else 'masdar')

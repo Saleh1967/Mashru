@@ -99,6 +99,7 @@
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
+   "flags": [],
    "jidhr": {
     "root": [
      "ع",
@@ -107,6 +108,10 @@
     ],
     "word_class": "ISM",
     "wazn": "FI3L"
+   },
+   "sanad_makhzan": {
+    "sha": "936c68e0c2c6",
+    "ref": "936c68e0c2c6@527055/PageV01P257/العلم/قائل:بلا نسبة صريحة"
    },
    "mukhassas_ref": null,
    "imda": {
@@ -124,11 +129,15 @@
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
+   "flags": [
+    "HOKOM_CLASS_SUSPECT"
+   ],
    "jidhr": {
     "root": null,
     "word_class": "ISM",
     "wazn": null
    },
+   "sanad_makhzan": null,
    "mukhassas_ref": null,
    "imda": {
     "man": null,
@@ -144,6 +153,7 @@
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
+   "flags": [],
    "jidhr": {
     "root": [
      "ج",
@@ -162,11 +172,12 @@
    "surface": "تَنْجَحْ",
    "ism_lean": "تنجح_m",
    "status": "PENDING",
-   "sabab_d6": "D6_NO_SANAD_SEALED_ABSENT",
+   "sabab_d6": "D6_NO_SANAD",
    "haqiqa": null,
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
+   "flags": [],
    "jidhr": {
     "root": [
      "ن",
@@ -191,11 +202,15 @@
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
+   "flags": [
+    "HOKOM_CLASS_SUSPECT"
+   ],
    "jidhr": {
     "root": null,
     "word_class": "ISM",
     "wazn": null
    },
+   "sanad_makhzan": null,
    "mukhassas_ref": null,
    "imda": {
     "man": null,
@@ -212,6 +227,7 @@
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
+   "flags": [],
    "jidhr": {
     "root": [
      "م",
@@ -221,6 +237,7 @@
     "word_class": "ISM",
     "wazn": "FA3IL"
    },
+   "sanad_makhzan": null,
    "mukhassas_ref": null,
    "imda": {
     "man": null,
