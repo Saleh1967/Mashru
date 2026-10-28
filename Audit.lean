@@ -116,6 +116,9 @@ import Jisr.AbniyaQiyas
 import Jisr.IntrubiyaShahada
 import Jisr.TabaqatQawaid
 import Jisr.IbdalAlfiyyaQiyas
+import Jisr.Mawsul
+import Jisr.MawsulDabit
+import Jisr.MawsulQiyas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2525,3 +2528,34 @@ import Jisr.IbdalAlfiyyaQiyas
 #print axioms Jisr.IbdalAlfiyya.Qiyas.natija_fia
 #print axioms Jisr.IbdalAlfiyya.Qiyas.akhta_1
 #print axioms Jisr.IbdalAlfiyya.Qiyas.azwaj_1
+-- الموصولُ وصلتُه في القطر (س137–143) والألفية (س146–157) (Jisr/Mawsul.lean): حكمُ الاستعمال ودرجتُه، والصلةُ بقراءة كلّ مصدر، والربطُ بـ Nizam.Phi.K3.wa
+#print axioms Jisr.Mawsul.bawwaba_la_hukm
+#print axioms Jisr.Mawsul.wa_k3
+#print axioms Jisr.Mawsul.jawab_k3
+#print axioms Jisr.Mawsul.khata_yakfi
+#print axioms Jisr.Mawsul.bila_sila
+#print axioms Jisr.Mawsul.silat_al
+#print axioms Jisr.Mawsul.silat_ghayriha
+#print axioms Jisr.Mawsul.ikhtilaf_masdarayn
+#print axioms Jisr.Mawsul.la_aid_khata
+#print axioms Jisr.Mawsul.tashdid_la_yughayyir
+#print axioms Jisr.Mawsul.tashdid_ghayr_muthanna
+#print axioms Jisr.Mawsul.lugha_la_tughayyir
+#print axioms Jisr.Mawsul.qayd_khata
+#print axioms Jisr.Mawsul.ghayr_maqbul_bila
+#print axioms Jisr.Mawsul.asma_qatr
+#print axioms Jisr.Mawsul.maqam_khass
+#print axioms Jisr.Mawsul.shawahid
+#print axioms Jisr.Mawsul.khilaf_mawsulOK_amm
+#print axioms Jisr.Mawsul.khilaf_mawsulOK
+#print axioms Jisr.Mawsul.khilaf_silaOK
+#print axioms Jisr.Mawsul.la_qalil
+-- مقارنةُ ضابط الموصول قبل الحالات (Jisr/MawsulDabit.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Mawsul.Dabit.qarin_hukm
+#print axioms Jisr.Mawsul.Dabit.qarin_daraja
+-- ضابطُ الموصول المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/MawsulQiyas.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Mawsul.Qiyas.majal
+#print axioms Jisr.Mawsul.Qiyas.natija
+#print axioms Jisr.Mawsul.Qiyas.natija_fia
+#print axioms Jisr.Mawsul.Qiyas.akhta_sifr
+#print axioms Jisr.Mawsul.Qiyas.azwaj_1

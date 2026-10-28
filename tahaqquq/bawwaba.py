@@ -93,6 +93,9 @@
   ٥ص٩. ضابطُ «الإبدال: الواوُ والياءُ في الكلمة» المجمَّد (tahaqquq/test_ibdal.py؛ الألفيّة 1216–1217 و1222 و1224 و1225–1226 و1238–1239،
       والكتابُ للفهم): مثلُ ٥ص على Jisr/IbdalAlfiyya.lean (قواعدُ Qayd على الخلايا فوق آلة القانون)، والمولَّدُ خلاياه من القارئ وعلى كلمةٍ
       بـ«أل»، وخلايا شواهد الأبيات من القارئ.
+  ٥ص١١. ضابطُ الموصول المجمَّد (tahaqquq/test_mawsul.py؛ القطر س137–143 والألفية س146–157): مثلُ ٥ص على Jisr/Mawsul.lean
+      وJisr/MawsulDabit.lean، بحقلين مسؤولين (الحكمُ، والدرجةُ لما متوقَّعُه «مقبول»)؛ والأسانيدُ والحالاتُ في أسطرها، وإعادةُ bina_cases.py
+      للحالات، إن حضر المودَعان.
   ٥ت٢. تحصيلُ النصّ ومحاذاتُه (tahaqquq/test_tahsil.py؛ Dal/Tahsil.lean والأداة tahsil): على عرّافٍ مستقلٍّ كتبه مؤلّفٌ لم يقرأ إلّا المواصفة
       (tahaqquq/tahsil/) — بصماتُ المواصفة والعرّاف وحالاته، وحالاتُ الحدود المشتقّةُ باليد، و7000 نصٍّ عشوائيّ، وحكمُ الفاحص على شهادة كلّ
       مقطع، وخلايا القارئ (`qari --khalaya`) على الكلمات المرخَّصة، وأسماءُ الأحكام في المواصفة، دائمًا.
@@ -184,6 +187,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_abniya.py",
     # قبل تمام التدقيق: طفرةٌ تزيد مبرهنةً عامّةً في ملفّ المقارنة (P1203) يقتلها فحصُها في test_ibdal.py لا غيابُ سطرها في Audit.lean.
     "tahaqquq/test_ibdal.py",
+    "tahaqquq/test_mawsul.py",
     "tahaqquq/test_tadqiq_tamm.py",
     "tahaqquq/test_tasis.py",
     "tahaqquq/test_tahsil.py",
@@ -1124,6 +1128,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ص١٢ {out.strip().splitlines()[-1] if out.strip() else 'ضابط الأبنية: ?'}")
     if code != 0:
         fails.append("اختبار ضابط الأبنية فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_mawsul.py"])
+    report.append(f"٥ص١١ {out.strip().splitlines()[-1] if out.strip() else 'ضابط الموصول: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط الموصول فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_tasis.py"])
     report.append(f"٥ر٢ {out.strip().splitlines()[-1] if out.strip() else 'شبكة الدلالة: ?'}")
     if code != 0:
