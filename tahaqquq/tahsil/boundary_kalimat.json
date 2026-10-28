@@ -119,5 +119,264 @@
     ]
    }
   ]
+ },
+ {
+  "label": "K1 wa-al-ardi fully licensed, no cell for the alif",
+  "nass": "\u0648\u064e\u0627\u0644\u0652\u0623\u064e\u0631\u0652\u0636\u0650",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 11,
+    "murakhkhasa": true,
+    "khalaya": [
+     112,
+     55,
+     0,
+     63,
+     50
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K2 wa-ista licensed",
+  "nass": "\u0648\u064e\u0627\u0633\u0652\u062a\u064e",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 7,
+    "murakhkhasa": true,
+    "khalaya": [
+     112,
+     83,
+     72
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K3 wa-al-shams not licensed (lam P)",
+  "nass": "\u0648\u064e\u0627\u0644\u0634\u0651\u064e\u0645\u0652\u0633\u0650",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 11,
+    "murakhkhasa": false,
+    "khalaya": [
+     112,
+     43,
+     40,
+     111,
+     82
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K4 minna with word-initial shadda not licensed",
+  "nass": "\u0645\u0651\u0650\u0646\u064e",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 5,
+    "murakhkhasa": false,
+    "khalaya": [
+     56
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K5 second word with initial shadda",
+  "nass": "\u0628\u064e \u0645\u0651\u0650\u0646\u064e",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 2,
+    "murakhkhasa": true,
+    "khalaya": [
+     104
+    ]
+   },
+   {
+    "a": 3,
+    "b": 8,
+    "murakhkhasa": false,
+    "khalaya": [
+     56
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K6 bi-ismi licensed",
+  "nass": "\u0628\u0650\u0627\u0633\u0652\u0645\u0650",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 7,
+    "murakhkhasa": true,
+    "khalaya": [
+     106,
+     83,
+     110
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K7 qala: harfMadd alif keeps its cell",
+  "nass": "\u0642\u064e\u0627\u0644\u064e",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 5,
+    "murakhkhasa": true,
+    "khalaya": [
+     28,
+     11,
+     52
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K8 bi-allahi not licensed",
+  "nass": "\u0628\u0650\u0627\u0644\u0644\u0651\u064e\u0647\u0650",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 9,
+    "murakhkhasa": false,
+    "khalaya": [
+     106,
+     55,
+     52,
+     6
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K9 wa-istaghfir licensed",
+  "nass": "\u0648\u064e\u0627\u0633\u0652\u062a\u064e\u063a\u0652\u0641\u0650\u0631\u0652",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 13,
+    "murakhkhasa": true,
+    "khalaya": [
+     112,
+     83,
+     72,
+     23,
+     102,
+     63
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K10 non-initial shadda licensed",
+  "nass": "\u0628\u064e\u0645\u0651\u064e",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 5,
+    "murakhkhasa": true,
+    "khalaya": [
+     104,
+     111,
+     108
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K11 qaltu licensed, madd alif keeps its cell",
+  "nass": "\u0642\u064e\u0627\u0644\u0652\u062a\u064f",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 7,
+    "murakhkhasa": true,
+    "khalaya": [
+     28,
+     11,
+     55,
+     73
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K12 a-fa-sta licensed, chain of two, no cell for the alif",
+  "nass": "\u0623\u064e\u0641\u064e\u0627\u0633\u0652\u062a\u064e",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 9,
+    "murakhkhasa": true,
+    "khalaya": [
+     0,
+     100,
+     83,
+     72
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K13 wa-bba-as licensed: chain broken by shadda, alif harfMadd",
+  "nass": "\u0648\u064e\u0628\u0651\u064e\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 8,
+    "murakhkhasa": true,
+    "khalaya": [
+     112,
+     107,
+     104,
+     11,
+     83
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K14 a-fa-bi-allahi not licensed (lam P)",
+  "nass": "\u0623\u064e\u0641\u064e\u0628\u0650\u0627\u0644\u0644\u0651\u064e\u0647\u0650",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 13,
+    "murakhkhasa": false,
+    "khalaya": [
+     0,
+     100,
+     106,
+     55,
+     52,
+     6
+    ]
+   }
+  ]
+ },
+ {
+  "label": "K15 wa-b-dammatan-as not licensed (tanwin P)",
+  "nass": "\u0648\u064e\u0628\u064c\u0627\u0633\u0652",
+  "tawaqqu": [
+   {
+    "a": 0,
+    "b": 7,
+    "murakhkhasa": false,
+    "khalaya": [
+     112,
+     11,
+     83
+    ]
+   }
+  ]
  }
 ]

@@ -2381,6 +2381,7 @@ import Jisr.DamirQiyas
 #print axioms Dal.Tahsil.mawdi_sahih
 #print axioms Dal.Tahsil.tahsil_salim
 #print axioms Dal.Tahsil.ismSinf_ne
+#print axioms Dal.Tahsil.shahid_wasl
 #print axioms Dal.Tahsil.shahada_hukm
 #print axioms Dal.Tahsil.shahada_tahsil_salima
 #print axioms Dal.Tahsil.khalaya_muhadhat

@@ -191,11 +191,15 @@ theorem qatta_ras : ∀ t : List Char, ∀ s ∈ (qatta t).tail, (s.head?.any al
 
 def fasil (s : List Char) : Bool := s.head? == some ' '
 
-/-- سياقُ المقطع في كلمته: ما قبله فيها، وهل ذلك أوّلُها، وما بعده فيها. -/
+/-- سياقُ المقطع في كلمته: ما قبله فيها، وهل ذلك أوّلُها، وهل حكمُه ألفُ الوصل (14ب)، وهل ما قبله فيها كلُّه سوابق، وما بعده فيها،
+    وما بعد ذلك فيها. -/
 structure Siyaq where
   sabiq : Option (List Char)
   sabiqAwwal : Bool
+  sabiqWasl : Bool
+  sawabiq : Bool
   lahiq : Option (List Char)
+  lahiq2 : Option (List Char)
   deriving DecidableEq, Repr
 
 inductive Sinf
@@ -203,6 +207,7 @@ inductive Sinf
   | tatwil
   | harfMadd
   | harfHaraka
+  | hamzaWasl
   deriving DecidableEq, Repr
 
 inductive Hukm
@@ -232,11 +237,28 @@ def alifJamaa (c : Siyaq) (r : Char) (ms : List Char) : Bool :=
   r == 'ا' && ms.isEmpty && c.lahiq.isNone && (c.sabiq == some ['و'] || c.sabiq == some ['و', '\u0652'])
 /-- ١٤: شدّةٌ بلا علامة حركة. -/
 def shaddaBilaHaraka (ms : List Char) : Bool := ms.contains shadda && !(ms.any harakaB)
+/-- ١٤أ: حاملٌ أو مقعدٌ أوّلَ الكلمة، وفي علاماته شدّة. -/
+def shaddaAwwal (c : Siyaq) (r : Char) (ms : List Char) : Bool :=
+  (hamilOf r).isSome && c.sabiq.isNone && ms.contains shadda
+/-- الفتحةُ والضمّةُ والكسرة. -/
+def harakaQasira (x : Char) : Bool := x == '\u064E' || x == '\u064F' || x == '\u0650'
+/-- حروفُ السوابق في 14ب (تعيينُ البنّاء، المواصفة: التعديل الثاني). -/
+def hurufSabiqa : List Char := ['و', 'ف', 'ب', 'ك', 'ل', 'ت', 'أ']
+/-- السابقة: رأسُها من حروف السوابق، وعلاماتُها فتحةٌ أو ضمّةٌ أو كسرةٌ وحدها. -/
+def sabiqa (s : List Char) : Bool :=
+  s.head?.any (fun h => hurufSabiqa.contains h) && s.tail.length == 1 && s.tail.all harakaQasira
+/-- رأسُ المقطع حاملٌ من الجدول أو مقعدُ همزة. -/
+def raasHamil (n : List Char) : Bool := n.head?.any (fun h => (hamilOf h).isSome)
+/-- ١٤ب: ألفٌ مجرّدةٌ في غير أوّل الكلمة، ما قبلها في الكلمة سوابقُ كلُّه، وقبل حاملٍ ساكن، أو قبل لامٍ مجرّدةٍ يليها مشدَّد. -/
+def alifWasl (c : Siyaq) (r : Char) (ms : List Char) : Bool :=
+  r == 'ا' && ms.isEmpty && c.sabiq.isSome && c.sawabiq &&
+    c.lahiq.any (fun n => raasHamil n &&
+      (n.tail == ['\u0652'] || (n == ['ل'] && c.lahiq2.any (fun m => m.tail.contains shadda))))
 /-- ١٥أ: ا أو و أو ي مجرّدةٌ في غير أوّل الكلمة. -/
 def madd (c : Siyaq) (r : Char) : Bool := (r == 'ا' || r == 'و' || r == 'ي') && c.sabiq.isSome
-/-- ١٥ب: لامٌ بعد ألفٍ هي أوّلُ الكلمة، وبعدها مشدَّد. -/
+/-- ١٥ب: لامٌ بعد ألفٍ هي أوّلُ الكلمة أو بعد ألفِ وصلٍ بالقاعدة ١٤ب، وبعدها مشدَّد. -/
 def lamTarif (c : Siyaq) (r : Char) : Bool :=
-  r == 'ل' && c.sabiqAwwal && c.sabiq.any (fun p => p.head? == some 'ا' || p.head? == some 'ٱ') &&
+  r == 'ل' && ((c.sabiqAwwal && c.sabiq.any (fun p => p.head? == some 'ا' || p.head? == some 'ٱ')) || c.sabiqWasl) &&
     c.lahiq.any (fun n => n.tail.contains shadda)
 
 /-- ١٦: الحرفُ المحرَّك. -/
@@ -252,7 +274,7 @@ def harfMaddOf (r : Char) : Hukm :=
   | some h => .L .harfMadd [khaliyaMin h .sukun]
   | none => .F "خلل داخلي"
 
-/-- **التصنيف:** أوّلُ قاعدةٍ تنطبق، بترتيب المواصفة (`tahaqquq/tahsil/wasf.md`، القواعد ١–١٦). -/
+/-- **التصنيف:** أوّلُ قاعدةٍ تنطبق، بترتيب المواصفة (`tahaqquq/tahsil/wasf.md`، القواعد ١–١٦ و١٤أ و١٤ب). -/
 def tasnifRas (c : Siyaq) (r : Char) (ms : List Char) : Hukm :=
   if r == ' ' then (if ms.isEmpty then .L .fasil [] else .F "علامة على فاصل")
   else if alama r then .F "علامة بلا حامل"
@@ -268,6 +290,8 @@ def tasnifRas (c : Siyaq) (r : Char) (ms : List Char) : Hukm :=
   else if alifTanwin c r ms then .P "قاعدة ألف التنوين"
   else if alifJamaa c r ms then .P "قاعدة ألف الجماعة"
   else if shaddaBilaHaraka ms then .P "قاعدة الشدّة بلا حركة"
+  else if shaddaAwwal c r ms then .P "قاعدة الشدّة في أوّل الكلمة"
+  else if alifWasl c r ms then .L .hamzaWasl []
   else if ms.isEmpty then
     (if madd c r then harfMaddOf r
     else if lamTarif c r then .P "قاعدة لام التعريف المدغمة"
@@ -288,6 +312,7 @@ def fakkKhaliya (k : Khaliya) : Char × Hala := (harf k.hamil, k.hala)
 def SahihL : Sinf → List Char → List Khaliya → Prop
   | .fasil, s, ks => s = [' '] ∧ ks = []
   | .tatwil, s, ks => s = ['ـ'] ∧ ks = []
+  | .hamzaWasl, s, ks => s = ['ا'] ∧ ks = []
   | .harfMadd, s, ks => ∃ r, s = [r] ∧ (r = 'ا' ∨ r = 'و' ∨ r = 'ي') ∧ ks.map fakkKhaliya = [(r, 3)]
   | .harfHaraka, s, ks => ∃ r ms st, s = r :: ms ∧ ms.filterMap halaAlama = [st] ∧
       (∀ x ∈ ms, x = shadda ∨ (halaAlama x).isSome) ∧ ms.count shadda ≤ 1 ∧
@@ -434,6 +459,16 @@ theorem tasnif_salim (c : Siyaq) (s : List Char) (sinf : Sinf) (ks : List Khaliy
     by_cases h14 : shaddaBilaHaraka ms = true
     · rw [ite_eq_left h14] at h; cases h
     rw [ite_eq_right h14] at h
+    by_cases h14a : shaddaAwwal c r ms = true
+    · rw [ite_eq_left h14a] at h; cases h
+    rw [ite_eq_right h14a] at h
+    by_cases h14b : alifWasl c r ms = true
+    · rw [ite_eq_left h14b] at h
+      cases h
+      simp only [alifWasl, Bool.and_eq_true, beq_iff_eq, List.isEmpty_iff] at h14b
+      obtain ⟨⟨⟨⟨hra, hms⟩, _⟩, _⟩, _⟩ := h14b
+      subst hra; subst hms; exact ⟨rfl, rfl⟩
+    rw [ite_eq_right h14b] at h
     by_cases h15 : ms.isEmpty = true
     · rw [ite_eq_left h15] at h
       by_cases h15a : madd c r = true
@@ -474,23 +509,29 @@ def lahiqMin : List (List Char) → Option (List Char)
   | n :: _ => if fasil n then none else some n
   | [] => none
 
-def binaMin : Nat → Nat → Option (List Char) → Bool → List (List Char) → List Maqta
-  | _, _, _, _, [] => []
-  | i, k, p, pa, s :: rest =>
-    let c : Siyaq := ⟨p, pa, lahiqMin rest⟩
+/-- المقطعُ بعد التالي في الكلمة. -/
+def lahiq2Min : List (List Char) → Option (List Char)
+  | n :: rest => if fasil n then none else lahiqMin rest
+  | [] => none
+
+def binaMin : Nat → Nat → Option (List Char) → Bool → Bool → Bool → List (List Char) → List Maqta
+  | _, _, _, _, _, _, [] => []
+  | i, k, p, pa, pw, ps, s :: rest =>
+    let c : Siyaq := ⟨p, pa, pw, ps, lahiqMin rest, lahiq2Min rest⟩
     ⟨i, k, k + s.length, s, c, tasnif c s⟩ ::
-      binaMin (i + 1) (k + s.length) (if fasil s then none else some s) (if fasil s then false else p.isNone) rest
+      binaMin (i + 1) (k + s.length) (if fasil s then none else some s) (if fasil s then false else p.isNone)
+        (tasnif c s == .L .hamzaWasl []) (fasil s || (ps && sabiqa s)) rest
 
 /-- **التحصيل:** مقاطعُ النصّ بمواضعها وسياقاتها وأحكامها. -/
-def tahsil (t : List Char) : List Maqta := binaMin 0 0 none false (qatta t)
+def tahsil (t : List Char) : List Maqta := binaMin 0 0 none false false true (qatta t)
 
-theorem binaMin_nass (i k : Nat) (p : Option (List Char)) (pa : Bool) (ss : List (List Char)) :
-    (binaMin i k p pa ss).map (·.nass) = ss := by
-  induction ss generalizing i k p pa with
+theorem binaMin_nass (i k : Nat) (p : Option (List Char)) (pa pw ps : Bool) (ss : List (List Char)) :
+    (binaMin i k p pa pw ps ss).map (·.nass) = ss := by
+  induction ss generalizing i k p pa pw ps with
   | nil => rfl
   | cons s rest ih => simp [binaMin, ih]
 
-theorem tahsil_nass (t : List Char) : (tahsil t).map (·.nass) = qatta t := binaMin_nass _ _ _ _ _
+theorem tahsil_nass (t : List Char) : (tahsil t).map (·.nass) = qatta t := binaMin_nass _ _ _ _ _ _ _
 
 /-- **التحصيلُ بلا فقد:** ضمُّ نصوص المقاطع هو النصّ. -/
 theorem tahsil_flatten (t : List Char) : ((tahsil t).map (·.nass)).flatten = t := by
@@ -499,28 +540,28 @@ theorem tahsil_flatten (t : List Char) : ((tahsil t).map (·.nass)).flatten = t 
 theorem mem_tahsil_qatta {t : List Char} {m : Maqta} (h : m ∈ tahsil t) : m.nass ∈ qatta t := by
   rw [← tahsil_nass]; exact List.mem_map_of_mem h
 
-theorem binaMin_hukm (i k : Nat) (p : Option (List Char)) (pa : Bool) (ss : List (List Char)) :
-    ∀ m ∈ binaMin i k p pa ss, m.hukm = tasnif m.siyaq m.nass := by
-  induction ss generalizing i k p pa with
+theorem binaMin_hukm (i k : Nat) (p : Option (List Char)) (pa pw ps : Bool) (ss : List (List Char)) :
+    ∀ m ∈ binaMin i k p pa pw ps ss, m.hukm = tasnif m.siyaq m.nass := by
+  induction ss generalizing i k p pa pw ps with
   | nil => simp [binaMin]
   | cons s rest ih =>
     intro m hm
     simp only [binaMin, List.mem_cons] at hm
     rcases hm with rfl | hm
     · rfl
-    · exact ih _ _ _ _ m hm
+    · exact ih _ _ _ _ _ _ m hm
 
 theorem tahsil_hukm (t : List Char) : ∀ m ∈ tahsil t, m.hukm = tasnif m.siyaq m.nass :=
-  binaMin_hukm _ _ _ _ _
+  binaMin_hukm _ _ _ _ _ _ _
 
 /-- المواضعُ متّصلةٌ من k إلى n، وكلُّ موضعٍ غيرُ فارغ. -/
 def tughatti : Nat → List Maqta → Nat → Prop
   | k, [], n => k = n
   | k, m :: ms, n => m.a = k ∧ m.a < m.b ∧ tughatti m.b ms n
 
-theorem binaMin_tughatti (i k : Nat) (p : Option (List Char)) (pa : Bool) (ss : List (List Char))
-    (hne : ∀ s ∈ ss, s ≠ []) : tughatti k (binaMin i k p pa ss) (k + (ss.map List.length).sum) := by
-  induction ss generalizing i k p pa with
+theorem binaMin_tughatti (i k : Nat) (p : Option (List Char)) (pa pw ps : Bool) (ss : List (List Char))
+    (hne : ∀ s ∈ ss, s ≠ []) : tughatti k (binaMin i k p pa pw ps ss) (k + (ss.map List.length).sum) := by
+  induction ss generalizing i k p pa pw ps with
   | nil => simp [binaMin, tughatti]
   | cons s rest ih =>
     simp only [binaMin]
@@ -529,18 +570,18 @@ theorem binaMin_tughatti (i k : Nat) (p : Option (List Char)) (pa : Bool) (ss : 
     · show k < k + s.length
       omega
     · rw [List.map_cons, List.sum_cons, ← Nat.add_assoc]
-      exact ih _ _ _ _ (fun x hx => hne x (List.mem_cons_of_mem _ hx))
+      exact ih _ _ _ _ _ _ (fun x hx => hne x (List.mem_cons_of_mem _ hx))
 
 /-- **التغطية:** مواضعُ المقاطع متّصلةٌ تبدأ من 0 وتنتهي بطول النصّ، ولا موضعَ فارغ. -/
 theorem tahsil_tughatti (t : List Char) : tughatti 0 (tahsil t) t.length := by
-  have := binaMin_tughatti 0 0 none false (qatta t) (qatta_ghayr_farigh t)
+  have := binaMin_tughatti 0 0 none false false true (qatta t) (qatta_ghayr_farigh t)
   rwa [← List.length_flatten, qatta_flatten, Nat.zero_add] at this
 
-theorem binaMin_muhadha (i k : Nat) (p : Option (List Char)) (pa : Bool) (ss : List (List Char))
+theorem binaMin_muhadha (i k : Nat) (p : Option (List Char)) (pa pw ps : Bool) (ss : List (List Char))
     (pre : List Char) (hpre : pre.length = k) :
-    ∀ m ∈ binaMin i k p pa ss, ((pre ++ ss.flatten).drop m.a).take (m.b - m.a) = m.nass ∧
+    ∀ m ∈ binaMin i k p pa pw ps ss, ((pre ++ ss.flatten).drop m.a).take (m.b - m.a) = m.nass ∧
       m.b ≤ (pre ++ ss.flatten).length := by
-  induction ss generalizing i k p pa pre with
+  induction ss generalizing i k p pa pw ps pre with
   | nil => simp [binaMin]
   | cons s rest ih =>
     intro m hm
@@ -551,14 +592,14 @@ theorem binaMin_muhadha (i k : Nat) (p : Option (List Char)) (pa : Bool) (ss : L
       refine ⟨?_, by omega⟩
       show List.take (pre.length + s.length - pre.length) (List.drop pre.length (pre ++ (s ++ rest.flatten))) = s
       rw [List.drop_left, Nat.add_sub_cancel_left, List.take_left]
-    · have := ih (i + 1) (k + s.length) _ _ (pre ++ s) (by simp [hpre]) m hm
+    · have := ih (i + 1) (k + s.length) _ _ _ _ (pre ++ s) (by simp [hpre]) m hm
       simpa [List.append_assoc] using this
 
 /-- **المحاذاة بنقاط الرمز:** ذرّاتُ النصّ في موضع المقطع هي المقطعُ بعينه، والموضعُ داخل النصّ. -/
 theorem tahsil_muhadha (t : List Char) :
     ∀ m ∈ tahsil t, (t.drop m.a).take (m.b - m.a) = m.nass ∧ m.b ≤ t.length := by
   intro m hm
-  have := binaMin_muhadha 0 0 none false (qatta t) [] rfl m hm
+  have := binaMin_muhadha 0 0 none false false true (qatta t) [] rfl m hm
   simpa [qatta_flatten] using this
 
 theorem tughatti_mem {k n : Nat} : ∀ {ms : List Maqta}, tughatti k ms n → ∀ m ∈ ms, m.a < m.b
@@ -597,6 +638,7 @@ def ismSinf : Sinf → String
   | .tatwil => "Dal.Tahsil.tatwil"
   | .harfMadd => "Dal.Tahsil.harfMadd"
   | .harfHaraka => "Dal.Tahsil.harfHaraka"
+  | .hamzaWasl => "Dal.Tahsil.hamzaWasl"
 
 def madkhalSalim : String := "مدخل سليم"
 
@@ -735,6 +777,7 @@ theorem khalaya_muhadhat (t : List Char) :
     cases s with
     | fasil => rw [hs.2] at hk; cases hk
     | tatwil => rw [hs.2] at hk; cases hk
+    | hamzaWasl => rw [hs.2] at hk; cases hk
     | harfMadd =>
       obtain ⟨r, hr, hmem, hmap⟩ := hs
       refine ⟨r, by simp [hr], ?_⟩
@@ -806,6 +849,16 @@ theorem shahid_muallaq :
     ((tahsil "كِتَابًا".toList).map (fun m => m.hukm)).drop 3 = [.P "قاعدة التنوين", .P "قاعدة ألف التنوين"] ∧
     ((tahsil "ذَهَبُوا".toList).map (fun m => m.hukm)).drop 3 = [.L .harfMadd [⟨28, 3⟩], .P "قاعدة ألف الجماعة"] ∧
     ((tahsil "كتَبَ".toList).map (fun m => m.hukm)).head? = some (.F "حرف بلا حركة في غير آخر الكلمة") := by
+  decide
+
+/-- القاعدتان 14أ و14ب: «وَالْأَرْضِ» ألفُها بعد السابقة ألفُ وصلٍ بلا خليّة والكلمةُ مرخَّصة؛ و«بِاللَّهِ» لامُها بعد ألف الوصل لامُ التعريف المدغمة؛
+    و«قَالْتُ» ألفُها في وسط الكلمة حرفُ مدٍّ لا ألفُ وصل؛ و«مِّنَ» شدّتُها أوّلَ الكلمة معلَّقة. -/
+theorem shahid_wasl :
+    (kalimat "وَالْأَرْضِ".toList).map (fun k => (k.murakhkhasa, k.khalaya.map Dal.n)) = [(true, [112, 55, 0, 63, 50])] ∧
+    (((tahsil "وَالْأَرْضِ".toList).map (fun m => m.hukm)).drop 1).head? = some (.L .hamzaWasl []) ∧
+    ((((tahsil "بِاللَّهِ".toList).map (fun m => m.hukm)).drop 1).take 2) = [.L .hamzaWasl [], .P "قاعدة لام التعريف المدغمة"] ∧
+    (((tahsil "قَالْتُ".toList).map (fun m => m.hukm)).drop 1).head? = some (.L .harfMadd [⟨2, 3⟩]) ∧
+    ((tahsil "مِّنَ".toList).map (fun m => m.hukm)).head? = some (.P "قاعدة الشدّة في أوّل الكلمة") := by
   decide
 
 end Dal.Tahsil

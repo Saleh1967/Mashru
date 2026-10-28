@@ -1,0 +1,114 @@
+{
+ "tashghil": 5,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد قاعدتَي التحصيل 14أ و14ب (dal/tahsil-wasl) في Dal/Tahsil.lean ووسيطِ 14أ في Dal/QiraaTahsil.lean؛ لا تغييرَ في Jisr/IbdalAlfiyya.lean",
+ "cases_sha256": "732403d34c0ab79d45609d0db1be1ca2abe5ae0c8a732cb216182d080ecfad9d",
+ "qablaha": {
+  "natija_4.json": "0fdadb783c5078f6fa41331a287f3b302c113af70d844f7dd8f4c4c3e5493284"
+ },
+ "shifra": {
+  "Jisr/IbdalAlfiyya.lean": {
+   "sha256": "5f33f0903b7b67fb62b688ab2fd25359a24f40679d698bcd22a353905fb1e648"
+  },
+  "Jisr/IbdalAlfiyyaDabit.lean": {
+   "sha256": "b95465b569a10837481fc58294034516c017fae8450c9d4879d98674b3f7bc2a"
+  },
+  "Jisr/TabaqatQawaid.lean": {
+   "sha256": "9e40d23cb79f52695cf29bbfc03dc1b354fa57f2f7e4a487bf0249dc853dea55"
+  },
+  "Dal/Jumla.lean": {
+   "sha256": "98b4200edc4a5b3cc051bd77f682f3e6b161486a376c2517d2e7f41bd7e9ba4b"
+  },
+  "Qari/Main.lean": {
+   "sha256": "fbe295b35a40771459aa74970e17674692911a699d3a5868e0fe38c152f77cf6"
+  },
+  "Dal/QiraaTahsil.lean": {
+   "sha256": "b02e85f13d21befffce72839b429444447af0d325f0864ce7304acb06939a827"
+  },
+  "Dal/Tahsil.lean": {
+   "sha256": "5ca756f2c55e069a7fdfb91479ca98406f05356b61035eba15718d9bef010f02"
+  },
+  "SLGE/Law.lean": {
+   "sha256": "88f025795e46f9074f55db52d31a9c002849b7d2c2b99dbdfcf2bf39f99c229a"
+  },
+  "Dal/Khaliya.lean": {
+   "sha256": "135444500327955efb0f6338e71ec374ee92568b41b83c4a1470b385716a4840"
+  }
+ },
+ "lean": [
+  "Jisr.IbdalAlfiyya.Qiyas.majal",
+  "Jisr.IbdalAlfiyya.Qiyas.natija",
+  "Jisr.IbdalAlfiyya.Qiyas.natija_fia",
+  "Jisr.IbdalAlfiyya.Qiyas.akhta_1",
+  "Jisr.IbdalAlfiyya.Qiyas.azwaj_1"
+ ],
+ "halat": 49,
+ "huqul_masula": 49,
+ "ihsa": {
+  "sawab": 39,
+  "naqsTaghtiya": 8,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtiyar": 2,
+  "rafdQari": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 10,
+  "حد": 6,
+  "خارج": 5,
+  "عموم": 18,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "B14",
+   "naqsTaghtiya"
+  ],
+  [
+   "B16",
+   "naqsTaghtiya"
+  ],
+  [
+   "B19",
+   "naqsTaghtiya"
+  ],
+  [
+   "B20",
+   "naqsTaghtiya"
+  ],
+  [
+   "B26",
+   "naqsTaghtiya"
+  ],
+  [
+   "B27",
+   "naqsTaghtiya"
+  ],
+  [
+   "B28",
+   "naqsTaghtiya"
+  ],
+  [
+   "B34",
+   "naqsTaghtiya"
+  ],
+  [
+   "B43",
+   "ikhtiyar"
+  ],
+  [
+   "B49",
+   "ikhtiyar"
+  ]
+ ],
+ "azwaj": {
+  "jumla": 15,
+  "taghayyar": 15,
+  "lam_yataghayyar": [],
+  "asaba_tarafan": 11
+ },
+ "rafd_qari": [],
+ "tarikh": "2026-10-28",
+ "malahiz": "الأعدادُ أعدادُ natija_4.json بعينها: خلايا الحالات من القارئ بعد قاعدتَي التحصيل هي هي (scripts/bina_dawabit_ibdal.py --check يعيد Jisr/IbdalAlfiyyaDawabit.lean بايتًا)، ومبرهناتُ Jisr/IbdalAlfiyyaQiyas.lean يقبلها البناء بلا تغيير؛ وتغيّرت في shifra بصمتا Dal/Tahsil.lean وDal/QiraaTahsil.lean."
+}
