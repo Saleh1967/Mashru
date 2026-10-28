@@ -53,8 +53,11 @@ import Dal.Jumla
 (`hawkama/عقد_الشهادة.md` §٣). ورسائلُ الرفض صارت بأسماء التحصيل أو الوسائط وبنصّ المقطع، إلّا رسالتَي `tamm` («كلمة فارغة»، و«ألف مجرّدة
 قبل متحرّك») كما كانتا؛ فتغيّر لفظُ بعضها. ولا وصلَ ولا وقفَ بين الكلمات هنا: ذلك في `Dal/Jumla.lean` كما كان.
 
-**المبرهنات** (20، بالمعيار الموحَّد في `Nizam/Asas.lean`):
-- لكلّ (12): `mem_khalayaTahsil`، `juzOf_khalaya`، `ajza_tahsil`، `ajza_asl`، `ajza_la_fasid`، `qiraa_ajza`، `qiraa_tahsil`، `qiraa_la_fasid`،
+**التعديل الثالث للتحصيل** (2026-10-29): أصنافُه التي لها وسيطٌ قديم (`wasitQaida`) يقرؤها القارئ بوسيطه باسم القاعدة القديمة، في الوقف
+والوصل كما كان؛ فما أصلُه التحصيلُ هو خلايا ما لا وسيطَ له (`khalayaTahsil`)، وشهادةُ مقطعٍ أصلُ خليّته وسيطٌ تعليقٌ أو ترخيص (`qiraa_shahada`).
+
+**المبرهنات** (21، بالمعيار الموحَّد في `Nizam/Asas.lean`):
+- لكلّ (13): `qaidaWasit_hukm`، `mem_khalayaTahsil`، `juzOf_khalaya`، `ajza_tahsil`، `ajza_asl`، `ajza_la_fasid`، `qiraa_ajza`، `qiraa_tahsil`، `qiraa_la_fasid`،
   `qiraa_asl`، `qiraa_shahada`، `ajza_L`، `qiraa_murakhkhasa`.
 - تعريفيّة (3): `juzOf_fasid`، `ajza_cons`، `tamm_khalaya`.
 - على الشاهد (5): `shahid_fata`، `shahid_shams`، `shahid_rafd_tatwil`، `shahid_tatwil_maqta`، `shahid_jamaa`.

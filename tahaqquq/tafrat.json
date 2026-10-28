@@ -5114,8 +5114,8 @@
  {
   "ism": "P888_tahsil_ism_kharij_alwasf",
   "milaf": "Dal/Tahsil.lean",
-  "min": "  | none => .F \"خلل داخلي\"",
-  "ila": "  | none => .F \"خلل\""
+  "min": "  | _, _ => .F \"خلل داخلي\"",
+  "ila": "  | _, _ => .F \"خلل\""
  },
  {
   "ism": "P889_shahada_sanad_la_yuthir",
@@ -5192,8 +5192,8 @@
  {
   "ism": "P901_qiraa_mawdi_mazaha",
   "milaf": "Dal/QiraaTahsil.lean",
-  "min": "  | .L _ ks => .ok ⟨ks.map (fun k => ⟨(Dal.n k).val, m.a, m.b, .tahsil⟩), [], false, false⟩",
-  "ila": "  | .L _ ks => .ok ⟨ks.map (fun k => ⟨(Dal.n k).val, m.a, m.a, .tahsil⟩), [], false, false⟩"
+  "min": "(khalayaOf m.hukm).map (fun k => ⟨(Dal.n k).val, m.a, m.b, .tahsil⟩) else []",
+  "ila": "(khalayaOf m.hukm).map (fun k => ⟨(Dal.n k).val, m.a, m.a, .tahsil⟩) else []"
  },
  {
   "ism": "P902_qiraa_wasit_ka_tahsil",
@@ -7400,8 +7400,8 @@
  {
   "ism": "P1322_shadda_awwal_mahdhufa",
   "milaf": "Dal/Tahsil.lean",
-  "min": "  else if shaddaAwwal c r ms then .P \"قاعدة الشدّة في أوّل الكلمة\"",
-  "ila": "  else if false && shaddaAwwal c r ms then .P \"قاعدة الشدّة في أوّل الكلمة\""
+  "min": "  else if shaddaAwwal c r ms then shaddaIbtidaOf r ms",
+  "ila": "  else if false && shaddaAwwal c r ms then shaddaIbtidaOf r ms"
  },
  {
   "ism": "P1323_lam_bila_wasl",
@@ -7412,8 +7412,8 @@
  {
   "ism": "P1324_sukun_maa_ghayrih",
   "milaf": "Dal/Tahsil.lean",
-  "min": "(n.tail == ['\\u0652'] ||",
-  "ila": "(n.tail.contains '\\u0652' ||"
+  "min": "(n.tail == ['\\u0652'] || (n == ['ل']",
+  "ila": "(n.tail.contains '\\u0652' || (n == ['ل']"
  },
  {
   "ism": "P1325_lahiq2_huwa_lahiq",
@@ -7528,5 +7528,59 @@
   "milaf": "Faahis/SijillMakhtum.lean",
   "min": "\\tمعلومات-سابقة\\tالمخصص\"",
   "ila": "\\tمعلومات-سابقة\\tالمخصّص\""
+ },
+ {
+  "ism": "P1365_idgham_bila_shin",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "'ظ', 'ث', 'ذ', 'ض', 'ش', 'ل']",
+  "ila": "'ظ', 'ث', 'ذ', 'ض', 'ل']"
+ },
+ {
+  "ism": "P1366_tanwin_bila_nun",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "[khaliyaMin h st, khaliyaMin 14 .sukun])",
+  "ila": "[khaliyaMin h st])"
+ },
+ {
+  "ism": "P1367_marbuta_ha",
+  "milaf": "Dal/Tahsil.lean",
+  "min": ".L .taMarbuta [khaliyaMin 18 st]",
+  "ila": ".L .taMarbuta [khaliyaMin 1 st]"
+ },
+ {
+  "ism": "P1368_maqsura_baad_damma",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "if p.tail.contains '\\u064E' then .L .alifMaqsura",
+  "ila": "if p.tail.contains '\\u064F' then .L .alifMaqsura"
+ },
+ {
+  "ism": "P1369_al_bila_sukun",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "    (n.tail == ['\\u0652'] || (n.tail.isEmpty",
+  "ila": "    ((n.tail.isEmpty"
+ },
+ {
+  "ism": "P1371_alif_tanwin_ghayr_akhir",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "c.lahiq == some ['ا', '\\u064B'] && c.lahiq2.isNone",
+  "ila": "c.lahiq == some ['ا', '\\u064B']"
+ },
+ {
+  "ism": "P1372_sukun_awwal",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "    else if (hamilOf r).isSome && c.sabiq.isSome then sukunOf r",
+  "ila": "    else if (hamilOf r).isSome then sukunOf r"
+ },
+ {
+  "ism": "P1373_tanwin_qabl_ayy",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "c.lawahiq.all (fun n => n == ['ا'] || n == ['ى'])",
+  "ila": "c.lawahiq.all (fun _ => true)"
+ },
+ {
+  "ism": "P1374_qari_akhir_bila_wasit",
+  "milaf": "Dal/QiraaTahsil.lean",
+  "min": "if m.siyaq.lahiq.isNone then some \"قاعدة الحرف الأخير بلا حركة\" else none",
+  "ila": "none"
  }
 ]

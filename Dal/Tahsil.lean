@@ -38,13 +38,21 @@ import Dal.Makharij
   الكلمة غيرُ شامل، وخلايا الكلمة غيرِ المرخَّصة مضمومة.
 - البدائلُ فارغةٌ في هذه الطبقة.
 
-**المبرهنات** (31، بالمعيار الموحَّد في `Nizam/Asas.lean`):
-- لكلّ (26): `hamilOf_harf`، `qatta_flatten`، `qatta_ghayr_farigh`، `qatta_alamat`، `qatta_ras`، `filterMap_hala_le`، `harfMaddOf_salim`،
+**التعديل الثالث** (2026-10-29، `tahaqquq/tahsil/wasf.md`؛ قولُ المالك في الجلسة 02:05 بتوقيت عمّان «قواعد التحصيل المعلّقة، كلٌّ على ضابطٍ
+مجمَّد، لرفع التغطية فوق النصف» من بندٍ ألصقه من جواب البنّاء، وفيها «انت مفوض بشكل مطلق … نفذ واكمل البرهان»؛ والقواعدُ وسندُها قرارُ البنّاء): أحدَ
+عشرَ صنفًا مرخَّصًا مكانَ المعلَّق حيث تُستوفى شروطُها — همزةُ أل مفتوحةً (`hamzaWaslAl`)، والممدودة (`madda`)، والتاءُ المربوطة تاءً موصولةً
+(`taMarbuta`)، والمقصورةُ ألفًا (`alifMaqsura`)، وألفُ الخطّ بلا خليّة (`alifKhatt`)، والتنوينُ نونًا ساكنة (`tanwin`، `tanwinAlif`)، وحركةُ ما قبل «اً»
+(`harakaMinTanwin`)، والشدّةُ أوّلَ الكلمة بلا نصفها الساكن (`shaddaIbtida`)، واللامُ المدغمة (`lamMudgham`)، والحرفُ بلا علامةٍ ساكنًا (`sukunMuqaddar`).
+وسلامتُها في `SahihL` (`tasnif_salim` عليها كلِّها). ومحاذاةُ الخلايا صارت بالرأس أو ببدله المسمّى (`ibdal`: نونُ التنوين، وهمزةُ أل، وما تُبدَل به
+الممدودةُ والمربوطةُ والمقصورة). والكلمةُ بهذا التعديل تُقرأ مبتدأً بها وموصولًا آخرُها.
+
+**المبرهنات** (40، بالمعيار الموحَّد في `Nizam/Asas.lean`):
+- لكلّ (33): `taOf_salim`، `maqsuraOf_salim`، `tanwinOf_salim`، `harakaTanwinOf_salim`، `shaddaIbtidaOf_salim`، `sukunOf_salim`، `shadda_wahda`، `hamilOf_harf`، `qatta_flatten`، `qatta_ghayr_farigh`، `qatta_alamat`، `qatta_ras`، `filterMap_hala_le`، `harfMaddOf_salim`،
   `harfHarakaOf_salim`، `tasnif_salim`، `binaMin_nass`، `tahsil_nass`، `tahsil_flatten`، `mem_tahsil_qatta`، `binaMin_hukm`، `tahsil_hukm`،
   `binaMin_tughatti`، `tahsil_tughatti`، `binaMin_muhadha`، `tahsil_muhadha`، `tughatti_mem`، `mawdi_sahih`، `tahsil_salim`، `ismSinf_ne`،
   `shahada_hukm`، `shahada_tahsil_salima`، `khalaya_muhadhat`.
 - تعريفيّة (1): `fakk_khaliyaMin`.
-- على الشاهد (4): `harf_sifr`، `shahid_kataba`، `shahid_shams`، `shahid_muallaq`.
+- على الشاهد (6): `harf_sifr`، `harf_thabit`، `shahid_kataba`، `shahid_shams`، `shahid_muallaq`، `shahid_wasl`.
 -/
 
 namespace Dal.Tahsil
