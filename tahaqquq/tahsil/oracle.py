@@ -98,6 +98,13 @@ ISM_12 = "قاعدة ألف التنوين"  # قاعدة ألف التنوين
 ISM_13 = "قاعدة ألف الجماعة"  # قاعدة ألف الجماعة
 ISM_14 = ("قاعدة الشدّة "
           "بلا حركة")  # قاعدة الشدّة بلا حركة
+# Amendment 1 (2026-10-28): rule 14أ name, written as explicit code points.
+ISM_14A = ("قاعدة الشدّة "
+           "في أوّل الكلمة")
+SINF_WASL = "hamzaWasl"
+# the three short harakat of rule 14ب (fatha, damma, kasra)
+SHORT_HARAKAT = ("َ", "ُ", "ِ")
+assert SHORT_HARAKAT == (FATHA, DAMMA, KASRA)
 ISM_15_LAM = ("قاعدة لام التعريف "
               "المدغمة")  # قاعدة لام التعريف المدغمة
 ISM_15_AKHIR = ("قاعدة الحرف "
@@ -151,6 +158,51 @@ def _P(name):
 
 def _F(name):
     return ("F", "-", name, [])
+
+
+def _ctx(word, pos):
+    return {
+        "word": word,
+        "awwal": pos == 0,
+        "akhir": pos == len(word) - 1,
+        "prev": word[pos - 1] if pos > 0 else None,
+        "next": word[pos + 1] if pos + 1 < len(word) else None,
+    }
+
+
+def _is_14b(text, segs, k, ctx):
+    """The conditions of rule 14ب alone (the caller has already ruled out rules 1-14أ)."""
+    if ctx is None:
+        return False
+    a, b = segs[k]
+    if text[a] != ALIF or b != a + 1 or ctx["awwal"]:
+        return False
+    prev, nxt = ctx["prev"], ctx["next"]
+    if prev is None or nxt is None:
+        return False
+    pa, pb = segs[prev]
+    if not any(m in SHORT_HARAKAT for m in text[pa + 1:pb]):
+        return False
+    na, nb = segs[nxt]
+    nhead, nmarks = text[na], text[na + 1:nb]
+    if not (nhead in INDEX or nhead in SEATS):
+        return False
+    if nmarks == SUKUN:
+        return True
+    if nhead == LAM and nmarks == "":
+        word = ctx["word"]
+        pos = word.index(nxt)
+        if pos + 1 < len(word):  # the segment right after the lam (see NOTES, amendment)
+            fa, fb = segs[word[pos + 1]]
+            if SHADDA in text[fa + 1:fb]:
+                return True
+    return False
+
+
+def _is_14b_at(text, segs, k, word):
+    """True iff segment k's verdict (first matching rule) is rule 14ب."""
+    res = _classify(text, segs, k, _ctx(word, word.index(k)))
+    return res[0] == "L" and res[1] == SINF_WASL
 
 
 def _classify(text, segs, k, ctx):
@@ -225,6 +277,12 @@ def _classify(text, segs, k, ctx):
     # 14
     if n_shadda == 1 and not vowels:
         return _P(ISM_14)
+    # 14أ (amendment 1): table carrier or hamza seat, awwal, shadda in marks
+    if (head in INDEX or head in SEATS) and awwal and n_shadda >= 1:
+        return _P(ISM_14A)
+    # 14ب (amendment 1): wasl alif after a prev with a short haraka, before a "sakin"
+    if _is_14b(text, segs, k, ctx):
+        return _L(SINF_WASL, [])
     # 15
     if not marks:
         if head in (ALIF, WAW, YA) and not awwal:
@@ -232,7 +290,10 @@ def _classify(text, segs, k, ctx):
         if head == LAM and prev is not None and nxt is not None:
             pa, _pb = segs[prev]
             prev_is_first = ctx["word"][0] == prev
-            if prev_is_first and text[pa] in (ALIF, ALIF_WASLA) and SHADDA in marks_of(nxt):
+            prev_first_alif = prev_is_first and text[pa] in (ALIF, ALIF_WASLA)
+            # amendment 1: or prev's verdict is by rule 14ب
+            if (prev_first_alif or _is_14b_at(text, segs, prev, ctx["word"])) \
+                    and SHADDA in marks_of(nxt):
                 return _P(ISM_15_LAM)
         if akhir:
             return _P(ISM_15_AKHIR)
@@ -252,13 +313,7 @@ def _analyse(text):
     ctxs = [None] * len(segs)
     for w in words:
         for pos, k in enumerate(w):
-            ctxs[k] = {
-                "word": w,
-                "awwal": pos == 0,
-                "akhir": pos == len(w) - 1,
-                "prev": w[pos - 1] if pos > 0 else None,
-                "next": w[pos + 1] if pos + 1 < len(w) else None,
-            }
+            ctxs[k] = _ctx(w, pos)
     out = []
     for k, (a, b) in enumerate(segs):
         hukm, sinf, ism, cells = _classify(text, segs, k, ctxs[k])

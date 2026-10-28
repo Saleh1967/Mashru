@@ -43,6 +43,11 @@ LAMT = "قاعدة لام التعريف المدغمة"
 AKH = "قاعدة الحرف الأخير بلا حركة"
 MID = "حرف بلا حركة في غير آخر الكلمة"
 
+# ---- amendment 1 (2026-10-28): explicit code points
+I14A = ("قاعدة الشدّة "
+        "في أوّل الكلمة")
+FEH, DAD, GHAIN = "ف", "ض", "غ"   # ف ض غ
+
 
 def L(a, b, sinf, cells=()):
     return ("L", a, b, sinf, "", list(cells))
@@ -58,6 +63,10 @@ def HM(a, b, cell):
 
 def FS(a, b):
     return L(a, b, "fasil")
+
+
+def HW(a, b):
+    return L(a, b, "hamzaWasl")
 
 
 def P(a, b, ism):
@@ -181,9 +190,10 @@ CASES = [
     ("R15 'al' alone: lam akhir", ALIF + LAM, [P(0, 1, WASL), P(1, 2, AKH)]),
     ("R15 lam after non-alif first segment", BA + FA + LAM + SHIN + SH + FA,
      [HH(0, 2, [104]), F(2, 3, MID), HH(3, 6, [43, 40])]),
-    ("R15 lam after alif that is not the first segment (wa-al-shams)",
+    # AMENDED (amendment 1): alif is now R14b hamzaWasl, so the lam is R15 lam-al (widened prev)
+    ("R15 lam after alif that is not the first segment (wa-al-shams) [amended: R14b + widened R15]",
      WAW + FA + ALIF + LAM + SHIN + SH + FA + MIM + SU + SIN + DA,
-     [HH(0, 2, [112]), HM(2, 3, 11), F(3, 4, MID), HH(4, 7, [43, 40]), HH(7, 9, [111]), HH(9, 11, [81])]),
+     [HH(0, 2, [112]), HW(2, 3), P(3, 4, LAMT), HH(4, 7, [43, 40]), HH(7, 9, [111]), HH(9, 11, [81])]),
     ("R15 word-initial lam (no prev)", LAM + SHIN + SH + FA, [F(0, 1, MID), HH(1, 4, [43, 40])]),
     ("R15 alif and lam separated by space", ALIF + SP + LAM + SHIN + SH + FA,
      [P(0, 1, WASL), FS(1, 2), F(2, 3, MID), HH(3, 6, [43, 40])]),
@@ -199,15 +209,115 @@ CASES = [
     ("R16 hamza on waw with damma", W_HAMZA + DA, [HH(0, 2, [1])]),
     ("R16 hamza on ya with sukun", Y_HAMZA + SU, [HH(0, 2, [3])]),
     ("R16 bare hamza with fatha", HAMZA + FA, [HH(0, 2, [0])]),
-    ("R16 hamza seat with shadda+fatha", A_HAMZA_ABOVE + SH + FA, [HH(0, 3, [3, 0])]),
-    ("R16 fatha before shadda", BA + FA + SH, [HH(0, 3, [107, 104])]),
-    ("R16 shadda before fatha", BA + SH + FA, [HH(0, 3, [107, 104])]),
-    ("R16 shadda + sukun", BA + SH + SU, [HH(0, 3, [107, 107])]),
-    ("R16 ya awwal with shadda+kasra", YA + SH + KA, [HH(0, 3, [47, 46])]),
+    ("R14a hamza seat awwal with shadda+fatha [amended, was R16]", A_HAMZA_ABOVE + SH + FA, [P(0, 3, I14A)]),
+    ("R14a fatha before shadda, awwal [amended, was R16]", BA + FA + SH, [P(0, 3, I14A)]),
+    ("R14a shadda before fatha, awwal [amended, was R16]", BA + SH + FA, [P(0, 3, I14A)]),
+    ("R14a shadda + sukun, awwal [amended, was R16]", BA + SH + SU, [P(0, 3, I14A)]),
+    ("R14a ya awwal with shadda+kasra [amended, was R16]", YA + SH + KA, [P(0, 3, I14A)]),
     ("R16 alif with fatha mid-word", BA + FA + ALIF + FA, [HH(0, 2, [104]), HH(2, 4, [8])]),
     ("R16 alif with sukun mid-word", BA + FA + ALIF + SU, [HH(0, 2, [104]), HH(2, 4, [11])]),
     ("multiple spaces between words", BA + FA + SP + SP + BA + FA,
      [HH(0, 2, [104]), FS(2, 3), FS(3, 4), HH(4, 6, [104])]),
+    # ================= amendment 1 (2026-10-28): rules 14a, 14b, widened 15 lam, hamzaWasl
+    # All expectations below derived by hand from spec.md (cells: 4h+s, see table above;
+    # also: f h=25 -> 100..103, d h=12 -> 48..51, gh h=5 -> 20..23, n h=14 -> 56..59).
+    # --- 14b: wasl alif after a prefix with a short haraka, before a sukun-only carrier
+    ("A1 R14b wa-istaghfir", WAW + FA + ALIF + SIN + SU + TA + FA + GHAIN + SU + FEH + KA + RA + SU,
+     [HH(0, 2, [112]), HW(2, 3), HH(3, 5, [83]), HH(5, 7, [72]), HH(7, 9, [23]), HH(9, 11, [102]),
+      HH(11, 13, [63])]),
+    ("A2 R14b fa-ista", FEH + FA + ALIF + SIN + SU + TA + FA,
+     [HH(0, 2, [100]), HW(2, 3), HH(3, 5, [83]), HH(5, 7, [72])]),
+    ("A3 R14b bi-al-qa (lam with sukun)", BA + KA + ALIF + LAM + SU + QAF + FA,
+     [HH(0, 2, [106]), HW(2, 3), HH(3, 5, [55]), HH(5, 7, [28])]),
+    ("A4 R14b ka-al-ba", KAF + FA + ALIF + LAM + SU + BA + FA,
+     [HH(0, 2, [32]), HW(2, 3), HH(3, 5, [55]), HH(5, 7, [104])]),
+    ("A5 R14b li-ismi", LAM + KA + ALIF + SIN + SU + MIM + KA,
+     [HH(0, 2, [54]), HW(2, 3), HH(3, 5, [83]), HH(5, 7, [110])]),
+    ("A6 R14b prev with damma", BA + DA + ALIF + SIN + SU,
+     [HH(0, 2, [105]), HW(2, 3), HH(3, 5, [83])]),
+    # --- 14b lam branch + widened 15 lam bullet
+    ("A7 R14b+R15 bi-allahi (lam, lam+shadda)", BA + KA + ALIF + LAM + LAM + SH + FA + HA + KA,
+     [HH(0, 2, [106]), HW(2, 3), P(3, 4, LAMT), HH(4, 7, [55, 52]), HH(7, 9, [6])]),
+    ("A8 R14b+R15 lam branch, after-lam has shadda only (R14)", WAW + FA + ALIF + LAM + SHIN + SH,
+     [HH(0, 2, [112]), HW(2, 3), P(3, 4, LAMT), P(4, 6, I14)]),
+    ("A9 bare lam, after it no shadda: alif harfMadd, lam F", WAW + FA + ALIF + LAM + KAF + FA,
+     [HH(0, 2, [112]), HM(2, 3, 11), F(3, 4, MID), HH(4, 6, [32])]),
+    ("A10 bare lam at word end: alif harfMadd, lam akhir", WAW + FA + ALIF + LAM,
+     [HH(0, 2, [112]), HM(2, 3, 11), P(3, 4, AKH)]),
+    ("A11 shadda two segments after the lam does not count (immediate reading)",
+     WAW + FA + ALIF + LAM + KAF + FA + TA + SH + FA,
+     [HH(0, 2, [112]), HM(2, 3, 11), F(3, 4, MID), HH(4, 6, [32]), HH(6, 9, [75, 72])]),
+    # --- 14b must not fire
+    ("A12 next has a vowel: harfMadd", BA + FA + ALIF + BA + FA,
+     [HH(0, 2, [104]), HM(2, 3, 11), HH(3, 5, [104])]),
+    ("A13 qala: next lam with fatha", QAF + FA + ALIF + LAM + FA,
+     [HH(0, 2, [28]), HM(2, 3, 11), HH(3, 5, [52])]),
+    ("A14 prev with sukun", BA + SU + ALIF + SIN + SU,
+     [HH(0, 2, [107]), HM(2, 3, 11), HH(3, 5, [83])]),
+    ("A15 prev with dammatan", BA + DAN + ALIF + SIN + SU,
+     [P(0, 2, I11), HM(2, 3, 11), HH(3, 5, [83])]),
+    ("A16 prev with fathatan: R12 first", BA + FAN + ALIF + SIN + SU,
+     [P(0, 2, I11), P(2, 3, I12), HH(3, 5, [83])]),
+    ("A17 bare prev", BA + ALIF + SIN + SU,
+     [F(0, 1, MID), HM(1, 2, 11), HH(2, 4, [83])]),
+    ("A18 alif awwal before sukun: R6", ALIF + SIN + SU + TA + FA,
+     [P(0, 1, WASL), HH(1, 3, [83]), HH(3, 5, [72])]),
+    ("A19 alif at word end, sukun letter in next word", BA + FA + ALIF + SP + SIN + SU,
+     [HH(0, 2, [104]), HM(2, 3, 11), FS(3, 4), HH(4, 6, [83])]),
+    ("A20 prefix and alif separated by space: R6", WAW + FA + SP + ALIF + SIN + SU,
+     [HH(0, 2, [112]), FS(2, 3), P(3, 4, WASL), HH(4, 6, [83])]),
+    ("A21 next sukun+shadda is not sukun alone", BA + FA + ALIF + SIN + SH + SU,
+     [HH(0, 2, [104]), HM(2, 3, 11), HH(3, 6, [83, 83])]),
+    ("A22 next ta marbuta with sukun (not a carrier)", BA + FA + ALIF + TAM + SU,
+     [HH(0, 2, [104]), HM(2, 3, 11), P(3, 5, I9)]),
+    ("A23 next alif maqsura with sukun (not a carrier)", BA + FA + ALIF + MAQ + SU,
+     [HH(0, 2, [104]), HM(2, 3, 11), P(3, 5, I10)]),
+    ("A24 next tatweel (not a carrier)", BA + FA + ALIF + TAT,
+     [HH(0, 2, [104]), HM(2, 3, 11), L(3, 4, "tatwil")]),
+    ("A25 next alif wasla with sukun (not in table)", BA + FA + ALIF + WASLA + SU,
+     [HH(0, 2, [104]), HM(2, 3, 11), P(3, 5, WASL)]),
+    ("A26 prev is mark-headed segment (no marks)", FA + ALIF + SIN + SU,
+     [F(0, 1, I2), HM(1, 2, 11), HH(2, 4, [83])]),
+    # --- 14b fires (edge)
+    ("A27 next hamza seat with sukun", FEH + FA + ALIF + A_HAMZA_ABOVE + SU + TA + DA,
+     [HH(0, 2, [100]), HW(2, 3), HH(3, 5, [3]), HH(5, 7, [73])]),
+    ("A28 next bare hamza with sukun", BA + FA + ALIF + HAMZA + SU,
+     [HH(0, 2, [104]), HW(2, 3), HH(3, 5, [3])]),
+    ("A29 next alif with sukun (alif is a table carrier)", BA + FA + ALIF + ALIF + SU,
+     [HH(0, 2, [104]), HW(2, 3), HH(3, 5, [11])]),
+    ("A30 prev is R14a (shadda+kasra awwal): prev verdict ignored", BA + SH + KA + ALIF + SIN + SU,
+     [P(0, 3, I14A), HW(3, 4), HH(4, 6, [83])]),
+    ("A31 prev is F (fatha+damma) but has fatha", BA + FA + DA + ALIF + SIN + SU,
+     [F(0, 3, I4), HW(3, 4), HH(4, 6, [83])]),
+    ("A32 R12 pre-empts 14b, so the lam is not R15 lam-al (NOTES A7)",
+     BA + FAN + FA + ALIF + LAM + SHIN + SH + FA,
+     [F(0, 3, I4), P(3, 4, I12), F(4, 5, MID), HH(5, 8, [43, 40])]),
+    # --- 14a: shadda on the word-initial carrier / hamza seat
+    ("B1 R14a mim shadda+kasra awwal", MIM + SH + KA + NUN + FA,
+     [P(0, 3, I14A), HH(3, 5, [56])]),
+    ("B2 shadda only awwal: R14 before R14a", MIM + SH + MIM + KA + NUN + FA,
+     [P(0, 2, I14), HH(2, 4, [110]), HH(4, 6, [56])]),
+    ("B3 R14a hamza-on-waw seat shadda+damma awwal", W_HAMZA + SH + DA + BA + FA,
+     [P(0, 3, I14A), HH(3, 5, [104])]),
+    ("B4 R14a bare hamza shadda+fatha", HAMZA + SH + FA, [P(0, 3, I14A)]),
+    ("B5 hamza seat shadda only awwal: R14", A_HAMZA_ABOVE + SH, [P(0, 2, I14)]),
+    ("B6 R14a in second word", BA + FA + SP + MIM + SH + FA,
+     [HH(0, 2, [104]), FS(2, 3), P(3, 6, I14A)]),
+    ("B7 same letter not awwal: R16 two cells", BA + FA + MIM + SH + FA,
+     [HH(0, 2, [104]), HH(2, 5, [111, 108])]),
+    ("B8 shadda+sukun not awwal: R16", BA + FA + BA + SH + SU,
+     [HH(0, 2, [104]), HH(2, 5, [107, 107])]),
+    ("B9 shadda+dammatan awwal: R11 first", BA + SH + DAN, [P(0, 3, I11)]),
+    ("B10 alif awwal shadda+fatha: R6 first", ALIF + SH + FA, [F(0, 3, I6F)]),
+    ("B11 after mark-headed segment: not awwal", FA + BA + SH + FA,
+     [F(0, 1, I2), HH(1, 4, [107, 104])]),
+    ("B12 after a tab: not awwal", BA + FA + TAB + BA + SH + FA,
+     [HH(0, 2, [104]), F(2, 3, I3), HH(3, 6, [107, 104])]),
+    ("B13 ta marbuta awwal shadda+fatha: R9", TAM + SH + FA, [P(0, 3, I9)]),
+    ("B14 tatweel awwal shadda+fatha: R5", TAT + SH + FA, [P(0, 3, I5)]),
+    ("B15 after a space carrying a mark: awwal", BA + FA + SP + FA + MIM + SH + FA,
+     [HH(0, 2, [104]), F(2, 4, I1), P(4, 7, I14A)]),
+    ("B16 waw awwal shadda+fatha", WAW + SH + FA, [P(0, 3, I14A)]),
 ]
 
 KALIMAT_CASES = [
@@ -222,6 +332,23 @@ KALIMAT_CASES = [
     ("tab does not split", BA + FA + TAB + BA + FA, [(0, 5, False, [104, 104])]),
     ("kataba", KAF + FA + TA + FA + BA + FA, [(0, 6, True, [32, 72, 104])]),
     ("leading/trailing spaces", SP + BA + FA + SP, [(1, 3, True, [104])]),
+    # ================= amendment 1 (hand-derived)
+    ("K1 wa-al-ardi fully licensed, no cell for the alif",
+     WAW + FA + ALIF + LAM + SU + A_HAMZA_ABOVE + FA + RA + SU + DAD + KA,
+     [(0, 11, True, [112, 55, 0, 63, 50])]),
+    ("K2 wa-ista licensed", WAW + FA + ALIF + SIN + SU + TA + FA, [(0, 7, True, [112, 83, 72])]),
+    ("K3 wa-al-shams not licensed (lam P)", WAW + FA + ALIF + LAM + SHIN + SH + FA + MIM + SU + SIN + KA,
+     [(0, 11, False, [112, 43, 40, 111, 82])]),
+    ("K4 minna with word-initial shadda not licensed", MIM + SH + KA + NUN + FA, [(0, 5, False, [56])]),
+    ("K5 second word with initial shadda", BA + FA + SP + MIM + SH + KA + NUN + FA,
+     [(0, 2, True, [104]), (3, 8, False, [56])]),
+    ("K6 bi-ismi licensed", BA + KA + ALIF + SIN + SU + MIM + KA, [(0, 7, True, [106, 83, 110])]),
+    ("K7 qala: harfMadd alif keeps its cell", QAF + FA + ALIF + LAM + FA, [(0, 5, True, [28, 11, 52])]),
+    ("K8 bi-allahi not licensed", BA + KA + ALIF + LAM + LAM + SH + FA + HA + KA,
+     [(0, 9, False, [106, 55, 52, 6])]),
+    ("K9 wa-istaghfir licensed", WAW + FA + ALIF + SIN + SU + TA + FA + GHAIN + SU + FEH + KA + RA + SU,
+     [(0, 13, True, [112, 83, 72, 23, 102, 63])]),
+    ("K10 non-initial shadda licensed", BA + FA + MIM + SH + FA, [(0, 5, True, [104, 111, 108])]),
 ]
 
 

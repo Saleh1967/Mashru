@@ -94,3 +94,72 @@ different reasonable implementation could disagree with mine.
 15. **Format.** Each case in `boundary.json` carries an extra key, `"label"`, a short English
     description, besides `"nass"` and `"tawaqqu"`. A consumer expecting exactly two keys should
     ignore it.
+
+## التعديل الأوّل
+
+Readings of the amended spec (rules 14أ, 14ب, the widened lam bullet of rule 15, sinf `hamzaWasl`).
+Numbering restarts at A1. Each item is a place where another reasonable implementation could disagree.
+
+A1. **14ب, lam branch: «وبعده في الكلمة مقطعٌ في علاماته شدّة».** I read «بعده» as referring to the
+    lam (= `next` of the alif), and «مقطعٌ» as the segment *immediately* after the lam (the same shape as
+    rule 15's lam bullet, which looks at the lam's `next`). The other reading is "some later segment in
+    the word". Example `وَالكَتَّ` (bare lam, then كَ, then تَّ): my reading gives the alif `harfMadd [11]`
+    and the lam F «حرف بلا حركة في غير آخر الكلمة»; the other reading gives the alif `hamzaWasl` (the lam
+    is still F, because rule 15 needs the lam's own `next` to carry the shadda).
+
+A2. **14ب, «`prev` في علاماته فتحةٌ أو ضمّةٌ أو كسرة».** Read as containment: prev's marks contain at least
+    one of U+064E/U+064F/U+0650. Prev may also carry a shadda. Prev's own verdict is ignored, as in old
+    note 8: a prev that is F by rule 4 (fatha+damma) or P by 14أ (word-initial shadda+kasra) still
+    qualifies. Sukun, the tanwins, or no marks do not qualify (a mark-headed prev has no marks).
+
+A3. **14ب, «علاماتُ `next` سكونٌ وحده».** Read as: next's marks are exactly one U+0652 and nothing else.
+    Sukun+shadda (either order) does not qualify, so the alif stays `harfMadd`, and the next letter is
+    rule 16 `[4h+3, 4h+3]` (old note 4).
+
+A4. **14ب, next head «حاملٌ من الجدول أو مقعدُ همزة».** Taken literally: every table carrier, including
+    ا, ء, و, ي. So `بَااْ` gives the first alif `hamzaWasl` (and the second, with sukun, `harfHaraka [11]`).
+    ة ى آ ٱ ـ are not carriers, so before them 14ب does not fire.
+
+A5. **14ب does not require prev to be a prefix.** The sanad speaks of «السابقة» (و ف ب ك ل), but the
+    rule text only says «`prev` في علاماته فتحة أو ضمّة أو كسرة». I follow the rule text: any segment
+    with a short haraka qualifies, also mid-word (e.g. `قَالْ…` would make that alif `hamzaWasl`, and
+    `كَتَبَاسْ` too). A prefix-restricted implementation would differ there.
+
+A6. **14ب head «ا».** Only U+0627. ٱ never reaches 14ب (rules 6/7 take it), أ is a seat and is not
+    the wasl alif. A mid-word alif *with* sukun is not «بلا علامات», so it stays `harfHaraka [11]`.
+
+A7. **Rule 15 lam bullet, «إمّا حكمُه بالقاعدة 14ب».** Read as: prev's actual verdict (the first matching
+    rule for prev) is rule 14ب, i.e. prev is L `hamzaWasl` — not merely "prev meets 14ب's conditions".
+    The two readings differ only when an earlier rule pre-empts 14ب for that alif, which can only be
+    rule 12 (alif whose prev has fathatan, so the prev's marks also contain a short haraka and are F by
+    rule 4), e.g. `بًَالشَّ`: my reading gives the alif P «قاعدة ألف التنوين» and the lam F «حرف بلا حركة
+    في غير آخر الكلمة»; the conditions-only reading would give the lam P «قاعدة لام التعريف المدغمة».
+    The first branch («أوّلُ مقطعٍ في الكلمة ورأسُه ا أو ٱ») still looks only at prev's head (old note 6).
+
+A8. **14أ, «وفي `marks` شدّة».** Rule 14 comes first, so shadda alone at word start stays P
+    «قاعدة الشدّة بلا حركة», and only shadda + one vowel mark reaches 14أ. Since sukun is a vowel mark
+    (old note 4), word-initial shadda+sukun is 14أ. Shadda+tanwin is taken by rule 11 first.
+
+A9. **14أ, `awwal`.** Inherits old notes 1 and 2: a letter after a text-initial mark-headed segment, or
+    after a tab/NBSP/newline, is not `awwal`, so it stays rule 16 with two cells; a letter after a
+    space that carries a mark (rule 1 F) is `awwal`, so it is 14أ.
+
+A10. **14أ, head ا.** ا is a table carrier, but rule 6 takes every word-initial ا (and ٱ) first, so
+     14أ never sees an alif: `اَّ` is F «ألف محرّكة في أوّل الكلمة». ء (index 0) and the four seats
+     do reach 14أ.
+
+A11. **«والقواعدُ 1–14 و15–16 سواها كما كانت».** The wording of rule 16 is unchanged, but its reachable
+     inputs changed: a word-initial carrier with shadda+vowel no longer reaches rule 16. So six old
+     boundary cases changed expectation (five former R16 cases that were word-initial with shadda, and
+     `وَالشَّمْسِ`, whose alif is now `hamzaWasl` and whose lam is now P by the widened rule 15). I updated
+     them in place (labels marked "[amended]") rather than deleting them. Old note 4's example `بّْ`
+     → `[107, 107]` now holds only when the letter is not `awwal`; old note 6's last-but-one bullet
+     context (lam after an alif that is not the first segment) now gives P «قاعدة لام التعريف المدغمة»
+     when that alif is 14ب.
+
+A12. **The parenthetical note now says «القواعدُ 6–14ب».** As in old note 13 I read it as a statement
+     about reachability, not an extra filter; 14أ and 14ب state their own head conditions anyway.
+
+A13. **`hamzaWasl` in output and in `kalimat`.** hukm "L", sinf "hamzaWasl", ism "", khalaya []. In a word
+     it counts as L and contributes no cell; the word is licensed iff all its segments are L and some
+     other segment has a cell (e.g. `وَالْأَرْضِ` → licensed, cells `[112, 55, 0, 63, 50]`).
