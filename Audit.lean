@@ -110,6 +110,15 @@ import Madlul.TasisDalala
 import Nizam.Shahada
 import Dal.Tahsil
 import Dal.QiraaTahsil
+import Jisr.Abniya
+import Jisr.AbniyaDabit
+import Jisr.AbniyaQiyas
+import Jisr.IntrubiyaShahada
+import Jisr.TabaqatQawaid
+import Jisr.IbdalAlfiyyaQiyas
+import Jisr.Mawsul
+import Jisr.MawsulDabit
+import Jisr.MawsulQiyas
 import Jisr.Ishara
 import Jisr.IsharaDabit
 import Jisr.IsharaQiyas
@@ -2392,6 +2401,167 @@ import Jisr.IsharaQiyas
 #print axioms Dal.QiraaTahsil.shahid_rafd_tatwil
 #print axioms Dal.QiraaTahsil.shahid_tatwil_maqta
 #print axioms Dal.QiraaTahsil.shahid_jamaa
+-- أبنيةُ اسمَي الفاعل والمفعول في الألفية (س594–607) والقطر (س358، س365) (Jisr/Abniya.lean): حكمُ صوغ الصيغة للمطلوب ودرجتُه
+#print axioms Jisr.Abniya.ghayr_thulathi_fail
+#print axioms Jisr.Abniya.ghayr_thulathi_mafool
+#print axioms Jisr.Abniya.mafool_thulathi
+#print axioms Jisr.Abniya.fail_min_fataha
+#print axioms Jisr.Abniya.taaddi_la_yughayyir
+#print axioms Jisr.Abniya.fail_mafool_la_yashtarikan
+#print axioms Jisr.Abniya.ghayr_maqbul_bila
+#print axioms Jisr.Abniya.amal_wad
+#print axioms Jisr.Abniya.shawahid
+-- مقارنةُ ضابط الأبنية قبل الحالات (Jisr/AbniyaDabit.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Abniya.Dabit.qarin_hukm
+#print axioms Jisr.Abniya.Dabit.qarin_daraja
+-- ضابطُ الأبنية المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/AbniyaQiyas.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Abniya.Qiyas.majal
+#print axioms Jisr.Abniya.Qiyas.natija
+#print axioms Jisr.Abniya.Qiyas.natija_fia
+#print axioms Jisr.Abniya.Qiyas.akhta_sifr
+#print axioms Jisr.Abniya.Qiyas.azwaj_1
+
+-- هيكلُ الإنتروبيا على الشيفرة (Jisr/Intrubiya.lean، Jisr/IntrubiyaShahada.lean).
+#print axioms Jisr.Intrubiya.sum_replicate
+#print axioms Jisr.Intrubiya.sum_map_le
+#print axioms Jisr.Intrubiya.sum_map_mul
+#print axioms Jisr.Intrubiya.sum_perm
+#print axioms Jisr.Intrubiya.exactWords_length
+#print axioms Jisr.Intrubiya.mem_exactWords
+#print axioms Jisr.Intrubiya.lenCount_eq_spec
+#print axioms Jisr.Intrubiya.lenCount_le
+#print axioms Jisr.Intrubiya.lenCount_naql
+#print axioms Jisr.Intrubiya.lenCount_perm
+#print axioms Jisr.Intrubiya.off_succ_sub
+#print axioms Jisr.Intrubiya.little_bounds
+#print axioms Jisr.Intrubiya.encode_bounds
+#print axioms Jisr.Intrubiya.off_mono
+#print axioms Jisr.Intrubiya.decode_length
+#print axioms Jisr.Intrubiya.qanatan
+#print axioms Jisr.Intrubiya.lawVec_length
+#print axioms Jisr.Intrubiya.lawVec_eq
+#print axioms Jisr.Intrubiya.lawCount_eq
+#print axioms Jisr.Intrubiya.lawCount_le
+#print axioms Jisr.Intrubiya.naql_tabdil
+#print axioms Jisr.Intrubiya.intrubiya_la_tataghayyar_bil_tamthil
+#print axioms Jisr.Intrubiya.lenCount_succ
+#print axioms Jisr.Intrubiya.hadd_aala
+#print axioms Jisr.Intrubiya.hadd_adna
+#print axioms Jisr.Intrubiya.qanun_nabt_huwa_slge
+#print axioms Jisr.Intrubiya.kulfa_nabt_huwa_slge
+#print axioms Jisr.Intrubiya.nihaya_nabt_huwa_slge
+#print axioms Jisr.Intrubiya.tartib_dal_huwa_slge
+#print axioms Jisr.Intrubiya.alaMashru_step
+#print axioms Jisr.Intrubiya.shahadaV_T
+#print axioms Jisr.Intrubiya.shahadaV_final
+#print axioms Jisr.Intrubiya.shahadaU_T
+#print axioms Jisr.Intrubiya.shahadaU_qaida
+#print axioms Jisr.Intrubiya.lawCount_aala
+#print axioms Jisr.Intrubiya.lawCount_adna
+#print axioms Jisr.Intrubiya.adad_waqf
+#print axioms Jisr.Intrubiya.adad_wasl
+#print axioms Jisr.Intrubiya.wasl_adyaq_3
+
+-- طبقةُ القواعد بين القانون والاستعمال (Jisr/TabaqatQawaid.lean).
+#print axioms Jisr.TabaqatQawaid.run_maan
+#print axioms Jisr.TabaqatQawaid.qabul_maan
+#print axioms Jisr.TabaqatQawaid.length_filter_and_le
+#print axioms Jisr.TabaqatQawaid.adad_maan_le
+#print axioms Jisr.TabaqatQawaid.adad_maan_eq
+#print axioms Jisr.TabaqatQawaid.length_filter_and_eq_iff
+#print axioms Jisr.TabaqatQawaid.adad_maan_eq_iff
+#print axioms Jisr.TabaqatQawaid.mayyit_yabqa
+#print axioms Jisr.TabaqatQawaid.ala_baad
+#print axioms Jisr.TabaqatQawaid.ala_iff
+#print axioms Jisr.TabaqatQawaid.tasmahBaad_mamnu
+#print axioms Jisr.TabaqatQawaid.tasmah_mamnu
+#print axioms Jisr.TabaqatQawaid.sira_mahalli
+#print axioms Jisr.TabaqatQawaid.tasmah_zawj
+#print axioms Jisr.TabaqatQawaid.maan_tasmah
+#print axioms Jisr.TabaqatQawaid.tasmah_ithnan
+#print axioms Jisr.TabaqatQawaid.tasmahBaad_fargh
+#print axioms Jisr.TabaqatQawaid.tasmah_fargh
+#print axioms Jisr.TabaqatQawaid.adad_fargh
+#print axioms Jisr.TabaqatQawaid.hadd_aala_amm
+#print axioms Jisr.TabaqatQawaid.hadd_adna_amm
+#print axioms Jisr.TabaqatQawaid.qanun_qaida_le
+#print axioms Jisr.TabaqatQawaid.qanun_qaida_eq_iff
+
+-- الإبدالُ في الواو والياء من الألفيّة على آلة القانون (Jisr/IbdalAlfiyya.lean، Jisr/IbdalAlfiyyaDabit.lean).
+#print axioms Jisr.IbdalAlfiyya.ghayrMamnu_iff
+#print axioms Jisr.IbdalAlfiyya.mamnu_iff
+#print axioms Jisr.IbdalAlfiyya.run_sawa
+#print axioms Jisr.IbdalAlfiyya.run_lt
+#print axioms Jisr.IbdalAlfiyya.qanun_sawa
+#print axioms Jisr.IbdalAlfiyya.ghayrMamnu_maan
+#print axioms Jisr.IbdalAlfiyya.la_wahid_baad_haraka
+#print axioms Jisr.IbdalAlfiyya.alif_mayyit
+#print axioms Jisr.IbdalAlfiyya.run_le
+#print axioms Jisr.IbdalAlfiyya.alif_baad_ghayr_fatha
+#print axioms Jisr.IbdalAlfiyya.sira_snoc
+#print axioms Jisr.IbdalAlfiyya.tasmah_mamnu_hukm
+#print axioms Jisr.IbdalAlfiyya.tasmahBaad_khatima
+#print axioms Jisr.IbdalAlfiyya.sinf_muqin_damma
+#print axioms Jisr.IbdalAlfiyya.yaBadDamma_yamna
+#print axioms Jisr.IbdalAlfiyya.yaBadDamma_akhir
+#print axioms Jisr.IbdalAlfiyya.sinf_wawYa_haraka
+#print axioms Jisr.IbdalAlfiyya.wawYa_yamna
+#print axioms Jisr.IbdalAlfiyya.sinf_wawYa_fatha_damma
+#print axioms Jisr.IbdalAlfiyya.yaWaw_yamna
+#print axioms Jisr.IbdalAlfiyya.akhir_mamnu
+#print axioms Jisr.IbdalAlfiyya.akhir_sinf_haraka
+#print axioms Jisr.IbdalAlfiyya.akhir_sinf_khatima
+#print axioms Jisr.IbdalAlfiyya.tasmahBaad_akhir
+#print axioms Jisr.IbdalAlfiyya.tasmah_akhir
+#print axioms Jisr.IbdalAlfiyya.akhir_yamna
+#print axioms Jisr.IbdalAlfiyya.haraka_sinfIshtibah
+#print axioms Jisr.IbdalAlfiyya.madd_la_ghayrMamnu
+#print axioms Jisr.IbdalAlfiyya.shawahid_hukm
+#print axioms Jisr.IbdalAlfiyya.fakkN_mem
+#print axioms Jisr.IbdalAlfiyya.yahdhif
+#print axioms Jisr.IbdalAlfiyya.muqin_yahdhif
+#print axioms Jisr.IbdalAlfiyya.wawYa_yahdhif
+#print axioms Jisr.IbdalAlfiyya.akhirWaw_yahdhif
+#print axioms Jisr.IbdalAlfiyya.akhirYa_yahdhif
+#print axioms Jisr.IbdalAlfiyya.Dabit.qarin_jadwal
+#print axioms Jisr.IbdalAlfiyya.Dabit.rafd_ikhfaq
+#print axioms Jisr.IbdalAlfiyya.Dabit.muharrik_kalima
+#print axioms Jisr.IbdalAlfiyya.Qiyas.majal
+#print axioms Jisr.IbdalAlfiyya.Qiyas.natija
+#print axioms Jisr.IbdalAlfiyya.Qiyas.natija_fia
+#print axioms Jisr.IbdalAlfiyya.Qiyas.akhta_1
+#print axioms Jisr.IbdalAlfiyya.Qiyas.azwaj_1
+-- الموصولُ وصلتُه في القطر (س137–143) والألفية (س146–157) (Jisr/Mawsul.lean): حكمُ الاستعمال ودرجتُه، والصلةُ بقراءة كلّ مصدر، والربطُ بـ Nizam.Phi.K3.wa
+#print axioms Jisr.Mawsul.bawwaba_la_hukm
+#print axioms Jisr.Mawsul.wa_k3
+#print axioms Jisr.Mawsul.jawab_k3
+#print axioms Jisr.Mawsul.khata_yakfi
+#print axioms Jisr.Mawsul.bila_sila
+#print axioms Jisr.Mawsul.silat_al
+#print axioms Jisr.Mawsul.silat_ghayriha
+#print axioms Jisr.Mawsul.ikhtilaf_masdarayn
+#print axioms Jisr.Mawsul.la_aid_khata
+#print axioms Jisr.Mawsul.tashdid_la_yughayyir
+#print axioms Jisr.Mawsul.tashdid_ghayr_muthanna
+#print axioms Jisr.Mawsul.lugha_la_tughayyir
+#print axioms Jisr.Mawsul.qayd_khata
+#print axioms Jisr.Mawsul.ghayr_maqbul_bila
+#print axioms Jisr.Mawsul.asma_qatr
+#print axioms Jisr.Mawsul.maqam_khass
+#print axioms Jisr.Mawsul.shawahid
+#print axioms Jisr.Mawsul.khilaf_mawsulOK_amm
+#print axioms Jisr.Mawsul.khilaf_mawsulOK
+#print axioms Jisr.Mawsul.khilaf_silaOK
+#print axioms Jisr.Mawsul.la_qalil
+-- مقارنةُ ضابط الموصول قبل الحالات (Jisr/MawsulDabit.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Mawsul.Dabit.qarin_hukm
+#print axioms Jisr.Mawsul.Dabit.qarin_daraja
+-- ضابطُ الموصول المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/MawsulQiyas.lean؛ hawkama/منهج_الضوابط.md)
+#print axioms Jisr.Mawsul.Qiyas.majal
+#print axioms Jisr.Mawsul.Qiyas.natija
+#print axioms Jisr.Mawsul.Qiyas.natija_fia
+#print axioms Jisr.Mawsul.Qiyas.akhta_sifr
+#print axioms Jisr.Mawsul.Qiyas.azwaj_1
 -- أسماءُ الإشارة في القطر (س132–135) والألفية (س137–144) (Jisr/Ishara.lean): حكمُ الاستعمال بالأصل والمشار إليه والموضع والمسافة و«ها» واللام والكاف
 #print axioms Jisr.Ishara.ghayr_muwafiq_khata
 #print axioms Jisr.Ishara.lam_bila_kaf_khata
@@ -2416,22 +2586,3 @@ import Jisr.IsharaQiyas
 #print axioms Jisr.Ishara.Qiyas.natija_fia
 #print axioms Jisr.Ishara.Qiyas.akhta_sifr
 #print axioms Jisr.Ishara.Qiyas.azwaj_1
--- أبنيةُ اسمَي الفاعل والمفعول في الألفية (س594–607) والقطر (س358، س365) (Jisr/Abniya.lean): حكمُ صوغ الصيغة للمطلوب ودرجتُه
-#print axioms Jisr.Abniya.ghayr_thulathi_fail
-#print axioms Jisr.Abniya.ghayr_thulathi_mafool
-#print axioms Jisr.Abniya.mafool_thulathi
-#print axioms Jisr.Abniya.fail_min_fataha
-#print axioms Jisr.Abniya.taaddi_la_yughayyir
-#print axioms Jisr.Abniya.fail_mafool_la_yashtarikan
-#print axioms Jisr.Abniya.ghayr_maqbul_bila
-#print axioms Jisr.Abniya.amal_wad
-#print axioms Jisr.Abniya.shawahid
--- مقارنةُ ضابط الأبنية قبل الحالات (Jisr/AbniyaDabit.lean؛ hawkama/منهج_الضوابط.md)
-#print axioms Jisr.Abniya.Dabit.qarin_hukm
-#print axioms Jisr.Abniya.Dabit.qarin_daraja
--- ضابطُ الأبنية المجمَّد، النتيجةُ على الشفرة الحاليّة (Jisr/AbniyaQiyas.lean؛ hawkama/منهج_الضوابط.md)
-#print axioms Jisr.Abniya.Qiyas.majal
-#print axioms Jisr.Abniya.Qiyas.natija
-#print axioms Jisr.Abniya.Qiyas.natija_fia
-#print axioms Jisr.Abniya.Qiyas.akhta_sifr
-#print axioms Jisr.Abniya.Qiyas.azwaj_1
