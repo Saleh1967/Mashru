@@ -1206,6 +1206,114 @@
   "ila": "  | .nisabWaDaynKathir => true"
  },
  {
+  "ism": "P120_nida_isnad",
+  "milaf": "Jisr/NisabAsnaf.lean",
+  "min": "  | 13 => 4\n",
+  "ila": "  | 13 => 2\n"
+ },
+ {
+  "ism": "P121_shart_taalluq",
+  "milaf": "Jisr/NisabAsnaf.lean",
+  "min": "  | 11 | 12 => 2\n",
+  "ila": "  | 11 | 12 => 5\n"
+ },
+ {
+  "ism": "P123_ikhtisas_bizahir_khat",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 339",
+  "ila": "def ikhtisasBizahir (a : SLGE.Wad.Amil) : Bool := a.line == 999"
+ },
+ {
+  "ism": "P124_ghaib_L115_naqis",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  [\"إن\", \"إذ\", \"إذما\", \"أي\", \"أين\", \"أنى\", \"أيان\", \"متى\", \"مهما\", \"من\", \"ما\", \"حيثما\"]",
+  "ila": "  [\"إن\", \"إذما\", \"أي\", \"أين\", \"أنى\", \"أيان\", \"متى\", \"مهما\", \"من\", \"ما\", \"حيثما\"]"
+ },
+ {
+  "ism": "P125_jam_tashih_jawaz_khata",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  | .jamTashihMudhakkar => .wajibManfi",
+  "ila": "  | .jamTashihMudhakkar => .jaizWajhan"
+ },
+ {
+  "ism": "P126_rutbat_laqab_khata",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  | .laqab => 1\n  | .kunya => 1",
+  "ila": "  | .laqab => 0\n  | .kunya => 1"
+ },
+ {
+  "ism": "P127_shahid_wujub_mukarrar",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  | .jawabQasamSarih => \"لعمرك لأفعلن\"",
+  "ila": "  | .jawabQasamSarih => \"لولا أنتم لكنا مؤمنين\""
+ },
+ {
+  "ism": "P128_ilgha_zann_mukarrar",
+  "milaf": "Jisr/KhulasaIkhbar.lean",
+  "min": "  | .baynaAlMafulayn => .musawin",
+  "ila": "  | .baynaAlMafulayn => .mumtani"
+ },
+ {
+  "ism": "P123_mujalasa_sirin_kilahuma_false",
+  "milaf": "Aql/AdawatMaani.lean",
+  "min": "  | .ibnSirinFaqat => true\n  | .kilahuma => true",
+  "ila": "  | .ibnSirinFaqat => true\n  | .kilahuma => false"
+ },
+ {
+  "ism": "P124_ikhtiyar_sabt_yawmAljumah_true",
+  "milaf": "Aql/AdawatMaani.lean",
+  "min": "  | .yawmAljumah => false",
+  "ila": "  | .yawmAljumah => true"
+ },
+ {
+  "ism": "P125_daw_laShamsWaDawSiraj_false",
+  "milaf": "Aql/AdawatMaani.lean",
+  "min": "  | .laShamsWaDawSiraj => true",
+  "ila": "  | .laShamsWaDawSiraj => false"
+ },
+ {
+  "ism": "P123_zayd_fail_qabl_amil",
+  "milaf": "Jisr/TartibMamul.lean",
+  "min": "def zaydFailAsl : Mawdi := 1",
+  "ila": "def zaydFailAsl : Mawdi := 0"
+ },
+ {
+  "ism": "P124_rabbuhu_aid_khati",
+  "milaf": "Jisr/TartibMamul.lean",
+  "min": "def rabbuhuFail : Kalima := ⟨2, 2, some 1⟩",
+  "ila": "def rabbuhuFail : Kalima := ⟨2, 2, some 99⟩"
+ },
+ {
+  "ism": "P125_muttasil_ziyada",
+  "milaf": "Jisr/TartibMamul.lean",
+  "min": "maful.damir = some amilRamz ∧ maful.mawdi = amilPos + 1",
+  "ila": "maful.damir = some amilRamz ∧ maful.mawdi = amilPos + 2"
+ },
+ {
+  "ism": "P126_hada_maful_muakhkhar",
+  "milaf": "Jisr/TartibMamul.lean",
+  "min": "def hadaMafulMuqaddam : Mawdi := 0   -- فريقا، مقدَّمٌ",
+  "ila": "def hadaMafulMuqaddam : Mawdi := 1   -- فريقا، مقدَّمٌ"
+ },
+ {
+  "ism": "P123_anti_bil_fatha",
+  "milaf": "Jisr/QiraaSimat.lean",
+  "min": "(\"أَنْتِ\", [kh 0 0, kh 14 3, kh 18 2]",
+  "ila": "(\"أَنْتِ\", [kh 0 0, kh 14 3, kh 18 0]"
+ },
+ {
+  "ism": "P124_muayyan_yaqbal_kull",
+  "milaf": "Jisr/QiraaSimat.lean",
+  "min": "  | .qad a, x => x == a",
+  "ila": "  | .qad _, _ => true"
+ },
+ {
+  "ism": "P125_muhtamal_bi_awwalih",
+  "milaf": "Jisr/QiraaSimat.lean",
+  "min": "  | gs => .muhtamal gs",
+  "ila": "  | g :: _ => .qad g"
+ },
+ {
   "ism": "P123_tashfir_fakk_jamad",
   "milaf": "Madlul/Tashfir.lean",
   "min": "| 1 => some .jamad",
@@ -5764,5 +5872,89 @@
   "milaf": "scripts/bina_intrubiya_shahada.py",
   "min": "K = 4 ",
   "ila": "K = 3 "
+ },
+ {
+  "ism": "P1230_damj_kutla_taraf",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            lazim[x] += max(ca[x], cb[x])",
+  "ila": "            lazim[x] += ca[x]"
+ },
+ {
+  "ism": "P1231_damj_kutla_majmu",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            lazim[x] += max(ca[x], cb[x])",
+  "ila": "            lazim[x] += ca[x] + cb[x]"
+ },
+ {
+  "ism": "P1232_damj_satr_qasir",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "if len(l.strip()) >= 3)",
+  "ila": "if len(l.strip()) >= 0)"
+ },
+ {
+  "ism": "P1233_damj_tafrat_fasid",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "return Counter(re.findall(r'\"ism\"\\s*:\\s*\"([^\"]+)\"', text))",
+  "ila": "return Counter()"
+ },
+ {
+  "ism": "P1234_damj_khatt_satran",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "    if path == MILAF_KHATT:\n        return Counter(set(ZAWJ_KHATT.findall(text)))",
+  "ila": "    if path == MILAF_KHATT + \"~\":\n        return Counter(set(ZAWJ_KHATT.findall(text)))"
+ },
+ {
+  "ism": "P1235_damj_bila_idhn",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "if any(damj.startswith(d) and m == path and bb == b for d, m, bb in maadhun):",
+  "ila": "if False:"
+ },
+ {
+  "ism": "P1236_damj_bila_hudur",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "if x in hali(path) or (damj, path, x) in seen:",
+  "ila": "if (damj, path, x) in seen:"
+ },
+ {
+  "ism": "P1237_damj_bila_muhaka",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "            if tmuh.get(path) == tm.get(path):",
+  "ila": "            if tmuh.get(path) != tm.get(path):"
+ },
+ {
+  "ism": "P1238_damj_la_yafshal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        if ghaib_m:\n",
+  "ila": "        if False:\n"
+ },
+ {
+  "ism": "P1239_damj_mahdhufa",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "set(a) | (set(mahdhufa_m) if path == MILAF_TAFRAT else set())",
+  "ila": "set(a)"
+ },
+ {
+  "ism": "P1240_damj_badiat_damj",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "r\"[0-9a-f]{7,40}\", t[\"damj\"]",
+  "ila": "r\"[0-9a-f]{5,40}\", t[\"damj\"]"
+ },
+ {
+  "ism": "P1241_damj_bila_kutal",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        if hal == 0 and line.startswith(\"<<<<<<< \"):",
+  "ila": "        if False:"
+ },
+ {
+  "ism": "P1242_damj_khatt_adad",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        lazim, hadir = Counter(set(lazim)), Counter(set(hadir))",
+  "ila": "        lazim, hadir = lazim, hadir"
+ },
+ {
+  "ism": "P1243_damj_diff3",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        elif hal == 1 and line.startswith(\"||||||| \"):\n            hal = 3",
+  "ila": "        elif hal == 1 and line.startswith(\"||||||| \"):\n            hal = 1"
  }
 ]
