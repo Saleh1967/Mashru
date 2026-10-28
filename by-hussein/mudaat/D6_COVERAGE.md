@@ -6,7 +6,7 @@
 **الكوربوس:** /tmp/c7_recovered.txt (14 سطحًا متمايزًا)
 
 ## الأعداد (التصنيف السباعيّ)
-`{'COVERED_BY_MASHRU_WITNESS': 4, 'COVERED_BY_MANUAL': 3, 'D7_JAMID': 3, 'HARF': 1, 'D6_PENDING': 2, 'D7_ALAM': 1}`
+`{'COVERED_BY_MASHRU_WITNESS': 4, 'COVERED_BY_MANUAL': 3, 'D7_JAMID': 3, 'HARF': 1, 'D6_PENDING': 1, 'D6_EVENT': 1, 'D6_MUSHTAQ': 1}`
 
 ## سجلّ mudaat.json
 - كَتَبَ (كتب) → RATIFIED 
@@ -15,6 +15,6 @@
 - الْعِلْمُ (علم) → PENDING D7_JAMID [سند مخصّص]
 - نُورٌ (نور) → PENDING D7_JAMID ⚑HOKOM_CLASS_SUSPECT
 - تَجْتَهِدْ (تجتهد) → PENDING D6_LEMMA_ABSENT
-- تَنْجَحْ (تنجح) → PENDING D6_NO_SANAD
+- تَنْجَحْ (تنجح) → RATIFIED_BY_RULE D6
 - مَاتَ (مات) → PENDING D7_JAMID ⚑HOKOM_CLASS_SUSPECT
-- مَالِكٌ (مالك) → PENDING D7_ALAM
+- مَالِكٌ (مالك) → RATIFIED_BY_RULE D6 ⚑D7_ALAM_READING_POSSIBLE

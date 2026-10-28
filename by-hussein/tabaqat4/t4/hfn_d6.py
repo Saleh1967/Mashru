@@ -164,16 +164,44 @@ def haqiqa_event(event_id):
     return 100000 + h
 
 
-# النصّ المختوم للمقاييس (7f71af0d) بدل maqayis.db (B4). المواضع المرشّحة ؛ غيابُها ⇒ D6_NO_SANAD (لا db).
+# النصّ المختوم للمقاييس (7f71af0d) بدل maqayis.db (B4). السندُ من موضع الجذر في النصّ المختوم ؛ غيابُه ⇒ D6_NO_SANAD (لا db).
 SEALED_MAQAYIS_SHA = '7f71af0dfe056cb84e7da24657fa13edc6e8061c'
 _SEALED_MAQAYIS_PATHS = [
     Path(os.environ['MUDAA_DIR']) / 'maqayis.txt' if os.environ.get('MUDAA_DIR') else None,
+    Path('/Users/husseinhiyassat/mudaat_mashru/maqayis.txt'),
     Path('/Users/husseinhiyassat/mudaa_dir/maqayis.txt'),
 ]
 
 
+def _sealed_maqayis_path():
+    return next((p for p in _SEALED_MAQAYIS_PATHS if p and p.exists()), None)
+
+
 def sealed_maqayis_present():
-    return any(p and p.exists() for p in _SEALED_MAQAYIS_PATHS)
+    return _sealed_maqayis_path() is not None
+
+
+_MAQAYIS_ROOT_LINES = None
+
+
+def sealed_maqayis_sanad(root_display):
+    """سندُ الجذر من النصّ المختوم للمقاييس (معجم الجذور): موضعُ عنوان «### | (جذر)» ؛ None إن غاب النصّ أو الجذر.
+    المرجعُ موضعٌ (رقم سطر) لا نصٌّ منقول — السند = 7f71af0d@line:N/(جذر)."""
+    global _MAQAYIS_ROOT_LINES
+    p = _sealed_maqayis_path()
+    if not p:
+        return None
+    if _MAQAYIS_ROOT_LINES is None:
+        idx = {}
+        for i, ln in enumerate(p.read_text(encoding='utf-8').splitlines(), 1):
+            m = _re.match(r'###\s*\|\s*\(([^)]+)\)', ln)
+            if m and m.group(1) not in idx:
+                idx[m.group(1)] = i
+        _MAQAYIS_ROOT_LINES = idx
+    n = _MAQAYIS_ROOT_LINES.get(root_display)
+    if n is None:
+        return None
+    return {'masdar': 'مقاييس-مختوم', 'sha': SEALED_MAQAYIS_SHA, 'ref': f'{SEALED_MAQAYIS_SHA[:12]}@line:{n}/({root_display})'}
 
 
 def maqayis_sanad(root_display):
@@ -275,9 +303,10 @@ def d6_classify(surface, hok, hfn, makhzan_sanad=None):
         res.update(status='PENDING', reason=f'D6_AMBIGUOUS_UNIT:{len(cands)}',
                    units=[u['lu_id'] for u in cands]); return res
     unit = cands[0]
-    # (٢) سند (v7.1): سندُ المخصّص عبر qari على mawsua/makhzan_kamil.tsv (يبدأ ببصمة 936c68e0) سندٌ مختوم يُرسَّم به D6.
-    #   المقاييس تبقى D6_NO_SANAD حتى يحضر نصّها (7f71af0d) — maqayis.db لا يُرسَّم به.
-    sanad = _lookup_makhzan(makhzan_sanad, surface, lem_n, root)
+    # (٢) سند مختوم — مصدران طبيعيّان (أمر v7.1): المخصّص (معجم الأعيان ، عبر qari على makhzan_kamil.tsv ، 936c68e0)
+    #   أو المقاييس (معجم الجذور ، موضعُ الجذر في النصّ المختوم 7f71af0d). أيُّهما حضر رسَّم D6 ؛ وإلّا D6_NO_SANAD.
+    root_display = unit['root_K'] or root
+    sanad = _lookup_makhzan(makhzan_sanad, surface, lem_n, root) or sealed_maqayis_sanad(root_display)
     if not sanad:
         res.update(status='PENDING', reason='D6_NO_SANAD', unit=unit['lu_id']); return res
     pos = unit['pos']

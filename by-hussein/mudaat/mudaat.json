@@ -170,27 +170,35 @@
   },
   "تنجح": {
    "surface": "تَنْجَحْ",
-   "ism_lean": "تنجح_m",
-   "status": "PENDING",
-   "sabab_d6": "D6_NO_SANAD",
-   "haqiqa": null,
+   "ism_lean": "d6_HFN_E_174c6435cc_V",
+   "status": "RATIFIED_BY_RULE",
+   "haqiqa": 1004600,
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
-   "flags": [],
-   "jidhr": {
-    "root": [
-     "ن",
-     "ج",
-     "ح"
-    ],
-    "word_class": "FI3L",
-    "wazn": null
+   "afrad": [],
+   "tim": true,
+   "ind": true,
+   "qism": "fil",
+   "masdar": {
+    "hfn_file": "lexical_units.csv",
+    "hfn_row_id": "HFN-E-174c6435cc#V",
+    "hfn_event_id": "HFN-E-174c6435cc",
+    "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
+    "sanad": {
+     "masdar": "مقاييس-مختوم",
+     "sha": "7f71af0dfe056cb84e7da24657fa13edc6e8061c",
+     "ref": "7f71af0dfe05@line:40435/(نجح)"
+    }
    },
    "imda": {
-    "man": null,
-    "tarikh": null
-   }
+    "man": "DR_HUSSEIN",
+    "qanun": "D6",
+    "hfn_release": "release_v18",
+    "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
+    "tarikh": "2026-10-28"
+   },
+   "flags": []
   },
   "مات": {
    "surface": "مَاتَ",
@@ -219,30 +227,37 @@
   },
   "مالك": {
    "surface": "مَالِكٌ",
-   "ism_lean": "مالك_m",
-   "status": "PENDING",
-   "sabab_d7": "D7_ALAM",
-   "kulli_juzi": "juzi",
-   "haqiqa": null,
+   "ism_lean": "d6_HFN_E_e532ba0350_AG",
+   "status": "RATIFIED_BY_RULE",
+   "haqiqa": 216261,
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
-   "flags": [],
-   "jidhr": {
-    "root": [
-     "م",
-     "ل",
-     "ك"
-    ],
-    "word_class": "ISM",
-    "wazn": "FA3IL"
+   "afrad": [],
+   "tim": false,
+   "ind": true,
+   "qism": "ism_mushtaq",
+   "masdar": {
+    "hfn_file": "lexical_units.csv",
+    "hfn_row_id": "HFN-E-e532ba0350#AG",
+    "hfn_event_id": "HFN-E-e532ba0350",
+    "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
+    "sanad": {
+     "masdar": "مقاييس-مختوم",
+     "sha": "7f71af0dfe056cb84e7da24657fa13edc6e8061c",
+     "ref": "7f71af0dfe05@line:39752/(ملك)"
+    }
    },
-   "sanad_makhzan": null,
-   "mukhassas_ref": null,
    "imda": {
-    "man": null,
-    "tarikh": null
-   }
+    "man": "DR_HUSSEIN",
+    "qanun": "D6",
+    "hfn_release": "release_v18",
+    "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
+    "tarikh": "2026-10-28"
+   },
+   "flags": [
+    "D7_ALAM_READING_POSSIBLE"
+   ]
   }
  }
 }

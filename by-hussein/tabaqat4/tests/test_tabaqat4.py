@@ -270,7 +270,7 @@ class T(unittest.TestCase):
         after = tree_sha()
         self.assertEqual(before, after, 'HOKOM_TREE_CHANGED (sha256 المحتوى)')
         m = subprocess.run(['git', '-C', str(ROOT), 'status', '--porcelain', '--untracked-files=all'], capture_output=True, text=True).stdout
-        outside = [l for l in m.splitlines() if not (l[3:].startswith('by-hussein/') or l[3:] in ('audit.txt', 'build.log', 'jumla_kamila.json'))]
+        outside = [l for l in m.splitlines() if not (l[3:].startswith('by-hussein/') or l[3:] in ('audit.txt', 'build.log', 'jumla_kamila.json', 'prompts/mudaat_mashru.tar.gz'))]
         self.assertEqual(outside, [], outside)
 
     def test_T23_pending_not_in_lean(self):
@@ -461,17 +461,24 @@ class T(unittest.TestCase):
         mhd = D.classify7('مُحَمَّدٌ', tq['مُحَمَّدٌ'], hfn, qamus, manual, alam, mw)
         self.assertEqual(mhd['category'], 'D7_ALAM')
 
-    def test_T42_makhzan_sanad_ratifies_maqayis_pending(self):
-        """T42 (v7.1 ١): سند المخصّص عبر qari يُرسَّم به D6 ؛ وبلا سند (المقاييس نصّها غائب) → D6_NO_SANAD"""
+    def test_T42_sanad_sources(self):
+        """T42 (v7.1 ١): سندٌ مختوم من المخصّص (936c68e0) أو المقاييس (7f71af0d) يُرسَّم به D6 ؛ وبلا سندٍ من المصدرين → D6_NO_SANAD"""
         hr = self._hokom_ok() or self._sources_ok()
         if hr: self.skipTest('NOT_RUN: ' + hr)
         from t4 import hfn_d6 as D
         import hokom_adapter as HK
         hfn = D.HFN(); h = HK.taqdir(['ذَهَبَ'])[0]
-        with_sanad = D.d6_classify('ذَهَبَ', h, hfn, makhzan_sanad=D.build_makhzan_sanad(['ذَهَبَ'], ROOT))
-        self.assertEqual(with_sanad['status'], 'RATIFIED_BY_RULE'); self.assertEqual(with_sanad['sanad']['sha'], D.MAKHZAN_SHA)
-        without = D.d6_classify('ذَهَبَ', h, hfn, makhzan_sanad={})      # لا سند مخصّص ، ولا نصّ مقاييس
-        self.assertEqual((without['status'], without['reason']), ('PENDING', 'D6_NO_SANAD'))
+        # (أ) سند المخصّص (قول qari) يُرسَّم به
+        a = D.d6_classify('ذَهَبَ', h, hfn, makhzan_sanad={D.surface_key('ذَهَبَ'): '936c68e0c2c6@1/PageX/ذهب/قائل:fixture'})
+        self.assertEqual(a['status'], 'RATIFIED_BY_RULE'); self.assertEqual(a['sanad']['sha'], D.MAKHZAN_SHA)
+        # (ب) بلا مخصّص ، والمقاييس المختوم حاضرٌ (MUDAA_DIR) ⇒ سندُ الجذر من النصّ المختوم (7f71af0d)
+        if D.sealed_maqayis_present():
+            b = D.d6_classify('ذَهَبَ', h, hfn, makhzan_sanad={})
+            self.assertEqual(b['status'], 'RATIFIED_BY_RULE'); self.assertEqual(b['sanad']['sha'], D.SEALED_MAQAYIS_SHA)
+        # (ج) جذرٌ غائبٌ من المصدرين (fixture) ⇒ D6_NO_SANAD
+        fx = D.HFN.from_records([{'lu_id': 'Z#V', 'lemma': 'ثَضَظَ', 'pos': 'فعل', 'event_id': 'Z', 'root_K': 'ثضظ'}])
+        c = D.d6_classify('ثَضَظَ', {'final_root': ['ث', 'ض', 'ظ'], 'word_class': 'FI3L', 'directive': 'ACCEPT'}, fx, makhzan_sanad={})
+        self.assertEqual((c['status'], c['reason']), ('PENDING', 'D6_NO_SANAD'))
 
     def test_T43_hokom_class_suspect_declared(self):
         """T43 (v7.1 ٣): مَاتَ يصنّفه Hokom اسمًا بجذر null ⇒ يبقى D7_JAMID كما خرج ، ويُعلَن HOKOM_CLASS_SUSPECT لا يُصلَح"""
@@ -532,7 +539,7 @@ class T(unittest.TestCase):
         D.classify7('مَالِكٌ', HK.taqdir(['مَالِكٌ'])[0], D.HFN(), *self._v7_sets())
         self.assertEqual(before, snap(), 'QUAD_SOURCE_CHANGED')
         m = subprocess.run(['git', '-C', str(ROOT), 'status', '--porcelain', '--untracked-files=all'], capture_output=True, text=True).stdout
-        outside = [l for l in m.splitlines() if not (l[3:].startswith('by-hussein/') or l[3:] in ('audit.txt', 'build.log', 'jumla_kamila.json'))]
+        outside = [l for l in m.splitlines() if not (l[3:].startswith('by-hussein/') or l[3:] in ('audit.txt', 'build.log', 'jumla_kamila.json', 'prompts/mudaat_mashru.tar.gz'))]
         self.assertEqual(outside, [], outside)
 
 

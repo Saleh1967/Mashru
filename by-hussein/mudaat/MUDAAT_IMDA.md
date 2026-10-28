@@ -8,4 +8,3 @@
 | الْعِلْمُ | kulli | ['ع', 'ل', 'م'] | ISM/FI3L | — |  |
 | نُورٌ | kulli | None | ISM/None | — |  |
 | مَاتَ | kulli | None | ISM/None | — |  |
-| مَالِكٌ | juzi | ['م', 'ل', 'ك'] | ISM/FA3IL | — |  |

@@ -362,3 +362,27 @@ D7_JAMID=3 (علم[سند مخصّص]، نور[SUSPECT]، مات[SUSPECT]) · D7
 **الاختبارات:** T1–T43 + conformance = **42/42 + 2/2**. **الرباعية (قبل=بعد):** HOKOM `478fd4dd…` · HFN_v18 `7d4caf66…` · MAQAYIS `35c7062d…` · MUDAA_DIR غائب. لا كتابة خارج by-hussein.
 
 **لم يُنفَّذ:** c7.txt (غائب — لم يُختلق) ؛ رَسْمُ D6 على الكوربوس المسترد (لا تقاطع وحدة+قول) ؛ سند المقاييس (نصّها غائب) ؛ qabiliyyat/khawass/alaqat ([]) ؛ ختم (م9).
+
+### الإصدار 7.1-ب (2026-10-28) — تركيب MUDAA_DIR الحقيقيّ ⇒ D6 يرسّم الأفعال بالمقاييس
+
+رُكِّبت `mudaat_mashru.tar.gz` (sha `436c8b88…`) **خارج المستودع** في `~/mudaat_mashru` ، وحكمت **أداةُ Mashru نفسُها**:
+```
+python3 -I mudaat/idaa.py tahaqqaq ~/mudaat_mashru
+مطابق	المخصص
+مطابق	مقاييس اللغة
+```
+فصار **`MUDAA_DIR = /Users/husseinhiyassat/mudaat_mashru`** حقيقيًّا (maqayis.txt + mukhassas.txt ، مطابقان). المقاييس صار له نصٌّ مختوم ،
+فسندُ الأفعال يُعيَّن بموضع الجذر فيه (`### | (جذر)` → `7f71af0d@line:N/(جذر)`) — وهو التوزيع الطبيعيّ: الأفعالُ من المقاييس (معجم الجذور) ،
+الأعيانُ من المخصّص (معجم الأعيان). `maqayis.db` لا يُرسَّم به. **لا كتابة في MUDAA_DIR** (قراءةٌ فقط ، وتحقّقٌ بعد العمل: مطابق).
+
+**جدول B2 بعد التركيب (الكوربوس المسترد ؛ c7.txt ما زال غائبًا):**
+```
+COVERED_WITNESS=4 · COVERED_MANUAL=3 · HARF=1
+D6_EVENT=1   تَنْجَحْ   (haqiqa 1004600 ، سند مقاييس-مختوم 7f71af0d@line:40435/(نجح))
+D6_MUSHTAQ=1 مَالِكٌ    (haqiqa 216261 ، سند مقاييس-مختوم ملك ، + D7_ALAM_READING_POSSIBLE)
+D6_PENDING=1 تَجْتَهِدْ (D6_LEMMA_ABSENT — Hokom لا يُخرج لِيمتَه)
+D7_JAMID=3   الْعِلْمُ · نُورٌ⚑SUSPECT · مَاتَ⚑SUSPECT
+D7_ALAM=0
+```
+فصار **D6_FULL = 2** (تنجح ، مالك) ، مُرسَّمَين في `mudaat.json` (RATIFIED_BY_RULE) و`Mudaat.lean` يمرّ بهما. المجموعة 42/42 + conformance 2/2.
+**لم يُنفَّذ:** c7.txt (غائب — B2 على المسترد) ؛ تجتهد (لا لِيمة من Hokom) ؛ qabiliyyat/khawass/alaqat ([]) ؛ الختم (م9).
