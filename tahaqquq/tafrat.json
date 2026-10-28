@@ -6830,7 +6830,7 @@
  {
   "ism": "P1303_nabt_run_pinned_bila_fahis",
   "milaf": "scripts/nabt.py",
-  "min": "        if checked.returncode:\n            raise RuntimeError",
+  "min": "        if fahs.returncode:\n            raise RuntimeError",
   "ila": "        if False:\n            raise RuntimeError"
  },
  {

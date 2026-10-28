@@ -133,9 +133,9 @@ def run_pinned(code: str, arguments: list[str], *, input_text: str | None = None
         raise RuntimeError("NABT_CHECKER_UNAVAILABLE")
     with tempfile.TemporaryDirectory(prefix="mashru-nabt-pyc-") as cache:
         python = [sys.executable, "-I", "-B", "-X", f"pycache_prefix={cache}"]
-        checked = subprocess.run([*python, str(CHECKER), "--quiet"], capture_output=True, text=True, check=False)
-        if checked.returncode:
-            raise RuntimeError("NABT_SNAPSHOT_REJECTED: " + checked.stderr.strip())
+        fahs = subprocess.run([*python, str(CHECKER), "--quiet"], capture_output=True, text=True, check=False)
+        if fahs.returncode:
+            raise RuntimeError("NABT_SNAPSHOT_REJECTED: " + fahs.stderr.strip())
         prelude = GUARD + "import sys\nsys.path[:0] = sys.argv[1:3]\n_pin(*sys.argv[1:3])\n"
         return subprocess.run([*python, "-c", prelude + code, str(VENDOR / "src"), str(VENDOR), *arguments],
                               input=input_text, capture_output=True, text=True, encoding="utf-8", check=False)
