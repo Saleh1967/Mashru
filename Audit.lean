@@ -2378,6 +2378,14 @@ import Jisr.DamirQiyas
 #print axioms Dal.Tahsil.harfMaddOf_salim
 #print axioms Dal.Tahsil.harfHarakaOf_salim
 #print axioms Dal.Tahsil.tasnif_salim
+#print axioms Dal.Tahsil.harf_thabit
+#print axioms Dal.Tahsil.taOf_salim
+#print axioms Dal.Tahsil.maqsuraOf_salim
+#print axioms Dal.Tahsil.tanwinOf_salim
+#print axioms Dal.Tahsil.harakaTanwinOf_salim
+#print axioms Dal.Tahsil.shaddaIbtidaOf_salim
+#print axioms Dal.Tahsil.sukunOf_salim
+#print axioms Dal.Tahsil.shadda_wahda
 #print axioms Dal.Tahsil.binaMin_nass
 #print axioms Dal.Tahsil.tahsil_nass
 #print axioms Dal.Tahsil.tahsil_flatten
@@ -2412,6 +2420,7 @@ import Jisr.DamirQiyas
 #print axioms Dal.QiraaTahsil.qiraa_la_fasid
 #print axioms Dal.QiraaTahsil.qiraa_asl
 #print axioms Dal.QiraaTahsil.qiraa_shahada
+#print axioms Dal.QiraaTahsil.qaidaWasit_hukm
 #print axioms Dal.QiraaTahsil.ajza_L
 #print axioms Dal.QiraaTahsil.qiraa_murakhkhasa
 #print axioms Dal.QiraaTahsil.shahid_fata

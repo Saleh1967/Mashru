@@ -200,6 +200,8 @@ structure Siyaq where
   sawabiq : Bool
   lahiq : Option (List Char)
   lahiq2 : Option (List Char)
+  /-- المقاطعُ بعده في كلمته كلُّها (التعديل الثالث، القاعدة 11). -/
+  lawahiq : List (List Char)
   deriving DecidableEq, Repr
 
 inductive Sinf
@@ -208,6 +210,18 @@ inductive Sinf
   | harfMadd
   | harfHaraka
   | hamzaWasl
+  /-- التعديل الثالث (2026-10-29). -/
+  | hamzaWaslAl
+  | madda
+  | taMarbuta
+  | alifMaqsura
+  | alifKhatt
+  | tanwin
+  | tanwinAlif
+  | harakaMinTanwin
+  | shaddaIbtida
+  | lamMudgham
+  | sukunMuqaddar
   deriving DecidableEq, Repr
 
 inductive Hukm
@@ -261,6 +275,79 @@ def lamTarif (c : Siyaq) (r : Char) : Bool :=
   r == 'ل' && ((c.sabiqAwwal && c.sabiq.any (fun p => p.head? == some 'ا' || p.head? == some 'ٱ')) || c.sabiqWasl) &&
     c.lahiq.any (fun n => n.tail.contains shadda)
 
+/-! ### قواعدُ التعديل الثالث (`tahaqquq/tahsil/wasf.md`، 2026-10-29) -/
+
+/-- الحالةُ من التنوين: فتحتان 0، ضمّتان 1، كسرتان 2. -/
+def tanwinHala (c : Char) : Option HalaIsm :=
+  if c == '\u064B' then some .fatha
+  else if c == '\u064C' then some .damma
+  else if c == '\u064D' then some .kasra
+  else none
+
+/-- حروفُ اللام المدغمة (الكتاب س21531–21539، واللامُ تعيينُ البنّاء). -/
+def hurufIdgham : List Char := ['ن', 'ر', 'د', 'ت', 'ص', 'ط', 'ز', 'س', 'ظ', 'ث', 'ذ', 'ض', 'ش', 'ل']
+
+/-- ٦: «لامُ التعريف» بعد المقطع. -/
+def lamBaad (c : Siyaq) : Bool :=
+  c.lahiq.any (fun n => n.head? == some 'ل' &&
+    (n.tail == ['\u0652'] || (n.tail.isEmpty && c.lahiq2.any (fun m => m.tail.contains shadda))))
+
+/-- ١٤ و١٥: التالي «اً» آخرَ الكلمة. -/
+def alifTanwinBaad (c : Siyaq) : Bool := c.lahiq == some ['ا', '\u064B'] && c.lahiq2.isNone
+
+/-- ١١: كلُّ ما بعده في كلمته ا أو ى بلا علامات. -/
+def baqiKhatt (c : Siyaq) : Bool := c.lawahiq.all (fun n => n == ['ا'] || n == ['ى'])
+
+/-- ٩: التاءُ المربوطة آخرَ الكلمة بحركةٍ قصيرةٍ أو تنوين. -/
+def taOf (c : Siyaq) : List Char → Hukm
+  | [m] =>
+    if c.lahiq.isNone then
+      match halaAlama m, tanwinHala m with
+      | some st, _ => if st == .sukun then .P "قاعدة التاء المربوطة" else .L .taMarbuta [khaliyaMin 18 st]
+      | none, some st => .L .taMarbuta [khaliyaMin 18 st, khaliyaMin 14 .sukun]
+      | none, none => .P "قاعدة التاء المربوطة"
+    else .P "قاعدة التاء المربوطة"
+  | _ => .P "قاعدة التاء المربوطة"
+
+/-- ١٠: الألفُ المقصورة آخرَ الكلمة بعد فتحةٍ أو فتحتين. -/
+def maqsuraOf (c : Siyaq) (ms : List Char) : Hukm :=
+  if ms.isEmpty && c.lahiq.isNone then
+    match c.sabiq with
+    | some p =>
+      if p.tail.contains '\u064E' then .L .alifMaqsura [khaliyaMin 2 .sukun]
+      else if p.tail.contains '\u064B' then .L .alifKhatt []
+      else .P "قاعدة الألف المقصورة"
+    | none => .P "قاعدة الألف المقصورة"
+  else .P "قاعدة الألف المقصورة"
+
+/-- ١١: التنوين. -/
+def tanwinOf (c : Siyaq) (r : Char) (ms : List Char) : Hukm :=
+  match hamilOf r, (ms.filterMap tanwinHala).head? with
+  | some h, some st =>
+    if !(r == 'ا' || r == 'و' || r == 'ي') && baqiKhatt c && !(c.sabiq.isNone && ms.contains shadda) then
+      .L .tanwin ((if ms.contains shadda then [khaliyaMin h .sukun] else []) ++ [khaliyaMin h st, khaliyaMin 14 .sukun])
+    else if r == 'ا' && ms == ['\u064B'] && c.lahiq.isNone && c.sabiq.isSome then .L .tanwinAlif [khaliyaMin 14 .sukun]
+    else .P "قاعدة التنوين"
+  | _, _ => .P "قاعدة التنوين"
+
+/-- ١٤ و١٥: حركةُ ما قبل «اً» فتحة (وقبلها ساكنٌ إن كان مشدَّدًا). -/
+def harakaTanwinOf (r : Char) (sh : Bool) : Hukm :=
+  match hamilOf r with
+  | some h => .L .harakaMinTanwin ((if sh then [khaliyaMin h .sukun] else []) ++ [khaliyaMin h .fatha])
+  | none => .F "خلل داخلي"
+
+/-- ١٤أ: الشدّةُ أوّلَ الكلمة بحركةٍ قصيرة: يسقط نصفُها الساكن. -/
+def shaddaIbtidaOf (r : Char) (ms : List Char) : Hukm :=
+  match hamilOf r, (ms.filterMap halaAlama).head? with
+  | some h, some st => if st == .sukun then .P "قاعدة الشدّة في أوّل الكلمة" else .L .shaddaIbtida [khaliyaMin h st]
+  | _, _ => .P "قاعدة الشدّة في أوّل الكلمة"
+
+/-- ١٥: الحرفُ بلا علامةٍ ساكن. -/
+def sukunOf (r : Char) : Hukm :=
+  match hamilOf r with
+  | some h => .L .sukunMuqaddar [khaliyaMin h .sukun]
+  | none => .F "خلل داخلي"
+
 /-- ١٦: الحرفُ المحرَّك. -/
 def harfHarakaOf (r : Char) (ms : List Char) : Hukm :=
   match hamilOf r, (ms.filterMap halaAlama).head? with
@@ -281,20 +368,28 @@ def tasnifRas (c : Siyaq) (r : Char) (ms : List Char) : Hukm :=
   else if ghayrMaruf r then .F "حرف ليس في جدول المخارج"
   else if mutaarida ms then .F "علامتان متعارضتان"
   else if r == 'ـ' then (if ms.isEmpty then .L .tatwil [] else .P "قاعدة التطويل بعلامة")
-  else if alifAwwal c r then (if ms.any harakaB then .F "ألف محرّكة في أوّل الكلمة" else .P "قاعدة همزة الوصل")
+  else if alifAwwal c r then
+    (if ms.any harakaB then .F "ألف محرّكة في أوّل الكلمة"
+    else if ms.isEmpty && lamBaad c then .L .hamzaWaslAl [khaliyaMin 0 .fatha]
+    else .P "قاعدة همزة الوصل")
   else if r == 'ٱ' then .P "قاعدة همزة الوصل"
-  else if r == 'آ' then .P "قاعدة الألف الممدودة"
-  else if r == 'ة' then .P "قاعدة التاء المربوطة"
-  else if r == 'ى' then .P "قاعدة الألف المقصورة"
-  else if ms.any tanwin then .P "قاعدة التنوين"
-  else if alifTanwin c r ms then .P "قاعدة ألف التنوين"
-  else if alifJamaa c r ms then .P "قاعدة ألف الجماعة"
-  else if shaddaBilaHaraka ms then .P "قاعدة الشدّة بلا حركة"
-  else if shaddaAwwal c r ms then .P "قاعدة الشدّة في أوّل الكلمة"
+  else if r == 'آ' then (if ms.isEmpty then .L .madda [khaliyaMin 0 .fatha, khaliyaMin 2 .sukun] else .P "قاعدة الألف الممدودة")
+  else if r == 'ة' then taOf c ms
+  else if r == 'ى' then maqsuraOf c ms
+  else if ms.any tanwin then tanwinOf c r ms
+  else if alifTanwin c r ms then .L .alifKhatt []
+  else if alifJamaa c r ms then .L .alifKhatt []
+  else if shaddaBilaHaraka ms then
+    (if alifTanwinBaad c && (hamilOf r).isSome then harakaTanwinOf r true else .P "قاعدة الشدّة بلا حركة")
+  else if shaddaAwwal c r ms then shaddaIbtidaOf r ms
   else if alifWasl c r ms then .L .hamzaWasl []
   else if ms.isEmpty then
     (if madd c r then harfMaddOf r
-    else if lamTarif c r then .P "قاعدة لام التعريف المدغمة"
+    else if lamTarif c r then
+      (if c.lahiq.any (fun n => n.head?.any (fun x => hurufIdgham.contains x)) then .L .lamMudgham []
+      else .P "قاعدة لام التعريف المدغمة")
+    else if (hamilOf r).isSome && c.sabiq.isSome && alifTanwinBaad c then harakaTanwinOf r false
+    else if (hamilOf r).isSome && c.sabiq.isSome then sukunOf r
     else if c.lahiq.isNone then .P "قاعدة الحرف الأخير بلا حركة"
     else .F "حرف بلا حركة في غير آخر الكلمة")
   else harfHarakaOf r ms
@@ -313,6 +408,22 @@ def SahihL : Sinf → List Char → List Khaliya → Prop
   | .fasil, s, ks => s = [' '] ∧ ks = []
   | .tatwil, s, ks => s = ['ـ'] ∧ ks = []
   | .hamzaWasl, s, ks => s = ['ا'] ∧ ks = []
+  | .hamzaWaslAl, s, ks => (s = ['ا'] ∨ s = ['ٱ']) ∧ ks.map fakkKhaliya = [('ء', 0)]
+  | .madda, s, ks => s = ['آ'] ∧ ks.map fakkKhaliya = [('ء', 0), ('ا', 3)]
+  | .taMarbuta, s, ks => ∃ m st, s = ['ة', m] ∧
+      ((halaAlama m = some st ∧ st ≠ .sukun ∧ ks.map fakkKhaliya = [('ت', st.ila)]) ∨
+       (tanwinHala m = some st ∧ ks.map fakkKhaliya = [('ت', st.ila), ('ن', 3)]))
+  | .alifMaqsura, s, ks => s = ['ى'] ∧ ks.map fakkKhaliya = [('ا', 3)]
+  | .alifKhatt, s, ks => (s = ['ا'] ∨ s = ['ى']) ∧ ks = []
+  | .tanwin, s, ks => ∃ r ms st, s = r :: ms ∧ (ms.filterMap tanwinHala).head? = some st ∧
+      ks.map fakkKhaliya = (if ms.contains shadda then [(raddHarf r, 3)] else []) ++ [(raddHarf r, st.ila), ('ن', 3)]
+  | .tanwinAlif, s, ks => s = ['ا', '\u064B'] ∧ ks.map fakkKhaliya = [('ن', 3)]
+  | .harakaMinTanwin, s, ks => ∃ (r : Char) (sh : Bool), (s = [r] ∨ s = [r, shadda]) ∧
+      ks.map fakkKhaliya = (if sh = true then [(raddHarf r, 3)] else []) ++ [(raddHarf r, 0)]
+  | .shaddaIbtida, s, ks => ∃ r ms st, s = r :: ms ∧ ms.contains shadda ∧ (ms.filterMap halaAlama).head? = some st ∧
+      st ≠ .sukun ∧ ks.map fakkKhaliya = [(raddHarf r, st.ila)]
+  | .lamMudgham, s, ks => s = ['ل'] ∧ ks = []
+  | .sukunMuqaddar, s, ks => ∃ r, s = [r] ∧ ks.map fakkKhaliya = [(raddHarf r, 3)]
   | .harfMadd, s, ks => ∃ r, s = [r] ∧ (r = 'ا' ∨ r = 'و' ∨ r = 'ي') ∧ ks.map fakkKhaliya = [(r, 3)]
   | .harfHaraka, s, ks => ∃ r ms st, s = r :: ms ∧ ms.filterMap halaAlama = [st] ∧
       (∀ x ∈ ms, x = shadda ∨ (halaAlama x).isSome) ∧ ms.count shadda ≤ 1 ∧
@@ -391,6 +502,131 @@ theorem harfHarakaOf_salim (r : Char) (ms : List Char) (sinf : Sinf) (ks : List 
       have hharf := hamilOf_harf hh
       split <;> simp [fakk_khaliyaMin, hharf, HalaIsm.ila]
 
+theorem harf_thabit : harf 0 = 'ء' ∧ harf 2 = 'ا' ∧ harf 14 = 'ن' ∧ harf 18 = 'ت' := by decide
+
+theorem taOf_salim (c : Siyaq) (ms : List Char) (sinf : Sinf) (ks : List Khaliya)
+    (h : taOf c ms = .L sinf ks) : SahihL sinf ('ة' :: ms) ks := by
+  rcases ms with _ | ⟨m, _ | ⟨_, _⟩⟩
+  · simp [taOf] at h
+  · simp only [taOf] at h
+    by_cases hl : c.lahiq.isNone = true
+    · rw [ite_eq_left hl] at h
+      cases hh : halaAlama m with
+      | some st =>
+        rw [hh] at h
+        simp only at h
+        by_cases hs : (st == HalaIsm.sukun) = true
+        · rw [ite_eq_left hs] at h; cases h
+        · rw [ite_eq_right hs] at h; cases h
+          exact ⟨m, st, rfl, Or.inl ⟨hh, by simpa using hs, by simp [fakk_khaliyaMin, harf_thabit, HalaIsm.ila]⟩⟩
+      | none =>
+        cases ht : tanwinHala m with
+        | some st =>
+          rw [hh, ht] at h; cases h
+          exact ⟨m, st, rfl, Or.inr ⟨ht, by simp [fakk_khaliyaMin, harf_thabit, HalaIsm.ila]⟩⟩
+        | none => rw [hh, ht] at h; cases h
+    · rw [ite_eq_right hl] at h; cases h
+  · simp [taOf] at h
+
+theorem maqsuraOf_salim (c : Siyaq) (ms : List Char) (sinf : Sinf) (ks : List Khaliya)
+    (h : maqsuraOf c ms = .L sinf ks) : SahihL sinf ('ى' :: ms) ks := by
+  unfold maqsuraOf at h
+  by_cases he : (ms.isEmpty && c.lahiq.isNone) = true
+  · rw [ite_eq_left he] at h
+    have hms : ms = [] := by simp only [Bool.and_eq_true, List.isEmpty_iff] at he; exact he.1
+    subst hms
+    cases hp : c.sabiq with
+    | none => rw [hp] at h; cases h
+    | some p =>
+      rw [hp] at h
+      simp only at h
+      split at h
+      · cases h; exact ⟨rfl, by simp [fakk_khaliyaMin, harf_thabit, HalaIsm.ila]⟩
+      · split at h
+        · cases h; exact ⟨Or.inr rfl, rfl⟩
+        · cases h
+  · rw [ite_eq_right he] at h; cases h
+
+theorem tanwinOf_salim (c : Siyaq) (r : Char) (ms : List Char) (sinf : Sinf) (ks : List Khaliya)
+    (h : tanwinOf c r ms = .L sinf ks) : SahihL sinf (r :: ms) ks := by
+  unfold tanwinOf at h
+  cases hh : hamilOf r with
+  | none => rw [hh] at h; cases h
+  | some hr =>
+    cases hst : (ms.filterMap tanwinHala).head? with
+    | none => rw [hh, hst] at h; cases h
+    | some st =>
+      rw [hh, hst] at h
+      simp only at h
+      have hharf := hamilOf_harf hh
+      split at h
+      · cases h
+        refine ⟨r, ms, st, rfl, hst, ?_⟩
+        split <;> simp [fakk_khaliyaMin, hharf, harf_thabit, HalaIsm.ila]
+      · split at h
+        · cases h
+          rename_i hc
+          simp only [Bool.and_eq_true, beq_iff_eq] at hc
+          obtain ⟨⟨⟨hr1, hm1⟩, _⟩, _⟩ := hc
+          subst hr1; subst hm1
+          exact ⟨rfl, by simp [fakk_khaliyaMin, harf_thabit, HalaIsm.ila]⟩
+        · cases h
+
+theorem harakaTanwinOf_salim (r : Char) (sh : Bool) (s : List Char) (hs : s = [r] ∨ s = [r, shadda])
+    (sinf : Sinf) (ks : List Khaliya) (h : harakaTanwinOf r sh = .L sinf ks) : SahihL sinf s ks := by
+  unfold harakaTanwinOf at h
+  cases hh : hamilOf r with
+  | none => rw [hh] at h; cases h
+  | some hr =>
+    rw [hh] at h; cases h
+    have hharf := hamilOf_harf hh
+    refine ⟨r, sh, hs, ?_⟩
+    cases sh <;> simp [fakk_khaliyaMin, hharf, HalaIsm.ila]
+
+theorem shaddaIbtidaOf_salim (r : Char) (ms : List Char) (hsh : ms.contains shadda = true) (sinf : Sinf) (ks : List Khaliya)
+    (h : shaddaIbtidaOf r ms = .L sinf ks) : SahihL sinf (r :: ms) ks := by
+  unfold shaddaIbtidaOf at h
+  cases hh : hamilOf r with
+  | none => rw [hh] at h; cases h
+  | some hr =>
+    cases hst : (ms.filterMap halaAlama).head? with
+    | none => rw [hh, hst] at h; cases h
+    | some st =>
+      rw [hh, hst] at h
+      simp only at h
+      by_cases hs : (st == HalaIsm.sukun) = true
+      · rw [ite_eq_left hs] at h; cases h
+      · rw [ite_eq_right hs] at h; cases h
+        have hharf := hamilOf_harf hh
+        exact ⟨r, ms, st, rfl, hsh, hst, by simpa using hs, by simp [fakk_khaliyaMin, hharf, HalaIsm.ila]⟩
+
+theorem sukunOf_salim (r : Char) (sinf : Sinf) (ks : List Khaliya)
+    (h : sukunOf r = .L sinf ks) : SahihL sinf [r] ks := by
+  unfold sukunOf at h
+  cases hh : hamilOf r with
+  | none => rw [hh] at h; cases h
+  | some hr =>
+    rw [hh] at h; cases h
+    exact ⟨r, rfl, by simp [fakk_khaliyaMin, hamilOf_harf hh, HalaIsm.ila]⟩
+
+/-- الشدّةُ وحدها: علاماتٌ بلا علامة حركة، فيها شدّةٌ واحدة على الأكثر وفيها شدّة ⇒ هي الشدّةُ وحدها. -/
+theorem shadda_wahda (ms : List Char) (hm : ∀ x ∈ ms, alama x = true) (n4 : mutaarida ms = false)
+    (h14 : shaddaBilaHaraka ms = true) : ms = [shadda] := by
+  simp only [shaddaBilaHaraka, Bool.and_eq_true, Bool.not_eq_true', List.any_eq_false] at h14
+  simp only [mutaarida, Bool.or_eq_false_iff, decide_eq_false_iff_not, gt_iff_lt, Nat.not_lt] at n4
+  have hall : ∀ x ∈ ms, x = shadda := by
+    intro x hx
+    have := hm x hx
+    simp only [alama, Bool.or_eq_true, beq_iff_eq] at this
+    rcases this with hb | hb
+    · have := h14.2 x hx; simp [hb] at this
+    · exact hb
+  have hc : ms.count shadda = ms.length := List.count_eq_length.2 (fun x hx => by simp [hall x hx])
+  have hpos : 0 < ms.length := List.length_pos_of_mem (List.contains_iff_mem.1 h14.1)
+  match ms, hall, hc, hpos with
+  | [a], hall, _, _ => rw [hall a (by simp)]
+  | _ :: _ :: _, _, hc, _ => simp only [List.length_cons] at hc; omega
+
 /-- **سلامةُ المرخَّص:** مقطعٌ ما بعد رأسه علامات، يرخّصه التصنيف بصنفٍ وخلايا ⇒ صحيحٌ بمعنى صنفه. -/
 theorem tasnif_salim (c : Siyaq) (s : List Char) (sinf : Sinf) (ks : List Khaliya)
     (hm : ∀ x ∈ s.tail, alama x = true) (h : tasnif c s = .L sinf ks) : SahihL sinf s ks := by
@@ -433,34 +669,70 @@ theorem tasnif_salim (c : Siyaq) (s : List Char) (sinf : Sinf) (ks : List Khaliy
     · rw [ite_eq_left h6] at h
       by_cases h6a : ms.any harakaB = true
       · rw [ite_eq_left h6a] at h; cases h
-      · rw [ite_eq_right h6a] at h; cases h
+      · rw [ite_eq_right h6a] at h
+        by_cases h6b : (ms.isEmpty && lamBaad c) = true
+        · rw [ite_eq_left h6b] at h
+          cases h
+          simp only [Bool.and_eq_true, List.isEmpty_iff] at h6b
+          simp only [alifAwwal, Bool.and_eq_true, Bool.or_eq_true, beq_iff_eq] at h6
+          rw [h6b.1]
+          refine ⟨?_, by simp [fakk_khaliyaMin, harf_thabit, HalaIsm.ila]⟩
+          rcases h6.1 with h' | h' <;> subst h' <;> simp
+        · rw [ite_eq_right h6b] at h; cases h
     rw [ite_eq_right h6] at h
     by_cases h7 : (r == 'ٱ') = true
     · rw [ite_eq_left h7] at h; cases h
     rw [ite_eq_right h7] at h
     by_cases h8 : (r == 'آ') = true
-    · rw [ite_eq_left h8] at h; cases h
+    · rw [ite_eq_left h8] at h
+      simp only [beq_iff_eq] at h8; subst h8
+      by_cases h8a : ms.isEmpty = true
+      · rw [ite_eq_left h8a] at h; cases h
+        rw [show ms = [] by simpa using h8a]
+        exact ⟨rfl, by simp [fakk_khaliyaMin, harf_thabit, HalaIsm.ila]⟩
+      · rw [ite_eq_right h8a] at h; cases h
     rw [ite_eq_right h8] at h
     by_cases h9 : (r == 'ة') = true
-    · rw [ite_eq_left h9] at h; cases h
+    · rw [ite_eq_left h9] at h
+      simp only [beq_iff_eq] at h9; subst h9
+      exact taOf_salim c ms sinf ks h
     rw [ite_eq_right h9] at h
     by_cases h10 : (r == 'ى') = true
-    · rw [ite_eq_left h10] at h; cases h
+    · rw [ite_eq_left h10] at h
+      simp only [beq_iff_eq] at h10; subst h10
+      exact maqsuraOf_salim c ms sinf ks h
     rw [ite_eq_right h10] at h
     by_cases h11 : ms.any tanwin = true
-    · rw [ite_eq_left h11] at h; cases h
+    · rw [ite_eq_left h11] at h
+      exact tanwinOf_salim c r ms sinf ks h
     rw [ite_eq_right h11] at h
     by_cases h12 : alifTanwin c r ms = true
-    · rw [ite_eq_left h12] at h; cases h
+    · rw [ite_eq_left h12] at h
+      cases h
+      simp only [alifTanwin, Bool.and_eq_true, beq_iff_eq, List.isEmpty_iff] at h12
+      obtain ⟨⟨hra, hms⟩, _⟩ := h12
+      subst hra; subst hms; exact ⟨Or.inl rfl, rfl⟩
     rw [ite_eq_right h12] at h
     by_cases h13 : alifJamaa c r ms = true
-    · rw [ite_eq_left h13] at h; cases h
+    · rw [ite_eq_left h13] at h
+      cases h
+      simp only [alifJamaa, Bool.and_eq_true, beq_iff_eq, List.isEmpty_iff] at h13
+      obtain ⟨⟨⟨hra, hms⟩, _⟩, _⟩ := h13
+      subst hra; subst hms; exact ⟨Or.inl rfl, rfl⟩
     rw [ite_eq_right h13] at h
     by_cases h14 : shaddaBilaHaraka ms = true
-    · rw [ite_eq_left h14] at h; cases h
+    · rw [ite_eq_left h14] at h
+      by_cases h14' : (alifTanwinBaad c && (hamilOf r).isSome) = true
+      · rw [ite_eq_left h14'] at h
+        have hms := shadda_wahda ms hm (by simpa using h4) h14
+        subst hms
+        exact harakaTanwinOf_salim r true _ (Or.inr rfl) sinf ks h
+      · rw [ite_eq_right h14'] at h; cases h
     rw [ite_eq_right h14] at h
     by_cases h14a : shaddaAwwal c r ms = true
-    · rw [ite_eq_left h14a] at h; cases h
+    · rw [ite_eq_left h14a] at h
+      simp only [shaddaAwwal, Bool.and_eq_true] at h14a
+      exact shaddaIbtidaOf_salim r ms h14a.2 sinf ks h
     rw [ite_eq_right h14a] at h
     by_cases h14b : alifWasl c r ms = true
     · rw [ite_eq_left h14b] at h
@@ -485,9 +757,24 @@ theorem tasnif_salim (c : Siyaq) (s : List Char) (sinf : Sinf) (ks : List Khaliy
         | harfMadd => exact harfMaddOf_salim r ks hr h
         | _ => unfold harfMaddOf at h; split at h <;> cases h
       rw [ite_eq_right h15a] at h
+      have hms : ms = [] := by simpa using h15
+      subst hms
       by_cases h15b : lamTarif c r = true
-      · rw [ite_eq_left h15b] at h; cases h
+      · rw [ite_eq_left h15b] at h
+        split at h
+        · cases h
+          simp only [lamTarif, Bool.and_eq_true, beq_iff_eq] at h15b
+          rw [h15b.1.1]; exact ⟨rfl, rfl⟩
+        · cases h
       rw [ite_eq_right h15b] at h
+      by_cases h15d : ((hamilOf r).isSome && c.sabiq.isSome && alifTanwinBaad c) = true
+      · rw [ite_eq_left h15d] at h
+        exact harakaTanwinOf_salim r false _ (Or.inl rfl) sinf ks h
+      rw [ite_eq_right h15d] at h
+      by_cases h15e : ((hamilOf r).isSome && c.sabiq.isSome) = true
+      · rw [ite_eq_left h15e] at h
+        exact sukunOf_salim r sinf ks h
+      rw [ite_eq_right h15e] at h
       by_cases h15c : c.lahiq.isNone = true
       · rw [ite_eq_left h15c] at h; cases h
       · rw [ite_eq_right h15c] at h; cases h
@@ -517,7 +804,7 @@ def lahiq2Min : List (List Char) → Option (List Char)
 def binaMin : Nat → Nat → Option (List Char) → Bool → Bool → Bool → List (List Char) → List Maqta
   | _, _, _, _, _, _, [] => []
   | i, k, p, pa, pw, ps, s :: rest =>
-    let c : Siyaq := ⟨p, pa, pw, ps, lahiqMin rest, lahiq2Min rest⟩
+    let c : Siyaq := ⟨p, pa, pw, ps, lahiqMin rest, lahiq2Min rest, rest.takeWhile (fun n => !fasil n)⟩
     ⟨i, k, k + s.length, s, c, tasnif c s⟩ ::
       binaMin (i + 1) (k + s.length) (if fasil s then none else some s) (if fasil s then false else p.isNone)
         (tasnif c s == .L .hamzaWasl []) (fasil s || (ps && sabiqa s)) rest
@@ -639,6 +926,17 @@ def ismSinf : Sinf → String
   | .harfMadd => "Dal.Tahsil.harfMadd"
   | .harfHaraka => "Dal.Tahsil.harfHaraka"
   | .hamzaWasl => "Dal.Tahsil.hamzaWasl"
+  | .hamzaWaslAl => "Dal.Tahsil.hamzaWaslAl"
+  | .madda => "Dal.Tahsil.madda"
+  | .taMarbuta => "Dal.Tahsil.taMarbuta"
+  | .alifMaqsura => "Dal.Tahsil.alifMaqsura"
+  | .alifKhatt => "Dal.Tahsil.alifKhatt"
+  | .tanwin => "Dal.Tahsil.tanwin"
+  | .tanwinAlif => "Dal.Tahsil.tanwinAlif"
+  | .harakaMinTanwin => "Dal.Tahsil.harakaMinTanwin"
+  | .shaddaIbtida => "Dal.Tahsil.shaddaIbtida"
+  | .lamMudgham => "Dal.Tahsil.lamMudgham"
+  | .sukunMuqaddar => "Dal.Tahsil.sukunMuqaddar"
 
 def madkhalSalim : String := "مدخل سليم"
 
@@ -759,10 +1057,18 @@ theorem shahada_tahsil_salima (src : Source Char) (m : Maqta) (hm : m ∈ tahsil
 def khalayaMuhadhat (t : List Char) : List (Khaliya × Nat × Nat) :=
   (tahsil t).flatMap fun m => (khalayaOf m.hukm).map fun k => (k, m.a, m.b)
 
-/-- **محاذاةُ الخلايا:** كلُّ خليّةٍ في تيّار الخلايا لها موضعُ مقطعٍ في النصّ، ذرّاتُه المقطع، ورأسُه حرفُ حاملها (والمقعدُ همزة). -/
+/-- ما يُبدَل به الرأسُ في التعديل الثالث: نونُ التنوين لكلّ رأس، وهمزةُ أل للألف، والهمزةُ والألفُ للممدودة، والتاءُ للمربوطة، والألفُ
+    للمقصورة. -/
+def ibdal (r : Char) : List Char :=
+  'ن' :: (if r == 'ا' || r == 'ٱ' then ['ء'] else if r == 'آ' then ['ء', 'ا'] else if r == 'ة' then ['ت']
+    else if r == 'ى' then ['ا'] else [])
+
+/-- **محاذاةُ الخلايا:** كلُّ خليّةٍ في تيّار الخلايا لها موضعُ مقطعٍ في النصّ، ذرّاتُه المقطع، وحرفُ حاملها رأسُه (والمقعدُ همزة) أو بدلُه
+    المسمّى (`ibdal`). -/
 theorem khalaya_muhadhat (t : List Char) :
     ∀ x ∈ khalayaMuhadhat t, ∃ m ∈ tahsil t, m.a = x.2.1 ∧ m.b = x.2.2 ∧
-      (t.drop m.a).take (m.b - m.a) = m.nass ∧ ∃ r ∈ m.nass.head?, harf x.1.hamil = raddHarf r := by
+      (t.drop m.a).take (m.b - m.a) = m.nass ∧ ∃ r ∈ m.nass.head?,
+        harf x.1.hamil = raddHarf r ∨ harf x.1.hamil ∈ ibdal r := by
   intro x hx
   simp only [khalayaMuhadhat, List.mem_flatMap, List.mem_map] at hx
   obtain ⟨m, hm, k, hk, rfl⟩ := hx
@@ -786,7 +1092,70 @@ theorem khalaya_muhadhat (t : List Char) :
       have hrad : raddHarf r = r := by
         unfold raddHarf
         rcases hmem with h | h | h <;> subst h <;> decide
-      rw [hk1, hrad]
+      exact Or.inl (by rw [hk1, hrad])
+    | alifKhatt => rw [hs.2] at hk; cases hk
+    | lamMudgham => rw [hs.2] at hk; cases hk
+    | hamzaWaslAl =>
+      obtain ⟨hr, hmap⟩ := hs
+      rw [hmap, List.mem_singleton] at hkm
+      have hk1 : harf k.hamil = 'ء' := congrArg Prod.fst hkm
+      rcases hr with hr | hr
+      · exact ⟨'ا', by simp [hr], Or.inr (by rw [hk1]; decide)⟩
+      · exact ⟨'ٱ', by simp [hr], Or.inr (by rw [hk1]; decide)⟩
+    | madda =>
+      obtain ⟨hr, hmap⟩ := hs
+      rw [hmap] at hkm
+      refine ⟨'آ', by simp [hr], Or.inr ?_⟩
+      simp only [List.mem_cons, List.not_mem_nil, or_false] at hkm
+      rcases hkm with hkm | hkm <;> (have e : harf k.hamil = (fakkKhaliya k).1 := rfl; rw [e, hkm]; dsimp only; first | exact List.mem_cons_self | decide)
+    | taMarbuta =>
+      obtain ⟨mm, st, hr, hc⟩ := hs
+      refine ⟨'ة', by simp [hr], Or.inr ?_⟩
+      rcases hc with ⟨_, _, hmap⟩ | ⟨_, hmap⟩ <;> rw [hmap] at hkm <;>
+        simp only [List.mem_cons, List.not_mem_nil, or_false] at hkm
+      · (have e : harf k.hamil = (fakkKhaliya k).1 := rfl; rw [e, hkm]; dsimp only; first | exact List.mem_cons_self | decide)
+      · rcases hkm with hkm | hkm <;> (have e : harf k.hamil = (fakkKhaliya k).1 := rfl; rw [e, hkm]; dsimp only; first | exact List.mem_cons_self | decide)
+    | alifMaqsura =>
+      obtain ⟨hr, hmap⟩ := hs
+      rw [hmap, List.mem_singleton] at hkm
+      refine ⟨'ى', by simp [hr], Or.inr ?_⟩
+      (have e : harf k.hamil = (fakkKhaliya k).1 := rfl; rw [e, hkm]; dsimp only; first | exact List.mem_cons_self | decide)
+    | tanwinAlif =>
+      obtain ⟨hr, hmap⟩ := hs
+      rw [hmap, List.mem_singleton] at hkm
+      refine ⟨'ا', by simp [hr], Or.inr ?_⟩
+      (have e : harf k.hamil = (fakkKhaliya k).1 := rfl; rw [e, hkm]; dsimp only; first | exact List.mem_cons_self | decide)
+    | tanwin =>
+      obtain ⟨r, ms, st, hr, _, hmap⟩ := hs
+      refine ⟨r, by simp [hr], ?_⟩
+      rw [hmap] at hkm
+      simp only [List.mem_append, List.mem_cons, List.not_mem_nil, or_false] at hkm
+      rcases hkm with hkm | hkm | hkm
+      · split at hkm
+        · simp only [List.mem_singleton] at hkm; exact Or.inl (congrArg Prod.fst hkm)
+        · cases hkm
+      · exact Or.inl (congrArg Prod.fst hkm)
+      · exact Or.inr (by (have e : harf k.hamil = (fakkKhaliya k).1 := rfl; rw [e, hkm]; dsimp only; first | exact List.mem_cons_self | decide))
+    | harakaMinTanwin =>
+      obtain ⟨r, sh, hr, hmap⟩ := hs
+      refine ⟨r, by rcases hr with hr | hr <;> simp [hr], Or.inl ?_⟩
+      rw [hmap] at hkm
+      simp only [List.mem_append, List.mem_singleton] at hkm
+      rcases hkm with hkm | hkm
+      · split at hkm
+        · simp only [List.mem_singleton] at hkm; exact congrArg Prod.fst hkm
+        · cases hkm
+      · exact congrArg Prod.fst hkm
+    | shaddaIbtida =>
+      obtain ⟨r, ms, st, hr, _, _, _, hmap⟩ := hs
+      refine ⟨r, by simp [hr], Or.inl ?_⟩
+      rw [hmap, List.mem_singleton] at hkm
+      exact congrArg Prod.fst hkm
+    | sukunMuqaddar =>
+      obtain ⟨r, hr, hmap⟩ := hs
+      refine ⟨r, by simp [hr], Or.inl ?_⟩
+      rw [hmap, List.mem_singleton] at hkm
+      exact congrArg Prod.fst hkm
     | harfHaraka =>
       obtain ⟨r, ms, st, hr, _, _, _, hmap⟩ := hs
       refine ⟨r, by simp [hr], ?_⟩
@@ -799,7 +1168,7 @@ theorem khalaya_muhadhat (t : List Char) :
             rw [hkm]
           · cases hkm
         · rw [hkm]
-      exact this
+      exact Or.inl this
 
 structure Kalima where
   a : Nat
@@ -837,28 +1206,29 @@ theorem shahid_kataba :
     ((tahsil "كَتَبَ".toList).flatMap (fun m => khalayaOf m.hukm)).map Dal.n = [32, 72, 104] := by
   decide
 
-/-- «ٱلشَّمْسُ»: همزةُ الوصل ولامُ التعريف المدغمة معلَّقتان باسميهما، والباقي مرخَّص، ولا شيءَ يُسقط. -/
+/-- «ٱلشَّمْسُ»: همزةُ أل مفتوحةً (التعديل الثالث، 6) ولامُ التعريف مدغمةٌ في الشين بلا خليّة (15)، والباقي مرخَّص. -/
 theorem shahid_shams :
     (tahsil "ٱلشَّمْسُ".toList).map (fun m => m.hukm) =
-      [.P "قاعدة همزة الوصل", .P "قاعدة لام التعريف المدغمة", .L .harfHaraka [⟨10, 3⟩, ⟨10, 0⟩],
+      [.L .hamzaWaslAl [⟨0, 0⟩], .L .lamMudgham [], .L .harfHaraka [⟨10, 3⟩, ⟨10, 0⟩],
        .L .harfHaraka [⟨27, 3⟩], .L .harfHaraka [⟨20, 1⟩]] := by
   decide
 
-/-- «كِتَابًا» و«ذَهَبُوا»: التنوينُ وألفُه وألفُ الجماعة معلَّقةٌ بأسمائها؛ وحرفٌ بلا حركةٍ وسطَ الكلمة مدخلٌ فاسد. -/
+/-- «كِتَابًا» و«ذَهَبُوا»: التنوينُ نونٌ ساكنةٌ بعد حركته، وألفُه وألفُ الجماعة خطٌّ بلا خليّة (التعديل الثالث، 11–13)؛ وحرفٌ بلا حركةٍ
+    أوّلَ الكلمة مدخلٌ فاسدٌ كما كان. -/
 theorem shahid_muallaq :
-    ((tahsil "كِتَابًا".toList).map (fun m => m.hukm)).drop 3 = [.P "قاعدة التنوين", .P "قاعدة ألف التنوين"] ∧
-    ((tahsil "ذَهَبُوا".toList).map (fun m => m.hukm)).drop 3 = [.L .harfMadd [⟨28, 3⟩], .P "قاعدة ألف الجماعة"] ∧
+    ((tahsil "كِتَابًا".toList).map (fun m => m.hukm)).drop 3 = [.L .tanwin [⟨26, 0⟩, ⟨14, 3⟩], .L .alifKhatt []] ∧
+    ((tahsil "ذَهَبُوا".toList).map (fun m => m.hukm)).drop 3 = [.L .harfMadd [⟨28, 3⟩], .L .alifKhatt []] ∧
     ((tahsil "كتَبَ".toList).map (fun m => m.hukm)).head? = some (.F "حرف بلا حركة في غير آخر الكلمة") := by
   decide
 
 /-- القاعدتان 14أ و14ب: «وَالْأَرْضِ» ألفُها بعد السابقة ألفُ وصلٍ بلا خليّة والكلمةُ مرخَّصة؛ و«بِاللَّهِ» لامُها بعد ألف الوصل لامُ التعريف المدغمة؛
-    و«قَالْتُ» ألفُها في وسط الكلمة حرفُ مدٍّ لا ألفُ وصل؛ و«مِّنَ» شدّتُها أوّلَ الكلمة معلَّقة. -/
+    و«قَالْتُ» ألفُها في وسط الكلمة حرفُ مدٍّ لا ألفُ وصل؛ و«مِّنَ» شدّتُها أوّلَ الكلمة يسقط نصفُها الساكن (التعديل الثالث، 14أ). -/
 theorem shahid_wasl :
     (kalimat "وَالْأَرْضِ".toList).map (fun k => (k.murakhkhasa, k.khalaya.map Dal.n)) = [(true, [112, 55, 0, 63, 50])] ∧
     (((tahsil "وَالْأَرْضِ".toList).map (fun m => m.hukm)).drop 1).head? = some (.L .hamzaWasl []) ∧
-    ((((tahsil "بِاللَّهِ".toList).map (fun m => m.hukm)).drop 1).take 2) = [.L .hamzaWasl [], .P "قاعدة لام التعريف المدغمة"] ∧
+    ((((tahsil "بِاللَّهِ".toList).map (fun m => m.hukm)).drop 1).take 2) = [.L .hamzaWasl [], .L .lamMudgham []] ∧
     (((tahsil "قَالْتُ".toList).map (fun m => m.hukm)).drop 1).head? = some (.L .harfMadd [⟨2, 3⟩]) ∧
-    ((tahsil "مِّنَ".toList).map (fun m => m.hukm)).head? = some (.P "قاعدة الشدّة في أوّل الكلمة") := by
+    ((tahsil "مِّنَ".toList).map (fun m => m.hukm)).head? = some (.L .shaddaIbtida [⟨27, 2⟩]) := by
   decide
 
 end Dal.Tahsil
