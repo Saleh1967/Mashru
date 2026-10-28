@@ -287,3 +287,53 @@ ISOLATION            = لا شيء خارج by-hussein/ (git status --untracked-
 - **سند المخصّص عبر qari في D6**: استعملتُ سند المقاييس فقط في القياس ؛ مسار المخصّص (makhzan) لم يُدمَج في D6.
 - **مدلول D6 في برهان جملة**: لا عيّنة تُظهره (انظر B14).
 - **fixtures/hfn_*.json على القرص**: اختبارا T30/T31 يبنيان HFN بمقتطفاتٍ في الذاكرة (`HFN.from_records`) لا بملفّات fixture.
+
+## الإصدار 7 (2026-10-28) — D6-ب (مشتقّات ومضارع) ، D7 (جوامد وأعلام تُجهَّز) ، قناة الإيداع
+
+**B0 — مواكبة main:** الفرعُ أُعيد وضعُه (rebase) على `origin/main`. **تنبيه:** main تقدّم إلى `09f7b27` (PR #92) لا `108a255`
+كما في الأمر — أُعلِن ولم يُختلَق الرقم ؛ أُعيد الوضع على الرأس الحقيقيّ. 21 إيداعًا كلُّها تحت `by-hussein/` طُبِّقت بلا تعارض.
+`lake build Jisr.Utur Aql.Isnad Jisr.BabJaza Jisr.BabJazaDawabit qari` نجح (123 عملًا) ؛ T19 42/42 + Conf PASS ؛ المجموعة 33/33.
+`_hfn_v19_draft/` (شاهد المالك) أُضيف إلى `by-hussein/.gitignore`. **MASHRU_HEAD بعد rebase = `d01309a`** (رأس الفرع).
+
+**ما تغيّر سلوكيًّا:** (أ) **D6-ب** — المشتقّات (اسم فاعل/مفعول) تُرسَّم بحقيقة حدثها (`haqiqa_event` ، الفعلُ ومشتقّه واحد) و`tim=false`
+و`qism=ism_mushtaq` ؛ والمضارع يُطابَق بلِيمة Hokom الماضية (`lemma_surface`) ضدّ events ، وغيابُها `D6_LEMMA_ABSENT`. (ب) **D7** — الجوامد
+والأعلام تُجهَّز PENDING بمرجع المخصّص (باب/كتاب بسطره) وخانات المالك فارغة ؛ لا تُبنى في HFN. (ج) **قناة الإيداع** — سندُ D6 يُحال إلى
+النصّ المختوم (`7f71af0d@موضع`) لا `maqayis.db` ؛ و`Mudaat.lean` لا يُولَّد إلّا من نسخةٍ مختومة (وإلّا `MUDAAT_UNSEALED`).
+
+**تنبيه بيئيّ حاكم (OWNER_ALERT):** النصّ المختوم للمقاييس/المخصّص **غيرُ حاضرٍ في هذه البيئة** (بُحث بـ`find`: لا maqayis.txt/mukhassas.txt ؛
+`MUDAA_DIR=/path/to/mudaat` نائب). فبقاعدة B4 نفسها («تعذّر تعيين الموضع ⇒ D6_NO_SANAD لا الإحالة إلى db») **لا يُرسَّم مودَعُ D6 في هذه
+البيئة**. أُبقي سندُ `maqayis.db` للمعاينة (`db_preview`) وحدها ، مَوسومًا ، لا يُودَع.
+
+**B2 — التصنيف السباعيّ (الكوربوس المسترد ، 14 سطحًا):**
+```
+الوضع              COVERED_WITNESS  COVERED_MANUAL  HARF  D6_EVENT  D6_MUSHTAQ  D6_PENDING  D7_JAMID  D7_ALAM
+db_preview (أهليّة)      4               3            1       1(تنجح)   1(مالك)      1(تجتهد)      3         0
+sealed (واقع البيئة)     4               3            1       0         0           2            3         1(مالك)
+```
+db_preview: تَنْجَحْ→D6_EVENT (لِيمة Hokom نَجَحَ) ، مَالِكٌ→D6_MUSHTAQ + D7_ALAM_READING_POSSIBLE ، تَجْتَهِدْ→D6_LEMMA_ABSENT.
+sealed: تَنْجَحْ→D6_NO_SANAD_SEALED_ABSENT ، مَالِكٌ→D7_ALAM. D7_JAMID: العلم/نور/مات (ومنها «مات» أجوفٌ يقرؤه Hokom ISM بجذر null — لا يُرقَّع).
+
+**البصمات الرباعية (قبل=بعد):**
+```
+HOKOM_TREE_SHA256   = 478fd4dd…7342ac8c3  قبل=بعد ✓
+HFN_V18_TREE_SHA256 = 7d4caf66…205b069    قبل=بعد ✓
+MAQAYIS_DB_SHA256   = 35c7062d…997897f    قبل=بعد ✓
+MUDAA_DIR           = غائبٌ في البيئة (نائب) — قراءةً لا كتابة ؛ لا بصمة
+MASHRU_HEAD         = d01309a (بعد rebase على 09f7b27) ؛ خارج by-hussein = لا شيء
+```
+
+**لكلّ بند:**
+- **B1 (مشتقّات):** `hfn_d6.haqiqa_event` + `d6_kind`/`qism`/`tim` ؛ مَالِكٌ/سَاكِنٌ مشتقّان أهليّةً. اختباره T35 (سَاكِنٌ) ، T40 (مالك + flag).
+- **B2 (مضارع):** `hokom_adapter` يُصدّر `lemma_surface` ؛ المضارع يُطابَق بها. اختباره T36 (تنجح D6_EVENT ، تجتهد D6_LEMMA_ABSENT).
+- **B3 (D7):** `t4/mushtaq_awzan.json` (FA3IL/MAF3UL بترميز Hokom) ، `mudaat/alam.json` (قائمة أوّليّة) ، `prep_v7` يجهّز D7 بمرجع `ajnas_mukhassas` ، و`MUDAAT_IMDA.md` (D7 ، haqiqa فارغ). اختباره T37 (البيت D7_JAMID ، محمد D7_ALAM juzi).
+- **B4 (القناة):** `mudaat.json` مراجع فقط (T38 = 0 نصّ معجميّ >20 حرفًا) ، `madlulat_export.tsv` ، `IDAA_COMMANDS.md` (أمرا الختم للمالك ، لم يُشغَّلا) ، بوّابة `mudaat_sealed` ⇒ `MUDAAT_UNSEALED`. اختباره T38 ، T39.
+- **B5 (الاختبارات):** T1–T41 + conformance = **40/40 ran ، 0 NOT_RUN** + Conf 2/2.
+- **B6:** `_runs_samples/v7_c01..c07` (الجمل السبع ، تجري عبر qamus/اليدويّ) ، وهذا القسم.
+
+**لم يُنفَّذ (بأسمائه وسببه):**
+- **رَسْمُ مودَعات D6 (RATIFIED_BY_RULE)**: مُعطَّلٌ بيئيًّا — النصّ المختوم للمقاييس غائب ⇒ لا سند مختوم (B4). الأهليّة في `db_preview`.
+- **سند المخصّص عبر qari في D7**: استُعمل مرجع `ajnas_mukhassas` (عناوين الأبواب) ؛ وأكثرُ الجوامد لا ترد عنوانًا (بيت/نور: 0) ⇒ `mukhassas_ref=null`. النصّ الخام للمخصّص غائب.
+- **qabiliyyat / khawass / alaqat في D6/D7**: `[]` (لا عمود HFN ولا إمضاء). D7 خاناتُ المالك فارغة عمدًا.
+- **الكوربوس C01–C07 والنصّ الطويل**: غير موجودَين نصًّا (كـ v6 س1) ؛ قِستُ على 14 سطحًا مستردًّا.
+- **تمييز المصدر عن الجامد بالوزن**: ترميز Hokom `FA3L` يُشترَك بين بيت (جامد) ودرس (مصدر) ⇒ مصادرُ تقع في D7_JAMID. حدٌّ معلَن.
+- **ختم أيّ مصدر / madlulat_export**: لم يُشغَّل `sajjil` (م9) ؛ أمرا الختم في `IDAA_COMMANDS.md` للمالك.

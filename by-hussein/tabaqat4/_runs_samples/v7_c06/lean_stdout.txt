@@ -1,0 +1,4 @@
+'Tabaqat4.jaza_hukm' does not depend on any axioms
+'Tabaqat4.jaza_sinf' does not depend on any axioms
+
+--- stderr ---
