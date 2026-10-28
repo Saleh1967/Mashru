@@ -190,7 +190,7 @@ class SnapshotFixtureTests(unittest.TestCase):
 
     def test_only_documented_generated_paths_are_excluded(self):
         generated = ("formal/.lake/build/bin/probe", "src/nabt/__pycache__/cached.pyc",
-                     "tools/old.pyc", "artifacts/local/run/report.json")
+                     "artifacts/local/run/report.json")
         for name in generated:
             target = self.vendor / name
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -198,6 +198,23 @@ class SnapshotFixtureTests(unittest.TestCase):
         self.assertEqual(self.verify()["files"], 3)
         (self.vendor / "artifacts/undeclared.json").write_text("{}")
         self.rejected("NABT_SNAPSHOT_EXTRA")
+
+    def test_sourceless_bytecode_outside_pycache_is_undeclared(self):
+        # 2026-10-28: this test's predecessor listed "tools/old.pyc" as an ignored
+        # generated path. Python imports a .pyc outside __pycache__ as a sourceless
+        # module, so a planted src/dataclasses.pyc shadowed the standard module and
+        # ran under scripts/nabt.py while this checker passed. Such a file is now an
+        # undeclared file, and a lock may still never pin bytecode.
+        for name in ("tools/old.pyc", "src/dataclasses.pyc", "src/nabt/payload.pyc"):
+            with self.subTest(path=name):
+                target = self.vendor / name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(b"bytecode without checked source")
+                self.rejected("NABT_SNAPSHOT_EXTRA")
+                target.unlink()
+        changed = deepcopy(self.document)
+        changed["files"][0]["path"] = "src/pinned.pyc"
+        self.rejected("NABT_LOCK_GENERATED_PATH", self.write_lock(changed))
 
     def test_similar_names_are_not_ignored(self):
         for name in ("formal/.lake-suffix/source.py", "src/nabt/__pycache__x/source.py",

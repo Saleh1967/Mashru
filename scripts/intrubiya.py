@@ -18,7 +18,7 @@
 والعيّنةُ ما رخّصه التحصيلُ كلَّه من كلمات المودَع؛ والمعلَّقُ يُعدّ باسم قاعدته ولا يُخمَّن.
 
 الاستعمال:
-  python3 -I scripts/intrubiya.py --mudaa <نصّ> --basma <sha256> [--khuruj <مجلّد>] [--nabt-src integrations/nabt/src]
+  python3 -I scripts/intrubiya.py --mudaa <نصّ> --basma <sha256> [--khuruj <مجلّد>]
   python3 -I scripts/intrubiya.py ... --check <مجلّد>   يعيد البناء ويطابق المخرج المحفوظ بالبايت
 """
 
@@ -164,16 +164,36 @@ def qari_tahsil(suwar: list[str]) -> tuple[dict[str, tuple[int, ...]], dict[str,
     return murakhkhas, asbab
 
 
-def qari_nabt(suwar: list[str], nabt_src: Path):
-    sys.path.insert(0, str(nabt_src))
-    from nabt.alphabet import parse_word  # noqa: E402  قارئ NABT نفسُه
-    from nabt.errors import NabtError  # noqa: E402
+NABT_RUNNER = JADHR / "scripts" / "nabt.py"
+QIRAA_NABT = """import json
+from nabt.alphabet import parse_word
+from nabt.errors import NabtError
+out = {}
+for s in json.loads(sys.stdin.read()):
+    try:
+        out[s] = {"ok": list(parse_word(s))}
+    except NabtError as e:
+        out[s] = {"sabab": e.status + ":" + e.code}
+print(json.dumps(out, ensure_ascii=False))
+"""
+
+
+def qari_nabt(suwar: list[str]):
+    """قارئُ NABT الصارم (`parse_word`) على اللقطة المفحوصة وحدها: يُشغَّل فاحصُ اللقطة أوّلًا، ثمّ ابنٌ بذاكرة bytecode جديدة وحارسِ
+    أصل الوحدات نفسِه في `scripts/nabt.py` (`run_pinned`)؛ فلا يُستورد NABT في هذه العمليّة، ولا يُقرأ من مسارٍ يعطيه المستدعي."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("mashru_nabt_runner", NABT_RUNNER)
+    runner = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(runner)
+    r = runner.run_pinned(QIRAA_NABT, [], input_text=json.dumps(suwar, ensure_ascii=False))
+    if r.returncode:
+        raise SystemExit("NABT_READER_FAILED: " + r.stderr.strip()[-600:])
     ok, asbab = {}, {}
-    for s in suwar:
-        try:
-            ok[s] = parse_word(s)
-        except NabtError as e:
-            asbab[s] = f"{e.status}:{e.code}"
+    for s, v in json.loads(r.stdout).items():
+        if "ok" in v:
+            ok[s] = tuple(v["ok"])
+        else:
+            asbab[s] = v["sabab"]
     return ok, asbab
 
 
@@ -370,7 +390,7 @@ def taqrir(r: dict, meta: dict) -> str:
     return "\n".join(L) + "\n"
 
 
-def tashghil(mudaa: Path, basma_mutawaqqaa: str, nabt_src: Path) -> tuple[dict, str]:
+def tashghil(mudaa: Path, basma_mutawaqqaa: str) -> tuple[dict, str]:
     if basma(mudaa) != basma_mutawaqqaa:
         raise SystemExit(f"MUDAA_SHA_MISMATCH {basma(mudaa)}")
     rumuz = mudaa.read_text(encoding="utf-8").split()
@@ -378,7 +398,7 @@ def tashghil(mudaa: Path, basma_mutawaqqaa: str, nabt_src: Path) -> tuple[dict, 
     qanun = Qanun()
     naql = jadwal_naql()
     tm, ta = qari_tahsil(suwar)
-    nm, na = qari_nabt(suwar, nabt_src)
+    nm, na = qari_nabt(suwar)
     r = bina(qanun, rumuz, tm, ta, nm, na, naql)
     meta = {"mudaa": mudaa.name, "basma": basma_mutawaqqaa}
     r["meta"] = meta
@@ -389,11 +409,10 @@ def main(argv=None):
     p = argparse.ArgumentParser()
     p.add_argument("--mudaa", required=True, type=Path)
     p.add_argument("--basma", required=True)
-    p.add_argument("--nabt-src", type=Path, default=JADHR / "integrations" / "nabt" / "src")
     p.add_argument("--khuruj", type=Path)
     p.add_argument("--check", type=Path)
     a = p.parse_args(argv)
-    r, md = tashghil(a.mudaa, a.basma, a.nabt_src)
+    r, md = tashghil(a.mudaa, a.basma)
     js = json.dumps(r, ensure_ascii=False, indent=1, sort_keys=True) + "\n"
     if a.check:
         old_js = (a.check / "intrubiya.json").read_text(encoding="utf-8")
