@@ -1,35 +1,29 @@
-# ورقة إمضاء D7 — للمالك (الجوامد والأعلام)
+# ورقة إمضاء D7 — للمالك (ثلاث قوائم ، أمر v7.2 ٢)
 
-لكلّ كلمة: جذر Hokom وصنفه ، ومرجع المخصّص (باب/كتاب بسطره — لا نصّ) إن وُجد. المطلوب منك: **haqiqa (≥1000) ، qabiliyyat ، alaqat ، khawass** ثمّ status=RATIFIED.
-لا يُقترَح رقمٌ (الحقل فارغ عمدًا).
+المطلوب منك في (أ): **haqiqa (≥1000) ، qabiliyyat ، alaqat ، khawass** ثمّ status=RATIFIED. لا يُقترَح رقم (فارغ عمدًا).
 
-| الكلمة | kulli/juzi | جذر Hokom | صنف/وزن | مرجع المخصّص | haqiqa (فارغ) |
+## (أ) جوامدُ للإمضاء — 6
+| الكلمة | kulli/juzi | جذر Hokom | صنف/وزن | المصدر (مرجع لا نصّ) | haqiqa (فارغ) |
 |---|---|---|---|---|---|
-| الْعِلْمُ | kulli | ['ع', 'ل', 'م'] | ISM/FI3L | — |  |
-| نُورٌ | kulli | None | ISM/None | — |  |
-| مُحَمَّدٌ | juzi | None | None/None | — |  |
-| الْمَسْجِدِ | kulli | ['س', 'ج', 'د'] | ISM/MAF3IL | — |  |
-| الرَّجُلُ | kulli | None | ISM/None | — |  |
+| الْعِلْمُ | kulli | ['ع', 'ل', 'م'] | ISM/FI3L | مخصّص-قول 936c68e0c2c6@527055/PageV01P |  |
+| الْمَسْجِدِ | kulli | ['س', 'ج', 'د'] | ISM/MAF3IL | مخصّص-قول 936c68e0c2c6@1115484/PageV01 |  |
 | عِنْدَهُ | kulli | ['ع', 'ن', 'د'] | ISM/FI3L | — |  |
-| جَاءَ | kulli | None | ISM/None | — |  |
-| الَّذِي | kulli | None | ISM/None | — |  |
-| فَازَ | kulli | None | ISM/None | — |  |
-| مَاتَ | kulli | None | ISM/None | — |  |
 | أُخْتٍ | kulli | ['ء', 'خ', 'ت'] | ISM/FU3L | — |  |
-| مَعَهُ | kulli | None | ISM/None | — |  |
-| فَأَرَادَ | kulli | None | ISM/None | — |  |
-| طَرْدَهَا | kulli | ['ط', 'ر', 'د'] | ISM/FA3L | — |  |
-| فَتَحَاكَمَا | kulli | None | ISM/None | — |  |
-| بَيْتِهِ | kulli | ['ب', 'ي', 'ت'] | ISM/FA3L | — |  |
-| إِخْرَاجَهَا | kulli | None | ISM/None | — |  |
+| بَيْتِهِ | kulli | ['ب', 'ي', 'ت'] | ISM/FA3L | مخصّص-قول 936c68e0c2c6@899079/PageV01P |  |
 | نِصْفَ | kulli | ['ن', 'ص', 'ف'] | ISM/FI3L | — |  |
-| هَذَا | kulli | None | ISM/None | — |  |
-| الْبَيْتِ | kulli | ['ب', 'ي', 'ت'] | ISM/FA3L | — |  |
-| بِعَقْدٍ | kulli | ['ع', 'ق', 'د'] | ISM/FA3L | — |  |
-| صَحِيحٍ | kulli | None | ISM/None | — |  |
-| أَخِي | kulli | None | ISM/None | — |  |
-| حَيًّا | kulli | None | ISM/None | — |  |
-| لَدَافَعَ | kulli | None | ISM/None | — |  |
-| خَوْفِي | kulli | None | ISM/None | — |  |
-| ضَيَاعِ | kulli | None | ISM/None | — |  |
-| الْقَضَاءَ | kulli | None | ISM/None | — |  |
+
+## (ج) مصادرُ/صفاتٌ/إشارةٌ — قرارُ المالك مؤجَّل — 4
+(تُعلَن D7_MASDAR / D7_SIFA / D7_ISHARA ؛ لا تُمضَى حتى يقرّر المالك قسمها)
+| الكلمة | kulli/juzi | جذر Hokom | صنف/وزن | المصدر (مرجع لا نصّ) | haqiqa (فارغ) |
+|---|---|---|---|---|---|
+| طَرْدَهَا | kulli | ['ط', 'ر', 'د'] | ISM/FA3L | — | ← D7_MASDAR |
+| هَذَا | kulli | None | ISM/None | مخصّص-قول 936c68e0c2c6@764397/PageV01P | ← D7_ISHARA |
+| الْبَيْتِ | kulli | ['ب', 'ي', 'ت'] | ISM/FA3L | مخصّص-قول 936c68e0c2c6@765594/PageV01P | ← D7_MASDAR |
+| بِعَقْدٍ | kulli | ['ع', 'ق', 'د'] | ISM/FA3L | — | ← D7_MASDAR |
+
+## (ب) مشبوهةٌ (HOKOM_CLASS_SUSPECT) — 17 — لا تُمضَى ، انظر HOKOM_REPAIR_LIST.md
+
+## أعلام (قائمة alam.json) — 1
+| الكلمة | kulli/juzi | جذر Hokom | صنف/وزن | المصدر (مرجع لا نصّ) | haqiqa (فارغ) |
+|---|---|---|---|---|---|
+| مُحَمَّدٌ | juzi | None | None/None | — |  |

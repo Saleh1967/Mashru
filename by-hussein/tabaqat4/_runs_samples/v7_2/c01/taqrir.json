@@ -1,0 +1,522 @@
+{
+ "schema": "Tabaqat4Record:v1",
+ "timestamp_utc": "2026-10-28T12:14:20.594590+00:00",
+ "input": {
+  "nass_kama_wasal": "الْعِلْمُ نُورٌ",
+  "nfc": "الْعِلْمُ نُورٌ",
+  "nfc_eq_input": true,
+  "sha256": "6999132cfbd2e7d7745e7790e4c801476193038931b74e704a238830bdb213b1",
+  "codepoints": 15,
+  "tahwil": []
+ },
+ "tokens": [
+  {
+   "idx": 0,
+   "anchor": "W-6999132c-000",
+   "surface": "الْعِلْمُ"
+  },
+  {
+   "idx": 1,
+   "anchor": "W-6999132c-001",
+   "surface": "نُورٌ"
+  }
+ ],
+ "dal": [
+  {
+   "surface": "الْعِلْمُ",
+   "khalaya": [
+    55,
+    14,
+    55,
+    109
+   ],
+   "wasl": true,
+   "al": true,
+   "tanwin": false,
+   "transforms": [
+    "AL_FLAG:همزة_الوصل_لا_تُرمَّز(Dal.Kalima.al=true,wasl=true)",
+    "AL_QAMARIYYA:لام_ساكنة",
+    "QARI_WITNESS:AGREE"
+   ],
+   "residuals": [],
+   "cells_human": [
+    "لْ=55",
+    "عِ=14",
+    "لْ=55",
+    "مُ=109"
+   ],
+   "qari": {
+    "khalaya": [
+     0,
+     55,
+     14,
+     55,
+     109
+    ],
+    "notes": [
+     "همزة الوصل أُصلحت بـ ibtidaForm (isAl=true) — حركتها وسيط المالك waslHaraka (شاهده قطر الندى L449–453)"
+    ],
+    "rejected": null,
+    "reconcile": {
+     "state": "AGREE",
+     "transforms": [
+      "QARI_IBTIDA_HAMZA_DROPPED→Kalima.al/wasl"
+     ]
+    }
+   }
+  },
+  {
+   "surface": "نُورٌ",
+   "khalaya": [
+    57,
+    115,
+    61,
+    59
+   ],
+   "wasl": false,
+   "al": false,
+   "tanwin": true,
+   "transforms": [
+    "MADD_UNMARKED_AS_SUKUN:و_بلا_حركة=ساكنة(حرف_مدّ)",
+    "TANWIN:نون_ساكنة(59)_بعد_الحركة",
+    "QARI_WITNESS:DISAGREE"
+   ],
+   "residuals": [],
+   "cells_human": [
+    "نُ=57",
+    "وْ=115",
+    "ر◌ُ=61",
+    "نْ(تنوين)=59"
+   ],
+   "qari": {
+    "khalaya": [
+     57,
+     115,
+     63
+    ],
+    "notes": [
+     "الوقف على التنوين بحذفه وتسكين الحرف (الألفية L1131، L1136)"
+    ],
+    "rejected": null,
+    "reconcile": {
+     "state": "DISAGREE",
+     "transforms": [],
+     "qari": [
+      57,
+      115,
+      63
+     ],
+     "jadwal": [
+      57,
+      115,
+      61,
+      59
+     ],
+     "reason": "WAQF_VS_WASL: القارئ يوقف على آخر النصّ (حذف التنوين وتسكين) والجدول يُخرج صورة الوصل (تنوين = نون ساكنة)"
+    }
+   }
+  }
+ ],
+ "maani": [
+  null,
+  null
+ ],
+ "plan": null,
+ "lean": null,
+ "stages": [
+  {
+   "stage": "S0_HAWIYYA",
+   "started": true,
+   "completed": true,
+   "found": true,
+   "produced": true,
+   "accepted": true,
+   "stored": true,
+   "consumed_by_next": null,
+   "reason": null,
+   "residuals": []
+  },
+  {
+   "stage": "S1_TAQTI",
+   "started": true,
+   "completed": true,
+   "found": true,
+   "produced": true,
+   "accepted": true,
+   "stored": true,
+   "consumed_by_next": true,
+   "reason": null,
+   "residuals": []
+  },
+  {
+   "stage": "S2_DAL",
+   "started": true,
+   "completed": true,
+   "found": true,
+   "produced": true,
+   "accepted": true,
+   "stored": true,
+   "consumed_by_next": true,
+   "reason": null,
+   "residuals": [
+    "W-6999132c-001:QARI_DISAGREE:WAQF_VS_WASL: القارئ يوقف على آخر النصّ (حذف التنوين وتسكين) والجدول يُخرج صورة الوصل (تنوين = نون ساكنة)"
+   ],
+   "hawamil_source": "Dal/Makharij.lean:def hawamil (قُرئ وقت التشغيل ، 29 حاملًا)",
+   "qari": {
+    "cmd": "/Users/husseinhiyassat/mashru/.lake/build/bin/qari mudaat/sijill.tsv mawsua/makhzan_kamil.tsv …",
+    "rc": 0
+   }
+  },
+  {
+   "stage": "S3_HOKOM_TAQDIR",
+   "started": true,
+   "completed": true,
+   "found": true,
+   "produced": true,
+   "accepted": true,
+   "stored": true,
+   "consumed_by_next": false,
+   "reason": "رتبة تقدير ؛ يُعرَض ولا يُستهلك في S4..S7",
+   "residuals": []
+  },
+  {
+   "stage": "S4_MADLUL",
+   "started": true,
+   "completed": true,
+   "found": false,
+   "produced": true,
+   "accepted": false,
+   "stored": true,
+   "consumed_by_next": false,
+   "reason": "كلمة أو أكثر بلا مدلول ← المسار الإسناديّ (S5) لا يُبنى",
+   "residuals": [
+    "W-6999132c-000:NO_SEALED_MADLUL",
+    "W-6999132c-001:NO_SEALED_MADLUL"
+   ]
+  },
+  {
+   "stage": "S5_MAAN_ITAR",
+   "started": true,
+   "completed": true,
+   "found": false,
+   "produced": false,
+   "accepted": null,
+   "stored": null,
+   "consumed_by_next": null,
+   "reason": "OUT_OF_EXECUTED_PATH:جملة اسمية (تقديرًا من السطح: أوّلها اسمٌ بأل أو تنوين) + PREREQ_MISSING: مدلولٌ أو خلايا ناقصة",
+   "residuals": [
+    "OUT_OF_EXECUTED_PATH"
+   ]
+  },
+  {
+   "stage": "S6_AQL",
+   "started": false,
+   "completed": null,
+   "found": null,
+   "produced": null,
+   "accepted": null,
+   "stored": null,
+   "consumed_by_next": null,
+   "reason": "PREREQ_MISSING (S5 لم يُنتج إطارًا)",
+   "residuals": []
+  },
+  {
+   "stage": "S7_BURHAN",
+   "started": false,
+   "completed": null,
+   "found": null,
+   "produced": null,
+   "accepted": null,
+   "stored": null,
+   "consumed_by_next": null,
+   "reason": "PREREQ_MISSING (S5 لم يُنتج إطارًا)",
+   "residuals": []
+  }
+ ],
+ "claims": [
+  {
+   "tabaqa": 1,
+   "ism": "dal_W-6999132c-000",
+   "qima": [
+    55,
+    14,
+    55,
+    109
+   ],
+   "tarjama": "«الْعِلْمُ»: 4 خلية [لْ=55, عِ=14, لْ=55, مُ=109] ، بأل التعريف (همزة وصل)",
+   "rutba": "مطابَق",
+   "burhan": "ترميز بجدول Dal/Makharij.lean (n=4·حامل+حالة) ؛ يُبرهَن على مستوى الجملة في S7",
+   "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 1,
+   "ism": "dal_W-6999132c-001",
+   "qima": [
+    57,
+    115,
+    61,
+    59
+   ],
+   "tarjama": "«نُورٌ»: 4 خلية [نُ=57, وْ=115, ر◌ُ=61, نْ(تنوين)=59]",
+   "rutba": "مطابَق",
+   "burhan": "ترميز بجدول Dal/Makharij.lean (n=4·حامل+حالة) ؛ يُبرهَن على مستوى الجملة في S7",
+   "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 1,
+   "ism": "qari_W-6999132c-001",
+   "qima": [
+    57,
+    115,
+    63
+   ],
+   "tarjama": "قارئ Mashru يقرأ «نُورٌ» = [57, 115, 63] ≠ الجدول [57, 115, 61, 59] — WAQF_VS_WASL: القارئ يوقف على آخر النصّ (حذف التنوين وتسكين) والجدول يُخرج صورة الوصل (تنوين = نون ساكنة)",
+   "rutba": "مفحوص",
+   "burhan": "مخرج qari (تنفيذ Mashru) ؛ الاختلاف يُعرَض ولا يُحسَم",
+   "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 1,
+   "ism": "qari_jumla",
+   "qima": [
+    0,
+    55,
+    14,
+    55,
+    109,
+    116,
+    57,
+    115,
+    63
+   ],
+   "tarjama": "الجملة في الوصل عند قارئ Mashru: مرخَّصة موقوفًا على آخرها — لها تقطيع (jumla_murakhkhasa) ؛ السلسلة [0, 55, 14, 55, 109, 116, 57, 115, 63]",
+   "rutba": "مفحوص",
+   "burhan": "آلة الجملة Msent في qari (تنفيذ Mashru ، لا نظرية في ملفنا)",
+   "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 0,
+   "ism": "hokom_W-6999132c-000",
+   "qima": {
+    "pin": "8a23298076b4",
+    "word_class": "ISM",
+    "word_class_subclass": "LEXICAL_NOUN",
+    "final_root": [
+     "ع",
+     "ل",
+     "م"
+    ],
+    "final_wazn": "FI3L",
+    "mood": null,
+    "directive": "ACCEPT",
+    "lemma_surface": null,
+    "active_residuals": [
+     "defer:bab:nominal_morphology_path",
+     "non_verbal_wazn"
+    ]
+   },
+   "tarjama": "تقدير Hokom لـ«الْعِلْمُ»: {'pin': '8a23298076b4', 'word_class': 'ISM', 'word_class_subclass': 'LEXICAL_NOUN', 'final_root': ['ع', 'ل', 'م'], 'final_wazn': 'FI3L', 'mood': None, 'directive': 'ACCEPT', 'lemma_surface': None, 'active_residuals': ['defer:bab:nominal_morphology_path', 'non_verbal_wazn']}",
+   "rutba": "تقدير",
+   "burhan": "pin=8a23298076b4",
+   "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 0,
+   "ism": "hokom_W-6999132c-001",
+   "qima": {
+    "pin": "8a23298076b4",
+    "word_class": "ISM",
+    "word_class_subclass": "LEXICAL_NOUN",
+    "final_root": null,
+    "final_wazn": null,
+    "mood": null,
+    "directive": "ACCEPT",
+    "lemma_surface": null,
+    "active_residuals": [
+     "defer:root:hollow_underlying_radical_unresolved",
+     "defer:wazn:no_hypothesis_built",
+     "final_root:null",
+     "final_wazn:null"
+    ]
+   },
+   "tarjama": "تقدير Hokom لـ«نُورٌ»: {'pin': '8a23298076b4', 'word_class': 'ISM', 'word_class_subclass': 'LEXICAL_NOUN', 'final_root': None, 'final_wazn': None, 'mood': None, 'directive': 'ACCEPT', 'lemma_surface': None, 'active_residuals': ['defer:root:hollow_underlying_radical_unresolved', 'defer:wazn:no_hypothesis_built', 'final_root:null', 'final_wazn:null']}",
+   "rutba": "تقدير",
+   "burhan": "pin=8a23298076b4",
+   "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 2,
+   "ism": "makhzan_W-6999132c-000",
+   "qima": [
+    "mutabaqa:العلم:نقيض الجهل",
+    "mutabaqa:العلم:المكان المرتفع فيه حصى",
+    "mutabaqa:العلم:شيء ينصب في الفلوات تهتدي به الضالة وجمعها أعلام",
+    "mutabaqa:العلم:الذي دخل فيه دخولا ثابتا والراسخون في كتاب"
+   ],
+   "tarjama": "المخزن (Mashru) باللفظ «العلم»: 4 قول ؛ الأوّل: mutabaqa:العلم:نقيض الجهل — سند 936c68e0c2c6@527055/PageV01P257/العلم/قائل:بلا نسبة صريحة",
+   "rutba": "تقدير",
+   "burhan": "وسم Mashru المحسوب نفسه (qari: «وسمه المحسوب: تقدير») ؛ معنى معجمي لا مدلول بنيوي",
+   "sabab_ghiyab": null
+  },
+  {
+   "tabaqa": 2,
+   "ism": "madlul_W-6999132c-000",
+   "qima": null,
+   "tarjama": "«الْعِلْمُ»: لا مدلولَ بنيويًّا (SLGE.Madlul) — لا في qamus (شواهد Mashru) ولا في مودَعات RATIFIED",
+   "rutba": null,
+   "burhan": null,
+   "sabab_ghiyab": "NO_SEALED_MADLUL: لا يُولَّد ؛ يدخل بمودَعٍ أمضاه المالك (D5) أو شاهد Mashru"
+  },
+  {
+   "tabaqa": 2,
+   "ism": "makhzan_W-6999132c-001",
+   "qima": null,
+   "tarjama": "المخزن باللفظ «نور»: لا مدخل — لا حكم (الغياب ليس امتناعًا)",
+   "rutba": null,
+   "burhan": null,
+   "sabab_ghiyab": "MAKHZAN_NO_ENTRY"
+  },
+  {
+   "tabaqa": 2,
+   "ism": "madlul_W-6999132c-001",
+   "qima": null,
+   "tarjama": "«نُورٌ»: لا مدلولَ بنيويًّا (SLGE.Madlul) — لا في qamus (شواهد Mashru) ولا في مودَعات RATIFIED",
+   "rutba": null,
+   "burhan": null,
+   "sabab_ghiyab": "NO_SEALED_MADLUL: لا يُولَّد ؛ يدخل بمودَعٍ أمضاه المالك (D5) أو شاهد Mashru"
+  }
+ ],
+ "wasm_summary": {
+  "مبرهن": 0,
+  "مبرهن على الشاهد": 0,
+  "مطابَق": 2,
+  "مفحوص": 2,
+  "مقيس": 0,
+  "تقدير": 3,
+  "رأي": 0,
+  "بلا رتبة": 3
+ },
+ "tabaqat_state": {
+  "1": "مطابَق",
+  "2": "PARTIAL_OR_BLOCKED",
+  "3": "NOT_REACHED",
+  "4": "NOT_REACHED"
+ },
+ "hukm3": null,
+ "la_yuddaa": [
+  "لا صحّة لغوية خارجية: ما يمرّ هنا مرّ على بنى Mashru كما عرّفها د. صالح ، لا على العربية كلّها.",
+  "المدلول لا يُولَّد: كلمة بلا مدلول معرَّف في Mashru تتوقّف عند الطبقة الثانية بالاسم NO_SEALED_MADLUL.",
+  "الأطر المنفَّذة في هذه الأداة (itar_map): [فعل+فاعل بأل]→darabaZayd ، [فعل+فاعل منوَّن]→jaaRajul ، [فعل+فاعل+مفعول بأل]→daraba ، وباب الجزاء ؛ ما عداها OUT_OF_EXECUTED_PATH باسم نمطه (ITAR_UNMAPPED).",
+  "المرساة (الآن=0 ، هنا=⟨0,0,0⟩) وإزاحة الحدث (−1 ساعة) موروثتان من Shahid_Ahmad.lean ت3/ت4 ، افتراضٌ معلَن قابل للتغيير بوسيطَي --an/--izaha.",
+  "الإسناد الدلالي ⟨مدلول_الفاعل ، qabiliyya(حقيقة_الفعل) ، isnadiyya⟩ قاعدةٌ بنيوية موروثة من الشاهد ، ليست استنتاجًا من النصّ.",
+  "رتبة «مبرهن على الشاهد» تعني: نظرية by decide مرّت على هذه الجملة بعينها في Lean ، بمسلّمات ⊆ {propext, Classical.choice, Quot.sound}. ليست «مبرهن» عامًّا.",
+  "MUDAAT_UNSEALED: بصمةُ mudaat.json ليست في mudaat/sijill.json — لا يُولَّد منه Mudaat.lean حتى يختمه المالك (B4)"
+ ],
+ "identity": {
+  "mashru_root": "/Users/husseinhiyassat/mashru",
+  "mashru_head": "41972275fcbdcbdd150c374c39dc5ec3075d81a6",
+  "mashru_tree_clean": false,
+  "mashru_status_porcelain": "M by-hussein/mudaat/D6_COVERAGE.md\n M by-hussein/mudaat/MUDAAT_IMDA.md\n M by-hussein/mudaat/Mudaat.lean\n M by-hussein/mudaat/madlulat_export.tsv\n M by-hussein/mudaat/mudaat.json\n M by-hussein/tabaqat4/mudaat_prep.py\n M by-hussein/tabaqat4/t4/hfn_d6.py\n?? by-hussein/mudaat/HOKOM_REPAIR_LIST.md\n?? by-hussein/tabaqat4/corpus/\n?? by-hussein/tabaqat4/scripts/\n?? by-hussein/tabaqat4/t4/lookup_norm.json\n?? by-hussein/tabaqat4/t4/wazn_to_form.json\n?? prompts/",
+  "lean_toolchain": "leanprover/lean4:v4.34.1",
+  "qamus_sha256": "e8662a21d29bfe8b0a1fe38d5b9a724bb6f43e60ef3d57770e721d8f8a5b6b20",
+  "tool_files": {
+   ".probe/taqrir.json": "de985e5dc22af7d63035627988d3055a5c99072154b94a02ecc0188a835f5b70",
+   ".probe/taqrir.md": "8d65f3d3687bf37391536ddc5aa9891f1b6eb69578870000e1c6f80026e98dcd",
+   ".probe2/taqrir.json": "360ae7218775e45f7e9a258173ef6a84c6d703787f4dbe9251374e0c929c4fe9",
+   ".probe2/taqrir.md": "4f8f1ed737fe6d0ca28ad79273b548442d6be6f4315b83133c6ef7ba964073f2",
+   ".probe3/s1/taqrir.json": "9037019c41395f787ce75f903f37303ea14bcd8dcfb49d145e5b9459185abd64",
+   ".probe3/s1/taqrir.md": "3f90c6f4fa81f710811eadbbdb16ea9cccd19b6cdbff2155cdb7df3916081b8a",
+   ".probe3/s2/taqrir.json": "f5f95c91bae45479b2dd2fbc389b1a1d65db9de905f890a3f2a872a7e4f379af",
+   ".probe3/s2/taqrir.md": "d78a04bbf927c3971595054db518f1af3514b958748794512b5e0f329f65af2e",
+   "README.md": "d79658ffd610b631e41e31b9590791dba9c5d3d639fb0f75c24b6bbf0c3d5ed2",
+   "T19_TARQIA.md": "1c67ca32f3db8cded22484223b590fb58ed41ed55157004184896e236c91176b",
+   "TAQRIR_TASLIM.md": "ba813dbfaca1f8f4cda0913ed717d62ef74589030133282ee79c89312a304afa",
+   "_runs_samples/a/taqrir.json": "9bfe0fd7fbeb82d35d0005e4a775d8bc446eae78ef3984cfbbb4f83bd4efe236",
+   "_runs_samples/a/taqrir.md": "3b09a7123fe28090a1e6d4bdc82bd893b6aaf9338948a9fbe925cae9e14c43dc",
+   "_runs_samples/b/taqrir.json": "b48cae0c87c2d50f4c1da6af2f029ba1b040c906fadeb6b927e5cdc9b693189a",
+   "_runs_samples/b/taqrir.md": "ccd354ab3c877df90968b04a61828fd64f4122bb54b1ef4b35e7a78dc47acd45",
+   "_runs_samples/c/taqrir.json": "f9ead96b162ef318e22cf77b03dd25a0dc4f82cca9a7ea6207cc005d97e3e708",
+   "_runs_samples/c/taqrir.md": "17a3d7efc2b5e99241a4c6da6628a78dbb274de5590bb9e2634eeece64bcf982",
+   "_runs_samples/c02_mudaat_fixture/taqrir.json": "0319a20e37379bdb6581d4f61b56f15d8d2be727a86aecac633e912bdd8beded",
+   "_runs_samples/c02_mudaat_fixture/taqrir.md": "bcb2f60441aafb6ba2d5ff2167cfe45674e8e374ee263094b85e00a478cffcfa",
+   "_runs_samples/c02_no_mudaat/taqrir.json": "f613a3f9b2d90ec350b14a8dfc9f2973e5e6c0872ec543c62f43f720e664a704",
+   "_runs_samples/c02_no_mudaat/taqrir.md": "af7760dcf9d984963eab3cc96a7f682cf43cb220660a6041b317de2ba07a9dda",
+   "_runs_samples/c02_ratified_dr_hussein/taqrir.json": "4b1c485dfadfe8db71c97728f413e419d44988c37b9f5beb86003441952f8bad",
+   "_runs_samples/c02_ratified_dr_hussein/taqrir.md": "6ae83c8b2284dd339ed586b993c3b09b04c7dafe5bdd037c7adbf3eba51c7ded",
+   "_runs_samples/d6_c01/taqrir.json": "38da79671e57c95ec90e4b5b5e0062145abcfe9b5138a428be68124c013edd15",
+   "_runs_samples/d6_c01/taqrir.md": "a6f17cea4fb2f789fdcb3f479875b345949679189409975117634ec05c664714",
+   "_runs_samples/d6_c02/taqrir.json": "b15b82935d80ea522625cbb5a2aa8cb9957247c9a2a452bf3ceee8b806774b0f",
+   "_runs_samples/d6_c02/taqrir.md": "d9809ec176d5de354f552505a68634688246eda7ecf7cf318c5949fe846af9ed",
+   "_runs_samples/d6_c03/taqrir.json": "df090cfc0561f618ccf01779128226a5eb1dd3c2ebaac3255a37cd59aa3aa937",
+   "_runs_samples/d6_c03/taqrir.md": "d163d6dee071e01b83d3f9f78c9b84372a3ec93a10d027f6d3538f0247af8d59",
+   "_runs_samples/d6_c04/taqrir.json": "0f124441de0fe6c144e61c46c571007ca0acad86345c463e27be1ed73e0acf2a",
+   "_runs_samples/d6_c04/taqrir.md": "9de712bb52ada58fa35ade1358dec52d8e79764128478146d972013ec264cfae",
+   "_runs_samples/d6_c05/taqrir.json": "60575e8eaed0ce15e92976b166821796b0e7044878d9cb344589b2f27cfbaf55",
+   "_runs_samples/d6_c05/taqrir.md": "5070f6910ddc46c0a829b195e70e6f88e9dff33d3853671a27db682054bc372b",
+   "_runs_samples/d6_c06/taqrir.json": "a7e1240ff23e9dd8763370321b070459f041679291731d14057764362f40b57b",
+   "_runs_samples/d6_c06/taqrir.md": "ba24d6f06569183e497ce456c71b17d45eded4e53b445c3420a2398ba3b74eb3",
+   "_runs_samples/d6_c07/taqrir.json": "df40c21e76b6dfef7c42c90bc2688f287544778d3f20d01cba976464d9062635",
+   "_runs_samples/d6_c07/taqrir.md": "389a7565b7b2c5aa9cb0c26882656d8c0639db5765c2a48dee389557a9a9e310",
+   "_runs_samples/e/taqrir.json": "004b78e048c32207cc01317a75c8972650a3b976b1770b2302a0c401cd7fcb81",
+   "_runs_samples/e/taqrir.md": "d426e555157e12876b62470336963d22fb6d7bf77e95a732d1db929b298f7adc",
+   "_runs_samples/f/taqrir.json": "18fdbbe78ce6d5665d226a53811a58f22e84ebe4f4c57eea0e6054848eb5c830",
+   "_runs_samples/f/taqrir.md": "eb416e28e51b9d30db585d1de7f33e1185b85d37e940e19d7cca2a14827ac8fa",
+   "_runs_samples/hokom_dhahaba/taqrir.json": "888a5fdc898eb1f97a013c3d3665a5e1c29f3d3e8c01136e09944bf23d0b4b64",
+   "_runs_samples/hokom_dhahaba/taqrir.md": "7556fdb769ed4ca42d43772dbeceec6620d8aa7b6366fbb6695d4478d7377691",
+   "_runs_samples/hokom_jaza/taqrir.json": "82e43798dea870f101163a87f1449a4711b7a629b81c7801937560cfa45c450a",
+   "_runs_samples/hokom_jaza/taqrir.md": "5944f11393085bf1b0ba655f4cf52bbf52f43a44f4c3e239e657d423e2f1eea5",
+   "_runs_samples/hokom_split/s1/taqrir.json": "2d6411a73c177bb13b93618bc94f08b9b0e3841895552512384af58b6c7cc6c1",
+   "_runs_samples/hokom_split/s1/taqrir.md": "8015fc6b8f9daf83db46e51d098bcac2faf14634f79e58f0a16d09e2d8b8517d",
+   "_runs_samples/hokom_split/s2/taqrir.json": "29a06c8880c9d7510a6ed288ff9d382df5bd134ea46fd705e908706d0abc7331",
+   "_runs_samples/hokom_split/s2/taqrir.md": "3a78eda9458d2c3d64e0afd32853af312e269c18b5381fd24845943f7120f357",
+   "_runs_samples/hokom_split/s3/taqrir.json": "0ed16ed1e9bbd6886ab3292c4739ab95f7c45ecc46406576e8b536b11dc7cfb7",
+   "_runs_samples/hokom_split/s3/taqrir.md": "dcb6fc2d91a58fa454ceb88dcea60f210c8c139e1e51c7dbf0baafa6ab3e0604",
+   "_runs_samples/j1/taqrir.json": "8baee02ae514993aa15397e6d03b959105cf9a0d01fd8ddc6f0c5587fd210fd8",
+   "_runs_samples/j1/taqrir.md": "680ebabcf5d2af6952489f9076c391492da3767914c0727f1deec29314d7b122",
+   "_runs_samples/j2/taqrir.json": "c22fbfcbf53b44bb3961c07d09b56115a80c863f45cbcb20e1087efca34f70d6",
+   "_runs_samples/j2/taqrir.md": "2203715078a615db8bbdf28c3574d759e6e18d4672931bc047b3bf66409e7eb8",
+   "_runs_samples/v7_c01/taqrir.json": "5c52091b16d75a7963b9c1be5b81871bf43b394d339ca91285ec3c1ec2218a34",
+   "_runs_samples/v7_c01/taqrir.md": "2e16b605328d15ad8552b7ea94bbbc3f4816ecc372a1aac0ebdb974ddb94da23",
+   "_runs_samples/v7_c02/taqrir.json": "84ac83b07df3f75767de6cf3ec8e228080612b4e1d990923aa46f1523ae51e3e",
+   "_runs_samples/v7_c02/taqrir.md": "f6a13bb17e412eb9e0bf30fc649276468bd0a49ff85de0c41b5761901ba2f4b7",
+   "_runs_samples/v7_c03/taqrir.json": "fb26f7d6fa6123f693e0ba0fb8f58d6b3401ce76e99b09ad80be392882b6b86a",
+   "_runs_samples/v7_c03/taqrir.md": "465d6d2b820676318a13d44227243fdc54c074c411b6de18beda5ac95b5678d9",
+   "_runs_samples/v7_c04/taqrir.json": "5f182609366697a4d296d2b24fda0989eb6024a3bf219cd72fab7ef672953042",
+   "_runs_samples/v7_c04/taqrir.md": "cbe6061882974b9e8b6b991eb9265c4c0af2488208202b929c4ef5d2fad50d5d",
+   "_runs_samples/v7_c05/taqrir.json": "4ba9704510a097956e79d26455f4db31cfdaab7c7bc7e9f349e74ed804dad140",
+   "_runs_samples/v7_c05/taqrir.md": "a2baa0413b3926d6c66711bc9831ce07e86d101411ffcbb1e12eec48b1eadc8a",
+   "_runs_samples/v7_c06/taqrir.json": "da25f1ec298fb81a6076a6d310b2c3faf214c6696171805f74f86c0ab4fe4b17",
+   "_runs_samples/v7_c06/taqrir.md": "95add5dc217ba48fdae7bbd3063825744aa71c43aa8ef26a2a192609f62659f1",
+   "_runs_samples/v7_c07/taqrir.json": "f7a3f17dbac4ba066339467630bc62c7e5a247a7ef1cb1d7e84034ca1ec3d5aa",
+   "_runs_samples/v7_c07/taqrir.md": "b70ba70fe5006c1a8181451d71785591dd30c8a47d240de307083da951e38bb5",
+   "hokom_adapter.example.py": "f2960748511e6b921874fb0a7cd2062904692f8b422a561de5398a3b77576f06",
+   "hokom_adapter.py": "661b835aaa96aff7515a227a685c132e99f578d0adb44540ca5319eb9283ebc8",
+   "mudaat_prep.py": "e8b925ad401bcafc1d1b25f2e4f045186e64a7e4ae9e4c05f841de9a9b9e3307",
+   "run.py": "4c9d37d924c460d15097ea5dae81841f3e0454c8e9e4bb6571a68377e0cb4b29",
+   "scripts/v7_2_report.py": "46300c4604fcc2ea4b1a0ec8df8da98a171ff8da2bb41d13f6ea6b63af40e559",
+   "t4/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "t4/core.py": "5b6da43bdb772d1a54de0b61e7b5c5430bbddebef809e0e61b50d97e881a13d1",
+   "t4/dal.py": "9779a99c83029d71fc55cbdb3cdf7a1adf6bbc222b358f96ede4519bc343a40b",
+   "t4/forms_map.json": "562584d2506ede054841c22f3bdaf51b5a30a142cf1aa2841c0d9147d135049d",
+   "t4/hfn_d6.py": "89fd39a9fda48fe47584f3494459c8b64686a3fc38a0f7ba8fa02b3c53fe4a8e",
+   "t4/hfn_map.json": "b1ada070c207a3d80b26b6654311566828fecb77278a9119d9207f0666abd000",
+   "t4/itar_map.json": "055a7405e75fe226d12d323b28f9676d1e36458ea358250dc7ca1cf8fc5118c3",
+   "t4/lookup_norm.json": "0613d24f3568fb37e1e20fbf26544d55390dc2ebc884dc1235bd0ff3a64dc5fd",
+   "t4/mushtaq_awzan.json": "d4207798fd61ea2d262d441d7d26506ae3fd4cd824d93fd5838d6858b9bbecaa",
+   "t4/qamus.json": "e8662a21d29bfe8b0a1fe38d5b9a724bb6f43e60ef3d57770e721d8f8a5b6b20",
+   "t4/qari.py": "841d73f7a5f34fa7cda3ed17ab1efd82224059d6562009b248c0a7c62b593da7",
+   "t4/report.py": "628ad9744fe6080eb137aa6e97435876f59c94b169de2e2464d9d64ee237b2ee",
+   "t4/wazn_to_form.json": "0b5042fe24be9353168cdec68cd469324b2a416bfc92964f4b0704d32fbba195",
+   "tests/fixtures/mudaat_2noun.json": "f06c2b1b46cdad96dad730c38f7ed9158ec86dce8d583cd43750359f77db4f03",
+   "tests/fixtures/mudaat_collision.json": "31ff59b2f8b560ae1527915eae4ce926d1a13bd32b0238a2d5eb4db633638fc6",
+   "tests/fixtures/mudaat_pending.json": "6e4d2df940a8c1aab122304cbdce10c38270af07dae6f58970c835fa79094141",
+   "tests/fixtures/mudaat_t21.json": "ac41ad56e418a318e87fa3081899a5ecf8409be90d46574fdbab5195e8e1eb47",
+   "tests/fixtures/mudaat_test.json": "a39b69174c8202170f29a32a7f4d3b3813bebb8e645eceb7707e6c60067767f1",
+   "tests/fixtures/taaqol_c02.json": "fc6a3eb0caf583fb3e578035eb40ab1efb94ed51719dd7132623ff96ec9be788",
+   "tests/fixtures/taaqol_conflict.json": "e21d48f1acc0977cac1b8798219c6bd421211376d59eeaa60a6c1dc7521f2fd9",
+   "tests/test_conformance.py": "225125ed35cfec821bb1fb4976ea7dd073cf076c7ac62c9ce44735d6ac4c97df",
+   "tests/test_tabaqat4.py": "24bc704541437f8ad94d52a94e09375af90ba558e4f7408e76a4117840d1555a"
+  }
+ },
+ "run_dir": "/Users/husseinhiyassat/mashru/by-hussein/tabaqat4/_runs_samples/v7_2/c01"
+}

@@ -1,0 +1,5 @@
+Jisr.BabJaza.Daraja.maqbul
+Jisr.BabJaza.Daraja.maqbul
+Jisr.BabJaza.Sinf.jaza
+
+--- stderr ---

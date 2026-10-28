@@ -69,6 +69,46 @@ def lemma_of(surface):
     return voweled, norm
 
 
+_CFG_DIR = Path(__file__).resolve().parent
+WAZN_TO_FORM = json.loads((_CFG_DIR / 'wazn_to_form.json').read_text(encoding='utf-8'))['verb_wazn_to_hfn_form']
+LOOKUP_NORM = json.loads((_CFG_DIR / 'lookup_norm.json').read_text(encoding='utf-8'))
+
+
+def lookup_key(surface):
+    """مفتاحُ البحث في HFN (v7.2 ٣): يُطبّق على المفتاح وحده (السطحُ والخلايا لا يُمَسّان).
+    يُعيد (voweled, norm, transforms): إسقاط فاء/واو العطف ، حرف جرّ ملتصق ، أل ، ضمير متّصل ، تاء التأنيث ، ثمّ التنوين/الحركة الأخيرة."""
+    tr = []
+    u = _base_units(surface)
+    # فاء/واو العطف في الأوّل (بحركة)
+    if len(u) >= 2 and u[0][0] in LOOKUP_NORM['conj_prefix'] and any(m in HARAKAT for m in u[0][1]):
+        tr.append('CONJ:' + u[0][0]); u = u[1:]
+    # حرف جرّ ملتصق في الأوّل (بكسرة/فتحة) قبل أل أو اسم
+    if len(u) >= 2 and u[0][0] in LOOKUP_NORM['jarr_prefix'] and any(m in HARAKAT for m in u[0][1]):
+        tr.append('JARR:' + u[0][0]); u = u[1:]
+    # أل التعريف
+    if len(u) >= 2 and u[0][0] == 'ا' and not any(m in HARAKAT and m not in TANWIN_MARKS for m in u[0][1]) and u[1][0] == 'ل':
+        rest = u[2:]
+        if rest and SHADDA in rest[0][1]:
+            rest[0][1] = [m for m in rest[0][1] if m != SHADDA]
+        tr.append('AL'); u = rest
+    # ضمير متّصل في الآخر (أطولُ تطابقٍ من القائمة)
+    bare = ''.join(c for c, _ in u)
+    for suf in sorted(LOOKUP_NORM['pronoun_suffix'], key=len, reverse=True):
+        if len(bare) > len(suf) + 1 and bare.endswith(suf):
+            u = u[:len(u) - len(suf)]; tr.append('DAMIR:' + suf); break
+    # تاء التأنيث المربوطة في الآخر
+    if u and u[-1][0] == LOOKUP_NORM['taa_marbuta']:
+        u = u[:-1]; tr.append('TAA_MARBUTA')
+    # التنوين دائمًا ، والحركة الأخيرة (قائم)
+    for cu in u:
+        cu[1] = [m for m in cu[1] if m not in TANWIN_MARKS]
+    if u:
+        u[-1][1] = [m for m in u[-1][1] if m == SHADDA]
+    voweled = ''.join(c + ''.join(m) for c, m in u)
+    norm = ''.join(HAMZA.get(c, c) + ''.join(sorted(ms)) for c, ms in u)
+    return voweled, norm, tr
+
+
 def hfn_lemma_norm(lemma):
     """صورة لِيمة HFN للمطابقة: إسقاط الحركة الأخيرة فقط ، تطبيع الهمزات ، حذف التطويل/الخنجرية/المدّة ،
     وإبقاء الحركات الداخلية والشدّة (فتميّز ذَهَبَ فعل عن ذَهِبَ فعل)."""
@@ -82,38 +122,50 @@ class HFN:
     def __init__(self, root=HFN_V18):
         self.root = Path(root)
         self.event_root = {}        # event_id -> root_K
+        self.event_form = {}
         for r in csv.DictReader(open(self.root / 'events.csv', encoding='utf-8')):
             self.event_root[r['event_id']] = r['root_K']
-        # lexical_units: (root_norm, lemma_norm) -> [ (lu_id, lemma, pos_ar, event_id) ]
+            self.event_form[r['event_id']] = r['form']
+        # lexical_units: (root_norm, lemma_norm) -> [...] ، و by_root_form: (root_norm, form) -> [وحدات الفعل #V]
         self.by_key = {}
         self.by_lemma_pos = {}      # (lemma_norm, pos) -> set(root_norm) : لتمييز ROOT_MISMATCH عن NO_HFN_UNIT
+        self.by_root_form = {}      # (root_norm, event_form) -> [وحدات pos=فعل] : مطابقة الفعل بالجذر+الصيغة (v7.2)
         self.units = []
         for r in csv.DictReader(open(self.root / 'lexical_units.csv', encoding='utf-8')):
             ev = r['event_id']
             rk = self.event_root.get(ev, '')
             rk_norm = ''.join(HAMZA.get(c, c) for c in rk)
             ln = hfn_lemma_norm(r['lemma'])
-            rec = dict(lu_id=r['lu_id'], lemma=r['lemma'], pos=r['pos_ar'], event_id=ev, root_K=rk)
+            rec = dict(lu_id=r['lu_id'], lemma=r['lemma'], pos=r['pos_ar'], event_id=ev, root_K=rk,
+                       form=self.event_form.get(ev))
             self._index(rk_norm, ln, rec)
 
     def _index(self, rk_norm, ln, rec):
         self.units.append(rec)
         self.by_key.setdefault((rk_norm, ln), []).append(rec)
         self.by_lemma_pos.setdefault((ln, rec['pos']), set()).add(rk_norm)
+        if rec['pos'] == 'فعل' and rec.get('form'):
+            self.by_root_form.setdefault((rk_norm, rec['form']), []).append(rec)
 
     @classmethod
     def from_records(cls, records):
-        """بناءٌ من سجلّات في الذاكرة (للاختبارات بمقتطفات صغيرة). كلّ سجلّ: dict(lu_id, lemma, pos, event_id, root_K)."""
+        """بناءٌ من سجلّات في الذاكرة (للاختبارات بمقتطفات صغيرة). كلّ سجلّ: dict(lu_id, lemma, pos, event_id, root_K[, form])."""
         self = cls.__new__(cls)
-        self.root = None; self.event_root = {}; self.by_key = {}; self.by_lemma_pos = {}; self.units = []
+        self.root = None; self.event_root = {}; self.event_form = {}
+        self.by_key = {}; self.by_lemma_pos = {}; self.by_root_form = {}; self.units = []
         for r in records:
             self.event_root[r['event_id']] = r['root_K']
+            self.event_form[r['event_id']] = r.get('form')
             rk_norm = ''.join(HAMZA.get(c, c) for c in r['root_K'])
-            self._index(rk_norm, hfn_lemma_norm(r['lemma']), dict(r))
+            rec = dict(r); rec.setdefault('form', r.get('form'))
+            self._index(rk_norm, hfn_lemma_norm(r['lemma']), rec)
         return self
 
     def match(self, root_norm, lemma_norm):
         return list(self.by_key.get((root_norm, lemma_norm), []))
+
+    def match_root_form(self, root_norm, form):
+        return list(self.by_root_form.get((root_norm, form), []))
 
     def lemma_pos_roots(self, lemma_norm, pos):
         return self.by_lemma_pos.get((lemma_norm, pos), set())
@@ -245,21 +297,33 @@ def classify7(surface, hok, hfn, qamus_surfaces, manual_keys, alam_keys, mushtaq
         if k in alam_keys:
             flags.append('D7_ALAM_READING_POSSIBLE')      # مشتقّ يرد في قائمة الأعلام (مالك) — لا ترجيح
         return dict(category=d6['d6_kind'], flags=flags, d6=d6)
-    # (٣) Hokom صنّف اسمًا جذرُه null (كـ«مَاتَ» الأجوف) ⇒ يُبقى كما خرج ويُعلَن HOKOM_CLASS_SUSPECT لا يُصلَح
-    if hok.get('word_class') == 'ISM' and hok.get('final_root') is None:
+    wc = hok.get('word_class')
+    # (٣) Hokom صنّف اسمًا جذرُه null ⇒ يُبقى كما خرج ويُعلَن HOKOM_CLASS_SUSPECT لا يُصلَح
+    if wc == 'ISM' and hok.get('final_root') is None:
         flags.append('HOKOM_CLASS_SUSPECT')
-    # PENDING: علمٌ مقدَّمٌ ، ثمّ جامدٌ (اسمٌ ليس على وزن مشتقّ) ، وإلّا سبب D6
+    # D7/علم: العَلَمُ مقدَّم ؛ ثمّ تقسيمُ D7 (أمر v7.2 ٢): إشارة ، مشبوهٌ (جذر null) ، مصدرٌ (له وحدةُ مصدرٍ في HFN) ، جامد
     if k in alam_keys:
         return dict(category='D7_ALAM', flags=flags, d6=d6)
-    if hok.get('word_class') == 'ISM' and hok.get('final_wazn') not in mushtaq_wazn:
-        return dict(category='D7_JAMID', flags=flags, d6=d6)
+    if wc == 'ISM':
+        if hok.get('word_class_subclass') in ISHARA_SUB:
+            return dict(category='D7_ISHARA', flags=flags, d6=d6)           # (ج)
+        if hok.get('final_root') is None:
+            return dict(category='D7_SUSPECT', flags=flags, d6=d6)          # (ب) يُراجَع Hokom ، لا يُمضَى
+        root = hamza_root(hok.get('final_root'))
+        _, lem_n, _tr = lookup_key(surface)
+        if root and any(u['pos'] == 'مصدر' for u in hfn.match(root, lem_n)):
+            return dict(category='D7_MASDAR', flags=flags, d6=d6)           # (ج) له وحدةُ مصدرٍ في HFN
+        if hok.get('final_wazn') not in mushtaq_wazn:
+            return dict(category='D7_JAMID', flags=flags, d6=d6)            # (أ) جامدٌ للإمضاء
     return dict(category='D6_PENDING:' + d6['reason'], flags=flags, d6=d6)
 
 
 # أصناف الوحدة → (tim, ind) : حدث(فعل) true/true ، مصدر/مشتق(ذات/مفهوم) false/true ، حرف -/false
 POS_TIM = {'فعل': True, 'مصدر': False, 'اسم فاعل': False, 'اسم مفعول': False}
-# صنف Hokom ↔ أقسام HFN المقبولة (condition 4): FI3L حدثٌ=فعل ، ISM ذاتٌ/مفهوم=مصدر/مشتق ، HARF لا وحدة
-CLASS_POS = {'FI3L': {'فعل'}, 'ISM': {'مصدر', 'اسم فاعل', 'اسم مفعول'}}
+# صنف Hokom ↔ أقسام HFN المقبولة لـD6: FI3L حدثٌ=فعل (مطابقةُ الصيغة) ، ISM مشتقٌّ=اسم فاعل/مفعول.
+# المصدرُ لا يُرسَّم D6 (أمر v7.2 ٢ج: المصادرُ تُؤجَّل D7_MASDAR بقرار المالك) ؛ والحرفُ لا وحدة.
+CLASS_POS = {'FI3L': {'فعل'}, 'ISM': {'اسم فاعل', 'اسم مفعول'}}
+ISHARA_SUB = {'DEMONSTRATIVE'}
 
 
 def d6_classify(surface, hok, hfn, makhzan_sanad=None):
@@ -278,30 +342,41 @@ def d6_classify(surface, hok, hfn, makhzan_sanad=None):
     root = hamza_root(hok.get('final_root'))
     if not root:
         res.update(status='PENDING', reason='D6_HOKOM_ROOT_NULL'); return res
-    # اللِّيمة: المضارع بلِيمة Hokom الماضية (B2) ؛ غيرُه من السطح (إسقاط أل/تنوين/الحركة الأخيرة)
-    if wc == 'FI3L' and sub == 'VERBAL_IMPERFECT':
-        ls = hok.get('lemma_surface')
-        if not ls:
-            res.update(status='PENDING', reason='D6_LEMMA_ABSENT'); return res
-        lem_v, lem_n = ls, hfn_lemma_norm(ls); res['lemma_source'] = 'HOKOM_LEMMA'
+    lem_n = None
+    if wc == 'FI3L':
+        # (١ v7.2) الفعل يُطابَق بالجذر + الصيغة (events.form) ، الصيغةُ من Hokom final_wazn بجدول حاصر.
+        #   null أو وزنٌ غير مجدوَلٍ ⇒ D6_FORM_UNKNOWN (لا افتراض لفَعَلَ) — فيُردّ المضارع والأجوف PENDING لا على حقيقةٍ خاطئة.
+        wz = hok.get('final_wazn')
+        form = WAZN_TO_FORM.get(wz)
+        res['hokom_wazn'] = wz; res['hfn_form'] = form; res['lemma_source'] = 'ROOT_FORM'
+        if not form:
+            res.update(status='PENDING', reason='D6_FORM_UNKNOWN'); return res
+        cands = hfn.match_root_form(root, form)
+        if len(cands) == 0:
+            res.update(status='PENDING', reason='D6_NO_HFN_UNIT'); return res
+        if len(cands) > 1:
+            res.update(status='PENDING', reason=f'D6_AMBIGUOUS_UNIT:{len(cands)}', units=[u['lu_id'] for u in cands]); return res
     else:
-        lem_v, lem_n = lemma_of(surface); res['lemma_source'] = 'SURFACE'
-    res['lemma'] = lem_v
-    # وحدة HFN بالجذر + اللِّيمة + قسمٌ يوافق صنف Hokom
-    allowed = CLASS_POS.get(wc, set())
-    cands = [u for u in hfn.match(root, lem_n) if u['pos'] in allowed]
-    if len(cands) == 0:
-        # لِيمة موجودة بقسمٍ موافق لكن تحت جذرٍ آخر ⇒ عدم تطابق الجذر (الشرط ١)، لا غياب وحدة
-        other_roots = set()
-        for p in allowed:
-            other_roots |= hfn.lemma_pos_roots(lem_n, p)
-        if other_roots:
-            res.update(status='PENDING', reason='D6_ROOT_MISMATCH',
-                       hfn_roots=sorted(other_roots)); return res
-        res.update(status='PENDING', reason='D6_NO_HFN_UNIT'); return res
-    if len(cands) > 1:
-        res.update(status='PENDING', reason=f'D6_AMBIGUOUS_UNIT:{len(cands)}',
-                   units=[u['lu_id'] for u in cands]); return res
+        # الاسم/المشتقّ: اللِّيمةُ الكاملةُ أوّلًا (lemma_of) ، وإن لم تُطابِق فتطبيعُ البحث (lookup_key) مسجَّلًا — السطحُ باقٍ.
+        allowed = CLASS_POS.get(wc, set())
+        lem_v, lem_n = lemma_of(surface); tr = []
+        cands = [u for u in hfn.match(root, lem_n) if u['pos'] in allowed]
+        if len(cands) == 0:
+            lv2, ln2, tr2 = lookup_key(surface)
+            if ln2 != lem_n:
+                c2 = [u for u in hfn.match(root, ln2) if u['pos'] in allowed]
+                if c2:
+                    cands, lem_v, lem_n, tr = c2, lv2, ln2, tr2
+        res['lemma'] = lem_v; res['lemma_source'] = ('LOOKUP_KEY' if tr else 'SURFACE'); res['lookup_transforms'] = tr
+        if len(cands) == 0:
+            other_roots = set()
+            for p in allowed:
+                other_roots |= hfn.lemma_pos_roots(lem_n, p)
+            if other_roots:
+                res.update(status='PENDING', reason='D6_ROOT_MISMATCH', hfn_roots=sorted(other_roots)); return res
+            res.update(status='PENDING', reason='D6_NO_HFN_UNIT'); return res
+        if len(cands) > 1:
+            res.update(status='PENDING', reason=f'D6_AMBIGUOUS_UNIT:{len(cands)}', units=[u['lu_id'] for u in cands]); return res
     unit = cands[0]
     # (٢) سند مختوم — مصدران طبيعيّان (أمر v7.1): المخصّص (معجم الأعيان ، عبر qari على makhzan_kamil.tsv ، 936c68e0)
     #   أو المقاييس (معجم الجذور ، موضعُ الجذر في النصّ المختوم 7f71af0d). أيُّهما حضر رسَّم D6 ؛ وإلّا D6_NO_SANAD.

@@ -145,15 +145,17 @@ def gen_mudaat_lean(doc, mashru_root):
         if e.get('status') not in ('RATIFIED', 'RATIFIED_BY_RULE'):
             continue
         ism = e['ism_lean']
-        kd = _dal.encode_word(e['surface'], hw)
-        if not kd.ok:
-            raise RuntimeError(f'MUDAA_DAL_UNENCODABLE:{k}:{kd.residuals}')
         b = lambda x: 'true' if x else 'false'
         q = ', '.join(str(x) for x in e.get('qabiliyyat') or [])
         L.append(f"def {ism} : Madlul := {{ haqiqa := {e['haqiqa']}, khawass := [], alaqat := [], "
                  f"qabiliyyat := [{q}], afrad := [], tim := {b(e['tim'])}, ind := {b(e['ind'])} }}"
                  f"   -- {e['surface']} ({e['status']})")
-        L.append(f"def {ism}K : Kalima := ⟨{kd.khalaya}, {b(kd.wasl)}, {b(kd.al)}⟩")
+        kd = _dal.encode_word(e['surface'], hw)
+        if kd.ok:
+            L.append(f"def {ism}K : Kalima := ⟨{kd.khalaya}, {b(kd.wasl)}, {b(kd.al)}⟩")
+        else:
+            # حدُّ Mashru: جدولُ المخارج لا يرمّز بعض الحروف (ة) ، فتُحذَف خليّةُ الكلمة ويُعلَن ؛ المدلولُ باقٍ
+            L.append(f"-- {ism}K: DAL_UNENCODABLE {kd.residuals} — لا ترميزَ خلايا لـ«{e['surface']}» (حدّ Mashru ، لا يُطبَّع السطح)")
     L += ['', 'end Mudaat', '']
     return '\n'.join(L)
 
@@ -221,7 +223,7 @@ def prep_v7(surfaces, existing, hfn, imda_sha, imda_date, mashru_root):
                                'hfn_sha256': imda_sha, 'tarikh': imda_date},
                       'flags': r['flags']}
             export.append(out[k])
-        elif cat in ('D7_JAMID', 'D7_ALAM'):
+        elif cat in ('D7_JAMID', 'D7_ALAM', 'D7_MASDAR', 'D7_ISHARA', 'D7_SUSPECT'):
             out[k] = {'surface': w, 'ism_lean': re.sub(r'\W', '_', k) + '_m', 'status': 'PENDING',
                       'sabab_d7': cat, 'kulli_juzi': ('juzi' if cat == 'D7_ALAM' else 'kulli'),
                       'haqiqa': None, 'khawass': [], 'alaqat': [], 'qabiliyyat': [], 'flags': r['flags'],
@@ -277,6 +279,7 @@ def main(argv=None):
             Path(a.coverage).write_text(_coverage_v7_md(cov, doc, note), encoding='utf-8')
         if a.imda_d7:
             Path(a.imda_d7).write_text(_imda_d7_md(doc), encoding='utf-8')
+            Path(a.imda_d7).parent.joinpath('HOKOM_REPAIR_LIST.md').write_text(_repair_list_md(doc), encoding='utf-8')
         print(f"v7.1 (سند المخصّص عبر qari) → {dict(cov)}")
         for k, e in doc['sijill'].items():
             fl = ' '.join(e.get('flags') or [])
@@ -358,17 +361,41 @@ def _coverage_v7_md(cov, doc, corpus_note=''):
     return '\n'.join(L) + '\n'
 
 
+def _d7_row(k, e):
+    j = e.get('jidhr', {}); ref = e.get('mukhassas_ref'); mk = e.get('sanad_makhzan')
+    src = (f"مخصّص@{ref['satr']}({ref['sinf']})" if ref else (f"مخصّص-قول {str((mk or {}).get('ref',''))[:28]}" if mk else '—'))
+    return f"| {e['surface']} | {e.get('kulli_juzi')} | {j.get('root')} | {j.get('word_class')}/{j.get('wazn')} | {src} |  |"
+
+
 def _imda_d7_md(doc):
-    L = ['# ورقة إمضاء D7 — للمالك (الجوامد والأعلام)', '',
-         'لكلّ كلمة: جذر Hokom وصنفه ، ومرجع المخصّص (باب/كتاب بسطره — لا نصّ) إن وُجد. المطلوب منك: **haqiqa (≥1000) ، qabiliyyat ، alaqat ، khawass** ثمّ status=RATIFIED.',
-         'لا يُقترَح رقمٌ (الحقل فارغ عمدًا).', '',
-         '| الكلمة | kulli/juzi | جذر Hokom | صنف/وزن | مرجع المخصّص | haqiqa (فارغ) |', '|---|---|---|---|---|---|']
-    for k, e in doc.get('sijill', {}).items():
-        if e.get('sabab_d7') not in ('D7_JAMID', 'D7_ALAM'):
-            continue
-        j = e.get('jidhr', {}); ref = e.get('mukhassas_ref')
-        refs = f"{ref['sinf']}@{ref['satr']} (sha {str(ref['sha'])[:8]})" if ref else '—'
-        L.append(f"| {e['surface']} | {e.get('kulli_juzi')} | {j.get('root')} | {j.get('word_class')}/{j.get('wazn')} | {refs} |  |")
+    """ورقة الإمضاء ثلاثًا (أمر v7.2 ٢): (أ) جوامد للإمضاء ، (ج) مصادر/صفات/إشارة مؤجَّلة. (ب) في HOKOM_REPAIR_LIST.md."""
+    s = doc.get('sijill', {})
+    jamid = [(k, e) for k, e in s.items() if e.get('sabab_d7') == 'D7_JAMID']
+    jeem = [(k, e) for k, e in s.items() if e.get('sabab_d7') in ('D7_MASDAR', 'D7_SIFA', 'D7_ISHARA')]
+    alam = [(k, e) for k, e in s.items() if e.get('sabab_d7') == 'D7_ALAM']
+    nsus = sum(1 for k, e in s.items() if e.get('sabab_d7') == 'D7_SUSPECT')
+    hdr = ['| الكلمة | kulli/juzi | جذر Hokom | صنف/وزن | المصدر (مرجع لا نصّ) | haqiqa (فارغ) |', '|---|---|---|---|---|---|']
+    L = ['# ورقة إمضاء D7 — للمالك (ثلاث قوائم ، أمر v7.2 ٢)', '',
+         'المطلوب منك في (أ): **haqiqa (≥1000) ، qabiliyyat ، alaqat ، khawass** ثمّ status=RATIFIED. لا يُقترَح رقم (فارغ عمدًا).', '',
+         f'## (أ) جوامدُ للإمضاء — {len(jamid)}', *hdr, *[_d7_row(k, e) for k, e in jamid], '',
+         f'## (ج) مصادرُ/صفاتٌ/إشارةٌ — قرارُ المالك مؤجَّل — {len(jeem)}',
+         '(تُعلَن D7_MASDAR / D7_SIFA / D7_ISHARA ؛ لا تُمضَى حتى يقرّر المالك قسمها)', *hdr,
+         *[f"{_d7_row(k, e)[:-3]} ← {e['sabab_d7']} |" for k, e in jeem], '',
+         f'## (ب) مشبوهةٌ (HOKOM_CLASS_SUSPECT) — {nsus} — لا تُمضَى ، انظر HOKOM_REPAIR_LIST.md', '',
+         f'## أعلام (قائمة alam.json) — {len(alam)}', *hdr, *[_d7_row(k, e) for k, e in alam]]
+    return '\n'.join(L) + '\n'
+
+
+def _repair_list_md(doc):
+    """(ب) HOKOM_CLASS_SUSPECT: اسمٌ بجذر null (أكثرُه أفعالٌ قرأها Hokom اسمًا) — تُراجَع ولا تُمضَى."""
+    s = doc.get('sijill', {})
+    sus = [(k, e) for k, e in s.items() if e.get('sabab_d7') == 'D7_SUSPECT']
+    L = ['# HOKOM_REPAIR_LIST — كلماتٌ صنّفها Hokom اسمًا بجذر null (v7.2 ٢ب)', '',
+         'تُعرَض كما خرجت من Hokom ، لا تُصلَح ولا تُمضَى ؛ أكثرُها أفعالٌ (جاء/فاز/مات…) قرأها Hokom ISM.', '',
+         '| الكلمة (السطح) | صنف Hokom | وزن | بقايا |', '|---|---|---|---|']
+    for k, e in sus:
+        j = e.get('jidhr', {})
+        L.append(f"| {e['surface']} | {j.get('word_class')} | {j.get('wazn')} | root=null |")
     return '\n'.join(L) + '\n'
 
 

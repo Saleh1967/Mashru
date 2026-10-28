@@ -123,7 +123,7 @@
    "surface": "نُورٌ",
    "ism_lean": "نور_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -233,7 +233,7 @@
    "surface": "الرَّجُلُ",
    "ism_lean": "رجل_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -288,7 +288,7 @@
    "surface": "جَاءَ",
    "ism_lean": "جاء_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -313,7 +313,7 @@
    "surface": "الَّذِي",
    "ism_lean": "ذي_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -338,7 +338,7 @@
    "surface": "فَازَ",
    "ism_lean": "فاز_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -385,33 +385,9 @@
   },
   "تجتهد": {
    "surface": "تَجْتَهِدْ",
-   "ism_lean": "تجتهد_m",
-   "status": "PENDING",
-   "sabab_d6": "D6_LEMMA_ABSENT",
-   "haqiqa": null,
-   "khawass": [],
-   "alaqat": [],
-   "qabiliyyat": [],
-   "flags": [],
-   "jidhr": {
-    "root": [
-     "ج",
-     "ه",
-     "د"
-    ],
-    "word_class": "FI3L",
-    "wazn": "IFTA3ALA"
-   },
-   "imda": {
-    "man": null,
-    "tarikh": null
-   }
-  },
-  "تنجح": {
-   "surface": "تَنْجَحْ",
-   "ism_lean": "d6_HFN_E_174c6435cc_V",
+   "ism_lean": "d6_HFN_E_e74708657a_V",
    "status": "RATIFIED_BY_RULE",
-   "haqiqa": 1004600,
+   "haqiqa": 335660,
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
@@ -421,13 +397,13 @@
    "qism": "fil",
    "masdar": {
     "hfn_file": "lexical_units.csv",
-    "hfn_row_id": "HFN-E-174c6435cc#V",
-    "hfn_event_id": "HFN-E-174c6435cc",
+    "hfn_row_id": "HFN-E-e74708657a#V",
+    "hfn_event_id": "HFN-E-e74708657a",
     "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
     "sanad": {
      "masdar": "مقاييس-مختوم",
      "sha": "7f71af0dfe056cb84e7da24657fa13edc6e8061c",
-     "ref": "7f71af0dfe05@line:40435/(نجح)"
+     "ref": "7f71af0dfe05@line:7886/(جهد)"
     }
    },
    "imda": {
@@ -439,11 +415,35 @@
    },
    "flags": []
   },
+  "تنجح": {
+   "surface": "تَنْجَحْ",
+   "ism_lean": "تنجح_m",
+   "status": "PENDING",
+   "sabab_d6": "D6_FORM_UNKNOWN",
+   "haqiqa": null,
+   "khawass": [],
+   "alaqat": [],
+   "qabiliyyat": [],
+   "flags": [],
+   "jidhr": {
+    "root": [
+     "ن",
+     "ج",
+     "ح"
+    ],
+    "word_class": "FI3L",
+    "wazn": null
+   },
+   "imda": {
+    "man": null,
+    "tarikh": null
+   }
+  },
   "مات": {
    "surface": "مَاتَ",
    "ism_lean": "مات_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -527,33 +527,41 @@
   },
   "ساكنة": {
    "surface": "سَاكِنَةً",
-   "ism_lean": "ساكنة_m",
-   "status": "PENDING",
-   "sabab_d6": "D6_NO_HFN_UNIT",
-   "haqiqa": null,
+   "ism_lean": "d6_HFN_E_b284d8f044_AG",
+   "status": "RATIFIED_BY_RULE",
+   "haqiqa": 1007477,
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
-   "flags": [],
-   "jidhr": {
-    "root": [
-     "س",
-     "ك",
-     "ن"
-    ],
-    "word_class": "ISM",
-    "wazn": "FA3IL"
+   "afrad": [],
+   "tim": false,
+   "ind": true,
+   "qism": "ism_mushtaq",
+   "masdar": {
+    "hfn_file": "lexical_units.csv",
+    "hfn_row_id": "HFN-E-b284d8f044#AG",
+    "hfn_event_id": "HFN-E-b284d8f044",
+    "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
+    "sanad": {
+     "masdar": "مقاييس-مختوم",
+     "sha": "7f71af0dfe056cb84e7da24657fa13edc6e8061c",
+     "ref": "7f71af0dfe05@line:18707/(سكن)"
+    }
    },
    "imda": {
-    "man": null,
-    "tarikh": null
-   }
+    "man": "DR_HUSSEIN",
+    "qanun": "D6",
+    "hfn_release": "release_v18",
+    "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
+    "tarikh": "2026-10-28"
+   },
+   "flags": []
   },
   "معه": {
    "surface": "مَعَهُ",
    "ism_lean": "معه_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -578,7 +586,7 @@
    "surface": "فَأَرَادَ",
    "ism_lean": "فأراد_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -627,7 +635,7 @@
    "surface": "طَرْدَهَا",
    "ism_lean": "طردها_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_MASDAR",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -654,7 +662,7 @@
    "surface": "فَتَحَاكَمَا",
    "ism_lean": "فتحاكما_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -773,7 +781,7 @@
    "surface": "إِخْرَاجَهَا",
    "ism_lean": "إخراجها_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -842,7 +850,7 @@
    "surface": "كُنْتُ",
    "ism_lean": "كنت_m",
    "status": "PENDING",
-   "sabab_d6": "D6_NO_HFN_UNIT",
+   "sabab_d6": "D6_FORM_UNKNOWN",
    "haqiqa": null,
    "khawass": [],
    "alaqat": [],
@@ -866,7 +874,7 @@
    "surface": "أَمْلِكُ",
    "ism_lean": "أملك_m",
    "status": "PENDING",
-   "sabab_d6": "D6_LEMMA_ABSENT",
+   "sabab_d6": "D6_NO_HFN_UNIT",
    "haqiqa": null,
    "khawass": [],
    "alaqat": [],
@@ -917,7 +925,7 @@
    "surface": "هَذَا",
    "ism_lean": "هذا_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_ISHARA",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -945,7 +953,7 @@
    "surface": "الْبَيْتِ",
    "ism_lean": "بيت_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_MASDAR",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -975,7 +983,7 @@
    "surface": "بِعَقْدٍ",
    "ism_lean": "بعقد_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_MASDAR",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -1002,7 +1010,7 @@
    "surface": "صَحِيحٍ",
    "ism_lean": "صحيح_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -1085,35 +1093,27 @@
   },
   "تخرجني": {
    "surface": "تُخْرِجَنِي",
-   "ism_lean": "d6_HFN_E_014e61e9ce_V",
-   "status": "RATIFIED_BY_RULE",
-   "haqiqa": 212791,
+   "ism_lean": "تخرجني_m",
+   "status": "PENDING",
+   "sabab_d6": "D6_FORM_UNKNOWN",
+   "haqiqa": null,
    "khawass": [],
    "alaqat": [],
    "qabiliyyat": [],
-   "afrad": [],
-   "tim": true,
-   "ind": true,
-   "qism": "fil",
-   "masdar": {
-    "hfn_file": "lexical_units.csv",
-    "hfn_row_id": "HFN-E-014e61e9ce#V",
-    "hfn_event_id": "HFN-E-014e61e9ce",
-    "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
-    "sanad": {
-     "masdar": "مقاييس-مختوم",
-     "sha": "7f71af0dfe056cb84e7da24657fa13edc6e8061c",
-     "ref": "7f71af0dfe05@line:11381/(خرج)"
-    }
+   "flags": [],
+   "jidhr": {
+    "root": [
+     "خ",
+     "ر",
+     "ج"
+    ],
+    "word_class": "FI3L",
+    "wazn": null
    },
    "imda": {
-    "man": "DR_HUSSEIN",
-    "qanun": "D6",
-    "hfn_release": "release_v18",
-    "hfn_sha256": "975b7da58be2aa8211435bb310d4c36ac9a1b477f5e489fa99ac080628984fd3",
-    "tarikh": "2026-10-28"
-   },
-   "flags": []
+    "man": null,
+    "tarikh": null
+   }
   },
   "ولو": {
    "surface": "وَلَوْ",
@@ -1139,7 +1139,7 @@
    "surface": "أَخِي",
    "ism_lean": "أخي_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -1164,7 +1164,7 @@
    "surface": "حَيًّا",
    "ism_lean": "حيا_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -1189,7 +1189,7 @@
    "surface": "لَدَافَعَ",
    "ism_lean": "لدافع_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -1258,7 +1258,7 @@
    "surface": "خَوْفِي",
    "ism_lean": "خوفي_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -1283,7 +1283,7 @@
    "surface": "ضَيَاعِ",
    "ism_lean": "ضياع_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],
@@ -1332,7 +1332,7 @@
    "surface": "الْقَضَاءَ",
    "ism_lean": "قضاء_m",
    "status": "PENDING",
-   "sabab_d7": "D7_JAMID",
+   "sabab_d7": "D7_SUSPECT",
    "kulli_juzi": "kulli",
    "haqiqa": null,
    "khawass": [],

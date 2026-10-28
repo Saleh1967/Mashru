@@ -354,11 +354,11 @@ class T(unittest.TestCase):
         self.assertEqual(len(found), 1, r['unit']); self.assertEqual(found[0]['lemma'], r['unit_lemma'])
 
     def test_T30_root_mismatch_no_number(self):
-        """T30 جذر Hokom ≠ جذر HFN (fixture) → PENDING:D6_ROOT_MISMATCH ، لا رقم يُولَّد"""
+        """T30 لِيمةٌ بقسمٍ موافق تحت جذرٍ آخر (fixture ، اسم فاعل) → PENDING:D6_ROOT_MISMATCH ، لا رقم (v7.2: على مسار الاسم)"""
         from t4 import hfn_d6 as D
-        hfn = D.HFN.from_records([{'lu_id': 'X#V', 'lemma': 'كَتَبَ', 'pos': 'فعل', 'event_id': 'X', 'root_K': 'خبر'}])
-        hok = {'final_root': ['ك', 'ت', 'ب'], 'word_class': 'FI3L', 'directive': 'ACCEPT'}
-        r = D.d6_classify('كَتَبَ', hok, hfn)
+        hfn = D.HFN.from_records([{'lu_id': 'X#AG', 'lemma': 'كَاتِب', 'pos': 'اسم فاعل', 'event_id': 'X', 'root_K': 'خبر'}])
+        hok = {'final_root': ['ك', 'ت', 'ب'], 'word_class': 'ISM', 'directive': 'ACCEPT', 'final_wazn': 'FA3IL'}
+        r = D.d6_classify('كَاتِبٌ', hok, hfn)
         self.assertEqual(r['status'], 'PENDING'); self.assertEqual(r['reason'], 'D6_ROOT_MISMATCH')
         self.assertNotIn('haqiqa', r)
 
@@ -366,9 +366,9 @@ class T(unittest.TestCase):
         """T31 وحدتان في HFN للِّيمة+الجذر+القسم نفسها (fixture) → PENDING:D6_AMBIGUOUS_UNIT:2 ، لا ترجيح"""
         from t4 import hfn_d6 as D
         hfn = D.HFN.from_records([
-            {'lu_id': 'A#V', 'lemma': 'دَرَسَ', 'pos': 'فعل', 'event_id': 'A', 'root_K': 'درس'},
-            {'lu_id': 'B#V', 'lemma': 'دَرَسَ', 'pos': 'فعل', 'event_id': 'B', 'root_K': 'درس'}])
-        hok = {'final_root': ['د', 'ر', 'س'], 'word_class': 'FI3L', 'directive': 'ACCEPT'}
+            {'lu_id': 'A#V', 'lemma': 'دَرَسَ', 'pos': 'فعل', 'event_id': 'A', 'root_K': 'درس', 'form': 'فَعَلَ'},
+            {'lu_id': 'B#V', 'lemma': 'دَرَسَ', 'pos': 'فعل', 'event_id': 'B', 'root_K': 'درس', 'form': 'فَعَلَ'}])
+        hok = {'final_root': ['د', 'ر', 'س'], 'word_class': 'FI3L', 'directive': 'ACCEPT', 'final_wazn': 'FA_A_LA'}
         r = D.d6_classify('دَرَسَ', hok, hfn)
         self.assertEqual(r['reason'], 'D6_AMBIGUOUS_UNIT:2'); self.assertNotIn('haqiqa', r)
         self.assertEqual(sorted(r['units']), ['A#V', 'B#V'])
@@ -442,24 +442,26 @@ class T(unittest.TestCase):
         from t4 import hfn_d6 as D
         import hokom_adapter as HK
         hfn = D.HFN()
-        mk = {D.surface_key('تَنْجَحْ'): '936c68e0c2c6@1/PageX/نجح/قائل:fixture'}
-        a = D.d6_classify('تَنْجَحْ', HK.taqdir(['تَنْجَحْ'])[0], hfn, makhzan_sanad=mk)
-        self.assertEqual((a['status'], a['d6_kind'], a['lemma_source']), ('RATIFIED_BY_RULE', 'D6_EVENT', 'HOKOM_LEMMA'))
-        b = D.d6_classify('تَجْتَهِدْ', HK.taqdir(['تَجْتَهِدْ'])[0], hfn, makhzan_sanad=mk)
-        self.assertEqual((b['status'], b['reason']), ('PENDING', 'D6_LEMMA_ABSENT'))
+        # تَجْتَهِدْ: Hokom wazn IFTA3ALA → صيغة افْتَعَلَ → حدث اجتهد (جذر جهد) ، سند مخصّص (fixture) → D6_EVENT
+        mkj = {D.surface_key('تَجْتَهِدْ'): '936c68e0c2c6@1/PageX/جهد/قائل:fixture'}
+        a = D.d6_classify('تَجْتَهِدْ', HK.taqdir(['تَجْتَهِدْ'])[0], hfn, makhzan_sanad=mkj)
+        self.assertEqual((a['status'], a['d6_kind'], a['hfn_form']), ('RATIFIED_BY_RULE', 'D6_EVENT', 'افْتَعَلَ'))
+        # تَنْجَحْ: Hokom wazn=null (مضارع لا يُخرج صيغتَه) → لا افتراض → D6_FORM_UNKNOWN
+        b = D.d6_classify('تَنْجَحْ', HK.taqdir(['تَنْجَحْ'])[0], hfn, makhzan_sanad=mkj)
+        self.assertEqual((b['status'], b['reason']), ('PENDING', 'D6_FORM_UNKNOWN'))
 
     def test_T37_jamid_and_alam(self):
-        """T37 جامد (الْبَيْتُ) → D7_JAMID بلا رقم ؛ عَلَم (مُحَمَّدٌ) → D7_ALAM ، juzi ، لا جذر يُفترَض"""
+        """T37 جامد (الْمَسْجِدِ) → D7_JAMID بلا رقم ؛ عَلَم (مُحَمَّدٌ) → D7_ALAM ، juzi ؛ إشارة (هَذَا) → D7_ISHARA"""
         hr = self._hokom_ok() or self._sources_ok()
         if hr: self.skipTest('NOT_RUN: ' + hr)
         from t4 import hfn_d6 as D
         import hokom_adapter as HK
         qamus, manual, alam, mw = self._v7_sets()
-        hfn = D.HFN(); tq = {w: h for w, h in zip(['الْبَيْتُ', 'مُحَمَّدٌ'], HK.taqdir(['الْبَيْتُ', 'مُحَمَّدٌ']))}
-        bayt = D.classify7('الْبَيْتُ', tq['الْبَيْتُ'], hfn, qamus, manual, alam, mw)
-        self.assertEqual(bayt['category'], 'D7_JAMID'); self.assertNotIn('haqiqa', bayt.get('d6', {}))
-        mhd = D.classify7('مُحَمَّدٌ', tq['مُحَمَّدٌ'], hfn, qamus, manual, alam, mw)
-        self.assertEqual(mhd['category'], 'D7_ALAM')
+        hfn = D.HFN(); ws = ['الْمَسْجِدِ', 'مُحَمَّدٌ', 'هَذَا']; tq = dict(zip(ws, HK.taqdir(ws)))
+        jamid = D.classify7('الْمَسْجِدِ', tq['الْمَسْجِدِ'], hfn, qamus, manual, alam, mw)
+        self.assertEqual(jamid['category'], 'D7_JAMID'); self.assertNotIn('haqiqa', jamid.get('d6', {}))
+        self.assertEqual(D.classify7('مُحَمَّدٌ', tq['مُحَمَّدٌ'], hfn, qamus, manual, alam, mw)['category'], 'D7_ALAM')
+        self.assertEqual(D.classify7('هَذَا', tq['هَذَا'], hfn, qamus, manual, alam, mw)['category'], 'D7_ISHARA')
 
     def test_T42_sanad_sources(self):
         """T42 (v7.1 ١): سندٌ مختوم من المخصّص (936c68e0) أو المقاييس (7f71af0d) يُرسَّم به D6 ؛ وبلا سندٍ من المصدرين → D6_NO_SANAD"""
@@ -475,19 +477,19 @@ class T(unittest.TestCase):
         if D.sealed_maqayis_present():
             b = D.d6_classify('ذَهَبَ', h, hfn, makhzan_sanad={})
             self.assertEqual(b['status'], 'RATIFIED_BY_RULE'); self.assertEqual(b['sanad']['sha'], D.SEALED_MAQAYIS_SHA)
-        # (ج) جذرٌ غائبٌ من المصدرين (fixture) ⇒ D6_NO_SANAD
-        fx = D.HFN.from_records([{'lu_id': 'Z#V', 'lemma': 'ثَضَظَ', 'pos': 'فعل', 'event_id': 'Z', 'root_K': 'ثضظ'}])
-        c = D.d6_classify('ثَضَظَ', {'final_root': ['ث', 'ض', 'ظ'], 'word_class': 'FI3L', 'directive': 'ACCEPT'}, fx, makhzan_sanad={})
+        # (ج) حدثٌ يُطابَق بالجذر+الصيغة لكنّ جذرَه غائبٌ من المصدرين (fixture) ⇒ D6_NO_SANAD
+        fx = D.HFN.from_records([{'lu_id': 'Z#V', 'lemma': 'ثَضَظَ', 'pos': 'فعل', 'event_id': 'Z', 'root_K': 'ثضظ', 'form': 'فَعَلَ'}])
+        c = D.d6_classify('ثَضَظَ', {'final_root': ['ث', 'ض', 'ظ'], 'word_class': 'FI3L', 'directive': 'ACCEPT', 'final_wazn': 'FA_A_LA'}, fx, makhzan_sanad={})
         self.assertEqual((c['status'], c['reason']), ('PENDING', 'D6_NO_SANAD'))
 
     def test_T43_hokom_class_suspect_declared(self):
-        """T43 (v7.1 ٣): مَاتَ يصنّفه Hokom اسمًا بجذر null ⇒ يبقى D7_JAMID كما خرج ، ويُعلَن HOKOM_CLASS_SUSPECT لا يُصلَح"""
+        """T43 (v7.2 ٣): مَاتَ يصنّفه Hokom اسمًا بجذر null ⇒ D7_SUSPECT (ب) كما خرج ، ويُعلَن HOKOM_CLASS_SUSPECT لا يُصلَح"""
         hr = self._hokom_ok() or self._sources_ok()
         if hr: self.skipTest('NOT_RUN: ' + hr)
         from t4 import hfn_d6 as D
         import hokom_adapter as HK
         r = D.classify7('مَاتَ', HK.taqdir(['مَاتَ'])[0], D.HFN(), *self._v7_sets())
-        self.assertEqual(r['category'], 'D7_JAMID'); self.assertIn('HOKOM_CLASS_SUSPECT', r['flags'])
+        self.assertEqual(r['category'], 'D7_SUSPECT'); self.assertIn('HOKOM_CLASS_SUSPECT', r['flags'])
 
     def test_T38_no_copied_text(self):
         """T38 لا نصّ معجميّ منقول: 20 حرفًا عربيًّا متتابعة في mudaat.json و madlulat_export.tsv = صفر"""
@@ -541,6 +543,38 @@ class T(unittest.TestCase):
         m = subprocess.run(['git', '-C', str(ROOT), 'status', '--porcelain', '--untracked-files=all'], capture_output=True, text=True).stdout
         outside = [l for l in m.splitlines() if not (l[3:].startswith('by-hussein/') or l[3:] in ('audit.txt', 'build.log', 'jumla_kamila.json', 'prompts/mudaat_mashru.tar.gz'))]
         self.assertEqual(outside, [], outside)
+
+
+    # ======================= v7.2 : T44..T46 =======================
+    def test_T44_mazid_not_matched_to_faala(self):
+        """T44 (v7.2 ١): فعلٌ بوزن Hokom AF3AL لا يُطابَق حدثَ فَعَلَ (fixture فيه فَعَلَ وحده) → D6_NO_HFN_UNIT لا رَسْم"""
+        from t4 import hfn_d6 as D
+        hfn = D.HFN.from_records([{'lu_id': 'X#V', 'lemma': 'خَرَجَ', 'pos': 'فعل', 'event_id': 'X', 'root_K': 'خرج', 'form': 'فَعَلَ'}])
+        hok = {'final_root': ['خ', 'ر', 'ج'], 'word_class': 'FI3L', 'directive': 'ACCEPT', 'final_wazn': 'AF3AL'}
+        r = D.d6_classify('أَخْرَجَ', hok, hfn, makhzan_sanad={D.surface_key('أَخْرَجَ'): '936c68e0c2c6@1/P/خرج'})
+        self.assertEqual((r['status'], r['reason']), ('PENDING', 'D6_NO_HFN_UNIT'))
+        self.assertEqual(r['hfn_form'], 'أَفْعَلَ')   # صيغة Hokom لا فَعَلَ
+
+    def test_T45_taa_marbuta_lookup_surface_kept(self):
+        """T45 (v7.2 ٣): سَاكِنَةٍ تجد وحدة «ساكن» بتحويلٍ مسجَّل (TAA_MARBUTA) والسطحُ باقٍ بلا تطبيع"""
+        hr = self._hokom_ok() or self._sources_ok()
+        if hr: self.skipTest('NOT_RUN: ' + hr)
+        from t4 import hfn_d6 as D
+        import hokom_adapter as HK
+        if not D.sealed_maqayis_present(): self.skipTest('NOT_RUN: SEALED_MAQAYIS_ABSENT')
+        r = D.d6_classify('سَاكِنَةٍ', HK.taqdir(['سَاكِنَةٍ'])[0], D.HFN(), makhzan_sanad={})
+        self.assertEqual((r['status'], r['d6_kind']), ('RATIFIED_BY_RULE', 'D6_MUSHTAQ'))
+        self.assertIn('TAA_MARBUTA', r.get('lookup_transforms', []))
+        self.assertEqual(r['surface'], 'سَاكِنَةٍ')     # السطحُ لم يُطبَّع
+
+    def test_T46_index_html_eight_links(self):
+        """T46 (v7.2 ٤): _runs_samples/v7_2/index.html يحوي الثماني وروابطها موجودة على القرص"""
+        idx = TOOL / '_runs_samples' / 'v7_2' / 'index.html'
+        if not idx.exists(): self.skipTest('NOT_RUN: index.html غير مبنيّ (شغّل scripts/v7_2_report.py)')
+        html = idx.read_text(encoding='utf-8')
+        self.assertEqual(html.count('/taqrir.html">taqrir.html'), 8, 'ثماني روابط')
+        for i in range(1, 9):
+            self.assertTrue((TOOL / '_runs_samples' / 'v7_2' / f'c{i:02d}' / 'taqrir.html').exists(), f'c{i:02d}')
 
 
 class Reporter(unittest.TextTestResult):

@@ -1,0 +1,21 @@
+{
+  "_law": "v7.2 (١): مطابقة D6 للفعل بـ(جذر Hokom + صيغة) ↔ (events.root_K + events.form). الصيغةُ من Hokom final_wazn بهذا الجدول الحاصر.",
+  "_note": "بأسماء Hokom كما تخرج ← صيغة HFN كما في events.form. final_wazn=null ⇒ D6_FORM_UNKNOWN (لا افتراض لفَعَلَ). FA3IL/MAF3UL صيغتا اشتقاق لا صيغتا فعل ⇒ مسارُ المشتقّ (لِيمة+قسم) لا مطابقةُ الصيغة.",
+  "verb_wazn_to_hfn_form": {
+    "FA_A_LA": "فَعَلَ",
+    "FA_I_LA": "فَعِلَ",
+    "FA_U_LA": "فَعُلَ",
+    "AF3AL": "أَفْعَلَ",
+    "FA33ALA": "فَعَّلَ",
+    "FA3ALA": "فَاعَلَ",
+    "TAFA33ALA": "تَفَعَّلَ",
+    "TAFA3ALA": "تَفَاعَلَ",
+    "IFTA3ALA": "افْتَعَلَ",
+    "INFA3ALA": "انْفَعَلَ",
+    "ISTAF3ALA": "اسْتَفْعَلَ",
+    "F3ALALA": "فَعْلَلَ"
+  },
+  "_verified_from_corpus": ["FA_A_LA"],
+  "_declared_from_order_unverified": ["AF3AL", "IFTA3ALA", "TAFA3ALA", "FA33ALA"],
+  "mushtaq_wazn_not_a_verb_form": ["FA3IL", "MAF3UL"]
+}
