@@ -109,6 +109,7 @@ import SLGE.Syllable
 import Madlul.TasisDalala
 import Nizam.Shahada
 import Dal.Tahsil
+import Dal.QiraaTahsil
 import Jisr.Khabar
 import Jisr.KhabarDabit
 import Jisr.KhabarQiyas
@@ -2371,6 +2372,26 @@ import Jisr.KhabarQiyas
 #print axioms Dal.Tahsil.shahid_kataba
 #print axioms Dal.Tahsil.shahid_shams
 #print axioms Dal.Tahsil.shahid_muallaq
+#print axioms Dal.QiraaTahsil.mem_khalayaTahsil
+#print axioms Dal.QiraaTahsil.juzOf_khalaya
+#print axioms Dal.QiraaTahsil.juzOf_fasid
+#print axioms Dal.QiraaTahsil.ajza_cons
+#print axioms Dal.QiraaTahsil.ajza_tahsil
+#print axioms Dal.QiraaTahsil.ajza_asl
+#print axioms Dal.QiraaTahsil.ajza_la_fasid
+#print axioms Dal.QiraaTahsil.tamm_khalaya
+#print axioms Dal.QiraaTahsil.qiraa_ajza
+#print axioms Dal.QiraaTahsil.qiraa_tahsil
+#print axioms Dal.QiraaTahsil.qiraa_la_fasid
+#print axioms Dal.QiraaTahsil.qiraa_asl
+#print axioms Dal.QiraaTahsil.qiraa_shahada
+#print axioms Dal.QiraaTahsil.ajza_L
+#print axioms Dal.QiraaTahsil.qiraa_murakhkhasa
+#print axioms Dal.QiraaTahsil.shahid_fata
+#print axioms Dal.QiraaTahsil.shahid_shams
+#print axioms Dal.QiraaTahsil.shahid_rafd_tatwil
+#print axioms Dal.QiraaTahsil.shahid_tatwil_maqta
+#print axioms Dal.QiraaTahsil.shahid_jamaa
 -- الخبرُ في القطر (س157–162) والألفية (س177–188) (Jisr/Khabar.lean): حكمُ الخبر ودرجتُه، والوصفُ ومرفوعُه، بقول كلّ مصدرٍ والجمع بينهما
 #print axioms Jisr.Khabar.bawwaba_la_hukm
 #print axioms Jisr.Khabar.jumla_bila_rabit
