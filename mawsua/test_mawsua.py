@@ -44,6 +44,11 @@
    والقارئ، إلّا بـ`--ikhtibar` معلَنًا؛ وسجلّاتُ الاختبار هنا كلُّها تُمرَّر به (`bayan`). والمولَّدُ مطابقٌ للمختوم (`--check`). ومبرهن: `mutamad_salim`.
 ١٧. fasid_shahid.tsv (P2-أ، القرار ٢-أ): محتوًى يربط معنًى بقضيّة، ومحتوًى بشاهدٍ موضعُه 999999 (التجربة ١): خطآن مسمّيان، ولا «مفهوم»؛
    والسؤالُ لا يجيب (خروج 1). والشواهدُ مبرهنةٌ هي `Waqi.shuhud` (`bina_shuhud`، `shuhud_saff`)، والمحتوى لا يغيّرها (`tahmil_shawahid`).
+١٩. أوّلُ «مفهوم» حقيقيّ (2026-10-29): على السجلّ المختوم نفسِه بلا --ikhtibar، المحتوى makhzan_waqi.tsv (مولَّدٌ بـ scripts/bina_ribt.py
+   من جدول التعريفات المختوم) يُقبل كلُّه (14 ادّعاءً)، والسؤالُ يرفع عشرةَ معانٍ إلى «مفهوم» بعدد شواهدها وأربعةً إلى «معلومة»؛ والتوقّعاتُ
+   مكتوبةٌ باليد من القاعدة (قياسٌ أو روايتان من مصدرين في صفوف الدفعة المربوطة) على صفوف waqi_001 بأرقامها: 1←2 و11 و12، 8←39، 9←36 و37،
+   12←13، 13←40، 14←9، 18←36، 20←48 و49، 21←7 و45، 22←31؛ و11 و15 و16 و17 رواياتٌ من مصدرٍ واحد. وبسجلٍّ يحذف أسطرَ الربط وحدها
+   (--ikhtibar) لا مفهوم: الربطُ من السجلّ المختوم لا من المحتوى. ومبرهنٌ على أسطر الجدول: `Waqi.Ribt.mafahim_ribt`، `maalumat_ribt`.
 التشغيل: python3 -I mawsua/test_mawsua.py
 """
 import hashlib
@@ -237,4 +242,23 @@ p = subprocess.run([sys.executable, "-I", os.path.join(ROOT, "scripts", "bina_si
 assert p.returncode == 0 and p.stdout.strip() == "مطابق", p.stdout
 ok += 1
 
-print(f"{ok}/23")
+# ١٩. أوّلُ «مفهوم» حقيقيّ: السجلُّ المختوم وجدولُ الربط المختوم فيه.
+code, rows = faahis("makhzan_waqi.tsv", SIJILL)
+assert code == 0 and len(ahkam(rows)) == 14 and all(v == ("مقبول", "1") for v in ahkam(rows).values()), rows
+code, out = sual("mutabaqa:", name="makhzan_waqi.tsv")
+MAANA = "ما عرّفه جدول التعريفات في صفّه "
+rutab = {l.split("«")[1].split("»")[0][len(MAANA):]: l.split("»: ")[1] for l in out if l.startswith("    المعنى «" + MAANA)}
+MAFHUM = {"1": 3, "8": 1, "9": 2, "12": 1, "13": 1, "14": 1, "18": 1, "20": 2, "21": 2, "22": 1}
+assert code == 0 and out[0] == "حكم (14) بالقاعدة ribt-waqi-0.1:", out[:2]
+assert rutab == {**{k: f"مفهوم (شواهد واقع: {n})" for k, n in MAFHUM.items()},
+                 **{k: "معلومة (لا شاهد واقعٍ مودَع)" for k in ("11", "15", "16", "17")}}, rutab
+assert out[-1] == "الفهرس: من حيث هي 14، معلومة 4، مفهوم 10", out[-1]
+import tempfile
+with tempfile.TemporaryDirectory() as d:
+    bila = os.path.join(d, "sijill_bila_ribt.tsv")
+    open(bila, "w", encoding="utf-8").write("".join(l for l in open(SIJILL, encoding="utf-8") if not l.startswith("shahid\t")))
+    code, out = sual("mutabaqa:", name="makhzan_waqi.tsv", sijill=bila)
+    assert code == 0 and out[-1] == "الفهرس: من حيث هي 14، معلومة 14، مفهوم 0", out[-1]
+ok += 1
+
+print(f"{ok}/24")
