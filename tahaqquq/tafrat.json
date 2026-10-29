@@ -5260,5 +5260,23 @@
   "milaf": "Jisr/QabiliyyaJins.lean",
   "min": "(Or.inl hq)",
   "ila": "(Or.inr hq)"
+ },
+ {
+  "ism": "P904_qj2_hadath_none",
+  "milaf": "Jisr/QabiliyyaJins.lean",
+  "min": "| none => .laHukm",
+  "ila": "| none => .murakhkhas"
+ },
+ {
+  "ism": "P905_qj2_warrith_farigh",
+  "milaf": "Jisr/QabiliyyaJins.lean",
+  "min": "Wiratha.warrith_farigh",
+  "ila": "Wiratha.warrith_yuhassin"
+ },
+ {
+  "ism": "P906_qj2_mutasiq",
+  "milaf": "Jisr/QabiliyyaJins.lean",
+  "min": "exact absurd rfl h",
+  "ila": "exact absurd rfl rfl"
  }
 ]

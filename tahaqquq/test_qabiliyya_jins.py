@@ -35,7 +35,24 @@ def main():
         for i, l in missing[:5]:
             print(f'CASE_NOT_IN_PROOF: {i} :: {l}')
         return 1
-    print(f'QABILIYYA_JINS_FROZEN_BOUND = YES ({len(halat)}/{len(halat)} حالة ممثَّلة ، البصمة مطابقة)')
+    # الجولة ٢: حالات §٤ (halat2) — البصمة + تمثيلُها في shawahid_hadath/tawafuq_shahid/laHukm_idha_la_intiqal
+    H2F = ROOT / 'tahaqquq' / 'dawabit' / 'qabiliyya_jins' / 'halat2.json'
+    T2F = ROOT / 'tahaqquq' / 'dawabit' / 'qabiliyya_jins' / 'tajmid2.json'
+    sha2 = hashlib.sha256(H2F.read_bytes()).hexdigest()
+    if sha2 != json.loads(T2F.read_text(encoding='utf-8'))['halat2_sha256']:
+        print(f'HALAT2_SHA_MISMATCH: {sha2}'); return 1
+    need = [
+        'hukmHadath (madlulWarith Jisr.Utur.walad .insan) mithalShahid 10 = .murakhkhas',   # H1
+        'hukmHadath (madlulWarith Jisr.Utur.walad .insan) mithalShahid 12 = .laHukm',        # H2
+        'hukmHadath (madlulWarith Jisr.Utur.dar .jamad) mithalShahid 10 = .laHukm',          # H3
+        'theorem tawafuq_shahid',                                                            # H4a/H4b
+        'theorem laHukm_idha_la_intiqal',                                                    # H5 (الخاصّة تعمل)
+    ]
+    miss2 = [n for n in need if n not in src]
+    if miss2:
+        for n in miss2: print('ROUND2_NOT_IN_PROOF:', n)
+        return 1
+    print(f'QABILIYYA_JINS_FROZEN_BOUND = YES (ج١ {len(halat)}/{len(halat)} + ج٢ §٤ ممثَّلة ، البصمتان مطابقتان)')
     return 0
 
 

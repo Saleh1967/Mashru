@@ -2374,3 +2374,12 @@ import Jisr.QabiliyyaJins
 #print axioms Jisr.QabiliyyaJins.laHukm_bila_qabiliyya
 #print axioms Jisr.QabiliyyaJins.idafiyya_mumtani
 #print axioms Jisr.QabiliyyaJins.shawahid_jins
+#print axioms Jisr.QabiliyyaJins.mutasiq_fusul
+#print axioms Jisr.QabiliyyaJins.laHukm_idha_la_intiqal
+#print axioms Jisr.QabiliyyaJins.madlulWarith_haqiqa
+#print axioms Jisr.QabiliyyaJins.madlulWarith_qab
+#print axioms Jisr.QabiliyyaJins.tarkhis_hadath
+#print axioms Jisr.QabiliyyaJins.hukmHadath_none
+#print axioms Jisr.QabiliyyaJins.mem_qab_contains
+#print axioms Jisr.QabiliyyaJins.shawahid_hadath
+#print axioms Jisr.QabiliyyaJins.tawafuq_shahid

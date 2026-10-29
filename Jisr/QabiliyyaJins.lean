@@ -39,7 +39,6 @@ theorem qabiliyyat_ilaMadlul (q : Qism) :
 theorem tarkhis_min_jins (jins : Jins) (m : Madlul) (q : Qism) (e : Nat) (dm : Madlul)
     (hj : jins m = some q)
     (hdm : madlulMin jins m = some dm)
-    (_hi : (Tayin.fusul q).intiqal = .naam)
     (he : ((Tayin.fusul q).qab.map Tayin.ramzQab).contains e = true) :
     hukmMadlul ⟨dm, .qabiliyya e, .isnadiyya⟩ = .murakhkhas := by
   have hdmq : dm = Tayin.ilaMadlul q := by
@@ -106,5 +105,96 @@ theorem shawahid_jins :
     hukmMadlul ⟨Tayin.ilaMadlul .nabat, .qabiliyya 13, .isnadiyya⟩ = .laHukm ∧
     hukmMadlul ⟨Tayin.ilaMadlul .nabat, .qabiliyya 13, .idafiyya⟩ = .mumtani := by
   decide
+
+/-! ## الجولة الثانية (#113-ب): الخاصّةُ تعمل في البرهان ، والجسرُ حدث→قابليّة مودَع ، و«ذهابُ الولد» بعينه -/
+
+/-- **اتّساقُ الجدول المودَع:** في فصول كلّ قسمٍ لا قابليّةَ حركةٍ إلّا للمنتقل ذاتيًّا (`mutasiq` على الجدول المطابَق). -/
+theorem mutasiq_fusul (q : Qism) : Tayin.mutasiq (Tayin.fusul q) := by
+  cases q <;> intro h <;> first | rfl | exact absurd rfl h
+
+/-- **الخاصّةُ تعمل (النصفُ الثاني لسؤال المالك):** لا يُرخَّص حملُ قابليّةِ حركةٍ على جنسٍ لا ينتقل ذاتيًّا — بل «لا حكم» (م13 ، لا ممتنع).
+مبرهَنٌ عامًّا من `mutasiq` (لا `decide` على الأربعة): جنسٌ `intiqal ≠ naam` فصولُه بلا قابليّةِ حركة ، فحملُ أيّ قابليّةٍ عليه بلا شاهدٍ في الحقول. -/
+theorem laHukm_idha_la_intiqal (q : Qism) (hm : Tayin.mutasiq (Tayin.fusul q))
+    (h : (Tayin.fusul q).intiqal ≠ .naam) (e : Nat) :
+    hukmMadlul ⟨Tayin.ilaMadlul q, .qabiliyya e, .isnadiyya⟩ = .laHukm := by
+  have hqab : (Tayin.fusul q).qab = [] := by
+    by_cases hc : (Tayin.fusul q).qab = []
+    · exact hc
+    · exact absurd (hm hc) h
+  have he : ((Tayin.fusul q).qab.map Tayin.ramzQab).contains e = false := by rw [hqab]; rfl
+  exact laHukm_bila_qabiliyya q e he
+
+/-! ### الجسرُ المودَع: الحدثُ مثالُ قابليّةِ حركةٍ (علاقةٌ من نصّ ، لا استنتاجٌ من المعنى) -/
+
+/-- جدولُ «الحدث e مثالُ قابليّةِ الحركة c» (ذهب → سير) — صفوفُه من معجمٍ مختوم (المخصّص/اللسان) ، لا من المعنى. -/
+abbrev MithalQab := List (Nat × Tayin.QabHaraka)
+
+/-- **حكمُ حملِ حدثٍ** عبر الجسر: إن كان للحدث e مثالُ قابليّةٍ c مودَعٌ فحكمُه حكمُ حمل تلك القابليّة ؛ وإلّا «لا حكم» (م13 ، غيابُ النصّ ليس امتناعًا). -/
+def hukmHadath (m : Madlul) (mq : MithalQab) (e : Nat) : Hukm :=
+  match mq.lookup e with
+  | some c => hukmMadlul ⟨m, .qabiliyya (Tayin.ramzQab c), .isnadiyya⟩
+  | none => .laHukm
+
+/-- غيابُ صفٍّ للحدث ⇒ «لا حكم» (طيرانُ الولد: لا نصَّ يجعل الطيران قابليّةَ إنسان — كشاهد Utur:337). -/
+theorem hukmHadath_none (m : Madlul) (mq : MithalQab) (e : Nat) (h : mq.lookup e = none) :
+    hukmHadath m mq e = .laHukm := by simp only [hukmHadath, h]
+
+/-! ### الجنسُ للكلمة ومدلولُها الموروث (بـ Wiratha ، بلا مسّ walad) -/
+
+/-- جدولُ جنس الكلمة بحقيقتها (مودَع): (20,إنسان) للولد ، (30,جماد) للدار. -/
+abbrev JinsJadwal := List (Nat × Qism)
+
+/-- خواصُّ الكلمة الموروثةُ من فصول جنسها بالتوريث (`warrith` ، فصلٌ فارغ يُبقي فصولَ الجنس — `warrith_farigh`). -/
+def khawassWarith (q : Qism) : Tayin.Khawass := Wiratha.warrith (Tayin.fusul q) {}
+
+/-- **مدلولُ الكلمة الموروث:** حقيقتُه حقيقةُ الكلمة نفسِها (20 لا 4) ، وخواصُّه وقابليّاتُه موروثةٌ من فصول جنسها بالتوريث — بلا قائمةٍ يدًا
+وبلا تعديل `walad`. -/
+def madlulWarith (m : Madlul) (q : Qism) : Madlul :=
+  { m with khawass := Tayin.khawassNaam (khawassWarith q),
+           qabiliyyat := (khawassWarith q).qab.map Tayin.ramzQab }
+
+theorem madlulWarith_haqiqa (m : Madlul) (q : Qism) : (madlulWarith m q).haqiqa = m.haqiqa := rfl
+/-- قابليّاتُ المدلول الموروث = قابليّاتُ حركة الجنس مرمَّزةً (مشتقّةٌ بالتوريث ، `warrith_farigh`). -/
+theorem madlulWarith_qab (m : Madlul) (q : Qism) :
+    (madlulWarith m q).qabiliyyat = (Tayin.fusul q).qab.map Tayin.ramzQab := by
+  simp only [madlulWarith, khawassWarith, Wiratha.warrith_farigh]
+
+/-- **النظريةُ العامّة للجسر:** جنسُ الكلمة q يملك قابليّةَ الحركة c ، والحدثُ e مثالُها بنصّ ⇒ حملُ الحدث على المدلول الموروث **مرخَّص**.
+(المدلولُ الموروث مسندٌ إليه صالح: `ibtidaMadlul` من ind/tim الكلمة.) -/
+theorem tarkhis_hadath (m : Madlul) (q : Qism) (e : Nat) (c : Tayin.QabHaraka) (mq : MithalQab)
+    (hib : ibtidaMadlul ⟨madlulWarith m q, .qabiliyya (Tayin.ramzQab c), .isnadiyya⟩ = true)
+    (hc : mq.lookup e = some c)
+    (hcq : ((Tayin.fusul q).qab.map Tayin.ramzQab).contains (Tayin.ramzQab c) = true) :
+    hukmHadath (madlulWarith m q) mq e = .murakhkhas := by
+  have hf : fiHuqul (madlulWarith m q) (.qabiliyya (Tayin.ramzQab c)) = true := by
+    simp only [fiHuqul, madlulWarith_qab]; exact hcq
+  have hw : waslMadlul ⟨madlulWarith m q, .qabiliyya (Tayin.ramzQab c), .isnadiyya⟩ = .murakhkhas := by
+    simp only [waslMadlul, nisabMahmul, List.contains, List.elem, hf]; rfl
+  simp only [hukmHadath, hc, hukmMadlul, hukmQayd, waqfMadlul, hib, hw, ofBool, damm, beq_self_eq_true, ite_true]
+
+/-- عضويّةُ قابليّةٍ في فصول الجنس ⇒ رمزُها في قابليّات المدلول الموروث (ربطُ العضويّة بالحقول). -/
+theorem mem_qab_contains (q : Qism) (c : Tayin.QabHaraka) (h : c ∈ (Tayin.fusul q).qab) :
+    ((Tayin.fusul q).qab.map Tayin.ramzQab).contains (Tayin.ramzQab c) = true := by
+  have hmem : Tayin.ramzQab c ∈ (Tayin.fusul q).qab.map Tayin.ramzQab := List.mem_map_of_mem h
+  simpa using hmem
+
+/-! ### (٤) الشاهدُ بعينه (الذي سأل عنه المالك) — على الشاهد (decide) ، على ترميز الشاهد الحاليّ (ذهب 10 ، طار 12 ، سير 11) -/
+
+/-- مثالُ القابليّة على الشاهد الحاليّ: «ذهب» (10) مثالُ السير — على أرقام شواهد Utur ، بانتظار ختم نصّ «ذهب=سار/مضى» (OWNER). -/
+def mithalShahid : MithalQab := [(10, .sayr)]
+
+/-- **ذهابُ الولد مرخَّص ، طيرانُه لا حكم ، ذهابُ الدار لا حكم** — من الجنس والخاصّة والجسر ، لا من قائمةٍ. -/
+theorem shawahid_hadath :
+    hukmHadath (madlulWarith Jisr.Utur.walad .insan) mithalShahid 10 = .murakhkhas ∧
+    hukmHadath (madlulWarith Jisr.Utur.walad .insan) mithalShahid 12 = .laHukm ∧
+    hukmHadath (madlulWarith Jisr.Utur.dar .jamad) mithalShahid 10 = .laHukm := by decide
+
+/-- **التقاءُ الطريقين (لا تعارض):** الحكمُ الجديد على (الولد ، ذهب 10) و(الولد ، طار 12) يساوي حكمَ شاهد Utur القائم
+(`madlul_shawahid` :335) — فالترخيصُ المشتقُّ من الجنس والترخيصُ المودَعُ في `walad` يلتقيان. -/
+theorem tawafuq_shahid :
+    hukmHadath (madlulWarith Jisr.Utur.walad .insan) mithalShahid 10
+      = hukmMadlul ⟨Jisr.Utur.walad, .qabiliyya 10, .isnadiyya⟩ ∧
+    hukmHadath (madlulWarith Jisr.Utur.walad .insan) mithalShahid 12
+      = hukmMadlul ⟨Jisr.Utur.walad, .qabiliyya 12, .isnadiyya⟩ := by decide
 
 end Jisr.QabiliyyaJins

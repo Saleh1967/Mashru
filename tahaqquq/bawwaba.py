@@ -145,6 +145,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_qiyas_d.py",
     "tahaqquq/test_qawaid.py",
     "tahaqquq/test_waqi.py",
+    "tahaqquq/test_qabiliyya_jins.py",
     "tahaqquq/test_nabt_vendor.py",
     "tahaqquq/test_nabt_cli.py",
     "tahaqquq/test_nabt_bridge.py",
@@ -789,6 +790,10 @@ def main():
     report.append(f"٥ظ الواقع المختوم والتعريفات: {out.strip().splitlines()[-1] if out.strip() else '?'}")
     if code != 0:
         fails.append("اختبار الواقع المختوم فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_qabiliyya_jins.py"])
+    report.append(f"٥ق الترخيص من خاصّة الجنس: {out.strip().splitlines()[-1] if out.strip() else '?'}")
+    if code != 0:
+        fails.append("اختبار الترخيص من خاصّة الجنس فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_nabt_vendor.py"])
     report.append(f"٥ NABT تثبيت المصدر: {'نجح' if code == 0 else 'فشل'}")
     if code != 0:
