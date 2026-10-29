@@ -1,0 +1,45 @@
+{
+ "adawat": {
+  "Bash": 28,
+  "Read": 1,
+  "Write": 3
+ },
+ "masarat_mutlaqa": [
+  "/",
+  "//",
+  "/S",
+  "/dev/null",
+  "/home/claude/mudaa_dir",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/athar_dabit/mujallad",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/athar_dabit/mujallad/",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/athar_dabit/mujallad/_bina_tmp.py",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/athar_dabit/mujallad/cases.json",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/athar_dabit/mujallad/fahs_cases.py",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/athar_dabit/mujallad/taalif.md",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/athar_dabit/mujallad/tafrat_fahs",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/athar_dabit/mujallad/tafrat_fahs/sawwi.py",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/athar_dabit/mujallad/wasf.md"
+ ],
+ "kharij_al_masmuh": [
+  "/",
+  "//",
+  "/S",
+  "/dev/null",
+  "/home/claude/mudaa_dir"
+ ],
+ "mamnu": [],
+ "qaraa_al_masadir": {
+  "/home/claude/mudaa_dir/qatr.txt": true,
+  "/home/claude/mudaa_dir/alfiyya.txt": true,
+  "/home/claude/mudaa_dir/mughni.txt": true,
+  "/home/claude/mudaa_dir/sibawayhi.txt": true,
+  "/home/claude/mudaa_dir/a2.txt": true
+ },
+ "tafsir_kharij": {
+  "/": "فاصلُ «sed s/…/…/» في أمرٍ يعدّل سكربتَ المؤلّف _bina_tmp.py في مجلّده، لا مسار",
+  "//": "عاملُ القسمة الصحيحة في بايثون (raw[: len(raw) // 2]) في توليد نسخةٍ مكسورة من cases.json، لا مسار",
+  "/S": "فاصلُ «sed s/…/…/» يليه اسمُ دالّةٍ في _bina_tmp.py، لا مسار",
+  "/dev/null": "هدفُ إعادة توجيه مخرج fahs_cases.py، لا قراءة",
+  "/home/claude/mudaa_dir": "هدفُ «cd» قبل sha256sum وawk وpython على المصادر الخمسة بأسمائها النسبيّة"
+ }
+}
