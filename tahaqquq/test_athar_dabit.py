@@ -6,25 +6,27 @@
 ٣. السجلّات: natija_1.json … natija_N.json متتالية، كلٌّ للحالات المجمَّدة. وبصمةُ natija_1.json ثابتةٌ هنا (NATIJA_1)، وكلُّ سجلٍّ بعده يحمل
    بصمةَ ما قبله. وآخرُها لبصمات الشفرة الحاليّة (SHIFRA)، وأعدادُه (ihsa، bil_fia، akhta، azwaj) هي أعدادُ مبرهنات Nizam/AtharQiyas.lean،
    وحقلُ lean هو LEAN_NATIJA بعينها وكلُّ اسمٍ فيه مبرهنةٌ هناك.
+   ٣د. وSHIFRA هي ما يحسبه Lean من البيئة المبنيّة (SHIFRA_LEAN بـ`lake env lean --stdin`): كلُّ ملفٍّ فيه تعريفٌ يبلغه حسابُ `natijaHala`.
 ٤. المجال: أعدادُ المجال بالقيم محسوبةٌ من cases.json هنا (majal_json)، لا من Lean، وهي قائمةُ مبرهنة `majal`؛ وhalat في آخر سجلّ، ومجموعُ كلّ
    فئةٍ في natija_fia عددُ حالاتها.
 ويفحص، إن حضرت المودَعات (MUDAA_DIR) ببصماتها، ولا طفرةَ له لأنّ CI بلا مودَع:
 ٥. كلُّ `sanad.nass` في الحالات في سطره بحذف البادئة وحدها، وسطرُه في نطاق نوع حالته كما تشترط المواصفة؛ ثمّ فاحصُ المؤلّف نفسُه يخرج 0.
 
-الطفرات وقاتلُها (شُغّلت بـtafrat_juz.py على 08a3ba1، 21 من 21، وأُعيدت P1430–P1439 على natija_3.json بعده؛ وعُزل الفحصُ القاتل بتشغيل الاختبار
-تحت كلّ طفرة): على المقارنة يقتلها البناء —
+الطفرات وقاتلُها (شُغّلت P1419–P1439 بـtafrat_juz.py على 08a3ba1، 21 من 21، وعُزل الفحصُ القاتل بتشغيل الاختبار تحت كلّ طفرة؛ ثمّ نُقلت P1430–P1439
+إلى natija_3.json ثمّ إلى natija_4.json، وزيدت P1443، وتشغيلُها بعد النقل يُكتب هنا بعد وقوعه): على المقارنة يقتلها البناء —
 P1419 (`qarin`: «لا حكم» تجاوز، `qarin_shawahid`)، P1428 (لا ردَّ من القارئ، `rafd_shahid`)؛ وعلى المفحوص يقتلها الفحصُ المسمّى وحده: P1420 (بصمةُ
 المواصفة في tajmid.json، ١)، P1421 (بصمةُ مصدرٍ فيه، ١)، P1422 (جملةُ حالةٍ في المولَّد، ٢)، P1423 (جدولُ القوّة في المولِّد، ٢)، P1425 (`natija` بلا أعدادها،
 ٣)، P1427 (`azwaj_1` بغير صيغتها، ٣)، P1429 (`akhta_1` بغير صيغتها، ٣)، P1430 (tashghil، ٣)، P1431 (cases_sha256، ٣)، P1432 (بصمةُ ملفٍّ من الشفرة،
 ٣)، P1433 (bil_fia، ٣)، P1434 (akhta، ٣)، P1435 (azwaj، ٣)، P1436 (حقلُ lean، ٣)، P1437 (halat، ٣)، P1438 (qablaha، ٣)، P1439 (ihsa، ٣)، P1426 (`majal`
-بلا أعدادها، ٤). وP1430–P1439 على natija_3.json (آخرِ سجلّ).
+بلا أعدادها، ٤)، P1443 (الحسابُ من `quwwaJumla` وحدها، ٣د). وP1430–P1439 على natija_4.json (آخرِ سجلّ).
 **أثرُ بصمة الشفرة على غيره:** تشمل ملفّاتٍ لا يبصمها اختبارُ ضابطٍ قبله (منها Jisr/QaydMafhum.lean وJisr/MantuqMafhum.lean وJisr/AqsamAwamil.lean
-وJisr/Awamil.lean وNizam/Silsila.lean)، فكلُّ طفرةٍ مقبلةٍ فيها تنجو من الاختبارات قبله يقتلها فحصُ البصمة في ٣، وهو لا يدلّ على عيبٍ سلوكيّ. وقاتلُ
+وAql/Qaida.lean وDal/Makharij.lean وNizam/Shahada.lean وNizam/Silsila.lean وملفّاتُ المالك في SLGE/)، فكلُّ طفرةٍ مقبلةٍ فيها تنجو من الاختبارات قبله يقتلها فحصُ البصمة في ٣، وهو لا يدلّ على عيبٍ سلوكيّ. وقاتلُ
 طفرةٍ قائمة في ملفّات البصمة قد يتغيّر: إن كان اختبارًا بعد هذا في IKHTIBARAT_TAFRAT (tahaqquq/bawwaba.py)، أو قتلها البناءُ (natayij_1 وشواهدُ
 Nizam/Athar.lean) قبل قاتلها المعلَن؛ ويُرى ذلك في تشغيل الطفرات الكامل على CI.
 **ما لا يُعزل:** P1424 (عدٌّ في natija_1.json) يقتلها فحصان: المرساة NATIJA_1، وqablaha في natija_2.json (٣). ولا طفرةَ على: موازنة أعداد `majal` بما
 في cases.json، ومجموعِ كلّ فئةٍ في `natija_fia` (تغييرُ أعداد المبرهنة يقتله البناء، وcases.json مجمَّدٌ ببصمته)؛ ووجودِ أسماء حقل lean مبرهناتٍ (لم تُبنَ
-طفرتُه: إعادةُ تسمية مبرهنةٍ تُبقي سطرَها في Audit.lean بلا تصريح)؛ وتتالي أرقام السجلّات؛ وفحوصِ ٥ (CI بلا مودَع).
+طفرتُه: إعادةُ تسمية مبرهنةٍ تُبقي سطرَها في Audit.lean بلا تصريح)؛ وتتالي أرقام السجلّات؛ وفحوصِ ٥ (CI بلا مودَع)؛ وتركِ أجسام المبرهنات في
+SHIFRA_LEAN (اتّباعُها لا يغيّر الحسابَ اليوم: واحدٌ وأربعون في الحالين، رُصد في الجلسة). و٣د يحتاج `lake` والبيئةَ المبنيّة، ويفشل بلاهما باسمه.
 التشغيل: python3 -I tahaqquq/test_athar_dabit.py
 """
 import hashlib
@@ -37,12 +39,52 @@ import sys
 
 JADHR = pathlib.Path(__file__).resolve().parent.parent
 D = JADHR / "tahaqquq" / "dawabit" / "athar"
-# بصمةُ الشفرة: ملفّاتُ ما يحسب الحقلين مباشرةً (القوّة والقيد وقراءةُ الجملة وإطارُها وحكمُه)، لا كلُّ ما تستورده. وفي natija_1.json خمسةٌ منها
-# (الشفرةُ المجمَّدة)، وثلاثةَ عشرَ في natija_2.json، وخمسةَ عشرَ منذ natija_3.json (زيد Jisr/QawaidSitta.lean وJisr/QawaidJadwal.lean).
-SHIFRA = ["Nizam/Athar.lean", "Nizam/AtharDabit.lean", "Nizam/Silsila.lean", "Jisr/NassItar.lean", "Dal/QiraaTahsil.lean",
-          "Dal/Tahsil.lean", "Jisr/Utur.lean", "Jisr/SakkJumla.lean", "Jisr/Awamil.lean", "Jisr/AwamilJadwal.lean",
-          "Jisr/AqsamAwamil.lean", "Jisr/MantuqMafhum.lean", "Jisr/QaydMafhum.lean", "Jisr/QawaidSitta.lean",
-          "Jisr/QawaidJadwal.lean"]
+# بصمةُ الشفرة: كلُّ ملفٍّ فيه تعريفٌ يبلغه حسابُ `natijaHala` (قيمُ التعريفات وأنواعُها، لا أجسامُ المبرهنات)، يحسبها ٣د بـLean من البيئة المبنيّة
+# (SHIFRA_LEAN) فتُقارَن بهذه القائمة؛ ومنها ملفّاتُ المالك في SLGE وملفُّ Nabt المنقول. وفي natija_1.json خمسةٌ (الشفرةُ المجمَّدة)، وثلاثةَ عشرَ في
+# natija_2.json، وخمسةَ عشرَ في natija_3.json باختيار البنّاء، وواحدٌ وأربعون منذ natija_4.json بالحساب.
+SHIFRA = ["Aql/Qaida.lean", "Dal/Jumla.lean", "Dal/Khaliya.lean", "Dal/Makharij.lean", "Dal/QiraaTahsil.lean", "Dal/Tahsil.lean",
+          "Jisr/AqsamAwamil.lean", "Jisr/AwamilJadwal.lean", "Jisr/AwamilUslub.lean", "Jisr/Ikhbar.lean", "Jisr/JisrDal.lean",
+          "Jisr/MantuqMafhum.lean", "Jisr/Mulhaqat.lean", "Jisr/NassItar.lean", "Jisr/Nisab.lean", "Jisr/QawaidJadwal.lean",
+          "Jisr/QawaidSitta.lean", "Jisr/QaydMafhum.lean", "Jisr/SakkJumla.lean", "Jisr/Utur.lean", "Nabt/UnitDiscovery.lean",
+          "Nizam/Athar.lean", "Nizam/AtharDabit.lean", "Nizam/Shahada.lean", "Nizam/Silsila.lean", "SLGE/Category.lean", "SLGE/Core.lean",
+          "SLGE/Hamza.lean", "SLGE/Kull.lean", "SLGE/Ladder.lean", "SLGE/Law.lean", "SLGE/Madlul.lean", "SLGE/MadlulAwwalan.lean",
+          "SLGE/Maqam.lean", "SLGE/Muwahhad.lean", "SLGE/Necessity.lean", "SLGE/Simat.lean", "SLGE/Simat2.lean", "SLGE/Tarkib.lean",
+          "SLGE/TarkibLit.lean", "SLGE/Wad.lean"]
+# يُقرأ بـ `lake env lean --stdin` على البيئة المبنيّة: وحداتُ المشروع التي فيها ثابتٌ يبلغه حسابُ `natijaHala`.
+SHIFRA_LEAN = """import Lean
+import Nizam.AtharDabit
+open Lean
+
+partial def wahdat : CoreM (Array Name) := do
+  let env ← getEnv
+  let mut seen : NameSet := {}
+  let mut st : Array Name := #[`Nizam.Athar.Dabit.natijaHala]
+  let mut mods : NameSet := {}
+  while st.size > 0 do
+    let c := st.back!
+    st := st.pop
+    if seen.contains c then continue
+    seen := seen.insert c
+    let some ci := env.find? c | continue
+    if let some idx := env.getModuleIdxFor? c then
+      mods := mods.insert env.header.moduleNames[idx.toNat]!
+    let uses : Array Name := match ci with
+      | .thmInfo _ => #[]
+      | .defnInfo v => v.type.getUsedConstants ++ v.value.getUsedConstants
+      | .opaqueInfo v => v.type.getUsedConstants ++ v.value.getUsedConstants
+      | .inductInfo v => v.type.getUsedConstants ++ v.ctors.toArray
+      | .ctorInfo v => v.type.getUsedConstants.push v.induct
+      | .recInfo v => v.type.getUsedConstants ++ v.all.toArray
+      | ci => ci.type.getUsedConstants
+    for u in uses do
+      if !seen.contains u then st := st.push u
+  return mods.toArray
+
+#eval show CoreM Unit from do
+  for m in (← wahdat) do
+    let s := m.toString
+    if !(s.startsWith "Init" || s.startsWith "Std" || s.startsWith "Lean") then IO.println s
+"""
 QIYAS = JADHR / "Nizam/AtharQiyas.lean"
 BINA = JADHR / "scripts/bina_dawabit_athar.py"
 MASADIR = {
@@ -171,6 +213,16 @@ if akhir:
         tahaqqaq(ism.startswith(NS) and re.search(r"^theorem %s\b" % re.escape(qasir), qiyas, re.M) is not None,
                  f"{natayij[-1].name}: «{ism}» ليست مبرهنةً في Nizam/AtharQiyas.lean")
     tahaqqaq(akhir["halat"] == len(halat), f"{natayij[-1].name}: halat غيرُ ما في cases.json")
+
+# ٣د. بصمةُ الشفرة محسوبةٌ: ما يبلغه حسابُ natijaHala هو SHIFRA
+try:
+    r = subprocess.run(["lake", "env", "lean", "--stdin"], input=SHIFRA_LEAN, cwd=JADHR, capture_output=True, text=True, timeout=900)
+    hisab = sorted(x.replace(".", "/") + ".lean" for x in r.stdout.split() if x)
+    tahaqqaq(r.returncode == 0 and hisab == sorted(SHIFRA),
+             f"SHIFRA غيرُ ما يبلغه حسابُ natijaHala: زائدٌ {sorted(set(SHIFRA) - set(hisab))}، ناقصٌ {sorted(set(hisab) - set(SHIFRA))}"
+             + ("" if r.returncode == 0 else "؛ " + r.stderr[-300:]))
+except (FileNotFoundError, subprocess.TimeoutExpired) as e:
+    tahaqqaq(False, f"تعذّر حسابُ SHIFRA بـlake: {e}")
 
 # ٤. المجال من cases.json وحده
 m = re.search(r"theorem majal : majalAadad halat = \[([\d, ]+)\]", qiyas)
