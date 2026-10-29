@@ -7644,10 +7644,10 @@
   "ila": "def ismMaqta (m : Dal.Tahsil.Maqta) : String := \"مقطع \" ++ toString (m.i)"
  },
  {
-  "ism": "P1377_silsila_badail_hiya_makhraj",
+  "ism": "P1377_silsila_badail_tashmal_mumtani",
   "milaf": "Nizam/Silsila.lean",
-  "min": "    (fs.map (·.1)).filter (· != makhraj)",
-  "ila": "    (fs.map (·.1)).filter (· == makhraj)"
+  "min": "((fs.filter fun f => !mumtaniB f.2).map (·.1)).filter (· != makhraj)",
+  "ila": "(fs.map (·.1)).filter (· != makhraj)"
  },
  {
   "ism": "P1378_silsila_bidayat_kalima",
@@ -7690,5 +7690,11 @@
   "milaf": "Nizam/Silsila.lean",
   "min": "  if kullMaqrua t then n\n",
   "ila": "  if true then n\n"
+ },
+ {
+  "ism": "P1385_silsila_itar_muallaq_manfi",
+  "milaf": "Nizam/Silsila.lean",
+  "min": "      fun x => ⟨x, .shart, .ghayrMafhus, sanadNass⟩",
+  "ila": "      fun x => ⟨x, .shart, .manfi, sanadNass⟩"
  }
 ]

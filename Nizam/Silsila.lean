@@ -1,12 +1,12 @@
 /-
   Nizam/Silsila.lean — الجسرُ الجامع: سلسلةُ شهاداتٍ موصولةٌ لكلّ انتقال، من مقاطع التحصيل إلى حكم الجملة.
 
-  **القول.** رسالةُ المالك 2026-10-29 (11:10 بتوقيت عمّان)، وصدرُها بنصّه:
+  **القول.** رسالةُ المالك 2026-10-29، ووقتُها (11:10 بتوقيت عمّان) وصدرُها من ملخّص الجلسة بعد ضغطها (لا الرسالةُ الخامّ)؛ وصدرُها فيه بنصّه:
   «الجسر الجامع المطلوب لكل انتقال هو شهادة مرتبطة بالعملية نفسها: صحة المدخل ∧ مقدمات القاعدة المكتسبة ∧ مطابقة المصدر والمقام ⟹ صحة
-  المخرج ضمن النطاق؛ وتحمل كل عقدة: مصدرها وموضعها، والمدخل والمخرج، وهوية القاعدة، وشهادات مقدماتها، والبدائل الباقية، وحدود الدعوى»،
-  وفيها أولويّاتٌ خمس (إغلاقُ التحصيل؛ وصلُ السمات بالإطار وعائلةُ الأسماء الستّة؛ وصلُ القرائن بشهادات وتمييزُ «المانع غير موجود» عن «لم
-  نفحص وجوده»؛ وصلُ التحليل بصكّ الجملة؛ والقياسُ على مراجع مستقلّة)، وآخرُها: «ابني البرهان والشيفرة المتكاملة والمترابطة والمتناسقة لتحقيق
-  الذكاء الاصطناعي التفسيري». والتصميمُ قرارُ البنّاء.
+  المخرج ضمن النطاق؛ وتحمل كل عقدة: مصدرها وموضعها، والمدخل والمخرج، وهوية القاعدة، وشهادات مقدماتها، والبدائل الباقية، وحدود الدعوى»؛
+  وفيها أولويّاتٌ خمس، بمعناها من الملخّص لا بلفظها: إغلاقُ التحصيل، ووصلُ السمات بالإطار وعائلةُ الأسماء الستّة، ووصلُ القرائن بشهاداتٍ
+  وتمييزُ أنّ المانع غيرُ موجود عن أنّه لم يُفحص وجودُه، ووصلُ التحليل بصكّ الجملة، والقياسُ على مراجع مستقلّة؛ وآخرُها بنصّه: «ابني البرهان
+  والشيفرة المتكاملة والمترابطة والمتناسقة لتحقيق الذكاء الاصطناعي التفسيري». والتصميمُ وتعييناتُه قرارُ البنّاء.
 
   **ما كان.** العقدُ (`Nizam/Shahada.lean`) مطبَّقٌ على مقاطع التحصيل وحدها (`Dal.Tahsil.shahada`)، والقارئُ يحمل لكلّ خليّةٍ شهادةَ مقطعها
   (`Dal.QiraaTahsil.qiraa_shahada`). أمّا الكلمةُ والإطارُ وحكمُ الأسماء الستّة (`Jisr.QawaidSitta.hukmSitta`) وحكمُ الجملة
@@ -14,21 +14,27 @@
   مدخله.
 
   **ما صار.**
-  * **الرفع** (`rafa`): حكمُ عقدةٍ ابنٍ يصير مقدّماتِ «صحّة المدخل» في أبيها: المرخَّصُ مشهود، والمعلَّقُ مقدّماتٌ لم تُفحص بأسماء نقصه مسبوقةً
-    باسم الابن، وما سواهما منفيٌّ باسم سببه. فـ**الترخيصُ لا يعلو أبناءه** (`abna_murakhkhas`): لا تُرخَّص عقدةٌ إلّا وكلُّ ابنٍ لها مرخَّص؛
-    و**النقصُ ظاهرٌ باسمه** (`naqs_zahir`): مقدّمةٌ لم تُفحص في ابنٍ تمنع ترخيصَ أبيه وتبقى في مقدّماته باسمها.
-  * **عقدةُ الإطار** (`uqdaItar`): مقدّماتُ مدخلها كلماتُ الإطار مرفوعة، وشرطُها حدُّ الطبقة (`Utur.fiHadd`)، وموانعُها مكوّناتُ `hukmSitta` الستّة
-    بأسمائها: المكوّنُ المرخِّص مانعٌ **فُحص فانتفى**، والممتنعُ مانعٌ مشهود، و«لا حكم» مانعٌ **لم يُفحص** (`halUtur`). ومع كلماتٍ مرخَّصة
-    حكمُ الفاحص عليها هو `hukmSitta` بأقسامه الثلاثة (`itar_murakhkhas`، `itar_mumtani`، `itar_laHukm`) — فالتمييزُ مبرهنٌ على ما يقوله
-    `hukmSitta` نفسُه، لا دعوى فوقه.
-  * **عقدةُ الجملة** (`uqdaJumla`): مقدّماتُها كلماتُها مرفوعة، وإطارٌ مرخَّصٌ شرطًا مشهودًا إن وُجد (والبدائلُ الباقيةُ الإطاراتُ الأخرى)، وإلّا
-    مانعٌ مشهودٌ إن امتنعت الإطاراتُ كلُّها، أو شرطٌ منفيٌّ إن لم يكن إطار، أو الإطاراتُ المعلَّقةُ بأسماء نقصها. ومع كلماتٍ مرخَّصة وإطاراتٍ
-    على حكمها: حكمُ الفاحص هو `hukmNass` بأقسامه (`jumla_murakhkhas`، `jumla_mumtani`، `jumla_laHukm`).
+  * **الرفع** (`rafa`): حكمُ الفاحص على عقدةٍ ابنٍ يصير مقدّماتِ «صحّة المدخل» في أبيها: المرخَّصُ مشهود، والمعلَّقُ مقدّماتٌ لم تُفحص بأسماء
+    نقصه مسبوقةً باسم الابن، وما سواهما (ومنه عدمُ الانطباق) منفيٌّ باسم سببه — فيصير الأبُ «مدخلًا فاسدًا» باسمه (تعيينٌ: كلمةٌ ردّها القارئ مدخلٌ
+    فاسدٌ للجملة). فـ**الترخيصُ لا يعلو أبناءه** (`abna_murakhkhas`)، و**النقصُ ظاهرٌ باسمه** (`naqs_zahir`)، و**الحكمُ الحاسمُ يسمّي مقدّمتَه**
+    (`hasim_ism`).
+  * **عقدةُ الكلمة** (`uqdaKalima`): شهاداتُ مقاطع تحصيلها مرفوعةً، وقراءةُ القارئ شرطًا (`kalima_murakhkhas`).
+  * **عقدةُ الإطار** (`uqdaItar`): كلماتُ الجملة مرفوعةً، وحدُّ الطبقة (`Utur.fiHadd`) شرطًا، ومكوّناتُ `hukmSitta` الستّة موانعَ بأسمائها؛ وحالُ المانع
+    **تعيينُ البنّاء** (`halUtur`): المكوّنُ المرخِّص مانعٌ فُحص فانتفى، والممتنعُ مشهود، و«لا حكم» لم يُفحص — وقد يكون لـ«لا حكم» المكوّن سببٌ مسمّى
+    عند `Jisr.Utur` (`SababLaHukm`)، فـ«لم يُفحص» هنا أنّ المانعَ لم يُحسم، لا أنّ شيئًا لم يُنظر فيه. وبفرض ربط العقدة وكلماتٍ مرخَّصةٍ غيرِ فارغة،
+    حكمُ الفاحص هو `hukmSitta` في الترخيص والامتناع (`itar_murakhkhas`، `itar_mumtani`)، و«لا حكم» فيه عدمُ انطباقٍ أو تعليق (`itar_laHukm`)؛
+    وأيُّهما وبأيّ اسمٍ من `itar_ahwal`.
+  * **عقدةُ الجملة** (`uqdaJumla`): كلماتُها مرفوعةً، ثمّ إطاراتُها **بأحكام الفاحص على شهاداتها** (`uturNatija`): إطارٌ مرخَّصٌ شرطًا مشهودًا ومخرجُه
+    أدوارُه والبدائلُ الباقيةُ أدوارُ الإطارات الأخرى غيرِ الممتنعة؛ وإلّا الإطاراتُ كلُّها ممتنعةٌ مانعًا مشهودًا، أو لا إطارَ شرطًا منفيًّا، أو الإطاراتُ
+    غيرُ الممتنعة مرفوعةً بشهاداتها (`rafaItar`: المعلَّقُ شروطٌ لم تُفحص بأسماء نقصه، وغيرُ المنطبق شرطٌ منفيّ). وبالفروض نفسِها حكمُها هو `jamaa`
+    على أحكام إطاراتها الثلاثيّة إذا قابلتها أحكامُ الفاحص (`jumla_natija`، `jumla_jamaa`).
+  * **السلسلةُ التامّة من النصّ** (`silsila_murakhkhas`): بفرض ربط الجملة وكلماتها، ترخيصُ الجملة هو أن تكون لها كلمة، وكلُّ مقطعٍ من كلّ كلمةٍ مرخَّصًا،
+    وكلُّ كلمةٍ مقروءة، و`hukmNass` مقبولًا. وربطُ الإطار ربطُ الجملة (`uqdaU_marbut`).
 
-  **حدُّه.** الرفعُ والعقدتان بناءٌ على أحكامٍ قائمة: لا قاعدةَ لغويّةً جديدة، ولا يرفع «لا حكم» إلى حكم؛ وإنّما يسمّي ما نقص ويمنع ترخيصًا بلا
-  مقدّماته. وصحّةُ الأحكام نفسِها لغةً ما شهدت به قطعُها (الضوابطُ المجمَّدة وحدودُها). والكلمةُ هنا ما يسلّمه القارئ، وشهادتُها مقاطعُ التحصيل
-  (`qiraa_shahada`)؛ ووسائطُ القارئ تُرفع بحكم مقطعها (تعليقٌ إن كان معلَّقًا). وتنفيذُ السلسلة على النصّ
-  `Qari/Silsila.lean` (التنفيذيّ `silsila`)، ويفحصه `tahaqquq/test_silsila.py`.
+  **حدُّه.** الرفعُ والعقدُ بناءٌ على أحكامٍ قائمة: لا قاعدةَ لغويّةً جديدة، ولا يرفع «لا حكم» إلى حكم؛ وإنّما يسمّي ما نقص ويمنع ترخيصًا بلا
+  مقدّماته. وصحّةُ الأحكام نفسِها لغةً ما شهدت به قطعُها (الضوابطُ المجمَّدة وحدودُها)، فمخرجُ الجملة (أدوارُ الإطار) سلوكُ المحرّك لا تعيينٌ صحيحٌ
+  للأدوار. والكلمةُ تُقرأ في الوصل وحده؛ وربطُ الكلمات فرضٌ يطبعه التنفيذيّ؛ والإطاراتُ من `Jisr.NassItar.itarat` داخلَ الحدّ فيما رُصد، ففرعُ
+  الإطار غيرِ المنطبق في الجملة لم يمسّه نصّ. وتنفيذُ السلسلة على النصّ `Qari/Silsila.lean` (التنفيذيّ `silsila`)، ويفحصه `tahaqquq/test_silsila.py`.
 -/
 import Jisr.NassItar
 import Dal.QiraaTahsil
@@ -431,8 +437,8 @@ theorem itar_mumtani (src sp md ad) (kalimat : List (String × Natija)) (u : Jis
   · obtain ⟨h1, _, _⟩ := hin hf
     simp only [ite_true, dammKull_mumtani, ne_eq, h1, Classical.not_not]
 
-/-- **«لا حكم» في `hukmSitta` شهادةٌ تسمّي سببه:** خارجَ الحدّ شرطٌ منفيٌّ باسم أسبابه، وداخلَه موانعُ لم تُفحص بأسمائها — لا مانعٌ
-    منتفٍ. -/
+/-- **«لا حكم» في `hukmSitta` عدمُ انطباقٍ أو تعليقٌ في الشهادة** (بربط العقدة وكلماتٍ مرخَّصةٍ غيرِ فارغة). وأيُّهما فمن `itar_ahwal`: خارجَ الحدّ
+    شرطٌ منفيٌّ باسم أسبابه، وداخلَه موانعُ «لا حكم» بأسمائها، وحالُها «لم يُفحص» بتعريف `halUtur` (`halUtur_ghayr`). -/
 theorem itar_laHukm (src sp md ad) (kalimat : List (String × Natija)) (u : Jisr.Utur.Itar3)
     (hb : (uqdaItar src sp md ad kalimat u).marbut = true)
     (hk : kalimat ≠ []) (hall : ∀ c ∈ kalimat, c.2 = .murakhkhas) :
@@ -443,30 +449,66 @@ theorem itar_laHukm (src sp md ad) (kalimat : List (String × Natija)) (u : Jisr
   exact laHukm_min_ithnayn _ _ ⟨M, S, Q, he⟩ (itar_murakhkhas src sp md ad kalimat u hb hk hall)
     (itar_mumtani src sp md ad kalimat u hb hk hall)
 
-/-! ## ٥. عقدةُ الجملة: إطارٌ مقبولٌ والبدائلُ الباقية -/
+/-! ## ٥. عقدةُ الجملة: إطاراتُها بشهاداتها -/
 
 def sanadNass : String := "Jisr.NassItar.hukmNass"
 def ismLaItar : String := "إطارٌ في المجال (Jisr.NassItar.itarat)"
 def ismKulluhaMumtani : String := "الإطاراتُ كلُّها ممتنعة"
 
-/-- مقدّماتُ الجملة بعد كلماتها: إطارٌ مقبولٌ شرطًا مشهودًا؛ وإلّا: لا إطار شرطٌ منفيّ، وكلُّها ممتنعٌ مانعٌ مشهود، وما سوى ذلك الإطاراتُ
-    التي لا حكمَ فيها شروطًا لم تُفحص. -/
-def baqiJumla (fs : List (String × Hukm)) : List Muqaddima :=
+def mumtaniB : Natija → Bool
+  | .mumtani _ => true
+  | _ => false
+
+theorem mumtaniB_iff (v : Natija) : mumtaniB v = true ↔ ∃ x, v = .mumtani x := by
+  cases v <;> simp [mumtaniB]
+
+/-- **رفعُ الإطار في الجملة:** حكمُ الفاحص على شهادة الإطار — المعلَّقُ شروطٌ لم تُفحص بأسماء نقصه مسبوقةً باسم الإطار، وغيرُ المنطبق والفاسدُ
+    شرطٌ منفيٌّ باسم سببه؛ والمرخَّصُ والممتنعُ لا يُرفعان هنا: لهما في `baqiJumla` فرعاهما. -/
+def rafaItar (ism : String) : Natija → List Muqaddima
+  | .murakhkhas => []
+  | .mumtani _ => []
+  | .muallaq l => (if l.isEmpty then [ism] else l.map (fun x => ism ++ " ← " ++ x)).map
+      fun x => ⟨x, .shart, .ghayrMafhus, sanadNass⟩
+  | .laTantabiq x => [⟨ism ++ " ← " ++ x, .shart, .manfi, sanadNass⟩]
+  | .madkhalFasid x => [⟨ism ++ " ← " ++ x, .shart, .manfi, sanadNass⟩]
+  | .ghayrMarbut => [⟨ism ++ " ← غير مربوط", .shart, .manfi, sanadNass⟩]
+
+theorem rafaItar_hal (s : String) (v : Natija) :
+    ∀ m ∈ rafaItar s v, m.naw = .shart ∧ (m.halFiil = .manfi ∨ m.halFiil = .ghayrMafhus) := by
+  intro m hm
+  cases v with
+  | muallaq l =>
+    simp only [rafaItar, List.mem_map] at hm
+    obtain ⟨x, _, rfl⟩ := hm
+    simp [Muqaddima.halFiil, sanadNass]
+  | murakhkhas => simp [rafaItar] at hm
+  | mumtani _ => simp [rafaItar] at hm
+  | _ => simp only [rafaItar, List.mem_singleton] at hm; subst hm; simp [Muqaddima.halFiil, sanadNass]
+
+theorem rafaItar_ne (s : String) (v : Natija) (h1 : v ≠ .murakhkhas) (h2 : mumtaniB v = false) : rafaItar s v ≠ [] := by
+  cases v <;> simp_all [rafaItar, mumtaniB]
+  split <;> simp_all
+
+/-- مقدّماتُ الجملة بعد كلماتها: إطارٌ مرخَّصٌ شرطًا مشهودًا؛ وإلّا: لا إطار شرطٌ منفيّ، وكلُّها ممتنعٌ مانعٌ مشهود، وما سوى ذلك الإطاراتُ غيرُ
+    الممتنعة مرفوعةً بشهاداتها (`rafaItar`). -/
+def baqiJumla (fs : List (String × Natija)) : List Muqaddima :=
   match fs.find? (fun f => f.2 == .murakhkhas) with
   | some f => [⟨"إطارٌ مقبول: " ++ f.1, .shart, .mashhud, sanadNass⟩]
   | none =>
     if fs = [] then [⟨ismLaItar, .shart, .manfi, sanadNass⟩]
-    else if fs.all (fun f => f.2 == .mumtani) then [⟨ismKulluhaMumtani, .mani, .mashhud, sanadNass⟩]
-    else (fs.filter fun f => f.2 == .laHukm).map fun f => ⟨"إطار " ++ f.1, .shart, .ghayrMafhus, sanadNass⟩
+    else if fs.all (fun f => mumtaniB f.2) then [⟨ismKulluhaMumtani, .mani, .mashhud, sanadNass⟩]
+    else fs.flatMap fun f => rafaItar ("إطار " ++ f.1) f.2
 
-/-- **عقدةُ الجملة:** كلماتُها مرفوعةٌ ثمّ إطاراتُها؛ والمخرجُ أدوارُ الإطار المقبول، والبدائلُ الباقيةُ أدوارُ الإطارات الأخرى. -/
+/-- **عقدةُ الجملة:** كلماتُها مرفوعةٌ ثمّ إطاراتُها بأحكام الفاحص على شهاداتها؛ والمخرجُ أدوارُ الإطار المرخَّص، والبدائلُ الباقيةُ أدوارُ
+    الإطارات الأخرى غيرِ الممتنعة. -/
 def uqdaJumla (src : Nabt.UnitDiscovery.Source Char) (sp : Nabt.UnitDiscovery.Span) (madkhal : String)
-    (kalimat : List (String × Natija)) (fs : List (String × Hukm)) : Naqla String String :=
+    (kalimat : List (String × Natija)) (fs : List (String × Natija)) : Naqla String String :=
   let makhraj := match fs.find? (fun f => f.2 == .murakhkhas) with | some f => f.1 | none => ""
   ⟨src, sp, madkhal, makhraj, ⟨"Jisr.NassItar.hukmNass", 1⟩, rafaKull kalimat ++ baqiJumla fs,
-    (fs.map (·.1)).filter (· != makhraj), "حكمُ الجملة جمعُ أحكام إطاراتها (Jisr.NassItar.jamaa)"⟩
+    ((fs.filter fun f => !mumtaniB f.2).map (·.1)).filter (· != makhraj),
+    "حكمُ الجملة جمعُ أحكام إطاراتها (Jisr.NassItar.jamaa)"⟩
 
-theorem baqiJumla_naw (fs : List (String × Hukm)) : ∀ m ∈ baqiJumla fs, m.naw ≠ .madkhal := by
+theorem baqiJumla_naw (fs : List (String × Natija)) : ∀ m ∈ baqiJumla fs, m.naw ≠ .madkhal := by
   intro m hm
   unfold baqiJumla at hm
   split at hm
@@ -475,7 +517,8 @@ theorem baqiJumla_naw (fs : List (String × Hukm)) : ∀ m ∈ baqiJumla fs, m.n
     · simp only [List.mem_singleton] at hm; subst hm; simp
     · split at hm
       · simp only [List.mem_singleton] at hm; subst hm; simp
-      · simp only [List.mem_map] at hm; obtain ⟨_, _, rfl⟩ := hm; simp
+      · obtain ⟨f, _, hmf⟩ := List.mem_flatMap.1 hm
+        rw [(rafaItar_hal _ _ m hmf).1]; simp
 
 theorem jamaa_murakhkhas (hs : List Hukm) : Jisr.NassItar.jamaa hs = .murakhkhas ↔ Hukm.murakhkhas ∈ hs := by
   unfold Jisr.NassItar.jamaa
@@ -500,80 +543,119 @@ theorem jamaa_mumtani (hs : List Hukm) :
       simp only [reduceCtorEq, false_iff, not_and]
       exact h'
 
-/-- **حكمُ الجملة بالشهادة هو `jamaa`:** على كلماتٍ مرخَّصة، ترخيصُ الجملة ترخيصُ `jamaa` لأحكام إطاراتها، وامتناعُها امتناعُه، و«لا حكم»
-    فيه شرطٌ منفيٌّ (لا إطار) أو تعليقٌ بأسماء الإطارات التي لا حكمَ فيها. -/
-theorem jumla_jamaa (src sp md) (kalimat : List (String × Natija)) (fs : List (String × Hukm))
+/-- **حكمُ الجملة على أحكام الفاحص على إطاراتها:** بكلماتٍ مرخَّصة، تُرخَّص الجملة إذا وفقط إذا رُخِّص إطار، وتمتنع إذا وفقط إذا امتنعت
+    إطاراتُها كلُّها ولم تخلُ. -/
+theorem jumla_natija (src sp md) (kalimat : List (String × Natija)) (fs : List (String × Natija))
     (hb : (uqdaJumla src sp md kalimat fs).marbut = true) (hk : kalimat ≠ []) (hall : ∀ c ∈ kalimat, c.2 = .murakhkhas) :
-    (hukm (uqdaJumla src sp md kalimat fs) = .murakhkhas ↔ Jisr.NassItar.jamaa (fs.map (·.2)) = .murakhkhas) ∧
-    ((∃ x, hukm (uqdaJumla src sp md kalimat fs) = .mumtani x) ↔ Jisr.NassItar.jamaa (fs.map (·.2)) = .mumtani) ∧
-    (Jisr.NassItar.jamaa (fs.map (·.2)) = .laHukm ↔
-      (∃ x, hukm (uqdaJumla src sp md kalimat fs) = .laTantabiq x) ∨
-      ∃ l, hukm (uqdaJumla src sp md kalimat fs) = .muallaq l) := by
+    (hukm (uqdaJumla src sp md kalimat fs) = .murakhkhas ↔ Natija.murakhkhas ∈ fs.map (·.2)) ∧
+    ((∃ x, hukm (uqdaJumla src sp md kalimat fs) = .mumtani x) ↔
+      fs.map (·.2) ≠ [] ∧ ∀ v ∈ fs.map (·.2), mumtaniB v = true) := by
   have he := uqda_madkhal (uqdaJumla src sp md kalimat fs) kalimat _ rfl hb hk hall (baqiJumla_naw fs)
   obtain ⟨hmn, hsh, hq⟩ := ahwal_baqi (uqdaJumla src sp md kalimat fs) kalimat (baqiJumla fs) rfl hall
-  have h12 : (hukm (uqdaJumla src sp md kalimat fs) = .murakhkhas ↔ Jisr.NassItar.jamaa (fs.map (·.2)) = .murakhkhas) ∧
-      ((∃ x, hukm (uqdaJumla src sp md kalimat fs) = .mumtani x) ↔ Jisr.NassItar.jamaa (fs.map (·.2)) = .mumtani) := by
-    rw [he, baad_murakhkhas, baad_mumtani, jamaa_murakhkhas, jamaa_mumtani]
-    cases hf : fs.find? (fun f => f.2 == .murakhkhas) with
-    | some f =>
-      have hbj : baqiJumla fs = [⟨"إطارٌ مقبول: " ++ f.1, .shart, .mashhud, sanadNass⟩] := by simp [baqiJumla, hf]
-      rw [hbj] at hmn hsh hq
-      have hfm : Hukm.murakhkhas ∈ fs.map (·.2) :=
-        List.mem_map.2 ⟨f, List.mem_of_find?_eq_some hf, by simpa using List.find?_some hf⟩
+  rw [he, baad_murakhkhas, baad_mumtani]
+  have hallM : (∀ v ∈ fs.map (·.2), mumtaniB v = true) ↔ fs.all (fun f => mumtaniB f.2) = true := by
+    rw [List.all_eq_true]
+    constructor
+    · intro h f hf; exact h _ (List.mem_map.2 ⟨f, hf, rfl⟩)
+    · intro h v hv; obtain ⟨f, hf, rfl⟩ := List.mem_map.1 hv; exact h f hf
+  cases hf : fs.find? (fun f => f.2 == .murakhkhas) with
+  | some f =>
+    have hbj : baqiJumla fs = [⟨"إطارٌ مقبول: " ++ f.1, .shart, .mashhud, sanadNass⟩] := by simp [baqiJumla, hf]
+    rw [hbj] at hmn hsh hq
+    have hfs := List.mem_of_find?_eq_some hf
+    have hf2 : f.2 = .murakhkhas := by simpa using List.find?_some hf
+    have hfm : Natija.murakhkhas ∈ fs.map (·.2) := List.mem_map.2 ⟨f, hfs, hf2⟩
+    have hM := hmn.2 (fun m hm hn => by rw [List.mem_singleton] at hm; subst hm; cases hn)
+    have hS := hsh.2 (fun m hm _ => by rw [List.mem_singleton] at hm; subst hm; simp [Muqaddima.halFiil, sanadNass])
+    have hQ := hq.2 (fun m hm => by rw [List.mem_singleton] at hm; subst hm; simp [Muqaddima.halFiil, sanadNass])
+    simp [hM, hS, hQ, hfm]
+    intro _
+    exact ⟨_, ⟨f.1, hfs⟩, by rw [hf2]; rfl⟩
+  | none =>
+    have hnm : Natija.murakhkhas ∉ fs.map (·.2) := by
+      simp only [List.mem_map, not_exists, not_and]
+      intro f hfm e
+      have := List.find?_eq_none.1 hf f hfm
+      simp [e] at this
+    by_cases he0 : fs = []
+    · subst he0
+      have hbj : baqiJumla [] = [⟨ismLaItar, .shart, .manfi, sanadNass⟩] := by simp [baqiJumla]
+      rw [hbj] at hmn hsh
       have hM := hmn.2 (fun m hm hn => by rw [List.mem_singleton] at hm; subst hm; cases hn)
-      have hS := hsh.2 (fun m hm _ => by rw [List.mem_singleton] at hm; subst hm; simp [Muqaddima.halFiil, sanadNass])
-      have hQ := hq.2 (fun m hm => by rw [List.mem_singleton] at hm; subst hm; simp [Muqaddima.halFiil, sanadNass])
-      simp [hM, hS, hQ, hfm]
-    | none =>
-      have hnm : Hukm.murakhkhas ∉ fs.map (·.2) := by
-        simp only [List.mem_map, not_exists, not_and]
-        intro f hfm e
-        have := List.find?_eq_none.1 hf f hfm
-        simp [e] at this
-      by_cases he0 : fs = []
-      · subst he0
-        have hbj : baqiJumla [] = [⟨ismLaItar, .shart, .manfi, sanadNass⟩] := by simp [baqiJumla]
-        rw [hbj] at hmn hsh
-        have hM := hmn.2 (fun m hm hn => by rw [List.mem_singleton] at hm; subst hm; cases hn)
-        have hS : awwalNaqid (uqdaJumla src sp md kalimat []) .shart ≠ none :=
-          fun h => hsh.1 h _ (List.mem_singleton_self _) rfl (by simp [Muqaddima.halFiil, sanadNass])
-        simp [hM, hS]
-      · by_cases ha : fs.all (fun f => f.2 == .mumtani) = true
-        · have hbj : baqiJumla fs = [⟨ismKulluhaMumtani, .mani, .mashhud, sanadNass⟩] := by
-            simp [baqiJumla, hf, he0, ha]
-          rw [hbj] at hmn
-          have hM : awwalNaqid (uqdaJumla src sp md kalimat fs) .mani ≠ none :=
-            fun h => hmn.1 h _ (List.mem_singleton_self _) rfl (by simp [Muqaddima.halFiil, sanadNass])
-          have hall' : ∀ h ∈ fs.map (·.2), h = .mumtani := by
-            intro h hh
-            obtain ⟨f, hf', rfl⟩ := List.mem_map.1 hh
-            simpa using List.all_eq_true.1 ha f hf'
-          have hne : fs.map (·.2) ≠ [] := by simpa using he0
-          simp [hM, hnm, hne]
-          intro h x hx; exact hall' h (List.mem_map.2 ⟨(x, h), hx, rfl⟩)
-        · have hbj : baqiJumla fs =
-              (fs.filter fun f => f.2 == .laHukm).map fun f => ⟨"إطار " ++ f.1, .shart, .ghayrMafhus, sanadNass⟩ := by
-            simp [baqiJumla, hf, he0, ha]
-          rw [hbj] at hmn hsh hq
-          obtain ⟨f, hfm, hfl⟩ : ∃ f ∈ fs, f.2 = .laHukm := Classical.byContradiction fun hno =>
-            ha (List.all_eq_true.2 fun f hf' => by
-              have h1 := List.find?_eq_none.1 hf f hf'
-              cases h' : f.2 with
-              | murakhkhas => simp [h'] at h1
-              | laHukm => exact absurd ⟨f, hf', h'⟩ hno
-              | mumtani => simp)
-          have hQ : naqisa (uqdaJumla src sp md kalimat fs) ≠ [] := by
-            intro h
-            refine hq.1 h ⟨"إطار " ++ f.1, .shart, .ghayrMafhus, sanadNass⟩ ?_ (by simp [Muqaddima.halFiil, sanadNass])
-            exact List.mem_map.2 ⟨f, List.mem_filter.2 ⟨hfm, by simp [hfl]⟩, rfl⟩
-          have hM := hmn.2 (fun m hm hn => by obtain ⟨g, _, rfl⟩ := List.mem_map.1 hm; cases hn)
-          have hS := hsh.2 (fun m hm _ => by
-            obtain ⟨g, _, rfl⟩ := List.mem_map.1 hm; simp [Muqaddima.halFiil, sanadNass])
-          simp [hM, hS, hQ, hnm]
-          intro _
-          exact ⟨f.2, ⟨f.1, hfm⟩, by rw [hfl]; simp⟩
-  exact ⟨h12.1, h12.2, laHukm_min_ithnayn _ _ ⟨_, _, _, he⟩ h12.1 h12.2⟩
+      have hS : awwalNaqid (uqdaJumla src sp md kalimat []) .shart ≠ none :=
+        fun h => hsh.1 h _ (List.mem_singleton_self _) rfl (by simp [Muqaddima.halFiil, sanadNass])
+      simp [hM, hS]
+    · have hne : fs.map (·.2) ≠ [] := by simpa using he0
+      by_cases ha : fs.all (fun f => mumtaniB f.2) = true
+      · have hbj : baqiJumla fs = [⟨ismKulluhaMumtani, .mani, .mashhud, sanadNass⟩] := by
+          simp [baqiJumla, hf, he0, ha]
+        rw [hbj] at hmn
+        have hM : awwalNaqid (uqdaJumla src sp md kalimat fs) .mani ≠ none :=
+          fun h => hmn.1 h _ (List.mem_singleton_self _) rfl (by simp [Muqaddima.halFiil, sanadNass])
+        rw [hallM]
+        simp [hM, hnm, hne, ha]
+      · have hbj : baqiJumla fs = fs.flatMap fun f => rafaItar ("إطار " ++ f.1) f.2 := by
+          simp [baqiJumla, hf, he0, ha]
+        rw [hbj] at hmn hsh hq
+        obtain ⟨f, hfm, hfn⟩ : ∃ f ∈ fs, mumtaniB f.2 = false := Classical.byContradiction fun hno =>
+          ha (List.all_eq_true.2 fun f hf' => by
+            cases h' : mumtaniB f.2
+            · exact absurd ⟨f, hf', h'⟩ hno
+            · rfl)
+        have hfr : f.2 ≠ .murakhkhas := fun e => by
+          have := List.find?_eq_none.1 hf f hfm; simp [e] at this
+        obtain ⟨m, hm⟩ := List.exists_mem_of_ne_nil _ (rafaItar_ne ("إطار " ++ f.1) f.2 hfr hfn)
+        have hmm : m ∈ fs.flatMap fun f => rafaItar ("إطار " ++ f.1) f.2 := List.mem_flatMap.2 ⟨f, hfm, hm⟩
+        obtain ⟨hn, hh⟩ := rafaItar_hal _ _ m hm
+        have hM := hmn.2 (fun m' hm' hn' => by
+          obtain ⟨g, _, hg⟩ := List.mem_flatMap.1 hm'
+          rw [(rafaItar_hal _ _ m' hg).1] at hn'; cases hn')
+        have hSQ : ¬ (awwalNaqid (uqdaJumla src sp md kalimat fs) .shart = none ∧
+            naqisa (uqdaJumla src sp md kalimat fs) = []) := by
+          rintro ⟨hS, hQ⟩
+          rcases hh with hh | hh
+          · exact hsh.1 hS m hmm hn (by rw [hh])
+          · exact hq.1 hQ m hmm (by rw [hh])
+        rw [hallM]
+        simp only [hM, true_and, ne_eq, not_true_eq_false, false_iff, hnm, iff_false]
+        exact ⟨hSQ, fun h => ha h.2⟩
 
+/-- **تقابلُ أحكام الإطارات:** أحكامُ الفاحص على شهادات الإطارات (`F`) تقابل أحكامها الثلاثيّة (`G`) في الترخيص والامتناع، فـ`jamaa` على `G`
+    مرخَّصٌ إذا وفقط إذا رُخِّص إطارٌ بـ`F`، وممتنعٌ إذا وفقط إذا امتنعت كلُّها بـ`F` ولم تخلُ. -/
+theorem jamaa_tanazur {α : Type} (l : List α) (F : α → Natija) (G : α → Hukm)
+    (h1 : ∀ a ∈ l, F a = .murakhkhas ↔ G a = .murakhkhas) (h2 : ∀ a ∈ l, mumtaniB (F a) = true ↔ G a = .mumtani) :
+    (Jisr.NassItar.jamaa (l.map G) = .murakhkhas ↔ Natija.murakhkhas ∈ l.map F) ∧
+    (Jisr.NassItar.jamaa (l.map G) = .mumtani ↔ l.map F ≠ [] ∧ ∀ v ∈ l.map F, mumtaniB v = true) := by
+  rw [jamaa_murakhkhas, jamaa_mumtani]
+  simp only [List.mem_map, ne_eq, List.map_eq_nil_iff, forall_exists_index, and_imp, forall_apply_eq_imp_iff₂]
+  constructor
+  · constructor
+    · rintro ⟨a, ha, e⟩; exact ⟨a, ha, (h1 a ha).2 e⟩
+    · rintro ⟨a, ha, e⟩; exact ⟨a, ha, (h1 a ha).1 e⟩
+  · constructor
+    · rintro ⟨_, hn, hall⟩; exact ⟨hn, fun a ha => (h2 a ha).2 (hall a ha)⟩
+    · rintro ⟨hn, hall⟩
+      refine ⟨fun ⟨a, ha, e⟩ => ?_, hn, fun a ha => (h2 a ha).1 (hall a ha)⟩
+      have := (h2 a ha).1 (hall a ha); rw [e] at this; cases this
+
+/-- **حكمُ الجملة بالشهادة هو `jamaa`:** بكلماتٍ مرخَّصة، وإطاراتٍ أحكامُ الفاحص على شهاداتها (`F`) تقابل أحكامها الثلاثيّة (`G`): ترخيصُ
+    الجملة ترخيصُ `jamaa`، وامتناعُها امتناعُه، و«لا حكم» فيه عدمُ انطباقٍ أو تعليقٌ في الجملة. -/
+theorem jumla_jamaa (src sp md) (kalimat : List (String × Natija)) (fs : List (String × Natija))
+    {α : Type} (l : List α) (F : α → Natija) (G : α → Hukm) (hfs : fs.map (·.2) = l.map F)
+    (h1 : ∀ a ∈ l, F a = .murakhkhas ↔ G a = .murakhkhas) (h2 : ∀ a ∈ l, mumtaniB (F a) = true ↔ G a = .mumtani)
+    (hb : (uqdaJumla src sp md kalimat fs).marbut = true) (hk : kalimat ≠ []) (hall : ∀ c ∈ kalimat, c.2 = .murakhkhas) :
+    (hukm (uqdaJumla src sp md kalimat fs) = .murakhkhas ↔ Jisr.NassItar.jamaa (l.map G) = .murakhkhas) ∧
+    ((∃ x, hukm (uqdaJumla src sp md kalimat fs) = .mumtani x) ↔ Jisr.NassItar.jamaa (l.map G) = .mumtani) ∧
+    (Jisr.NassItar.jamaa (l.map G) = .laHukm ↔
+      (∃ x, hukm (uqdaJumla src sp md kalimat fs) = .laTantabiq x) ∨
+      ∃ l, hukm (uqdaJumla src sp md kalimat fs) = .muallaq l) := by
+  have hn := jumla_natija src sp md kalimat fs hb hk hall
+  have ht := jamaa_tanazur l F G h1 h2
+  rw [hfs] at hn
+  have he := uqda_madkhal (uqdaJumla src sp md kalimat fs) kalimat _ rfl hb hk hall (baqiJumla_naw fs)
+  have k1 := hn.1.trans ht.1.symm
+  have k2 := hn.2.trans ht.2.symm
+  exact ⟨k1, k2, laHukm_min_ithnayn _ _ ⟨_, _, _, he⟩ k1 k2⟩
 
 /-- الرفعُ على مطلوبه كلُّه إذا وفقط إذا رُخِّص كلُّ ابن. -/
 theorem rafaKull_matlub (cs : List (String × Natija)) :
@@ -725,20 +807,38 @@ def utur (t : List Char) : List (List Jisr.NassItar.Dawr × Jisr.Utur.Itar3) :=
 
 def ismItar (j : Nat) (ds : List Jisr.NassItar.Dawr) : String := toString (j + 1) ++ " (" ++ adwarIsm ds ++ ")"
 
-/-- الإطاراتُ بأسمائها وأحكامها بصفّ الأسماء الستّة. -/
-def uturHukm (t : List Char) : List (String × Hukm) :=
-  ((List.range (utur t).length).zip (utur t)).map fun x => (ismItar x.1 x.2.1, hukmSitta x.2.2)
+/-- عقدةُ الإطار من النصّ. -/
+def uqdaU (t : List Char) (x : List Jisr.NassItar.Dawr × Jisr.Utur.Itar3) : Naqla String String :=
+  uqdaItar (masdarJumla t) (spanJumla t) (String.ofList t) (adwarIsm x.1) (abnaJumla t) x.2
+
+/-- تسميةُ عناصر قائمةٍ برقمها. -/
+def birraqm {β γ : Type} (l : List β) (f : Nat → β → γ) : List γ :=
+  ((List.range l.length).zip l).map fun x => f x.1 x.2
+
+theorem birraqm_snd {β γ δ : Type} (l : List β) (N : Nat → β → γ) (F : β → δ) :
+    (birraqm l fun i x => (N i x, F x)).map (·.2) = l.map F := by
+  unfold birraqm
+  simp only [List.map_map]
+  suffices h : ∀ k, ((List.range' k l.length).zip l).map ((·.2) ∘ fun x => (N x.1 x.2, F x.2)) = l.map F by
+    simpa [List.range_eq_range'] using h 0
+  induction l with
+  | nil => intro k; simp
+  | cons a l ih => intro k; simp [List.range'_succ, ih (k + 1)]
 
 /-- عقدُ الإطارات. -/
-def uqadUtur (t : List Char) : List (Naqla String String) :=
-  ((List.range (utur t).length).zip (utur t)).map fun x =>
-    uqdaItar (masdarJumla t) (spanJumla t) (String.ofList t) (adwarIsm x.2.1) (abnaJumla t) x.2.2
+def uqadUtur (t : List Char) : List (Naqla String String) := (utur t).map (uqdaU t)
+
+/-- الإطاراتُ بأسمائها وأحكامها بصفّ الأسماء الستّة (للعرض). -/
+def uturHukm (t : List Char) : List (String × Hukm) := birraqm (utur t) fun i x => (ismItar i x.1, hukmSitta x.2)
+
+/-- الإطاراتُ بأسمائها وأحكام الفاحص على شهاداتها: مقدّماتُ الجملة. -/
+def uturNatija (t : List Char) : List (String × Natija) := birraqm (utur t) fun i x => (ismItar i x.1, hukm (uqdaU t x))
 
 def ismLamTuqra : String := "الإطارات: لم تُحسب، فكلمةٌ لم يقرأها القارئ"
 
-/-- **عقدةُ الجملة من النصّ:** إن قُرئت الكلماتُ كلُّها فعقدةُ الجملة على إطاراتها؛ وإلّا فالإطاراتُ مقدّمةٌ لم تُفحص باسمها. -/
+/-- **عقدةُ الجملة من النصّ:** إن قُرئت الكلماتُ كلُّها فعقدةُ الجملة على شهادات إطاراتها؛ وإلّا فالإطاراتُ مقدّمةٌ لم تُفحص باسمها. -/
 def jumla (t : List Char) : Naqla String String :=
-  let n := uqdaJumla (masdarJumla t) (spanJumla t) (String.ofList t) (abnaJumla t) (uturHukm t)
+  let n := uqdaJumla (masdarJumla t) (spanJumla t) (String.ofList t) (abnaJumla t) (uturNatija t)
   if kullMaqrua t then n
   else { n with muqaddimat := rafaKull (abnaJumla t) ++ [⟨ismLamTuqra, .shart, .ghayrMafhus, ""⟩] }
 
@@ -749,22 +849,20 @@ theorem jumla_muqaddimat (t : List Char) : ∃ r, (jumla t).muqaddimat = rafaKul
   · exact ⟨_, rfl, baqiJumla_naw _⟩
   · exact ⟨_, rfl, fun m hm => by rw [List.mem_singleton] at hm; subst hm; simp⟩
 
-theorem uturHukm_snd (t : List Char) : (uturHukm t).map (·.2) = (utur t).map (fun x => hukmSitta x.2) := by
-  simp only [uturHukm, List.map_map]
-  generalize utur t = l
-  suffices h : ∀ k, ((List.range' k l.length).zip l).map ((·.2) ∘ fun x => (ismItar x.1 x.2.1, hukmSitta x.2.2)) =
-      l.map (fun x => hukmSitta x.2) by
-    simpa [List.range_eq_range'] using h 0
-  induction l with
-  | nil => intro k; simp
-  | cons a l ih => intro k; simp [List.range'_succ, ih (k + 1)]
+/-- ربطُ الإطار ربطُ الجملة: المصدرُ والموضعُ واحد، واسما القاعدتين غيرُ فارغين. -/
+theorem uqdaU_marbut (t : List Char) (x : List Jisr.NassItar.Dawr × Jisr.Utur.Itar3) :
+    (uqdaU t x).marbut = (jumla t).marbut := by
+  unfold jumla
+  have e1 : "Jisr.QawaidSitta.hukmSitta".isEmpty = false := by decide
+  have e2 : "Jisr.NassItar.hukmNass".isEmpty = false := by decide
+  split <;> simp [uqdaU, uqdaItar, uqdaJumla, Naqla.marbut, e1, e2]
 
 theorem kullMaqrua_kalimatDal (t : List Char) (h : ∀ k ∈ kalimatM t, qariOk (Dal.QiraaTahsil.qiraa k.w false) = true) :
     kullMaqrua t = true := List.all_eq_true.2 h
 
 /-- **السلسلةُ التامّة من النصّ:** ترخيصُ الجملة بشهادتها هو أن تكون لها كلمةٌ، وكلُّ مقطعٍ من تحصيل كلّ كلمةٍ مرخَّصًا، وكلُّ كلمةٍ مقروءةً،
-    وحكمُ الأسماء الستّة على كلماتها كما يسلّمها القارئ (`Jisr.NassItar.hukmNass`) مقبولًا — بفرض الربط في الجملة وكلماتها. وما نقص من
-    ذلك يمنع الترخيص ويظهر باسمه في سلسلته (`naqs_zahir`، `hasim_ism`). -/
+    وحكمُ الأسماء الستّة على كلماتها كما يسلّمها القارئ (`Jisr.NassItar.hukmNass`) مقبولًا — بفرض الربط في الجملة وكلماتها. والإطاراتُ تدخل
+    الجملةَ بأحكام الفاحص على شهاداتها (`uturNatija`)، ومقابلتُها لـ`hukmSitta` من `itar_murakhkhas` و`itar_mumtani`. -/
 theorem silsila_murakhkhas (t : List Char) (hb : (jumla t).marbut = true)
     (hbk : ∀ k ∈ kalimatM t, (uqdaK t k).marbut = true) :
     hukm (jumla t) = .murakhkhas ↔
@@ -781,10 +879,25 @@ theorem silsila_murakhkhas (t : List Char) (hb : (jumla t).marbut = true)
     rw [uqdaK, kalima_murakhkhas]
     exact ⟨fun h => h.2, fun h => ⟨hbk k hk, h⟩⟩
   have hne : abnaJumla t ≠ [] ↔ kalimatM t ≠ [] := by simp [abnaJumla]
-  have hnass : ∀ (hk : kullMaqrua t = true), Jisr.NassItar.hukmNass (kalimatDal t) =
-      Jisr.NassItar.jamaa ((uturHukm t).map (·.2)) := by
-    intro hk
-    rw [uturHukm_snd, utur]; simp only [hk, ite_true]; rfl
+  -- الجملةُ على شهادات إطاراتها، بكلماتٍ مرخَّصة.
+  have key : ∀ (hk0 : abnaJumla t ≠ []) (hall : ∀ c ∈ abnaJumla t, c.2 = .murakhkhas),
+      (hukm (jumla t) = .murakhkhas ↔ Jisr.NassItar.hukmNass (kalimatDal t) = .murakhkhas) := by
+    intro hk0 hall
+    have hkm : kullMaqrua t = true := kullMaqrua_kalimatDal t fun k hk => (hkk.1 (hab.1 hall) k hk).2.2
+    have hj : jumla t = uqdaJumla (masdarJumla t) (spanJumla t) (String.ofList t) (abnaJumla t) (uturNatija t) := by
+      simp [jumla, hkm]
+    have hnass : Jisr.NassItar.hukmNass (kalimatDal t) = Jisr.NassItar.jamaa ((utur t).map fun x => hukmSitta x.2) := by
+      simp only [utur, hkm, ite_true]; rfl
+    have hbj := hb
+    rw [hj] at hbj
+    have h1 : ∀ x ∈ utur t, hukm (uqdaU t x) = .murakhkhas ↔ hukmSitta x.2 = .murakhkhas := fun x _ =>
+      itar_murakhkhas _ _ _ _ _ _ (by rw [← hbj, ← hj]; exact uqdaU_marbut t x) hk0 hall
+    have h2 : ∀ x ∈ utur t, mumtaniB (hukm (uqdaU t x)) = true ↔ hukmSitta x.2 = .mumtani := fun x _ => by
+      rw [mumtaniB_iff]
+      exact itar_mumtani _ _ _ _ _ _ (by rw [← hbj, ← hj]; exact uqdaU_marbut t x) hk0 hall
+    rw [hj, hnass]
+    exact (jumla_jamaa _ _ _ _ _ (utur t) (fun x => hukm (uqdaU t x)) (fun x => hukmSitta x.2)
+      (birraqm_snd _ _ _) h1 h2 hbj hk0 hall).1
   constructor
   · intro h
     obtain ⟨r, hr, hrn⟩ := jumla_muqaddimat t
@@ -795,20 +908,8 @@ theorem silsila_murakhkhas (t : List Char) (hb : (jumla t).marbut = true)
       rcases List.mem_append.1 hm with hm | hm
       · exact rafaKull_nil_madkhal ⟨m, hm, hn⟩
       · exact absurd hn (hrn m hm)
-    have hw := hkk.1 (hab.1 hall)
-    have hkm : kullMaqrua t = true := kullMaqrua_kalimatDal t fun k hk => (hw k hk).2.2
-    refine ⟨hne.1 hk0, hw, ?_⟩
-    rw [hnass hkm]
-    have hj : jumla t = uqdaJumla (masdarJumla t) (spanJumla t) (String.ofList t) (abnaJumla t) (uturHukm t) := by
-      simp [jumla, hkm]
-    rw [hj] at h hb
-    exact (jumla_jamaa _ _ _ _ _ hb hk0 hall).1.1 h
+    exact ⟨hne.1 hk0, hkk.1 (hab.1 hall), (key hk0 hall).1 h⟩
   · rintro ⟨h0, hw, hn⟩
-    have hall := hab.2 (hkk.2 hw)
-    have hkm : kullMaqrua t = true := kullMaqrua_kalimatDal t fun k hk => (hw k hk).2.2
-    have hj : jumla t = uqdaJumla (masdarJumla t) (spanJumla t) (String.ofList t) (abnaJumla t) (uturHukm t) := by
-      simp [jumla, hkm]
-    rw [hj] at hb ⊢
-    exact (jumla_jamaa _ _ _ _ _ hb (hne.2 h0) hall).1.2 (by rw [← hnass hkm]; exact hn)
+    exact (key (hne.2 h0) (hab.2 (hkk.2 hw))).2 hn
 
 end Nizam.Silsila
