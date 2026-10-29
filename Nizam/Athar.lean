@@ -43,7 +43,8 @@
     رُخِّصت الجملةُ بعد المعجم، وكان في إطارها دورٌ نسبتُه إسنادية، وأخرج `MantuqMafhum.jisr` على المودَع المربوط ببنية الجملة
     (`QaydMafhum.bilBunya`) مفهومَ مخالفة (`mafhum_jisr`)؛ وبلا ودائع لا تُرخَّص (`mafhum_bila_wada`)، وفي المجال لا تُرخَّص أصلًا
     (`la_mafhum_fi_majal`: الغايةُ في إطارٍ لا إسنادَ فيه)، فيسمّي المحرّكُ ما ينقصه.
-  * **الأثرُ على الشاهد:** المقطعُ («رِ»/«رُ») يقلب الجملةَ والمنطوقَ والمفهوم (`athar_maqta`)، والأداةُ («إلى»/«في») تقلب القيدَ والمفهوم
+  * **الأثرُ على الشاهد:** المقطعُ («رِ»/«رُ») يقلب الجملةَ (مرخَّصة/ممتنعة) والمنطوقَ (كلمتان/لا شيء)، وعقدةُ المفهوم معلَّقةٌ في المرخَّصة ومدخلٌ
+    فاسدٌ في الممتنعة، ولا تُرخَّص في أيّهما (`athar_maqta`)، والأداةُ («إلى»/«في») تقلب القيدَ والمفهوم
     (`athar_adat`)، والدورُ يمنع الشرطَ من «مَنْ» مفعولًا والقيدَ بلا إطار (`athar_dawr`)، والقسمُ يعلّق ما كان ممتنعًا أو مرخَّصًا بقراءة الأداة فعلًا
     (`athar_qism`)، والإطارُ يعيّن النِّسَب (`athar_itar`)، والصدرُ وصورةُ الفعل وأداةُ الإطار والإسنادُ تعيّن القوّةَ والدعوى (`athar_quwwa`)، و«إنما»
     مانعٌ مشهود (`athar_innama`).
@@ -59,10 +60,11 @@
   لم يُفحص. وأرقامُ ج3 بترقيمين: س721 بترقيم `a2.txt` (كـ`Jisr/Nisab.lean`)، وس548–586 بترقيم التحويل `scripts/tahwil_docx.py`
   (كـ`Jisr/MantuqMafhum.lean`).
 
-  **حدُّه.** الإطارُ (`Jisr.NassItar.itarat`) يقرأ بهيكل حروف الجرّ الخمسة (`hurufJarr`) قبل المعجم، فـ«مَنْ ذَهَبَ» و«عَلَا الْجَبَلُ» جارٌّ ومجرور،
-  ويشهد لهما المعجمُ «مشهود»: «مَنْ» صفُّ «من» الجارّة أيضًا (لفظُها بلا علامة)، و«ى» و«ا» خليّةٌ واحدة فـ«عَلَا» صفُّ «على»؛ والإطارُ يقرأ الكلمةَ
+  **حدُّه** (وشواهدُه `athar_hadd` و`athar_hadd_sura` و`athar_hadd_itar`). الإطارُ (`Jisr.NassItar.itarat`) يقرأ بهيكل حروف الجرّ الخمسة
+  (`hurufJarr`) قبل المعجم، فـ«مَنْ ذَهَبَ» و«عَلَا الْجَبَلُ» جارٌّ ومجرور، ويشهد لهما المعجمُ «مشهود»: «مَنْ» صفُّ «من» الجارّة أيضًا (لفظُها بلا علامة)، و«ى» و«ا» خليّةٌ واحدة فـ«عَلَا» صفُّ «على»؛ والإطارُ يقرأ الكلمةَ
   الأولى فعلًا ما لم تكن بأل أو تنوين أو هيكلِ حرف جرّ، ولو كان لها صفّ («إِنَّ»، «هَلْ»)، والمعجمُ يعلّق قراءتَها إن لم يكن الفعلُ من أقسام صفوفها،
-  ولا يعلّق ما لا صفَّ له. والوصفيّةُ (لا الناهية، لام الأمر، الهمزة…) لا تُعرف، فالأمرُ والنهيُ والاستفهامُ بالهمزة لا تبلغ
+  ولا يعلّق ما لا صفَّ له؛ والجملةُ التي امتنعت إطاراتُها كلُّها ممتنعة (حكمُ `silsila`)، ولو صحّت خارجَ الأشكال الستّة («قَامَ أَبُو بَكْرٍ»): ردٌّ
+  خاطئٌ معلَن. والوصفيّةُ (لا الناهية، لام الأمر، الهمزة…) لا تُعرف، فالأمرُ والنهيُ والاستفهامُ بالهمزة لا تبلغ
   القوّةَ إنشاءً بل «لا حكم»؛ وفعلُ القول («أتقول») لا يُقرأ؛ ولا معجمَ لغير أفعال جدول العوامل. و«إِنْ» تعليقٌ أبدًا، فـ«إن» النافية (المغني س371–375)
   لا تُفرَّق منها. والخبرُ المثبت من صورة الماضي في دور الفعل وحده: المضارعُ والجملةُ الاسميّة والماضي المضمومُ أوّلُه أو آخرُه أو المسكَّنُ آخرُه
   («ضَرَبُوا»، «ضَرَبْتُ») والمكسورُ أوّلُه («بِئْسَ») والمبدوءُ بحرفٍ من «نأيت» («أَكْرَمَ») «لا حكم»؛ والصورةُ لا تفحص ما اتّصل بأوّل الفعل («فَذَهَبَ» ماضٍ) ولا المعنى: فالماضي
@@ -74,15 +76,15 @@
   ولا تستدعي هذه العُقَدَ قراءةٌ ولا حكمٌ في القارئ ولا في السلسلة؛ وتنفيذُها `Qari/Athar.lean` (التنفيذيّ `athar`)، ويحرس مخرجَه
   `tahaqquq/test_athar.py`.
 
-  **العدّ** بالمعيار الموحَّد (`Nizam/Asas.lean`): 62 مبرهنة — 39 لكلّ (`muqDawr_hal`، `adawatItar_hal`، `hukm_idkhal`، `itarM_sawa`،
+  **العدّ** بالمعيار الموحَّد (`Nizam/Asas.lean`): 64 مبرهنة — 39 لكلّ (`muqDawr_hal`، `adawatItar_hal`، `hukm_idkhal`، `itarM_sawa`،
   `itarM_muallaq`، `abna_min_hukm`، `itarM_murakhkhas_imp`، `itarM_mumtani_imp`، `jumlaM_murakhkhas`، `jumlaM_mumtani`، `hukm_idkhal_aw`،
   `itarM_hukm`، `ramz_itar`، `harfJarr_la_isnad`، `itarMurakhkhas_spec`، `adwarKalimat_itar`، `mantuq_itar`، `jumlaM_itar`، `insha_nabt`،
   `quwwaSufuf_insha`، `quwwaJumla_insha`، `dawa_murakhkhas`، `dawa_waqi`، `insha_la_dawa`، `unsurDawr_qayd`، `la_shart_fi_majal`، `innamaFi_bunya`،
   `qaydJumla_mem`، `qaydJumla_dawr`، `mashud_qaydJumla`، `qaydJumla_anwa`، `qaydJumla_sinf`، `mafhum_kalima`، `mafahim_eq`، `mafhum_bila_wada`،
   `muqMafhum_matlub`، `mafahim_mukhalafa`، `mafhum_jisr`، `la_mafhum_fi_majal`)، و9 تعريفيّة (`mem_sufuf`، `hukm_muqaddimat`، `jumlaM_marbut`،
-  `isnadMuq_matlub`، `la_tarqiya`، `forceOfUslub_assertive`، `shartQuwwa_matlub`، `adatQayd_anwa`، `qaydMuq_matlub`)، و14 على الشاهد (`sathiya_82`،
+  `isnadMuq_matlub`، `la_tarqiya`، `forceOfUslub_assertive`، `shartQuwwa_matlub`، `adatQayd_anwa`، `qaydMuq_matlub`)، و16 على الشاهد (`sathiya_82`،
   `sufuf_shawahid`، `maqta_adat`، `nisbaDawr_qiyam`، `unsurQayd_innama`، `qaydMin_shahid`، `athar_maqta`، `athar_adat`، `athar_dawr`، `athar_qism`، `athar_itar`،
-  `athar_quwwa`، `athar_hadd`، `athar_innama`). ومساعدٌ خاصٌّ واحد (`ite_mawani`، تعريفيّة). بلا sorry ولا axiom ولا native_decide.
+  `athar_quwwa`، `athar_hadd`، `athar_hadd_sura`، `athar_hadd_itar`، `athar_innama`). ومساعدٌ خاصٌّ واحد (`ite_mawani`، تعريفيّة). بلا sorry ولا axiom ولا native_decide.
 -/
 import Nizam.Silsila
 import Jisr.AqsamAwamil
@@ -653,7 +655,7 @@ def sadr (t : List Char) : List Nat :=
 /-- **صورةُ الماضي:** أوّلُ خليّةٍ مفتوحةٌ (تعيين: مثالُ القطر «ضرب») حاملُها ليس من «نأيت» (القطر L65: المضارعُ «افتتاحه بحرف من نأيت»)، وآخرُها
     مفتوحة (القطر L55–56: «وبناؤه على الفتح كضرب، إلا مع واو الجماعة فيضم ك"ضربوا"، والضمير المرفوع المتحرك فيسكن ك"ضربت"» — فالمضمومُ
     والمسكَّنُ «لا حكم»)، أو تاءٌ بعد مفتوحة (القطر L55: «ويعرف بتاء التأنيث الساكنة»)، ساكنةٌ (75) أو مكسورةٌ في الوصل (74؛ الكتاب س17606–17607: «أن
-    يكسروا إذا التقى الساكنان»). وما يعدّه القطر بعدُ من الماضي (L56: «ومنه نعم وبئس وعسى وليس في الأصح») مكسورُ الأوّل («بِئْسَ») «لا حكم»، أو
+    يكسروا إذا التقى الساكنان»). وما يعدّه القطر بعدُ من الماضي (L56–57: «ومنه نعم وبئس وعسى وليس في الأصح») مكسورُ الأوّل («بِئْسَ») «لا حكم»، أو
     صفٌّ في الجدول («عَسَى»، «لَيْسَ»). وهي لا تكفي في الكلمة وحدها (اسمٌ منصوبٌ بلا أل ولا تنوين بصورتها)، فلا تُقرأ إلّا في دور الفعل (`filMadi`). -/
 def madiSura (k : List Nat) : Bool :=
   match k.head?, k.getLast? with
@@ -1302,6 +1304,26 @@ theorem athar_hadd :
     quwwaJumla "رَحِمَ اللَّهُ زَيْدًا".toList = .ithbat ∧ hukm (uqdaDawa "رَحِمَ اللَّهُ زَيْدًا".toList) = .murakhkhas ∧
     quwwaJumla "جَعْفَرَ زَيْدٌ".toList = .ithbat ∧ hukm (uqdaDawa "جَعْفَرَ زَيْدٌ".toList) = .murakhkhas ∧
     quwwaJumla "فَذَهَبَ الْوَلَدُ".toList = .ithbat ∧ hukm (uqdaDawa "فَذَهَبَ الْوَلَدُ".toList) = .murakhkhas := by
+  decide +kernel
+
+/-- **شاهدُ الحدّ في صورة الماضي:** «ضَرَبَ» بصورة الماضي، و«ضَرَبُوا» (مضمومُ الآخر) و«ضَرَبْتُ» (مسكَّنُه) و«أَكْرَمَ» (أوّلُه همزة، من «نأيت»)
+    و«بِئْسَ» (مكسورُ الأوّل) ليست بها؛ فـ«أَكْرَمَ زَيْدٌ» مرخَّصةٌ وقوّتُها «لا حكم». -/
+theorem athar_hadd_sura :
+    madiSura (khalaya "ضَرَبَ".toList) = true ∧ madiSura (khalaya "ضَرَبُوا".toList) = false ∧
+    madiSura (khalaya "ضَرَبْتُ".toList) = false ∧ madiSura (khalaya "أَكْرَمَ".toList) = false ∧
+    madiSura (khalaya "بِئْسَ".toList) = false ∧
+    hukm (jumlaM "أَكْرَمَ زَيْدٌ".toList) = .murakhkhas ∧ quwwaJumla "أَكْرَمَ زَيْدٌ".toList = .laHukm := by
+  decide +kernel
+
+/-- **شاهدُ الحدّ في الإطار والقوّة:** «مَنْ ذَهَبَ» و«عَلَا الْجَبَلُ» جارٌّ ومجرور، والمعجمُ يشهد لـ«مَنْ» حرفَ جرٍّ «مشهود»، و«عَلَا الْجَبَلُ» ممتنعة؛
+    و«قَامَ أَبُو بَكْرٍ» (صحيحةٌ خارجَ الأشكال الستّة) ممتنعة؛ و«إِنْ أَدْرِي» («إن» النافية، المغني س374) تعليق؛ و«أَتَقُولُ» لا حكم. خطأٌ أو حدٌّ معلَن،
+    لا حكمٌ مسنود. -/
+theorem athar_hadd_itar :
+    (utur "مَنْ ذَهَبَ".toList).map (·.1) = [[.harfJarr, .majrur]] ∧
+    (adawatItar "مَنْ ذَهَبَ".toList [.harfJarr, .majrur]).map (·.halFiil) = [.mashhud] ∧
+    (utur "عَلَا الْجَبَلُ".toList).map (·.1) = [[.harfJarr, .majrur]] ∧ mumtaniB (hukm (jumlaM "عَلَا الْجَبَلُ".toList)) = true ∧
+    mumtaniB (hukm (jumlaM "قَامَ أَبُو بَكْرٍ".toList)) = true ∧
+    quwwaJumla "إِنْ أَدْرِي".toList = .taliq ∧ quwwaJumla "أَتَقُولُ".toList = .laHukm := by
   decide +kernel
 
 /-- **أثرُ «إنما» في المفهوم:** في «إِنَّمَا ذَهَبَ الْوَلَدُ» مانعُ «إنما» مشهود (القطر L189–190؛ ج3 س584). -/

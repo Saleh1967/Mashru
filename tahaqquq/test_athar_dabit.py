@@ -24,7 +24,11 @@ import sys
 
 JADHR = pathlib.Path(__file__).resolve().parent.parent
 D = JADHR / "tahaqquq" / "dawabit" / "athar"
-SHIFRA = ["Nizam/Athar.lean", "Nizam/AtharDabit.lean", "Nizam/Silsila.lean", "Jisr/NassItar.lean", "Dal/QiraaTahsil.lean"]
+# بصمةُ الشفرة: ملفّاتُ ما يحسب الحقلين مباشرةً (القوّة والقيد وقراءةُ الجملة وإطارُها وحكمُه)، لا كلُّ ما تستورده. وفي natija_1.json خمسةٌ منها
+# (الشفرةُ المجمَّدة)، وزيد الباقي منذ natija_2.json.
+SHIFRA = ["Nizam/Athar.lean", "Nizam/AtharDabit.lean", "Nizam/Silsila.lean", "Jisr/NassItar.lean", "Dal/QiraaTahsil.lean",
+          "Dal/Tahsil.lean", "Jisr/Utur.lean", "Jisr/SakkJumla.lean", "Jisr/Awamil.lean", "Jisr/AwamilJadwal.lean",
+          "Jisr/AqsamAwamil.lean", "Jisr/MantuqMafhum.lean", "Jisr/QaydMafhum.lean"]
 QIYAS = JADHR / "Nizam/AtharQiyas.lean"
 BINA = JADHR / "scripts/bina_dawabit_athar.py"
 MASADIR = {

@@ -2799,6 +2799,8 @@ import Jisr.DamirQiyas
 #print axioms Nizam.Athar.athar_itar
 #print axioms Nizam.Athar.athar_quwwa
 #print axioms Nizam.Athar.athar_hadd
+#print axioms Nizam.Athar.athar_hadd_sura
+#print axioms Nizam.Athar.athar_hadd_itar
 #print axioms Nizam.Athar.athar_innama
 -- مقارنةُ ضابط «أثر العُقَد» (Nizam/AtharDabit.lean)
 #print axioms Nizam.Athar.Dabit.qarin_shawahid
