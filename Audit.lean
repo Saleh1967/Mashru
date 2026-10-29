@@ -109,6 +109,7 @@ import SLGE.Root
 import SLGE.Syllable
 import Madlul.TasisDalala
 import Nizam.Shahada
+import Nizam.Silsila
 import Dal.Tahsil
 import Dal.QiraaTahsil
 import Jisr.Abniya
@@ -2679,3 +2680,57 @@ import Jisr.DamirQiyas
 #print axioms Waqi.Ribt.mafhum_mashru
 #print axioms Waqi.Ribt.la_mafhum_bila_khatm_dafa
 #print axioms Waqi.Ribt.hukm_satr
+
+-- سلسلةُ الشهادات (Nizam/Silsila.lean): الرفعُ، وعقدُ الإطار والجملة والكلمة، والسلسلةُ التامّة من النصّ
+#print axioms Nizam.Silsila.rafa_naw
+#print axioms Nizam.Silsila.rafa_ne
+#print axioms Nizam.Silsila.rafa_matlub
+#print axioms Nizam.Silsila.mem_rafaKull
+#print axioms Nizam.Silsila.abna_murakhkhas
+#print axioms Nizam.Silsila.naqs_zahir
+#print axioms Nizam.Silsila.rafaKull_mashhud
+#print axioms Nizam.Silsila.rafaKull_madkhal
+#print axioms Nizam.Silsila.hukm_madkhal_salim
+#print axioms Nizam.Silsila.awwalNaqid_mani_none
+#print axioms Nizam.Silsila.awwalNaqid_shart_none
+#print axioms Nizam.Silsila.baad_madkhal
+#print axioms Nizam.Silsila.hasim_ism
+#print axioms Nizam.Silsila.maniOf_hal
+#print axioms Nizam.Silsila.dammKull_murakhkhas
+#print axioms Nizam.Silsila.dammKull_mumtani
+#print axioms Nizam.Silsila.hukm_thalath
+#print axioms Nizam.Silsila.laHukm_min_ithnayn
+#print axioms Nizam.Silsila.hukmSitta_ajza
+#print axioms Nizam.Silsila.kull_baqi
+#print axioms Nizam.Silsila.baqiItar_naw
+#print axioms Nizam.Silsila.uqda_madkhal
+#print axioms Nizam.Silsila.ahwal_baqi
+#print axioms Nizam.Silsila.baad_murakhkhas
+#print axioms Nizam.Silsila.baad_mumtani
+#print axioms Nizam.Silsila.halUtur_mashhud
+#print axioms Nizam.Silsila.halUtur_ghayr
+#print axioms Nizam.Silsila.la_mumtani_la_laHukm
+#print axioms Nizam.Silsila.ajza_ahwal
+#print axioms Nizam.Silsila.itar_ahwal
+#print axioms Nizam.Silsila.itar_murakhkhas
+#print axioms Nizam.Silsila.itar_mumtani
+#print axioms Nizam.Silsila.itar_laHukm
+#print axioms Nizam.Silsila.mumtaniB_iff
+#print axioms Nizam.Silsila.rafaItar_hal
+#print axioms Nizam.Silsila.rafaItar_ne
+#print axioms Nizam.Silsila.baqiJumla_naw
+#print axioms Nizam.Silsila.jamaa_murakhkhas
+#print axioms Nizam.Silsila.jamaa_mumtani
+#print axioms Nizam.Silsila.jumla_natija
+#print axioms Nizam.Silsila.jamaa_tanazur
+#print axioms Nizam.Silsila.jumla_jamaa
+#print axioms Nizam.Silsila.rafaKull_matlub
+#print axioms Nizam.Silsila.rafaKull_nil_madkhal
+#print axioms Nizam.Silsila.shartQari_matlub
+#print axioms Nizam.Silsila.abnaKalima_murakhkhas
+#print axioms Nizam.Silsila.kalima_murakhkhas
+#print axioms Nizam.Silsila.birraqm_snd
+#print axioms Nizam.Silsila.jumla_muqaddimat
+#print axioms Nizam.Silsila.uqdaU_marbut
+#print axioms Nizam.Silsila.kullMaqrua_kalimatDal
+#print axioms Nizam.Silsila.silsila_murakhkhas
