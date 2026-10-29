@@ -11,7 +11,8 @@
 ٤. الشهادة: حكمُ الفاحص على شهادة كلّ مقطع (`Nizam.Shahada.hukm`، العمودُ الأخير) صورةُ حكم التصنيف: L ← murakhkhas، P ← muallaq:الاسم،
    F ← madkhalFasid:الاسم؛ على مقاطع ٢ و٣ كلّها.
 ٥. القارئ: على كلماتٍ عشوائيّة (البذرة 20261028) يرخّصها التحصيلُ كلَّها، وهي ألفٌ على الأقلّ، خلايا `qari --khalaya` هي خلايا التحصيل
-   (والمبرهنةُ `Dal.QiraaTahsil.qiraa_murakhkhasa`؛ وهذا فحصُ المنفَّذ). وعلى خمسين كلمةً فيها علامتا حركة على حرفٍ واحد يردّها التحصيلُ
+   (والمبرهنةُ `Dal.QiraaTahsil.qiraa_murakhkhasa`؛ وهذا فحصُ المنفَّذ)، إلّا ما فيه صنفٌ من التعديل الثالث يقرؤه القارئ بوسيطه
+   (`wasitQaida`؛ شرطُ المبرهنة منذ 2026-10-29). وعلى خمسين كلمةً فيها علامتا حركة على حرفٍ واحد يردّها التحصيلُ
    «علامتان متعارضتان»: يردّها القارئُ كلَّها باسمه (وكان قبل وصله بالتحصيل يقرؤها ويأخذ الأخيرة).
 ٦. الأسماء: كلُّ اسمٍ لحكمٍ P أو F في Dal/Tahsil.lean في wasf.md بين «» بنصّه (فحصُ نصّ)، إلّا «مقطع فارغ» و«خلل داخلي» اللذين لا يصل
    إليهما مقطعٌ، ولا يظهران في مخرجٍ من ٢ و٣.
@@ -214,7 +215,10 @@ def kalima_ashwaiyya():
 kalimat5 = [kalima_ashwaiyya() for _ in range(2000)]
 out5 = shaghghil(kalimat5)
 if out5 is not None:
-    murakhkhasa = [(w, o[1][0]["khalaya"]) for w, o in zip(kalimat5, out5) if len(o[1]) == 1 and o[1][0]["murakhkhasa"]]
+    # أصنافُ التعديل الثالث التي يقرؤها القارئ بوسيطه (Dal.QiraaTahsil.wasitQaida) خارجُ شرط qiraa_murakhkhasa
+    BI_WASIT = {"hamzaWaslAl", "madda", "taMarbuta", "alifMaqsura", "alifKhatt", "tanwin", "tanwinAlif", "shaddaIbtida", "lamMudgham"}
+    murakhkhasa = [(w, o[1][0]["khalaya"]) for w, o in zip(kalimat5, out5) if len(o[1]) == 1 and o[1][0]["murakhkhasa"]
+                   and not any(m["sinf"] in BI_WASIT or (m["sinf"] == "sukunMuqaddar" and m is o[0][-1]) for m in o[0])]
     harakatan = [rng5.choice(HAWAMIL) + rng5.choice(HARAKAT) + rng5.choice(HARAKAT) + rng5.choice(HAWAMIL) + rng5.choice(HARAKAT)
                  for _ in range(50)]
     out5b = shaghghil(harakatan)

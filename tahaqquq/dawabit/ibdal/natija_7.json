@@ -1,0 +1,123 @@
+{
+ "tashghil": 7,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة: بعد التعديل الثالث للتحصيل (Dal/Tahsil.lean) ووصلِ أصنافه بوسائط القارئ (Dal/QiraaTahsil.lean)",
+ "cases_sha256": "732403d34c0ab79d45609d0db1be1ca2abe5ae0c8a732cb216182d080ecfad9d",
+ "qablaha": {
+  "natija_6.json": "799d7b96c7983f4bc72c399f1248eb3859379aee37b49095a55367c891c7ee82"
+ },
+ "shifra": {
+  "Jisr/IbdalAlfiyya.lean": {
+   "sha256": "5f33f0903b7b67fb62b688ab2fd25359a24f40679d698bcd22a353905fb1e648",
+   "iydaa": "9f72a3387760025b9155d12c6a4d434d282df0d9"
+  },
+  "Jisr/IbdalAlfiyyaDabit.lean": {
+   "sha256": "b95465b569a10837481fc58294034516c017fae8450c9d4879d98674b3f7bc2a",
+   "iydaa": "4ad7b9aa33e18b0c7a21af076d72288370dbf5a6"
+  },
+  "Jisr/TabaqatQawaid.lean": {
+   "sha256": "9e40d23cb79f52695cf29bbfc03dc1b354fa57f2f7e4a487bf0249dc853dea55",
+   "iydaa": "58aede8bf1cc35f793ffa8032223a450c99a7dc3"
+  },
+  "Dal/Jumla.lean": {
+   "sha256": "98b4200edc4a5b3cc051bd77f682f3e6b161486a376c2517d2e7f41bd7e9ba4b",
+   "iydaa": "a888aad7599d58b9adfe325baa9e8be83c159254"
+  },
+  "Qari/Main.lean": {
+   "sha256": "412023286fb2dd2370c740d9fecff0675ae14433f6e9a5d210494099bffd8b9a",
+   "iydaa": "09238703c426c682f41850a2ae35edc6f8226b7e"
+  },
+  "Dal/QiraaTahsil.lean": {
+   "sha256": "6d6785aac8819e4b8cd1fceaaf2fd851ab462e221862fb42b144cca906874a48",
+   "iydaa": "7769e1c1c437b65a5c27f96eec5bc3b0c999e4a8"
+  },
+  "Dal/Tahsil.lean": {
+   "sha256": "626d9990e814cf0b032da8a805a8df99f2a513f7c42ba6a4e50211f63fe01bef",
+   "iydaa": "7769e1c1c437b65a5c27f96eec5bc3b0c999e4a8"
+  },
+  "SLGE/Law.lean": {
+   "sha256": "88f025795e46f9074f55db52d31a9c002849b7d2c2b99dbdfcf2bf39f99c229a",
+   "iydaa": "8e1c27ddb943c0a76163fdaed66e56d23b492293"
+  },
+  "Dal/Khaliya.lean": {
+   "sha256": "135444500327955efb0f6338e71ec374ee92568b41b83c4a1470b385716a4840",
+   "iydaa": "8e1c27ddb943c0a76163fdaed66e56d23b492293"
+  }
+ },
+ "lean": [
+  "Jisr.IbdalAlfiyya.Qiyas.majal",
+  "Jisr.IbdalAlfiyya.Qiyas.natija",
+  "Jisr.IbdalAlfiyya.Qiyas.natija_fia",
+  "Jisr.IbdalAlfiyya.Qiyas.akhta_1",
+  "Jisr.IbdalAlfiyya.Qiyas.azwaj_1"
+ ],
+ "halat": 49,
+ "huqul_masula": 49,
+ "ihsa": {
+  "sawab": 39,
+  "naqsTaghtiya": 8,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtiyar": 2,
+  "rafdQari": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 10,
+  "حد": 6,
+  "خارج": 5,
+  "عموم": 18,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "B14",
+   "naqsTaghtiya"
+  ],
+  [
+   "B16",
+   "naqsTaghtiya"
+  ],
+  [
+   "B19",
+   "naqsTaghtiya"
+  ],
+  [
+   "B20",
+   "naqsTaghtiya"
+  ],
+  [
+   "B26",
+   "naqsTaghtiya"
+  ],
+  [
+   "B27",
+   "naqsTaghtiya"
+  ],
+  [
+   "B28",
+   "naqsTaghtiya"
+  ],
+  [
+   "B34",
+   "naqsTaghtiya"
+  ],
+  [
+   "B43",
+   "ikhtiyar"
+  ],
+  [
+   "B49",
+   "ikhtiyar"
+  ]
+ ],
+ "azwaj": {
+  "jumla": 15,
+  "taghayyar": 15,
+  "lam_yataghayyar": [],
+  "asaba_tarafan": 11
+ },
+ "rafd_qari": [],
+ "tarikh": "2026-10-29",
+ "malahiz": "الأعدادُ أعدادُ natija_6.json بعينها: المبرهناتُ في ملفّ النتيجة تُبنى على الشفرة الحاليّة، ومولِّدُ الخلايا يعيدها بايتًا («مطابق»)؛ وتغيّرت بصماتُ Dal/Tahsil.lean وDal/QiraaTahsil.lean بالتعديل الثالث للتحصيل."
+}
