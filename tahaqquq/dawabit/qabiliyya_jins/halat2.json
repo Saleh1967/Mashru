@@ -1,0 +1,13 @@
+{
+ "_law": "ضابط مجمَّد (الجولة ٢): الحالاتُ الأربعُ المتوقَّعة من §٤ من أمر المالك (2026-10-29) ، أوتوريتي سابقٌ للشفرة ، + سلوكُ الخاصّة العامّ. تُجمَّد ببصمتها.",
+ "_spec": "Madlul/قابلية_من_خاصة_الجنس.md (الجولة الثانية)",
+ "_source": "قرارات المالك §٤ نصًّا",
+ "halat": [
+  {"id":"H1","desc":"ذهاب الولد مرخَّص (madlulWarith walad insan ، event 10 → sayr)","expr":"hukmHadath (madlulWarith walad .insan) mithalShahid 10","hukm":"murakhkhas"},
+  {"id":"H2","desc":"طيران الولد لا حكم (event 12 بلا مثال)","expr":"hukmHadath (madlulWarith walad .insan) mithalShahid 12","hukm":"laHukm"},
+  {"id":"H3","desc":"ذهاب الدار لا حكم (الجماد لا ينتقل)","expr":"hukmHadath (madlulWarith dar .jamad) mithalShahid 10","hukm":"laHukm"},
+  {"id":"H4a","desc":"توافق: الجديد(ولد,10) = شاهد Utur(walad,.qabiliyya 10) = murakhkhas","expr":"hukmHadath(walad,10) = hukmMadlul(walad,qab 10)","hukm":"EQUAL"},
+  {"id":"H4b","desc":"توافق: الجديد(ولد,12) = شاهد Utur(walad,.qabiliyya 12) = laHukm","expr":"hukmHadath(walad,12) = hukmMadlul(walad,qab 12)","hukm":"EQUAL"},
+  {"id":"H5","desc":"الخاصّة تعمل: جنسٌ لا ينتقل (جماد/نبات) ⇒ أيّ قابليّة إسنادًا = لا حكم","expr":"laHukm_idha_la_intiqal (q لا ينتقل)","hukm":"laHukm"}
+ ]
+}
