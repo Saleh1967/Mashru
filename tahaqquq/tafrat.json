@@ -7963,86 +7963,92 @@
  },
  {
   "ism": "P1430_athar_tashghil",
-  "milaf": "tahaqquq/dawabit/athar/natija_4.json",
-  "min": " \"tashghil\": 4,",
-  "ila": " \"tashghil\": 5,"
+  "milaf": "tahaqquq/dawabit/athar/natija_5.json",
+  "min": " \"tashghil\": 5,",
+  "ila": " \"tashghil\": 6,"
  },
  {
   "ism": "P1431_athar_natija_cases",
-  "milaf": "tahaqquq/dawabit/athar/natija_4.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_5.json",
   "min": " \"cases_sha256\": \"7bd6204545366af11dfca85769739d65ff23a3d863139ffee90f1c49d6f032ab\",",
   "ila": " \"cases_sha256\": \"8bd6204545366af11dfca85769739d65ff23a3d863139ffee90f1c49d6f032ab\","
  },
  {
   "ism": "P1432_athar_shifra",
-  "milaf": "tahaqquq/dawabit/athar/natija_4.json",
-  "min": "   \"sha256\": \"ccb82d8c6f70d813ac4232cf71d6dc01bf240e2f10f258c3052924508bc2fe03\"",
-  "ila": "   \"sha256\": \"0cb82d8c6f70d813ac4232cf71d6dc01bf240e2f10f258c3052924508bc2fe03\""
+  "milaf": "tahaqquq/dawabit/athar/natija_5.json",
+  "min": "   \"sha256\": \"ac1263b813a5c250a206f53a0537a758bfa2fd44fb76516bdc1844757b68c7c0\"",
+  "ila": "   \"sha256\": \"0c1263b813a5c250a206f53a0537a758bfa2fd44fb76516bdc1844757b68c7c0\""
  },
  {
   "ism": "P1433_athar_bil_fia",
-  "milaf": "tahaqquq/dawabit/athar/natija_4.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_5.json",
   "min": "  \"موجب\": 4,",
   "ila": "  \"موجب\": 5,"
  },
  {
   "ism": "P1434_athar_akhta_json",
-  "milaf": "tahaqquq/dawabit/athar/natija_4.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_5.json",
   "min": "   \"A50\",\n   \"qayd\",\n   \"naqsTaghtiya\"",
   "ila": "   \"A50\",\n   \"qayd\",\n   \"khata\""
  },
  {
   "ism": "P1435_athar_azwaj_json",
-  "milaf": "tahaqquq/dawabit/athar/natija_4.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_5.json",
   "min": "   \"A34\",\n   \"A35\",\n   false",
   "ila": "   \"A34\",\n   \"A35\",\n   true"
  },
  {
   "ism": "P1436_athar_lean_qaima",
-  "milaf": "tahaqquq/dawabit/athar/natija_4.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_5.json",
   "min": "  \"Nizam.Athar.Qiyas.natija_fia\",",
   "ila": "  \"Nizam.Athar.Qiyas.azwaj_1\","
  },
  {
   "ism": "P1437_athar_halat",
-  "milaf": "tahaqquq/dawabit/athar/natija_4.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_5.json",
   "min": " \"halat\": 50,",
   "ila": " \"halat\": 51,"
  },
  {
   "ism": "P1438_athar_qablaha",
-  "milaf": "tahaqquq/dawabit/athar/natija_4.json",
-  "min": "  \"natija_3.json\": \"31c7d0bc34ff5025638f755d08095752282ce15ea6a3e65c8efd61793efee9a3\"",
-  "ila": "  \"natija_3.json\": \"01c7d0bc34ff5025638f755d08095752282ce15ea6a3e65c8efd61793efee9a3\""
+  "milaf": "tahaqquq/dawabit/athar/natija_5.json",
+  "min": "  \"natija_4.json\": \"5d1e1a569f386e6046ca34d7d9bd30b742910b167fafbaa06a51530ec17fadb6\"",
+  "ila": "  \"natija_4.json\": \"0d1e1a569f386e6046ca34d7d9bd30b742910b167fafbaa06a51530ec17fadb6\""
  },
  {
   "ism": "P1439_athar_ihsa_json",
-  "milaf": "tahaqquq/dawabit/athar/natija_4.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_5.json",
   "min": "  \"sawab\": 7,",
   "ila": "  \"sawab\": 6,"
  },
  {
-  "ism": "P1440_athar_madi_nun_damir",
+  "ism": "P1440_athar_madi_lahiq",
   "milaf": "Nizam/Athar.lean",
-  "min": "!([18, 14].contains (z / 4) &&",
-  "ila": "!([18].contains (z / 4) &&"
+  "min": "c % 4 == 0 && d % 4 == 0 && b % 4 == 3",
+  "ila": "c % 4 == 0 && d % 4 == 0"
  },
  {
   "ism": "P1441_athar_madi_tadif",
   "milaf": "Nizam/Athar.lean",
-  "min": "p % 4 == 3 && p / 4 != 2)",
-  "ila": "p % 4 == 3 && p / 4 != 2 && p / 4 != z / 4)"
+  "min": "(b % 4 == 3 && b / 4 == c / 4)",
+  "ila": "(b % 4 == 3)"
  },
  {
   "ism": "P1442_athar_madi_alif",
   "milaf": "Nizam/Athar.lean",
-  "min": "p % 4 == 3 && p / 4 != 2)",
-  "ila": "p % 4 == 3)"
+  "min": "b % 4 != 3 || b == 11 ||",
+  "ila": "b % 4 != 3 ||"
  },
  {
   "ism": "P1443_athar_dabit_shifra_jadhr",
   "milaf": "tahaqquq/test_athar_dabit.py",
   "min": "#[`Nizam.Athar.Dabit.natijaHala]",
   "ila": "#[`Nizam.Athar.quwwaJumla]"
+ },
+ {
+  "ism": "P1444_athar_madi_tul",
+  "milaf": "Nizam/Athar.lean",
+  "min": "  | [_, b, c, d] =>",
+  "ila": "  | _ :: b :: c :: d :: _ =>"
  }
 ]
