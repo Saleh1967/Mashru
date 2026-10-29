@@ -113,6 +113,8 @@
   ٥ت٨. أثرُ العُقَد (tahaqquq/test_athar.py؛ Nizam/Athar.lean والأداة athar): صفوفُ جدول العوامل من صورٍ مشكولةٍ باليد لكلّ صفٍّ ذي صورة، وحكمُ
       الجملة قبل المعجم وبعده والقوّةُ والدعوى والمنطوقُ والقيدُ وعقدةُ المفهوم (حارسُ تراجعٍ على مخرجٍ رآه البنّاء)، واتّساقُ حكمها قبل المعجم
       بـ`silsila` وما بعده بما قبله، واتّساقُ حقول المخرج على ما تقوله المبرهنات (القيدُ ودورُه، والدعوى والإسناد، وشروطُ الخبر)، دائمًا.
+  ٥ص١٤. ضابطُ «أثر العُقَد» المجمَّد (tahaqquq/test_athar_dabit.py؛ نطاقُ القوّة من الكتاب والمغني والقطر والألفية وج3، ونطاقُ القيد ج3 س1062–1106):
+      مثلُ ٥ص على Nizam/Athar.lean وNizam/AtharDabit.lean، بحقلٍ مسؤولٍ في كلّ حالة (القوّة أو القيد)، دائمًا؛ والسندُ في أسطره وفاحصُ المؤلّف إن حضرت المودَعات.
   ٥ت٣. هيكلُ الإنتروبيا (tahaqquq/test_intrubiya.py؛ Jisr/Intrubiya.lean وJisr/IntrubiyaShahada.lean وscripts/intrubiya.py): تعدادٌ صريحٌ لكلمات
       الطول 3 وتجميعٌ حتى 4 يساويان أعدادَ lawCount المنسوخة من Lean، والشهادةُ المولَّدة بالبايت ومتباينتاها بأعدادٍ صحيحة، والمقدِّراتُ على
       توزيعاتٍ باليد، والنقلُ بالجسر قبل الآلة، وجدولُ nabtBridge، والتحصيلُ على كلماتٍ خلاياها باليد، دائمًا؛ وعلى المودَع إن حضر في MUDAA_DIR.
@@ -213,6 +215,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_tahsil.py",
     "tahaqquq/test_silsila.py",
     "tahaqquq/test_athar.py",
+    "tahaqquq/test_athar_dabit.py",
     "tahaqquq/test_intrubiya.py",
     "tahaqquq/test_qiyas_intrubiya.py",
     "tahaqquq/test_nabt_tadqiq.py",
@@ -1173,6 +1176,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت٨ {out.strip().splitlines()[-1] if out.strip() else 'أثر العقد: ?'}")
     if code != 0:
         fails.append("اختبار أثر العقد فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_athar_dabit.py"])
+    report.append(f"٥ص١٤ {out.strip().splitlines()[-1] if out.strip() else 'ضابط أثر العقد: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط أثر العقد فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_intrubiya.py"])
     report.append(f"٥ت٣ {out.strip().splitlines()[-1] if out.strip() else 'الإنتروبيا: ?'}")
     if code != 0:

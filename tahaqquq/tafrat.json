@@ -7900,5 +7900,65 @@
   "milaf": "Nizam/AtharDabit.lean",
   "min": "  else if makh = [la] then .naqsTaghtiya",
   "ila": "  else if makh = [la] then .tajawuz"
+ },
+ {
+  "ism": "P1420_athar_tajmid_wasf",
+  "milaf": "tahaqquq/dawabit/athar/tajmid.json",
+  "min": "\"wasf_sha256\": \"d3646b7e39ec766c39248637f23c4ae298b62d3b9f64a7fe7f953cedbdbd6d26\"",
+  "ila": "\"wasf_sha256\": \"e3646b7e39ec766c39248637f23c4ae298b62d3b9f64a7fe7f953cedbdbd6d26\""
+ },
+ {
+  "ism": "P1421_athar_tajmid_masdar",
+  "milaf": "tahaqquq/dawabit/athar/tajmid.json",
+  "min": "\"sha256\": \"a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\"",
+  "ila": "\"sha256\": \"b160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625\""
+ },
+ {
+  "ism": "P1422_athar_mawlud_nass",
+  "milaf": "Nizam/AtharDawabit.lean",
+  "min": "\"صُمْ يَوْمَ الْخَمِيسِ\"",
+  "ila": "\"صُمْ يَوْمَ الْجُمُعَةِ\""
+ },
+ {
+  "ism": "P1423_athar_muwallid_quwwa",
+  "milaf": "scripts/bina_dawabit_athar.py",
+  "min": "QUWWA = {\"إثبات\": \".ithbat\",",
+  "ila": "QUWWA = {\"إثبات\": \".nafy\","
+ },
+ {
+  "ism": "P1424_athar_natija1_sawab",
+  "milaf": "tahaqquq/dawabit/athar/natija_1.json",
+  "min": "  \"sawab\": 7,",
+  "ila": "  \"sawab\": 8,"
+ },
+ {
+  "ism": "P1425_athar_natija_sigha",
+  "milaf": "Nizam/AtharQiyas.lean",
+  "min": "theorem natija : ihsa (natayij halat) = ⟨7, 43, 0, 0, 0, 0⟩ := by",
+  "ila": "theorem natija : ihsa (natayij halat) = ihsa (natayij halat) := by"
+ },
+ {
+  "ism": "P1426_athar_majal_sigha",
+  "milaf": "Nizam/AtharQiyas.lean",
+  "min": "theorem majal : majalAadad halat = [50, 29, 21, 6, 5, 6, 7, 3, 2, 3, 2, 2, 4, 7, 0, 3, 16, 25, 10, 3, 9, 3] := by",
+  "ila": "theorem majal : halat.length = halat.length := by"
+ },
+ {
+  "ism": "P1427_athar_azwaj_sigha",
+  "milaf": "Nizam/AtharQiyas.lean",
+  "min": "    azwaj halat = [(\"A01\", \"A02\", true),",
+  "ila": "    (azwaj halat).length = 8 ∧ azwaj halat = [(\"A01\", \"A02\", true),"
+ },
+ {
+  "ism": "P1428_athar_dabit_rafd",
+  "milaf": "Nizam/AtharDabit.lean",
+  "min": "  if !kullMaqrua t then .rafdQari",
+  "ila": "  if false then .rafdQari"
+ },
+ {
+  "ism": "P1429_athar_akhta_sigha",
+  "milaf": "Nizam/AtharQiyas.lean",
+  "min": "    akhta (natayij halat) = [",
+  "ila": "    Dabit.akhta (natayij halat) = ["
  }
 ]

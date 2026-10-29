@@ -1,0 +1,128 @@
+/-
+# أثرُ العُقَد على ضابطه المجمَّد — النتيجةُ على الشفرة الحاليّة
+
+**ما يُقارَن** (`Nizam/AtharDabit.lean`، بنصّ المواصفة `tahaqquq/dawabit/athar/wasf.md` §القياس): لكلّ حالةٍ من `Dabit.halat` (كتبها مؤلّفٌ
+مستقلٌّ إجرائيًّا من المواصفة والمصادر الخمسة، وفي سياقه ما حُقن آليًّا — `taalif.md` —، وجُمّدت ببصمتها في `tahaqquq/dawabit/athar/tajmid.json`
+في الإيداع `def3e90` قبل إيداع الشفرة `a721d74`) حقلُ نوعها: `quwwa` (`quwwaJumla` على نصّ الجملة) أو `qayd` (`qaydMuharrik`).
+
+**الوسم.** سبعُ مبرهناتٍ على الشاهد: ستٌّ بـ`decide` على الحالات المجمَّدة — `majal`، و`natayij_1` (يُحسب فيها المحرّكُ على الحالات الخمسين
+مرّةً واحدة)، و`natija` و`natija_fia` و`akhta_1` (منها بإعادة الكتابة)، و`azwaj_1` —، و`rafd_shahid` على جملةٍ مبنيّة. ومعنى العدّ موافقةُ الشفرة لقراءةٍ مستقلّةٍ للنطاق، لا تغطيةُ اللغة:
+الحالاتُ مؤلَّفة لا عيّنةٌ من استعمال. **والمواصفةُ كُتبت بعد الشفرة** (انحرافٌ عن المنهج §٤-أ؛ `tahaqquq/dawabit/athar/mulhaq_1.md`).
+
+**التشغيلات.** المبرهناتُ هنا على الشفرة الحاليّة دائمًا. وسجلُّ كلّ تشغيلٍ ملفٌّ في `tahaqquq/dawabit/athar/` (`natija_1.json` …).
+- `natija_1.json`: التشغيلُ الأوّل على الشفرة المجمَّدة في `a721d74`، قبل أيّ تعديلٍ لها بعد قراءة الحالات: 7 صوابًا من 50، و43 نقصَ تغطية،
+  ولا خطأ ولا تجاوز ولا اختيار ولا ردَّ من القارئ.
+
+**الإخفاقاتُ الثلاثة والأربعون كلُّها نقصُ تغطية:** المحرّكُ قال «لا حكم» حيث المتوقَّعُ حكم (`akhta_1`)؛ وما حكم فيه أصاب (أربعُ حالاتٍ موجبة
+وثلاثُ خارجة). وأسبابُها قراءةُ البنّاء من مخرج المحرّك على الحالات (`#eval`، في `mulhaq_1.md` §٤): في القيد كلُّها بلا إطارٍ مرخَّص (الجملةُ
+الاسميّة والأمرُ والجملةُ الأطولُ من الأشكال الستّة خارجَ ما يقرؤه `Jisr.NassItar.itarat`)؛ وفي القوّة أداةٌ لها صفوفٌ بأساليبَ مختلفة («ما»،
+«متى»)، أو صفٌّ لم يُبنَ أثرُه في القوّة («لمّا»، «حيثما»)، أو أداةٌ متّصلة («أَلَمْ»، «وَإِذَا»)، أو ما ليس ماضيًا مجرّدًا في دور الفعل (الأمر،
+والمضارع، والاسميّة، والماضي بضميرٍ متّصل).
+-/
+import Nizam.AtharDawabit
+
+namespace Nizam.Athar
+namespace Qiyas
+
+open Dabit
+
+/-- **المجالُ غيرُ فارغ ولا مائلٍ إلى «لا حكم»:** 50 حالة، 29 قوّةً و21 قيدًا. والقوّةُ المتوقَّعة: إثبات 6، نفي 5، تعليق 6، إنشاء 7، لا حكم 3،
+    وبديلان 2؛ والقيدُ: صفة 3، شرط 2، غاية 2، عدد 4، لا قيد 7، لا حكم 0، وقائمةٌ من اثنين فأكثر 3؛ وذواتُ الزوج 16 (ثمانيةُ أزواج)؛ والفئات: موجب 25،
+    وحدّ 10، وخارج 3، وعموم 9، وغموض 3. -/
+theorem majal : majalAadad halat = [50, 29, 21, 6, 5, 6, 7, 3, 2, 3, 2, 2, 4, 7, 0, 3, 16, 25, 10, 3, 9, 3] := by
+  decide +kernel
+
+/-- **النتيجةُ حالةً حالة** (الحالة، الفئة، النوع، النتيجة): المحرّكُ على الحالات الخمسين. -/
+theorem natayij_1 :
+    natayij halat = [
+      ("A01", .mujib, .quwwa, .sawab),
+      ("A02", .mujib, .quwwa, .naqsTaghtiya),
+      ("A03", .mujib, .quwwa, .naqsTaghtiya),
+      ("A04", .umum, .quwwa, .naqsTaghtiya),
+      ("A05", .mujib, .quwwa, .naqsTaghtiya),
+      ("A06", .hadd, .quwwa, .naqsTaghtiya),
+      ("A07", .hadd, .quwwa, .naqsTaghtiya),
+      ("A08", .mujib, .quwwa, .sawab),
+      ("A09", .mujib, .quwwa, .naqsTaghtiya),
+      ("A10", .hadd, .quwwa, .naqsTaghtiya),
+      ("A11", .mujib, .quwwa, .naqsTaghtiya),
+      ("A12", .mujib, .quwwa, .sawab),
+      ("A13", .mujib, .quwwa, .naqsTaghtiya),
+      ("A14", .mujib, .quwwa, .naqsTaghtiya),
+      ("A15", .mujib, .quwwa, .naqsTaghtiya),
+      ("A16", .hadd, .quwwa, .naqsTaghtiya),
+      ("A17", .hadd, .quwwa, .naqsTaghtiya),
+      ("A18", .hadd, .quwwa, .naqsTaghtiya),
+      ("A19", .hadd, .quwwa, .naqsTaghtiya),
+      ("A20", .hadd, .quwwa, .naqsTaghtiya),
+      ("A21", .umum, .quwwa, .naqsTaghtiya),
+      ("A22", .umum, .quwwa, .naqsTaghtiya),
+      ("A23", .umum, .quwwa, .naqsTaghtiya),
+      ("A24", .ghumud, .quwwa, .naqsTaghtiya),
+      ("A25", .ghumud, .quwwa, .naqsTaghtiya),
+      ("A26", .kharij, .quwwa, .sawab),
+      ("A27", .kharij, .quwwa, .sawab),
+      ("A28", .kharij, .quwwa, .sawab),
+      ("A29", .mujib, .quwwa, .sawab),
+      ("A30", .mujib, .qayd, .naqsTaghtiya),
+      ("A31", .hadd, .qayd, .naqsTaghtiya),
+      ("A32", .mujib, .qayd, .naqsTaghtiya),
+      ("A33", .mujib, .qayd, .naqsTaghtiya),
+      ("A34", .umum, .qayd, .naqsTaghtiya),
+      ("A35", .umum, .qayd, .naqsTaghtiya),
+      ("A36", .mujib, .qayd, .naqsTaghtiya),
+      ("A37", .umum, .qayd, .naqsTaghtiya),
+      ("A38", .mujib, .qayd, .naqsTaghtiya),
+      ("A39", .mujib, .qayd, .naqsTaghtiya),
+      ("A40", .mujib, .qayd, .naqsTaghtiya),
+      ("A41", .mujib, .qayd, .naqsTaghtiya),
+      ("A42", .mujib, .qayd, .naqsTaghtiya),
+      ("A43", .umum, .qayd, .naqsTaghtiya),
+      ("A44", .hadd, .qayd, .naqsTaghtiya),
+      ("A45", .ghumud, .qayd, .naqsTaghtiya),
+      ("A46", .mujib, .qayd, .naqsTaghtiya),
+      ("A47", .mujib, .qayd, .naqsTaghtiya),
+      ("A48", .mujib, .qayd, .naqsTaghtiya),
+      ("A49", .mujib, .qayd, .naqsTaghtiya),
+      ("A50", .umum, .qayd, .naqsTaghtiya)] := by
+  decide +kernel
+
+/-- **النتيجة:** 7 صوابًا من 50، و43 نقصَ تغطية؛ ولا تجاوز، ولا اختيار، ولا خطأ، ولا ردَّ من القارئ. -/
+theorem natija : ihsa (natayij halat) = ⟨7, 43, 0, 0, 0, 0⟩ := by
+  rw [natayij_1]; decide
+
+/-- **بالفئات:** موجب 4 من 25، حدّ 0 من 10، خارج 3 من 3، عموم 0 من 9، غموض 0 من 3؛ والباقي نقصُ تغطية. -/
+theorem natija_fia :
+    [Fia.mujib, .hadd, .kharij, .umum, .ghumud].map (fun f => ihsa ((natayij halat).filter (·.2.1 == f))) =
+      [⟨4, 21, 0, 0, 0, 0⟩, ⟨0, 10, 0, 0, 0, 0⟩, ⟨3, 0, 0, 0, 0, 0⟩, ⟨0, 9, 0, 0, 0, 0⟩, ⟨0, 3, 0, 0, 0, 0⟩] := by
+  rw [natayij_1]; decide
+
+/-- **والإخفاقاتُ الثلاثة والأربعون بأسمائها**، كلُّها نقصُ تغطية: 22 في القوّة، و21 في القيد (كلُّ حالات القيد). -/
+theorem akhta_1 :
+    akhta (natayij halat) = [
+      ("A02", .quwwa, .naqsTaghtiya), ("A03", .quwwa, .naqsTaghtiya), ("A04", .quwwa, .naqsTaghtiya), ("A05", .quwwa, .naqsTaghtiya),
+      ("A06", .quwwa, .naqsTaghtiya), ("A07", .quwwa, .naqsTaghtiya), ("A09", .quwwa, .naqsTaghtiya), ("A10", .quwwa, .naqsTaghtiya),
+      ("A11", .quwwa, .naqsTaghtiya), ("A13", .quwwa, .naqsTaghtiya), ("A14", .quwwa, .naqsTaghtiya), ("A15", .quwwa, .naqsTaghtiya),
+      ("A16", .quwwa, .naqsTaghtiya), ("A17", .quwwa, .naqsTaghtiya), ("A18", .quwwa, .naqsTaghtiya), ("A19", .quwwa, .naqsTaghtiya),
+      ("A20", .quwwa, .naqsTaghtiya), ("A21", .quwwa, .naqsTaghtiya), ("A22", .quwwa, .naqsTaghtiya), ("A23", .quwwa, .naqsTaghtiya),
+      ("A24", .quwwa, .naqsTaghtiya), ("A25", .quwwa, .naqsTaghtiya), ("A30", .qayd, .naqsTaghtiya), ("A31", .qayd, .naqsTaghtiya),
+      ("A32", .qayd, .naqsTaghtiya), ("A33", .qayd, .naqsTaghtiya), ("A34", .qayd, .naqsTaghtiya), ("A35", .qayd, .naqsTaghtiya),
+      ("A36", .qayd, .naqsTaghtiya), ("A37", .qayd, .naqsTaghtiya), ("A38", .qayd, .naqsTaghtiya), ("A39", .qayd, .naqsTaghtiya),
+      ("A40", .qayd, .naqsTaghtiya), ("A41", .qayd, .naqsTaghtiya), ("A42", .qayd, .naqsTaghtiya), ("A43", .qayd, .naqsTaghtiya),
+      ("A44", .qayd, .naqsTaghtiya), ("A45", .qayd, .naqsTaghtiya), ("A46", .qayd, .naqsTaghtiya), ("A47", .qayd, .naqsTaghtiya),
+      ("A48", .qayd, .naqsTaghtiya), ("A49", .qayd, .naqsTaghtiya), ("A50", .qayd, .naqsTaghtiya)] := by
+  rw [natayij_1]; decide
+
+/-- **الأزواج الثمانية:** يختلف مخرجُ المحرّك بين طرفي زوجين («هَلْ»/«مَا» إنشاءٌ ولا حكم، و«أَلَمْ»/«لَمْ» لا حكمَ ونفي)، ولا يختلف في ستّة. -/
+theorem azwaj_1 :
+    azwaj halat = [("A01", "A02", true), ("A03", "A04", false), ("A05", "A06", false), ("A07", "A08", true),
+      ("A09", "A10", false), ("A30", "A31", false), ("A32", "A33", false), ("A34", "A35", false)] := by
+  decide +kernel
+
+/-- **ردُّ القارئ في المقارنة:** جملةٌ لا يقرأ القارئُ كلماتها نتيجتُها `rafdQari` لا مقارنةُ حقلها — ولا حالةَ من الخمسين يردّها القارئ
+    (`natija`)، فشاهدُ الفرع مبنيّ: «abc» مردودة، ولو كان متوقَّعُها «لا حكم» في `خارج`. -/
+theorem rafd_shahid : natijaHala ⟨"X", .quwwa, .kharij, "abc", [.laHukm], [], none⟩ = .rafdQari := by
+  decide +kernel
+
+end Qiyas
+end Nizam.Athar

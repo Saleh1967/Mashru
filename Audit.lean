@@ -112,6 +112,7 @@ import Nizam.Shahada
 import Nizam.Silsila
 import Nizam.Athar
 import Nizam.AtharDabit
+import Nizam.AtharQiyas
 import Dal.Tahsil
 import Dal.QiraaTahsil
 import Jisr.Abniya
@@ -2801,3 +2802,11 @@ import Jisr.DamirQiyas
 #print axioms Nizam.Athar.athar_innama
 -- مقارنةُ ضابط «أثر العُقَد» (Nizam/AtharDabit.lean)
 #print axioms Nizam.Athar.Dabit.qarin_shawahid
+-- أثرُ العُقَد على ضابطه المجمَّد (Nizam/AtharQiyas.lean)
+#print axioms Nizam.Athar.Qiyas.majal
+#print axioms Nizam.Athar.Qiyas.natayij_1
+#print axioms Nizam.Athar.Qiyas.natija
+#print axioms Nizam.Athar.Qiyas.natija_fia
+#print axioms Nizam.Athar.Qiyas.akhta_1
+#print axioms Nizam.Athar.Qiyas.azwaj_1
+#print axioms Nizam.Athar.Qiyas.rafd_shahid
