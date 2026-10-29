@@ -17,7 +17,7 @@
 المفحوص يقتلها الفحصُ المسمّى وحده: P1420 (بصمةُ المواصفة في tajmid.json، ١)، P1421 (بصمةُ مصدرٍ فيه، ١)، P1422 (جملةُ حالةٍ في المولَّد، ٢)، P1423
 (جدولُ القوّة في المولِّد، ٢)، P1425 (`natija` بلا أعدادها، ٣)، P1427 (`azwaj_1` بغير صيغتها، ٣)، P1429 (`akhta_1` بغير صيغتها، ٣)، P1430 (tashghil، ٣)،
 P1431 (cases_sha256، ٣)، P1432 (بصمةُ ملفٍّ من الشفرة، ٣)، P1433 (bil_fia، ٣)، P1434 (akhta، ٣)، P1435 (azwaj، ٣)، P1436 (حقلُ lean، ٣)، P1437 (halat،
-٣)، P1438 (qablaha، ٣)، P1439 (ihsa، ٣)، P1426 (`majal` بلا أعدادها، ٤). ثمّ نُقلت P1430–P1439 إلى آخر سجلّ (natija_5.json)، وزيدت P1443 (حسابُ SHIFRA
+٣)، P1438 (qablaha، ٣)، P1439 (ihsa، ٣)، P1426 (`majal` بلا أعدادها، ٤). ثمّ نُقلت P1430–P1439 إلى آخر سجلّ (natija_6.json)، وزيدت P1443 (حسابُ SHIFRA
 من `quwwaJumla` وحدها)؛ وقاتلُها بعد النقل لا يُكتب هنا قبل تشغيلها.
 **أثرُ بصمة الشفرة على غيره:** تشمل ملفّاتٍ لا يبصمها اختبارُ ضابطٍ قبله (منها Jisr/QaydMafhum.lean وJisr/MantuqMafhum.lean وJisr/AqsamAwamil.lean
 وAql/Qaida.lean وDal/Makharij.lean وNizam/Shahada.lean وNizam/Silsila.lean وملفّاتُ المالك في SLGE/ إلّا SLGE/Law.lean الذي يبصمه tahaqquq/test_ibdal.py)، فكلُّ طفرةٍ مقبلةٍ فيها تنجو من الاختبارات قبله يقتلها فحصُ البصمة في ٣، وهو لا يدلّ على عيبٍ سلوكيّ. وقاتلُ
@@ -41,7 +41,7 @@ import sys
 
 JADHR = pathlib.Path(__file__).resolve().parent.parent
 D = JADHR / "tahaqquq" / "dawabit" / "athar"
-# بصمةُ الشفرة: كلُّ ملفٍّ فيه ثابتٌ يبلغه حسابُ `natijaHala` (قيمُ التعريفات وأنواعُها، لا أجسامُ المبرهنات)، يحسبها ٣د بـLean من البيئة المبنيّة
+# بصمةُ الشفرة: كلُّ ملفٍّ فيه ثابتٌ يبلغه حسابُ `natijaHala` (قيمُ التعريفات وأنواعُها، لا أجسامُ المبرهنات ولا أنواعُها)، يحسبها ٣د بـLean من البيئة المبنيّة
 # (SHIFRA_LEAN) فتُقارَن بهذه القائمة؛ ومنها ملفّاتُ المالك في SLGE وملفُّ Nabt المنقول. وفي natija_1.json خمسةٌ (الشفرةُ المجمَّدة)، وثلاثةَ عشرَ في
 # natija_2.json، وخمسةَ عشرَ في natija_3.json باختيار البنّاء، وواحدٌ وأربعون منذ natija_4.json بالحساب.
 SHIFRA = ["Aql/Qaida.lean", "Dal/Jumla.lean", "Dal/Khaliya.lean", "Dal/Makharij.lean", "Dal/QiraaTahsil.lean", "Dal/Tahsil.lean",
