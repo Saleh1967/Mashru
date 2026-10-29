@@ -7,6 +7,10 @@
   * لا ختم بلا إذن المالك: `sajjil` بلا `--idhn` يُرفض ولا يمسّ السجلّ.
   * الاسم الواحد لا يُختم ببصمتين، والبصمة الواحدة لا تُسجَّل باسمين.
   * حالة المودَع: «مختوم» يدخل سجلّ الفاحص (sijill.tsv)؛ «مرشح» لا يدخله حتّى يُختم.
+  * جدولُ الربط (P2-أ؛ «جدول الربط — القطعة الأولى»، 2026-10-29): مودَعٌ «وضع» يحمل في السجلّ حقلَ `shawahid` — أسطرَه
+    بعينها (المعنى، الشيء، الخاصّة، القيمة) — وبصمتُه بصمةُ هذه الأسطر مكتوبةً «حقولًا بـTAB، وسطرًا بـLF» فتُفحص من السجلّ
+    نفسه بلا مودَع؛ ويولّد منها `wallid` أسطرَ `shahid` بعد أسطر `mudaa` كلّها. فلا يربط معنًى بواقعٍ إلّا مودَعٌ مختومٌ بإذن.
+    الختم: `sajjil <ملفّ> --ism X --naw وضع --ribt --idhn …`.
 
 التشغيل:
   python3 -I mudaat/idaa.py fahs [--sijill S]                 يتحقّق من السجلّ ويقارن sijill.tsv بالمولَّد
@@ -58,13 +62,36 @@ def akhta(s):
             e.append(f"{i}: الاسم {m['ism']} ببصمتين")
         if m["sha256"] in basamat and basamat[m["sha256"]] != m["ism"]:
             e.append(f"{i}: البصمة باسمين")
+        if "shawahid" in m:
+            r = m["shawahid"]
+            if m.get("naw") != "وضع":
+                e.append(f"{i}: جدولُ ربطٍ نوعُه غيرُ «وضع»")
+            if not isinstance(r, list) or not r or any(not isinstance(x, list) or len(x) != 4 or
+                                                       not all(isinstance(y, str) and y and "\t" not in y and "\n" not in y for y in x) for x in r):
+                e.append(f"{i}: أسطرُ الربط لا تُقرأ (أربعةُ حقولٍ غيرُ فارغةٍ لكلّ سطر)")
+            elif hashlib.sha256(baytRibt(r)).hexdigest() != m.get("sha256"):
+                e.append(f"{i}: أسطرُ الربط لا تطابق بصمةَ المودَع")
         asma[m["ism"]] = m["sha256"]
         basamat[m["sha256"]] = m["ism"]
     return e
 
 
+def baytRibt(rows):
+    return "".join("\t".join(r) + "\n" for r in rows).encode("utf-8")
+
+
+def qiraRibt(path):
+    b = open(path, "rb").read()
+    rows = [l.split("\t") for l in b.decode("utf-8").split("\n")[:-1]] if b.endswith(b"\n") else None
+    if not rows or any(len(r) != 4 or not all(r) for r in rows) or baytRibt(rows) != b:
+        return None
+    return rows
+
+
 def tsv(s):
-    return "".join(f"mudaa\t{m['sha256']}\t{m['naw']}\t{m['ism']}\n" for m in s if m["hala"] == "مختوم")
+    mk = [m for m in s if m["hala"] == "مختوم"]
+    return "".join(f"mudaa\t{m['sha256']}\t{m['naw']}\t{m['ism']}\n" for m in mk) + \
+        "".join("shahid\t" + "\t".join(r) + "\n" for m in mk for r in m.get("shawahid", []))
 
 
 def arg(name, default=None):
@@ -108,12 +135,22 @@ def main():
                 print(f"مرفوض: البصمة مسجّلة باسم «{m['ism']}»")
                 sys.exit(3)
             if m["sha256"] == b and m["ism"] == ism and m["hala"] == "مختوم":
+                if ("--ribt" in sys.argv) != ("shawahid" in m):
+                    print("مرفوض: مختومٌ بلا أسطر ربط، أو بها؛ لا يُغيَّر قيدٌ مختوم")
+                    sys.exit(3)
                 print("موجود مختومًا؛ لا تغيير")
                 return
         s = [m for m in s if not (m["ism"] == ism and m["sha256"] == b)]
-        s.append({"ism": ism, "naw": naw, "sha256": b, "milaf": os.path.basename(f),
-                  "masdar": arg("--masdar", ""), "hala": "مختوم", "idhn": idhn,
-                  "tarikh": datetime.date.today().isoformat()})
+        qayd = {"ism": ism, "naw": naw, "sha256": b, "milaf": os.path.basename(f),
+                "masdar": arg("--masdar", ""), "hala": "مختوم", "idhn": idhn,
+                "tarikh": datetime.date.today().isoformat()}
+        if "--ribt" in sys.argv:
+            rows = qiraRibt(f)
+            if naw != "وضع" or rows is None:
+                print("مرفوض: جدولُ الربط «وضع»، وأسطرُه أربعةُ حقولٍ غيرُ فارغةٍ بـTAB وكلُّ سطرٍ ينتهي بـLF")
+                sys.exit(3)
+            qayd["shawahid"] = rows
+        s.append(qayd)
         kitaba(sp, s)
         open(tp, "w", encoding="utf-8").write(tsv(s))
         print(f"خُتم «{ism}» {b}")
