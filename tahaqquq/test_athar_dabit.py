@@ -11,12 +11,17 @@
 ويفحص، إن حضرت المودَعات (MUDAA_DIR) ببصماتها، ولا طفرةَ له لأنّ CI بلا مودَع:
 ٥. كلُّ `sanad.nass` في الحالات في سطره بحذف البادئة وحدها، وسطرُه في نطاق نوع حالته كما تشترط المواصفة؛ ثمّ فاحصُ المؤلّف نفسُه يخرج 0.
 
-الطفرات وقاتلُها (شُغّلت بـtafrat_juz.py على 08a3ba1، 21 من 21؛ وعُزل الفحصُ القاتل بتشغيل الاختبار تحت كلّ طفرة): على المقارنة يقتلها البناء —
+الطفرات وقاتلُها (شُغّلت بـtafrat_juz.py على 08a3ba1، 21 من 21، وأُعيدت P1430–P1439 على natija_3.json بعده؛ وعُزل الفحصُ القاتل بتشغيل الاختبار
+تحت كلّ طفرة): على المقارنة يقتلها البناء —
 P1419 (`qarin`: «لا حكم» تجاوز، `qarin_shawahid`)، P1428 (لا ردَّ من القارئ، `rafd_shahid`)؛ وعلى المفحوص يقتلها الفحصُ المسمّى وحده: P1420 (بصمةُ
 المواصفة في tajmid.json، ١)، P1421 (بصمةُ مصدرٍ فيه، ١)، P1422 (جملةُ حالةٍ في المولَّد، ٢)، P1423 (جدولُ القوّة في المولِّد، ٢)، P1425 (`natija` بلا أعدادها،
 ٣)، P1427 (`azwaj_1` بغير صيغتها، ٣)، P1429 (`akhta_1` بغير صيغتها، ٣)، P1430 (tashghil، ٣)، P1431 (cases_sha256، ٣)، P1432 (بصمةُ ملفٍّ من الشفرة،
 ٣)، P1433 (bil_fia، ٣)، P1434 (akhta، ٣)، P1435 (azwaj، ٣)، P1436 (حقلُ lean، ٣)، P1437 (halat، ٣)، P1438 (qablaha، ٣)، P1439 (ihsa، ٣)، P1426 (`majal`
-بلا أعدادها، ٤).
+بلا أعدادها، ٤). وP1430–P1439 على natija_3.json (آخرِ سجلّ).
+**أثرُ بصمة الشفرة على غيره:** تشمل ملفّاتٍ لا يبصمها اختبارُ ضابطٍ قبله (منها Jisr/QaydMafhum.lean وJisr/MantuqMafhum.lean وJisr/AqsamAwamil.lean
+وJisr/Awamil.lean وNizam/Silsila.lean)، فكلُّ طفرةٍ مقبلةٍ فيها تنجو من الاختبارات قبله يقتلها فحصُ البصمة في ٣، وهو لا يدلّ على عيبٍ سلوكيّ. وقاتلُ
+طفرةٍ قائمة في ملفّات البصمة قد يتغيّر: إن كان اختبارًا بعد هذا في IKHTIBARAT_TAFRAT (tahaqquq/bawwaba.py)، أو قتلها البناءُ (natayij_1 وشواهدُ
+Nizam/Athar.lean) قبل قاتلها المعلَن؛ ويُرى ذلك في تشغيل الطفرات الكامل على CI.
 **ما لا يُعزل:** P1424 (عدٌّ في natija_1.json) يقتلها فحصان: المرساة NATIJA_1، وqablaha في natija_2.json (٣). ولا طفرةَ على: موازنة أعداد `majal` بما
 في cases.json، ومجموعِ كلّ فئةٍ في `natija_fia` (تغييرُ أعداد المبرهنة يقتله البناء، وcases.json مجمَّدٌ ببصمته)؛ ووجودِ أسماء حقل lean مبرهناتٍ (لم تُبنَ
 طفرتُه: إعادةُ تسمية مبرهنةٍ تُبقي سطرَها في Audit.lean بلا تصريح)؛ وتتالي أرقام السجلّات؛ وفحوصِ ٥ (CI بلا مودَع).
@@ -33,10 +38,11 @@ import sys
 JADHR = pathlib.Path(__file__).resolve().parent.parent
 D = JADHR / "tahaqquq" / "dawabit" / "athar"
 # بصمةُ الشفرة: ملفّاتُ ما يحسب الحقلين مباشرةً (القوّة والقيد وقراءةُ الجملة وإطارُها وحكمُه)، لا كلُّ ما تستورده. وفي natija_1.json خمسةٌ منها
-# (الشفرةُ المجمَّدة)، وزيد الباقي منذ natija_2.json.
+# (الشفرةُ المجمَّدة)، وثلاثةَ عشرَ في natija_2.json، وخمسةَ عشرَ منذ natija_3.json (زيد Jisr/QawaidSitta.lean وJisr/QawaidJadwal.lean).
 SHIFRA = ["Nizam/Athar.lean", "Nizam/AtharDabit.lean", "Nizam/Silsila.lean", "Jisr/NassItar.lean", "Dal/QiraaTahsil.lean",
           "Dal/Tahsil.lean", "Jisr/Utur.lean", "Jisr/SakkJumla.lean", "Jisr/Awamil.lean", "Jisr/AwamilJadwal.lean",
-          "Jisr/AqsamAwamil.lean", "Jisr/MantuqMafhum.lean", "Jisr/QaydMafhum.lean"]
+          "Jisr/AqsamAwamil.lean", "Jisr/MantuqMafhum.lean", "Jisr/QaydMafhum.lean", "Jisr/QawaidSitta.lean",
+          "Jisr/QawaidJadwal.lean"]
 QIYAS = JADHR / "Nizam/AtharQiyas.lean"
 BINA = JADHR / "scripts/bina_dawabit_athar.py"
 MASADIR = {
