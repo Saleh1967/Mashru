@@ -110,6 +110,8 @@ import SLGE.Syllable
 import Madlul.TasisDalala
 import Nizam.Shahada
 import Nizam.Silsila
+import Nizam.Athar
+import Nizam.AtharDabit
 import Dal.Tahsil
 import Dal.QiraaTahsil
 import Jisr.Abniya
@@ -2734,3 +2736,68 @@ import Jisr.DamirQiyas
 #print axioms Nizam.Silsila.uqdaU_marbut
 #print axioms Nizam.Silsila.kullMaqrua_kalimatDal
 #print axioms Nizam.Silsila.silsila_murakhkhas
+-- أثرُ العُقَد في المنطوق والمفهوم (Nizam/Athar.lean): الأداةُ والقسمُ، والإطارُ والجملةُ بعد المعجم، والمنطوقُ، والقوّةُ والدعوى، والمفهوم
+#print axioms Nizam.Athar.mem_sufuf
+#print axioms Nizam.Athar.sathiya_82
+#print axioms Nizam.Athar.sufuf_shawahid
+#print axioms Nizam.Athar.maqta_adat
+#print axioms Nizam.Athar.muqDawr_hal
+#print axioms Nizam.Athar.adawatItar_hal
+#print axioms Nizam.Athar.hukm_muqaddimat
+#print axioms Nizam.Athar.hukm_idkhal
+#print axioms Nizam.Athar.itarM_sawa
+#print axioms Nizam.Athar.itarM_muallaq
+#print axioms Nizam.Athar.jumlaM_marbut
+#print axioms Nizam.Athar.abna_min_hukm
+#print axioms Nizam.Athar.itarM_murakhkhas_imp
+#print axioms Nizam.Athar.itarM_mumtani_imp
+#print axioms Nizam.Athar.jumlaM_murakhkhas
+#print axioms Nizam.Athar.jumlaM_mumtani
+#print axioms Nizam.Athar.hukm_idkhal_aw
+#print axioms Nizam.Athar.itarM_hukm
+#print axioms Nizam.Athar.nisbaDawr_qiyam
+#print axioms Nizam.Athar.ramz_itar
+#print axioms Nizam.Athar.harfJarr_la_isnad
+#print axioms Nizam.Athar.itarMurakhkhas_spec
+#print axioms Nizam.Athar.adwarKalimat_itar
+#print axioms Nizam.Athar.mantuq_itar
+#print axioms Nizam.Athar.jumlaM_itar
+#print axioms Nizam.Athar.isnadMuq_matlub
+#print axioms Nizam.Athar.la_tarqiya
+#print axioms Nizam.Athar.forceOfUslub_assertive
+#print axioms Nizam.Athar.insha_nabt
+#print axioms Nizam.Athar.quwwaSufuf_insha
+#print axioms Nizam.Athar.quwwaJumla_insha
+#print axioms Nizam.Athar.shartQuwwa_matlub
+#print axioms Nizam.Athar.dawa_murakhkhas
+#print axioms Nizam.Athar.dawa_waqi
+#print axioms Nizam.Athar.insha_la_dawa
+#print axioms Nizam.Athar.qaydMin_shahid
+#print axioms Nizam.Athar.adatQayd_anwa
+#print axioms Nizam.Athar.unsurDawr_qayd
+#print axioms Nizam.Athar.unsurQayd_innama
+#print axioms Nizam.Athar.la_shart_fi_majal
+#print axioms Nizam.Athar.innamaFi_bunya
+#print axioms Nizam.Athar.qaydJumla_mem
+#print axioms Nizam.Athar.qaydJumla_dawr
+#print axioms Nizam.Athar.mashud_qaydJumla
+#print axioms Nizam.Athar.qaydJumla_anwa
+#print axioms Nizam.Athar.qaydJumla_sinf
+#print axioms Nizam.Athar.mafhum_kalima
+#print axioms Nizam.Athar.mafahim_eq
+#print axioms Nizam.Athar.mafhum_bila_wada
+#print axioms Nizam.Athar.qaydMuq_matlub
+#print axioms Nizam.Athar.muqMafhum_matlub
+#print axioms Nizam.Athar.mafahim_mukhalafa
+#print axioms Nizam.Athar.mafhum_jisr
+#print axioms Nizam.Athar.la_mafhum_fi_majal
+#print axioms Nizam.Athar.athar_maqta
+#print axioms Nizam.Athar.athar_adat
+#print axioms Nizam.Athar.athar_dawr
+#print axioms Nizam.Athar.athar_qism
+#print axioms Nizam.Athar.athar_itar
+#print axioms Nizam.Athar.athar_quwwa
+#print axioms Nizam.Athar.athar_hadd
+#print axioms Nizam.Athar.athar_innama
+-- مقارنةُ ضابط «أثر العُقَد» (Nizam/AtharDabit.lean)
+#print axioms Nizam.Athar.Dabit.qarin_shawahid
