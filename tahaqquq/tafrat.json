@@ -7630,5 +7630,65 @@
   "milaf": "mudaat/idaa.py",
   "min": "if (\"--ribt\" in sys.argv) != (\"shawahid\" in m):",
   "ila": "if False:"
+ },
+ {
+  "ism": "P1375_silsila_ism_taliq",
+  "milaf": "Qari/Silsila.lean",
+  "min": "  | .muallaq l => \"معلق: \" ++ \" | \".intercalate l",
+  "ila": "  | .muallaq l => \"معلق \" ++ \" | \".intercalate l"
+ },
+ {
+  "ism": "P1376_silsila_maqta_min_sifr",
+  "milaf": "Nizam/Silsila.lean",
+  "min": "def ismMaqta (m : Dal.Tahsil.Maqta) : String := \"مقطع \" ++ toString (m.i + 1)",
+  "ila": "def ismMaqta (m : Dal.Tahsil.Maqta) : String := \"مقطع \" ++ toString (m.i)"
+ },
+ {
+  "ism": "P1377_silsila_badail_hiya_makhraj",
+  "milaf": "Nizam/Silsila.lean",
+  "min": "    (fs.map (·.1)).filter (· != makhraj)",
+  "ila": "    (fs.map (·.1)).filter (· == makhraj)"
+ },
+ {
+  "ism": "P1378_silsila_bidayat_kalima",
+  "milaf": "Nizam/Silsila.lean",
+  "min": "taqtiAux cs (k + 1) [] (k + 1)",
+  "ila": "taqtiAux cs (k + 1) [] k"
+ },
+ {
+  "ism": "P1379_silsila_halan_maqlubani",
+  "milaf": "Qari/Silsila.lean",
+  "min": "| .mashhud => \"مشهود\" | .manfi => \"منفي\"",
+  "ila": "| .mashhud => \"منفي\" | .manfi => \"مشهود\""
+ },
+ {
+  "ism": "P1380_silsila_laHukm_manfi",
+  "milaf": "Nizam/Silsila.lean",
+  "min": "  | .laHukm => .ghayrMafhus",
+  "ila": "  | .laHukm => .manfi"
+ },
+ {
+  "ism": "P1381_silsila_muallaq_yurfa_manfi",
+  "milaf": "Nizam/Silsila.lean",
+  "min": "      fun x => ⟨x, .madkhal, .ghayrMafhus, sanadRafa⟩",
+  "ila": "      fun x => ⟨x, .madkhal, .manfi, sanadRafa⟩"
+ },
+ {
+  "ism": "P1382_silsila_qari_mardud_mashhud",
+  "milaf": "Nizam/Silsila.lean",
+  "min": "  | .error e => ⟨ismQari ++ \": \" ++ e, .shart, .manfi, sanadQari⟩",
+  "ila": "  | .error e => ⟨ismQari ++ \": \" ++ e, .shart, .mashhud, sanadQari⟩"
+ },
+ {
+  "ism": "P1383_silsila_kharij_hadd_ghayrMafhus",
+  "milaf": "Nizam/Silsila.lean",
+  "min": "sababIsm), .shart, .manfi, sanadHadd⟩]",
+  "ila": "sababIsm), .shart, .ghayrMafhus, sanadHadd⟩]"
+ },
+ {
+  "ism": "P1384_silsila_utur_bila_qiraa",
+  "milaf": "Nizam/Silsila.lean",
+  "min": "  if kullMaqrua t then n\n",
+  "ila": "  if true then n\n"
  }
 ]

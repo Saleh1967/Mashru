@@ -107,6 +107,9 @@
   ٥ت٢. تحصيلُ النصّ ومحاذاتُه (tahaqquq/test_tahsil.py؛ Dal/Tahsil.lean والأداة tahsil): على عرّافٍ مستقلٍّ كتبه مؤلّفٌ لم يقرأ إلّا المواصفة
       (tahaqquq/tahsil/) — بصماتُ المواصفة والعرّاف وحالاته، وحالاتُ الحدود المشتقّةُ باليد، و7000 نصٍّ عشوائيّ، وحكمُ الفاحص على شهادة كلّ
       مقطع، وخلايا القارئ (`qari --khalaya`) على الكلمات المرخَّصة، وأسماءُ الأحكام في المواصفة، دائمًا.
+  ٥ت٧. سلسلةُ الشهادات (tahaqquq/test_silsila.py؛ Nizam/Silsila.lean والأداة silsila): حكمُ الفاحص على شهادة الجملة ومخرجُها وبدائلُها
+      بتوقّعٍ يدويّ، والناقصُ باسم كلمته ومقطعه، وموانعُ الإطار بأحوالها الثلاث، والمواضعُ، واتّساقُ حكم الجملة والإطار بـ`qari --itar`،
+      والأسانيدُ والربط، دائمًا.
   ٥ت٣. هيكلُ الإنتروبيا (tahaqquq/test_intrubiya.py؛ Jisr/Intrubiya.lean وJisr/IntrubiyaShahada.lean وscripts/intrubiya.py): تعدادٌ صريحٌ لكلمات
       الطول 3 وتجميعٌ حتى 4 يساويان أعدادَ lawCount المنسوخة من Lean، والشهادةُ المولَّدة بالبايت ومتباينتاها بأعدادٍ صحيحة، والمقدِّراتُ على
       توزيعاتٍ باليد، والنقلُ بالجسر قبل الآلة، وجدولُ nabtBridge، والتحصيلُ على كلماتٍ خلاياها باليد، دائمًا؛ وعلى المودَع إن حضر في MUDAA_DIR.
@@ -205,6 +208,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_tadqiq_tamm.py",
     "tahaqquq/test_tasis.py",
     "tahaqquq/test_tahsil.py",
+    "tahaqquq/test_silsila.py",
     "tahaqquq/test_intrubiya.py",
     "tahaqquq/test_qiyas_intrubiya.py",
     "tahaqquq/test_nabt_tadqiq.py",
@@ -1157,6 +1161,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت٢ {out.strip().splitlines()[-1] if out.strip() else 'التحصيل: ?'}")
     if code != 0:
         fails.append("اختبار التحصيل فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_silsila.py"])
+    report.append(f"٥ت٧ {out.strip().splitlines()[-1] if out.strip() else 'سلسلة الشهادات: ?'}")
+    if code != 0:
+        fails.append("اختبار سلسلة الشهادات فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_intrubiya.py"])
     report.append(f"٥ت٣ {out.strip().splitlines()[-1] if out.strip() else 'الإنتروبيا: ?'}")
     if code != 0:
