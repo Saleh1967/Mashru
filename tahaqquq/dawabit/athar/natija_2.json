@@ -1,0 +1,334 @@
+{
+ "tashghil": 2,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد المراجعة الرابعة، بلا تغييرٍ في دوالّ الحكم",
+ "cases_sha256": "7bd6204545366af11dfca85769739d65ff23a3d863139ffee90f1c49d6f032ab",
+ "qablaha": {
+  "natija_1.json": "562bf2462de408048f96c4695d7505e08e4d60f4041be8d183b04674d33f0b21"
+ },
+ "shifra": {
+  "Nizam/Athar.lean": {
+   "sha256": "9e757cc91d4e35b44a594fb34ec5f9c9813f626c42c0a66fe3a8d2c9543296dc"
+  },
+  "Nizam/AtharDabit.lean": {
+   "sha256": "c04f1d68dff3a8bedc6bb2044c7ae632ea47241686503fc625ec68b98748a4a4"
+  },
+  "Nizam/Silsila.lean": {
+   "sha256": "6f35cb23137a9dfb189dacba697e6f96e728a7dd9448b34ca67784e944ee56da"
+  },
+  "Jisr/NassItar.lean": {
+   "sha256": "07023a1e450a214b964ddbf5e9f15527978ca95a7f1cdbad69f6ad7d5e5441e0"
+  },
+  "Dal/QiraaTahsil.lean": {
+   "sha256": "6d6785aac8819e4b8cd1fceaaf2fd851ab462e221862fb42b144cca906874a48"
+  },
+  "Dal/Tahsil.lean": {
+   "sha256": "626d9990e814cf0b032da8a805a8df99f2a513f7c42ba6a4e50211f63fe01bef"
+  },
+  "Jisr/Utur.lean": {
+   "sha256": "acdfbd81ca33e89ab596c66e3af83a13b7b683faed6a7d39954fa816eca0e451"
+  },
+  "Jisr/SakkJumla.lean": {
+   "sha256": "47ee37d29a00e32ae3c10c52d8bafc574c1a71e17075b2b4bfef268bfb41a969"
+  },
+  "Jisr/Awamil.lean": {
+   "sha256": "ddf06c814a9ded3296d1aae134a773f40a5a825693792561ef6e51886956a87d"
+  },
+  "Jisr/AwamilJadwal.lean": {
+   "sha256": "b926ee05ccdf21b8fdcd481df612ae599740d39178dbffeaf3b6ba0402f202e6"
+  },
+  "Jisr/AqsamAwamil.lean": {
+   "sha256": "6037ccba9e156d609b9cf6c5af84c1850cec591a468042bf26b6f6bd6eb0ddd4"
+  },
+  "Jisr/MantuqMafhum.lean": {
+   "sha256": "bbfe17d98eae8f1859145e0cf5b6db5530a046f656600db2df0b87ae92b18377"
+  },
+  "Jisr/QaydMafhum.lean": {
+   "sha256": "5bd3bec210203a6bd79662b1e5c9eb7c6e88d88421eee5f5f0d7b642fa4d5ea2"
+  }
+ },
+ "lean": [
+  "Nizam.Athar.Qiyas.majal",
+  "Nizam.Athar.Qiyas.natayij_1",
+  "Nizam.Athar.Qiyas.natija",
+  "Nizam.Athar.Qiyas.natija_fia",
+  "Nizam.Athar.Qiyas.akhta_1",
+  "Nizam.Athar.Qiyas.azwaj_1"
+ ],
+ "halat": 50,
+ "ihsa": {
+  "sawab": 7,
+  "naqsTaghtiya": 43,
+  "tajawuz": 0,
+  "ikhtiyar": 0,
+  "khata": 0,
+  "rafdQari": 0
+ },
+ "bil_fia": {
+  "موجب": 4,
+  "حد": 0,
+  "خارج": 3,
+  "عموم": 0,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "A02",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A03",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A04",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A05",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A06",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A07",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A09",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A10",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A11",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A13",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A14",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A15",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A16",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A17",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A18",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A19",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A20",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A21",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A22",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A23",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A24",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A25",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A30",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A31",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A32",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A33",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A34",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A35",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A36",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A37",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A38",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A39",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A40",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A41",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A42",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A43",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A44",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A45",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A46",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A47",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A48",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A49",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A50",
+   "qayd",
+   "naqsTaghtiya"
+  ]
+ ],
+ "azwaj": [
+  [
+   "A01",
+   "A02",
+   true
+  ],
+  [
+   "A03",
+   "A04",
+   false
+  ],
+  [
+   "A05",
+   "A06",
+   false
+  ],
+  [
+   "A07",
+   "A08",
+   true
+  ],
+  [
+   "A09",
+   "A10",
+   false
+  ],
+  [
+   "A30",
+   "A31",
+   false
+  ],
+  [
+   "A32",
+   "A33",
+   false
+  ],
+  [
+   "A34",
+   "A35",
+   false
+  ]
+ ],
+ "tarikh": "2026-10-29",
+ "malahiz": "الأعدادُ أعدادُ natija_1.json بعينها: زيدت في Nizam/Athar.lean شاهدتا حدٍّ (athar_hadd_sura، athar_hadd_itar) وصُحّح رأسُه وسندُ L56–57، وصار برهانُ natija وnatija_fia وakhta_1 «rw [natayij_1] <;> decide»، وزيد في shifra ثمانيةُ ملفّاتٍ يحسب بها المحرّكُ الحقلين؛ ودوالُّ الحكم كما هي. وتصحيحُ ملاحظة natija_1.json: سببُ نقص القيد ليس أنّ «الأشكال الستّة لا تقرأ جملَها» — بعد المعجم 11 جملةً ممتنعةٌ إطاراتُها كلُّها، و8 «لا تنطبق» (لا إطارَ لها في المجال)، و2 معلَّقتان (مخرجُ الأداة athar)؛ و«ما بعدها بإعادة الكتابة» لا يصدق على azwaj_1 (برهانُها decide +kernel). والأعدادُ أعدادُ مبرهنات Nizam/AtharQiyas.lean في الإيداع الذي يحمل هذا الملفّ."
+}

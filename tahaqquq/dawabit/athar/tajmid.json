@@ -1,0 +1,52 @@
+{
+ "naw": "ضابط مجمَّد",
+ "minhaj": "hawkama/منهج_الضوابط.md، الإصدار ١ (بفئة غموض)؛ والمواصفةُ كُتبت بعد الشفرة — انحرافٌ عن §٤-أ، معلَنٌ في mulhaq_1.md",
+ "qita": "أثرُ العُقَد (Nizam/Athar.lean): قوّةُ الجملة، وقيدُ المخالفة في لفظها",
+ "masadir": [
+  {
+   "milaf": "qatr.txt",
+   "sha256": "2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d"
+  },
+  {
+   "milaf": "alfiyya.txt",
+   "sha256": "13b351a0a02d9060fdedbb5db568544718eb4e89bef323f5572b8a26c0921ca0"
+  },
+  {
+   "milaf": "mughni.txt",
+   "sha256": "f37ac2bb4b273f59169053dd0ac2abf50a52846a7e87ddf689ee5c0b87f77e7d"
+  },
+  {
+   "milaf": "sibawayhi.txt",
+   "sha256": "a160f940bb194e6fe7e6655d2c7f28e41f1fc648c4c5e340cc4e42306d5cb625"
+  },
+  {
+   "milaf": "a2.txt",
+   "sha256": "8252ca521c91c285b0344b74ab5fc956f088447c8c7811fd5c95c6c2717b8401"
+  }
+ ],
+ "wasf_sha256": "d3646b7e39ec766c39248637f23c4ae298b62d3b9f64a7fe7f953cedbdbd6d26",
+ "cases_sha256": "7bd6204545366af11dfca85769739d65ff23a3d863139ffee90f1c49d6f032ab",
+ "fahs_cases_sha256": "79ae4b424c0096ff40b557b071c20beca6994e45fc5de5992c1bce57267c36af",
+ "taalif_sha256": "0d7f46b81b4b9a22493fffeab37de95a823e72726164d03d51f36a217c8adf1f",
+ "muallif": "وكيلٌ جديد (general-purpose) بالمواصفة والمصادر الخمسة وحدها، بتوجيهٍ محفوظٍ بنصّه في tawjih_muallif.md؛ وحقنت البيئةُ في سياقه آليًّا CLAUDE.md (قال في جوابه إنّه أفصح بذلك في taalif.md)؛ أجاب البنّاءَ بالبصمات والأعداد، وزاد إفصاحًا عن حكمٍ واحد (المثنّى عددًا، وأنّه يوافق ما في CLAUDE.md، وسندُه a2.txt س1092)",
+ "aadad_muallif": {
+  "jumla": 50,
+  "naw_quwwa": 29,
+  "naw_qayd": 21,
+  "موجب": 25,
+  "حد": 10,
+  "خارج": 3,
+  "عموم": 9,
+  "غموض": 3,
+  "azwaj": 8,
+  "harfi": 28,
+  "tafrat_fahs_marfuda": 15
+ },
+ "tawjih": {
+  "milaf": "tawjih_muallif.md",
+  "arsil": "2026-10-29T18:06:51Z"
+ },
+ "fahs_sijill": "sijill_muallif.json: أدواتُ المؤلّف ومساراتُه المطلقة في سبعة حقولٍ من مدخلات أدواته (file_path، path، command، pattern، glob، notebook_path، url)، بلا محتوى ما كتب؛ وما خارج مجلّده والمصادر خمسةُ رموزٍ ليست قراءةً، مفسَّرةٌ في tafsir_kharij؛ وقرأ المصادرَ بأسمائها النسبيّة بعد cd",
+ "tajmid": "2026-10-29T21:31+03:00",
+ "qabl_shifra": "جُمّد قبل إيداع الشفرة؛ ولم يقرأ البنّاءُ cases.json ولا taalif.md ولا fahs_cases.py ولا tafrat_fahs. وما رآه من سجلّ المؤلّف لاستخراج sijill_muallif.json: أسماءُ الأدوات والمساراتُ المطلقة، ثمّ لتفسير خمسة رموز سياقَها في أوامره (أربعين حرفًا قبلها وثلاثين بعدها، والحروفُ العربيّة مطموسة): فيها أرقامُ أسطرٍ قرأها المؤلّف من المصادر، واسمُ دالّةٍ في سكربته ورقما سطرين من الكتاب (1523، 1525) فيهما قطعتا سند. ومن جوابه أنّه عدّ المثنّى عددًا. **وكانت الشفرةُ (Nizam/Athar.lean) قد كُتبت وبُنيت وروجعت ثلاثًا قبل المواصفة** (mulhaq_1.md §١)، ولم تتغيّر بعد جواب المؤلّف."
+}

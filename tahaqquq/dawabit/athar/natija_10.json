@@ -1,0 +1,418 @@
+{
+ "tashghil": 10,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة بعد المراجعة الثانية عشرة، بلا تغييرٍ في دوالّ الحكم",
+ "cases_sha256": "7bd6204545366af11dfca85769739d65ff23a3d863139ffee90f1c49d6f032ab",
+ "qablaha": {
+  "natija_9.json": "0d4d35c830d13ad0b16fcf79b7aeecedc2538cacff75279de7f85457b221c9fc"
+ },
+ "shifra": {
+  "Aql/Qaida.lean": {
+   "sha256": "1209cb88ae042e323b256a37efff07557dbcb8f01567f740e09ccc78830a6e28"
+  },
+  "Dal/Jumla.lean": {
+   "sha256": "98b4200edc4a5b3cc051bd77f682f3e6b161486a376c2517d2e7f41bd7e9ba4b"
+  },
+  "Dal/Khaliya.lean": {
+   "sha256": "135444500327955efb0f6338e71ec374ee92568b41b83c4a1470b385716a4840"
+  },
+  "Dal/Makharij.lean": {
+   "sha256": "ba9aa41ce1c57766d2c4bfbefbfb26aab5dab6136afce8e61baea567f1538690"
+  },
+  "Dal/QiraaTahsil.lean": {
+   "sha256": "6d6785aac8819e4b8cd1fceaaf2fd851ab462e221862fb42b144cca906874a48"
+  },
+  "Dal/Tahsil.lean": {
+   "sha256": "626d9990e814cf0b032da8a805a8df99f2a513f7c42ba6a4e50211f63fe01bef"
+  },
+  "Jisr/AqsamAwamil.lean": {
+   "sha256": "6037ccba9e156d609b9cf6c5af84c1850cec591a468042bf26b6f6bd6eb0ddd4"
+  },
+  "Jisr/AwamilJadwal.lean": {
+   "sha256": "b926ee05ccdf21b8fdcd481df612ae599740d39178dbffeaf3b6ba0402f202e6"
+  },
+  "Jisr/AwamilUslub.lean": {
+   "sha256": "d32bc4c4c63b45c1a537595f2aee384c1c42c7b023c1e1b8929e8ea65b1f9ae6"
+  },
+  "Jisr/Ikhbar.lean": {
+   "sha256": "4cc77ce21926ae22ebd1fe4adc884813bc391bc5129240a410d6844f57dff27e"
+  },
+  "Jisr/JisrDal.lean": {
+   "sha256": "49337a8653d732fb76f74e5448d11cf4d3f2f8cf1bea8d855802ffb95d218520"
+  },
+  "Jisr/MantuqMafhum.lean": {
+   "sha256": "bbfe17d98eae8f1859145e0cf5b6db5530a046f656600db2df0b87ae92b18377"
+  },
+  "Jisr/Mulhaqat.lean": {
+   "sha256": "48215cd22fed60ab423b680e3f932dbdc7d4798fd34454a17f785af93ea7d431"
+  },
+  "Jisr/NassItar.lean": {
+   "sha256": "07023a1e450a214b964ddbf5e9f15527978ca95a7f1cdbad69f6ad7d5e5441e0"
+  },
+  "Jisr/Nisab.lean": {
+   "sha256": "8f2ffe8f32c87282046429147426b79dcd5a48ef37fabc3875247eda1acfecf2"
+  },
+  "Jisr/QawaidJadwal.lean": {
+   "sha256": "8b32e1ac57c03e790c538c64f2929cab98b9df73a4b3fa18ffb87a02ee77d0b3"
+  },
+  "Jisr/QawaidSitta.lean": {
+   "sha256": "e65adfc5718413c277face174f573d9dd506ec0ef454403cfc4f46520ad28fbe"
+  },
+  "Jisr/QaydMafhum.lean": {
+   "sha256": "5bd3bec210203a6bd79662b1e5c9eb7c6e88d88421eee5f5f0d7b642fa4d5ea2"
+  },
+  "Jisr/SakkJumla.lean": {
+   "sha256": "47ee37d29a00e32ae3c10c52d8bafc574c1a71e17075b2b4bfef268bfb41a969"
+  },
+  "Jisr/Utur.lean": {
+   "sha256": "acdfbd81ca33e89ab596c66e3af83a13b7b683faed6a7d39954fa816eca0e451"
+  },
+  "Nabt/UnitDiscovery.lean": {
+   "sha256": "71afe89ac4336ab182f7a511922e3cda6cb5ea078d6a84484566029461f9bd35"
+  },
+  "Nizam/Athar.lean": {
+   "sha256": "8eabe6a31e81d89a1920bf9a957776f628b1a22582a5445627d381967d8d1520"
+  },
+  "Nizam/AtharDabit.lean": {
+   "sha256": "c04f1d68dff3a8bedc6bb2044c7ae632ea47241686503fc625ec68b98748a4a4"
+  },
+  "Nizam/Shahada.lean": {
+   "sha256": "116c687d28170cccd0e83dc237ec950d46788112615bd4ac22d039fffe221cb2"
+  },
+  "Nizam/Silsila.lean": {
+   "sha256": "6f35cb23137a9dfb189dacba697e6f96e728a7dd9448b34ca67784e944ee56da"
+  },
+  "SLGE/Category.lean": {
+   "sha256": "0336e9e86c9a00f46aef44c86c85565aaa29fb0c57b01ea71e6c7d4cd0a46aa6"
+  },
+  "SLGE/Core.lean": {
+   "sha256": "8fe9b3576d01c463944159158d56ed3a775a2bbb0453fb216e366f102e22f8e3"
+  },
+  "SLGE/Hamza.lean": {
+   "sha256": "e1dc405bdf3bafa2061f60df427345264989607424cacacd1d06faadbfe82c2a"
+  },
+  "SLGE/Kull.lean": {
+   "sha256": "3c71938dbe5fbfc9f554b096953f68924863ef6e8bb79e523fe0eb6339b2b57f"
+  },
+  "SLGE/Ladder.lean": {
+   "sha256": "982270fe8d83605a1bbf882f4ff974e608a86e3977f68b29325bf2881d013184"
+  },
+  "SLGE/Law.lean": {
+   "sha256": "88f025795e46f9074f55db52d31a9c002849b7d2c2b99dbdfcf2bf39f99c229a"
+  },
+  "SLGE/Madlul.lean": {
+   "sha256": "9010f6623229d34b701891eda9e9df3e88024e74f5d1da5bfb4c05fa6f1f212a"
+  },
+  "SLGE/MadlulAwwalan.lean": {
+   "sha256": "46c386651d4335d8e92386d0d4646908cc3b3bea74a1c0b7eed24415d0aa300a"
+  },
+  "SLGE/Maqam.lean": {
+   "sha256": "569a6644a466aa4a54b8273e0f31968c41d377a3c5fdf1b03af01dc2d5c847b2"
+  },
+  "SLGE/Muwahhad.lean": {
+   "sha256": "e0743302f3e04fc83fb67873744c7c2aa92f4ad17f9b171406de9366e9cce295"
+  },
+  "SLGE/Necessity.lean": {
+   "sha256": "ebcc0d3f82985aa03ac3e39dc407450e354d16496db5207c9729a59e2e5c581d"
+  },
+  "SLGE/Simat.lean": {
+   "sha256": "ca61d495563f77dce0d4fc87f91fffe02e0ea20b88b85a48baae448170c388d6"
+  },
+  "SLGE/Simat2.lean": {
+   "sha256": "c91f8a2ed71d3bb486c2806c3a2d1aaa093815e58a1eb7375b77dd331f27ab4d"
+  },
+  "SLGE/Tarkib.lean": {
+   "sha256": "8fd7301ce6b429e53c8ea1fbcc16b2b24034c3aff8dd43b95d1c63ac421098ec"
+  },
+  "SLGE/TarkibLit.lean": {
+   "sha256": "9e4613a8f80a677d88ce047147fbac464543ccc44bc08cbd1bfbcb646d3268ac"
+  },
+  "SLGE/Wad.lean": {
+   "sha256": "18c95d06f76826060b2e73cdc76f06720d405b06e34c46462760091874031812"
+  }
+ },
+ "lean": [
+  "Nizam.Athar.Qiyas.majal",
+  "Nizam.Athar.Qiyas.natayij_1",
+  "Nizam.Athar.Qiyas.natija",
+  "Nizam.Athar.Qiyas.natija_fia",
+  "Nizam.Athar.Qiyas.akhta_1",
+  "Nizam.Athar.Qiyas.azwaj_1"
+ ],
+ "halat": 50,
+ "ihsa": {
+  "sawab": 7,
+  "naqsTaghtiya": 43,
+  "tajawuz": 0,
+  "ikhtiyar": 0,
+  "khata": 0,
+  "rafdQari": 0
+ },
+ "bil_fia": {
+  "موجب": 4,
+  "حد": 0,
+  "خارج": 3,
+  "عموم": 0,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "A02",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A03",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A04",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A05",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A06",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A07",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A09",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A10",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A11",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A13",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A14",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A15",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A16",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A17",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A18",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A19",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A20",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A21",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A22",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A23",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A24",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A25",
+   "quwwa",
+   "naqsTaghtiya"
+  ],
+  [
+   "A30",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A31",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A32",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A33",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A34",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A35",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A36",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A37",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A38",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A39",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A40",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A41",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A42",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A43",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A44",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A45",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A46",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A47",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A48",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A49",
+   "qayd",
+   "naqsTaghtiya"
+  ],
+  [
+   "A50",
+   "qayd",
+   "naqsTaghtiya"
+  ]
+ ],
+ "azwaj": [
+  [
+   "A01",
+   "A02",
+   true
+  ],
+  [
+   "A03",
+   "A04",
+   false
+  ],
+  [
+   "A05",
+   "A06",
+   false
+  ],
+  [
+   "A07",
+   "A08",
+   true
+  ],
+  [
+   "A09",
+   "A10",
+   false
+  ],
+  [
+   "A30",
+   "A31",
+   false
+  ],
+  [
+   "A32",
+   "A33",
+   false
+  ],
+  [
+   "A34",
+   "A35",
+   false
+  ]
+ ],
+ "tarikh": "2026-10-30",
+ "malahiz": "الأعدادُ أعدادُ natija_1.json بعينها، ولم تتغيّر دوالُّ الحكم؛ وتغيّر في Nizam/Athar.lean رأسُه وتوثيقُ quwwaJumla وathar_hadd وathar_hadd_sura، وزيد «مَاتْ» في athar_hadd_sura: صار الحدُّ شرطَ quwwaJumla وmadiSura بنصّهما وقائمتين من الكلمات بلا أصناف، لأنّ أصنافًا كُتبت على القوائم نقضها مخرجُ athar (ضبطه المراجع المستقلّ: «لَيْسَتْ» و«رَحِمَكَ» وُسما «من غير الماضي»، و«على الأوزان» غيرُ شرط madiSura، و«فَلْيَرَ زَيْدٌ مَنْ» قوّتُها «لا حكم»). وتصحيحُ ملاحظة natija_9.json: قالت «وصار وصفُ ما يُقرأ خبرًا مثبتًا شرطًا على الخلايا بأمثلةٍ بأعيانها بدل الأصناف»، وبقيت الأصنافُ يومئذٍ في الرأس («من غير الماضي»، «ما بعد سابقة»، «على الأوزان»). والأعدادُ أعدادُ مبرهنات Nizam/AtharQiyas.lean في الإيداع الذي يحمل هذا الملفّ."
+}
