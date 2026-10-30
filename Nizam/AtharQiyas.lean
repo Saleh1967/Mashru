@@ -69,7 +69,13 @@
   «حدُّه» بلا فرضها، و«بتعريف `wifaq`» لما يُخرجه `muqDawr`: `natija_18.json`.)
 - `natija_18.json`: على مادّةٍ مكشوفة، بعد المراجعة العشرين: لم تتغيّر دوالُّ الحكم؛ في رأس `Nizam/Athar.lean`: `itarM_sawa` في «حدُّه» وفي قسم «الإطارُ والجملةُ بعد المعجم» بفرضيها،
   والجملةُ الممتنعةُ إطاراتُها بفروض `Nizam.Silsila.jumla_natija` على `uqdaJumla` وبـ`kullMaqrua`، و«بتعريف `muqDawr` على `wifaq`» في موضعين، و«بتعريف `saffFiDawr`»، و«بتعريف
-  `Jisr.NassItar.itarat`». الأعدادُ نفسُها.
+  `Jisr.NassItar.itarat`». الأعدادُ نفسُها. (ولم يُذكر هنا تغييرُ رأس `tahaqquq/test_athar.py` ولا ما ضبطه المراجع، وبقيت توثيقاتُ `itarM_sawa`
+  و`jumlaM_murakhkhas` و`jumlaM_mumtani` و`jumlaM_itar` و`dawa_murakhkhas` بلا فروضها: `natija_19.json`.)
+- `natija_19.json`: على مادّةٍ مكشوفة، بعد المراجعة الحادية والعشرين، وضبط فيها المراجعُ توثيقاتٍ بلا فروض مبرهناتها، وعمومًا من تعريفٍ في المتن بلا
+  «بتعريف»، ووصفَ فروض `jumla_natija` في (١٦٣)، ونقصَ بند `natija_18.json`: لم تتغيّر دوالُّ الحكم؛ وفي `Nizam/Athar.lean`: توثيقُ `itarM_sawa` بفرضيها،
+  وتوثيقاتُ `jumlaM_murakhkhas` و`jumlaM_mumtani` و`jumlaM_itar` و`dawa_murakhkhas` «بالربط»، وتوثيقُ `saffFiDawr` «بتعريف `Jisr.NassItar.itarat`»؛ وفي
+  رأسه «الإطارُ يقرأ، بتعريف `Jisr.NassItar.itarat`»، و«والخبرُ المثبت بتعريف `quwwaJumla` وحدها»، و«فهي `uqdaJumla` بتعريف `jumla`»؛ وفي CLAUDE.md
+  «فهي `uqdaJumla` بتعريف `jumla`» و«لا إطارَ شرطٍ في المجال، بتعريف `Jisr.NassItar.itarat`». الأعدادُ نفسُها.
 
 **الإخفاقاتُ الثلاثة والأربعون كلُّها نقصُ تغطية** في الحقل المسؤول (`akhta_1`): قال المحرّكُ «لا حكم» حيث المتوقَّعُ حكم. وحكم في أربع حالاتٍ
 موجبة فأصاب فيها، وامتنع في الخارجة الثلاث فأصاب. والأسبابُ قراءةُ البنّاء لمخرج الأداة `athar` على الحالات (`mulhaq_1.md` §٤–§٥)، لا مبرهنة:
