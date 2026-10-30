@@ -7963,61 +7963,61 @@
  },
  {
   "ism": "P1430_athar_tashghil",
-  "milaf": "tahaqquq/dawabit/athar/natija_17.json",
-  "min": " \"tashghil\": 17,",
-  "ila": " \"tashghil\": 18,"
+  "milaf": "tahaqquq/dawabit/athar/natija_18.json",
+  "min": " \"tashghil\": 18,",
+  "ila": " \"tashghil\": 19,"
  },
  {
   "ism": "P1431_athar_natija_cases",
-  "milaf": "tahaqquq/dawabit/athar/natija_17.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_18.json",
   "min": " \"cases_sha256\": \"7bd6204545366af11dfca85769739d65ff23a3d863139ffee90f1c49d6f032ab\",",
   "ila": " \"cases_sha256\": \"8bd6204545366af11dfca85769739d65ff23a3d863139ffee90f1c49d6f032ab\","
  },
  {
   "ism": "P1432_athar_shifra",
-  "milaf": "tahaqquq/dawabit/athar/natija_17.json",
-  "min": "   \"sha256\": \"381626a8b5f70332b97f55b9ea0332075be691ffcea3b03038b2faf29754b9eb\"",
-  "ila": "   \"sha256\": \"081626a8b5f70332b97f55b9ea0332075be691ffcea3b03038b2faf29754b9eb\""
+  "milaf": "tahaqquq/dawabit/athar/natija_18.json",
+  "min": "   \"sha256\": \"76088d44ece52682576645d1abebd778dd2af301547e27f81467c6d89ae169b3\"",
+  "ila": "   \"sha256\": \"06088d44ece52682576645d1abebd778dd2af301547e27f81467c6d89ae169b3\""
  },
  {
   "ism": "P1433_athar_bil_fia",
-  "milaf": "tahaqquq/dawabit/athar/natija_17.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_18.json",
   "min": "  \"موجب\": 4,",
   "ila": "  \"موجب\": 5,"
  },
  {
   "ism": "P1434_athar_akhta_json",
-  "milaf": "tahaqquq/dawabit/athar/natija_17.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_18.json",
   "min": "   \"A50\",\n   \"qayd\",\n   \"naqsTaghtiya\"",
   "ila": "   \"A50\",\n   \"qayd\",\n   \"khata\""
  },
  {
   "ism": "P1435_athar_azwaj_json",
-  "milaf": "tahaqquq/dawabit/athar/natija_17.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_18.json",
   "min": "   \"A34\",\n   \"A35\",\n   false",
   "ila": "   \"A34\",\n   \"A35\",\n   true"
  },
  {
   "ism": "P1436_athar_lean_qaima",
-  "milaf": "tahaqquq/dawabit/athar/natija_17.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_18.json",
   "min": "  \"Nizam.Athar.Qiyas.natija_fia\",",
   "ila": "  \"Nizam.Athar.Qiyas.azwaj_1\","
  },
  {
   "ism": "P1437_athar_halat",
-  "milaf": "tahaqquq/dawabit/athar/natija_17.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_18.json",
   "min": " \"halat\": 50,",
   "ila": " \"halat\": 51,"
  },
  {
   "ism": "P1438_athar_qablaha",
-  "milaf": "tahaqquq/dawabit/athar/natija_17.json",
-  "min": "  \"natija_16.json\": \"d500065241135d8ca47ddce6e921b36cc2ca3354cd6a01240186c9a50b13432a\"",
-  "ila": "  \"natija_16.json\": \"0500065241135d8ca47ddce6e921b36cc2ca3354cd6a01240186c9a50b13432a\""
+  "milaf": "tahaqquq/dawabit/athar/natija_18.json",
+  "min": "  \"natija_17.json\": \"24706ff0fa56ccf416e023d6b76c360eff674fa51f75be436f075df0f71f2874\"",
+  "ila": "  \"natija_17.json\": \"04706ff0fa56ccf416e023d6b76c360eff674fa51f75be436f075df0f71f2874\""
  },
  {
   "ism": "P1439_athar_ihsa_json",
-  "milaf": "tahaqquq/dawabit/athar/natija_17.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_18.json",
   "min": "  \"sawab\": 7,",
   "ila": "  \"sawab\": 6,"
  },
