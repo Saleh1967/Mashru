@@ -75,7 +75,12 @@
   «بتعريف»، ووصفَ فروض `jumla_natija` في (١٦٣)، ونقصَ بند `natija_18.json`: لم تتغيّر دوالُّ الحكم؛ وفي `Nizam/Athar.lean`: توثيقُ `itarM_sawa` بفرضيها،
   وتوثيقاتُ `jumlaM_murakhkhas` و`jumlaM_mumtani` و`jumlaM_itar` و`dawa_murakhkhas` «بالربط»، وتوثيقُ `saffFiDawr` «بتعريف `Jisr.NassItar.itarat`»؛ وفي
   رأسه «الإطارُ يقرأ، بتعريف `Jisr.NassItar.itarat`»، و«والخبرُ المثبت بتعريف `quwwaJumla` وحدها»، و«فهي `uqdaJumla` بتعريف `jumla`»؛ وفي CLAUDE.md
-  «فهي `uqdaJumla` بتعريف `jumla`» و«لا إطارَ شرطٍ في المجال، بتعريف `Jisr.NassItar.itarat`». الأعدادُ نفسُها.
+  «فهي `uqdaJumla` بتعريف `jumla`» و«لا إطارَ شرطٍ في المجال، بتعريف `Jisr.NassItar.itarat`». الأعدادُ نفسُها. (وبقي نظيرا «بتعريف
+  `Jisr.NassItar.itarat`» و«بتعريف `quwwaJumla`» في «حدُّه» من CLAUDE.md بلا «بتعريف»، وفي الرأس وCLAUDE.md مواضعُ أخرى من النمط نفسِه: `natija_20.json`.)
+- `natija_20.json`: على مادّةٍ مكشوفة، بعد المراجعة الثانية والعشرين (وحكمُها «يُدمج» بأربع مشكلاتٍ خفيفة): لم تتغيّر دوالُّ الحكم؛ وفي رأس
+  `Nizam/Athar.lean`: «فعلٌ بتعريف `Jisr.NassItar.itarat`» («ما كان»)، و«(بتعريفَي `uqdaDawa` و`muqMafhum`)» (المنطوق)، و«بتعريف `madiSura`» («حدُّه»)؛ وفي
+  CLAUDE.md: «الإطارُ يقرأ، بتعريف `Jisr.NassItar.itarat`»، و«والخبرُ المثبت بتعريف `quwwaJumla` وحدها»، و«(بتعريف `madiSura`»، و«(بتعريف `muqDawr` على `wifaq`)»؛
+  و«بالربط» في رأس `tahaqquq/test_athar.py` لـ`dawa_murakhkhas` وفي `خارطة_الطريق.md` لـ`mafhum_jisr`. الأعدادُ نفسُها.
 
 **الإخفاقاتُ الثلاثة والأربعون كلُّها نقصُ تغطية** في الحقل المسؤول (`akhta_1`): قال المحرّكُ «لا حكم» حيث المتوقَّعُ حكم. وحكم في أربع حالاتٍ
 موجبة فأصاب فيها، وامتنع في الخارجة الثلاث فأصاب. والأسبابُ قراءةُ البنّاء لمخرج الأداة `athar` على الحالات (`mulhaq_1.md` §٤–§٥)، لا مبرهنة:
