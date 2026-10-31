@@ -1299,7 +1299,7 @@ def jiyaW : Kalima := ⟨[44, 38, 44], false, false⟩                          
 /-- **اللفيفُ المفروقُ «محتمَل»** (`lafifMafruq`، `mithal`، `faMahdhuf`): جذورُ «قُ» قبل الآخر المحذوف على أوزانه «وقو» و«وقي» (الموضع 300 واو)،
 وأحدُ جذرَي «كُ» عليه مشهود، وجذرا «صُ» و«بِ» عليه غيرُ مشهودين؛ وقراءةُ «يَقِي» محتمَلةٌ على «وقي»؛ فـ«يَقُونَ» و«قُوا» و«يَكُونَ» و«قِيَا» و«لَنْ يَقِيَ»
 و«لَنْ يَجِيَ زَيْدٌ» «لا حكم» (وفي اللسان س299537 «ويقال: وجيت الدابة توجى»)، و«يَصُونَ» و«تَبِينَ» ممتنعتان، و«لَمْ يَقِ» «لا حكم»؛ و«لَمْ يَقِوْ زَيْدٌ»
-«لا حكم». -/
+«لا حكم»؛ وقراءةُ «قُوا» أمرًا محتمَلةٌ على «وقي»، ولا قراءةَ لـ«قَوا» (الفتحةُ قبل الآخر المحذوف لا تكون في اللفيف: `.dk`). -/
 theorem shahid_lafif :
     lafifMafruq.map (fun (_, ms) => judhur [29, 11] ms) = [[[28, 7, 28], [28, 7, 11]], [[28, 7, 28], [28, 7, 11]]] ∧
     lafifMafruq.all (fun (_, ms) => (judhur [33, 11] ms).any mashhud) = true ∧
@@ -1309,7 +1309,9 @@ theorem shahid_lafif :
     hukmJumla [yaqunaW] = .laHukm ∧ hukmJumla [quwaW] = .laHukm ∧ hukmJumla [yakunaW] = .laHukm ∧
     hukmJumla [qiyaW] = .laHukm ∧ hukmJumla [lanW, yaqiyaW] = .laHukm ∧ hukmJumla [lanW, jiyaW, zaydun] = .laHukm ∧
     hukmJumla [yasunaW] = .mumtani ∧ hukmJumla [tabinaW] = .mumtani ∧ hukmJumla [lamW, yaqiW] = .laHukm ∧
-    hukmJumla [lamW, ⟨[44, 30, 115], false, false⟩, zaydun] = .laHukm := by decide +kernel
+    hukmJumla [lamW, ⟨[44, 30, 115], false, false⟩, zaydun] = .laHukm ∧
+    (filQiraat [29, 115] 0).map (fun w => (w.ihtimal, w.judhurQ)) = [(true, some [[28, 7, 11]])] ∧ filQiraat [28, 115] 0 = [] := by
+  decide +kernel
 
 def yardawnaW : Kalima := ⟨[44, 63, 48, 115, 56], false, false⟩                 -- يَرْضَوْنَ
 def yardawW : Kalima := ⟨[44, 63, 48, 115], false, false⟩                       -- يَرْضَوْا
