@@ -7556,8 +7556,8 @@
  {
   "ism": "P1369_al_bila_sukun",
   "milaf": "Dal/Tahsil.lean",
-  "min": "    (n.tail == ['\\u0652'] || (n.tail.isEmpty",
-  "ila": "    ((n.tail.isEmpty"
+  "min": "    (n.tail == ['\\u0652'] || (n.tail.contains shadda",
+  "ila": "    ((n.tail.contains shadda"
  },
  {
   "ism": "P1371_alif_tanwin_ghayr_akhir",
@@ -8596,5 +8596,11 @@
   "milaf": "Jisr/Tahlil.lean",
   "min": "judhurQ := some jd, ihtimal := ih }",
   "ila": "judhurQ := some jd }"
+ },
+ {
+  "ism": "P1447_lamBaad_shadda",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "(n.tail.contains shadda && c.lahiq2.isSome)",
+  "ila": "false"
  }
 ]

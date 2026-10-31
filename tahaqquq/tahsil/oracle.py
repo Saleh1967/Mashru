@@ -250,6 +250,12 @@ def _lam_tarif_after(text, segs, k, ctx):
         if pos + 1 < len(word):
             fa, fb = segs[word[pos + 1]]
             return SHADDA in text[fa + 1:fb]
+    if SHADDA in nmarks:
+        # amendment 4: the lam itself carries a shadda (أل assimilated into a lam-initial stem, الَّذِي),
+        # provided a segment follows it in the word. Bare «الَّ» alone (no following segment) stays P (D7).
+        word = ctx["word"]
+        pos = word.index(nxt)
+        return pos + 1 < len(word)
     return False
 
 
