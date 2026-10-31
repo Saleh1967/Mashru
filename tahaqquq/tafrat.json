@@ -8466,12 +8466,6 @@
   "ila": "def mahmuzAyn : List Wazn := [([.v, .illa], [0, 400, 1])]"
  },
  {
-  "ism": "P1516_tahlil_mithal_sahih",
-  "milaf": "Jisr/Tahlil.lean",
-  "min": "def mithal : Wazn := ([.ks, .ns], [300, 0, 1])",
-  "ila": "def mithal : Wazn := ([.ks, .any], [300, 0, 1])"
- },
- {
   "ism": "P1518_tahlil_lafif_bila_fath",
   "milaf": "Jisr/Tahlil.lean",
   "min": "([.dk, .h (kh 2 3)], [300, 0, 1])",
@@ -8542,5 +8536,11 @@
   "milaf": "Jisr/Tahlil.lean",
   "min": "def lafifMafruq : List Wazn := [([.ks, .md], [300, 0, 1]), ",
   "ila": "def lafifMafruq : List Wazn := ["
+ },
+ {
+  "ism": "P1530_tahlil_mithal_fa",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "def mithal : Wazn := ([.ks, .ns], [300, 0, 1])",
+  "ila": "def mithal : Wazn := ([.ks, .ns], [0, 1])"
  }
 ]
