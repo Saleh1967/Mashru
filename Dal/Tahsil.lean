@@ -298,7 +298,8 @@ def hurufIdgham : List Char := ['ن', 'ر', 'د', 'ت', 'ص', 'ط', 'ز', 'س', 
 /-- ٦: «لامُ التعريف» بعد المقطع. -/
 def lamBaad (c : Siyaq) : Bool :=
   c.lahiq.any (fun n => n.head? == some 'ل' &&
-    (n.tail == ['\u0652'] || (n.tail.isEmpty && c.lahiq2.any (fun m => m.tail.contains shadda))))
+    (n.tail == ['\u0652'] || (n.tail.contains shadda && c.lahiq2.isSome)
+      || (n.tail.isEmpty && c.lahiq2.any (fun m => m.tail.contains shadda))))
 
 /-- ١٤ و١٥: التالي «اً» آخرَ الكلمة. -/
 def alifTanwinBaad (c : Siyaq) : Bool := c.lahiq == some ['ا', '\u064B'] && c.lahiq2.isNone

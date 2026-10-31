@@ -8062,5 +8062,11 @@
   "milaf": "Nizam/Athar.lean",
   "min": "(b == 11 && c % 4 == 3 && c / 4 == d / 4)",
   "ila": "false"
+ },
+ {
+  "ism": "P1447_lamBaad_shadda",
+  "milaf": "Dal/Tahsil.lean",
+  "min": "(n.tail.contains shadda && c.lahiq2.isSome)",
+  "ila": "false"
  }
 ]
