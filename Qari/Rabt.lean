@@ -174,7 +174,7 @@ def sharh (t : Jadwal) (j : Jumla) (nusus : Array (List String)) (qabl : List (N
   let mf := mafahim m W
   let mfs := if mf.isEmpty then ["  المفهوم (على الودائع المرشَّحة): لا مفهوم"]
     else mf.map fun f => match f.naw with
-      | .mukhalafa _ => s!"  المفهوم (على الودائع المرشَّحة — تحتاج ختمًا): مخالفةُ {ismQayd f.lazim.1} (ج3 س566): نفيُ الحكم عند انتفاء {ismQayd f.lazim.1} «{qaydNass}»"
+      | .mukhalafa _ => s!"  المفهوم (على الودائع المرشَّحة — تحتاج ختمًا): مخالفةُ {ismQayd f.lazim.1} «{qaydNass}» — المدلولُ في محلّ السكوت مخالفٌ لمدلوله في محلّ النطق (الشخصيّة ج3، a2.txt س1064)" ++ (if f.lazim.1 == .ghaya then "، فنفيُ الحكم فيما بعد الغاية (س1088)" else "")
       | _ => "  المفهوم: (غير المخالفة)"
   let makhtum := (mafahim m (wadaMakhtuma m)).length
   let haml := s!"  الودائعُ المرشَّحة (تحتاج ختمًا): الحملُ على الحقيقة اللغويّة {(W.haml.filter (· == .haqiqa .lughawiyya)).length} من {W.haml.length} كلمة، ولا أغلبَ ولا معطِّل؛ وعلى المختومة وحدها (لا حملَ مودَعًا): {makhtum} مفهومًا (Nizam.Rabt.mafahim_makhtuma)"
@@ -184,8 +184,8 @@ def sharh (t : Jadwal) (j : Jumla) (nusus : Array (List String)) (qabl : List (N
     else rs.flatMap fun r =>
       (mafatih e.wahda r).flatMap fun k =>
         let ds := dalalat t k
-        if ds.isEmpty then [] else [s!"  الدلالة: «{nassWahda j e.wahda}» مرشَّحُ جذره {k} (عنوانٌ في اللسان، وصفوفُه في جدول اللزوم المرشَّح؛ " ++
-          "سلسلةُ كلّ صفٍّ على قاعدة الجدول وأصولُها صفوفُه، فلا تفحص صدقَه)"] ++ ds
+        if ds.isEmpty then [] else [s!"  الدلالة: «{nassWahda j e.wahda}» مرشَّحُ جذره {k} (من عنوانٍ مرمَّزٍ في اللسان {jidhrNass r}، وصفوفُه في جدول " ++
+          "اللزوم المرشَّح؛ سلسلةُ كلّ صفٍّ على قاعدة الجدول وأصولُها صفوفُه، فلا تفحص صدقَه)"] ++ ds
   ["  " ++ "قراءة: " ++ " ".intercalate (m.adwar.map (ismDawr ·.2))] ++ tab ++ isn ++
     [s!"  القوّة: {Nizam.Athar.quwwaIsm q} — {qs}"] ++ ih ++ [mantuq, qd] ++ mfs ++ [haml] ++ dal
 

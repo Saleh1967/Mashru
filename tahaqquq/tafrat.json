@@ -8162,8 +8162,8 @@
  {
   "ism": "P1463_rabt_hala_mahall",
   "milaf": "Nizam/Rabt.lean",
-  "min": "match ms.head? with | some h => .mahall h | none => .mabni",
-  "ila": ".mabni"
+  "min": "if w.naw == .fil then .mabni else match ms.head? with | some h => .mahall h | none => .mabni",
+  "ila": "if w.naw == .fil then .mabni else .mabni"
  },
  {
   "ism": "P1464_rabt_quwwa_lan",
@@ -8220,15 +8220,195 @@
   "ila": "naw [.juz] \"تضمّن\""
  },
  {
-  "ism": "P1473_qari_rabt_maqbul",
-  "milaf": "Qari/Rabt.lean",
-  "min": "(if ok then \" [يقبلها الفاحص]\" else \" [يردّها الفاحص]\")",
-  "ila": "\" [يقبلها الفاحص]\""
- },
- {
   "ism": "P1474_qari_rabt_mujam",
   "milaf": "Qari/Rabt.lean",
   "min": "t := t.insert a ((t.getD a #[]).push ⟨mj, a, w, n, b, sn⟩)",
   "ila": "t := t.insert w ((t.getD w #[]).push ⟨mj, a, w, n, b, sn⟩)"
+ },
+ {
+  "ism": "P1475_tahlil_samit_alif",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "def samitSakinQabl (s : List Nat) (n : Nat) : Bool := (minAkhir s n).any fun c => sakin c && c / 4 != 2",
+  "ila": "def samitSakinQabl (s : List Nat) (n : Nat) : Bool := (minAkhir s n).any sakin"
+ },
+ {
+  "ism": "P1476_tahlil_nun_asl",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "    let nunAsl : List QiraaFil := fs.flatMap fun f => qr 0 f [0]",
+  "ila": "    let nunAsl : List QiraaFil := []"
+ },
+ {
+  "ism": "P1477_rabt_nun_niswa",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "def nunNiswa (w : Wahda) : Bool := w.naw == .fil && w.sima.1 == 1 && w.sima.2.2.1.1 != 1 && w.sima.2.2.1.2 == (1, 2)",
+  "ila": "def nunNiswa (w : Wahda) : Bool := false"
+ },
+ {
+  "ism": "P1478_rabt_lahiqa_mutakallim",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "(ft.1 != 1 && ft.2.2 != 0) || ft == (2, 1, 0)",
+  "ila": "ft.2.2 != 0 || ft == (2, 1, 0)"
+ },
+ {
+  "ism": "P1479_rabt_mafatih_hamza",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "     [r] ++ (List.range r.length).filterMap (fun i => if r[i]? == some 28 then some (r.set i 0) else none)",
+  "ila": "     [r]"
+ },
+ {
+  "ism": "P1480_rabt_wada_makhtuma",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "  ⟨(wadaMurashshaha m).haml.map fun _ => .laHukm, false, false⟩",
+  "ila": "  ⟨(wadaMurashshaha m).haml, false, false⟩"
+ },
+ {
+  "ism": "P1481_qari_rabt_taqdir",
+  "milaf": "Qari/Rabt.lean",
+  "min": "    if hs.length == 3 then ismHalaN h",
+  "ila": "    if false then ismHalaN h"
+ },
+ {
+  "ism": "P1482_qari_rabt_idafa_wahda",
+  "milaf": "Qari/Rabt.lean",
+  "min": "\"إضافةُ «\" ++ nassDawr j m k (fun x => x != .mudafIlayh && x != .harfJarr && x != .rabit)",
+  "ila": "\"إضافةُ «\" ++ nassKalima j k"
+ },
+ {
+  "ism": "P1483_qari_rabt_qayd_majrur",
+  "milaf": "Qari/Rabt.lean",
+  "min": "        | some (_, Dawr.harfJarr), some (v, Dawr.majrur) => \" \" ++ nassWahda j v",
+  "ila": "        | some (_, Dawr.harfJarr), some (v, Dawr.majrur) => \"\""
+ },
+ {
+  "ism": "P1484_qari_rabt_ghaya",
+  "milaf": "Qari/Rabt.lean",
+  "min": "(if f.lazim.1 == .ghaya then",
+  "ila": "(if false then"
+ },
+ {
+  "ism": "P1485_tahlil_tajmid_wasf",
+  "milaf": "tahaqquq/dawabit/tahlil/tajmid.json",
+  "min": "\"wasf_sha256\": \"f2804f0383a79ed431937709b6b2cdda42f57a61a72e26190a57f77d89179c75\"",
+  "ila": "\"wasf_sha256\": \"f2804f0383a79ed431937709b6b2cdda42f57a61a72e26190a57f77d89179c76\""
+ },
+ {
+  "ism": "P1486_tahlil_tajmid_qatr",
+  "milaf": "tahaqquq/dawabit/tahlil/tajmid.json",
+  "min": "\"sha256\": \"2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d\"",
+  "ila": "\"sha256\": \"2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9e\""
+ },
+ {
+  "ism": "P1487_tahlil_mawallad_ism",
+  "milaf": "Jisr/TahlilDawabit.lean",
+  "min": "⟨\"T17\", ",
+  "ila": "⟨\"T17x\", "
+ },
+ {
+  "ism": "P1488_tahlil_sijill_shifra",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_3.json",
+  "min": "\"sha256\": \"981ea74f75bd58479951f4553e339c277e4c3662375cd89a4b030710da108271\"",
+  "ila": "\"sha256\": \"981ea74f75bd58479951f4553e339c277e4c3662375cd89a4b030710da108272\""
+ },
+ {
+  "ism": "P1489_tahlil_sijill_sawab",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_3.json",
+  "min": "\"sawab\": 79,\n  \"naqsTaghtiya\": 3,",
+  "ila": "\"sawab\": 78,\n  \"naqsTaghtiya\": 4,"
+ },
+ {
+  "ism": "P1490_tahlil_sijill_qablaha",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_3.json",
+  "min": "\"sha256\": \"026594dd1996126867e3241fdfd565c943a2bde05c5c836104d35d01530af7ed\"",
+  "ila": "\"sha256\": \"026594dd1996126867e3241fdfd565c943a2bde05c5c836104d35d01530af7e0\""
+ },
+ {
+  "ism": "P1491_tahlil_natija1_adad",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_1.json",
+  "min": "\"sawab\": 59,",
+  "ila": "\"sawab\": 58,"
+ },
+ {
+  "ism": "P1492_tahlil_fahs_akhta_fi_lean",
+  "milaf": "Jisr/TahlilQiyas.lean",
+  "min": "theorem akhta_1 :",
+  "ila": "private theorem akhta_alt :\n    akhta (natayij halat) = [(\"T15\", .hukm, .naqsTaghtiya), (\"T32\", .hukm, .naqsTaghtiya), (\"T41\", .hukm, .naqsTaghtiya),\n      (\"T52\", .hukm, .tajawuz), (\"T53\", .hukm, .tajawuz), (\"T55\", .hukm, .ikhtiyar)] := by\n  decide +kernel\n\ntheorem akhta_1 :"
+ },
+ {
+  "ism": "P1493_tahlil_sijill_lean",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_3.json",
+  "min": "\"Jisr.Tahlil.Qiyas.akhta_1\",\n  \"Jisr.Tahlil.Qiyas.azwaj_1\"",
+  "ila": "\"Jisr.Tahlil.Qiyas.akhta_1\""
+ },
+ {
+  "ism": "P1494_tahlil_sijill_akhta",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_3.json",
+  "min": "\"akhta\": [\n  [\n   \"T15\",",
+  "ila": "\"akhta\": [\n  [\n   \"T16\","
+ },
+ {
+  "ism": "P1495_tahlil_sijill_bil_fia",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_3.json",
+  "min": "\"موجب\": 30,",
+  "ila": "\"موجب\": 29,"
+ },
+ {
+  "ism": "P1496_tahlil_sijill_tashghil",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_3.json",
+  "min": "\"tashghil\": 3,",
+  "ila": "\"tashghil\": 4,"
+ },
+ {
+  "ism": "P1497_tahlil_sijill_cases",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_3.json",
+  "min": "\"cases_sha256\": \"571c7abb14a660d3268d69b18cd0a270ed7b8778b078c087c80109eb643e937f\"",
+  "ila": "\"cases_sha256\": \"571c7abb14a660d3268d69b18cd0a270ed7b8778b078c087c80109eb643e9370\""
+ },
+ {
+  "ism": "P1498_tahlil_sijill_halat",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_3.json",
+  "min": "\"halat\": 55,",
+  "ila": "\"halat\": 54,"
+ },
+ {
+  "ism": "P1499_tahlil_sijill_azwaj",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_3.json",
+  "min": "\"sawab_tarafayn\": 13",
+  "ila": "\"sawab_tarafayn\": 12"
+ },
+ {
+  "ism": "P1500_tahlil_majal_bila_adad",
+  "milaf": "Jisr/TahlilQiyas.lean",
+  "min": "theorem majal : majalAadad = [55, 31, 18, 5, 1, 1, 28, 16, 18, 5, 14, 2] := by",
+  "ila": "theorem majal : majalAadad = majalAadad ∨ majalAadad = [55, 31, 18, 5, 1, 1, 28, 16, 18, 5, 14, 2] := by"
+ },
+ {
+  "ism": "P1501_tahlil_natija_bila_adad",
+  "milaf": "Jisr/TahlilQiyas.lean",
+  "min": "theorem natija : ihsa (natayij halat) = ⟨79, 3, 2, 0, 0, 1, 0, 0, 0⟩ := by",
+  "ila": "theorem natija : ihsa (natayij halat) = ihsa (natayij halat) ∨ ihsa (natayij halat) = ⟨79, 3, 2, 0, 0, 1, 0, 0, 0⟩ := by"
+ },
+ {
+  "ism": "P1502_tahlil_akhta_bila_sigha",
+  "milaf": "Jisr/TahlilQiyas.lean",
+  "min": "    akhta (natayij halat) = [(\"T15\"",
+  "ila": "    akhta (natayij halat) = akhta (natayij halat) ∧ akhta (natayij halat) = [(\"T15\""
+ },
+ {
+  "ism": "P1503_tahlil_natija_fia_khassa",
+  "milaf": "Jisr/TahlilQiyas.lean",
+  "min": "theorem natija_fia :",
+  "ila": "private theorem natija_fia :"
+ },
+ {
+  "ism": "P1504_tahlil_azwaj_bila_sigha",
+  "milaf": "Jisr/TahlilQiyas.lean",
+  "min": "(azwaj halat).length = 14 ∧ ((azwaj halat).filter",
+  "ila": "((azwaj halat)).length = 14 ∧ ((azwaj halat).filter"
+ },
+ {
+  "ism": "P1505_tahlil_sijill_huqul",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_3.json",
+  "min": "\"huqul_masula\": 85,",
+  "ila": "\"huqul_masula\": 86,"
  }
 ]

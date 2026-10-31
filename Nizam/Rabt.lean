@@ -38,12 +38,13 @@
      (`luzum_mujam.tsv`، `520dffc8…` في `mudaat/sijill.json`) مرشَّحٌ «يحتاج ختمًا»، ولا تفحص الأداةُ بصمتَه.
 
   **حدُّه:** العُقَدُ على القراءات المرخَّصة وحدها؛ والإحالةُ مرشَّحون لا تعيين؛ والودائعُ المرشَّحة فرضٌ معلَن؛ وجذرُ الاسم على أوزانٍ ثمانيةٍ تعيينًا،
-  ومرشَّحُ الجذر بالهمزة لا يُعدّ إلّا إن كان عنوانًا مشهودًا في اللسان (`mafatih`).
+  ومفاتيحُ الجذر في الجدول مرشَّحون من عنوانٍ مرمَّزٍ واوُه قد تكون همزةً أو ألفًا (`mafatih`): فـ«شَيْءٍ» مفاتيحُه «شوو» و«شءو» و«شوء» و«شيو» و«شيء»
+  (`shahid_mafatih`)، ولا يُعيَّن منها شيء.
 
-  **المبرهنات** بالمعيار الموحَّد (`Nizam/Asas.lean`): 24 — 15 لكلّ (`irabAux_tamm`، `irab_tamm`، `mem_irabAux`، `wahdaFi_mem`، `amilOf_fil`،
+  **المبرهنات** بالمعيار الموحَّد (`Nizam/Asas.lean`): 25 — 15 لكلّ (`irabAux_tamm`، `irab_tamm`، `mem_irabAux`، `wahdaFi_mem`، `amilOf_fil`،
   `amil_fil_fi_jumla`، `hala_matluba`، `murashshah_mutabiq`، `mafhum_wahda`، `qanun_raqm`، `asl_sahih`، `iddia_maqbul`، `dalala_sadiqa`،
-  `hamlWahda_qiyam`، `mafahim_makhtuma`)، و3 تعريفيّة (`isnad_fil`، `nafy_suwar`، `marji_hudur`)، و6 على الشاهد (`nisba_qiyam`، `shahid_lam`،
-  `shahid_lamAmr`، `shahid_ismiyya`، `shahid_mudari_damir`، `shahid_dalala`).
+  `hamlWahda_qiyam`، `mafahim_makhtuma`)، و3 تعريفيّة (`isnad_fil`، `nafy_suwar`، `marji_hudur`)، و7 على الشاهد (`nisba_qiyam`، `shahid_lam`،
+  `shahid_lamAmr`، `shahid_ismiyya`، `shahid_mudari_damir`، `shahid_mafatih`، `shahid_dalala`).
 -/
 import Jisr.Tahlil
 import Nizam.Athar
@@ -487,12 +488,12 @@ def harf (c : Nat) : Char := Dal.hawamil.getD c ' '
 /-- الجذرُ نصًّا بحروف عناوين المعجم (`shabaka/jadwal_luzum.py` R1: الهمزةُ «ء»). -/
 def jidhrNass (r : List Nat) : String := String.ofList (r.map harf)
 
-/-- **مفاتيحُ الجذر في جدول اللزوم:** الجذرُ، وإن كان في خلايا الوحدة همزةٌ فهو أيضًا بالهمزة مكانَ واوٍ فيه (`Tahlil.asl`: «الهمزةُ
-    همزةٌ أو ألف»، والألفُ في العنوان تُرمَّز واوًا؛ وعنوانُ الجدول بالهمزة: `shabaka/jadwal_luzum.py` R1) إن كان عنوانًا مشهودًا في اللسان
-    (`Tahlil.mashhud`). وكلُّ مفتاحٍ مرشَّحُ جذر، لا تعيين. -/
+/-- **مفاتيحُ الجذر في جدول اللزوم:** الجذرُ `r` عنوانٌ مرمَّزٌ مشهود في اللسان (`judhurWahda`)، والواوُ فيه قد تكون واوًا أو همزةً أو ألفًا
+    (`Tahlil.asl`: «الهمزةُ همزةٌ أو ألف»، والألفُ في العنوان تُرمَّز واوًا)؛ وعنوانُ الجدول بالهمزة (`shabaka/jadwal_luzum.py` R1). فإن كان في
+    خلايا الوحدة همزةٌ فالمفاتيحُ `r` وكلُّ صورةٍ منه بهمزةٍ مكانَ واوٍ واحدة. وكلُّ مفتاحٍ مرشَّحُ جذر، لا تعيين. -/
 def mafatih (w : Wahda) (r : List Nat) : List String :=
   (if w.khalaya.any (· / 4 == 0) then
-     [r] ++ (List.range r.length).filterMap (fun i => if r[i]? == some 28 && mashhud (r.set i 0) then some (r.set i 0) else none)
+     [r] ++ (List.range r.length).filterMap (fun i => if r[i]? == some 28 then some (r.set i 0) else none)
    else [r]).eraseDups.map jidhrNass
 
 open JadwalLuzum QawaninDalala
@@ -604,6 +605,12 @@ theorem shahid_mudari_damir :
     (maqbula [naktubuW]).map (fun m => (isnadOf m).map fun i => (i.sura, i.wujub)) = [some (.mustatar, some true)] ∧
     (maqbula [yaktubnaW]).map (fun m => (irabQiyam m, (isnadOf m).map (·.sura))) =
       [([(.fil, .mahall 1, .tajarrud)], some .bariz)] := by
+  decide +kernel
+
+/-- **مفاتيحُ «شَيْءٍ»:** عنوانا اللسان المرمَّزان «شوو» و«شيو» (الواوُ همزةٌ أو ألفٌ أو واو)، وصورُهما بالهمزة، ومنها «شيء». -/
+theorem shahid_mafatih :
+    (maqbula [wallahu, bikulli, shayin, alimun]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) =
+      [["كلل", "شوو", "شءو", "شوء", "شيو", "شيء", "علم"]] := by
   decide +kernel
 
 /-- **الدلالةُ على صفوف «كتب» الأربعة في `JadwalLuzum.jadwal`:** كلُّ صفٍّ ادّعاءٌ يقبله الفاحص (`iddia_maqbul` على الشاهد): ترادفان مطابقةً لمعنى «علم»،
