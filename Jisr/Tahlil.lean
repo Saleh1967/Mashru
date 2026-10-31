@@ -1,7 +1,7 @@
 /-
   Jisr/Tahlil.lean — قراءةُ الجملة بالعوامل: من خلايا الكلمات إلى وحداتها وأدوارها، ثمّ الإطارُ والحكمُ بقانون المالك.
 
-  **الطلب:** قولُ المالك 2026-10-31 (12:48 بتوقيت عمّان، من ملخّص الجلسة بعد ضغطها): «مطلوب ان تحسن الأداء وتوجد طريقة لتوظيف
+  **الطلب:** قولُ المالك 2026-10-31 (ووقتُه 12:48 بتوقيت عمّان ولفظُه من ملخّص الجلسة بعد ضغطها): «… مطلوب ان تحسن الأداء وتوجد طريقة لتوظيف
   المكونات كلها … وانت مفوض بالحل وليس التشخيص». والتصميمُ قرارُ البنّاء، والمجالُ معلَنٌ في مواصفة الضابط المجمَّد
   `tahaqquq/dawabit/tahlil/wasf.md` قبل الحالات وقبل هذه الشفرة.
 
@@ -25,9 +25,19 @@
   **بعد قراءة حالات الضابط** عُدّلت القراءة بأحد عشر تغييرًا، لكلٍّ سندُه والحالةُ التي نبّهت إليه (`tahaqquq/dawabit/tahlil/mulhaq_1.md` §٢):
   ترجيحُ الجذر المشهود، والأجوفُ ساكنَ الآخر، وحركةُ سابقة المضارع، ونونُ النسوة، وياءُ المتكلّم، والنونُ مع الضمير، والمقصورُ والمنقوص، و«كلا»
   بلا ضمير، والتامُّ من أخوات «كان»، والمرفوعُ الخارج بعد مرفوعٍ ظاهر، والمجرورُ بعد الوصف بـ«ال». فالتشغيلُ بعدها على مادّةٍ مكشوفة.
+  **ثمّ بعد بناء شواهد السلسلة** (`Nizam/Rabt.lean`) بتغييرين لم تنبّه إليهما حالة (`mulhaq_1.md` §٢): لاحقةُ الماضي لا تلي ألفَ المدّ (`samitSakinQabl`؛
+  وكانت «كَانَ زَيْدٌ» و«مَاتَ زَيْدٌ» و«بَانَ الْحَقُّ» ممتنعة: «كَانَ» تُقرأ بنون النسوة)، والنونُ المفتوحةُ بعد حرف مدّ آخرُ الجذع أيضًا (`nunAsl`؛ وكانت
+  «لَنْ يَصُونَ» و«لَنْ يَبِينَ» ممتنعة)؛ وشاهدُهما `shahid_ajwaf`.
+
+  **المبرهنات** بالمعيار الموحَّد (`Nizam/Asas.lean`): 22 (21 عامّة وواحدة خاصّة `dammKull_murakhkhas`) — 11 لكلّ (`lawahiq_tamm`،
+  `dammKull_murakhkhas`، `murakhkhas_qanun`، `murakhkhas_framesL`، `hala_murakhkhasa`، `hukmJumla_murakhkhas`، `hukmJumla_mumtani`،
+  `la_murashshah_la_yurakhkhas`، `la_qiraa_la_hukm`، `kharij_la_yurakhkhis`، `taqdir_la_yurakhkhis`)، و3 تعريفيّة (`hurufJadwal` بـ rfl،
+  `hukmKharij_ne`، `hukmKharijQiraa_ne`)، و8 على الشاهد (`shahid_lam`، `shahid_lamAmr`، `shahid_ismiyya`، `shahid_muatall`، `shahid_kharij`،
+  `shahid_mashhud`، `shahid_ajwaf`، `shahid_naqis`).
 
   **ما لم يُبنَ:** المبنيّاتُ الظاهرة (الضميرُ المنفصل والإشارةُ والموصول)، والنواسخ، والشرط، والنداء، والعطف، والتوابع، والحال، والظرف
-  بمعجمه، والأسماءُ الستّة (لها `Jisr/QawaidSitta.lean`)، والمعتلّ (يُقدَّر). والتعدّي والجنس لا تحملهما الحروف.
+  بمعجمه، والأسماءُ الستّة (لها `Jisr/QawaidSitta.lean`)، والمعتلّ (يُقدَّر)، وواوُ «عمرو» الزائدة (فمثالُ القطر L220 «مات عمرو» «لا حكم»: لا قراءةَ
+  لـ«عَمْرٌو»). والتعدّي والجنس لا تحملهما الحروف.
 -/
 import Jisr.NassItar
 import Jisr.AwamilJadwal
@@ -51,6 +61,8 @@ def endsWith (s suf : List Nat) : Bool := suf.length ≤ s.length && s.drop (s.l
 
 /-- ما قبل اللاحقة ساكن. -/
 def sakinQabl (s : List Nat) (n : Nat) : Bool := (minAkhir s n).any sakin
+/-- ما قبل اللاحقة حرفٌ ساكنٌ غيرُ ألف المدّ: لاحقةُ الماضي لا تلي ألفًا («قُلْتُ»، «رَمَيْتُ»)، فـ«كَانَ» و«مَاتَ» بلا لاحقة. -/
+def samitSakinQabl (s : List Nat) (n : Nat) : Bool := (minAkhir s n).any fun c => sakin c && c / 4 != 2
 /-- ما قبل اللاحقة متحرّكٌ بالحركة `h`. -/
 def harakaQabl (s : List Nat) (n h : Nat) : Bool := (minAkhir s n).any fun c => mutaharrik c && haraka c == h
 
@@ -258,18 +270,18 @@ def jidhrMashhud (ws : List Wazn) (b : List Nat) : Bool :=
 
 /-! ## ٦. الفعل -/
 
-/-- سماتُ الماضي من صورة آخره. -/
+/-- سماتُ الماضي من صورة آخره؛ ولاحقةُ الضمير بعد ساكنٍ غيرِ ألف المدّ (`samitSakinQabl`). -/
 def madiSima (s : List Nat) : Option Feat :=
-  if endsWith s [kh 18 1, kh 27 0, kh 2 3] && sakinQabl s 3 then some (2, 0, 1)                         -- تُمَا
-  else if (endsWith s [kh 18 1, kh 27 3] || endsWith s [kh 18 1, kh 27 1]) && sakinQabl s 2 then some (2, 0, 2)  -- تُمْ
-  else if endsWith s [kh 14 0, kh 2 3] && sakinQabl s 2 then some (1, 0, 2)                              -- نَا
-  else if endsWith s [kh 18 1] && sakinQabl s 1 then some (1, 0, 0)                                      -- تُ
-  else if endsWith s [kh 18 0] && sakinQabl s 1 then some (2, 0, 0)                                      -- تَ
-  else if endsWith s [kh 18 2] && sakinQabl s 1 then some (2, 1, 0)                                      -- تِ
+  if endsWith s [kh 18 1, kh 27 0, kh 2 3] && samitSakinQabl s 3 then some (2, 0, 1)                         -- تُمَا
+  else if (endsWith s [kh 18 1, kh 27 3] || endsWith s [kh 18 1, kh 27 1]) && samitSakinQabl s 2 then some (2, 0, 2)  -- تُمْ
+  else if endsWith s [kh 14 0, kh 2 3] && samitSakinQabl s 2 then some (1, 0, 2)                              -- نَا
+  else if endsWith s [kh 18 1] && samitSakinQabl s 1 then some (1, 0, 0)                                      -- تُ
+  else if endsWith s [kh 18 0] && samitSakinQabl s 1 then some (2, 0, 0)                                      -- تَ
+  else if endsWith s [kh 18 2] && samitSakinQabl s 1 then some (2, 1, 0)                                      -- تِ
   else if endsWith s [kh 18 3] && harakaQabl s 1 0 then some (3, 1, 0)                                   -- تْ
   else if endsWith s [kh 28 3] && harakaQabl s 1 1 then some (3, 0, 2)                                   -- وا
   else if endsWith s [kh 2 3] && harakaQabl s 1 0 then some (3, 0, 1)                                    -- ا
-  else if endsWith s [kh 14 0] && sakinQabl s 1 then some (3, 1, 2)                                      -- نَ
+  else if endsWith s [kh 14 0] && samitSakinQabl s 1 then some (3, 1, 2)                                      -- نَ
   else if harakaQabl s 0 0 then some (3, 0, 0)
   else none
 
@@ -303,7 +315,8 @@ structure QiraaFil where
 /-- **قراءاتُ المضارع:** الجذعُ بعد السابقة على وزنٍ من أوزانه بحركة السابقة (`awzanMudariBi`)، ومن الأمثلة الخمسة بالنون (رفعًا) وبحذفها
 (نصبًا وجزمًا) (القطر L88–90). والمعتلُّ الآخر (القطر L90–95) إن شُهد جذرُه معتلًّا: آخرُه حرفُ علّةٍ ساكن فالضمّةُ مقدَّرة (وفي الألف الفتحةُ
 أيضًا)، أو حُذف آخرُه فهو مجزوم؛ وإلّا فحالتُه «مقدَّرة» لا تُقرأ. وما جذرُه غيرُ مشهودٍ في اللسان «مقدَّر». ومع نون النسوة مبنيٌّ على
-السكون (القطر L67: «ويسكن آخره مع نون النسوة نحو يتربصن وإلا أن يعفون»)؛ والتقاءُ الساكنين والتضعيفُ «مقدَّران». -/
+السكون (القطر L67: «ويسكن آخره مع نون النسوة نحو يتربصن وإلا أن يعفون»)؛ والتقاءُ الساكنين والتضعيفُ «مقدَّران». والنونُ المفتوحةُ بعد واوٍ
+أو ياءٍ ساكنة تُقرأ لاحقةً وتُقرأ معها آخرَ الجذع منصوبًا (`nunAsl`: «لَنْ يَكُونَ»، «لَنْ يَبِينَ»). -/
 def mudariQiraat (s : List Nat) : List QiraaFil :=
   match s with
   | [] => []
@@ -324,16 +337,18 @@ def mudariQiraat (s : List Nat) : List QiraaFil :=
     let illa (b : List Nat) (hs : List Nat) : List QiraaFil :=
       if fiAwzan aw b then fs.map fun f => ⟨f, hs, !jidhrMashhud aw b, jidhrMashhud aw b, false⟩ else []
     let muqaddar (q : QiraaFil) : QiraaFil := { q with tq := true }
+    -- النونُ آخرَ الجذع بعد حرف مدّ («يَكُونَ»، «يَصُونَ»، «يَبِينَ»): قراءةُ الصحيح بحالة آخره، مع قراءة اللاحقة
+    let nunAsl : List QiraaFil := fs.flatMap fun f => qr 0 f [0]
     if fs.isEmpty || s.length < 3 then []
     else if endsWith s [kh 28 3, kh 14 0] && harakaQabl s 2 1 then
-      (if ya then qr 2 (3, 0, 2) [1] else if ta then qr 2 (2, 0, 2) [1] else [])
+      (if ya then qr 2 (3, 0, 2) [1] else if ta then qr 2 (2, 0, 2) [1] else []) ++ nunAsl
     else if endsWith s [kh 28 3] && harakaQabl s 1 1 then
       (if ya then qr 1 (3, 0, 2) [0, 3] else if ta then qr 1 (2, 0, 2) [0, 3] else []) ++ illa jidh [1]
     else if endsWith s [kh 2 3, kh 14 2] && harakaQabl s 2 0 then
       (if ya then qr 2 (3, 0, 1) [1] else if ta then qr 2 (2, 0, 1) [1] ++ qr 2 (3, 1, 1) [1] else [])
     else if endsWith s [kh 2 3] && harakaQabl s 1 0 then
       (if ya then qr 1 (3, 0, 1) [0, 3] else if ta then qr 1 (2, 0, 1) [0, 3] ++ qr 1 (3, 1, 1) [0, 3] else []) ++ illa jidh [0, 1]
-    else if endsWith s [kh 11 3, kh 14 0] && harakaQabl s 2 2 then (if ta then qr 2 (2, 1, 0) [1] else [])
+    else if endsWith s [kh 11 3, kh 14 0] && harakaQabl s 2 2 then (if ta then qr 2 (2, 1, 0) [1] else []) ++ nunAsl
     else if endsWith s [kh 11 3] && harakaQabl s 1 2 then (if ta then qr 1 (2, 1, 0) [0, 3] else []) ++ illa jidh [1]
     else if endsWith s [kh 14 0] && sakinQabl s 1 then
       ((if ya then qr 1 (3, 1, 2) [] else if ta then qr 1 (2, 1, 2) [] else []).map fun q => { q with mabni := true })
@@ -969,15 +984,15 @@ theorem hala_murakhkhasa (m : Murashshah) (x : Wahda × Option Nat × Nat) (h : 
     x.1.taqdir = false ∧ (x.1.sima.2.2.2 = true ∨ matlub m x = [] ∨ ∃ s ∈ x.1.halat, s ∈ matlub m x) := by
   unfold hukmHala at h
   by_cases ht : x.1.taqdir = true
-  · rw [if_pos ht] at h; cases h
-  · rw [if_neg ht] at h
+  · simp [ht] at h
+  · simp only [ht, Bool.false_eq_true, ↓reduceIte] at h
     refine ⟨by simpa using ht, ?_⟩
     by_cases hm : (x.1.sima.2.2.2 || (matlub m x).isEmpty) = true
     · simp only [Bool.or_eq_true, List.isEmpty_iff] at hm
       rcases hm with hm | hm
       · exact Or.inl hm
       · exact Or.inr (Or.inl hm)
-    · rw [if_neg hm] at h
+    · simp only [hm, Bool.false_eq_true, ↓reduceIte] at h
       unfold ofBool at h; split at h
       · rename_i ha
         obtain ⟨s, hs, hc⟩ := List.any_eq_true.mp ha
@@ -1068,7 +1083,7 @@ theorem shahid_lam :
     hukmJumla [lamW, yaktubR, zaydun] = .mumtani := by
   decide +kernel
 
-/-- **لامُ الأمر بعد الرابط:** «فَلْيَكْتُبْ» رابطٌ ولامُ أمرٍ ومضارعٌ مجزوم، وفاعلُه مستترٌ يحيل إلى ما سبق. -/
+/-- **لامُ الأمر بعد الرابط:** «فَلْيَكْتُبْ» رابطٌ ولامُ أمرٍ ومضارعٌ مجزوم. -/
 theorem shahid_lamAmr : adwarMaqbula [falyaktub] = [[.rabit, .jazim, .fil]] := by decide +kernel
 
 /-- **الاسميّةُ وشبهُ الجملة بين المبتدأ والخبر:** «وَاللَّهُ بِكُلِّ شَيْءٍ عَلِيمٌ» بقراءةٍ واحدة. -/
@@ -1088,6 +1103,27 @@ theorem shahid_kharij : hukmJumla [qama, zaydun, alimun] = .laHukm ∧ hukmJumla
 /-- **الجذرُ في عناوين اللسان:** كتب ودعو مشهودان، و«تتق» (قراءةُ «اتّقى» بلا إبدال الواو) لا. -/
 theorem shahid_mashhud : mashhud [8, 18, 26] = true ∧ mashhud [17, 3, 28] = true ∧ mashhud [18, 18, 7] = false := by
   decide +kernel
+
+def kanaW : Kalima := ⟨[32, 11, 56], false, false⟩                              -- كَانَ
+def mataW : Kalima := ⟨[108, 11, 72], false, false⟩                             -- مَاتَ
+def lanW : Kalima := ⟨[52, 59], false, false⟩                                   -- لَنْ
+def yasunaW : Kalima := ⟨[44, 85, 115, 56], false, false⟩                       -- يَصُونَ
+def qumW : Kalima := ⟨[29, 111], false, false⟩                                  -- قُمْ
+def yaqumW : Kalima := ⟨[44, 29, 111], false, false⟩                            -- يَقُمْ
+def laysaW : Kalima := ⟨[52, 47, 80], false, false⟩                             -- لَيْسَ
+def naktubuW : Kalima := ⟨[56, 35, 73, 105], false, false⟩                      -- نَكْتُبُ
+def yaktubnaW : Kalima := ⟨[44, 35, 73, 107, 56], false, false⟩                 -- يَكْتُبْنَ
+
+/-- **الأجوف:** «كَانَ زَيْدٌ» و«مَاتَ زَيْدٌ» مرخَّصتان (الألفُ قبل «نَ» و«تَ» ليست ساكنَ اللاحقة: `samitSakinQabl`)، و«لَنْ يَصُونَ» مرخَّصة (النونُ
+آخرُ الجذع: `nunAsl`)، و«قُمْ» و«لَمْ يَقُمْ» مرخَّصتان وجذرُ قراءتيهما مشهود (`ajwafSakin`؛ القطر L77 «لم يقم»). -/
+theorem shahid_ajwaf :
+    hukmJumla [kanaW, zaydun] = .murakhkhas ∧ hukmJumla [mataW, zaydun] = .murakhkhas ∧ hukmJumla [lanW, yasunaW] = .murakhkhas ∧
+    hukmJumla [qumW] = .murakhkhas ∧ (murashshahun [qumW]).map (·.adwar.map (·.1.jidhr)) = [[true]] ∧
+    hukmJumla [lamW, yaqumW] = .murakhkhas := by
+  decide +kernel
+
+/-- **ما لا يكون إلّا ناقصًا** (`naqisDaiman`): «لَيْسَ زَيْدٌ» «لا حكم» (قراءتُه ناسخًا «خارج»، ولا قراءةَ تامّة)، و«كَانَ زَيْدٌ» مرخَّصةٌ تامّةً. -/
+theorem shahid_naqis : hukmJumla [laysaW, zaydun] = .laHukm ∧ adwarMaqbula [kanaW, zaydun] = [[.fil, .fail]] := by decide +kernel
 
 end Tahlil
 end Jisr

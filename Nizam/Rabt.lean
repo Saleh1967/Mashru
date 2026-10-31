@@ -2,35 +2,48 @@
   Nizam/Rabt.lean — ربطُ السلسلة على قراءة الجملة بالعوامل (`Jisr.Tahlil`): لكلّ قراءةٍ مرخَّصة جدولُ إعرابها (الدورُ والحالةُ والعامل)،
   ونِسَبُ أدوارها، وإسنادُها، وقوّتُها، وإحالةُ ضمائرها، وقيدُها ومفهومُها، ودلالةُ ألفاظها على جدول اللزوم.
 
-  **الطلب:** قولُ المالك 2026-10-31 (12:48 بتوقيت عمّان، من ملخّص الجلسة بعد ضغطها): «… يوجد كود للعوامل لم يوظف … يوجد كود ياسر الإعراب لم
+  **الطلب:** قولُ المالك 2026-10-31 (ووقتُه 12:48 بتوقيت عمّان ولفظُه من ملخّص الجلسة بعد ضغطها): «… يوجد كود للعوامل لم يوظف … يوجد كود ياسر الإعراب لم
   يوظف يوجد كود للاسناد والمسند إليه لم يوظف الاسناد ولا التضمن ولا التقييد ويوجد كود للدلالة المطابقة ودلالة التضمن ودلالة ودلالة الالتزام لم
-  توظف ويوجد كود للاحالة والاسماء المبنيات لم يوظف … وانت مفوض بالحل وليس التشخيص»؛ وفيه: «واما الإيداع والختم يمكن عمل تحفظ ولكن نكمل
-  العمل ونضع ملاحظة ان الجدول مثلا للرسم يحتاج ختم». والتصميمُ وتعييناتُه قرارُ البنّاء.
+  توظف ويوجد كود للاحالة والاسماء المبنيات لم يوظف … وانت مفوض بالحل وليس التشخيص»؛ وفيه: «… واما الإيداع والختم يمكن عمل تحفظ ولكن نكمل
+  العمل ونضع ملاحظة ان الجدول مثلا للرسم يحتاج ختم ولا نجعل كل شيء deffer …». والتصميمُ وتعييناتُه قرارُ البنّاء.
 
   **العُقَد** (كلٌّ على قطعةٍ قائمة في المشروع):
   1. **العامل** (`amilOf`): الجازمُ والناصبُ وحرفُ الجرّ صفوفُ جدول العوامل المختوم (`Awamil.table`، بصفّ الوحدة)؛ والمضارعُ بلا ناصبٍ ولا
-     جازم مرفوعٌ بالتجرّد (القطر L96 «يرفع المضارع خاليا من ناصب وجازم»؛ الألفية L883 «رفع مضارعا إذا يجرد من ناصب وجازم»)؛ والفاعلُ والمفعولُ
-     بالفعل (الألفية L312 «وبعد فعل فاعل»، وL361 «فانصب به مفعوله»)؛ والمبتدأُ بالابتداء والخبرُ بالمبتدأ (الألفية L181 «ورفعوا مبتدأ بالابتدا ...
-     كذاك رفع خبر بالمبتدا»)؛ والمضافُ إليه بالإضافة (القطر L339 «أو بإضافة إلى اسم»؛ الألفية L508 «والثاني اجرر»)؛ والماضي والأمرُ والحرفُ
-     مبنيّة (القطر L55، L59).
-  2. **الحالة** (`halaOf`): الحالةُ التي يطلبها موضعُ الوحدة في إطار المالك (`Tahlil.matlub`) وفي حالات خلاياها؛ والمقدَّرُ والمبنيُّ ومحلُّه.
+     جازم مرفوعٌ بالتجرّد (القطر L96 «يرفع المضارع خاليا من ناصب وجازم»؛ الألفية L883 «رفع مضارعا إذا يجرد ... من ناصب وجازم»)؛ والفاعلُ
+     بالفعل (القطر L220 «ولا يتأخر عامله عنه»، والألفية L312 «وبعد فعل فاعل»)، والمفعولُ به (الألفية L361 «فانصب به مفعوله»)؛ والمبتدأُ بالابتداء
+     والخبرُ بالمبتدأ (الألفية L181 «ورفعوا مبتدأ بالابتدا ... كذاك رفع خبر بالمبتدا»)؛ والمضافُ إليه بالإضافة (القطر L339 «أو بإضافة إلى اسم»؛
+     الألفية L508 «والثاني اجرر»)؛ والماضي والأمرُ مبنيّان (القطر L55، L59)، والحرفُ مبنيّ (القطر L71–72 «وجميع الحروف مبنية»).
+  2. **الحالة** (`halaOf`): الحالةُ التي يطلبها موضعُ الوحدة في إطار المالك (`Tahlil.matlub`) وفي حالات خلاياها؛ والمقدَّرُ والمبنيُّ ومحلُّه؛
+     والمضارعُ مع نون النسوة مبنيٌّ في محلّ ما يطلبه موضعُه (القطر L67–68 «ويسكن آخره مع نون النسوة … ويعرب فيما عدا ذلك»).
   3. **النسبة** (`nisba`): تعيينُ `Jisr.Nisab.nisbaOf` على علاقات المالك (`Simat.semOf`) الذي أمضاه المالك 2026-10-16، والمضافُ إليه الإضافيّة
      (كـ`Nizam.Athar.nisbaDawr`).
   4. **الإسناد** (`isnadOf`): «هذا باب المسند والمسند إليه … فمن ذلك الاسم المبتدأ والمبنى عليه … ومثل ذلك يذهب عبد الله» (الكتاب س234–237):
      المسندُ الفعلُ أو الخبر، والمسندُ إليه الفاعلُ أو المبتدأ؛ والفاعلُ الضميرُ بارزٌ متّصل (لاحقةُ الفعل) أو مستتر — وجوبًا في المضارع للمتكلّم
-     والمخاطب وجوازًا للغائب (القطر L124–125: «مستتر كالمقدر وجوبا في نحو "أقوم" و "تقوم" أو جوازا في نحو "زيد يقوم"»).
-  5. **القوّة** (`quwwaOf`): من صفّ الصدر بعمود الأسلوب (`Nizam.Athar.quwwaSufuf`)، و«لن» و«لا» النافية نفيٌ بصورتي النفي في
-     `Aql.Awwaliyyat.nafy` (الكتاب س9783–9787)، والأمرُ إنشاء (القطر L59: «ويعرف بدلالته على الطلب»)، وما سواها خبرٌ مثبت (`SakkJumla.awwal`).
+     والمخاطب وجوازًا للغائب (القطر L124–125: «مستتر كالمقدر وجوبا في نحو "أقوم" و "تقوم" أو جوازا فشي [كذا] نحو "زيد يقوم"»)؛ ولاحقةُ المضارع
+     ألفُ الاثنين وواوُ الجماعة ونونُ النسوة وياءُ المخاطبة (`lahiqaFail`)، فـ«نَكْتُبُ» فاعلُه مستترٌ وجوبًا (`shahid_naktubu`).
+  5. **القوّة** (`quwwaOf`): من صفّ الصدر بعمود الأسلوب (`Nizam.Athar.quwwaSufuf`)؛ و«لن» و«لا» النافية نفيٌ **تعيينًا**: صورتاهما صورتا النفي في
+     `Aql.Awwaliyyat.nafy` («لا يفعل» الكتاب س9786، و«لن يفعل» س9787)، ولا مبرهنةَ تصل `quwwaOf` بها (`nafy_suwar` مساواةُ نصّين). **وخلافٌ معلَن:**
+     `Nizam.Athar.quwwaSufuf` يجعل صفَّ «لن» (63) «لا حكم» (أداةٌ لم يُبنَ أثرُها في القوّة)، فأداتا `athar` و`rabt` تختلفان في قوّة «لن يفعل».
+     والأمرُ إنشاء (القطر L59: «ويعرف بدلالته على الطلب»)، وما سواها خبرٌ مثبت (`SakkJumla.awwal`).
   6. **الإحالة** (`ihalat`): ضميرُ المتكلّم والمخاطب إلى الحضور، والغائبُ إلى مرشَّحين قبله بمطابقة العدد (تعيينُ البنّاء: الجنسُ لا تحمله الحروف).
   7. **القيدُ والمفهوم** (`qaydR`، `mafahim`): عناصرُ البنية من الوحدات بأدوارها على `Jisr.QaydMafhum.unsurQayd` (الغايةُ من «إلى» حرفَ جرّ، والعددُ
-     من المثنّى، والاسمُ من ذي الأداة والنكرة)، والجسرُ `Jisr.MantuqMafhum.jisr` بعد ربطه بالبنية (`bilBunya`) على ودائعَ تُعطى معاملًا.
-     **والودائعُ المرشَّحة** (`wadaMurashshaha`) تحتاج ختمًا: الحملُ على الحقيقة اللغويّة لكلّ كلمةٍ جذرُها مشهود (`QawaninDalala.haml` بلا حقيقةٍ
-     شرعيّةٍ ولا عرفيّةٍ مودَعة)، ولا خروجَ مخرجَ الأغلب، ولا نصَّ معطِّل.
+     من المثنّى، والاسمُ من ذي الأداة ومن المنوَّن بلا أداةٍ ولا إضافة، ومنه العلم)، والجسرُ `Jisr.MantuqMafhum.jisr` بعد ربطه بالبنية (`bilBunya`)
+     على ودائعَ تُعطى معاملًا. **والودائعُ المرشَّحة** (`wadaMurashshaha`) تحتاج ختمًا: الحملُ على الحقيقة اللغويّة لكلّ كلمةٍ جذرُها مشهود
+     (`QawaninDalala.haml` بلا حقيقةٍ شرعيّةٍ ولا عرفيّةٍ مودَعة)، ولا خروجَ مخرجَ الأغلب، ولا نصَّ معطِّل. وعلى المختومة وحدها لا حملَ مودَعًا لكلمة،
+     فلا يُخرج الجسرُ مفهومًا (`mafahim_makhtuma`، من `MantuqMafhum.la_mafhum_bila_haml`).
   8. **الدلالة** (`iddiaOf`): صفُّ جدول اللزوم (`JadwalLuzum.Saff`) ادّعاءٌ بسلسلته على قاعدة الجدول نفسِه (`JadwalLuzum.qaidaOf`): الترادفُ مطابقة،
-     والجزءُ والأصلُ تضمّن، والتعليلُ التزام. **ويقبله الفاحصُ لكلّ جدولٍ وكلّ صفٍّ فيه** (`iddia_maqbul`)، فهو صادقٌ في النموذج بفروض
-     `QawaninDalala.salama` (`dalala_sadiqa`). والجدولُ في التنفيذيّ `rabt` هو `luzum_mujam.tsv` المرشَّح (`520dffc8…`، «يحتاج ختمًا»).
+     والجزءُ والأصلُ تضمّن، والتعليلُ التزام، والخارجُ مطابقةُ اللفظ لمعناه (لا صلتُه بما في عمود B). **وأصولُ السلسلة صفوفُ الجدول نفسِه** (`aslB T`)،
+     فقبولُ `Qaida.maqbul` لها (`iddia_maqbul`، لكلّ جدولٍ وكلّ صفٍّ فيه) فحصٌ لشكل السلسلة لا لصدق الجدول؛ وصدقُها في النموذج بفرض صدق الأصول
+     (`dalala_sadiqa`، فرضُ `hA`). والفاحصُ التنفيذيّ `faahis` لا يقبل أصلًا إلّا بسندٍ أوّلُه بصمةُ مودَعٍ مختوم، والجدولُ في `rabt`
+     (`luzum_mujam.tsv`، `520dffc8…` في `mudaat/sijill.json`) مرشَّحٌ «يحتاج ختمًا»، ولا تفحص الأداةُ بصمتَه.
 
-  **حدُّه:** العُقَدُ على القراءات المرخَّصة وحدها؛ والإحالةُ مرشَّحون لا تعيين؛ والودائعُ المرشَّحة فرضٌ معلَن؛ وجذرُ الاسم على أوزانٍ ثمانيةٍ تعيينًا.
+  **حدُّه:** العُقَدُ على القراءات المرخَّصة وحدها؛ والإحالةُ مرشَّحون لا تعيين؛ والودائعُ المرشَّحة فرضٌ معلَن؛ وجذرُ الاسم على أوزانٍ ثمانيةٍ تعيينًا،
+  ومرشَّحُ الجذر بالهمزة لا يُعدّ إلّا إن كان عنوانًا مشهودًا في اللسان (`mafatih`).
+
+  **المبرهنات** بالمعيار الموحَّد (`Nizam/Asas.lean`): 24 — 15 لكلّ (`irabAux_tamm`، `irab_tamm`، `mem_irabAux`، `wahdaFi_mem`، `amilOf_fil`،
+  `amil_fil_fi_jumla`، `hala_matluba`، `murashshah_mutabiq`، `mafhum_wahda`، `qanun_raqm`، `asl_sahih`، `iddia_maqbul`، `dalala_sadiqa`،
+  `hamlWahda_qiyam`، `mafahim_makhtuma`)، و3 تعريفيّة (`isnad_fil`، `nafy_suwar`، `marji_hudur`)، و6 على الشاهد (`nisba_qiyam`، `shahid_lam`،
+  `shahid_lamAmr`، `shahid_ismiyya`، `shahid_mudari_damir`، `shahid_dalala`).
 -/
 import Jisr.Tahlil
 import Nizam.Athar
@@ -110,8 +123,13 @@ def amilOf (m : Murashshah) (prev : Option Wahda) (p : Wahda × Dawr) : Amil :=
 
 def khanaOf (m : Murashshah) (w : Wahda) : Option (Wahda × Option Nat × Nat) := m.khanat.find? (·.1 == w)
 
-/-- **الحالة:** المقدَّرةُ «مقدَّرة»؛ والفعلُ المبنيّ مبنيّ، والاسمُ والضميرُ المبنيّان في محلّ ما يطلبه موضعُه؛ والمعربُ بأوّل حالةٍ من حالات خلاياها يطلبها الموضع — ظاهرةً إن انفردت بها
-    خلاياها، ومشتركةً إن احتملت غيرَها (المقصورُ والمنقوصُ والمضافُ إلى الياء والأمثلةُ الخمسة ونونُ النسوة). -/
+/-- المضارعُ مع نون النسوة (الغائباتُ والمخاطَبات): مبنيٌّ (القطر L67 «ويسكن آخره مع نون النسوة»)، وسمتُه عند المالك سمةُ المعرب
+    (`Simat.slotAttrOK`)، فيُعرف هنا بسمته. -/
+def nunNiswa (w : Wahda) : Bool := w.naw == .fil && w.sima.1 == 1 && w.sima.2.2.1.1 != 1 && w.sima.2.2.1.2 == (1, 2)
+
+/-- **الحالة:** المقدَّرةُ «مقدَّرة»؛ والفعلُ المبنيّ مبنيّ، والاسمُ والضميرُ المبنيّان والمضارعُ مع نون النسوة في محلّ ما يطلبه موضعُه؛ والمعربُ بأوّل
+    حالةٍ من حالات خلاياها يطلبها الموضع — ظاهرةً إن انفردت بها خلاياها، ومشتركةً إن احتملت غيرَها (المقصورُ والمنقوصُ والمضافُ إلى الياء والأمثلةُ
+    الخمسة). -/
 def halaOf (m : Murashshah) (w : Wahda) : Hala :=
   match khanaOf m w with
   | none => .laHala
@@ -119,6 +137,7 @@ def halaOf (m : Murashshah) (w : Wahda) : Hala :=
     let ms := Jisr.Tahlil.matlub m x
     if w.taqdir then .muqaddara
     else if w.sima.2.2.2 then (if w.naw == .fil then .mabni else match ms.head? with | some h => .mahall h | none => .mabni)
+    else if nunNiswa w then (match ms.head? with | some h => .mahall h | none => .mabni)
     else match w.halat.find? (ms.contains ·) with
       | some h => if w.halat.length == 1 then .zahira h else .mushtaraka h w.halat
       | none => .ghayrMatluba w.halat
@@ -163,7 +182,7 @@ theorem wahdaFi_mem (m : Murashshah) (d : Dawr) {v : Wahda} (h : wahdaFi m d = s
     rw [← h, ← hp]
     exact hm
 
-/-- العاملُ فعلٌ إذا كان في المرشَّح فعلٌ في تلك الكلمة. -/
+/-- إن كان العاملُ فعلًا في الكلمة k ففي المرشَّح فعلٌ في الكلمة k. -/
 theorem amilOf_fil (m : Murashshah) (q : Option Wahda) (p : Wahda × Dawr) (k : Nat) (h : amilOf m q p = .fil k) :
     ∃ v, (v, Dawr.fil) ∈ m.adwar ∧ v.kalima = k := by
   unfold amilOf at h
@@ -181,7 +200,7 @@ theorem amilOf_fil (m : Murashshah) (q : Option Wahda) (p : Wahda × Dawr) (k : 
     | (split at h <;> (try split at h) <;> cases h)
     | cases h
 
-/-- **العاملُ في الفاعل والمفعول فعلٌ في الجملة نفسِها:** كلُّ مدخلٍ في جدول الإعراب عاملُه فعلٌ في الكلمة k في المرشَّح فعلٌ في الكلمة k. -/
+/-- **العاملُ الفعلُ فعلٌ في القراءة نفسِها:** كلُّ مدخلٍ في جدول الإعراب عاملُه فعلٌ في الكلمة k ففي المرشَّح فعلٌ في الكلمة k. -/
 theorem amil_fil_fi_jumla (m : Murashshah) {e : Irab} (he : e ∈ irab m) {k : Nat} (ha : e.amil = .fil k) :
     ∃ v, (v, Dawr.fil) ∈ m.adwar ∧ v.kalima = k := by
   obtain ⟨p, _, q, rfl⟩ := mem_irabAux m he
@@ -208,6 +227,11 @@ theorem hala_matluba (m : Murashshah) (w : Wahda) {h : Nat} (hh : halaOf m w = .
         · simp
         · cases (Jisr.Tahlil.matlub m x).head? <;> simp
       · simp only [hb, Bool.false_eq_true, ↓reduceIte] at hh
+        by_cases hn : nunNiswa w = true
+        · simp only [hn, ↓reduceIte] at hh
+          revert hh
+          cases (Jisr.Tahlil.matlub m x).head? <;> simp
+        simp only [hn, Bool.false_eq_true, ↓reduceIte] at hh
         split at hh
         · rename_i h' hf
           have hh' : h' = h := by
@@ -258,12 +282,12 @@ structure Isnad where
   wujub : Option Bool
   deriving Repr
 
-/-- لاحقةُ الفعل ضميرُ رفعٍ بارز: الماضي بغير الغائب المفرد وتاء التأنيث، والمضارعُ بألف الاثنين وواو الجماعة ونون النسوة وياء المخاطبة،
-    والأمرُ بغير المفرد المذكّر. -/
+/-- لاحقةُ الفعل ضميرُ رفعٍ بارز: الماضي بغير الغائب المفرد وتاء التأنيث، والمضارعُ بألف الاثنين وواو الجماعة ونون النسوة وياء المخاطبة (لا المتكلّم:
+    «نَكْتُبُ» بلا لاحقة)، والأمرُ بغير المفرد المذكّر. -/
 def lahiqaFail (v : Wahda) : Bool :=
   let ft := v.sima.2.2.1
   if v.sima.1 == 0 then !(ft == (3, 0, 0) || ft == (3, 1, 0))
-  else if v.sima.1 == 1 then ft.2.2 != 0 || ft == (2, 1, 0)
+  else if v.sima.1 == 1 then (ft.1 != 1 && ft.2.2 != 0) || ft == (2, 1, 0)
   else ft != (2, 0, 0)
 
 def isnadOf (m : Murashshah) : Option Isnad :=
@@ -301,9 +325,9 @@ open Jisr.SakkJumla (Quwwa)
 def quwwaOf (m : Murashshah) : Quwwa × String :=
   match m.adwar.find? (fun p => p.2 == .jazim || p.2 == .nasib || p.2 == .nafiya) with
   | some (s, d) =>
-    if d == .nafiya then (.nafy, "«لا» نافيةً: «لا يفعل» صورةُ نفي المستقبل (Aql.Awwaliyyat.nafy؛ الكتاب س9787)")
+    if d == .nafiya then (.nafy, "«لا» نافيةً: «لا يفعل» صورةُ نفي المستقبل (Aql.Awwaliyyat.nafy؛ الكتاب س9786) — تعيين")
     else match s.saff with
-      | some 63 => (.nafy, "«لن»: «لن يفعل» صورةُ نفي المستقبل المنفَّس (Aql.Awwaliyyat.nafy؛ الكتاب س9787)")
+      | some 63 => (.nafy, "«لن»: «لن يفعل» صورةُ نفي المستقبل المنفَّس (Aql.Awwaliyyat.nafy؛ الكتاب س9787) — تعيين، وفي Nizam.Athar «لا حكم»")
       | some i => (Nizam.Athar.quwwaSufuf [i], "صفّ الجدول " ++ toString i ++ " بعمود الأسلوب (Nizam.Athar.quwwaSufuf)")
       | none => (.laHukm, "صدرٌ بلا صفّ")
   | none =>
@@ -313,7 +337,7 @@ def quwwaOf (m : Murashshah) : Quwwa × String :=
       else (Jisr.SakkJumla.awwal ⟨.laShay, .laQawl, .laQawl, .amma⟩, "لا أداةَ في الصدر (Jisr.SakkJumla.awwal)")
     | none => (Jisr.SakkJumla.awwal ⟨.laShay, .laQawl, .laQawl, .amma⟩, "لا أداةَ في الصدر (Jisr.SakkJumla.awwal)")
 
-/-- صورتا النفي في الأزمنة الخمسة: «لا يفعل» للمستقبل و«لن يفعل» للمنفَّس (`Aql.Awwaliyyat.nafy`). -/
+/-- صورتا النفي في الأزمنة الخمسة: «لا يفعل» للمستقبل و«لن يفعل» للمنفَّس (`Aql.Awwaliyyat.nafy`). مساواةُ نصّين، لا تصل `quwwaOf` بهما. -/
 theorem nafy_suwar : Aql.Awwaliyyat.nafy .mustaqbal = "لا يفعل" ∧ Aql.Awwaliyyat.nafy .mustaqbalMunaffas = "لن يفعل" := ⟨rfl, rfl⟩
 
 /-! ## ٤. الإحالة -/
@@ -356,7 +380,7 @@ def ihalat (qabl : List (Nat × Wahda)) (j : Nat) (m : Murashshah) : List Ihala 
     | none => none
   fail ++ damair
 
-/-- **ضميرُ المتكلّم والمخاطب يحيل إلى الحضور، والغائبُ إلى مرشَّحين بعدده.** -/
+/-- **ضميرُ المتكلّم والمخاطب يحيل إلى الحضور** (والغائبُ إلى مرشَّحين بعدده: `murashshah_mutabiq`). -/
 theorem marji_hudur (qabl : List (Nat × Wahda)) (ft : SLGE.Maqam.Feat) (h : ft.1 ≤ 2) : marjiOf qabl ft = .hudur := by
   unfold marjiOf; simp [h]
 
@@ -376,7 +400,8 @@ theorem murashshah_mutabiq (qabl : List (Nat × Wahda)) (ft : SLGE.Maqam.Feat) {
 open Jisr.QaydMafhum (Unsur unsurQayd)
 open Jisr.MantuqMafhum (Qayd sinfOf Mudaa Mafhum jisr)
 
-/-- عناصرُ البنية من الوحدة بدورها: حرفُ الجرّ بصفّه، والاسمُ مثنًّى (بابُ المثنّى) وبـ«ال» (ذو الأداة، المعرفةُ الخامسة) ونكرةً (اسمُ جنس). -/
+/-- عناصرُ البنية من الوحدة بدورها: حرفُ الجرّ بصفّه، والاسمُ مثنًّى (بابُ المثنّى) وبـ«ال» (ذو الأداة، المعرفةُ الخامسة)، وبلا «ال» ولا إضافة
+    اسمَ جنس (`Unsur.ismJins`؛ ومنه العلمُ المنوَّن، إذ العلميّةُ لا تحملها الحروف — تعيين). -/
 def anasirWahda (w : Wahda) (d : Dawr) : List Unsur :=
   (if d == .harfJarr then (match w.saff with | some i => [Unsur.adat i] | none => []) else []) ++
   (if w.naw == .ism then
@@ -462,11 +487,12 @@ def harf (c : Nat) : Char := Dal.hawamil.getD c ' '
 /-- الجذرُ نصًّا بحروف عناوين المعجم (`shabaka/jadwal_luzum.py` R1: الهمزةُ «ء»). -/
 def jidhrNass (r : List Nat) : String := String.ofList (r.map harf)
 
-/-- **مفاتيحُ الجذر في جدول اللزوم:** الجذرُ، وإن كان في خلايا الوحدة همزةٌ فهو بالهمزة مكانَ الواو المرمِّزة لها (`Tahlil.asl`: «الهمزةُ
-    همزةٌ أو ألف»، والألفُ في العنوان تُرمَّز واوًا؛ وعنوانُ الجدول بالهمزة: `shabaka/jadwal_luzum.py` R1). -/
+/-- **مفاتيحُ الجذر في جدول اللزوم:** الجذرُ، وإن كان في خلايا الوحدة همزةٌ فهو أيضًا بالهمزة مكانَ واوٍ فيه (`Tahlil.asl`: «الهمزةُ
+    همزةٌ أو ألف»، والألفُ في العنوان تُرمَّز واوًا؛ وعنوانُ الجدول بالهمزة: `shabaka/jadwal_luzum.py` R1) إن كان عنوانًا مشهودًا في اللسان
+    (`Tahlil.mashhud`). وكلُّ مفتاحٍ مرشَّحُ جذر، لا تعيين. -/
 def mafatih (w : Wahda) (r : List Nat) : List String :=
   (if w.khalaya.any (· / 4 == 0) then
-     [r] ++ (List.range r.length).filterMap (fun i => if r[i]? == some 28 then some (r.set i 0) else none)
+     [r] ++ (List.range r.length).filterMap (fun i => if r[i]? == some 28 && mashhud (r.set i 0) then some (r.set i 0) else none)
    else [r]).eraseDups.map jidhrNass
 
 open JadwalLuzum QawaninDalala
@@ -528,9 +554,21 @@ theorem hamlWahda_qiyam (w : Wahda) : hamlWahda w = .haqiqa .lughawiyya ∨ haml
   unfold hamlWahda
   split <;> decide
 
+/-- **الودائعُ على المختومة وحدها:** لا حملَ مودَعًا لكلمة («لا حكم» لكلّ كلمة)، ولا أغلبَ ولا معطِّل. -/
+def wadaMakhtuma (m : Murashshah) : Wada :=
+  ⟨(wadaMurashshaha m).haml.map fun _ => .laHukm, false, false⟩
+
+/-- **وعلى المختومة وحدها لا مفهوم** ما دامت في القراءة كلمةٌ فعلٌ أو اسم (`MantuqMafhum.la_mafhum_bila_haml`). -/
+theorem mafahim_makhtuma (m : Murashshah) (h : (wadaMurashshaha m).haml ≠ []) : mafahim m (wadaMakhtuma m) = [] := by
+  unfold mafahim
+  simp only [Jisr.MantuqMafhum.jisr, List.flatMap_cons, List.flatMap_nil, List.append_nil]
+  apply Jisr.MantuqMafhum.la_mafhum_bila_haml
+  obtain ⟨a, l, hl⟩ := List.exists_cons_of_ne_nil h
+  simp [Jisr.MantuqMafhum.mahmul, Jisr.QaydMafhum.bilBunya, mudaaR, wadaMakhtuma, hl]
+
 /-! ## ٨. الشواهد -/
 
-open Jisr.Tahlil (lamW yaktubJ zaydun falyaktub wallahu bikulli shayin alimun murashshahun hukmM)
+open Jisr.Tahlil (lamW yaktubJ zaydun falyaktub wallahu bikulli shayin alimun naktubuW yaktubnaW murashshahun hukmM)
 
 /-- القراءاتُ المرخَّصة بلا تكرار أدوار. -/
 def maqbula (ws : List Dal.Kalima) : List Murashshah :=
@@ -546,19 +584,26 @@ theorem shahid_lam :
     (maqbula [lamW, yaktubJ, zaydun]).map (·|> quwwaOf |>.1) = [.nafy] := by
   decide +kernel
 
-/-- **«فَلْيَكْتُبْ»:** الفعلُ مجزومٌ بلام الأمر (61)، والقوّةُ إنشاء (عمودُ الأسلوب «الطلب»)، والفاعلُ مستترٌ جوازًا يحيل إلى ما سبق. -/
+/-- **«فَلْيَكْتُبْ»:** الفعلُ مجزومٌ بلام الأمر (61)، والقوّةُ إنشاء (عمودُ الأسلوب «الطلب»)، والفاعلُ مستترٌ مرشَّحوه ما قبله (ولا شيءَ قبله هنا). -/
 theorem shahid_lamAmr :
     (maqbula [falyaktub]).map irabQiyam = [[(.rabit, .laHala, .bina), (.jazim, .mabni, .bina), (.fil, .zahira 3, .saff 61)]] ∧
     (maqbula [falyaktub]).map (·|> quwwaOf |>.1) = [.insha] ∧
     (maqbula [falyaktub]).map (fun m => (ihalat [] 0 m).map fun i => (i.sura, i.marji)) = [[(.mustatar, .murashshahun [])]] := by
   decide +kernel
 
-/-- **«وَاللَّهُ بِكُلِّ شَيْءٍ عَلِيمٌ»:** المبتدأُ مرفوعٌ بالابتداء، والمجرورُ بالباء (40)، والمضافُ إليه بالإضافة، والخبرُ بالمبتدأ؛ والإسنادُ
-    إلى «اللَّهُ»؛ والقوّةُ خبرٌ مثبت. -/
+/-- **«وَاللَّهُ بِكُلِّ شَيْءٍ عَلِيمٌ»:** عاملُ المبتدأ الابتداء، والمجرورِ الباء (40)، والمضافِ إليه الإضافة، والخبرِ المبتدأ؛ والقوّةُ خبرٌ مثبت. -/
 theorem shahid_ismiyya :
     (maqbula [wallahu, bikulli, shayin, alimun]).map (fun m => (irab m).map (·.amil)) =
       [[.bina, .ibtida, .bina, .saff 40, .idafa 1, .mubtada 0]] ∧
     (maqbula [wallahu, bikulli, shayin, alimun]).map (·|> quwwaOf |>.1) = [.ithbat] := by
+  decide +kernel
+
+/-- **«نَكْتُبُ»:** المضارعُ للمتكلّم بلا لاحقة، ففاعلُه مستترٌ وجوبًا (القطر L124–125)؛ و**«يَكْتُبْنَ»:** المضارعُ مع نون النسوة مبنيٌّ في محلّ رفعٍ
+    بالتجرّد (القطر L67–68)، وفاعلُه ضميرٌ بارز. -/
+theorem shahid_mudari_damir :
+    (maqbula [naktubuW]).map (fun m => (isnadOf m).map fun i => (i.sura, i.wujub)) = [some (.mustatar, some true)] ∧
+    (maqbula [yaktubnaW]).map (fun m => (irabQiyam m, (isnadOf m).map (·.sura))) =
+      [([(.fil, .mahall 1, .tajarrud)], some .bariz)] := by
   decide +kernel
 
 /-- **الدلالةُ على صفوف «كتب» الأربعة في `JadwalLuzum.jadwal`:** كلُّ صفٍّ ادّعاءٌ يقبله الفاحص (`iddia_maqbul` على الشاهد): ترادفان مطابقةً لمعنى «علم»،

@@ -2,7 +2,8 @@
   Qari/Rabt.lean — التنفيذيّ `rabt`: السلسلةُ كاملةً على قراءة الجملة بالعوامل (`Nizam.Rabt`).
   `rabt <luzum_mujam.tsv> <ملفّ: مفتاح⇥جملة>`: لكلّ جملةٍ حكمُها (`Jisr.Tahlil.hukmJumla`)، ولكلّ قراءةٍ مرخَّصة جدولُ إعرابها (الدورُ والحالةُ
   والعامل والنسبة)، وإسنادُها، وقوّتُها، وإحالةُ ضمائرها (إلى ما سبقها في الملفّ)، ومنطوقُها، وقيدُها ومفهومُها على الودائع المرشَّحة،
-  ودلالةُ ألفاظها على جدول اللزوم (كلُّ ادّعاءٍ بقبول الفاحص `Qaida.maqbul`). والجدولُ `luzum_mujam.tsv` مرشَّحٌ يحتاج ختمًا، ومكانُه MUDAA_DIR.
+  ودلالةُ ألفاظها على جدول اللزوم (ادّعاءُ كلّ صفٍّ بسلسلته على قاعدة الجدول، وأصولُها صفوفُه: `Nizam.Rabt.iddia_maqbul`، فلا تفحص صدقَ الجدول).
+  والجدولُ `luzum_mujam.tsv` مرشَّحٌ يحتاج ختمًا، ومكانُه MUDAA_DIR، ولا تفحص الأداةُ بصمتَه.
 -/
 import Nizam.Rabt
 import Std.Data.HashMap
@@ -38,20 +39,25 @@ def nassWahda (j : Jumla) (w : Wahda) : String :=
 
 def nassKalima (j : Jumla) (k : Nat) : String := (j.kalimat[k]?.map (String.ofList ·.w)).getD "؟"
 
-def ismAmil (j : Jumla) (m : Murashshah) : Amil → String
+/-- نصُّ الوحدة في الكلمة k بدورٍ يحقّق `p`، وإلّا نصُّ الكلمة. -/
+def nassDawr (j : Jumla) (m : Murashshah) (k : Nat) (p : Dawr → Bool) : String :=
+  ((m.adwar.find? fun x => p x.2 && x.1.kalima == k).map (nassWahda j ·.1)).getD (nassKalima j k)
+
+def ismAmil (j : Jumla) (m : Murashshah) (d : Dawr) : Amil → String
   | .saff i => "«" ++ Nizam.Athar.lafz i ++ "» (صفّ " ++ toString i ++ " من جدول العوامل)"
   | .tajarrud => "التجرّد من الناصب والجازم (القطر L96)"
-  | .fil k => "الفعل «" ++ ((m.adwar.find? fun p => p.2 == .fil && p.1.kalima == k).map (nassWahda j ·.1)).getD (nassKalima j k) ++
-      "» (الألفية L312، L361)"
+  | .fil k => "الفعل «" ++ nassDawr j m k (· == .fil) ++ "» (" ++ (if d == .fail then "القطر L220، الألفية L312" else "الألفية L361") ++ ")"
   | .ibtida => "الابتداء (الألفية L181)"
-  | .mubtada k => "المبتدأ «" ++ nassKalima j k ++ "» (الألفية L181)"
-  | .idafa k => "الإضافة إلى «" ++ nassKalima j k ++ "» (القطر L339)"
+  | .mubtada k => "المبتدأ «" ++ nassDawr j m k (· == .mubtada) ++ "» (الألفية L181)"
+  | .idafa k => "إضافةُ «" ++ nassDawr j m k (fun x => x != .mudafIlayh && x != .harfJarr && x != .rabit) ++ "» إليه (القطر L339)"
   | .bina => "—"
   | .kharij => "خارج المجال"
 
 def ismHala : Hala → String
   | .zahira h => ismHalaN h
-  | .mushtaraka h hs => ismHalaN h ++ " (علامتُها تحتمل " ++ ", ".intercalate (hs.map ismHalaN) ++ ")"
+  | .mushtaraka h hs =>
+    if hs.length == 3 then ismHalaN h ++ " مقدَّرًا (القطر L92 «تقدر جميع الحركات في نحو \"غلامي والفتى\"»)"
+    else ismHalaN h ++ " (علامتُها تحتمل " ++ ", ".intercalate (hs.map ismHalaN) ++ ")"
   | .muqaddara => "مقدَّرة"
   | .mahall h => "مبنيّ في محلّ " ++ ismHalaN h
   | .mabni => "مبنيّ"
@@ -67,6 +73,9 @@ def ismFeat (ft : SLGE.Maqam.Feat) : String :=
 
 def ismSura : Sura → String
   | .zahir => "ظاهر" | .bariz => "ضميرٌ بارزٌ متّصل" | .mustatar => "ضميرٌ مستتر"
+
+def ismSuraJarr : Sura → String
+  | .zahir => "ظاهر" | .bariz => "ضميرٍ بارزٍ متّصل" | .mustatar => "ضميرٍ مستتر"
 
 def ismQayd : Jisr.MantuqMafhum.Qayd → String
   | .sifa => "الصفة" | .shart => "الشرط" | .ghaya => "الغاية" | .adad => "العدد" | .ism => "الاسم"
@@ -94,7 +103,8 @@ def qiraJadwal (path : String) : IO Jadwal := do
 def ismMujam : JadwalLuzum.Mujam → String
   | .lisan => "اللسان" | .maqayis => "المقاييس"
 
-/-- دلالاتُ جذرٍ بأنواعها: أوّلُ خمسةٍ من كلّ نوع (المقاييسُ أوّلًا)، وكلُّ ادّعاءٍ بقبول الفاحص على جدول صفوفه المعروضة. -/
+/-- دلالاتُ جذرٍ بأنواعها: أوّلُ خمسةٍ من كلّ نوع (المقاييسُ أوّلًا) وعددُ الصفوف. وادّعاءُ كلّ صفٍّ بسلسلته على قاعدة الجدول وأصولُها صفوفُه
+    (`Nizam.Rabt.iddia_maqbul`)، فلا يُطبع له قبولٌ يُحسب: لا يفحص صدقَ الجدول. -/
 def dalalat (t : Jadwal) (r : String) : List String :=
   let rows := (t.getD r #[]).toList
   let maq := rows.filter (·.mujam == .maqayis)
@@ -104,10 +114,10 @@ def dalalat (t : Jadwal) (r : String) : List String :=
     let shown := all.take 5
     if shown.isEmpty then []
     else
-      let ok := shown.all fun x => Qaida.maqbul (JadwalLuzum.qaidaOf shown) (JadwalLuzum.aslB shown) (iddiaOf shown x)
       [s!"    {ism}: " ++ ", ".intercalate (shown.map fun x => s!"{x.b} ({ismMujam x.mujam} س{x.satr})") ++
-        (if all.length > 5 then s!" … ({all.length} صفًّا)" else "") ++ (if ok then " [يقبلها الفاحص]" else " [يردّها الفاحص]")]
-  naw [.taraduf] "مطابقة" ++ naw [.juz, .asl] "تضمّن" ++ naw [.luzum] "التزام" ++ naw [.kharij] "خارجٌ عن المدلول"
+        (if all.length > 5 then s!" … ({all.length} صفًّا)" else "")]
+  naw [.taraduf] "مطابقة" ++ naw [.juz, .asl] "تضمّن" ++ naw [.luzum] "التزام" ++
+    naw [.kharij] "خارجٌ عن المدلول (والادّعاءُ مطابقةُ اللفظ لمعناه لا صلتُه بها)"
 
 /-! ## الجملة -/
 
@@ -117,7 +127,7 @@ def sharh (t : Jadwal) (j : Jumla) (nusus : Array (List String)) (qabl : List (N
     List String :=
   let es := irab m
   let tab := es.map fun e =>
-    s!"  {nassWahda j e.wahda}\t{ismDawr e.dawr}\t{ismHala e.hala}\tالعامل: {ismAmil j m e.amil}\tالنسبة: {ismNisba (nisba e.dawr)}"
+    s!"  {nassWahda j e.wahda}\t{ismDawr e.dawr}\t{ismHala e.hala}\tالعامل: {ismAmil j m e.dawr e.amil}\tالنسبة: {ismNisba (nisba e.dawr)}"
   let (q, qs) := quwwaOf m
   let isn := match isnadOf m with
     | some i =>
@@ -136,17 +146,27 @@ def sharh (t : Jadwal) (j : Jumla) (nusus : Array (List String)) (qabl : List (N
           "«" ++ ((if p.1 == jn then j.kalimat.map (fun (x : Nizam.Silsila.KalimaM) => String.ofList x.w) else nusus.getD p.1 []).getD p.2 "؟") ++ "» (الجملة " ++
             toString (p.1 + 1) ++ ")")
     s!"  الإحالة: «{nassKalima j i.kalima}» {ismSura i.sura} ({ismFeat i.ft}) ← {r}"
-  let quyud := es.filterMap fun e =>
-    match nisba e.dawr with
-    | some .taqyidiyya => some ("«" ++ nassWahda j e.wahda ++ "» (" ++ ismDawr e.dawr ++ ")")
-    | some .idafiyya => some ("«" ++ nassWahda j e.wahda ++ "» (" ++ ismDawr e.dawr ++ ")")
-    | _ => none
+  let bi (n : Jisr.Nisab.Nisba) := es.filterMap fun e =>
+    if nisba e.dawr == some n then some ("«" ++ nassWahda j e.wahda ++ "» (" ++ ismDawr e.dawr ++ ")") else none
+  let quyud := bi .taqyidiyya
+  let idafat := bi .idafiyya
   let mantuq := s!"  المنطوق: {Nizam.Athar.quwwaIsm q}" ++
     (match isnadOf m with
      | some i => "، إسنادُ " ++ (match i.musnad with | some v => "«" ++ nassWahda j v ++ "»" | none => "شبه الجملة") ++ " إلى " ++
-         (match i.ilayh with | some v => "«" ++ nassWahda j v ++ "»" | none => ismSura i.sura)
+         (match i.ilayh with | some v => "«" ++ nassWahda j v ++ "»" | none => ismSuraJarr i.sura)
      | none => "") ++
-    (if quyud.isEmpty then "" else "، مقيَّدًا بـ " ++ "، ".intercalate quyud)
+    (if quyud.isEmpty then "" else "، مقيَّدًا بـ " ++ "، ".intercalate quyud) ++
+    (if idafat.isEmpty then "" else "، وفي نسبته الإضافيّة " ++ "، ".intercalate idafat)
+  -- نصُّ القيد: وحدتُه، ويليها مجرورُها إن كانت حرفَ جرّ
+  let qaydNass := match qaydR m with
+    | some (_, w) =>
+      let ad : List (Wahda × Dawr) := m.adwar
+      let i := (ad.map (fun (x : Wahda × Dawr) => x.1)).idxOf w
+      let tali := match ad[i]?, ad[i + 1]? with
+        | some (_, Dawr.harfJarr), some (v, Dawr.majrur) => " " ++ nassWahda j v
+        | _, _ => ""
+      nassWahda j w ++ tali
+    | none => ""
   let qd := match qaydR m with
     | some (k, w) => s!"  القيد: {ismQayd k} من «{nassWahda j w}» (Jisr.QaydMafhum.unsurQayd)"
     | none => "  القيد: لا قيدَ في البنية"
@@ -154,16 +174,18 @@ def sharh (t : Jadwal) (j : Jumla) (nusus : Array (List String)) (qabl : List (N
   let mf := mafahim m W
   let mfs := if mf.isEmpty then ["  المفهوم (على الودائع المرشَّحة): لا مفهوم"]
     else mf.map fun f => match f.naw with
-      | .mukhalafa _ => s!"  المفهوم (على الودائع المرشَّحة — تحتاج ختمًا): مخالفةُ {ismQayd f.lazim.1} (ج3 س566): نفيُ الحكم عند انتفاء {ismQayd f.lazim.1} «{nassKalima j f.lazim.2} {nassKalima j (f.lazim.2 + 1)}»"
+      | .mukhalafa _ => s!"  المفهوم (على الودائع المرشَّحة — تحتاج ختمًا): مخالفةُ {ismQayd f.lazim.1} (ج3 س566): نفيُ الحكم عند انتفاء {ismQayd f.lazim.1} «{qaydNass}»"
       | _ => "  المفهوم: (غير المخالفة)"
-  let haml := s!"  الودائعُ المرشَّحة (تحتاج ختمًا): الحملُ على الحقيقة اللغويّة {(W.haml.filter (· == .haqiqa .lughawiyya)).length} من {W.haml.length} كلمة، ولا أغلبَ ولا معطِّل؛ وعلى المختومة وحدها: المفهومُ معلَّقٌ بالحمل والأغلب والمعطِّل"
+  let makhtum := (mafahim m (wadaMakhtuma m)).length
+  let haml := s!"  الودائعُ المرشَّحة (تحتاج ختمًا): الحملُ على الحقيقة اللغويّة {(W.haml.filter (· == .haqiqa .lughawiyya)).length} من {W.haml.length} كلمة، ولا أغلبَ ولا معطِّل؛ وعلى المختومة وحدها (لا حملَ مودَعًا): {makhtum} مفهومًا (Nizam.Rabt.mafahim_makhtuma)"
   let dal := es.flatMap fun e =>
     let rs := judhurWahda e.wahda
     if rs.isEmpty then []
     else rs.flatMap fun r =>
       (mafatih e.wahda r).flatMap fun k =>
         let ds := dalalat t k
-        if ds.isEmpty then [] else [s!"  الدلالة: «{nassWahda j e.wahda}» جذرُه {k} (عنوانٌ في اللسان، وصفوفُه في جدول اللزوم المرشَّح)"] ++ ds
+        if ds.isEmpty then [] else [s!"  الدلالة: «{nassWahda j e.wahda}» مرشَّحُ جذره {k} (عنوانٌ في اللسان، وصفوفُه في جدول اللزوم المرشَّح؛ " ++
+          "سلسلةُ كلّ صفٍّ على قاعدة الجدول وأصولُها صفوفُه، فلا تفحص صدقَه)"] ++ ds
   ["  " ++ "قراءة: " ++ " ".intercalate (m.adwar.map (ismDawr ·.2))] ++ tab ++ isn ++
     [s!"  القوّة: {Nizam.Athar.quwwaIsm q} — {qs}"] ++ ih ++ [mantuq, qd] ++ mfs ++ [haml] ++ dal
 
@@ -171,7 +193,7 @@ def main (args : List String) : IO UInt32 := do
   match args with
   | [luzum, path] =>
     let t ← qiraJadwal luzum
-    IO.println s!"# جدول اللزوم المرشَّح (يحتاج ختمًا): {t.size} جذرًا"
+    IO.println s!"# جدول اللزوم المرشَّح (يحتاج ختمًا، ولا تفحص الأداةُ بصمتَه): {t.size} جذرًا"
     let mut qabl : List (Nat × Wahda) := []
     let mut nusus : Array (List String) := #[]
     let mut jn := 0
