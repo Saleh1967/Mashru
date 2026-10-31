@@ -626,10 +626,13 @@ theorem shahid_mafatih :
       [["كلل", "شوو", "شءو", "شوء", "شيو", "شيء", "علم"]] := by
   decide +kernel
 
-/-- **جذرُ الفعل من قراءته** (`Wahda.judhurQ`): مفتاحُ «يَقُونَ» في قراءتها المرخَّصة «وقي» (اللفيفُ المفروق)، ومفتاحُ «يَكُونَ» «وكي»، لا «قون»
-و«قوي» و«كون» من أوزان الجذع؛ ومفتاحا «لَنْ يَقُونَ» «قون» و«قين» (النونُ آخرُ الجذع: `nunAsl` في `Jisr.Tahlil.mudariQiraat`). -/
+/-- **جذرُ الفعل من قراءته** (`Wahda.judhurQ`): مفتاحُ «يَقُونَ» و«قُوا» في قراءتهما المرخَّصة «وقي» (اللفيفُ المفروق)، ومفتاحُ «يَكُونَ» «وكي»،
+ومفتاحُ «يُرُونَ» «رءي» (`mahmuzAyn`)، لا جذورُ أوزان الجذع («قون»، «قوو»، «كون»، «روي»)؛ ومفتاحا «لَنْ يَقُونَ» «قون» و«قين» (النونُ آخرُ الجذع:
+`nunAsl` في `Jisr.Tahlil.mudariQiraat`). -/
 theorem shahid_lafif_jidhr :
     (maqbula [Jisr.Tahlil.yaqunaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) = [["وقي"]] ∧
+    (maqbula [Jisr.Tahlil.quwaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) = [["وقي"]] ∧
+    (maqbula [Jisr.Tahlil.yurunaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) = [["رءي"]] ∧
     (maqbula [Jisr.Tahlil.yakunaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) = [["وكي"]] ∧
     (maqbula [Jisr.Tahlil.lanW, Jisr.Tahlil.yaqunaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) =
       [["قون", "قين"]] := by
