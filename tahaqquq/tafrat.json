@@ -8305,7 +8305,7 @@
  },
  {
   "ism": "P1489_tahlil_sijill_sawab",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_7.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_9.json",
   "min": "\"sawab\": 79,\n  \"naqsTaghtiya\": 3,",
   "ila": "\"sawab\": 78,\n  \"naqsTaghtiya\": 4,"
  },
@@ -8329,19 +8329,19 @@
  },
  {
   "ism": "P1493_tahlil_sijill_lean",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_7.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_9.json",
   "min": "\"Jisr.Tahlil.Qiyas.akhta_1\",\n  \"Jisr.Tahlil.Qiyas.azwaj_1\"",
   "ila": "\"Jisr.Tahlil.Qiyas.akhta_1\""
  },
  {
   "ism": "P1494_tahlil_sijill_akhta",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_7.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_9.json",
   "min": "\"akhta\": [\n  [\n   \"T15\",",
   "ila": "\"akhta\": [\n  [\n   \"T16\","
  },
  {
   "ism": "P1495_tahlil_sijill_bil_fia",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_7.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_9.json",
   "min": "\"موجب\": 30,",
   "ila": "\"موجب\": 29,"
  },
@@ -8353,19 +8353,19 @@
  },
  {
   "ism": "P1497_tahlil_sijill_cases",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_7.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_9.json",
   "min": "\"cases_sha256\": \"571c7abb14a660d3268d69b18cd0a270ed7b8778b078c087c80109eb643e937f\"",
   "ila": "\"cases_sha256\": \"571c7abb14a660d3268d69b18cd0a270ed7b8778b078c087c80109eb643e9370\""
  },
  {
   "ism": "P1498_tahlil_sijill_halat",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_7.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_9.json",
   "min": "\"halat\": 55,",
   "ila": "\"halat\": 54,"
  },
  {
   "ism": "P1499_tahlil_sijill_azwaj",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_7.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_9.json",
   "min": "\"sawab_tarafayn\": 13",
   "ila": "\"sawab_tarafayn\": 12"
  },
@@ -8401,7 +8401,7 @@
  },
  {
   "ism": "P1505_tahlil_sijill_huqul",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_7.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_9.json",
   "min": "\"huqul_masula\": 85,",
   "ila": "\"huqul_masula\": 86,"
  },
