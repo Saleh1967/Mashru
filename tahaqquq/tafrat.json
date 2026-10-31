@@ -8062,5 +8062,173 @@
   "milaf": "Nizam/Athar.lean",
   "min": "(b == 11 && c % 4 == 3 && c / 4 == d / 4)",
   "ila": "false"
+ },
+ {
+  "ism": "P1447_tahlil_tarjih_mashhud",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "if vs.any (·.jidhr) then vs.filter (·.jidhr) else vs",
+  "ila": "vs"
+ },
+ {
+  "ism": "P1448_tahlil_ajwaf_sakin",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "def ajwafSakin : Wazn := ([.v, .s], [0, 200, 1])",
+  "ila": "def ajwafSakin : Wazn := ([.v, .s, .s], [0, 200, 1])"
+ },
+ {
+  "ism": "P1449_tahlil_mudari_damm",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "if h == 1 then awzanMudariDamm else awzanMudariFath",
+  "ila": "awzanMudariFath"
+ },
+ {
+  "ism": "P1450_tahlil_naqis_daiman",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "def naqisDaiman : List (List Nat) := [[25, 18, 0], [25, 18, 28], [13, 11, 20], [19, 11, 13]]",
+  "ila": "def naqisDaiman : List (List Nat) := []"
+ },
+ {
+  "ism": "P1451_tahlil_marfu_qabl",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "(x.2.2.2 && x.1.halat.contains 1)",
+  "ila": "x.1.halat.contains 1"
+ },
+ {
+  "ism": "P1452_tahlil_wasf_al",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "| some (x, _) => x.naw == .ism && x.sima.2.1 == 1 && wazn (x.khalaya.drop 1) [.v, .h (kh 2 3), .v, .any]",
+  "ila": "| some (x, _) => false"
+ },
+ {
+  "ism": "P1453_tahlil_kharij_qiraa",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "if khata then .mumtani else .laHukm",
+  "ila": ".laHukm"
+ },
+ {
+  "ism": "P1454_tahlil_kharij_mufrad",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "def kharijMufrad : List (List Nat) := [[34, 52, 11], [34, 55, 72, 11]]",
+  "ila": "def kharijMufrad : List (List Nat) := []"
+ },
+ {
+  "ism": "P1455_tahlil_ya_mutakallim",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "def yaMutakallim (p : List Nat) : Bool := p == [kh 11 3] || p == [kh 11 0]",
+  "ila": "def yaMutakallim (p : List Nat) : Bool := false"
+ },
+ {
+  "ism": "P1456_tahlil_shibh_hadir",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "def shibhHadir (it : Mulhaqat.Itar) : Bool := ((attrAt it.ud.ats 1).2.2.1.1 ≤ 2)",
+  "ila": "def shibhHadir (it : Mulhaqat.Itar) : Bool := false"
+ },
+ {
+  "ism": "P1457_tahlil_kaf_zahir",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "!(a.1.saff == some 42 && a.2 == .harfJarr && b.1.naw == .damir)",
+  "ila": "true"
+ },
+ {
+  "ism": "P1458_rabt_tajarrud",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "    | none => .tajarrud",
+  "ila": "    | none => .bina"
+ },
+ {
+  "ism": "P1459_rabt_amil_fail",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "  | .fail => match wahdaFi m .fil with | some v => .fil v.kalima | none => .kharij",
+  "ila": "  | .fail => .kharij"
+ },
+ {
+  "ism": "P1460_rabt_amil_khabar",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "  | .khabar => match wahdaFi m .mubtada with | some v => .mubtada v.kalima | none => .kharij",
+  "ila": "  | .khabar => .ibtida"
+ },
+ {
+  "ism": "P1461_rabt_amil_mudaf",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "  | .mudafIlayh => match prev with | some x => .idafa x.kalima | none => .kharij",
+  "ila": "  | .mudafIlayh => .kharij"
+ },
+ {
+  "ism": "P1462_rabt_amil_mubtada",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "  | .mubtada => .ibtida",
+  "ila": "  | .mubtada => .bina"
+ },
+ {
+  "ism": "P1463_rabt_hala_mahall",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "match ms.head? with | some h => .mahall h | none => .mabni",
+  "ila": ".mabni"
+ },
+ {
+  "ism": "P1464_rabt_quwwa_lan",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "      | some 63 => (.nafy,",
+  "ila": "      | some 99 => (.nafy,"
+ },
+ {
+  "ism": "P1465_rabt_quwwa_nafiya",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "if d == .nafiya then (.nafy,",
+  "ila": "if d == .nafiya then (.laHukm,"
+ },
+ {
+  "ism": "P1466_rabt_quwwa_amr",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "if v.sima.1 == 2 then (.insha,",
+  "ila": "if v.sima.1 == 2 then (.ithbat,"
+ },
+ {
+  "ism": "P1467_rabt_marji_hudur",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "if ft.1 ≤ 2 then .hudur else",
+  "ila": "if ft.1 ≤ 1 then .hudur else"
+ },
+ {
+  "ism": "P1468_rabt_lahiqa_madi",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "if v.sima.1 == 0 then !(ft == (3, 0, 0) || ft == (3, 1, 0))",
+  "ila": "if v.sima.1 == 0 then false"
+ },
+ {
+  "ism": "P1469_rabt_qayd_harf",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "(if d == .harfJarr then (match w.saff with | some i => [Unsur.adat i] | none => []) else [])",
+  "ila": "([] : List Unsur)"
+ },
+ {
+  "ism": "P1470_rabt_iddia_luzum",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "  | .luzum => ⟨.iltizam l b,",
+  "ila": "  | .luzum => ⟨.tadammun l b,"
+ },
+ {
+  "ism": "P1471_rabt_jidh_mudari",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "(List.range 3).flatMap fun n => mashhudat Jisr.Tahlil.awzanMudari ((s.drop 1).take (s.length - 1 - n))",
+  "ila": "[]"
+ },
+ {
+  "ism": "P1472_qari_rabt_naw_juz",
+  "milaf": "Qari/Rabt.lean",
+  "min": "naw [.juz, .asl] \"تضمّن\"",
+  "ila": "naw [.juz] \"تضمّن\""
+ },
+ {
+  "ism": "P1473_qari_rabt_maqbul",
+  "milaf": "Qari/Rabt.lean",
+  "min": "(if ok then \" [يقبلها الفاحص]\" else \" [يردّها الفاحص]\")",
+  "ila": "\" [يقبلها الفاحص]\""
+ },
+ {
+  "ism": "P1474_qari_rabt_mujam",
+  "milaf": "Qari/Rabt.lean",
+  "min": "t := t.insert a ((t.getD a #[]).push ⟨mj, a, w, n, b, sn⟩)",
+  "ila": "t := t.insert w ((t.getD w #[]).push ⟨mj, a, w, n, b, sn⟩)"
  }
 ]

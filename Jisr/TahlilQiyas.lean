@@ -72,6 +72,7 @@ def sawabHukm (i : String) : Bool := (natayij halat).any fun x => x.1 == i && x.
     ولا رفضَ من القارئ. -/
 theorem azwaj_1 :
     (azwaj halat).length = 14 ∧ ((azwaj halat).filter (·.2.2)).length = 14 ∧
+    (azwaj halat).filter (!·.2.2) = [] ∧
     ((azwaj halat).filter fun p => sawabHukm p.1 && sawabHukm p.2.1).length = 13 ∧ rafd halat = [] := by
   decide +kernel
 

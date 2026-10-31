@@ -133,6 +133,10 @@ import Jisr.KhabarQiyas
 import Jisr.Damir
 import Jisr.DamirDabit
 import Jisr.DamirQiyas
+import Jisr.Tahlil
+import Jisr.TahlilDabit
+import Jisr.TahlilQiyas
+import Nizam.Rabt
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2812,3 +2816,53 @@ import Jisr.DamirQiyas
 #print axioms Nizam.Athar.Qiyas.akhta_1
 #print axioms Nizam.Athar.Qiyas.azwaj_1
 #print axioms Nizam.Athar.Qiyas.rafd_shahid
+#print axioms Jisr.Tahlil.hurufJadwal
+#print axioms Jisr.Tahlil.lawahiq_tamm
+#print axioms Jisr.Tahlil.hukmKharij_ne
+#print axioms Jisr.Tahlil.hukmKharijQiraa_ne
+#print axioms Jisr.Tahlil.murakhkhas_qanun
+#print axioms Jisr.Tahlil.murakhkhas_framesL
+#print axioms Jisr.Tahlil.hala_murakhkhasa
+#print axioms Jisr.Tahlil.hukmJumla_murakhkhas
+#print axioms Jisr.Tahlil.hukmJumla_mumtani
+#print axioms Jisr.Tahlil.la_murashshah_la_yurakhkhas
+#print axioms Jisr.Tahlil.la_qiraa_la_hukm
+#print axioms Jisr.Tahlil.kharij_la_yurakhkhis
+#print axioms Jisr.Tahlil.taqdir_la_yurakhkhis
+#print axioms Jisr.Tahlil.shahid_lam
+#print axioms Jisr.Tahlil.shahid_lamAmr
+#print axioms Jisr.Tahlil.shahid_ismiyya
+#print axioms Jisr.Tahlil.shahid_muatall
+#print axioms Jisr.Tahlil.shahid_kharij
+#print axioms Jisr.Tahlil.shahid_mashhud
+#print axioms Jisr.Tahlil.Dabit.qarin_hukm
+#print axioms Jisr.Tahlil.Dabit.qarin_adwar
+#print axioms Jisr.Tahlil.Dabit.rafd_ikhfaq
+#print axioms Jisr.Tahlil.Dabit.adwar_tabi_hukm
+#print axioms Jisr.Tahlil.Qiyas.majal
+#print axioms Jisr.Tahlil.Qiyas.natija
+#print axioms Jisr.Tahlil.Qiyas.natija_fia
+#print axioms Jisr.Tahlil.Qiyas.akhta_1
+#print axioms Jisr.Tahlil.Qiyas.azwaj_1
+#print axioms Nizam.Rabt.irabAux_tamm
+#print axioms Nizam.Rabt.irab_tamm
+#print axioms Nizam.Rabt.mem_irabAux
+#print axioms Nizam.Rabt.wahdaFi_mem
+#print axioms Nizam.Rabt.amilOf_fil
+#print axioms Nizam.Rabt.amil_fil_fi_jumla
+#print axioms Nizam.Rabt.hala_matluba
+#print axioms Nizam.Rabt.nisba_qiyam
+#print axioms Nizam.Rabt.isnad_fil
+#print axioms Nizam.Rabt.nafy_suwar
+#print axioms Nizam.Rabt.marji_hudur
+#print axioms Nizam.Rabt.murashshah_mutabiq
+#print axioms Nizam.Rabt.mafhum_wahda
+#print axioms Nizam.Rabt.qanun_raqm
+#print axioms Nizam.Rabt.asl_sahih
+#print axioms Nizam.Rabt.iddia_maqbul
+#print axioms Nizam.Rabt.dalala_sadiqa
+#print axioms Nizam.Rabt.hamlWahda_qiyam
+#print axioms Nizam.Rabt.shahid_lam
+#print axioms Nizam.Rabt.shahid_lamAmr
+#print axioms Nizam.Rabt.shahid_ismiyya
+#print axioms Nizam.Rabt.shahid_dalala
