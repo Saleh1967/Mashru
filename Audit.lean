@@ -2829,6 +2829,7 @@ import Nizam.Rabt
 #print axioms Jisr.Tahlil.la_qiraa_la_hukm
 #print axioms Jisr.Tahlil.kharij_la_yurakhkhis
 #print axioms Jisr.Tahlil.taqdir_la_yurakhkhis
+#print axioms Jisr.Tahlil.ihtimal_la_yurakhkhis
 #print axioms Jisr.Tahlil.shahid_lam
 #print axioms Jisr.Tahlil.shahid_lamAmr
 #print axioms Jisr.Tahlil.shahid_ismiyya
@@ -2842,9 +2843,11 @@ import Nizam.Rabt
 #print axioms Jisr.Tahlil.shahid_lafif
 #print axioms Jisr.Tahlil.shahid_jamaa_fath
 #print axioms Jisr.Tahlil.shahid_mithal_raa
-#print axioms Jisr.Tahlil.shahid_hadd_madi
+#print axioms Jisr.Tahlil.shahid_fa_zahira
 #print axioms Jisr.Tahlil.shahid_lam_waw
 #print axioms Jisr.Tahlil.shahid_hadd_ayn
+#print axioms Jisr.Tahlil.shahid_rubai
+#print axioms Jisr.Tahlil.shahid_hadd_madi_naqis
 #print axioms Jisr.Tahlil.Dabit.qarin_hukm
 #print axioms Jisr.Tahlil.Dabit.qarin_adwar
 #print axioms Jisr.Tahlil.Dabit.rafd_ikhfaq
