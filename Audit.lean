@@ -2869,5 +2869,6 @@ import Nizam.Rabt
 #print axioms Nizam.Rabt.shahid_lamAmr
 #print axioms Nizam.Rabt.shahid_ismiyya
 #print axioms Nizam.Rabt.shahid_mudari_damir
+#print axioms Nizam.Rabt.shahid_ya
 #print axioms Nizam.Rabt.shahid_mafatih
 #print axioms Nizam.Rabt.shahid_dalala
