@@ -67,9 +67,10 @@ def ismHala : Hala → String
 def ismNisba : Option Jisr.Nisab.Nisba → String
   | some .isnadiyya => "إسناديّة" | some .taqyidiyya => "تقييديّة" | some .idafiyya => "إضافيّة" | none => "—"
 
+/-- السماتُ: والمتكلّمُ بلا جنس (لا تحمله صورتُه). -/
 def ismFeat (ft : SLGE.Maqam.Feat) : String :=
   (match ft.1 with | 1 => "متكلّم" | 2 => "مخاطَب" | _ => "غائب") ++ " " ++
-  (if ft.2.1 == 1 then "مؤنّث" else "مذكّر") ++ " " ++ (match ft.2.2 with | 1 => "مثنّى" | 2 => "جمع" | _ => "مفرد")
+  (if ft.1 == 1 then "" else (if ft.2.1 == 1 then "مؤنّث" else "مذكّر") ++ " ") ++ (match ft.2.2 with | 1 => "مثنّى" | 2 => "جمع" | _ => "مفرد")
 
 def ismSura : Sura → String
   | .zahir => "ظاهر" | .bariz => "ضميرٌ بارزٌ متّصل" | .mustatar => "ضميرٌ مستتر"
@@ -136,7 +137,8 @@ def sharh (t : Jadwal) (j : Jumla) (nusus : Array (List String)) (qabl : List (N
         | some v => "«" ++ nassWahda j v ++ "»"
         | none => ismSura i.sura ++ " (" ++ ismFeat i.ft ++ ")" ++
             (match i.wujub with | some true => " وجوبًا" | some false => " جوازًا" | none => "")
-      [s!"  الإسناد (الكتاب س234–237): المسند {mus}، والمسند إليه {il}"]
+      [s!"  الإسناد (الكتاب س234–237): المسند {mus}، والمسند إليه {il}" ++
+        (if i.ilayh.isNone then " (البارزُ والمستترُ: القطر L124–126)" else "")]
     | none => []
   let ih := (ihalat qabl jn m).map fun i =>
     let r := match i.marji with

@@ -8228,8 +8228,8 @@
  {
   "ism": "P1475_tahlil_samit_alif",
   "milaf": "Jisr/Tahlil.lean",
-  "min": "def samitSakinQabl (s : List Nat) (n : Nat) : Bool := (minAkhir s n).any fun c => sakin c && c / 4 != 2",
-  "ila": "def samitSakinQabl (s : List Nat) (n : Nat) : Bool := (minAkhir s n).any sakin"
+  "min": "  (minAkhir s n).any (fun c => sakin c && c / 4 != 2) &&",
+  "ila": "  (minAkhir s n).any (fun c => sakin c) &&"
  },
  {
   "ism": "P1476_tahlil_nun_asl",
@@ -8410,5 +8410,23 @@
   "milaf": "tahaqquq/dawabit/tahlil/natija_3.json",
   "min": "\"huqul_masula\": 85,",
   "ila": "\"huqul_masula\": 86,"
+ },
+ {
+  "ism": "P1506_tahlil_samit_waw",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "  !((minAkhir s n).any (fun c => c / 4 == 28) && harakaQabl s (n + 1) 1) &&",
+  "ila": "  true &&"
+ },
+ {
+  "ism": "P1507_tahlil_samit_ya",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "  !((minAkhir s n).any (fun c => c / 4 == 11) && harakaQabl s (n + 1) 2)",
+  "ila": "  true"
+ },
+ {
+  "ism": "P1508_qari_rabt_mutakallim_jins",
+  "milaf": "Qari/Rabt.lean",
+  "min": "  (if ft.1 == 1 then \"\" else (if ft.2.1 == 1 then \"مؤنّث\" else \"مذكّر\") ++ \" \") ++",
+  "ila": "  ((if ft.2.1 == 1 then \"مؤنّث\" else \"مذكّر\") ++ \" \") ++"
  }
 ]
