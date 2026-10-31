@@ -2843,6 +2843,8 @@ import Nizam.Rabt
 #print axioms Jisr.Tahlil.shahid_jamaa_fath
 #print axioms Jisr.Tahlil.shahid_mithal_raa
 #print axioms Jisr.Tahlil.shahid_hadd_madi
+#print axioms Jisr.Tahlil.shahid_lam_waw
+#print axioms Jisr.Tahlil.shahid_hadd_ayn
 #print axioms Jisr.Tahlil.Dabit.qarin_hukm
 #print axioms Jisr.Tahlil.Dabit.qarin_adwar
 #print axioms Jisr.Tahlil.Dabit.rafd_ikhfaq

@@ -39,7 +39,8 @@
 
   **حدُّه:** العُقَدُ على القراءات المرخَّصة وحدها؛ والإحالةُ مرشَّحون لا تعيين؛ والودائعُ المرشَّحة فرضٌ معلَن؛ وجذرُ الاسم على أوزانٍ ثمانيةٍ تعيينًا،
   ومفاتيحُ الجذر في الجدول مرشَّحون من عنوانٍ مرمَّزٍ واوُه قد تكون همزةً أو ألفًا (`mafatih`): فـ«شَيْءٍ» مفاتيحُه «شوو» و«شءو» و«شوء» و«شيو» و«شيء»
-  (`shahid_mafatih`)، ولا يُعيَّن منها شيء؛ وجذورُ الفعل جذورُ قراءته (`Wahda.judhurQ`، `shahid_lafif_jidhr`).
+  (`shahid_mafatih`)، ولا يُعيَّن منها شيء؛ وجذورُ الفعل جذورُ قراءته (`Wahda.judhurQ`، `shahid_lafif_jidhr`): كلُّ جذرٍ مشهودٍ على وزنها، فقد تكون
+  أكثرَ من واحد («لَمْ يَعِدْ»: «عود» و«عيد»).
 
   **المبرهنات** بالمعيار الموحَّد (`Nizam/Asas.lean`): 27 — 15 لكلّ (`irabAux_tamm`، `irab_tamm`، `mem_irabAux`، `wahdaFi_mem`، `amilOf_fil`،
   `amil_fil_fi_jumla`، `hala_matluba`، `murashshah_mutabiq`، `mafhum_wahda`، `qanun_raqm`، `asl_sahih`، `iddia_maqbul`، `dalala_sadiqa`،
@@ -471,17 +472,12 @@ def jidhIsm (w : Wahda) : List Nat :=
 def mashhudat (ws : List Wazn) (b : List Nat) : List (List Nat) :=
   ws.flatMap fun (p, ms) => if wazn b p then (judhur b ms).filter mashhud else []
 
-/-- **جذورُ الوحدة المشهودة في عناوين اللسان:** الفعلُ بجذور قراءته (`Wahda.judhurQ`: وزنُها وجذعُها، فلـ«يَقُونَ» اللفيفُ «وقي» لا «قوي»)،
-وبلاها بأوزانه (الماضي بلا لاحقته، والمضارعُ بلا سابقته ولواحقه، والأمر)؛ والاسمُ بأوزانه. -/
+/-- **جذورُ الوحدة المشهودة في عناوين اللسان:** الفعلُ بجذور قراءته وحدها (`Wahda.judhurQ`: كلُّ جذرٍ مشهودٍ على وزنها وجذعها، فلـ«يَقُونَ» اللفيفُ
+«وقي» لا «قوو»، ولـ«لَمْ يَعِدْ» الأجوفُ «عود» و«عيد»: `shahid_lafif_jidhr`)، وفعلٌ بلا قراءة (`judhurQ = none`) لا جذرَ له، وكلُّ فعلٍ من القارئ
+(`Jisr.Tahlil.filQiraat`) له قراءة؛ والاسمُ بأوزانه. -/
 def judhurWahda (w : Wahda) : List (List Nat) :=
-  let s := w.khalaya
   (match w.naw with
-   | .fil =>
-     if let some r := w.judhurQ then r
-     else if w.sima.1 == 0 then mashhudat Jisr.Tahlil.awzanMadi (s.take (s.length - Jisr.Tahlil.madiLahiqa w.sima.2.2.1))
-     else if w.sima.1 == 1 then
-       (List.range 3).flatMap fun n => mashhudat Jisr.Tahlil.awzanMudari ((s.drop 1).take (s.length - 1 - n))
-     else (List.range 3).flatMap fun n => mashhudat Jisr.Tahlil.awzanAmr (s.take (s.length - n))
+   | .fil => w.judhurQ.getD []
    | .ism => mashhudat awzanIsm (jidhIsm w)
    | _ => []).eraseDups
 
@@ -628,14 +624,17 @@ theorem shahid_mafatih :
 
 /-- **جذرُ الفعل من قراءته** (`Wahda.judhurQ`): مفتاحُ «يَقُونَ» و«قُوا» في قراءتهما المرخَّصة «وقي» (اللفيفُ المفروق)، ومفتاحُ «يَكُونَ» «وكي»،
 ومفتاحُ «يُرُونَ» «رءي» (`mahmuzAyn`)، لا جذورُ أوزان الجذع («قون»، «قوو»، «كون»، «روي»)؛ ومفتاحا «لَنْ يَقُونَ» «قون» و«قين» (النونُ آخرُ الجذع:
-`nunAsl` في `Jisr.Tahlil.mudariQiraat`). -/
+`nunAsl` في `Jisr.Tahlil.mudariQiraat`)؛ ومفتاحا «لَمْ يَعِدْ» «عود» و«عيد»: قراءتُها المرخَّصة الأجوف، وجذورُها كلُّ مشهودٍ على وزنها، لا «وعد»
+(المثالُ «مقدَّر»: `Jisr.Tahlil.shahid_hadd_ayn`). -/
 theorem shahid_lafif_jidhr :
     (maqbula [Jisr.Tahlil.yaqunaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) = [["وقي"]] ∧
     (maqbula [Jisr.Tahlil.quwaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) = [["وقي"]] ∧
     (maqbula [Jisr.Tahlil.yurunaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) = [["رءي"]] ∧
     (maqbula [Jisr.Tahlil.yakunaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) = [["وكي"]] ∧
     (maqbula [Jisr.Tahlil.lanW, Jisr.Tahlil.yaqunaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) =
-      [["قون", "قين"]] := by
+      [["قون", "قين"]] ∧
+    (maqbula [Jisr.Tahlil.lamW, Jisr.Tahlil.yaidW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) =
+      [["عود", "عيد"]] := by
   decide +kernel
 
 /-- **الدلالةُ على صفوف «كتب» الأربعة في `JadwalLuzum.jadwal`:** كلُّ صفٍّ ادّعاءٌ يقبله `Qaida.maqbul` على قاعدة الصفوف الأربعة وأصولُها هي
