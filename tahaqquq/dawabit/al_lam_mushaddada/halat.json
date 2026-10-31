@@ -1,0 +1,122 @@
+{
+"_law": "ضابط مجمَّد: 23 حالة (مؤلّف مستقلّ a5286b0b) قرأ المواصفة والمصدر فقط، قبل الشفرة. الحكمُ المعتمَد للضابط: تقسيم المؤلّف (hamzaWaslAl مقابل غيره)؛ أسماءُ أصناف المشتّتات تفصيلٌ للمحرّك لا يُلزِم.",
+"_spec": "Dal/al_lam_mushaddada.md",
+"halat": [
+{
+"id": "T01",
+"surface": "الَّذِي",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T02",
+"surface": "الَّذِينَ",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T03",
+"surface": "الَّتِي",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T04",
+"surface": "اللَّذَانِ",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T05",
+"surface": "اللَّتَانِ",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T06",
+"surface": "الَّذَانِ",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T07",
+"surface": "اللَّه",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T08",
+"surface": "اللَّيْل",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T09",
+"surface": "اللَّحْم",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T10",
+"surface": "الشَّمْس",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T11",
+"surface": "النُّور",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T12",
+"surface": "الرَّحْمَن",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T13",
+"surface": "الْقَمَر",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T14",
+"surface": "الْبَيْت",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T15",
+"surface": "الْكِتَاب",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T17",
+"surface": "أَلَّا",
+"awwal_rule": "harfHaraka"
+},
+{
+"id": "T18",
+"surface": "إِلَّا",
+"awwal_rule": "harfHaraka"
+},
+{
+"id": "T19",
+"surface": "أَلَّذِي",
+"awwal_rule": "harfHaraka"
+},
+{
+"id": "T20",
+"surface": "لكِنَّ",
+"awwal_rule": "harfHaraka",
+"_note": "صورةٌ بلامٍ بلا حركة؛ المحرّك يردّها مدخلًا فاسدًا (tasnif). المؤلّف قدّر harfHaraka؛ المعتمَد: ليست hamzaWaslAl (مشتِّت غير متأثّر بالتعديل)."
+},
+{
+"id": "T21",
+"surface": "الَّائِي",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T22",
+"surface": "الظَّالِم",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T23",
+"surface": "الدَّار",
+"awwal_rule": "hamzaWaslAl"
+},
+{
+"id": "T24",
+"surface": "أَحْمَد",
+"awwal_rule": "harfHaraka"
+}
+]
+}

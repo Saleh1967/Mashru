@@ -215,6 +215,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_tadqiq_tamm.py",
     "tahaqquq/test_tasis.py",
     "tahaqquq/test_tahsil.py",
+    "tahaqquq/test_al_lam.py",
     "tahaqquq/test_silsila.py",
     "tahaqquq/test_athar.py",
     "tahaqquq/test_athar_dabit.py",
