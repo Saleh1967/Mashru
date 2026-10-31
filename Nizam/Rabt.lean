@@ -14,7 +14,7 @@
      والخبرُ بالمبتدأ (الألفية L181 «ورفعوا مبتدأ بالابتدا ... كذاك رفع خبر بالمبتدا»)؛ والمضافُ إليه بالإضافة (القطر L339 «أو بإضافة إلى اسم»؛
      الألفية L508 «والثاني اجرر»)؛ والماضي والأمرُ مبنيّان (القطر L55، L59)، والحرفُ مبنيّ (القطر L71–72 «وجميع الحروف مبنية»).
   2. **الحالة** (`halaOf`): الحالةُ التي يطلبها موضعُ الوحدة في إطار المالك (`Tahlil.matlub`) وفي حالات خلاياها؛ والمقدَّرُ والمبنيُّ ومحلُّه؛
-     والمضارعُ مع نون النسوة مبنيٌّ في محلّ ما يطلبه موضعُه (القطر L67–68 «ويسكن آخره مع نون النسوة … ويعرب فيما عدا ذلك»).
+     والمضارعُ مع نون النسوة مبنيٌّ (القطر L67–68 «ويسكن آخره مع نون النسوة … ويعرب فيما عدا ذلك»)، وجعلُه في محلّ ما يطلبه موضعُه تعيينُ البنّاء.
   3. **النسبة** (`nisba`): تعيينُ `Jisr.Nisab.nisbaOf` على علاقات المالك (`Simat.semOf`) الذي أمضاه المالك 2026-10-16، والمضافُ إليه الإضافيّة
      (كـ`Nizam.Athar.nisbaDawr`).
   4. **الإسناد** (`isnadOf`): «هذا باب المسند والمسند إليه … فمن ذلك الاسم المبتدأ والمبنى عليه … ومثل ذلك يذهب عبد الله» (الكتاب س234–237):
@@ -39,12 +39,12 @@
 
   **حدُّه:** العُقَدُ على القراءات المرخَّصة وحدها؛ والإحالةُ مرشَّحون لا تعيين؛ والودائعُ المرشَّحة فرضٌ معلَن؛ وجذرُ الاسم على أوزانٍ ثمانيةٍ تعيينًا،
   ومفاتيحُ الجذر في الجدول مرشَّحون من عنوانٍ مرمَّزٍ واوُه قد تكون همزةً أو ألفًا (`mafatih`): فـ«شَيْءٍ» مفاتيحُه «شوو» و«شءو» و«شوء» و«شيو» و«شيء»
-  (`shahid_mafatih`)، ولا يُعيَّن منها شيء.
+  (`shahid_mafatih`)، ولا يُعيَّن منها شيء؛ وجذورُ الفعل جذورُ قراءته (`Wahda.judhurQ`، `shahid_lafif_jidhr`).
 
-  **المبرهنات** بالمعيار الموحَّد (`Nizam/Asas.lean`): 26 — 15 لكلّ (`irabAux_tamm`، `irab_tamm`، `mem_irabAux`، `wahdaFi_mem`، `amilOf_fil`،
+  **المبرهنات** بالمعيار الموحَّد (`Nizam/Asas.lean`): 27 — 15 لكلّ (`irabAux_tamm`، `irab_tamm`، `mem_irabAux`، `wahdaFi_mem`، `amilOf_fil`،
   `amil_fil_fi_jumla`، `hala_matluba`، `murashshah_mutabiq`، `mafhum_wahda`، `qanun_raqm`، `asl_sahih`، `iddia_maqbul`، `dalala_sadiqa`،
-  `hamlWahda_qiyam`، `mafahim_makhtuma`)، و3 تعريفيّة (`isnad_fil`، `nafy_suwar`، `marji_hudur`)، و8 على الشاهد (`nisba_qiyam`، `shahid_lam`،
-  `shahid_lamAmr`، `shahid_ismiyya`، `shahid_mudari_damir`، `shahid_ya`، `shahid_mafatih`، `shahid_dalala`).
+  `hamlWahda_qiyam`، `mafahim_makhtuma`)، و3 تعريفيّة (`isnad_fil`، `nafy_suwar`، `marji_hudur`)، و9 على الشاهد (`nisba_qiyam`، `shahid_lam`،
+  `shahid_lamAmr`، `shahid_ismiyya`، `shahid_mudari_damir`، `shahid_ya`، `shahid_mafatih`، `shahid_lafif_jidhr`، `shahid_dalala`).
 -/
 import Jisr.Tahlil
 import Nizam.Athar
@@ -471,12 +471,14 @@ def jidhIsm (w : Wahda) : List Nat :=
 def mashhudat (ws : List Wazn) (b : List Nat) : List (List Nat) :=
   ws.flatMap fun (p, ms) => if wazn b p then (judhur b ms).filter mashhud else []
 
-/-- **جذورُ الوحدة المشهودة في عناوين اللسان:** الفعلُ بأوزانه (الماضي بلا لاحقته، والمضارعُ بلا سابقته ولواحقه، والأمر)، والاسمُ بأوزانه. -/
+/-- **جذورُ الوحدة المشهودة في عناوين اللسان:** الفعلُ بجذور قراءته (`Wahda.judhurQ`: وزنُها وجذعُها، فلـ«يَقُونَ» اللفيفُ «وقي» لا «قوي»)،
+وبلاها بأوزانه (الماضي بلا لاحقته، والمضارعُ بلا سابقته ولواحقه، والأمر)؛ والاسمُ بأوزانه. -/
 def judhurWahda (w : Wahda) : List (List Nat) :=
   let s := w.khalaya
   (match w.naw with
    | .fil =>
-     if w.sima.1 == 0 then mashhudat Jisr.Tahlil.awzanMadi (s.take (s.length - Jisr.Tahlil.madiLahiqa w.sima.2.2.1))
+     if let some r := w.judhurQ then r
+     else if w.sima.1 == 0 then mashhudat Jisr.Tahlil.awzanMadi (s.take (s.length - Jisr.Tahlil.madiLahiqa w.sima.2.2.1))
      else if w.sima.1 == 1 then
        (List.range 3).flatMap fun n => mashhudat Jisr.Tahlil.awzanMudari ((s.drop 1).take (s.length - 1 - n))
      else (List.range 3).flatMap fun n => mashhudat Jisr.Tahlil.awzanAmr (s.take (s.length - n))
@@ -622,6 +624,15 @@ theorem shahid_ya :
 theorem shahid_mafatih :
     (maqbula [wallahu, bikulli, shayin, alimun]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) =
       [["كلل", "شوو", "شءو", "شوء", "شيو", "شيء", "علم"]] := by
+  decide +kernel
+
+/-- **جذرُ الفعل من قراءته** (`Wahda.judhurQ`): مفتاحُ «يَقُونَ» في قراءتها المرخَّصة «وقي» (اللفيفُ المفروق)، ومفتاحُ «يَكُونَ» «وكي»، لا «قون»
+و«قوي» و«كون» من أوزان الجذع؛ ومفتاحا «لَنْ يَقُونَ» «قون» و«قين» (النونُ آخرُ الجذع: `nunAsl` في `Jisr.Tahlil.mudariQiraat`). -/
+theorem shahid_lafif_jidhr :
+    (maqbula [Jisr.Tahlil.yaqunaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) = [["وقي"]] ∧
+    (maqbula [Jisr.Tahlil.yakunaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) = [["وكي"]] ∧
+    (maqbula [Jisr.Tahlil.lanW, Jisr.Tahlil.yaqunaW]).map (fun m => m.adwar.flatMap fun p => (judhurWahda p.1).flatMap (mafatih p.1)) =
+      [["قون", "قين"]] := by
   decide +kernel
 
 /-- **الدلالةُ على صفوف «كتب» الأربعة في `JadwalLuzum.jadwal`:** كلُّ صفٍّ ادّعاءٌ يقبله `Qaida.maqbul` على قاعدة الصفوف الأربعة وأصولُها هي
