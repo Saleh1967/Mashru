@@ -1,0 +1,34 @@
+{
+ "adawat": {
+  "Read": 2,
+  "Bash": 17,
+  "Write": 3,
+  "Edit": 4
+ },
+ "masarat_mutlaqa": [
+  "/b06_akhir_bila_alama.json",
+  "/b14_jumla_mukarrara.json",
+  "/home/claude/mudaa_dir/qatr.txt",
+  "/out.txt",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/tahlil/mujallad",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/tahlil/mujallad/bina_cases.py",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/tahlil/mujallad/fahs_cases.py",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/tahlil/mujallad/taalif.md",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/tahlil/mujallad/tafrat_fahs/out.txt",
+  "/tmp/claude-0/-home-claude/9fe1b599-e71e-5040-b7e8-33e9d9b2fbfe/scratchpad/tahlil/mujallad/wasf.md"
+ ],
+ "kharij_al_masmuh": [
+  "/b06_akhir_bila_alama.json",
+  "/b14_jumla_mukarrara.json",
+  "/out.txt"
+ ],
+ "mamnu": [],
+ "qaraa_al_masadir": {
+  "/home/claude/mudaa_dir/qatr.txt": true
+ },
+ "tafsir_kharij": {
+  "/b06_akhir_bila_alama.json": "من «tafrat_fahs/b06_akhir_bila_alama.json» داخل المجلّد المسموح، نسبيًّا (نسخةٌ مكسورة للفاحص)",
+  "/b14_jumla_mukarrara.json": "من «tafrat_fahs/b14_jumla_mukarrara.json» داخل المجلّد المسموح، نسبيًّا (نسخةٌ مكسورة للفاحص)",
+  "/out.txt": "من «tafrat_fahs/out.txt» داخل المجلّد المسموح، نسبيًّا ومطلقًا (مخرجُ تجربة الفاحص)"
+ }
+}
