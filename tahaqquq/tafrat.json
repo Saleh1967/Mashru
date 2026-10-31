@@ -8305,21 +8305,21 @@
  },
  {
   "ism": "P1488_tahlil_sijill_shifra",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_4.json",
-  "min": "\"sha256\": \"168b3c72238390222f31666fead88277cc1fd5de2bb2d71f0a658b35693e8a0f\"",
-  "ila": "\"sha256\": \"168b3c72238390222f31666fead88277cc1fd5de2bb2d71f0a658b35693e8a00\""
+  "milaf": "tahaqquq/dawabit/tahlil/natija_5.json",
+  "min": "\"sha256\": \"4c5c9391db245794b9fcf108300429630fe2b1285a01371c4ecbf4834f243173\"",
+  "ila": "\"sha256\": \"4c5c9391db245794b9fcf108300429630fe2b1285a01371c4ecbf4834f243170\""
  },
  {
   "ism": "P1489_tahlil_sijill_sawab",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_4.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_5.json",
   "min": "\"sawab\": 79,\n  \"naqsTaghtiya\": 3,",
   "ila": "\"sawab\": 78,\n  \"naqsTaghtiya\": 4,"
  },
  {
   "ism": "P1490_tahlil_sijill_qablaha",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_4.json",
-  "min": "\"sha256\": \"3599d4abea5d2bf86053cf19824949a5c2f235ee86556f546122708fedf91b69\"",
-  "ila": "\"sha256\": \"3599d4abea5d2bf86053cf19824949a5c2f235ee86556f546122708fedf91b60\""
+  "milaf": "tahaqquq/dawabit/tahlil/natija_5.json",
+  "min": "\"sha256\": \"d7b5a66528bdc4c9c4629ba4545969ff239229df15a4a60c6d1ef29b3e0e5de4\"",
+  "ila": "\"sha256\": \"d7b5a66528bdc4c9c4629ba4545969ff239229df15a4a60c6d1ef29b3e0e5de0\""
  },
  {
   "ism": "P1491_tahlil_natija1_adad",
@@ -8335,43 +8335,43 @@
  },
  {
   "ism": "P1493_tahlil_sijill_lean",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_4.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_5.json",
   "min": "\"Jisr.Tahlil.Qiyas.akhta_1\",\n  \"Jisr.Tahlil.Qiyas.azwaj_1\"",
   "ila": "\"Jisr.Tahlil.Qiyas.akhta_1\""
  },
  {
   "ism": "P1494_tahlil_sijill_akhta",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_4.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_5.json",
   "min": "\"akhta\": [\n  [\n   \"T15\",",
   "ila": "\"akhta\": [\n  [\n   \"T16\","
  },
  {
   "ism": "P1495_tahlil_sijill_bil_fia",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_4.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_5.json",
   "min": "\"موجب\": 30,",
   "ila": "\"موجب\": 29,"
  },
  {
   "ism": "P1496_tahlil_sijill_tashghil",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_4.json",
-  "min": "\"tashghil\": 4,",
-  "ila": "\"tashghil\": 5,"
+  "milaf": "tahaqquq/dawabit/tahlil/natija_5.json",
+  "min": "\"tashghil\": 5,",
+  "ila": "\"tashghil\": 6,"
  },
  {
   "ism": "P1497_tahlil_sijill_cases",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_4.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_5.json",
   "min": "\"cases_sha256\": \"571c7abb14a660d3268d69b18cd0a270ed7b8778b078c087c80109eb643e937f\"",
   "ila": "\"cases_sha256\": \"571c7abb14a660d3268d69b18cd0a270ed7b8778b078c087c80109eb643e9370\""
  },
  {
   "ism": "P1498_tahlil_sijill_halat",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_4.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_5.json",
   "min": "\"halat\": 55,",
   "ila": "\"halat\": 54,"
  },
  {
   "ism": "P1499_tahlil_sijill_azwaj",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_4.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_5.json",
   "min": "\"sawab_tarafayn\": 13",
   "ila": "\"sawab_tarafayn\": 12"
  },
@@ -8407,7 +8407,7 @@
  },
  {
   "ism": "P1505_tahlil_sijill_huqul",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_4.json",
+  "milaf": "tahaqquq/dawabit/tahlil/natija_5.json",
   "min": "\"huqul_masula\": 85,",
   "ila": "\"huqul_masula\": 86,"
  },
@@ -8428,5 +8428,41 @@
   "milaf": "Qari/Rabt.lean",
   "min": "  (if ft.1 == 1 then \"\" else (if ft.2.1 == 1 then \"مؤنّث\" else \"مذكّر\") ++ \" \") ++",
   "ila": "  ((if ft.2.1 == 1 then \"مؤنّث\" else \"مذكّر\") ++ \" \") ++"
+ },
+ {
+  "ism": "P1509_tahlil_bila_ajwaf",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "def bilaAjwaf (ws : List Wazn) : List Wazn := ws.filter fun (_, ms) => !ms.contains 200",
+  "ila": "def bilaAjwaf (ws : List Wazn) : List Wazn := ws.filter fun (_, _) => true"
+ },
+ {
+  "ism": "P1510_tahlil_lafif_fa",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "else if i == 300 then [28] else",
+  "ila": "else if i == 300 then [28, 11] else"
+ },
+ {
+  "ism": "P1511_tahlil_lafif_mudari",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "let awM := bilaAjwaf aw ++ (if haraka p == 1 then [] else [lafifMafruq])",
+  "ila": "let awM := bilaAjwaf aw"
+ },
+ {
+  "ism": "P1512_tahlil_lafif_amr",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "qr0 (bilaAjwaf awzanAmr ++ [lafifMafruq])",
+  "ila": "qr0 (bilaAjwaf awzanAmr)"
+ },
+ {
+  "ism": "P1513_rabt_judhurQ",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "     if let some r := w.judhurQ then r",
+  "ila": "     if let some _ := w.judhurQ then []"
+ },
+ {
+  "ism": "P1514_tahlil_judhurQ_mudari",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "taqdir := q.tq, jidhr := q.ms, judhurQ := some q.jd } : Wahda)",
+  "ila": "taqdir := q.tq, jidhr := q.ms, judhurQ := none } : Wahda)"
  }
 ]
