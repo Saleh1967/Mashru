@@ -8066,7 +8066,7 @@
  {
   "ism": "P1447_tahlil_tarjih_mashhud",
   "milaf": "Jisr/Tahlil.lean",
-  "min": "if vs.any (·.jidhr) then vs.filter (·.jidhr) else vs",
+  "min": "if vs.any (fun w => w.jidhr && !w.ihtimal) then vs.filter (·.jidhr) else vs",
   "ila": "vs"
  },
  {
@@ -8299,9 +8299,9 @@
  },
  {
   "ism": "P1488_tahlil_sijill_shifra",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_7.json",
-  "min": "\"sha256\": \"47ce399d145eac2656e2e631ee2b7da333302a0325f2070b42b128ddbb451691\"",
-  "ila": "\"sha256\": \"47ce399d145eac2656e2e631ee2b7da333302a0325f2070b42b128ddbb451690\""
+  "milaf": "tahaqquq/dawabit/tahlil/natija_8.json",
+  "min": "\"sha256\": \"30ba374cbd258745a18aa0407e0edd7aab578826f844e5d140a3b2d3ff7a2cf4\"",
+  "ila": "\"sha256\": \"30ba374cbd258745a18aa0407e0edd7aab578826f844e5d140a3b2d3ff7a2cf0\""
  },
  {
   "ism": "P1489_tahlil_sijill_sawab",
@@ -8311,9 +8311,9 @@
  },
  {
   "ism": "P1490_tahlil_sijill_qablaha",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_7.json",
-  "min": "\"sha256\": \"2121a77d7273ea4583707f2d9f785a4eb5f7e66dfe7394efc4484e325c4f173f\"",
-  "ila": "\"sha256\": \"2121a77d7273ea4583707f2d9f785a4eb5f7e66dfe7394efc4484e325c4f1730\""
+  "milaf": "tahaqquq/dawabit/tahlil/natija_8.json",
+  "min": "\"sha256\": \"0fc30743ae457af6aece2755fd32a8264b39db61fbade58ac5736cc692b97095\"",
+  "ila": "\"sha256\": \"0fc30743ae457af6aece2755fd32a8264b39db61fbade58ac5736cc692b97090\""
  },
  {
   "ism": "P1491_tahlil_natija1_adad",
@@ -8347,9 +8347,9 @@
  },
  {
   "ism": "P1496_tahlil_sijill_tashghil",
-  "milaf": "tahaqquq/dawabit/tahlil/natija_7.json",
-  "min": "\"tashghil\": 7,",
-  "ila": "\"tashghil\": 8,"
+  "milaf": "tahaqquq/dawabit/tahlil/natija_8.json",
+  "min": "\"tashghil\": 8,",
+  "ila": "\"tashghil\": 9,"
  },
  {
   "ism": "P1497_tahlil_sijill_cases",
@@ -8456,8 +8456,8 @@
  {
   "ism": "P1514_tahlil_judhurQ_mudari",
   "milaf": "Jisr/Tahlil.lean",
-  "min": "taqdir := q.tq, jidhr := q.ms, judhurQ := some q.jd } : Wahda)",
-  "ila": "taqdir := q.tq, jidhr := q.ms, judhurQ := none } : Wahda)"
+  "min": "taqdir := q.tq, jidhr := q.ms, judhurQ := some q.jd, ihtimal := q.ih } : Wahda)",
+  "ila": "taqdir := q.tq, jidhr := q.ms, judhurQ := none, ihtimal := q.ih } : Wahda)"
  },
  {
   "ism": "P1515_tahlil_raa_wahdaha",
@@ -8492,38 +8492,14 @@
  {
   "ism": "P1522_tahlil_judhurQ_amr",
   "milaf": "Jisr/Tahlil.lean",
-  "min": "taqdir := tq, jidhr := !tq, judhurQ := some jd } : Wahda)",
-  "ila": "taqdir := tq, jidhr := !tq, judhurQ := none } : Wahda)"
- },
- {
-  "ism": "P1523_tahlil_mithal_muqaddar",
-  "milaf": "Jisr/Tahlil.lean",
-  "min": "(if haraka p == 1 then [] else (qr0 [mithal] (j n) f hs).map muqaddar)",
-  "ila": "(if haraka p == 1 then [] else qr0 [mithal] (j n) f hs)"
- },
- {
-  "ism": "P1524_tahlil_mithal_amr_muqaddar",
-  "milaf": "Jisr/Tahlil.lean",
-  "min": "(qr0 [mithal] (j n) f).map fun (f, _, jd) => (f, true, jd)",
-  "ila": "qr0 [mithal] (j n) f"
+  "min": "taqdir := tq, jidhr := !tq, judhurQ := some jd, ihtimal := ih } : Wahda)",
+  "ila": "taqdir := tq, jidhr := !tq, judhurQ := none, ihtimal := ih } : Wahda)"
  },
  {
   "ism": "P1525_tahlil_lam_waw",
   "milaf": "Jisr/Tahlil.lean",
   "min": "def lamWaw (b : List Nat) : Bool := (minAkhir b 0).any (· / 4 == 28) && harakaQabl b 1 1",
   "ila": "def lamWaw (b : List Nat) : Bool := false"
- },
- {
-  "ism": "P1526_tahlil_lafifYa_mudari",
-  "milaf": "Jisr/Tahlil.lean",
-  "min": "ajwafSakin, lafifYa]",
-  "ila": "ajwafSakin]"
- },
- {
-  "ism": "P1527_tahlil_lafifYa_amr",
-  "milaf": "Jisr/Tahlil.lean",
-  "min": "([.v, .s, .v, .any], [0, 1, 2, 3]),\n   lafifYa]",
-  "ila": "([.v, .s, .v, .any], [0, 1, 2, 3])]"
  },
  {
   "ism": "P1528_tahlil_jazm_waw",
@@ -8542,5 +8518,83 @@
   "milaf": "Jisr/Tahlil.lean",
   "min": "def mithal : Wazn := ([.ks, .ns], [300, 0, 1])",
   "ila": "def mithal : Wazn := ([.ks, .ns], [0, 1])"
+ },
+ {
+  "ism": "P1516_tahlil_mithal_ns",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "  | .ns => c < 116 && !illaKh c",
+  "ila": "  | .ns => c < 116"
+ },
+ {
+  "ism": "P1531_tahlil_tarjih_ihtimal",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "if vs.any (fun w => w.jidhr && !w.ihtimal) then",
+  "ila": "if vs.any (·.jidhr) then"
+ },
+ {
+  "ism": "P1532_tahlil_ihtimal_bila_matlub",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "else if x.1.sima.2.2.2 || (matlub m x).isEmpty then (if x.1.ihtimal then .laHukm else .murakhkhas)",
+  "ila": "else if x.1.sima.2.2.2 || (matlub m x).isEmpty then .murakhkhas"
+ },
+ {
+  "ism": "P1533_tahlil_ihtimal_matlub",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "then (if x.1.ihtimal then .laHukm else .murakhkhas) else .mumtani",
+  "ila": "then .murakhkhas else .mumtani"
+ },
+ {
+  "ism": "P1534_tahlil_fa_mahdhuf_ihtimal",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "judhurFil w2 b, true)]",
+  "ila": "judhurFil w2 b, false)]"
+ },
+ {
+  "ism": "P1535_tahlil_lam_waw_ya",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "judhurFil w1 b, lamWawYa w1 b)]",
+  "ila": "judhurFil w1 b, false)]"
+ },
+ {
+  "ism": "P1536_tahlil_fa_zahira",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "let as := if i < 100 && (c / 4 == 28 || c / 4 == 11) && mutaharrik c then [c / 4] else aslAt b i",
+  "ila": "let as := aslAt b i"
+ },
+ {
+  "ism": "P1537_tahlil_ayn_rubai",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "  | .fk => mutaharrik c && (c % 4 == 0 || c % 4 == 2)",
+  "ila": "  | .fk => mutaharrik c"
+ },
+ {
+  "ism": "P1538_tahlil_rubai_jamaa",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "if haraka p == 1 && f.2.2 == 2 then awzanMudariDammJ ++ mahmuzAyn else awM",
+  "ila": "awM"
+ },
+ {
+  "ism": "P1539_tahlil_damma_zahira",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "let zahira := if haraka a == 1 && (a / 4 == 11 || a / 4 == 28) then [] else sahih [haraka a]",
+  "ila": "let zahira := sahih [haraka a]"
+ },
+ {
+  "ism": "P1540_tahlil_ajwaf_madd",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "([.v, .md, .any], [0, 1, 2]),\n   ([.h (kh 18 0), .v, .sx, .v, .any], [1, 2, 4])",
+  "ila": "([.v, .illa, .any], [0, 1, 2]),\n   ([.h (kh 18 0), .v, .sx, .v, .any], [1, 2, 4])"
+ },
+ {
+  "ism": "P1541_tahlil_ihtimal_mudari",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "judhurQ := some q.jd, ihtimal := q.ih }",
+  "ila": "judhurQ := some q.jd }"
+ },
+ {
+  "ism": "P1542_tahlil_ihtimal_amr",
+  "milaf": "Jisr/Tahlil.lean",
+  "min": "judhurQ := some jd, ihtimal := ih }",
+  "ila": "judhurQ := some jd }"
  }
 ]
