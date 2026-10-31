@@ -1,0 +1,968 @@
+/-
+  Jisr/Tahlil.lean — قراءةُ الجملة بالعوامل: من خلايا الكلمات إلى وحداتها وأدوارها، ثمّ الإطارُ والحكمُ بقانون المالك.
+
+  **الطلب:** قولُ المالك 2026-10-31 (12:48 بتوقيت عمّان، من ملخّص الجلسة بعد ضغطها): «مطلوب ان تحسن الأداء وتوجد طريقة لتوظيف
+  المكونات كلها … وانت مفوض بالحل وليس التشخيص». والتصميمُ قرارُ البنّاء، والمجالُ معلَنٌ في مواصفة الضابط المجمَّد
+  `tahaqquq/dawabit/tahlil/wasf.md` قبل الحالات وقبل هذه الشفرة.
+
+  **القراءة** (تعيينُ البنّاء):
+  1. **التقطيع** (`kalimaAlts`): الرابطُ «وَ/فَ» أوّلَ الجملة، ولامُ الأمر، وحرفُ الجرّ المتّصل، والضميرُ المتّصل المنصوبُ أو المجرور
+     وحدةٌ وحدَه؛ وضميرُ الرفع المتّصل في وحدة الفعل (كإطار المالك `Mulhaqat.qumtu`). وكلُّ تقطيعٍ ممكنٍ مرشَّح، والتقطيعُ عند الضمير
+     لا يُسقط خليّةً ولا يزيدها (`lawahiq_tamm`).
+  2. **التصنيف بلا معجم:** الحرفُ قائمةٌ مغلقة صفوفُها في جدول العوامل المختوم (`hurufJadwal`)؛ والفعلُ من سابقة «نأيت» وصور آخره،
+     والاسمُ من «ال» والتنوين وصور المثنّى والجمع والإضافة. وما يحتمل حرفَ علّةٍ أو نونَ النسوة أو التقاءَ ساكنين أو تضعيفًا يُولَّد معه
+     بديلٌ حالتُه «مقدَّرة» (`taqdir`)، فلا يُبنى امتناعٌ على قراءةٍ لم تُولَّد.
+  3. **الإطار:** الوحداتُ تُبنى إطارًا موحَّدًا للمالك (`SLGE.Kull.UD`) بسماتها، والمضافُ إليه ملحقٌ (`Mulhaqat.Mulhaq`)، وشبهُ الجملة
+     إطارُ المالك `bikam` بعينه بمتعلَّقٍ مقدَّر؛ والفاعلُ المستتر خانةٌ بملء 1 تحيل إلى الحضور (المتكلّم والمخاطَب) أو إلى ما سبق (الغائب).
+     والجنسُ لا تحمله الحروف (المواصفة)، فيُعطى الاسمُ جنسَ ما يطابقه.
+  4. **الحكم** (`hukmM`): ضمُّ حكم التركيب في الوصل (`Utur.hukmTarkib` على `Dal.rakkib`)، وقانونِ المالك (`Mulhaqat.itarOK` للإطار
+     ولكلّ شبه جملة)، والحالاتِ: كلُّ وحدةٍ معربةٍ ظاهرة حالتُها ممّا يطلبه موضعُها في الإطار (`Mulhaqat.halatAt`)، وإلّا امتنعت؛ وما
+     قُدّرت حالتُه «لا حكم».
+  5. **حكمُ الجملة** (`hukmJumla`): مرخَّصٌ إن رُخّص مرشَّح؛ وممتنعٌ إن كان لها مرشَّحٌ وامتنعت مرشَّحاتُها كلُّها؛ و«لا حكم» فيما
+     سوى ذلك، ومنه ألّا يكون لها مرشَّح (`hukmJumla_mumtani`، `la_murashshah_la_hukm`). **وحدُّه:** الامتناعُ نسبيٌّ إلى ما يولّده
+     القارئ؛ والقراءةُ التي لا يولّدها (معجمٌ لم يُودَع) لا يشهد غيابُها.
+
+  **ما لم يُبنَ:** المبنيّاتُ الظاهرة (الضميرُ المنفصل والإشارةُ والموصول)، والنواسخ، والشرط، والنداء، والعطف، والتوابع، والحال، والظرف
+  بمعجمه، والأسماءُ الستّة (لها `Jisr/QawaidSitta.lean`)، والمعتلّ (يُقدَّر). والتعدّي والجنس لا تحملهما الحروف.
+-/
+import Jisr.NassItar
+import Jisr.AwamilJadwal
+import Madlul.Fard116
+
+namespace Jisr
+namespace Tahlil
+open Dal SLGE.Tarkib SLGE.Simat SLGE.Maqam SLGE.Kull Jisr.Utur
+
+/-! ## ١. الخليّة -/
+
+def kh (h s : Nat) : Nat := 4 * h + s
+def haraka (c : Nat) : Nat := c % 4
+def mutaharrik (c : Nat) : Bool := c < 116 && c % 4 < 3
+def sakin (c : Nat) : Bool := c < 116 && c % 4 == 3
+
+/-- الخليّةُ `n` من الآخر (0: الأخيرة). -/
+def minAkhir (s : List Nat) (n : Nat) : Option Nat := s.reverse[n]?
+
+def endsWith (s suf : List Nat) : Bool := suf.length ≤ s.length && s.drop (s.length - suf.length) == suf
+
+/-- ما قبل اللاحقة ساكن. -/
+def sakinQabl (s : List Nat) (n : Nat) : Bool := (minAkhir s n).any sakin
+/-- ما قبل اللاحقة متحرّكٌ بالحركة `h`. -/
+def harakaQabl (s : List Nat) (n h : Nat) : Bool := (minAkhir s n).any fun c => mutaharrik c && haraka c == h
+
+/-! ## ٢. الوحدة -/
+
+/-- أدوارُ الوحدات في المجال (المواصفة). -/
+inductive Dawr
+  | rabit | jazim | nasib | nafiya | fil | fail | maful | mubtada | khabar | harfJarr | majrur | mudafIlayh | kharij
+deriving DecidableEq, Repr
+
+/-- نوعُ الوحدة؛ و«خارج» حرفٌ أو مبنيٌّ أو ناسخٌ لم يُبنَ له إطار. -/
+inductive Naw | rabit | adat | nafiya | jarr | fil | ism | damir | kharij
+deriving DecidableEq, Repr
+
+/-- الوحدة: خلاياها، ورتبةُ كلمتها، ونوعُها، وصفُّها في جدول العوامل، وسمتُها عند المالك، وحالاتُها الممكنة من خلاياها (فارغةٌ
+للمبنيّ)، وتقديرُ حالتها، وحاجتُها إلى مضافٍ إليه بعدها. -/
+structure Wahda where
+  khalaya : List Nat
+  kalima : Nat := 0
+  naw : Naw
+  saff : Option Nat := none
+  sima : Attr := harfA
+  halat : List Nat := []
+  taqdir : Bool := false
+  idafa : Bool := false
+deriving DecidableEq, Repr
+
+/-! ## ٣. الحروف: صفوفُ جدول العوامل -/
+
+/-- الحروفُ المفردة في المجال بخلاياها، ونوعِها، وصفِّها في `Awamil.table`. -/
+def hurufMufrada : List (List Nat × Naw × Option Nat) :=
+  [([kh 13 0, kh 27 3], .adat, some 58), ([kh 13 0, kh 27 1], .adat, some 58), ([kh 13 0, kh 27 2], .adat, some 58),  -- لَمْ
+   ([kh 13 0, kh 2 3], .adat, some 60), ([kh 13 0, kh 2 3], .nafiya, none),                                         -- لَا
+   ([kh 13 0, kh 14 3], .adat, some 63), ([kh 0 0, kh 14 3], .adat, some 62),                                       -- لَنْ، أَنْ
+   ([kh 27 2, kh 14 3], .jarr, some 35), ([kh 27 2, kh 14 0], .jarr, some 35),                                      -- مِنْ، مِنَ
+   ([kh 0 2, kh 13 0, kh 2 3], .jarr, some 36),                                                                     -- إِلَى
+   ([kh 3 0, kh 14 3], .jarr, some 37), ([kh 3 0, kh 14 2], .jarr, some 37),                                        -- عَنْ، عَنِ
+   ([kh 3 0, kh 13 0, kh 2 3], .jarr, some 38),                                                                     -- عَلَى
+   ([kh 25 2, kh 11 3], .jarr, some 39)]                                                                            -- فِي
+
+/-- صورُ حروف الجرّ قبل الضمير المتّصل: «مِنْ»، «عَنْ»، «عَلَيْ»، «إِلَيْ»، «فِي»، والباءُ، واللامُ مفتوحةً، والكاف. -/
+def jarrQablDamir : List (List Nat × Nat) :=
+  [([kh 27 2, kh 14 3], 35), ([kh 0 2, kh 13 0, kh 11 3], 36), ([kh 3 0, kh 14 3], 37), ([kh 3 0, kh 13 0, kh 11 3], 38),
+   ([kh 25 2, kh 11 3], 39), ([kh 26 2], 40), ([kh 13 0], 41), ([kh 13 2], 41), ([kh 8 0], 42)]
+
+/-- الحروفُ المتّصلة: الرابط (الواو 50، الفاء 51)، وحرفُ الجرّ قبل الاسم (الباء 40، اللام 41، الكاف 42)، ولامُ الأمر 61. -/
+def rabitSaff (c : Nat) : Option Nat := if c == kh 28 0 then some 50 else if c == kh 25 0 then some 51 else none
+def jarrMuttasil (c : Nat) : Option Nat :=
+  if c == kh 26 2 then some 40 else if c == kh 13 2 then some 41 else if c == kh 8 0 then some 42 else none
+
+/-- **خارجُ المجال** (قائمةٌ مغلقة، بخلاياها كما يكتبها القارئ): نواسخُ «إنّ» وأخواتُها، وحروفُ العطف والجرّ والنصب والشرط والاستفهام
+والنداء في جدول العوامل ممّا لم يُبنَ هنا، و«إلّا» و«قد» و«سوف»، والضمائرُ المنفصلة، وأسماءُ الإشارة، والأسماءُ الموصولة. والكلمةُ
+منها (أو منها وضميرٌ متّصل) لا قراءةَ لها غيرُها، فتكون الجملةُ «لا حكم». -/
+def kharijKalimat : List (List Nat) :=
+  [[2, 59, 56], [0, 59, 56], [32, 0, 59, 56], [52, 34, 59, 56], [52, 47, 72], [52, 12, 55, 52], [52, 34, 59],
+   [97, 111, 108], [0, 115], [0, 111], [104, 55], [16, 75, 72, 11], [61, 107, 104], [109, 95], [109, 59, 93], [24, 52, 11],
+   [12, 68, 11], [16, 11, 40, 11], [52, 111, 108, 11], [32, 47], [2, 92, 59], [2, 59], [108, 59], [108, 11], [108, 7, 108, 11],
+   [108, 72, 11], [0, 47, 56], [0, 47, 56, 108, 11], [0, 59, 56, 11], [16, 47, 97, 108, 11], [32, 47, 100, 108, 11], [2, 92, 11],
+   [52, 115], [52, 115, 52, 11], [52, 115, 108, 11], [4, 55], [108, 11, 92, 11], [0, 47, 45], [32, 111], [32, 47, 100], [44, 11],
+   [0, 44, 11], [4, 44, 11], [2, 55, 52, 11], [28, 71], [80, 115, 100], [5, 112], [6, 44], [5, 111], [5, 108, 11], [5, 59, 56],
+   [0, 56, 11], [56, 19, 57], [0, 59, 72], [0, 59, 74], [0, 59, 73, 111], [0, 59, 73, 108, 11], [2, 47, 44, 11], [4, 92, 11],
+   [4, 94, 6], [4, 92, 11, 58], [4, 1, 52, 11, 2], [92, 54], [74, 55], [1, 115, 52, 2], [55, 52, 94, 47], [55, 52, 74, 47],
+   [55, 52, 94, 47, 56], [55, 52, 92, 11, 58], [55, 52, 72, 11, 58], [55, 52, 11, 2, 47], [0, 55, 52, 11], [32, 108, 11],
+   [110, 111, 108, 59], [110, 111, 108, 11], [12, 111, 108, 11], [2, 111, 108, 11], [0, 111, 108, 11], [54, 0, 59, 56]]
+
+/-- **الحروفُ صفوفٌ في الجدول المختوم بأسمائها وأصنافها:** لم وما يلي من الجوازم والنواصب صنفا 5 و4، وحروفُ الجرّ صنفُ 7، والرابطُ 8. -/
+theorem hurufJadwal :
+    (Awamil.table[58]?, Awamil.table[60]?, Awamil.table[61]?, Awamil.table[62]?, Awamil.table[63]?) =
+      (some ("لم", 5, false), some ("لا الناهية", 5, false), some ("لام الأمر", 5, false), some ("أنْ", 4, false),
+       some ("لن", 4, false)) ∧
+    ([35, 36, 37, 38, 39, 40, 41, 42].map fun i => (Awamil.table[i]?.map (·.1), Awamil.table[i]?.map (·.2.1))) =
+      [(some "من", some 7), (some "إلى", some 7), (some "عن", some 7), (some "على", some 7), (some "في", some 7),
+       (some "الباء", some 7), (some "اللام", some 7), (some "الكاف", some 7)] ∧
+    (Awamil.table[50]?, Awamil.table[51]?) = (some ("الواو", 8, false), some ("الفاء", 8, false)) :=
+  ⟨rfl, rfl, rfl⟩
+
+/-- صنفُ العامل من الجدول. -/
+def sinfSaff (i : Nat) : Nat := (Awamil.table[i]?.map (·.2.1)).getD 0
+
+/-- أداةُ الإطار عند المالك من صنف العامل: الجازمُ لفعلٍ واحد (5) جازم، والناصبُ (4) ناصب. -/
+def adatItar (i : Nat) : Nat := if sinfSaff i == 5 then 5 else if sinfSaff i == 4 then 4 else 0
+
+/-! ## ٤. الضمائرُ المتّصلة المنصوبة والمجرورة -/
+
+/-- الضميرُ المتّصل وسماتُه (الشخص، الجنس، العدد)؛ وميمُ الجمع ساكنةً أو محرّكةً لالتقاء الساكنين. -/
+def damairMuttasila : List (List Nat × Feat) :=
+  [([kh 1 1], (3, 0, 0)), ([kh 1 2], (3, 0, 0)), ([kh 1 0, kh 2 3], (3, 1, 0)),
+   ([kh 1 1, kh 27 3], (3, 0, 2)), ([kh 1 1, kh 27 1], (3, 0, 2)), ([kh 1 2, kh 27 3], (3, 0, 2)), ([kh 1 2, kh 27 2], (3, 0, 2)),
+   ([kh 1 1, kh 27 0, kh 2 3], (3, 0, 1)), ([kh 1 2, kh 27 0, kh 2 3], (3, 0, 1)),
+   ([kh 8 0], (2, 0, 0)), ([kh 8 2], (2, 1, 0)),
+   ([kh 8 1, kh 27 3], (2, 0, 2)), ([kh 8 1, kh 27 1], (2, 0, 2)), ([kh 8 1, kh 27 2], (2, 0, 2)),
+   ([kh 8 1, kh 27 0, kh 2 3], (2, 0, 1)), ([kh 14 0, kh 2 3], (1, 0, 2)), ([kh 14 2, kh 11 3], (1, 0, 0))]
+
+def damir (c : List Nat) (k : Nat) (ft : Feat) : Wahda := { khalaya := c, kalima := k, naw := .damir, sima := pron ft.1 ft.2.1 ft.2.2 }
+
+/-- تقسيمُ الكلمة إلى ما قبل الضمير المتّصل والضمير. -/
+def lawahiq (s : List Nat) : List (List Nat × List Nat × Feat) :=
+  damairMuttasila.filterMap fun (p, ft) =>
+    if p.length < s.length && endsWith s p then some (s.take (s.length - p.length), p, ft) else none
+
+/-- الكلمةُ خارجُ المجال: من القائمة، أو منها وضميرٌ متّصل («إنّه»، «ذلكم»). -/
+def kharijKalima (s : List Nat) : Bool :=
+  kharijKalimat.any fun x => s == x || (s.length > x.length && s.take x.length == x &&
+    damairMuttasila.any (·.1 == s.drop x.length))
+
+/-! ## ٥. أوزانُ الفعل وجذرُه في عناوين اللسان -/
+
+/-- صورةُ الخليّة في الوزن: ساكن، أو متحرّك، أو ساكنٌ يليه حرفُه نفسُه (التضعيف)، أو خليّةٌ بعينها، أو تاءُ الافتعال وما تُبدَل إليه،
+أو حرفُ علّةٍ ساكن، أو أيّ خليّة. -/
+inductive Q | s | v | sx | h (c : Nat) | ta | illa | any
+
+def illaKh (c : Nat) : Bool := c == kh 2 3 || c == kh 11 3 || c == kh 28 3
+
+def qOK (b : List Nat) (i : Nat) (c : Nat) : Q → Bool
+  | .s => sakin c
+  | .v => mutaharrik c
+  | .sx => sakin c && (b[i + 1]?).any (fun d => d / 4 == c / 4)
+  | .h x => c == x
+  | .ta => c == kh 18 0 || c == kh 16 0 || c == kh 17 0
+  | .illa => illaKh c
+  | .any => c < 116
+
+/-- الوزنُ صوَرُ خلاياه ومواضعُ أصوله. -/
+abbrev Wazn := List Q × List Nat
+
+def wazn (b : List Nat) (p : List Q) : Bool :=
+  p.length == b.length && ((List.range b.length).zip p).all fun (i, q) => qOK b i (b.getD i 0) q
+
+/-- أوزانُ جذع الماضي (بلا لاحقته): فَعَلَ والمضعَّفُ والأجوفُ والناقص، وفعّل وفاعل وأفعل وتفعّل وتفاعل وانفعل وافتعل واستفعل،
+والرباعيُّ وتفعلل. وما سقطت همزةُ وصله يبدأ بساكن. (تعيينُ البنّاء.) -/
+def awzanMadi : List Wazn :=
+  [([.v, .v, .any], [0, 1, 2]), ([.v, .sx, .any], [0, 1, 2]), ([.v, .illa, .any], [0, 1, 2]),
+   ([.v, .sx, .v, .any], [0, 1, 3]), ([.v, .h (kh 2 3), .v, .any], [0, 2, 3]), ([.h (kh 0 0), .s, .v, .any], [1, 2, 3]),
+   ([.v, .s, .v, .any], [0, 1, 2, 3]), ([.h (kh 18 0), .v, .sx, .v, .any], [1, 2, 4]),
+   ([.h (kh 18 0), .v, .h (kh 2 3), .v, .any], [1, 3, 4]), ([.h (kh 14 3), .v, .v, .any], [1, 2, 3]),
+   ([.s, .ta, .v, .any], [100, 2, 3]), ([.h (kh 20 3), .h (kh 18 0), .s, .v, .any], [2, 3, 4]),
+   ([.h (kh 18 0), .v, .s, .v, .any], [1, 2, 3, 4])]
+
+/-- أوزانُ جذع المضارع بعد سابقته، وجذعِ الأمر بعد همزة وصله. -/
+def awzanMudari : List Wazn :=
+  [([.s, .v, .any], [0, 1, 2]), ([.v, .sx, .any], [0, 1, 2]), ([.v, .illa, .any], [0, 1, 2]),
+   ([.v, .sx, .v, .any], [0, 1, 3]), ([.v, .h (kh 2 3), .v, .any], [0, 2, 3]), ([.h (kh 18 0), .v, .sx, .v, .any], [1, 2, 4]),
+   ([.h (kh 18 0), .v, .h (kh 2 3), .v, .any], [1, 3, 4]), ([.h (kh 14 3), .v, .v, .any], [1, 2, 3]),
+   ([.s, .ta, .v, .any], [100, 2, 3]), ([.h (kh 20 3), .h (kh 18 0), .s, .v, .any], [2, 3, 4]), ([.v, .s, .v, .any], [0, 1, 2, 3])]
+
+def awzanAmr : List Wazn :=
+  [([.s, .v, .any], [0, 1, 2]), ([.v, .sx, .v, .any], [0, 1, 3]), ([.v, .h (kh 2 3), .v, .any], [0, 2, 3]),
+   ([.h (kh 0 0), .s, .v, .any], [1, 2, 3]), ([.h (kh 18 0), .v, .sx, .v, .any], [1, 2, 4]),
+   ([.h (kh 18 0), .v, .h (kh 2 3), .v, .any], [1, 3, 4]), ([.h (kh 14 3), .v, .v, .any], [1, 2, 3]),
+   ([.s, .ta, .v, .any], [100, 2, 3]), ([.h (kh 20 3), .h (kh 18 0), .s, .v, .any], [2, 3, 4]), ([.v, .s, .v, .any], [0, 1, 2, 3])]
+
+/-- حاملُ الأصل: حرفُ العلّة (والألفُ في العنوان) واوٌ أو ياء (`Madlul/Fard116Data.lean`: «الألفُ في العنوان … يُرمَّز واوًا»)، والهمزةُ
+همزةٌ أو ألف. -/
+def asl (c : Nat) : List Nat :=
+  if c / 4 == 2 || c / 4 == 11 || c / 4 == 28 then [28, 11] else if c / 4 == 0 then [0, 28] else [c / 4]
+
+/-- جذورُ الجذع بمواضع أصوله؛ والموضعُ 100+i أصلُه في i أو واوٌ مثالٌ أُبدلت تاءً في الافتعال («اتّقى» من وقى). -/
+def judhur (b : List Nat) (ms : List Nat) : List (List Nat) :=
+  ms.foldr (fun i acc =>
+    let as := if i ≥ 100 then asl (b.getD (i - 100) 0) ++ [28] else asl (b.getD i 0)
+    as.flatMap fun a => acc.map (a :: ·)) [[]]
+
+/-- **الجذرُ مشهود:** عنوانٌ في اللسان المختوم بطوله (`Madlul.Fard116Data.bits3`، `bits4`). -/
+def mashhud (r : List Nat) : Bool :=
+  if r.length == 3 then Nat.testBit Madlul.Fard116Data.bits3 (Madlul.Fard116.ramz r)
+  else if r.length == 4 then Nat.testBit Madlul.Fard116Data.bits4 (Madlul.Fard116.ramz r)
+  else false
+
+/-- الجذعُ على وزنٍ من الأوزان، وأحدُ جذوره مشهود. -/
+def fiAwzan (ws : List Wazn) (b : List Nat) : Bool := ws.any fun (p, _) => wazn b p
+def jidhrMashhud (ws : List Wazn) (b : List Nat) : Bool :=
+  ws.any fun (p, ms) => wazn b p && (judhur b ms).any mashhud
+
+/-! ## ٦. الفعل -/
+
+/-- سماتُ الماضي من صورة آخره. -/
+def madiSima (s : List Nat) : Option Feat :=
+  if endsWith s [kh 18 1, kh 27 0, kh 2 3] && sakinQabl s 3 then some (2, 0, 1)                         -- تُمَا
+  else if (endsWith s [kh 18 1, kh 27 3] || endsWith s [kh 18 1, kh 27 1]) && sakinQabl s 2 then some (2, 0, 2)  -- تُمْ
+  else if endsWith s [kh 14 0, kh 2 3] && sakinQabl s 2 then some (1, 0, 2)                              -- نَا
+  else if endsWith s [kh 18 1] && sakinQabl s 1 then some (1, 0, 0)                                      -- تُ
+  else if endsWith s [kh 18 0] && sakinQabl s 1 then some (2, 0, 0)                                      -- تَ
+  else if endsWith s [kh 18 2] && sakinQabl s 1 then some (2, 1, 0)                                      -- تِ
+  else if endsWith s [kh 18 3] && harakaQabl s 1 0 then some (3, 1, 0)                                   -- تْ
+  else if endsWith s [kh 28 3] && harakaQabl s 1 1 then some (3, 0, 2)                                   -- وا
+  else if endsWith s [kh 2 3] && harakaQabl s 1 0 then some (3, 0, 1)                                    -- ا
+  else if endsWith s [kh 14 0] && sakinQabl s 1 then some (3, 1, 2)                                      -- نَ
+  else if harakaQabl s 0 0 then some (3, 0, 0)
+  else none
+
+/-- طولُ لاحقة الماضي (ضميرُ الرفع أو تاءُ التأنيث). -/
+def madiLahiqa (ft : Feat) : Nat :=
+  match ft with
+  | (3, 0, 0) => 0 | (2, 0, 1) => 3 | (2, 0, 2) => 2 | (1, 0, 2) => 2 | _ => 1
+
+/-- سابقةُ المضارع («نأيت») وسماتُ المفرد بها. -/
+def sabiqaMudari (p : Nat) : List Feat :=
+  if p == kh 0 0 || p == kh 0 1 then [(1, 0, 0)]
+  else if p == kh 14 0 || p == kh 14 1 then [(1, 0, 2)]
+  else if p == kh 11 0 || p == kh 11 1 then [(3, 0, 0)]
+  else if p == kh 18 0 || p == kh 18 1 then [(2, 0, 0), (3, 1, 0)]
+  else []
+
+/-- آخرُ الكلمة حرفٌ مضعَّف: الحرفُ نفسُه ساكنًا قبله (فقد يُجزم بالفتح أو الكسر). -/
+def mudaaf (s : List Nat) : Bool :=
+  match minAkhir s 0, minAkhir s 1 with
+  | some a, some b => sakin b && b / 4 == a / 4
+  | _, _ => false
+
+/-- قراءةُ الفعل: سماتُه، وحالاتُه الممكنة، وتقديرُها. -/
+abbrev QiraaFil := Feat × List Nat × Bool
+
+/-- **قراءاتُ المضارع:** الجذعُ بعد السابقة على وزنٍ من أوزانه، ومن الأمثلة الخمسة بالنون (رفعًا) وبحذفها (نصبًا وجزمًا) (القطر
+L88–90). والمعتلُّ الآخر (القطر L90–95) إن شُهد جذرُه معتلًّا: آخرُه حرفُ علّةٍ ساكن فالضمّةُ مقدَّرة (وفي الألف الفتحةُ أيضًا)، أو
+حُذف آخرُه فهو مجزوم؛ وإلّا فحالتُه «مقدَّرة» لا تُقرأ. وما جذرُه غيرُ مشهودٍ في اللسان «مقدَّر». وكذا نونُ النسوة والتقاءُ الساكنين
+والتضعيف. -/
+def mudariQiraat (s : List Nat) : List QiraaFil :=
+  match s with
+  | [] => []
+  | p :: jidh =>
+    let fs := sabiqaMudari p
+    let ya := p == kh 11 0 || p == kh 11 1
+    let ta := p == kh 18 0 || p == kh 18 1
+    let j (n : Nat) := jidh.take (jidh.length - n)
+    let qr0 (b : List Nat) (f : Feat) (hs : List Nat) : List QiraaFil :=
+      if fiAwzan awzanMudari b then [(f, hs, !jidhrMashhud awzanMudari b)] else []
+    -- واللاحقةُ بعد جذعٍ حُذف آخرُه المعتلّ («يدعُون»، «يرمُون»)
+    let qr (n : Nat) (f : Feat) (hs : List Nat) : List QiraaFil :=
+      let a := qr0 (j n) f hs
+      let b := qr0 (j n ++ [kh 2 3]) f hs
+      if a.any (·.2.2 == false) then a else a ++ b
+    -- المعتلّ: آخرُ الجذع حرفُ علّةٍ ساكن، أو حرفٌ محذوفٌ بعد الحركة
+    let illa (b : List Nat) (hs : List Nat) : List QiraaFil :=
+      if fiAwzan awzanMudari b then fs.map fun f => (f, hs, !jidhrMashhud awzanMudari b) else []
+    if fs.isEmpty || s.length < 3 then []
+    else if endsWith s [kh 28 3, kh 14 0] && harakaQabl s 2 1 then
+      (if ya then qr 2 (3, 0, 2) [1] else if ta then qr 2 (2, 0, 2) [1] else [])
+    else if endsWith s [kh 28 3] && harakaQabl s 1 1 then
+      (if ya then qr 1 (3, 0, 2) [0, 3] else if ta then qr 1 (2, 0, 2) [0, 3] else []) ++ illa jidh [1]
+    else if endsWith s [kh 2 3, kh 14 2] && harakaQabl s 2 0 then
+      (if ya then qr 2 (3, 0, 1) [1] else if ta then qr 2 (2, 0, 1) [1] ++ qr 2 (3, 1, 1) [1] else [])
+    else if endsWith s [kh 2 3] && harakaQabl s 1 0 then
+      (if ya then qr 1 (3, 0, 1) [0, 3] else if ta then qr 1 (2, 0, 1) [0, 3] ++ qr 1 (3, 1, 1) [0, 3] else []) ++ illa jidh [0, 1]
+    else if endsWith s [kh 11 3, kh 14 0] && harakaQabl s 2 2 then (if ta then qr 2 (2, 1, 0) [1] else [])
+    else if endsWith s [kh 11 3] && harakaQabl s 1 2 then (if ta then qr 1 (2, 1, 0) [0, 3] else []) ++ illa jidh [1]
+    else if endsWith s [kh 14 0] && sakinQabl s 1 then
+      (if ya then (qr 1 (3, 1, 2) []).map (fun q => (q.1, q.2.1, true))
+       else if ta then (qr 1 (2, 1, 2) []).map (fun q => (q.1, q.2.1, true)) else [])
+    else
+      match minAkhir s 0 with
+      | some a =>
+        let sahih (hs : List Nat) := fs.flatMap fun f => qr 0 f hs
+        let mudaafQ := if mudaaf s then (sahih [0, 2, 3]).map fun q => (q.1, q.2.1, true) else []
+        if sakin a then sahih [3] ++ mudaafQ
+        else if haraka a == 2 then (sahih [2]).map (fun q => (q.1, q.2.1, true)) ++ mudaafQ ++ illa (jidh ++ [kh 11 3]) [3]
+        else sahih [haraka a] ++ mudaafQ ++ illa (jidh ++ [kh 2 3]) [3]
+      | none => []
+
+/-- **قراءاتُ الأمر:** مبنيٌّ على السكون، أو على حذف النون مع واو الجماعة وألف الاثنين وياء المخاطبة، أو على حذف آخره المعتلّ
+(القطر L59–62) إن شُهد جذرُه معتلًّا؛ ولا أمرَ بلاحقة الماضي. وما جذرُه غيرُ مشهودٍ «مقدَّر». -/
+def amrQiraat (s : List Nat) : List (Feat × Bool) :=
+  let madiLahiq := endsWith s [kh 18 1] || endsWith s [kh 18 0] || endsWith s [kh 18 2] || endsWith s [kh 18 3] ||
+    endsWith s [kh 18 1, kh 27 3] || endsWith s [kh 14 0, kh 2 3]
+  let j (n : Nat) := s.take (s.length - n)
+  let qr0 (b : List Nat) (f : Feat) : List (Feat × Bool) :=
+    if fiAwzan awzanAmr b then [(f, !jidhrMashhud awzanAmr b)] else []
+  let qr (n : Nat) (f : Feat) : List (Feat × Bool) :=
+    let a := qr0 (j n) f
+    if a.any (·.2 == false) || n == 0 then a else a ++ qr0 (j n ++ [kh 2 3]) f
+  if s.length < 2 || madiLahiq then []
+  else if endsWith s [kh 28 3] && harakaQabl s 1 1 then qr 1 (2, 0, 2)
+  else if endsWith s [kh 2 3] && harakaQabl s 1 0 then qr 1 (2, 0, 1)
+  else if endsWith s [kh 11 3] && harakaQabl s 1 2 then qr 1 (2, 1, 0)
+  else
+    match minAkhir s 0 with
+    | some a =>
+      if sakin a then qr 0 (2, 0, 0)
+      else
+        let b := s ++ [if haraka a == 1 then kh 28 3 else if haraka a == 2 then kh 11 3 else kh 2 3]
+        if fiAwzan awzanAmr b then [((2, 0, 0), !jidhrMashhud awzanAmr b)] else []
+    | none => []
+
+/-- جذورُ «كان» وأخواتها في جدول العوامل (الصفوف 6–18)، بحواملها: كون، صبح، ضحو/ضحي، مسو/مسي، بيت، صير، ظلل، ليس، زول/زيل، برح،
+فتأ، فكك، دوم. الناسخُ لم يُبنَ له إطارٌ هنا، فالفعلُ منها «خارج». -/
+def judhurKana : List (List Nat) :=
+  [[8, 28, 14], [21, 26, 4], [12, 4, 28], [12, 4, 11], [27, 20, 28], [27, 20, 11], [26, 11, 18], [21, 11, 15], [22, 13, 13],
+   [13, 11, 20], [19, 28, 13], [19, 11, 13], [26, 15, 4], [25, 18, 0], [25, 18, 28], [25, 8, 8], [17, 28, 27]]
+
+/-- جذعٌ أحدُ جذوره من جذور «كان». -/
+def naskh (ws : List Wazn) (b : List Nat) : Bool :=
+  ws.any fun (p, ms) => wazn b p && (judhur b ms).any judhurKana.contains
+
+/-- **وحداتُ الفعل:** الماضي بجذعه على وزن، والمضارعُ بسابقته، والأمر؛ وما جذرُه غيرُ مشهودٍ في اللسان حالتُه «مقدَّرة». -/
+def filQiraat (s : List Nat) (k : Nat) : List Wahda :=
+  let madi := match madiSima s with
+    | some ft =>
+      let b := s.take (s.length - madiLahiqa ft)
+      if fiAwzan awzanMadi b then [{ khalaya := s, kalima := k, naw := .fil, sima := (0, 9, ft, true), taqdir := !jidhrMashhud awzanMadi b }]
+      else []
+    | none => []
+  let bad := s.head?.any mutaharrik
+  let mudari := if bad then (mudariQiraat s).map fun (ft, hs, tq) =>
+      ({ khalaya := s, kalima := k, naw := .fil, sima := (1, 9, ft, false), halat := hs, taqdir := tq } : Wahda) else []
+  let amr := (amrQiraat s).map fun (ft, tq) =>
+      ({ khalaya := s, kalima := k, naw := .fil, sima := (2, 9, ft, true), taqdir := tq } : Wahda)
+  -- الناسخُ: الماضي بجذعه، والمضارعُ بجذعه بعد سابقته (بلا لاحقة) أو بعد حذف آخره
+  let kana := (match madiSima s with | some ft => naskh awzanMadi (s.take (s.length - madiLahiqa ft)) | none => false) ||
+    (bad && ((List.range 3).any fun n => naskh awzanMudari ((s.drop 1).take (s.length - 1 - n)) ||
+      naskh awzanMudari ((s.drop 1).take (s.length - 1 - n) ++ [kh 2 3])))
+  if kana then [{ khalaya := s, kalima := k, naw := .kharij }] else madi ++ mudari ++ amr
+
+/-! ## ٧. الاسم -/
+
+/-- قراءاتُ الاسم: (التعريف، العدد، الحالات، الإضافة، التقدير). التنوينُ والمثنّى والجمعُ بالنون (القطر L82–85)، وما بـ«ال»، والمضافُ
+(بلا «ال» ولا تنوين، وحذفُ نون المثنّى والجمع معه: القطر L343)؛ والمقصورُ والمنقوص (القطر L92–93): آخرُه ألفٌ بعد فتحةٍ فحركاتُه كلُّها
+مقدَّرة، أو ياءٌ بعد كسرةٍ فالضمّةُ والكسرة؛ ومنوَّنُهما بجذرٍ معتلٍّ مشهود (فَعًى، فاعٍ). -/
+def ismQiraat (s : List Nat) (al : Bool) : List (Nat × Nat × List Nat × Bool × Bool) :=
+  let t := if al then 1 else 0
+  -- الاسمُ لا يبدأ بساكنٍ إلّا بـ«ال» أو من أسماء همزة الوصل (اسم، ابن، امرؤ وامرأة، اثنان)؛ ولا يكون على وزن مضارعٍ مضموم السابقة
+  -- مزيدٍ (يُفَعِّل، يُفاعِل، يُفَعْلِل)
+  let wasl := match s with
+    | a :: b :: _ => (a == kh 20 3 && b / 4 == 27) || (a == kh 26 3 && b / 4 == 14) || (a == kh 27 3 && b / 4 == 15) ||
+                     (a == kh 24 3 && b / 4 == 14)
+    | _ => false
+  let mudariMazid := match s with
+    | p :: r => (p == kh 11 1 || p == kh 18 1 || p == kh 14 1 || p == kh 0 1) &&
+                (wazn r [.v, .sx, .v, .any] || wazn r [.v, .h (kh 2 3), .v, .any] || wazn r [.v, .s, .v, .any])
+    | [] => false
+  if s.length < 2 || (s.head?.any sakin && !al && !wasl) || mudariMazid then []
+  else if endsWith s [kh 14 3] && (minAkhir s 1).any mutaharrik then
+    if al then []
+    else
+      let h := haraka ((minAkhir s 1).getD 0)
+      let jidh := s.take (s.length - 1)
+      let maqsur := h == 0 && jidh.length == 2 && (judhur (jidh ++ [kh 2 3]) [0, 1, 2]).any mashhud
+      let manqus := h == 2 && wazn jidh [.v, .h (kh 2 3), .v] && (judhur (jidh ++ [kh 11 3]) [0, 2, 3]).any mashhud
+      [(0, 0, [h], false, false)] ++ (if maqsur then [(0, 0, [0, 1, 2], false, false)] else []) ++
+        (if manqus then [(0, 0, [1, 2], false, false)] else [])
+  else if endsWith s [kh 2 3, kh 14 2] && harakaQabl s 2 0 then [(t, 1, [1], false, false)]
+  else if endsWith s [kh 11 3, kh 14 2] && harakaQabl s 2 0 then [(t, 1, [0, 2], false, false)]
+  else if endsWith s [kh 28 3, kh 14 0] && harakaQabl s 2 1 then [(t, 2, [1], false, false)]
+  else if endsWith s [kh 11 3, kh 14 0] && harakaQabl s 2 2 then [(t, 2, [0, 2], false, false)]
+  else
+    match minAkhir s 0 with
+    | some a =>
+      if mutaharrik a then [(t, 0, [haraka a], !al, false)]
+      else if a == kh 2 3 || a == kh 11 3 || a == kh 28 3 then
+        (if a == kh 2 3 && harakaQabl s 1 0 then [(t, 0, [0, 1, 2], !al, false)]
+         else if a == kh 11 3 && harakaQabl s 1 2 then [(t, 0, [1, 2], !al, false)] else []) ++
+        (if al then [] else
+          if a == kh 2 3 && harakaQabl s 1 0 then [(t, 1, [1], true, false)]
+          else if a == kh 11 3 && harakaQabl s 1 0 then [(t, 1, [0, 2], true, false)]
+          else if a == kh 28 3 && harakaQabl s 1 1 then [(t, 2, [1], true, false)]
+          else if a == kh 11 3 && harakaQabl s 1 2 then [(t, 2, [0, 2], true, false)]
+          else [])
+      else []
+    | none => []
+
+def ismWahda (s : List Nat) (k : Nat) (q : Nat × Nat × List Nat × Bool × Bool) : Wahda :=
+  { khalaya := s, kalima := k, naw := .ism, sima := noun q.1 0 q.2.1, halat := q.2.2.1, idafa := q.2.2.2.1, taqdir := q.2.2.2.2 }
+
+/-- «ال» في أوّل الخلايا بعد حرفٍ متّصل: لامٌ ساكنةٌ قبل متحرّك (القمريّة)، أو حرفٌ ساكنٌ يليه نفسُه متحرّكًا (الشمسيّة المدغمة). -/
+def alFi (s : List Nat) : Bool :=
+  match s with
+  | a :: b :: _ => (a == kh 13 3 && mutaharrik b) || (sakin a && mutaharrik b && a / 4 == b / 4)
+  | _ => false
+
+/-! ## ٨. تقطيعُ الكلمة -/
+
+/-- الاسمُ أو الفعلُ بضميره المتّصل وبلا ضمير. -/
+def kalimaMaDamir (s : List Nat) (al : Bool) (k : Nat) : List (List Wahda) :=
+  let fil (j : List Nat) := if al then [] else filQiraat j k
+  let mufrad := (fil s).map ([·]) ++ (ismQiraat s al).map fun q => [ismWahda s k q]
+  let biDamir := (lawahiq s).flatMap fun (j, p, ft) =>
+    (fil j).map (fun v => [v, damir p k ft]) ++
+    ((ismQiraat j al).filter (·.2.2.2.1)).map (fun q => [ismWahda j k q, damir p k ft])
+  mufrad ++ biDamir
+
+/-- حرفُ الجرّ المتّصل بالاسم أو بالضمير. -/
+def maJarr (s : List Nat) (k : Nat) : List (List Wahda) :=
+  let biIsm := match s with
+    | c :: r => match jarrMuttasil c with
+      | some i => ((ismQiraat r (alFi r)).map fun q => [{ khalaya := [c], kalima := k, naw := .jarr, saff := some i }, ismWahda r k q])
+      | none => []
+    | [] => []
+  let biDamir := jarrQablDamir.flatMap fun (j, i) =>
+    (damairMuttasila.filter fun (p, _) => s == j ++ p).map fun (p, ft) =>
+      [{ khalaya := j, kalima := k, naw := .jarr, saff := some i }, damir p k ft]
+  biIsm ++ biDamir
+
+/-- قراءاتُ الكلمة بعد الرابط: لامُ الأمر قبل المضارع، والحرفُ المفرد (مغلقٌ: لا قراءةَ غيرُه)، والجارُّ المتّصل، والاسمُ والفعل. -/
+def baadRabit (s : List Nat) (al : Bool) (k : Nat) (lam : Bool) : List (List Wahda) :=
+  let mufrad := hurufMufrada.filter (·.1 == s)
+  let jarrDamir := jarrQablDamir.any fun (j, _) => damairMuttasila.any fun (p, _) => s == j ++ p
+  if kharijKalima s then [[{ khalaya := s, kalima := k, naw := .kharij }]]
+  else if !mufrad.isEmpty then mufrad.map fun (c, n, i) => [{ khalaya := c, kalima := k, naw := n, saff := i }]
+  else if jarrDamir then maJarr s k
+  else
+    let lamAmr := match s with
+      | c :: r => if lam && (c == kh 13 3 || c == kh 13 2) then
+          ((filQiraat r k).filter (·.sima.1 == 1)).map fun v => [{ khalaya := [c], kalima := k, naw := .adat, saff := some 61 }, v]
+        else []
+      | [] => []
+    lamAmr ++ maJarr s k ++ kalimaMaDamir s al k
+
+/-- **قراءاتُ الكلمة:** الرابطُ في الكلمة الأولى وحدها؛ ولامُ الأمر بعده ساكنةً أو أوّلَ الجملة مكسورة. -/
+def kalimaAlts (w : Kalima) (k : Nat) : List (List Wahda) :=
+  let s := w.khalaya
+  let rabit := match s with
+    | c :: r => match rabitSaff c with
+      | some i => if k == 0 && r.length ≥ 2 then
+          -- همزةُ الوصل بعد الرابط ساقطةٌ في النطق: ألفٌ يليها ساكن
+          let r' := match r with | a :: b :: t => if a == kh 2 3 && sakin b then b :: t else r | _ => r
+          (baadRabit r' w.al k true).map fun ws => { khalaya := [c], kalima := k, naw := .rabit, saff := some i } :: ws
+        else []
+      | none => []
+    | [] => []
+  -- «ال» بعد سابقةٍ («وَاللَّهُ»): لا قراءةَ للكلمة كلِّها بلا تقطيع
+  let mutassil := w.al && !alFi s
+  rabit ++ (if mutassil then maJarr s k else baadRabit s w.al k (k == 0 && s.head? == some (kh 13 2)))
+
+/-- **إدغامُ ما بين الكلمتين:** الشدّةُ على أوّل الكلمة («بَّيْنَكُمْ»، «رِّجَالِكُمْ») يكتبها القارئ ساكنًا ثمّ متحرّكًا؛ فإن لم تكن الكلمةُ
+بهمزة وصلٍ ولا «ال»، وكان آخرُ ما قبلها ساكنًا، سقط ساكنُها الأوّل (المدغَمُ في آخر ما قبلها). -/
+def idgham : List Kalima → List Kalima
+  | [] => []
+  | w :: ws => w :: idghamAux w ws
+where
+  idghamAux (prev : Kalima) : List Kalima → List Kalima
+    | [] => []
+    | x :: r =>
+      let x' := match x.khalaya with
+        | a :: b :: t => if !x.wasl && !x.al && (prev.khalaya.getLast?.any sakin) && sakin a && mutaharrik b && a / 4 == b / 4
+                         then { x with khalaya := b :: t } else x
+        | _ => x
+      x' :: idghamAux x' r
+
+/-- قراءاتُ الجملة: حاصلُ ضرب قراءات كلماتها. -/
+def jumlaAlts (ws : List Kalima) : List (List Wahda) :=
+  (ws.zip (List.range ws.length)).foldr (fun (w, k) acc => (kalimaAlts w k).flatMap fun a => acc.map (a ++ ·)) [[]]
+
+/-! ## ٩. البنية -/
+
+/-- عنصرٌ اسميّ في الجملة: وحدتُه، ومضافُه إليه. -/
+abbrev Unsur := Wahda × Option Wahda
+
+/-- البنية: الرابط، والصدر (جازمٌ أو ناصبٌ أو نافية)، والفعل، والعناصرُ الاسميّة بترتيبها، وأشباهُ الجمل، والوحداتُ بترتيب النطق
+موسومةً بموضعها في البنية. -/
+inductive Mawdi
+  | rabit | sadr | fil | unsur (i : Nat) | ilayh (i : Nat) | jarr (g : Nat) | majrur (g : Nat) | ilayhShibh (g : Nat)
+deriving DecidableEq, Repr
+
+structure Bunya where
+  rabit : Option Wahda := none
+  sadr : Option Wahda := none
+  fil : Option Wahda := none
+  anasir : List Unsur := []
+  shibh : List (Wahda × Wahda × Option Wahda) := []
+  nutq : List (Wahda × Mawdi) := []
+  shibhQablFil : Bool := false
+  shibhQablIsm : Bool := false
+deriving Repr
+
+/-- المضافُ إليه: اسمٌ غيرُ مضاف (بـ«ال» أو منوَّن) أو ضميرٌ متّصل. -/
+def yasluhIlayh (w : Wahda) : Bool := (w.naw == .ism && !w.idafa) || w.naw == .damir
+
+/-- **البناء:** يقرأ الوحداتِ بترتيبها؛ وما لا يقع في المجال `none`. -/
+def bunyaAux (b : Bunya) : List Wahda → Option Bunya
+  | [] => some b
+  | w :: r =>
+    match w.naw with
+    | .jarr =>
+      match r with
+      | m :: r' =>
+        if !(m.naw == .ism || m.naw == .damir) then none
+        else
+          let g := b.shibh.length
+          let b1 := { b with shibhQablFil := b.shibhQablFil || b.fil.isNone, shibhQablIsm := b.shibhQablIsm || b.anasir.isEmpty }
+          if m.idafa then
+            match r' with
+            | x :: r'' =>
+              if yasluhIlayh x then
+                bunyaAux { b1 with shibh := b.shibh ++ [(w, m, some x)],
+                                   nutq := b.nutq ++ [(w, .jarr g), (m, .majrur g), (x, .ilayhShibh g)] } r''
+              else none
+            | [] => none
+          else bunyaAux { b1 with shibh := b.shibh ++ [(w, m, none)], nutq := b.nutq ++ [(w, .jarr g), (m, .majrur g)] } r'
+      | [] => none
+    | .fil =>
+      if b.fil.isSome || !b.anasir.isEmpty then none
+      else bunyaAux { b with fil := some w, nutq := b.nutq ++ [(w, .fil)] } r
+    | .ism =>
+      let i := b.anasir.length
+      if w.idafa then
+        match r with
+        | x :: r' =>
+          if yasluhIlayh x then bunyaAux { b with anasir := b.anasir ++ [(w, some x)], nutq := b.nutq ++ [(w, .unsur i), (x, .ilayh i)] } r'
+          else none
+        | [] => none
+      else bunyaAux { b with anasir := b.anasir ++ [(w, none)], nutq := b.nutq ++ [(w, .unsur i)] } r
+    | .damir =>
+      let i := b.anasir.length
+      bunyaAux { b with anasir := b.anasir ++ [(w, none)], nutq := b.nutq ++ [(w, .unsur i)] } r
+    | _ => none
+
+def bunya (ws : List Wahda) : Option Bunya :=
+  let (rb, r1) : Option Wahda × List Wahda := match ws with
+    | w :: r => if w.naw == Naw.rabit then (some w, r) else (none, ws)
+    | [] => (none, [])
+  let (sd, r2) : Option Wahda × List Wahda := match r1 with
+    | w :: r => if w.naw == Naw.adat || w.naw == Naw.nafiya then (some w, r) else (none, r1)
+    | [] => (none, [])
+  bunyaAux { rabit := rb, sadr := sd,
+             nutq := rb.toList.map (·, Mawdi.rabit) ++ sd.toList.map (·, Mawdi.sadr) } r2
+
+/-! ## ١٠. المرشَّح: الإطارُ بقانون المالك -/
+
+/-- المرشَّح: الإطارُ الممدود، وأشباهُ الجمل إطاراتٍ للمالك، ودورُ كلّ وحدةٍ بترتيب النطق، وخانةُ كلّ وحدةٍ ظاهرةٍ في إطارها
+(`none` للإطار الأوّل، و`some g` لشبه الجملة `g`). -/
+structure Murashshah where
+  itar : Mulhaqat.Itar
+  shibh : List Mulhaqat.Itar
+  adwar : List (Wahda × Dawr)
+  khanat : List (Wahda × Option Nat × Nat)
+  /-- الوحداتُ الخارجة: الوحدة، وقبلها مجرور، وأهي مضافٌ إليه. -/
+  kharij : List (Wahda × Bool × Bool) := []
+  /-- فرضٌ لا تحمله الحروف (المبتدأُ المنوَّنُ علمًا معرفة): المرشَّحُ معه «لا حكم». -/
+  fard : Bool := false
+deriving Repr
+
+/-- سمةُ الاسم بتعريفه وجنسٍ معطًى وعدده. -/
+def simaJins (w : Wahda) (g : Nat) : Attr := (w.sima.1, w.sima.2.1, (w.sima.2.2.1.1, g, w.sima.2.2.1.2.2), w.sima.2.2.2)
+
+/-- تعريفُ المضافِ تعريفُ المضاف إليه (`Mulhaqat.idafaAthar`)، ورمزُه `q` في الملحق: 2 إن كان المضافُ إليه معرفة. -/
+def taarifIlayh (x : Wahda) : Nat := x.sima.2.1
+def simaUnsur (u : Unsur) (g : Nat) : Attr :=
+  let w := u.1
+  match u.2 with
+  | some x => (w.sima.1, taarifIlayh x, (w.sima.2.2.1.1, g, w.sima.2.2.1.2.2), w.sima.2.2.2)
+  | none => simaJins w g
+
+def mulhaqIlayh (marsa : Nat) (x : Wahda) : Mulhaqat.Mulhaq :=
+  { dawr := .mudafIlayhi, marsa := marsa, naw := 0, t := x.sima, q := if taarifIlayh x == 1 then 2 else 0 }
+
+/-- شبهُ الجملة إطارَ المالك `bikam`: جارٌّ ومجرورٌ ومتعلَّقٌ مقدَّر، وللمجرور مضافٌ إليه ملحق. -/
+def itarShibh (g : Nat) (s : Wahda × Wahda × Option Wahda) : Mulhaqat.Itar × List (Wahda × Option Nat × Nat) :=
+  let m := s.2.1
+  let sm := match s.2.2 with | some x => (m.sima.1, taarifIlayh x, m.sima.2.2.1, m.sima.2.2.2) | none => m.sima
+  let ud : UD := { pre := [], f := (2, 0, [(5, 0, 0), (6, 0, 0), (8, 1, 0)]), ats := [harfA, sm, harfA],
+                   ex := [e0, if m.naw == .damir then pk else e0, e0] }
+  ({ ud := ud, ml := s.2.2.toList.map (mulhaqIlayh 1) },
+   [(s.1, some g, 0), (m, some g, 1)] ++ s.2.2.toList.map fun x => (x, some g, 3))
+
+/-- **الفعليّة:** الأداةُ ثمّ الفعل ثمّ العناصرُ فاعلًا ومفعولًا بترتيب النطق؛ والفاعلُ المستتر خانةٌ بملء 1 بعد الفعل تحيل إلى الحضور
+أو إلى ما سبق. والضميرُ المتّصل لا يكون فاعلًا هنا. والمرشَّحُ يأخذ أوائلَ العناصر (حتى اثنين)، وما بعدها «خارج المجال» (تابعٌ أو حالٌ
+أو ظرفٌ أو مفعولٌ ثانٍ…): المخرجُ (أدوارُ الأوائل: 3 فاعل، 4 مفعول؛ وأمستترٌ الفاعل؛ وعددُ الأوائل). -/
+def filiyya (n : List Unsur) : List (List (Nat × Unsur) × Bool × Nat) :=
+  let awail : Nat → List (List (Nat × Unsur) × Bool)
+    | 0 => [([], true)]
+    | 1 => match n with
+      | x :: _ => (if x.1.naw == .ism then [([(3, x)], false)] else []) ++ [([(4, x)], true)]
+      | [] => []
+    | _ => match n with
+      | x :: y :: _ =>
+        (if x.1.naw == .ism then [([(3, x), (4, y)], false)] else []) ++ (if y.1.naw == .ism then [([(4, x), (3, y)], false)] else [])
+      | _ => []
+  (List.range (min n.length 2 + 1)).flatMap fun p => (awail p).map fun (a, m) => (a, m, p)
+
+def bnaFiliyya (b : Bunya) (v : Wahda) (asg : List (Nat × Unsur)) (mustatar : Bool) : Mulhaqat.Itar × List (Wahda × Nat) :=
+  let a := match b.sadr with | some s => (match s.saff with | some i => adatItar i | none => 0) | none => 0
+  let pre := match b.sadr with | some s => if s.naw == .nafiya then [1] else [] | none => []
+  let ft := v.sima.2.2.1
+  let g := ft.2.1
+  let sadrSl : List (Slot × Attr × Ext × Option Wahda) := if a != 0 then [((7, 0, 0), harfA, e0, b.sadr)] else []
+  let filSl : List (Slot × Attr × Ext × Option Wahda) := [((2, 0, 0), v.sima, e0, some v)]
+  let mustSl : List (Slot × Attr × Ext × Option Wahda) :=
+    if mustatar then [((3, 1, if ft.1 ≤ 2 then hudur else sabiq), pron ft.1 ft.2.1 ft.2.2, e0, none)] else []
+  -- ضميرُ المتكلّم والمخاطب المتّصلُ خانةٌ بملء 1 عند المالك (`Simat.slotAttrOK`: الظاهرُ الاسميّ غائب)، كفاعل `Mulhaqat.qumtu`
+  let anSl : List (Slot × Attr × Ext × Option Wahda) := asg.map fun (r, u) =>
+    ((r, if u.1.naw == .damir && u.1.sima.2.2.1.1 ≤ 2 then 1 else 0, 0), (if r == 3 then simaUnsur u g else simaUnsur u 0),
+     (if u.1.naw == .damir then pk else e0), some u.1)
+  let sl := sadrSl ++ filSl ++ mustSl ++ anSl
+  let ud : UD := { pre := pre, f := (1, a, sl.map (·.1)), ats := sl.map (·.2.1), ex := sl.map (·.2.2.1) }
+  let nb := sl.length
+  -- المضافُ إليه ملحقٌ على خانة مضافه، بترتيب العناصر
+  let ilayhs := (List.range sl.length).filterMap fun i =>
+    match (sl.getD i ((0, 0, 0), harfA, e0, none)).2.2.2 with
+    | some w => (asg.find? (·.2.1 == w)).bind fun (_, u) => u.2.map fun x => (i, x)
+    | none => none
+  let itar : Mulhaqat.Itar := { ud := ud, ml := ilayhs.map fun (i, x) => mulhaqIlayh i x }
+  let khanat := (List.range sl.length).filterMap (fun i => (sl.getD i ((0, 0, 0), harfA, e0, none)).2.2.2.map (·, i)) ++
+    (List.range ilayhs.length).filterMap fun j => (ilayhs[j]?).map fun (_, x) => (x, nb + j)
+  (itar, khanat)
+
+/-- **الاسميّة:** مبتدأٌ وخبر، أو مبتدأٌ وشبهُ جملةٍ خبرُه (في محلّ رفع: سمتُه مبنيّة، جامد). والخبرُ جامدٌ أو مشتقّ (لا تحملهما
+الحروف)، والمسوِّغُ للنكرة المضافة الإضافة (`Simat2` 4). -/
+def bnaIsmiyya (m : Unsur) (k : Option Unsur) (jamid : Bool) : Mulhaqat.Itar × List (Wahda × Nat) :=
+  let mAt := simaUnsur m 0
+  let musawwigh := if m.2.isSome && mAt.2.1 == 0 then 4 else 0
+  let mEx : Ext := (musawwigh, false, 0, if m.1.naw == .damir then 1 else 0)
+  let kAt : Attr := match k with
+    | some u => simaUnsur u 0
+    | none => (9, 0, (3, 0, mAt.2.2.1.2.2), true)
+  let kEx : Ext := (0, jamid || k.isNone, 0, 0)
+  let kw : Option Wahda := k.map (·.1)
+  let ud : UD := { pre := [], f := (0, 0, [(0, 0, 0), (1, 0, 0)]), ats := [mAt, kAt], ex := [mEx, kEx] }
+  let ils := (m.2.map (0, ·)).toList ++ (match k with | some u => (u.2.map (1, ·)).toList | none => [])
+  ({ ud := ud, ml := ils.map fun (i, x) => mulhaqIlayh i x },
+   [(m.1, 0)] ++ kw.toList.map (·, 1) ++ (List.range ils.length).filterMap fun j => (ils[j]?).map fun (_, x) => (x, 2 + j))
+
+/-- دورُ الوحدة بموضعها في البنية ودور عنصرها. -/
+def dawrOf (adwarAnasir : Nat → Dawr) : Wahda × Mawdi → Dawr
+  | (_, .rabit) => .rabit
+  | (w, .sadr) => if w.naw == .nafiya then .nafiya else if (w.saff.map adatItar) == some 4 then .nasib else .jazim
+  | (_, .fil) => .fil
+  | (_, .unsur i) => adwarAnasir i
+  | (_, .ilayh i) => if adwarAnasir i == .kharij then .kharij else .mudafIlayh
+  | (_, .jarr _) => .harfJarr
+  | (_, .majrur _) => .majrur
+  | (_, .ilayhShibh _) => .mudafIlayh
+
+def ramzDawr : Nat → Dawr
+  | 3 => .fail | 4 => .maful | 0 => .mubtada | _ => .khabar
+
+/-- قبل العنصر `i` مجرورٌ أو مضافٌ إليه (فيصلح المجرورُ «الخارج» تابعًا له). -/
+def jarrQabl (b : Bunya) (w : Wahda) : Bool :=
+  (b.nutq.takeWhile (·.1 != w)).any fun x => match x.2 with
+    | .majrur _ | .ilayh _ | .ilayhShibh _ => true
+    | _ => false
+
+/-- العناصرُ «الخارجة» بمضافاتها إليها. -/
+def kharijOf (b : Bunya) (p : Nat) : List (Wahda × Bool × Bool) :=
+  (b.anasir.drop p).flatMap fun u => (u.1, jarrQabl b u.1, false) :: u.2.toList.map fun x => (x, true, true)
+
+/-- **المرشَّحون من البنية.** -/
+def murashshahunBunya (b : Bunya) : List Murashshah :=
+  let shibh := (List.range b.shibh.length).filterMap fun g => (b.shibh[g]?).map (itarShibh g)
+  let khanatShibh := shibh.flatMap (·.2)
+  match b.fil with
+  | some v =>
+    if b.shibhQablFil then []
+    else (filiyya b.anasir).map fun (asg, must, p) =>
+      let (it, kh0) := bnaFiliyya b v asg must
+      let dw : Nat → Dawr := fun i =>
+        if i ≥ p then .kharij else ((asg.find? fun q => b.anasir[i]? == some q.2).map fun q => ramzDawr q.1).getD .kharij
+      { itar := it, shibh := shibh.map (·.1), adwar := b.nutq.map fun x => (x.1, dawrOf dw x),
+        khanat := kh0.map (fun (w, i) => (w, none, i)) ++ khanatShibh, kharij := kharijOf b p }
+  | none =>
+    if b.sadr.isSome || b.shibhQablIsm then []
+    else
+      match b.anasir with
+      | m0 :: r =>
+        -- المبتدأُ المنوَّن نكرةٌ، أو علمٌ معرفة: والعلميّةُ لا تحملها الحروف، فالمرشَّحُ بها «لا حكم» (فرض)
+        let ms : List (Unsur × Bool) := (m0, false) ::
+          (if m0.1.naw == .ism && m0.2.isNone && m0.1.sima.2.1 == 0 then
+             [(({ m0.1 with sima := (m0.1.sima.1, 1, m0.1.sima.2.2) }, none), true)] else [])
+        ms.flatMap fun (m, fard) =>
+          match r with
+          | [] => if b.shibh.length == 1 then
+              let (it, kh0) := bnaIsmiyya m none true
+              [{ itar := it, shibh := shibh.map (·.1), adwar := b.nutq.map fun x => (x.1, dawrOf (fun _ => .mubtada) x),
+                 khanat := kh0.map (fun (w, i) => (w, none, i)) ++ khanatShibh, fard := fard }]
+            else []
+          | k :: _ => [true, false].map fun jamid =>
+              let (it, kh0) := bnaIsmiyya m (some k) jamid
+              { itar := it, shibh := shibh.map (·.1),
+                adwar := b.nutq.map fun x => (x.1, dawrOf (fun i => if i == 0 then .mubtada else if i == 1 then .khabar else .kharij) x),
+                khanat := kh0.map (fun (w, i) => (w, none, i)) ++ khanatShibh, kharij := kharijOf b 2, fard := fard }
+      | _ => []
+
+/-- قراءةٌ فيها وحدةٌ خارج المجال (حرفٌ أو مبنيٌّ أو ناسخٌ لم يُبنَ). -/
+def fihaKharij (a : List Wahda) : Bool := a.any (·.naw == .kharij)
+
+/-- المرشَّحون من الكلمات: لكلّ قراءةٍ بنيتُها ومرشَّحوها. -/
+def murashshahun (ws : List Kalima) : List Murashshah :=
+  (jumlaAlts (idgham ws)).flatMap fun a => match bunya a with | some b => murashshahunBunya b | none => []
+
+/-! ## ١١. الحكم -/
+
+/-- الإطارُ الذي فيه الخانة. -/
+def itarAt (m : Murashshah) : Option Nat → Mulhaqat.Itar
+  | none => m.itar
+  | some g => m.shibh.getD g m.itar
+
+/-- الحالاتُ التي يطلبها الموضعُ في إطاره (`Mulhaqat.halatAt` بوقودٍ يكفي سلسلةَ الملحقات). -/
+def matlub (m : Murashshah) (x : Wahda × Option Nat × Nat) : List Nat :=
+  let it := itarAt m x.2.1
+  Mulhaqat.halatAt it (it.ml.length + 1) x.2.2
+
+/-- حكمُ حالة الوحدة في موضعها: المقدَّرةُ «لا حكم»؛ والمبنيّةُ والتي لا يطلب موضعُها حالةً مرخَّصة؛ والمعربةُ مرخَّصةٌ إن كانت حالتُها
+ممّا يُطلب، وإلّا ممتنعة. -/
+def hukmHala (m : Murashshah) (x : Wahda × Option Nat × Nat) : Hukm :=
+  if x.1.taqdir then .laHukm
+  else if x.1.sima.2.2.2 || (matlub m x).isEmpty then .murakhkhas
+  else ofBool (x.1.halat.any (matlub m x).contains)
+
+/-- **الوحدةُ الخارجة «لا حكم»** إن صلحت حالتُها لدورٍ خارج المجال: نصبًا (حالٌ أو تمييزٌ أو ظرفٌ أو مفعولٌ ثانٍ أو مطلق)، أو رفعًا (تابعٌ
+لمرفوعٍ أو بدلٌ من فاعلٍ متّصل)، أو جرًّا بعد مجرور (تابع)، أو مبنيّةً؛ وإلّا ممتنعة. والمضافُ إليه منها مجرور. -/
+def kharijYaslah (x : Wahda × Bool × Bool) : Bool :=
+  x.1.taqdir ||
+  (if x.2.2 then x.1.sima.2.2.2 || x.1.halat.contains 2
+   else x.1.naw == .damir || x.1.halat.any (· ≤ 1) || (x.2.1 && x.1.halat.contains 2))
+
+def hukmKharij (x : Wahda × Bool × Bool) : Hukm := if kharijYaslah x then .laHukm else .mumtani
+
+def dammKull (hs : List Hukm) : Hukm := hs.foldr damm .murakhkhas
+
+/-- الكافُ مختصّةٌ بالظاهر (القطر L339): لا تجرّ ضميرًا. -/
+def kafZahir (m : Murashshah) : Bool :=
+  m.adwar.zip (m.adwar.drop 1) |>.all fun (a, b) => !(a.1.saff == some 42 && a.2 == .harfJarr && b.1.naw == .damir)
+
+/-- شبهُ جملةٍ مجرورُه ضميرُ متكلّمٍ أو مخاطب: لا يمثّله إطارُ المالك (المجرورُ خانةٌ ظاهرةٌ غائبة، ولا ملءَ 1 للجارّ والمجرور:
+`Tarkib.okF`)، فحكمُه «لا حكم» لا امتناع. -/
+def shibhHadir (it : Mulhaqat.Itar) : Bool := ((attrAt it.ud.ats 1).2.2.1.1 ≤ 2)
+
+def hukmShibh (it : Mulhaqat.Itar) : Hukm := if shibhHadir it then .laHukm else ofBool (Mulhaqat.itarOK it)
+
+/-- **حكمُ المرشَّح:** التركيبُ في الوصل، وقانونُ المالك على الإطار وعلى كلّ شبه جملة، والحالات، والوحداتُ الخارجة. -/
+def hukmM (ws : List Kalima) (m : Murashshah) : Hukm :=
+  damm (hukmTarkib (rakkib (idgham ws)))
+    (damm (ofBool (Mulhaqat.itarOK m.itar && kafZahir m))
+      (damm (dammKull (m.shibh.map hukmShibh))
+        (damm (dammKull (m.khanat.map (hukmHala m)))
+          (damm (dammKull (m.kharij.map hukmKharij)) (if m.fard then .laHukm else .murakhkhas)))))
+
+/-- أحكامُ المرشَّحين، و«لا حكم» إن كان للجملة قراءةٌ فيها وحدةٌ خارج المجال. -/
+def ahkam (ws : List Kalima) : List Hukm :=
+  (murashshahun ws).map (hukmM ws) ++ (if (jumlaAlts (idgham ws)).any fihaKharij then [.laHukm] else [])
+
+/-- **حكمُ الجملة** جمعُ أحكامها بـ`NassItar.jamaa` نفسِه: مرخَّصٌ إن رُخّص مرشَّح؛ وممتنعٌ إن كان لها حكمٌ وامتنعت كلُّها؛ و«لا حكم»
+فيما سوى ذلك. -/
+def hukmJumla (ws : List Kalima) : Hukm := NassItar.jamaa (ahkam ws)
+
+/-- أدوارُ المرشَّحين المرخَّصين (بلا تكرار). -/
+def adwarMaqbula (ws : List Kalima) : List (List Dawr) :=
+  (((murashshahun ws).filter fun m => hukmM ws m == .murakhkhas).map fun m => m.adwar.map (·.2)).eraseDups
+
+/-! ## ١٢. المبرهنات -/
+
+/-- **التقطيعُ عند الضمير لا يُسقط خليّةً ولا يزيدها.** -/
+theorem lawahiq_tamm (s : List Nat) : ∀ x ∈ lawahiq s, x.1 ++ x.2.1 = s := by
+  intro x hx
+  unfold lawahiq at hx
+  rw [List.mem_filterMap] at hx
+  obtain ⟨⟨p, ft⟩, -, hp⟩ := hx
+  simp only at hp
+  split at hp
+  · rename_i h
+    cases hp
+    simp only [Bool.and_eq_true] at h
+    have he := h.2
+    unfold endsWith at he
+    simp only [Bool.and_eq_true, decide_eq_true_eq, beq_iff_eq] at he
+    show s.take (s.length - p.length) ++ p = s
+    conv => rhs; rw [← List.take_append_drop (s.length - p.length) s]
+    rw [he.2]
+  · cases hp
+
+/-- الوحدةُ الخارجة «لا حكم» أو ممتنعة، لا مرخَّصة. -/
+theorem hukmKharij_ne (x : Wahda × Bool × Bool) : hukmKharij x ≠ .murakhkhas := by
+  unfold hukmKharij
+  split <;> simp
+
+private theorem dammKull_murakhkhas (hs : List Hukm) : dammKull hs = .murakhkhas ↔ ∀ h ∈ hs, h = .murakhkhas := by
+  induction hs with
+  | nil => simp [dammKull]
+  | cons a t ih =>
+    show damm a (dammKull t) = .murakhkhas ↔ _
+    rw [damm_murakhkhas, ih]; simp
+
+/-- **المرخَّصُ يستوفي قانونَ المالك كلَّه:** التركيبُ في الوصل مرخَّص، والإطارُ الممدود (`Mulhaqat.itarOK`) وكلُّ شبه جملة، وكلُّ وحدةٍ
+ظاهرةٍ حالتُها مرخَّصة؛ ولا وحدةَ خارجة ولا فرض. -/
+theorem murakhkhas_qanun (ws : List Kalima) (m : Murashshah) (h : hukmM ws m = .murakhkhas) :
+    hukmTarkib (rakkib (idgham ws)) = .murakhkhas ∧ Mulhaqat.itarOK m.itar = true ∧ (∀ s ∈ m.shibh, Mulhaqat.itarOK s = true) ∧
+    (∀ x ∈ m.khanat, hukmHala m x = .murakhkhas) ∧ m.kharij = [] ∧ m.fard = false := by
+  unfold hukmM at h
+  rw [damm_murakhkhas, damm_murakhkhas, damm_murakhkhas, damm_murakhkhas, damm_murakhkhas, dammKull_murakhkhas,
+    dammKull_murakhkhas, dammKull_murakhkhas] at h
+  obtain ⟨h1, h2, h3, h4, h5, h6⟩ := h
+  refine ⟨h1, ?_, ?_, ?_, ?_, ?_⟩
+  · unfold ofBool at h2; split at h2
+    · rename_i hb; simp only [Bool.and_eq_true] at hb; exact hb.1
+    · cases h2
+  · intro s hs
+    have := h3 _ (List.mem_map_of_mem hs)
+    unfold hukmShibh at this; split at this
+    · cases this
+    · unfold ofBool at this; split at this
+      · assumption
+      · cases this
+  · intro x hx; exact h4 _ (List.mem_map_of_mem hx)
+  · cases hk : m.kharij with
+    | nil => rfl
+    | cons x t =>
+      exact absurd (h5 (hukmKharij x) (by rw [hk]; exact List.mem_map_of_mem (List.mem_cons_self))) (hukmKharij_ne x)
+  · cases hf : m.fard
+    · rfl
+    · rw [hf] at h6; cases h6
+
+/-- **الإطارُ المرخَّص من أطر المالك المستنفَدة** (`Tarkib.framesL`، 298 إطارًا). -/
+theorem murakhkhas_framesL (ws : List Kalima) (m : Murashshah) (h : hukmM ws m = .murakhkhas) : m.itar.ud.f ∈ framesL := by
+  have h2 := (murakhkhas_qanun ws m h).2.1
+  unfold Mulhaqat.itarOK at h2
+  simp only [Bool.and_eq_true] at h2
+  have hu := h2.1.1.1.1.1
+  unfold uK at hu
+  simp only [Bool.and_eq_true] at hu
+  exact List.contains_iff_mem.mp hu.1
+
+/-- **حالةُ المرخَّص:** لا تقديرَ فيها، وهي مبنيّةٌ أو لا يطلب موضعُها حالةً أو حالتُها ممّا يطلبه. -/
+theorem hala_murakhkhasa (m : Murashshah) (x : Wahda × Option Nat × Nat) (h : hukmHala m x = .murakhkhas) :
+    x.1.taqdir = false ∧ (x.1.sima.2.2.2 = true ∨ matlub m x = [] ∨ ∃ s ∈ x.1.halat, s ∈ matlub m x) := by
+  unfold hukmHala at h
+  by_cases ht : x.1.taqdir = true
+  · rw [if_pos ht] at h; cases h
+  · rw [if_neg ht] at h
+    refine ⟨by simpa using ht, ?_⟩
+    by_cases hm : (x.1.sima.2.2.2 || (matlub m x).isEmpty) = true
+    · simp only [Bool.or_eq_true, List.isEmpty_iff] at hm
+      rcases hm with hm | hm
+      · exact Or.inl hm
+      · exact Or.inr (Or.inl hm)
+    · rw [if_neg hm] at h
+      unfold ofBool at h; split at h
+      · rename_i ha
+        obtain ⟨s, hs, hc⟩ := List.any_eq_true.mp ha
+        exact Or.inr (Or.inr ⟨s, hs, List.contains_iff_mem.mp hc⟩)
+      · cases h
+
+/-- **حكمُ الجملة مرخَّصٌ إذا وفقط إذا رُخّص مرشَّح.** -/
+theorem hukmJumla_murakhkhas (ws : List Kalima) :
+    hukmJumla ws = .murakhkhas ↔ ∃ m ∈ murashshahun ws, hukmM ws m = .murakhkhas := by
+  unfold hukmJumla
+  rw [NassItar.jamaa_murakhkhas]
+  unfold ahkam
+  constructor
+  · intro h
+    rcases List.mem_append.mp h with h | h
+    · obtain ⟨m, hm, he⟩ := List.mem_map.mp h; exact ⟨m, hm, he⟩
+    · split at h <;> simp at h
+  · rintro ⟨m, hm, he⟩
+    exact List.mem_append_left _ (List.mem_map.mpr ⟨m, hm, he⟩)
+
+/-- **ولا امتناعَ إلّا بمرشَّحين ممتنعين كلِّهم، ولا قراءةَ فيها وحدةٌ خارج المجال.** -/
+theorem hukmJumla_mumtani (ws : List Kalima) (h : hukmJumla ws = .mumtani) :
+    murashshahun ws ≠ [] ∧ (∀ m ∈ murashshahun ws, hukmM ws m = .mumtani) ∧ (jumlaAlts (idgham ws)).any fihaKharij = false := by
+  unfold hukmJumla at h
+  rw [NassItar.jamaa_mumtani] at h
+  obtain ⟨hn, ha⟩ := h
+  unfold ahkam at hn ha
+  have hk : (jumlaAlts (idgham ws)).any fihaKharij = false := by
+    cases hb : (jumlaAlts (idgham ws)).any fihaKharij with
+    | false => rfl
+    | true =>
+      rw [hb] at ha
+      have := ha .laHukm (List.mem_append_right _ (List.mem_singleton.mpr rfl)); cases this
+  rw [hk] at hn ha
+  simp only [Bool.false_eq_true, ↓reduceIte, List.append_nil] at hn ha
+  refine ⟨fun e => hn (by rw [e]; rfl), fun m hm => ha _ (List.mem_map_of_mem hm), hk⟩
+
+/-- **بلا مرشَّحٍ لا حكم.** -/
+theorem la_murashshah_la_hukm (ws : List Kalima) (h : murashshahun ws = []) : hukmJumla ws = .laHukm := by
+  unfold hukmJumla ahkam
+  rw [h]
+  simp only [List.map_nil, List.nil_append]
+  cases (jumlaAlts (idgham ws)).any fihaKharij <;> decide
+
+/-- **الوحدةُ الخارجة لا تُرخَّص:** مرشَّحٌ فيه وحدةٌ خارجة لا يكون مرخَّصًا. -/
+theorem kharij_la_yurakhkhis (ws : List Kalima) (m : Murashshah) (h : m.kharij ≠ []) : hukmM ws m ≠ .murakhkhas :=
+  fun e => h (murakhkhas_qanun ws m e).2.2.2.2.1
+
+/-- **المقدَّرُ لا يُرخَّص:** وحدةٌ في خانات المرشَّح حالتُها مقدَّرة تمنع ترخيصَه. -/
+theorem taqdir_la_yurakhkhis (ws : List Kalima) (m : Murashshah) (x : Wahda × Option Nat × Nat) (hx : x ∈ m.khanat)
+    (ht : x.1.taqdir = true) : hukmM ws m ≠ .murakhkhas := by
+  intro e
+  have := (hala_murakhkhasa m x ((murakhkhas_qanun ws m e).2.2.2.1 x hx)).1
+  rw [ht] at this; cases this
+
+/-! ## ١٣. الشواهد (خلاياها كما يكتبها القارئ `qari --khalaya`) -/
+
+def lamW : Kalima := ⟨[52, 111], false, false⟩                                 -- لَمْ
+def yaktubJ : Kalima := ⟨[44, 35, 73, 107], false, false⟩                       -- يَكْتُبْ
+def yaktubR : Kalima := ⟨[44, 35, 73, 105], false, false⟩                       -- يَكْتُبُ
+def yadu : Kalima := ⟨[44, 71, 13], false, false⟩                               -- يَدْعُ
+def zaydun : Kalima := ⟨[76, 47, 69, 59], false, false⟩                         -- زَيْدٌ
+def falyaktub : Kalima := ⟨[100, 55, 44, 35, 73, 107], false, false⟩            -- فَلْيَكْتُبْ
+def wallahu : Kalima := ⟨[112, 55, 52, 5], false, true⟩                         -- وَاللَّهُ
+def bikulli : Kalima := ⟨[106, 33, 55, 54], false, false⟩                       -- بِكُلِّ
+def shayin : Kalima := ⟨[40, 47, 2, 59], false, false⟩                          -- شَيْءٍ
+def alimun : Kalima := ⟨[12, 54, 47, 109, 59], false, false⟩                    -- عَلِيمٌ
+def qamu : Kalima := ⟨[28, 11, 109, 115], false, false⟩                         -- قَامُوا
+def arRijalu : Kalima := ⟨[63, 62, 36, 11, 53], true, true⟩                     -- الرِّجَالُ
+
+/-- **لم وجزمُ المضارع:** «لَمْ يَكْتُبْ زَيْدٌ» مرخَّصةٌ بقراءةٍ واحدة (جازم، فعل، فاعل)، و«لَمْ يَكْتُبُ زَيْدٌ» ممتنعة (القطر L112–113:
+«ويجزم أيضا بلم»). -/
+theorem shahid_lam :
+    hukmJumla [lamW, yaktubJ, zaydun] = .murakhkhas ∧ adwarMaqbula [lamW, yaktubJ, zaydun] = [[.jazim, .fil, .fail]] ∧
+    hukmJumla [lamW, yaktubR, zaydun] = .mumtani := by
+  decide +kernel
+
+/-- **لامُ الأمر بعد الرابط:** «فَلْيَكْتُبْ» رابطٌ ولامُ أمرٍ ومضارعٌ مجزوم، وفاعلُه مستترٌ يحيل إلى ما سبق. -/
+theorem shahid_lamAmr : adwarMaqbula [falyaktub] = [[.rabit, .jazim, .fil]] := by decide +kernel
+
+/-- **الاسميّةُ وشبهُ الجملة بين المبتدأ والخبر:** «وَاللَّهُ بِكُلِّ شَيْءٍ عَلِيمٌ» بقراءةٍ واحدة. -/
+theorem shahid_ismiyya :
+    adwarMaqbula [wallahu, bikulli, shayin, alimun] = [[.rabit, .mubtada, .harfJarr, .majrur, .mudafIlayh, .khabar]] := by
+  decide +kernel
+
+/-- **المعتلُّ بجذره المشهود:** «لَمْ يَدْعُ زَيْدٌ» مرخَّصة: «دعو» عنوانٌ في اللسان، فالمحذوفُ آخرُه جزمًا (القطر L90–91). -/
+theorem shahid_muatall : hukmJumla [lamW, yadu, zaydun] = .murakhkhas := by decide +kernel
+
+/-- **الوحدةُ الخارجة لا يُبنى عليها امتناع:** «قَامُوا الرِّجَالُ» «لا حكم»، لا خطأ: «الرِّجَالُ» بعد الفعل وفاعله المتّصل يصلح تابعًا خارجَ المجال. -/
+theorem shahid_kharij : hukmJumla [qamu, arRijalu] = .laHukm := by decide +kernel
+
+/-- **الجذرُ في عناوين اللسان:** كتب ودعو مشهودان، و«تتق» (قراءةُ «اتّقى» بلا إبدال الواو) لا. -/
+theorem shahid_mashhud : mashhud [8, 18, 26] = true ∧ mashhud [17, 3, 28] = true ∧ mashhud [18, 18, 7] = false := by
+  decide +kernel
+
+end Tahlil
+end Jisr
