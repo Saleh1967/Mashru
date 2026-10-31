@@ -107,6 +107,8 @@
   ٥ت٢. تحصيلُ النصّ ومحاذاتُه (tahaqquq/test_tahsil.py؛ Dal/Tahsil.lean والأداة tahsil): على عرّافٍ مستقلٍّ كتبه مؤلّفٌ لم يقرأ إلّا المواصفة
       (tahaqquq/tahsil/) — بصماتُ المواصفة والعرّاف وحالاته، وحالاتُ الحدود المشتقّةُ باليد، و7000 نصٍّ عشوائيّ، وحكمُ الفاحص على شهادة كلّ
       مقطع، وخلايا القارئ (`qari --khalaya`) على الكلمات المرخَّصة، وأسماءُ الأحكام في المواصفة، دائمًا.
+  ٥ت٩. الموصولاتُ مع لامٍ مشدَّدة (tahaqquq/test_al_lam.py؛ `lamBaad` في Dal/Tahsil.lean، #118): المقطعُ الأوّل من 23 حالةً مجمَّدةً على `silsila`؛ وكان
+      في IKHTIBARAT_TAFRAT وحده بعد #118، فيردّه test_bawwaba (test_sweep_list_matches_gate_tests) على main (f0bbf07).
   ٥ت٧. سلسلةُ الشهادات (tahaqquq/test_silsila.py؛ Nizam/Silsila.lean والأداة silsila): حكمُ الفاحص على شهادة الجملة ومخرجُها وبدائلُها (مطابَقةٌ على مخرجٍ رآه البنّاء في أكثرها)
       والناقصُ باسم كلمته ومقطعه أو إطاره، وموانعُ الإطار بأحوالها الثلاث، والمواضعُ، واتّساقُ حكم الجملة بـ`qari --itar` وحكمِ الإطار بحكمه بصفّ الستّة،
       والأسانيدُ والربط، دائمًا.
@@ -1175,6 +1177,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت٢ {out.strip().splitlines()[-1] if out.strip() else 'التحصيل: ?'}")
     if code != 0:
         fails.append("اختبار التحصيل فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_al_lam.py"])
+    report.append(f"٥ت٩ {out.strip().splitlines()[-1] if out.strip() else 'الموصولات مع لامٍ مشدَّدة: ?'}")
+    if code != 0:
+        fails.append("اختبار الموصولات مع لامٍ مشدَّدة فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_silsila.py"])
     report.append(f"٥ت٧ {out.strip().splitlines()[-1] if out.strip() else 'سلسلة الشهادات: ?'}")
     if code != 0:
