@@ -8520,12 +8520,6 @@
   "ila": "def mithal : Wazn := ([.ks, .ns], [0, 1])"
  },
  {
-  "ism": "P1516_tahlil_mithal_ns",
-  "milaf": "Jisr/Tahlil.lean",
-  "min": "  | .ns => c < 116 && !illaKh c",
-  "ila": "  | .ns => c < 116"
- },
- {
   "ism": "P1531_tahlil_tarjih_ihtimal",
   "milaf": "Jisr/Tahlil.lean",
   "min": "if vs.any (fun w => w.jidhr && !w.ihtimal) then",
