@@ -7488,6 +7488,30 @@
   "ila": "        return 0\n"
  },
  {
+  "ism": "P1547_sabq_mawruth_bila_basma",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "    return b is not None and hashlib.sha256(b).hexdigest() == sha and bayt(jadhr, F, m) == b",
+  "ila": "    return b is not None and bayt(jadhr, F, m) == b"
+ },
+ {
+  "ism": "P1548_sabq_mawruth_bila_F",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "    return b is not None and hashlib.sha256(b).hexdigest() == sha and bayt(jadhr, F, m) == b",
+  "ila": "    return b is not None and hashlib.sha256(b).hexdigest() == sha"
+ },
+ {
+  "ism": "P1549_sabq_kulluha_mawruth",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "    if C and not baad:",
+  "ila": "    if False:"
+ },
+ {
+  "ism": "P1550_sabq_mawruth_maa_F",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "    if m is None or sha is None or c == F or not salaf(jadhr, c, F):",
+  "ila": "    if m is None or sha is None or not salaf(jadhr, c, F):"
+ },
+ {
   "ism": "P1350_muhtawa_yashhad",
   "milaf": "Faahis/Lib.lean",
   "min": "      else if raas line == \"shahid\" then khata h n \"المحتوى لا يربط معنًى بواقع: الربطُ في سجلّ المودَعات وحده\"",
