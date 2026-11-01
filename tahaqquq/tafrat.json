@@ -8799,6 +8799,6 @@
   "ism": "P1576_jadwal_yaud",
   "milaf": "Dal/WiladaKalima.lean",
   "min": "namespace Dal.WiladaKalima\nopen SLGE SLGE.Law SLGE.Law.HisabKalima\n",
-  "ila": "namespace Dal.WiladaKalima\nopen SLGE SLGE.Law SLGE.Law.HisabKalima\n\n/-- الجدولُ المحذوف يعود باسمه. -/\ndef _root_.SLGE.Machine.row (M : SLGE.Machine) (q : Nat) : Nat := M.A + q\n"
+  "ila": "namespace SLGE.Machine\n\n/-- الجدولُ المحذوف يعود باسمه. -/\ndef row (M : SLGE.Machine) (q : Nat) : Nat := M.A + q\n\nend SLGE.Machine\n\nnamespace Dal.WiladaKalima\nopen SLGE SLGE.Law SLGE.Law.HisabKalima\n"
  }
 ]
