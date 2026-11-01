@@ -1,5 +1,5 @@
 /-
-  Nizam/WahdatJadwal.lean — مولَّدٌ من رؤوس ملفّات Lean في المشروع بـ `python3 -I scripts/bina_wahdat.py`؛ لا يُحرَّر يدويًّا.
+  Nizam/WahdatJadwal.lean — مولَّدٌ من رؤوس وحدات حزمة lake في المشروع بـ `python3 -I scripts/bina_wahdat.py`؛ لا يُحرَّر يدويًّا.
   يطابقه `tahaqquq/test_wiratha.py` بايتًا، ويطابق استيرادَه محلّلُ رؤوس Lean نفسُه. وقاعدتُه وترخيصُه في `Nizam/Wiratha.lean`.
   282 ملفًّا، و476 استيرادًا بينها، ودرجاتُ الاشتقاق من 0 إلى 23.
 -/

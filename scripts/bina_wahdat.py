@@ -1,8 +1,10 @@
-"""يولّد `Nizam/WahdatJadwal.lean`: كلُّ ملفّ Lean في المشروع، وما يستورده منه، ودرجةُ اشتقاقه، وترتيبُ بنائه.
+"""يولّد `Nizam/WahdatJadwal.lean`: كلُّ وحدةٍ من حزمة lake في المشروع، وما تستورده منه، ودرجةُ اشتقاقه، وترتيبُ بنائه.
 
 الملفّات: كلُّ `.lean` تحت `Nabt` و`SLGE` و`Dal` و`Madlul` و`Jisr` و`Aql` و`Nizam` و`Faahis` و`Qari`، و`Nabt.lean` (وهي وحداتُ حزمة lake في
-`lakefile.toml`؛ يفحصه `tahaqquq/test_wiratha.py` ٢). والاستيرادُ أسطرُ `import X` في رأس الملفّ، ويقف عند أوّل سطرٍ ليس `import X` وحده ولا
-تعليقًا خالصًا ولا فارغًا؛ ويُعدّ منه ما كان ملفًّا في المشروع وحده. ودرجةُ الاشتقاق 0 لما لا يستورد من
+`lakefile.toml`؛ يفحصه `tahaqquq/test_wiratha.py` ٢). والاستيرادُ أسطرُ `import X` في رأس الملفّ: يتخطّى الفارغَ وما أوّلُه `--` أو `/-` (ويُسقط معه ما بعده في سطره، ومنه `/- … -/ import X`)،
+ويأخذ `import X` بكلمةٍ واحدةٍ بعدها (فـ`import A--c` اسمُه `A--c`، ليس في المشروع)، ويقف عند أوّل سطرٍ سواه (ومنه `import A -- c`
+و`public import A`)؛
+ويُعدّ منه ما كان ملفًّا في المشروع وحده. ودرجةُ الاشتقاق 0 لما لا يستورد من
 المشروع شيئًا، وإلّا واحدٌ فوق أعلى ما يستورده. وترتيبُ البناء بالدرجة ثمّ بالرقم.
 
 التشغيل: python3 -I scripts/bina_wahdat.py           (يكتب Nizam/WahdatJadwal.lean)
@@ -74,7 +76,7 @@ def jadwal():
 def nass():
     asma, imp, rutba, tartib = jadwal()
     L = ["/-",
-         "  Nizam/WahdatJadwal.lean — مولَّدٌ من رؤوس ملفّات Lean في المشروع بـ `python3 -I scripts/bina_wahdat.py`؛ لا يُحرَّر يدويًّا.",
+         "  Nizam/WahdatJadwal.lean — مولَّدٌ من رؤوس وحدات حزمة lake في المشروع بـ `python3 -I scripts/bina_wahdat.py`؛ لا يُحرَّر يدويًّا.",
          "  يطابقه `tahaqquq/test_wiratha.py` بايتًا، ويطابق استيرادَه محلّلُ رؤوس Lean نفسُه. وقاعدتُه وترخيصُه في `Nizam/Wiratha.lean`.",
          f"  {len(asma)} ملفًّا، و{sum(len(x) for x in imp)} استيرادًا بينها، ودرجاتُ الاشتقاق من 0 إلى {max(rutba)}.",
          "-/",
