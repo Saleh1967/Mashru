@@ -137,6 +137,10 @@ import Jisr.Tahlil
 import Jisr.TahlilDabit
 import Jisr.TahlilQiyas
 import Nizam.Rabt
+import Dal.QanunAdad
+import Dal.WiladaJadhr
+import Dal.WiladaKalima
+import Dal.WiladaJumla
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -2886,3 +2890,82 @@ import Nizam.Rabt
 #print axioms Nizam.Rabt.shahid_mafatih
 #print axioms Nizam.Rabt.shahid_lafif_jidhr
 #print axioms Nizam.Rabt.shahid_dalala
+#print axioms Dal.QanunAdad.sum_map_one
+#print axioms Dal.QanunAdad.sum_map_add
+#print axioms Dal.QanunAdad.sum_zero
+#print axioms Dal.QanunAdad.sum_ite_eq
+#print axioms Dal.QanunAdad.tajmi
+#print axioms Dal.QanunAdad.qanun_adad
+#print axioms Dal.QanunAdad.Asnaf.base_mayyit
+#print axioms Dal.QanunAdad.Asnaf.mayyit_sifr
+#print axioms Dal.QanunAdad.Asnaf.C_khatwa
+#print axioms Dal.QanunAdad.Asnaf.C_mustaqill
+#print axioms Dal.QanunAdad.Asnaf.C_thabit
+#print axioms Dal.QanunAdad.Asnaf.C_thabit2
+#print axioms Dal.QanunAdad.Asnaf.C_khatwa1
+#print axioms Dal.WiladaJadhr.sinfT_sinf
+#print axioms Dal.WiladaJadhr.asnaf
+#print axioms Dal.WiladaJadhr.jadhr_mutakafi
+#print axioms Dal.WiladaJadhr.mayyitJ
+#print axioms Dal.WiladaJadhr.potJ
+#print axioms Dal.WiladaJadhr.wazn1
+#print axioms Dal.WiladaJadhr.lev_jadhr
+#print axioms Dal.WiladaJadhr.x_dead
+#print axioms Dal.WiladaJadhr.x_khatwa
+#print axioms Dal.WiladaJadhr.x_bidaya
+#print axioms Dal.WiladaJadhr.jadhr_khatwa
+#print axioms Dal.WiladaJadhr.wilada
+#print axioms Dal.WiladaJadhr.jadhr_shahid
+#print axioms Dal.WiladaJadhr.wilada_awwal
+#print axioms Dal.WiladaJadhr.tawlid
+#print axioms Dal.WiladaJadhr.jadhr_bil_qanun
+#print axioms Dal.WiladaJadhr.wasl_khatwa
+#print axioms Dal.WiladaJadhr.r1
+#print axioms Dal.WiladaJadhr.r2
+#print axioms Dal.WiladaJadhr.r30
+#print axioms Dal.WiladaJadhr.d96
+#print axioms Dal.WiladaJadhr.kamil3
+#print axioms Dal.WiladaJadhr.la_yakfi_wahid
+#print axioms Dal.WiladaKalima.maghluqK
+#print axioms Dal.WiladaKalima.sinfK
+#print axioms Dal.WiladaKalima.waznK
+#print axioms Dal.WiladaKalima.saffK_hadd
+#print axioms Dal.WiladaKalima.adadK
+#print axioms Dal.WiladaKalima.kalima_mutakafi_waqf
+#print axioms Dal.WiladaKalima.kalima_mutakafi_wasl
+#print axioms Dal.WiladaKalima.saffK_kabir
+#print axioms Dal.WiladaKalima.mayyitK
+#print axioms Dal.WiladaKalima.potK
+#print axioms Dal.WiladaKalima.wazn1K
+#print axioms Dal.WiladaKalima.pK_le
+#print axioms Dal.WiladaKalima.y_khatwa
+#print axioms Dal.WiladaKalima.y_dead
+#print axioms Dal.WiladaKalima.kalima_khatwa
+#print axioms Dal.WiladaKalima.bidaya_waqf
+#print axioms Dal.WiladaKalima.bidaya_wasl
+#print axioms Dal.WiladaKalima.lev_waqf
+#print axioms Dal.WiladaKalima.lev_wasl
+#print axioms Dal.WiladaKalima.tawlid
+#print axioms Dal.WiladaKalima.awail
+#print axioms Dal.WiladaKalima.wilada_waqf
+#print axioms Dal.WiladaKalima.wilada_wasl
+#print axioms Dal.WiladaKalima.kalima_bil_qanun
+#print axioms Dal.WiladaKalima.kalima_maqati
+#print axioms Dal.WiladaJumla.saffS_hadd
+#print axioms Dal.WiladaJumla.waznS
+#print axioms Dal.WiladaJumla.adadS
+#print axioms Dal.WiladaJumla.jumla_mutakafi
+#print axioms Dal.WiladaJumla.saffS_kabir
+#print axioms Dal.WiladaJumla.mayyitS
+#print axioms Dal.WiladaJumla.potS
+#print axioms Dal.WiladaJumla.wazn1S
+#print axioms Dal.WiladaJumla.pS_le
+#print axioms Dal.WiladaJumla.z_khatwa
+#print axioms Dal.WiladaJumla.z_dead
+#print axioms Dal.WiladaJumla.jumla_khatwa
+#print axioms Dal.WiladaJumla.bidaya_jumla
+#print axioms Dal.WiladaJumla.lev_jumla
+#print axioms Dal.WiladaJumla.tawlidS
+#print axioms Dal.WiladaJumla.awailS
+#print axioms Dal.WiladaJumla.wilada_jumla
+#print axioms Dal.WiladaJumla.jumla_bil_qanun
