@@ -336,3 +336,10 @@
 
   فصار كلٌّ «بتعريف» باسمه أو «بالربط».
 - **ونُقلت طفراتُ السجلّ** (P1430–P1439) إلى `natija_20.json`.
+
+## ٢٤. بعد دمج main في `jisr/qiraa-awamil`، والتشغيلُ الحادي والعشرون (`natija_21.json`)
+
+- **#118 غيّر `Dal/Tahsil.lean`** (`lamBaad`: فرعٌ جديدٌ لِلامٍ مشدَّدةٍ يليها مقطع، `n.tail.contains shadda && c.lahiq2.isSome`، إيداعُ `012191b`)، وهو في SHIFRA هذا الضابط، ودُمج في main بلا سجلٍّ جديد، فيردّ
+  `tahaqquq/test_athar_dabit.py` main (`f0bbf07`). سجّل `natija_21.json` بصمتَه بأعداد `natija_20.json` نفسِها، وهي أعدادُ مبرهنات `Nizam/AtharQiyas.lean`
+  على شجرة الدمج. ولم تتغيّر دوالُّ الحكم.
+- **ونُقلت طفراتُ السجلّ** (P1430–P1439) إلى `natija_21.json`.

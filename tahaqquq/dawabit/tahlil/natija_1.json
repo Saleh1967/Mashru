@@ -1,0 +1,180 @@
+{
+ "tashghil": 1,
+ "naw": "التشغيلُ الأوّل على الحالات المجمَّدة، بعد دفع الشفرة وقبل أيّ تعديلٍ لها",
+ "cases_sha256": "571c7abb14a660d3268d69b18cd0a270ed7b8778b078c087c80109eb643e937f",
+ "shifra": {
+  "Jisr/Tahlil.lean": {
+   "sha256": "3964686392b082f526c3a43b8fed08f41bd5c5ec5c8b3a7deec868eb38f49f2f",
+   "iydaa": "1d9722075d30ded915ba46fb3e9f69759697568b"
+  },
+  "Jisr/TahlilDabit.lean": {
+   "sha256": "3a725ca04070eaebf7aee713dbead5d6a13718b6f8c035d10a06c47835062525",
+   "iydaa": "1d9722075d30ded915ba46fb3e9f69759697568b"
+  },
+  "Qari/Main.lean": {
+   "sha256": "412023286fb2dd2370c740d9fecff0675ae14433f6e9a5d210494099bffd8b9a",
+   "iydaa": "09238703c426c682f41850a2ae35edc6f8226b7e"
+  },
+  "Dal/QiraaTahsil.lean": {
+   "sha256": "6d6785aac8819e4b8cd1fceaaf2fd851ab462e221862fb42b144cca906874a48",
+   "iydaa": "7769e1c1c437b65a5c27f96eec5bc3b0c999e4a8"
+  },
+  "Dal/Tahsil.lean": {
+   "sha256": "626d9990e814cf0b032da8a805a8df99f2a513f7c42ba6a4e50211f63fe01bef",
+   "iydaa": "7769e1c1c437b65a5c27f96eec5bc3b0c999e4a8"
+  }
+ },
+ "lean": [
+  "Jisr.Tahlil.Qiyas.majal",
+  "Jisr.Tahlil.Qiyas.natija",
+  "Jisr.Tahlil.Qiyas.natija_fia",
+  "Jisr.Tahlil.Qiyas.akhta_1",
+  "Jisr.Tahlil.Qiyas.azwaj_1"
+ ],
+ "halat": 55,
+ "huqul_masula": 81,
+ "ihsa": {
+  "sawab": 59,
+  "naqsTaghtiya": 15,
+  "tajawuz": 4,
+  "qabulKhati": 1,
+  "raddKhati": 0,
+  "ikhtiyar": 1,
+  "khataAdwar": 1,
+  "rafdQari": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 26,
+  "حد": 7,
+  "خارج": 1,
+  "عموم": 25,
+  "غموض": 0
+ },
+ "akhta": [
+  [
+   "T05",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T06",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T07",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T08",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T14",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T15",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T22",
+   "hukm",
+   "qabulKhati"
+  ],
+  [
+   "T23",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T25",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T27",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T32",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T38",
+   "adwar",
+   "khataAdwar"
+  ],
+  [
+   "T39",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T41",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T43",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T48",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T49",
+   "hukm",
+   "tajawuz"
+  ],
+  [
+   "T50",
+   "hukm",
+   "tajawuz"
+  ],
+  [
+   "T52",
+   "hukm",
+   "tajawuz"
+  ],
+  [
+   "T53",
+   "hukm",
+   "tajawuz"
+  ],
+  [
+   "T54",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T55",
+   "hukm",
+   "ikhtiyar"
+  ]
+ ],
+ "azwaj": {
+  "jumla": 14,
+  "taghayyar": 13,
+  "lam_yataghayyar": [
+   [
+    "T06",
+    "T07"
+   ]
+  ],
+  "sawab_tarafayn": 6
+ },
+ "rafd_qari": [],
+ "tarikh": "2026-10-31",
+ "malahiz": "على الشفرة كما دُفعت في 1d97220 (والحالاتُ مجمَّدةٌ في 9ea302c قبلها)؛ والخلايا من qari --khalaya المبنيّ من main نفسِه (Qari/Main.lean لم يتغيّر في الفرع). والأعدادُ أعدادُ مبرهنات Jisr/TahlilQiyas.lean في الإيداع الذي يحمل هذا الملفّ."
+}

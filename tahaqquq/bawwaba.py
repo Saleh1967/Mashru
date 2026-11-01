@@ -107,6 +107,8 @@
   ٥ت٢. تحصيلُ النصّ ومحاذاتُه (tahaqquq/test_tahsil.py؛ Dal/Tahsil.lean والأداة tahsil): على عرّافٍ مستقلٍّ كتبه مؤلّفٌ لم يقرأ إلّا المواصفة
       (tahaqquq/tahsil/) — بصماتُ المواصفة والعرّاف وحالاته، وحالاتُ الحدود المشتقّةُ باليد، و7000 نصٍّ عشوائيّ، وحكمُ الفاحص على شهادة كلّ
       مقطع، وخلايا القارئ (`qari --khalaya`) على الكلمات المرخَّصة، وأسماءُ الأحكام في المواصفة، دائمًا.
+  ٥ت٩. الموصولاتُ مع لامٍ مشدَّدة (tahaqquq/test_al_lam.py؛ `lamBaad` في Dal/Tahsil.lean، #118): المقطعُ الأوّل من 23 حالةً مجمَّدةً على `silsila`؛ وكان
+      في IKHTIBARAT_TAFRAT وحده بعد #118، فيردّه test_bawwaba (test_sweep_list_matches_gate_tests) على main (f0bbf07).
   ٥ت٧. سلسلةُ الشهادات (tahaqquq/test_silsila.py؛ Nizam/Silsila.lean والأداة silsila): حكمُ الفاحص على شهادة الجملة ومخرجُها وبدائلُها (مطابَقةٌ على مخرجٍ رآه البنّاء في أكثرها)
       والناقصُ باسم كلمته ومقطعه أو إطاره، وموانعُ الإطار بأحوالها الثلاث، والمواضعُ، واتّساقُ حكم الجملة بـ`qari --itar` وحكمِ الإطار بحكمه بصفّ الستّة،
       والأسانيدُ والربط، دائمًا.
@@ -117,6 +119,9 @@
       مثلُ ٥ص، وبصمةُ الشفرة كلُّ ملفٍّ فيه ثابتٌ يبلغه حسابُ natijaHala (SHIFRA، ويحسبها Lean من البيئة المبنيّة فتُقارَن بها)، بحقلٍ مسؤولٍ في
       كلّ حالة (القوّة أو القيد)، دائمًا؛
       والسندُ في أسطره وفاحصُ المؤلّف إن حضرت المودَعات.
+  ٥ص١٥. ضابطُ «قراءة الجملة بالعوامل» المجمَّد والسلسلةُ فوقه (tahaqquq/test_tahlil.py؛ القطر في المجال المعلن في wasf.md): مثلُ ٥ص على
+      Jisr/Tahlil.lean؛ والأداتان tarkib وrabt (Nizam/Rabt.lean) على جملٍ بتوقّعٍ يدويّ لحكمها وقراءتها، ولعامل الوحدة وحالتها والإسناد وقوّة الجملة
+      والإحالة والمفهوم؛ والدلالةُ على جدول لزومٍ مصنوع (اتّساقٌ لا توقّعٌ مستقلّ)، دائمًا؛ والسندُ في أسطره وفاحصُ المؤلّف إن حضر القطر.
   ٥ت٣. هيكلُ الإنتروبيا (tahaqquq/test_intrubiya.py؛ Jisr/Intrubiya.lean وJisr/IntrubiyaShahada.lean وscripts/intrubiya.py): تعدادٌ صريحٌ لكلمات
       الطول 3 وتجميعٌ حتى 4 يساويان أعدادَ lawCount المنسوخة من Lean، والشهادةُ المولَّدة بالبايت ومتباينتاها بأعدادٍ صحيحة، والمقدِّراتُ على
       توزيعاتٍ باليد، والنقلُ بالجسر قبل الآلة، وجدولُ nabtBridge، والتحصيلُ على كلماتٍ خلاياها باليد، دائمًا؛ وعلى المودَع إن حضر في MUDAA_DIR.
@@ -125,7 +130,8 @@
   ٥ت٥. تدقيقُ مكتبة Nabt المنقولة إلى Mashru (tahaqquq/test_nabt_tadqiq.py؛ AuditNabt.lean): قائمتُها 1592 مبرهنةً مبنيّة، ومسلّماتُ كلِّ تصريحٍ
       تحت Nabt. من الثلاث.
   ٥ت٦. سبقُ التجميد مقيسًا من التاريخ (tahaqquq/test_sabq_tajmid.py؛ tahaqquq/sabq_tajmid.py): لكلّ ضابطٍ مجمَّد إيداعُ الحالات سلفٌ صارمٌ لإيداع
-      الشفرة، وهي سلفٌ للنتيجة الأولى، وبصمةُ الحالات واحدةٌ عند التجميد وفي النتيجة والآن؛ على مستودعاتٍ مصنوعة دائمًا، وعلى المستودع إن لم يكن ضحلًا.
+      الشفرة (إلّا الملفَّ الموروث: قبل التجميد بلا تغيّرٍ إليه وبصمتُه المسجَّلة بايتاتُه، ومع شفرةٍ بعده)، وهي سلفٌ للنتيجة الأولى، وبصمةُ الحالات
+      واحدةٌ عند التجميد وفي النتيجة والآن؛ على مستودعاتٍ مصنوعة دائمًا، وعلى المستودع إن لم يكن ضحلًا.
   ٥خ. تمامُ التدقيق (tahaqquq/test_tadqiq_tamm.py؛ 2026-10-26؛ مقترحُ البنّاء بأمر المالك العامّ، يسري بعد دمج طلبه): كلُّ مبرهنةٍ عامّةٍ
       في وحدات المشروع (SLGE وDal وMadlul وJisr وAql وNizam وFaahis وQari؛ تصريحٌ تسبق اسمَه في سطره theorem أو lemma) لها `#print axioms`
       في Audit.lean خارج التعليقات — من ملفّات `.ilean` التي يكتبها lake build؛ فالبند ٣ يعدّ ما في Audit.lean، وهذا يمنع أن تُبنى مبرهنةٌ
@@ -219,6 +225,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_silsila.py",
     "tahaqquq/test_athar.py",
     "tahaqquq/test_athar_dabit.py",
+    "tahaqquq/test_tahlil.py",
     "tahaqquq/test_intrubiya.py",
     "tahaqquq/test_qiyas_intrubiya.py",
     "tahaqquq/test_nabt_tadqiq.py",
@@ -1171,6 +1178,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت٢ {out.strip().splitlines()[-1] if out.strip() else 'التحصيل: ?'}")
     if code != 0:
         fails.append("اختبار التحصيل فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_al_lam.py"])
+    report.append(f"٥ت٩ {out.strip().splitlines()[-1] if out.strip() else 'الموصولات مع لامٍ مشدَّدة: ?'}")
+    if code != 0:
+        fails.append("اختبار الموصولات مع لامٍ مشدَّدة فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_silsila.py"])
     report.append(f"٥ت٧ {out.strip().splitlines()[-1] if out.strip() else 'سلسلة الشهادات: ?'}")
     if code != 0:
@@ -1183,6 +1194,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ص١٤ {out.strip().splitlines()[-1] if out.strip() else 'ضابط أثر العقد: ?'}")
     if code != 0:
         fails.append("اختبار ضابط أثر العقد فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_tahlil.py"])
+    report.append(f"٥ص١٥ {out.strip().splitlines()[-1] if out.strip() else 'ضابط قراءة الجملة: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط قراءة الجملة بالعوامل فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_intrubiya.py"])
     report.append(f"٥ت٣ {out.strip().splitlines()[-1] if out.strip() else 'الإنتروبيا: ?'}")
     if code != 0:

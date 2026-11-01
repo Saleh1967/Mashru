@@ -1,0 +1,99 @@
+{
+ "tashghil": 5,
+ "naw": "تشغيلٌ على مادّةٍ مكشوفة، بعد مراجعة murajii الثالثة (tahaqquq/dawabit/tahlil/mulhaq_1.md §٢، §٤، §٥)",
+ "qablaha": {
+  "milaf": "natija_4.json",
+  "sha256": "d7b5a66528bdc4c9c4629ba4545969ff239229df15a4a60c6d1ef29b3e0e5de4"
+ },
+ "cases_sha256": "571c7abb14a660d3268d69b18cd0a270ed7b8778b078c087c80109eb643e937f",
+ "shifra": {
+  "Jisr/Tahlil.lean": {
+   "sha256": "4c5c9391db245794b9fcf108300429630fe2b1285a01371c4ecbf4834f243173",
+   "iydaa": "aa8b9eaeeb1c209ed8b5e8f0c78062f32ebd3f0a"
+  },
+  "Jisr/TahlilDabit.lean": {
+   "sha256": "3a725ca04070eaebf7aee713dbead5d6a13718b6f8c035d10a06c47835062525",
+   "iydaa": "1d9722075d30ded915ba46fb3e9f69759697568b"
+  },
+  "Qari/Main.lean": {
+   "sha256": "412023286fb2dd2370c740d9fecff0675ae14433f6e9a5d210494099bffd8b9a",
+   "iydaa": "09238703c426c682f41850a2ae35edc6f8226b7e"
+  },
+  "Dal/QiraaTahsil.lean": {
+   "sha256": "6d6785aac8819e4b8cd1fceaaf2fd851ab462e221862fb42b144cca906874a48",
+   "iydaa": "7769e1c1c437b65a5c27f96eec5bc3b0c999e4a8"
+  },
+  "Dal/Tahsil.lean": {
+   "sha256": "626d9990e814cf0b032da8a805a8df99f2a513f7c42ba6a4e50211f63fe01bef",
+   "iydaa": "7769e1c1c437b65a5c27f96eec5bc3b0c999e4a8"
+  }
+ },
+ "lean": [
+  "Jisr.Tahlil.Qiyas.majal",
+  "Jisr.Tahlil.Qiyas.natija",
+  "Jisr.Tahlil.Qiyas.natija_fia",
+  "Jisr.Tahlil.Qiyas.akhta_1",
+  "Jisr.Tahlil.Qiyas.azwaj_1"
+ ],
+ "halat": 55,
+ "huqul_masula": 85,
+ "ihsa": {
+  "sawab": 79,
+  "naqsTaghtiya": 3,
+  "tajawuz": 2,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtiyar": 1,
+  "khataAdwar": 0,
+  "rafdQari": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 30,
+  "حد": 16,
+  "خارج": 3,
+  "عموم": 28,
+  "غموض": 2
+ },
+ "akhta": [
+  [
+   "T15",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T32",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T41",
+   "hukm",
+   "naqsTaghtiya"
+  ],
+  [
+   "T52",
+   "hukm",
+   "tajawuz"
+  ],
+  [
+   "T53",
+   "hukm",
+   "tajawuz"
+  ],
+  [
+   "T55",
+   "hukm",
+   "ikhtiyar"
+  ]
+ ],
+ "azwaj": {
+  "jumla": 14,
+  "taghayyar": 14,
+  "lam_yataghayyar": [],
+  "sawab_tarafayn": 13
+ },
+ "rafd_qari": [],
+ "tarikh": "2026-10-31",
+ "malahiz": "على الشفرة في aa8b9ea: الجذعُ المحذوفُ آخرُه بلا ajwafSakin (bilaAjwaf) ومع اللفيف المفروق (lafifMafruq)، وجذورُ القراءة في Wahda.judhurQ، والشاهدان shahid_lafif وshahid_hadd_niswa، والتعليقات؛ فلا يشهد للضابط. والأعدادُ أعدادُ natija_4.json نفسُها، وهي أعدادُ مبرهنات Jisr/TahlilQiyas.lean: بُنيت على هذه الشفرة قبل إيداعها، وعدّها lake build Jisr.TahlilQiyas بعده قائمةً (17:18 UTC، قبل كتابة هذا السجلّ). وقولُ natija_4.json «lake build نجح قبل كتابة هذا السجلّ» لا أثرَ له يُفحص: أعادت بوّابةُ ab62db8 بناءَ الوحدة بعده ومرّ فيها ٥ص١٥."
+}
