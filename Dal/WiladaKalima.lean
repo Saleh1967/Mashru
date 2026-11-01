@@ -15,16 +15,20 @@ import Dal.WiladaJadhr
 (`kalima_maqati`)؛ وكونُ ذلك سببَهما قراءةُ البنّاء. والفرقُ بين الوقف والوصل صنفٌ واحد: الساكنان المعلّقان على الوقف (‎4‎) يُقبلان
 موقوفًا عليهما وحدهما، ولا ينتقل منهما شيءٌ إلّا إلى الممتنع، فلا يُعدّ منهما إلّا الدرجةُ صفرٌ موقوفًا عليها
 (`y FW 4 0 = 1` و`y FL 4 0 = 0`)، وبه يتأخّر التكرارُ في الوقف درجةً.
-وأعدادُ المالك (`SLGE.Law.word_levels`، `word_levels_wasl`) نتيجةٌ للقانون، وبعدها الدرجةُ الرابعة (`kalima_bil_qanun`).
+وأعدادُ المالك (`SLGE.Law.word_levels`، `word_levels_wasl`) تُشتقّ به أيضًا، وبعدها الدرجةُ الرابعة (`kalima_bil_qanun`)؛ وقضيّتاه في
+`SLGE/Law.lean` باقيتان بحسابهما بالجدول `tab`.
 
 **الأصناف** (‎0‎ ابتداء، ‎1‎ بعد مفتوح، ‎2‎ بعد مضمومٍ أو مكسور، ‎3‎ بعد مدّ، ‎4‎ ساكنان معلّقان على الوقف، ‎5‎ مدٌّ ثمّ ساكن،
 ‎6‎ مدٌّ ثمّ ألفٌ ساكنة، ‎7‎ حدٌّ بعد ‎5‎، ‎8‎ ممتنع، ‎9‎–‎11‎ بعد ساكنٍ مُغلِقٍ صنفُ حامله بمجاورٍ واحد وبلا مجاور وبمجاورَين،
-‎12‎ الحالةُ ‎5‎) وصفوفُها تعيينُ البنّاء، يفحصه التكافؤُ نفسُه؛ وما لا يُبلغ من الابتداء (37، 38+k، 40، 5، 8) أصنافٌ أيضًا.
+‎12‎ الحالةُ ‎5‎) وصفوفُها تعيينُ البنّاء، يفحصه التكافؤُ نفسُه؛ وما لا يُبلغ من الابتداء — منه 37 و38+k و5 و8 و69 — في أصنافٍ أيضًا.
 
-المبرهنات: 25 بالمعيار الموحَّد: لكلّ 13 (`maghluqK`، `potK`، `wazn1K`، `pK_le`، `y_khatwa`، `y_dead`، `kalima_khatwa`، `lev_waqf`، `lev_wasl`،
-`tawlid`، `awail`، `wilada_waqf`، `wilada_wasl`)؛ وتعريفيّة 2 (`saffK_kabir`، `mayyitK`)؛ وعلى الشاهد 9 برهانُها decide (`sinfK`، `waznK`،
-`saffK_hadd`، `adadK` — بثلاثَ عشرةَ مساعدةً خاصّة كلٌّ على ثمانِ حالاتٍ، لأنّ decide على الحالات كلِّها بلغ 5.2 غيغابايت —، `kalima_mutakafi_waqf`،
-`kalima_mutakafi_wasl`، `bidaya_waqf`، `bidaya_wasl`، `kalima_maqati`)؛ و1 على الشاهد خارجَ حرف المعيار (`kalima_bil_qanun`: `awail`)، معلَن.
+المبرهنات: 25 بالمعيار الموحَّد: لكلّ 12 (`potK`، `wazn1K`، `pK_le`، `y_khatwa`، `y_dead`، `kalima_khatwa`، `lev_waqf`، `lev_wasl`، `tawlid`،
+`awail`، `wilada_waqf`، `wilada_wasl`)؛ وتعريفيّة 2 (`saffK_kabir`، `mayyitK`)؛ وعلى الشاهد 6 برهانُها decide (`sinfK`، `waznK`، `saffK_hadd`،
+`bidaya_waqf`، `bidaya_wasl`، `kalima_maqati`)؛ و5 على الشاهد خارجَ حرف المعيار، معلَن (`maghluqK`: `fin_close` للمالك؛ `adadK`: من ثلاثَ عشرةَ
+مساعدةً خاصّةً برهانُها decide، اثنتا عشرةَ على ثمانِ حالاتٍ وواحدةٌ على حالة — لأنّ decide على الحالات كلِّها معًا بلغ 5.2 غيغابايت —؛
+`kalima_mutakafi_waqf` و`kalima_mutakafi_wasl`: بنيتان من تلك؛ `kalima_bil_qanun`: `awail`).
+
+**وعدٌّ مباشرٌ معلَن:** `kalima_maqati` يعدّ على آلة `Mword` مقطعًا ومقطعين بـ decide لا بالأصناف، شاهدًا لمعنى المعاملين لا عددًا في درجة.
 -/
 
 namespace Dal.WiladaKalima
@@ -251,11 +255,11 @@ theorem wilada_wasl (k : Nat) :
   | zero => exact bidaya_wasl.2.2.2.2.1
   | succ m => exact (kalima_khatwa FL rfl m).2.2.2.2.1
 
-/-- **أعدادُ المالك من القانون:** 168 و32872 و6038368 موقوفًا عليها، و5908224 في الوصل للدرجة الثالثة
+/-- **أعدادُ المالك من القانون:** 0 و168 و32872 و6038368 موقوفًا عليها، و5908224 في الوصل للدرجة الثالثة
 (`SLGE.Law.word_levels`، `word_levels_wasl`)، والدرجةُ الرابعة 1089919936 و1068055744. -/
-theorem kalima_bil_qanun : Mword.lev 3 0 1 = 168 ∧ Mword.lev 3 0 2 = 32872 ∧ Mword.lev 3 0 3 = 6038368 ∧
+theorem kalima_bil_qanun : Mword.lev 3 0 0 = 0 ∧ Mword.lev 3 0 1 = 168 ∧ Mword.lev 3 0 2 = 32872 ∧ Mword.lev 3 0 3 = 6038368 ∧
     Mword.lev 3 0 4 = 1089919936 ∧ MwordWasl.lev 3 0 1 = 168 ∧ MwordWasl.lev 3 0 2 = 32872 ∧
-    MwordWasl.lev 3 0 3 = 5908224 ∧ MwordWasl.lev 3 0 4 = 1068055744 := by
+    MwordWasl.lev 3 0 3 = 5908224 ∧ MwordWasl.lev 3 0 4 = 1068055744 ∧ MwordWasl.lev 3 0 0 = 0 := by
   simp only [lev_waqf, lev_wasl]
   obtain ⟨w0, w1, w2, w3, w4, w5, w9, w10, w11⟩ := bidaya_waqf
   obtain ⟨l0, l1, l2, l3, l4, l5, l9, l10, l11⟩ := bidaya_wasl
@@ -263,9 +267,10 @@ theorem kalima_bil_qanun : Mword.lev 3 0 1 = 168 ∧ Mword.lev 3 0 2 = 32872 ∧
   have al := awail (y FL) (kalima_khatwa FL rfl) l0 l1 l2 l3 l5 l9 l10 l11
   rw [w4] at aw
   rw [l4] at al
-  exact ⟨aw.1, aw.2.1, aw.2.2.1, aw.2.2.2, al.1, al.2.1, al.2.2.1, al.2.2.2⟩
+  exact ⟨w0, aw.1, aw.2.1, aw.2.2.1, aw.2.2.2, al.1, al.2.1, al.2.2.1, al.2.2.2, l0⟩
 
-/-- **المقاطع:** ما وزنُه صامتٌ واحد 168 (‎CV‎ 84 و‎CVV‎ 84)، و‎CVC‎ 2296، و‎CVVC‎ 2352 — من آلة المالك على المقطع الواحد. -/
+/-- **المقاطع:** خانةٌ واحدةٌ مقبولةٌ وقفًا 84 (‎CV‎)، وخانتان بصامتٍ واحد 84 (‎CV‎ ثمّ مدّ: ‎CVV‎)، وخانتان بصامتين تنتهيان بعد ساكنٍ
+مُغلِق 2296 (‎CVC‎) — عدٌّ مباشرٌ على آلة المالك. -/
 theorem kalima_maqati :
     ((List.range 116).filter fun a => Fwaqf (run 0 [a])).length = 84 ∧
     (((List.range 116).flatMap fun a => (List.range 116).map fun b => [a, b]).filter

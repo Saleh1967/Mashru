@@ -6,15 +6,16 @@ import Dal.WiladaKalima
 قولُ المالك في الجلسة (2026-11-01، 12:40 بتوقيت عمّان): «… ولكن يجب ان نوحد الحساب من الان وصاعدا بقانون واحد جبري».
 
 آلةُ الجملة للمالك (`SLGE.Law.Msent`: الخاناتُ الـ116 والحدُّ 116) كما هي. وأصنافُ الكلمة الثلاثة عشر (`Dal.WiladaKalima.sK`)
-نفسُها تتكافأ عليها (`jumla_mutakafi`)، وحدُّ الكلمة مدخلٌ وزنُه صفر: من كلّ صنفٍ يقبل الوصلَ إلى الابتداء، ومن ‎5‎ إلى ‎7‎، وممّا
-سواهما إلى الممتنع. فيخرج من القانون الواحد التكرار لكلّ درجة: `S(k+4) = 336·S(k+3) + 4676·S(k+2)` (`wilada_jumla`)،
-وأعدادُ المالك (`SLGE.Law.sent_levels`) نتيجةٌ له، وبعدها الدرجةُ الرابعة 7490858144 (`jumla_bil_qanun`).
+نفسُها تتكافأ عليها (`jumla_mutakafi`)، وحدُّ الكلمة مدخلٌ وزنُه صفر: من الأصناف ‎1‎ و‎2‎ و‎3‎ و‎9‎ و‎10‎ و‎11‎ إلى الابتداء، ومن ‎5‎ إلى ‎7‎،
+وممّا سواها إلى الممتنع. فيخرج من القانون الواحد التكرار لكلّ درجة: `S(k+4) = 336·S(k+3) + 4676·S(k+2)` (`wilada_jumla`)،
+وأعدادُ المالك (`SLGE.Law.sent_levels`) تُشتقّ به أيضًا، وبعدها الدرجةُ الرابعة 7490858144 (`jumla_bil_qanun`)؛ وقضيّتُه في
+`SLGE/Law.lean` باقيةٌ بحسابها بالجدول `tab`.
 
 والمعاملان من صفوف الأصناف (`jumla_khatwa`)؛ والمبرهَنُ التكرارُ نفسُه، وتأويلُ 336 و4676 بالمقاطع لم يُبنَ.
 
 المبرهنات: 18 بالمعيار الموحَّد: لكلّ 10 (`potS`، `wazn1S`، `pS_le`، `z_khatwa`، `z_dead`، `jumla_khatwa`، `lev_jumla`، `tawlidS`، `awailS`،
-`wilada_jumla`)؛ وتعريفيّة 1 (`saffS_kabir`)؛ وعلى الشاهد 6 برهانُها decide (`saffS_hadd`، `waznS`، `adadS` بمساعداتٍ خاصّة، `jumla_mutakafi`،
-`mayyitS`، `bidaya_jumla`)؛ و1 على الشاهد خارجَ حرف المعيار (`jumla_bil_qanun`: `awailS`)، معلَن.
+`wilada_jumla`)؛ وتعريفيّة 2 (`saffS_kabir`، `mayyitS`)؛ وعلى الشاهد 3 برهانُها decide (`saffS_hadd`، `waznS`، `bidaya_jumla`)؛ و3 على الشاهد خارجَ
+حرف المعيار، معلَن (`adadS`: من ثلاثَ عشرةَ مساعدةً خاصّةً برهانُها decide؛ `jumla_mutakafi`: بنيةٌ منها و`fin_close` للمالك؛ `jumla_bil_qanun`: `awailS`).
 -/
 
 namespace Dal.WiladaJumla
@@ -97,7 +98,7 @@ theorem saffS_kabir (i : Nat) (h : 13 ≤ i) : saffS i = [] := by
   | n + 13, _ => rfl
 
 theorem mayyitS : ∀ i, (i == 8) = true → QS.F i = false ∧ ∀ e ∈ QS.saff i, (e.2.1 == 8) = true := by
-  intro i hi; simp at hi; subst hi; decide +kernel
+  intro i hi; simp at hi; subst hi; exact ⟨rfl, by simp [QS, saffS]⟩
 
 theorem potS : ∀ i, (i == 8) = false → ∀ e ∈ QS.saff i, (e.2.1 == 8) = false → pS e.2.1 + 1 ≤ pS i + 3 * e.1 := by
   intro i hi e he hj
@@ -193,11 +194,11 @@ theorem wilada_jumla (k : Nat) :
   simp only [lev_jumla]
   exact tawlidS z jumla_khatwa k
 
-/-- **أعدادُ المالك من القانون:** 168 و61096 و21443968 (`SLGE.Law.sent_levels`)، والدرجةُ الرابعة 7490858144. -/
-theorem jumla_bil_qanun : Msent.lev 3 0 1 = 168 ∧ Msent.lev 3 0 2 = 61096 ∧ Msent.lev 3 0 3 = 21443968 ∧
+/-- **أعدادُ المالك من القانون:** 0 و168 و61096 و21443968 (`SLGE.Law.sent_levels`)، والدرجةُ الرابعة 7490858144. -/
+theorem jumla_bil_qanun : Msent.lev 3 0 0 = 0 ∧ Msent.lev 3 0 1 = 168 ∧ Msent.lev 3 0 2 = 61096 ∧ Msent.lev 3 0 3 = 21443968 ∧
     Msent.lev 3 0 4 = 7490858144 := by
   simp only [lev_jumla]
   obtain ⟨w0, w1, w2, w3, w4, w5, w7, w9, w10, w11⟩ := bidaya_jumla
-  exact awailS z jumla_khatwa w0 w1 w2 w3 w4 w5 w7 w9 w10 w11
+  exact ⟨w0, awailS z jumla_khatwa w0 w1 w2 w3 w4 w5 w7 w9 w10 w11⟩
 
 end Dal.WiladaJumla
