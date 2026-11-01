@@ -4,20 +4,26 @@
 «الخل ان كل module يجب ان يكون بالترخيص الجبري المتدرج فكل module يخضع لقانون الوراثة والتوريث ويدخل في ال slot machine  وهو حامل جيناته الحسابية»
 وقراءةُ «module» ملفَّ Lean اختيارُه، وقراءةُ «جيناته الحسابية» الحسابَ الصنفيَّ قراءةُ البنّاء تنتظر إمضاءه.
 
+الملفّات: وحداتُ حزمة lake، أي مكتباتُ `lakefile.toml` بأنماطها وجذورُ تنفيذيّاته (تسعُ مجلّدات و`Nabt.lean`)؛ وخارجها `Audit.lean` و`AuditNabt.lean`
+وملفّاتُ `tahaqquq`.
+
 يفحص، بعد `lake build`:
 ١. المولَّد: `Nizam/WahdatJadwal.lean` مخرجُ `scripts/bina_wahdat.py` بايتًا.
-٢. **محلّلُ رؤوس Lean نفسُه** (`Lean.Elab.parseImports`) على كلّ ملفٍّ في المشروع: الملفّاتُ هي ملفّاتُ الجدول، وما يستورده كلٌّ من المشروع صفُّه فيه.
-   فالجدولُ لا يقوم على قراءة بايثون للرؤوس وحدها.
+٢. الملفّاتُ في المجلّدات هي وحداتُ الحزمة من `lakefile.toml`، وهي ملفّاتُ الجدول؛ ثمّ **محلّلُ رؤوس Lean نفسُه** (`Lean.Elab.parseImports`) على
+   كلّ ملفٍّ منها: ما يستورده من المشروع صفُّه في الجدول. فالجدولُ لا يقوم على قراءة بايثون للرؤوس وحدها.
 ٣. **الجيناتُ على بيئة Lean:** لكلّ وحدةٍ في الجدول تستوردها البيئةُ، الثوابتُ التي نوعُها `SLGE.Hisab` فيها هي أسماءُ `jinatKhassa` لها بعينها،
    والخاصُّ منها داخل.
 وما في `Nizam/Wiratha.lean` من تدرّجٍ وترخيصٍ ووراثةٍ يقرّره البناء.
 
-**حدُّه:** وحداتُ التنفيذ (`Faahis.Main` و`Qari.*`) يفحصها ٢ وحده، لأنّ لكلٍّ منها `main` فلا تُستورد معًا؛ و٣ على ما سواها.
+**حدُّه:** جذورُ التنفيذيّات في `lakefile.toml` (تسعة: `Faahis.Main`، و`Jisr.NabtExport`، و`Qari.*` السبعة) يفحصها ٢ وحده، لأنّ في كلٍّ منها `main`،
+وملفُّ الفحص الذي يجمعها تتصادم فيه؛ و٣ على ما سواها. وفحصُ الملفّات في ٢ بلا طفرةٍ تعزله: كلُّ طفرةٍ في المولِّد يقتلها ١ قبله، ولا طفرةَ تضيف
+ملفًّا، و`lakefile.toml` خارج امتدادات الطفرات.
 
-**حدُّ المولِّد:** يقرأ الرؤوسَ سطرًا سطرًا، فلا يرى استيرادًا بعد تعليقٍ في سطره (`/- … -/ import X`)؛ ويكشفه ٢.
+**حدُّ المولِّد:** يقرأ الرؤوسَ سطرًا سطرًا، ويقف عند أوّل سطرٍ ليس `import X` وحده ولا تعليقًا خالصًا ولا فارغًا؛ فلا يرى ما بعده من استيراد
+(ومنه `import A -- c`، و`/- … -/ import X`، و`public import A`)؛ ويكشفه ٢.
 
-الطفرات: P1577 (المولِّد يُسقط «واحدًا فوق» من الدرجة) وP1578 (المولِّد يُسقط ملفّات `Qari`) لـ ١، وP1579 (استيرادٌ بعد تعليقٍ في سطره، لا يراه
-المولِّد) لـ ٢، وP1580 (حسابٌ صنفيٌّ في ملفٍّ لا تسمّيه `jinatKhassa`) لـ ٣؛ وP1581–P1585 على `Nizam/Wiratha.lean` للبناء. وقاتلُ كلٍّ من سجلّ
+الطفرات: P1577 (المولِّد يُسقط «واحدٌ فوق» من الدرجة) وP1578 (المولِّد يُسقط ملفّات `Qari`) لـ ١، وP1579 (استيرادٌ بعد تعليقٍ في سطره، لا يراه
+المولِّد) لـ ٢، وP1580 (حسابٌ صنفيٌّ في ملفٍّ لا تسمّيه `jinatKhassa`) لـ ٣؛ وP1581–P1585 وP1587 على `Nizam/Wiratha.lean` للبناء. وقاتلُ كلٍّ من سجلّ
 تشغيلها في `hawkama/الوراثة_الصنفية.md`.
 التشغيل (بعد lake build): python3 -I tahaqquq/test_wiratha.py
 """
@@ -26,10 +32,11 @@ import re
 import subprocess
 import sys
 import tempfile
+import tomllib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIRS = ["Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari"]
-TANFIDH = ("Faahis.Main", "Qari.")  # وحداتُ التنفيذ: لكلٍّ `main`
+LAKEFILE = os.path.join(ROOT, "lakefile.toml")
 HADAF = os.path.join(ROOT, "Nizam", "WahdatJadwal.lean")
 
 
@@ -98,15 +105,40 @@ def malaffat : List (String × String) := MALAFFAT
 '''
 
 
+def hazma():
+    """وحداتُ حزمة lake من `lakefile.toml`: أنماطُ المكتبات على الملفّات، وجذورُ التنفيذيّات. يُرجع (الوحدات، الجذور)."""
+    cfg = tomllib.load(open(LAKEFILE, "rb"))
+    kull = set()
+    for dp, _, fs in os.walk(ROOT):
+        if ".lake" in dp.split(os.sep) or ".git" in dp.split(os.sep):
+            continue
+        for f in fs:
+            if f.endswith(".lean"):
+                kull.add(os.path.relpath(os.path.join(dp, f), ROOT)[:-5].replace(os.sep, "."))
+    out = set()
+    for lib in cfg.get("lean_lib", []):
+        for g in lib.get("globs", [lib["name"]]):
+            if g.endswith(".+"):
+                out |= {m for m in kull if m.startswith(g[:-2] + ".")}
+            else:
+                out |= {m for m in kull if m == g}
+    juzur = sorted(e["root"] for e in cfg.get("lean_exe", []))
+    return out | set(juzur), juzur
+
+
 def wahdat_mustawrada():
-    """الوحداتُ التي يستوردها ملفُّ الفحص: ما في الجدول إلّا وحدات التنفيذ."""
-    return [m for m, _ in malaffat() if not m.startswith(TANFIDH)]
+    """الوحداتُ التي يستوردها ملفُّ الفحص: ما في الجدول إلّا جذور التنفيذيّات."""
+    _, juzur = hazma()
+    return [m for m, _ in malaffat() if m not in juzur]
 
 
 def fahs_lean(fails):
     mf = malaffat()
     rows = jadwal_lean()
     asma = [n for n, _ in rows]
+    wahdat_hazma, _ = hazma()
+    if set(m for m, _ in mf) != wahdat_hazma:
+        fails.append(f"٢ ملفّاتُ المجلّدات غيرُ وحدات الحزمة: زائدة {sorted(set(m for m, _ in mf) - wahdat_hazma)}، ناقصة {sorted(wahdat_hazma - set(m for m, _ in mf))}")
     if [m for m, _ in mf] != asma:
         fails.append(f"٢ الملفّاتُ غيرُ الجدول: زائدة {sorted(set(m for m, _ in mf) - set(asma))}، ناقصة {sorted(set(asma) - set(m for m, _ in mf))}")
         return 0

@@ -8846,8 +8846,8 @@
  {
   "ism": "P1583_wahdat_jinat_zaid",
   "milaf": "Nizam/Wiratha.lean",
-  "min": "    [(\"SLGE.Law.HisabJadhr.hisabJadhr\", SLGE.Law.HisabJadhr.hisabJadhr.Q.m, SLGE.Law.HisabJadhr.hisabJadhr.K),\n     (\"SLGE.Law.HisabZaid.hisabZaid\", SLGE.Law.HisabZaid.hisabZaid.Q.m, SLGE.Law.HisabZaid.hisabZaid.K)]",
-  "ila": "    [(\"SLGE.Law.HisabJadhr.hisabJadhr\", SLGE.Law.HisabJadhr.hisabJadhr.Q.m, SLGE.Law.HisabJadhr.hisabJadhr.K)]"
+  "min": "[jin! SLGE.Law.HisabJadhr.hisabJadhr, jin! SLGE.Law.HisabZaid.hisabZaid]",
+  "ila": "[jin! SLGE.Law.HisabJadhr.hisabJadhr]"
  },
  {
   "ism": "P1584_wahdat_bila_tawrith",
@@ -8860,5 +8860,11 @@
   "milaf": "Nizam/Wiratha.lean",
   "min": "if istirad i = [] then none else some ⟨ism i, istirad i, i⟩",
   "ila": "if istirad i = [] then none else some ⟨ism i, [], i⟩"
+ },
+ {
+  "ism": "P1587_wahdat_jin_ism",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "`(($(Lean.quote x.getId.toString), ($x).Q.m, ($x).K))",
+  "ila": "`((\"jin\", ($x).Q.m, ($x).K))"
  }
 ]

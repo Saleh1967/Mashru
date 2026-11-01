@@ -9,22 +9,31 @@ import SLGE.Syllable
 قولُ المالك في الجلسة (2026-11-01، 19:11 بتوقيت عمّان):
 «الخل ان كل module يجب ان يكون بالترخيص الجبري المتدرج فكل module يخضع لقانون الوراثة والتوريث ويدخل في ال slot machine  وهو حامل جيناته الحسابية»
 ثمّ اختار من سؤالين متعدّدَي الخيارات نصُّ خياراتهما من البنّاء «كلُّ ملفّ Lean في المشروع» معنًى لـ module،
-و«بعد الفرع الحاليّ في طلبٍ مستقلّ (موصى به)» ترتيبًا. ثمّ رسالتُه 20:05 (في `hawkama/الوراثة_الصنفية.md` §١ بنصّها): «… يجب ان يرث كل lean ما ترخص قبله وكل اختبار ما قبله».
+و«بعد الفرع الحاليّ في طلبٍ مستقلّ (موصى به)» ترتيبًا. ووصفُ الخيار الأوّل «لكلّ ملفٍّ رتبة، ولا يستورد إلّا ما دونها، وجيناتُه أعدادُه؛
+وأكثرُ الملفّات ليس فيها آلة»، والخيارُ الموصى به كان «كلُّ آلةٍ في السلّم (موصى به)». ثمّ رسالتُه 20:05 (في `hawkama/الوراثة_الصنفية.md`
+§١ بنصّها): «… يجب ان يرث كل lean ما ترخص قبله وكل اختبار ما قبله»؛ ووراثةُ الاختبارات منها لم تُبنَ (§٥ أ(5)).
 ثمّ ردُّه 20:25 على مسوّدة التصميم: «Option a»، وقراءتُه §٥ أ من التصميم (الملفّات أوّلًا) قراءةُ البنّاء.
 
 **البناء** (تعيينُ البنّاء، ينتظر إمضاءك):
-- كلُّ ملفّ Lean في المشروع قانونٌ في قاعدةٍ من `Aql/Qaida.lean`: مقدّماتُه ما يستورده من المشروع، ونتيجتُه هو. وما لا يستورد من المشروع شيئًا أصل.
-  والجدولُ مولَّدٌ من رؤوس الملفّات (`Nizam/WahdatJadwal.lean`)، ويطابقه محلّلُ رؤوس Lean نفسُه (`tahaqquq/test_wiratha.py`).
+- الملفّاتُ وحداتُ حزمة lake: مكتباتُ `lakefile.toml` (تسعُ مجلّدات و`Nabt.lean`) وجذورُ تنفيذيّاته؛ وخارجها `Audit.lean` و`AuditNabt.lean` وملفّاتُ
+  `tahaqquq` الأربعة. والجدولُ مولَّدٌ من رؤوسها (`Nizam/WahdatJadwal.lean`)، ويطابقه محلّلُ رؤوس Lean نفسُه (`tahaqquq/test_wiratha.py`).
+- كلُّ ملفٍّ يستورد من المشروع شيئًا قانونٌ في قاعدةٍ من `Aql/Qaida.lean`: مقدّماتُه ما يستورده من المشروع، ونتيجتُه هو. وما لا يستورد من المشروع
+  شيئًا أصلٌ بالتعريف (`aslB`)، وليس قانونًا.
 - رتبةُ الملفّ درجةُ اشتقاقه (`rutba_daraja`)، فالقاعدةُ متدرّجة (`mutadarrija`)، وما رتبتُه صفرٌ لا يُرخَّص إلّا أصلًا (`rutba_sifr_asl` من `Aql/Qaida.lean`).
-- ترتيبُ البناء سلسلةٌ يقبلها فاحصُ القاعدة نفسُه (`Qaida.fahs`) فيُثبت كلَّ ملفّ (`bina_maqbul`)، فكلُّ ملفٍّ مرخَّص (`kull_wahda_murakhkhasa`).
-- وما لا يرث شيئًا قائمةٌ مسمّاة (`bilaWirth`)، فملفٌّ جديدٌ لا يستورد من المشروع شيئًا لا يدخل إلّا بإضافة اسمه إليها (`bilaWirth_iff`). وأيُّها أصلٌ وأيُّها
-  يتيمٌ يُوصل بأبيه قرارُ المالك.
+- ترتيبُ البناء سلسلةٌ يقبلها فاحصُ القاعدة نفسُه (`Qaida.fahs`) فيُثبت كلَّ ملفّ (`bina_maqbul`)، فكلُّ ملفٍّ مرخَّص على أصولها
+  (`kull_wahda_murakhkhasa`) — على هذا الجدول.
+- وما لا يرث شيئًا قائمةٌ مسمّاة (`bilaWirth`، 53)، تطابقها رتبةُ الصفر على هذا الجدول (`bilaWirth_iff`). وملفٌّ جديدٌ يُعاد له توليدُ الجدول (يفحصه ١ و٢
+  في الاختبار)، ثمّ لا يُبنى `bilaWirth_iff` إن لم يستورد من المشروع شيئًا حتى يُضاف اسمُه.
+- **الأصلُ قرارُ المالك، ولم يُبنَ:** الأصلُ في `bina_maqbul` و`kull_wahda_murakhkhasa` ما رتبتُه صفرٌ كلُّه (`aslB`، بالتعريف)، ومنه ما تعدّه الوثيقةُ
+  غيرَ أصل (`Jisr.BabFa` …). والمبنيُّ لقراره `rutba_sifr`: أيًّا كانت الأصولُ ‎`a`‎، ما رتبتُه صفرٌ لا يُرخَّص إلّا منها؛ فما يعدّه يتيمًا لا يُرخَّص حتى
+  يُوصل بأبيه.
 - **الجيناتُ الحسابيّة** (قراءةُ البنّاء): لكلّ ملفٍّ حساباتُه الصنفيّة (`SLGE.Hisab`): اسمُ كلٍّ، وعددُ أصنافه، وثابتُه (`jinatKhassa`). وجيناتُه كلُّها
-  الخاصّةُ مع جينات ما يستورده (`jinat`)، فكلُّ ملفٍّ يحمل جيناتِ كلِّ ما يستورده (`jinat_tuwarrath`، `jinatKull_tuwarrath`). وأنّ `jinatKhassa`
-  هي حساباتُ كلّ ملفٍّ في البيئة بعينها يفحصه `tahaqquq/test_wiratha.py`.
+  الخاصّةُ مع جينات ما يستورده (`jinat`)، فكلُّ ملفٍّ يحمل جيناتِ ما يستورده (`jinat_tuwarrath`، و`jinatKull_tuwarrath` على هذا الجدول). والاسمُ
+  وأعدادُه من الثابت نفسِه (`jin!`)، وأنّ `jinatKhassa` هي حساباتُ كلّ ملفٍّ في البيئة بعينها يفحصه `tahaqquq/test_wiratha.py`.
 
-**حدُّه:** «يدخل في ال slot machine» هنا أنّ ترتيبَ البناء سلسلةٌ يقبلها فاحصُ المحرّك (`Qaida.fahs`)، لا آلةً من `SLGE.Machine`. والوراثةُ هنا وراثةُ
-الاستيراد والجينات، لا اشتقاقُ حساب آلةٍ من حساب أبيها (§٥ ب من التصميم، لم يُبنَ). والجدولُ استيرادُ الرؤوس، لا ما يستعمله الملفّ فعلًا.
+**حدُّه:** «يدخل في ال slot machine» هنا أنّ ترتيبَ البناء سلسلةٌ يقبلها فاحصُ المحرّك (`Qaida.fahs`)، لا آلةً من `SLGE.Machine`. والترخيصُ صياغةُ ترتيب
+البناء في قاعدة المحرّك: يصدق على كلّ جدولِ استيرادٍ بلا دَور مع هذه الأصول، وLean يمنع الدَّور؛ فليس شاهدًا على محتوى الملفّات. والوراثةُ هنا
+وراثةُ الاستيراد والجينات، لا اشتقاقُ حساب آلةٍ من حساب أبيها (§٥ ب من التصميم، لم يُبنَ). والجدولُ استيرادُ الرؤوس، لا ما يستعمله الملفّ فعلًا.
 -/
 
 namespace Nizam
@@ -69,14 +78,14 @@ theorem mutadarrija : Mutadarrija qaida rutba := by
 theorem bina_maqbul : fahs qaida aslB [] silsila = some tartib ∧ ∀ i < N, i ∈ tartib := by
   decide +kernel
 
-/-- **كلُّ ملفٍّ مرخَّص** في القاعدة على أصولها. -/
+/-- **كلُّ ملفٍّ مرخَّص** في القاعدة على أصولها (`aslB`: ما رتبتُه صفر) — على هذا الجدول. -/
 theorem kull_wahda_murakhkhasa : ∀ i < N, Murakhkhas qaida (fun p => aslB p = true) i := by
   intro i hi
   exact fahs_sahih qaida aslB silsila [] tartib (by simp) bina_maqbul.1 i (bina_maqbul.2 i hi)
 
-/-- **ما رتبتُه صفرٌ أصل:** كلُّ ملفٍّ مرخَّصٍ رتبتُه صفر أصلٌ في الجدول. -/
-theorem rutba_sifr (i : Nat) (h : Murakhkhas qaida (fun p => aslB p = true) i) (h0 : rutba i = 0) :
-    aslB i = true :=
+/-- **ما رتبتُه صفرٌ لا يُرخَّص إلّا أصلًا:** أيًّا كانت الأصولُ ‎`a`‎ (قرارُ المالك)، كلُّ ملفٍّ مرخَّصٍ عليها رتبتُه صفرٌ منها. -/
+theorem rutba_sifr (a : Nat → Bool) (i : Nat) (h : Murakhkhas qaida (fun p => a p = true) i) (h0 : rutba i = 0) :
+    a i = true :=
   rutba_sifr_asl qaida rutba _ mutadarrija h h0
 
 /-- ما لا يرث من المشروع شيئًا: كلُّ ملفٍّ رتبتُه صفر. أيُّها أصلٌ وأيُّها يتيمٌ يُوصل بأبيه قرارُ المالك (`hawkama/الوراثة_الصنفية.md`). -/
@@ -95,8 +104,8 @@ def bilaWirth : List String := [
   "Nizam.Asas", "Nizam.Damj", "Nizam.Qiyas", "Nizam.WahdatJadwal",
   "SLGE.AwamilTable", "SLGE.Core", "SLGE.MadlulAwwalan", "SLGE.TarkibLit"]
 
-/-- **ما لا يرث مسمًّى:** رتبةُ الملفّ صفرٌ إذا وفقط إذا كان اسمُه في `bilaWirth` — على الجدول. فملفٌّ جديدٌ لا يستورد من المشروع
-شيئًا لا يدخل إلّا بإضافة اسمه. -/
+/-- **ما لا يرث مسمًّى:** رتبةُ الملفّ صفرٌ إذا وفقط إذا كان اسمُه في `bilaWirth` — على هذا الجدول. فملفٌّ جديدٌ لا يستورد من المشروع
+شيئًا، بعد إعادة توليد الجدول (يفحصها الاختبار)، لا يُبنى معه هذا حتى يُضاف اسمُه. -/
 theorem bilaWirth_iff : (∀ i < N, (rutba i = 0 ↔ ism i ∈ bilaWirth)) ∧ ∀ m ∈ bilaWirth, ∃ i < N, ism i = m := by
   decide +kernel
 
@@ -105,18 +114,17 @@ theorem bilaWirth_iff : (∀ i < N, (rutba i = 0 ↔ ism i ∈ bilaWirth)) ∧ �
 /-- جينٌ حسابيّ: اسمُ الحساب الصنفيّ، وعددُ أصنافه، وثابتُ طوله. -/
 abbrev Jin := String × Nat × Nat
 
-/-- جيناتُ الملفّ الخاصّة: حساباتُه الصنفيّة بأسمائها، وعددُ الأصناف والثابتُ مقروءان من الحساب نفسِه. -/
+/-- جينُ الحساب الصنفيّ ‎`x`‎: اسمُه وعددُ أصنافه وثابتُه، كلُّها من الثابت نفسِه، فلا يفترق الاسمُ عن أعداده. -/
+macro "jin!" x:ident : term => `(($(Lean.quote x.getId.toString), ($x).Q.m, ($x).K))
+
+/-- جيناتُ الملفّ الخاصّة: حساباتُه الصنفيّة. -/
 def jinatKhassa (m : String) : List Jin :=
   if m = "SLGE.Root" then
-    [("SLGE.Law.HisabJadhr.hisabJadhr", SLGE.Law.HisabJadhr.hisabJadhr.Q.m, SLGE.Law.HisabJadhr.hisabJadhr.K),
-     ("SLGE.Law.HisabZaid.hisabZaid", SLGE.Law.HisabZaid.hisabZaid.Q.m, SLGE.Law.HisabZaid.hisabZaid.K)]
+    [jin! SLGE.Law.HisabJadhr.hisabJadhr, jin! SLGE.Law.HisabZaid.hisabZaid]
   else if m = "SLGE.Law" then
-    [("SLGE.Law.HisabKalima.hisabWaqf", SLGE.Law.HisabKalima.hisabWaqf.Q.m, SLGE.Law.HisabKalima.hisabWaqf.K),
-     ("SLGE.Law.HisabKalima.hisabWasl", SLGE.Law.HisabKalima.hisabWasl.Q.m, SLGE.Law.HisabKalima.hisabWasl.K),
-     ("SLGE.Law.HisabJumla.hisabJumla", SLGE.Law.HisabJumla.hisabJumla.Q.m, SLGE.Law.HisabJumla.hisabJumla.K)]
+    [jin! SLGE.Law.HisabKalima.hisabWaqf, jin! SLGE.Law.HisabKalima.hisabWasl, jin! SLGE.Law.HisabJumla.hisabJumla]
   else if m = "SLGE.Syllable" then
-    [("SLGE.Law.HisabMaqta.hisabWaqf", SLGE.Law.HisabMaqta.hisabWaqf.Q.m, SLGE.Law.HisabMaqta.hisabWaqf.K),
-     ("SLGE.Law.HisabMaqta.hisabWasl", SLGE.Law.HisabMaqta.hisabWasl.Q.m, SLGE.Law.HisabMaqta.hisabWasl.K)]
+    [jin! SLGE.Law.HisabMaqta.hisabWaqf, jin! SLGE.Law.HisabMaqta.hisabWasl]
   else []
 
 /-- جيناتُ الملفّ بالوراثة بوقود ‎`k`‎: الخاصّةُ، ثمّ جيناتُ ما يستورده بوقود ‎`k − 1`‎. -/
@@ -174,8 +182,7 @@ theorem jinatKull_tuwarrath (i : Nat) (hi : i < N) (j : Nat) (hj : j ∈ istirad
   rw [hk]
   exact jinat_tuwarrath k i j hj g (jinat_ratib_le j (by omega) g hg)
 
-/-- **الشاهد:** آلاتُ المالك السبع في ثلاثة ملفّات بحساباتها، وأصنافُها وثوابتُها مقروءةٌ منها، وملفّا التكرار يحملان جيناتِ ملفّات المالك
-التي تحتهما. -/
+/-- **الشاهد:** آلاتُ المالك السبع في ثلاثة ملفّات بحساباتها، وأصنافُها وثوابتُها مقروءةٌ منها. -/
 theorem shahid_jinat :
     jinatKhassa "SLGE.Root" = [("SLGE.Law.HisabJadhr.hisabJadhr", 5, 1), ("SLGE.Law.HisabZaid.hisabZaid", 10, 2)] ∧
     jinatKhassa "SLGE.Law" = [("SLGE.Law.HisabKalima.hisabWaqf", 13, 2), ("SLGE.Law.HisabKalima.hisabWasl", 13, 2),
