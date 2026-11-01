@@ -140,7 +140,8 @@ structure Mutakafi (M : Machine) (Q : Asnaf) (U : Nat) (s : Nat → Nat) (P : Na
     ((List.range M.A).filter fun b => M.ω q b == u && s (M.δ q b) == j).length =
       (((Q.saff (s q)).filter fun e => e.1 == u && e.2.1 == j).map fun e => e.2.2).sum
 
-/-- **قانونُ العدّ الواحد:** على أصنافٍ متكافئة، عدُّ المالك من الحالة هو العدُّ على صفّ صنفها، لكلّ طولٍ ووزن. -/
+/-- **قانونُ العدّ الواحد:** على أصنافٍ متكافئة على الحالات ‎`P`‎، عدُّ المالك من كلّ حالةٍ منها (‎`P q`‎) هو العدُّ على صفّ صنفها، لكلّ طولٍ
+ووزن. -/
 theorem qanun_adad (M : Machine) (Q : Asnaf) (U : Nat) (s : Nat → Nat) (P : Nat → Prop)
     (h : Mutakafi M Q U s P) : ∀ f w q, P q → M.C f w q = Q.C f w (s q)
   | 0, w, q, hq => by simp only [Machine.C, Machine.base, Asnaf.C, Asnaf.base, h.qubul q hq]
