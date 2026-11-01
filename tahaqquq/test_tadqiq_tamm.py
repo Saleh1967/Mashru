@@ -14,7 +14,7 @@
 والوحداتُ: ما تحت SLGE وDal وMadlul وJisr وAql وNizam وFaahis وQari ممّا له ملفُّ مصدر.
 
 ويرفض: مبرهنةً عامّةً ليس لها `#print axioms <اسمها>` في Audit.lean خارج التعليقات (`bawwaba.strip_comments`)؛ وتصريحًا لا يقع اسمُه
-في موضعه من سطره (فيُكشف خطأُ وحدة العمود بدل أن تفوت مبرهنةٌ بصمت؛ ويُستثنى `instance` بلا اسم، وموضعُه أوّلُ الكلمة)؛ وغيابَ البناء (لا `.ilean`)؛ ووحدةً مصدرُها
+في موضعه من سطره (فيُكشف خطأُ وحدة العمود بدل أن تفوت مبرهنةٌ بصمت؛ ويُستثنى `instance` بلا اسم، وما يولّده `macro` (`_aux_…_macroRules_…`)، وموضعُهما أوّلُ الكلمة)؛ وغيابَ البناء (لا `.ilean`)؛ ووحدةً مصدرُها
 موجود ولا `.ilean` لها. الطفرات: P838 (مبرهنةٌ بلا سطر)، وP839 (سطرٌ في تعليق)، وP840 (خاصّةٌ صارت عامّة). وفرعا غياب البناء والوحدة بلا
 `.ilean` بلا طفرة: الطفراتُ تبدّل نصًّا في ملفٍّ قائم، ولا تحذف بناءً ولا تُنشئ وحدة.
 التشغيل (بعد lake build): python3 -I tahaqquq/test_tadqiq_tamm.py
@@ -59,7 +59,7 @@ def mubarhanat(mod, fails):
         line, col = pos[4], pos[5]
         pre = src[line][:col] if line < len(src) else ""
         tok = TOKEN.match(src[line][col:]) if line < len(src) else None
-        if not (tok and name.endswith(tok.group(0))) and not src[line][col:].startswith("instance"):
+        if not (tok and name.endswith(tok.group(0))) and not src[line][col:].startswith(("instance", "macro ")):
             fails.append(f"موضعُ التصريح {name} في {mod} لا يقع عليه اسمُه (س{line + 1}، ع{col})")
             continue
         if not KIND.search(pre):
