@@ -136,6 +136,10 @@
       في وحدات المشروع (SLGE وDal وMadlul وJisr وAql وNizam وFaahis وQari؛ تصريحٌ تسبق اسمَه في سطره theorem أو lemma) لها `#print axioms`
       في Audit.lean خارج التعليقات — من ملفّات `.ilean` التي يكتبها lake build؛ فالبند ٣ يعدّ ما في Audit.lean، وهذا يمنع أن تُبنى مبرهنةٌ
       ولا تُدقَّق.
+  ٥خ٢. الحسابُ الصنفيّ (tahaqquq/test_hisab.py؛ 2026-11-01؛ قولُ المالك، لفظُه ووقتُه 17:56 من ملخّص الجلسة: «… يجب ان تجعل كل المشروع لا يعمل الا وفق هذا الحساب …»، وقراءتُه قراءةُ البنّاء
+      تنتظر إمضاءه؛ hawkama/الحساب_الصنفي.md): على بيئة Lean نفسِها لا يعود الجدولُ المحذوف (tab)، ولكلّ تعريفٍ نوعُه SLGE.Machine حسابٌ صنفيّ
+      (SLGE.Hisab)، وكلُّ مبرهنةٍ في قضيّتها عددُ درجةٍ لآلةٍ بأرقامٍ حرفيّة يبلغ برهانُها Hisab.lev_eq أو Hisab.C_eq؛ وعلى مرآة بايثون
+      (tahaqquq/hisab_sinfi.py) كلُّ عددٍ في قضايا المالك يساوي الاستنفادَ على المرآة والعدَّ على صفوف الأصناف المقروءة من Lean.
   ٥غ. سرعة الفاحص (tahaqquq/test_sura.py؛ س1، 2026-10-24): مضاعفةُ مخزنٍ مولَّد لا تزيد زمنَ المعالج على ثلاثة أضعاف، للفحص وللسؤال —
       يمنع البحثَ الخطّيّ في الأصول أو القوانين (التربيعيّ)، ولا يثبت الخطّيّة. وهو آخرُ IKHTIBARAT_TAFRAT.
   ٦. كلّ طفرة في tafrat.json تُقتل: تُفشل البناء بخطأ Lean في ملفٍّ وسطر (`KHATA_BINA`) أو تُفشل اختبارًا برمزٍ موجب. طفرة تعيش = اختبارٌ مرآة.
@@ -230,6 +234,8 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_qiyas_intrubiya.py",
     "tahaqquq/test_nabt_tadqiq.py",
     "tahaqquq/test_sabq_tajmid.py",
+    # قبل الأخير: يستورد وحدات المشروع كلَّها في Lean، فلا يجري إلّا على ما نجا ممّا قبله.
+    "tahaqquq/test_hisab.py",
     # آخرُها عمدًا: نموُّ الزمن (س1) لا يقتل إلّا طفرةً لا تغيّر الدلالة (P466، P467)، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_sura.py",
 )
@@ -1222,6 +1228,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥خ {out.strip().splitlines()[-1] if out.strip() else 'تمامُ التدقيق: ?'}")
     if code != 0:
         fails.append("اختبار تمام التدقيق فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_hisab.py"])
+    report.append(f"٥خ٢ {out.strip().splitlines()[-1] if out.strip() else 'الحسابُ الصنفيّ: ?'}")
+    if code != 0:
+        fails.append("اختبار الحساب الصنفيّ فشل:\n" + out[-1500:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_sura.py"])
     report.append(f"٥غ سرعة الفاحص (نموٌّ غير تربيعيّ): {' · '.join(out.strip().splitlines()) if out.strip() else '?'}")
     if code != 0:

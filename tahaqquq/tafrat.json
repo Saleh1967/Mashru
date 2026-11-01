@@ -8647,25 +8647,25 @@
  },
  {
   "ism": "P1551_qanun_adad_bila_adad",
-  "milaf": "Dal/QanunAdad.lean",
+  "milaf": "SLGE/HisabSinfi.lean",
   "min": "then e.2.2 * C f (w - e.1) e.2.1 else 0).sum",
   "ila": "then C f (w - e.1) e.2.1 else 0).sum"
  },
  {
   "ism": "P1552_qanun_adad_qubul_bila_wazn",
-  "milaf": "Dal/QanunAdad.lean",
+  "milaf": "SLGE/HisabSinfi.lean",
   "min": "if w = 0 ∧ Q.F i = true then 1 else 0",
   "ila": "if Q.F i = true then 1 else 0"
  },
  {
   "ism": "P1553_jadhr_saff_sinf1",
-  "milaf": "Dal/WiladaJadhr.lean",
+  "milaf": "SLGE/Root.lean",
   "min": "(1, 2, 9), (1, 3, 9), (1, 4, 2)]",
   "ila": "(1, 2, 10), (1, 3, 9), (1, 4, 1)]"
  },
  {
   "ism": "P1554_jadhr_sinfT",
-  "milaf": "Dal/WiladaJadhr.lean",
+  "milaf": "SLGE/Law.lean",
   "min": "[1, 1, 0, 1, 1, 1, 1, 0, 0,",
   "ila": "[1, 1, 0, 1, 1, 1, 1, 0, 1,"
  },
@@ -8689,19 +8689,19 @@
  },
  {
   "ism": "P1558_kalima_saff_fatha",
-  "milaf": "Dal/WiladaKalima.lean",
-  "min": "(1, 9, 10), (1, 10, 9), (1, 11, 9)]",
-  "ila": "(1, 9, 9), (1, 10, 10), (1, 11, 9)]"
+  "milaf": "SLGE/Law.lean",
+  "min": "| 1 => [(0, 3, 1), (1, 1, 28), (1, 2, 56), (1, 8, 3), (1, 9, 10), (1, 10, 9), (1, 11, 9)]",
+  "ila": "| 1 => [(0, 3, 1), (1, 1, 28), (1, 2, 56), (1, 8, 3), (1, 9, 9), (1, 10, 10), (1, 11, 9)]"
  },
  {
   "ism": "P1559_kalima_waqf_ka_wasl",
-  "milaf": "Dal/WiladaKalima.lean",
+  "milaf": "SLGE/Law.lean",
   "min": "!(i == 0 || i == 7 || i == 8)",
   "ila": "!(i == 0 || i == 4 || i == 7 || i == 8)"
  },
  {
   "ism": "P1560_kalima_sinf_mughliq",
-  "milaf": "Dal/WiladaKalima.lean",
+  "milaf": "SLGE/Law.lean",
   "min": "then 10 else if sinfT.getD (q - 67) 0 = 1 then 9 else 11",
   "ila": "then 9 else if sinfT.getD (q - 67) 0 = 1 then 10 else 11"
  },
@@ -8725,7 +8725,7 @@
  },
  {
   "ism": "P1564_jumla_hadd_bad_madd",
-  "milaf": "Dal/WiladaJumla.lean",
+  "milaf": "SLGE/Law.lean",
   "min": "| 5 => [(0, 7, 1),",
   "ila": "| 5 => [(0, 8, 1),"
  },
@@ -8737,8 +8737,68 @@
  },
  {
   "ism": "P1566_jumla_juhd",
-  "milaf": "Dal/WiladaJumla.lean",
+  "milaf": "SLGE/Law.lean",
   "min": "if i = 1 ∨ i = 2 then 2 else",
   "ila": "if i = 1 ∨ i = 2 then 1 else"
+ },
+ {
+  "ism": "P1567_jadhr_bila_hisab",
+  "milaf": "Dal/WiladaJadhr.lean",
+  "min": "namespace Dal.WiladaJadhr\nopen SLGE SLGE.Law SLGE.Law.HisabJadhr\n",
+  "ila": "namespace Dal.WiladaJadhr\nopen SLGE SLGE.Law SLGE.Law.HisabJadhr\n\n/-- عددٌ للجذر بالاستنفاد المباشر لا بالحساب الصنفيّ. -/\nprivate theorem adad_bila_hisab : Mroot.lev 3 0 1 = 28 := by decide +kernel\n"
+ },
+ {
+  "ism": "P1568_ala_bila_hisab",
+  "milaf": "Dal/WiladaJumla.lean",
+  "min": "namespace Dal.WiladaJumla\n",
+  "ila": "namespace Dal.WiladaJumla\n\n/-- آلةٌ بلا حسابٍ صنفيّ. -/\ndef MsentWasl : SLGE.Machine := SLGE.Law.mk 117 SLGE.Law.Fwasl\n"
+ },
+ {
+  "ism": "P1569_mirat_zaid",
+  "milaf": "tahaqquq/hisab_sinfi.py",
+  "min": "augs = [20, 0, 13, 18, 27, 28, 14, 11, 1, 2]",
+  "ila": "augs = [0, 13, 18, 27, 28, 14, 11, 1, 2]"
+ },
+ {
+  "ism": "P1570_zaid_saff",
+  "milaf": "SLGE/Root.lean",
+  "min": "| 8 => [(1, 1, 8), (1, 2, 16), (1, 6, 92)]",
+  "ila": "| 8 => [(1, 1, 8), (1, 2, 17), (1, 6, 91)]"
+ },
+ {
+  "ism": "P1571_maqta_saff",
+  "milaf": "SLGE/Syllable.lean",
+  "min": "| 2 => [(0, 3, 1), (1, 5, 27), (1, 7, 88)]",
+  "ila": "| 2 => [(0, 3, 1), (1, 5, 28), (1, 7, 87)]"
+ },
+ {
+  "ism": "P1572_maqta_sinf",
+  "milaf": "SLGE/Syllable.lean",
+  "min": "else if q ≤ 34 then 5 else if q ≤ 36 then 6 else if q ≤ 66 then 7 else if q ≤ 95 then 5 else 7",
+  "ila": "else if q ≤ 34 then 5 else if q ≤ 36 then 6 else if q ≤ 66 then 7 else if q ≤ 95 then 6 else 7"
+ },
+ {
+  "ism": "P1573_zaid_sinfA",
+  "milaf": "SLGE/Root.lean",
+  "min": "def sinfA : List Nat := [1, 1, 0, 0,",
+  "ila": "def sinfA : List Nat := [1, 0, 0, 0,"
+ },
+ {
+  "ism": "P1574_hisab_juhd",
+  "milaf": "SLGE/HisabSinfi.lean",
+  "min": "  juhd : ∀ i, mayyit i = false → ∀ e ∈ Q.saff i, mayyit e.2.1 = false → pot e.2.1 + 1 ≤ pot i + K * e.1",
+  "ila": "  juhd : ∀ i, mayyit i = false → ∀ e ∈ Q.saff i, mayyit e.2.1 = false → pot e.2.1 ≤ pot i + K * e.1"
+ },
+ {
+  "ism": "P1575_jumla_hisab_K",
+  "milaf": "SLGE/Law.lean",
+  "min": "  K := 3\n",
+  "ila": "  K := 2\n"
+ },
+ {
+  "ism": "P1576_jadwal_yaud",
+  "milaf": "Dal/WiladaKalima.lean",
+  "min": "namespace Dal.WiladaKalima\nopen SLGE SLGE.Law SLGE.Law.HisabKalima\n",
+  "ila": "namespace Dal.WiladaKalima\nopen SLGE SLGE.Law SLGE.Law.HisabKalima\n\n/-- الجدولُ المحذوف يعود باسمه. -/\ndef _root_.SLGE.Machine.row (M : SLGE.Machine) (q : Nat) : Nat := M.A + q\n"
  }
 ]

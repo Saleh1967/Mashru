@@ -73,14 +73,141 @@ theorem root_close : ∀ q < 31, ∀ a < Mroot.A, Mroot.δ q a < 31 := by
   show ∀ q < 31, ∀ a < 29, δr q a < 31
   decide +kernel
 
-theorem root_lev_tab (j : Nat) (hj : j ≤ 5) :
-    Mroot.lev 3 0 j = ((Mroot.tab 31 5 (3 * j)).getD j []).getD 0 0 :=
-  (Mroot.tab_eq 31 5 root_close (3 * j) j 0 hj (by decide)).symm
+/-! ### الحسابُ الصنفيّ للجذر (`SLGE/HisabSinfi.lean`)
+
+أُضيف بإذن المالك في الجلسة (2026-11-01؛ اختار «عدّل SLGE نفسَها»، انظر رأس `SLGE/HisabSinfi.lean`)، منقولًا من `Dal/WiladaJadhr.lean`
+(#119)، لتُبرهَن به أعدادُ الجذر بعده (`root3`، `root4`، `root5`) — وكانت بالجدول `tab` (`root_lev_tab`، حُذف). صنفُ الحامل عددُ ما
+يتجاور معه من الحوامل غيرِ الألف (`sinfT`، `SLGE/Law.lean`)، وحالاتُ الآلة بعد الحامل تتكافأ بصنفه: ‎0‎ ابتداء، و‎1‎–‎3‎ بعد حاملٍ بلا مجاورٍ
+وبمجاورٍ وبمجاورَين، و‎4‎ ممتنع. والأصنافُ وصفوفُها تعيينُ البنّاء، يفحصه التكافؤُ نفسُه (`jadhr_mutakafi`)؛ وأعدادُ الجذر الثلاثة تمرّ
+بـ `Hisab.lev_eq`.
+-/
+
+namespace HisabJadhr
+
+/-- صنفُ حالة الآلة: الابتداء 0، وبعد الحامل ‎`c`‎ ‎`1 + sinf c`‎، والممتنع 4. -/
+def sJ (q : Nat) : Nat := if q = 0 then 0 else if q ≤ 29 then 1 + sinfT.getD (q - 1) 0 else 4
+
+/-- **صفوفُ الأصناف** (الوزن، الصنفُ الهدف، العدد): بعد الحامل يسقط من صنفه بعددِ ما يجاوره، والألفُ إلى الممتنع. -/
+def saffJ : Nat → List (Nat × Nat × Nat)
+  | 0 => [(1, 1, 9), (1, 2, 10), (1, 3, 9), (1, 4, 1)]
+  | 1 => [(1, 1, 9), (1, 2, 10), (1, 3, 9), (1, 4, 1)]
+  | 2 => [(1, 1, 9), (1, 2, 9), (1, 3, 9), (1, 4, 2)]
+  | 3 => [(1, 1, 9), (1, 2, 10), (1, 3, 7), (1, 4, 3)]
+  | 4 => [(1, 4, 29)]
+  | _ => []
+
+def QJ : Asnaf := ⟨5, saffJ, fun i => i == 1 || i == 2 || i == 3⟩
+
+/-- **التكافؤ:** حالاتُ آلة الجذر تتكافأ بأصنافها. -/
+theorem jadhr_mutakafi : Mutakafi Mroot QJ 1 sJ (fun q => q < 31) where
+  maghluq := fun q hq b hb => root_close q hq b hb
+  sinf := by show ∀ q < 31, sJ q < 5; decide +kernel
+  wazn := fun _ _ _ _ => Nat.le_refl 1
+  saff := by show ∀ q < 31, ∀ e ∈ saffJ (sJ q), e.1 ≤ 1 ∧ e.2.1 < 5; decide +kernel
+  qubul := by show ∀ q < 31, decide (1 ≤ q ∧ q ≤ 29) = (sJ q == 1 || sJ q == 2 || sJ q == 3); decide +kernel
+  adad := by
+    show ∀ q < 31, ∀ u ≤ 1, ∀ j < 5, ((List.range 29).filter fun b => (1 : Nat) == u && sJ (δr q b) == j).length =
+      (((saffJ (sJ q)).filter fun e => e.1 == u && e.2.1 == j).map fun e => e.2.2).sum
+    decide +kernel
+
+/-- ما يُكمل الجذرَ بطول ‎`n`‎ من الصنف ‎`i`‎. -/
+def x (i n : Nat) : Nat := QJ.C n n i
+
+theorem mayyitJ : ∀ i, (i == 4) = true → QJ.F i = false ∧ ∀ e ∈ QJ.saff i, (e.2.1 == 4) = true := by
+  intro i hi; simp at hi; subst hi; exact ⟨rfl, by simp [QJ, saffJ]⟩
+
+theorem potJ : ∀ i, (i == 4) = false → ∀ e ∈ QJ.saff i, (e.2.1 == 4) = false →
+    (fun _ => 0) e.2.1 + 1 ≤ (fun _ => 0) i + 1 * e.1 := by
+  intro i _ e he _
+  have : i < 5 ∨ 5 ≤ i := by omega
+  rcases this with h | h
+  · have : ∀ i < 5, ∀ e ∈ saffJ i, e.1 = 1 := by decide +kernel
+    simp only [this i h e he]; omega
+  · have : saffJ i = [] := by
+      match i, h with
+      | n + 5, _ => rfl
+    simp [QJ, this] at he
+
+theorem wazn1 : ∀ i, ∀ e ∈ QJ.saff i, e.1 ≤ 1 := by
+  intro i e he
+  have : i < 5 ∨ 5 ≤ i := by omega
+  rcases this with h | h
+  · have : ∀ i < 5, ∀ e ∈ saffJ i, e.1 ≤ 1 := by decide +kernel
+    exact this i h e he
+  · have : saffJ i = [] := by
+      match i, h with
+      | n + 5, _ => rfl
+    simp [QJ, this] at he
+
+/-- **الحسابُ الصنفيّ للجذر:** الأصنافُ الخمسة، والجهدُ صفرٌ بثابتٍ ‎1‎، والممتنعُ ميّت. -/
+def hisabJadhr : Hisab Mroot 0 where
+  Q := QJ
+  U := 1
+  s := sJ
+  P := fun q => q < 31
+  mutakafi := jadhr_mutakafi
+  bidaya := by decide
+  K := 1
+  pot := fun _ => 0
+  mayyit := (· == 4)
+  mayyit_sahih := mayyitJ
+  juhd := potJ
+
+/-- **العدُّ بالحساب الصنفيّ:** عددُ الجذور بطول ‎`n`‎ هو العدُّ من صنف الابتداء. -/
+theorem lev_jadhr (n : Nat) : Mroot.lev 3 0 n = x 0 n :=
+  hisabJadhr.lev_eq 3 n n (by show 1 * n + 0 ≤ 3 * n; omega) (by show 1 * n + 0 ≤ n; omega)
+
+theorem x_dead (n : Nat) : x 4 n = 0 := QJ.mayyit_sifr (· == 4) mayyitJ n n 4 rfl
+
+/-- **الخطوة:** كلُّ صنفٍ بطول ‎`n + 1`‎ مجموعُ صفّه على الأصناف بطول ‎`n`‎. -/
+theorem x_khatwa (i n : Nat) : x i (n + 1) = QJ.base (n + 1) i +
+    ((QJ.saff i).map fun e => e.2.2 * (if e.1 = 0 then x e.2.1 (n + 1) else x e.2.1 n)).sum := by
+  have := QJ.C_khatwa1 1 0 (fun _ => 0) (· == 4) mayyitJ potJ (Nat.le_refl 1) (fun _ => Nat.le_refl 0) wazn1 n i
+  simp only [Nat.one_mul, Nat.add_zero] at this
+  exact this
+
+theorem x_bidaya (i : Nat) : x i 0 = QJ.base 0 i := rfl
+
+theorem jadhr_khatwa (n : Nat) :
+    x 0 (n + 1) = 9 * x 1 n + 10 * x 2 n + 9 * x 3 n ∧
+    x 1 (n + 1) = 9 * x 1 n + 10 * x 2 n + 9 * x 3 n ∧
+    x 2 (n + 1) = 9 * x 1 n + 9 * x 2 n + 9 * x 3 n ∧
+    x 3 (n + 1) = 9 * x 1 n + 10 * x 2 n + 7 * x 3 n := by
+  refine ⟨?_, ?_, ?_, ?_⟩ <;>
+  · rw [x_khatwa]
+    simp [QJ, saffJ, Asnaf.base, x_dead]
+    omega
+
+theorem jadhr_shahid : x 1 0 = 1 ∧ x 2 0 = 1 ∧ x 3 0 = 1 := by decide +kernel
+
+/-- صفوفُ خطوة الجذر على متتاليةٍ مجرّدة. -/
+def KhatwaJ (X : Nat → Nat → Nat) : Prop := ∀ n,
+    X 0 (n + 1) = 9 * X 1 n + 10 * X 2 n + 9 * X 3 n ∧
+    X 1 (n + 1) = 9 * X 1 n + 10 * X 2 n + 9 * X 3 n ∧
+    X 2 (n + 1) = 9 * X 1 n + 9 * X 2 n + 9 * X 3 n ∧
+    X 3 (n + 1) = 9 * X 1 n + 10 * X 2 n + 7 * X 3 n
+
+/-- **الأوائلُ من صفوف الخطوة:** 28 و756 و20430 و552078 و14918778. -/
+theorem awailJ (X : Nat → Nat → Nat) (h : KhatwaJ X) (h1 : X 1 0 = 1) (h2 : X 2 0 = 1) (h3 : X 3 0 = 1) :
+    X 0 1 = 28 ∧ X 0 2 = 756 ∧ X 0 3 = 20430 ∧ X 0 4 = 552078 ∧ X 0 5 = 14918778 := by
+  obtain ⟨a0, a1, a2, a3⟩ := h 0
+  obtain ⟨b0, b1, b2, b3⟩ := h 1
+  obtain ⟨c0, c1, c2, c3⟩ := h 2
+  obtain ⟨d0, d1, d2, d3⟩ := h 3
+  obtain ⟨e0, e1, e2, e3⟩ := h 4
+  simp only [Nat.reduceAdd] at *
+  refine ⟨by omega, by omega, by omega, by omega, by omega⟩
+
+/-- **أعدادُ الجذر بالحساب الصنفيّ.** -/
+theorem adad_jadhr : x 0 1 = 28 ∧ x 0 2 = 756 ∧ x 0 3 = 20430 ∧ x 0 4 = 552078 ∧ x 0 5 = 14918778 :=
+  awailJ x jadhr_khatwa jadhr_shahid.1 jadhr_shahid.2.1 jadhr_shahid.2.2
+
+end HisabJadhr
 
 /-- **الاستنفادُ في الجذر:** ‎20,430‎ ثلاثيًّا من ‎21,952‎، و‎552,078‎ رباعيًّا، و‎14,918,778‎ خماسيًّا. -/
-theorem root3 : Mroot.lev 3 0 3 = 20430 := by rw [root_lev_tab 3 (by decide)]; decide +kernel
-theorem root4 : Mroot.lev 3 0 4 = 552078 := by rw [root_lev_tab 4 (by decide)]; decide +kernel
-theorem root5 : Mroot.lev 3 0 5 = 14918778 := by rw [root_lev_tab 5 (by decide)]; decide +kernel
+theorem root3 : Mroot.lev 3 0 3 = 20430 := by rw [HisabJadhr.lev_jadhr]; exact HisabJadhr.adad_jadhr.2.2.1
+theorem root4 : Mroot.lev 3 0 4 = 552078 := by rw [HisabJadhr.lev_jadhr]; exact HisabJadhr.adad_jadhr.2.2.2.1
+theorem root5 : Mroot.lev 3 0 5 = 14918778 := by rw [HisabJadhr.lev_jadhr]; exact HisabJadhr.adad_jadhr.2.2.2.2
 
 /-- **رقمُ الجذر:** الجذورُ المرخَّصة بطول ‎k‎ تقابل ‎[0, lev k)‎ بالرتبة. -/
 theorem root_numbering (k : Nat) :
@@ -262,13 +389,205 @@ theorem aug_close : ∀ q < 97, ∀ a < Maug.A, Maug.δ q a < 97 := by
   show ∀ q < 97, ∀ a < 116, δa q a < 97
   decide +kernel
 
-theorem aug_lev_tab (j : Nat) (hj : j ≤ 2) :
-    Maug.lev 3 0 j = ((Maug.tab 97 2 (3 * j)).getD j []).getD 0 0 :=
-  (Maug.tab_eq 97 2 aug_close (3 * j) j 0 hj (by decide)).symm
+/-! ### الحسابُ الصنفيّ للزوائد (`SLGE/HisabSinfi.lean`)
+
+أُضيف بإذن المالك في الجلسة (2026-11-01؛ اختار «عدّل SLGE نفسَها»، انظر رأس `SLGE/HisabSinfi.lean`) لتُبرهَن به عددا الوحدات بعده
+(`units1`، `units2`) — وكانا بالجدول `tab` (`aug_lev_tab`، حُذف). حالاتُ آلة الزوائد السبعُ والتسعون تتكافأ في عشرة أصناف (`HisabZaid.sA`):
+‎0‎ ابتداء (ومعه ‎37‎)، ‎1‎ بعد مفتوح، ‎2‎ بعد مضمومٍ أو مكسور، ‎3‎ بعد مدّ، ‎4‎ مدٌّ ثمّ ساكنٌ ليس من الزوائد أو ألف (ومعه الحالةُ ‎5‎)،
+‎5‎ مدٌّ ثمّ ساكنٌ من الزوائد غيرِ الألف، ‎6‎ ممتنع (ومعه ‎35‎ و‎36‎ والحدُّ بعد ‎4‎)، ‎7‎ حدٌّ بعد ‎5‎، ‎8‎ و‎9‎ بعد ساكنٍ مُغلِقٍ يجاوره من الزوائد
+غيرِ الألف واحدٌ أو لا شيء (`sinfA`). والأصنافُ وصفوفُها وجهدُها تعيينُ البنّاء، يفحصه التكافؤُ نفسُه (`zaid_mutakafi`)؛ وعددا الوحدات يمرّان
+بـ `Hisab.lev_eq`. أمّا `unitList1_ok` و`mazidU1_count` بعده فعدُّ قائمةٍ بـ decide (`hawkama/الحساب_الصنفي.md` §٥).
+-/
+
+namespace HisabZaid
+open HisabKalima (waznK)
+
+/-- جدولُ صنف الحامل بين الزوائد: عددُ حروف «سألتمونيها» غيرِ الألف التي تتجاور معه (`sinfA_sinf`). -/
+def sinfA : List Nat := [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0]
+
+theorem sinfA_sinf : ∀ c < 29, sinfA.getD c 0 = (augs.filter fun b => b != 2 && conflict c b).length := by
+  decide +kernel
+
+/-- صنفُ حالة الزوائد. -/
+def sA (q : Nat) : Nat :=
+  if q = 0 ∨ q = 37 then 0 else if q = 1 then 1 else if q ≤ 3 then 2 else if q = 4 then 3 else if q = 5 then 4
+  else if q ≤ 34 then (if isAug (q - 6) && q - 6 != 2 then 5 else 4)
+  else if q ≤ 36 then 6
+  else if q ≤ 66 then (if isAug (q - 38) && q - 38 != 2 then 7 else 6)
+  else if q ≤ 95 then (if sinfA.getD (q - 67) 0 = 1 then 8 else 9) else 6
+
+/-- **صفوفُ الأصناف** (الوزن، الصنفُ الهدف، العدد) على الخانات الـ116. -/
+def saffA : Nat → List (Nat × Nat × Nat)
+  | 0 => [(1, 1, 9), (1, 2, 18), (1, 6, 89)]
+  | 1 => [(0, 3, 1), (1, 1, 9), (1, 2, 18), (1, 6, 79), (1, 8, 2), (1, 9, 7)]
+  | 2 => [(0, 3, 1), (1, 1, 9), (1, 2, 18), (1, 6, 80), (1, 8, 2), (1, 9, 6)]
+  | 3 => [(1, 1, 9), (1, 2, 18), (1, 5, 9), (1, 6, 80)]
+  | 4 => [(1, 6, 116)]
+  | 5 => [(1, 1, 1), (1, 2, 2), (1, 6, 113)]
+  | 6 => [(1, 6, 116)]
+  | 7 => [(1, 1, 1), (1, 2, 2), (1, 6, 113)]
+  | 8 => [(1, 1, 8), (1, 2, 16), (1, 6, 92)]
+  | 9 => [(1, 1, 9), (1, 2, 18), (1, 6, 89)]
+  | _ => []
+
+/-- القبولُ في الوصل: كلُّ صنفٍ إلّا الابتداءَ والممتنعَ والحدّ. -/
+def FA (i : Nat) : Bool := !(i == 0 || i == 6 || i == 7)
+
+def QA : Asnaf := ⟨10, saffA, FA⟩
+
+theorem sinfAq : ∀ q < 97, sA q < 10 := by decide +kernel
+theorem saffA_hadd : ∀ q < 97, ∀ e ∈ saffA (sA q), e.1 ≤ 1 ∧ e.2.1 < 10 := by decide +kernel
+/-- ما يُفحص لكلّ حالة: عددُ انتقالاتها بكلّ وزنٍ إلى كلّ صنفٍ هو ما في صفّ صنفها. -/
+abbrev ShartA (q : Nat) : Prop := ∀ u ≤ 1, ∀ j < 10,
+    ((List.range 116).filter fun b => ω q b == u && sA (δa q b) == j).length =
+      (((saffA (sA q)).filter fun e => e.1 == u && e.2.1 == j).map fun e => e.2.2).sum
+
+private theorem ShartA_0 : ∀ r < 8, ShartA (r + 0) := by decide +kernel
+private theorem ShartA_1 : ∀ r < 8, ShartA (r + 8) := by decide +kernel
+private theorem ShartA_2 : ∀ r < 8, ShartA (r + 16) := by decide +kernel
+private theorem ShartA_3 : ∀ r < 8, ShartA (r + 24) := by decide +kernel
+private theorem ShartA_4 : ∀ r < 8, ShartA (r + 32) := by decide +kernel
+private theorem ShartA_5 : ∀ r < 8, ShartA (r + 40) := by decide +kernel
+private theorem ShartA_6 : ∀ r < 8, ShartA (r + 48) := by decide +kernel
+private theorem ShartA_7 : ∀ r < 8, ShartA (r + 56) := by decide +kernel
+private theorem ShartA_8 : ∀ r < 8, ShartA (r + 64) := by decide +kernel
+private theorem ShartA_9 : ∀ r < 8, ShartA (r + 72) := by decide +kernel
+private theorem ShartA_10 : ∀ r < 8, ShartA (r + 80) := by decide +kernel
+private theorem ShartA_11 : ∀ r < 8, ShartA (r + 88) := by decide +kernel
+private theorem ShartA_12 : ∀ r < 1, ShartA (r + 96) := by decide +kernel
+
+theorem adadA : ∀ q < 97, ShartA q := by
+  intro q hq
+  have h : q < 8 ∨ (8 ≤ q ∧ q < 16) ∨ (16 ≤ q ∧ q < 24) ∨ (24 ≤ q ∧ q < 32) ∨ (32 ≤ q ∧ q < 40) ∨ (40 ≤ q ∧ q < 48) ∨ (48 ≤ q ∧ q < 56) ∨ (56 ≤ q ∧ q < 64) ∨ (64 ≤ q ∧ q < 72) ∨ (72 ≤ q ∧ q < 80) ∨ (80 ≤ q ∧ q < 88) ∨ (88 ≤ q ∧ q < 96) ∨ (96 ≤ q ∧ q < 97) := by omega
+  rcases h with h | h | h | h | h | h | h | h | h | h | h | h | h
+  · have := ShartA_0 q h; rwa [Nat.add_zero] at this
+  · have := ShartA_1 (q - 8) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartA_2 (q - 16) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartA_3 (q - 24) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartA_4 (q - 32) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartA_5 (q - 40) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartA_6 (q - 48) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartA_7 (q - 56) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartA_8 (q - 64) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartA_9 (q - 72) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartA_10 (q - 80) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartA_11 (q - 88) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartA_12 (q - 96) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+
+/-- **التكافؤ:** حالاتُ آلة الزوائد تتكافأ في عشرة أصناف. -/
+theorem zaid_mutakafi : Mutakafi Maug QA 1 sA (fun q => q < 97) where
+  maghluq := fun q hq b hb => aug_close q hq b hb
+  sinf := sinfAq
+  wazn := fun q hq b hb => waznK q hq b hb
+  saff := saffA_hadd
+  qubul := by show ∀ q < 97, Fwasl q = FA (sA q); decide +kernel
+  adad := adadA
+
+/-- الجهد: يكفي الصنفَ طولُ ‎`2·w + pA i`‎. -/
+def pA (i : Nat) : Nat := if i = 1 ∨ i = 2 then 1 else 0
+
+theorem saffA_kabir (i : Nat) (h : 10 ≤ i) : saffA i = [] := by
+  match i, h with
+  | n + 10, _ => rfl
+
+theorem mayyitA : ∀ i, (i == 6) = true → QA.F i = false ∧ ∀ e ∈ QA.saff i, (e.2.1 == 6) = true := by
+  intro i hi; simp at hi; subst hi
+  exact ⟨rfl, by simp [QA, saffA]⟩
+
+theorem potA : ∀ i, (i == 6) = false → ∀ e ∈ QA.saff i, (e.2.1 == 6) = false → pA e.2.1 + 1 ≤ pA i + 2 * e.1 := by
+  intro i hi e he hj
+  have : i < 10 ∨ 10 ≤ i := by omega
+  rcases this with h | h
+  · have k : ∀ i < 10, (i == 6) = false → ∀ e ∈ saffA i, (e.2.1 == 6) = false → pA e.2.1 + 1 ≤ pA i + 2 * e.1 := by
+      decide +kernel
+    exact k i h hi e he hj
+  · simp [QA, saffA_kabir i h] at he
+
+theorem wazn1A : ∀ i, ∀ e ∈ QA.saff i, e.1 ≤ 1 := by
+  intro i e he
+  have : i < 10 ∨ 10 ≤ i := by omega
+  rcases this with h | h
+  · have k : ∀ i < 10, ∀ e ∈ saffA i, e.1 ≤ 1 := by decide +kernel
+    exact k i h e he
+  · simp [QA, saffA_kabir i h] at he
+
+/-- **الحسابُ الصنفيّ للزوائد:** الأصنافُ العشرة، والجهدُ ‎`pA`‎ بثابتٍ ‎2‎، والممتنعُ ميّت. -/
+def hisabZaid : Hisab Maug 0 where
+  Q := QA
+  U := 1
+  s := sA
+  P := fun q => q < 97
+  mutakafi := zaid_mutakafi
+  bidaya := by decide
+  K := 2
+  pot := pA
+  mayyit := (· == 6)
+  mayyit_sahih := mayyitA
+  juhd := potA
+
+/-- ما يُكمل الوحدةَ بوزن ‎`n`‎ من الصنف ‎`i`‎ (بطولٍ كافٍ ‎`2n + 1`‎). -/
+def v (i n : Nat) : Nat := QA.C (2 * n + 1) n i
+
+theorem pA_le : ∀ i, pA i ≤ 1 := by intro i; unfold pA; split <;> omega
+
+theorem v_khatwa (i n : Nat) : v i (n + 1) = QA.base (n + 1) i +
+    ((QA.saff i).map fun e => e.2.2 * (if e.1 = 0 then v e.2.1 (n + 1) else v e.2.1 n)).sum :=
+  QA.C_khatwa1 2 1 pA (· == 6) mayyitA potA (by decide +kernel) pA_le wazn1A n i
+
+theorem v_dead (n : Nat) : v 6 n = 0 := QA.mayyit_sifr (· == 6) mayyitA _ _ 6 rfl
+
+/-- **صفوفُ الخطوة.** -/
+theorem zaid_khatwa (n : Nat) :
+    v 0 (n + 1) = 9 * v 1 n + 18 * v 2 n ∧
+    v 1 (n + 1) = v 3 (n + 1) + 9 * v 1 n + 18 * v 2 n + 2 * v 8 n + 7 * v 9 n ∧
+    v 2 (n + 1) = v 3 (n + 1) + 9 * v 1 n + 18 * v 2 n + 2 * v 8 n + 6 * v 9 n ∧
+    v 3 (n + 1) = 9 * v 1 n + 18 * v 2 n + 9 * v 5 n ∧
+    v 5 (n + 1) = v 1 n + 2 * v 2 n ∧
+    v 8 (n + 1) = 8 * v 1 n + 16 * v 2 n ∧
+    v 9 (n + 1) = 9 * v 1 n + 18 * v 2 n := by
+  have d := v_dead
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_⟩ <;>
+  · rw [v_khatwa]
+    simp [QA, saffA, Asnaf.base, d]
+    try omega
+
+theorem bidaya_zaid : v 0 0 = 0 ∧ v 1 0 = 2 ∧ v 2 0 = 2 ∧ v 3 0 = 1 ∧ v 5 0 = 1 ∧ v 8 0 = 1 ∧ v 9 0 = 1 := by
+  decide +kernel
+
+/-- **العدُّ بالحساب الصنفيّ:** عددُ الوحدات بوزن ‎`n`‎ هو العدُّ من صنف الابتداء. -/
+theorem lev_zaid (n : Nat) : Maug.lev 3 0 n = v 0 n :=
+  hisabZaid.lev_eq 3 n (2 * n + 1) (by show 2 * n + 0 ≤ 3 * n; omega)
+    (by show 2 * n + 0 ≤ 2 * n + 1; omega)
+
+/-- صفوفُ خطوة الزوائد على متتاليةٍ مجرّدة. -/
+def KhatwaA (V : Nat → Nat → Nat) : Prop := ∀ n,
+    V 0 (n + 1) = 9 * V 1 n + 18 * V 2 n ∧
+    V 1 (n + 1) = V 3 (n + 1) + 9 * V 1 n + 18 * V 2 n + 2 * V 8 n + 7 * V 9 n ∧
+    V 2 (n + 1) = V 3 (n + 1) + 9 * V 1 n + 18 * V 2 n + 2 * V 8 n + 6 * V 9 n ∧
+    V 3 (n + 1) = 9 * V 1 n + 18 * V 2 n + 9 * V 5 n ∧
+    V 5 (n + 1) = V 1 n + 2 * V 2 n ∧
+    V 8 (n + 1) = 8 * V 1 n + 16 * V 2 n ∧
+    V 9 (n + 1) = 9 * V 1 n + 18 * V 2 n
+
+/-- **الأوائلُ من صفوف الخطوة:** 54 و3384. -/
+theorem awailA (V : Nat → Nat → Nat) (h : KhatwaA V) (h0 : V 0 0 = 0) (h1 : V 1 0 = 2) (h2 : V 2 0 = 2)
+    (h3 : V 3 0 = 1) (h5 : V 5 0 = 1) (h8 : V 8 0 = 1) (h9 : V 9 0 = 1) :
+    V 0 1 = 54 ∧ V 0 2 = 3384 := by
+  obtain ⟨a0, a1, a2, a3, a5, a8, a9⟩ := h 0
+  obtain ⟨b0, b1, b2, b3, b5, b8, b9⟩ := h 1
+  simp only [Nat.reduceAdd] at *
+  refine ⟨by omega, by omega⟩
+
+/-- **عددا الوحدات بالحساب الصنفيّ.** -/
+theorem adad_zaid : v 0 1 = 54 ∧ v 0 2 = 3384 := by
+  obtain ⟨w0, w1, w2, w3, w5, w8, w9⟩ := bidaya_zaid
+  exact awailA v zaid_khatwa w0 w1 w2 w3 w5 w8 w9
+
+end HisabZaid
 
 /-- **الاستنفادُ في الوحدات:** ‎54‎ وحدةً بصامتٍ واحد، و‎3,384‎ بصامتين. -/
-theorem units1 : Maug.lev 3 0 1 = 54 := by rw [aug_lev_tab 1 (by decide)]; decide +kernel
-theorem units2 : Maug.lev 3 0 2 = 3384 := by rw [aug_lev_tab 2 (by decide)]; decide +kernel
+theorem units1 : Maug.lev 3 0 1 = 54 := by rw [HisabZaid.lev_zaid]; exact HisabZaid.adad_zaid.1
+theorem units2 : Maug.lev 3 0 2 = 3384 := by rw [HisabZaid.lev_zaid]; exact HisabZaid.adad_zaid.2
 
 /-- الوحداتُ بصامتٍ واحد صريحةً: متحرّكٌ من الزوائد، وبعده مدُّه أو لا. -/
 def unitList1 : List (List Nat) :=

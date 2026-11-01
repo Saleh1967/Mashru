@@ -1,7 +1,7 @@
 # SLGE — قانون الدالّ وحده (الابتداء/الوصل/الوقف، المقطع، الجذر)
 
 هذه الملفّات السبعة **من مرفق المالك slge-closed.zip** (بصمته b773980b3c66ce05b44034626af90bf4aa4cd6e50fb088d8c9cd098e6667e1a6)،
-منقولةٌ بنصّها بلا تعديل، وبُنيت هنا بـ Lean 4.34.1 وأُدرجت مبرهناتها الرئيسة في Audit.lean:
+منقولةٌ بنصّها بلا تعديل (ثمّ عُدّل منها Count وLaw وRoot وSyllable بإذن المالك 2026-11-01: «ما عُدّل هنا» أدناه)، وبُنيت هنا بـ Lean 4.34.1 وأُدرجت مبرهناتها الرئيسة في Audit.lean:
 Core، Ladder، Count، Law، Hamza، Syllable، Root.
 ثمّ أربعةٌ من حزمة المالك slge-closed-v13 (بصمة الملفّ المرفوع 364c3067ff7914307a565b2ce1fbd3a162de0527a8dc395f1f56807f5f4c6873)، بنصّها بلا تعديل، أُدرجت مبرهناتها في Audit.lean
 (2026-10-15): MadlulAwwalan (المدلول أوّلًا)، Category (الكلمة اسمٌ وفعلٌ وحرف والتركيب ثلاثة لا رابع)، Ladder2 (سلّم الضرورة «لكلّ»: الترتيب والموضع
@@ -15,6 +15,12 @@ Madlul رفعه المالك موسومًا «غير مدقَّق»؛ دُقّق
 ما لم يُنقل بعد (26 ملفًّا): Mazid، MazidGeneral، Ilal، IlalMore، OrderAll، Tarib، Jisr، Ajnas، Qanun، Maluma، Ifada، JamiMani،
 Istinfad، Maratib، Dalala، Tahlil، TahlilHukm، Example، ملفّات الشواهد الخمسة (BridgeWitness، ExtWitness، SimatWitness،
 MuwahhadWitness، KullWitness — كلٌّ بمبرهنة)، MadlulWitness، وClosed/ClosedMadlul (القفل).
+
+**ما عُدّل هنا بإذن المالك** (2026-11-01؛ اختار «عدّل SLGE نفسَها» من سؤالٍ نصُّ خياراته من البنّاء، ولفظُهما من ملخّص الجلسة؛ ووصفُ الخيار «أستبدل براهين الأعداد في ملفّاتك بالقانون (بإذنك هذا)، فلا يبقى
+حسابٌ بالجدول في المستودع»): أُضيف `HisabSinfi.lean` (الحسابُ الصنفيّ، من البنّاء)، وأُدخلت أقسامُ «الحسابُ الصنفيّ» في `Law.lean` و`Root.lean`
+و`Syllable.lean`، وصارت براهينُ أعداد المالك فيها به (`root3`…`root5`، `units1`، `units2`، `word_levels`، `word_levels_wasl`، `sent_levels`، `sl0`…`slw3`) بقضاياها
+نفسِها؛ وحُذف من `Count.lean` الجدولُ (`row`، `tab`، `tab_eq`) وما بُني عليه (`root_lev_tab`، `aug_lev_tab`، `lev_tab`)، وعُدّلت جملتُه في رأس `Count.lean`.
+والتفصيلُ في `hawkama/الحساب_الصنفي.md`.
 
 الربط بخلايانا في `Dal/Qanun.lean`: ترميزنا `Dal.n` هو `SLGE.cellEnc` بعينه، وجدول مخارجنا `Dal.ahjam` هو
 `SLGE.makharijSizes` بعينه، وجدول المدّ واحد — كلّها مبرهنة، فتسري قوانين المالك على خلايانا.
