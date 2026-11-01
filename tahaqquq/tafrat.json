@@ -8806,5 +8806,59 @@
   "milaf": "Dal/WiladaJumla.lean",
   "min": "end Dal.WiladaJumla",
   "ila": "/-- آلةٌ بلا حسابٍ صنفيّ، أوّلُ اسمها «_». -/\ndef _alaKhafiya : SLGE.Machine := SLGE.Law.mk 117 SLGE.Law.Fwasl\n\nend Dal.WiladaJumla"
+ },
+ {
+  "ism": "P1577_wahdat_rutba_muwallid",
+  "milaf": "scripts/bina_wahdat.py",
+  "min": "rutba[i] = 0 if not imp[i] else 1 + max(r(j, khat + (i,)) for j in imp[i])",
+  "ila": "rutba[i] = 0 if not imp[i] else max(r(j, khat + (i,)) for j in imp[i])"
+ },
+ {
+  "ism": "P1578_wahdat_bila_qari",
+  "milaf": "scripts/bina_wahdat.py",
+  "min": "DIRS = [\"Nabt\", \"SLGE\", \"Dal\", \"Madlul\", \"Jisr\", \"Aql\", \"Nizam\", \"Faahis\", \"Qari\"]",
+  "ila": "DIRS = [\"Nabt\", \"SLGE\", \"Dal\", \"Madlul\", \"Jisr\", \"Aql\", \"Nizam\", \"Faahis\"]"
+ },
+ {
+  "ism": "P1579_wahdat_istirad_khafi",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "import Aql.Qaida\nimport Nizam.WahdatJadwal\n",
+  "ila": "/- مستورَدٌ بعد تعليقٍ في سطره -/ import SLGE.Core\nimport Aql.Qaida\nimport Nizam.WahdatJadwal\n"
+ },
+ {
+  "ism": "P1580_wahdat_hisab_khafi",
+  "milaf": "Dal/WiladaKalima.lean",
+  "min": "  decide +kernel\n\nend Dal.WiladaKalima",
+  "ila": "  decide +kernel\n\n/-- حسابٌ صنفيٌّ لا تسمّيه الجينات. -/\ndef hisabNaskh : SLGE.Hisab SLGE.Law.Mword 0 := SLGE.Law.HisabKalima.hisabWaqf\n\nend Dal.WiladaKalima"
+ },
+ {
+  "ism": "P1581_wahdat_rutba",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "def rutba (i : Nat) : Nat := rutbaJadwal.getD i 0",
+  "ila": "def rutba (i : Nat) : Nat := rutbaJadwal.getD i 0 + 1"
+ },
+ {
+  "ism": "P1582_wahdat_bilaWirth",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "\"SLGE.AwamilTable\", \"SLGE.Core\", \"SLGE.MadlulAwwalan\", \"SLGE.TarkibLit\"]",
+  "ila": "\"SLGE.AwamilTable\", \"SLGE.MadlulAwwalan\", \"SLGE.TarkibLit\"]"
+ },
+ {
+  "ism": "P1583_wahdat_jinat_zaid",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "    [(\"SLGE.Law.HisabJadhr.hisabJadhr\", SLGE.Law.HisabJadhr.hisabJadhr.Q.m, SLGE.Law.HisabJadhr.hisabJadhr.K),\n     (\"SLGE.Law.HisabZaid.hisabZaid\", SLGE.Law.HisabZaid.hisabZaid.Q.m, SLGE.Law.HisabZaid.hisabZaid.K)]",
+  "ila": "    [(\"SLGE.Law.HisabJadhr.hisabJadhr\", SLGE.Law.HisabJadhr.hisabJadhr.Q.m, SLGE.Law.HisabJadhr.hisabJadhr.K)]"
+ },
+ {
+  "ism": "P1584_wahdat_bila_tawrith",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "  | k + 1, i => jinatKhassa (ism i) ++ (istirad i).flatMap (jinat k)",
+  "ila": "  | k + 1, i => jinatKhassa (ism i) ++ (istirad i).flatMap (fun _ => [])"
+ },
+ {
+  "ism": "P1585_wahdat_qanun_bila_muqaddimat",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "if istirad i = [] then none else some ⟨ism i, istirad i, i⟩",
+  "ila": "if istirad i = [] then none else some ⟨ism i, [], i⟩"
  }
 ]
