@@ -122,9 +122,14 @@ def dalalat (t : Jadwal) (r : String) : List String :=
 
 /-! ## الجملة -/
 
-def wahdatIsm (m : Murashshah) : List Wahda := (m.adwar.filter fun p => p.1.naw == .ism).map (·.1)
 
-def sharh (t : Jadwal) (j : Jumla) (nusus : Array (List String)) (qabl : List (Nat × Wahda)) (jn : Nat) (m : Murashshah) :
+/-- حكمُ التفسير الجامع نصًّا: فوق حكم الجملة، ويُسمّي الاختلافَ ولا يحسمه بالترتيب (`Nizam.Rabt.hukmTafsir`). -/
+def ismHukmTafsir : HukmTafsir → String
+  | .laQiraa => "لا قراءةَ مرخَّصة"
+  | .wahid n => s!"تفسيرٌ واحد (طُويت فيه {n} قراءةً مرخَّصةً متكافئةَ التفسير: Nizam.Rabt.maqbulaT_tamm)"
+  | .mukhtalif k n => s!"{k} تفسيراتٍ مختلفة من {n} قراءةً مرخَّصة — اختلافٌ معلَن، لا يُحسم بالترتيب"
+
+def sharh (t : Jadwal) (j : Jumla) (nusus : Array (List String)) (qabl : Siyaq) (jn : Nat) (m : Murashshah) :
     List String :=
   let es := irab m
   let tab := es.map fun e =>
@@ -196,7 +201,7 @@ def main (args : List String) : IO UInt32 := do
   | [luzum, path] =>
     let t ← qiraJadwal luzum
     IO.println s!"# جدول اللزوم المرشَّح (يحتاج ختمًا، ولا تفحص الأداةُ بصمتَه): {t.size} جذرًا"
-    let mut qabl : List (Nat × Wahda) := []
+    let mut qabl : Siyaq := []
     let mut nusus : Array (List String) := #[]
     let mut jn := 0
     for line in ← IO.FS.lines path do
@@ -208,12 +213,14 @@ def main (args : List String) : IO UInt32 := do
           let ws := Nizam.Silsila.kalimatDal c
           let j : Jumla := ⟨Nizam.Silsila.kalimatM c, ws⟩
           IO.println s!"{k}\t{s}\t{ismHukm (hukmJumla ws)}"
-          let ms := maqbula ws
-          for m in ms do
+          -- القراءاتُ بتكافؤ التفسير لا بتشابه الأدوار، وحكمُ التفسير الجامع فوق حكم الجملة
+          let ms := maqbulaT ws
+          IO.println s!"  التفسير الجامع: {ismHukmTafsir (hukmTafsir ws)}"
+          for (m, n) in ms do
             for l in sharh t j nusus qabl jn m do IO.println l
-          match ms.head? with
-          | some m => qabl := qabl ++ (wahdatIsm m).map (jn, ·)
-          | none => pure ()
+            if n > 1 then IO.println s!"  طُوي في هذه القراءة: {n} قراءاتٍ مرخَّصة بتفسيرٍ واحد"
+          -- سياقُ الإحالة من القراءات المقبولة كلِّها، لا من أوّلها (Nizam.Rabt.siyaq_la_yatba_tartib)
+          qabl := qabl ++ siyaqJumla jn j.kalimat.length (ms.map (·.1))
         nusus := nusus.push ((Nizam.Silsila.kalimatM c).map (String.ofList ·.w))
         jn := jn + 1
       | _ => IO.println s!"{line}\tKHALAL\tسطرٌ ليس «مفتاح⇥جملة»"
