@@ -42,7 +42,8 @@
   (`shahid_mafatih`)، ولا يُعيَّن منها شيء؛ وجذورُ الفعل جذورُ قراءته (`Wahda.judhurQ`، `shahid_lafif_jidhr`): كلُّ جذرٍ مشهودٍ على وزنها (ومع الواو
   بعد ضمّةٍ آخرَ الجذع ما لامُه واو إن شُهد)، فقد تكون أكثرَ من واحد («لَمْ يَعِدْ»: «عود» و«عيد»)؛ ولا جذرَ في السلسلة لقراءةٍ «محتمَلة» (لا تُرخِّص).
 
-  **المبرهنات** بالمعيار الموحَّد (`Nizam/Asas.lean`): 27 — 15 لكلّ (`irabAux_tamm`، `irab_tamm`، `mem_irabAux`، `wahdaFi_mem`، `amilOf_fil`،
+  **المبرهنات** بالمعيار الموحَّد (`Nizam/Asas.lean`): 38 — 26 لكلّ (§٩: `tayyT_hafiz`، `tayyT_dakhil`، `foldl_tayyT_hafiz`، `foldl_tayyT_tamm`،
+  `maqbulaT_tamm`، `foldl_tayyT_min`، `maqbulaT_murakhkhas`، `maqbulaT_nil`، `hukmTafsir_laQiraa`، `siyaq_la_yatba_tartib`، `siyaq_shahid`؛ و`irabAux_tamm`، `irab_tamm`، `mem_irabAux`، `wahdaFi_mem`، `amilOf_fil`،
   `amil_fil_fi_jumla`، `hala_matluba`، `murashshah_mutabiq`، `mafhum_wahda`، `qanun_raqm`، `asl_sahih`، `iddia_maqbul`، `dalala_sadiqa`،
   `hamlWahda_qiyam`، `mafahim_makhtuma`)، و3 تعريفيّة (`isnad_fil`، `nafy_suwar`، `marji_hudur`)، و9 على الشاهد (`nisba_qiyam`، `shahid_lam`،
   `shahid_lamAmr`، `shahid_ismiyya`، `shahid_mudari_damir`، `shahid_ya`، `shahid_mafatih`، `shahid_lafif_jidhr`، `shahid_dalala`).
@@ -357,15 +358,18 @@ structure Ihala where
   marji : Marji
   deriving Repr
 
-/-- المرشَّحون للغائب: الأسماءُ الظاهرة قبله بعدده، الأقربُ أوّلًا (تعيين). -/
-def murashshahunIhala (qabl : List (Nat × Wahda)) (ft : SLGE.Maqam.Feat) : List (Nat × Nat) :=
-  ((qabl.filter fun p => p.2.naw == .ism && p.2.sima.2.2.1.2.2 == ft.2.2).map fun p => (p.1, p.2.kalima)).reverse
+/-- قيدُ السياق: (الجملة، الكلمة، العدد) — اسمٌ ظاهرٌ شهدت له قراءةٌ مقبولة (`siyaqJumla`)، لا وحدةُ قراءةٍ بعينها. -/
+abbrev Siyaq := List (Nat × Nat × Nat)
 
-def marjiOf (qabl : List (Nat × Wahda)) (ft : SLGE.Maqam.Feat) : Marji :=
+/-- المرشَّحون للغائب: الأسماءُ الظاهرة قبله بعدده، الأقربُ أوّلًا (تعيين). -/
+def murashshahunIhala (qabl : Siyaq) (ft : SLGE.Maqam.Feat) : List (Nat × Nat) :=
+  ((qabl.filter fun p => p.2.2 == ft.2.2).map fun p => (p.1, p.2.1)).reverse
+
+def marjiOf (qabl : Siyaq) (ft : SLGE.Maqam.Feat) : Marji :=
   if ft.1 ≤ 2 then .hudur else .murashshahun (murashshahunIhala qabl ft)
 
 /-- **الإحالات في القراءة** `m` من الجملة `j`، و`qabl` أسماءُ ما قبلها: الفاعلُ الضميرُ (بارزًا أو مستترًا)، والضمائرُ المتّصلة المنصوبةُ والمجرورة. -/
-def ihalat (qabl : List (Nat × Wahda)) (j : Nat) (m : Murashshah) : List Ihala :=
+def ihalat (qabl : Siyaq) (j : Nat) (m : Murashshah) : List Ihala :=
   let fail := match isnadOf m with
     | some i => match i.sura, i.musnad with
       | .zahir, _ => []
@@ -376,26 +380,28 @@ def ihalat (qabl : List (Nat × Wahda)) (j : Nat) (m : Murashshah) : List Ihala 
     match m.adwar[n]? with
     | some (w, _) =>
       if w.naw == .damir then
-        let qablFi := ((m.adwar.take n).filter fun p => p.1.kalima != w.kalima).map fun p => (j, p.1)
+        let qablFi := (m.adwar.take n).filterMap fun p =>
+          if p.1.naw == .ism && p.1.kalima != w.kalima then some (j, p.1.kalima, p.1.sima.2.2.1.2.2) else none
         some ⟨w.kalima, .bariz, w.sima.2.2.1, marjiOf (qabl ++ qablFi) w.sima.2.2.1⟩
       else none
     | none => none
   fail ++ damair
 
 /-- **ضميرُ المتكلّم والمخاطب يحيل إلى الحضور** (والغائبُ إلى مرشَّحين بعدده: `murashshah_mutabiq`). -/
-theorem marji_hudur (qabl : List (Nat × Wahda)) (ft : SLGE.Maqam.Feat) (h : ft.1 ≤ 2) : marjiOf qabl ft = .hudur := by
+theorem marji_hudur (qabl : Siyaq) (ft : SLGE.Maqam.Feat) (h : ft.1 ≤ 2) : marjiOf qabl ft = .hudur := by
   unfold marjiOf; simp [h]
 
-theorem murashshah_mutabiq (qabl : List (Nat × Wahda)) (ft : SLGE.Maqam.Feat) {p : Nat × Nat}
-    (hp : p ∈ murashshahunIhala qabl ft) :
-    ∃ w, (p.1, w) ∈ qabl ∧ w.kalima = p.2 ∧ w.naw = .ism ∧ w.sima.2.2.1.2.2 = ft.2.2 := by
+/-- **كلُّ مرشَّحٍ قيدٌ في السياق بعدد الضمير** (وشهودُ القيد في `siyaq_shahid`). -/
+theorem murashshah_mutabiq (qabl : Siyaq) (ft : SLGE.Maqam.Feat) {p : Nat × Nat}
+    (hp : p ∈ murashshahunIhala qabl ft) : (p.1, p.2, ft.2.2) ∈ qabl := by
   unfold murashshahunIhala at hp
   rw [List.mem_reverse, List.mem_map] at hp
-  obtain ⟨⟨a, w⟩, hm, he⟩ := hp
+  obtain ⟨⟨a, k, n⟩, hm, he⟩ := hp
   rw [List.mem_filter] at hm
-  simp only [Bool.and_eq_true, beq_iff_eq] at hm
+  simp only [beq_iff_eq] at hm
   cases he
-  exact ⟨w, hm.1, rfl, hm.2.1, hm.2.2⟩
+  rw [← hm.2]
+  exact hm.1
 
 /-! ## ٥. القيدُ والمفهوم -/
 
@@ -648,6 +654,203 @@ theorem shahid_dalala :
     (T.map fun r => Qaida.maqbul (qaidaOf T) (aslB T) (iddiaOf T r)) = [true, true, true, true] ∧
     (T.map fun r => (iddiaOf T r).qawl) = [.mutabaqa 0 2, .mutabaqa 3 2, .tadammun 3 2, .tadammun 6 8] := by
   decide
+
+/-! ## ٩. التفسيرُ الجامع والسياقُ من القراءات المقبولة كلِّها
+
+**ما ضُبط (مراجعةُ المالك 2026-11-03، قراءةً للشفرة على `5e9a38e`):** `maqbula` تدمج القراءاتِ المرخَّصة إذا تساوت قوائمُ أدوارها وحدَها، وتساوي
+الأدوار لا يُثبت تساويَ الحالات والعوامل والإسناد والقوّة والقيد والجذور؛ و`Qari.Rabt.main` كان يبني سياقَ الإحالة من **أوّل** قراءةٍ مقبولة (`ms.head?`)،
+فتصير الإحالةُ التالية مبنيّةً على اختيارٍ لم يُحسم؛ و`hukmJumla` جمعٌ وجوديّ (`NassItar.jamaa`: مرخَّصٌ إن رُخّص مرشَّح) فلا يقول أتّفقت
+القراءاتُ أم اختلفت.
+
+**فههنا ثلاثةٌ**، كلٌّ مبرهَنٌ لكلّ مُدخَل:
+1. `tafsirOf`: هويّةُ ما يستهلكه ما بعد القبول — الإعرابُ والإسنادُ والقوّةُ والقيدُ والجذور — و`maqbulaT` تطوي القراءاتِ المرخَّصة **بتكافؤ التفسير**
+   لا بتشابه الأدوار، ولا تُسقط قراءة: لكلّ مرخَّصةٍ ممثّلٌ بتفسيرها (`maqbulaT_tamm`)، وكلُّ ممثّلٍ مرخَّص (`maqbulaT_murakhkhas`).
+2. `hukmTafsir`: حكمٌ ثانٍ **فوق** حكم الجملة: لا قراءة، أو تفسيرٌ واحد (وكم طُوي فيه)، أو `k` تفسيراتٍ مختلفة من `n` مرخَّصة — **اختلافٌ معلَن
+   لا يُحسم بالترتيب**؛ ويتّفق مع حكم الجملة في الخلوّ (`hukmTafsir_laQiraa`).
+3. `siyaqJumla`: سياقُ الإحالة من القراءات المقبولة **كلِّها**، دالّةٌ في مجموعتها: تبديلُ ترتيبها لا يغيّره (`siyaq_la_yatba_tartib`)، وكلُّ قيدٍ فيه
+   يشهد له اسمٌ في قراءةٍ منها (`siyaq_shahid`).
+
+**حدُّه:** تمايزُ ممثّلي `maqbulaT` (لا ممثّلان بتفسيرٍ واحد) غيرُ مبرهَن، وعددُ المطويّ شاهدٌ من الحساب لا مبرهنة؛ وهويّةُ التفسير تعيينُ البنّاء لما
+يستهلكه `rabt` اليوم، فما يُزاد على السلسلة يُزاد فيها. -/
+
+/-- **هويّةُ تفسير القراءة** — ما يستهلكه ما بعد القبول: الإعرابُ بدوره وحالته وعامله، والإسنادُ، والقوّةُ، والقيدُ، وجذورُ كلّ وحدةٍ بكلمتها. فقراءتان
+    تتساويان فيه متكافئتان لما يحتاجه التفسير — لا بمجرّد تساوي أدوارهما. -/
+abbrev Tafsir :=
+  List (Dawr × Hala × Amil) × Option (Option Wahda × Option Wahda × Sura × SLGE.Maqam.Feat × Option Bool) × Quwwa ×
+    Option (Qayd × Nat) × List (Nat × List (List Nat))
+
+def tafsirOf (m : Murashshah) : Tafsir :=
+  (irabQiyam m, (isnadOf m).map fun i => (i.musnad, i.ilayh, i.sura, i.ft, i.wujub), (quwwaOf m).1,
+   (qaydR m).map fun p => (p.1, p.2.kalima), m.adwar.map fun p => (p.1.kalima, judhurWahda p.1))
+
+/-- القراءاتُ المرخَّصة كلُّها، بلا دمج. -/
+def murakhkhasa (ws : List Dal.Kalima) : List Murashshah := (murashshahun ws).filter fun m => hukmM ws m == .murakhkhas
+
+/-- خطوةُ الطيّ: قراءةٌ تفسيرُها في الحاصل تُعدّ على ممثّلها، وإلّا تُضاف ممثّلًا بعدّ 1. -/
+def tayyT (acc : List (Murashshah × Nat)) (m : Murashshah) : List (Murashshah × Nat) :=
+  if acc.any (fun x => tafsirOf x.1 == tafsirOf m) then acc.map fun x => if tafsirOf x.1 == tafsirOf m then (x.1, x.2 + 1) else x
+  else acc ++ [(m, 1)]
+
+/-- **المقبولُ بالتفسير:** ممثّلٌ لكلّ تفسيرٍ من القراءات المرخَّصة، ومعه عددُ ما طُوي فيه. -/
+def maqbulaT (ws : List Dal.Kalima) : List (Murashshah × Nat) := (murakhkhasa ws).foldl tayyT []
+
+theorem tayyT_hafiz (acc : List (Murashshah × Nat)) (m : Murashshah) :
+    ∀ x ∈ acc, ∃ y ∈ tayyT acc m, tafsirOf y.1 = tafsirOf x.1 := by
+  intro x hx
+  unfold tayyT
+  split
+  · refine ⟨if tafsirOf x.1 == tafsirOf m then (x.1, x.2 + 1) else x, List.mem_map.mpr ⟨x, hx, rfl⟩, ?_⟩
+    split <;> rfl
+  · exact ⟨x, List.mem_append_left _ hx, rfl⟩
+
+theorem tayyT_dakhil (acc : List (Murashshah × Nat)) (m : Murashshah) : ∃ y ∈ tayyT acc m, tafsirOf y.1 = tafsirOf m := by
+  unfold tayyT
+  split
+  · rename_i h
+    obtain ⟨x, hx, he⟩ := List.any_eq_true.mp h
+    have he' : tafsirOf x.1 = tafsirOf m := beq_iff_eq.mp he
+    refine ⟨(x.1, x.2 + 1), List.mem_map.mpr ⟨x, hx, ?_⟩, he'⟩
+    simp [he]
+  · exact ⟨(m, 1), List.mem_append_right _ (List.mem_singleton.mpr rfl), rfl⟩
+
+theorem foldl_tayyT_hafiz (l : List Murashshah) :
+    ∀ acc, ∀ x ∈ acc, ∃ y ∈ l.foldl tayyT acc, tafsirOf y.1 = tafsirOf x.1 := by
+  induction l with
+  | nil => intro acc x hx; exact ⟨x, hx, rfl⟩
+  | cons a l ih =>
+    intro acc x hx
+    rw [List.foldl_cons]
+    obtain ⟨y, hy, hy'⟩ := tayyT_hafiz acc a x hx
+    obtain ⟨z, hz, hz'⟩ := ih (tayyT acc a) y hy
+    exact ⟨z, hz, hz'.trans hy'⟩
+
+theorem foldl_tayyT_tamm (l : List Murashshah) :
+    ∀ acc, ∀ m ∈ l, ∃ y ∈ l.foldl tayyT acc, tafsirOf y.1 = tafsirOf m := by
+  induction l with
+  | nil => intro acc m hm; simp at hm
+  | cons a l ih =>
+    intro acc m hm
+    rw [List.foldl_cons]
+    rcases List.mem_cons.mp hm with rfl | hm
+    · obtain ⟨y, hy, hy'⟩ := tayyT_dakhil acc m
+      obtain ⟨z, hz, hz'⟩ := foldl_tayyT_hafiz l (tayyT acc m) y hy
+      exact ⟨z, hz, hz'.trans hy'⟩
+    · exact ih (tayyT acc a) m hm
+
+/-- **لا تُسقط قراءةٌ مرخَّصة:** لكلٍّ ممثّلٌ في `maqbulaT` بتفسيرها. -/
+theorem maqbulaT_tamm (ws : List Dal.Kalima) : ∀ m ∈ murakhkhasa ws, ∃ y ∈ maqbulaT ws, tafsirOf y.1 = tafsirOf m :=
+  foldl_tayyT_tamm (murakhkhasa ws) []
+
+theorem foldl_tayyT_min (l : List Murashshah) :
+    ∀ acc, ∀ y ∈ l.foldl tayyT acc, y.1 ∈ acc.map (·.1) ∨ y.1 ∈ l := by
+  induction l with
+  | nil => intro acc y hy; exact Or.inl (List.mem_map.mpr ⟨y, hy, rfl⟩)
+  | cons a l ih =>
+    intro acc y hy
+    rw [List.foldl_cons] at hy
+    rcases ih (tayyT acc a) y hy with h | h
+    · obtain ⟨x, hx, hx'⟩ := List.mem_map.mp h
+      unfold tayyT at hx
+      split at hx
+      · obtain ⟨z, hz, hz'⟩ := List.mem_map.mp hx
+        refine Or.inl (List.mem_map.mpr ⟨z, hz, ?_⟩)
+        rw [← hx', ← hz']
+        split <;> rfl
+      · rcases List.mem_append.mp hx with hx | hx
+        · exact Or.inl (List.mem_map.mpr ⟨x, hx, hx'⟩)
+        · rw [List.mem_singleton] at hx
+          subst hx
+          exact Or.inr (hx' ▸ List.mem_cons_self ..)
+    · exact Or.inr (List.mem_cons_of_mem _ h)
+
+/-- **كلُّ ممثّلٍ قراءةٌ مرخَّصةٌ من مرشَّحي الجملة.** -/
+theorem maqbulaT_murakhkhas (ws : List Dal.Kalima) : ∀ y ∈ maqbulaT ws, y.1 ∈ murashshahun ws ∧ hukmM ws y.1 = .murakhkhas := by
+  intro y hy
+  rcases foldl_tayyT_min (murakhkhasa ws) [] y hy with h | h
+  · simp at h
+  · have := List.mem_filter.mp h
+    exact ⟨this.1, by simpa using this.2⟩
+
+theorem maqbulaT_nil (ws : List Dal.Kalima) : maqbulaT ws = [] ↔ murakhkhasa ws = [] := by
+  constructor
+  · intro h
+    cases hm : murakhkhasa ws with
+    | nil => rfl
+    | cons m l =>
+      obtain ⟨y, hy, -⟩ := maqbulaT_tamm ws m (hm ▸ List.mem_cons_self ..)
+      simp [h] at hy
+  · intro h; unfold maqbulaT; rw [h]; rfl
+
+/-- حكمُ التفسير الجامع: فوق حكم الجملة، لا بدلًا منه. -/
+inductive HukmTafsir
+  | laQiraa
+  /-- تفسيرٌ واحدٌ طُويت فيه n قراءةً مرخَّصة. -/
+  | wahid (n : Nat)
+  /-- k تفسيراتٍ مختلفة من n قراءةً مرخَّصة: اختلافٌ معلَن، لا يُحسم بالترتيب. -/
+  | mukhtalif (k n : Nat)
+  deriving DecidableEq, Repr
+
+def hukmTafsir (ws : List Dal.Kalima) : HukmTafsir :=
+  match maqbulaT ws with
+  | [] => .laQiraa
+  | [x] => .wahid x.2
+  | l => .mukhtalif l.length (l.map (·.2)).sum
+
+/-- **حكمُ التفسير يخلو حيث يخلو حكمُ الجملة من الترخيص، لا غير.** -/
+theorem hukmTafsir_laQiraa (ws : List Dal.Kalima) : hukmTafsir ws = .laQiraa ↔ Jisr.Tahlil.hukmJumla ws ≠ .murakhkhas := by
+  show _ ↔ ¬ (Jisr.Tahlil.hukmJumla ws = .murakhkhas)
+  rw [Jisr.Tahlil.hukmJumla_murakhkhas]
+  have e : hukmTafsir ws = .laQiraa ↔ maqbulaT ws = [] := by
+    unfold hukmTafsir
+    cases maqbulaT ws with
+    | nil => simp
+    | cons x l => cases l <;> simp
+  rw [e, maqbulaT_nil]
+  constructor
+  · rintro h ⟨m, hm, hk⟩
+    have : m ∈ murakhkhasa ws := List.mem_filter.mpr ⟨hm, by simp [hk]⟩
+    simp [h] at this
+  · intro h
+    cases hm : murakhkhasa ws with
+    | nil => rfl
+    | cons m l =>
+      have hmem : m ∈ murakhkhasa ws := hm ▸ List.mem_cons_self ..
+      have := List.mem_filter.mp hmem
+      exact absurd ⟨m, this.1, by simpa using this.2⟩ h
+
+/-- الكلمةُ k اسمٌ بالعدد a في قراءةٍ من القراءات. -/
+def ismFi (ms : List Murashshah) (k a : Nat) : Bool :=
+  ms.any fun m => m.adwar.any fun p => p.1.naw == .ism && p.1.kalima == k && p.1.sima.2.2.1.2.2 == a
+
+/-- **سياقُ الجملة للإحالة من قراءاتها المقبولة كلِّها**، لا من أوّلها: (الجملة، الكلمة، العدد) لكلّ كلمةٍ بترتيبها ولكلّ عددٍ شهدت له قراءة. -/
+def siyaqJumla (jn n : Nat) (ms : List Murashshah) : List (Nat × Nat × Nat) :=
+  (List.range n).flatMap fun k => [0, 1, 2].filterMap fun a => if ismFi ms k a then some (jn, k, a) else none
+
+/-- **تبديلُ ترتيب القراءات لا يغيّر السياق:** دالّةٌ في مجموعتها. -/
+theorem siyaq_la_yatba_tartib (jn n : Nat) {ms ms' : List Murashshah} (h : ms.Perm ms') :
+    siyaqJumla jn n ms = siyaqJumla jn n ms' := by
+  have e : ismFi ms = ismFi ms' := by
+    funext k a
+    unfold ismFi
+    exact h.any_eq
+  simp only [siyaqJumla, e]
+
+/-- **كلُّ قيدٍ في السياق يشهد له اسمٌ في قراءةٍ من القراءات** بكلمته وعدده. -/
+theorem siyaq_shahid (jn n : Nat) (ms : List Murashshah) {q : Nat × Nat × Nat} (hq : q ∈ siyaqJumla jn n ms) :
+    q.1 = jn ∧ ∃ m ∈ ms, ∃ p ∈ m.adwar, p.1.naw = .ism ∧ p.1.kalima = q.2.1 ∧ p.1.sima.2.2.1.2.2 = q.2.2 := by
+  unfold siyaqJumla at hq
+  obtain ⟨k, -, hk⟩ := List.mem_flatMap.mp hq
+  obtain ⟨a, -, ha⟩ := List.mem_filterMap.mp hk
+  split at ha
+  · rename_i hf
+    cases ha
+    refine ⟨rfl, ?_⟩
+    unfold ismFi at hf
+    obtain ⟨m, hm, hm'⟩ := List.any_eq_true.mp hf
+    obtain ⟨p, hp, hp'⟩ := List.any_eq_true.mp hm'
+    simp only [Bool.and_eq_true, beq_iff_eq] at hp'
+    exact ⟨m, hm, p, hp, hp'.1.1, hp'.1.2, hp'.2⟩
+  · simp at ha
 
 end Rabt
 end Nizam
