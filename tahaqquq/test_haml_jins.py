@@ -4,7 +4,7 @@
 ١. التجميد: بصماتُ wasf.md وmasdar.md وcases.json وfahs_cases.py وtaalif.md هي المسجَّلة في tajmid.json.
 ٢. المولَّد: Jisr/HamlJinsDawabit.lean مخرجُ scripts/bina_dawabit_haml_jins.py على cases.json بايتًا.
 ٣. السجلّات: natija_1.json … natija_N.json متتالية، كلٌّ للحالات المجمَّدة. وبصمةُ natija_1.json ثابتةٌ هنا (NATIJA_1)، وكلُّ سجلٍّ بعده يحمل
-   بصمةَ ما قبله. وآخرُها لبصمة الشفرة الحاليّة (SHIFRA: Jisr/QabiliyyaJins.lean وJisr/HamlJinsDabit.lean)، وأعدادُه (ihsa، bil_fia، akhta)
+   بصمةَ ما قبله. وآخرُها لبصمة الشفرة الحاليّة (SHIFRA: Jisr/QabiliyyaJins.lean وJisr/HamlJinsDabit.lean، لكلٍّ بصمتُه وإيداعُه `iydaa`)، وأعدادُه (ihsa، bil_fia، akhta)
    أعدادُ مبرهنات Jisr/HamlJinsQiyas.lean، وحقلُ lean هو LEAN_NATIJA وكلُّ اسمٍ فيه مبرهنةٌ هناك.
 ٤. المجال: أعدادُ المجال محسوبةٌ من cases.json هنا (majal_json)، لا من Lean، وهي قائمةُ مبرهنة `majal`.
 ٥. الأسانيد: كلُّ `sanad.nass` في سطره من masdar.md بحذف رقمه والنقطة والمسافة وحدها (المصدرُ في الشجرة، فيُفحص دائمًا)؛ ثمّ فاحصُ المؤلّف
@@ -23,7 +23,7 @@ D = JADHR / "tahaqquq" / "dawabit" / "haml_jins"
 SHIFRA = ["Jisr/QabiliyyaJins.lean", "Jisr/HamlJinsDabit.lean"]
 QIYAS = JADHR / "Jisr/HamlJinsQiyas.lean"
 BINA = JADHR / "scripts/bina_dawabit_haml_jins.py"
-NATIJA_1 = "3c16411798d3a9b283af40fe7562903d493e75b50c8066fb44ed9491379aada6"  # natija_1.json كما أُودع أوّلًا
+NATIJA_1 = "2c3b8857001935c3e55d3c77cd14a8eb43db2dd7ddeca7587ae835ad31821d15"  # natija_1.json كما أُودع أوّلًا
 NS = "Jisr.QabiliyyaJins.Qiyas."
 LEAN_NATIJA = [NS + x for x in ["majal", "natija", "natija_fia", "akhta_1"]]
 HUQUL_IHSA = ["sawab", "naqsTaghtiya", "tajawuz", "qabulKhati", "raddKhati", "ikhtiyar", "khata"]
@@ -91,7 +91,8 @@ halat = json.loads((D / "cases.json").read_text(encoding="utf-8"))
 mj = majal_json(halat)
 if akhir:
     shifra_hali = {m: sha(JADHR / m) for m in SHIFRA}
-    tahaqqaq(akhir["shifra"] == shifra_hali, f"{natayij[-1].name} لغير الشفرة الحاليّة: {SHIFRA} تغيّرت بعد آخر تشغيل")
+    tahaqqaq({m: x["sha256"] for m, x in akhir["shifra"].items()} == shifra_hali,
+             f"{natayij[-1].name} لغير الشفرة الحاليّة: {SHIFRA} تغيّرت بعد آخر تشغيل")
     m = re.search(r"theorem natija : ihsa \(natayij halat\) = ⟨([\d, ]+)⟩", qiyas)
     tahaqqaq(m is not None, "لا مبرهنةَ natija بصيغتها في Jisr/HamlJinsQiyas.lean")
     if m:

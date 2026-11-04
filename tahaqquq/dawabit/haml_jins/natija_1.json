@@ -3,10 +3,15 @@
  "naw": "التشغيلُ الأوّل على الحالات المجمَّدة، بعد دفع الشفرة (506e52d) وقبل أيّ تعديلٍ لها",
  "cases_sha256": "59c8effa421dc6fd76f4f265f1e97cdadd81fb254946a29e5342bc986660f353",
  "shifra": {
-  "Jisr/QabiliyyaJins.lean": "7f7ce554ef8a124de1cb669eada947a8b36d5140d7d23a3e708d6231927820ae",
-  "Jisr/HamlJinsDabit.lean": "545f3bef7f9f8e3b64b1fa2204fd35337194d8450fa098b4615437eb265ebdf5"
+  "Jisr/QabiliyyaJins.lean": {
+   "sha256": "7f7ce554ef8a124de1cb669eada947a8b36d5140d7d23a3e708d6231927820ae",
+   "iydaa": "506e52dd2aaedc962d74f66b94b9f7029860de73"
+  },
+  "Jisr/HamlJinsDabit.lean": {
+   "sha256": "545f3bef7f9f8e3b64b1fa2204fd35337194d8450fa098b4615437eb265ebdf5",
+   "iydaa": "506e52dd2aaedc962d74f66b94b9f7029860de73"
+  }
  },
- "iydaa": "506e52d",
  "lean": [
   "Jisr.QabiliyyaJins.Qiyas.majal",
   "Jisr.QabiliyyaJins.Qiyas.natija",
