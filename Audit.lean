@@ -139,6 +139,7 @@ import Jisr.TahlilQiyas
 import Nizam.Rabt
 import Jisr.QabiliyyaJins
 import Jisr.HamlJinsDabit
+import Jisr.HamlJinsQiyas
 import Dal.QanunAdad
 import Dal.WiladaJadhr
 import Dal.WiladaKalima
@@ -3005,9 +3006,14 @@ import Dal.WiladaJumla
 #print axioms Jisr.QabiliyyaJins.hukmMujarrad_isnadiyya
 #print axioms Jisr.QabiliyyaJins.hukmMujarrad_idafiyya
 #print axioms Jisr.QabiliyyaJins.hukmMujarrad_la_intiqal
+#print axioms Nizam.Rabt.mem_of_lookup
 #print axioms Nizam.Rabt.saffMin_mem
 #print axioms Nizam.Rabt.hamlJins_murakhkhas
 #print axioms Nizam.Rabt.hamlJins_la_mumtani
 #print axioms Nizam.Rabt.hamlJins_bila_jadwal
 #print axioms Nizam.Rabt.shahid_haml_jins
 #print axioms Jisr.QabiliyyaJins.Dabit.qarin_jadwal
+#print axioms Jisr.QabiliyyaJins.Qiyas.majal
+#print axioms Jisr.QabiliyyaJins.Qiyas.natija
+#print axioms Jisr.QabiliyyaJins.Qiyas.natija_fia
+#print axioms Jisr.QabiliyyaJins.Qiyas.akhta_1
