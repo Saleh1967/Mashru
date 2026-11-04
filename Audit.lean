@@ -2887,6 +2887,17 @@ import Dal.WiladaJumla
 #print axioms Nizam.Rabt.shahid_mafatih
 #print axioms Nizam.Rabt.shahid_lafif_jidhr
 #print axioms Nizam.Rabt.shahid_dalala
+#print axioms Nizam.Rabt.tayyT_hafiz
+#print axioms Nizam.Rabt.tayyT_dakhil
+#print axioms Nizam.Rabt.foldl_tayyT_hafiz
+#print axioms Nizam.Rabt.foldl_tayyT_tamm
+#print axioms Nizam.Rabt.maqbulaT_tamm
+#print axioms Nizam.Rabt.foldl_tayyT_min
+#print axioms Nizam.Rabt.maqbulaT_murakhkhas
+#print axioms Nizam.Rabt.maqbulaT_nil
+#print axioms Nizam.Rabt.hukmTafsir_laQiraa
+#print axioms Nizam.Rabt.siyaq_la_yatba_tartib
+#print axioms Nizam.Rabt.siyaq_shahid
 #print axioms SLGE.HisabSinfi.sum_map_one
 #print axioms SLGE.HisabSinfi.sum_map_add
 #print axioms SLGE.HisabSinfi.sum_zero

@@ -8866,5 +8866,29 @@
   "milaf": "Nizam/Wiratha.lean",
   "min": "`(($(Lean.quote x.getId.toString), ($x).Q.m, ($x).K))",
   "ila": "`((\"jin\", ($x).Q.m, ($x).K))"
+ },
+ {
+  "ism": "P1567_rabt_tayy_la_yudif",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "  else acc ++ [(m, 1)]",
+  "ila": "  else acc"
+ },
+ {
+  "ism": "P1568_rabt_siyaq_farigh",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "if ismFi ms k a then some (jn, k, a) else none",
+  "ila": "if ismFi ms k a then none else none"
+ },
+ {
+  "ism": "P1569_qari_rabt_siyaq_akhir",
+  "milaf": "Qari/Rabt.lean",
+  "min": "qabl := qabl ++ siyaqJumla jn j.kalimat.length (ms.map (·.1))",
+  "ila": "qabl := siyaqJumla jn j.kalimat.length (ms.map (·.1))"
+ },
+ {
+  "ism": "P1570_rabt_hukmTafsir_adad",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "  | [x] => .wahid x.2",
+  "ila": "  | [x] => .wahid 1"
  }
 ]
