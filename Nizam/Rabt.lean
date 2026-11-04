@@ -52,6 +52,7 @@ import Jisr.Tahlil
 import Nizam.Athar
 import Madlul.JadwalLuzum
 import Aql.SalamaMaqbul
+import Jisr.QabiliyyaJins
 
 namespace Nizam
 namespace Rabt
@@ -851,6 +852,185 @@ theorem siyaq_shahid (jn n : Nat) (ms : List Murashshah) {q : Nat × Nat × Nat}
     simp only [Bool.and_eq_true, beq_iff_eq] at hp'
     exact ⟨m, hm, p, hp, hp'.1.1, hp'.1.2, hp'.2⟩
   · simp at ha
+
+/-! ## ١٠. الحملُ من الجنس: «ذهابُ الولد مرخَّص لأنّ الولدَ إنسانٌ والإنسانَ ينتقل» على القراءة
+
+**الطلب:** أمرُ المالك 2026-11-04 («اعد إنتاج الهدف من pr 113 وفق ما وجدنا بعده … وطوره وحافظ على تناسق وترابط وتكامل Mashru»). النظريةُ في
+`Jisr/QabiliyyaJins.lean` (من #113)، وهذا وصلُها بسلسلة القراءة: الإسنادُ (`isnadOf`) يعطي المسندَ والمسندَ إليه؛ ومفاتيحُ جذريهما
+(`judhurWahda`، `mafatih` — من #122، لا من المعنى) تُقرأ في جدولين **مودَعين**: جدولِ الجنس (مفتاحُ الجذر ← القسم؛ قرارُ المالك 2026-10-29 س٢)
+وجدولِ المثال (مفتاحُ الجذر ← قابليّةُ الحركة التي الحدثُ مثالُها؛ س١ وس٣). ثمّ الحكمُ `hukmMadlul` على مدلول الجنس (`Tayin.ilaMadlul`)
+بالنسبة الإسناديّة. **ولا شيءَ يُستنتج من المعنى**: جنسٌ غائبٌ عن الجدول «لا جنس»، ومثالٌ غائب «لا مثال» — مُسمَّيان لا مُصفَّران.
+
+**المبرهن لكلّ مُدخَل:** `hamlJins_murakhkhas` (لا يُرخَّص إلّا من صفٍّ في جدول الجنس وصفٍّ في جدول المثال وقابليّةٍ في فصول الجنس)،
+`hamlJins_la_mumtani` (الحملُ من الجنس لا يُخترع فيه امتناع)، `hamlJins_bila_jadwal` (بلا جدول جنسٍ لا حكمَ من جنس)، و`saffMin_mem` و`mem_of_lookup`؛ وعلى الشاهد
+`shahid_haml_jins`. **وحدٌّ معلَن:** اسمُ الفاعل المؤنّث («ذَاهِبَةٌ») بلا مفاتيح جذرٍ في `judhurWahda` (أوزانُ الاسم لا تقطع التاء)، فمسندٌ به «لا مثال» بمفاتيحَ فارغة. **والجدولان المرشَّحان** (`jinsMurashshah`، `mithalMurashshah`) يحتاجان ختمًا، وتقرؤهما الأداةُ `rabt` من ملفٍّ إن أُعطي. -/
+
+open Jisr.QabiliyyaJins (hukm_qab_thulathi qab_la_mumtani)
+
+/-- جدولُ الجنس: مفتاحُ الجذر (عنوانُ اللسان نصًّا) ← القسم. -/
+abbrev JinsJadwal := List (String × Madlul.Tayin.Qism)
+/-- جدولُ المثال: مفتاحُ جذر الحدث ← قابليّةُ الحركة التي هو مثالُها. -/
+abbrev MithalJadwal := List (String × Madlul.Tayin.QabHaraka)
+
+/-- حكمُ الحمل من الجنس، بأسبابه مُسمّاةً. -/
+inductive HukmJins
+  /-- لا إسنادَ بمسندٍ ومسندٍ إليه ظاهرين. -/
+  | laIsnad
+  /-- لا صفَّ في جدول الجنس لمفاتيح المسند إليه. -/
+  | laJins (mafatih : List String)
+  /-- لا صفَّ في جدول المثال لمفاتيح المسند. -/
+  | laMithal (mafatih : List String)
+  /-- الحكمُ على مدلول الجنس q بقابليّة c، بمفتاحي الصفّين. -/
+  | hukm (jidhrIlayh : String) (q : Madlul.Tayin.Qism) (jidhrMusnad : String) (c : Madlul.Tayin.QabHaraka) (h : Jisr.Utur.Hukm)
+  deriving DecidableEq, Repr
+
+/-- مفاتيحُ جذور الوحدة في الجداول (من #122: جذورُ القراءة ومفاتيحُها). -/
+def mafatihWahda (w : Wahda) : List String := (judhurWahda w).flatMap (mafatih w)
+
+/-- أوّلُ مفتاحٍ له صفٌّ في جدول. -/
+def saffMin {β : Type} (T : List (String × β)) (ks : List String) : Option (String × β) :=
+  ks.findSome? fun k => (T.lookup k).map (k, ·)
+
+/-- **الحملُ من الجنس على القراءة.** -/
+def hamlJins (J : JinsJadwal) (M : MithalJadwal) (m : Murashshah) : HukmJins :=
+  match isnadOf m with
+  | none => .laIsnad
+  | some i =>
+    match i.musnad, i.ilayh with
+    | some v, some w =>
+      match saffMin J (mafatihWahda w) with
+      | none => .laJins (mafatihWahda w)
+      | some (k, q) =>
+        match saffMin M (mafatihWahda v) with
+        | none => .laMithal (mafatihWahda v)
+        | some (k', c) =>
+          .hukm k q k' c (Jisr.Utur.hukmMadlul ⟨Madlul.Tayin.ilaMadlul q, .qabiliyya (Madlul.Tayin.ramzQab c), .isnadiyya⟩)
+    | _, _ => .laIsnad
+
+theorem mem_of_lookup {β : Type} {T : List (String × β)} {k : String} {b : β} (h : T.lookup k = some b) : (k, b) ∈ T := by
+  obtain ⟨l₁, l₂, rfl, -⟩ := List.lookup_eq_some_iff.1 h
+  exact List.mem_append_right _ (List.mem_cons_self ..)
+
+theorem saffMin_mem {β : Type} (T : List (String × β)) (ks : List String) {k : String} {b : β}
+    (h : saffMin T ks = some (k, b)) : k ∈ ks ∧ (k, b) ∈ T := by
+  unfold saffMin at h
+  obtain ⟨k', hk', hs⟩ := List.exists_of_findSome?_eq_some h
+  cases hl : T.lookup k' with
+  | none => rw [hl] at hs; cases hs
+  | some b' =>
+    rw [hl] at hs
+    simp only [Option.map_some, Option.some.injEq, Prod.mk.injEq] at hs
+    obtain ⟨rfl, rfl⟩ := hs
+    exact ⟨hk', mem_of_lookup hl⟩
+
+/-- **لا يُرخَّص إلّا من الجدولين والفصول:** ترخيصٌ من الجنس ⇒ للمسند إليه صفٌّ في جدول الجنس بمفتاحٍ من مفاتيحه، وللمسند صفٌّ في جدول
+المثال بمفتاحٍ من مفاتيحه، والقابليّةُ في فصول ذلك الجنس. -/
+theorem hamlJins_murakhkhas (J : JinsJadwal) (M : MithalJadwal) (m : Murashshah) {k k' : String}
+    {q : Madlul.Tayin.Qism} {c : Madlul.Tayin.QabHaraka}
+    (h : hamlJins J M m = .hukm k q k' c .murakhkhas) :
+    (k, q) ∈ J ∧ (k', c) ∈ M ∧ c ∈ (Madlul.Tayin.fusul q).qab ∧
+      ∃ i, isnadOf m = some i ∧ ∃ v w, i.musnad = some v ∧ i.ilayh = some w ∧ k ∈ mafatihWahda w ∧ k' ∈ mafatihWahda v := by
+  cases hi : isnadOf m with
+  | none => simp [hamlJins, hi] at h
+  | some i =>
+    cases hv : i.musnad with
+    | none => simp [hamlJins, hi, hv] at h
+    | some v =>
+      cases hw : i.ilayh with
+      | none => simp [hamlJins, hi, hv, hw] at h
+      | some w =>
+        cases hp : saffMin J (mafatihWahda w) with
+        | none => simp [hamlJins, hi, hv, hw, hp] at h
+        | some p =>
+          obtain ⟨k₀, q₀⟩ := p
+          cases hp' : saffMin M (mafatihWahda v) with
+          | none => simp [hamlJins, hi, hv, hw, hp, hp'] at h
+          | some p' =>
+            obtain ⟨k₁, c₁⟩ := p'
+            simp only [hamlJins, hi, hv, hw, hp, hp', HukmJins.hukm.injEq] at h
+            obtain ⟨rfl, rfl, rfl, rfl, hh⟩ := h
+            obtain ⟨hk, hJ⟩ := saffMin_mem J _ hp
+            obtain ⟨hk', hM⟩ := saffMin_mem M _ hp'
+            refine ⟨hJ, hM, ?_, i, rfl, v, w, hv, hw, hk, hk'⟩
+            rw [hukm_qab_thulathi] at hh
+            by_cases hc : c₁ ∈ (Madlul.Tayin.fusul q₀).qab
+            · exact hc
+            · rw [if_neg hc] at hh; cases hh
+
+/-- **ولا يُخترع امتناع:** الحملُ من الجنس لا يكون «ممتنعًا» أبدًا — إسنادُ قابليّةٍ إلى مدلول جنس. -/
+theorem hamlJins_la_mumtani (J : JinsJadwal) (M : MithalJadwal) (m : Murashshah) (k k' : String)
+    (q : Madlul.Tayin.Qism) (c : Madlul.Tayin.QabHaraka) : hamlJins J M m ≠ .hukm k q k' c .mumtani := by
+  intro h
+  cases hi : isnadOf m with
+  | none => simp [hamlJins, hi] at h
+  | some i =>
+    cases hv : i.musnad with
+    | none => simp [hamlJins, hi, hv] at h
+    | some v =>
+      cases hw : i.ilayh with
+      | none => simp [hamlJins, hi, hv, hw] at h
+      | some w =>
+        cases hp : saffMin J (mafatihWahda w) with
+        | none => simp [hamlJins, hi, hv, hw, hp] at h
+        | some p =>
+          obtain ⟨k₀, q₀⟩ := p
+          cases hp' : saffMin M (mafatihWahda v) with
+          | none => simp [hamlJins, hi, hv, hw, hp, hp'] at h
+          | some p' =>
+            obtain ⟨k₁, c₁⟩ := p'
+            simp only [hamlJins, hi, hv, hw, hp, hp', HukmJins.hukm.injEq] at h
+            obtain ⟨-, rfl, -, rfl, hh⟩ := h
+            exact qab_la_mumtani _ _ hh
+
+/-- **بلا جدول جنسٍ لا حكمَ من جنس:** الغيابُ يُسمّى، ولا يُستنتج جنسٌ من المعنى. -/
+theorem hamlJins_bila_jadwal (M : MithalJadwal) (m : Murashshah) :
+    hamlJins [] M m = .laIsnad ∨ ∃ ks, hamlJins [] M m = .laJins ks := by
+  cases hi : isnadOf m with
+  | none => left; simp [hamlJins, hi]
+  | some i =>
+    cases hv : i.musnad with
+    | none => left; simp [hamlJins, hi, hv]
+    | some v =>
+      cases hw : i.ilayh with
+      | none => left; simp [hamlJins, hi, hv, hw]
+      | some w =>
+        right
+        refine ⟨mafatihWahda w, ?_⟩
+        have hp : saffMin ([] : JinsJadwal) (mafatihWahda w) = none := by
+          unfold saffMin; simp [List.lookup]
+        simp [hamlJins, hi, hv, hw, hp]
+
+/-! ### الجدولان المرشَّحان (يحتاجان ختمًا؛ قرارُ المالك 2026-10-29 س٢ وس٣) -/
+
+/-- جدولُ الجنس المرشَّح: الولد = إنسان، والدار = جماد (المخصّص بأبوابه؛ موضعُ كلّ صفٍّ يثبّته المالك عند الختم). -/
+def jinsMurashshah : JinsJadwal := [("ولد", .insan), ("دور", .jamad)]
+
+/-- جدولُ المثال المرشَّح: ذهب مثالُ السير («ذهب = سار/مضى»؛ نصُّه في المخصّص أو اللسان يثبّته المالك عند الختم). -/
+def mithalMurashshah : MithalJadwal := [("ذهب", .sayr)]
+
+def dhahabaW : Dal.Kalima := ⟨[92, 4, 104], false, false⟩                   -- ذَهَبَ
+def alwaladuW : Dal.Kalima := ⟨[55, 112, 52, 69], true, true⟩               -- الْوَلَدُ
+def taraW : Dal.Kalima := ⟨[64, 11, 60], false, false⟩                       -- طَارَ
+def addaruW : Dal.Kalima := ⟨[71, 68, 11, 61], true, true⟩                   -- الدَّارُ
+
+def dhahibunW : Dal.Kalima := ⟨[92, 11, 6, 105, 59], false, false⟩          -- ذَاهِبٌ
+
+/-- **على الشاهد:** «ذَهَبَ الْوَلَدُ» و«الْوَلَدُ ذَاهِبٌ» مرخَّصان من الجنس (ولد → إنسان، ذهب → سير، والسيرُ في فصول الإنسان)؛ و«ذَهَبَ الدَّارُ»
+و«الدَّارُ ذَاهِبٌ» لا حكم (الدارُ جمادٌ لا ينتقل، وغيابُ الشاهد ليس امتناعًا)؛ و«طَارَ الْوَلَدُ» لا مثالَ لمفتاحَي «طور/طير» (الأجوفُ بجذرين)؛
+وبلا جدول جنسٍ «ذَهَبَ الْوَلَدُ» لا جنس. -/
+theorem shahid_haml_jins :
+    (maqbulaT [dhahabaW, alwaladuW]).map (fun x => hamlJins jinsMurashshah mithalMurashshah x.1) =
+      [.hukm "ولد" .insan "ذهب" .sayr .murakhkhas] ∧
+    (maqbulaT [alwaladuW, dhahibunW]).map (fun x => hamlJins jinsMurashshah mithalMurashshah x.1) =
+      [.hukm "ولد" .insan "ذهب" .sayr .murakhkhas] ∧
+    (maqbulaT [dhahabaW, addaruW]).map (fun x => hamlJins jinsMurashshah mithalMurashshah x.1) =
+      [.hukm "دور" .jamad "ذهب" .sayr .laHukm] ∧
+    (maqbulaT [addaruW, dhahibunW]).map (fun x => hamlJins jinsMurashshah mithalMurashshah x.1) =
+      [.hukm "دور" .jamad "ذهب" .sayr .laHukm] ∧
+    (maqbulaT [taraW, alwaladuW]).map (fun x => hamlJins jinsMurashshah mithalMurashshah x.1) =
+      [.laMithal ["طور", "طير"]] ∧
+    (maqbulaT [dhahabaW, alwaladuW]).map (fun x => hamlJins [] mithalMurashshah x.1) = [.laJins ["ولد"]] := by
+  decide +kernel
 
 end Rabt
 end Nizam

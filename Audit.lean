@@ -137,6 +137,9 @@ import Jisr.Tahlil
 import Jisr.TahlilDabit
 import Jisr.TahlilQiyas
 import Nizam.Rabt
+import Jisr.QabiliyyaJins
+import Jisr.HamlJinsDabit
+import Jisr.HamlJinsQiyas
 import Dal.QanunAdad
 import Dal.WiladaJadhr
 import Dal.WiladaKalima
@@ -2980,3 +2983,37 @@ import Dal.WiladaJumla
 #print axioms Dal.WiladaJumla.awailS
 #print axioms Dal.WiladaJumla.wilada_jumla
 #print axioms Dal.WiladaJumla.jumla_bil_qanun
+
+-- الترخيصُ من خاصّة الجنس (Jisr/QabiliyyaJins.lean، من #113 على main بعد #122): القابليّةُ من فصول الجنس، والجسرُ مودَع، والحكمُ المجرَّد؛
+-- ووصلُه بالسلسلة (Nizam/Rabt.lean §١٠)؛ وضابطُه المجمَّد (tahaqquq/dawabit/haml_jins)
+#print axioms Jisr.QabiliyyaJins.qabiliyyat_ilaMadlul
+#print axioms Jisr.QabiliyyaJins.ramzQab_inj
+#print axioms Jisr.QabiliyyaJins.qab_contains_iff
+#print axioms Jisr.QabiliyyaJins.tarkhis_min_jins
+#print axioms Jisr.QabiliyyaJins.laHukm_bila_qabiliyya
+#print axioms Jisr.QabiliyyaJins.hukm_qab_thulathi
+#print axioms Jisr.QabiliyyaJins.qab_la_mumtani
+#print axioms Jisr.QabiliyyaJins.idafiyya_mumtani
+#print axioms Jisr.QabiliyyaJins.mutasiq_fusul
+#print axioms Jisr.QabiliyyaJins.laHukm_idha_la_intiqal
+#print axioms Jisr.QabiliyyaJins.hukmHadath_none
+#print axioms Jisr.QabiliyyaJins.madlulWarith_haqiqa
+#print axioms Jisr.QabiliyyaJins.madlulWarith_qab
+#print axioms Jisr.QabiliyyaJins.mem_qab_contains
+#print axioms Jisr.QabiliyyaJins.tarkhis_hadath
+#print axioms Jisr.QabiliyyaJins.shawahid_hadath
+#print axioms Jisr.QabiliyyaJins.tawafuq_shahid
+#print axioms Jisr.QabiliyyaJins.hukmMujarrad_isnadiyya
+#print axioms Jisr.QabiliyyaJins.hukmMujarrad_idafiyya
+#print axioms Jisr.QabiliyyaJins.hukmMujarrad_la_intiqal
+#print axioms Nizam.Rabt.mem_of_lookup
+#print axioms Nizam.Rabt.saffMin_mem
+#print axioms Nizam.Rabt.hamlJins_murakhkhas
+#print axioms Nizam.Rabt.hamlJins_la_mumtani
+#print axioms Nizam.Rabt.hamlJins_bila_jadwal
+#print axioms Nizam.Rabt.shahid_haml_jins
+#print axioms Jisr.QabiliyyaJins.Dabit.qarin_jadwal
+#print axioms Jisr.QabiliyyaJins.Qiyas.majal
+#print axioms Jisr.QabiliyyaJins.Qiyas.natija
+#print axioms Jisr.QabiliyyaJins.Qiyas.natija_fia
+#print axioms Jisr.QabiliyyaJins.Qiyas.akhta_1
