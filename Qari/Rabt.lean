@@ -4,6 +4,8 @@
   والعامل والنسبة)، وإسنادُها، وقوّتُها، وإحالةُ ضمائرها (إلى ما سبقها في الملفّ)، ومنطوقُها، وقيدُها ومفهومُها على الودائع المرشَّحة،
   ودلالةُ ألفاظها على جدول اللزوم (ادّعاءُ كلّ صفٍّ بسلسلته على قاعدة الجدول، وأصولُها صفوفُه: `Nizam.Rabt.iddia_maqbul`، فلا تفحص صدقَ الجدول).
   والجدولُ `luzum_mujam.tsv` مرشَّحٌ يحتاج ختمًا، ومكانُه MUDAA_DIR، ولا تفحص الأداةُ بصمتَه.
+  و**الحملُ من الجنس** (`Nizam.Rabt.hamlJins`، §١٠): لكلّ قراءةٍ مقبولةٍ حكمُ حملِ المسند على المسند إليه من خاصّة جنسه، على جدولَي الجنس والمثال
+  المرشَّحين في Lean (`jinsMurashshah`، `mithalMurashshah`)، أو من ملفّين اختياريّين `--jins <tsv>` (جذر⇥قسم) و`--mithal <tsv>` (جذر⇥قابليّة).
 -/
 import Nizam.Rabt
 import Std.Data.HashMap
@@ -120,6 +122,53 @@ def dalalat (t : Jadwal) (r : String) : List String :=
   naw [.taraduf] "مطابقة" ++ naw [.juz, .asl] "تضمّن" ++ naw [.luzum] "التزام" ++
     naw [.kharij] "خارجٌ عن المدلول (والادّعاءُ مطابقةُ اللفظ لمعناه لا صلتُه بها)"
 
+/-! ## الحملُ من الجنس (Nizam.Rabt §١٠) -/
+
+def ismQism : Madlul.Tayin.Qism → String
+  | .jamad => "جماد" | .nabat => "نبات" | .hayawan => "حيوان" | .insan => "إنسان"
+
+def ismQab : Madlul.Tayin.QabHaraka → String
+  | .sayr => "السير" | .rakd => "الركض" | .jary => "الجري" | .zahf => "الزحف" | .qafz => "القفز"
+
+def qismOf : String → Option Madlul.Tayin.Qism
+  | "جماد" => some .jamad | "نبات" => some .nabat | "حيوان" => some .hayawan | "إنسان" => some .insan | _ => none
+
+def qabOf : String → Option Madlul.Tayin.QabHaraka
+  | "السير" => some .sayr | "الركض" => some .rakd | "الجري" => some .jary | "الزحف" => some .zahf | "القفز" => some .qafz | _ => none
+
+/-- جدولُ الجنس من ملفّ «جذر⇥قسم⇥…»: ما لا يُقرأ صفُّه يُسقَط (والعددُ يُطبع فيُرى). -/
+def qiraJins (path : String) : IO JinsJadwal := do
+  let mut t : JinsJadwal := []
+  for line in ← IO.FS.lines path do
+    match line.splitOn "\t" with
+    | k :: q :: _ => match qismOf q with | some x => t := t ++ [(k, x)] | none => pure ()
+    | _ => pure ()
+  return t
+
+def qiraMithal (path : String) : IO MithalJadwal := do
+  let mut t : MithalJadwal := []
+  for line in ← IO.FS.lines path do
+    match line.splitOn "\t" with
+    | k :: c :: _ => match qabOf c with | some x => t := t ++ [(k, x)] | none => pure ()
+    | _ => pure ()
+  return t
+
+/-- سطرُ الحمل من الجنس للقراءة. -/
+def nassHamlJins (j : Jumla) (m : Murashshah) (J : JinsJadwal) (M : MithalJadwal) (murashshah : Bool) : String :=
+  let wasm := if murashshah then "على الجدولين المرشَّحين (يحتاجان ختمًا)" else "على الجدولين المُعطيين (لا تفحص الأداةُ بصمتهما)"
+  let musnad := (isnadOf m).bind (·.musnad) |>.map (nassWahda j ·) |>.getD "؟"
+  let ilayh := (isnadOf m).bind (·.ilayh) |>.map (nassWahda j ·) |>.getD "؟"
+  match hamlJins J M m with
+  | .laIsnad => s!"  الحملُ من الجنس {wasm}: لا إسنادَ بمسندٍ ومسندٍ إليه ظاهرين"
+  | .laJins ks => s!"  الحملُ من الجنس {wasm}: لا جنسَ مودَعًا لمفاتيح «{ilayh}» ({", ".intercalate ks}) — لا يُستنتج جنسٌ من المعنى (Nizam.Rabt.hamlJins_bila_jadwal)"
+  | .laMithal ks => s!"  الحملُ من الجنس {wasm}: لا مثالَ قابليّةٍ مودَعًا لمفاتيح «{musnad}» ({", ".intercalate ks}) — الجسرُ علاقةٌ من نصّ لا من المعنى"
+  | .hukm k q k' c h =>
+    let sabab := s!"«{ilayh}» جذرُه {k} و{ismQism q} بالجدول، و«{musnad}» جذرُه {k'} مثالُ {ismQab c} بالجدول"
+    match h with
+    | .murakhkhas => s!"  الحملُ من الجنس {wasm}: «{musnad}» على «{ilayh}» مرخَّصٌ — {sabab}، و{ismQab c} في قابليّات {ismQism q} لأنّه ينتقل ذاتيًّا (Madlul.Tayin.fusul؛ Nizam.Rabt.hamlJins_murakhkhas)"
+    | .laHukm => s!"  الحملُ من الجنس {wasm}: «{musnad}» على «{ilayh}» لا حكم — {sabab}، و{ismQab c} ليست في قابليّات {ismQism q} (Jisr.QabiliyyaJins.laHukm_bila_qabiliyya؛ غيابُ الشاهد ليس امتناعًا)"
+    | .mumtani => s!"  الحملُ من الجنس {wasm}: «{musnad}» على «{ilayh}» ممتنع — {sabab} (لا يقع: Nizam.Rabt.hamlJins_la_mumtani)"
+
 /-! ## الجملة -/
 
 
@@ -129,7 +178,8 @@ def ismHukmTafsir : HukmTafsir → String
   | .wahid n => s!"تفسيرٌ واحد (طُويت فيه {n} قراءةً مرخَّصةً متكافئةَ التفسير: Nizam.Rabt.maqbulaT_tamm)"
   | .mukhtalif k n => s!"{k} تفسيراتٍ مختلفة من {n} قراءةً مرخَّصة — اختلافٌ معلَن، لا يُحسم بالترتيب"
 
-def sharh (t : Jadwal) (j : Jumla) (nusus : Array (List String)) (qabl : Siyaq) (jn : Nat) (m : Murashshah) :
+def sharh (t : Jadwal) (j : Jumla) (nusus : Array (List String)) (qabl : Siyaq) (jn : Nat) (m : Murashshah)
+    (J : JinsJadwal) (M : MithalJadwal) (murashshah : Bool) :
     List String :=
   let es := irab m
   let tab := es.map fun e =>
@@ -193,13 +243,26 @@ def sharh (t : Jadwal) (j : Jumla) (nusus : Array (List String)) (qabl : Siyaq) 
         let ds := dalalat t k
         if ds.isEmpty then [] else [s!"  الدلالة: «{nassWahda j e.wahda}» مرشَّحُ جذره {k} (من عنوانٍ مرمَّزٍ في اللسان {jidhrNass r}، وصفوفُه في جدول " ++
           "اللزوم المرشَّح؛ سلسلةُ كلّ صفٍّ على قاعدة الجدول وأصولُها صفوفُه، فلا تفحص صدقَه)"] ++ ds
-  ["  " ++ "قراءة: " ++ " ".intercalate (m.adwar.map (ismDawr ·.2))] ++ tab ++ isn ++
+  ["  " ++ "قراءة: " ++ " ".intercalate (m.adwar.map (ismDawr ·.2))] ++ tab ++ isn ++ [nassHamlJins j m J M murashshah] ++
     [s!"  القوّة: {Nizam.Athar.quwwaIsm q} — {qs}"] ++ ih ++ [mantuq, qd] ++ mfs ++ [haml] ++ dal
 
+/-- الوسيطان الاختياريّان `--jins <tsv>` و`--mithal <tsv>` من أيّ موضعٍ في الوسائط. -/
+def ikhtiyari (args : List String) : List String × Option String × Option String :=
+  match args with
+  | "--jins" :: f :: r => let (a, _, m) := ikhtiyari r; (a, some f, m)
+  | "--mithal" :: f :: r => let (a, j, _) := ikhtiyari r; (a, j, some f)
+  | x :: r => let (a, j, m) := ikhtiyari r; (x :: a, j, m)
+  | [] => ([], none, none)
+
 def main (args : List String) : IO UInt32 := do
+  let (args, jinsF, mithalF) := ikhtiyari args
   match args with
   | [luzum, path] =>
     let t ← qiraJadwal luzum
+    let J ← match jinsF with | some f => qiraJins f | none => pure jinsMurashshah
+    let M ← match mithalF with | some f => qiraMithal f | none => pure mithalMurashshah
+    let murashshah := jinsF.isNone && mithalF.isNone
+    IO.println s!"# جدولا الجنس والمثال ({if murashshah then "مرشَّحان في Lean، يحتاجان ختمًا" else "من ملفّين، لا تفحص الأداةُ بصمتهما"}): {J.length} جنسًا، {M.length} مثالًا"
     IO.println s!"# جدول اللزوم المرشَّح (يحتاج ختمًا، ولا تفحص الأداةُ بصمتَه): {t.size} جذرًا"
     let mut qabl : Siyaq := []
     let mut nusus : Array (List String) := #[]
@@ -217,7 +280,7 @@ def main (args : List String) : IO UInt32 := do
           let ms := maqbulaT ws
           IO.println s!"  التفسير الجامع: {ismHukmTafsir (hukmTafsir ws)}"
           for (m, n) in ms do
-            for l in sharh t j nusus qabl jn m do IO.println l
+            for l in sharh t j nusus qabl jn m J M murashshah do IO.println l
             if n > 1 then IO.println s!"  طُوي في هذه القراءة: {n} قراءاتٍ مرخَّصة بتفسيرٍ واحد"
           -- سياقُ الإحالة من القراءات المقبولة كلِّها، لا من أوّلها (Nizam.Rabt.siyaq_la_yatba_tartib)
           qabl := qabl ++ siyaqJumla jn j.kalimat.length (ms.map (·.1))
@@ -225,4 +288,4 @@ def main (args : List String) : IO UInt32 := do
         jn := jn + 1
       | _ => IO.println s!"{line}\tKHALAL\tسطرٌ ليس «مفتاح⇥جملة»"
     return 0
-  | _ => IO.eprintln "الاستعمال: rabt <luzum_mujam.tsv> <ملفّ: مفتاح⇥جملة>"; return 2
+  | _ => IO.eprintln "الاستعمال: rabt [--jins <tsv>] [--mithal <tsv>] <luzum_mujam.tsv> <ملفّ: مفتاح⇥جملة>"; return 2
