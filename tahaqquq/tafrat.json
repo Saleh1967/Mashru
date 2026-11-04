@@ -8890,5 +8890,47 @@
   "milaf": "Nizam/Rabt.lean",
   "min": "  | [x] => .wahid x.2",
   "ila": "  | [x] => .wahid 1"
+ },
+ {
+  "ism": "P1571_qj_hukmMujarrad_la_jins",
+  "milaf": "Jisr/QabiliyyaJins.lean",
+  "min": "  | none, _, _ => .laJins",
+  "ila": "  | none, _, _ => .laMithal"
+ },
+ {
+  "ism": "P1572_rabt_hamlJins_la_jins",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "      | none => .laJins (mafatihWahda w)",
+  "ila": "      | none => .laMithal (mafatihWahda w)"
+ },
+ {
+  "ism": "P1573_rabt_mithal_murashshah",
+  "milaf": "Nizam/Rabt.lean",
+  "min": "def mithalMurashshah : MithalJadwal := [(\"ذهب\", .sayr)]",
+  "ila": "def mithalMurashshah : MithalJadwal := [(\"كتب\", .sayr)]"
+ },
+ {
+  "ism": "P1574_haml_jins_basmat_halat",
+  "milaf": "tahaqquq/dawabit/haml_jins/tajmid.json",
+  "min": "\"cases_sha256\": \"59c8effa421dc6fd76f4f265f1e97cdadd81fb254946a29e5342bc986660f353\"",
+  "ila": "\"cases_sha256\": \"19c8effa421dc6fd76f4f265f1e97cdadd81fb254946a29e5342bc986660f353\""
+ },
+ {
+  "ism": "P1575_haml_jins_muwallad",
+  "milaf": "Jisr/HamlJinsDawabit.lean",
+  "min": "  ⟨\"H01\", ",
+  "ila": "  ⟨\"H01x\", "
+ },
+ {
+  "ism": "P1576_haml_jins_natija_sawab",
+  "milaf": "tahaqquq/dawabit/haml_jins/natija_1.json",
+  "min": "\"sawab\": 23",
+  "ila": "\"sawab\": 24"
+ },
+ {
+  "ism": "P1577_qari_rabt_haml_satr",
+  "milaf": "Qari/Rabt.lean",
+  "min": "مرخَّصٌ — {sabab}، و{ismQab c} في قابليّات {ismQism q} لأنّه ينتقل ذاتيًّا",
+  "ila": "لا حكم — {sabab}، و{ismQab c} في قابليّات {ismQism q} لأنّه ينتقل ذاتيًّا"
  }
 ]
