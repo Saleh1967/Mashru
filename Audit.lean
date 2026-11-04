@@ -110,6 +110,7 @@ import SLGE.Syllable
 import Madlul.TasisDalala
 import Nizam.Shahada
 import Nizam.Silsila
+import Nizam.Wiratha
 import Nizam.Athar
 import Nizam.AtharDabit
 import Nizam.AtharQiyas
@@ -3006,3 +3007,16 @@ import Dal.WiladaJumla
 #print axioms SLGE.Law.HisabJumla.awailS
 #print axioms Dal.WiladaJumla.wilada_jumla
 #print axioms Dal.WiladaJumla.jumla_bil_qanun
+#print axioms Nizam.Wiratha.rutba_daraja
+#print axioms Nizam.Wiratha.mutadarrija
+#print axioms Nizam.Wiratha.bina_maqbul
+#print axioms Nizam.Wiratha.kull_wahda_murakhkhasa
+#print axioms Nizam.Wiratha.rutba_sifr
+#print axioms Nizam.Wiratha.bilaWirth_iff
+#print axioms Nizam.Wiratha.jinat_khassa
+#print axioms Nizam.Wiratha.jinat_tuwarrath
+#print axioms Nizam.Wiratha.jinat_ratib
+#print axioms Nizam.Wiratha.jinat_ratib_le
+#print axioms Nizam.Wiratha.istirad_adna
+#print axioms Nizam.Wiratha.jinatKull_tuwarrath
+#print axioms Nizam.Wiratha.shahid_jinat
