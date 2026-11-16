@@ -142,7 +142,6 @@ import SLGE.HisabSinfi
 import Jisr.QabiliyyaJins
 import Jisr.HamlJinsDabit
 import Jisr.HamlJinsQiyas
-import Dal.QanunAdad
 import Dal.WiladaJadhr
 import Dal.WiladaKalima
 import Dal.WiladaJumla
