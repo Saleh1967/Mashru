@@ -11,7 +11,8 @@ import SLGE.Core
 * ‎C f w q‎ هو **عددُ** المرخَّصات بوزنٍ ‎w‎ وطولٍ لا يتجاوز ‎f‎، والرتبةُ ‎rank‎ تقابلٌ بينها وبين ‎[0, C)‎؛
 * الترقيمُ المتدرّج ‎gEnc‎: تقابلٌ بين المرخَّصات كلّها وبين ‎ℕ‎، يملأ كلَّ درجةٍ قبل التي تليها
   (**الاستنفادُ قبل الترخيص**)؛
-* جدولٌ ‎tab‎ يحسب ‎C‎ حسابًا يقبله النواة، مبرهَنٌ تساويهما.
+* وأعدادُ ‎C‎ لآلاتٍ بعينها لا تُحسب هنا: تُحسب بالحساب الصنفيّ (`SLGE/HisabSinfi.lean`)؛ وكان هنا جدولٌ ‎tab‎ يحسبها
+  (‎row‎، ‎tab‎، ‎tab_eq‎) حُذف بإذن المالك في الجلسة (2026-11-01؛ انظر رأس `SLGE/HisabSinfi.lean`).
 -/
 
 namespace SLGE
@@ -170,34 +171,6 @@ theorem unrank_spec : ∀ (f w q i : Nat), i < M.C f w q →
         refine ⟨⟨h1, hω, ihA⟩, ?_⟩
         simp only [rank, Nat.add_sub_cancel, ihR, h3]; omega
       · rw [if_neg hω] at h2; omega
-
-/-! ### الجدول: حسابُ ‎C‎ بما تقبله النواة -/
-
-def row (Q : Nat) (t : List (List Nat)) (w : Nat) : List Nat :=
-  (List.range Q).map fun q => M.base w q + ((List.range M.A).map fun b =>
-    if M.ω q b ≤ w then (t.getD (w - M.ω q b) []).getD (M.δ q b) 0 else 0).sum
-
-def tab (Q W : Nat) : Nat → List (List Nat)
-  | 0 => (List.range (W + 1)).map fun w => (List.range Q).map (M.base w)
-  | f + 1 => (List.range (W + 1)).map (M.row Q (tab Q W f))
-
-theorem tab_eq (Q W : Nat) (hQ : ∀ q < Q, ∀ a < M.A, M.δ q a < Q) :
-    ∀ f w q, w ≤ W → q < Q → ((M.tab Q W f).getD w []).getD q 0 = M.C f w q
-  | 0, w, q, hw, hq => by simp [tab, C, Nat.lt_succ_of_le hw, hq]
-  | f + 1, w, q, hw, hq => by
-    have key : ((List.range M.A).map fun b => if M.ω q b ≤ w then
-        ((M.tab Q W f).getD (w - M.ω q b) []).getD (M.δ q b) 0 else 0) =
-        ((List.range M.A).map fun b => if M.ω q b ≤ w then M.C f (w - M.ω q b) (M.δ q b) else 0) := by
-      apply List.map_congr_left; intro b hb; rw [List.mem_range] at hb
-      split
-      · exact tab_eq Q W hQ f _ _ (by omega) (hQ q hq b hb)
-      · rfl
-    have e1 : (M.tab Q W (f + 1)).getD w [] = M.row Q (M.tab Q W f) w := by
-      simp [tab, Nat.lt_succ_of_le hw]
-    have e2 : (M.row Q (M.tab Q W f) w).getD q 0 = M.base w q + ((List.range M.A).map fun b =>
-        if M.ω q b ≤ w then ((M.tab Q W f).getD (w - M.ω q b) []).getD (M.δ q b) 0 else 0).sum := by
-      simp [row, hq]
-    rw [e1, e2, key, C_succ]; rfl
 
 /-! ### الترقيمُ المتدرّج: الدرجةُ ‎W‎ لا تُرقَّم إلّا بعد استنفاد ما دونها -/
 

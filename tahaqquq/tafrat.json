@@ -6031,61 +6031,61 @@
  },
  {
   "ism": "P1193_ibdal_natija_tashghil",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
-  "min": "\"tashghil\": 4,",
-  "ila": "\"tashghil\": 5,"
+  "milaf": "tahaqquq/dawabit/ibdal/natija_9.json",
+  "min": "\"tashghil\": 9,",
+  "ila": "\"tashghil\": 10,"
  },
  {
   "ism": "P1194_ibdal_natija_cases",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_9.json",
   "min": "\"cases_sha256\": \"7324",
   "ila": "\"cases_sha256\": \"8324"
  },
  {
   "ism": "P1195_ibdal_natija_huqul",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_9.json",
   "min": "\"huqul_masula\": 49,",
   "ila": "\"huqul_masula\": 50,"
  },
  {
   "ism": "P1196_ibdal_natija_ihsa",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_9.json",
   "min": "\"sawab\": 39,\n  \"naqsTaghtiya\": 8,",
   "ila": "\"sawab\": 38,\n  \"naqsTaghtiya\": 9,"
  },
  {
   "ism": "P1197_ibdal_natija_fia",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_9.json",
   "min": "\"عموم\": 18,",
   "ila": "\"عموم\": 17,"
  },
  {
   "ism": "P1198_ibdal_natija_akhta",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_9.json",
   "min": "\"B49\",",
   "ila": "\"B48\","
  },
  {
   "ism": "P1199_ibdal_natija_lean",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_9.json",
   "min": "  \"Jisr.IbdalAlfiyya.Qiyas.natija\",\n  \"Jisr.IbdalAlfiyya.Qiyas.natija_fia\",",
   "ila": "  \"Jisr.IbdalAlfiyya.Qiyas.natija_fia\",\n  \"Jisr.IbdalAlfiyya.Qiyas.natija\","
  },
  {
   "ism": "P1200_ibdal_natija_azwaj",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_9.json",
   "min": "\"asaba_tarafan\": 11",
   "ila": "\"asaba_tarafan\": 10"
  },
  {
   "ism": "P1201_ibdal_natija_rafd",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_9.json",
   "min": "\"rafd_qari\": []",
   "ila": "\"rafd_qari\": [\"B01\"]"
  },
  {
   "ism": "P1202_ibdal_natija_halat",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_9.json",
   "min": "\"halat\": 49,",
   "ila": "\"halat\": 48,"
  },
@@ -6175,15 +6175,15 @@
  },
  {
   "ism": "P1217_ibdal_natija_shifra",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
+  "milaf": "tahaqquq/dawabit/ibdal/natija_9.json",
   "min": "\"sha256\": \"5f33f090",
   "ila": "\"sha256\": \"6f33f090"
  },
  {
   "ism": "P1218_ibdal_natija_qablaha",
-  "milaf": "tahaqquq/dawabit/ibdal/natija_4.json",
-  "min": "\"natija_3.json\": \"fa35b435",
-  "ila": "\"natija_3.json\": \"0a35b435"
+  "milaf": "tahaqquq/dawabit/ibdal/natija_9.json",
+  "min": "\"natija_8.json\": \"9a1894a7",
+  "ila": "\"natija_8.json\": \"0a1894a7"
  },
  {
   "ism": "P1219_ibdal_muqin_khatima",
@@ -7987,61 +7987,61 @@
  },
  {
   "ism": "P1430_athar_tashghil",
-  "milaf": "tahaqquq/dawabit/athar/natija_21.json",
-  "min": " \"tashghil\": 21,",
-  "ila": " \"tashghil\": 22,"
+  "milaf": "tahaqquq/dawabit/athar/natija_23.json",
+  "min": " \"tashghil\": 23,",
+  "ila": " \"tashghil\": 24,"
  },
  {
   "ism": "P1431_athar_natija_cases",
-  "milaf": "tahaqquq/dawabit/athar/natija_21.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_23.json",
   "min": " \"cases_sha256\": \"7bd6204545366af11dfca85769739d65ff23a3d863139ffee90f1c49d6f032ab\",",
   "ila": " \"cases_sha256\": \"8bd6204545366af11dfca85769739d65ff23a3d863139ffee90f1c49d6f032ab\","
  },
  {
   "ism": "P1432_athar_shifra",
-  "milaf": "tahaqquq/dawabit/athar/natija_21.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_23.json",
   "min": "   \"sha256\": \"c6664224b005b490bd080f85cc7bc8ae2e58b77634ab4cd848cbe11480b25133\"",
   "ila": "   \"sha256\": \"06664224b005b490bd080f85cc7bc8ae2e58b77634ab4cd848cbe11480b25133\""
  },
  {
   "ism": "P1433_athar_bil_fia",
-  "milaf": "tahaqquq/dawabit/athar/natija_21.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_23.json",
   "min": "  \"موجب\": 4,",
   "ila": "  \"موجب\": 5,"
  },
  {
   "ism": "P1434_athar_akhta_json",
-  "milaf": "tahaqquq/dawabit/athar/natija_21.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_23.json",
   "min": "   \"A50\",\n   \"qayd\",\n   \"naqsTaghtiya\"",
   "ila": "   \"A50\",\n   \"qayd\",\n   \"khata\""
  },
  {
   "ism": "P1435_athar_azwaj_json",
-  "milaf": "tahaqquq/dawabit/athar/natija_21.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_23.json",
   "min": "   \"A34\",\n   \"A35\",\n   false",
   "ila": "   \"A34\",\n   \"A35\",\n   true"
  },
  {
   "ism": "P1436_athar_lean_qaima",
-  "milaf": "tahaqquq/dawabit/athar/natija_21.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_23.json",
   "min": "  \"Nizam.Athar.Qiyas.natija_fia\",",
   "ila": "  \"Nizam.Athar.Qiyas.azwaj_1\","
  },
  {
   "ism": "P1437_athar_halat",
-  "milaf": "tahaqquq/dawabit/athar/natija_21.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_23.json",
   "min": " \"halat\": 50,",
   "ila": " \"halat\": 51,"
  },
  {
   "ism": "P1438_athar_qablaha",
-  "milaf": "tahaqquq/dawabit/athar/natija_21.json",
-  "min": "  \"natija_20.json\": \"b13880bbe1f251197464c8348fcb8c1095be14059efe90665873a6d9cdeb8276\"",
-  "ila": "  \"natija_20.json\": \"b13880bbe1f251197464c8348fcb8c1095be14059efe90665873a6d9cdeb8270\""
+  "milaf": "tahaqquq/dawabit/athar/natija_23.json",
+  "min": "  \"natija_22.json\": \"e9d9c2b2f1916806891b97882b1a26dc16163e3f4f76f4758d6c21c0a06b6c12\"",
+  "ila": "  \"natija_22.json\": \"e9d9c2b2f1916806891b97882b1a26dc16163e3f4f76f4758d6c21c0a06b6c10\""
  },
  {
   "ism": "P1439_athar_ihsa_json",
-  "milaf": "tahaqquq/dawabit/athar/natija_21.json",
+  "milaf": "tahaqquq/dawabit/athar/natija_23.json",
   "min": "  \"sawab\": 7,",
   "ila": "  \"sawab\": 6,"
  },
@@ -8647,25 +8647,25 @@
  },
  {
   "ism": "P1551_qanun_adad_bila_adad",
-  "milaf": "Dal/QanunAdad.lean",
+  "milaf": "SLGE/HisabSinfi.lean",
   "min": "then e.2.2 * C f (w - e.1) e.2.1 else 0).sum",
   "ila": "then C f (w - e.1) e.2.1 else 0).sum"
  },
  {
   "ism": "P1552_qanun_adad_qubul_bila_wazn",
-  "milaf": "Dal/QanunAdad.lean",
+  "milaf": "SLGE/HisabSinfi.lean",
   "min": "if w = 0 ∧ Q.F i = true then 1 else 0",
   "ila": "if Q.F i = true then 1 else 0"
  },
  {
   "ism": "P1553_jadhr_saff_sinf1",
-  "milaf": "Dal/WiladaJadhr.lean",
+  "milaf": "SLGE/Root.lean",
   "min": "(1, 2, 9), (1, 3, 9), (1, 4, 2)]",
   "ila": "(1, 2, 10), (1, 3, 9), (1, 4, 1)]"
  },
  {
   "ism": "P1554_jadhr_sinfT",
-  "milaf": "Dal/WiladaJadhr.lean",
+  "milaf": "SLGE/Law.lean",
   "min": "[1, 1, 0, 1, 1, 1, 1, 0, 0,",
   "ila": "[1, 1, 0, 1, 1, 1, 1, 0, 1,"
  },
@@ -8689,19 +8689,19 @@
  },
  {
   "ism": "P1558_kalima_saff_fatha",
-  "milaf": "Dal/WiladaKalima.lean",
-  "min": "(1, 9, 10), (1, 10, 9), (1, 11, 9)]",
-  "ila": "(1, 9, 9), (1, 10, 10), (1, 11, 9)]"
+  "milaf": "SLGE/Law.lean",
+  "min": "| 1 => [(0, 3, 1), (1, 1, 28), (1, 2, 56), (1, 8, 3), (1, 9, 10), (1, 10, 9), (1, 11, 9)]",
+  "ila": "| 1 => [(0, 3, 1), (1, 1, 28), (1, 2, 56), (1, 8, 3), (1, 9, 9), (1, 10, 10), (1, 11, 9)]"
  },
  {
   "ism": "P1559_kalima_waqf_ka_wasl",
-  "milaf": "Dal/WiladaKalima.lean",
+  "milaf": "SLGE/Law.lean",
   "min": "!(i == 0 || i == 7 || i == 8)",
   "ila": "!(i == 0 || i == 4 || i == 7 || i == 8)"
  },
  {
   "ism": "P1560_kalima_sinf_mughliq",
-  "milaf": "Dal/WiladaKalima.lean",
+  "milaf": "SLGE/Law.lean",
   "min": "then 10 else if sinfT.getD (q - 67) 0 = 1 then 9 else 11",
   "ila": "then 9 else if sinfT.getD (q - 67) 0 = 1 then 10 else 11"
  },
@@ -8725,7 +8725,7 @@
  },
  {
   "ism": "P1564_jumla_hadd_bad_madd",
-  "milaf": "Dal/WiladaJumla.lean",
+  "milaf": "SLGE/Law.lean",
   "min": "| 5 => [(0, 7, 1),",
   "ila": "| 5 => [(0, 8, 1),"
  },
@@ -8737,9 +8737,135 @@
  },
  {
   "ism": "P1566_jumla_juhd",
-  "milaf": "Dal/WiladaJumla.lean",
+  "milaf": "SLGE/Law.lean",
   "min": "if i = 1 ∨ i = 2 then 2 else",
   "ila": "if i = 1 ∨ i = 2 then 1 else"
+ },
+ {
+  "ism": "P1567_jadhr_bila_hisab",
+  "milaf": "Dal/WiladaJadhr.lean",
+  "min": "namespace Dal.WiladaJadhr\nopen SLGE SLGE.Law SLGE.Law.HisabJadhr\n",
+  "ila": "namespace Dal.WiladaJadhr\nopen SLGE SLGE.Law SLGE.Law.HisabJadhr\n\n/-- عددٌ للجذر بالاستنفاد المباشر لا بالحساب الصنفيّ. -/\nprivate theorem adad_bila_hisab : Mroot.lev 3 0 1 = 28 := by decide +kernel\n"
+ },
+ {
+  "ism": "P1568_ala_bila_hisab",
+  "milaf": "Dal/WiladaJumla.lean",
+  "min": "namespace Dal.WiladaJumla\n",
+  "ila": "namespace Dal.WiladaJumla\n\n/-- آلةٌ بلا حسابٍ صنفيّ. -/\ndef MsentWasl : SLGE.Machine := SLGE.Law.mk 117 SLGE.Law.Fwasl\n"
+ },
+ {
+  "ism": "P1569_mirat_zaid",
+  "milaf": "tahaqquq/hisab_sinfi.py",
+  "min": "augs = [20, 0, 13, 18, 27, 28, 14, 11, 1, 2]",
+  "ila": "augs = [0, 13, 18, 27, 28, 14, 11, 1, 2]"
+ },
+ {
+  "ism": "P1570_zaid_saff",
+  "milaf": "SLGE/Root.lean",
+  "min": "| 8 => [(1, 1, 8), (1, 2, 16), (1, 6, 92)]",
+  "ila": "| 8 => [(1, 1, 8), (1, 2, 17), (1, 6, 91)]"
+ },
+ {
+  "ism": "P1571_maqta_saff",
+  "milaf": "SLGE/Syllable.lean",
+  "min": "| 2 => [(0, 3, 1), (1, 5, 27), (1, 7, 88)]",
+  "ila": "| 2 => [(0, 3, 1), (1, 5, 28), (1, 7, 87)]"
+ },
+ {
+  "ism": "P1572_maqta_sinf",
+  "milaf": "SLGE/Syllable.lean",
+  "min": "else if q ≤ 34 then 5 else if q ≤ 36 then 6 else if q ≤ 66 then 7 else if q ≤ 95 then 5 else 7",
+  "ila": "else if q ≤ 34 then 5 else if q ≤ 36 then 6 else if q ≤ 66 then 7 else if q ≤ 95 then 6 else 7"
+ },
+ {
+  "ism": "P1573_zaid_sinfA",
+  "milaf": "SLGE/Root.lean",
+  "min": "def sinfA : List Nat := [1, 1, 0, 0,",
+  "ila": "def sinfA : List Nat := [1, 0, 0, 0,"
+ },
+ {
+  "ism": "P1574_hisab_juhd",
+  "milaf": "SLGE/HisabSinfi.lean",
+  "min": "  juhd : ∀ i, mayyit i = false → ∀ e ∈ Q.saff i, mayyit e.2.1 = false → pot e.2.1 + 1 ≤ pot i + K * e.1",
+  "ila": "  juhd : ∀ i, mayyit i = false → ∀ e ∈ Q.saff i, mayyit e.2.1 = false → pot e.2.1 ≤ pot i + K * e.1"
+ },
+ {
+  "ism": "P1575_jumla_hisab_K",
+  "milaf": "SLGE/Law.lean",
+  "min": "  K := 3\n",
+  "ila": "  K := 2\n"
+ },
+ {
+  "ism": "P1576_jadwal_yaud",
+  "milaf": "Dal/WiladaKalima.lean",
+  "min": "namespace Dal.WiladaKalima\nopen SLGE SLGE.Law SLGE.Law.HisabKalima\n",
+  "ila": "namespace SLGE.Machine\n\n/-- الجدولُ المحذوف يعود باسمه. -/\ndef row (M : SLGE.Machine) (q : Nat) : Nat := M.A + q\n\nend SLGE.Machine\n\nnamespace Dal.WiladaKalima\nopen SLGE SLGE.Law SLGE.Law.HisabKalima\n"
+ },
+ {
+  "ism": "P1586_ala_khafiya_bila_hisab",
+  "milaf": "Dal/WiladaJumla.lean",
+  "min": "end Dal.WiladaJumla",
+  "ila": "/-- آلةٌ بلا حسابٍ صنفيّ، أوّلُ اسمها «_». -/\ndef _alaKhafiya : SLGE.Machine := SLGE.Law.mk 117 SLGE.Law.Fwasl\n\nend Dal.WiladaJumla"
+ },
+ {
+  "ism": "P1577_wahdat_rutba_muwallid",
+  "milaf": "scripts/bina_wahdat.py",
+  "min": "rutba[i] = 0 if not imp[i] else 1 + max(r(j, khat + (i,)) for j in imp[i])",
+  "ila": "rutba[i] = 0 if not imp[i] else max(r(j, khat + (i,)) for j in imp[i])"
+ },
+ {
+  "ism": "P1578_wahdat_bila_qari",
+  "milaf": "scripts/bina_wahdat.py",
+  "min": "DIRS = [\"Nabt\", \"SLGE\", \"Dal\", \"Madlul\", \"Jisr\", \"Aql\", \"Nizam\", \"Faahis\", \"Qari\"]",
+  "ila": "DIRS = [\"Nabt\", \"SLGE\", \"Dal\", \"Madlul\", \"Jisr\", \"Aql\", \"Nizam\", \"Faahis\"]"
+ },
+ {
+  "ism": "P1579_wahdat_istirad_khafi",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "import Aql.Qaida\nimport Nizam.WahdatJadwal\n",
+  "ila": "/- مستورَدٌ بعد تعليقٍ في سطره -/ import SLGE.Core\nimport Aql.Qaida\nimport Nizam.WahdatJadwal\n"
+ },
+ {
+  "ism": "P1580_wahdat_hisab_khafi",
+  "milaf": "Dal/WiladaKalima.lean",
+  "min": "  decide +kernel\n\nend Dal.WiladaKalima",
+  "ila": "  decide +kernel\n\n/-- حسابٌ صنفيٌّ لا تسمّيه الجينات. -/\ndef hisabNaskh : SLGE.Hisab SLGE.Law.Mword 0 := SLGE.Law.HisabKalima.hisabWaqf\n\nend Dal.WiladaKalima"
+ },
+ {
+  "ism": "P1581_wahdat_rutba",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "def rutba (i : Nat) : Nat := rutbaJadwal.getD i 0",
+  "ila": "def rutba (i : Nat) : Nat := rutbaJadwal.getD i 0 + 1"
+ },
+ {
+  "ism": "P1582_wahdat_bilaWirth",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "\"SLGE.AwamilTable\", \"SLGE.Core\", \"SLGE.MadlulAwwalan\", \"SLGE.TarkibLit\"]",
+  "ila": "\"SLGE.AwamilTable\", \"SLGE.MadlulAwwalan\", \"SLGE.TarkibLit\"]"
+ },
+ {
+  "ism": "P1583_wahdat_jinat_zaid",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "[jin! SLGE.Law.HisabJadhr.hisabJadhr, jin! SLGE.Law.HisabZaid.hisabZaid]",
+  "ila": "[jin! SLGE.Law.HisabJadhr.hisabJadhr]"
+ },
+ {
+  "ism": "P1584_wahdat_bila_tawrith",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "  | k + 1, i => jinatKhassa (ism i) ++ (istirad i).flatMap (jinat k)",
+  "ila": "  | k + 1, i => jinatKhassa (ism i) ++ (istirad i).flatMap (fun _ => [])"
+ },
+ {
+  "ism": "P1585_wahdat_qanun_bila_muqaddimat",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "if istirad i = [] then none else some ⟨ism i, istirad i, i⟩",
+  "ila": "if istirad i = [] then none else some ⟨ism i, [], i⟩"
+ },
+ {
+  "ism": "P1587_wahdat_jin_ism",
+  "milaf": "Nizam/Wiratha.lean",
+  "min": "`(($(Lean.quote x.getId.toString), ($x).Q.m, ($x).K))",
+  "ila": "`((\"jin\", ($x).Q.m, ($x).K))"
  },
  {
   "ism": "P1567_rabt_tayy_la_yudif",

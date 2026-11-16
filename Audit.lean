@@ -110,6 +110,7 @@ import SLGE.Syllable
 import Madlul.TasisDalala
 import Nizam.Shahada
 import Nizam.Silsila
+import Nizam.Wiratha
 import Nizam.Athar
 import Nizam.AtharDabit
 import Nizam.AtharQiyas
@@ -137,6 +138,7 @@ import Jisr.Tahlil
 import Jisr.TahlilDabit
 import Jisr.TahlilQiyas
 import Nizam.Rabt
+import SLGE.HisabSinfi
 import Jisr.QabiliyyaJins
 import Jisr.HamlJinsDabit
 import Jisr.HamlJinsQiyas
@@ -2109,7 +2111,6 @@ import Dal.WiladaJumla
 #print axioms SLGE.Machine.rank_lt
 #print axioms SLGE.Machine.unrank_rank
 #print axioms SLGE.Machine.unrank_spec
-#print axioms SLGE.Machine.tab_eq
 #print axioms SLGE.Machine.blockEnc_levels
 #print axioms SLGE.Machine.levels_length
 #print axioms SLGE.Machine.levels_getD
@@ -2235,7 +2236,6 @@ import Dal.WiladaJumla
 #print axioms SLGE.Law.root_wt
 #print axioms SLGE.Law.root_hK
 #print axioms SLGE.Law.root_close
-#print axioms SLGE.Law.root_lev_tab
 #print axioms SLGE.Law.tajawur_root
 #print axioms SLGE.Law.fin_shape
 #print axioms SLGE.Law.fin_shapeF
@@ -2249,7 +2249,6 @@ import Dal.WiladaJumla
 #print axioms SLGE.Law.root_acc
 #print axioms SLGE.Law.muj_size3
 #print axioms SLGE.Law.aug_close
-#print axioms SLGE.Law.aug_lev_tab
 #print axioms SLGE.Law.unitList1_ok
 #print axioms SLGE.Law.δa_dead
 #print axioms SLGE.Law.aug_dead
@@ -2279,7 +2278,6 @@ import Dal.WiladaJumla
 #print axioms SLGE.Law.hW1
 #print axioms SLGE.Law.hFwaqf
 #print axioms SLGE.Law.hFwasl
-#print axioms SLGE.Law.lev_tab
 #print axioms SLGE.Law.sl0
 #print axioms SLGE.Law.sl1
 #print axioms SLGE.Law.sl2
@@ -2904,32 +2902,36 @@ import Dal.WiladaJumla
 #print axioms Nizam.Rabt.hukmTafsir_laQiraa
 #print axioms Nizam.Rabt.siyaq_la_yatba_tartib
 #print axioms Nizam.Rabt.siyaq_shahid
-#print axioms Dal.QanunAdad.sum_map_one
-#print axioms Dal.QanunAdad.sum_map_add
-#print axioms Dal.QanunAdad.sum_zero
-#print axioms Dal.QanunAdad.sum_ite_eq
-#print axioms Dal.QanunAdad.tajmi
-#print axioms Dal.QanunAdad.qanun_adad
-#print axioms Dal.QanunAdad.Asnaf.base_mayyit
-#print axioms Dal.QanunAdad.Asnaf.mayyit_sifr
-#print axioms Dal.QanunAdad.Asnaf.C_khatwa
-#print axioms Dal.QanunAdad.Asnaf.C_mustaqill
-#print axioms Dal.QanunAdad.Asnaf.C_thabit
-#print axioms Dal.QanunAdad.Asnaf.C_thabit2
-#print axioms Dal.QanunAdad.Asnaf.C_khatwa1
+#print axioms SLGE.HisabSinfi.sum_map_one
+#print axioms SLGE.HisabSinfi.sum_map_add
+#print axioms SLGE.HisabSinfi.sum_zero
+#print axioms SLGE.HisabSinfi.sum_ite_eq
+#print axioms SLGE.HisabSinfi.tajmi
+#print axioms SLGE.qanun_adad
+#print axioms SLGE.Asnaf.base_mayyit
+#print axioms SLGE.Asnaf.mayyit_sifr
+#print axioms SLGE.Asnaf.C_khatwa
+#print axioms SLGE.Asnaf.C_mustaqill
+#print axioms SLGE.Asnaf.C_thabit
+#print axioms SLGE.Asnaf.C_thabit2
+#print axioms SLGE.Asnaf.C_khatwa1
+#print axioms SLGE.Hisab.C_eq
+#print axioms SLGE.Hisab.lev_eq
 #print axioms Dal.WiladaJadhr.sinfT_sinf
 #print axioms Dal.WiladaJadhr.asnaf
-#print axioms Dal.WiladaJadhr.jadhr_mutakafi
-#print axioms Dal.WiladaJadhr.mayyitJ
-#print axioms Dal.WiladaJadhr.potJ
-#print axioms Dal.WiladaJadhr.wazn1
-#print axioms Dal.WiladaJadhr.lev_jadhr
-#print axioms Dal.WiladaJadhr.x_dead
-#print axioms Dal.WiladaJadhr.x_khatwa
-#print axioms Dal.WiladaJadhr.x_bidaya
-#print axioms Dal.WiladaJadhr.jadhr_khatwa
+#print axioms SLGE.Law.HisabJadhr.jadhr_mutakafi
+#print axioms SLGE.Law.HisabJadhr.mayyitJ
+#print axioms SLGE.Law.HisabJadhr.potJ
+#print axioms SLGE.Law.HisabJadhr.wazn1
+#print axioms SLGE.Law.HisabJadhr.lev_jadhr
+#print axioms SLGE.Law.HisabJadhr.x_dead
+#print axioms SLGE.Law.HisabJadhr.x_khatwa
+#print axioms SLGE.Law.HisabJadhr.x_bidaya
+#print axioms SLGE.Law.HisabJadhr.jadhr_khatwa
 #print axioms Dal.WiladaJadhr.wilada
-#print axioms Dal.WiladaJadhr.jadhr_shahid
+#print axioms SLGE.Law.HisabJadhr.jadhr_shahid
+#print axioms SLGE.Law.HisabJadhr.awailJ
+#print axioms SLGE.Law.HisabJadhr.adad_jadhr
 #print axioms Dal.WiladaJadhr.wilada_awwal
 #print axioms Dal.WiladaJadhr.tawlid
 #print axioms Dal.WiladaJadhr.jadhr_bil_qanun
@@ -2940,49 +2942,99 @@ import Dal.WiladaJumla
 #print axioms Dal.WiladaJadhr.d96
 #print axioms Dal.WiladaJadhr.kamil3
 #print axioms Dal.WiladaJadhr.la_yakfi_wahid
-#print axioms Dal.WiladaKalima.maghluqK
-#print axioms Dal.WiladaKalima.sinfK
-#print axioms Dal.WiladaKalima.waznK
-#print axioms Dal.WiladaKalima.saffK_hadd
-#print axioms Dal.WiladaKalima.adadK
-#print axioms Dal.WiladaKalima.kalima_mutakafi_waqf
-#print axioms Dal.WiladaKalima.kalima_mutakafi_wasl
-#print axioms Dal.WiladaKalima.saffK_kabir
-#print axioms Dal.WiladaKalima.mayyitK
-#print axioms Dal.WiladaKalima.potK
-#print axioms Dal.WiladaKalima.wazn1K
-#print axioms Dal.WiladaKalima.pK_le
-#print axioms Dal.WiladaKalima.y_khatwa
-#print axioms Dal.WiladaKalima.y_dead
-#print axioms Dal.WiladaKalima.kalima_khatwa
-#print axioms Dal.WiladaKalima.bidaya_waqf
-#print axioms Dal.WiladaKalima.bidaya_wasl
-#print axioms Dal.WiladaKalima.lev_waqf
-#print axioms Dal.WiladaKalima.lev_wasl
+#print axioms SLGE.Law.HisabKalima.maghluqK
+#print axioms SLGE.Law.HisabKalima.sinfK
+#print axioms SLGE.Law.HisabKalima.waznK
+#print axioms SLGE.Law.HisabKalima.saffK_hadd
+#print axioms SLGE.Law.HisabKalima.adadK
+#print axioms SLGE.Law.HisabKalima.kalima_mutakafi_waqf
+#print axioms SLGE.Law.HisabKalima.kalima_mutakafi_wasl
+#print axioms SLGE.Law.HisabKalima.saffK_kabir
+#print axioms SLGE.Law.HisabKalima.mayyitK
+#print axioms SLGE.Law.HisabKalima.potK
+#print axioms SLGE.Law.HisabKalima.wazn1K
+#print axioms SLGE.Law.HisabKalima.pK_le
+#print axioms SLGE.Law.HisabKalima.y_khatwa
+#print axioms SLGE.Law.HisabKalima.y_dead
+#print axioms SLGE.Law.HisabKalima.kalima_khatwa
+#print axioms SLGE.Law.HisabKalima.bidaya_waqf
+#print axioms SLGE.Law.HisabKalima.bidaya_wasl
+#print axioms SLGE.Law.HisabKalima.lev_waqf
+#print axioms SLGE.Law.HisabKalima.lev_wasl
 #print axioms Dal.WiladaKalima.tawlid
-#print axioms Dal.WiladaKalima.awail
+#print axioms SLGE.Law.HisabKalima.awail
 #print axioms Dal.WiladaKalima.wilada_waqf
 #print axioms Dal.WiladaKalima.wilada_wasl
 #print axioms Dal.WiladaKalima.kalima_bil_qanun
 #print axioms Dal.WiladaKalima.kalima_maqati
-#print axioms Dal.WiladaJumla.saffS_hadd
-#print axioms Dal.WiladaJumla.waznS
-#print axioms Dal.WiladaJumla.adadS
-#print axioms Dal.WiladaJumla.jumla_mutakafi
-#print axioms Dal.WiladaJumla.saffS_kabir
-#print axioms Dal.WiladaJumla.mayyitS
-#print axioms Dal.WiladaJumla.potS
-#print axioms Dal.WiladaJumla.wazn1S
-#print axioms Dal.WiladaJumla.pS_le
-#print axioms Dal.WiladaJumla.z_khatwa
-#print axioms Dal.WiladaJumla.z_dead
-#print axioms Dal.WiladaJumla.jumla_khatwa
-#print axioms Dal.WiladaJumla.bidaya_jumla
-#print axioms Dal.WiladaJumla.lev_jumla
+#print axioms SLGE.Law.HisabMaqta.sinfM
+#print axioms SLGE.Law.HisabMaqta.saffM_hadd
+#print axioms SLGE.Law.HisabMaqta.adadM
+#print axioms SLGE.Law.HisabMaqta.maqta_mutakafi_waqf
+#print axioms SLGE.Law.HisabMaqta.maqta_mutakafi_wasl
+#print axioms SLGE.Law.HisabMaqta.saffM_kabir
+#print axioms SLGE.Law.HisabMaqta.mayyitM
+#print axioms SLGE.Law.HisabMaqta.potM
+#print axioms SLGE.Law.HisabMaqta.wazn1M
+#print axioms SLGE.Law.HisabMaqta.pM_le
+#print axioms SLGE.Law.HisabMaqta.m_khatwa
+#print axioms SLGE.Law.HisabMaqta.m_dead
+#print axioms SLGE.Law.HisabMaqta.maqta_khatwa
+#print axioms SLGE.Law.HisabMaqta.bidaya_waqf
+#print axioms SLGE.Law.HisabMaqta.bidaya_wasl
+#print axioms SLGE.Law.HisabMaqta.lev_waqf
+#print axioms SLGE.Law.HisabMaqta.lev_wasl
+#print axioms SLGE.Law.HisabMaqta.awailM
+#print axioms SLGE.Law.HisabMaqta.adad_waqf
+#print axioms SLGE.Law.HisabMaqta.adad_wasl
+#print axioms SLGE.Law.HisabZaid.sinfA_sinf
+#print axioms SLGE.Law.HisabZaid.sinfAq
+#print axioms SLGE.Law.HisabZaid.saffA_hadd
+#print axioms SLGE.Law.HisabZaid.adadA
+#print axioms SLGE.Law.HisabZaid.zaid_mutakafi
+#print axioms SLGE.Law.HisabZaid.saffA_kabir
+#print axioms SLGE.Law.HisabZaid.mayyitA
+#print axioms SLGE.Law.HisabZaid.potA
+#print axioms SLGE.Law.HisabZaid.wazn1A
+#print axioms SLGE.Law.HisabZaid.pA_le
+#print axioms SLGE.Law.HisabZaid.v_khatwa
+#print axioms SLGE.Law.HisabZaid.v_dead
+#print axioms SLGE.Law.HisabZaid.zaid_khatwa
+#print axioms SLGE.Law.HisabZaid.bidaya_zaid
+#print axioms SLGE.Law.HisabZaid.lev_zaid
+#print axioms SLGE.Law.HisabZaid.awailA
+#print axioms SLGE.Law.HisabZaid.adad_zaid
+#print axioms SLGE.Law.HisabJumla.saffS_hadd
+#print axioms SLGE.Law.HisabJumla.waznS
+#print axioms SLGE.Law.HisabJumla.adadS
+#print axioms SLGE.Law.HisabJumla.jumla_mutakafi
+#print axioms SLGE.Law.HisabJumla.saffS_kabir
+#print axioms SLGE.Law.HisabJumla.mayyitS
+#print axioms SLGE.Law.HisabJumla.potS
+#print axioms SLGE.Law.HisabJumla.wazn1S
+#print axioms SLGE.Law.HisabJumla.pS_le
+#print axioms SLGE.Law.HisabJumla.z_khatwa
+#print axioms SLGE.Law.HisabJumla.z_dead
+#print axioms SLGE.Law.HisabJumla.jumla_khatwa
+#print axioms SLGE.Law.HisabJumla.bidaya_jumla
+#print axioms SLGE.Law.HisabJumla.lev_jumla
 #print axioms Dal.WiladaJumla.tawlidS
-#print axioms Dal.WiladaJumla.awailS
+#print axioms SLGE.Law.HisabJumla.awailS
 #print axioms Dal.WiladaJumla.wilada_jumla
 #print axioms Dal.WiladaJumla.jumla_bil_qanun
+#print axioms Nizam.Wiratha.rutba_daraja
+#print axioms Nizam.Wiratha.mutadarrija
+#print axioms Nizam.Wiratha.bina_maqbul
+#print axioms Nizam.Wiratha.kull_wahda_murakhkhasa
+#print axioms Nizam.Wiratha.rutba_sifr
+#print axioms Nizam.Wiratha.bilaWirth_iff
+#print axioms Nizam.Wiratha.jinat_khassa
+#print axioms Nizam.Wiratha.jinat_tuwarrath
+#print axioms Nizam.Wiratha.jinat_ratib
+#print axioms Nizam.Wiratha.jinat_ratib_le
+#print axioms Nizam.Wiratha.istirad_adna
+#print axioms Nizam.Wiratha.jinatKull_tuwarrath
+#print axioms Nizam.Wiratha.shahid_jinat
 
 -- الترخيصُ من خاصّة الجنس (Jisr/QabiliyyaJins.lean، من #113 على main بعد #122): القابليّةُ من فصول الجنس، والجسرُ مودَع، والحكمُ المجرَّد؛
 -- ووصلُه بالسلسلة (Nizam/Rabt.lean §١٠)؛ وضابطُه المجمَّد (tahaqquq/dawabit/haml_jins)

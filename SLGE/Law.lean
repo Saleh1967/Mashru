@@ -1,5 +1,5 @@
 import SLGE.Ladder
-import SLGE.Count
+import SLGE.HisabSinfi
 
 /-!
 # القانون: الابتداءُ والوصلُ والوقف على الخانات ‎29 × 4‎ — برهانٌ واحدٌ مغلق
@@ -799,32 +799,447 @@ theorem closure68 (A : Nat) (F : Nat → Bool) (hA : A ≤ 117) :
   intro q hq a ha
   exact fin_close q hq a (by simp [mk] at ha; omega)
 
+/-! ### الحسابُ الصنفيّ للكلمة والجملة (`SLGE/HisabSinfi.lean`)
+
+أُضيف بإذن المالك في الجلسة (2026-11-01؛ اختار «عدّل SLGE نفسَها»، انظر رأس `SLGE/HisabSinfi.lean`)، منقولًا من `Dal/WiladaKalima.lean`
+و`Dal/WiladaJumla.lean` (#119)، لتُبرهَن به أعدادُ الدرجات بعده (`word_levels`، `word_levels_wasl`، `sent_levels`) — وكانت بالجدول `tab`.
+حالاتُ الآلة السبعُ والتسعون تتكافأ في ثلاثة عشر صنفًا (`HisabKalima.sK`): ‎0‎ ابتداء، ‎1‎ بعد مفتوح، ‎2‎ بعد مضمومٍ أو مكسور، ‎3‎ بعد
+مدّ، ‎4‎ ساكنان معلّقان على الوقف، ‎5‎ مدٌّ ثمّ ساكن، ‎6‎ مدٌّ ثمّ ألفٌ ساكنة، ‎7‎ حدٌّ بعد ‎5‎، ‎8‎ ممتنع، ‎9‎–‎11‎ بعد ساكنٍ مُغلِقٍ صنفُ حامله
+بمجاورٍ واحد وبلا مجاور وبمجاورَين (`sinfT`)، ‎12‎ الحالةُ ‎5‎؛ وما لا يُبلغ من الابتداء — منه 37 و38+k و5 و8 و69 — في أصنافٍ أيضًا.
+والجملةُ على الأصناف نفسِها، وحدُّ الكلمة مدخلٌ وزنُه صفر (`HisabJumla.saffS`). والأصنافُ وصفوفُها وجهدُها تعيينُ البنّاء، يفحصه
+التكافؤُ نفسُه (`kalima_mutakafi_waqf`، `kalima_mutakafi_wasl`، `jumla_mutakafi`)، وأعدادُ الدرجات الثلاثة (`word_levels`، `word_levels_wasl`،
+`sent_levels`) تمرّ بـ `Hisab.lev_eq`. وأُبقي على `decide` في ثلاثَ عشرةَ مساعدةً خاصّةً لكلٍّ من الكلمة والجملة (`ShartK_0` … و`ShartS_0` …):
+اثنتا عشرةَ على ثماني حالاتٍ، والأخيرةُ على حالةٍ واحدة، لأنّ decide على حالات الكلمة كلِّها معًا بلغ 5.2 غيغابايت (#119).
+-/
+
+/-- جدولُ صنف الحامل للحوامل التسعة والعشرين: عددُ الحوامل غيرِ الألف التي تتجاور معه (`conflict`)، فيمتنع أن تليه
+ساكنًا مُغلِقًا؛ ويساويه العدُّ من `conflict` (`Dal.WiladaJadhr.sinfT_sinf`). -/
+def sinfT : List Nat := [1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 1, 1, 0]
+
+namespace HisabKalima
+
+/-- صنفُ حالة الكلمة. -/
+def sK (q : Nat) : Nat :=
+  if q = 0 ∨ q = 37 then 0 else if q = 1 then 1 else if q = 2 ∨ q = 3 then 2 else if q = 4 then 3
+  else if q = 5 then 12 else if q = 8 then 6 else if q ≤ 34 then 5 else if q ≤ 36 then 4
+  else if q = 40 then 8 else if q ≤ 66 then 7
+  else if q ≤ 95 then (if sinfT.getD (q - 67) 0 = 0 then 10 else if sinfT.getD (q - 67) 0 = 1 then 9 else 11)
+  else 8
+
+/-- **صفوفُ الأصناف** (الوزن، الصنفُ الهدف، العدد) على الخانات الـ116. -/
+def saffK : Nat → List (Nat × Nat × Nat)
+  | 0 => [(1, 1, 28), (1, 2, 56), (1, 8, 32)]
+  | 1 => [(0, 3, 1), (1, 1, 28), (1, 2, 56), (1, 8, 3), (1, 9, 10), (1, 10, 9), (1, 11, 9)]
+  | 2 => [(0, 3, 1), (1, 1, 28), (1, 2, 56), (1, 8, 4), (1, 9, 10), (1, 10, 8), (1, 11, 9)]
+  | 3 => [(1, 1, 28), (1, 2, 56), (1, 5, 28), (1, 8, 4)]
+  | 4 => [(1, 8, 116)]
+  | 5 => [(1, 1, 1), (1, 2, 2), (1, 4, 28), (1, 8, 85)]
+  | 6 => [(1, 4, 28), (1, 8, 88)]
+  | 7 => [(1, 1, 1), (1, 2, 2), (1, 8, 113)]
+  | 8 => [(1, 8, 116)]
+  | 9 => [(1, 1, 27), (1, 2, 54), (1, 4, 28), (1, 8, 7)]
+  | 10 => [(1, 1, 28), (1, 2, 56), (1, 4, 28), (1, 8, 4)]
+  | 11 => [(1, 1, 26), (1, 2, 52), (1, 4, 28), (1, 8, 10)]
+  | 12 => [(1, 8, 116)]
+  | _ => []
+
+/-- القبولُ موقوفًا عليها: كلُّ صنفٍ إلّا الابتداءَ وحدَّ ما بعد ‎5‎ والممتنع. -/
+def FW (i : Nat) : Bool := !(i == 0 || i == 7 || i == 8)
+/-- القبولُ في الوصل: ويسقط الساكنان المعلّقان على الوقف (‎4‎). -/
+def FL (i : Nat) : Bool := !(i == 0 || i == 4 || i == 7 || i == 8)
+
+def QK (F : Nat → Bool) : Asnaf := ⟨13, saffK, F⟩
+
+theorem maghluqK : ∀ q < 97, ∀ b < 116, δ q b < 97 := fun q hq b hb => fin_close q hq b (by omega)
+theorem sinfK : ∀ q < 97, sK q < 13 := by decide +kernel
+theorem waznK : ∀ q < 97, ∀ b < 116, ω q b ≤ 1 := by decide +kernel
+theorem saffK_hadd : ∀ q < 97, ∀ e ∈ saffK (sK q), e.1 ≤ 1 ∧ e.2.1 < 13 := by decide +kernel
+/-- ما يُفحص لكلّ حالة: عددُ انتقالاتها بكلّ وزنٍ إلى كلّ صنفٍ هو ما في صفّ صنفها. -/
+abbrev ShartK (q : Nat) : Prop := ∀ u ≤ 1, ∀ j < 13,
+    ((List.range 116).filter fun b => ω q b == u && sK (δ q b) == j).length =
+      (((saffK (sK q)).filter fun e => e.1 == u && e.2.1 == j).map fun e => e.2.2).sum
+
+private theorem ShartK_0 : ∀ r < 8, ShartK (r + 0) := by decide +kernel
+private theorem ShartK_1 : ∀ r < 8, ShartK (r + 8) := by decide +kernel
+private theorem ShartK_2 : ∀ r < 8, ShartK (r + 16) := by decide +kernel
+private theorem ShartK_3 : ∀ r < 8, ShartK (r + 24) := by decide +kernel
+private theorem ShartK_4 : ∀ r < 8, ShartK (r + 32) := by decide +kernel
+private theorem ShartK_5 : ∀ r < 8, ShartK (r + 40) := by decide +kernel
+private theorem ShartK_6 : ∀ r < 8, ShartK (r + 48) := by decide +kernel
+private theorem ShartK_7 : ∀ r < 8, ShartK (r + 56) := by decide +kernel
+private theorem ShartK_8 : ∀ r < 8, ShartK (r + 64) := by decide +kernel
+private theorem ShartK_9 : ∀ r < 8, ShartK (r + 72) := by decide +kernel
+private theorem ShartK_10 : ∀ r < 8, ShartK (r + 80) := by decide +kernel
+private theorem ShartK_11 : ∀ r < 8, ShartK (r + 88) := by decide +kernel
+private theorem ShartK_12 : ∀ r < 1, ShartK (r + 96) := by decide +kernel
+
+theorem adadK : ∀ q < 97, ShartK q := by
+  intro q hq
+  have h : q < 8 ∨ (8 ≤ q ∧ q < 16) ∨ (16 ≤ q ∧ q < 24) ∨ (24 ≤ q ∧ q < 32) ∨ (32 ≤ q ∧ q < 40) ∨ (40 ≤ q ∧ q < 48) ∨ (48 ≤ q ∧ q < 56) ∨ (56 ≤ q ∧ q < 64) ∨ (64 ≤ q ∧ q < 72) ∨ (72 ≤ q ∧ q < 80) ∨ (80 ≤ q ∧ q < 88) ∨ (88 ≤ q ∧ q < 96) ∨ (96 ≤ q ∧ q < 97) := by omega
+  rcases h with h | h | h | h | h | h | h | h | h | h | h | h | h
+  · have := ShartK_0 q h; rwa [Nat.add_zero] at this
+  · have := ShartK_1 (q - 8) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartK_2 (q - 16) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartK_3 (q - 24) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartK_4 (q - 32) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartK_5 (q - 40) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartK_6 (q - 48) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartK_7 (q - 56) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartK_8 (q - 64) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartK_9 (q - 72) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartK_10 (q - 80) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartK_11 (q - 88) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartK_12 (q - 96) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+
+/-- **التكافؤ (الوقف):** حالاتُ الكلمة موقوفًا عليها تتكافأ في ثلاثة عشر صنفًا. -/
+theorem kalima_mutakafi_waqf : Mutakafi Mword (QK FW) 1 sK (fun q => q < 97) where
+  maghluq := fun q hq b hb => maghluqK q hq b hb
+  sinf := sinfK
+  wazn := fun q hq b hb => waznK q hq b hb
+  saff := saffK_hadd
+  qubul := by show ∀ q < 97, Fwaqf q = FW (sK q); decide +kernel
+  adad := adadK
+
+/-- **التكافؤ (الوصل).** -/
+theorem kalima_mutakafi_wasl : Mutakafi MwordWasl (QK FL) 1 sK (fun q => q < 97) where
+  maghluq := fun q hq b hb => maghluqK q hq b hb
+  sinf := sinfK
+  wazn := fun q hq b hb => waznK q hq b hb
+  saff := saffK_hadd
+  qubul := by show ∀ q < 97, Fwasl q = FL (sK q); decide +kernel
+  adad := adadK
+
+/-! ## العدُّ على الأصناف -/
+
+def pK (i : Nat) : Nat := if i = 1 ∨ i = 2 then 1 else 0
+
+theorem saffK_kabir (i : Nat) (h : 13 ≤ i) : saffK i = [] := by
+  match i, h with
+  | n + 13, _ => rfl
+
+theorem mayyitK (F : Nat → Bool) (hF : F 8 = false) :
+    ∀ i, (i == 8) = true → (QK F).F i = false ∧ ∀ e ∈ (QK F).saff i, (e.2.1 == 8) = true := by
+  intro i hi; simp at hi; subst hi
+  exact ⟨hF, by simp [QK, saffK]⟩
+
+theorem potK (F : Nat → Bool) : ∀ i, (i == 8) = false → ∀ e ∈ (QK F).saff i, (e.2.1 == 8) = false →
+    pK e.2.1 + 1 ≤ pK i + 2 * e.1 := by
+  intro i hi e he hj
+  have : i < 13 ∨ 13 ≤ i := by omega
+  rcases this with h | h
+  · have k : ∀ i < 13, (i == 8) = false → ∀ e ∈ saffK i, (e.2.1 == 8) = false → pK e.2.1 + 1 ≤ pK i + 2 * e.1 := by
+      decide +kernel
+    exact k i h hi e he hj
+  · simp [QK, saffK_kabir i h] at he
+
+theorem wazn1K (F : Nat → Bool) : ∀ i, ∀ e ∈ (QK F).saff i, e.1 ≤ 1 := by
+  intro i e he
+  have : i < 13 ∨ 13 ≤ i := by omega
+  rcases this with h | h
+  · have k : ∀ i < 13, ∀ e ∈ saffK i, e.1 ≤ 1 := by decide +kernel
+    exact k i h e he
+  · simp [QK, saffK_kabir i h] at he
+
+/-- **الحسابُ الصنفيّ للكلمة موقوفًا عليها:** الأصنافُ الثلاثة عشر، والجهدُ ‎`pK`‎ بثابتٍ ‎2‎، والممتنعُ ميّت. -/
+def hisabWaqf : Hisab Mword 0 where
+  Q := QK FW
+  U := 1
+  s := sK
+  P := fun q => q < 97
+  mutakafi := kalima_mutakafi_waqf
+  bidaya := by decide
+  K := 2
+  pot := pK
+  mayyit := (· == 8)
+  mayyit_sahih := mayyitK FW rfl
+  juhd := potK FW
+
+/-- **الحسابُ الصنفيّ للكلمة في الوصل.** -/
+def hisabWasl : Hisab MwordWasl 0 where
+  Q := QK FL
+  U := 1
+  s := sK
+  P := fun q => q < 97
+  mutakafi := kalima_mutakafi_wasl
+  bidaya := by decide
+  K := 2
+  pot := pK
+  mayyit := (· == 8)
+  mayyit_sahih := mayyitK FL rfl
+  juhd := potK FL
+
+/-- ما يُكمل الكلمةَ بوزن ‎`n`‎ من الصنف ‎`i`‎ (بطولٍ كافٍ ‎`2n + 1`‎). -/
+def y (F : Nat → Bool) (i n : Nat) : Nat := (QK F).C (2 * n + 1) n i
+
+theorem pK_le : ∀ i, pK i ≤ 1 := by intro i; unfold pK; split <;> omega
+
+/-- **الخطوة:** الصنفُ بوزن ‎`n + 1`‎ مجموعُ صفّه: ما وزنُه صفرٌ في الدرجة نفسِها، وما وزنُه واحدٌ في ‎`n`‎. -/
+theorem y_khatwa (F : Nat → Bool) (hF : F 8 = false) (i n : Nat) : y F i (n + 1) = (QK F).base (n + 1) i +
+    (((QK F).saff i).map fun e => e.2.2 * (if e.1 = 0 then y F e.2.1 (n + 1) else y F e.2.1 n)).sum :=
+  (QK F).C_khatwa1 2 1 pK (· == 8) (mayyitK F hF) (potK F) (by decide +kernel) pK_le (wazn1K F) n i
+
+theorem y_dead (F : Nat → Bool) (hF : F 8 = false) (n : Nat) : y F 8 n = 0 :=
+  (QK F).mayyit_sifr (· == 8) (mayyitK F hF) _ _ 8 rfl
+
+/-- **صفوفُ الخطوة** لكلّ قبولٍ لا يقبل الممتنع. -/
+theorem kalima_khatwa (F : Nat → Bool) (hF : F 8 = false) (n : Nat) :
+    y F 0 (n + 1) = 28 * y F 1 n + 56 * y F 2 n ∧
+    y F 1 (n + 1) = y F 3 (n + 1) + 28 * y F 1 n + 56 * y F 2 n + 10 * y F 9 n + 9 * y F 10 n + 9 * y F 11 n ∧
+    y F 2 (n + 1) = y F 3 (n + 1) + 28 * y F 1 n + 56 * y F 2 n + 10 * y F 9 n + 8 * y F 10 n + 9 * y F 11 n ∧
+    y F 3 (n + 1) = 28 * y F 1 n + 56 * y F 2 n + 28 * y F 5 n ∧
+    y F 4 (n + 1) = 0 ∧
+    y F 5 (n + 1) = y F 1 n + 2 * y F 2 n + 28 * y F 4 n ∧
+    y F 9 (n + 1) = 27 * y F 1 n + 54 * y F 2 n + 28 * y F 4 n ∧
+    y F 10 (n + 1) = 28 * y F 1 n + 56 * y F 2 n + 28 * y F 4 n ∧
+    y F 11 (n + 1) = 26 * y F 1 n + 52 * y F 2 n + 28 * y F 4 n := by
+  have d := y_dead F hF
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩ <;>
+  · rw [y_khatwa F hF]
+    simp [QK, saffK, Asnaf.base, d]
+    try omega
+
+theorem bidaya_waqf : y FW 0 0 = 0 ∧ y FW 1 0 = 2 ∧ y FW 2 0 = 2 ∧ y FW 3 0 = 1 ∧ y FW 4 0 = 1 ∧ y FW 5 0 = 1 ∧
+    y FW 9 0 = 1 ∧ y FW 10 0 = 1 ∧ y FW 11 0 = 1 := by decide +kernel
+
+theorem bidaya_wasl : y FL 0 0 = 0 ∧ y FL 1 0 = 2 ∧ y FL 2 0 = 2 ∧ y FL 3 0 = 1 ∧ y FL 4 0 = 0 ∧ y FL 5 0 = 1 ∧
+    y FL 9 0 = 1 ∧ y FL 10 0 = 1 ∧ y FL 11 0 = 1 := by decide +kernel
+
+/-- **العدُّ بالحساب الصنفيّ (الوقف):** عددُ الكلمات بوزن ‎`n`‎ هو العدُّ من صنف الابتداء. -/
+theorem lev_waqf (n : Nat) : Mword.lev 3 0 n = y FW 0 n :=
+  hisabWaqf.lev_eq 3 n (2 * n + 1) (by show 2 * n + 0 ≤ 3 * n; omega)
+    (by show 2 * n + 0 ≤ 2 * n + 1; omega)
+
+theorem lev_wasl (n : Nat) : MwordWasl.lev 3 0 n = y FL 0 n :=
+  hisabWasl.lev_eq 3 n (2 * n + 1) (by show 2 * n + 0 ≤ 3 * n; omega)
+    (by show 2 * n + 0 ≤ 2 * n + 1; omega)
+
+/-- صفوفُ الخطوة على متتاليةٍ مجرّدة: ما يلزم التكرارَ منها. -/
+def Khatwa (Y : Nat → Nat → Nat) : Prop := ∀ n,
+    Y 0 (n + 1) = 28 * Y 1 n + 56 * Y 2 n ∧
+    Y 1 (n + 1) = Y 3 (n + 1) + 28 * Y 1 n + 56 * Y 2 n + 10 * Y 9 n + 9 * Y 10 n + 9 * Y 11 n ∧
+    Y 2 (n + 1) = Y 3 (n + 1) + 28 * Y 1 n + 56 * Y 2 n + 10 * Y 9 n + 8 * Y 10 n + 9 * Y 11 n ∧
+    Y 3 (n + 1) = 28 * Y 1 n + 56 * Y 2 n + 28 * Y 5 n ∧
+    Y 4 (n + 1) = 0 ∧
+    Y 5 (n + 1) = Y 1 n + 2 * Y 2 n + 28 * Y 4 n ∧
+    Y 9 (n + 1) = 27 * Y 1 n + 54 * Y 2 n + 28 * Y 4 n ∧
+    Y 10 (n + 1) = 28 * Y 1 n + 56 * Y 2 n + 28 * Y 4 n ∧
+    Y 11 (n + 1) = 26 * Y 1 n + 52 * Y 2 n + 28 * Y 4 n
+
+/-- **الأوائلُ من صفوف الخطوة:** على ‎`f = Y₄(0)`‎ (قبولُ الساكنين المعلّقين). -/
+theorem awail (Y : Nat → Nat → Nat) (h : Khatwa Y) (h0 : Y 0 0 = 0) (h1 : Y 1 0 = 2) (h2 : Y 2 0 = 2)
+    (h3 : Y 3 0 = 1) (h5 : Y 5 0 = 1) (h9 : Y 9 0 = 1) (h10 : Y 10 0 = 1) (h11 : Y 11 0 = 1) :
+    Y 0 1 = 168 ∧ Y 0 2 = 32872 ∧ Y 0 3 = 5908224 + 130144 * Y 4 0 ∧
+    Y 0 4 = 1068055744 + 21864192 * Y 4 0 := by
+  obtain ⟨a0, a1, a2, a3, a4, a5, a9, a10, a11⟩ := h 0
+  obtain ⟨b0, b1, b2, b3, b4, b5, b9, b10, b11⟩ := h 1
+  obtain ⟨c0, c1, c2, c3, c4, c5, c9, c10, c11⟩ := h 2
+  obtain ⟨d0, d1, d2, d3, d4, d5, d9, d10, d11⟩ := h 3
+  simp only [Nat.reduceAdd] at *
+  refine ⟨by omega, by omega, by omega, by omega⟩
+
+end HisabKalima
+
+namespace HisabJumla
+open HisabKalima
+
+/-- **صفوفُ الأصناف** على الخانات والحدّ (117 رمزًا). -/
+def saffS : Nat → List (Nat × Nat × Nat)
+  | 0 => [(0, 8, 1), (1, 1, 28), (1, 2, 56), (1, 8, 32)]
+  | 1 => [(0, 0, 1), (0, 3, 1), (1, 1, 28), (1, 2, 56), (1, 8, 3), (1, 9, 10), (1, 10, 9), (1, 11, 9)]
+  | 2 => [(0, 0, 1), (0, 3, 1), (1, 1, 28), (1, 2, 56), (1, 8, 4), (1, 9, 10), (1, 10, 8), (1, 11, 9)]
+  | 3 => [(0, 0, 1), (1, 1, 28), (1, 2, 56), (1, 5, 28), (1, 8, 4)]
+  | 4 => [(0, 8, 1), (1, 8, 116)]
+  | 5 => [(0, 7, 1), (1, 1, 1), (1, 2, 2), (1, 4, 28), (1, 8, 85)]
+  | 6 => [(0, 8, 1), (1, 4, 28), (1, 8, 88)]
+  | 7 => [(0, 8, 1), (1, 1, 1), (1, 2, 2), (1, 8, 113)]
+  | 8 => [(0, 8, 1), (1, 8, 116)]
+  | 9 => [(0, 0, 1), (1, 1, 27), (1, 2, 54), (1, 4, 28), (1, 8, 7)]
+  | 10 => [(0, 0, 1), (1, 1, 28), (1, 2, 56), (1, 4, 28), (1, 8, 4)]
+  | 11 => [(0, 0, 1), (1, 1, 26), (1, 2, 52), (1, 4, 28), (1, 8, 10)]
+  | 12 => [(0, 8, 1), (1, 8, 116)]
+  | _ => []
+
+def QS : Asnaf := ⟨13, saffS, FW⟩
+
+theorem saffS_hadd : ∀ q < 97, ∀ e ∈ saffS (sK q), e.1 ≤ 1 ∧ e.2.1 < 13 := by decide +kernel
+theorem waznS : ∀ q < 97, ∀ b < 117, ω q b ≤ 1 := by decide +kernel
+/-- ما يُفحص لكلّ حالة: عددُ انتقالاتها بكلّ وزنٍ إلى كلّ صنفٍ هو ما في صفّ صنفها. -/
+abbrev ShartS (q : Nat) : Prop := ∀ u ≤ 1, ∀ j < 13,
+    ((List.range 117).filter fun b => ω q b == u && sK (δ q b) == j).length =
+      (((saffS (sK q)).filter fun e => e.1 == u && e.2.1 == j).map fun e => e.2.2).sum
+
+private theorem ShartS_0 : ∀ r < 8, ShartS (r + 0) := by decide +kernel
+private theorem ShartS_1 : ∀ r < 8, ShartS (r + 8) := by decide +kernel
+private theorem ShartS_2 : ∀ r < 8, ShartS (r + 16) := by decide +kernel
+private theorem ShartS_3 : ∀ r < 8, ShartS (r + 24) := by decide +kernel
+private theorem ShartS_4 : ∀ r < 8, ShartS (r + 32) := by decide +kernel
+private theorem ShartS_5 : ∀ r < 8, ShartS (r + 40) := by decide +kernel
+private theorem ShartS_6 : ∀ r < 8, ShartS (r + 48) := by decide +kernel
+private theorem ShartS_7 : ∀ r < 8, ShartS (r + 56) := by decide +kernel
+private theorem ShartS_8 : ∀ r < 8, ShartS (r + 64) := by decide +kernel
+private theorem ShartS_9 : ∀ r < 8, ShartS (r + 72) := by decide +kernel
+private theorem ShartS_10 : ∀ r < 8, ShartS (r + 80) := by decide +kernel
+private theorem ShartS_11 : ∀ r < 8, ShartS (r + 88) := by decide +kernel
+private theorem ShartS_12 : ∀ r < 1, ShartS (r + 96) := by decide +kernel
+
+theorem adadS : ∀ q < 97, ShartS q := by
+  intro q hq
+  have h : q < 8 ∨ (8 ≤ q ∧ q < 16) ∨ (16 ≤ q ∧ q < 24) ∨ (24 ≤ q ∧ q < 32) ∨ (32 ≤ q ∧ q < 40) ∨ (40 ≤ q ∧ q < 48) ∨ (48 ≤ q ∧ q < 56) ∨ (56 ≤ q ∧ q < 64) ∨ (64 ≤ q ∧ q < 72) ∨ (72 ≤ q ∧ q < 80) ∨ (80 ≤ q ∧ q < 88) ∨ (88 ≤ q ∧ q < 96) ∨ (96 ≤ q ∧ q < 97) := by omega
+  rcases h with h | h | h | h | h | h | h | h | h | h | h | h | h
+  · have := ShartS_0 q h; rwa [Nat.add_zero] at this
+  · have := ShartS_1 (q - 8) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartS_2 (q - 16) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartS_3 (q - 24) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartS_4 (q - 32) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartS_5 (q - 40) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartS_6 (q - 48) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartS_7 (q - 56) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartS_8 (q - 64) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartS_9 (q - 72) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartS_10 (q - 80) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartS_11 (q - 88) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+  · have := ShartS_12 (q - 96) (by omega); rwa [Nat.sub_add_cancel (by omega)] at this
+
+/-- **التكافؤ:** حالاتُ الجملة تتكافأ في أصناف الكلمة الثلاثة عشر نفسِها. -/
+theorem jumla_mutakafi : Mutakafi Msent QS 1 sK (fun q => q < 97) where
+  maghluq := fun q hq b hb => fin_close q hq b hb
+  sinf := sinfK
+  wazn := fun q hq b hb => waznS q hq b hb
+  saff := saffS_hadd
+  qubul := by show ∀ q < 97, Fwaqf q = FW (sK q); decide +kernel
+  adad := adadS
+
+/-! ## العدُّ على الأصناف -/
+
+/-- الجهد: يكفي الصنفَ طولُ ‎`3·w + pS i`‎. -/
+def pS (i : Nat) : Nat := if i = 1 ∨ i = 2 then 2 else if i = 3 ∨ i = 5 ∨ i = 9 ∨ i = 10 ∨ i = 11 then 1 else 0
+
+theorem saffS_kabir (i : Nat) (h : 13 ≤ i) : saffS i = [] := by
+  match i, h with
+  | n + 13, _ => rfl
+
+theorem mayyitS : ∀ i, (i == 8) = true → QS.F i = false ∧ ∀ e ∈ QS.saff i, (e.2.1 == 8) = true := by
+  intro i hi; simp at hi; subst hi; exact ⟨rfl, by simp [QS, saffS]⟩
+
+theorem potS : ∀ i, (i == 8) = false → ∀ e ∈ QS.saff i, (e.2.1 == 8) = false → pS e.2.1 + 1 ≤ pS i + 3 * e.1 := by
+  intro i hi e he hj
+  have : i < 13 ∨ 13 ≤ i := by omega
+  rcases this with h | h
+  · have k : ∀ i < 13, (i == 8) = false → ∀ e ∈ saffS i, (e.2.1 == 8) = false → pS e.2.1 + 1 ≤ pS i + 3 * e.1 := by
+      decide +kernel
+    exact k i h hi e he hj
+  · simp [QS, saffS_kabir i h] at he
+
+theorem wazn1S : ∀ i, ∀ e ∈ QS.saff i, e.1 ≤ 1 := by
+  intro i e he
+  have : i < 13 ∨ 13 ≤ i := by omega
+  rcases this with h | h
+  · have k : ∀ i < 13, ∀ e ∈ saffS i, e.1 ≤ 1 := by decide +kernel
+    exact k i h e he
+  · simp [QS, saffS_kabir i h] at he
+
+theorem pS_le : ∀ i, pS i ≤ 2 := by intro i; unfold pS; split <;> (try split) <;> omega
+
+
+/-- **الحسابُ الصنفيّ للجملة:** أصنافُ الكلمة نفسُها، والجهدُ ‎`pS`‎ بثابتٍ ‎3‎. -/
+def hisabJumla : Hisab Msent 0 where
+  Q := QS
+  U := 1
+  s := sK
+  P := fun q => q < 97
+  mutakafi := jumla_mutakafi
+  bidaya := by decide
+  K := 3
+  pot := pS
+  mayyit := (· == 8)
+  mayyit_sahih := mayyitS
+  juhd := potS
+
+/-- ما يُكمل الجملةَ بوزن ‎`n`‎ من الصنف ‎`i`‎ (بطولٍ كافٍ ‎`3n + 2`‎). -/
+def z (i n : Nat) : Nat := QS.C (3 * n + 2) n i
+
+theorem z_khatwa (i n : Nat) : z i (n + 1) = QS.base (n + 1) i +
+    ((QS.saff i).map fun e => e.2.2 * (if e.1 = 0 then z e.2.1 (n + 1) else z e.2.1 n)).sum :=
+  QS.C_khatwa1 3 2 pS (· == 8) mayyitS potS (by decide +kernel) pS_le wazn1S n i
+
+theorem z_dead (n : Nat) : z 8 n = 0 := QS.mayyit_sifr (· == 8) mayyitS _ _ 8 rfl
+
+/-- **صفوفُ الخطوة.** -/
+theorem jumla_khatwa (n : Nat) :
+    z 0 (n + 1) = 28 * z 1 n + 56 * z 2 n ∧
+    z 1 (n + 1) = z 0 (n + 1) + z 3 (n + 1) + 28 * z 1 n + 56 * z 2 n + 10 * z 9 n + 9 * z 10 n + 9 * z 11 n ∧
+    z 2 (n + 1) = z 0 (n + 1) + z 3 (n + 1) + 28 * z 1 n + 56 * z 2 n + 10 * z 9 n + 8 * z 10 n + 9 * z 11 n ∧
+    z 3 (n + 1) = z 0 (n + 1) + 28 * z 1 n + 56 * z 2 n + 28 * z 5 n ∧
+    z 4 (n + 1) = 0 ∧
+    z 5 (n + 1) = z 7 (n + 1) + z 1 n + 2 * z 2 n + 28 * z 4 n ∧
+    z 7 (n + 1) = z 1 n + 2 * z 2 n ∧
+    z 9 (n + 1) = z 0 (n + 1) + 27 * z 1 n + 54 * z 2 n + 28 * z 4 n ∧
+    z 10 (n + 1) = z 0 (n + 1) + 28 * z 1 n + 56 * z 2 n + 28 * z 4 n ∧
+    z 11 (n + 1) = z 0 (n + 1) + 26 * z 1 n + 52 * z 2 n + 28 * z 4 n := by
+  have d := z_dead
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩ <;>
+  · rw [z_khatwa]
+    simp [QS, saffS, Asnaf.base, d, FW]
+    try omega
+
+theorem bidaya_jumla : z 0 0 = 0 ∧ z 1 0 = 2 ∧ z 2 0 = 2 ∧ z 3 0 = 1 ∧ z 4 0 = 1 ∧ z 5 0 = 1 ∧ z 7 0 = 0 ∧
+    z 9 0 = 1 ∧ z 10 0 = 1 ∧ z 11 0 = 1 := by decide +kernel
+
+/-- **العدُّ بالحساب الصنفيّ:** عددُ الجمل بوزن ‎`n`‎ هو العدُّ من صنف الابتداء. -/
+theorem lev_jumla (n : Nat) : Msent.lev 3 0 n = z 0 n :=
+  hisabJumla.lev_eq 3 n (3 * n + 2) (by show 3 * n + 0 ≤ 3 * n; omega)
+    (by show 3 * n + 0 ≤ 3 * n + 2; omega)
+
+/-- صفوفُ خطوة الجملة على متتاليةٍ مجرّدة. -/
+def KhatwaS (Z : Nat → Nat → Nat) : Prop := ∀ n,
+    Z 0 (n + 1) = 28 * Z 1 n + 56 * Z 2 n ∧
+    Z 1 (n + 1) = Z 0 (n + 1) + Z 3 (n + 1) + 28 * Z 1 n + 56 * Z 2 n + 10 * Z 9 n + 9 * Z 10 n + 9 * Z 11 n ∧
+    Z 2 (n + 1) = Z 0 (n + 1) + Z 3 (n + 1) + 28 * Z 1 n + 56 * Z 2 n + 10 * Z 9 n + 8 * Z 10 n + 9 * Z 11 n ∧
+    Z 3 (n + 1) = Z 0 (n + 1) + 28 * Z 1 n + 56 * Z 2 n + 28 * Z 5 n ∧
+    Z 4 (n + 1) = 0 ∧
+    Z 5 (n + 1) = Z 7 (n + 1) + Z 1 n + 2 * Z 2 n + 28 * Z 4 n ∧
+    Z 7 (n + 1) = Z 1 n + 2 * Z 2 n ∧
+    Z 9 (n + 1) = Z 0 (n + 1) + 27 * Z 1 n + 54 * Z 2 n + 28 * Z 4 n ∧
+    Z 10 (n + 1) = Z 0 (n + 1) + 28 * Z 1 n + 56 * Z 2 n + 28 * Z 4 n ∧
+    Z 11 (n + 1) = Z 0 (n + 1) + 26 * Z 1 n + 52 * Z 2 n + 28 * Z 4 n
+
+theorem awailS (Z : Nat → Nat → Nat) (h : KhatwaS Z) (h0 : Z 0 0 = 0) (h1 : Z 1 0 = 2) (h2 : Z 2 0 = 2)
+    (h3 : Z 3 0 = 1) (h4 : Z 4 0 = 1) (h5 : Z 5 0 = 1) (h7 : Z 7 0 = 0) (h9 : Z 9 0 = 1) (h10 : Z 10 0 = 1)
+    (h11 : Z 11 0 = 1) : Z 0 1 = 168 ∧ Z 0 2 = 61096 ∧ Z 0 3 = 21443968 ∧ Z 0 4 = 7490858144 := by
+  obtain ⟨a0, a1, a2, a3, a4, a5, a7, a9, a10, a11⟩ := h 0
+  obtain ⟨b0, b1, b2, b3, b4, b5, b7, b9, b10, b11⟩ := h 1
+  obtain ⟨c0, c1, c2, c3, c4, c5, c7, c9, c10, c11⟩ := h 2
+  obtain ⟨d0, d1, d2, d3, d4, d5, d7, d9, d10, d11⟩ := h 3
+  simp only [Nat.reduceAdd] at *
+  refine ⟨by omega, by omega, by omega, by omega⟩
+
+end HisabJumla
+
 /-- **العدُّ في الدرجات (الكلمة موقوفًا عليها):** ‎0, 168, 32872, 6038368‎ لصامتٍ ‎0, 1, 2, 3‎. -/
 theorem word_levels : Mword.lev 3 0 0 = 0 ∧ Mword.lev 3 0 1 = 168 ∧ Mword.lev 3 0 2 = 32872 ∧
     Mword.lev 3 0 3 = 6038368 := by
-  have t := fun f w => (Mword.tab_eq 97 3 (closure68 116 Fwaqf (by decide)) f w 0)
-  simp only [Machine.lev]
-  rw [← t 0 0 (by decide) (by decide), ← t 3 1 (by decide) (by decide),
-    ← t 6 2 (by decide) (by decide), ← t 9 3 (by decide) (by decide)]
-  decide +kernel
+  simp only [HisabKalima.lev_waqf]
+  obtain ⟨w0, w1, w2, w3, w4, w5, w9, w10, w11⟩ := HisabKalima.bidaya_waqf
+  have aw := HisabKalima.awail _ (HisabKalima.kalima_khatwa HisabKalima.FW rfl) w0 w1 w2 w3 w5 w9 w10 w11
+  rw [w4] at aw
+  exact ⟨w0, aw.1, aw.2.1, aw.2.2.1⟩
 
 /-- **العدُّ في الدرجات (الكلمة في الوصل):** يسقط ‎CVCC‎ و‎CVVCC‎ آخرًا: ‎5908224‎ في الثالثة. -/
 theorem word_levels_wasl : MwordWasl.lev 3 0 1 = 168 ∧ MwordWasl.lev 3 0 2 = 32872 ∧
     MwordWasl.lev 3 0 3 = 5908224 := by
-  have t := fun f w => (MwordWasl.tab_eq 97 3 (closure68 116 Fwasl (by decide)) f w 0)
-  simp only [Machine.lev]
-  rw [← t 3 1 (by decide) (by decide), ← t 6 2 (by decide) (by decide),
-    ← t 9 3 (by decide) (by decide)]
-  decide +kernel
+  simp only [HisabKalima.lev_wasl]
+  obtain ⟨l0, l1, l2, l3, l4, l5, l9, l10, l11⟩ := HisabKalima.bidaya_wasl
+  have al := HisabKalima.awail _ (HisabKalima.kalima_khatwa HisabKalima.FL rfl) l0 l1 l2 l3 l5 l9 l10 l11
+  rw [l4] at al
+  exact ⟨al.1, al.2.1, al.2.2.1⟩
 
 /-- **العدُّ في الدرجات (الجملة):** ‎0, 168, 61096, 21443968‎. -/
 theorem sent_levels : Msent.lev 3 0 0 = 0 ∧ Msent.lev 3 0 1 = 168 ∧ Msent.lev 3 0 2 = 61096 ∧
     Msent.lev 3 0 3 = 21443968 := by
-  have t := fun f w => (Msent.tab_eq 97 3 (closure68 117 Fwaqf (by decide)) f w 0)
-  simp only [Machine.lev]
-  rw [← t 0 0 (by decide) (by decide), ← t 3 1 (by decide) (by decide),
-    ← t 6 2 (by decide) (by decide), ← t 9 3 (by decide) (by decide)]
-  decide +kernel
+  simp only [HisabJumla.lev_jumla]
+  obtain ⟨w0, w1, w2, w3, w4, w5, w7, w9, w10, w11⟩ := HisabJumla.bidaya_jumla
+  have a := HisabJumla.awailS HisabJumla.z HisabJumla.jumla_khatwa w0 w1 w2 w3 w4 w5 w7 w9 w10 w11
+  exact ⟨w0, a.1, a.2.1, a.2.2.1⟩
 
 def wordNum (l : List Nat) : Nat := Mword.gEnc 3 0 l
 def wordOfNum (n : Nat) : List Nat := Mword.gDec 3 0 n
