@@ -8932,5 +8932,137 @@
   "milaf": "Qari/Rabt.lean",
   "min": "مرخَّصٌ — {sabab}، و{ismQab c} في قابليّات {ismQism q} لأنّه ينتقل ذاتيًّا",
   "ila": "لا حكم — {sabab}، و{ismQab c} في قابليّات {ismQism q} لأنّه ينتقل ذاتيًّا"
+ },
+ {
+  "ism": "P1588_silsila_maftuh_wahid_yakfi",
+  "milaf": "Madlul/NTP/Silsila.lean",
+  "min": "  else if maftuh m k a || maftuh m k b then .laHukm",
+  "ila": "  else if maftuh m k a && maftuh m k b then .laHukm"
+ },
+ {
+  "ism": "P1589_silsila_aslaf_bila_nafs",
+  "milaf": "Madlul/NTP/Silsila.lean",
+  "min": "  | 0, n => [n]",
+  "ila": "  | 0, _ => []"
+ },
+ {
+  "ism": "P1590_silsila_akbar_yaqbal_la_hukm",
+  "milaf": "Madlul/NTP/Silsila.lean",
+  "min": "(fun y => istiqlal m k x y == .mustaqill)",
+  "ila": "(fun y => istiqlal m k x y != .ghayr)"
+ },
+ {
+  "ism": "P1591_maajim_lisan_bila_muhkam",
+  "milaf": "Madlul/NTP/SilsilaMaajim.lean",
+  "min": "  else if n = lisan then some [40, 41, 42, 43, 44]",
+  "ila": "  else if n = lisan then some [40, 42, 43, 44]"
+ },
+ {
+  "ism": "P1592_maajim_maqayis_bila_ayn",
+  "milaf": "Madlul/NTP/SilsilaMaajim.lean",
+  "min": "  else if n = maqayis then some [10, 12, 11, 45, 15]",
+  "ila": "  else if n = maqayis then some [12, 11, 45, 15]"
+ },
+ {
+  "ism": "P1593_maajim_majhul_maqru",
+  "milaf": "Madlul/NTP/SilsilaMaajim.lean",
+  "min": "  else none\n\n/-! ## ٢.",
+  "ila": "  else some []\n\n/-! ## ٢."
+ },
+ {
+  "ism": "P1594_wasl_bila_tawatur",
+  "milaf": "Madlul/NTP/Wasl.lean",
+  "min": "  if yadkhul sh K k n then hukmMujarrad (sannif (khawassOf sh k n)) (some c) ns else .laJins",
+  "ila": "  hukmMujarrad (sannif (khawassOf sh k n)) (some c) ns"
+ },
+ {
+  "ism": "P1595_wasl_intiqal_min_aql",
+  "milaf": "Madlul/NTP/Wasl.lean",
+  "min": "    intiqal := qima sh k n pIntiqal",
+  "ila": "    intiqal := qima sh k n pAql"
+ },
+ {
+  "ism": "P1596_wasl_fasl_yaghlib",
+  "milaf": "Madlul/NTP/Wasl.lean",
+  "min": "    qima sh (k + 1) n p = Madlul.Wiratha.battQ (qima sh k a p) (sh.fasl n p) := by",
+  "ila": "    qima sh (k + 1) n p = Madlul.Wiratha.battQ (sh.fasl n p) (qima sh k a p) := by"
+ },
+ {
+  "ism": "P1597_wasl_insan_bila_aql",
+  "milaf": "Madlul/NTP/Wasl.lean",
+  "min": "    else if n = nIns ∧ (p = pIntiqal ∨ p = pAql) then .naam",
+  "ila": "    else if n = nIns ∧ p = pIntiqal then .naam"
+ },
+ {
+  "ism": "P1598_wasl_hajar_yasir",
+  "milaf": "Madlul/NTP/Wasl.lean",
+  "min": "    hukm shabakaWasl 2 4 nHajar .sayr .isnadiyya = .laHukm ∧",
+  "ila": "    hukm shabakaWasl 2 4 nHajar .sayr .isnadiyya = .murakhkhas ∧"
+ },
+ {
+  "ism": "P1599_wasl_ghiyab_imtina",
+  "milaf": "Madlul/NTP/Wasl.lean",
+  "min": "    hukm shabakaWasl 2 4 nZayt .sayr .isnadiyya = .laHukm ∧",
+  "ila": "    hukm shabakaWasl 2 4 nZayt .sayr .isnadiyya = .mumtani ∧"
+ },
+ {
+  "ism": "P1600_wasl_masdar_akhar",
+  "milaf": "Madlul/NTP/Wasl.lean",
+  "min": "    else if n = nCycIns then [⟨cyc, \"opencyc:CycIns\"⟩, ⟨cyc, \"opencyc:CycIns-2\"⟩, ⟨cyc, \"opencyc:CycIns-3\"⟩]",
+  "ila": "    else if n = nCycIns then [⟨cyc, \"opencyc:CycIns\"⟩, ⟨4, \"wikidata\"⟩, ⟨cyc, \"opencyc:CycIns-3\"⟩]"
+ },
+ {
+  "ism": "P1601_muallij_yaqin_lil_sifa",
+  "milaf": "Madlul/NTP/Muallij.lean",
+  "min": "if n = .wujud ∧ K ≤ c then .yaqin",
+  "ila": "if K ≤ c then .yaqin"
+ },
+ {
+  "ism": "P1602_muallij_adad_shahadat",
+  "milaf": "Madlul/NTP/Muallij.lean",
+  "min": "def adad (sh : List Shahid) : Nat := (mutamayyiz (sh.map (·.masdar))).length",
+  "ila": "def adad (sh : List Shahid) : Nat := sh.length"
+ },
+ {
+  "ism": "P1603_muallij_ab_awwal_yaghlib",
+  "milaf": "Madlul/NTP/Muallij.lean",
+  "min": "  | x :: xs => if xs.all (· == x) then x else none",
+  "ila": "  | x :: _ => x"
+ },
+ {
+  "ism": "P1604_muallij_khatwa_tastabdil",
+  "milaf": "Madlul/NTP/Muallij.lean",
+  "min": "def khatwa (qs : List Qanun) (s : Haqiqa → Nat) (h : Haqiqa) : Nat := max (s h) (ishtiqaq s h qs)",
+  "ila": "def khatwa (qs : List Qanun) (s : Haqiqa → Nat) (h : Haqiqa) : Nat := ishtiqaq s h qs"
+ },
+ {
+  "ism": "P1605_muallij_aala_bada_adna",
+  "milaf": "Madlul/NTP/Muallij.lean",
+  "min": "  | x :: y :: ys => min x (minL (y :: ys))",
+  "ila": "  | x :: y :: ys => max x (minL (y :: ys))"
+ },
+ {
+  "ism": "P1606_muallij_fasl_yanqud",
+  "milaf": "Madlul/NTP/Muallij.lean",
+  "min": "Madlul.Wiratha.battQ (damj ((sh.aba n).map (fun a => qima sh k a p))) (sh.fasl n p)",
+  "ila": "Madlul.Wiratha.battQ (sh.fasl n p) (damj ((sh.aba n).map (fun a => qima sh k a p)))"
+ },
+ {
+  "ism": "P1607_muallij_shifra_bila_naw",
+  "milaf": "Madlul/NTP/Muallij.lean",
+  "min": "def shifra (B : Nat) (h : Haqiqa) : Nat := h.alaqa.idx + 8 * (h.a + B * h.b)",
+  "ila": "def shifra (B : Nat) (h : Haqiqa) : Nat := h.alaqa.idx + (h.a + B * h.b)"
+ },
+ {
+  "ism": "P1608_muallij_tanaqud_yuhmal",
+  "milaf": "Madlul/NTP/Muallij.lean",
+  "min": "  | .wahid u, v => if u = v then .wahid u else .tanaqud",
+  "ila": "  | .wahid u, _ => .wahid u"
+ },
+ {
+  "ism": "P1609_maajim_milaf_ghayr_mukhtum",
+  "milaf": "Madlul/NTP/SilsilaMaajim.lean",
+  "min": "⟨3, 15, \"maqayis.txt\", 62,",
+  "ila": "⟨3, 15, \"maqayis2.txt\", 62,"
  }
 ]
