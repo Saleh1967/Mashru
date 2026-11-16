@@ -8932,5 +8932,11 @@
   "milaf": "Qari/Rabt.lean",
   "min": "مرخَّصٌ — {sabab}، و{ismQab c} في قابليّات {ismQism q} لأنّه ينتقل ذاتيًّا",
   "ila": "لا حكم — {sabab}، و{ismQab c} في قابليّات {ismQism q} لأنّه ينتقل ذاتيًّا"
+ },
+ {
+  "ism": "P1610_audit_import_bila_masdar",
+  "milaf": "Audit.lean",
+  "min": "import Jisr.HamlJinsQiyas\n",
+  "ila": "import Jisr.HamlJinsQiyasX\n"
  }
 ]
