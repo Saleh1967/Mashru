@@ -15,7 +15,7 @@
 
 ويرفض: مبرهنةً عامّةً ليس لها `#print axioms <اسمها>` في Audit.lean خارج التعليقات (`bawwaba.strip_comments`)؛ وتصريحًا لا يقع اسمُه
 في موضعه من سطره (فيُكشف خطأُ وحدة العمود بدل أن تفوت مبرهنةٌ بصمت؛ ويُستثنى تصريحٌ موضعُه نصٌّ أوّلُه `instance` (بلا اسم) أو `macro ` (ما يولّده، كـ`_aux_…_macroRules_…`)، على نصّ السطر لا على الاسم)؛ وغيابَ البناء (لا `.ilean`)؛ ووحدةً مصدرُها
-موجود ولا `.ilean` لها. الطفرات: P838 (مبرهنةٌ بلا سطر)، وP839 (سطرٌ في تعليق)، وP840 (خاصّةٌ صارت عامّة). وفرعا غياب البناء والوحدة بلا
+موجود ولا `.ilean` لها؛ واستيرادًا في Audit.lean (`import X` خارج التعليقات) لا ملفَّ مصدرٍ له في الشجرة (P1610) — فمبنيٌّ قديمٌ في `.lake` يُرضي `lake env lean` محلّيًّا ويسقط في CI النظيف (ضُبط على main في 37593b9: `import Dal.QanunAdad` بعد حذف ملفّه). الطفرات: P838 (مبرهنةٌ بلا سطر)، وP839 (سطرٌ في تعليق)، وP840 (خاصّةٌ صارت عامّة). وفرعا غياب البناء والوحدة بلا
 `.ilean` بلا طفرة: الطفراتُ تبدّل نصًّا في ملفٍّ قائم، ولا تحذف بناءً ولا تُنشئ وحدة؛ وكذلك فرعُ الاستثناء. **وحدُّه:** مبرهنةٌ يولّدها
 `macro` لا يراها هذا الفحص، لأنّ `theorem` لا يسبق اسمَها في سطر الاستدعاء.
 التشغيل (بعد lake build): python3 -I tahaqquq/test_tadqiq_tamm.py
@@ -75,6 +75,9 @@ def main():
     fails = []
     audit = open(os.path.join(ROOT, "Audit.lean"), encoding="utf-8").read()
     mudaqqaq = set(re.findall(r"^#print axioms\s+(\S+)\s*$", bawwaba.strip_comments(audit), flags=re.M))
+    for mod in re.findall(r"^import\s+(\S+)\s*$", bawwaba.strip_comments(audit), flags=re.M):
+        if not os.path.isfile(os.path.join(ROOT, *mod.split(".")) + ".lean"):
+            fails.append(f"استيرادٌ في Audit.lean بلا ملفّ مصدرٍ في الشجرة: {mod} (مبنيٌّ قديمٌ في .lake لا يُعتدّ به)")
     if not os.path.isdir(BUILD):
         print("تمامُ التدقيق: لا بناء (.lake/build/lib/lean غائب)؛ شغّل lake build أوّلًا")
         sys.exit(1)

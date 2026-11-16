@@ -9064,5 +9064,11 @@
   "milaf": "Madlul/NTP/SilsilaMaajim.lean",
   "min": "⟨3, 15, \"maqayis.txt\", 62,",
   "ila": "⟨3, 15, \"maqayis2.txt\", 62,"
+ },
+ {
+  "ism": "P1610_audit_import_bila_masdar",
+  "milaf": "Audit.lean",
+  "min": "import Jisr.HamlJinsQiyas\n",
+  "ila": "import Jisr.HamlJinsQiyasX\n"
  }
 ]
