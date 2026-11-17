@@ -125,6 +125,8 @@
       Jisr/Tahlil.lean؛ والأداتان tarkib وrabt (Nizam/Rabt.lean) على جملٍ بتوقّعٍ يدويّ لحكمها وقراءتها، ولعامل الوحدة وحالتها والإسناد وقوّة الجملة
       والإحالة والمفهوم؛ والدلالةُ على جدول لزومٍ مصنوع (اتّساقٌ لا توقّعٌ مستقلّ)، دائمًا؛ والسندُ في أسطره وفاحصُ المؤلّف إن حضر القطر.
   ٥ص١٦. ضابطُ «الحمل من الجنس» المجمَّد (tahaqquq/test_haml_jins.py؛ أقوالُ المالك في masdar.md): مثلُ ٥ص على Jisr/QabiliyyaJins.lean.
+  ٥ص١٧. ضابطُ «نواة التوليد» المجمَّد (tahaqquq/test_tawlid.py؛ أقوالُ المالك المرقَّمة نواةً في masdar.md): مثلُ ٥ص على Madlul/Nawat.lean
+      وJisr/Tawlid.lean؛ وصفُّ النواة المرشَّح في rabt.
   ٥ت٣. هيكلُ الإنتروبيا (tahaqquq/test_intrubiya.py؛ Jisr/Intrubiya.lean وJisr/IntrubiyaShahada.lean وscripts/intrubiya.py): تعدادٌ صريحٌ لكلمات
       الطول 3 وتجميعٌ حتى 4 يساويان أعدادَ lawCount المنسوخة من Lean، والشهادةُ المولَّدة بالبايت ومتباينتاها بأعدادٍ صحيحة، والمقدِّراتُ على
       توزيعاتٍ باليد، والنقلُ بالجسر قبل الآلة، وجدولُ nabtBridge، والتحصيلُ على كلماتٍ خلاياها باليد، دائمًا؛ وعلى المودَع إن حضر في MUDAA_DIR.
@@ -241,6 +243,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_athar_dabit.py",
     "tahaqquq/test_tahlil.py",
     "tahaqquq/test_haml_jins.py",
+    "tahaqquq/test_tawlid.py",
     "tahaqquq/test_intrubiya.py",
     "tahaqquq/test_qiyas_intrubiya.py",
     "tahaqquq/test_nabt_tadqiq.py",
@@ -1225,6 +1228,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ص١٦ {out.strip().splitlines()[-1] if out.strip() else 'ضابط الحمل من الجنس: ?'}")
     if code != 0:
         fails.append("اختبار ضابط الحمل من الجنس فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_tawlid.py"])
+    report.append(f"٥ص١٧ {out.strip().splitlines()[-1] if out.strip() else 'ضابط نواة التوليد: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط نواة التوليد فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_intrubiya.py"])
     report.append(f"٥ت٣ {out.strip().splitlines()[-1] if out.strip() else 'الإنتروبيا: ?'}")
     if code != 0:

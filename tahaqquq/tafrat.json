@@ -9076,5 +9076,53 @@
   "milaf": "AuditNabt.lean",
   "min": "import Nabt\n",
   "ila": "import Nabt.Wahmi\n"
+ },
+ {
+  "ism": "P1612_nawat_miftah_idrak",
+  "milaf": "Madlul/Nawat.lean",
+  "min": "  | .idrak => some (·.aql)\n",
+  "ila": "  | .idrak => none\n"
+ },
+ {
+  "ism": "P1613_nawat_jumud_nabat",
+  "milaf": "Madlul/Nawat.lean",
+  "min": "  | .jumudMutlaq => q == .jamad\n",
+  "ila": "  | .jumudMutlaq => q == .jamad || q == .nabat\n"
+ },
+ {
+  "ism": "P1614_tawlid_ala_ghayr_jamad",
+  "milaf": "Jisr/Tawlid.lean",
+  "min": "  else if u.dawr = .ala then (if q = .jamad then .murakhkhas else .mumtani)\n",
+  "ila": "  else if u.dawr = .ala then (if q = .jamad then .murakhkhas else .laHukm)\n"
+ },
+ {
+  "ism": "P1615_tawlid_mani_baad_ala",
+  "milaf": "Jisr/Tawlid.lean",
+  "min": "  if u.mawani.any (maniMutahaqqiq · q) then .mumtani\n  else if u.dawr = .ala then (if q = .jamad then .murakhkhas else .mumtani)\n",
+  "ila": "  if u.dawr = .ala then (if q = .jamad then .murakhkhas else .mumtani)\n  else if u.mawani.any (maniMutahaqqiq · q) then .mumtani\n"
+ },
+ {
+  "ism": "P1616_tawlid_sigha_mubalagha",
+  "milaf": "Jisr/Tawlid.lean",
+  "min": "  | .mubalagha => [c1, c2, 'ّ', 'ا', c3]\n",
+  "ila": "  | .mubalagha => [c1, c2, 'ا', c3]\n"
+ },
+ {
+  "ism": "P1617_tawlid_qayd_fail",
+  "milaf": "Jisr/Tawlid.lean",
+  "min": "  | .failiyya | .mubalagha | .sababiyya => (s.shurutFail, none)\n",
+  "ila": "  | .failiyya | .mubalagha | .sababiyya => (s.shurutFail, s.qayd)\n"
+ },
+ {
+  "ism": "P1618_tawlid_dawabit_halat",
+  "milaf": "Jisr/TawlidDawabit.lean",
+  "min": "def halat : List Hala := [\n",
+  "ila": "def halat : List Hala := List.take 31 [\n"
+ },
+ {
+  "ism": "P1619_rabt_satr_murashshah",
+  "milaf": "Qari/Rabt.lean",
+  "min": "\\n  صفُّ نواةٍ مرشَّح (Jisr.Tawlid.satrMurashshah؛ لا يدخل النواةَ بلا إمضاء): ",
+  "ila": ""
  }
 ]

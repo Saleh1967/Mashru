@@ -1,0 +1,45 @@
+{
+ "tashghil": 1,
+ "naw": "التشغيلُ الأوّل على الحالات المجمَّدة، بعد إيداع الشفرة (284bdf4) وقبل أيّ تعديلٍ لها",
+ "cases_sha256": "81a98e5f423945672bfb34db7b6d9d3d5e47fbc8e7f0b163cc37b739b228ea61",
+ "shifra": {
+  "Madlul/Nawat.lean": {
+   "sha256": "28665802df6e6edcf00adb4b01ccf4f3cf9e7555092df76414f5fecddab3a4b9",
+   "iydaa": "284bdf468edcb327b35fd1f0bc15e1bc1b590e97"
+  },
+  "Jisr/Tawlid.lean": {
+   "sha256": "c6d15160f2a3d04d1b67165f82c3fd409434e34f0dc0716e448d62f89241728d",
+   "iydaa": "284bdf468edcb327b35fd1f0bc15e1bc1b590e97"
+  },
+  "Jisr/TawlidDabit.lean": {
+   "sha256": "06881b5b2b6bcdb9dc6a3bda775e78da1aeb1c9561fdde36f749349b45c38117",
+   "iydaa": "284bdf468edcb327b35fd1f0bc15e1bc1b590e97"
+  }
+ },
+ "lean": [
+  "Jisr.Tawlid.Qiyas.majal",
+  "Jisr.Tawlid.Qiyas.natija",
+  "Jisr.Tawlid.Qiyas.natija_fia",
+  "Jisr.Tawlid.Qiyas.akhta_1"
+ ],
+ "halat": 32,
+ "ihsa": {
+  "sawab": 32,
+  "naqsTaghtiya": 0,
+  "tajawuz": 0,
+  "qabulKhati": 0,
+  "raddKhati": 0,
+  "ikhtiyar": 0,
+  "khata": 0
+ },
+ "bil_fia": {
+  "موجب": 4,
+  "حد": 11,
+  "خارج": 6,
+  "صورة": 11,
+  "غموض": 0
+ },
+ "akhta": [],
+ "tarikh": "2026-11-17",
+ "malahiz": "الأعدادُ من #eval على Jisr/TawlidDawabit.lean ثمّ مبرهناتٍ بـ decide +kernel في Jisr/TawlidQiyas.lean؛ وbil_fia عددُ الحقول الصائبة في كلّ فئة. لا إخفاق: الشفرةُ كُتبت قبل الحالات على المواصفة والمصدر وحدهما، والمؤلّفُ المستقلّ قرأهما وحدهما، فالتوافقُ التامّ توافقُ قراءتين لأقوال المالك المرقَّمة لا تغطيةٌ للغة؛ ولم يكتب المؤلّفُ حالةَ غموض."
+}
