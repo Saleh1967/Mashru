@@ -1276,6 +1276,9 @@ def main():
         print(f"البوّابة: {e}", file=sys.stderr, flush=True)
         sys.exit(2)
     fails, report = [], []
+    # تنقيةُ المبنيّ القديم قبل البناء (بروتوكول الدمج ٣): أثرٌ في .lake لوحدةٍ بلا مصدر يُرضي lake env lean ويخدع ٣ و٥خ؛
+    # ضُبط على main في 37593b9، وفي نسخة test_khattaf (وحدةٌ مؤقّتة تُحذف بعد بنائها). فتُحذف هنا، وما بقي منها يرفضه ٥خ باسمه.
+    run([sys.executable, "-I", "scripts/tanqiyat_bina.py"])
     code, out = run(["lake", "build"])
     report.append(f"١ البناء: {'نجح' if code == 0 else 'فشل'}")
     if code != 0:
