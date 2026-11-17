@@ -9122,7 +9122,7 @@
  {
   "ism": "P1619_rabt_satr_murashshah",
   "milaf": "Qari/Rabt.lean",
-  "min": "\\n  صفُّ نواةٍ مرشَّح (Jisr.Tawlid.satrMurashshah؛ لا يدخل النواةَ بلا إمضاء): ",
+  "min": "\\n  صفُّ نواةٍ مرشَّح (Jisr.Tawlid.satrMurashshah؛ لا يدخل النواةَ بلا إمضاء): {Jisr.Tawlid.satrMurashshah (\"-\".intercalate (k'.toList.map (String.singleton ·))) q}",
   "ila": ""
  }
 ]

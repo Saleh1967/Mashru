@@ -145,6 +145,20 @@ tahaqqaq("def satrMurashshah" in tawlid and "ينتظر إمضاء المالك"
 tahaqqaq("def nawat : List SaffJadhr := [kasara, alima]" in (JADHR / "Madlul/Nawat.lean").read_text(encoding="utf-8"),
          "النواةُ ليست صفَّي المصدر (س22، س23)")
 tahaqqaq("satrMurashshah" in (JADHR / "Qari/Rabt.lean").read_text(encoding="utf-8"), "rabt لا يكتب صفَّ النواة المرشَّح")
+exe = JADHR / ".lake/build/bin/rabt"
+if exe.exists():
+    import tempfile
+    with tempfile.TemporaryDirectory() as d_:
+        luzum = pathlib.Path(d_) / "luzum.tsv"
+        luzum.write_text("mujam\tA\tW\tqadiyya\tB\tsatr\tnass\n", encoding="utf-8")
+        jumal = pathlib.Path(d_) / "j.tsv"
+        jumal.write_text("a\tذَهَبَ الْوَلَدُ\nb\tذَهَبَ الدَّارُ\n", encoding="utf-8")
+        r = subprocess.run([str(exe), str(luzum), str(jumal)], capture_output=True, text=True)
+    tahaqqaq(r.returncode == 0 and "صفُّ نواةٍ مرشَّح" in r.stdout and "نواةُ الجذر (ذ-ه-ب) شُهد مسندًا إلى إنسان (س6)" in r.stdout,
+             "rabt على «ذَهَبَ الْوَلَدُ» لا يكتب صفَّ النواة المرشَّح للجذر ذ-ه-ب والإنسان")
+    tahaqqaq(r.stdout.count("صفُّ نواةٍ مرشَّح") == 1, "rabt يكتب صفًّا مرشَّحًا لغير الحمل المرخَّص (الدار لا تذهب: لا حكم)")
+else:
+    tahaqqaq(False, "ثنائيّ rabt غيرُ مبنيّ؛ ابنِ المشروع قبل الاختبار")
 
 if fashal:
     print("\n".join(fashal))
