@@ -8,6 +8,7 @@
   المرشَّحين في Lean (`jinsMurashshah`، `mithalMurashshah`)، أو من ملفّين اختياريّين `--jins <tsv>` (جذر⇥قسم) و`--mithal <tsv>` (جذر⇥قابليّة).
 -/
 import Nizam.Rabt
+import Jisr.Tawlid
 import Std.Data.HashMap
 
 open Nizam.Rabt Jisr.Tahlil
@@ -165,7 +166,7 @@ def nassHamlJins (j : Jumla) (m : Murashshah) (J : JinsJadwal) (M : MithalJadwal
   | .hukm k q k' c h =>
     let sabab := s!"«{ilayh}» جذرُه {k} و{ismQism q} بالجدول، و«{musnad}» جذرُه {k'} مثالُ {ismQab c} بالجدول"
     match h with
-    | .murakhkhas => s!"  الحملُ من الجنس {wasm}: «{musnad}» على «{ilayh}» مرخَّصٌ — {sabab}، و{ismQab c} في قابليّات {ismQism q} لأنّه ينتقل ذاتيًّا (Madlul.Tayin.fusul؛ Nizam.Rabt.hamlJins_murakhkhas)"
+    | .murakhkhas => s!"  الحملُ من الجنس {wasm}: «{musnad}» على «{ilayh}» مرخَّصٌ — {sabab}، و{ismQab c} في قابليّات {ismQism q} لأنّه ينتقل ذاتيًّا (Madlul.Tayin.fusul؛ Nizam.Rabt.hamlJins_murakhkhas)\n  صفُّ نواةٍ مرشَّح (Jisr.Tawlid.satrMurashshah؛ لا يدخل النواةَ بلا إمضاء): {Jisr.Tawlid.satrMurashshah ("-".intercalate (k'.toList.map (String.singleton ·))) q}"
     | .laHukm => s!"  الحملُ من الجنس {wasm}: «{musnad}» على «{ilayh}» لا حكم — {sabab}، و{ismQab c} ليست في قابليّات {ismQism q} (Jisr.QabiliyyaJins.laHukm_bila_qabiliyya؛ غيابُ الشاهد ليس امتناعًا)"
     | .mumtani => s!"  الحملُ من الجنس {wasm}: «{musnad}» على «{ilayh}» ممتنع — {sabab} (لا يقع: Nizam.Rabt.hamlJins_la_mumtani)"
 
