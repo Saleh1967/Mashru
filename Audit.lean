@@ -145,6 +145,10 @@ import Jisr.HamlJinsQiyas
 import Dal.WiladaJadhr
 import Dal.WiladaKalima
 import Dal.WiladaJumla
+import Madlul.NTP.Muallij
+import Madlul.NTP.Wasl
+import Madlul.NTP.Silsila
+import Madlul.NTP.SilsilaMaajim
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -3068,3 +3072,80 @@ import Dal.WiladaJumla
 #print axioms Jisr.QabiliyyaJins.Qiyas.natija
 #print axioms Jisr.QabiliyyaJins.Qiyas.natija_fia
 #print axioms Jisr.QabiliyyaJins.Qiyas.akhta_1
+-- معالجُ NTP ووصلُه والتواترُ بشجرة النقل (Madlul/NTP/، قولُ المالك 2026-11-16 و2026-11-17):
+-- Muallij: Madlul/NTP/Muallij.lean
+#print axioms NTP.mutamayyiz_wahid
+#print axioms NTP.adad_masdar_wahid
+#print axioms NTP.masdar_wahid_la_yudkhil
+#print axioms NTP.cyc_wahdahu_la_yudkhil
+#print axioms NTP.yaqin_iff
+#print axioms NTP.ghayr_wujud_la_yaqin
+#print axioms NTP.la_shahid_la_hukm
+#print axioms NTP.muwafaqat_aqliyya
+#print axioms NTP.ras_hasr
+#print axioms NTP.ittifaq_tanaqud
+#print axioms NTP.far_tanaqud
+#print axioms NTP.dakhil_tahta_ras
+#print axioms NTP.jam_farigh
+#print axioms NTP.jam_wahid
+#print axioms NTP.damj_la_yunaqid
+#print axioms NTP.jam_ittifaq
+#print axioms NTP.warith_la_yunqad
+#print axioms NTP.fasl_yabutt
+#print axioms NTP.minL_le
+#print axioms NTP.minL_hadd
+#print axioms NTP.khatwa_ratiba
+#print axioms NTP.tashghil_ratiba
+#print axioms NTP.ishtiqaq_hadd
+#print axioms NTP.tashghil_hadd
+#print axioms NTP.ishtiqaq_masdar
+#print axioms NTP.ziyada_munsuba
+#print axioms NTP.wujud_la_yushtaqq
+#print axioms NTP.tashghil_wujud
+#print axioms NTP.sifa_zanniyya
+#print axioms NTP.qawanin_la_wujud
+#print axioms NTP.Alaqa.ofIdx_idx
+#print axioms NTP.Alaqa.idx_lt
+#print axioms NTP.fakk_shifra
+#print axioms NTP.shifra_inj
+#print axioms NTP.judhur_murakhkhasa
+#print axioms NTP.arqam_mutamayyiza
+#print axioms NTP.shahid_far
+#print axioms NTP.shahid_hajin
+#print axioms NTP.shahid_wiratha
+#print axioms NTP.shahid_dukhul
+#print axioms NTP.shahid_muallij
+-- Wasl: Madlul/NTP/Wasl.lean
+#print axioms NTP.Wasl.damj_wahid
+#print axioms NTP.Wasl.qima_ab_wahid
+#print axioms NTP.Wasl.khawassOf_warrith
+#print axioms NTP.Wasl.tasnif_yuwarrath
+#print axioms NTP.Wasl.la_tawatur_la_jins
+#print axioms NTP.Wasl.cyc_la_yahmil
+#print axioms NTP.Wasl.hukm_yuwarrath
+#print axioms NTP.Wasl.tarkhis_yuwarrath
+#print axioms NTP.Wasl.shahid_marfu_la_yasil
+#print axioms NTP.Wasl.judhur_wasl_murakhkhasa
+#print axioms NTP.Wasl.arqam_wasl_mutamayyiza
+#print axioms NTP.Wasl.wasl_tasnif
+#print axioms NTP.Wasl.wasl_hukm
+-- Silsila: Madlul/NTP/Silsila.lean
+#print axioms NTP.Silsila.nafsuhu_aslaf
+#print axioms NTP.Silsila.mushtarak_iltaqaya
+#print axioms NTP.Silsila.mushtarak_ghayr
+#print axioms NTP.Silsila.nafsuhu_ghayr
+#print axioms NTP.Silsila.maftuh_la_yustaqill
+#print axioms NTP.Silsila.mustaqill_iff
+#print axioms NTP.Silsila.akbar_minha
+#print axioms NTP.Silsila.akbar_mustaqill
+#print axioms NTP.Silsila.akbar_nodup
+#print axioms NTP.Silsila.jidd_wahid
+#print axioms NTP.Silsila.mem_mutamayyiz
+#print axioms NTP.Silsila.adadS_le_adad
+#print axioms NTP.Silsila.yuqbalS_yuqbal
+#print axioms NTP.Silsila.jidd_wahid_la_yuqbal
+-- SilsilaMaajim: Madlul/NTP/SilsilaMaajim.lean
+#print axioms NTP.SilsilaMaajim.adlaa_bi_asanid
+#print axioms NTP.SilsilaMaajim.natija
+#print axioms NTP.SilsilaMaajim.adad_arbaa
+#print axioms NTP.SilsilaMaajim.zayt_bi_sijill_la_bi_shajara

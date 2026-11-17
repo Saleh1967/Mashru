@@ -86,6 +86,8 @@
   ٥ر٢. شبكةُ الدلالة (tahaqquq/test_tasis.py): الإغلاقُ بالتعريف على صفوف Madlul/JadwalLuzumData.lean بتنفيذٍ مستقلّ (الدورُ فهم–عقل،
       والإغلاقُ من «كتب»، والأساسُ الأدنى)، ومبرهناتُ Madlul/TasisDalala.lean مدقّقة، ومرآةُ الجدول الكامل shabaka/tasis_dalala.py بتوقّعاتٍ
       يدويّة على الصفوف الثلاثين، دائمًا؛ والاقتباساتُ في أسطرها إن حضر المودَع.
+  ٥ر٣. التواترُ بشجرة النقل (tahaqquq/test_tawatur.py): شجرةُ مصادر المعاجم الأربعة وأسانيدُها في Madlul/NTP/SilsilaMaajim.lean،
+      وتنفيذٌ مستقلٌّ للأسلاف والاستقلال والعدّ بتوقّعاتٍ يدويّة من الخُطَب، دائمًا؛ والأسانيدُ في أسطرها إن حضر المودَع.
   ٥ص٨. ضابطُ «صكّ الجملة» المجمَّد (tahaqquq/test_sakk.py؛ الكتاب والمغني والقطر والألفية والشخصيّة ج1 وج3): مثلُ ٥ص على
       Jisr/SakkJumla.lean، وذهبُ NABT الخمسُ والعشرون منقولًا يدويًّا يطابق dhahab25، وبملفّ NABT نفسِه إن حضر.
   ٥ص١٢. ضابطُ أبنية اسمَي الفاعل والمفعول المجمَّد (tahaqquq/test_abniya.py؛ الألفية س594–607 والقطر س358 وس365): مثلُ ٥ص على
@@ -231,6 +233,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_damir.py",
     "tahaqquq/test_tadqiq_tamm.py",
     "tahaqquq/test_tasis.py",
+    "tahaqquq/test_tawatur.py",
     "tahaqquq/test_tahsil.py",
     "tahaqquq/test_al_lam.py",
     "tahaqquq/test_silsila.py",
@@ -1190,6 +1193,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ر٢ {out.strip().splitlines()[-1] if out.strip() else 'شبكة الدلالة: ?'}")
     if code != 0:
         fails.append("اختبار شبكة الدلالة فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_tawatur.py"])
+    report.append(f"٥ر٣ {out.strip().splitlines()[-1] if out.strip() else 'التواتر بشجرة النقل: ?'}")
+    if code != 0:
+        fails.append("اختبار التواتر بشجرة النقل فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_tahsil.py"])
     report.append(f"٥ت٢ {out.strip().splitlines()[-1] if out.strip() else 'التحصيل: ?'}")
     if code != 0:
