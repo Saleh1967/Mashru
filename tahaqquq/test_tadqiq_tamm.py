@@ -15,7 +15,11 @@
 
 ويرفض: مبرهنةً عامّةً ليس لها `#print axioms <اسمها>` في Audit.lean خارج التعليقات (`bawwaba.strip_comments`)؛ وتصريحًا لا يقع اسمُه
 في موضعه من سطره (فيُكشف خطأُ وحدة العمود بدل أن تفوت مبرهنةٌ بصمت؛ ويُستثنى تصريحٌ موضعُه نصٌّ أوّلُه `instance` (بلا اسم) أو `macro ` (ما يولّده، كـ`_aux_…_macroRules_…`)، على نصّ السطر لا على الاسم)؛ وغيابَ البناء (لا `.ilean`)؛ ووحدةً مصدرُها
-موجود ولا `.ilean` لها؛ واستيرادًا في Audit.lean (`import X` خارج التعليقات) لا ملفَّ مصدرٍ له في الشجرة (P1610) — فمبنيٌّ قديمٌ في `.lake` يُرضي `lake env lean` محلّيًّا ويسقط في CI النظيف (ضُبط على main في 37593b9: `import Dal.QanunAdad` بعد حذف ملفّه). الطفرات: P838 (مبرهنةٌ بلا سطر)، وP839 (سطرٌ في تعليق)، وP840 (خاصّةٌ صارت عامّة). وفرعا غياب البناء والوحدة بلا
+موجود ولا `.ilean` لها؛ واستيرادًا لوحدةٍ من المشروع (أوّلُ اسمها Nabt أو SLGE أو Dal أو Madlul أو Jisr أو Aql أو Nizam أو Faahis أو Qari)
+في أيّ ملفّ `.lean` في الشجرة خارج `.lake` — ومنها ما لا يبنيه lake: Audit.lean وAuditNabt.lean وNabt.lean وtahaqquq/*.lean — لا ملفَّ مصدرٍ له
+(P1610 على Audit.lean، وP1611 على AuditNabt.lean؛ ما يبنيه lake يسقط بناؤه قبل ذلك)؛ وأثرًا مبنيًّا في `.lake/build/lib/lean` (`.ilean`) لوحدةٍ
+لا مصدرَ لها (العلاجُ `python3 -I scripts/tanqiyat_bina.py`) — فمبنيٌّ قديمٌ في `.lake` يُرضي `lake env lean` محلّيًّا ويسقط في CI النظيف
+(ضُبط على main في 37593b9: `import Dal.QanunAdad` بعد حذف ملفّه)، وcache في CI يعيد `.lake` من تشغيلٍ سابق فالعيبُ ممكنٌ هناك أيضًا. الطفرات: P838 (مبرهنةٌ بلا سطر)، وP839 (سطرٌ في تعليق)، وP840 (خاصّةٌ صارت عامّة). وفرعا غياب البناء والوحدة بلا
 `.ilean` بلا طفرة: الطفراتُ تبدّل نصًّا في ملفٍّ قائم، ولا تحذف بناءً ولا تُنشئ وحدة؛ وكذلك فرعُ الاستثناء. **وحدُّه:** مبرهنةٌ يولّدها
 `macro` لا يراها هذا الفحص، لأنّ `theorem` لا يسبق اسمَها في سطر الاستدعاء.
 التشغيل (بعد lake build): python3 -I tahaqquq/test_tadqiq_tamm.py
@@ -32,6 +36,32 @@ DIRS = ("SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari")
 BUILD = os.path.join(ROOT, ".lake", "build", "lib", "lean")
 KIND = re.compile(r"(?:^|\s)(theorem|lemma)\s+$")
 TOKEN = re.compile(r"[^\s:(\[{]+")
+
+
+HUZAM = ("Nabt",) + DIRS
+
+
+def milaffat_lean():
+    """كلُّ ملفّ `.lean` في الشجرة خارج `.lake` (ومنها ما لا يبنيه lake)، بمساره النسبيّ."""
+    out = []
+    for dirpath, dirs, files in os.walk(ROOT):
+        dirs[:] = sorted(d for d in dirs if not d.startswith("."))
+        for f in sorted(files):
+            if f.endswith(".lean"):
+                out.append(os.path.relpath(os.path.join(dirpath, f), ROOT))
+    return out
+
+
+def athar_bila_masdar():
+    """وحداتٌ لها `.ilean` في البناء ولا ملفَّ مصدرٍ لها في الشجرة: مبنيٌّ قديم."""
+    out = []
+    for dirpath, _, files in os.walk(BUILD):
+        for f in sorted(files):
+            if f.endswith(".ilean"):
+                rel = os.path.relpath(os.path.join(dirpath, f), BUILD)[:-6]
+                if not os.path.isfile(os.path.join(ROOT, rel + ".lean")):
+                    out.append(rel.replace(os.sep, "."))
+    return sorted(out)
 
 
 def wahdat():
@@ -75,9 +105,13 @@ def main():
     fails = []
     audit = open(os.path.join(ROOT, "Audit.lean"), encoding="utf-8").read()
     mudaqqaq = set(re.findall(r"^#print axioms\s+(\S+)\s*$", bawwaba.strip_comments(audit), flags=re.M))
-    for mod in re.findall(r"^import\s+(\S+)\s*$", bawwaba.strip_comments(audit), flags=re.M):
-        if not os.path.isfile(os.path.join(ROOT, *mod.split(".")) + ".lean"):
-            fails.append(f"استيرادٌ في Audit.lean بلا ملفّ مصدرٍ في الشجرة: {mod} (مبنيٌّ قديمٌ في .lake لا يُعتدّ به)")
+    for milaf in milaffat_lean():
+        nass = open(os.path.join(ROOT, milaf), encoding="utf-8", errors="replace").read()
+        for mod in re.findall(r"^import\s+(\S+)\s*$", bawwaba.strip_comments(nass), flags=re.M):
+            if mod.split(".")[0] in HUZAM and not os.path.isfile(os.path.join(ROOT, *mod.split(".")) + ".lean"):
+                fails.append(f"استيرادٌ في {milaf} بلا ملفّ مصدرٍ في الشجرة: {mod} (مبنيٌّ قديمٌ في .lake لا يُعتدّ به)")
+    for athar in athar_bila_masdar():
+        fails.append(f"مبنيٌّ بلا مصدر في .lake: {athar} (احذفه: python3 -I scripts/tanqiyat_bina.py)")
     if not os.path.isdir(BUILD):
         print("تمامُ التدقيق: لا بناء (.lake/build/lib/lean غائب)؛ شغّل lake build أوّلًا")
         sys.exit(1)

@@ -1237,8 +1237,9 @@ class QismTests(unittest.TestCase):
     def test_shard_only_runs_its_part(self):
         code, out, _, fi_mustawda, fi_nuskha = self.gate(["--tafrat-faqat", "--qism", "2/3"])
         self.assertEqual(code, 0)
-        # في المستودع: البناءُ، وtest_hawadith.py حارسًا للبند ٦ (لا البند ٥ث)؛ ولا شيءَ غيرُهما من البنود ٢–٥
-        self.assertEqual(fi_mustawda, ["build", "tahaqquq/test_hawadith.py"])
+        # في المستودع: تنقيةُ المبنيّ القديم (بروتوكول الدمج ٣) ثمّ البناءُ، وtest_hawadith.py حارسًا للبند ٦ (لا البند ٥ث)؛
+        # ولا شيءَ غيرُها من البنود ٢–٥
+        self.assertEqual(fi_mustawda, ["scripts/tanqiyat_bina.py", "build", "tahaqquq/test_hawadith.py"])
         self.assertEqual(fi_nuskha, ["build", "build"])          # P1 وP4 وحدهما
         self.assertIn("٢–٥ تُركت بطلب (--tafrat-faqat)", out)
         self.assertIn("٦ الطفرات (القسم 2 من 3): قُتلت 2 من 2", out)
