@@ -246,12 +246,13 @@ theorem taallam_malik (q : Qanat) (n x : String) (e : qarar q n = .tanfidh .taal
 /-! ## ٤. الوكلاءُ والخطّة -/
 
 /-- الوكلاء: تنفيذيّاتُ Mashru القائمة، ومعالجُ NTP والمتعلّمُ في العمليّة نفسها. -/
-inductive Wakil | qari | tarkib | athar | silsila | faahis | faahisSual | muallij | mutaallim
+inductive Wakil | qari | tarkib | athar | silsila | faahis | faahisSual | muallij | mutaallim | rabt
   deriving DecidableEq, Repr
 
 def Wakil.ism : Wakil → String
   | .qari => "qari" | .tarkib => "tarkib" | .athar => "athar" | .silsila => "silsila"
   | .faahis => "faahis" | .faahisSual => "faahis --sual" | .muallij => "NTP.Wasl" | .mutaallim => "mutaallim"
+  | .rabt => "rabt"
 
 def Wakil.nawAthar : Wakil → Athar
   | .mutaallim => .iqtirah
@@ -267,7 +268,7 @@ def dalalat : List String := ["mutabaqa:", "tadammun:", "iltizam:"]
 
 def khittaAmr : Amr → String → List Khatwa
   | .iqra, x => [⟨.qari, x⟩]
-  | .aarib, x => [⟨.tarkib, x⟩, ⟨.athar, x⟩]
+  | .aarib, x => [⟨.tarkib, x⟩, ⟨.athar, x⟩, ⟨.rabt, x⟩]
   | .tatabba, x => [⟨.silsila, x⟩]
   | .isal, x => dalalat.map fun d => ⟨.faahisSual, d ++ tajrid x⟩
   | .ifhas, _ => [⟨.faahis, ""⟩]
@@ -279,6 +280,9 @@ def khitta : Qarar → List Khatwa
   | .tanfidh a x => khittaAmr a x
   | .qiraa n => [⟨.athar, n⟩]
   | .rafd _ => []
+
+/-- **الإعرابُ ثلاثُ خطوات:** التركيبُ، فالأثرُ، فالسلسلةُ كاملةً بجدول اللزوم المختوم (`rabt`). -/
+theorem khitta_aarib (x : String) : (khittaAmr .aarib x).map (·.wakil) = [.tarkib, .athar, .rabt] := rfl
 
 /-- **المرفوضُ لا خطوةَ له.** -/
 theorem rafd_la_khitta (r : Rafd) : khitta (.rafd r) = [] := rfl
@@ -428,10 +432,63 @@ def natijaKhatwa (w : Wakil) (khuruj : Nat) (makhraj : String) : Natija :=
   | .faahisSual => if bada makhraj "لا حكم" then .laHukm else .najah
   | .faahis | .mutaallim => .najah
   | .muallij => if bada makhraj "لا حكم" || fihi makhraj "لا جنس" then .laHukm else .najah
+  | .rabt =>
+    if fihi makhraj "مودَعٌ غائب" then .laHukm
+    else if fihi makhraj "\tمقبول\n" then .najah
+    else if fihi makhraj "\tخطأ\n" then .rafd
+    else .laHukm
 
 /-- **الخروجُ بغير صفرٍ خطأٌ** أيًّا كان المخرج. -/
 theorem khuruj_khata (w : Wakil) (k : Nat) (s : String) (h : k ≠ 0) : natijaKhatwa w k s = .khata := by
   simp [natijaKhatwa, h]
+
+/-! ## ٥ب. لا جوابَ معلَّق
+
+أمرُ المالك (2026-11-19، 17:43): «عالج نقص المعلومات او ما هو غير مختوم او لم يصل جواب لا نريد جواب معلق اوجد حلا». والحلُّ (تصميمُ
+البنّاء): «لا حكم» يبقى حكمًا ثلاثيًّا لا يُرفع بالتخمين (الدستور م5، م13)، لكنّه لا يُترك بلا اسم: لكلّ نتيجةٍ غيرِ «حكمٌ صدر» في
+كلّ وكيلٍ سببٌ مسمًّى وعلاجٌ مسمًّى (ما يرفعه)، ولكلّ رفضٍ في القرار علاجُه. فالجوابُ لا يكون معلَّقًا: إمّا حكمٌ، وإمّا سببٌ وعلاج. -/
+
+/-- سببُ ما لم يُحكم فيه في خطوة. -/
+def sababKhatwa : Wakil → Natija → String
+  | _, .najah => ""
+  | _, .khata => "خرج الوكيلُ بغير صفر (أو غاب ثنائيُّه)، فلا يُقرأ مخرجُه حكمًا"
+  | .qari, .rafd => "في النصّ كلمةٌ لا قرارَ لها (غيرُ مشكولةٍ أو خارجُ القانون)، والقارئُ لا يشكّل بالتخمين (الدستور م5)"
+  | .tarkib, .rafd => "الجملةُ ممتنعةٌ بقانون الإطار (RAFD) بسببها المسمّى في مخرج tarkib"
+  | .rabt, .rafd => "الجملةُ خطأٌ في rabt بسببها المسمّى في مخرجه"
+  | _, .rafd => "مدخلٌ فاسدٌ مسمًّى في مخرج الوكيل"
+  | .tarkib, .laHukm => "لا قراءةَ مرخَّصة: الجملةُ خارجُ مجال الإطارات المبنيّة"
+  | .rabt, .laHukm => "المودَعاتُ المختومة (luzum_mujam.tsv وjins.tsv وmithal.tsv) غائبة، أو الجملةُ لا حكم في rabt"
+  | .faahisSual, .laHukm => "لا ادّعاءَ في المخزن بهذه البادئة"
+  | .muallij, .laHukm => "لا عقدةَ لهذا الاسم في شبكة الشاهد، أو لا ترخيصَ إسناديّ"
+  | _, .laHukm => "معلَّقٌ بأسماء ما لم يُفحص في مخرج الوكيل (لا حكم، لا امتناع)"
+
+/-- ما يرفع ما لم يُحكم فيه. -/
+def ilajKhatwa : Wakil → Natija → String
+  | _, .najah => ""
+  | _, .khata => "lake build ثمّ أعد البرومبت؛ وإن بقي فالخللُ في الوكيل باسمه"
+  | .qari, .rafd => "أرسل النصَّ مشكولًا شكلًا تامًّا"
+  | _, .rafd => "صحّح المدخلَ بما سمّاه المخرج"
+  | .rabt, .laHukm => "python3 -I mudaat/jalb.py (يجلب المودَعاتِ ويطابق بصماتها المختومة) ثمّ أعد البرومبت"
+  | .faahisSual, .laHukm => "«تَعَلَّمْ <قضيّة>» من قناة المالك: اقتراحٌ يختمه المالك فيدخل المخزن"
+  | .muallij, .laHukm => "إيداعُ جنسه بشهوده المستقلّين (بوّابة التواتر) ثمّ ختمُه بإذن المالك"
+  | _, .laHukm => "أعد الصياغةَ في مجال الأبواب المبنيّة، أو يُبنى بابُها (hawkama/مدير_الوكلاء.md §٤)"
+
+/-- ما يرفع رفضَ القرار. -/
+def ilajRafd : Rafd → String
+  | .farigh => "أرسل نصًّا"
+  | .bilaMaqam _ => "أرسله من قناة المالك (--qanat malik)، أو اسأل بقالب «ما معنى …»"
+  | .ghayrMurakhkhas _ _ => "أرسله من قناةٍ يرخّص قسمُها هذا الأمر (التعلّمُ للمالك وحده)"
+  | .mahzur _ => "سلطةُ المالك في الجلسة لا في البرومبت: يفعله المالك بنفسه"
+  | .bilaHujja _ => "أتبع الأمرَ بنصّه"
+
+/-- **لا جوابَ معلَّق في خطوة:** كلُّ نتيجةٍ غيرِ «حكمٌ صدر» لها سببٌ وعلاجٌ غيرُ فارغين. -/
+theorem la_jawab_muallaq (w : Wakil) (n : Natija) (h : n ≠ .najah) :
+    sababKhatwa w n ≠ "" ∧ ilajKhatwa w n ≠ "" := by
+  cases w <;> cases n <;> first | exact absurd rfl h | simp [sababKhatwa, ilajKhatwa]
+
+/-- **ولا رفضَ بلا علاج.** -/
+theorem rafd_lahu_ilaj (r : Rafd) : ilajRafd r ≠ "" := by
+  cases r <;> simp [ilajRafd]
 
 /-! ## ٦. التصديق -/
 

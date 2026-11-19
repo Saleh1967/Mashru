@@ -3220,3 +3220,6 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms Nizam.Mudir.shawahid_tasdiq
 #print axioms Nizam.Mudir.shawahid_qarar
 #print axioms Nizam.Mudir.shahid_tasnif
+#print axioms Nizam.Mudir.khitta_aarib
+#print axioms Nizam.Mudir.la_jawab_muallaq
+#print axioms Nizam.Mudir.rafd_lahu_ilaj
