@@ -90,7 +90,7 @@ def mubarhanat(mod, fails):
         line, col = pos[4], pos[5]
         pre = src[line][:col] if line < len(src) else ""
         tok = TOKEN.match(src[line][col:]) if line < len(src) else None
-        if not (tok and name.endswith(tok.group(0))) and not src[line][col:].startswith(("instance", "macro ")):
+        if not (tok and name.endswith(tok.group(0).removeprefix("_root_."))) and not src[line][col:].startswith(("instance", "macro ")):
             fails.append(f"موضعُ التصريح {name} في {mod} لا يقع عليه اسمُه (س{line + 1}، ع{col})")
             continue
         if not KIND.search(pre):

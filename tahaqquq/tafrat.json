@@ -8816,8 +8816,8 @@
  {
   "ism": "P1578_wahdat_bila_qari",
   "milaf": "scripts/bina_wahdat.py",
-  "min": "DIRS = [\"Nabt\", \"SLGE\", \"Dal\", \"Madlul\", \"Jisr\", \"Aql\", \"Nizam\", \"Faahis\", \"Qari\"]",
-  "ila": "DIRS = [\"Nabt\", \"SLGE\", \"Dal\", \"Madlul\", \"Jisr\", \"Aql\", \"Nizam\", \"Faahis\"]"
+  "min": "DIRS = [\"A116\", \"Nabt\", \"SLGE\", \"Dal\", \"Madlul\", \"Jisr\", \"Aql\", \"Nizam\", \"Faahis\", \"Qari\"]",
+  "ila": "DIRS = [\"A116\", \"Nabt\", \"SLGE\", \"Dal\", \"Madlul\", \"Jisr\", \"Aql\", \"Nizam\", \"Faahis\"]"
  },
  {
   "ism": "P1579_wahdat_istirad_khafi",
