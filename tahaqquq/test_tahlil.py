@@ -209,6 +209,32 @@ for juz in ["الدلالة: «يَكْتُبْ» مرشَّحُ جذره كتب
     tahaqqaq(code == 0 and juz in nass, f"rabt: لا «{juz}» في مخرجه على الجدول المصنوع")
 tahaqqaq("كتب (اللسان س44)" not in nass, "rabt: صفُّ «قلم» ظهر في دلالة «كتب»")
 
+# ٢هـ. الجداولُ المختومة (`rabt --sijill`، Qari/Rabt.lean `fahsJadwal`): مع سجلّ الفاحص المختوم لا يُقرأ جدولٌ بصمتُه ليست بصمةَ مودَعٍ مختوم،
+#     فالجداولُ المصنوعة هنا مرفوضةٌ باسم أوّلها (جدول اللزوم) وخروجٌ بـ3، ولا يُطبع شيء؛ وبلا --jins و--mithal مرفوضٌ أيضًا. وإن حضرت في
+#     MUDAA_DIR الجداولُ الثلاثة المختومة (2026-11-17) قُرئت وطُبعت أسماؤها في السجلّ (فحصٌ بالمودَع بلا طفرة).
+SIJILL = str(JADHR / "mudaat/sijill.tsv")
+if (BIN / "rabt").exists():
+    with tempfile.TemporaryDirectory() as d:
+        d = pathlib.Path(d)
+        (d / "j.tsv").write_text("0\tذَهَبَ الْوَلَدُ\n", encoding="utf-8")
+        for n in ("luzum.tsv", "jins.tsv", "mithal.tsv"):
+            (d / n).write_text("x\n", encoding="utf-8")
+        r = subprocess.run([str(BIN / "rabt"), "--sijill", SIJILL, "--jins", str(d / "jins.tsv"), "--mithal", str(d / "mithal.tsv"),
+                            str(d / "luzum.tsv"), str(d / "j.tsv")], capture_output=True, text=True)
+        tahaqqaq(r.returncode == 3 and "خطأ تحميل: جدول اللزوم" in r.stderr and "ليس مودَعًا مختومًا" in r.stderr and not r.stdout,
+                 "rabt --sijill قبل جدولًا غيرَ مختوم: " + (r.stdout + r.stderr)[-300:])
+        r = subprocess.run([str(BIN / "rabt"), "--sijill", SIJILL, str(d / "luzum.tsv"), str(d / "j.tsv")], capture_output=True, text=True)
+        tahaqqaq(r.returncode == 3 and "لا بدّ من --jins و--mithal" in r.stderr, "rabt --sijill بلا جدولَي الجنس والمثال لم يُرفض")
+    M = pathlib.Path(os.environ.get("MUDAA_DIR", "/nonexistent"))
+    if all((M / n).exists() for n in ("luzum_mujam.tsv", "jins.tsv", "mithal.tsv")):
+        with tempfile.TemporaryDirectory() as d:
+            j = pathlib.Path(d) / "j.tsv"
+            j.write_text("0\tذَهَبَ الْوَلَدُ\n", encoding="utf-8")
+            r = subprocess.run([str(BIN / "rabt"), "--sijill", SIJILL, "--jins", str(M / "jins.tsv"), "--mithal", str(M / "mithal.tsv"),
+                                str(M / "luzum_mujam.tsv"), str(j)], capture_output=True, text=True)
+        tahaqqaq(r.returncode == 0 and "«جدول الجنس — القطعة الأولى» 3f77de8419c0" in r.stdout and "جدول اللزوم «جدول اللزوم من شبكة المعاجم» 520dffc8309c" in r.stdout,
+                 "rabt لم يقرأ الجداولَ المختومة: " + (r.stdout + r.stderr)[-300:])
+
 # ٣. السجلّات
 natayij = sorted(D.glob("natija_*.json"), key=lambda p: int(re.search(r"natija_(\d+)\.json$", p.name).group(1)))
 arqam = [int(re.search(r"natija_(\d+)\.json$", p.name).group(1)) for p in natayij]

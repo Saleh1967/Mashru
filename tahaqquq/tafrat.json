@@ -9072,6 +9072,18 @@
   "ila": "import Jisr.HamlJinsQiyasX\n"
  },
  {
+  "ism": "P1613_rabt_sijill_basma",
+  "milaf": "Qari/Rabt.lean",
+  "min": "    | [\"mudaa\", h, _, ism] => if h == b then some ism else none",
+  "ila": "    | [\"mudaa\", _, _, ism] => some ism"
+ },
+ {
+  "ism": "P1612_rabt_sijill_ghayr_makhtum",
+  "milaf": "Qari/Rabt.lean",
+  "min": "    | none => return .error s!\"خطأ تحميل: {wasf} ({p}، {b.take 12}) ليس مودَعًا مختومًا في السجلّ\"",
+  "ila": "    | none => return .ok s!\"«{wasf}» {b.take 12}\""
+ },
+ {
   "ism": "P1611_auditnabt_import_bila_masdar",
   "milaf": "AuditNabt.lean",
   "min": "import Nabt\n",
