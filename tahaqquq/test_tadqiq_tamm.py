@@ -32,7 +32,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tahaqquq"))
 import bawwaba  # noqa: E402
-DIRS = ("SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari")
+DIRS = ("A116", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari")
 BUILD = os.path.join(ROOT, ".lake", "build", "lib", "lean")
 KIND = re.compile(r"(?:^|\s)(theorem|lemma)\s+$")
 TOKEN = re.compile(r"[^\s:(\[{]+")

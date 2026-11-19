@@ -9268,5 +9268,17 @@
   "milaf": "scripts/bina_jadawil_rabt.py",
   "min": "\"ذهب\\tالسير\\tlisan.txt 34fa56710a5b@13268\\tالذهاب: السير والمرور\\tنصُّ المعجم\\n\"",
   "ila": "\"ذهب\\tالسير\\tlisan.txt 34fa56710a5b@13268\\tالذهاب: السير والمرور\\tنصّ المعجم\\n\""
+ },
+ {
+  "ism": "P1642_a116_khaliya_sakina_tabda",
+  "milaf": "A116/Model.lean",
+  "min": "  | awaiting, c => if c.isSukun then fellOut else afterSeed\n",
+  "ila": "  | awaiting, c => if c.isSukun then afterSeed else afterSeed\n"
+ },
+ {
+  "ism": "P1643_a116_jadwal_marja_bila_ibtida",
+  "milaf": "Qari/A116Jadwal.lean",
+  "min": "      | .ibtida => \"ibtida\" | .wasl p => s!\"wasl:{hn p}\" | .waqf p => s!\"waqf:{hn p}\"",
+  "ila": "      | .ibtida => \"ibtida_\" | .wasl p => s!\"wasl:{hn p}\" | .waqf p => s!\"waqf:{hn p}\""
  }
 ]

@@ -23,7 +23,7 @@ import SLGE.Syllable
 - رتبةُ الملفّ درجةُ اشتقاقه (`rutba_daraja`)، فالقاعدةُ متدرّجة (`mutadarrija`)، وما رتبتُه صفرٌ لا يُرخَّص إلّا أصلًا (`rutba_sifr_asl` من `Aql/Qaida.lean`).
 - ترتيبُ البناء سلسلةٌ يقبلها فاحصُ القاعدة نفسُه (`Qaida.fahs`) فيُثبت كلَّ ملفّ (`bina_maqbul`)، فكلُّ ملفٍّ مرخَّص على أصولها
   (`kull_wahda_murakhkhasa`) — على هذا الجدول، ويصدق على كلّ جدولِ استيرادٍ بلا دَور.
-- وما لا يرث شيئًا قائمةٌ مسمّاة (`bilaWirth`، 53)، تطابقها رتبةُ الصفر على هذا الجدول (`bilaWirth_iff`). وملفٌّ جديدٌ يُعاد له توليدُ الجدول (يفحصه ١ و٢
+- وما لا يرث شيئًا قائمةٌ مسمّاة (`bilaWirth`، 78: 53 ومعها جذورُ A116 الخمسةُ والعشرون، 2026-11-20)، تطابقها رتبةُ الصفر على هذا الجدول (`bilaWirth_iff`). وملفٌّ جديدٌ يُعاد له توليدُ الجدول (يفحصه ١ و٢
   في الاختبار)، ثمّ لا يُبنى `bilaWirth_iff` إن لم يستورد من المشروع شيئًا حتى يُضاف اسمُه.
 - **الأصلُ قرارُ المالك، ولم يُبنَ:** الأصلُ في `bina_maqbul` و`kull_wahda_murakhkhasa` ما رتبتُه صفرٌ كلُّه (`aslB`، بالتعريف)، ومنه ما تعدّه الوثيقةُ
   غيرَ أصل (`Jisr.BabFa` …). والمبنيُّ لقراره `rutba_sifr` (على هذا الجدول، لأنّ فرضَها `mutadarrija`): أيًّا كانت الأصولُ ‎`a`‎، ما رتبتُه صفرٌ لا يُرخَّص إلّا منها؛ فما يعدّه يتيمًا لا يُرخَّص حتى
@@ -76,9 +76,86 @@ theorem rutba_daraja : ∀ i < N, rutba i = (istirad i).foldr (fun j a => max a 
 theorem mutadarrija : Mutadarrija qaida rutba := by
   unfold Mutadarrija; decide +kernel
 
+/-! ### الفحصُ قطعةً قطعة
+
+لمّا دخلت وحداتُ A116 الجدولَ (2026-11-20) صار فحصُ السلسلة كلِّها بقرارٍ واحدٍ في النواة يجاوز ذاكرةَ البيئة (قُتل عند 6 غ.ب). فالسلسلةُ تُفحص
+قطعًا من `QITAA` خطوةً، كلُّ قطعةٍ بقرارٍ مستقلّ يبدأ من ثابت ما قبلها؛ و`fahs_qitaa` يجمعها فحصًا واحدًا (مبرهنٌ لكلّ قاعدةٍ وسلسلة). -/
+
+/-- الفاحصُ على سلسلتين متتاليتين هو الفاحصُ على الأولى ثمّ على الثانية من ثابتها. -/
+theorem fahs_append {P : Type} [DecidableEq P] (q : Qaida P) (a : P → Bool) :
+    ∀ (xs ys : List (Khatwa P)) (t : List P), fahs q a t (xs ++ ys) = (fahs q a t xs).bind (fun t' => fahs q a t' ys) := by
+  intro xs
+  induction xs with
+  | nil => intro ys t; rfl
+  | cons x xs ih =>
+    intro ys t
+    simp only [List.cons_append, fahs]
+    cases tatbiq q a t x with
+    | none => rfl
+    | some t' => exact ih ys t'
+
+/-- **القطعُ تجمع:** إن قبل الفاحصُ كلَّ قطعةٍ من ثابت ما قبلها فقد قبل السلسلةَ كلَّها. -/
+theorem fahs_qitaa {P : Type} [DecidableEq P] (q : Qaida P) (a : P → Bool) (S : List (Khatwa P)) (T : List P) (n K : Nat)
+    (h : ∀ k < K, fahs q a (T.take (k * n)) ((S.drop (k * n)).take n) = some (T.take ((k + 1) * n)))
+    (hS : S.length ≤ K * n) (hT : T.length ≤ K * n) : fahs q a [] S = some T := by
+  have key : ∀ k ≤ K, fahs q a [] (S.take (k * n)) = some (T.take (k * n)) := by
+    intro k
+    induction k with
+    | zero => intro _; simp [fahs]
+    | succ k ih =>
+      intro hk
+      have e : (k + 1) * n = k * n + n := Nat.succ_mul k n
+      rw [e, List.take_add, fahs_append, ih (by omega)]
+      simp only [Option.bind_some]
+      rw [← e]; exact h k (by omega)
+  have := key K (Nat.le_refl K)
+  rwa [List.take_of_length_le hS, List.take_of_length_le hT] at this
+
+/-- طولُ القطعة، وعددُ القطع (يسع 640 ملفًّا؛ وما زاد يردّه `bina_maqbul` بفرض الطول). -/
+def QITAA : Nat := 40
+
+/-- القطعةُ ‎`k`‎ مقبولةٌ من ثابت ما قبلها. -/
+def qitaa (k : Nat) : Prop :=
+  fahs qaida aslB (tartib.take (k * QITAA)) ((silsila.drop (k * QITAA)).take QITAA) = some (tartib.take ((k + 1) * QITAA))
+
+theorem qitaa_0 : qitaa 0 := by unfold qitaa; decide +kernel
+theorem qitaa_1 : qitaa 1 := by unfold qitaa; decide +kernel
+theorem qitaa_2 : qitaa 2 := by unfold qitaa; decide +kernel
+theorem qitaa_3 : qitaa 3 := by unfold qitaa; decide +kernel
+theorem qitaa_4 : qitaa 4 := by unfold qitaa; decide +kernel
+theorem qitaa_5 : qitaa 5 := by unfold qitaa; decide +kernel
+theorem qitaa_6 : qitaa 6 := by unfold qitaa; decide +kernel
+theorem qitaa_7 : qitaa 7 := by unfold qitaa; decide +kernel
+theorem qitaa_8 : qitaa 8 := by unfold qitaa; decide +kernel
+theorem qitaa_9 : qitaa 9 := by unfold qitaa; decide +kernel
+theorem qitaa_10 : qitaa 10 := by unfold qitaa; decide +kernel
+theorem qitaa_11 : qitaa 11 := by unfold qitaa; decide +kernel
+theorem qitaa_12 : qitaa 12 := by unfold qitaa; decide +kernel
+theorem qitaa_13 : qitaa 13 := by unfold qitaa; decide +kernel
+theorem qitaa_14 : qitaa 14 := by unfold qitaa; decide +kernel
+theorem qitaa_15 : qitaa 15 := by unfold qitaa; decide +kernel
+
 /-- **البناءُ سلسلةٌ مقبولة:** فاحصُ القاعدة يقبل ترتيبَ البناء خطوةً خطوة، ويُثبت به الملفّاتِ كلَّها — على الجدول. -/
 theorem bina_maqbul : fahs qaida aslB [] silsila = some tartib ∧ ∀ i < N, i ∈ tartib := by
-  decide +kernel
+  refine ⟨fahs_qitaa qaida aslB silsila tartib QITAA 16 (fun k hk => ?_) (by decide +kernel) (by decide +kernel), by decide +kernel⟩
+  match k, hk with
+    | 0, _ => exact qitaa_0
+    | 1, _ => exact qitaa_1
+    | 2, _ => exact qitaa_2
+    | 3, _ => exact qitaa_3
+    | 4, _ => exact qitaa_4
+    | 5, _ => exact qitaa_5
+    | 6, _ => exact qitaa_6
+    | 7, _ => exact qitaa_7
+    | 8, _ => exact qitaa_8
+    | 9, _ => exact qitaa_9
+    | 10, _ => exact qitaa_10
+    | 11, _ => exact qitaa_11
+    | 12, _ => exact qitaa_12
+    | 13, _ => exact qitaa_13
+    | 14, _ => exact qitaa_14
+    | 15, _ => exact qitaa_15
+    | _ + 16, h => exact absurd h (by omega)
 
 /-- **كلُّ ملفٍّ مرخَّص** في القاعدة على أصولها (`aslB`: ما رتبتُه صفر) — على هذا الجدول. -/
 theorem kull_wahda_murakhkhasa : ∀ i < N, Murakhkhas qaida (fun p => aslB p = true) i := by
@@ -93,6 +170,11 @@ theorem rutba_sifr (a : Nat → Bool) (i : Nat) (h : Murakhkhas qaida (fun p => 
 
 /-- ما لا يرث من المشروع شيئًا: كلُّ ملفٍّ رتبتُه صفر. أيُّها أصلٌ وأيُّها يتيمٌ يُوصل بأبيه قرارُ المالك (`hawkama/الوراثة_الصنفية.md`). -/
 def bilaWirth : List String := [
+  "A116.Cells", "A116.Derivation", "A116.Fiber", "A116.Fold", "A116.FractalMushafDef", "A116.FractalTarkibData",
+  "A116.Harf.Khana", "A116.Hasr", "A116.Ishtiqaq", "A116.Kraft", "A116.LazimData", "A116.Malumat",
+  "A116.MaqayisData", "A116.NaqlData", "A116.Qarar", "A116.QarinaData", "A116.Qism", "A116.Recovery",
+  "A116.Silsila", "A116.Stages", "A116.Tadwir", "A116.Tanith", "A116.TashkilData", "A116.TawafiqMasfufaData",
+  "A116.WadData",
   "Aql.Qaida", "Aql.WaqiRibtJadwal",
   "Dal.Adad", "Dal.AqsamAlism", "Dal.AqsamAllafz", "Dal.Khaliya", "Dal.WaqfSibawayhi",
   "Faahis.SijillMakhtum",

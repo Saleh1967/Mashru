@@ -124,6 +124,8 @@
       natija_1.json وأصنافُها تُعاد من نتائجها بقواعد المواصفة، والمحوِّلُ على مخرجٍ مكتوبٍ باليد بصيغة جدولها (حارسٌ كتبه البنّاء)، دائمًا.
   ٥ت١٢. جلبُ المودَعات (tahaqquq/test_jalb.py؛ mudaat/jalb.py وscripts/bina_jadawil_rabt.py): لا يدخل المجلّدَ ملفٌّ إلّا ببصمته المختومة،
       والمخالفُ والغائبُ والمرشَّحُ بأسمائها، وجدولا الجنس والمثال يُبنيان ببصمتيهما المختومتين، والسجلُّ لا يتغيّر؛ بلا شبكة، دائمًا.
+  ٥ت١٣. A116 المستورد (tahaqquq/test_a116.py؛ Saleh1967/Alghanem formal/a116 بإيداعه 9d8fa03): الجداولُ الأربعةُ والثلاثون في jadawil/a116
+      وملفّا البيانات = مُخرَجُ a116-jadwal من Lean المبنيّ في Mashru بايتًا (مطابَق)، دائمًا.
   ٥ص١٤. ضابطُ «أثر العُقَد» المجمَّد (tahaqquq/test_athar_dabit.py؛ نطاقُ القوّة من الكتاب والمغني والقطر والألفية وج3، ونطاقُ القيد ج3 س1062–1106):
       مثلُ ٥ص، وبصمةُ الشفرة كلُّ ملفٍّ فيه ثابتٌ يبلغه حسابُ natijaHala (SHIFRA، ويحسبها Lean من البيئة المبنيّة فتُقارَن بها)، بحقلٍ مسؤولٍ في
       كلّ حالة (القوّة أو القيد)، دائمًا؛
@@ -259,7 +261,8 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_mudir.py",
     "tahaqquq/test_sual.py",
     "tahaqquq/test_jalb.py",
-    # قبل الأخيرَين: يستورد وحدات المشروع كلَّها في Lean إلّا جذورَ التنفيذيّات العشرة، فلا يجري إلّا على ما نجا ممّا قبله.
+    "tahaqquq/test_a116.py",
+    # قبل الأخيرَين: يستورد وحدات المشروع كلَّها في Lean إلّا جذورَ التنفيذيّات الأحدَ عشر، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_wiratha.py",
     # قبل الأخير: يستورد وحدات المشروع كلَّها في Lean، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_hisab.py",
@@ -1239,6 +1242,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت١٢ {out.strip().splitlines()[-1] if out.strip() else 'جلب المودَعات: ?'}")
     if code != 0:
         fails.append("اختبار جلب المودَعات فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_a116.py"])
+    report.append(f"٥ت١٣ {out.strip().splitlines()[-1] if out.strip() else 'A116: ?'}")
+    if code != 0:
+        fails.append("اختبار A116 المستورد فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_athar_dabit.py"])
     report.append(f"٥ص١٤ {out.strip().splitlines()[-1] if out.strip() else 'ضابط أثر العقد: ?'}")
     if code != 0:
