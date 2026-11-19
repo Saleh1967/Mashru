@@ -63,6 +63,7 @@ import Madlul.JadwalLuzumNaql
 import Madlul.Naht
 import Nizam.Asas
 import Nizam.Talab
+import Nizam.Mudir
 import Faahis.Lib
 import Nizam.Damj
 import Nizam.Aqd
@@ -3185,3 +3186,37 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms NTP.SilsilaMaajim.natija
 #print axioms NTP.SilsilaMaajim.adad_arbaa
 #print axioms NTP.SilsilaMaajim.zayt_bi_sijill_la_bi_shajara
+-- Mudir: Nizam/Mudir.lean
+#print axioms Nizam.Mudir.bila_maqam_la_qisma
+#print axioms Nizam.Mudir.amr_iff_malik
+#print axioms Nizam.Mudir.farigh_marfud
+#print axioms Nizam.Mudir.qararAmr_malik
+#print axioms Nizam.Mudir.qararAmr_majhul
+#print axioms Nizam.Mudir.bila_maqam_la_tanfidh
+#print axioms Nizam.Mudir.qararAmr_tanfidh
+#print axioms Nizam.Mudir.mahzur_marfud
+#print axioms Nizam.Mudir.majhul_marfud
+#print axioms Nizam.Mudir.taallam_malik
+#print axioms Nizam.Mudir.rafd_la_khitta
+#print axioms Nizam.Mudir.khittaAmr_all
+#print axioms Nizam.Mudir.khittaAmr_mutaallim
+#print axioms Nizam.Mudir.khatwa_qiraa_aw_iqtirah
+#print axioms Nizam.Mudir.mutaallim_malik
+#print axioms Nizam.Mudir.thiql_ashadd
+#print axioms Nizam.Mudir.thiql_foldl
+#print axioms Nizam.Mudir.foldl_max_ge
+#print axioms Nizam.Mudir.foldl_max_mem
+#print axioms Nizam.Mudir.thiql_khata
+#print axioms Nizam.Mudir.thiql_le_3
+#print axioms Nizam.Mudir.khata_yaghlib
+#print axioms Nizam.Mudir.najah_iff
+#print axioms Nizam.Mudir.khata_yaghlib_badil
+#print axioms Nizam.Mudir.badil_najah
+#print axioms Nizam.Mudir.rafd_jami
+#print axioms Nizam.Mudir.khata_jami
+#print axioms Nizam.Mudir.khuruj_khata
+#print axioms Nizam.Mudir.insha_ghayr_qabil
+#print axioms Nizam.Mudir.khabar_bila_shahid
+#print axioms Nizam.Mudir.shawahid_tasdiq
+#print axioms Nizam.Mudir.shawahid_qarar
+#print axioms Nizam.Mudir.shahid_tasnif
