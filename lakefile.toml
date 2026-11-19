@@ -1,6 +1,6 @@
 name = "mashru"
 version = "0.1.0"
-defaultTargets = ["Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "faahis", "qari", "tahsil", "silsila", "athar", "tarkib", "rabt", "nabtBridge", "qanunJadwal"]
+defaultTargets = ["Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "faahis", "qari", "tahsil", "silsila", "athar", "tarkib", "rabt", "nabtBridge", "qanunJadwal", "mudir"]
 
 [[lean_lib]]
 name = "Nabt"
@@ -69,3 +69,7 @@ root = "Jisr.NabtExport"
 [[lean_exe]]
 name = "qanunJadwal"
 root = "Qari.QanunJadwal"
+
+[[lean_exe]]
+name = "mudir"
+root = "Qari.Mudir"

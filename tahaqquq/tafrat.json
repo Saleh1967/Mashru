@@ -9088,5 +9088,143 @@
   "milaf": "AuditNabt.lean",
   "min": "import Nabt\n",
   "ila": "import Nabt.Wahmi\n"
+ },
+ {
+  "ism": "P1612_nawat_miftah_idrak",
+  "milaf": "Madlul/Nawat.lean",
+  "min": "  | .idrak => some (·.aql)\n",
+  "ila": "  | .idrak => none\n"
+ },
+ {
+  "ism": "P1613_nawat_jumud_nabat",
+  "milaf": "Madlul/Nawat.lean",
+  "min": "  | .jumudMutlaq => q == .jamad\n",
+  "ila": "  | .jumudMutlaq => q == .jamad || q == .nabat\n"
+ },
+ {
+  "ism": "P1614_tawlid_ala_ghayr_jamad",
+  "milaf": "Jisr/Tawlid.lean",
+  "min": "  else if u.dawr = .ala then (if q = .jamad then .murakhkhas else .mumtani)\n",
+  "ila": "  else if u.dawr = .ala then (if q = .jamad then .murakhkhas else .laHukm)\n"
+ },
+ {
+  "ism": "P1615_tawlid_mani_baad_ala",
+  "milaf": "Jisr/Tawlid.lean",
+  "min": "  if u.mawani.any (maniMutahaqqiq · q) then .mumtani\n  else if u.dawr = .ala then (if q = .jamad then .murakhkhas else .mumtani)\n",
+  "ila": "  if u.dawr = .ala then (if q = .jamad then .murakhkhas else .mumtani)\n  else if u.mawani.any (maniMutahaqqiq · q) then .mumtani\n"
+ },
+ {
+  "ism": "P1616_tawlid_sigha_mubalagha",
+  "milaf": "Jisr/Tawlid.lean",
+  "min": "  | .mubalagha => [c1, c2, 'ّ', 'ا', c3]\n",
+  "ila": "  | .mubalagha => [c1, c2, 'ا', c3]\n"
+ },
+ {
+  "ism": "P1617_tawlid_qayd_fail",
+  "milaf": "Jisr/Tawlid.lean",
+  "min": "  | .failiyya | .mubalagha | .sababiyya => (s.shurutFail, none)\n",
+  "ila": "  | .failiyya | .mubalagha | .sababiyya => (s.shurutFail, s.qayd)\n"
+ },
+ {
+  "ism": "P1618_tawlid_dawabit_halat",
+  "milaf": "Jisr/TawlidDawabit.lean",
+  "min": "def halat : List Hala := [\n",
+  "ila": "def halat : List Hala := List.take 31 [\n"
+ },
+ {
+  "ism": "P1619_rabt_satr_murashshah",
+  "milaf": "Qari/Rabt.lean",
+  "min": "\\n  صفُّ نواةٍ مرشَّح (Jisr.Tawlid.satrMurashshah؛ لا يدخل النواةَ بلا إمضاء): {Jisr.Tawlid.satrMurashshah (\"-\".intercalate (k'.toList.map (String.singleton ·))) q}",
+  "ila": ""
+ },
+ {
+  "ism": "P1620_mudir_majhul_lahu_rutba",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  | .majhul => none\n",
+  "ila": "  | .majhul => some .tasawi\n"
+ },
+ {
+  "ism": "P1621_mudir_iltimas_yaqtarih",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  | .iltimas, a => a.nawAthar == .qiraa",
+  "ila": "  | .iltimas, _ => true"
+ },
+ {
+  "ism": "P1622_mudir_mahzur_murakhkhas",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "(\"ادمج\", .mahzur .idmaj)",
+  "ila": "(\"ادمج\", .murakhkhas .iqra)"
+ },
+ {
+  "ism": "P1623_mudir_jam_afdal",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "def ashadd (a b : Natija) : Natija := if b.thiql > a.thiql then b else a",
+  "ila": "def ashadd (a b : Natija) : Natija := if b.thiql < a.thiql then b else a"
+ },
+ {
+  "ism": "P1624_mudir_marfud_lahu_khitta",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  | .rafd _ => []\n",
+  "ila": "  | .rafd _ => [⟨.athar, \"\"⟩]\n"
+ },
+ {
+  "ism": "P1625_mudir_insha_yusaddaq",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  if bada quwwa \"إنشاء\" then .ghayrQabil",
+  "ila": "  if bada quwwa \"إنشاء\" then .laHukmBilaShahid"
+ },
+ {
+  "ism": "P1626_mudir_khuruj_muhmal",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  if khuruj ≠ 0 then .khata else",
+  "ila": "  if khuruj ≠ khuruj then .khata else"
+ },
+ {
+  "ism": "P1627_mudir_qari_la_yurfad",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  | .qari => if fihi makhraj \"مرفوضة باسمها\" then .rafd else .najah",
+  "ila": "  | .qari => if fihi makhraj \"مرفوضة باسمها\" then .najah else .najah"
+ },
+ {
+  "ism": "P1628_mudir_isal_bila_khatawat",
+  "milaf": "Qari/Mudir.lean",
+  "min": "    if a.1.compress != a.2.compress then farq",
+  "ila": "    if a.1.compress != a.1.compress then farq"
+ },
+ {
+  "ism": "P1629_mudir_mutaallim_fi_mawsua",
+  "milaf": "Qari/Mudir.lean",
+  "min": "    let p := b.iqtirahat ++ \"/\" ++ ism ++ \".tsv\"",
+  "ila": "    let p := b.jadhr ++ \"/mawsua/\" ++ ism ++ \".tsv\""
+ },
+ {
+  "ism": "P1630_mudir_qanat_iftiradiyya_malik",
+  "milaf": "Qari/Mudir.lean",
+  "min": "  ahlil .majhul none b0 args",
+  "ila": "  ahlil .malik none b0 args"
+ },
+ {
+  "ism": "P1631_sabq_tajriba_muhawwil_yataghayyar",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "        if b is None or hashlib.sha256(b).hexdigest() != sha:\n            akhta.append(f\"{ism}: بصمةُ المحوِّل",
+  "ila": "        if b is None:\n            akhta.append(f\"{ism}: بصمةُ المحوِّل"
+ },
+ {
+  "ism": "P1632_sabq_tajriba_iltizam_baad",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "    if I == F or not salaf(jadhr, I, F):",
+  "ila": "    if I == F:"
+ },
+ {
+  "ism": "P1633_sabq_tajriba_muhawwil_maa_F",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "    if not A or A == F or not salaf(jadhr, A, F):",
+  "ila": "    if not A:"
+ },
+ {
+  "ism": "P1634_sual_sinf_ikhtiyar_khata",
+  "milaf": "tahaqquq/dawabit/sual/tashghil.py",
+  "min": "        return \"اختيار بلا مرجّح\" if len(mt) == 1 else \"خطأ\"",
+  "ila": "        return \"خطأ\" if len(mt) == 1 else \"اختيار بلا مرجّح\""
  }
 ]

@@ -1,0 +1,18 @@
+{
+ "naw": "تجربة جواب على ضابطٍ مجمَّد",
+ "minhaj": "hawkama/منهج_الضوابط.md، الإصدار ١",
+ "masadir": {
+  "qatr.txt": "2d9241beca1b138187ace8f6782d5eed68f3864f402ec1d5fc90fdeb306ceb9d",
+  "alfiyya.txt": "13b351a0a02d9060fdedbb5db568544718eb4e89bef323f5572b8a26c0921ca0"
+ },
+ "wasf_sha256": "5ed3c8842bcef242e57969eabf227de030d0ca72f5613f4af16c10d666a53de6",
+ "tashghil_sha256": "bfc13b51b123065fb99bf3f64fda1e2764a932e5c556fb8b666ab59b42bd26b3",
+ "cases_sha256": "553e11b4a624ef55c347859b0dec48d6b4e796adab220ea2480f5a4baa0163b5",
+ "fahs_cases_sha256": "939d69705cf8247ac492e3096128eef71d4a544b05684d0d9b81bf22fc088e68",
+ "bina_cases_sha256": "3d42e7cbb922070dba665fcc27ae089af475872c32795df6c44d3b5037def801",
+ "taalif_sha256": "7c7e2baee5b54f38e41190282e35d9fbe6c7387d4ca4e723faf54355aeb3566e",
+ "muallif": "وكيلٌ جديد (general-purpose) بتوجيهٍ محفوظٍ بنصّه في tawjih_muallif.md؛ أجاب البنّاءَ بالبصمتين والأعداد وحدها؛ وإفصاحُه في taalif.md (لم يقرأه البنّاء قبل التجميد)",
+ "fahs_sijill": "لم يُحفظ سجلُّ أدوات المؤلّف آليًّا؛ الاستقلالُ بإفصاحه",
+ "tajmid": "2026-11-19T09:27+00:00",
+ "qabl_tashghil": "المحوِّل tashghil.py والمواصفة أُودعا قبل كتابة الحالات (cb2a81f)؛ ولم يقرأ البنّاءُ cases.json ولا taalif.md ولا سكربتَي المؤلّف قبل دفع هذا الإيداع"
+}

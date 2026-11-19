@@ -63,6 +63,7 @@ import Madlul.JadwalLuzumNaql
 import Madlul.Naht
 import Nizam.Asas
 import Nizam.Talab
+import Nizam.Mudir
 import Faahis.Lib
 import Nizam.Damj
 import Nizam.Aqd
@@ -142,6 +143,10 @@ import SLGE.HisabSinfi
 import Jisr.QabiliyyaJins
 import Jisr.HamlJinsDabit
 import Jisr.HamlJinsQiyas
+import Madlul.Nawat
+import Jisr.Tawlid
+import Jisr.TawlidDabit
+import Jisr.TawlidQiyas
 import Dal.WiladaJadhr
 import Dal.WiladaKalima
 import Dal.WiladaJumla
@@ -3072,6 +3077,38 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms Jisr.QabiliyyaJins.Qiyas.natija
 #print axioms Jisr.QabiliyyaJins.Qiyas.natija_fia
 #print axioms Jisr.QabiliyyaJins.Qiyas.akhta_1
+-- نواةُ التوليد (Madlul/Nawat.lean، Jisr/Tawlid.lean؛ أقوالُ المالك المرقَّمة نواةً، أمرُه 2026-11-17): الصفوفُ والمفاتيح، والعواملُ السبعة والعقدةُ
+-- والحكمُ على الجنس فيها، والحلقة؛ وضابطُه المجمَّد (tahaqquq/dawabit/nawat_tawlid)
+#print axioms Madlul.Nawat.bila_miftah_la_yatahaqqaq
+#print axioms Madlul.Nawat.mani_bila_miftah
+#print axioms Madlul.Nawat.inadamAql_hayawan
+#print axioms Madlul.Nawat.jumud_jamad
+#print axioms Madlul.Nawat.shart_mutahaqqiq_wiratha
+#print axioms Madlul.Nawat.hayat_fi_thalatha
+#print axioms Madlul.Nawat.aql_insan
+#print axioms Madlul.Nawat.haraka_intiqal
+#print axioms Madlul.Nawat.nawat_shahid
+#print axioms Jisr.Tawlid.sigha_tahfaz_jadhr
+#print axioms Jisr.Tawlid.mawruth_min_nawat
+#print axioms Jisr.Tawlid.mawani_min_jadhr
+#print axioms Jisr.Tawlid.fail_bila_qayd
+#print axioms Jisr.Tawlid.la_hukm_bila_nawat
+#print axioms Jisr.Tawlid.la_jins_bila_jins
+#print axioms Jisr.Tawlid.ala_ghayr_jamad_mumtani
+#print axioms Jisr.Tawlid.murakhkhas_bi_shahid
+#print axioms Jisr.Tawlid.mumtani_bi_shahid
+#print axioms Jisr.Tawlid.bila_miftah_la_tarkhis
+#print axioms Jisr.Tawlid.murakhkhas_la_yughayyir
+#print axioms Jisr.Tawlid.shahid_kasara
+#print axioms Jisr.Tawlid.shahid_alima
+#print axioms Jisr.Tawlid.shahid_kharij
+#print axioms Jisr.Tawlid.murashshah_la_yadkhul
+#print axioms Jisr.Tawlid.Dabit.qarin_jadwal
+#print axioms Jisr.Tawlid.Dabit.sigha_mukhtalifa_khata
+#print axioms Jisr.Tawlid.Qiyas.majal
+#print axioms Jisr.Tawlid.Qiyas.natija
+#print axioms Jisr.Tawlid.Qiyas.natija_fia
+#print axioms Jisr.Tawlid.Qiyas.akhta_1
 -- معالجُ NTP ووصلُه والتواترُ بشجرة النقل (Madlul/NTP/، قولُ المالك 2026-11-16 و2026-11-17):
 -- Muallij: Madlul/NTP/Muallij.lean
 #print axioms NTP.mutamayyiz_wahid
@@ -3149,3 +3186,37 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms NTP.SilsilaMaajim.natija
 #print axioms NTP.SilsilaMaajim.adad_arbaa
 #print axioms NTP.SilsilaMaajim.zayt_bi_sijill_la_bi_shajara
+-- Mudir: Nizam/Mudir.lean
+#print axioms Nizam.Mudir.bila_maqam_la_qisma
+#print axioms Nizam.Mudir.amr_iff_malik
+#print axioms Nizam.Mudir.farigh_marfud
+#print axioms Nizam.Mudir.qararAmr_malik
+#print axioms Nizam.Mudir.qararAmr_majhul
+#print axioms Nizam.Mudir.bila_maqam_la_tanfidh
+#print axioms Nizam.Mudir.qararAmr_tanfidh
+#print axioms Nizam.Mudir.mahzur_marfud
+#print axioms Nizam.Mudir.majhul_marfud
+#print axioms Nizam.Mudir.taallam_malik
+#print axioms Nizam.Mudir.rafd_la_khitta
+#print axioms Nizam.Mudir.khittaAmr_all
+#print axioms Nizam.Mudir.khittaAmr_mutaallim
+#print axioms Nizam.Mudir.khatwa_qiraa_aw_iqtirah
+#print axioms Nizam.Mudir.mutaallim_malik
+#print axioms Nizam.Mudir.thiql_ashadd
+#print axioms Nizam.Mudir.thiql_foldl
+#print axioms Nizam.Mudir.foldl_max_ge
+#print axioms Nizam.Mudir.foldl_max_mem
+#print axioms Nizam.Mudir.thiql_khata
+#print axioms Nizam.Mudir.thiql_le_3
+#print axioms Nizam.Mudir.khata_yaghlib
+#print axioms Nizam.Mudir.najah_iff
+#print axioms Nizam.Mudir.khata_yaghlib_badil
+#print axioms Nizam.Mudir.badil_najah
+#print axioms Nizam.Mudir.rafd_jami
+#print axioms Nizam.Mudir.khata_jami
+#print axioms Nizam.Mudir.khuruj_khata
+#print axioms Nizam.Mudir.insha_ghayr_qabil
+#print axioms Nizam.Mudir.khabar_bila_shahid
+#print axioms Nizam.Mudir.shawahid_tasdiq
+#print axioms Nizam.Mudir.shawahid_qarar
+#print axioms Nizam.Mudir.shahid_tasnif

@@ -117,6 +117,11 @@
   ٥ت٨. أثرُ العُقَد (tahaqquq/test_athar.py؛ Nizam/Athar.lean والأداة athar): صفوفُ جدول العوامل من صورٍ مشكولةٍ باليد لكلّ صفٍّ ذي صورة، وحكمُ
       الجملة قبل المعجم وبعده والقوّةُ والدعوى والمنطوقُ والقيدُ وعقدةُ المفهوم (حارسُ تراجعٍ على مخرجٍ رآه البنّاء)، واتّساقُ حكمها قبل المعجم
       بـ`silsila` وما بعده بما قبله، واتّساقُ حقول المخرج على ما تقوله المبرهنات (القيدُ ودورُه، والدعوى والإسناد، وشروطُ الخبر)، دائمًا.
+  ٥ت١٠. مديرُ الوكلاء (tahaqquq/test_mudir.py؛ Nizam/Mudir.lean والأداة mudir): قرارُ البرومبت بقسمة الطلب على مقام القناة (المجهولُ لا يأمر،
+      والنظيرُ لا يقترح، والمحظورُ مرفوضٌ من المالك)، وخطّةُ الوكلاء، والنتيجةُ الجامعة، والمتعلّمُ لا يمسّ mudaat/ ولا mawsua/، والإيصالُ يطابق
+      إعادةَ التشغيل ويرفض المغيَّر (حارسُ تراجعٍ على مخرجٍ رآه البنّاء؛ بنيةٌ لا ضابطَ مجمَّد لها)، دائمًا.
+  ٥ت١١. تجربةُ الجواب (tahaqquq/test_sual.py؛ tahaqquq/dawabit/sual/): بصماتُ التجميد والمحوِّل، وشروطُ الحالات الشكليّة من المواصفة، وأعدادُ
+      natija_1.json وأصنافُها تُعاد من نتائجها بقواعد المواصفة، والمحوِّلُ على مخرجٍ مكتوبٍ باليد بصيغة جدولها (حارسٌ كتبه البنّاء)، دائمًا.
   ٥ص١٤. ضابطُ «أثر العُقَد» المجمَّد (tahaqquq/test_athar_dabit.py؛ نطاقُ القوّة من الكتاب والمغني والقطر والألفية وج3، ونطاقُ القيد ج3 س1062–1106):
       مثلُ ٥ص، وبصمةُ الشفرة كلُّ ملفٍّ فيه ثابتٌ يبلغه حسابُ natijaHala (SHIFRA، ويحسبها Lean من البيئة المبنيّة فتُقارَن بها)، بحقلٍ مسؤولٍ في
       كلّ حالة (القوّة أو القيد)، دائمًا؛
@@ -125,6 +130,8 @@
       Jisr/Tahlil.lean؛ والأداتان tarkib وrabt (Nizam/Rabt.lean) على جملٍ بتوقّعٍ يدويّ لحكمها وقراءتها، ولعامل الوحدة وحالتها والإسناد وقوّة الجملة
       والإحالة والمفهوم؛ والدلالةُ على جدول لزومٍ مصنوع (اتّساقٌ لا توقّعٌ مستقلّ)، دائمًا؛ والسندُ في أسطره وفاحصُ المؤلّف إن حضر القطر.
   ٥ص١٦. ضابطُ «الحمل من الجنس» المجمَّد (tahaqquq/test_haml_jins.py؛ أقوالُ المالك في masdar.md): مثلُ ٥ص على Jisr/QabiliyyaJins.lean.
+  ٥ص١٧. ضابطُ «نواة التوليد» المجمَّد (tahaqquq/test_tawlid.py؛ أقوالُ المالك المرقَّمة نواةً في masdar.md): مثلُ ٥ص على Madlul/Nawat.lean
+      وJisr/Tawlid.lean؛ وصفُّ النواة المرشَّح في rabt.
   ٥ت٣. هيكلُ الإنتروبيا (tahaqquq/test_intrubiya.py؛ Jisr/Intrubiya.lean وJisr/IntrubiyaShahada.lean وscripts/intrubiya.py): تعدادٌ صريحٌ لكلمات
       الطول 3 وتجميعٌ حتى 4 يساويان أعدادَ lawCount المنسوخة من Lean، والشهادةُ المولَّدة بالبايت ومتباينتاها بأعدادٍ صحيحة، والمقدِّراتُ على
       توزيعاتٍ باليد، والنقلُ بالجسر قبل الآلة، وجدولُ nabtBridge، والتحصيلُ على كلماتٍ خلاياها باليد، دائمًا؛ وعلى المودَع إن حضر في MUDAA_DIR.
@@ -134,7 +141,8 @@
       تحت Nabt. من الثلاث.
   ٥ت٦. سبقُ التجميد مقيسًا من التاريخ (tahaqquq/test_sabq_tajmid.py؛ tahaqquq/sabq_tajmid.py): لكلّ ضابطٍ مجمَّد إيداعُ الحالات سلفٌ صارمٌ لإيداع
       الشفرة (إلّا الملفَّ الموروث: قبل التجميد بلا تغيّرٍ إليه وبصمتُه المسجَّلة بايتاتُه، ومع شفرةٍ بعده)، وهي سلفٌ للنتيجة الأولى، وبصمةُ الحالات
-      واحدةٌ عند التجميد وفي النتيجة والآن؛ على مستودعاتٍ مصنوعة دائمًا، وعلى المستودع إن لم يكن ضحلًا.
+      واحدةٌ عند التجميد وفي النتيجة والآن؛ وفي صيغة «تجربة الجواب» (الشفرةُ قبل الحالات) التزامُ المحرّك والمحوِّلُ سلفان صارمان للتجميد
+      وبصمةُ المحوِّل واحدة؛ على مستودعاتٍ مصنوعة دائمًا، وعلى المستودع إن لم يكن ضحلًا.
   ٥خ. تمامُ التدقيق (tahaqquq/test_tadqiq_tamm.py؛ 2026-10-26؛ مقترحُ البنّاء بأمر المالك العامّ، يسري بعد دمج طلبه): كلُّ مبرهنةٍ عامّةٍ
       في وحدات المشروع (SLGE وDal وMadlul وJisr وAql وNizam وFaahis وQari؛ تصريحٌ تسبق اسمَه في سطره theorem أو lemma) لها `#print axioms`
       في Audit.lean خارج التعليقات — من ملفّات `.ilean` التي يكتبها lake build؛ فالبند ٣ يعدّ ما في Audit.lean، وهذا يمنع أن تُبنى مبرهنةٌ
@@ -241,11 +249,14 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_athar_dabit.py",
     "tahaqquq/test_tahlil.py",
     "tahaqquq/test_haml_jins.py",
+    "tahaqquq/test_tawlid.py",
     "tahaqquq/test_intrubiya.py",
     "tahaqquq/test_qiyas_intrubiya.py",
     "tahaqquq/test_nabt_tadqiq.py",
     "tahaqquq/test_sabq_tajmid.py",
-    # قبل الأخيرَين: يستورد وحدات المشروع كلَّها في Lean إلّا جذورَ التنفيذيّات التسعة، فلا يجري إلّا على ما نجا ممّا قبله.
+    "tahaqquq/test_mudir.py",
+    "tahaqquq/test_sual.py",
+    # قبل الأخيرَين: يستورد وحدات المشروع كلَّها في Lean إلّا جذورَ التنفيذيّات العشرة، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_wiratha.py",
     # قبل الأخير: يستورد وحدات المشروع كلَّها في Lean، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_hisab.py",
@@ -1213,6 +1224,14 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت٨ {out.strip().splitlines()[-1] if out.strip() else 'أثر العقد: ?'}")
     if code != 0:
         fails.append("اختبار أثر العقد فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_mudir.py"])
+    report.append(f"٥ت١٠ {out.strip().splitlines()[-1] if out.strip() else 'مدير الوكلاء: ?'}")
+    if code != 0:
+        fails.append("اختبار مدير الوكلاء فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_sual.py"])
+    report.append(f"٥ت١١ {out.strip().splitlines()[-1] if out.strip() else 'تجربة الجواب: ?'}")
+    if code != 0:
+        fails.append("اختبار تجربة الجواب فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_athar_dabit.py"])
     report.append(f"٥ص١٤ {out.strip().splitlines()[-1] if out.strip() else 'ضابط أثر العقد: ?'}")
     if code != 0:
@@ -1225,6 +1244,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ص١٦ {out.strip().splitlines()[-1] if out.strip() else 'ضابط الحمل من الجنس: ?'}")
     if code != 0:
         fails.append("اختبار ضابط الحمل من الجنس فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_tawlid.py"])
+    report.append(f"٥ص١٧ {out.strip().splitlines()[-1] if out.strip() else 'ضابط نواة التوليد: ?'}")
+    if code != 0:
+        fails.append("اختبار ضابط نواة التوليد فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_intrubiya.py"])
     report.append(f"٥ت٣ {out.strip().splitlines()[-1] if out.strip() else 'الإنتروبيا: ?'}")
     if code != 0:
