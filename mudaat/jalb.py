@@ -8,6 +8,7 @@
   * نصوصُ OpenITI على raw.githubusercontent.com: باليداع المسجَّل حيث سُجّل (lisan، maqayis، mukhassas)، وإلّا الفرعُ الرئيس
     والبصمةُ تحرسه.
   * مرفقاتُ المالك (a1.docx، a2.docx، badiha.docx) من تاريخ مستودعه العامّ hamil-hala-zaman-program بإيداعها.
+  * تاجُ العروس من OpenITI، وQAC 0.4 من مرآة alstat/QuranTree.jl، وMASAQ ونصُّ التنزيل من corpora/ في Saleh1967/Alghanem — كلُّها بإيداعٍ مثبَّت.
   * المشتقّ: `luzum_mujam.tsv` بـ`shabaka/jadwal_luzum.py` على lisan وmaqayis المختومين، و`jins.tsv`/`mithal.tsv` بـ`scripts/bina_jadawil_rabt.py`.
   * وما سواها (مرفقاتُ المالك، والمراجعُ المحجوبة، وجداولُ البنّاء، والمرشَّحة) غائبٌ يُسمّى بمصدره المسجَّل.
 
@@ -49,7 +50,18 @@ MALIK = {
                "%D8%A7%D9%84%D8%AC%D8%B2%D8%A1%20%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB%20%D9%88%D8%B1%D8%AF%20%282%29.docx",
     "badiha.docx": "2bb18501598278bb3facac84e60cff5bb4b25219/%D8%B3%D8%B1%D8%B9%D8%A9%20%D8%A7%D9%84%D8%A8%D8%AF%D9%8A%D9%87%D8%A9.docx",
 }
-URL = {**{k: RAW + v for k, v in OPENITI.items()}, **{k: HAMIL + v for k, v in MALIK.items()}}
+# مراجعُ ونصوصٌ في مستودعاتٍ عامّة (باليداع؛ والبصمةُ المختومة تحرسها):
+#   QAC 0.4: مرآةُ alstat/QuranTree.jl التي يسمّيها سجلُّ المودَعات مرآةً ثانية؛ وMASAQ ونصُّ التنزيل: corpora/ في مستودع المالك Saleh1967/Alghanem.
+ALGHANEM = "https://raw.githubusercontent.com/Saleh1967/Alghanem/9d8fa03a51f894416e0abaf3b6821c5ae6441dcd/corpora/"
+UKHRA = {
+    "taj.txt": RAW + "1225AH/4ec30fc763750fc1233d3774c4416b28c5c8b886/data/1205MurtadaZabidi/1205MurtadaZabidi.TajCarus/"
+               "1205MurtadaZabidi.TajCarus.Shamela0007030-ara1",
+    "quranic-corpus-morphology-0.4.txt": "https://raw.githubusercontent.com/alstat/QuranTree.jl/d7a0fe9c5c7138081aec6683d18e49f9a233d0dd/data/"
+                                         "quranic-corpus-morphology-0.4.txt",
+    "MASAQ.csv": ALGHANEM + "MASAQ.csv",
+    "quran-simple-enhanced.txt": ALGHANEM + "quran-simple-enhanced.txt",
+}
+URL = {**{k: RAW + v for k, v in OPENITI.items()}, **{k: HAMIL + v for k, v in MALIK.items()}, **UKHRA}
 
 MUSHTAQQ = {
     "luzum_mujam.tsv": (["lisan.txt", "maqayis.txt"], lambda d: [sys.executable, "-I", os.path.join(JADHR, "shabaka", "jadwal_luzum.py")],

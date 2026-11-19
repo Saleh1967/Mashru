@@ -4,7 +4,8 @@
 # (tahaqquq/jam_tafrat.py). والتقسيمُ بقرار المالك 2026-10-28: اختار من سؤالٍ متعدّد الخيارات «الاثنان (موصى به)»، ووصفُه:
 # «طلبٌ أوّل يرفع timeout-minutes إلى 360 الآن، ثمّ طلبٌ ثانٍ يقسم البند ٦ على وظائف متوازية (matrix) فينزل الزمنُ تحت الساعة.»
 # (نصُّ الخيار و«موصى به» من البنّاء؛ ونزولُ الزمن تحت الساعة توقّعٌ لم يُقس بعد).
-# اختبارات الشبكة (المودَع mukhassas.txt) لا تعمل هنا لأنّ المودَعات لا تُرفع إلى المستودع؛ البوّابة تذكر ذلك بنفسها.
+# المودَعاتُ لا تُرفع إلى المستودع؛ وظيفةُ «bawwaba» تجلبها ببصماتها (mudaat/jalb.py) وتمرّرها MUDAA_DIR، وما لا جلبَ له تسمّيه البوّابة.
+# ووظائفُ «tafrat» بلا مودَعات (البندُ ٦ كما كان).
 name: bawwaba
 
 on:
@@ -63,6 +64,20 @@ jobs:
       - name: prune build artifacts without source (المبنيُّ القديم ليس شاهدًا؛ cache يعيد .lake)
         run: python3 -I scripts/tanqiyat_bina.py
 
+      - name: cache sealed deposits (المودَعاتُ المختومة لا تُرفع إلى المستودع؛ تُجلب ببصماتها)
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: ${{ runner.temp }}/mudaa
+          key: mudaa-${{ hashFiles('mudaat/sijill.json', 'mudaat/jalb.py', 'scripts/bina_jadawil_rabt.py', 'shabaka/jadwal_luzum.py') }}
+
+      - name: fetch sealed deposits (mudaat/jalb.py — لا يُكتب إلّا ما طابقت بصمتُه المختومة)
+        # أمرُ المالك 2026-11-19 (21:45): «… وانت تجلب كل المطلوب …». الغيابُ (شبكةٌ أو مصدرٌ لا جلبَ له) لا يُفشل الوظيفة: البوّابةُ
+        # تسمّي ما لم يُشغَّل؛ أمّا بصمةٌ مخالفة («مرفوض») فتُفشلها هنا.
+        run: |
+          set +e
+          python3 -I mudaat/jalb.py "$RUNNER_TEMP/mudaa" | tee jalb_out.txt
+          ! grep -q "^مرفوض" jalb_out.txt
+
       - name: lake build
         run: |
           export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
@@ -83,6 +98,7 @@ jobs:
         run: |
           export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
           set +e
+          export MUDAA_DIR="$RUNNER_TEMP/mudaa"
           python3 -I tahaqquq/bawwaba.py --bila-tafrat > gate_out.txt 2> gate_err.txt
           code=$?
           cat gate_out.txt; cat gate_err.txt
