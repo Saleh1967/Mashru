@@ -122,6 +122,8 @@
       إعادةَ التشغيل ويرفض المغيَّر (حارسُ تراجعٍ على مخرجٍ رآه البنّاء؛ بنيةٌ لا ضابطَ مجمَّد لها)، دائمًا.
   ٥ت١١. تجربةُ الجواب (tahaqquq/test_sual.py؛ tahaqquq/dawabit/sual/): بصماتُ التجميد والمحوِّل، وشروطُ الحالات الشكليّة من المواصفة، وأعدادُ
       natija_1.json وأصنافُها تُعاد من نتائجها بقواعد المواصفة، والمحوِّلُ على مخرجٍ مكتوبٍ باليد بصيغة جدولها (حارسٌ كتبه البنّاء)، دائمًا.
+  ٥ت١٢. جلبُ المودَعات (tahaqquq/test_jalb.py؛ mudaat/jalb.py وscripts/bina_jadawil_rabt.py): لا يدخل المجلّدَ ملفٌّ إلّا ببصمته المختومة،
+      والمخالفُ والغائبُ والمرشَّحُ بأسمائها، وجدولا الجنس والمثال يُبنيان ببصمتيهما المختومتين، والسجلُّ لا يتغيّر؛ بلا شبكة، دائمًا.
   ٥ص١٤. ضابطُ «أثر العُقَد» المجمَّد (tahaqquq/test_athar_dabit.py؛ نطاقُ القوّة من الكتاب والمغني والقطر والألفية وج3، ونطاقُ القيد ج3 س1062–1106):
       مثلُ ٥ص، وبصمةُ الشفرة كلُّ ملفٍّ فيه ثابتٌ يبلغه حسابُ natijaHala (SHIFRA، ويحسبها Lean من البيئة المبنيّة فتُقارَن بها)، بحقلٍ مسؤولٍ في
       كلّ حالة (القوّة أو القيد)، دائمًا؛
@@ -256,6 +258,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_sabq_tajmid.py",
     "tahaqquq/test_mudir.py",
     "tahaqquq/test_sual.py",
+    "tahaqquq/test_jalb.py",
     # قبل الأخيرَين: يستورد وحدات المشروع كلَّها في Lean إلّا جذورَ التنفيذيّات العشرة، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_wiratha.py",
     # قبل الأخير: يستورد وحدات المشروع كلَّها في Lean، فلا يجري إلّا على ما نجا ممّا قبله.
@@ -1232,6 +1235,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت١١ {out.strip().splitlines()[-1] if out.strip() else 'تجربة الجواب: ?'}")
     if code != 0:
         fails.append("اختبار تجربة الجواب فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_jalb.py"])
+    report.append(f"٥ت١٢ {out.strip().splitlines()[-1] if out.strip() else 'جلب المودَعات: ?'}")
+    if code != 0:
+        fails.append("اختبار جلب المودَعات فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_athar_dabit.py"])
     report.append(f"٥ص١٤ {out.strip().splitlines()[-1] if out.strip() else 'ضابط أثر العقد: ?'}")
     if code != 0:

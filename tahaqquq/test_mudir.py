@@ -8,12 +8,14 @@
 ٣. النتيجة: القارئُ على نصٍّ غير مشكولٍ رفضٌ باسمه (خروج 2)، والسؤالُ بالدلالات يكفيه حكمٌ واحد، والوكيلُ الغائبُ خطأُ تنفيذ لا يُخفى (خروج 3).
 ٤. المتعلّم: الاقتراحُ يُكتب في مجلّد الاقتراحات وحده، ولا تتغيّر بصمةُ `mudaat/sijill.json` ولا `mawsua/makhzan.tsv`.
 ٥. الإيصال: `--tahaqquq` يطابق إعادةَ التشغيل، ويرفض إيصالًا غُيّرت فيه بصمةُ خطوة.
+٧. لا جوابَ معلَّق: لكلّ خطوةٍ غيرِ «حكمٌ صدر» سطرُ سببٍ وعلاج، ولكلّ رفضٍ علاجُه، و`rabt` بلا مودَعٍ «لا حكم» بعلاجه (`mudaat/jalb.py`).
+٨. وإن حضرت المودَعاتُ المختومة في MUDAA_DIR: «أعرب» كاملٌ بـ`rabt` (فحصٌ بالمودَع بلا طفرة).
 ٦. التصديق: الخبرُ «لا حكم على الواقع» بلا شاهد، ومعالجُ NTP يصنّف الزيتونَ نباتًا والولدَ إنسانًا.
 
 الطفرات وقاتلُها: على Lean يقتلها البناء — P1620 (المجهولُ يأمر: `bila_maqam_la_qisma`)، P1621 (الالتماسُ يقترح: `taallam_malik`)،
 P1622 (المحظورُ أمرٌ مرخَّص: `shawahid_qarar`)، P1623 (الخطأُ لا يغلب: `khata_yaghlib`)، P1624 (المرفوضُ له خطّة: `rafd_la_khitta`)،
 P1625 (الإنشاءُ يُصدَّق: `insha_ghayr_qabil`)، P1626 (الخروجُ بغير صفرٍ نجاح: `khuruj_khata`)؛ وفي الأداة يقتلها هذا الاختبار —
-P1627 (القارئُ لا يُرفض: ٣)، P1628 (الإيصالُ لا يقارن الخطوات: ٥)، P1629 (المتعلّمُ يكتب في mawsua: ٤)، P1630 (القناةُ الافتراضيّة المالك: ١).
+P1627 (القارئُ لا يُرفض: ٣)، P1628 (الإيصالُ لا يقارن الخطوات: ٥)، P1629 (المتعلّمُ يكتب في mawsua: ٤)، P1638 (لا يُطبع سطرُ السبب: ٧)، P1639 (rabt يُشغَّل بلا مودَع: ٧)، P1630 (القناةُ الافتراضيّة المالك: ١).
 التشغيل: python3 -I tahaqquq/test_mudir.py
 """
 import hashlib
@@ -40,7 +42,11 @@ def tahaqqaq(shart, wasf):
         fashal.append(wasf)
 
 
+FARIGH = tempfile.mkdtemp()  # MUDAA_DIR فارغ: الحالاتُ لا تتبع حضورَ المودَعات في البيئة
+
+
 def shaghghil(*args, bia=None):
+    bia = bia or dict(os.environ, MUDAA_DIR=FARIGH)
     p = subprocess.run([str(MUDIR), *args], cwd=JADHR, capture_output=True, text=True, timeout=300, env=bia)
     return p.returncode, p.stdout
 
@@ -67,7 +73,7 @@ def main():
         (["اقْرَأْ كَتَبَ الطَّالِبُ الدَّرْسَ"], "القرار: رفض: «اقرأ» أمرٌ بلا مقام", "", 2),
         (["--qanat", "majhul", "اقْرَأْ كَتَبَ"], "القرار: رفض: «اقرأ» أمرٌ بلا مقام", "", 2),
         (["--qanat", "wakil", "تَعَلَّمْ الْمَاءُ سَائِلٌ"], "القرار: رفض: «تعلّم» لا يرخّصه قسمُ «التماس»", "", 2),
-        (["--qanat", "wakil", "أَعْرِبْ كَتَبَ الطَّالِبُ الدَّرْسَ"], "القرار: تنفيذ «أعرب»", "tarkib ← athar", 0),
+        (["--qanat", "wakil", "أَعْرِبْ كَتَبَ الطَّالِبُ الدَّرْسَ"], "القرار: تنفيذ «أعرب»", "tarkib ← athar ← rabt", 1),
         (["--qanat", "malik", "ادْمُجْ الفرع"], "القرار: رفض: «ادمج» سلطةُ المالك في الجلسة", "", 2),
         (["--qanat", "malik", "احْذِفْ mudaat"], "القرار: رفض: «احذف» سلطةُ المالك في الجلسة", "", 2),
         (["--qanat", "malik", "اقْرَأْ:"], "القرار: رفض: «اقرأ» يحتاج نصًّا بعده", "", 2),
@@ -101,7 +107,7 @@ def main():
         os.makedirs(os.path.join(d, ".lake", "build", "bin"))
         for f in ("mudaat", "mawsua"):
             os.symlink(JADHR / f, os.path.join(d, f))
-        bia = dict(os.environ, MASHRU_JADHR=d)
+        bia = dict(os.environ, MASHRU_JADHR=d, MUDAA_DIR=FARIGH)
         code, out = shaghghil("--qanat", "malik", "أَعْرِبْ كَتَبَ", bia=bia)
         tahaqqaq(code == 3 and "· خطأ تنفيذ" in out and "النتيجة الجامعة: خطأ تنفيذ" in out,
                  f"٣ الوكيلُ الغائب: خروج {code}")
@@ -141,6 +147,27 @@ def main():
     tahaqqaq("القسم بالوراثة: نبات\tحملُ «يسير» إسناديًّا: لا حكم" in out, "٦ الزيتون")
     code, out = shaghghil("--qanat", "malik", "صنف الولد")
     tahaqqaq("القسم بالوراثة: إنسان\tحملُ «يسير» إسناديًّا: مرخَّص" in out, "٦ الولد")
+
+    # ٧: لا جوابَ معلَّق — لكلّ خطوةٍ نتيجتُها غيرُ «حكمٌ صدر» سطرُ سببٍ وعلاجٍ في «ما بقي باسمه»، ولكلّ رفضٍ في القرار علاجُه
+    for args, _, _, _ in HALAT + [(["--qanat", "malik", "اقرأ كتب الطالب"], 0, 0, 0), (["ما معنى البلجة؟"], 0, 0, 0)]:
+        code, out = shaghghil(*args)
+        khatawat = [l for l in out.splitlines() if l.startswith("- ") and " · خروج " in l]
+        ghayr = [l.split(" «")[0][5:] for l in khatawat if not l.endswith("· حكمٌ صدر")]
+        baqi = out.split("## ما بقي باسمه", 1)[-1]
+        asbab = [l for l in baqi.splitlines() if " — السبب: " in l and " · العلاج: " in l and not l.endswith("العلاج: ")]
+        tahaqqaq(len(asbab) == len(ghayr), f"٧ {args}: {len(ghayr)} خطوةً بلا حكم و{len(asbab)} سطرَ سببٍ وعلاج")
+        if satr(out, "القرار:").startswith("القرار: رفض"):
+            tahaqqaq(". العلاج: " in baqi, f"٧ {args}: رفضٌ بلا علاج")
+        tahaqqaq("لا جوابَ معلَّق" in baqi, f"٧ {args}: لا سطرَ «لا جوابَ معلَّق»")
+    code, out = shaghghil("--qanat", "malik", "أَعْرِبْ كَتَبَ الطَّالِبُ الدَّرْسَ")
+    tahaqqaq("- rabt: لا حكم — السبب: المودَعاتُ المختومة" in out and "python3 -I mudaat/jalb.py" in out and " · خروج 0 " in out,
+             "٧ rabt بلا مودَع: لا سببَ ولا علاج، أو شُغّل")
+    # ٨: بالمودَعات المختومة إن حضرت في MUDAA_DIR البيئة (فحصٌ بالمودَع بلا طفرة): الإعرابُ كاملٌ بـrabt
+    M = os.environ.get("MUDAA_DIR")
+    if M and all(os.path.exists(os.path.join(M, n)) for n in ("luzum_mujam.tsv", "jins.tsv", "mithal.tsv")):
+        code, out = shaghghil("--qanat", "malik", "أَعْرِبْ كَتَبَ الطَّالِبُ الدَّرْسَ", bia=dict(os.environ))
+        tahaqqaq(code == 0 and "j\tكَتَبَ الطَّالِبُ الدَّرْسَ\tمقبول" in out and "الطَّالِبُ\tفاعل\tرفع" in out
+                 and "النتيجة الجامعة: حكمٌ صدر" in out, f"٨ rabt بالمودَع: خروج {code}")
 
     if fashal:
         print("\n".join("FAIL " + x for x in fashal))

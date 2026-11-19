@@ -15,6 +15,8 @@ import Lean
 * القناةُ بلا تعيينٍ «majhul»: لا مقامَ فلا أمر (قرارُ المالك ٢). والمالكُ يعيّنها لنفسه في الطرفيّة.
 * الوكلاءُ تنفيذيّاتٌ في `.lake/build/bin` تحت جذر المستودع (`MASHRU_JADHR`، وإلّا المجلّدُ الحاليّ)، ومدخلاتُهم `mudaat/sijill.tsv`
   و`mawsua/makhzan_kamil.tsv` من المستودع نفسِه. ومعالجُ NTP والمتعلّمُ في هذه العمليّة.
+* `rabt` (في «أعرب») يقرأ جداولَه المختومة الثلاثة من `MUDAA_DIR` (وإلّا `~/mudaa_dir`) بسجلّ الفاحص؛ وإن غاب منها شيءٌ لم يُشغَّل، وكانت
+  خطوتُه «لا حكم» بسببها وعلاجِها (`mudaat/jalb.py`). ولكلّ نتيجةٍ غيرِ «حكمٌ صدر» سطرُ سببٍ وعلاج (`la_jawab_muallaq`).
 * المتعلّمُ يكتب اقتراحًا في `--iqtirahat` (وإلّا `artifacts/local/mudir/iqtirahat`، وهو مُتجاهَلٌ في git)، ولا يمسّ `mudaat/` ولا `mawsua/`.
 * الإيصال (`--isal`): JSON بالنصّ والقناة والقرار والخطّة، ولكلّ خطوةٍ خروجُها وبصمةُ مخرجها (sha256 بأداة النظام `sha256sum`) ونتيجتُها.
   و`--tahaqquq` يعيد التشغيلَ من النصّ والقناة المسجَّلين وحدهما (مجلّدُ اقتراحاتٍ مؤقّت)، ويطابق القرارَ والخطّةَ والبصمات.
@@ -68,6 +70,7 @@ def ismTasdiq : Tasdiq → String
 structure Bia where
   jadhr : String
   iqtirahat : String
+  mudaa : String := ""
 
 def bin (b : Bia) (n : String) : String := b.jadhr ++ "/.lake/build/bin/" ++ n
 
@@ -103,6 +106,18 @@ def khatwa (b : Bia) (nass : String) (k : Khatwa) : IO (Nat × String) := do
   | .faahisSual => tashghil b (bin b "faahis") #["--sual", k.hujja, sj, mk]
   | .faahis => tashghil b (bin b "faahis") #[sj, mk]
   | .muallij => return (0, tasnifNTP k.hujja)
+  | .rabt =>
+    let jadawil := ["luzum_mujam.tsv", "jins.tsv", "mithal.tsv"]
+    let mut ghaib : List String := []
+    for n in jadawil do
+      unless ← System.FilePath.pathExists (b.mudaa ++ "/" ++ n) do ghaib := ghaib ++ [n]
+    if !ghaib.isEmpty then
+      return (0, s!"مودَعٌ غائب في «{b.mudaa}»: {", ".intercalate ghaib} (MUDAA_DIR)")
+    let f ← jumlaFile k.hujja
+    let r ← tashghil b (bin b "rabt") #["--sijill", sj, "--jins", b.mudaa ++ "/jins.tsv", "--mithal", b.mudaa ++ "/mithal.tsv",
+      b.mudaa ++ "/luzum_mujam.tsv", f.toString]
+    IO.FS.removeFile f
+    return r
   | .mutaallim =>
     let ism := (← basma k.hujja).take 16
     IO.FS.createDirAll b.iqtirahat
@@ -169,13 +184,11 @@ def tibaa (q : Qanat) (nass : String) (qr : Qarar) (ss : Array Sijill) (n : Nati
     IO.println (qassBayad s.makhraj)
   IO.println "## ما بقي باسمه"
   match qr with
-  | .rafd r => IO.println s!"- {ismRafd r}. لم يُشغَّل وكيل (Nizam.Mudir.rafd_la_khitta)."
+  | .rafd r => IO.println s!"- {ismRafd r}. لم يُشغَّل وكيل (Nizam.Mudir.rafd_la_khitta). العلاج: {ilajRafd r}."
   | .qiraa _ =>
     match ss.toList.head? >>= (fun s => quwwaMin s.makhraj) with
     | some w => IO.println s!"- قوّةُ الجملة في athar: «{w}» ← {ismTasdiq (tasdiqOf w)}."
     | none => IO.println "- لا سطرَ قوّةٍ في مخرج athar."
-  | .tanfidh .aarib _ =>
-    IO.println "- rabt (السلسلةُ كاملةً بجدول اللزوم) لم يدخل الخطّة: جدولُه luzum_mujam.tsv مودَعٌ في MUDAA_DIR لا في المستودع."
   | .tanfidh .sannif _ =>
     IO.println "- الشبكةُ NTP.Wasl.shabakaWasl شاهدٌ مبنيّ (أعدادُ شهوده مفروضة)، لا مودَعٌ مختوم."
   | .tanfidh .taallam _ =>
@@ -183,6 +196,10 @@ def tibaa (q : Qanat) (nass : String) (qr : Qarar) (ss : Array Sijill) (n : Nati
   | _ => pure ()
   for s in ss do
     if s.natija == .khata then IO.println s!"- خطأ تنفيذ في {s.khatwa.wakil.ism} (خروج {s.khuruj}): لا يُخفيه نجاحُ غيره (khata_yaghlib)."
+  for s in ss do
+    if s.natija != .najah then
+      IO.println s!"- {s.khatwa.wakil.ism}: {ismNatija s.natija} — السبب: {sababKhatwa s.khatwa.wakil s.natija} · العلاج: {ilajKhatwa s.khatwa.wakil s.natija}"
+  IO.println "لا جوابَ معلَّق (Nizam.Mudir.la_jawab_muallaq، rafd_lahu_ilaj): ما لم يُحكم فيه سُمّي سببُه وعلاجُه."
   IO.println s!"النتيجة الجامعة: {ismNatija n}"
 
 def tahaqquq (b : Bia) (p : String) : IO UInt32 := do
@@ -214,7 +231,9 @@ end MudirTanfidhi
 open MudirTanfidhi in
 def main (args : List String) : IO UInt32 := do
   let jadhr := (← IO.getEnv "MASHRU_JADHR").getD (← IO.currentDir).toString
-  let b0 : Bia := ⟨jadhr, jadhr ++ "/artifacts/local/mudir/iqtirahat"⟩
+  let home := (← IO.getEnv "HOME").getD ""
+  let mudaa := (← IO.getEnv "MUDAA_DIR").getD (home ++ "/mudaa_dir")
+  let b0 : Bia := ⟨jadhr, jadhr ++ "/artifacts/local/mudir/iqtirahat", mudaa⟩
   let rec ahlil (q : Qanat) (isal : Option String) (b : Bia) : List String → IO UInt32
     | "--tahaqquq" :: p :: [] => tahaqquq b p
     | "--qanat" :: v :: r =>
