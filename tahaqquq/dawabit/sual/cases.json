@@ -1,0 +1,1985 @@
+[
+ {
+  "id": "Q001",
+  "naw": "hukm",
+  "jumla": "قَامَ زَيْدٌ",
+  "kalima": null,
+  "mutawaqqa": "مقبول",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 220
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 220,
+    "nass": "ك\"قام زيد\""
+   }
+  ],
+  "taliq": "مثالُ باب الفاعل"
+ },
+ {
+  "id": "Q002",
+  "naw": "hukm",
+  "jumla": "قَامَ رَجُلَانِ",
+  "kalima": null,
+  "mutawaqqa": "مقبول",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 221
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 221,
+    "nass": "بل يقال \"قام رجلان"
+   }
+  ],
+  "taliq": "لا تلحق الفعلَ علامةُ تثنية"
+ },
+ {
+  "id": "Q003",
+  "naw": "hukm",
+  "jumla": "قَامَتْ هِنْدٌ",
+  "kalima": null,
+  "mutawaqqa": "مقبول",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 222
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 222,
+    "nass": "وتلحقه علامة تأنيث إن كان مؤثا ك \"قامت"
+   }
+  ],
+  "taliq": "التاء مع المؤنث الحقيقي"
+ },
+ {
+  "id": "Q004",
+  "naw": "hukm",
+  "jumla": "قَامَ الزَّيْدُونَ",
+  "kalima": null,
+  "mutawaqqa": "مقبول",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 226
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 226,
+    "nass": "إلا جمعي ms06 التصحيح فكمفرديهما نحو \"قام الزيدون\""
+   }
+  ],
+  "taliq": "جمع المذكر السالم كمفرده"
+ },
+ {
+  "id": "Q005",
+  "naw": "hukm",
+  "jumla": "حَضَرَتِ الْقَاضِيَ امْرَأَةٌ",
+  "kalima": null,
+  "mutawaqqa": "مقبول",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 224
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 224,
+    "nass": "وفي الحقيقي المنفصل نحو \"حضرت القاضي امرأة\""
+   }
+  ],
+  "taliq": "الحقيقي المنفصل يجوز فيه الوجهان"
+ },
+ {
+  "id": "Q006",
+  "naw": "hukm",
+  "jumla": "حَضَرَ الْقَاضِيَ امْرَأَةٌ",
+  "kalima": null,
+  "mutawaqqa": "مقبول",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 223,
+    "nass": "ويجوز الوجهان"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 224,
+    "nass": "وفي الحقيقي المنفصل نحو \"حضرت القاضي امرأة\""
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 319,
+    "nass": "وقد يبيح الفصل ترك التاء"
+   }
+  ],
+  "taliq": "الوجه الثاني بترك التاء مع الفصل"
+ },
+ {
+  "id": "Q007",
+  "naw": "hukm",
+  "jumla": "مَا كَانَ أَحْسَنَ زَيْدًا",
+  "kalima": null,
+  "mutawaqqa": "مقبول",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 178
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 178,
+    "nass": "متوسطة نحو \"ما كان أحسن زيدا\""
+   }
+  ],
+  "taliq": "زيادة كان متوسطة"
+ },
+ {
+  "id": "Q008",
+  "naw": "hukm",
+  "jumla": "لَا رَجُلَ فِي الدَّارِ",
+  "kalima": null,
+  "mutawaqqa": "مقبول",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 203,
+    "nass": "بني على الفتح في نحو \"لا رجل\""
+   }
+  ],
+  "taliq": "اسم لا المفرد مبني على الفتح"
+ },
+ {
+  "id": "Q009",
+  "naw": "hukm",
+  "jumla": "يَا رَجُلًا خُذْ بِيَدِي",
+  "kalima": null,
+  "mutawaqqa": "مقبول",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 272
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 272,
+    "nass": "كقول الأعمى: \"يا رجلا خذ بيدي\""
+   }
+  ],
+  "taliq": "نكرة غير مقصودة منصوبة"
+ },
+ {
+  "id": "Q010",
+  "naw": "hukm",
+  "jumla": "زَيْدًا ضَرَبْتُهُ",
+  "kalima": null,
+  "mutawaqqa": "مقبول",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 247
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 247,
+    "nass": "يجوز في نحو \"زيدا ضربته\""
+   }
+  ],
+  "taliq": "باب الاشتغال"
+ },
+ {
+  "id": "Q011",
+  "naw": "hukm",
+  "jumla": "قَامَ هِنْدٌ",
+  "kalima": null,
+  "mutawaqqa": "خطأ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 222,
+    "nass": "وتلحقه علامة تأنيث إن كان مؤثا ك \"قامت"
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 318,
+    "nass": "وإنما تلزم فعل مضمر ... متصل أو مفهم ذات حر"
+   }
+  ],
+  "taliq": "الحقيقي المتصل تلزمه التاء"
+ },
+ {
+  "id": "Q012",
+  "naw": "hukm",
+  "jumla": "قَامَتِ الزَّيْدُونَ",
+  "kalima": null,
+  "mutawaqqa": "خطأ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 226,
+    "nass": "إلا جمعي ms06 التصحيح فكمفرديهما نحو \"قام الزيدون\""
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 322,
+    "nass": "والتاء مع جمع سوى السالم من"
+   }
+  ],
+  "taliq": "جمع المذكر السالم كمفرده بلا تاء"
+ },
+ {
+  "id": "Q013",
+  "naw": "hukm",
+  "jumla": "مَا قَامَتْ إِلَّا هِنْدٌ",
+  "kalima": null,
+  "mutawaqqa": "خطأ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 227
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 227,
+    "nass": "وإنما امتنع في النثر \"ما قامت إلا هند\""
+   }
+  ],
+  "taliq": "نصّ القطر على امتناعه في النثر"
+ },
+ {
+  "id": "Q014",
+  "naw": "hukm",
+  "jumla": "لَا تَدْنُ مِنَ الْأَسَدِ يَأْكُلْكَ",
+  "kalima": null,
+  "mutawaqqa": "خطأ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 112,
+    "nass": "نحو \"لا تدن من الأسد تسلم\"، بخلاف يأكلك"
+   }
+  ],
+  "taliq": "شرط الجزم بعد النهي صحة حلول إن لا"
+ },
+ {
+  "id": "Q015",
+  "naw": "hukm",
+  "jumla": "زَيْدٌ الْيَوْمَ",
+  "kalima": null,
+  "mutawaqqa": "خطأ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 160,
+    "nass": "ولا يخبر بالزمان عن"
+   }
+  ],
+  "taliq": "لا يخبر بالزمان عن الذات"
+ },
+ {
+  "id": "Q016",
+  "naw": "hukm",
+  "jumla": "رَجُلٌ قَائِمٌ",
+  "kalima": null,
+  "mutawaqqa": "خطأ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 189,
+    "nass": "ولا يجوز الابتدا بالنكرة ... ما لم تفد"
+   }
+  ],
+  "taliq": "ابتداء بنكرة غير مفيدة"
+ },
+ {
+  "id": "Q017",
+  "naw": "hukm",
+  "jumla": "غُلَامٌ زَيْدٍ",
+  "kalima": null,
+  "mutawaqqa": "خطأ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 343,
+    "nass": "ولا تجامع الإضافة تنوينا"
+   }
+  ],
+  "taliq": "الإضافة لا تجامع التنوين"
+ },
+ {
+  "id": "Q018",
+  "naw": "hukm",
+  "jumla": "الْغُلَامُ زَيْدٍ",
+  "kalima": null,
+  "mutawaqqa": "خطأ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 343,
+    "nass": "ولا تجامع الإضافة تنوينا ولا نونا تالية للإعراب مطلقا، ولا أل إلا في نحو"
+   }
+  ],
+  "taliq": "المضاف إضافة معنوية لا تدخله أل"
+ },
+ {
+  "id": "Q019",
+  "naw": "hukm",
+  "jumla": "قَائِمًا لَيْسَ زَيْدٌ",
+  "kalima": null,
+  "mutawaqqa": "خطأ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 172,
+    "nass": "وقد يتقدم الخبر إلا"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 173,
+    "nass": "خبر دام وليس"
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 217,
+    "nass": "ومنع سبق خبر ليس اصطفي"
+   }
+  ],
+  "taliq": "لا يتقدم خبر ليس عليها"
+ },
+ {
+  "id": "Q020",
+  "naw": "hukm",
+  "jumla": "لَمْ يَقُومُ زَيْدٌ",
+  "kalima": null,
+  "mutawaqqa": "خطأ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 112,
+    "nass": "ويجزم أيضا بلم"
+   }
+  ],
+  "taliq": "لم تجزم المضارع"
+ },
+ {
+  "id": "Q021",
+  "naw": "fail",
+  "jumla": "قَامَ زَيْدٌ",
+  "kalima": null,
+  "mutawaqqa": "زَيْدٌ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 220
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 219,
+    "nass": "باب الفاعل مرفوع:"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 220,
+    "nass": "ك\"قام زيد\""
+   }
+  ],
+  "taliq": "مثال الفاعل"
+ },
+ {
+  "id": "Q022",
+  "naw": "fail",
+  "jumla": "طَلَعَتِ الشَّمْسُ",
+  "kalima": null,
+  "mutawaqqa": "الشَّمْسُ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 223
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 223,
+    "nass": "و \"طلعت الشمس\""
+   }
+  ],
+  "taliq": "فاعل مؤنث مجازي"
+ },
+ {
+  "id": "Q023",
+  "naw": "fail",
+  "jumla": "ضَرَبَنِي زَيْدٌ",
+  "kalima": null,
+  "mutawaqqa": "زَيْدٌ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 232
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 229,
+    "nass": "والأصل أن يلي عامله. وقد يتأخر جوازا"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 232,
+    "nass": "ووجوبا نحو"
+   }
+  ],
+  "taliq": "تأخر الفاعل وجوبا"
+ },
+ {
+  "id": "Q024",
+  "naw": "fail",
+  "jumla": "ضَرَبَ مُوسَى عِيسَى",
+  "kalima": null,
+  "mutawaqqa": "مُوسَى",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 233
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 233,
+    "nass": "وقد يجب تأخير المفعول ك \"ضربت زيدا\" و \"ما أحسن زيدا\" و \"ضرب موسى"
+   }
+  ],
+  "taliq": "الأول الفاعل لخفاء الإعراب"
+ },
+ {
+  "id": "Q025",
+  "naw": "fail",
+  "jumla": "زَيْدٌ قَائِمٌ",
+  "kalima": null,
+  "mutawaqqa": "زَيْدٌ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 73
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 73,
+    "nass": "ك\"زيد قائم\""
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 177,
+    "nass": "مبتدأ زيد وعاذر خبر"
+   }
+  ],
+  "taliq": "المبتدأ"
+ },
+ {
+  "id": "Q026",
+  "naw": "fail",
+  "jumla": "اللَّهُ رَبُّنَا",
+  "kalima": null,
+  "mutawaqqa": "اللَّهُ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 153
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 152,
+    "nass": "باب المبتدأ والخبر مرفوعان:"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 153,
+    "nass": "ك \"الله ربنا\""
+   }
+  ],
+  "taliq": "مثال المبتدأ"
+ },
+ {
+  "id": "Q027",
+  "naw": "fail",
+  "jumla": "مُحَمَّدٌ نَبِيُّنَا",
+  "kalima": null,
+  "mutawaqqa": "مُحَمَّدٌ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 153
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 152,
+    "nass": "باب المبتدأ والخبر مرفوعان:"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 153,
+    "nass": "و \"محمد نبينا\""
+   }
+  ],
+  "taliq": "مثال المبتدأ"
+ },
+ {
+  "id": "Q028",
+  "naw": "fail",
+  "jumla": "زَيْدٌ يَقُومُ",
+  "kalima": null,
+  "mutawaqqa": "زَيْدٌ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 76
+  },
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 183,
+    "nass": "ومفردا يأتي ويأتي جمله"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 125,
+    "nass": "أو جوازا فشي نحو \"زيد يقوم\""
+   }
+  ],
+  "taliq": "مبتدأ خبره جملة"
+ },
+ {
+  "id": "Q029",
+  "naw": "fail",
+  "jumla": "أَقُومُ",
+  "kalima": null,
+  "mutawaqqa": "مستتر",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 125
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 124,
+    "nass": "وهو إما مستتر كالمقدر وجوبا"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 125,
+    "nass": "في نحو \"أقوم\""
+   }
+  ],
+  "taliq": "مستتر وجوبا"
+ },
+ {
+  "id": "Q030",
+  "naw": "fail",
+  "jumla": "يَقُومُ زَيْدٌ",
+  "kalima": null,
+  "mutawaqqa": "زَيْدٌ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 96
+  },
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 312,
+    "nass": "وبعد فعل فاعل فإن ظهر"
+   }
+  ],
+  "taliq": "فاعل ظاهر بعد الفعل"
+ },
+ {
+  "id": "Q031",
+  "naw": "fail",
+  "jumla": "زَيْدٌ أَبُوهُ قَائِمٌ",
+  "kalima": null,
+  "mutawaqqa": "زَيْدٌ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 157
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 157,
+    "nass": "والخبر جملة لها رابط ك \"زيد أبوه قائم\""
+   }
+  ],
+  "taliq": "المبتدأ الأول وخبره جملة"
+ },
+ {
+  "id": "Q032",
+  "naw": "fail",
+  "jumla": "فِي الدَّارِ زَيْدٌ",
+  "kalima": null,
+  "mutawaqqa": "زَيْدٌ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 163
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 163,
+    "nass": "وقد يتقدم، نحو \"في الدار زيد\""
+   }
+  ],
+  "taliq": "مبتدأ مؤخر"
+ },
+ {
+  "id": "Q033",
+  "naw": "fail",
+  "jumla": "قَامَ رَجُلَانِ",
+  "kalima": null,
+  "mutawaqqa": "رَجُلَانِ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 221
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 221,
+    "nass": "بل يقال \"قام رجلان"
+   }
+  ],
+  "taliq": "فاعل مثنى"
+ },
+ {
+  "id": "Q034",
+  "naw": "fail",
+  "jumla": "نِعْمَ الْعَبْدُ",
+  "kalima": null,
+  "mutawaqqa": "الْعَبْدُ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 236
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 236,
+    "nass": "إما معرف بأل الجنسية نحو \"نعم العبد\""
+   }
+  ],
+  "taliq": "فاعل نعم المعرف بأل"
+ },
+ {
+  "id": "Q035",
+  "naw": "fail",
+  "jumla": "قَامَتْ هِنْدٌ",
+  "kalima": null,
+  "mutawaqqa": "هِنْدٌ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 222
+  },
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 312,
+    "nass": "وبعد فعل فاعل فإن ظهر"
+   }
+  ],
+  "taliq": "فاعل ظاهر"
+ },
+ {
+  "id": "Q036",
+  "naw": "fail",
+  "jumla": "اضْرِبْ",
+  "kalima": null,
+  "mutawaqqa": "مستتر",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 60
+  },
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 112,
+    "nass": "ومن ضمير الرفع ما يستتر ... كافعل"
+   }
+  ],
+  "taliq": "الأمر فاعله مستتر"
+ },
+ {
+  "id": "Q037",
+  "naw": "fail",
+  "jumla": "نَغْتَبِطُ",
+  "kalima": null,
+  "mutawaqqa": "مستتر",
+  "masdar_jumla": {
+   "milaf": "alfiyya.txt",
+   "satr": 112
+  },
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 112,
+    "nass": "ومن ضمير الرفع ما يستتر ... كافعل أوافق نغتبط"
+   }
+  ],
+  "taliq": "مثال المستتر"
+ },
+ {
+  "id": "Q038",
+  "naw": "fail",
+  "jumla": "أَقَائِمٌ زَيْدٌ",
+  "kalima": null,
+  "mutawaqqa": [
+   "أَقَائِمٌ",
+   "زَيْدٌ"
+  ],
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 178,
+    "nass": "وأول مبتدأ والثاني"
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 180,
+    "nass": "والثاني مبتدا وذا الوصف خبر ... إن في سوى الإفراد طبقا استقر"
+   }
+  ],
+  "taliq": "الوجهان في المفرد المطابق"
+ },
+ {
+  "id": "Q039",
+  "naw": "fail",
+  "jumla": "زَيْدٌ عَاذِرٌ مَنِ اعْتَذَرَ",
+  "kalima": null,
+  "mutawaqqa": "زَيْدٌ",
+  "masdar_jumla": {
+   "milaf": "alfiyya.txt",
+   "satr": 177
+  },
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 177,
+    "nass": "مبتدأ زيد وعاذر خبر"
+   }
+  ],
+  "taliq": "مثال المبتدأ"
+ },
+ {
+  "id": "Q040",
+  "naw": "fail",
+  "jumla": "أَقَاطِنٌ قَوْمُ سَلْمَى",
+  "kalima": null,
+  "mutawaqqa": "أَقَاطِنٌ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 162
+  },
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 178,
+    "nass": "وأول مبتدأ والثاني"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 162,
+    "nass": "استفهام، أو نفي، نحو \"أقاطن قوم سلمى\""
+   }
+  ],
+  "taliq": "الوصف مبتدأ ومرفوعه أغنى"
+ },
+ {
+  "id": "Q041",
+  "naw": "irab",
+  "jumla": "ضَرَبْتُ زَيْدًا",
+  "kalima": 2,
+  "mutawaqqa": "نصب",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 268
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 267,
+    "nass": "باب المفعول منصوب"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 268,
+    "nass": "ك \"ضربت زيدا\""
+   }
+  ],
+  "taliq": "مفعول به"
+ },
+ {
+  "id": "Q042",
+  "naw": "irab",
+  "jumla": "غُلَامُ زَيْدٍ قَائِمٌ",
+  "kalima": 2,
+  "mutawaqqa": "جرّ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 339,
+    "nass": "أو بإضافة إلى اسم على"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 340,
+    "nass": "معنى اللام ك \"غلام زيد\""
+   }
+  ],
+  "taliq": "مضاف إليه"
+ },
+ {
+  "id": "Q043",
+  "naw": "irab",
+  "jumla": "لَمْ يَقُمْ",
+  "kalima": 2,
+  "mutawaqqa": "جزم",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 77
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 77,
+    "nass": "وجزم نحو \"لم يقم\""
+   }
+  ],
+  "taliq": "مجزوم بلم"
+ },
+ {
+  "id": "Q044",
+  "naw": "irab",
+  "jumla": "إِنَّ زَيْدًا لَنْ يَقُومَ",
+  "kalima": 4,
+  "mutawaqqa": "نصب",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 76
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 96,
+    "nass": "وينصب ب\"لن\""
+   }
+  ],
+  "taliq": "منصوب بلن"
+ },
+ {
+  "id": "Q045",
+  "naw": "irab",
+  "jumla": "زَيْدٌ يَقُومُ",
+  "kalima": 2,
+  "mutawaqqa": "رفع",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 76
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 96,
+    "nass": "يرفع المضارع خاليا من ناصب وجازم"
+   }
+  ],
+  "taliq": "مضارع مجرد"
+ },
+ {
+  "id": "Q046",
+  "naw": "irab",
+  "jumla": "ضَرَبَ مُوسَى عِيسَى",
+  "kalima": 1,
+  "mutawaqqa": "مبنيّ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 233
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 55,
+    "nass": "وبناؤه على الفتح كضرب"
+   }
+  ],
+  "taliq": "ماض مبني"
+ },
+ {
+  "id": "Q047",
+  "naw": "irab",
+  "jumla": "قَامَ الزَّيْدُونَ",
+  "kalima": 2,
+  "mutawaqqa": "رفع",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 226
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 82,
+    "nass": "وجمع المذكر السالم كالزيدون فيرفع"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 83,
+    "nass": "بالواو"
+   }
+  ],
+  "taliq": "جمع مذكر سالم مرفوع"
+ },
+ {
+  "id": "Q048",
+  "naw": "irab",
+  "jumla": "رَأَيْتُ الزَّيْدِينَ",
+  "kalima": 2,
+  "mutawaqqa": "نصب",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 83,
+    "nass": "ويجران وينصبان بالياء"
+   }
+  ],
+  "taliq": "منصوب بالياء"
+ },
+ {
+  "id": "Q049",
+  "naw": "irab",
+  "jumla": "رَأَيْتُ أَبَاهُ",
+  "kalima": 2,
+  "mutawaqqa": "نصب",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 79,
+    "nass": "فترفع بالواو وتنصب بالألف"
+   }
+  ],
+  "taliq": "من الأسماء الستة"
+ },
+ {
+  "id": "Q050",
+  "naw": "irab",
+  "jumla": "فِي الدَّارِ زَيْدٌ",
+  "kalima": 2,
+  "mutawaqqa": "جرّ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 163
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 337,
+    "nass": "باب يخفض الاسم إما بحرف مشترك:"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 338,
+    "nass": "وهو من وإلى وعن وعلى وفي"
+   }
+  ],
+  "taliq": "مجرور بفي"
+ },
+ {
+  "id": "Q051",
+  "naw": "irab",
+  "jumla": "هَلْ تَقُومَنَّ",
+  "kalima": 1,
+  "mutawaqqa": "مبنيّ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 68,
+    "nass": "وكل حرف مستحق للبنا"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 70,
+    "nass": "نحو هل وبل"
+   }
+  ],
+  "taliq": "حرف"
+ },
+ {
+  "id": "Q052",
+  "naw": "irab",
+  "jumla": "هَلْ تَقُومَنَّ",
+  "kalima": 2,
+  "mutawaqqa": "مبنيّ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 66,
+    "nass": "وأعربوا مضارعا إن عريا"
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 67,
+    "nass": "من نون توكيد مباشر"
+   }
+  ],
+  "taliq": "مع نون التوكيد المباشرة"
+ },
+ {
+  "id": "Q053",
+  "naw": "irab",
+  "jumla": "جَاءَ هٰؤُلَاءِ",
+  "kalima": 2,
+  "mutawaqqa": "مبنيّ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 49,
+    "nass": "ك\"هؤلاء\" في لزوم الكسر"
+   }
+  ],
+  "taliq": "مبني على الكسر"
+ },
+ {
+  "id": "Q054",
+  "naw": "irab",
+  "jumla": "الْهِنْدَاتُ يَتَرَبَّصْنَ",
+  "kalima": 2,
+  "mutawaqqa": "مبنيّ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 67,
+    "nass": "ومن ... نون إناث كيرعن من فتن"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 67,
+    "nass": "ويسكن آخره مع نون النسوة نحو يتربصن"
+   }
+  ],
+  "taliq": "مع نون النسوة"
+ },
+ {
+  "id": "Q055",
+  "naw": "irab",
+  "jumla": "يَا زَيْدُ",
+  "kalima": 2,
+  "mutawaqqa": "مبنيّ",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 273
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 272,
+    "nass": "والمفرد المعرفة يبنى على ما يرفع"
+   }
+  ],
+  "taliq": "منادى مفرد معرفة"
+ },
+ {
+  "id": "Q056",
+  "naw": "irab",
+  "jumla": "يَا عَبْدَ اللَّهِ",
+  "kalima": 2,
+  "mutawaqqa": "نصب",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 269
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 269,
+    "nass": "وإنما ينصب مضافا ك \"يا عبد الله\""
+   }
+  ],
+  "taliq": "منادى مضاف"
+ },
+ {
+  "id": "Q057",
+  "naw": "irab",
+  "jumla": "لَا رَجُلَ فِي الدَّارِ",
+  "kalima": 2,
+  "mutawaqqa": "مبنيّ",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 203,
+    "nass": "بني على الفتح في نحو \"لا رجل\""
+   }
+  ],
+  "taliq": "اسم لا مفرد"
+ },
+ {
+  "id": "Q058",
+  "naw": "irab",
+  "jumla": "لَا تَضْرِبْ زَيْدًا",
+  "kalima": 2,
+  "mutawaqqa": "جزم",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 113,
+    "nass": "وباللام ولا الطلبيتين"
+   }
+  ],
+  "taliq": "مجزوم بلا الناهية"
+ },
+ {
+  "id": "Q059",
+  "naw": "irab",
+  "jumla": "إِنْ تَقُمْ أَقُمْ",
+  "kalima": 3,
+  "mutawaqqa": "جزم",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 115,
+    "nass": "ويجزم فعلين إن"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 119,
+    "nass": "ويسمى الأول شرطا، والثاني جوابا وجزاء"
+   }
+  ],
+  "taliq": "جواب الشرط"
+ },
+ {
+  "id": "Q060",
+  "naw": "irab",
+  "jumla": "كَانَ زَيْدٌ قَائِمًا",
+  "kalima": 3,
+  "mutawaqqa": "نصب",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 171,
+    "nass": "وينصبن الخبر خبرا لهن"
+   }
+  ],
+  "taliq": "خبر كان"
+ },
+ {
+  "id": "Q061",
+  "naw": "jidhr",
+  "jumla": "قَامَ زَيْدٌ",
+  "kalima": 1,
+  "mutawaqqa": "قوم",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 220
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 65,
+    "nass": "نحو نقوم وأقوم ويقوم وتقوم"
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1240,
+    "nass": "من واو أو ياء بتحريك أصل ... ألفا أبدل بعد فتح متصل"
+   }
+  ],
+  "taliq": "الألف عن واو"
+ },
+ {
+  "id": "Q062",
+  "naw": "jidhr",
+  "jumla": "ضَرَبْتُ زَيْدًا",
+  "kalima": 1,
+  "mutawaqqa": "ضرب",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 268
+  },
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1182,
+    "nass": "والحرف إن يلزم فأصل والذي ... لا يلزم الزائد"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 55,
+    "nass": "كضرب"
+   }
+  ],
+  "taliq": "التاء ضمير زائد"
+ },
+ {
+  "id": "Q063",
+  "naw": "jidhr",
+  "jumla": "رَمَى زَيْدٌ",
+  "kalima": 1,
+  "mutawaqqa": "رمي",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 445,
+    "nass": "أو كان أصلها الياء ك \"رمى"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 446,
+    "nass": "وينكشف أمر ألف الفعل بالتاء ك\"رميت"
+   }
+  ],
+  "taliq": "الألف عن ياء"
+ },
+ {
+  "id": "Q064",
+  "naw": "jidhr",
+  "jumla": "عَفَا زَيْدٌ",
+  "kalima": 1,
+  "mutawaqqa": "عفو",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 445,
+    "nass": "وألفا في غيره ك \"عفا\""
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 446,
+    "nass": "ك\"رميت وعفوت\""
+   }
+  ],
+  "taliq": "الألف عن واو"
+ },
+ {
+  "id": "Q065",
+  "naw": "jidhr",
+  "jumla": "رَأَيْتُ الْفَتَى",
+  "kalima": 2,
+  "mutawaqqa": "فتي",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 445,
+    "nass": "ك \"رمى والفتى\""
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 446,
+    "nass": "والاسم بالتثنية"
+   }
+  ],
+  "taliq": "الألف عن ياء بالتثنية"
+ },
+ {
+  "id": "Q066",
+  "naw": "jidhr",
+  "jumla": "أَخَذَ زَيْدٌ الْعَصَا",
+  "kalima": 3,
+  "mutawaqqa": "عصو",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 446,
+    "nass": "\"العصا\""
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 446,
+    "nass": "والاسم بالتثنية"
+   }
+  ],
+  "taliq": "تثنيته عصوان"
+ },
+ {
+  "id": "Q067",
+  "naw": "jidhr",
+  "jumla": "زَيْدٌ يَسْتَخْرِجُ الْمَاءَ",
+  "kalima": 2,
+  "mutawaqqa": "خرج",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1193,
+    "nass": "والتاء في التأنيث والمضارعه ... ونحو الاستفعال"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 67,
+    "nass": "ويستخرج\""
+   }
+  ],
+  "taliq": "حروف المضارعة والاستفعال زائدة"
+ },
+ {
+  "id": "Q068",
+  "naw": "jidhr",
+  "jumla": "يُدَحْرِجُ زَيْدٌ الْحَجَرَ",
+  "kalima": 1,
+  "mutawaqqa": "دحرج",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 66,
+    "nass": "رباعيا ك\"يدحرج"
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1178,
+    "nass": "ومنتهاه أربع إن جردا"
+   }
+  ],
+  "taliq": "رباعي مجرد"
+ },
+ {
+  "id": "Q069",
+  "naw": "jidhr",
+  "jumla": "جَعْفَرٌ قَائِمٌ",
+  "kalima": 1,
+  "mutawaqqa": "جعفر",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1184,
+    "nass": "كراء جعفر وقاف فستق"
+   }
+  ],
+  "taliq": "حروفه أصول"
+ },
+ {
+  "id": "Q070",
+  "naw": "jidhr",
+  "jumla": "اسْتَخْرَجَ زَيْدٌ الْمَاءَ",
+  "kalima": 1,
+  "mutawaqqa": "خرج",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 452,
+    "nass": "ك \"استخرج\""
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1193,
+    "nass": "ونحو الاستفعال"
+   }
+  ],
+  "taliq": "همز وصل وزيادة الاستفعال"
+ },
+ {
+  "id": "Q071",
+  "naw": "jidhr",
+  "jumla": "إِذَنْ أُكْرِمَكَ",
+  "kalima": 2,
+  "mutawaqqa": "كرم",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 98
+  },
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1274,
+    "nass": "وحذف همز أفعل استمر في"
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1190,
+    "nass": "وهكذا همز وميم سبقا ... ثلاثة تأصيلها تحققا"
+   }
+  ],
+  "taliq": "همزة المضارعة زائدة"
+ },
+ {
+  "id": "Q072",
+  "naw": "jidhr",
+  "jumla": "قَعَدْتُ جُلُوسًا",
+  "kalima": 2,
+  "mutawaqqa": "جلس",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 290
+  },
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1182,
+    "nass": "والحرف إن يلزم فأصل"
+   }
+  ],
+  "taliq": "الواو زائدة غير لازمة"
+ },
+ {
+  "id": "Q073",
+  "naw": "jidhr",
+  "jumla": "زَيْدٌ مُوقِنٌ",
+  "kalima": 2,
+  "mutawaqqa": "يقن",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1222,
+    "nass": "ويا كموقن بذا لها اعترف"
+   }
+  ],
+  "taliq": "الواو عن ياء"
+ },
+ {
+  "id": "Q074",
+  "naw": "jidhr",
+  "jumla": "زَيْدٌ قَائِلٌ",
+  "kalima": 2,
+  "mutawaqqa": "قول",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1206,
+    "nass": "فاعل ما أعل عينا"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 197,
+    "nass": "والقول"
+   }
+  ],
+  "taliq": "الهمزة عن واو"
+ },
+ {
+  "id": "Q075",
+  "naw": "jidhr",
+  "jumla": "عِدْ زَيْدًا",
+  "kalima": 1,
+  "mutawaqqa": "وعد",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1273,
+    "nass": "فا أمر او مضارع من كوعد ... احذف"
+   }
+  ],
+  "taliq": "حذفت الفاء"
+ },
+ {
+  "id": "Q076",
+  "naw": "jidhr",
+  "jumla": "يَعِدُ زَيْدٌ",
+  "kalima": 1,
+  "mutawaqqa": "وعد",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1273,
+    "nass": "فا أمر او مضارع من كوعد ... احذف"
+   }
+  ],
+  "taliq": "حذفت الفاء"
+ },
+ {
+  "id": "Q077",
+  "naw": "jidhr",
+  "jumla": "بَاعَ زَيْدٌ الدَّارَ",
+  "kalima": 1,
+  "mutawaqqa": "بيع",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1240,
+    "nass": "من واو أو ياء بتحريك أصل"
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1259,
+    "nass": "نحو مبيع"
+   }
+  ],
+  "taliq": "الألف عن ياء"
+ },
+ {
+  "id": "Q078",
+  "naw": "jidhr",
+  "jumla": "انْطَلَقَ زَيْدٌ",
+  "kalima": 1,
+  "mutawaqqa": "طلق",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 243,
+    "nass": "وثالث نحو انطلق"
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1199,
+    "nass": "وهو لفعل ماض احتوى على ... أكثر من أربعة"
+   }
+  ],
+  "taliq": "همز وصل ونون زائدة"
+ },
+ {
+  "id": "Q079",
+  "naw": "jidhr",
+  "jumla": "ضَرَبْتُ اللِّصَّ مَكْتُوفًا",
+  "kalima": 3,
+  "mutawaqqa": "كتف",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 308
+  },
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1190,
+    "nass": "وهكذا همز وميم سبقا ... ثلاثة تأصيلها تحققا"
+   }
+  ],
+  "taliq": "الميم زائدة"
+ },
+ {
+  "id": "Q080",
+  "naw": "jidhr",
+  "jumla": "امْتَلَأَ الْإِنَاءُ مَاءً",
+  "kalima": 1,
+  "mutawaqqa": "ملء",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 319
+  },
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1193,
+    "nass": "والمطاوعه"
+   },
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 1199,
+    "nass": "وهو لفعل ماض احتوى على"
+   }
+  ],
+  "taliq": "همز وصل وتاء افتعال"
+ },
+ {
+  "id": "Q081",
+  "naw": "quwwa",
+  "jumla": "زَيْدٌ قَائِمٌ",
+  "kalima": null,
+  "mutawaqqa": "خبر مثبت",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 73
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 73,
+    "nass": "والكلام: لفظ مفيد. وأقل ائتلافه من اسمين ك\"زيد قائم\""
+   }
+  ],
+  "taliq": "خبر بلا نفي"
+ },
+ {
+  "id": "Q082",
+  "naw": "quwwa",
+  "jumla": "قَامَتْ هِنْدٌ",
+  "kalima": null,
+  "mutawaqqa": "خبر مثبت",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 222
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 74,
+    "nass": "ك\"قام زيد\""
+   }
+  ],
+  "taliq": "فعلية خبرية مثبتة"
+ },
+ {
+  "id": "Q083",
+  "naw": "quwwa",
+  "jumla": "إِنَّ زَيْدًا قَائِمٌ",
+  "kalima": null,
+  "mutawaqqa": "خبر مثبت",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 187,
+    "nass": "إن وأن للتأكيد"
+   }
+  ],
+  "taliq": "إن للتأكيد"
+ },
+ {
+  "id": "Q084",
+  "naw": "quwwa",
+  "jumla": "مَا زَيْدٌ قَائِمًا",
+  "kalima": null,
+  "mutawaqqa": "خبر منفي",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 181,
+    "nass": "وما النافية عند الحجازيين كليس"
+   }
+  ],
+  "taliq": "ما النافية"
+ },
+ {
+  "id": "Q085",
+  "naw": "quwwa",
+  "jumla": "لَا رَجُلَ فِي الدَّارِ",
+  "kalima": null,
+  "mutawaqqa": "خبر منفي",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 201,
+    "nass": "ومثل إن لا النافية للجنس"
+   }
+  ],
+  "taliq": "لا النافية للجنس"
+ },
+ {
+  "id": "Q086",
+  "naw": "quwwa",
+  "jumla": "مَا مَضْرُوبٌ الْعُمَرَانِ",
+  "kalima": null,
+  "mutawaqqa": "خبر منفي",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 162
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 162,
+    "nass": "استفهام، أو نفي، نحو \"أقاطن قوم سلمى\" و \"ما مضروب العمران\""
+   }
+  ],
+  "taliq": "وصف معتمد على نفي"
+ },
+ {
+  "id": "Q087",
+  "naw": "quwwa",
+  "jumla": "لَيْسَ زَيْدٌ قَائِمًا",
+  "kalima": null,
+  "mutawaqqa": "خبر منفي",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 228,
+    "nass": "إعمال ليس أعملت ما دون إن ... مع بقا النفي"
+   }
+  ],
+  "taliq": "ليس للنفي"
+ },
+ {
+  "id": "Q088",
+  "naw": "quwwa",
+  "jumla": "مَا قَامَ إِلَّا هِنْدٌ",
+  "kalima": null,
+  "mutawaqqa": "خبر منفي",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 326,
+    "nass": "من كلام تام موجب"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 327,
+    "nass": "فقد الإيجاب"
+   }
+  ],
+  "taliq": "نفي مع إلا"
+ },
+ {
+  "id": "Q089",
+  "naw": "quwwa",
+  "jumla": "إِنْ يَقُمْ زَيْدٌ أَقُمْ",
+  "kalima": null,
+  "mutawaqqa": "تعليق",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 115,
+    "nass": "ويجزم فعلين إن"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 119,
+    "nass": "ويسمى الأول شرطا"
+   }
+  ],
+  "taliq": "جملة شرطية"
+ },
+ {
+  "id": "Q090",
+  "naw": "quwwa",
+  "jumla": "لَوْ قَامَ زَيْدٌ قُمْتُ",
+  "kalima": null,
+  "mutawaqqa": "تعليق",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "alfiyya.txt",
+    "satr": 922,
+    "nass": "لو حرف شرط في مضي"
+   }
+  ],
+  "taliq": "لو حرف شرط"
+ },
+ {
+  "id": "Q091",
+  "naw": "quwwa",
+  "jumla": "إِنْ زَيْدًا لَقِيتَهُ فَأَكْرِمْهُ",
+  "kalima": null,
+  "mutawaqqa": "تعليق",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 253
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 253,
+    "nass": "ويجب في نحو \"إن زيدا لقيته فأكرمه\""
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 119,
+    "nass": "ويسمى الأول شرطا"
+   }
+  ],
+  "taliq": "شرط بإن"
+ },
+ {
+  "id": "Q092",
+  "naw": "quwwa",
+  "jumla": "اضْرِبْ زَيْدًا",
+  "kalima": null,
+  "mutawaqqa": "إنشاء",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 59,
+    "nass": "وأمر: ويعرف بدلالته على الطلب"
+   }
+  ],
+  "taliq": "أمر"
+ },
+ {
+  "id": "Q093",
+  "naw": "quwwa",
+  "jumla": "زَيْدًا اضْرِبْهُ",
+  "kalima": null,
+  "mutawaqqa": "إنشاء",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 250
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 250,
+    "nass": "ويترجح النصب في نحو \"زيدا اضربه\" للطلب"
+   }
+  ],
+  "taliq": "طلب"
+ },
+ {
+  "id": "Q094",
+  "naw": "quwwa",
+  "jumla": "لَا تَضْرِبْ زَيْدًا",
+  "kalima": null,
+  "mutawaqqa": "إنشاء",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 113,
+    "nass": "وباللام ولا الطلبيتين"
+   }
+  ],
+  "taliq": "لا الطلبية"
+ },
+ {
+  "id": "Q095",
+  "naw": "quwwa",
+  "jumla": "يَا عَبْدَ اللَّهِ",
+  "kalima": null,
+  "mutawaqqa": "إنشاء",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 269
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 268,
+    "nass": "ومنه المنادى"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 269,
+    "nass": "ك \"يا عبد الله\""
+   }
+  ],
+  "taliq": "نداء"
+ },
+ {
+  "id": "Q096",
+  "naw": "quwwa",
+  "jumla": "لَيْتَ زَيْدًا قَائِمٌ",
+  "kalima": null,
+  "mutawaqqa": "إنشاء",
+  "masdar_jumla": null,
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 188,
+    "nass": "للتمني"
+   }
+  ],
+  "taliq": "تمن"
+ },
+ {
+  "id": "Q097",
+  "naw": "quwwa",
+  "jumla": "كَمْ عَبْدًا مَلَكْتَ",
+  "kalima": null,
+  "mutawaqqa": "إنشاء",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 315
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 315,
+    "nass": "ومنه تمييز كم الاستفهامية نحو \"كم عبدا ملكت؟"
+   }
+  ],
+  "taliq": "استفهام"
+ },
+ {
+  "id": "Q098",
+  "naw": "quwwa",
+  "jumla": "أَقَاطِنٌ قَوْمُ سَلْمَى",
+  "kalima": null,
+  "mutawaqqa": "إنشاء",
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 162
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 162,
+    "nass": "استفهام، أو نفي، نحو \"أقاطن قوم سلمى\""
+   }
+  ],
+  "taliq": "استفهام بالهمزة"
+ },
+ {
+  "id": "Q099",
+  "naw": "quwwa",
+  "jumla": "مَا أَحْسَنَ زَيْدًا",
+  "kalima": null,
+  "mutawaqqa": [
+   "إنشاء",
+   "خبر مثبت"
+  ],
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 233
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 432,
+    "nass": "باب التعجب له صيغتان"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 434,
+    "nass": "والجملة خبر ما"
+   }
+  ],
+  "taliq": "تعجب وإعرابه خبر ما"
+ },
+ {
+  "id": "Q100",
+  "naw": "quwwa",
+  "jumla": "لَا تَدْنُ مِنَ الْأَسَدِ تَسْلَمْ",
+  "kalima": null,
+  "mutawaqqa": [
+   "إنشاء",
+   "تعليق"
+  ],
+  "masdar_jumla": {
+   "milaf": "qatr.txt",
+   "satr": 112
+  },
+  "sanad": [
+   {
+    "milaf": "qatr.txt",
+    "satr": 110,
+    "nass": "فإن سقطت الفاء بعد الطلب وقصد الجزاء جزم"
+   },
+   {
+    "milaf": "qatr.txt",
+    "satr": 111,
+    "nass": "وشرط الجزم بعد النهي صحة حلول إن لا محله"
+   }
+  ],
+  "taliq": "نهي قصد به الجزاء"
+ }
+]
