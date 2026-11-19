@@ -9088,5 +9088,71 @@
   "milaf": "AuditNabt.lean",
   "min": "import Nabt\n",
   "ila": "import Nabt.Wahmi\n"
+ },
+ {
+  "ism": "P1614_mudir_majhul_lahu_rutba",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  | .majhul => none\n",
+  "ila": "  | .majhul => some .tasawi\n"
+ },
+ {
+  "ism": "P1615_mudir_iltimas_yaqtarih",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  | .iltimas, a => a.nawAthar == .qiraa",
+  "ila": "  | .iltimas, _ => true"
+ },
+ {
+  "ism": "P1616_mudir_mahzur_murakhkhas",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "(\"ادمج\", .mahzur .idmaj)",
+  "ila": "(\"ادمج\", .murakhkhas .iqra)"
+ },
+ {
+  "ism": "P1617_mudir_jam_afdal",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "def ashadd (a b : Natija) : Natija := if b.thiql > a.thiql then b else a",
+  "ila": "def ashadd (a b : Natija) : Natija := if b.thiql < a.thiql then b else a"
+ },
+ {
+  "ism": "P1618_mudir_marfud_lahu_khitta",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  | .rafd _ => []\n",
+  "ila": "  | .rafd _ => [⟨.athar, \"\"⟩]\n"
+ },
+ {
+  "ism": "P1619_mudir_insha_yusaddaq",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  if bada quwwa \"إنشاء\" then .ghayrQabil",
+  "ila": "  if bada quwwa \"إنشاء\" then .laHukmBilaShahid"
+ },
+ {
+  "ism": "P1620_mudir_khuruj_muhmal",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  if khuruj ≠ 0 then .khata else",
+  "ila": "  if khuruj ≠ khuruj then .khata else"
+ },
+ {
+  "ism": "P1621_mudir_qari_la_yurfad",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  | .qari => if fihi makhraj \"مرفوضة باسمها\" then .rafd else .najah",
+  "ila": "  | .qari => if fihi makhraj \"مرفوضة باسمها\" then .najah else .najah"
+ },
+ {
+  "ism": "P1622_mudir_isal_bila_khatawat",
+  "milaf": "Qari/Mudir.lean",
+  "min": "    if a.1.compress != a.2.compress then farq",
+  "ila": "    if a.1.compress != a.1.compress then farq"
+ },
+ {
+  "ism": "P1623_mudir_mutaallim_fi_mawsua",
+  "milaf": "Qari/Mudir.lean",
+  "min": "    let p := b.iqtirahat ++ \"/\" ++ ism ++ \".tsv\"",
+  "ila": "    let p := b.jadhr ++ \"/mawsua/\" ++ ism ++ \".tsv\""
+ },
+ {
+  "ism": "P1624_mudir_qanat_iftiradiyya_malik",
+  "milaf": "Qari/Mudir.lean",
+  "min": "  ahlil .majhul none b0 args",
+  "ila": "  ahlil .malik none b0 args"
  }
 ]
