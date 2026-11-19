@@ -1,0 +1,738 @@
+{
+ "cases_sha256": "553e11b4a624ef55c347859b0dec48d6b4e796adab220ea2480f5a4baa0163b5",
+ "tashghil_sha256": "bfc13b51b123065fb99bf3f64fda1e2764a932e5c556fb8b666ab59b42bd26b3",
+ "rabt_sha256": "b73282bd6dfdffa1f6e0aa4f9f3a3daf3bbac624d94e4506f63b7c32bd8f27b4",
+ "jadawil_sha256": {
+  "jins.tsv": "3f77de8419c09db618b6992cec8cda45027ba8ac5c125e0795f6d04b13f2bfca",
+  "mithal.tsv": "ecfe28651e1b98efab065bf7405679c9aa6df738824897fbe80a3d79bbea7bef",
+  "luzum_mujam.tsv": "520dffc8309c151c098ae5ec01ad688956c56eec3518a018c02ae673bf8d8eec"
+ },
+ "iltizam": "d3c73bdfb957e9cce97c1b5c65491eef37b3f1d1",
+ "kull": {
+  "صواب": 32,
+  "خطأ": 5,
+  "نقص تغطية": 59,
+  "اختيار بلا مرجّح": 4
+ },
+ "sawab_min_100": 32,
+ "sawab_mimma_ajab": [
+  32,
+  41
+ ],
+ "ala_naw": {
+  "hukm": {
+   "صواب": 9,
+   "خطأ": 3,
+   "نقص تغطية": 8
+  },
+  "fail": {
+   "صواب": 8,
+   "نقص تغطية": 11,
+   "اختيار بلا مرجّح": 1
+  },
+  "irab": {
+   "صواب": 7,
+   "نقص تغطية": 12,
+   "خطأ": 1
+  },
+  "jidhr": {
+   "صواب": 4,
+   "نقص تغطية": 12,
+   "خطأ": 1,
+   "اختيار بلا مرجّح": 3
+  },
+  "quwwa": {
+   "نقص تغطية": 16,
+   "صواب": 4
+  }
+ },
+ "nataij": [
+  {
+   "id": "Q001",
+   "naw": "hukm",
+   "jawab": [
+    "مقبول"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q002",
+   "naw": "hukm",
+   "jawab": [
+    "مقبول"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q003",
+   "naw": "hukm",
+   "jawab": [
+    "مقبول"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q004",
+   "naw": "hukm",
+   "jawab": [
+    "مقبول"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q005",
+   "naw": "hukm",
+   "jawab": [
+    "خطأ"
+   ],
+   "sinf": "خطأ"
+  },
+  {
+   "id": "Q006",
+   "naw": "hukm",
+   "jawab": [
+    "مقبول"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q007",
+   "naw": "hukm",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q008",
+   "naw": "hukm",
+   "jawab": [
+    "مقبول"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q009",
+   "naw": "hukm",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q010",
+   "naw": "hukm",
+   "jawab": [
+    "خطأ"
+   ],
+   "sinf": "خطأ"
+  },
+  {
+   "id": "Q011",
+   "naw": "hukm",
+   "jawab": [
+    "مقبول"
+   ],
+   "sinf": "خطأ"
+  },
+  {
+   "id": "Q012",
+   "naw": "hukm",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q013",
+   "naw": "hukm",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q014",
+   "naw": "hukm",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q015",
+   "naw": "hukm",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q016",
+   "naw": "hukm",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q017",
+   "naw": "hukm",
+   "jawab": [
+    "خطأ"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q018",
+   "naw": "hukm",
+   "jawab": [
+    "خطأ"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q019",
+   "naw": "hukm",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q020",
+   "naw": "hukm",
+   "jawab": [
+    "خطأ"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q021",
+   "naw": "fail",
+   "jawab": [
+    "زَيْدٌ"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q022",
+   "naw": "fail",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q023",
+   "naw": "fail",
+   "jawab": [
+    "زَيْدٌ",
+    "ضَرَبَنِ"
+   ],
+   "sinf": "اختيار بلا مرجّح"
+  },
+  {
+   "id": "Q024",
+   "naw": "fail",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q025",
+   "naw": "fail",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q026",
+   "naw": "fail",
+   "jawab": [
+    "اللَّهُ"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q027",
+   "naw": "fail",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q028",
+   "naw": "fail",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q029",
+   "naw": "fail",
+   "jawab": [
+    "مستتر"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q030",
+   "naw": "fail",
+   "jawab": [
+    "زَيْدٌ"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q031",
+   "naw": "fail",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q032",
+   "naw": "fail",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q033",
+   "naw": "fail",
+   "jawab": [
+    "رَجُلَانِ"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q034",
+   "naw": "fail",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q035",
+   "naw": "fail",
+   "jawab": [
+    "هِنْدٌ"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q036",
+   "naw": "fail",
+   "jawab": [
+    "مستتر"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q037",
+   "naw": "fail",
+   "jawab": [
+    "مستتر"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q038",
+   "naw": "fail",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q039",
+   "naw": "fail",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q040",
+   "naw": "fail",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q041",
+   "naw": "irab",
+   "jawab": [
+    "نصب"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q042",
+   "naw": "irab",
+   "jawab": [
+    "جرّ"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q043",
+   "naw": "irab",
+   "jawab": [
+    "جزم"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q044",
+   "naw": "irab",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q045",
+   "naw": "irab",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q046",
+   "naw": "irab",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q047",
+   "naw": "irab",
+   "jawab": [
+    "رفع"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q048",
+   "naw": "irab",
+   "jawab": [
+    "نصب (علامتُها تحتمل نصب, جرّ)"
+   ],
+   "sinf": "خطأ"
+  },
+  {
+   "id": "Q049",
+   "naw": "irab",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q050",
+   "naw": "irab",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q051",
+   "naw": "irab",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q052",
+   "naw": "irab",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q053",
+   "naw": "irab",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q054",
+   "naw": "irab",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q055",
+   "naw": "irab",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q056",
+   "naw": "irab",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q057",
+   "naw": "irab",
+   "jawab": [
+    "مبنيّ"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q058",
+   "naw": "irab",
+   "jawab": [
+    "جزم"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q059",
+   "naw": "irab",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q060",
+   "naw": "irab",
+   "jawab": [
+    "نصب"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q061",
+   "naw": "jidhr",
+   "jawab": [
+    "قوم"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q062",
+   "naw": "jidhr",
+   "jawab": [
+    "ضرب"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q063",
+   "naw": "jidhr",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q064",
+   "naw": "jidhr",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q065",
+   "naw": "jidhr",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q066",
+   "naw": "jidhr",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q067",
+   "naw": "jidhr",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q068",
+   "naw": "jidhr",
+   "jawab": [
+    "دحرج"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q069",
+   "naw": "jidhr",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q070",
+   "naw": "jidhr",
+   "jawab": [
+    "خرج"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q071",
+   "naw": "jidhr",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q072",
+   "naw": "jidhr",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q073",
+   "naw": "jidhr",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q074",
+   "naw": "jidhr",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q075",
+   "naw": "jidhr",
+   "jawab": [
+    "عود",
+    "عيد"
+   ],
+   "sinf": "خطأ"
+  },
+  {
+   "id": "Q076",
+   "naw": "jidhr",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q077",
+   "naw": "jidhr",
+   "jawab": [
+    "بوع",
+    "بيع"
+   ],
+   "sinf": "اختيار بلا مرجّح"
+  },
+  {
+   "id": "Q078",
+   "naw": "jidhr",
+   "jawab": [
+    "طلق",
+    "ولق"
+   ],
+   "sinf": "اختيار بلا مرجّح"
+  },
+  {
+   "id": "Q079",
+   "naw": "jidhr",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q080",
+   "naw": "jidhr",
+   "jawab": [
+    "ملء",
+    "ملو"
+   ],
+   "sinf": "اختيار بلا مرجّح"
+  },
+  {
+   "id": "Q081",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q082",
+   "naw": "quwwa",
+   "jawab": [
+    "خبر مثبت"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q083",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q084",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q085",
+   "naw": "quwwa",
+   "jawab": [
+    "خبر منفي"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q086",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q087",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q088",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q089",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q090",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q091",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q092",
+   "naw": "quwwa",
+   "jawab": [
+    "إنشاء"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q093",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q094",
+   "naw": "quwwa",
+   "jawab": [
+    "إنشاء"
+   ],
+   "sinf": "صواب"
+  },
+  {
+   "id": "Q095",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q096",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q097",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q098",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q099",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  },
+  {
+   "id": "Q100",
+   "naw": "quwwa",
+   "jawab": [],
+   "sinf": "نقص تغطية"
+  }
+ ]
+}
