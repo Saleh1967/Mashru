@@ -142,6 +142,10 @@ import SLGE.HisabSinfi
 import Jisr.QabiliyyaJins
 import Jisr.HamlJinsDabit
 import Jisr.HamlJinsQiyas
+import Madlul.Nawat
+import Jisr.Tawlid
+import Jisr.TawlidDabit
+import Jisr.TawlidQiyas
 import Dal.WiladaJadhr
 import Dal.WiladaKalima
 import Dal.WiladaJumla
@@ -3072,6 +3076,38 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms Jisr.QabiliyyaJins.Qiyas.natija
 #print axioms Jisr.QabiliyyaJins.Qiyas.natija_fia
 #print axioms Jisr.QabiliyyaJins.Qiyas.akhta_1
+-- نواةُ التوليد (Madlul/Nawat.lean، Jisr/Tawlid.lean؛ أقوالُ المالك المرقَّمة نواةً، أمرُه 2026-11-17): الصفوفُ والمفاتيح، والعواملُ السبعة والعقدةُ
+-- والحكمُ على الجنس فيها، والحلقة؛ وضابطُه المجمَّد (tahaqquq/dawabit/nawat_tawlid)
+#print axioms Madlul.Nawat.bila_miftah_la_yatahaqqaq
+#print axioms Madlul.Nawat.mani_bila_miftah
+#print axioms Madlul.Nawat.inadamAql_hayawan
+#print axioms Madlul.Nawat.jumud_jamad
+#print axioms Madlul.Nawat.shart_mutahaqqiq_wiratha
+#print axioms Madlul.Nawat.hayat_fi_thalatha
+#print axioms Madlul.Nawat.aql_insan
+#print axioms Madlul.Nawat.haraka_intiqal
+#print axioms Madlul.Nawat.nawat_shahid
+#print axioms Jisr.Tawlid.sigha_tahfaz_jadhr
+#print axioms Jisr.Tawlid.mawruth_min_nawat
+#print axioms Jisr.Tawlid.mawani_min_jadhr
+#print axioms Jisr.Tawlid.fail_bila_qayd
+#print axioms Jisr.Tawlid.la_hukm_bila_nawat
+#print axioms Jisr.Tawlid.la_jins_bila_jins
+#print axioms Jisr.Tawlid.ala_ghayr_jamad_mumtani
+#print axioms Jisr.Tawlid.murakhkhas_bi_shahid
+#print axioms Jisr.Tawlid.mumtani_bi_shahid
+#print axioms Jisr.Tawlid.bila_miftah_la_tarkhis
+#print axioms Jisr.Tawlid.murakhkhas_la_yughayyir
+#print axioms Jisr.Tawlid.shahid_kasara
+#print axioms Jisr.Tawlid.shahid_alima
+#print axioms Jisr.Tawlid.shahid_kharij
+#print axioms Jisr.Tawlid.murashshah_la_yadkhul
+#print axioms Jisr.Tawlid.Dabit.qarin_jadwal
+#print axioms Jisr.Tawlid.Dabit.sigha_mukhtalifa_khata
+#print axioms Jisr.Tawlid.Qiyas.majal
+#print axioms Jisr.Tawlid.Qiyas.natija
+#print axioms Jisr.Tawlid.Qiyas.natija_fia
+#print axioms Jisr.Tawlid.Qiyas.akhta_1
 -- معالجُ NTP ووصلُه والتواترُ بشجرة النقل (Madlul/NTP/، قولُ المالك 2026-11-16 و2026-11-17):
 -- Muallij: Madlul/NTP/Muallij.lean
 #print axioms NTP.mutamayyiz_wahid
