@@ -10,6 +10,11 @@
      المالك). ولا بدّ من إيداعٍ واحدٍ على الأقلّ بعد F غيرِ موروث (شفرةُ القطعة نفسُها).
   ٢. كلُّ C سلفٌ لـN أو هو هو (النتيجةُ الأولى على شفرةٍ أُودعت).
   ٣. بايتاتُ `cases.json` في F بصمتُها `cases_sha256` في `natija_1.json`، وهي بايتاتُه الآن (لم تُغيَّر الحالاتُ بعد التجميد).
+وصيغةُ «تجربة الجواب» (natija_1.json بلا `shifra` وفيه `iltizam` و`tashghil_sha256`، كضابط `sual`): الشفرةُ مجمَّدةٌ **قبل** الحالات لا بعدها
+  (المحرّكُ والمحوِّلُ قائمان، والمؤلّفُ المستقلّ يكتب الحالات بعدهما)، فشروطُها بدل ١ و٢:
+  ت١. `iltizam` (التزامُ main الذي شُغّل عليه المحرّك) إيداعٌ في التاريخ، وسلفٌ صارمٌ لـF، وسلفٌ لـN.
+  ت٢. المحوِّلُ `tashghil.py` أُضيف في سلفٍ صارمٍ لـF، وبايتاتُه في F وفي N والآن بصمتُها `tashghil_sha256` (لم يتغيّر بعد التجميد).
+  و٣ كما هو. وحدُّها: لا يُثبت أنّ ثنائيَّ `rabt` (`rabt_sha256`) بُني من `iltizam`؛ قراءةُ البنّاء 2026-11-19، تنتظر إمضاء المالك.
 حدُّه المعلَن: يُثبت ترتيبَ الإيداعات في التاريخ، لا ترتيبَ الدفع إلى GitHub ولا أنّ البنّاء لم يقرأ الحالات؛ ونسخةٌ ضحلةٌ تُردّ باسمها
 (`TARIKH_DAHL`) لا تُعدّ نجاحًا. وضابطُ التحصيل (`tahaqquq/tahsil/`) بصيغةٍ أخرى لا يدخل هنا.
 التشغيل: python3 -I tahaqquq/sabq_tajmid.py [جذر المستودع]
@@ -63,6 +68,31 @@ def mawruth(jadhr, F, m, c, sha):
     return b is not None and hashlib.sha256(b).hexdigest() == sha and bayt(jadhr, F, m) == b
 
 
+def fahs_tajriba(jadhr, ism, d, natija, F, N):
+    """شرطا ت١ وت٢ لصيغة «تجربة الجواب» (الشفرةُ قبل الحالات)."""
+    akhta = []
+    I = natija["iltizam"]
+    if git(jadhr, "cat-file", "-e", I + "^{commit}")[0] != 0:
+        return [f"{ism}: التزامُ المحرّك {I[:7]} ليس في التاريخ"]
+    if I == F or not salaf(jadhr, I, F):
+        akhta.append(f"{ism}: التزامُ المحرّك {I[:7]} ليس سلفًا صارمًا للتجميد {F[:7]}")
+    if not salaf(jadhr, I, N):
+        akhta.append(f"{ism}: التزامُ المحرّك {I[:7]} ليس سلفًا للنتيجة الأولى {N[:7]}")
+    rel = f"{d}/tashghil.py"
+    A = awwal_idafa(jadhr, rel)
+    if not A or A == F or not salaf(jadhr, A, F):
+        akhta.append(f"{ism}: المحوِّل ليس مُودَعًا في سلفٍ صارمٍ للتجميد {F[:7]}")
+    sha = natija["tashghil_sha256"]
+    try:
+        alan = open(os.path.join(jadhr, rel), "rb").read()
+    except OSError:
+        alan = None
+    for wasf, b in (("عند التجميد", bayt(jadhr, F, rel)), ("عند النتيجة", bayt(jadhr, N, rel)), ("الآن", alan)):
+        if b is None or hashlib.sha256(b).hexdigest() != sha:
+            akhta.append(f"{ism}: بصمةُ المحوِّل {wasf} غيرُ tashghil_sha256")
+    return akhta
+
+
 def fahs_dabit(jadhr, ism):
     """أخطاءُ ضابطٍ واحد (قائمةٌ فارغة إن سلم)."""
     d = f"tahaqquq/dawabit/{ism}"
@@ -76,7 +106,9 @@ def fahs_dabit(jadhr, ism):
     C = marasi_shifra(natija)
     if not F or not N:
         return [f"{ism}: لا مرساةَ في التاريخ لـ{'cases.json' if not F else 'natija_1.json'}"]
-    if not C:
+    if not C and natija.get("iltizam") and natija.get("tashghil_sha256"):
+        akhta = fahs_tajriba(jadhr, ism, d, natija, F, N)
+    elif not C:
         return [f"{ism}: natija_1.json بلا إيداع شفرة (shifra.iydaa)"]
     baad = False
     for m, c, sha in C:

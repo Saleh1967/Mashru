@@ -12,6 +12,11 @@
 ٩. موروثٌ غُيّر بين إيداعه والتجميد ← «ليس سلفًا صارمًا» (P1548).
 ١٠. موروثٌ بصمتُه المسجَّلة غيرُ بايتاته في إيداعه ← «ليس سلفًا صارمًا» (P1547).
 ١١. «موروثٌ» أُودع مع الحالات في إيداع التجميد ← «ليس سلفًا صارمًا» (P1550).
+وصيغةُ «تجربة الجواب» (ت١ وت٢ في رأس sabq_tajmid.py؛ الشفرةُ قبل الحالات):
+١٢. المحرّكُ والمحوِّلُ قبل التجميد ولم يتغيّر المحوِّل ← لا خطأ.
+١٣. المحوِّلُ غُيّر بعد التجميد ← «بصمةُ المحوِّل» (P1631).
+١٤. التزامُ المحرّك بعد التجميد ← «ليس سلفًا صارمًا للتجميد» (P1632).
+١٥. المحوِّلُ أُودع مع الحالات ← «ليس مُودَعًا في سلفٍ صارم» (P1633).
 التشغيل: python3 -I tahaqquq/test_sabq_tajmid.py
 """
 
@@ -115,6 +120,33 @@ def mustawda_mawruth(naw):
     return r
 
 
+def mustawda_tajriba(naw):
+    """ضابطٌ «x» بصيغة تجربة الجواب؛ naw: «salim» أو «muhawwil_baad» أو «iltizam_baad» أو «muhawwil_maa_F»."""
+    r = tempfile.mkdtemp()
+    g(r, "init", "-q")
+    D = "tahaqquq/dawabit/x"
+    t = "print(1)\n"
+    cases = '[{"id": 1}]\n'
+    ktb(r, "Jisr/X.lean", "def x := 1\n")
+    I = awda(r, "muharrik")
+    if naw != "muhawwil_maa_F":
+        ktb(r, f"{D}/tashghil.py", t)
+        awda(r, "muhawwil")
+    else:
+        ktb(r, f"{D}/tashghil.py", t)
+    ktb(r, f"{D}/cases.json", cases)
+    F = awda(r, "tajmid")
+    if naw == "iltizam_baad":
+        ktb(r, "Jisr/X.lean", "def x := 2\n")
+        I = awda(r, "muharrik2")
+    if naw == "muhawwil_baad":
+        ktb(r, f"{D}/tashghil.py", "print(2)\n")
+    ktb(r, f"{D}/natija_1.json", json.dumps({"cases_sha256": hashlib.sha256(cases.encode()).hexdigest(),
+                                              "tashghil_sha256": hashlib.sha256(t.encode()).hexdigest(), "iltizam": I}))
+    awda(r, "natija")
+    return r
+
+
 check("١ السليمُ بلا خطأ", st.fahs_dabit(mustawda("salim"), "x") == [])
 a = st.fahs_dabit(mustawda("maan"), "x")
 check("٢ الحالاتُ والشفرةُ معًا: ليس سلفًا صارمًا", any("ليس سلفًا صارمًا" in x for x in a))
@@ -133,6 +165,13 @@ check("٨ كلُّها موروثة: لا شفرةَ بعد التجميد", any
 for n, naw in [("٩ موروثٌ غُيّر قبل التجميد", "taghayyar"), ("١٠ موروثٌ ببصمةٍ غيرِ بايتاته", "basma"), ("١١ «موروثٌ» مع الحالات", "maa_F")]:
     a = st.fahs_dabit(mustawda_mawruth(naw), "x")
     check(n + ": ليس سلفًا صارمًا", any("ليس سلفًا صارمًا" in x for x in a))
+check("١٢ تجربةُ الجواب السليمة: لا خطأ", st.fahs_dabit(mustawda_tajriba("salim"), "x") == [])
+a = st.fahs_dabit(mustawda_tajriba("muhawwil_baad"), "x")
+check("١٣ المحوِّلُ غُيّر بعد التجميد: بصمةُ المحوِّل", any("بصمةُ المحوِّل" in x for x in a))
+a = st.fahs_dabit(mustawda_tajriba("iltizam_baad"), "x")
+check("١٤ التزامُ المحرّك بعد التجميد: ليس سلفًا صارمًا", any("ليس سلفًا صارمًا للتجميد" in x for x in a))
+a = st.fahs_dabit(mustawda_tajriba("muhawwil_maa_F"), "x")
+check("١٥ المحوِّلُ مع الحالات: ليس في سلفٍ صارم", any("ليس مُودَعًا في سلفٍ صارم" in x for x in a))
 r6 = subprocess.run(["git", "-C", JADHR, "rev-parse", "--is-shallow-repository"], capture_output=True, text=True)
 if r6.returncode != 0 or r6.stdout.strip() != "false":
     print("—    المستودعُ ضحلٌ أو بلا تاريخ: تُرك ٦")

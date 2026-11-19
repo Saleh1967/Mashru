@@ -9202,5 +9202,29 @@
   "milaf": "Qari/Mudir.lean",
   "min": "  ahlil .majhul none b0 args",
   "ila": "  ahlil .malik none b0 args"
+ },
+ {
+  "ism": "P1631_sabq_tajriba_muhawwil_yataghayyar",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "        if b is None or hashlib.sha256(b).hexdigest() != sha:\n            akhta.append(f\"{ism}: بصمةُ المحوِّل",
+  "ila": "        if b is None:\n            akhta.append(f\"{ism}: بصمةُ المحوِّل"
+ },
+ {
+  "ism": "P1632_sabq_tajriba_iltizam_baad",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "    if I == F or not salaf(jadhr, I, F):",
+  "ila": "    if I == F:"
+ },
+ {
+  "ism": "P1633_sabq_tajriba_muhawwil_maa_F",
+  "milaf": "tahaqquq/sabq_tajmid.py",
+  "min": "    if not A or A == F or not salaf(jadhr, A, F):",
+  "ila": "    if not A:"
+ },
+ {
+  "ism": "P1634_sual_sinf_ikhtiyar_khata",
+  "milaf": "tahaqquq/dawabit/sual/tashghil.py",
+  "min": "        return \"اختيار بلا مرجّح\" if len(mt) == 1 else \"خطأ\"",
+  "ila": "        return \"خطأ\" if len(mt) == 1 else \"اختيار بلا مرجّح\""
  }
 ]
