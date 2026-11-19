@@ -9082,5 +9082,11 @@
   "milaf": "Qari/Rabt.lean",
   "min": "    | none => return .error s!\"خطأ تحميل: {wasf} ({p}، {b.take 12}) ليس مودَعًا مختومًا في السجلّ\"",
   "ila": "    | none => return .ok s!\"«{wasf}» {b.take 12}\""
+ },
+ {
+  "ism": "P1611_auditnabt_import_bila_masdar",
+  "milaf": "AuditNabt.lean",
+  "min": "import Nabt\n",
+  "ila": "import Nabt.Wahmi\n"
  }
 ]

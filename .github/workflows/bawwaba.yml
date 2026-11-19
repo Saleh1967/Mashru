@@ -8,7 +8,8 @@
 name: bawwaba
 
 on:
-  pull_request:
+  pull_request:   # يُستخرج refs/pull/N/merge: شجرةُ التقاء الفرع بـ main وقتَ التشغيل لا رأسُ الفرع (بروتوكول الدمج ٣)؛ وما يتقدّم
+                  # به main بعده لا يُعاد عليه إلّا بـ«Require branches to be up to date» في حماية main (البند ١، إعدادٌ بيد المالك)
   push:
     branches: [main]
 
@@ -58,6 +59,9 @@ jobs:
         run: |
           sudo python3 -m pip install --break-system-packages numpy
           python3 -I -c "import numpy; print('numpy', numpy.__version__)"
+
+      - name: prune build artifacts without source (المبنيُّ القديم ليس شاهدًا؛ cache يعيد .lake)
+        run: python3 -I scripts/tanqiyat_bina.py
 
       - name: lake build
         run: |
@@ -138,6 +142,9 @@ jobs:
         run: |
           sudo python3 -m pip install --break-system-packages numpy
           python3 -I -c "import numpy; print('numpy', numpy.__version__)"
+
+      - name: prune build artifacts without source (المبنيُّ القديم ليس شاهدًا؛ cache يعيد .lake)
+        run: python3 -I scripts/tanqiyat_bina.py
 
       - name: lake build
         run: |
