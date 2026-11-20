@@ -32,7 +32,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tahaqquq"))
 import bawwaba  # noqa: E402
-DIRS = ("SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari")
+DIRS = ("A116", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari")
 BUILD = os.path.join(ROOT, ".lake", "build", "lib", "lean")
 KIND = re.compile(r"(?:^|\s)(theorem|lemma)\s+$")
 TOKEN = re.compile(r"[^\s:(\[{]+")
@@ -90,7 +90,7 @@ def mubarhanat(mod, fails):
         line, col = pos[4], pos[5]
         pre = src[line][:col] if line < len(src) else ""
         tok = TOKEN.match(src[line][col:]) if line < len(src) else None
-        if not (tok and name.endswith(tok.group(0))) and not src[line][col:].startswith(("instance", "macro ")):
+        if not (tok and name.endswith(tok.group(0).removeprefix("_root_."))) and not src[line][col:].startswith(("instance", "macro ")):
             fails.append(f"موضعُ التصريح {name} في {mod} لا يقع عليه اسمُه (س{line + 1}، ع{col})")
             continue
         if not KIND.search(pre):

@@ -83,6 +83,7 @@ def main():
         (["--qanat", "malik", "صَنِّفْ الزَّيْتُونَ"], "القرار: تنفيذ «صنّف» على «الزَّيْتُونَ»", "NTP.Wasl", 0),
         (["--qanat", "malik", "صنف القمر"], "القرار: تنفيذ «صنّف» على «القمر»", "NTP.Wasl", 1),
         (["--qanat", "malik", "اعرض"], "القرار: تنفيذ «اعرض»", "", 0),
+        (["--qanat", "wakil", "شَكِّلْ كتب"], "القرار: تنفيذ «شكّل» على «كتب»", "A116.Tashkil", 1),
     ]
     for args, qarar, khitta, khuruj in HALAT:
         code, out = shaghghil(*args)
@@ -162,6 +163,20 @@ def main():
     code, out = shaghghil("--qanat", "malik", "أَعْرِبْ كَتَبَ الطَّالِبُ الدَّرْسَ")
     tahaqqaq("- rabt: لا حكم — السبب: المودَعاتُ المختومة" in out and "python3 -I mudaat/jalb.py" in out and " · خروج 0 " in out,
              "٧ rabt بلا مودَع: لا سببَ ولا علاج، أو شُغّل")
+    # ٩: وكيلُ التشكيل (A116.Tashkil، 2026-11-20). بلا معجم: «مودَعٌ غائب» وسببٌ وعلاج. وبمعجمٍ صغيرٍ مكتوبٍ باليد هنا (لا من
+    # المودَع ولا من الشيفرة): «كتب» محتمَلٌ بصورتيه كلتيهما بترتيبهما، و«قال» مرشَّحٌ واحد، و«غول» لا حكم؛ ولا يُكتب في النصّ شيء.
+    code, out = shaghghil("--qanat", "malik", "شَكِّلْ كتب")
+    tahaqqaq(code == 1 and "مودَعٌ غائب" in out and "- A116.Tashkil: لا حكم — السبب: معجمُ التشكيل المختوم" in out
+             and "python3 -I mudaat/jalb.py" in out, f"٩ التشكيل بلا معجم: خروج {code}")
+    with tempfile.TemporaryDirectory() as d:
+        pathlib.Path(d, "tashkil_mujam.tsv").write_text("قال\tقَالَ\nكتب\tكَتَبَ كُتُبٌ\n", encoding="utf-8")
+        bia = dict(os.environ, MUDAA_DIR=d)
+        code, out = shaghghil("--qanat", "malik", "شَكِّلْ قال كتب", bia=bia)
+        tahaqqaq(code == 0 and "قال\tقال\tمرشَّحٌ_واحد\tقَالَ\n" in out and "كتب\tكتب\tمحتمَل\tكَتَبَ كُتُبٌ\n" in out
+                 and "النتيجة الجامعة: حكمٌ صدر" in out, f"٩ التشكيل بمعجم: خروج {code}")
+        code, out = shaghghil("--qanat", "malik", "شَكِّلْ قَالَ غول", bia=bia)
+        tahaqqaq(code == 1 and "قَالَ\tقال\tمرشَّحٌ_واحد\tقَالَ\n" in out and "غول\tغول\tلا_حكم" in out.splitlines()
+                 and "النتيجة الجامعة: لا حكم" in out, f"٩ التشكيل بهيكلٍ لا صورةَ له: خروج {code}")
     # ٨: بالمودَعات المختومة إن حضرت في MUDAA_DIR البيئة (فحصٌ بالمودَع بلا طفرة): الإعرابُ كاملٌ بـrabt
     M = os.environ.get("MUDAA_DIR")
     if M and all(os.path.exists(os.path.join(M, n)) for n in ("luzum_mujam.tsv", "jins.tsv", "mithal.tsv")):

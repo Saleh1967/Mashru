@@ -40,6 +40,7 @@ def ismQism : Nizam.Hukm Nizam.Talab.Qism → String
 def ismAmr : Amr → String
   | .iqra => "اقرأ" | .aarib => "أعرب" | .tatabba => "تتبّع" | .isal => "اسأل" | .ifhas => "افحص"
   | .sannif => "صنّف" | .taallam => "تعلّم" | .aard => "اعرض"
+  | .shakkil => "شكّل"
 
 def ismMahzur : Mahzur → String
   | .idmaj => "ادمج" | .ikhtim => "اختم" | .ihdhif => "احذف" | .idfa => "ادفع"
@@ -106,6 +107,16 @@ def khatwa (b : Bia) (nass : String) (k : Khatwa) : IO (Nat × String) := do
   | .faahisSual => tashghil b (bin b "faahis") #["--sual", k.hujja, sj, mk]
   | .faahis => tashghil b (bin b "faahis") #[sj, mk]
   | .muallij => return (0, tasnifNTP k.hujja)
+  | .tashkil =>
+    -- معجمُ التشكيل المختوم مفكوكًا (mudaat/jalb.py: tashkil_mujam.tsv)، سطرُه «هيكل⇥صورٌ بمسافة».
+    let p := b.mudaa ++ "/tashkil_mujam.tsv"
+    unless ← System.FilePath.pathExists p do
+      return (0, s!"مودَعٌ غائب في «{b.mudaa}»: tashkil_mujam.tsv (MUDAA_DIR)")
+    let mj : A116.Tashkil.Mujam := ((← IO.FS.readFile p).splitOn "\n").filterMap fun l =>
+      match l.splitOn "\t" with
+      | [h, suwar] => some (h, (suwar.splitOn " ").filter (· ≠ ""))
+      | _ => none
+    return (0, tashkilNass mj k.hujja)
   | .rabt =>
     let jadawil := ["luzum_mujam.tsv", "jins.tsv", "mithal.tsv"]
     let mut ghaib : List String := []

@@ -258,9 +258,16 @@ if len(masadir) == 2:
             tahaqqaq(any(a <= n <= b for a, b in NITAQ[k]), f"سندُ {h['id']} خارجَ نطاق {k}: س{n}")
             satr = re.sub(r"^(### \| |~~|# )", "", masadir[k][n - 1])
             tahaqqaq(s["nass"] in satr, f"سندُ {h['id']} ليس في {k} س{n} بحذف البادئة وحدها")
-    r = subprocess.run([sys.executable, "-I", str(D / "fahs_cases.py")], capture_output=True, text=True, cwd=str(D))
-    tahaqqaq(r.returncode == 0, "فاحصُ المؤلّف رفض الحالات: " + (r.stdout + r.stderr)[-400:])
-    ziyada = f"؛ و{sum(len(h['sanad']) for h in halat)} سندًا للحالات في أسطرها، وفاحصُ المؤلّف 0"
+    # فاحصُ المؤلّف مجمَّدٌ ببصمته، ومسارا مصدريه فيه مطلقان (بيئةُ المؤلّف: /home/claude/mudaa_dir)؛ فلا يُشغَّل إلّا إن حضرا هناك ببصمتيهما،
+    # وإلّا سُمّي (كما في CI بعد جلب المودَعات إلى مجلّدٍ آخر، 2026-11-19).
+    MUTLAQ = pathlib.Path("/home/claude/mudaa_dir")
+    if all((MUTLAQ / m).exists() and sha(MUTLAQ / m) == b for m, b in BASMAT.values()):
+        r = subprocess.run([sys.executable, "-I", str(D / "fahs_cases.py")], capture_output=True, text=True, cwd=str(D))
+        tahaqqaq(r.returncode == 0, "فاحصُ المؤلّف رفض الحالات: " + (r.stdout + r.stderr)[-400:])
+        mualif = "وفاحصُ المؤلّف 0"
+    else:
+        mualif = "وفاحصُ المؤلّف لم يُشغَّل (مسارا مصدريه المطلقان في ملفّه المجمَّد غائبان)"
+    ziyada = f"؛ و{sum(len(h['sanad']) for h in halat)} سندًا للحالات في أسطرها، {mualif}"
 else:
     ziyada = "؛ الأسانيدُ لم تُفحص (المودَعان غائبان)"
 

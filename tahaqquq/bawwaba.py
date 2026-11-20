@@ -37,6 +37,8 @@
       و٤ج أصلًا؛ وما يُسقطه حلٌّ من طرف الفرع نفسِه (كطفراتٍ للفرع) لا يراه ٤أ وأساسُه طرفُ main. وحدُّه: يرى السقوطَ في حلّ الدمج لا في
       إيداعٍ عاديّ (الحذفُ المقصود إيداعٌ عاديّ)؛ وسطرٌ أعاد الحلُّ صياغتَه في كتلةٍ يُعدّ ساقطًا (فشلٌ نحو الإذن لا نحو المرور)؛ ودمجُ
       الطلب الاصطناعيّ على CI يساوي محاكاتَه فلا يسقط فيه شيء.
+  ٠. المودَعات (`hayyi_mudaat`): بلا MUDAA_DIR مجلّدُه `.mudaa/`، ويُجلب إليه بـ`mudaat/jalb.py` كلُّ ما له مصدرٌ ببصمته المختومة،
+     ويُطبع ما لا جلبَ له باسمه (٠أ)؛ وMUDAA_MUKHASSAS منه إن لم يُعيَّن.
   ٥. اختبارات بايثون (shabaka/test_shabaka.py) تمرّ، إن وُجد المودَع (MUDAA_MUKHASSAS).
   ٥أ. اختبارات خطّ الأساس والتثبيت (tahaqquq/test_bawwaba.py): رفض JSON التالف وحفظ الحدّ، وفحص بديل تثبيت Lean.
   ٥ب. اختبارات المخزن (mawsua/test_mawsua.py): الفاحص التنفيذيّ المبنيّ من Lean يقبل المخزن ويرفض الفاسد.
@@ -124,6 +126,8 @@
       natija_1.json وأصنافُها تُعاد من نتائجها بقواعد المواصفة، والمحوِّلُ على مخرجٍ مكتوبٍ باليد بصيغة جدولها (حارسٌ كتبه البنّاء)، دائمًا.
   ٥ت١٢. جلبُ المودَعات (tahaqquq/test_jalb.py؛ mudaat/jalb.py وscripts/bina_jadawil_rabt.py): لا يدخل المجلّدَ ملفٌّ إلّا ببصمته المختومة،
       والمخالفُ والغائبُ والمرشَّحُ بأسمائها، وجدولا الجنس والمثال يُبنيان ببصمتيهما المختومتين، والسجلُّ لا يتغيّر؛ بلا شبكة، دائمًا.
+  ٥ت١٣. A116 المستورد (tahaqquq/test_a116.py؛ Saleh1967/Alghanem formal/a116 بإيداعه 9d8fa03): الجداولُ الأربعةُ والثلاثون في jadawil/a116
+      وملفّا البيانات = مُخرَجُ a116-jadwal من Lean المبنيّ في Mashru بايتًا (مطابَق)، دائمًا.
   ٥ص١٤. ضابطُ «أثر العُقَد» المجمَّد (tahaqquq/test_athar_dabit.py؛ نطاقُ القوّة من الكتاب والمغني والقطر والألفية وج3، ونطاقُ القيد ج3 س1062–1106):
       مثلُ ٥ص، وبصمةُ الشفرة كلُّ ملفٍّ فيه ثابتٌ يبلغه حسابُ natijaHala (SHIFRA، ويحسبها Lean من البيئة المبنيّة فتُقارَن بها)، بحقلٍ مسؤولٍ في
       كلّ حالة (القوّة أو القيد)، دائمًا؛
@@ -259,7 +263,8 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_mudir.py",
     "tahaqquq/test_sual.py",
     "tahaqquq/test_jalb.py",
-    # قبل الأخيرَين: يستورد وحدات المشروع كلَّها في Lean إلّا جذورَ التنفيذيّات العشرة، فلا يجري إلّا على ما نجا ممّا قبله.
+    "tahaqquq/test_a116.py",
+    # قبل الأخيرَين: يستورد وحدات المشروع كلَّها في Lean إلّا جذورَ التنفيذيّات الأحدَ عشر، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_wiratha.py",
     # قبل الأخير: يستورد وحدات المشروع كلَّها في Lean، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_hisab.py",
@@ -1239,6 +1244,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت١٢ {out.strip().splitlines()[-1] if out.strip() else 'جلب المودَعات: ?'}")
     if code != 0:
         fails.append("اختبار جلب المودَعات فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_a116.py"])
+    report.append(f"٥ت١٣ {out.strip().splitlines()[-1] if out.strip() else 'A116: ?'}")
+    if code != 0:
+        fails.append("اختبار A116 المستورد فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_athar_dabit.py"])
     report.append(f"٥ص١٤ {out.strip().splitlines()[-1] if out.strip() else 'ضابط أثر العقد: ?'}")
     if code != 0:
@@ -1299,6 +1308,31 @@ def bunud_2_5(report, fails):
             fails.append("مودَع تغيّرت بصمته:\n" + out)
 
 
+def hayyi_mudaat(report):
+    """٠. المودَعات قبل كلّ شيء (أمرُ المالك 2026-11-20، 05:57: «لا زال كل شي لم يسجل ومعظم النتائج صفر … نفذ كل ما يلزم»):
+    إن لم يُعيَّن MUDAA_DIR فمجلّدُه `.mudaa/` في المستودع (لا يُرفع: .gitignore)، ويجلب `mudaat/jalb.py` إليه كلَّ ما له مصدرٌ ببصمته
+    المختومة؛ وMUDAA_MUKHASSAS من MUDAA_DIR إن حضر المخصّص فيه. وما لا جلبَ له يُطبع باسمه (لا يُفترض ولا يُصنع)."""
+    if not os.environ.get("MUDAA_DIR"):
+        os.environ["MUDAA_DIR"] = os.path.join(ROOT, ".mudaa")
+    d = os.environ["MUDAA_DIR"]
+    os.makedirs(d, exist_ok=True)
+    try:
+        r = subprocess.run([sys.executable, "-I", os.path.join(ROOT, "mudaat", "jalb.py"), d], cwd=ROOT,
+                           capture_output=True, text=True, timeout=3600)
+        sutur = r.stdout.strip().splitlines()
+        khulasa = sutur[-1] if sutur else "?"
+        marfud = [l for l in sutur if l.startswith("مرفوض") or l.startswith("غائب:")]
+        report.append(f"٠ المودَعات: {khulasa}" + (f"؛ لم يُجلب: {' · '.join(marfud)}" if marfud else ""))
+        ghaib = [l.split(":", 1)[1].split("—")[0].strip() for l in sutur if l.startswith("غائبٌ بلا جلب")]
+        if ghaib:
+            report.append(f"٠أ مختومٌ لا مصدرَ لجلبه (بايتاتُه عند المالك وحده): {'، '.join(ghaib)}")
+    except (OSError, subprocess.TimeoutExpired) as e:
+        report.append(f"٠ المودَعات: لم يُشغَّل الجلب ({e})")
+    m = os.path.join(d, "mukhassas.txt")
+    if not os.environ.get("MUDAA_MUKHASSAS") and os.path.exists(m):
+        os.environ["MUDAA_MUKHASSAS"] = m
+
+
 def main():
     try:
         faqat, qism = khiyarat(sys.argv[1:])
@@ -1306,6 +1340,7 @@ def main():
         print(f"البوّابة: {e}", file=sys.stderr, flush=True)
         sys.exit(2)
     fails, report = [], []
+    hayyi_mudaat(report)
     # تنقيةُ المبنيّ القديم قبل البناء (بروتوكول الدمج ٣): أثرٌ في .lake لوحدةٍ بلا مصدر يُرضي lake env lean ويخدع ٣ و٥خ؛
     # ضُبط على main في 37593b9، وفي نسخة test_khattaf (وحدةٌ مؤقّتة تُحذف بعد بنائها). فتُحذف هنا، وما بقي منها يرفضه ٥خ باسمه.
     run([sys.executable, "-I", "scripts/tanqiyat_bina.py"])

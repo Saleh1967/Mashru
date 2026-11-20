@@ -8,6 +8,7 @@
   * نصوصُ OpenITI على raw.githubusercontent.com: باليداع المسجَّل حيث سُجّل (lisan، maqayis، mukhassas)، وإلّا الفرعُ الرئيس
     والبصمةُ تحرسه.
   * مرفقاتُ المالك (a1.docx، a2.docx، badiha.docx) من تاريخ مستودعه العامّ hamil-hala-zaman-program بإيداعها.
+  * تاجُ العروس من OpenITI، وQAC 0.4 من مرآة alstat/QuranTree.jl، وMASAQ ونصُّ التنزيل من corpora/ في Saleh1967/Alghanem — كلُّها بإيداعٍ مثبَّت.
   * المشتقّ: `luzum_mujam.tsv` بـ`shabaka/jadwal_luzum.py` على lisan وmaqayis المختومين، و`jins.tsv`/`mithal.tsv` بـ`scripts/bina_jadawil_rabt.py`.
   * وما سواها (مرفقاتُ المالك، والمراجعُ المحجوبة، وجداولُ البنّاء، والمرشَّحة) غائبٌ يُسمّى بمصدره المسجَّل.
 
@@ -49,13 +50,38 @@ MALIK = {
                "%D8%A7%D9%84%D8%AC%D8%B2%D8%A1%20%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB%20%D9%88%D8%B1%D8%AF%20%282%29.docx",
     "badiha.docx": "2bb18501598278bb3facac84e60cff5bb4b25219/%D8%B3%D8%B1%D8%B9%D8%A9%20%D8%A7%D9%84%D8%A8%D8%AF%D9%8A%D9%87%D8%A9.docx",
 }
-URL = {**{k: RAW + v for k, v in OPENITI.items()}, **{k: HAMIL + v for k, v in MALIK.items()}}
+# مراجعُ ونصوصٌ في مستودعاتٍ عامّة (باليداع؛ والبصمةُ المختومة تحرسها):
+#   QAC 0.4: مرآةُ alstat/QuranTree.jl التي يسمّيها سجلُّ المودَعات مرآةً ثانية؛ وMASAQ ونصُّ التنزيل: corpora/ في مستودع المالك Saleh1967/Alghanem.
+ALGHANEM = "https://raw.githubusercontent.com/Saleh1967/Alghanem/9d8fa03a51f894416e0abaf3b6821c5ae6441dcd/corpora/"
+UKHRA = {
+    "taj.txt": RAW + "1225AH/4ec30fc763750fc1233d3774c4416b28c5c8b886/data/1205MurtadaZabidi/1205MurtadaZabidi.TajCarus/"
+               "1205MurtadaZabidi.TajCarus.Shamela0007030-ara1",
+    "quranic-corpus-morphology-0.4.txt": "https://raw.githubusercontent.com/alstat/QuranTree.jl/d7a0fe9c5c7138081aec6683d18e49f9a233d0dd/data/"
+                                         "quranic-corpus-morphology-0.4.txt",
+    "MASAQ.csv": ALGHANEM + "MASAQ.csv",
+    "quran-simple-enhanced.txt": ALGHANEM + "quran-simple-enhanced.txt",
+    # معجمُ التشكيل في A116 (Alghanem docs/tashkil/PREREG.md يسمّي بصمتَه)؛ خُتم 2026-11-20 بأمر المالك.
+    "tashkil_mujam.tsv.gz": ALGHANEM + "tashkil/mujam.tsv.gz",
+}
+URL = {**{k: RAW + v for k, v in OPENITI.items()}, **{k: HAMIL + v for k, v in MALIK.items()}, **UKHRA}
+
+FAKK = ("import gzip, os, shutil, sys; d = sys.argv[1]\n"
+        "with gzip.open(os.path.join(d, 'tashkil_mujam.tsv.gz')) as i, open(os.path.join(d, 'tashkil_mujam.tsv'), 'wb') as o:\n"
+        "    shutil.copyfileobj(i, o)")
 
 MUSHTAQQ = {
     "luzum_mujam.tsv": (["lisan.txt", "maqayis.txt"], lambda d: [sys.executable, "-I", os.path.join(JADHR, "shabaka", "jadwal_luzum.py")],
                         lambda d: dict(os.environ, MUDAA_DIR=d)),
     "jins.tsv": ([], lambda d: [sys.executable, "-I", os.path.join(JADHR, "scripts", "bina_jadawil_rabt.py"), d], lambda d: None),
     "mithal.tsv": ([], lambda d: [sys.executable, "-I", os.path.join(JADHR, "scripts", "bina_jadawil_rabt.py"), d], lambda d: None),
+    # فكُّ ضغط معجم التشكيل كما هو (بايتاتُه بلا تغيير)، ليقرأه وكيلُ `a116-tashkil` في Lean.
+    "tashkil_mujam.tsv": (["tashkil_mujam.tsv.gz"], lambda d: [sys.executable, "-I", "-c", FAKK, d], lambda d: None),
+    # نصّا ج1 وج3 كما تقرؤهما أسانيدُ الضوابط (test_sakk، test_athar_dabit، …): `pandoc -t plain --wrap=none` (pandoc 3.1.3) يعيد
+    # بصمتيهما المكتوبتين في تلك الاختبارات بايتًا (قيس 2026-11-20). وpandoc غيرُ حاضرٍ أو بإصدارٍ آخر: «مرفوض» باسمه لا بديلَ له.
+    "a1.txt": (["a1.docx"], lambda d: ["pandoc", "-t", "plain", "--wrap=none", os.path.join(d, "a1.docx"), "-o", os.path.join(d, "a1.txt")],
+               lambda d: None),
+    "a2.txt": (["a2.docx"], lambda d: ["pandoc", "-t", "plain", "--wrap=none", os.path.join(d, "a2.docx"), "-o", os.path.join(d, "a2.txt")],
+               lambda d: None),
 }
 
 
@@ -134,7 +160,12 @@ def main(argv):
             print(f"غائب: {milaf} (أصولُه غائبة: {'، '.join(naqis)})")
             fashal = 1
             continue
-        r = subprocess.run(amr(d), cwd=JADHR, capture_output=True, text=True, env=bia(d))
+        try:
+            r = subprocess.run(amr(d), cwd=JADHR, capture_output=True, text=True, env=bia(d))
+        except FileNotFoundError as e:  # أداةُ التوليد (pandoc) غيرُ حاضرة
+            print(f"مرفوض: {milaf} أداةُ توليده غائبة ({e.filename})")
+            fashal = 1
+            continue
         if not hadir(milaf):
             if os.path.exists(os.path.join(d, milaf)):
                 os.remove(os.path.join(d, milaf))

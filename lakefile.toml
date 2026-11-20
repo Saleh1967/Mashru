@@ -1,6 +1,10 @@
 name = "mashru"
 version = "0.1.0"
-defaultTargets = ["Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "faahis", "qari", "tahsil", "silsila", "athar", "tarkib", "rabt", "nabtBridge", "qanunJadwal", "mudir"]
+defaultTargets = ["A116", "Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "faahis", "qari", "tahsil", "silsila", "athar", "tarkib", "rabt", "nabtBridge", "qanunJadwal", "mudir", "a116-jadwal"]
+
+[[lean_lib]]
+name = "A116"
+globs = ["A116", "A116.+"]
 
 [[lean_lib]]
 name = "Nabt"
@@ -73,3 +77,7 @@ root = "Qari.QanunJadwal"
 [[lean_exe]]
 name = "mudir"
 root = "Qari.Mudir"
+
+[[lean_exe]]
+name = "a116-jadwal"
+root = "Qari.A116Jadwal"

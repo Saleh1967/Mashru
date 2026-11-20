@@ -15,7 +15,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DIRS = ["Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari"]
+DIRS = ["A116", "Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari"]
 HADAF = os.path.join(ROOT, "Nizam", "WahdatJadwal.lean")
 
 
@@ -30,6 +30,9 @@ def malaffat():
     p = os.path.join(ROOT, "Nabt.lean")
     if os.path.exists(p):
         out["Nabt"] = p
+    p = os.path.join(ROOT, "A116.lean")
+    if os.path.exists(p):
+        out["A116"] = p
     return out
 
 

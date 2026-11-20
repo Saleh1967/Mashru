@@ -4,7 +4,7 @@
 «الخل ان كل module يجب ان يكون بالترخيص الجبري المتدرج فكل module يخضع لقانون الوراثة والتوريث ويدخل في ال slot machine  وهو حامل جيناته الحسابية»
 وقراءةُ «module» ملفَّ Lean اختيارُه، وقراءةُ «جيناته الحسابية» الحسابَ الصنفيَّ قراءةُ البنّاء تنتظر إمضاءه.
 
-الملفّات: وحداتُ حزمة lake، أي مكتباتُ `lakefile.toml` الثماني بأنماطها وجذورُ تنفيذيّاته العشرة (وملفّاتُها في تسع مجلّدات و`Nabt.lean`)؛ وخارجها
+الملفّات: وحداتُ حزمة lake، أي مكتباتُ `lakefile.toml` التسع بأنماطها وجذورُ تنفيذيّاته الأحدَ عشر (وملفّاتُها في عشر مجلّدات و`Nabt.lean` و`A116.lean`)؛ وخارجها
 `Audit.lean` و`AuditNabt.lean` وملفّاتُ `tahaqquq`. و`hazma` أضيقُ من دلالة Lake: لا تعالج من الأنماط إلّا `X.+` والاسمَ المفرد (لا `X.*` ولا
 `roots` ولا `srcDir`)، ولا تعدّ ما يبنيه Lake من استيراد ملفّات المكتبة؛ فإن خالفتها الحزمةُ رفض الفحصُ ولم يقبل.
 
@@ -37,7 +37,7 @@ import tempfile
 import tomllib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DIRS = ["Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari"]
+DIRS = ["A116", "Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari"]
 LAKEFILE = os.path.join(ROOT, "lakefile.toml")
 HADAF = os.path.join(ROOT, "Nizam", "WahdatJadwal.lean")
 
@@ -53,6 +53,8 @@ def malaffat():
                     out.append((rel[:-5].replace(os.sep, "."), rel))
     if os.path.exists(os.path.join(ROOT, "Nabt.lean")):
         out.append(("Nabt", "Nabt.lean"))
+    if os.path.exists(os.path.join(ROOT, "A116.lean")):
+        out.append(("A116", "A116.lean"))
     return sorted(out)
 
 

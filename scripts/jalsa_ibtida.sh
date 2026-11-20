@@ -8,5 +8,7 @@ if ! command -v lake >/dev/null 2>&1; then
   exit 0
 fi
 timeout 540 lake build > /tmp/jalsa_ibtida_build.log 2>&1
+# المودَعاتُ المختومة إلى $MUDAA_DIR (وإلّا ~/mudaa_dir) ببصماتها، في الخلفيّة لا تحجب الجلسة (أمرُ المالك 2026-11-19).
+nohup timeout 1800 python3 -I mudaat/jalb.py > /tmp/jalsa_ibtida_jalb.log 2>&1 &
 echo "lake build: خروج $? (السجلّ /tmp/jalsa_ibtida_build.log)"
 exit 0

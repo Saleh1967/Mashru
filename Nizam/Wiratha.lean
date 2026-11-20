@@ -23,7 +23,7 @@ import SLGE.Syllable
 - رتبةُ الملفّ درجةُ اشتقاقه (`rutba_daraja`)، فالقاعدةُ متدرّجة (`mutadarrija`)، وما رتبتُه صفرٌ لا يُرخَّص إلّا أصلًا (`rutba_sifr_asl` من `Aql/Qaida.lean`).
 - ترتيبُ البناء سلسلةٌ يقبلها فاحصُ القاعدة نفسُه (`Qaida.fahs`) فيُثبت كلَّ ملفّ (`bina_maqbul`)، فكلُّ ملفٍّ مرخَّص على أصولها
   (`kull_wahda_murakhkhasa`) — على هذا الجدول، ويصدق على كلّ جدولِ استيرادٍ بلا دَور.
-- وما لا يرث شيئًا قائمةٌ مسمّاة (`bilaWirth`، 53)، تطابقها رتبةُ الصفر على هذا الجدول (`bilaWirth_iff`). وملفٌّ جديدٌ يُعاد له توليدُ الجدول (يفحصه ١ و٢
+- وما لا يرث شيئًا قائمةٌ مسمّاة (`bilaWirth`، 78: 53 ومعها جذورُ A116 الخمسةُ والعشرون، 2026-11-20)، تطابقها رتبةُ الصفر على هذا الجدول (`bilaWirth_iff`). وملفٌّ جديدٌ يُعاد له توليدُ الجدول (يفحصه ١ و٢
   في الاختبار)، ثمّ لا يُبنى `bilaWirth_iff` إن لم يستورد من المشروع شيئًا حتى يُضاف اسمُه.
 - **الأصلُ قرارُ المالك، ولم يُبنَ:** الأصلُ في `bina_maqbul` و`kull_wahda_murakhkhasa` ما رتبتُه صفرٌ كلُّه (`aslB`، بالتعريف)، ومنه ما تعدّه الوثيقةُ
   غيرَ أصل (`Jisr.BabFa` …). والمبنيُّ لقراره `rutba_sifr` (على هذا الجدول، لأنّ فرضَها `mutadarrija`): أيًّا كانت الأصولُ ‎`a`‎، ما رتبتُه صفرٌ لا يُرخَّص إلّا منها؛ فما يعدّه يتيمًا لا يُرخَّص حتى
@@ -76,9 +76,86 @@ theorem rutba_daraja : ∀ i < N, rutba i = (istirad i).foldr (fun j a => max a 
 theorem mutadarrija : Mutadarrija qaida rutba := by
   unfold Mutadarrija; decide +kernel
 
+/-! ### الفحصُ قطعةً قطعة
+
+لمّا دخلت وحداتُ A116 الجدولَ (2026-11-20) صار فحصُ السلسلة كلِّها بقرارٍ واحدٍ في النواة يجاوز ذاكرةَ البيئة (قُتل عند 6 غ.ب). فالسلسلةُ تُفحص
+قطعًا من `QITAA` خطوةً، كلُّ قطعةٍ بقرارٍ مستقلّ يبدأ من ثابت ما قبلها؛ و`fahs_qitaa` يجمعها فحصًا واحدًا (مبرهنٌ لكلّ قاعدةٍ وسلسلة). -/
+
+/-- الفاحصُ على سلسلتين متتاليتين هو الفاحصُ على الأولى ثمّ على الثانية من ثابتها. -/
+theorem fahs_append {P : Type} [DecidableEq P] (q : Qaida P) (a : P → Bool) :
+    ∀ (xs ys : List (Khatwa P)) (t : List P), fahs q a t (xs ++ ys) = (fahs q a t xs).bind (fun t' => fahs q a t' ys) := by
+  intro xs
+  induction xs with
+  | nil => intro ys t; rfl
+  | cons x xs ih =>
+    intro ys t
+    simp only [List.cons_append, fahs]
+    cases tatbiq q a t x with
+    | none => rfl
+    | some t' => exact ih ys t'
+
+/-- **القطعُ تجمع:** إن قبل الفاحصُ كلَّ قطعةٍ من ثابت ما قبلها فقد قبل السلسلةَ كلَّها. -/
+theorem fahs_qitaa {P : Type} [DecidableEq P] (q : Qaida P) (a : P → Bool) (S : List (Khatwa P)) (T : List P) (n K : Nat)
+    (h : ∀ k < K, fahs q a (T.take (k * n)) ((S.drop (k * n)).take n) = some (T.take ((k + 1) * n)))
+    (hS : S.length ≤ K * n) (hT : T.length ≤ K * n) : fahs q a [] S = some T := by
+  have key : ∀ k ≤ K, fahs q a [] (S.take (k * n)) = some (T.take (k * n)) := by
+    intro k
+    induction k with
+    | zero => intro _; simp [fahs]
+    | succ k ih =>
+      intro hk
+      have e : (k + 1) * n = k * n + n := Nat.succ_mul k n
+      rw [e, List.take_add, fahs_append, ih (by omega)]
+      simp only [Option.bind_some]
+      rw [← e]; exact h k (by omega)
+  have := key K (Nat.le_refl K)
+  rwa [List.take_of_length_le hS, List.take_of_length_le hT] at this
+
+/-- طولُ القطعة، وعددُ القطع (يسع 640 ملفًّا؛ وما زاد يردّه `bina_maqbul` بفرض الطول). -/
+def QITAA : Nat := 40
+
+/-- القطعةُ ‎`k`‎ مقبولةٌ من ثابت ما قبلها. -/
+def qitaa (k : Nat) : Prop :=
+  fahs qaida aslB (tartib.take (k * QITAA)) ((silsila.drop (k * QITAA)).take QITAA) = some (tartib.take ((k + 1) * QITAA))
+
+theorem qitaa_0 : qitaa 0 := by unfold qitaa; decide +kernel
+theorem qitaa_1 : qitaa 1 := by unfold qitaa; decide +kernel
+theorem qitaa_2 : qitaa 2 := by unfold qitaa; decide +kernel
+theorem qitaa_3 : qitaa 3 := by unfold qitaa; decide +kernel
+theorem qitaa_4 : qitaa 4 := by unfold qitaa; decide +kernel
+theorem qitaa_5 : qitaa 5 := by unfold qitaa; decide +kernel
+theorem qitaa_6 : qitaa 6 := by unfold qitaa; decide +kernel
+theorem qitaa_7 : qitaa 7 := by unfold qitaa; decide +kernel
+theorem qitaa_8 : qitaa 8 := by unfold qitaa; decide +kernel
+theorem qitaa_9 : qitaa 9 := by unfold qitaa; decide +kernel
+theorem qitaa_10 : qitaa 10 := by unfold qitaa; decide +kernel
+theorem qitaa_11 : qitaa 11 := by unfold qitaa; decide +kernel
+theorem qitaa_12 : qitaa 12 := by unfold qitaa; decide +kernel
+theorem qitaa_13 : qitaa 13 := by unfold qitaa; decide +kernel
+theorem qitaa_14 : qitaa 14 := by unfold qitaa; decide +kernel
+theorem qitaa_15 : qitaa 15 := by unfold qitaa; decide +kernel
+
 /-- **البناءُ سلسلةٌ مقبولة:** فاحصُ القاعدة يقبل ترتيبَ البناء خطوةً خطوة، ويُثبت به الملفّاتِ كلَّها — على الجدول. -/
 theorem bina_maqbul : fahs qaida aslB [] silsila = some tartib ∧ ∀ i < N, i ∈ tartib := by
-  decide +kernel
+  refine ⟨fahs_qitaa qaida aslB silsila tartib QITAA 16 (fun k hk => ?_) (by decide +kernel) (by decide +kernel), by decide +kernel⟩
+  match k, hk with
+    | 0, _ => exact qitaa_0
+    | 1, _ => exact qitaa_1
+    | 2, _ => exact qitaa_2
+    | 3, _ => exact qitaa_3
+    | 4, _ => exact qitaa_4
+    | 5, _ => exact qitaa_5
+    | 6, _ => exact qitaa_6
+    | 7, _ => exact qitaa_7
+    | 8, _ => exact qitaa_8
+    | 9, _ => exact qitaa_9
+    | 10, _ => exact qitaa_10
+    | 11, _ => exact qitaa_11
+    | 12, _ => exact qitaa_12
+    | 13, _ => exact qitaa_13
+    | 14, _ => exact qitaa_14
+    | 15, _ => exact qitaa_15
+    | _ + 16, h => exact absurd h (by omega)
 
 /-- **كلُّ ملفٍّ مرخَّص** في القاعدة على أصولها (`aslB`: ما رتبتُه صفر) — على هذا الجدول. -/
 theorem kull_wahda_murakhkhasa : ∀ i < N, Murakhkhas qaida (fun p => aslB p = true) i := by
@@ -93,6 +170,11 @@ theorem rutba_sifr (a : Nat → Bool) (i : Nat) (h : Murakhkhas qaida (fun p => 
 
 /-- ما لا يرث من المشروع شيئًا: كلُّ ملفٍّ رتبتُه صفر. أيُّها أصلٌ وأيُّها يتيمٌ يُوصل بأبيه قرارُ المالك (`hawkama/الوراثة_الصنفية.md`). -/
 def bilaWirth : List String := [
+  "A116.Cells", "A116.Derivation", "A116.Fiber", "A116.Fold", "A116.FractalMushafDef", "A116.FractalTarkibData",
+  "A116.Harf.Khana", "A116.Hasr", "A116.Ishtiqaq", "A116.Kraft", "A116.LazimData", "A116.Malumat",
+  "A116.MaqayisData", "A116.NaqlData", "A116.Qarar", "A116.QarinaData", "A116.Qism", "A116.Recovery",
+  "A116.Silsila", "A116.Stages", "A116.Tadwir", "A116.Tanith", "A116.TashkilData", "A116.TawafiqMasfufaData",
+  "A116.WadData",
   "Aql.Qaida", "Aql.WaqiRibtJadwal",
   "Dal.Adad", "Dal.AqsamAlism", "Dal.AqsamAllafz", "Dal.Khaliya", "Dal.WaqfSibawayhi",
   "Faahis.SijillMakhtum",
@@ -107,10 +189,109 @@ def bilaWirth : List String := [
   "Nizam.Asas", "Nizam.Damj", "Nizam.Qiyas", "Nizam.WahdatJadwal",
   "SLGE.AwamilTable", "SLGE.Core", "SLGE.MadlulAwwalan", "SLGE.TarkibLit"]
 
+/-! ### فحصُ `bilaWirth` قطعًا
+
+قرارُه الواحد في النواة بلغ 5.7 غ.ب بعد دخول A116 (قيسَ بـ`scripts/qiyas_dhakira.py`، 2026-11-20): مقارنةُ أسماء الملفّات الـ453 نصوصًا بالقائمة.
+فالشطرُ الأوّل قطعٌ من 40 ملفًّا، والثاني قطعٌ من 20 اسمًا، كلُّ قطعةٍ بقرارٍ مستقلّ؛ ويجمعهما `bilaWirth_iff` بنصّه السابق. -/
+
+theorem wirth_0 : ∀ r < 40, 40 * 0 + r < N → (rutba (40 * 0 + r) = 0 ↔ ism (40 * 0 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_1 : ∀ r < 40, 40 * 1 + r < N → (rutba (40 * 1 + r) = 0 ↔ ism (40 * 1 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_2 : ∀ r < 40, 40 * 2 + r < N → (rutba (40 * 2 + r) = 0 ↔ ism (40 * 2 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_3 : ∀ r < 40, 40 * 3 + r < N → (rutba (40 * 3 + r) = 0 ↔ ism (40 * 3 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_4 : ∀ r < 40, 40 * 4 + r < N → (rutba (40 * 4 + r) = 0 ↔ ism (40 * 4 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_5 : ∀ r < 40, 40 * 5 + r < N → (rutba (40 * 5 + r) = 0 ↔ ism (40 * 5 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_6 : ∀ r < 40, 40 * 6 + r < N → (rutba (40 * 6 + r) = 0 ↔ ism (40 * 6 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_7 : ∀ r < 40, 40 * 7 + r < N → (rutba (40 * 7 + r) = 0 ↔ ism (40 * 7 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_8 : ∀ r < 40, 40 * 8 + r < N → (rutba (40 * 8 + r) = 0 ↔ ism (40 * 8 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_9 : ∀ r < 40, 40 * 9 + r < N → (rutba (40 * 9 + r) = 0 ↔ ism (40 * 9 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_10 : ∀ r < 40, 40 * 10 + r < N → (rutba (40 * 10 + r) = 0 ↔ ism (40 * 10 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_11 : ∀ r < 40, 40 * 11 + r < N → (rutba (40 * 11 + r) = 0 ↔ ism (40 * 11 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_12 : ∀ r < 40, 40 * 12 + r < N → (rutba (40 * 12 + r) = 0 ↔ ism (40 * 12 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_13 : ∀ r < 40, 40 * 13 + r < N → (rutba (40 * 13 + r) = 0 ↔ ism (40 * 13 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_14 : ∀ r < 40, 40 * 14 + r < N → (rutba (40 * 14 + r) = 0 ↔ ism (40 * 14 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_15 : ∀ r < 40, 40 * 15 + r < N → (rutba (40 * 15 + r) = 0 ↔ ism (40 * 15 + r) ∈ bilaWirth) := by
+  decide +kernel
+
+theorem aslIsm_0 : ∀ r < 20, 20 * 0 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 0 + r) "" := by
+  decide +kernel
+theorem aslIsm_1 : ∀ r < 20, 20 * 1 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 1 + r) "" := by
+  decide +kernel
+theorem aslIsm_2 : ∀ r < 20, 20 * 2 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 2 + r) "" := by
+  decide +kernel
+theorem aslIsm_3 : ∀ r < 20, 20 * 3 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 3 + r) "" := by
+  decide +kernel
+theorem aslIsm_4 : ∀ r < 20, 20 * 4 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 4 + r) "" := by
+  decide +kernel
+theorem aslIsm_5 : ∀ r < 20, 20 * 5 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 5 + r) "" := by
+  decide +kernel
+theorem aslIsm_6 : ∀ r < 20, 20 * 6 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 6 + r) "" := by
+  decide +kernel
+theorem aslIsm_7 : ∀ r < 20, 20 * 7 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 7 + r) "" := by
+  decide +kernel
+
 /-- **ما لا يرث مسمًّى:** رتبةُ الملفّ صفرٌ إذا وفقط إذا كان اسمُه في `bilaWirth` — على هذا الجدول. فملفٌّ جديدٌ لا يستورد من المشروع
 شيئًا، بعد إعادة توليد الجدول (يفحصها الاختبار)، لا يُبنى معه هذا حتى يُضاف اسمُه. -/
 theorem bilaWirth_iff : (∀ i < N, (rutba i = 0 ↔ ism i ∈ bilaWirth)) ∧ ∀ m ∈ bilaWirth, ∃ i < N, ism i = m := by
-  decide +kernel
+  have hN : N ≤ 40 * 16 := by decide +kernel
+  have hB : bilaWirth.length ≤ 20 * 8 := by decide
+  refine ⟨fun i hi => ?_, fun m hm => ?_⟩
+  · have e : i = 40 * (i / 40) + i % 40 := (Nat.div_add_mod i 40).symm
+    have hk : i / 40 < 16 := by omega
+    have hr : i % 40 < 40 := Nat.mod_lt _ (by decide)
+    rw [e]
+    have key : ∀ k < 16, ∀ r < 40, 40 * k + r < N → (rutba (40 * k + r) = 0 ↔ ism (40 * k + r) ∈ bilaWirth) := by
+      intro k hk
+      match k, hk with
+    | 0, _ => exact wirth_0
+    | 1, _ => exact wirth_1
+    | 2, _ => exact wirth_2
+    | 3, _ => exact wirth_3
+    | 4, _ => exact wirth_4
+    | 5, _ => exact wirth_5
+    | 6, _ => exact wirth_6
+    | 7, _ => exact wirth_7
+    | 8, _ => exact wirth_8
+    | 9, _ => exact wirth_9
+    | 10, _ => exact wirth_10
+    | 11, _ => exact wirth_11
+    | 12, _ => exact wirth_12
+    | 13, _ => exact wirth_13
+    | 14, _ => exact wirth_14
+    | 15, _ => exact wirth_15
+      | _ + 16, h => exact absurd h (by omega)
+    exact key (i / 40) hk (i % 40) hr (by omega)
+  · obtain ⟨j, hj, rfl⟩ := List.getElem_of_mem hm
+    have e : j = 20 * (j / 20) + j % 20 := (Nat.div_add_mod j 20).symm
+    have key : ∀ k < 8, ∀ r < 20, 20 * k + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * k + r) "" := by
+      intro k hk
+      match k, hk with
+    | 0, _ => exact aslIsm_0
+    | 1, _ => exact aslIsm_1
+    | 2, _ => exact aslIsm_2
+    | 3, _ => exact aslIsm_3
+    | 4, _ => exact aslIsm_4
+    | 5, _ => exact aslIsm_5
+    | 6, _ => exact aslIsm_6
+    | 7, _ => exact aslIsm_7
+      | _ + 8, h => exact absurd h (by omega)
+    have := key (j / 20) (by omega) (j % 20) (Nat.mod_lt _ (by decide)) (by omega)
+    rw [← e] at this
+    simpa [List.getD_eq_getElem?_getD, List.getElem?_eq_getElem hj] using this
 
 /-! ## الجيناتُ الحسابيّة -/
 
