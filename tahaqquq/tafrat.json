@@ -9280,5 +9280,23 @@
   "milaf": "Qari/A116Jadwal.lean",
   "min": "      | .ibtida => \"ibtida\" | .wasl p => s!\"wasl:{hn p}\" | .waqf p => s!\"waqf:{hn p}\"",
   "ila": "      | .ibtida => \"ibtida_\" | .wasl p => s!\"wasl:{hn p}\" | .waqf p => s!\"waqf:{hn p}\""
+ },
+ {
+  "ism": "P1644_marja_madd_hala_khamsa",
+  "milaf": "Jisr/MarjaMutabaqa.lean",
+  "min": "  | .v, _ => [4]\n",
+  "ila": "  | .v, _ => [5]\n"
+ },
+ {
+  "ism": "P1645_marja_sukun_bila_madd",
+  "milaf": "Jisr/MarjaMutabaqa.lean",
+  "min": "if p == .sukun then [.v, .c] else [.cv]",
+  "ila": "if p == .sukun then [.c] else [.cv]"
+ },
+ {
+  "ism": "P1646_marja_yuskan_la_yuqaran",
+  "milaf": "Jisr/MarjaMutabaqa.lean",
+  "min": "    | .murakhkhas | .yuskan => kull m a == (qablM m).2\n",
+  "ila": "    | .murakhkhas => kull m a == (qablM m).2\n    | .yuskan => true\n"
  }
 ]

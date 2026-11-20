@@ -78,10 +78,10 @@ jobs:
           python3 -I mudaat/jalb.py "$RUNNER_TEMP/mudaa" | tee jalb_out.txt
           ! grep -q "^مرفوض" jalb_out.txt
 
-      - name: lake build
+      - name: lake build (scripts/bina_amin.sh — يعيد ما قتله نفادُ الذاكرة، ويطبع الذروة)
         run: |
           export PATH="$HOME/.elan/bin:$HOME/.lean/lean-4.34.1-linux/bin:$PATH"
-          lake build
+          bash scripts/bina_amin.sh
 
       - name: audit axioms
         run: |

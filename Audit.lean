@@ -1,5 +1,6 @@
 import A116
 import Jisr.Nabt
+import Jisr.MarjaMutabaqa
 import Dal.Khaliya
 import Dal.AqsamAllafz
 import Madlul.Dalala
@@ -3055,6 +3056,30 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms Nizam.Wiratha.kull_wahda_murakhkhasa
 #print axioms Nizam.Wiratha.rutba_sifr
 #print axioms Nizam.Wiratha.bilaWirth_iff
+#print axioms Nizam.Wiratha.wirth_0
+#print axioms Nizam.Wiratha.wirth_1
+#print axioms Nizam.Wiratha.wirth_2
+#print axioms Nizam.Wiratha.wirth_3
+#print axioms Nizam.Wiratha.wirth_4
+#print axioms Nizam.Wiratha.wirth_5
+#print axioms Nizam.Wiratha.wirth_6
+#print axioms Nizam.Wiratha.wirth_7
+#print axioms Nizam.Wiratha.wirth_8
+#print axioms Nizam.Wiratha.wirth_9
+#print axioms Nizam.Wiratha.wirth_10
+#print axioms Nizam.Wiratha.wirth_11
+#print axioms Nizam.Wiratha.wirth_12
+#print axioms Nizam.Wiratha.wirth_13
+#print axioms Nizam.Wiratha.wirth_14
+#print axioms Nizam.Wiratha.wirth_15
+#print axioms Nizam.Wiratha.aslIsm_0
+#print axioms Nizam.Wiratha.aslIsm_1
+#print axioms Nizam.Wiratha.aslIsm_2
+#print axioms Nizam.Wiratha.aslIsm_3
+#print axioms Nizam.Wiratha.aslIsm_4
+#print axioms Nizam.Wiratha.aslIsm_5
+#print axioms Nizam.Wiratha.aslIsm_6
+#print axioms Nizam.Wiratha.aslIsm_7
 #print axioms Nizam.Wiratha.jinat_khassa
 #print axioms Nizam.Wiratha.jinat_tuwarrath
 #print axioms Nizam.Wiratha.jinat_ratib
@@ -5522,3 +5547,12 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms A116.Wazn.prof_eval
 #print axioms A116.Wazn.thulathi_check
 #print axioms A116.Wazn.waslH_eq
+
+-- MarjaMutabaqa: Jisr/MarjaMutabaqa.lean (المرحلة «ج»)
+#print axioms Jisr.MarjaMutabaqa.ramzA_taqabul
+#print axioms Jisr.MarjaMutabaqa.qablM_qablK
+#print axioms Jisr.MarjaMutabaqa.ibtida_tamm
+#print axioms Jisr.MarjaMutabaqa.wasl_fatha_tamm
+#print axioms Jisr.MarjaMutabaqa.adad_mutabaqa
+#print axioms Jisr.MarjaMutabaqa.khilaf_sinfan
+#print axioms Jisr.MarjaMutabaqa.mawadi_khilaf_alif

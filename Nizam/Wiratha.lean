@@ -189,10 +189,109 @@ def bilaWirth : List String := [
   "Nizam.Asas", "Nizam.Damj", "Nizam.Qiyas", "Nizam.WahdatJadwal",
   "SLGE.AwamilTable", "SLGE.Core", "SLGE.MadlulAwwalan", "SLGE.TarkibLit"]
 
+/-! ### فحصُ `bilaWirth` قطعًا
+
+قرارُه الواحد في النواة بلغ 5.7 غ.ب بعد دخول A116 (قيسَ بـ`scripts/qiyas_dhakira.py`، 2026-11-20): مقارنةُ أسماء الملفّات الـ453 نصوصًا بالقائمة.
+فالشطرُ الأوّل قطعٌ من 40 ملفًّا، والثاني قطعٌ من 20 اسمًا، كلُّ قطعةٍ بقرارٍ مستقلّ؛ ويجمعهما `bilaWirth_iff` بنصّه السابق. -/
+
+theorem wirth_0 : ∀ r < 40, 40 * 0 + r < N → (rutba (40 * 0 + r) = 0 ↔ ism (40 * 0 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_1 : ∀ r < 40, 40 * 1 + r < N → (rutba (40 * 1 + r) = 0 ↔ ism (40 * 1 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_2 : ∀ r < 40, 40 * 2 + r < N → (rutba (40 * 2 + r) = 0 ↔ ism (40 * 2 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_3 : ∀ r < 40, 40 * 3 + r < N → (rutba (40 * 3 + r) = 0 ↔ ism (40 * 3 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_4 : ∀ r < 40, 40 * 4 + r < N → (rutba (40 * 4 + r) = 0 ↔ ism (40 * 4 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_5 : ∀ r < 40, 40 * 5 + r < N → (rutba (40 * 5 + r) = 0 ↔ ism (40 * 5 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_6 : ∀ r < 40, 40 * 6 + r < N → (rutba (40 * 6 + r) = 0 ↔ ism (40 * 6 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_7 : ∀ r < 40, 40 * 7 + r < N → (rutba (40 * 7 + r) = 0 ↔ ism (40 * 7 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_8 : ∀ r < 40, 40 * 8 + r < N → (rutba (40 * 8 + r) = 0 ↔ ism (40 * 8 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_9 : ∀ r < 40, 40 * 9 + r < N → (rutba (40 * 9 + r) = 0 ↔ ism (40 * 9 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_10 : ∀ r < 40, 40 * 10 + r < N → (rutba (40 * 10 + r) = 0 ↔ ism (40 * 10 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_11 : ∀ r < 40, 40 * 11 + r < N → (rutba (40 * 11 + r) = 0 ↔ ism (40 * 11 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_12 : ∀ r < 40, 40 * 12 + r < N → (rutba (40 * 12 + r) = 0 ↔ ism (40 * 12 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_13 : ∀ r < 40, 40 * 13 + r < N → (rutba (40 * 13 + r) = 0 ↔ ism (40 * 13 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_14 : ∀ r < 40, 40 * 14 + r < N → (rutba (40 * 14 + r) = 0 ↔ ism (40 * 14 + r) ∈ bilaWirth) := by
+  decide +kernel
+theorem wirth_15 : ∀ r < 40, 40 * 15 + r < N → (rutba (40 * 15 + r) = 0 ↔ ism (40 * 15 + r) ∈ bilaWirth) := by
+  decide +kernel
+
+theorem aslIsm_0 : ∀ r < 20, 20 * 0 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 0 + r) "" := by
+  decide +kernel
+theorem aslIsm_1 : ∀ r < 20, 20 * 1 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 1 + r) "" := by
+  decide +kernel
+theorem aslIsm_2 : ∀ r < 20, 20 * 2 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 2 + r) "" := by
+  decide +kernel
+theorem aslIsm_3 : ∀ r < 20, 20 * 3 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 3 + r) "" := by
+  decide +kernel
+theorem aslIsm_4 : ∀ r < 20, 20 * 4 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 4 + r) "" := by
+  decide +kernel
+theorem aslIsm_5 : ∀ r < 20, 20 * 5 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 5 + r) "" := by
+  decide +kernel
+theorem aslIsm_6 : ∀ r < 20, 20 * 6 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 6 + r) "" := by
+  decide +kernel
+theorem aslIsm_7 : ∀ r < 20, 20 * 7 + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * 7 + r) "" := by
+  decide +kernel
+
 /-- **ما لا يرث مسمًّى:** رتبةُ الملفّ صفرٌ إذا وفقط إذا كان اسمُه في `bilaWirth` — على هذا الجدول. فملفٌّ جديدٌ لا يستورد من المشروع
 شيئًا، بعد إعادة توليد الجدول (يفحصها الاختبار)، لا يُبنى معه هذا حتى يُضاف اسمُه. -/
 theorem bilaWirth_iff : (∀ i < N, (rutba i = 0 ↔ ism i ∈ bilaWirth)) ∧ ∀ m ∈ bilaWirth, ∃ i < N, ism i = m := by
-  decide +kernel
+  have hN : N ≤ 40 * 16 := by decide +kernel
+  have hB : bilaWirth.length ≤ 20 * 8 := by decide
+  refine ⟨fun i hi => ?_, fun m hm => ?_⟩
+  · have e : i = 40 * (i / 40) + i % 40 := (Nat.div_add_mod i 40).symm
+    have hk : i / 40 < 16 := by omega
+    have hr : i % 40 < 40 := Nat.mod_lt _ (by decide)
+    rw [e]
+    have key : ∀ k < 16, ∀ r < 40, 40 * k + r < N → (rutba (40 * k + r) = 0 ↔ ism (40 * k + r) ∈ bilaWirth) := by
+      intro k hk
+      match k, hk with
+    | 0, _ => exact wirth_0
+    | 1, _ => exact wirth_1
+    | 2, _ => exact wirth_2
+    | 3, _ => exact wirth_3
+    | 4, _ => exact wirth_4
+    | 5, _ => exact wirth_5
+    | 6, _ => exact wirth_6
+    | 7, _ => exact wirth_7
+    | 8, _ => exact wirth_8
+    | 9, _ => exact wirth_9
+    | 10, _ => exact wirth_10
+    | 11, _ => exact wirth_11
+    | 12, _ => exact wirth_12
+    | 13, _ => exact wirth_13
+    | 14, _ => exact wirth_14
+    | 15, _ => exact wirth_15
+      | _ + 16, h => exact absurd h (by omega)
+    exact key (i / 40) hk (i % 40) hr (by omega)
+  · obtain ⟨j, hj, rfl⟩ := List.getElem_of_mem hm
+    have e : j = 20 * (j / 20) + j % 20 := (Nat.div_add_mod j 20).symm
+    have key : ∀ k < 8, ∀ r < 20, 20 * k + r < bilaWirth.length → ∃ i < N, ism i = bilaWirth.getD (20 * k + r) "" := by
+      intro k hk
+      match k, hk with
+    | 0, _ => exact aslIsm_0
+    | 1, _ => exact aslIsm_1
+    | 2, _ => exact aslIsm_2
+    | 3, _ => exact aslIsm_3
+    | 4, _ => exact aslIsm_4
+    | 5, _ => exact aslIsm_5
+    | 6, _ => exact aslIsm_6
+    | 7, _ => exact aslIsm_7
+      | _ + 8, h => exact absurd h (by omega)
+    have := key (j / 20) (by omega) (j % 20) (Nat.mod_lt _ (by decide)) (by omega)
+    rw [← e] at this
+    simpa [List.getD_eq_getElem?_getD, List.getElem?_eq_getElem hj] using this
 
 /-! ## الجيناتُ الحسابيّة -/
 
