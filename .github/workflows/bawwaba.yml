@@ -70,8 +70,14 @@ jobs:
           path: ${{ runner.temp }}/mudaa
           key: mudaa-${{ hashFiles('mudaat/sijill.json', 'mudaat/jalb.py', 'scripts/bina_jadawil_rabt.py', 'shabaka/jadwal_luzum.py') }}
 
-      - name: pandoc (يولّد a1.txt وa2.txt من مودَعَي docx ببصمتيهما المختومتين؛ mudaat/jalb.py)
-        run: sudo apt-get install -y --no-install-recommends pandoc && pandoc --version | head -1
+      - name: pandoc 3.1.3 (يولّد a1.txt وa2.txt من مودَعَي docx ببصمتيهما المختومتين؛ mudaat/jalb.py)
+        # الإصدارُ مثبَّت: pandoc 3.7 (مستودعُ أوبونتو) يُخرج a2.txt ببصمةٍ أخرى (CI على b6967b6، 2026-11-20). والتحقّقُ ببصمة المخرَج
+        # في jalb.py لا ببصمة الحزمة؛ وتُطبع بصمةُ الحزمة للسجلّ.
+        run: |
+          curl -sSfL -o "$RUNNER_TEMP/pandoc.deb" https://github.com/jgm/pandoc/releases/download/3.1.3/pandoc-3.1.3-1-amd64.deb
+          sha256sum "$RUNNER_TEMP/pandoc.deb"
+          sudo dpkg -i "$RUNNER_TEMP/pandoc.deb"
+          pandoc --version | head -1
 
       - name: fetch sealed deposits (mudaat/jalb.py — لا يُكتب إلّا ما طابقت بصمتُه المختومة)
         # أمرُ المالك 2026-11-19 (21:45): «… وانت تجلب كل المطلوب …». الغيابُ (شبكةٌ أو مصدرٌ لا جلبَ له) لا يُفشل الوظيفة: البوّابةُ
