@@ -256,10 +256,16 @@ if hadir:
             tahaqqaq(s["nass"] in satr, f"سندُ {h['id']} ليس في {s['milaf']} س{s['satr']} بحذف البادئة وحدها")
             tahaqqaq(any(a <= s["satr"] <= b for a, b in NITAQ[h["naw"]].get(s["milaf"], [])),
                      f"سندُ {h['id']} خارجَ نطاق نوعه: {s['milaf']} س{s['satr']}")
-    # فاحصُ المؤلّف يقرأ المصادرَ من /home/claude/mudaa_dir مكتوبًا فيه، ويأخذ مسارَ الحالات.
-    r = subprocess.run([sys.executable, "-I", str(D / "fahs_cases.py"), str(D / "cases.json")], capture_output=True, text=True)
-    tahaqqaq(r.returncode == 0, "فاحصُ المؤلّف رفض الحالات: " + (r.stdout + r.stderr)[-400:])
-    ziyada = f"؛ و{nh} سندًا للحالات في أسطرها، وفاحصُ المؤلّف 0"
+    # فاحصُ المؤلّف مجمَّدٌ ببصمته ويقرأ المصادرَ من /home/claude/mudaa_dir مكتوبًا فيه؛ فلا يُشغَّل إلّا إن حضرت هناك ببصماتها، وإلّا
+    # سُمّي (كما في test_nass): في CI تُجلب المودَعاتُ إلى مجلّدٍ آخر، وبحضور a2.txt هناك (2026-11-20) صار الفحصُ يبلغه فيفشل بالمسار.
+    MUTLAQ = pathlib.Path("/home/claude/mudaa_dir")
+    if all((MUTLAQ / f).exists() and sha(MUTLAQ / f) == b for f, b in MASADIR.items()):
+        r = subprocess.run([sys.executable, "-I", str(D / "fahs_cases.py"), str(D / "cases.json")], capture_output=True, text=True)
+        tahaqqaq(r.returncode == 0, "فاحصُ المؤلّف رفض الحالات: " + (r.stdout + r.stderr)[-400:])
+        mualif = "وفاحصُ المؤلّف 0"
+    else:
+        mualif = "وفاحصُ المؤلّف لم يُشغَّل (مسارُ مصادره المطلق في ملفّه المجمَّد غائب)"
+    ziyada = f"؛ و{nh} سندًا للحالات في أسطرها، {mualif}"
 else:
     ziyada = "؛ السندُ لم يُفحص (المودَعات غائبة)"
 
