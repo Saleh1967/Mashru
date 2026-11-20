@@ -76,6 +76,12 @@ MUSHTAQQ = {
     "mithal.tsv": ([], lambda d: [sys.executable, "-I", os.path.join(JADHR, "scripts", "bina_jadawil_rabt.py"), d], lambda d: None),
     # فكُّ ضغط معجم التشكيل كما هو (بايتاتُه بلا تغيير)، ليقرأه وكيلُ `a116-tashkil` في Lean.
     "tashkil_mujam.tsv": (["tashkil_mujam.tsv.gz"], lambda d: [sys.executable, "-I", "-c", FAKK, d], lambda d: None),
+    # نصّا ج1 وج3 كما تقرؤهما أسانيدُ الضوابط (test_sakk، test_athar_dabit، …): `pandoc -t plain --wrap=none` (pandoc 3.1.3) يعيد
+    # بصمتيهما المكتوبتين في تلك الاختبارات بايتًا (قيس 2026-11-20). وpandoc غيرُ حاضرٍ أو بإصدارٍ آخر: «مرفوض» باسمه لا بديلَ له.
+    "a1.txt": (["a1.docx"], lambda d: ["pandoc", "-t", "plain", "--wrap=none", os.path.join(d, "a1.docx"), "-o", os.path.join(d, "a1.txt")],
+               lambda d: None),
+    "a2.txt": (["a2.docx"], lambda d: ["pandoc", "-t", "plain", "--wrap=none", os.path.join(d, "a2.docx"), "-o", os.path.join(d, "a2.txt")],
+               lambda d: None),
 }
 
 
@@ -154,7 +160,12 @@ def main(argv):
             print(f"غائب: {milaf} (أصولُه غائبة: {'، '.join(naqis)})")
             fashal = 1
             continue
-        r = subprocess.run(amr(d), cwd=JADHR, capture_output=True, text=True, env=bia(d))
+        try:
+            r = subprocess.run(amr(d), cwd=JADHR, capture_output=True, text=True, env=bia(d))
+        except FileNotFoundError as e:  # أداةُ التوليد (pandoc) غيرُ حاضرة
+            print(f"مرفوض: {milaf} أداةُ توليده غائبة ({e.filename})")
+            fashal = 1
+            continue
         if not hadir(milaf):
             if os.path.exists(os.path.join(d, milaf)):
                 os.remove(os.path.join(d, milaf))

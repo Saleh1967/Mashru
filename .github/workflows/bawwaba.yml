@@ -70,6 +70,9 @@ jobs:
           path: ${{ runner.temp }}/mudaa
           key: mudaa-${{ hashFiles('mudaat/sijill.json', 'mudaat/jalb.py', 'scripts/bina_jadawil_rabt.py', 'shabaka/jadwal_luzum.py') }}
 
+      - name: pandoc (يولّد a1.txt وa2.txt من مودَعَي docx ببصمتيهما المختومتين؛ mudaat/jalb.py)
+        run: sudo apt-get install -y --no-install-recommends pandoc && pandoc --version | head -1
+
       - name: fetch sealed deposits (mudaat/jalb.py — لا يُكتب إلّا ما طابقت بصمتُه المختومة)
         # أمرُ المالك 2026-11-19 (21:45): «… وانت تجلب كل المطلوب …». الغيابُ (شبكةٌ أو مصدرٌ لا جلبَ له) لا يُفشل الوظيفة: البوّابةُ
         # تسمّي ما لم يُشغَّل؛ أمّا بصمةٌ مخالفة («مرفوض») فتُفشلها هنا.
