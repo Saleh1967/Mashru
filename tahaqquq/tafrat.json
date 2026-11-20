@@ -9298,5 +9298,23 @@
   "milaf": "Jisr/MarjaMutabaqa.lean",
   "min": "    | .murakhkhas | .yuskan => kull m a == (qablM m).2\n",
   "ila": "    | .murakhkhas => kull m a == (qablM m).2\n    | .yuskan => true\n"
+ },
+ {
+  "ism": "P1647_tashkil_yakhtar_awwal",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  | .muhtamal l => s!\"{w}\\t{h}\\tمحتمَل\\t{\" \".intercalate l}\"\n",
+  "ila": "  | .muhtamal l => s!\"{w}\\t{h}\\tمحتمَل\\t{l.headD \"\"}\"\n"
+ },
+ {
+  "ism": "P1648_tashkil_la_hukm_najah",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  | .tashkil => if fihi makhraj \"مودَعٌ غائب\" || fihi makhraj \"\\tلا_حكم\\t\" then .laHukm else .najah\n",
+  "ila": "  | .tashkil => if fihi makhraj \"مودَعٌ غائب\" then .laHukm else .najah\n"
+ },
+ {
+  "ism": "P1649_tashkil_suwar_ghayr_maqsuma",
+  "milaf": "Qari/Mudir.lean",
+  "min": "      | [h, suwar] => some (h, (suwar.splitOn \" \").filter (· ≠ \"\"))\n",
+  "ila": "      | [h, suwar] => some (h, [suwar])\n"
  }
 ]

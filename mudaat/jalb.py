@@ -60,14 +60,22 @@ UKHRA = {
                                          "quranic-corpus-morphology-0.4.txt",
     "MASAQ.csv": ALGHANEM + "MASAQ.csv",
     "quran-simple-enhanced.txt": ALGHANEM + "quran-simple-enhanced.txt",
+    # معجمُ التشكيل في A116 (Alghanem docs/tashkil/PREREG.md يسمّي بصمتَه)؛ خُتم 2026-11-20 بأمر المالك.
+    "tashkil_mujam.tsv.gz": ALGHANEM + "tashkil/mujam.tsv.gz",
 }
 URL = {**{k: RAW + v for k, v in OPENITI.items()}, **{k: HAMIL + v for k, v in MALIK.items()}, **UKHRA}
+
+FAKK = ("import gzip, os, shutil, sys; d = sys.argv[1]\n"
+        "with gzip.open(os.path.join(d, 'tashkil_mujam.tsv.gz')) as i, open(os.path.join(d, 'tashkil_mujam.tsv'), 'wb') as o:\n"
+        "    shutil.copyfileobj(i, o)")
 
 MUSHTAQQ = {
     "luzum_mujam.tsv": (["lisan.txt", "maqayis.txt"], lambda d: [sys.executable, "-I", os.path.join(JADHR, "shabaka", "jadwal_luzum.py")],
                         lambda d: dict(os.environ, MUDAA_DIR=d)),
     "jins.tsv": ([], lambda d: [sys.executable, "-I", os.path.join(JADHR, "scripts", "bina_jadawil_rabt.py"), d], lambda d: None),
     "mithal.tsv": ([], lambda d: [sys.executable, "-I", os.path.join(JADHR, "scripts", "bina_jadawil_rabt.py"), d], lambda d: None),
+    # فكُّ ضغط معجم التشكيل كما هو (بايتاتُه بلا تغيير)، ليقرأه وكيلُ `a116-tashkil` في Lean.
+    "tashkil_mujam.tsv": (["tashkil_mujam.tsv.gz"], lambda d: [sys.executable, "-I", "-c", FAKK, d], lambda d: None),
 }
 
 

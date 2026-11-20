@@ -34,6 +34,7 @@
 -/
 import Nizam.Talab
 import Madlul.NTP.Wasl
+import A116.Tashkil
 
 set_option autoImplicit false
 
@@ -71,6 +72,7 @@ inductive Amr
   | sannif    -- صنّف: معالجُ NTP على شبكته
   | taallam   -- تعلّم: اقتراحُ إيداعٍ لا ختمُه
   | aard      -- اعرض: سجلُّ الأوامر
+  | shakkil   -- شكّل: مرشَّحو الوضع لكلّ كلمةٍ غيرِ مشكولة (A116.Tashkil)، بلا اختيار
   deriving DecidableEq, Repr
 
 /-- ما لا يرخّصه المدير أبدًا: سلطةُ المالك في الجلسة (CLAUDE.md، «السلطة»). -/
@@ -102,6 +104,7 @@ def sijillAwamir : List (String × Fil) :=
    ("صنف", .murakhkhas .sannif),
    ("تعلم", .murakhkhas .taallam),
    ("اعرض", .murakhkhas .aard),
+   ("شكل", .murakhkhas .shakkil),
    ("ادمج", .mahzur .idmaj), ("اختم", .mahzur .ikhtim), ("احذف", .mahzur .ihdhif), ("ادفع", .mahzur .idfa)]
 
 def bahth (w : List Char) : Option Fil := (sijillAwamir.find? (·.1.toList == tajridL (qassAlamat w))).map (·.2)
@@ -246,13 +249,13 @@ theorem taallam_malik (q : Qanat) (n x : String) (e : qarar q n = .tanfidh .taal
 /-! ## ٤. الوكلاءُ والخطّة -/
 
 /-- الوكلاء: تنفيذيّاتُ Mashru القائمة، ومعالجُ NTP والمتعلّمُ في العمليّة نفسها. -/
-inductive Wakil | qari | tarkib | athar | silsila | faahis | faahisSual | muallij | mutaallim | rabt
+inductive Wakil | qari | tarkib | athar | silsila | faahis | faahisSual | muallij | mutaallim | rabt | tashkil
   deriving DecidableEq, Repr
 
 def Wakil.ism : Wakil → String
   | .qari => "qari" | .tarkib => "tarkib" | .athar => "athar" | .silsila => "silsila"
   | .faahis => "faahis" | .faahisSual => "faahis --sual" | .muallij => "NTP.Wasl" | .mutaallim => "mutaallim"
-  | .rabt => "rabt"
+  | .rabt => "rabt" | .tashkil => "A116.Tashkil"
 
 def Wakil.nawAthar : Wakil → Athar
   | .mutaallim => .iqtirah
@@ -275,6 +278,7 @@ def khittaAmr : Amr → String → List Khatwa
   | .sannif, x => [⟨.muallij, tajrid x⟩]
   | .taallam, x => [⟨.athar, x⟩, ⟨.mutaallim, x⟩]
   | .aard, _ => []
+  | .shakkil, x => [⟨.tashkil, x⟩]
 
 def khitta : Qarar → List Khatwa
   | .tanfidh a x => khittaAmr a x
@@ -437,10 +441,63 @@ def natijaKhatwa (w : Wakil) (khuruj : Nat) (makhraj : String) : Natija :=
     else if fihi makhraj "\tمقبول\n" then .najah
     else if fihi makhraj "\tخطأ\n" then .rafd
     else .laHukm
+  | .tashkil => if fihi makhraj "مودَعٌ غائب" || fihi makhraj "\tلا_حكم\t" then .laHukm else .najah
 
 /-- **الخروجُ بغير صفرٍ خطأٌ** أيًّا كان المخرج. -/
 theorem khuruj_khata (w : Wakil) (k : Nat) (s : String) (h : k ≠ 0) : natijaKhatwa w k s = .khata := by
   simp [natijaKhatwa, h]
+
+/-! ## ٥أ. وكيلُ التشكيل: A116 في محرّك الإجابة
+
+أمرُ المالك (2026-11-20، 03:10) على قول البنّاء «A116 isn’t connected to the answering engine yet». فالقارئُ يرفض غيرَ المشكول
+(الدستور م5)، و«شَكِّلْ <النصّ>» يعرض لكلّ كلمةٍ مرشَّحيها من معجم التشكيل المختوم (`tashkil_mujam.tsv`، وضعٌ من
+Alghanem `corpora/tashkil/mujam.tsv.gz`) بـ`A116.Tashkil.tashkil` بلا قيد: صورةٌ واحدة «مرشَّحٌ_واحد»، وأكثرُ «محتمَل» بقائمته
+كلّها، ولا صورة «لا_حكم». ولا يُستبدل بالنصّ شيء: المرشَّحُ الواحد ليس الصورةَ الصحيحة بالضرورة (معيَّنُ A116 يطابق التشكيلَ
+البشريّ المحجوب في 62.04٪ منه، `A116.Tashkil.qiyas`)، فيُعرض مرشَّحًا لا حكمًا. -/
+
+/-- سطرُ الكلمة: الكلمة، وهيكلُها، والحكم، والصور. -/
+def tashkilKalima (mj : A116.Tashkil.Mujam) (w : String) : String :=
+  let h := tajrid w
+  match A116.Tashkil.tashkil mj [] h with
+  | .muayyan f => s!"{w}\t{h}\tمرشَّحٌ_واحد\t{f}"
+  | .muhtamal l => s!"{w}\t{h}\tمحتمَل\t{" ".intercalate l}"
+  | .laHukm => s!"{w}\t{h}\tلا_حكم\t"
+
+/-- مخرجُ الوكيل: سطرٌ لكلّ كلمة. -/
+def tashkilNass (mj : A116.Tashkil.Mujam) (x : String) : String :=
+  String.join ((kalimat x.toList).map fun w => tashkilKalima mj (String.ofList w) ++ "\n")
+
+/-- **لا تشكيلَ بلا وضع:** هيكلٌ لا صورةَ له في المعجم سطرُه «لا_حكم» بلا صورة (من `A116.Tashkil.la_tashkil_bila_wad`). -/
+theorem tashkilKalima_laHukm (mj : A116.Tashkil.Mujam) (w : String)
+    (h : A116.Tashkil.marashshahun mj (tajrid w) = []) :
+    tashkilKalima mj w = s!"{w}\t{tajrid w}\tلا_حكم\t" := by
+  simp [tashkilKalima, A116.Tashkil.la_tashkil_bila_wad mj [] _ h]
+
+/-- **المحتمَلُ يُعرض كلُّه:** إن كان للهيكل أكثرُ من صورةٍ عُرضت صورُه كلُّها بلا اختيار. -/
+theorem tashkilKalima_muhtamal (mj : A116.Tashkil.Mujam) (w : String) (l : List String)
+    (h : A116.Tashkil.tashkil mj [] (tajrid w) = .muhtamal l) :
+    tashkilKalima mj w = s!"{w}\t{tajrid w}\tمحتمَل\t{" ".intercalate l}" := by
+  simp [tashkilKalima, h]
+
+/-- **المرشَّحُ الواحد من المعجم:** صورتُه إحدى صور هيكله (`A116.Tashkil.muayyan_min_mujam`). -/
+theorem tashkilKalima_wahid (mj : A116.Tashkil.Mujam) (w f : String)
+    (h : A116.Tashkil.tashkil mj [] (tajrid w) = .muayyan f) :
+    tashkilKalima mj w = s!"{w}\t{tajrid w}\tمرشَّحٌ_واحد\t{f}" ∧ f ∈ A116.Tashkil.marashshahun mj (tajrid w) :=
+  ⟨by simp [tashkilKalima, h], (A116.Tashkil.muayyan_min_mujam mj [] _ f h).1⟩
+
+/-- **على الشاهد** (`A116.Tashkil.mujam`): «قال» مرشَّحٌ واحد، و«كتب» محتمَلٌ بخمس صور، و«غول» لا حكم؛ ونتيجةُ الخطوة
+«لا حكم» إن كان في النصّ هيكلٌ لا صورةَ له، وإلّا حكمٌ صدر. -/
+theorem tashkil_shahid :
+    tashkilNass A116.Tashkil.mujam "قال كتب" =
+      "قال\tقال\tمرشَّحٌ_واحد\tقَالَ\nكتب\tكتب\tمحتمَل\tكَتَبَ كُتُبٌ كُتُبٍ كُتُبِ كُتِبَ\n" ∧
+    natijaKhatwa .tashkil 0 (tashkilNass A116.Tashkil.mujam "قال كتب") = .najah ∧
+    natijaKhatwa .tashkil 0 (tashkilNass A116.Tashkil.mujam "قال غول") = .laHukm := by
+  decide +kernel
+
+/-- **التشكيلُ قراءة:** خطّةُ «شكّل» خطوةٌ واحدة لوكيل التشكيل، وأثرُه قراءةٌ لا تكتب. -/
+theorem khitta_shakkil (x : String) :
+    (khittaAmr .shakkil x).map (·.wakil) = [.tashkil] ∧ Amr.shakkil.nawAthar = .qiraa ∧ Wakil.tashkil.nawAthar = .qiraa :=
+  ⟨rfl, rfl, rfl⟩
 
 /-! ## ٥ب. لا جوابَ معلَّق
 
@@ -460,16 +517,18 @@ def sababKhatwa : Wakil → Natija → String
   | .rabt, .laHukm => "المودَعاتُ المختومة (luzum_mujam.tsv وjins.tsv وmithal.tsv) غائبة، أو الجملةُ لا حكم في rabt"
   | .faahisSual, .laHukm => "لا ادّعاءَ في المخزن بهذه البادئة"
   | .muallij, .laHukm => "لا عقدةَ لهذا الاسم في شبكة الشاهد، أو لا ترخيصَ إسناديّ"
+  | .tashkil, .laHukm => "معجمُ التشكيل المختوم (tashkil_mujam.tsv) غائب، أو في النصّ هيكلٌ لا صورةَ له فيه (A116.Tashkil.la_tashkil_bila_wad)"
   | _, .laHukm => "معلَّقٌ بأسماء ما لم يُفحص في مخرج الوكيل (لا حكم، لا امتناع)"
 
 /-- ما يرفع ما لم يُحكم فيه. -/
 def ilajKhatwa : Wakil → Natija → String
   | _, .najah => ""
   | _, .khata => "lake build ثمّ أعد البرومبت؛ وإن بقي فالخللُ في الوكيل باسمه"
-  | .qari, .rafd => "أرسل النصَّ مشكولًا شكلًا تامًّا"
+  | .qari, .rafd => "أرسل النصَّ مشكولًا شكلًا تامًّا؛ و«شَكِّلْ <النصّ>» يعرض مرشَّحي الوضع لكلّ كلمة (A116.Tashkil) ولا يختار منها"
   | _, .rafd => "صحّح المدخلَ بما سمّاه المخرج"
   | .rabt, .laHukm => "python3 -I mudaat/jalb.py (يجلب المودَعاتِ ويطابق بصماتها المختومة) ثمّ أعد البرومبت"
   | .faahisSual, .laHukm => "«تَعَلَّمْ <قضيّة>» من قناة المالك: اقتراحٌ يختمه المالك فيدخل المخزن"
+  | .tashkil, .laHukm => "python3 -I mudaat/jalb.py (يجلب معجمَ التشكيل المختوم)؛ وما لا صورةَ له يُرسَل مشكولًا بيد المالك"
   | .muallij, .laHukm => "إيداعُ جنسه بشهوده المستقلّين (بوّابة التواتر) ثمّ ختمُه بإذن المالك"
   | _, .laHukm => "أعد الصياغةَ في مجال الأبواب المبنيّة، أو يُبنى بابُها (hawkama/مدير_الوكلاء.md §٤)"
 
