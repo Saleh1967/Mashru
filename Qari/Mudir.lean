@@ -116,7 +116,7 @@ def khatwa (b : Bia) (nass : String) (k : Khatwa) : IO (Nat × String) := do
       match l.splitOn "\t" with
       | [h, suwar] => some (h, (suwar.splitOn " ").filter (· ≠ ""))
       | _ => none
-    return (0, tashkilNass mj k.hujja)
+    return (0, tashkilJumla mj k.hujja)
   | .rabt =>
     let jadawil := ["luzum_mujam.tsv", "jins.tsv", "mithal.tsv"]
     let mut ghaib : List String := []

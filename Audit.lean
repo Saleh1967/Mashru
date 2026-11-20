@@ -119,6 +119,7 @@ import Nizam.AtharDabit
 import Nizam.AtharQiyas
 import Dal.Tahsil
 import Dal.QiraaTahsil
+import Dal.GhayrMashkul
 import Jisr.Abniya
 import Jisr.AbniyaDabit
 import Jisr.AbniyaQiyas
@@ -2452,6 +2453,20 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms Dal.QiraaTahsil.shahid_rafd_tatwil
 #print axioms Dal.QiraaTahsil.shahid_tatwil_maqta
 #print axioms Dal.QiraaTahsil.shahid_jamaa
+#print axioms Dal.GhayrMashkul.run_khalaya_cons
+#print axioms Dal.GhayrMashkul.qiraat_eq
+#print axioms Dal.GhayrMashkul.qiraa_murakhkhasa
+#print axioms Dal.GhayrMashkul.qiraa_tamma
+#print axioms Dal.GhayrMashkul.hayy_96
+#print axioms Dal.GhayrMashkul.baqiya_akhir
+#print axioms Dal.GhayrMashkul.baqiya_wasat
+#print axioms Dal.GhayrMashkul.Fwaqf_hayy
+#print axioms Dal.GhayrMashkul.baqiya_min_amamiyya
+#print axioms Dal.GhayrMashkul.tadarruj
+#print axioms Dal.GhayrMashkul.kataba_qanun
+#print axioms Dal.GhayrMashkul.qala_alif
+#print axioms Dal.GhayrMashkul.ila_hamza
+#print axioms Dal.GhayrMashkul.kataba_alkitab
 -- أبنيةُ اسمَي الفاعل والمفعول في الألفية (س594–607) والقطر (س358، س365) (Jisr/Abniya.lean): حكمُ صوغ الصيغة للمطلوب ودرجتُه
 #print axioms Jisr.Abniya.ghayr_thulathi_fail
 #print axioms Jisr.Abniya.ghayr_thulathi_mafool
@@ -3270,6 +3285,8 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms Nizam.Mudir.tashkilKalima_wahid
 #print axioms Nizam.Mudir.tashkil_shahid
 #print axioms Nizam.Mudir.khitta_shakkil
+#print axioms Nizam.Mudir.hukmDaraja_sabab
+#print axioms Nizam.Mudir.tashkilJumla_shahid
 #print axioms Nizam.Mudir.la_jawab_muallaq
 #print axioms Nizam.Mudir.rafd_lahu_ilaj
 

@@ -26,6 +26,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import unicodedata
 
 JADHR = pathlib.Path(__file__).resolve().parent.parent
 MUDIR = JADHR / ".lake" / "build" / "bin" / "mudir"
@@ -163,20 +164,42 @@ def main():
     code, out = shaghghil("--qanat", "malik", "أَعْرِبْ كَتَبَ الطَّالِبُ الدَّرْسَ")
     tahaqqaq("- rabt: لا حكم — السبب: المودَعاتُ المختومة" in out and "python3 -I mudaat/jalb.py" in out and " · خروج 0 " in out,
              "٧ rabt بلا مودَع: لا سببَ ولا علاج، أو شُغّل")
-    # ٩: وكيلُ التشكيل (A116.Tashkil، 2026-11-20). بلا معجم: «مودَعٌ غائب» وسببٌ وعلاج. وبمعجمٍ صغيرٍ مكتوبٍ باليد هنا (لا من
-    # المودَع ولا من الشيفرة): «كتب» محتمَلٌ بصورتيه كلتيهما بترتيبهما، و«قال» مرشَّحٌ واحد، و«غول» لا حكم؛ ولا يُكتب في النصّ شيء.
+    # ٩: وكيلُ التشكيل — غيرُ المشكول بالدرجات الثلاث (Dal.GhayrMashkul، أمرُ المالك 2026-11-20، 11:42). بلا معجم: «مودَعٌ غائب»
+    # وسببٌ وعلاج. وبمعجمٍ صغيرٍ مكتوبٍ باليد هنا (لا من المودَع ولا من الشيفرة)، والتوقّعاتُ من القانون بيد البنّاء:
+    # - «قال» وحدها: الألفُ مدٌّ بعد فتحةٍ لا غير، فالقافُ مفتوحة؛ واللامُ بحالاتها الأربع أو مضعَّفةً بحركاتها الثلاث، والوقفُ يقبل كلَّها: 7 ← 7،
+    #   وفي المعجم «قَالَ» وحدها.
+    # - «كتب الطالب»: «الطالب» تتّصل بما قبلها بلا حدّ (همزةُ الوصل تسقط، ولامُها مدغمةٌ في الطاء المضعَّفة)، فالباءُ الساكنة قبلها ساكنان؛
+    #   والمنوَّنُ «كُتُبٌ» في الوصل نونُه خليّة فلا يوافق الهيكل؛ فـ«كتب» «كَتَبَ» وحدها في الوضع، و«الطالب» «الطَّالِبُ».
+    # - «قاا»: لا ألفَ بعد مدّ، فلا قراءةَ بالقانون: «لا_حكم» وخروج 1. و«غول» لا صورةَ لها: «القانون_وحده» ولا يُردّ.
     code, out = shaghghil("--qanat", "malik", "شَكِّلْ كتب")
     tahaqqaq(code == 1 and "مودَعٌ غائب" in out and "- A116.Tashkil: لا حكم — السبب: معجمُ التشكيل المختوم" in out
              and "python3 -I mudaat/jalb.py" in out, f"٩ التشكيل بلا معجم: خروج {code}")
     with tempfile.TemporaryDirectory() as d:
-        pathlib.Path(d, "tashkil_mujam.tsv").write_text("قال\tقَالَ\nكتب\tكَتَبَ كُتُبٌ\n", encoding="utf-8")
+        pathlib.Path(d, "tashkil_mujam.tsv").write_text("قال\tقَالَ\nكتب\tكَتَبَ كُتُبٌ\nالطالب\tالطَّالِبُ\n", encoding="utf-8")
         bia = dict(os.environ, MUDAA_DIR=d)
-        code, out = shaghghil("--qanat", "malik", "شَكِّلْ قال كتب", bia=bia)
-        tahaqqaq(code == 0 and "قال\tقال\tمرشَّحٌ_واحد\tقَالَ\n" in out and "كتب\tكتب\tمحتمَل\tكَتَبَ كُتُبٌ\n" in out
-                 and "النتيجة الجامعة: حكمٌ صدر" in out, f"٩ التشكيل بمعجم: خروج {code}")
-        code, out = shaghghil("--qanat", "malik", "شَكِّلْ قَالَ غول", bia=bia)
-        tahaqqaq(code == 1 and "قَالَ\tقال\tمرشَّحٌ_واحد\tقَالَ\n" in out and "غول\tغول\tلا_حكم" in out.splitlines()
-                 and "النتيجة الجامعة: لا حكم" in out, f"٩ التشكيل بهيكلٍ لا صورةَ له: خروج {code}")
+        code, out = shaghghil("--qanat", "malik", "شَكِّلْ قال", bia=bia)
+        tahaqqaq(code == 0 and "قال\tمرشَّحٌ_واحد\tد1=7 د2=7 د3=1\tقَالَ\t" in out
+                 and "النتيجة الجامعة: حكمٌ صدر" in out, f"٩ التشكيل «قال»: خروج {code}")
+        code, out = shaghghil("--qanat", "malik", "شَكِّلْ كتب الطالب", bia=bia)
+        # المقارنةُ بعد NFC: ترتيبُ الشدّة والحركة في البايتات يختلف بين المصدرين، والحرفُ هو هو.
+        N = lambda x: unicodedata.normalize("NFC", x)
+        sk, st = [N(x) for x in satr(out, "كتب\t").split("\t")], [N(x) for x in satr(out, "الطالب\t").split("\t")]
+        tahaqqaq(code == 0 and sk[1] == N("مرشَّحٌ_واحد") and sk[3] == N("كَتَبَ") and st[1] == N("مرشَّحٌ_واحد")
+                 and st[3] == N("الطَّالِبُ") and N("بْ") not in sk[4], f"٩ التشكيل «كتب الطالب»: خروج {code}، {sk[:4]}، {st[:4]}")
+        # «كتب قال»: بعد «كتب» حدٌّ فـ«كُتُبْ» جائزةٌ بالقانون؛ لكنّ «كُتُبٌ» في الوصل نونُه خليّة، فلا توافق «كتب» غيرَ الأخيرة: «كَتَبَ» وحدها.
+        code, out = shaghghil("--qanat", "malik", "شَكِّلْ كتب قال", bia=bia)
+        sk = [N(x) for x in satr(out, "كتب\t").split("\t")]
+        tahaqqaq(code == 0 and sk[1] == N("مرشَّحٌ_واحد") and sk[3] == N("كَتَبَ") and N("بْ") in sk[4],
+                 f"٩ التشكيل «كتب قال»: خروج {code}، {sk[:4]}")
+        # ومنفردتين: «غول» لا صورةَ لها فـ«القانون_وحده» ولا يُردّ؛ و«قاا» لا قراءةَ لها. وفي جملةٍ واحدةٍ يُردّ الاثنان: الدرجةُ الثانية
+        # قراءةٌ تامّةٌ للجملة كلّها، ولا قراءةَ تامّةً فيها «قاا».
+        code, out = shaghghil("--qanat", "malik", "شَكِّلْ غول", bia=bia)
+        tahaqqaq(code == 0 and satr(out, "غول\t").startswith("غول\tالقانون_وحده\t"), f"٩ التشكيل «غول»: خروج {code}")
+        code, out = shaghghil("--qanat", "malik", "شَكِّلْ غول قاا", bia=bia)
+        tahaqqaq(code == 1 and satr(out, "غول\t").startswith("غول\tلا_حكم\t") and satr(out, "قاا\t").startswith("قاا\tلا_حكم\t")
+                 and "النتيجة الجامعة: لا حكم" in out, f"٩ التشكيل «غول قاا»: خروج {code}")
+        code, out = shaghghil("--qanat", "malik", "شَكِّلْ كتب x", bia=bia)
+        tahaqqaq(code == 1 and "كتب x\tلا_حكم\t«x» ليس حرفًا من الحوامل" in out, f"٩ التشكيل بحرفٍ غريب: خروج {code}")
     # ٨: بالمودَعات المختومة إن حضرت في MUDAA_DIR البيئة (فحصٌ بالمودَع بلا طفرة): الإعرابُ كاملٌ بـrabt
     M = os.environ.get("MUDAA_DIR")
     if M and all(os.path.exists(os.path.join(M, n)) for n in ("luzum_mujam.tsv", "jins.tsv", "mithal.tsv")):

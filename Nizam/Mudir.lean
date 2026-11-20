@@ -35,6 +35,7 @@
 import Nizam.Talab
 import Madlul.NTP.Wasl
 import A116.Tashkil
+import Dal.GhayrMashkul
 
 set_option autoImplicit false
 
@@ -494,6 +495,47 @@ theorem tashkil_shahid :
     natijaKhatwa .tashkil 0 (tashkilNass A116.Tashkil.mujam "قال غول") = .laHukm := by
   decide +kernel
 
+/-! ### غيرُ المشكول بالدرجات الثلاث (`Dal.GhayrMashkul`؛ أمرُ المالك 2026-11-20، 11:42)
+
+«شَكِّلْ» يقرأ الجملةَ غيرَ المشكولة كلَّها: كلُّ حرفٍ قيمةٌ من الـ116، والقانونُ (آلةُ δ) يربطه بما قبله وما بعده، والدرجاتُ تتدرّج:
+الأولى ما بلغته الجملةُ قبل الكلمة، والثانية ما يُستكمل منه بعدها إلى الوقف، والثالثة ما له صورةٌ في المعجم. وسطرُ الكلمة:
+الكلمة، والحكم، وأعدادُ الدرجات، وصورُ الثالثة، وحركاتُ كلّ حرفٍ في الثانية. والحكمُ: «مرشَّحٌ_واحد» أو «محتمَل» في الوضع، أو
+«القانون_وحده» إن لم يكن للباقي صورةٌ في المعجم، أو «لا_حكم» إن لم يبقَ بالقانون شيء. -/
+
+/-- حكمُ الكلمة من أعداد درجتيها الأخيرتين. -/
+def hukmDaraja (d2 d3 : Nat) : String :=
+  if d2 == 0 then "لا_حكم" else if d3 == 1 then "مرشَّحٌ_واحد" else if d3 == 0 then "القانون_وحده" else "محتمَل"
+
+/-- سطرُ الكلمة. -/
+def satrDarajat (d : Dal.GhayrMashkul.Darajat) : String :=
+  let w := String.ofList d.kalima
+  let suwar := " ".intercalate (d.thalitha.map (Dal.GhayrMashkul.nass d.kalima))
+  let harakat := " | ".intercalate ((List.range d.kalima.length).map fun i =>
+    "،".intercalate (Dal.GhayrMashkul.harakatFi d.thaniya d.kalima i))
+  s!"{w}\t{hukmDaraja d.thaniya.length d.thalitha.length}\tد1={d.ula.length} د2={d.thaniya.length} د3={d.thalitha.length}\t{suwar}\t{harakat}\n"
+
+/-- **مخرجُ وكيل التشكيل:** سطرٌ لكلّ كلمة، أو اسمُ ما لم يُقرأ من حروفها «لا_حكم». -/
+def tashkilJumla (mj : A116.Tashkil.Mujam) (x : String) : String :=
+  match Dal.GhayrMashkul.darajatJumla mj (kalimat x.toList) with
+  | .ok ds => String.join (ds.map satrDarajat)
+  | .error e => s!"{x}\tلا_حكم\t{e}\n"
+
+/-- لا «مرشَّح» بلا وضع، ولا قراءةَ إن ردّ القانونُ الجملة (لكلّ عدد). -/
+theorem hukmDaraja_sabab (d2 d3 : Nat) :
+    (hukmDaraja d2 d3 = "لا_حكم" ↔ d2 = 0) ∧ (hukmDaraja d2 d3 = "مرشَّحٌ_واحد" ↔ d2 ≠ 0 ∧ d3 = 1) := by
+  unfold hukmDaraja
+  by_cases h2 : d2 = 0 <;> by_cases h3 : d3 = 1 <;> by_cases h0 : d3 = 0 <;> simp_all <;> decide
+
+/-- **على الشاهد** (`A116.Tashkil.mujam`): «كتب الكتاب» يُقرأ بدرجاته — «كتب» 138 ← 117 ← 3 و«الكتاب» 84 ← 84 ← 3، كلتاهما
+«محتمَل» في الوضع بصوره كلّها، وحركاتُ كلّ حرفٍ في الدرجة الثانية —؛ ونتيجةُ الخطوة حكمٌ صدر؛ وحرفٌ ليس من الحوامل «لا حكم» باسمه. -/
+theorem tashkilJumla_shahid :
+    tashkilJumla A116.Tashkil.mujam "كتب الكتاب" =
+      "كتب\tمحتمَل\tد1=138 د2=117 د3=3\tكَتَبَ كُتُبِ كُتِبَ\tكَ،كُ،كِ | تَ،تُ،تِ،تْ،تَّ،تُّ،تِّ | بَ،بُ،بِ،بَّ،بُّ،بِّ\nالكتاب\tمحتمَل\tد1=84 د2=84 د3=3\tالْكِتَابَ الْكِتَابُ الْكِتَابِ\tا | لْ،ل | كَ،كُ،كِ،كَّ،كُّ،كِّ | تَ،تَّ | ا | بَ،بُ،بِ،بْ،بَّ،بُّ،بِّ\n" ∧
+    natijaKhatwa .tashkil 0 (tashkilJumla A116.Tashkil.mujam "كتب الكتاب") = .najah ∧
+    tashkilJumla A116.Tashkil.mujam "كتب x" = "كتب x\tلا_حكم\t«x» ليس حرفًا من الحوامل\n" ∧
+    natijaKhatwa .tashkil 0 (tashkilJumla A116.Tashkil.mujam "كتب x") = .laHukm := by
+  decide +kernel
+
 /-- **التشكيلُ قراءة:** خطّةُ «شكّل» خطوةٌ واحدة لوكيل التشكيل، وأثرُه قراءةٌ لا تكتب. -/
 theorem khitta_shakkil (x : String) :
     (khittaAmr .shakkil x).map (·.wakil) = [.tashkil] ∧ Amr.shakkil.nawAthar = .qiraa ∧ Wakil.tashkil.nawAthar = .qiraa :=
@@ -517,7 +559,7 @@ def sababKhatwa : Wakil → Natija → String
   | .rabt, .laHukm => "المودَعاتُ المختومة (luzum_mujam.tsv وjins.tsv وmithal.tsv) غائبة، أو الجملةُ لا حكم في rabt"
   | .faahisSual, .laHukm => "لا ادّعاءَ في المخزن بهذه البادئة"
   | .muallij, .laHukm => "لا عقدةَ لهذا الاسم في شبكة الشاهد، أو لا ترخيصَ إسناديّ"
-  | .tashkil, .laHukm => "معجمُ التشكيل المختوم (tashkil_mujam.tsv) غائب، أو في النصّ هيكلٌ لا صورةَ له فيه (A116.Tashkil.la_tashkil_bila_wad)"
+  | .tashkil, .laHukm => "معجمُ التشكيل المختوم (tashkil_mujam.tsv) غائب، أو في النصّ كلمةٌ لا قراءةَ لها بالقانون في الجملة أو حرفٌ ليس من الحوامل («لا_حكم» في سطرها؛ Dal.GhayrMashkul)"
   | _, .laHukm => "معلَّقٌ بأسماء ما لم يُفحص في مخرج الوكيل (لا حكم، لا امتناع)"
 
 /-- ما يرفع ما لم يُحكم فيه. -/
@@ -528,7 +570,7 @@ def ilajKhatwa : Wakil → Natija → String
   | _, .rafd => "صحّح المدخلَ بما سمّاه المخرج"
   | .rabt, .laHukm => "python3 -I mudaat/jalb.py (يجلب المودَعاتِ ويطابق بصماتها المختومة) ثمّ أعد البرومبت"
   | .faahisSual, .laHukm => "«تَعَلَّمْ <قضيّة>» من قناة المالك: اقتراحٌ يختمه المالك فيدخل المخزن"
-  | .tashkil, .laHukm => "python3 -I mudaat/jalb.py (يجلب معجمَ التشكيل المختوم)؛ وما لا صورةَ له يُرسَل مشكولًا بيد المالك"
+  | .tashkil, .laHukm => "python3 -I mudaat/jalb.py (يجلب معجمَ التشكيل المختوم)؛ والكلمةُ التي لا قراءةَ لها تُرسَل مشكولةً أو تُصحَّح كتابتُها"
   | .muallij, .laHukm => "إيداعُ جنسه بشهوده المستقلّين (بوّابة التواتر) ثمّ ختمُه بإذن المالك"
   | _, .laHukm => "أعد الصياغةَ في مجال الأبواب المبنيّة، أو يُبنى بابُها (hawkama/مدير_الوكلاء.md §٤)"
 

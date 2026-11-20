@@ -9316,5 +9316,41 @@
   "milaf": "Qari/Mudir.lean",
   "min": "      | [h, suwar] => some (h, (suwar.splitOn \" \").filter (· ≠ \"\"))\n",
   "ila": "      | [h, suwar] => some (h, [suwar])\n"
+ },
+ {
+  "ism": "P1650_ghayr_mashkul_la_wasl_bila_hadd",
+  "milaf": "Dal/GhayrMashkul.lean",
+  "min": "  | some k => if k.wasl then q else hadd q\n",
+  "ila": "  | some _ => hadd q\n"
+ },
+ {
+  "ism": "P1651_ghayr_mashkul_la_khalf",
+  "milaf": "Dal/GhayrMashkul.lean",
+  "min": "      else (hayya k q).filter fun r => bNext.contains (baad ks i (run q (khalaya r))))).eraseDups\n",
+  "ila": "      else (hayya k q))).eraseDups\n"
+ },
+ {
+  "ism": "P1652_lam_al_bila_tadif",
+  "milaf": "Dal/GhayrMashkul.lean",
+  "min": "      let baad := (mufrad c).map (fun x => (4 * 13 + 3) :: x) ++ (if c == 13 || c == 2 then [] else mudaaf c)\n",
+  "ila": "      let baad := (mufrad c).map (fun x => (4 * 13 + 3) :: x) ++ mufrad c ++ (if c == 13 || c == 2 then [] else mudaaf c)\n"
+ },
+ {
+  "ism": "P1653_alif_awwal_la_hamza",
+  "milaf": "Dal/GhayrMashkul.lean",
+  "min": "      let h ← if ch == 'ا' then .ok (mufrad 0) else harf true ch\n",
+  "ila": "      let h ← harf true ch\n"
+ },
+ {
+  "ism": "P1654_wad_bila_mawdi",
+  "milaf": "Dal/GhayrMashkul.lean",
+  "min": "  let suwar := (hayakil.flatMap fun k => A116.Tashkil.marashshahun mj (String.ofList k)).filterMap (khalayaSura akhir)\n",
+  "ila": "  let suwar := (hayakil.flatMap fun k => A116.Tashkil.marashshahun mj (String.ofList k)).filterMap (khalayaSura true)\n"
+ },
+ {
+  "ism": "P1655_hukm_daraja_wad_sifr",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  if d2 == 0 then \"لا_حكم\" else if d3 == 1 then \"مرشَّحٌ_واحد\" else if d3 == 0 then \"القانون_وحده\" else \"محتمَل\"\n",
+  "ila": "  if d2 == 0 then \"لا_حكم\" else if d3 == 1 then \"مرشَّحٌ_واحد\" else \"محتمَل\"\n"
  }
 ]
