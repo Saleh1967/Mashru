@@ -1,5 +1,5 @@
 {
- "mubarhanat": 2844,
- "tarikh": "2026-11-17",
- "sabab": "2814←2844 بعد مرور البوّابة محلّيًّا على فرع madlul/nawat-tawlid (2026-11-17، فوق d3c73bd): Madlul/Nawat.lean +9، Jisr/Tawlid.lean +15، Jisr/TawlidDabit.lean +2، Jisr/TawlidQiyas.lean +4"
+ "mubarhanat": 5226,
+ "tarikh": "2026-11-21",
+ "sabab": "2844←5226: مخرج `lake env lean Audit.lean` على فرع claude/tawzif-ntp (جلسة 2026-11-21): 5226 سطرًا كلُّها في المسموح — 5211 على main عند f23f635، و15 مبرهنةً جديدة في Madlul/NTP/Mukhassas.lean. كان الحدّ متأخّرًا 2367 مبرهنةً منذ 2026-11-17 فلا يحرس حذفها."
 }
