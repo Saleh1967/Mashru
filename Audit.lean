@@ -156,6 +156,7 @@ import Madlul.NTP.Muallij
 import Madlul.NTP.Wasl
 import Madlul.NTP.Silsila
 import Madlul.NTP.SilsilaMaajim
+import Aql.Muhakat
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -5561,3 +5562,30 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms Jisr.MarjaMutabaqa.adad_mutabaqa
 #print axioms Jisr.MarjaMutabaqa.khilaf_sinfan
 #print axioms Jisr.MarjaMutabaqa.mawadi_khilaf_alif
+#print axioms Aql.Muhakat.saqf_fard
+#print axioms Aql.Muhakat.saqf_madh_dhamm
+#print axioms Aql.Muhakat.saqf_sifa_hiss
+#print axioms Aql.Muhakat.saqf_athar_sifa
+#print axioms Aql.Muhakat.saqf_wujud_hissi
+#print axioms Aql.Muhakat.qati_qanat
+#print axioms Aql.Muhakat.sifa_qati_mutawatir
+#print axioms Aql.Muhakat.siyasa_khana_wahida
+#print axioms Aql.Muhakat.saqf_yuwafiq_martaba
+#print axioms Aql.Muhakat.iltiqa_la_yazid
+#print axioms Aql.Muhakat.iltiqa_comm
+#print axioms Aql.Muhakat.iltiqa_assoc
+#print axioms Aql.Muhakat.foldl_iltiqa_le
+#print axioms Aql.Muhakat.rutba_la_taalu_saqf
+#print axioms Aql.Muhakat.rutba_la_taalu_muqaddima
+#print axioms Aql.Muhakat.sifa_hiss_la_qati
+#print axioms Aql.Muhakat.haqiqa_wujud
+#print axioms Aql.Muhakat.naql_laysa_haqiqa
+#print axioms Aql.Muhakat.siyaj_la_ray_zanni
+#print axioms Aql.Muhakat.siyaj_qati_bila_ray
+#print axioms Aql.Muhakat.siyaj_yabqi_qati
+#print axioms Aql.Muhakat.siyaj_la_fard
+#print axioms Aql.Muhakat.siyaj_yabqi_maaluma
+#print axioms Aql.Muhakat.dafi_la_yughayyir
+#print axioms Aql.Muhakat.madh_dhamm_kharij
+#print axioms Aql.Muhakat.ghayr_madh_dakhil
+#print axioms Aql.Muhakat.shahid_dayn
