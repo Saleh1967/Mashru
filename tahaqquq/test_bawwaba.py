@@ -1318,5 +1318,41 @@ class QismTests(unittest.TestCase):
                 self.assertIn(sabab, uyub)
 
 
+class MahzuratTests(unittest.TestCase):
+    """البند ٢: المحظوراتُ تُرى خارج التعليقات على الحزمة كلّها. التوقّعاتُ مكتوبةٌ باليد من قواعد Lean (التعليقُ الكتليّ
+    متداخل، و`/-` و`--` في سلسلةٍ ليسا تعليقًا)، لا محسوبةٌ بالشفرة. طفرتاها: P1650_strip_ghayr_mutadakhil وP1651_mahzurat_bila_A116."""
+
+    def test_string_opener_does_not_hide_sorry(self):
+        src = 'def s : String := "/-"\ntheorem t : 1 = 2 := sorry\n/-- doc -/\ndef u := 1\n'
+        self.assertRegex(bawwaba.strip_comments(src), r"\bsorry\b")
+
+    def test_string_dashes_do_not_hide_sorry(self):
+        src = 'def s : String := "--" ; theorem t : 1 = 2 := sorry\n'
+        self.assertRegex(bawwaba.strip_comments(src), r"\bsorry\b")
+
+    def test_nested_comment_is_one_comment(self):
+        src = "/- a /- b -/ sorry -/\ndef u := 1\n"
+        self.assertNotRegex(bawwaba.strip_comments(src), r"\bsorry\b")
+        self.assertIn("def u := 1", bawwaba.strip_comments(src))
+
+    def test_line_comment_removed(self):
+        self.assertEqual(bawwaba.strip_comments("def u := 1 -- sorry\n"), "def u := 1 \n")
+
+    def test_scan_covers_A116_and_roots(self):
+        for d in ("A116", "Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari"):
+            self.assertIn(d, bawwaba.MAJALLAT_MAHZURAT)
+        with tempfile.TemporaryDirectory() as d:
+            os.makedirs(os.path.join(d, "A116"))
+            Path(d, "A116", "X.lean").write_text("theorem t : 1 = 2 := sorry\n", encoding="utf-8")
+            Path(d, "Nabt.lean").write_text("axiom a : False\n", encoding="utf-8")
+            report, fails = [], []
+            with patch.object(bawwaba, "ROOT", d), patch.object(bawwaba, "run", return_value=(1, "")):
+                try:
+                    bawwaba.bunud_2_5(report, fails)
+                except Exception:
+                    pass
+            self.assertIn("٢ المحظورات: 2", report)
+
+
 if __name__ == "__main__":
     unittest.main()

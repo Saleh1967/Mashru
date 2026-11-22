@@ -1,0 +1,2241 @@
+{
+ "_": "مولَّدٌ بـ python3 -I scripts/bina_tawzif.py؛ لا يُحرَّر يدويًّا.",
+ "khulasa": {
+  "wahdat": 447,
+  "muwazzafa": 262,
+  "ghayr_muwazzafa": 185,
+  "mudaat": 44,
+  "mudaat_ghayr_mustamala": 3,
+  "mudaat_la_tujlab": 20,
+  "tanfidhiyyat": {
+   "a116-jadwal": 156,
+   "athar": 74,
+   "faahis": 13,
+   "mudir": 92,
+   "nabtBridge": 20,
+   "qanunJadwal": 4,
+   "qari": 62,
+   "rabt": 85,
+   "silsila": 48,
+   "tahsil": 7,
+   "tarkib": 51
+  }
+ },
+ "ghayr_muwazzafa": [
+  "Aql.AdawatMaani",
+  "Aql.AlaqaMajaz",
+  "Aql.Azmina",
+  "Aql.Badiha",
+  "Aql.Isnad",
+  "Aql.Makan",
+  "Aql.Mirsat",
+  "Aql.Naql",
+  "Aql.SababShartMani",
+  "Aql.TashfirAwwaliyyat",
+  "Aql.TashfirAzmina",
+  "Aql.TashfirMakan",
+  "Aql.TashfirMirsat",
+  "Aql.WaqiRibt",
+  "Aql.WaqiRibtJadwal",
+  "Aql.WaqiShawahid",
+  "Dal.AqsamAlism",
+  "Dal.AqsamAllafz",
+  "Dal.Tamthil",
+  "Dal.WaqfSibawayhi",
+  "Dal.WaqfSibawayhiDawabit",
+  "Dal.WaqfSibawayhiQiyas",
+  "Dal.WiladaJadhr",
+  "Dal.WiladaJumla",
+  "Dal.WiladaKalima",
+  "Jisr.Abniya",
+  "Jisr.AbniyaDabit",
+  "Jisr.AbniyaDawabit",
+  "Jisr.AbniyaQiyas",
+  "Jisr.AqsamDalMadlul",
+  "Jisr.BabFa",
+  "Jisr.BabFaDawabit",
+  "Jisr.BabFaQiyas",
+  "Jisr.BabJazaDawabit",
+  "Jisr.BabJazaQiyas",
+  "Jisr.BaqiJaza",
+  "Jisr.BaqiJazaDawabit",
+  "Jisr.BaqiJazaQiyas",
+  "Jisr.Damir",
+  "Jisr.DamirDabit",
+  "Jisr.DamirDawabit",
+  "Jisr.DamirQiyas",
+  "Jisr.HamlJinsDabit",
+  "Jisr.HamlJinsDawabit",
+  "Jisr.HamlJinsQiyas",
+  "Jisr.IbdalAlfiyya",
+  "Jisr.IbdalAlfiyyaDabit",
+  "Jisr.IbdalAlfiyyaDawabit",
+  "Jisr.IbdalAlfiyyaQiyas",
+  "Jisr.Intrubiya",
+  "Jisr.IntrubiyaShahada",
+  "Jisr.Ishara",
+  "Jisr.IsharaDabit",
+  "Jisr.IsharaDawabit",
+  "Jisr.IsharaQiyas",
+  "Jisr.JadwalLuzum",
+  "Jisr.JisrDalUtur",
+  "Jisr.Khabar",
+  "Jisr.KhabarDabit",
+  "Jisr.KhabarDawabit",
+  "Jisr.KhabarQiyas",
+  "Jisr.MajariKalim",
+  "Jisr.MajariKalimDawabit",
+  "Jisr.MajariKalimQiyas",
+  "Jisr.MarjaMutabaqa",
+  "Jisr.Mawsul",
+  "Jisr.MawsulDabit",
+  "Jisr.MawsulDawabit",
+  "Jisr.MawsulQiyas",
+  "Jisr.NafyFil",
+  "Jisr.NafyFilDawabit",
+  "Jisr.NafyFilQiyas",
+  "Jisr.NassItarDabit",
+  "Jisr.NassItarDawabit",
+  "Jisr.NassItarQiyas",
+  "Jisr.NisabAsnaf",
+  "Jisr.QiraaSimat",
+  "Jisr.SakkJumlaDawabit",
+  "Jisr.SakkJumlaQiyas",
+  "Jisr.TabaqatQawaid",
+  "Jisr.TahlilDabit",
+  "Jisr.TahlilDawabit",
+  "Jisr.TahlilQiyas",
+  "Jisr.Tarkib",
+  "Jisr.TartibMamul",
+  "Jisr.TasnifAlism",
+  "Jisr.Tawafuq",
+  "Jisr.TawlidDabit",
+  "Jisr.TawlidDawabit",
+  "Jisr.TawlidQiyas",
+  "Madlul.AqsamAlmadlul",
+  "Madlul.Fard116Shawahid",
+  "Madlul.Ishtirak",
+  "Madlul.IshtirakData",
+  "Madlul.JadwalLuzumNaql",
+  "Madlul.Naht",
+  "Madlul.NahtData",
+  "Madlul.Tarjih",
+  "Madlul.Tashfir",
+  "Madlul.TashfirHawass",
+  "Madlul.TashfirKhawass",
+  "Madlul.TashfirMadda",
+  "Madlul.TashfirNas",
+  "Madlul.TashfirShabaka",
+  "Madlul.TashfirSullam",
+  "Madlul.TasisDalala",
+  "Nabt",
+  "Nabt.AcquiredSyntaxV3",
+  "Nabt.Acquisition",
+  "Nabt.AffixFunctions",
+  "Nabt.AlignedAcquisition",
+  "Nabt.AlignedAcquisitionV2",
+  "Nabt.ArabicCoverage",
+  "Nabt.ArabicInnaFragment",
+  "Nabt.AttestedLexicalLoading",
+  "Nabt.AwamilInventory",
+  "Nabt.AwamilRules",
+  "Nabt.BinaryUnitDomain",
+  "Nabt.BookCoverage",
+  "Nabt.BoundedLaw",
+  "Nabt.ClassicalBoundaryAffixes",
+  "Nabt.ClassicalGemination",
+  "Nabt.ClassicalHamza",
+  "Nabt.ClassicalLanguageEvidence",
+  "Nabt.ClassicalReferenceReadings",
+  "Nabt.ClassicalWeak",
+  "Nabt.ConnectedAcquisitionV3",
+  "Nabt.ConstructionEvidence",
+  "Nabt.Count",
+  "Nabt.EpistemicMeasurement",
+  "Nabt.EvidenceLifecycleV1",
+  "Nabt.FourSlotClosure",
+  "Nabt.ImperativeParadigm",
+  "Nabt.InflectionEvidence",
+  "Nabt.LearnedModel",
+  "Nabt.LearnedModelData",
+  "Nabt.LexicalCatalog",
+  "Nabt.LexicalCompletion",
+  "Nabt.LexicalCompletionCatalog",
+  "Nabt.LexicalDenotation",
+  "Nabt.LexicalGraph",
+  "Nabt.LicensedInference",
+  "Nabt.LinguisticTruth",
+  "Nabt.LisanRules",
+  "Nabt.MantuqMafhum",
+  "Nabt.MaqayisDenotation",
+  "Nabt.MaqayisRules",
+  "Nabt.Morphology",
+  "Nabt.NominalEvidence",
+  "Nabt.NominalPatterns",
+  "Nabt.Obligations",
+  "Nabt.PersonEvidence",
+  "Nabt.PhonologicalModes",
+  "Nabt.ProductiveClauseV1",
+  "Nabt.ProductiveForms",
+  "Nabt.Program",
+  "Nabt.PropertyEvidence",
+  "Nabt.ProsodicUnits",
+  "Nabt.QatrReading",
+  "Nabt.QatrRules",
+  "Nabt.QualifiedInference",
+  "Nabt.ReadingEnumeration",
+  "Nabt.RecursiveLicensedAlgebra",
+  "Nabt.RecursiveSourceBridge",
+  "Nabt.RuleLearning",
+  "Nabt.RuleRouting",
+  "Nabt.Shakhsiyya1Rules",
+  "Nabt.Shakhsiyya3Rules",
+  "Nabt.SibawayhiRules",
+  "Nabt.SourceSemantics",
+  "Nabt.TextEvidence",
+  "Nabt.ThinkingRules",
+  "Nabt.UnitCarrier",
+  "Nabt.VerifiedReading",
+  "Nabt.Words",
+  "Nizam.AtharDabit",
+  "Nizam.AtharDawabit",
+  "Nizam.AtharQiyas",
+  "Nizam.Baqi",
+  "Nizam.Damj",
+  "Nizam.Phi",
+  "Nizam.QawaidB",
+  "Nizam.Qiyas",
+  "Nizam.WahdatJadwal",
+  "Nizam.Wiratha"
+ ],
+ "mudaat_ghayr_mustamala": [
+  "A116_Marja.pdf",
+  "a3.doc",
+  "badiha.docx"
+ ],
+ "mudaat_la_tujlab": [
+  "A116_Marja.pdf",
+  "a3.doc",
+  "ajnas.tsv",
+  "ajnas_jamad.tsv",
+  "alaqat.tsv",
+  "awamil_mia.xlsx",
+  "awwaliyyat.tsv",
+  "azmina.tsv",
+  "hawass.tsv",
+  "isnad.tsv",
+  "jisr_dal.tsv",
+  "makan.tsv",
+  "mirsat.tsv",
+  "nisab_asnaf.tsv",
+  "nizam_fizya.tsv",
+  "nizam_riyadiyyat.tsv",
+  "qawaid.tsv",
+  "ribt_001.tsv",
+  "taarifat.tsv",
+  "waqi_001.tsv"
+ ],
+ "lean": {
+  "A116": [
+   "a116-jadwal"
+  ],
+  "A116.AjnasMukhassas": [
+   "a116-jadwal"
+  ],
+  "A116.Alif": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.AmaliyyaHafiza": [
+   "a116-jadwal"
+  ],
+  "A116.Amil": [
+   "a116-jadwal"
+  ],
+  "A116.Atf": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Awamil": [
+   "a116-jadwal"
+  ],
+  "A116.AwamilCount": [
+   "a116-jadwal"
+  ],
+  "A116.AwamilData": [
+   "a116-jadwal"
+  ],
+  "A116.Baqi": [
+   "a116-jadwal"
+  ],
+  "A116.Bawwabat": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.BawwabatMarsa": [
+   "a116-jadwal"
+  ],
+  "A116.Boundary": [
+   "a116-jadwal"
+  ],
+  "A116.Cells": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Certificate": [
+   "a116-jadwal"
+  ],
+  "A116.ContextDeposit": [
+   "a116-jadwal"
+  ],
+  "A116.ContinueCount": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Count": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Dal": [
+   "a116-jadwal"
+  ],
+  "A116.Dalalat": [
+   "a116-jadwal"
+  ],
+  "A116.Derivation": [
+   "a116-jadwal"
+  ],
+  "A116.Envelope": [
+   "a116-jadwal"
+  ],
+  "A116.Exhaust": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.ExhaustPause": [
+   "a116-jadwal"
+  ],
+  "A116.Fasl": [
+   "a116-jadwal"
+  ],
+  "A116.Fiber": [
+   "a116-jadwal"
+  ],
+  "A116.Field112": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Fold": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Fractal": [
+   "a116-jadwal"
+  ],
+  "A116.FractalData": [
+   "a116-jadwal"
+  ],
+  "A116.FractalHadd": [
+   "a116-jadwal"
+  ],
+  "A116.FractalMushaf": [
+   "a116-jadwal"
+  ],
+  "A116.FractalMushafDef": [
+   "a116-jadwal"
+  ],
+  "A116.FractalTarkib": [
+   "a116-jadwal"
+  ],
+  "A116.FractalTarkibCount": [
+   "a116-jadwal"
+  ],
+  "A116.FractalTarkibData": [
+   "a116-jadwal"
+  ],
+  "A116.Grade": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Hadd": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Hajah": [
+   "a116-jadwal"
+  ],
+  "A116.Hamza": [
+   "a116-jadwal"
+  ],
+  "A116.Haqaiq": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Harf.Khana": [
+   "a116-jadwal"
+  ],
+  "A116.Harf.Maqta": [
+   "a116-jadwal"
+  ],
+  "A116.Harf.Satr": [
+   "a116-jadwal"
+  ],
+  "A116.Harf.Thunai": [
+   "a116-jadwal"
+  ],
+  "A116.HarfBridge.Satr": [
+   "a116-jadwal"
+  ],
+  "A116.HarfBridge.Takafu": [
+   "a116-jadwal"
+  ],
+  "A116.Hasr": [
+   "a116-jadwal"
+  ],
+  "A116.Hudud": [
+   "a116-jadwal"
+  ],
+  "A116.HukmMuwahhad": [
+   "a116-jadwal"
+  ],
+  "A116.Ihala": [
+   "a116-jadwal"
+  ],
+  "A116.IhalaHasr": [
+   "a116-jadwal"
+  ],
+  "A116.Iktisab": [
+   "a116-jadwal"
+  ],
+  "A116.IktisabAqd": [
+   "a116-jadwal"
+  ],
+  "A116.IktisabData": [
+   "a116-jadwal"
+  ],
+  "A116.IktisabHuwiyya": [
+   "a116-jadwal"
+  ],
+  "A116.IktisabHuwiyyaAqd": [
+   "a116-jadwal"
+  ],
+  "A116.IktisabHuwiyyaData": [
+   "a116-jadwal"
+  ],
+  "A116.Ilal": [
+   "a116-jadwal"
+  ],
+  "A116.Iltiqa": [
+   "a116-jadwal"
+  ],
+  "A116.Imla": [
+   "a116-jadwal"
+  ],
+  "A116.Iqtiran": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Ishtiqaq": [
+   "a116-jadwal"
+  ],
+  "A116.Istiqama": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Itar": [
+   "a116-jadwal"
+  ],
+  "A116.Jadwal": [
+   "a116-jadwal"
+  ],
+  "A116.Jisr": [
+   "a116-jadwal"
+  ],
+  "A116.JisrCount": [
+   "a116-jadwal"
+  ],
+  "A116.JisrWazaif": [
+   "a116-jadwal"
+  ],
+  "A116.Junction": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Khawass": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Kraft": [
+   "a116-jadwal"
+  ],
+  "A116.Ladder": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Lazim": [
+   "a116-jadwal"
+  ],
+  "A116.LazimData": [
+   "a116-jadwal"
+  ],
+  "A116.Ledger": [
+   "a116-jadwal"
+  ],
+  "A116.LineEmpty": [
+   "a116-jadwal"
+  ],
+  "A116.Majaz": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Makharij": [
+   "a116-jadwal"
+  ],
+  "A116.MakharijIdgham": [
+   "a116-jadwal"
+  ],
+  "A116.Malumat": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.MalumatData": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.MalumatShawahid": [
+   "a116-jadwal"
+  ],
+  "A116.Mamnu": [
+   "a116-jadwal"
+  ],
+  "A116.Manhaj": [
+   "a116-jadwal"
+  ],
+  "A116.MantuqMafhum": [
+   "a116-jadwal"
+  ],
+  "A116.Maqayis": [
+   "a116-jadwal"
+  ],
+  "A116.MaqayisData": [
+   "a116-jadwal"
+  ],
+  "A116.Marakib": [
+   "a116-jadwal"
+  ],
+  "A116.Marja": [
+   "a116-jadwal"
+  ],
+  "A116.Mizan": [
+   "a116-jadwal"
+  ],
+  "A116.MizanData": [
+   "a116-jadwal"
+  ],
+  "A116.MizanKernel": [
+   "a116-jadwal"
+  ],
+  "A116.Model": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Mudari": [
+   "a116-jadwal"
+  ],
+  "A116.Mufrad": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.NaqdFractal": [
+   "a116-jadwal"
+  ],
+  "A116.Naql": [
+   "a116-jadwal"
+  ],
+  "A116.NaqlData": [
+   "a116-jadwal"
+  ],
+  "A116.Neutral": [
+   "a116-jadwal"
+  ],
+  "A116.Nizam": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.NizamHadd": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.NizamLine": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.NizamTree": [
+   "a116-jadwal"
+  ],
+  "A116.Numbering": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Pause": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.PauseCount": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Qabil": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Qarar": [
+   "a116-jadwal"
+  ],
+  "A116.Qarina": [
+   "a116-jadwal"
+  ],
+  "A116.QarinaData": [
+   "a116-jadwal"
+  ],
+  "A116.QiraaMadlul": [
+   "a116-jadwal"
+  ],
+  "A116.Qism": [
+   "a116-jadwal"
+  ],
+  "A116.QismAwamil": [
+   "a116-jadwal"
+  ],
+  "A116.QismDaraja": [
+   "a116-jadwal"
+  ],
+  "A116.QismKhanat": [
+   "a116-jadwal"
+  ],
+  "A116.Qufl": [
+   "a116-jadwal"
+  ],
+  "A116.Recovery": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Residue": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.RootGrade": [
+   "a116-jadwal"
+  ],
+  "A116.Rubai": [
+   "a116-jadwal"
+  ],
+  "A116.Sawabiq": [
+   "a116-jadwal"
+  ],
+  "A116.Sawt": [
+   "a116-jadwal"
+  ],
+  "A116.Shannon": [
+   "a116-jadwal"
+  ],
+  "A116.Sidq": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.SidqData": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.SidqSirafi": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Sigha": [
+   "a116-jadwal"
+  ],
+  "A116.Sijill": [
+   "a116-jadwal"
+  ],
+  "A116.SijillData": [
+   "a116-jadwal"
+  ],
+  "A116.Silsila": [
+   "a116-jadwal"
+  ],
+  "A116.SilsilaFuru": [
+   "a116-jadwal"
+  ],
+  "A116.SilsilaQurra": [
+   "a116-jadwal"
+  ],
+  "A116.Stages": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Tadwir": [
+   "a116-jadwal"
+  ],
+  "A116.Tanith": [
+   "a116-jadwal"
+  ],
+  "A116.Tarkib": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Tashkil": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.TashkilData": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Tasrif": [
+   "a116-jadwal"
+  ],
+  "A116.Tawafiq": [
+   "a116-jadwal"
+  ],
+  "A116.TawafiqMasfufa": [
+   "a116-jadwal"
+  ],
+  "A116.TawafiqMasfufaData": [
+   "a116-jadwal"
+  ],
+  "A116.Tawrith": [
+   "a116-jadwal"
+  ],
+  "A116.TawrithBit": [
+   "a116-jadwal"
+  ],
+  "A116.TawrithSitta": [
+   "a116-jadwal"
+  ],
+  "A116.Tayy": [
+   "a116-jadwal"
+  ],
+  "A116.Ternary": [
+   "a116-jadwal",
+   "mudir"
+  ],
+  "A116.Umum": [
+   "a116-jadwal"
+  ],
+  "A116.Unicode": [
+   "a116-jadwal"
+  ],
+  "A116.Wad": [
+   "a116-jadwal"
+  ],
+  "A116.WadData": [
+   "a116-jadwal"
+  ],
+  "A116.WahdaMuqarana": [
+   "a116-jadwal"
+  ],
+  "A116.Wazn": [
+   "a116-jadwal"
+  ],
+  "A116.Zawaid": [
+   "a116-jadwal"
+  ],
+  "Aql.AdawatMaani": [],
+  "Aql.AlaqaMajaz": [],
+  "Aql.Aqliyya": [
+   "athar",
+   "faahis",
+   "mudir",
+   "nabtBridge",
+   "qari",
+   "rabt"
+  ],
+  "Aql.Awwaliyyat": [
+   "athar",
+   "rabt"
+  ],
+  "Aql.Azmina": [],
+  "Aql.Badiha": [],
+  "Aql.Idaa": [
+   "athar",
+   "faahis",
+   "nabtBridge",
+   "qari",
+   "rabt"
+  ],
+  "Aql.Isnad": [],
+  "Aql.Makan": [],
+  "Aql.Maratib": [
+   "athar",
+   "faahis",
+   "nabtBridge",
+   "qari",
+   "rabt"
+  ],
+  "Aql.Mawsua": [
+   "athar",
+   "faahis",
+   "nabtBridge",
+   "qari",
+   "rabt"
+  ],
+  "Aql.Mirsat": [],
+  "Aql.Naql": [],
+  "Aql.Qaida": [
+   "athar",
+   "faahis",
+   "mudir",
+   "nabtBridge",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Aql.QawaninDalala": [
+   "athar",
+   "faahis",
+   "nabtBridge",
+   "qari",
+   "rabt"
+  ],
+  "Aql.SababShartMani": [],
+  "Aql.SalamaMaqbul": [
+   "rabt"
+  ],
+  "Aql.SimAql": [
+   "mudir"
+  ],
+  "Aql.TashfirAwwaliyyat": [],
+  "Aql.TashfirAzmina": [],
+  "Aql.TashfirMakan": [],
+  "Aql.TashfirMirsat": [],
+  "Aql.Waqi": [
+   "athar",
+   "faahis",
+   "qari",
+   "rabt"
+  ],
+  "Aql.WaqiJadwal": [
+   "faahis",
+   "qari"
+  ],
+  "Aql.WaqiRibt": [],
+  "Aql.WaqiRibtJadwal": [],
+  "Aql.WaqiShawahid": [],
+  "Dal.Adad": [
+   "nabtBridge"
+  ],
+  "Dal.AqsamAlism": [],
+  "Dal.AqsamAllafz": [],
+  "Dal.Jumla": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Dal.Khaliya": [
+   "athar",
+   "faahis",
+   "mudir",
+   "nabtBridge",
+   "qari",
+   "rabt",
+   "silsila",
+   "tahsil",
+   "tarkib"
+  ],
+  "Dal.Makharij": [
+   "athar",
+   "mudir",
+   "nabtBridge",
+   "qari",
+   "rabt",
+   "silsila",
+   "tahsil",
+   "tarkib"
+  ],
+  "Dal.Qanun": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Dal.QiraaTahsil": [
+   "athar",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Dal.Tahsil": [
+   "athar",
+   "qari",
+   "rabt",
+   "silsila",
+   "tahsil",
+   "tarkib"
+  ],
+  "Dal.Tamthil": [],
+  "Dal.WaqfSibawayhi": [],
+  "Dal.WaqfSibawayhiDawabit": [],
+  "Dal.WaqfSibawayhiQiyas": [],
+  "Dal.WiladaJadhr": [],
+  "Dal.WiladaJumla": [],
+  "Dal.WiladaKalima": [],
+  "Faahis.Lib": [
+   "faahis",
+   "qari"
+  ],
+  "Faahis.Main": [
+   "faahis"
+  ],
+  "Faahis.SijillMakhtum": [
+   "faahis",
+   "qari"
+  ],
+  "Jisr.Abniya": [],
+  "Jisr.AbniyaDabit": [],
+  "Jisr.AbniyaDawabit": [],
+  "Jisr.AbniyaQiyas": [],
+  "Jisr.AqsamAwamil": [
+   "athar",
+   "rabt"
+  ],
+  "Jisr.AqsamDalMadlul": [],
+  "Jisr.Awamil": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Jisr.AwamilJadwal": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Jisr.AwamilUslub": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Jisr.BabFa": [],
+  "Jisr.BabFaDawabit": [],
+  "Jisr.BabFaQiyas": [],
+  "Jisr.BabJaza": [
+   "athar",
+   "rabt"
+  ],
+  "Jisr.BabJazaDawabit": [],
+  "Jisr.BabJazaQiyas": [],
+  "Jisr.BaqiJaza": [],
+  "Jisr.BaqiJazaDawabit": [],
+  "Jisr.BaqiJazaQiyas": [],
+  "Jisr.Damir": [],
+  "Jisr.DamirDabit": [],
+  "Jisr.DamirDawabit": [],
+  "Jisr.DamirQiyas": [],
+  "Jisr.HamlJinsDabit": [],
+  "Jisr.HamlJinsDawabit": [],
+  "Jisr.HamlJinsQiyas": [],
+  "Jisr.IbdalAlfiyya": [],
+  "Jisr.IbdalAlfiyyaDabit": [],
+  "Jisr.IbdalAlfiyyaDawabit": [],
+  "Jisr.IbdalAlfiyyaQiyas": [],
+  "Jisr.Ikhbar": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Jisr.Intrubiya": [],
+  "Jisr.IntrubiyaShahada": [],
+  "Jisr.Iqtiran": [
+   "qari"
+  ],
+  "Jisr.Ishara": [],
+  "Jisr.IsharaDabit": [],
+  "Jisr.IsharaDawabit": [],
+  "Jisr.IsharaQiyas": [],
+  "Jisr.JadwalLuzum": [],
+  "Jisr.JisrDal": [
+   "athar",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Jisr.JisrDalUtur": [],
+  "Jisr.Khabar": [],
+  "Jisr.KhabarDabit": [],
+  "Jisr.KhabarDawabit": [],
+  "Jisr.KhabarQiyas": [],
+  "Jisr.KhulasaIkhbar": [
+   "athar",
+   "rabt"
+  ],
+  "Jisr.MajariKalim": [],
+  "Jisr.MajariKalimDawabit": [],
+  "Jisr.MajariKalimQiyas": [],
+  "Jisr.MantuqMafhum": [
+   "athar",
+   "rabt"
+  ],
+  "Jisr.MarjaMutabaqa": [],
+  "Jisr.Mawsul": [],
+  "Jisr.MawsulDabit": [],
+  "Jisr.MawsulDawabit": [],
+  "Jisr.MawsulQiyas": [],
+  "Jisr.Mulhaqat": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Jisr.Nabt": [
+   "nabtBridge"
+  ],
+  "Jisr.NabtExport": [
+   "nabtBridge"
+  ],
+  "Jisr.NafyFil": [],
+  "Jisr.NafyFilDawabit": [],
+  "Jisr.NafyFilQiyas": [],
+  "Jisr.NassItar": [
+   "athar",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Jisr.NassItarDabit": [],
+  "Jisr.NassItarDawabit": [],
+  "Jisr.NassItarQiyas": [],
+  "Jisr.Nisab": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Jisr.NisabAsnaf": [],
+  "Jisr.QabiliyyaJins": [
+   "mudir",
+   "rabt"
+  ],
+  "Jisr.QawaidJadwal": [
+   "athar",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Jisr.QawaidSitta": [
+   "athar",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Jisr.QaydMafhum": [
+   "athar",
+   "rabt"
+  ],
+  "Jisr.QiraaSimat": [],
+  "Jisr.SakkJumla": [
+   "athar",
+   "rabt"
+  ],
+  "Jisr.SakkJumlaDawabit": [],
+  "Jisr.SakkJumlaQiyas": [],
+  "Jisr.TabaqatQawaid": [],
+  "Jisr.Tahlil": [
+   "rabt",
+   "tarkib"
+  ],
+  "Jisr.TahlilDabit": [],
+  "Jisr.TahlilDawabit": [],
+  "Jisr.TahlilQiyas": [],
+  "Jisr.Tarkib": [],
+  "Jisr.TartibMamul": [],
+  "Jisr.TasnifAlism": [],
+  "Jisr.Tawafuq": [],
+  "Jisr.Tawlid": [
+   "rabt"
+  ],
+  "Jisr.TawlidDabit": [],
+  "Jisr.TawlidDawabit": [],
+  "Jisr.TawlidQiyas": [],
+  "Jisr.Utur": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Madlul.AqsamAlmadlul": [],
+  "Madlul.Dalala": [
+   "athar",
+   "faahis",
+   "nabtBridge",
+   "qari",
+   "rabt"
+  ],
+  "Madlul.Fard116": [
+   "mudir",
+   "rabt",
+   "tarkib"
+  ],
+  "Madlul.Fard116Data": [
+   "mudir",
+   "rabt",
+   "tarkib"
+  ],
+  "Madlul.Fard116Shawahid": [],
+  "Madlul.Hawass": [
+   "athar",
+   "rabt"
+  ],
+  "Madlul.Ishtirak": [],
+  "Madlul.IshtirakData": [],
+  "Madlul.JadwalLuzum": [
+   "rabt"
+  ],
+  "Madlul.JadwalLuzumData": [
+   "qari",
+   "rabt"
+  ],
+  "Madlul.JadwalLuzumNaql": [],
+  "Madlul.JadwalLuzumNaw": [
+   "qari",
+   "rabt"
+  ],
+  "Madlul.Jamad": [
+   "athar",
+   "rabt"
+  ],
+  "Madlul.NTP.Muallij": [
+   "mudir"
+  ],
+  "Madlul.NTP.Mukhassas": [
+   "mudir"
+  ],
+  "Madlul.NTP.Silsila": [
+   "mudir"
+  ],
+  "Madlul.NTP.SilsilaMaajim": [
+   "mudir"
+  ],
+  "Madlul.NTP.Wasl": [
+   "mudir"
+  ],
+  "Madlul.Naht": [],
+  "Madlul.NahtData": [],
+  "Madlul.Nawat": [
+   "rabt"
+  ],
+  "Madlul.Shabaka": [
+   "athar",
+   "rabt"
+  ],
+  "Madlul.Tarjih": [],
+  "Madlul.Tashfir": [],
+  "Madlul.TashfirHawass": [],
+  "Madlul.TashfirKhawass": [],
+  "Madlul.TashfirMadda": [],
+  "Madlul.TashfirNas": [],
+  "Madlul.TashfirShabaka": [],
+  "Madlul.TashfirSullam": [],
+  "Madlul.TasisDalala": [],
+  "Madlul.Tayin": [
+   "athar",
+   "mudir",
+   "rabt"
+  ],
+  "Madlul.Wiratha": [
+   "athar",
+   "mudir",
+   "rabt"
+  ],
+  "Nabt": [],
+  "Nabt.AcquiredSyntaxV3": [],
+  "Nabt.Acquisition": [],
+  "Nabt.AffixFunctions": [],
+  "Nabt.AlignedAcquisition": [],
+  "Nabt.AlignedAcquisitionV2": [],
+  "Nabt.ArabicCoverage": [],
+  "Nabt.ArabicInnaFragment": [],
+  "Nabt.ArabicReading": [
+   "athar",
+   "rabt"
+  ],
+  "Nabt.AttestedLexicalLoading": [],
+  "Nabt.AwamilInventory": [],
+  "Nabt.AwamilRules": [],
+  "Nabt.BinaryUnitDomain": [],
+  "Nabt.BookCoverage": [],
+  "Nabt.BoundedLaw": [],
+  "Nabt.Bridges": [
+   "nabtBridge"
+  ],
+  "Nabt.Cell": [
+   "athar",
+   "nabtBridge",
+   "qanunJadwal",
+   "rabt"
+  ],
+  "Nabt.ClassicalBoundaryAffixes": [],
+  "Nabt.ClassicalGemination": [],
+  "Nabt.ClassicalHamza": [],
+  "Nabt.ClassicalLanguageEvidence": [],
+  "Nabt.ClassicalReferenceReadings": [],
+  "Nabt.ClassicalWeak": [],
+  "Nabt.ConnectedAcquisitionV3": [],
+  "Nabt.ConstructionEvidence": [],
+  "Nabt.Count": [],
+  "Nabt.Derivation": [
+   "athar",
+   "nabtBridge",
+   "qari",
+   "rabt",
+   "silsila",
+   "tahsil",
+   "tarkib"
+  ],
+  "Nabt.DiscourseEvidence": [
+   "athar",
+   "rabt"
+  ],
+  "Nabt.EpistemicMeasurement": [],
+  "Nabt.EvidenceLifecycleV1": [],
+  "Nabt.FourSlotClosure": [],
+  "Nabt.Governors": [
+   "athar",
+   "rabt"
+  ],
+  "Nabt.ImperativeParadigm": [],
+  "Nabt.InflectionEvidence": [],
+  "Nabt.Law": [
+   "qanunJadwal"
+  ],
+  "Nabt.LearnedModel": [],
+  "Nabt.LearnedModelData": [],
+  "Nabt.LexicalCatalog": [],
+  "Nabt.LexicalCompletion": [],
+  "Nabt.LexicalCompletionCatalog": [],
+  "Nabt.LexicalDenotation": [],
+  "Nabt.LexicalGraph": [],
+  "Nabt.LicensedDerivation": [
+   "nabtBridge"
+  ],
+  "Nabt.LicensedInference": [],
+  "Nabt.LinguisticTruth": [],
+  "Nabt.LisanRules": [],
+  "Nabt.MantuqMafhum": [],
+  "Nabt.MaqayisDenotation": [],
+  "Nabt.MaqayisRules": [],
+  "Nabt.Morphology": [],
+  "Nabt.NominalEvidence": [],
+  "Nabt.NominalPatterns": [],
+  "Nabt.Obligations": [],
+  "Nabt.PersonEvidence": [],
+  "Nabt.PhonologicalModes": [],
+  "Nabt.ProductiveClauseV1": [],
+  "Nabt.ProductiveForms": [],
+  "Nabt.Program": [],
+  "Nabt.PropertyEvidence": [],
+  "Nabt.ProsodicUnits": [],
+  "Nabt.QatrReading": [],
+  "Nabt.QatrRules": [],
+  "Nabt.QualifiedInference": [],
+  "Nabt.RationalInquiry": [
+   "nabtBridge"
+  ],
+  "Nabt.ReadingEnumeration": [],
+  "Nabt.RecursiveLicensedAlgebra": [],
+  "Nabt.RecursiveSourceBridge": [],
+  "Nabt.RuleLearning": [],
+  "Nabt.RuleRouting": [],
+  "Nabt.SemanticInference": [
+   "athar",
+   "rabt"
+  ],
+  "Nabt.Sequence": [
+   "athar",
+   "nabtBridge",
+   "rabt"
+  ],
+  "Nabt.Shakhsiyya1Rules": [],
+  "Nabt.Shakhsiyya3Rules": [],
+  "Nabt.SibawayhiRules": [],
+  "Nabt.SourceSemantics": [],
+  "Nabt.TextEvidence": [],
+  "Nabt.ThinkingRules": [],
+  "Nabt.Transition": [
+   "nabtBridge",
+   "qanunJadwal"
+  ],
+  "Nabt.UnitCarrier": [],
+  "Nabt.UnitDiscovery": [
+   "athar",
+   "nabtBridge",
+   "qari",
+   "rabt",
+   "silsila",
+   "tahsil",
+   "tarkib"
+  ],
+  "Nabt.VerifiedReading": [],
+  "Nabt.Words": [],
+  "Nizam.Aqd": [
+   "qari"
+  ],
+  "Nizam.Asas": [
+   "mudir",
+   "qari"
+  ],
+  "Nizam.Athar": [
+   "athar",
+   "rabt"
+  ],
+  "Nizam.AtharDabit": [],
+  "Nizam.AtharDawabit": [],
+  "Nizam.AtharQiyas": [],
+  "Nizam.Baqi": [],
+  "Nizam.Damj": [],
+  "Nizam.Mudir": [
+   "mudir"
+  ],
+  "Nizam.Phi": [],
+  "Nizam.QawaidB": [],
+  "Nizam.Qiyas": [],
+  "Nizam.Rabt": [
+   "rabt"
+  ],
+  "Nizam.Shahada": [
+   "athar",
+   "qari",
+   "rabt",
+   "silsila",
+   "tahsil",
+   "tarkib"
+  ],
+  "Nizam.Silsila": [
+   "athar",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "Nizam.Talab": [
+   "mudir"
+  ],
+  "Nizam.WahdatJadwal": [],
+  "Nizam.Wiratha": [],
+  "SLGE.Awamil": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.AwamilTable": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Bridge": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Category": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Core": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Count": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Hamza": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.HisabSinfi": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Kull": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Ladder": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Ladder2": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Law": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Madlul": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.MadlulAwwalan": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Maqam": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Muwahhad": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Necessity": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Root": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Simat": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Simat2": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Syllable": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Tarkib": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.TarkibExt": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.TarkibLit": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ],
+  "SLGE.Wad": [
+   "athar",
+   "mudir",
+   "qari",
+   "rabt",
+   "silsila",
+   "tarkib"
+  ]
+ },
+ "mudaat": {
+  "mukhassas.txt": {
+   "ism": "المخصص",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "Madlul/NTP/Mukhassas.lean",
+    "Madlul/NTP/SilsilaMaajim.lean",
+    "mudaat/test_idaa.py",
+    "scripts/bina_ajnas_mukhassas.py",
+    "scripts/bina_jadawil_rabt.py",
+    "scripts/bina_ntp_mukhassas.py",
+    "shabaka/mukhassas_shabaka.py",
+    "shabaka/test_shabaka.py",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_ajnas.py",
+    "tahaqquq/test_awwaliyyat.py",
+    "tahaqquq/test_azmina.py",
+    "tahaqquq/test_jamad.py",
+    "tahaqquq/test_ntp_mukhassas.py",
+    "tahaqquq/test_shabaka.py",
+    "tahaqquq/test_tawatur.py"
+   ]
+  },
+  "lisan.txt": {
+   "ism": "لسان العرب",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "Jisr/JadwalLuzum.lean",
+    "Madlul/Fard116Data.lean",
+    "Madlul/NTP/SilsilaMaajim.lean",
+    "Madlul/TasisDalala.lean",
+    "scripts/bina_jadawil_rabt.py",
+    "shabaka/ayyina_jadhr.py",
+    "shabaka/fard116.py",
+    "shabaka/hiss.py",
+    "shabaka/jadwal_luzum.py",
+    "shabaka/naht.py",
+    "shabaka/tarjih.py",
+    "shabaka/tasis_dalala.py",
+    "tahaqquq/test_awwaliyyat.py",
+    "tahaqquq/test_azmina.py",
+    "tahaqquq/test_fard116.py",
+    "tahaqquq/test_hawass.py",
+    "tahaqquq/test_isnad.py",
+    "tahaqquq/test_jamad.py",
+    "tahaqquq/test_luzum.py",
+    "tahaqquq/test_makan.py",
+    "tahaqquq/test_mirsat.py",
+    "tahaqquq/test_shabaka.py",
+    "tahaqquq/test_tasis.py",
+    "tahaqquq/test_tawatur.py"
+   ]
+  },
+  "taj.txt": {
+   "ism": "تاج العروس",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "Madlul/NTP/SilsilaMaajim.lean",
+    "tahaqquq/test_tawatur.py"
+   ]
+  },
+  "maqayis.txt": {
+   "ism": "مقاييس اللغة",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "Jisr/JadwalLuzum.lean",
+    "Madlul/Fard116Data.lean",
+    "Madlul/NTP/SilsilaMaajim.lean",
+    "Madlul/TasisDalala.lean",
+    "shabaka/fard116.py",
+    "shabaka/jadwal_luzum.py",
+    "shabaka/naht.py",
+    "shabaka/tarjih.py",
+    "tahaqquq/test_fard116.py",
+    "tahaqquq/test_luzum.py",
+    "tahaqquq/test_tasis.py",
+    "tahaqquq/test_tawatur.py"
+   ]
+  },
+  "sibawayhi.txt": {
+   "ism": "كتاب سيبويه",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "Dal/WaqfSibawayhi.lean",
+    "Jisr/AqsamAwamil.lean",
+    "Jisr/BabFa.lean",
+    "Jisr/BabJaza.lean",
+    "Jisr/BaqiJaza.lean",
+    "Jisr/MajariKalim.lean",
+    "Jisr/NafyFil.lean",
+    "Jisr/SakkJumla.lean",
+    "tahaqquq/dawabit/athar/fahs_cases.py",
+    "tahaqquq/dawabit/fa/fahs_cases.py",
+    "tahaqquq/dawabit/ibdal/fahs_cases.py",
+    "tahaqquq/dawabit/jaza/fahs_cases.py",
+    "tahaqquq/dawabit/jaza2/fahs_cases.py",
+    "tahaqquq/dawabit/majari/fahs_cases.py",
+    "tahaqquq/dawabit/nafy/fahs_cases.py",
+    "tahaqquq/dawabit/sakk/fahs_cases.py",
+    "tahaqquq/dawabit/waqf/fahs_cases.py",
+    "tahaqquq/test_aqsam.py",
+    "tahaqquq/test_athar_dabit.py",
+    "tahaqquq/test_awwaliyyat.py",
+    "tahaqquq/test_azmina.py",
+    "tahaqquq/test_fa.py",
+    "tahaqquq/test_ibdal.py",
+    "tahaqquq/test_isnad.py",
+    "tahaqquq/test_jaza.py",
+    "tahaqquq/test_jaza2.py",
+    "tahaqquq/test_majari.py",
+    "tahaqquq/test_makan.py",
+    "tahaqquq/test_mirsat.py",
+    "tahaqquq/test_nafy.py",
+    "tahaqquq/test_nisab_asnaf.py",
+    "tahaqquq/test_qawaid.py",
+    "tahaqquq/test_sakk.py",
+    "tahaqquq/test_shabaka.py",
+    "tahaqquq/test_waqf.py"
+   ]
+  },
+  "awamil_mia.xlsx": {
+   "ism": "جدول العوامل المئة (جدول المالك؛ «مئة حسب الجرجاني» بتسميته في الجلسة)",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "scripts/bina_awamil.py",
+    "tahaqquq/test_awamil.py"
+   ]
+  },
+  "qatr.txt": {
+   "ism": "متن قطر الندى",
+   "hala": "مختوم",
+   "naw": "وضع",
+   "yujlab": true,
+   "mustamil": [
+    "Jisr/Abniya.lean",
+    "Jisr/Damir.lean",
+    "Jisr/Ishara.lean",
+    "Jisr/Khabar.lean",
+    "Jisr/KhulasaIkhbar.lean",
+    "Jisr/Mawsul.lean",
+    "Jisr/SakkJumla.lean",
+    "Jisr/TartibMamul.lean",
+    "tahaqquq/dawabit/abniya/fahs_cases.py",
+    "tahaqquq/dawabit/athar/fahs_cases.py",
+    "tahaqquq/dawabit/damir/fahs_cases.py",
+    "tahaqquq/dawabit/ishara/bina_cases.py",
+    "tahaqquq/dawabit/ishara/fahs_cases.py",
+    "tahaqquq/dawabit/khabar/bina_cases.py",
+    "tahaqquq/dawabit/khabar/fahs_cases.py",
+    "tahaqquq/dawabit/khabar/sana_tafrat.py",
+    "tahaqquq/dawabit/mawsul/bina_cases.py",
+    "tahaqquq/dawabit/mawsul/fahs_cases.py",
+    "tahaqquq/dawabit/nass/fahs_cases.py",
+    "tahaqquq/dawabit/sakk/fahs_cases.py",
+    "tahaqquq/dawabit/sual/bina_cases.py",
+    "tahaqquq/dawabit/sual/fahs_cases.py",
+    "tahaqquq/dawabit/tahlil/fahs_cases.py",
+    "tahaqquq/test_abniya.py",
+    "tahaqquq/test_athar_dabit.py",
+    "tahaqquq/test_damir.py",
+    "tahaqquq/test_hawass.py",
+    "tahaqquq/test_ishara.py",
+    "tahaqquq/test_isnad.py",
+    "tahaqquq/test_jisrdal.py",
+    "tahaqquq/test_khabar.py",
+    "tahaqquq/test_makan.py",
+    "tahaqquq/test_mawsul.py",
+    "tahaqquq/test_nass.py",
+    "tahaqquq/test_nisab_asnaf.py",
+    "tahaqquq/test_qawaid.py",
+    "tahaqquq/test_sakk.py",
+    "tahaqquq/test_tahlil.py"
+   ]
+  },
+  "mughni.txt": {
+   "ism": "مغني اللبيب",
+   "hala": "مختوم",
+   "naw": "وضع",
+   "yujlab": true,
+   "mustamil": [
+    "Jisr/AqsamAwamil.lean",
+    "Jisr/SakkJumla.lean",
+    "tahaqquq/dawabit/athar/fahs_cases.py",
+    "tahaqquq/dawabit/sakk/fahs_cases.py",
+    "tahaqquq/test_aqsam.py",
+    "tahaqquq/test_athar_dabit.py",
+    "tahaqquq/test_isnad.py",
+    "tahaqquq/test_makan.py",
+    "tahaqquq/test_sakk.py"
+   ]
+  },
+  "alfiyya.txt": {
+   "ism": "ألفية ابن مالك",
+   "hala": "مختوم",
+   "naw": "وضع",
+   "yujlab": true,
+   "mustamil": [
+    "A116/Mamnu.lean",
+    "A116/Qism.lean",
+    "Jisr/Abniya.lean",
+    "Jisr/AqsamAwamil.lean",
+    "Jisr/Damir.lean",
+    "Jisr/IbdalAlfiyya.lean",
+    "Jisr/Ishara.lean",
+    "Jisr/Khabar.lean",
+    "Jisr/Mawsul.lean",
+    "Jisr/SakkJumla.lean",
+    "tahaqquq/dawabit/abniya/fahs_cases.py",
+    "tahaqquq/dawabit/athar/fahs_cases.py",
+    "tahaqquq/dawabit/damir/fahs_cases.py",
+    "tahaqquq/dawabit/ibdal/fahs_cases.py",
+    "tahaqquq/dawabit/ishara/bina_cases.py",
+    "tahaqquq/dawabit/ishara/fahs_cases.py",
+    "tahaqquq/dawabit/khabar/bina_cases.py",
+    "tahaqquq/dawabit/khabar/fahs_cases.py",
+    "tahaqquq/dawabit/khabar/sana_tafrat.py",
+    "tahaqquq/dawabit/mawsul/bina_cases.py",
+    "tahaqquq/dawabit/mawsul/fahs_cases.py",
+    "tahaqquq/dawabit/nass/fahs_cases.py",
+    "tahaqquq/dawabit/sakk/fahs_cases.py",
+    "tahaqquq/dawabit/sual/bina_cases.py",
+    "tahaqquq/dawabit/sual/fahs_cases.py",
+    "tahaqquq/test_abniya.py",
+    "tahaqquq/test_aqsam.py",
+    "tahaqquq/test_athar_dabit.py",
+    "tahaqquq/test_damir.py",
+    "tahaqquq/test_ibdal.py",
+    "tahaqquq/test_ishara.py",
+    "tahaqquq/test_khabar.py",
+    "tahaqquq/test_mawsul.py",
+    "tahaqquq/test_nass.py",
+    "tahaqquq/test_nisab_asnaf.py",
+    "tahaqquq/test_qawaid.py",
+    "tahaqquq/test_sakk.py",
+    "tahaqquq/test_shabaka.py"
+   ]
+  },
+  "janadani.txt": {
+   "ism": "الجنى الداني في حروف المعاني",
+   "hala": "مختوم",
+   "naw": "وضع",
+   "yujlab": true,
+   "mustamil": [
+    "Jisr/AqsamAwamil.lean",
+    "tahaqquq/test_aqsam.py"
+   ]
+  },
+  "ajnas.tsv": {
+   "ism": "جدول الأجناس — القطعة الأولى",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "A116/AjnasMukhassas.lean",
+    "A116/QiraaMadlul.lean",
+    "Madlul/TashfirKhawass.lean",
+    "Madlul/Tayin.lean",
+    "Madlul/Wiratha.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_ajnas.py",
+    "tahaqquq/test_jamad.py",
+    "tahaqquq/test_shabaka.py"
+   ]
+  },
+  "ajnas_jamad.tsv": {
+   "ism": "جدول الأجناس — القطعة الثانية",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Madlul/Wiratha.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_jamad.py",
+    "tahaqquq/test_shabaka.py"
+   ]
+  },
+  "nizam_fizya.tsv": {
+   "ism": "نظام الفيزياء",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Madlul/Jamad.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_jamad.py"
+   ]
+  },
+  "nizam_riyadiyyat.tsv": {
+   "ism": "نظام الرياضيات",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Madlul/Jamad.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_jamad.py"
+   ]
+  },
+  "alaqat.tsv": {
+   "ism": "جدول العلاقات",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Madlul/Shabaka.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_shabaka.py"
+   ]
+  },
+  "hawass.tsv": {
+   "ism": "جدول الحواسّ الخمس",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Madlul/Hawass.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_hawass.py"
+   ]
+  },
+  "awwaliyyat.tsv": {
+   "ism": "جدول أوّليات العقل",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Aql/Awwaliyyat.lean",
+    "Aql/TashfirAwwaliyyat.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_awwaliyyat.py"
+   ]
+  },
+  "azmina.tsv": {
+   "ism": "جدول الأزمنة",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Aql/Azmina.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_azmina.py"
+   ]
+  },
+  "makan.tsv": {
+   "ism": "جدول التجاور المكانيّ",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Aql/Makan.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_makan.py"
+   ]
+  },
+  "mirsat.tsv": {
+   "ism": "جدول المرساة",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Aql/Mirsat.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_mirsat.py"
+   ]
+  },
+  "isnad.tsv": {
+   "ism": "جدول الرابطة الإسنادية",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Aql/Isnad.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_isnad.py"
+   ]
+  },
+  "jisr_dal.tsv": {
+   "ism": "جدول الجسر إلى الدالّ",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Jisr/JisrDal.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_jisrdal.py"
+   ]
+  },
+  "nisab_asnaf.tsv": {
+   "ism": "جدول النِّسَب الثلاث على الأصناف",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Jisr/NisabAsnaf.lean",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_nisab_asnaf.py"
+   ]
+  },
+  "a1.docx": {
+   "ism": "الشخصية الإسلامية ج1",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "mudaat/test_idaa.py"
+   ]
+  },
+  "a2.docx": {
+   "ism": "الشخصية الإسلامية ج3 (أصول الفقه)",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "Jisr/MantuqMafhum.lean",
+    "Madlul/Tarjih.lean",
+    "mudaat/test_idaa.py",
+    "scripts/tarqim_j3.py",
+    "tahaqquq/test_luzum.py"
+   ]
+  },
+  "a3.doc": {
+   "ism": "التفكير",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": []
+  },
+  "badiha.docx": {
+   "ism": "سرعة البديهة",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": []
+  },
+  "quranic-corpus-morphology-0.4.txt": {
+   "ism": "المدوّنة القرآنية الصرفية QAC 0.4",
+   "hala": "مختوم",
+   "naw": "مرجع-محجوب",
+   "yujlab": true,
+   "mustamil": [
+    "tahaqquq/qiyas_d.py",
+    "tahaqquq/test_qiyas_d.py"
+   ]
+  },
+  "MASAQ.csv": {
+   "ism": "MASAQ 2 (مدوّنة القرآن المحلّلة صرفيًّا ونحويًّا)",
+   "hala": "مختوم",
+   "naw": "مرجع-محجوب",
+   "yujlab": true,
+   "mustamil": [
+    "tahaqquq/qiyas_d.py",
+    "tahaqquq/test_qiyas_d.py"
+   ]
+  },
+  "A116_Marja.pdf": {
+   "ism": "مرجع المالك: القوانين الأربعة على البرج (A116.Marja)",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": []
+  },
+  "qawaid.tsv": {
+   "ism": "جدول القواعد",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": false,
+   "mustamil": [
+    "Jisr/QawaidJadwal.lean",
+    "Jisr/QawaidSitta.lean",
+    "mudaat/test_idaa.py",
+    "scripts/bina_qawaid.py",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_qawaid.py"
+   ]
+  },
+  "waqi_001.tsv": {
+   "ism": "الواقع المختوم — الدفعة الأولى",
+   "hala": "مختوم",
+   "naw": "واقع-مختوم",
+   "yujlab": false,
+   "mustamil": [
+    "Aql/WaqiJadwal.lean",
+    "Aql/WaqiShawahid.lean",
+    "mudaat/test_idaa.py",
+    "scripts/bina_ribt.py",
+    "scripts/bina_taarifat.py",
+    "scripts/bina_waqi.py",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_waqi.py"
+   ]
+  },
+  "taarifat.tsv": {
+   "ism": "جدول التعريفات — القطعة الأولى",
+   "hala": "مختوم",
+   "naw": "وضع",
+   "yujlab": false,
+   "mustamil": [
+    "mudaat/test_idaa.py",
+    "scripts/bina_ribt.py",
+    "scripts/bina_taarifat.py",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_waqi.py"
+   ]
+  },
+  "quran-simple-enhanced.txt": {
+   "ism": "نصّ المصحف (Tanzil، quran-simple-enhanced)",
+   "hala": "مختوم",
+   "naw": "وضع",
+   "yujlab": true,
+   "mustamil": [
+    "mudaat/test_idaa.py",
+    "scripts/qiyas_intrubiya.py",
+    "tahaqquq/test_intrubiya.py",
+    "tahaqquq/test_qiyas_intrubiya.py"
+   ]
+  },
+  "ribt_001.tsv": {
+   "ism": "جدول الربط — القطعة الأولى (المعنى ← قضيّة الواقع)",
+   "hala": "مختوم",
+   "naw": "وضع",
+   "yujlab": false,
+   "mustamil": [
+    "mudaat/test_idaa.py"
+   ]
+  },
+  "luzum_mujam.tsv": {
+   "ism": "جدول اللزوم من شبكة المعاجم",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "Madlul/JadwalLuzumData.lean",
+    "Madlul/TasisDalala.lean",
+    "Nizam/Mudir.lean",
+    "Nizam/Rabt.lean",
+    "Qari/Mudir.lean",
+    "Qari/Rabt.lean",
+    "mudaat/test_idaa.py",
+    "shabaka/bina_luzum_lean.py",
+    "shabaka/jadwal_luzum.py",
+    "shabaka/naht.py",
+    "shabaka/tarjih.py",
+    "shabaka/tasis_dalala.py",
+    "tahaqquq/test_luzum.py",
+    "tahaqquq/test_mudir.py",
+    "tahaqquq/test_tahlil.py"
+   ]
+  },
+  "jins.tsv": {
+   "ism": "جدول الجنس — القطعة الأولى",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "Nizam/Mudir.lean",
+    "Qari/Mudir.lean",
+    "mudaat/test_idaa.py",
+    "scripts/bina_jadawil_rabt.py",
+    "tahaqquq/dawabit/sual/tashghil.py",
+    "tahaqquq/test_mudir.py",
+    "tahaqquq/test_tahlil.py"
+   ]
+  },
+  "mithal.tsv": {
+   "ism": "جدول المثال — القطعة الأولى",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "Nizam/Mudir.lean",
+    "Qari/Mudir.lean",
+    "mudaat/test_idaa.py",
+    "scripts/bina_jadawil_rabt.py",
+    "tahaqquq/dawabit/sual/tashghil.py",
+    "tahaqquq/test_mudir.py",
+    "tahaqquq/test_tahlil.py"
+   ]
+  },
+  "tashkil_mujam.tsv.gz": {
+   "ism": "معجم التشكيل A116",
+   "hala": "مختوم",
+   "naw": "وضع",
+   "yujlab": true,
+   "mustamil": [
+    "mudaat/test_idaa.py"
+   ]
+  },
+  "tashkil_mujam.tsv": {
+   "ism": "معجم التشكيل A116 (مفكوك)",
+   "hala": "مختوم",
+   "naw": "وضع",
+   "yujlab": true,
+   "mustamil": [
+    "Nizam/Mudir.lean",
+    "Qari/Mudir.lean",
+    "mudaat/test_idaa.py",
+    "tahaqquq/test_mudir.py"
+   ]
+  },
+  "a1.txt": {
+   "ism": "الشخصية الإسلامية ج1 — نصُّه (pandoc)",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    ".github/workflows/bawwaba.yml",
+    "Aql/Aqliyya.lean",
+    "Aql/Awwaliyyat.lean",
+    "Jisr/SakkJumla.lean",
+    "Madlul/Hawass.lean",
+    "Madlul/Tayin.lean",
+    "mudaat/test_idaa.py",
+    "tahaqquq/dawabit/sakk/fahs_cases.py",
+    "tahaqquq/test_sakk.py"
+   ]
+  },
+  "a2.txt": {
+   "ism": "الشخصية الإسلامية ج3 (أصول الفقه) — نصُّه (pandoc)",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    ".github/workflows/bawwaba.yml",
+    "Aql/Awwaliyyat.lean",
+    "Aql/Naql.lean",
+    "Aql/SababShartMani.lean",
+    "Aql/SimAql.lean",
+    "Dal/AqsamAlism.lean",
+    "Dal/AqsamAllafz.lean",
+    "Jisr/NisabAsnaf.lean",
+    "Jisr/SakkJumla.lean",
+    "Madlul/JadwalLuzumNaql.lean",
+    "Madlul/Shabaka.lean",
+    "Madlul/TasisDalala.lean",
+    "Madlul/Tayin.lean",
+    "Nizam/Athar.lean",
+    "Qari/Rabt.lean",
+    "mudaat/test_idaa.py",
+    "scripts/tarqim_j3.py",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/dawabit/athar/fahs_cases.py",
+    "tahaqquq/dawabit/sakk/fahs_cases.py",
+    "tahaqquq/test_athar_dabit.py",
+    "tahaqquq/test_sakk.py",
+    "tahaqquq/test_sim_aql.py",
+    "tahaqquq/test_tahlil.py",
+    "tahaqquq/test_tasis.py"
+   ]
+  },
+  "ntp_mukhassas.tsv": {
+   "ism": "شبكة NTP من المخصص",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "Madlul/NTP/Mukhassas.lean",
+    "Nizam/Mudir.lean",
+    "Qari/Mudir.lean",
+    "mudaat/test_idaa.py",
+    "scripts/bina_ntp_mukhassas.py",
+    "tahaqquq/test_ntp_mukhassas.py",
+    "tahaqquq/test_sim_aql.py"
+   ]
+  },
+  "tafkir.txt": {
+   "ism": "التفكير — نصّ المكتبة الشاملة",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "Aql/SimAql.lean",
+    "mudaat/test_idaa.py",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_sim_aql.py"
+   ]
+  }
+ }
+}

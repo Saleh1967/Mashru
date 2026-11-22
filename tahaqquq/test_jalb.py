@@ -51,7 +51,11 @@ def main():
         for f in ("jins.tsv", "mithal.tsv"):
             q = os.path.join(d, f)
             tahaqqaq(os.path.exists(q) and hashlib.sha256(open(q, "rb").read()).hexdigest() == mk[f], f"٤/٥ {f} غيرُ المختوم")
-        tahaqqaq(all(m in out.splitlines()[-2] for m in murashshah) and len(murashshah) == 8, "٦ المرشَّحة الثمانية")
+        # كانت ثمانيةً مرشَّحة، وخُتمت كلُّها بإذن المالك 2026-11-21 (13:57)؛ فلا مرشَّحَ يُذكر، والثمانيةُ في «غائبٌ بلا جلب» بأسمائها.
+        tahaqqaq(murashshah == [] and "مرشَّحةٌ لا تُجلب" not in out, "٦ مرشَّحٌ باقٍ بعد الختم")
+        tahaqqaq(all(f"غائبٌ بلا جلب: {f}" in out for f in ("hawass.tsv", "awwaliyyat.tsv", "azmina.tsv", "makan.tsv", "mirsat.tsv",
+                                                         "isnad.tsv", "jisr_dal.tsv", "nisab_asnaf.tsv")),
+                 "٦ب الثمانيةُ المختومة غائبةٌ بلا جلب")
         tahaqqaq(not [x for x in os.listdir(d) if x.startswith(".jalb_")], "مؤقّتٌ باقٍ في المجلّد")
     tahaqqaq(hashlib.sha256((JADHR / "mudaat/sijill.json").read_bytes()).hexdigest() == qabl, "٦ تغيّر السجلّ")
     if fashal:

@@ -156,6 +156,8 @@ import Madlul.NTP.Muallij
 import Madlul.NTP.Wasl
 import Madlul.NTP.Silsila
 import Madlul.NTP.SilsilaMaajim
+import Madlul.NTP.Mukhassas
+import Aql.SimAql
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -3230,6 +3232,65 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms NTP.SilsilaMaajim.natija
 #print axioms NTP.SilsilaMaajim.adad_arbaa
 #print axioms NTP.SilsilaMaajim.zayt_bi_sijill_la_bi_shajara
+-- Mukhassas: Madlul/NTP/Mukhassas.lean (NTP على شبكة المخصّص المختوم، أمرُ المالك 2026-11-21)
+#print axioms NTP.Mukhassas.masar_awwal
+#print axioms NTP.Mukhassas.masar_tul
+#print axioms NTP.Mukhassas.masar_ab
+#print axioms NTP.Mukhassas.nafsuhu_badil
+#print axioms NTP.Mukhassas.qail_maftuh
+#print axioms NTP.Mukhassas.shuhud_qail
+#print axioms NTP.Mukhassas.akbar_maftuh
+#print axioms NTP.Mukhassas.adadS_maftuh
+#print axioms NTP.Mukhassas.la_yuqbal_bi_shajara
+#print axioms NTP.Mukhassas.length_mutamayyiz_le
+#print axioms NTP.Mukhassas.adad_le_qailun
+#print axioms NTP.Mukhassas.rutba_zann
+#print axioms NTP.Mukhassas.shahid_masar
+#print axioms NTP.Mukhassas.shahid_balja
+#print axioms NTP.Mukhassas.shahid_faza
+-- SimAql: Aql/SimAql.lean (SIM-AQL على «التفكير» وش٣، أمرُ المالك 2026-11-22)
+#print axioms Aql.SimAql.iltiqa_l
+#print axioms Aql.SimAql.iltiqa_r
+#print axioms Aql.SimAql.iltiqa_comm
+#print axioms Aql.SimAql.iltiqaKull_adna
+#print axioms Aql.SimAql.saqf_fard
+#print axioms Aql.SimAql.saqf_takhayyul
+#print axioms Aql.SimAql.saqf_shuur
+#print axioms Aql.SimAql.saqf_athar
+#print axioms Aql.SimAql.saqf_hiss_sifa
+#print axioms Aql.SimAql.saqf_ghayb
+#print axioms Aql.SimAql.saqf_ahad
+#print axioms Aql.SimAql.muwafaqa_martaba
+#print axioms Aql.SimAql.dafi_la_yuaththir
+#print axioms Aql.SimAql.wasm_la_yamnah
+#print axioms Aql.SimAql.think_ok
+#print axioms Aql.SimAql.madh_mamnu
+#print axioms Aql.SimAql.laysa_fikran
+#print axioms Aql.SimAql.fard_takhayyul_shuur
+#print axioms Aql.SimAql.hiss_wahdahu
+#print axioms Aql.SimAql.jazim_wujud
+#print axioms Aql.SimAql.s6_adna
+#print axioms Aql.SimAql.siyaj_qati
+#print axioms Aql.SimAql.siyaj_zanni_qati
+#print axioms Aql.SimAql.siyaj_zanni_yubqi
+#print axioms Aql.SimAql.qati_yaghlib
+#print axioms Aql.SimAql.qatiyyan_taliq
+#print axioms Aql.SimAql.haqiqa_wujud
+#print axioms Aql.SimAql.amiq_ratib
+#print axioms Aql.SimAql.mustanir_amiq
+#print axioms Aql.SimAql.sathi_amiq
+#print axioms Aql.SimAql.iddia_la_yakfi
+#print axioms Aql.SimAql.bila_ghaya_la_jadd
+#print axioms Aql.SimAql.bila_amal_la_jadd
+#print axioms Aql.SimAql.dun_almustawa
+#print axioms Aql.SimAql.khitta_sahiha
+#print axioms Aql.SimAql.siyasi_kamil
+#print axioms Aql.SimAql.siyasi_taliq
+#print axioms Aql.SimAql.shahid_sawt
+#print axioms Aql.SimAql.shahid_sifa_athar
+#print axioms Aql.SimAql.shahid_rai
+#print axioms NTP.Mukhassas.simaql_wujud_jazim
+#print axioms NTP.Mukhassas.simaql_madmun_zann
 -- Mudir: Nizam/Mudir.lean
 #print axioms Nizam.Mudir.bila_maqam_la_qisma
 #print axioms Nizam.Mudir.amr_iff_malik

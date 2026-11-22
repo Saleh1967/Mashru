@@ -93,6 +93,16 @@ def tashghil (b : Bia) (cmd : String) (args : Array String) : IO (Nat × String)
     return (o.exitCode.toNat, o.stdout ++ (if o.stderr.isEmpty then "" else "\n[stderr] " ++ o.stderr))
   catch e => return (127, s!"تعذّر تشغيل الوكيل «{cmd}»: {e}")
 
+/-- يقرأ `ntp_mukhassas.tsv` (scripts/bina_ntp_mukhassas.py): سطرُ jins أو zawj بستّة حقول؛ وما سواه يُترك. -/
+def shabakaMin (t : String) : NTP.Mukhassas.Shabaka :=
+  let asatir := (t.splitOn "\n").map (·.splitOn "\t")
+  { ajnas := asatir.filterMap fun
+      | ["jins", r, a, n, u, m] => some ⟨r.toNat!, if a = "-" then none else some a.toNat!, n, u, m.toNat!⟩
+      | _ => none
+    azwaj := asatir.filterMap fun
+      | ["zawj", r, j, l, q, m] => some ⟨r.toNat!, j.toNat!, l, q, m.toNat!⟩
+      | _ => none }
+
 /-- خطوةٌ واحدة: الوكيلُ وحجّتُه ← (الخروج، المخرج). -/
 def khatwa (b : Bia) (nass : String) (k : Khatwa) : IO (Nat × String) := do
   let sj := "mudaat/sijill.tsv"
@@ -107,6 +117,12 @@ def khatwa (b : Bia) (nass : String) (k : Khatwa) : IO (Nat × String) := do
   | .faahisSual => tashghil b (bin b "faahis") #["--sual", k.hujja, sj, mk]
   | .faahis => tashghil b (bin b "faahis") #[sj, mk]
   | .muallij => return (0, tasnifNTP k.hujja)
+  | .mukhassas =>
+    -- شبكةُ المخصّص المختوم مشتقّةً (mudaat/jalb.py: ntp_mukhassas.tsv)، بدوالّ NTP.Mukhassas المبرهنة.
+    let p := b.mudaa ++ "/ntp_mukhassas.tsv"
+    unless ← System.FilePath.pathExists p do
+      return (0, s!"لا حكم: مودَعٌ غائب في «{b.mudaa}»: ntp_mukhassas.tsv (MUDAA_DIR)")
+    return (0, NTP.Mukhassas.jawab (shabakaMin (← IO.FS.readFile p)) k.hujja)
   | .tashkil =>
     -- معجمُ التشكيل المختوم مفكوكًا (mudaat/jalb.py: tashkil_mujam.tsv)، سطرُه «هيكل⇥صورٌ بمسافة».
     let p := b.mudaa ++ "/tashkil_mujam.tsv"
