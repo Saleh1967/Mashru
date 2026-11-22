@@ -67,6 +67,12 @@ def main():
     jalb = open(os.path.join(ROOT, "mudaat", "jalb.py"), encoding="utf-8").read()
     tahaqqaq('"tafkir.txt": "https://raw.githubusercontent.com/Saleh1967/alghanem-constitution/f75a43b9f4ed3df059f1feb832f48d96e6f846ba/'
              in jalb, "١ لا رابطَ مثبَّتًا في jalb.py")
+    # فحصُ الفاحص بلا مودَع (يجري في وظائف الطفرات وهي بلا MUDAA_DIR): سطران مصنوعان، والمحرَّفُ بكلمةٍ وفي غير سطره يُردّان.
+    sn = {"s": ["ألف باء تاء", "ثاء جيم حاء خاء"]}
+    tahaqqaq(fi_satrih(sn, "s", 2, "ثاء … حاء خاء"), "٢أ الفاحصُ ردّ نقلًا صحيحًا (مصنوع)")
+    tahaqqaq(not fi_satrih(sn, "s", 2, "ثاء … حاء دال"), "٢أ الفاحصُ قبل نقلًا محرَّفًا (مصنوع)")
+    tahaqqaq(not fi_satrih(sn, "s", 1, "ثاء جيم"), "٢أ الفاحصُ قبل نقلًا في غير سطره (مصنوع)")
+    tahaqqaq(not fi_satrih(sn, "s", 2, "خاء … ثاء"), "٢أ الفاحصُ قبل قطعًا بغير ترتيبها (مصنوع)")
     d = os.environ.get("MUDAA_DIR") or os.path.join(ROOT, ".mudaa")
     p = {f: os.path.join(d, f) for f in ("tafkir.txt", "a2.txt")}
     if not all(os.path.exists(x) for x in p.values()):
