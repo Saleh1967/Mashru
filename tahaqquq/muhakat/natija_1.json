@@ -1,0 +1,31 @@
+{
+ "aya": "البقرة 282",
+ "basmat_mudaat": {
+  "lisan.txt": "34fa56710a5b701532a34cb70f8fe440b261e80ae3c40d9667d18b65be7ed86d",
+  "maqayis.txt": "7f71af0dfe056cb84e7da24657fa13edc6e8061ca1980eed7f6c196bd18b5689",
+  "quran-simple-enhanced.txt": "37633090743d403886b334d12dd911d1994e49767faa9f2be0f01fd48b466c5a"
+ },
+ "basmat_mukhrajat": {
+  "baqa": "771bfdfffcb4ceefc451296c92499da518e44782b94df4bb2c70a7ef3db27f47",
+  "hajaUdwiyya": "771bfdfffcb4ceefc451296c92499da518e44782b94df4bb2c70a7ef3db27f47",
+  "naw": "771bfdfffcb4ceefc451296c92499da518e44782b94df4bb2c70a7ef3db27f47",
+  "tadayyun": "771bfdfffcb4ceefc451296c92499da518e44782b94df4bb2c70a7ef3db27f47"
+ },
+ "halat_jadhr": {
+  "la_murashshah": 74,
+  "murashshah_wahid": 55,
+  "murashshahun": 0
+ },
+ "hukm_shari_kharij": 17,
+ "inv01_basma_wahida": true,
+ "jumal": 17,
+ "kalimat": 129,
+ "mana": {
+  "laFikr": 74,
+  "qati": 0,
+  "zanni": 55
+ },
+ "satr": 289,
+ "shuhud_maqayis": 48,
+ "wujud_qati_haqiqa": 17
+}

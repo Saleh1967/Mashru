@@ -9316,5 +9316,53 @@
   "milaf": "Qari/Mudir.lean",
   "min": "      | [h, suwar] => some (h, (suwar.splitOn \" \").filter (· ≠ \"\"))\n",
   "ila": "      | [h, suwar] => some (h, [suwar])\n"
+ },
+ {
+  "ism": "P1650_muhakat_sifa_athar_zanni",
+  "milaf": "Aql/Muhakat.lean",
+  "min": "  | .sifa, .athar => .laFikr\n",
+  "ila": "  | .sifa, .athar => .zanni\n"
+ },
+ {
+  "ism": "P1651_muhakat_wujud_athar_zanni",
+  "milaf": "Aql/Muhakat.lean",
+  "min": "  | .wujud, .athar => .qati\n",
+  "ila": "  | .wujud, .athar => .zanni\n"
+ },
+ {
+  "ism": "P1652_muhakat_hukm_bila_haris",
+  "milaf": "Aql/Muhakat.lean",
+  "min": "  if s.jiha = .madhDhamm then .kharijNitaq else .bi (rutbaHukm p s.jiha s.qanat ms)\n",
+  "ila": "  .bi (rutbaHukm p s.jiha s.qanat ms)\n"
+ },
+ {
+  "ism": "P1653_muhakat_iltiqa_max",
+  "milaf": "Aql/Muhakat.lean",
+  "min": "def iltiqa (a b : Rutba) : Rutba := if a.val ≤ b.val then a else b\n",
+  "ila": "def iltiqa (a b : Rutba) : Rutba := if a.val ≤ b.val then b else a\n"
+ },
+ {
+  "ism": "P1654_muhakat_ray_fi_zanni",
+  "milaf": "Aql/Muhakat.lean",
+  "min": "  | .ray => !bahthQati && m.rutba == .qati\n",
+  "ila": "  | .ray => !bahthQati\n"
+ },
+ {
+  "ism": "P1655_muhakat_mira_ismail",
+  "milaf": "scripts/muhakat_dayn.py",
+  "min": "            return \"qati\" if ismail else \"zanni\"\n",
+  "ila": "            return \"qati\"\n"
+ },
+ {
+  "ism": "P1656_muhakat_sel_la_yuqsam",
+  "milaf": "scripts/muhakat_dayn.py",
+  "min": "    return [j.split() for j in s.split(\"<sel>\") if j.strip()]\n",
+  "ila": "    return [s.split()]\n"
+ },
+ {
+  "ism": "P1657_muhakat_la_murashshah_zanni",
+  "milaf": "scripts/muhakat_dayn.py",
+  "min": "    return {\"hala\": \"murashshahun\" if rs else \"la_murashshah\", \"jadhr\": None, \"shuhud\": [], \"ms\": [\"laFikr\"],\n",
+  "ila": "    return {\"hala\": \"murashshahun\" if rs else \"la_murashshah\", \"jadhr\": None, \"shuhud\": [], \"ms\": [\"zanni\"],\n"
  }
 ]

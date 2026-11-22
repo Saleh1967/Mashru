@@ -128,6 +128,9 @@
       والمخالفُ والغائبُ والمرشَّحُ بأسمائها، وجدولا الجنس والمثال يُبنيان ببصمتيهما المختومتين، والسجلُّ لا يتغيّر؛ بلا شبكة، دائمًا.
   ٥ت١٣. A116 المستورد (tahaqquq/test_a116.py؛ Saleh1967/Alghanem formal/a116 بإيداعه 9d8fa03): الجداولُ الأربعةُ والثلاثون في jadawil/a116
       وملفّا البيانات = مُخرَجُ a116-jadwal من Lean المبنيّ في Mashru بايتًا (مطابَق)، دائمًا.
+  ٥ت١٤. محاكاةُ قواعد العمليّة العقليّة (tahaqquq/test_muhakat.py؛ Aql/Muhakat.lean والمرآة scripts/muhakat_dayn.py): جدولُ السقوف من Lean (#eval) =
+      توقّعٌ يدويّ من نصوص التفكير وج3 = المرآة، دائمًا؛ وآيةُ الدَّين (البقرة 282) على المودَعات المختومة إن حضرت: الجملُ والكلماتُ، والوجودُ قطعيٌّ
+      حقيقة، والحكمُ بالمدح والذمّ خارجَ النطاق، ولا معنى قطعيّ، والدوافعُ الأربعة مخرجٌ واحد (INV-01)، وأسطرُ الشواهد عناوينُ موادّها، والملخّصُ = natija_1.json.
   ٥ص١٤. ضابطُ «أثر العُقَد» المجمَّد (tahaqquq/test_athar_dabit.py؛ نطاقُ القوّة من الكتاب والمغني والقطر والألفية وج3، ونطاقُ القيد ج3 س1062–1106):
       مثلُ ٥ص، وبصمةُ الشفرة كلُّ ملفٍّ فيه ثابتٌ يبلغه حسابُ natijaHala (SHIFRA، ويحسبها Lean من البيئة المبنيّة فتُقارَن بها)، بحقلٍ مسؤولٍ في
       كلّ حالة (القوّة أو القيد)، دائمًا؛
@@ -264,6 +267,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_sual.py",
     "tahaqquq/test_jalb.py",
     "tahaqquq/test_a116.py",
+    "tahaqquq/test_muhakat.py",
     # قبل الأخيرَين: يستورد وحدات المشروع كلَّها في Lean إلّا جذورَ التنفيذيّات الأحدَ عشر، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_wiratha.py",
     # قبل الأخير: يستورد وحدات المشروع كلَّها في Lean، فلا يجري إلّا على ما نجا ممّا قبله.
@@ -1248,6 +1252,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت١٣ {out.strip().splitlines()[-1] if out.strip() else 'A116: ?'}")
     if code != 0:
         fails.append("اختبار A116 المستورد فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_muhakat.py"])
+    report.append(f"٥ت١٤ {out.strip().splitlines()[-1] if out.strip() else 'محاكاة العقل: ?'}")
+    if code != 0:
+        fails.append("اختبار محاكاة العقل فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_athar_dabit.py"])
     report.append(f"٥ص١٤ {out.strip().splitlines()[-1] if out.strip() else 'ضابط أثر العقد: ?'}")
     if code != 0:
