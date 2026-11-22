@@ -1,5 +1,5 @@
 {
- "mubarhanat": 5226,
- "tarikh": "2026-11-21",
- "sabab": "2844←5226: مخرج `lake env lean Audit.lean` على فرع claude/tawzif-ntp (جلسة 2026-11-21): 5226 سطرًا كلُّها في المسموح — 5211 على main عند f23f635، و15 مبرهنةً جديدة في Madlul/NTP/Mukhassas.lean. كان الحدّ متأخّرًا 2367 مبرهنةً منذ 2026-11-17 فلا يحرس حذفها."
+ "mubarhanat": 5268,
+ "tarikh": "2026-11-22",
+ "sabab": "5226←5268: مخرج `lake env lean Audit.lean` على فرع claude/sim-aql (جلسة 2026-11-22): 5268 سطرًا كلُّها في المسموح — 40 مبرهنةً في Aql/SimAql.lean ومبرهنتان في Madlul/NTP/Mukhassas.lean (simaql_wujud_jazim، simaql_madmun_zann). وقبلها 2844←5226 على claude/tawzif-ntp."
 }

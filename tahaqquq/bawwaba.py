@@ -166,6 +166,8 @@
   ٥ت١٤. NTP على المخصّص (tahaqquq/test_ntp_mukhassas.py؛ Madlul/NTP/Mukhassas.lean؛ أمرُ المالك 2026-11-21، 13:57): «شبكة NTP من المخصص»
       مختومةٌ وفي jalb.py مولِّدُها؛ وأسطرُ شاهد Lean أسطرٌ في الجدول ونصوصُها في المخصّص عند إزاحاتها؛ و«صنّف» في mudir يطابق قراءةَ بايثون
       للجدول على شاهدَين وعيّنة؛ وبلا مودَعٍ «مودَعٌ غائب».
+  ٥ت١٥. SIM-AQL (tahaqquq/test_sim_aql.py؛ Aql/SimAql.lean؛ أمرُ المالك 2026-11-22، 17:14): «التفكير — نصّ المكتبة الشاملة» مختومٌ ويُجلب؛
+      ونقولُ رأس SimAql.lean في أسطرها من tafkir.txt وa2.txt بنصّها؛ وسطرُ SIM-AQL في «صنّف» من mudir.
   ٥خ٤. التوظيف (tahaqquq/test_tawzif.py؛ scripts/bina_tawzif.py؛ أمرُ المالك 2026-11-21، 13:57 «لا اريد ان تبقي اي مختوم او مودع او جدول او lean
       خارج التوظيف مطلقا»): tahaqquq/tawzif.json مخرجُ المولِّد بايتًا — لكلّ وحدةٍ من مكتبات lakefile.toml التنفيذيّاتُ التي تبلغها بسلسلة import، ولكلّ
       مودَعٍ الكودُ الذي يذكر ملفَّه وهل يُجلب على CI؛ والسقّاطة: ما ليس موظَّفًا الآن في قوائم tahaqquq/tawzif_asas.json بالاسم، فلا يدخل جديدٌ خارج التوظيف.
@@ -269,6 +271,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_sabq_tajmid.py",
     "tahaqquq/test_mudir.py",
     "tahaqquq/test_ntp_mukhassas.py",
+    "tahaqquq/test_sim_aql.py",
     "tahaqquq/test_sual.py",
     "tahaqquq/test_jalb.py",
     "tahaqquq/test_a116.py",
@@ -1284,6 +1287,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت١٤ {out.strip().splitlines()[-1] if out.strip() else 'NTP على المخصّص: ?'}")
     if code != 0:
         fails.append("اختبار NTP على المخصّص فشل:\n" + out[-1500:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_sim_aql.py"])
+    report.append(f"٥ت١٥ {out.strip().splitlines()[-1] if out.strip() else 'SIM-AQL: ?'}")
+    if code != 0:
+        fails.append("اختبار SIM-AQL فشل:\n" + out[-1500:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_jalb.py"])
     report.append(f"٥ت١٢ {out.strip().splitlines()[-1] if out.strip() else 'جلب المودَعات: ?'}")
     if code != 0:

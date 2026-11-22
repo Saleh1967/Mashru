@@ -9382,5 +9382,53 @@
   "milaf": "scripts/bina_ntp_mukhassas.py",
   "min": "\"-\" if j[\"parent\"] is None else j[\"parent\"]",
   "ila": "\"-\""
+ },
+ {
+  "ism": "P1661_athar_yanqul_sifa",
+  "milaf": "Aql/SimAql.lean",
+  "min": "  | _, .athar => .laFikr\n",
+  "ila": "  | _, .athar => .zanni\n"
+ },
+ {
+  "ism": "P1662_siyaj_bila_tasfiya",
+  "milaf": "Aql/SimAql.lean",
+  "min": "  if bahthQati then [] else ar.filter (·.rutba == .qati)\n",
+  "ila": "  if bahthQati then [] else ar\n"
+ },
+ {
+  "ism": "P1663_zanni_la_yuradd",
+  "milaf": "Aql/SimAql.lean",
+  "min": "    | some rai => if r = .qati then .taliq .taarudMutasawi else .mardud t.qawl rai.nass\n",
+  "ila": "    | some _ => if r = .qati then .taliq .taarudMutasawi else .hukm t.qawl t.jiha r (s7 t.jiha r)\n"
+ },
+ {
+  "ism": "P1664_jazim_bila_wujud",
+  "milaf": "Aql/SimAql.lean",
+  "min": "def s7 (j : Jiha) (r : Rutba) : Tasdiq := if j = .wujud ∧ r = .qati then .jazim else .zannRajih",
+  "ila": "def s7 (j : Jiha) (r : Rutba) : Tasdiq := if r = .qati then .jazim else .zannRajih"
+ },
+ {
+  "ism": "P1665_amiq_yansa",
+  "milaf": "Aql/SimAql.lean",
+  "min": "  | k + 1 => amiq tabaqa k ++ tabaqa (k + 1)\n",
+  "ila": "  | k + 1 => tabaqa (k + 1)\n"
+ },
+ {
+  "ism": "P1666_jadd_bila_amal",
+  "milaf": "Aql/SimAql.lean",
+  "min": "  | some g => a.mariyya && a.aamal.any (· ≥ g)\n",
+  "ila": "  | some g => a.mariyya || a.aamal.any (· ≥ g)\n"
+ },
+ {
+  "ism": "P1667_madmun_wujud",
+  "milaf": "Madlul/NTP/Mukhassas.lean",
+  "min": "  ⟨\"سؤال المالك\", s!\"«{w}» تحت عقدته في المخصّص\", .kunh,",
+  "ila": "  ⟨\"سؤال المالك\", s!\"«{w}» تحت عقدته في المخصّص\", .wujud,"
+ },
+ {
+  "ism": "P1668_fahs_nuqul_yaqbal_kull",
+  "milaf": "tahaqquq/test_sim_aql.py",
+  "min": "        if i < 0:\n            return False\n",
+  "ila": "        if i < -1:\n            return False\n"
  }
 ]

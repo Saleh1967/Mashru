@@ -64,6 +64,10 @@ UKHRA = {
     "quran-simple-enhanced.txt": ALGHANEM + "quran-simple-enhanced.txt",
     # معجمُ التشكيل في A116 (Alghanem docs/tashkil/PREREG.md يسمّي بصمتَه)؛ خُتم 2026-11-20 بأمر المالك.
     "tashkil_mujam.tsv.gz": ALGHANEM + "tashkil/mujam.tsv.gz",
+    # «التفكير» نصًّا (تصدير المكتبة الشاملة) في مستودع المالك alghanem-constitution؛ خُتم 2026-11-22 بإذن المالك العامّ (2026-11-21)،
+    # ويقرؤه Aql/SimAql.lean بأسطره (tahaqquq/test_sim_aql.py). وa3.doc (بصمته e917d9a0…) نسخةُ الكتاب الأخرى، بايتاتُه غائبة.
+    "tafkir.txt": "https://raw.githubusercontent.com/Saleh1967/alghanem-constitution/f75a43b9f4ed3df059f1feb832f48d96e6f846ba/"
+                  "suspended/data__sources/tafkir.txt",
 }
 URL = {**{k: RAW + v for k, v in OPENITI.items()}, **{k: HAMIL + v for k, v in MALIK.items()}, **UKHRA}
 

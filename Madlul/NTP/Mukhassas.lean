@@ -28,6 +28,7 @@
   بلا sorry ولا axiom ولا native_decide.
 -/
 import Madlul.NTP.SilsilaMaajim
+import Aql.SimAql
 
 set_option autoImplicit false
 
@@ -180,6 +181,26 @@ theorem adad_le_qailun (asma : List String) (zs : List Zawj) : adad (shuhud asma
 theorem rutba_zann (K c : Nat) : rutba K .taht c ≠ .yaqin :=
   ghayr_wujud_la_yaqin K c .taht (by decide)
 
+/-! ## ٣ب. SIM-AQL على الجواب (`Aql.SimAql`، 2026-11-22)
+
+  حكمان على كلّ جواب: (١) وجودُ القول في المودَع المختوم — جهتُه الوجود، وقناتُه الحسّ بالبايتات المختومة (البصمة)، فقطعيٌّ وتصديقُه
+  جازم؛ (٢) مضمونُه، أنّ اللفظ تحت عقدته — جهتُه الكنه، وقناتُه خبرٌ لغويّ: متواترٌ إن قُبل بالتواتر على الشجرة وإلّا آحاد (ش٣ 729)،
+  وربطُه تصنيف؛ فلا يزيد على الظنّ. وجعلُ عضويّة الجنس «كنهًا» قراءةُ البنّاء. -/
+
+def halaWujud (w : String) : Aql.SimAql.Hala :=
+  ⟨"سؤال المالك", s!"في المخصّص المختوم لفظ «{w}»", .wujud, .hiss, .wujudAnHissAwAthar, [.qati], [], true, none⟩
+
+def halaMadmun (w : String) (mutawatir : Bool) : Aql.SimAql.Hala :=
+  ⟨"سؤال المالك", s!"«{w}» تحت عقدته في المخصّص", .kunh, .khabarLugha mutawatir, .tasnif, [.zanni], [], false, none⟩
+
+theorem simaql_wujud_jazim (w : String) :
+    Aql.SimAql.think (halaWujud w) = .hukm s!"في المخصّص المختوم لفظ «{w}»" .wujud .qati .jazim := rfl
+
+/-- **مضمونُ المخصّص ظنٌّ راجح أيًّا كان التواتر**: التصنيفُ سقفُه الظنّ. -/
+theorem simaql_madmun_zann (w : String) (t : Bool) :
+    Aql.SimAql.think (halaMadmun w t) = .hukm s!"«{w}» تحت عقدته في المخصّص" .kunh .zanni .zannRajih := by
+  cases t <;> rfl
+
 /-! ## ٤. الجواب -/
 
 def unwanOf (sh : Shabaka) (n : Nat) : String :=
@@ -218,6 +239,8 @@ def jawab (sh : Shabaka) (w : String) : String :=
     s!"\n\tالقائلون المسمّون ({ql.length}): {"، ".intercalate (ql.take 12)}" ++
     s!"\n\tالعدّ بالسجلّ (NTP.adad): {nS} — {if yuqbal 2 sh' then "يُقبل" else "لا يُقبل"} به عند K = 2؛ والعدّ بالشجرة (Silsila.adadS): {nT}" ++
     s!"\n\tالمرتبة (NTP.rutba، تحت): {ismRutba (rutba 2 .taht nS)}" ++
+    s!"\n\tSIM-AQL (Aql.SimAql.think): وجودُ القول في المودَع المختوم: {Aql.SimAql.wasf (Aql.SimAql.think (halaWujud w))}؛ " ++
+    s!"ومضمونُه (كنهٌ بتصنيف، خبرٌ لغويّ {if qbT then "متواتر" else "آحاد"}): {Aql.SimAql.wasf (Aql.SimAql.think (halaMadmun w qbT))}" ++
     s!"\n\tالمواضع (إزاحةُ المحرف في mukhassas.txt): {", ".intercalate ((zs.take 8).map fun z => toString z.mawdi)}"
 
 /-! ## ٥. الشاهد: أسطرٌ من `ntp_mukhassas.tsv` بنصّها -/

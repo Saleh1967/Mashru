@@ -1,17 +1,17 @@
 {
  "_": "مولَّدٌ بـ python3 -I scripts/bina_tawzif.py؛ لا يُحرَّر يدويًّا.",
  "khulasa": {
-  "wahdat": 446,
-  "muwazzafa": 261,
+  "wahdat": 447,
+  "muwazzafa": 262,
   "ghayr_muwazzafa": 185,
-  "mudaat": 43,
+  "mudaat": 44,
   "mudaat_ghayr_mustamala": 3,
   "mudaat_la_tujlab": 20,
   "tanfidhiyyat": {
    "a116-jadwal": 156,
    "athar": 74,
    "faahis": 13,
-   "mudir": 91,
+   "mudir": 92,
    "nabtBridge": 20,
    "qanunJadwal": 4,
    "qari": 62,
@@ -801,6 +801,9 @@
   "Aql.SababShartMani": [],
   "Aql.SalamaMaqbul": [
    "rabt"
+  ],
+  "Aql.SimAql": [
+   "mudir"
   ],
   "Aql.TashfirAwwaliyyat": [],
   "Aql.TashfirAzmina": [],
@@ -2184,6 +2187,7 @@
     "Aql/Awwaliyyat.lean",
     "Aql/Naql.lean",
     "Aql/SababShartMani.lean",
+    "Aql/SimAql.lean",
     "Dal/AqsamAlism.lean",
     "Dal/AqsamAllafz.lean",
     "Jisr/NisabAsnaf.lean",
@@ -2196,10 +2200,12 @@
     "Qari/Rabt.lean",
     "mudaat/test_idaa.py",
     "scripts/tarqim_j3.py",
+    "tahaqquq/bawwaba.py",
     "tahaqquq/dawabit/athar/fahs_cases.py",
     "tahaqquq/dawabit/sakk/fahs_cases.py",
     "tahaqquq/test_athar_dabit.py",
     "tahaqquq/test_sakk.py",
+    "tahaqquq/test_sim_aql.py",
     "tahaqquq/test_tahlil.py",
     "tahaqquq/test_tasis.py"
    ]
@@ -2215,7 +2221,20 @@
     "Qari/Mudir.lean",
     "mudaat/test_idaa.py",
     "scripts/bina_ntp_mukhassas.py",
-    "tahaqquq/test_ntp_mukhassas.py"
+    "tahaqquq/test_ntp_mukhassas.py",
+    "tahaqquq/test_sim_aql.py"
+   ]
+  },
+  "tafkir.txt": {
+   "ism": "التفكير — نصّ المكتبة الشاملة",
+   "hala": "مختوم",
+   "naw": "معلومات-سابقة",
+   "yujlab": true,
+   "mustamil": [
+    "Aql/SimAql.lean",
+    "mudaat/test_idaa.py",
+    "tahaqquq/bawwaba.py",
+    "tahaqquq/test_sim_aql.py"
    ]
   }
  }
