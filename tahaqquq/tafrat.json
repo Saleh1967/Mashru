@@ -9316,5 +9316,29 @@
   "milaf": "Qari/Mudir.lean",
   "min": "      | [h, suwar] => some (h, (suwar.splitOn \" \").filter (· ≠ \"\"))\n",
   "ila": "      | [h, suwar] => some (h, [suwar])\n"
+ },
+ {
+  "ism": "P1660_talaqqi_bila_tasawwur",
+  "milaf": "Aql/TalaqqiFikri.lean",
+  "min": "\"فهم-فكري\", [maalumat f, mustawa f, waqi f, tasawwur f]",
+  "ila": "\"فهم-فكري\", [maalumat f, mustawa f, waqi f]"
+ },
+ {
+  "ism": "P1661_talaqqi_fahm_rutba_sifr",
+  "milaf": "Aql/TalaqqiFikri.lean",
+  "min": "  | fahmLughawi _ | fahmFikri _ => 1",
+  "ila": "  | fahmLughawi _ => 1\n  | fahmFikri _ => 0"
+ },
+ {
+  "ism": "P1662_talaqqi_mawqif_min_lugha",
+  "milaf": "Aql/TalaqqiFikri.lean",
+  "min": "\"موقف\", [fahmFikri f], mawqif f",
+  "ila": "\"موقف\", [lugha f], mawqif f"
+ },
+ {
+  "ism": "P1663_talaqqi_shahid_tasawwur",
+  "milaf": "Aql/TalaqqiFikri.lean",
+  "min": "  | tasawwur _ => false\n  | p => aslKamil p",
+  "ila": "  | p => aslKamil p"
  }
 ]

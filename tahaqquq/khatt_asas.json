@@ -1,5 +1,5 @@
 {
- "mubarhanat": 2844,
- "tarikh": "2026-11-17",
- "sabab": "2814←2844 بعد مرور البوّابة محلّيًّا على فرع madlul/nawat-tawlid (2026-11-17، فوق d3c73bd): Madlul/Nawat.lean +9، Jisr/Tawlid.lean +15، Jisr/TawlidDabit.lean +2، Jisr/TawlidQiyas.lean +4"
+ "mubarhanat": 5219,
+ "tarikh": "2026-11-22",
+ "sabab": "2844←5219 بعد مرور البوّابة محلّيًّا على فرع aql/talaqqi-fikri (2026-11-22، فوق f23f635): Aql/TalaqqiFikri.lean +8؛ و5211 = 5219 − 8 كانت في Audit.lean على f23f635 ولم يُرفع إليها الأساسُ بعد استيراد A116. وقبله: 2814←2844 بعد مرور البوّابة محلّيًّا على فرع madlul/nawat-tawlid (2026-11-17، فوق d3c73bd): Madlul/Nawat.lean +9، Jisr/Tawlid.lean +15، Jisr/TawlidDabit.lean +2، Jisr/TawlidQiyas.lean +4"
 }

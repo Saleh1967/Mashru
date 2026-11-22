@@ -156,6 +156,7 @@ import Madlul.NTP.Muallij
 import Madlul.NTP.Wasl
 import Madlul.NTP.Silsila
 import Madlul.NTP.SilsilaMaajim
+import Aql.TalaqqiFikri
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -5561,3 +5562,11 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms Jisr.MarjaMutabaqa.adad_mutabaqa
 #print axioms Jisr.MarjaMutabaqa.khilaf_sinfan
 #print axioms Jisr.MarjaMutabaqa.mawadi_khilaf_alif
+#print axioms Aql.TalaqqiFikri.mutadarrija
+#print axioms Aql.TalaqqiFikri.asl_iff
+#print axioms Aql.TalaqqiFikri.fahm_iff
+#print axioms Aql.TalaqqiFikri.naqs_shart
+#print axioms Aql.TalaqqiFikri.mustawa_la_yakfi
+#print axioms Aql.TalaqqiFikri.mawqif_iff
+#print axioms Aql.TalaqqiFikri.lughawi_la_yakfi
+#print axioms Aql.TalaqqiFikri.shahid_wai
