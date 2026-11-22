@@ -9316,5 +9316,71 @@
   "milaf": "Qari/Mudir.lean",
   "min": "      | [h, suwar] => some (h, (suwar.splitOn \" \").filter (· ≠ \"\"))\n",
   "ila": "      | [h, suwar] => some (h, [suwar])\n"
+ },
+ {
+  "ism": "P1650_strip_ghayr_mutadakhil",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "        elif src.startswith(\"/-\", i):\n            umq = 1; i += 2\n",
+  "ila": "        elif False:\n            pass\n"
+ },
+ {
+  "ism": "P1651_mahzurat_bila_A116",
+  "milaf": "tahaqquq/bawwaba.py",
+  "min": "MAJALLAT_MAHZURAT = (\"A116\", \"Nabt\",",
+  "ila": "MAJALLAT_MAHZURAT = (\"Nabt\","
+ },
+ {
+  "ism": "P1652_tawzif_bila_taaddi",
+  "milaf": "scripts/bina_tawzif.py",
+  "min": "        st += istirad(jadhr, x)\n",
+  "ila": "        st += []\n"
+ },
+ {
+  "ism": "P1653_jalb_istimal",
+  "milaf": "scripts/bina_tawzif.py",
+  "min": " if f in t and not p.endswith(\"jalb.py\"))}",
+  "ila": " if f in t)}"
+ },
+ {
+  "ism": "P1654_saqqata_bil_adad",
+  "milaf": "tahaqquq/test_tawzif.py",
+  "min": "    return sorted(set(hali) - set(asas))\n",
+  "ila": "    return [] if len(hali) <= len(asas) else sorted(set(hali) - set(asas))\n"
+ },
+ {
+  "ism": "P1655_ghayr_musamma_naqis",
+  "milaf": "Madlul/NTP/Mukhassas.lean",
+  "min": "def ghayrMusamma : List String := [\"بلا نسبة صريحة\", \"غيره\", \"غير واحد\"]",
+  "ila": "def ghayrMusamma : List String := [\"غيره\", \"غير واحد\"]"
+ },
+ {
+  "ism": "P1656_masar_la_yasad",
+  "milaf": "Madlul/NTP/Mukhassas.lean",
+  "min": "      | some a => masar sh k a\n",
+  "ila": "      | some _ => []\n"
+ },
+ {
+  "ism": "P1657_silsila_qail_mughlaqa",
+  "milaf": "Madlul/NTP/Mukhassas.lean",
+  "min": "def shajaraQail : Shajara := fun n => if n < 1000 then SilsilaMaajim.shajara n else none",
+  "ila": "def shajaraQail : Shajara := fun n => if n < 1000 then SilsilaMaajim.shajara n else some []"
+ },
+ {
+  "ism": "P1658_qari_yaqlib_lafz_qail",
+  "milaf": "Qari/Mudir.lean",
+  "min": "      | [\"zawj\", r, j, l, q, m] => some ⟨r.toNat!, j.toNat!, l, q, m.toNat!⟩",
+  "ila": "      | [\"zawj\", r, j, l, q, m] => some ⟨r.toNat!, j.toNat!, q, l, m.toNat!⟩"
+ },
+ {
+  "ism": "P1659_sannif_bila_badail",
+  "milaf": "Nizam/Mudir.lean",
+  "min": "  | .tanfidh .sannif _ => jamBadil l\n",
+  "ila": "  | .tanfidh .sannif _ => jam l\n"
+ },
+ {
+  "ism": "P1660_muwallid_yusqit_ab",
+  "milaf": "scripts/bina_ntp_mukhassas.py",
+  "min": "\"-\" if j[\"parent\"] is None else j[\"parent\"]",
+  "ila": "\"-\""
  }
 ]

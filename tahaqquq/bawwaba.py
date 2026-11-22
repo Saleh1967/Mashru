@@ -163,6 +163,12 @@
       scripts/bina_wahdat.py بايتًا، وملفّاتُه وحداتُ الحزمة في lakefile.toml، ومحلّلُ رؤوس Lean نفسُه على كلّ ملفٍّ يطابق استيرادَه، والحساباتُ الصنفيّة في كلّ وحدةٍ على البيئة هي
       jinatKhassa لها؛ والتدرّجُ والترخيصُ والوراثة مبرهنةٌ على هذا الجدول في Nizam/Wiratha.lean، والترخيصُ يصدق على كلّ
       جدولِ استيرادٍ بلا دَور.
+  ٥ت١٤. NTP على المخصّص (tahaqquq/test_ntp_mukhassas.py؛ Madlul/NTP/Mukhassas.lean؛ أمرُ المالك 2026-11-21، 13:57): «شبكة NTP من المخصص»
+      مختومةٌ وفي jalb.py مولِّدُها؛ وأسطرُ شاهد Lean أسطرٌ في الجدول ونصوصُها في المخصّص عند إزاحاتها؛ و«صنّف» في mudir يطابق قراءةَ بايثون
+      للجدول على شاهدَين وعيّنة؛ وبلا مودَعٍ «مودَعٌ غائب».
+  ٥خ٤. التوظيف (tahaqquq/test_tawzif.py؛ scripts/bina_tawzif.py؛ أمرُ المالك 2026-11-21، 13:57 «لا اريد ان تبقي اي مختوم او مودع او جدول او lean
+      خارج التوظيف مطلقا»): tahaqquq/tawzif.json مخرجُ المولِّد بايتًا — لكلّ وحدةٍ من مكتبات lakefile.toml التنفيذيّاتُ التي تبلغها بسلسلة import، ولكلّ
+      مودَعٍ الكودُ الذي يذكر ملفَّه وهل يُجلب على CI؛ والسقّاطة: ما ليس موظَّفًا الآن في قوائم tahaqquq/tawzif_asas.json بالاسم، فلا يدخل جديدٌ خارج التوظيف.
   ٥غ. سرعة الفاحص (tahaqquq/test_sura.py؛ س1، 2026-10-24): مضاعفةُ مخزنٍ مولَّد لا تزيد زمنَ المعالج على ثلاثة أضعاف، للفحص وللسؤال —
       يمنع البحثَ الخطّيّ في الأصول أو القوانين (التربيعيّ)، ولا يثبت الخطّيّة. وهو آخرُ IKHTIBARAT_TAFRAT.
   ٦. كلّ طفرة في tafrat.json تُقتل: تُفشل البناء بخطأ Lean في ملفٍّ وسطر (`KHATA_BINA`) أو تُفشل اختبارًا برمزٍ موجب. طفرة تعيش = اختبارٌ مرآة.
@@ -184,6 +190,7 @@ import tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
+MAJALLAT_MAHZURAT = ("A116", "Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari")
 # القتلُ بالبناء يُثبته خطأُ Lean في ملفٍّ وسطر؛ وخروجُ lake بغير صفرٍ بلا هذا (قتلُ المعالج لنفاد الذاكرة يُخرجه هكذا) حالٌ ثالثة: لا قتلٌ
 # ولا حياة. وكذلك اختبارٌ قُتل بإشارة (رمزٌ سالب). قاعدةٌ واحدة يقرؤها tafrat_juz.py أيضًا.
 KHATA_BINA = r"^error: (\S+?):\d+"
@@ -261,9 +268,11 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_nabt_tadqiq.py",
     "tahaqquq/test_sabq_tajmid.py",
     "tahaqquq/test_mudir.py",
+    "tahaqquq/test_ntp_mukhassas.py",
     "tahaqquq/test_sual.py",
     "tahaqquq/test_jalb.py",
     "tahaqquq/test_a116.py",
+    "tahaqquq/test_tawzif.py",
     # قبل الأخيرَين: يستورد وحدات المشروع كلَّها في Lean إلّا جذورَ التنفيذيّات الأحدَ عشر، فلا يجري إلّا على ما نجا ممّا قبله.
     "tahaqquq/test_wiratha.py",
     # قبل الأخير: يستورد وحدات المشروع كلَّها في Lean، فلا يجري إلّا على ما نجا ممّا قبله.
@@ -279,8 +288,35 @@ def run(cmd, cwd=ROOT, timeout=1800):
 
 
 def strip_comments(src):
-    src = re.sub(r"/-.*?-/", "", src, flags=re.S)
-    return re.sub(r"--.*", "", src)
+    """يحذف تعليقات Lean ويُبقي ما سواها. التعليقُ الكتليّ متداخل (`/- … /- … -/ … -/`)، و`/-` و`--` داخل سلسلةٍ نصّيّة
+    ("…") ليسا تعليقًا؛ فالسلسلةُ تبقى بحروفها. كانت الصيغةُ السابقة (تعبيران نمطيّان) تقطع المتداخلَ عند أوّل `-/`،
+    وتبدأ تعليقًا من `"/-"` في سلسلة فتبتلع ما بعدها حتّى أوّل `-/` — ومنه `sorry` في البند ٢."""
+    out, i, n, umq = [], 0, len(src), 0
+    while i < n:
+        if umq:
+            if src.startswith("/-", i):
+                umq += 1; i += 2
+            elif src.startswith("-/", i):
+                umq -= 1; i += 2
+            else:
+                if src[i] == "\n":
+                    out.append("\n")
+                i += 1
+            continue
+        c = src[i]
+        if c == '"':
+            j = i + 1
+            while j < n and src[j] != '"' and src[j] != "\n":
+                j += 2 if src[j] == "\\" else 1
+            out.append(src[i:j + 1]); i = j + 1
+        elif src.startswith("/-", i):
+            umq = 1; i += 2
+        elif src.startswith("--", i):
+            while i < n and src[i] != "\n":
+                i += 1
+        else:
+            out.append(c); i += 1
+    return "".join(out)
 
 
 def load_baseline(path):
@@ -894,16 +930,20 @@ def qism_tafrat(tafrat, i, n):
 def bunud_2_5(report, fails):
     """البنود ٢–٥د: تُكتب في report وfails. تُترك كلُّها مع --tafrat-faqat (وظائفُ الطفرات المتوازية على CI)."""
     bad = []
-    for d in ("Nabt", "SLGE", "Dal", "Madlul", "Jisr", "Aql", "Nizam", "Faahis", "Qari"):
+    # A116 مكتبةٌ في lakefile.toml وفي defaultTargets، وتعدّها test_tadqiq_tamm.py وtest_wiratha.py وbina_wahdat.py؛ وجذرا A116.lean
+    # وNabt.lean خارج المجلّدات. فالمسحُ على الحزمة كلّها لا على تسعة مجلّداتٍ منها.
+    milaffat = [os.path.join(ROOT, f) for f in ("A116.lean", "Nabt.lean") if os.path.exists(os.path.join(ROOT, f))]
+    for d in MAJALLAT_MAHZURAT:
         for root, _, fs in os.walk(os.path.join(ROOT, d)):
-            for f in fs:
-                if f.endswith(".lean"):
-                    src = strip_comments(open(os.path.join(root, f), encoding="utf-8").read())
-                    for w in ("sorry", "native_decide"):
-                        if re.search(rf"\b{w}\b", src):
-                            bad.append(f"{f}: {w}")
-                    if re.search(r"^\s*axiom\s", src, re.M):
-                        bad.append(f"{f}: axiom")
+            milaffat += [os.path.join(root, f) for f in fs if f.endswith(".lean")]
+    for p in milaffat:
+        f = os.path.relpath(p, ROOT)
+        src = strip_comments(open(p, encoding="utf-8").read())
+        for w in ("sorry", "native_decide"):
+            if re.search(rf"\b{w}\b", src):
+                bad.append(f"{f}: {w}")
+        if re.search(r"^\s*axiom\s", src, re.M):
+            bad.append(f"{f}: axiom")
     report.append(f"٢ المحظورات: {len(bad)}")
     if bad:
         fails.append("محظورات: " + "، ".join(bad))
@@ -1240,6 +1280,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ت١١ {out.strip().splitlines()[-1] if out.strip() else 'تجربة الجواب: ?'}")
     if code != 0:
         fails.append("اختبار تجربة الجواب فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_ntp_mukhassas.py"])
+    report.append(f"٥ت١٤ {out.strip().splitlines()[-1] if out.strip() else 'NTP على المخصّص: ?'}")
+    if code != 0:
+        fails.append("اختبار NTP على المخصّص فشل:\n" + out[-1500:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_jalb.py"])
     report.append(f"٥ت١٢ {out.strip().splitlines()[-1] if out.strip() else 'جلب المودَعات: ?'}")
     if code != 0:
@@ -1292,6 +1336,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥خ٣ {out.strip().splitlines()[-1] if out.strip() else 'الوراثةُ الصنفيّة: ?'}")
     if code != 0:
         fails.append("اختبار الوراثة الصنفيّة فشل:\n" + out[-1500:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_tawzif.py"])
+    report.append(f"٥خ٤ {out.strip().splitlines()[-1] if out.strip() else 'التوظيف: ?'}")
+    if code != 0:
+        fails.append("اختبار التوظيف فشل:\n" + out[-1500:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_hisab.py"])
     report.append(f"٥خ٢ {out.strip().splitlines()[-1] if out.strip() else 'الحسابُ الصنفيّ: ?'}")
     if code != 0:

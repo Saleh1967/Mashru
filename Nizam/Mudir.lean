@@ -34,6 +34,7 @@
 -/
 import Nizam.Talab
 import Madlul.NTP.Wasl
+import Madlul.NTP.Mukhassas
 import A116.Tashkil
 
 set_option autoImplicit false
@@ -249,13 +250,13 @@ theorem taallam_malik (q : Qanat) (n x : String) (e : qarar q n = .tanfidh .taal
 /-! ## ٤. الوكلاءُ والخطّة -/
 
 /-- الوكلاء: تنفيذيّاتُ Mashru القائمة، ومعالجُ NTP والمتعلّمُ في العمليّة نفسها. -/
-inductive Wakil | qari | tarkib | athar | silsila | faahis | faahisSual | muallij | mutaallim | rabt | tashkil
+inductive Wakil | qari | tarkib | athar | silsila | faahis | faahisSual | muallij | mutaallim | rabt | tashkil | mukhassas
   deriving DecidableEq, Repr
 
 def Wakil.ism : Wakil → String
   | .qari => "qari" | .tarkib => "tarkib" | .athar => "athar" | .silsila => "silsila"
   | .faahis => "faahis" | .faahisSual => "faahis --sual" | .muallij => "NTP.Wasl" | .mutaallim => "mutaallim"
-  | .rabt => "rabt" | .tashkil => "A116.Tashkil"
+  | .rabt => "rabt" | .tashkil => "A116.Tashkil" | .mukhassas => "NTP.Mukhassas"
 
 def Wakil.nawAthar : Wakil → Athar
   | .mutaallim => .iqtirah
@@ -275,7 +276,7 @@ def khittaAmr : Amr → String → List Khatwa
   | .tatabba, x => [⟨.silsila, x⟩]
   | .isal, x => dalalat.map fun d => ⟨.faahisSual, d ++ tajrid x⟩
   | .ifhas, _ => [⟨.faahis, ""⟩]
-  | .sannif, x => [⟨.muallij, tajrid x⟩]
+  | .sannif, x => [⟨.muallij, tajrid x⟩, ⟨.mukhassas, tajrid x⟩]
   | .taallam, x => [⟨.athar, x⟩, ⟨.mutaallim, x⟩]
   | .aard, _ => []
   | .shakkil, x => [⟨.tashkil, x⟩]
@@ -399,6 +400,8 @@ def natijaJamia (qr : Qarar) (l : List Natija) : Natija :=
   match qr with
   | .rafd _ => .rafd
   | .tanfidh .isal _ => jamBadil l
+  -- «صنّف» وكيلان بديلان: الشبكةُ المبنيّة (NTP.Wasl) وشبكةُ المخصّص المختوم (NTP.Mukhassas)؛ يكفي حكمُ أحدهما ما لم يُخطئ أحد.
+  | .tanfidh .sannif _ => jamBadil l
   | _ => jam l
 
 theorem rafd_jami (r : Rafd) (l : List Natija) : natijaJamia (.rafd r) l = .rafd := rfl
@@ -436,6 +439,7 @@ def natijaKhatwa (w : Wakil) (khuruj : Nat) (makhraj : String) : Natija :=
   | .faahisSual => if bada makhraj "لا حكم" then .laHukm else .najah
   | .faahis | .mutaallim => .najah
   | .muallij => if bada makhraj "لا حكم" || fihi makhraj "لا جنس" then .laHukm else .najah
+  | .mukhassas => if bada makhraj "لا حكم" || fihi makhraj "مودَعٌ غائب" then .laHukm else .najah
   | .rabt =>
     if fihi makhraj "مودَعٌ غائب" then .laHukm
     else if fihi makhraj "\tمقبول\n" then .najah
@@ -517,6 +521,7 @@ def sababKhatwa : Wakil → Natija → String
   | .rabt, .laHukm => "المودَعاتُ المختومة (luzum_mujam.tsv وjins.tsv وmithal.tsv) غائبة، أو الجملةُ لا حكم في rabt"
   | .faahisSual, .laHukm => "لا ادّعاءَ في المخزن بهذه البادئة"
   | .muallij, .laHukm => "لا عقدةَ لهذا الاسم في شبكة الشاهد، أو لا ترخيصَ إسناديّ"
+  | .mukhassas, .laHukm => "شبكةُ المخصّص المختوم (ntp_mukhassas.tsv) غائبة، أو اللفظُ ليس فيها، أو لم يدخل بالتواتر على الشجرة: كتبُ قائليه لم تُقرأ مصادرُها (NTP.Mukhassas.la_yuqbal_bi_shajara)"
   | .tashkil, .laHukm => "معجمُ التشكيل المختوم (tashkil_mujam.tsv) غائب، أو في النصّ هيكلٌ لا صورةَ له فيه (A116.Tashkil.la_tashkil_bila_wad)"
   | _, .laHukm => "معلَّقٌ بأسماء ما لم يُفحص في مخرج الوكيل (لا حكم، لا امتناع)"
 
@@ -530,6 +535,7 @@ def ilajKhatwa : Wakil → Natija → String
   | .faahisSual, .laHukm => "«تَعَلَّمْ <قضيّة>» من قناة المالك: اقتراحٌ يختمه المالك فيدخل المخزن"
   | .tashkil, .laHukm => "python3 -I mudaat/jalb.py (يجلب معجمَ التشكيل المختوم)؛ وما لا صورةَ له يُرسَل مشكولًا بيد المالك"
   | .muallij, .laHukm => "إيداعُ جنسه بشهوده المستقلّين (بوّابة التواتر) ثمّ ختمُه بإذن المالك"
+  | .mukhassas, .laHukm => "python3 -I mudaat/jalb.py (يبني ntp_mukhassas.tsv من المخصّص المختوم)؛ ولدخول التواتر: قراءةُ مصادر كتب القائلين في شجرة النقل (Madlul/NTP/SilsilaMaajim.lean)"
   | _, .laHukm => "أعد الصياغةَ في مجال الأبواب المبنيّة، أو يُبنى بابُها (hawkama/مدير_الوكلاء.md §٤)"
 
 /-- ما يرفع رفضَ القرار. -/

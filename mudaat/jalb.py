@@ -27,6 +27,8 @@ import tempfile
 JADHR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW = "https://raw.githubusercontent.com/OpenITI/"
 
+# كلُّ رابطٍ مثبَّتٌ بإيداع: الخمسةُ التي كانت على master ثُبّتت (جلسة 2026-11-20) على رأس master يومَها، وبصمةُ المجلوب منه
+# طابقت المختومةَ في sijill.json لكلٍّ منها؛ فتعديلٌ لاحقٌ في OpenITI لا يُفشل الجلبَ («مرفوض») على CI.
 OPENITI = {
     "lisan.txt": "0725AH/056df249d6619b428a78f1d69a8ab2851b97b0a6/data/0711IbnManzurIfriqi/0711IbnManzurIfriqi.LisanCarab/"
                  "0711IbnManzurIfriqi.LisanCarab.Shamela0001687-ara1.mARkdown",
@@ -34,11 +36,11 @@ OPENITI = {
                    "0395IbnFarisQazwini.MucjamMaqayis.Shamela0021710-ara1",
     "mukhassas.txt": "0475AH/cc9beb0d9645e8cdce892556423b9926a127054f/data/0458IbnSidaMursi/0458IbnSidaMursi.Mukhassas/"
                      "0458IbnSidaMursi.Mukhassas.Shamela0003590-ara1",
-    "qatr.txt": "0775AH/master/data/0761JamalDinIbnHisham/0761JamalDinIbnHisham.MatnQatrNada/0761JamalDinIbnHisham.MatnQatrNada.Shamela0011376-ara1",
-    "mughni.txt": "0775AH/master/data/0761JamalDinIbnHisham/0761JamalDinIbnHisham.MughniLabib/0761JamalDinIbnHisham.MughniLabib.Shamela0006972-ara1",
-    "alfiyya.txt": "0675AH/master/data/0672IbnMalik/0672IbnMalik.Alfiyya/0672IbnMalik.Alfiyya.Shamela0008522-ara1",
-    "janadani.txt": "0750AH/master/data/0749BadrDinMisriMuradi/0749BadrDinMisriMuradi.JanaDani/0749BadrDinMisriMuradi.JanaDani.Shamela0026099-ara1",
-    "sibawayhi.txt": "0200AH/master/data/0180Sibawayhi/0180Sibawayhi.KitabSibawayhi/0180Sibawayhi.KitabSibawayhi.JK006989-ara1",
+    "qatr.txt": "0775AH/61b0c7891699554aeff8dffdb8b1a2a59d2d22ab/data/0761JamalDinIbnHisham/0761JamalDinIbnHisham.MatnQatrNada/0761JamalDinIbnHisham.MatnQatrNada.Shamela0011376-ara1",
+    "mughni.txt": "0775AH/61b0c7891699554aeff8dffdb8b1a2a59d2d22ab/data/0761JamalDinIbnHisham/0761JamalDinIbnHisham.MughniLabib/0761JamalDinIbnHisham.MughniLabib.Shamela0006972-ara1",
+    "alfiyya.txt": "0675AH/4b1d2886508b435eb0377ccab96e1da96cc8ee0a/data/0672IbnMalik/0672IbnMalik.Alfiyya/0672IbnMalik.Alfiyya.Shamela0008522-ara1",
+    "janadani.txt": "0750AH/3a235a291ba442ce3795048254675dc0a2361f52/data/0749BadrDinMisriMuradi/0749BadrDinMisriMuradi.JanaDani/0749BadrDinMisriMuradi.JanaDani.Shamela0026099-ara1",
+    "sibawayhi.txt": "0200AH/599f22fe249871f602efe2e0ddc801d3742960a3/data/0180Sibawayhi/0180Sibawayhi.KitabSibawayhi/0180Sibawayhi.KitabSibawayhi.JK006989-ara1",
 }
 # مرفقاتُ المالك في تاريخ مستودعه العامّ Saleh1967/hamil-hala-zaman-program (بالإيداع الذي أضافها؛ CLAUDE.md: «وُجدت في تاريخ
 # hamil-hala-zaman-program وطابقت بصماتها المختومة»).
@@ -76,6 +78,9 @@ MUSHTAQQ = {
     "mithal.tsv": ([], lambda d: [sys.executable, "-I", os.path.join(JADHR, "scripts", "bina_jadawil_rabt.py"), d], lambda d: None),
     # فكُّ ضغط معجم التشكيل كما هو (بايتاتُه بلا تغيير)، ليقرأه وكيلُ `a116-tashkil` في Lean.
     "tashkil_mujam.tsv": (["tashkil_mujam.tsv.gz"], lambda d: [sys.executable, "-I", "-c", FAKK, d], lambda d: None),
+    # شبكةُ NTP من المخصّص المختوم (وكيلُ NTP.Mukhassas في mudir)؛ خُتمت 2026-11-21 بإذن المالك، ومولِّدُها يعيدها ببصمتها.
+    "ntp_mukhassas.tsv": (["mukhassas.txt"], lambda d: [sys.executable, "-I", os.path.join(JADHR, "scripts", "bina_ntp_mukhassas.py"), d],
+                          lambda d: None),
     # نصّا ج1 وج3 كما تقرؤهما أسانيدُ الضوابط (test_sakk، test_athar_dabit، …): `pandoc -t plain --wrap=none` (pandoc 3.1.3) يعيد
     # بصمتيهما المكتوبتين في تلك الاختبارات بايتًا (قيس 2026-11-20). وpandoc غيرُ حاضرٍ أو بإصدارٍ آخر: «مرفوض» باسمه لا بديلَ له.
     "a1.txt": (["a1.docx"], lambda d: ["pandoc", "-t", "plain", "--wrap=none", os.path.join(d, "a1.docx"), "-o", os.path.join(d, "a1.txt")],

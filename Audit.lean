@@ -156,6 +156,7 @@ import Madlul.NTP.Muallij
 import Madlul.NTP.Wasl
 import Madlul.NTP.Silsila
 import Madlul.NTP.SilsilaMaajim
+import Madlul.NTP.Mukhassas
 
 -- المرحلة ١: الدال وحده
 #print axioms Dal.n_injective
@@ -3230,6 +3231,22 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms NTP.SilsilaMaajim.natija
 #print axioms NTP.SilsilaMaajim.adad_arbaa
 #print axioms NTP.SilsilaMaajim.zayt_bi_sijill_la_bi_shajara
+-- Mukhassas: Madlul/NTP/Mukhassas.lean (NTP على شبكة المخصّص المختوم، أمرُ المالك 2026-11-21)
+#print axioms NTP.Mukhassas.masar_awwal
+#print axioms NTP.Mukhassas.masar_tul
+#print axioms NTP.Mukhassas.masar_ab
+#print axioms NTP.Mukhassas.nafsuhu_badil
+#print axioms NTP.Mukhassas.qail_maftuh
+#print axioms NTP.Mukhassas.shuhud_qail
+#print axioms NTP.Mukhassas.akbar_maftuh
+#print axioms NTP.Mukhassas.adadS_maftuh
+#print axioms NTP.Mukhassas.la_yuqbal_bi_shajara
+#print axioms NTP.Mukhassas.length_mutamayyiz_le
+#print axioms NTP.Mukhassas.adad_le_qailun
+#print axioms NTP.Mukhassas.rutba_zann
+#print axioms NTP.Mukhassas.shahid_masar
+#print axioms NTP.Mukhassas.shahid_balja
+#print axioms NTP.Mukhassas.shahid_faza
 -- Mudir: Nizam/Mudir.lean
 #print axioms Nizam.Mudir.bila_maqam_la_qisma
 #print axioms Nizam.Mudir.amr_iff_malik

@@ -16,8 +16,15 @@ ACTIVE_FLAG=$(printf '%s' "$ACTIVE" | sed -n 1p)
 SESSION=$(printf '%s' "$ACTIVE" | sed -n 2p)
 LOG=".claude/hooks/sijill_khattaf.log"
 GUARD=".claude/hooks/.marrat_alhajb"
-OUT=$(python3 -I tahaqquq/bawwaba.py 2>&1)
+# مهلةُ الخطّاف في settings.json ‏600 ث، والبوّابةُ كاملةً ببندها السادس (1553 طفرة) تجاوزت ساعتين على CI؛ فبلا حدٍّ داخليّ يُقتل
+# الخطّافُ بالمهلة قبل أن يكتب سطرًا في السجلّ، ويتوقّف الوكيلُ بلا حكم. فالبندُ ٦ هنا متروك (يجري كاملًا على CI قبل الدمج)،
+# والمهلةُ الداخليّة دون مهلة الخطّاف، وتجاوزُها حالٌ مسمّاة تحجب كالفشل.
+OUT=$(timeout 560 python3 -I tahaqquq/bawwaba.py --bila-tafrat 2>&1)
 CODE=$?
+if [ $CODE -eq 124 ]; then
+  OUT="$OUT
+البوّابة لم تكتمل في 560 ث (البنود ١–٥)؛ لا حكمَ بالمرور."
+fi
 if [ $CODE -eq 0 ]; then
   rm -f "$GUARD"
   echo "$(date -u +%FT%TZ) stop_hook_active=$ACTIVE_FLAG session=$SESSION gate=pass exit=0" >> "$LOG"
@@ -36,7 +43,7 @@ if [ $N -ge 3 ]; then
   echo "$OUT" | tail -n 40 >&2
   exit 0
 fi
-echo "$(date -u +%FT%TZ) stop_hook_active=$ACTIVE_FLAG session=$SESSION gate=fail block=$N exit=2" >> "$LOG"
+echo "$(date -u +%FT%TZ) stop_hook_active=$ACTIVE_FLAG session=$SESSION gate=fail code=$CODE block=$N exit=2" >> "$LOG"
 echo "لم تمرّ البوّابة؛ أصلح ثم أعد. المخرج:" >&2
 echo "$OUT" | tail -n 40 >&2
 exit 2
