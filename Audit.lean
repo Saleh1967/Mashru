@@ -6,6 +6,7 @@ import Dal.AqsamAllafz
 import Madlul.Dalala
 import Madlul.AqsamAlmadlul
 import Madlul.Tayin
+import Madlul.Qisma
 import Madlul.Tashfir
 import Madlul.TashfirSullam
 import Madlul.TashfirMadda
@@ -5561,3 +5562,13 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms Jisr.MarjaMutabaqa.adad_mutabaqa
 #print axioms Jisr.MarjaMutabaqa.khilaf_sinfan
 #print axioms Jisr.MarjaMutabaqa.mawadi_khilaf_alif
+#print axioms Madlul.Qisma.hayy_iff
+#print axioms Madlul.Qisma.la_tayin_la_mawdi
+#print axioms Madlul.Qisma.shajara_sahiha
+#print axioms Madlul.Qisma.asma_mutamayiza
+#print axioms Madlul.Qisma.judhur
+#print axioms Madlul.Qisma.ghayb_la_abna
+#print axioms Madlul.Qisma.ghayb_la_tayin
+#print axioms Madlul.Qisma.ahya
+#print axioms Madlul.Qisma.ashya
+#print axioms Madlul.Qisma.la_hukm

@@ -9,7 +9,7 @@
     والبصمةُ تحرسه.
   * مرفقاتُ المالك (a1.docx، a2.docx، badiha.docx) من تاريخ مستودعه العامّ hamil-hala-zaman-program بإيداعها.
   * تاجُ العروس من OpenITI، وQAC 0.4 من مرآة alstat/QuranTree.jl، وMASAQ ونصُّ التنزيل من corpora/ في Saleh1967/Alghanem — كلُّها بإيداعٍ مثبَّت.
-  * المشتقّ: `luzum_mujam.tsv` بـ`shabaka/jadwal_luzum.py` على lisan وmaqayis المختومين، و`jins.tsv`/`mithal.tsv` بـ`scripts/bina_jadawil_rabt.py`.
+  * المشتقّ: `luzum_mujam.tsv` بـ`shabaka/jadwal_luzum.py` على lisan وmaqayis المختومين، و`jins.tsv`/`mithal.tsv` بـ`scripts/bina_jadawil_rabt.py`، و`qisma.tsv` بـ`scripts/bina_qisma.py`.
   * وما سواها (مرفقاتُ المالك، والمراجعُ المحجوبة، وجداولُ البنّاء، والمرشَّحة) غائبٌ يُسمّى بمصدره المسجَّل.
 
 التشغيل: python3 -I mudaat/jalb.py [<مجلّد>] [--mahalli <مجلّد مصادر>]
@@ -74,6 +74,7 @@ MUSHTAQQ = {
                         lambda d: dict(os.environ, MUDAA_DIR=d)),
     "jins.tsv": ([], lambda d: [sys.executable, "-I", os.path.join(JADHR, "scripts", "bina_jadawil_rabt.py"), d], lambda d: None),
     "mithal.tsv": ([], lambda d: [sys.executable, "-I", os.path.join(JADHR, "scripts", "bina_jadawil_rabt.py"), d], lambda d: None),
+    "qisma.tsv": ([], lambda d: [sys.executable, "-I", os.path.join(JADHR, "scripts", "bina_qisma.py"), d], lambda d: None),
     # فكُّ ضغط معجم التشكيل كما هو (بايتاتُه بلا تغيير)، ليقرأه وكيلُ `a116-tashkil` في Lean.
     "tashkil_mujam.tsv": (["tashkil_mujam.tsv.gz"], lambda d: [sys.executable, "-I", "-c", FAKK, d], lambda d: None),
     # نصّا ج1 وج3 كما تقرؤهما أسانيدُ الضوابط (test_sakk، test_athar_dabit، …): `pandoc -t plain --wrap=none` (pandoc 3.1.3) يعيد

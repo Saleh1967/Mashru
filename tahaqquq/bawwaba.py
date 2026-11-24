@@ -90,6 +90,8 @@
       يدويّة على الصفوف الثلاثين، دائمًا؛ والاقتباساتُ في أسطرها إن حضر المودَع.
   ٥ر٣. التواترُ بشجرة النقل (tahaqquq/test_tawatur.py): شجرةُ مصادر المعاجم الأربعة وأسانيدُها في Madlul/NTP/SilsilaMaajim.lean،
       وتنفيذٌ مستقلٌّ للأسلاف والاستقلال والعدّ بتوقّعاتٍ يدويّة من الخُطَب، دائمًا؛ والأسانيدُ في أسطرها إن حضر المودَع.
+  ٥ر٤. جدولُ القسمة (tahaqquq/test_qisma.py): Madlul/QismaJadwal.lean مخرجُ scripts/bina_qisma.py، وبصمتُه بصمةُ qisma.tsv المختومة،
+      وتوقّعاتٌ يدويّة على الجذور والآباء والوسم، ومبرهناتُ Madlul/Qisma.lean مدقّقة، دائمًا؛ والجدولُ والنصوصُ في أسطرها إن حضر المودَع.
   ٥ص٨. ضابطُ «صكّ الجملة» المجمَّد (tahaqquq/test_sakk.py؛ الكتاب والمغني والقطر والألفية والشخصيّة ج1 وج3): مثلُ ٥ص على
       Jisr/SakkJumla.lean، وذهبُ NABT الخمسُ والعشرون منقولًا يدويًّا يطابق dhahab25، وبملفّ NABT نفسِه إن حضر.
   ٥ص١٢. ضابطُ أبنية اسمَي الفاعل والمفعول المجمَّد (tahaqquq/test_abniya.py؛ الألفية س594–607 والقطر س358 وس365): مثلُ ٥ص على
@@ -248,6 +250,7 @@ IKHTIBARAT_TAFRAT = (
     "tahaqquq/test_tadqiq_tamm.py",
     "tahaqquq/test_tasis.py",
     "tahaqquq/test_tawatur.py",
+    "tahaqquq/test_qisma.py",
     "tahaqquq/test_tahsil.py",
     "tahaqquq/test_al_lam.py",
     "tahaqquq/test_silsila.py",
@@ -1216,6 +1219,10 @@ def bunud_2_5(report, fails):
     report.append(f"٥ر٣ {out.strip().splitlines()[-1] if out.strip() else 'التواتر بشجرة النقل: ?'}")
     if code != 0:
         fails.append("اختبار التواتر بشجرة النقل فشل:\n" + out[-800:])
+    code, out = run([sys.executable, "-I", "tahaqquq/test_qisma.py"])
+    report.append(f"٥ر٤ {out.strip().splitlines()[-1] if out.strip() else 'جدول القسمة: ?'}")
+    if code != 0:
+        fails.append("اختبار جدول القسمة فشل:\n" + out[-800:])
     code, out = run([sys.executable, "-I", "tahaqquq/test_tahsil.py"])
     report.append(f"٥ت٢ {out.strip().splitlines()[-1] if out.strip() else 'التحصيل: ?'}")
     if code != 0:

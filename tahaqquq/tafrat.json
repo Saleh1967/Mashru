@@ -9316,5 +9316,35 @@
   "milaf": "Qari/Mudir.lean",
   "min": "      | [h, suwar] => some (h, (suwar.splitOn \" \").filter (· ≠ \"\"))\n",
   "ila": "      | [h, suwar] => some (h, [suwar])\n"
+ },
+ {
+  "ism": "P1670_qisma_ibil_jamad",
+  "milaf": "Madlul/Qisma.lean",
+  "min": "  | \"الإبل\" => some .hayawan\n",
+  "ila": "  | \"الإبل\" => some .jamad\n"
+ },
+ {
+  "ism": "P1671_qisma_mawdi_maqlub",
+  "milaf": "Madlul/Qisma.lean",
+  "min": "if hayat (fusul q) = .naam then \"أحياء\" else \"أشياء\"",
+  "ila": "if hayat (fusul q) = .la then \"أحياء\" else \"أشياء\""
+ },
+ {
+  "ism": "P1672_qisma_nujum_taht_kawn",
+  "milaf": "scripts/bina_qisma.py",
+  "min": "(11, \"النجوم\", \"الكواكب\",",
+  "ila": "(11, \"النجوم\", \"الكون\","
+ },
+ {
+  "ism": "P1673_qisma_wasm_bila_malik",
+  "milaf": "scripts/bina_qisma.py",
+  "min": "\"قول المالك؛ \" + TAYIN_AB),\n    (6,",
+  "ila": "TAYIN_AB),\n    (6,"
+ },
+ {
+  "ism": "P1674_qisma_ghayb_mahsus",
+  "milaf": "scripts/bina_qisma.py",
+  "min": "(4, \"ما وراء الكون\", \"\", \"لا\",",
+  "ila": "(4, \"ما وراء الكون\", \"\", \"نعم\","
  }
 ]
