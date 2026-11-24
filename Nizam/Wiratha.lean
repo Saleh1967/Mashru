@@ -180,7 +180,7 @@ def bilaWirth : List String := [
   "Faahis.SijillMakhtum",
   "Jisr.AqsamDalMadlul", "Jisr.AwamilJadwal", "Jisr.AwamilUslub", "Jisr.BabFa", "Jisr.BaqiJaza", "Jisr.MajariKalim",
   "Jisr.QawaidJadwal", "Jisr.TartibMamul",
-  "Madlul.AqsamAlmadlul", "Madlul.Dalala", "Madlul.Fard116Data", "Madlul.IshtirakData", "Madlul.JadwalLuzumNaw", "Madlul.NahtData",
+  "Madlul.AqsamAlmadlul", "Madlul.Dalala", "Madlul.Fard116Data", "Madlul.IshtirakData", "Madlul.JadwalLuzumNaw", "Madlul.NahtData", "Madlul.QismaJadwal",
   "Nabt.ArabicCoverage", "Nabt.BookCoverage", "Nabt.Cell", "Nabt.ClassicalBoundaryAffixes", "Nabt.ClassicalGemination",
   "Nabt.ClassicalHamza", "Nabt.ClassicalLanguageEvidence", "Nabt.ClassicalReferenceReadings", "Nabt.ClassicalWeak",
   "Nabt.Derivation", "Nabt.LearnedModelData", "Nabt.MaqayisRules", "Nabt.Obligations", "Nabt.PhonologicalModes",
