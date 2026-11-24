@@ -9316,5 +9316,35 @@
   "milaf": "Qari/Mudir.lean",
   "min": "      | [h, suwar] => some (h, (suwar.splitOn \" \").filter (· ≠ \"\"))\n",
   "ila": "      | [h, suwar] => some (h, [suwar])\n"
+ },
+ {
+  "ism": "P1650_nizam_asl_bila_rutba",
+  "milaf": "Aql/NizamMarifi.lean",
+  "min": "  n.rutba p == 0 && Idaa.aslMusajjal n.sanad? (n.sijill.map Prod.fst) p\n",
+  "ila": "  Idaa.aslMusajjal n.sanad? (n.sijill.map Prod.fst) p\n"
+ },
+ {
+  "ism": "P1651_nizam_hukm_imtina_min_ghiyab",
+  "milaf": "Aql/NizamMarifi.lean",
+  "min": "def hukm (n : NizamMarifi P) (c : Iddia P) : Nizam.Phi.K3 := if n.yaqbal c then .P else .U\n",
+  "ila": "def hukm (n : NizamMarifi P) (c : Iddia P) : Nizam.Phi.K3 := if n.yaqbal c then .P else .N\n"
+ },
+ {
+  "ism": "P1652_nizam_martaba_bila_sijill",
+  "milaf": "Aql/NizamMarifi.lean",
+  "min": "  Maratib.martabatMaana m (Maratib.shuhudMutabara n.sijill sh)\n",
+  "ila": "  Maratib.martabatMaana m sh\n"
+ },
+ {
+  "ism": "P1653_shabaka_sijill_waqi",
+  "milaf": "Aql/NizamMarifi.lean",
+  "min": "  sijill := [(basmaAlaqat, .maalumatSabiqa)]\n",
+  "ila": "  sijill := [(basmaAlaqat, .waqiMakhtum)]\n"
+ },
+ {
+  "ism": "P1654_shabaka_sanad_li_kull_qawl",
+  "milaf": "Aql/NizamMarifi.lean",
+  "min": "  sanad? q := if sh.aslB q then some basmaAlaqat else none\n",
+  "ila": "  sanad? _ := some basmaAlaqat\n"
  }
 ]
