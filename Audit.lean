@@ -44,6 +44,7 @@ import Aql.Idaa
 import Aql.QawaninDalala
 import Aql.Naql
 import Aql.Maratib
+import Aql.NizamMarifi
 import Aql.AlaqaMajaz
 import Aql.SalamaMaqbul
 import Dal.Tamthil
@@ -5561,3 +5562,17 @@ import Madlul.NTP.SilsilaMaajim
 #print axioms Jisr.MarjaMutabaqa.adad_mutabaqa
 #print axioms Jisr.MarjaMutabaqa.khilaf_sinfan
 #print axioms Jisr.MarjaMutabaqa.mawadi_khilaf_alif
+#print axioms NizamMarifi.NizamMarifi.asl_rutba_sifr
+#print axioms NizamMarifi.NizamMarifi.asl_musajjal
+#print axioms NizamMarifi.NizamMarifi.maqbul_murakhkhas
+#print axioms NizamMarifi.NizamMarifi.sifr_musajjal
+#print axioms NizamMarifi.NizamMarifi.maqbul_sifr_musajjal
+#print axioms NizamMarifi.NizamMarifi.hukm_P_iff
+#print axioms NizamMarifi.NizamMarifi.hukm_la_mumtani
+#print axioms NizamMarifi.NizamMarifi.la_mafhum_bila_waqi
+#print axioms NizamMarifi.NizamMarifi.mafhum_waqi
+#print axioms NizamMarifi.basmaAlaqat_sadiqa
+#print axioms NizamMarifi.shabaka_aslB
+#print axioms NizamMarifi.shabaka_yaqbal
+#print axioms NizamMarifi.shahid_shabaka
+#print axioms NizamMarifi.shabaka_la_mafhum
